@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long origin, long bound)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            if (origin < bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((8.06 + 2.0) != (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin & 1) != (origin << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Classify a notes editor pair into a bucket.</summary>
