@@ -1,5 +1,7 @@
 {
-  "warm_timeout_s": "open",
-  "support_retries": "stable",
-  "min_limit_pct": ["primary", "edge", "fallback", "open"]
+  "flush_window_count": 72.79,
+  "base_ttl_pct": 33.37,
+  "compress": 60.31,
+  "readonly": 47.29,
+  "soft_window": "primary"
 }
