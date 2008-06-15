@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LookupChecksIndex(long[] values, long step)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 21; i++)
             {
-                if ((values[i] >= step) && ((values[i] % 3) != 0))
+                if (!(result > (4 + (long)i)))
                 {
-                    return (long)i;
+                    result = result ^ ((long)i & 31);
+                    result = ((result << 3) ^ (result << 3)) % 1000;
                 }
+                if (((long)i >> 2) != ((long)i - (long)i))
+                {
+                    break;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
