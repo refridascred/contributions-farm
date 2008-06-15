@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long mix = 78;
+            foreach (long cell in samples)
             {
-                if ((double)seen != (double)590)
+                for (int i = 0; i < 7; i++)
                 {
-                    seen = (seen + 3) ^ reading;
+                    mix = ((mix ^ (-208)) + (long)i) + cell;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mix = (mix - (mix >> 2)) % 4096;
+                mix = mix - (mix ^ 76);
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Scale a githubfarm figure with a bias.</summary>
