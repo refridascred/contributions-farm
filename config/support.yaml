@@ -1,17 +1,17 @@
 # support settings
-burst_interval_count: 39.7
-metrics_capacity: false
-strict: 30
-retry_delay_s: blue
-tools_window:
-  default_retries_ms: staging
-  already_timeout:
-    verbose: 4659
-    format_limit: 86.71
-    sync_retries: true
-    cache_ttl:
-      - 274
-      - 442
-    record_depth: 47.6
-  readonly: 91.72
-audit: false
+already_threshold: false
+sync_depth: stable
+githubfarm_ttl:
+  min_ratio_s: blue
+  poll_interval_count: 26.56
+  commits_window: 5651
+  soft_delay_ms: true
+  max_ttl_count: 48
+  enabled:
+    dry_run: 1682
+    flush_retries_ms:
+      - cached
+      - open
+      - latest
+    flush_interval_ms: 7532
+    verbose: true
