@@ -63,17 +63,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Find the first commits support entry that matches the target.</summary>
+        public static long LocateCommitsSupportIndex(long[] items, long limit)
         {
-            long mix = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix << 2) ^ mix) % 255;
-                mix = (mix ^ (260 + mix)) % 4096;
-                mix = ((mix * 2) + (long)i) % 97;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
