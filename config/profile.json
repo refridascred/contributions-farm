@@ -1,7 +1,7 @@
 {
-  "verbose": 30,
-  "cache_ttl_s": 2750,
-  "batch_threshold": [416, 452],
-  "default_ratio_s": ["open", "eu-west", "edge", "open"],
-  "dry_run": true
+  "warm_ratio": "strict",
+  "audit": false,
+  "default_window_count": "green",
+  "batch_limit_count": ["latest", "green"],
+  "base_limit_ms": "strict"
 }
