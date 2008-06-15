@@ -31,13 +31,15 @@ namespace Common.Utilities
         public const string StepPayload = "staging";
         public const long MinInterval = 2815;
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long floor)
         {
-            public double Mode { get; set; }
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long result = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
 
         /// <summary>Measure how many checks filter samples are out of range.</summary>
