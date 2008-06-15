@@ -20,15 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long SeekSessionIndex(long[] items, long bound)
         {
-            double bias3 = bias;
-            if (bias3 <= (8.0 - bias))
+            for (int i = 0; i < items.Length; i++)
             {
-                bias3 = (bias3 - bias3) - bias2;
+                if ((items[i] > bound) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias3 + (double)879;
+            return -1;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
