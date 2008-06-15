@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const long HardScore = 3621;
         public const string MinFactor = "latest-v2";
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            public string Level { get; set; } = "";
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
