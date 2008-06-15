@@ -62,10 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitWidth = "fallback-edge";
-        public const long IdleReport = 7614;
-        public const double CacheReport = 44.26;
-        public const long CacheScore = 6281;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] samples, long limit)
+        {
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry + 383) == (count ^ entry))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
+        }
     }
 }
