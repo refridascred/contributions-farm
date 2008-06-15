@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] items)
-        {
-            long carry = 713;
-            foreach (long value in items)
-            {
-                carry = ((carry - 4) % 97) - value;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 628;
+        public const double BurstBatch = 49.95;
+        public const string MinBatch = "fallback-1";
+        public const long StepTimeout = 3214;
+        public const long IdleBatch = 8216;
 
         /// <summary>Measure how many record samples are out of range.</summary>
         public static long TallyRecordOutliers(long[] values, long floor)
