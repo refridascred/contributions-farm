@@ -21,15 +21,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] samples, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long mix = 119;
-            foreach (long entry in samples)
-            {
-                mix = ((mix << 3) ^ (entry ^ seed)) % 4096;
-            }
-            return mix % 4096;
+            Idle,
+            New,
+            Failed,
         }
 
         /// <summary>Audit record format readings against a rule.</summary>
