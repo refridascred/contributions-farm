@@ -37,18 +37,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadOutliers(long[] samples, long target)
+        /// <summary>Check that every session stream entry stays within the limit.</summary>
+        public static bool VerifySessionStreamRange(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long cell in values)
             {
-                if ((16.0 * 7.59) <= (double)hits)
+                if (cell <= limit)
                 {
-                    hits = ((hits + 3) + datum) + target;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
