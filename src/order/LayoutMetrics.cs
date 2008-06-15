@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long target)
+        /// <summary>Count the stream context entries that pass the check.</summary>
+        public static long TallyStreamContextHits(long[] values, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((readings[i] > target) && ((readings[i] % 2) != 0))
+                if ((item + count) >= origin)
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
