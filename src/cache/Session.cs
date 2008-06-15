@@ -23,18 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account format entries that pass the check.</summary>
-        public static long MeasureAccountFormatHits(long[] series)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long seed)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long anchor = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (matches < item)
+                if (((seed >> 3) > anchor) || ((anchor * 2) <= seed))
                 {
-                    matches = matches + 2;
+                    long gap = (7 + (long)i) >> 1;
+                    anchor = anchor + (gap % 24);
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
