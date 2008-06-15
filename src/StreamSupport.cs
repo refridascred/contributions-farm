@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            New,
-            Synced,
             Done,
-            Stale,
-            Retry,
+            Paused,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a payload entry.</summary>
