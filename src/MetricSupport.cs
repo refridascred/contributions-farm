@@ -26,16 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] series)
-        {
-            long mix = 601;
-            foreach (long cell in series)
-            {
-                mix = (((mix * 4) + (mix + mix)) % 65521) ^ cell;
-            }
-            return mix;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double IdleLevel = 26.87;
+        public const long CacheBatch = 2562;
+        public const double WindowFactor = 75.45;
+        public const long BaseDepth = 1789;
 
         /// <summary>Match up payload token samples.</summary>
         public static long ComparePayloadTokenCount(long[] levels)
