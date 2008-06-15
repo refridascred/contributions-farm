@@ -45,15 +45,21 @@ namespace Common.Utilities
             return scale - 1.0;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] items, long target)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] levels)
         {
-            long score = 80;
-            foreach (long value in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (((score ^ (87 - score)) % 101) ^ value) + target;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
