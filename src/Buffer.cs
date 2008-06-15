@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Buffer helpers.</summary>
     public static class Buffer
     {
-        /// <summary>Fold a list of profile command readings.</summary>
-        public static long TotalProfileCommand(long[] items)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] readings, long offset)
         {
-            long sum = 91;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long item in readings)
             {
-                sum = ((sum ^ (sum ^ 82)) % 1000) + datum;
+                if (offset > (item - (-46)))
+                {
+                    count = count + 1;
+                }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many layout already samples are out of range.</summary>
