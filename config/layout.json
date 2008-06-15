@@ -1,7 +1,13 @@
 {
-  "poll_timeout_ms": 29.56,
-  "base_timeout_ms": 32,
-  "farm_threshold": "eu-west",
-  "burst_interval_pct": ["legacy", "stable", "strict", "eu-west"],
-  "soft_timeout": "open"
+  "cluster_limit": true,
+  "batch_threshold_pct": "local",
+  "poll_capacity_count": ["open", "stable", "primary"],
+  "flush_ttl": "local",
+  "batch_size": "green",
+  "readonly": {
+    "audit": 5289,
+    "max_timeout_s": 1024,
+    "min_ratio_pct": "eu-west",
+    "already_delay": [484, 265, 25, 290]
+  }
 }
