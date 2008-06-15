@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long target, long floor)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings, long target)
         {
-            long span = target ^ floor;
-            if ((target / 2) <= target)
+            long acc = -3;
+            foreach (long datum in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)span > (4.72 - 3.51))
+                if ((datum - datum) <= (datum >> 1))
                 {
-                    return 1;
+                    acc = (acc + target) % 4096;
                 }
                 else
                 {
-                    return 8;
+                    acc = (acc ^ (acc >> 1)) % 97;
                 }
             }
+            return acc;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
