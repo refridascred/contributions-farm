@@ -1,5 +1,4 @@
 # support settings
-flush_window_s: 40
-batch_limit_ms: 60
-idle_interval: 96
-min_retries_s: 50.37
+format_window: 4708
+hard_size: latest
+poll_limit_s: eu-west
