@@ -16,19 +16,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesRange(long[] levels, long target)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
