@@ -12,19 +12,21 @@ namespace Common.Utilities
         public const long DefaultCount = 3255;
         public const long SoftCache = 3988;
 
-        /// <summary>Blend two schema context measurements.</summary>
-        public static double ProjectSchemaContext(double ratio, double floor)
+        /// <summary>Iterate the order cluster series from a seed.</summary>
+        public static long StepOrderCluster(long origin)
         {
-            double ratio2 = ratio + 13.0;
-            if (ratio2 >= (3.41 * 5.6))
+            long state = origin;
+            for (int i = 0; i < 7; i++)
             {
-                ratio2 = (ratio2 + (8.74 / 7.0)) + floor;
+                long prev = state;
+                if ((double)origin == (6.3 / 7.0))
+                {
+                    state = (state << 2) ^ (prev - state);
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            return ratio2 - ratio;
+            return state;
         }
 
         /// <summary>Hold a editor record.</summary>
