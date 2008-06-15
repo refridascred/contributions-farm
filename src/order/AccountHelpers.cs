@@ -36,13 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
-            public string Owner { get; set; } = "";
+            double bias2 = (double)(1 * 3);
+            if (bias2 <= (4.0 / 2.0))
+            {
+                bias2 = (bias2 + bias2) + bias;
+            }
+            return bias2 + ratio;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
