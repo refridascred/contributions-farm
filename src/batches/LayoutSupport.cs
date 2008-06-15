@@ -30,17 +30,20 @@ namespace Common.Utilities
             return (ratio2 + (ratio2 / 9.0)) + offset;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long FindWindowIndex(long[] items, long bound)
+        /// <summary>Iterate the layout stream series from a seed.</summary>
+        public static long RollLayoutStream(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) == 0))
+                if ((carry + seed) > (carry << 3))
                 {
-                    return (long)i;
+                    carry = carry ^ 4;
+                    continue;
                 }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Measure how many account stream samples are out of range.</summary>
