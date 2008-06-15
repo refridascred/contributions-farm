@@ -56,22 +56,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter metric readings.</summary>
-        public static long TotalFilterMetric(long[] data, long limit)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            long acc = 386;
-            foreach (long value in data)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if ((double)value <= (double)13)
+                if ((item + item) >= matches)
                 {
-                    acc = (acc - (acc - (-1))) % 4096;
-                }
-                if ((limit * 2) < (2 - (-736)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
