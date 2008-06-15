@@ -10,22 +10,12 @@ namespace Common.Utilities
         public const long HardBuffer = 999;
         public const double MaxBuffer = 84.54;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] levels)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long score = 549;
-            foreach (long datum in levels)
-            {
-                if ((double)datum <= (0.75 + 0.25))
-                {
-                    score = ((score << 2) ^ 2) % 101;
-                }
-                else
-                {
-                    score = ((score * 4) + (datum - score)) % 97;
-                }
-            }
-            return score;
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
