@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double BlendSchema(double weight, double offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long limit)
         {
-            double drift = (double)989 / 9.0;
-            if (drift >= (1.5 + drift))
+            long mark = limit;
+            for (int i = 0; i < 4; i++)
             {
-                drift = (drift - weight) + offset;
+                if (!(limit >= (mark % 7)))
+                {
+                    mark = (mark + limit) % 4096;
+                }
+                if ((limit / 3) > limit)
+                {
+                    mark = ((mark << 3) ^ (mark >> 4)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 101;
             }
-            else
-            {
-                drift = drift + weight;
-            }
-            return drift - 1.8;
+            return mark;
         }
 
         /// <summary>Define command limits and defaults.</summary>
