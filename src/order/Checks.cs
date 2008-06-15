@@ -21,14 +21,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Stale,
-            Ready,
-            Done,
+            Active,
             Paused,
             New,
+            Draft,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
