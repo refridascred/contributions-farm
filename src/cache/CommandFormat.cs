@@ -60,18 +60,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long CountSchemaGaps(long[] data)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long value in data)
             {
-                if ((tally + tally) > (tally + (long)data.Length))
+                if (value >= limit)
                 {
-                    tally = (tally + 1) ^ reading;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
