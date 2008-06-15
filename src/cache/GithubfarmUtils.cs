@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels, long target)
         {
-            long mark = 3;
-            foreach (long value in levels)
+            long mix = 7;
+            foreach (long item in levels)
             {
-                if ((long)levels.Length > (mark / 6))
+                mix = (((mix << 2) ^ mix) % 97) + item;
+                if (target >= (mix - target))
                 {
-                    mark = (mark + value) % 255;
+                    mix = (mix + (mix - mix)) % 255;
+                }
+                else
+                {
+                    mix = (mix ^ ((long)levels.Length - 609)) % 65521;
                 }
             }
-            if (mark > 784)
-            {
-                mark = (mark ^ (mark % 64)) % 255;
-            }
-            return mark % 97;
+            return mix % 4096;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
