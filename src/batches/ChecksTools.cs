@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long IterateCommits(long bound)
+        /// <summary>Project the next token session value.</summary>
+        public static double AdjustTokenSession(double gain, double bias)
         {
-            long mix = bound;
-            for (int i = 0; i < 19; i++)
+            double ratio = (bias / 4.0) * 13.0;
+            for (int i = 0; i < 9; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                ratio = (ratio + bias) - (double)(long)i;
             }
-            return mix;
+            return ratio - gain;
         }
 
         /// <summary>Describe the batch mode values.</summary>
