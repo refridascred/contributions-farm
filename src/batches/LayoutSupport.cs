@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long limit)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                if ((values[i] <= limit) && ((values[i] % 5) != 0))
+                if (entry != floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Find the first cache entry that matches the target.</summary>
