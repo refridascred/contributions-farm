@@ -57,19 +57,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter context entry stays within the limit.</summary>
-        public static bool VerifyFilterContextRange(long[] values, long target)
+        /// <summary>Grade a cache account value against two limits.</summary>
+        public static long SortCacheAccount(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            if (((7 + origin) >= origin) || ((3.0 - 3.79) == (double)origin))
             {
-                if (reading < target)
+                return 3;
+            }
+            else
+            {
+                if (((-28) - floor) < floor)
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((762 >> 4) < (floor - origin)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return valid;
         }
     }
 }
