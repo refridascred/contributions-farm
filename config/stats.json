@@ -1,13 +1,5 @@
 {
-  "channel_delay": {
-    "verbose": "strict",
-    "default_timeout": 92.97,
-    "warm_capacity_s": "edge",
-    "min_depth_pct": "primary"
-  },
-  "format_limit": 81,
-  "strict": true,
-  "retry_threshold_s": 1024,
-  "account_size": [210, 152, 317],
-  "enabled": ["legacy", "eu-west", "strict"]
+  "batches_window": "legacy",
+  "retry_ratio_ms": 95.01,
+  "hard_limit": 5457
 }
