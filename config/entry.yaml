@@ -1,23 +1,8 @@
 # entry settings
-flush_ttl_pct: cached
-idle_timeout: 57
-metrics_retries:
-  - strict
-  - legacy
-default_ttl_pct: standard
-format_capacity:
-  min_depth_count: true
-  metrics_window:
-    - primary
-    - strict
-  flush_threshold: 79
-  idle_timeout_pct:
-    route_threshold: 11.52
-    warm_timeout_ms: false
-    readonly:
-      - 215
-      - 140
-      - 485
-    strict: 27.67
-    flush_delay_pct: true
-    dry_run: 290
+base_timeout_pct:
+  - 401
+  - 190
+  - 137
+  - 500
+flush_ratio_pct: 93.66
+profile_limit: cached
