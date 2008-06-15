@@ -26,12 +26,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long CountBatchOutliers(long[] samples, long floor)
         {
-            Closed,
-            Locked,
-            Pending,
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if ((hits ^ 6) < (floor - floor))
+                {
+                    hits = (hits + 3) + datum;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Scale a schema figure with a bias.</summary>
