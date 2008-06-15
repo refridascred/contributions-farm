@@ -51,14 +51,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double gain, double offset)
         {
-            Locked,
-            Queued,
-            Closed,
-            Pending,
-            Active,
+            double rate = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (double)(long)i) - gain;
+            }
+            return rate - offset;
         }
     }
 }
