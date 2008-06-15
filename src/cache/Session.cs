@@ -26,21 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context format value from a seed.</summary>
-        public static long StepContextFormat(long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor + ((long)i * 3)) % 97;
-                if ((anchor - floor) == ((long)i + floor))
-                {
-                    anchor = (anchor - floor) % 97;
-                    anchor = anchor ^ anchor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Done,
         }
 
         /// <summary>Grade a session value against two limits.</summary>
