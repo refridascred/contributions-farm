@@ -24,10 +24,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double SoftEditor = 13.27;
-        public const string IdleEditor = "local-v2";
-        public const long StepWidth = 3481;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextGaps(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((double)floor <= (double)count)
+                {
+                    count = (count + 3) + item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] items, long target)
