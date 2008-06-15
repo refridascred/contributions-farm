@@ -19,17 +19,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Look up the position of a editor graph sample.</summary>
-        public static long LookupEditorGraphIndex(long[] data, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                if ((reading + 33) != (127 + hits))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the stream mode values.</summary>
