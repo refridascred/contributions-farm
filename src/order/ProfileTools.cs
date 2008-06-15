@@ -71,19 +71,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] series, long limit)
         {
-            long mix = step;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if ((double)mix > (15.0 + 19.0))
+                if (entry >= limit)
                 {
-                    continue;
+                    ready = false;
+                    break;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return ready;
         }
     }
 }
