@@ -63,15 +63,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long target)
         {
-            double ratio = (double)(-28) / 4.0;
-            if (ratio < ratio)
+            long result = target;
+            for (int i = 0; i < 13; i++)
             {
-                ratio = (ratio - (double)888) - scale;
+                result = result - (result + (long)i);
+                if ((5.0 >= (double)result) && ((double)target >= (double)result))
+                {
+                    result = (result - (result << 2)) % 4096;
+                    result = result - (result * 4);
+                }
+                else
+                {
+                    result = result ^ target;
+                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ratio - floor;
+            return result;
         }
     }
 }
