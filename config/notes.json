@@ -1,13 +1,8 @@
 {
-  "sync_capacity_ms": "eu-west",
-  "persist": [210, 205, 308],
-  "flush_limit_s": {
-    "window_retries": 72.93,
-    "cache_timeout": 86.97,
-    "idle_capacity_ms": 72.15,
-    "strict": true,
-    "hard_capacity": 76.36
-  },
-  "cache_retries": 11,
-  "sync_depth_pct": "latest"
+  "burst_depth": 25.73,
+  "dry_run": false,
+  "session_depth": false,
+  "persist": "latest",
+  "base_ttl_ms": false,
+  "verbose": 70.26
 }
