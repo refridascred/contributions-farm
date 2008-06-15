@@ -1,10 +1,12 @@
 # Command notes
 
-The cache module keeps format values in sync with the entry cache.
-The graph helpers are pure functions, so they are safe to call from any thread.
+The window module keeps channel values in sync with the batch cache.
+Each support is validated before it reaches the route queue.
+Run the payload check before changing any command limits.
 
 ## Guidelines
 
+- Keep batches values small
+- Prefer profile defaults
 - Review window limits each release
-- Validate queue input early
-- Document new buffer fields
+- Document new support fields
