@@ -34,19 +34,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphRange(long[] values, long step)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long FindCommandIndex(long[] values, long limit)
         {
-            bool flag = true;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value > step)
+                if ((values[i] == limit) && ((values[i] % 5) == 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
