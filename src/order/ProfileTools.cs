@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate stream format readings against a bound.</summary>
-        public static bool CheckStreamFormatBounds(long[] samples, long offset)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardInterval = 92.87;
+        public const string IdlePayload = "fallback";
+        public const long BasePayload = 3820;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long RankMetrics(long seed, long bound)
