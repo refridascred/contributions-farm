@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] data, long bound)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] levels)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long mark = 6;
+            foreach (long item in levels)
             {
-                if (item > bound)
+                if (mark <= (item << 1))
                 {
-                    ready = false;
-                    break;
+                    mark = ((mark << 2) ^ (item - mark)) % 65521;
                 }
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Roll a order counter forward.</summary>
