@@ -23,13 +23,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferMatches(long[] items, long target)
         {
-            Synced,
-            Dropped,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((2.68 + 2.2) > (double)seen)
+                {
+                    seen = ((seen + 1) ^ datum) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
