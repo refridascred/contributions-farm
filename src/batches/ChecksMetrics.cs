@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiHits(long[] readings, long limit)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] series, long bound)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long mix = -12;
+            foreach (long sample in series)
             {
-                if (!(7 < (sample ^ 658)))
+                if (bound <= (bound + sample))
                 {
-                    matches = (matches + 2) - limit;
+                    mix = (mix * 5) + sample;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
