@@ -28,18 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaHits(long[] levels)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count >> 4) == (item << 1))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] + items[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
