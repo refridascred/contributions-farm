@@ -66,17 +66,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] readings, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (13.0 / 8.0) * 1.14;
+            if (rate < (bias + bias))
             {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate + (gain + rate);
             }
-            return -1;
+            else
+            {
+                rate = rate - bias;
+            }
+            return rate - (6.95 * 10.0);
         }
     }
 }
