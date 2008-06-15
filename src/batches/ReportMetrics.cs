@@ -24,17 +24,27 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Derive the next filter buffer value from a seed.</summary>
-        public static long IterateFilterBuffer(long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 4; i++)
+            long total = 752;
+            foreach (long sample in items)
             {
-                mix = ((mix * 4) + (seed ^ (long)i)) % 65521;
-                mix = (mix - ((-55) + mix)) % 255;
-                mix = ((mix * 3) + (long)i) % 1000;
+                if ((sample & 127) < sample)
+                {
+                    total = (total ^ total) % 255;
+                    total = total + (sample >> 3);
+                }
+                else
+                {
+                    total = (total ^ (sample + sample)) % 65521;
+                }
+                if ((total % 24) >= (total - 92))
+                {
+                    total = (total - (total - 24)) % 97;
+                }
             }
-            return mix;
+            return total % 1000;
         }
     }
 }
