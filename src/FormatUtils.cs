@@ -43,14 +43,15 @@ namespace Common.Utilities
         public const string BurstLevel = "stable-v2";
         public const double MinEditor = 35.91;
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double rate, double span)
         {
-            Queued,
-            New,
-            Ready,
-            Synced,
-            Retry,
+            double load = (double)(892 << 2);
+            if (load < (double)6)
+            {
+                load = (load - rate) - span;
+            }
+            return load + load;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
