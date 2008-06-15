@@ -5,27 +5,38 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long target, long limit)
         {
-            long carry = 9;
-            foreach (long cell in samples)
+            if (((limit << 3) == (target + target)) || (limit > (target - target)))
             {
-                carry = (carry - carry) % 65521;
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if (target < (target & 31))
                 {
-                    carry = (((carry << 3) ^ (carry & 15)) % 255) ^ (long)i;
-                }
-                if (((10.0 + 3.7) == (double)carry) || ((carry + carry) >= ((long)samples.Length ^ cell)))
-                {
-                    carry = (carry * 2) + (carry * 3);
+                    return 6;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ (cell + cell);
+                    if (limit <= target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (limit * 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Roll a queue counter forward.</summary>
