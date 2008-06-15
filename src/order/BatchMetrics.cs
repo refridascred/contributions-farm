@@ -15,12 +15,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaGaps(long[] levels)
         {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public string Count { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (((hits - hits) < (sample / 6)) || ((hits & 63) > hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the cache mode values.</summary>
