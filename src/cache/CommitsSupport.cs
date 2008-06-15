@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long WindowSpan = 1041;
         public const long MaxChannel = 724;
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
-            public bool Mode { get; set; }
+            public long Limit { get; set; }
+            public bool Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route state values.</summary>
