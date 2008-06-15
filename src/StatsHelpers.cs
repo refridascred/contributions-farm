@@ -23,18 +23,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double AdjustRoute(double weight, double floor)
         {
-            long anchor = 764;
-            foreach (long datum in samples)
+            double load = (weight + weight) * 3.9;
+            for (int i = 0; i < 3; i++)
             {
-                if ((anchor + datum) <= (anchor ^ 969))
-                {
-                    anchor = anchor - 8;
-                }
+                load = ((load - (5.3 / 8.0)) + (double)(long)i) + floor;
             }
-            return anchor;
+            return load - (4.35 / 3.0);
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
