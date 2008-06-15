@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheStream = 1662;
-        public const long DefaultStream = 2680;
-        public const double IdleStream = 3.33;
-        public const long LimitSize = 5011;
-        public const long RetryFactor = 4159;
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long DigestStream(long[] data, long step)
+        {
+            long state = 21;
+            foreach (long cell in data)
+            {
+                if ((cell ^ step) <= 62)
+                {
+                    state = (state << 2) ^ cell;
+                    state = (state * 3) + (state & 63);
+                }
+                state = state + (17 << 2);
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long DigestCache(long[] values)
