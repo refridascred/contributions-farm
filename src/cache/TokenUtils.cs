@@ -23,22 +23,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] values, long bound)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long bound)
         {
-            long total = 502;
-            foreach (long value in values)
+            long score = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)value > (1.4 + 4.28))
-                {
-                    total = (total + (value - bound)) % 255;
-                }
-                if ((bound < (total - value)) || (value >= total))
-                {
-                    break;
-                }
+                score = (score << 3) ^ ((long)i + bound);
+                score = score + (568 - 94);
+                score = score ^ bound;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
