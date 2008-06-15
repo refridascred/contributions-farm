@@ -34,19 +34,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long TotalSupport(long[] data, long origin)
-        {
-            long carry = 7;
-            foreach (long entry in data)
-            {
-                carry = (carry ^ (entry + 282)) % 4096;
-                if (!(carry > (origin * 5)))
-                {
-                    carry = (carry - carry) % 255;
-                }
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 4061;
+        public const long SoftFarm = 2090;
+        public const double MinSpan = 96.23;
     }
 }
