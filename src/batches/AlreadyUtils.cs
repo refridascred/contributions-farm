@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long origin, long floor)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LocateFormatIndex(long[] values, long step)
         {
-            if (((floor + origin) >= 167) || ((1 << 1) != ((-8) ^ floor)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin & 7) != (floor - 82))
+                if (values[i] >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) <= (floor & 1))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
