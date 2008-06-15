@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryOrder = 5104;
-        public const double BatchOrder = 70.95;
-        public const long LimitSpan = 2012;
-        public const long BaseOrder = 7915;
-        public const long CacheSpan = 6534;
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
+        {
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Project the next editor commits value.</summary>
         public static double AdjustEditorCommits(double bias, double bias2)
