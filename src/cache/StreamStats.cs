@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseWidth = 1519;
-        public const string RetryStream = "staging-edge";
-        public const long BurstStream = 1530;
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftOrder = 31.0;
+        public const long DefaultOrder = 7650;
+        public const long RetryWidth = 2162;
+        public const long LimitSpan = 6086;
+        public const double RetryLevel = 92.54;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TotalToken(long[] values)
