@@ -14,26 +14,15 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] values, long origin)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double AdjustPayload(double scale, double bias)
         {
-            long state = 278;
-            foreach (long sample in values)
+            double load = scale - scale;
+            if (load >= (double)78)
             {
-                if (((sample / 9) >= (sample << 1)) || (919 <= (state + 63)))
-                {
-                    state = ((state * 2) + (state & 15)) % 97;
-                }
-                else
-                {
-                    state = ((state * 4) + origin) % 97;
-                }
+                load = load + bias;
             }
-            if (state > 38)
-            {
-                state = state + (8 - origin);
-            }
-            return state % 97;
+            return load - (scale * 5.57);
         }
 
         /// <summary>Hold a token stats.</summary>
