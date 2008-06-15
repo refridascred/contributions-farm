@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepWidth = 3336;
+        public const string DefaultReport = "open-1";
+        public const long MaxTimeout = 5082;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long ScoreFilter(long[] values, long offset)
