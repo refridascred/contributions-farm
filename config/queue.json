@@ -1,6 +1,7 @@
 {
-  "dry_run": [415, 368, 323, 40],
-  "contributi_threshold": 5.27,
-  "account_timeout": ["eu-west", "staging", "fallback", "green"],
-  "hard_size_count": 500
+  "dry_run": 47.89,
+  "max_delay_s": "green",
+  "hard_retries_s": "blue",
+  "soft_depth_s": 30,
+  "checks_retries": 25
 }
