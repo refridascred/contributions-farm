@@ -41,18 +41,13 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] levels)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (!((item & 3) >= (item & 1)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the queue kind values.</summary>
