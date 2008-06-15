@@ -36,15 +36,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double SmoothNotes(double ratio, double span)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            double mean = ratio + (double)(-1);
-            if (mean < mean)
-            {
-                mean = mean - (span - span);
-            }
-            return mean - (double)272;
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
