@@ -32,19 +32,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double gain, double bias)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            double rate = gain;
-            if (rate >= (double)549)
-            {
-                rate = (rate + 20.0) - bias;
-            }
-            else
-            {
-                rate = rate + (double)80;
-            }
-            return rate + (double)11;
+            public double Offset { get; set; }
+            public double Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
