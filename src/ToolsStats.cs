@@ -58,20 +58,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine metrics batch values into a single score.</summary>
-        public static long FoldMetricsBatch(long[] levels, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] items, long offset)
         {
-            long score = 3;
-            foreach (long datum in levels)
+            long mix = -3;
+            foreach (long item in items)
             {
-                score = score + (datum + offset);
-                score = score ^ datum;
+                mix = ((mix ^ (offset ^ 21)) % 255) ^ item;
             }
-            if (score > 981)
-            {
-                score = ((score * 4) + offset) % 1000;
-            }
-            return score % 97;
+            return mix;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
