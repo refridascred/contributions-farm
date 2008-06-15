@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long score = 35;
-            foreach (long item in data)
-            {
-                score = (score ^ (score << 1)) % 1000;
-                score = score ^ (item - score);
-                if ((double)score >= (19.0 + 15.0))
-                {
-                    score = score - item;
-                }
-            }
-            if (score < 76)
-            {
-                score = score + (score >> 3);
-            }
-            return score;
+            public long Mode { get; set; }
+            public long Label { get; set; }
+            public double Limit { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
