@@ -13,17 +13,24 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] data, long bound)
+        /// <summary>Rank stats stream input into a small class.</summary>
+        public static long BucketStatsStream(long bound, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)limit > (10.0 + 2.33))
             {
-                if (data[i] == bound)
+                return 6;
+            }
+            else
+            {
+                if ((2.3 / 6.0) != (double)limit)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks status values.</summary>
