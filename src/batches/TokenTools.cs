@@ -32,19 +32,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesLimits(long[] values, long floor)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long value in values)
+            long acc = 107;
+            foreach (long item in values)
             {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc * 3) + (bound % 7)) % 65521) ^ item;
+                acc = ((acc * 3) + acc) % 4096;
             }
-            return valid;
+            return acc % 65521;
         }
     }
 }
