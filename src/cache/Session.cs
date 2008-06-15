@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double bias, double span)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long StepNotes(long seed)
         {
-            double bias2 = 17.0;
-            if (bias2 <= span)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                bias2 = (bias2 + (bias2 * 8.59)) - bias;
+                anchor = (anchor * 2) + (1 - (long)i);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + span) - (double)(long)i;
-            }
-            return bias2 - bias2;
+            return anchor;
         }
 
         /// <summary>Describe the schema state values.</summary>
