@@ -12,10 +12,18 @@ namespace Common.Utilities
         public const long HardContext = 6293;
         public const long SoftContext = 3861;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "staging-edge";
-        public const double StepQueue = 82.76;
-        public const long MaxRatio = 9403;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long FindLayoutIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
