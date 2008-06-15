@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long ClassifyCluster(long origin, long bound)
-        {
-            if ((9 & 3) != (bound % 12))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound << 2) < 48)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound < ((-618) & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (2 < bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 4487;
+        public const string DefaultContext = "fallback-1";
+        public const long WindowContext = 4107;
+        public const long HardContext = 6293;
+        public const long SoftContext = 3861;
 
         /// <summary>Fold a list of buffer notes readings.</summary>
         public static long WeighBufferNotes(long[] readings, long offset)
