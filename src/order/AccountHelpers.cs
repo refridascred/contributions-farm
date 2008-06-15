@@ -40,10 +40,11 @@ namespace Common.Utilities
         public const long BatchFactor = 7931;
         public const double DefaultFactor = 34.85;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchFarm = 8121;
-        public const long MinSpan = 4103;
-        public const string StepCount = "staging-1";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4295;
+        public const string BaseChecks = "local";
+        public const long WindowSpan = 8261;
+        public const long MaxRatio = 446;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long WindowEditor = 7023;
