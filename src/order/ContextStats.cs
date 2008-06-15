@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] data, long seed)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 2494;
+        public const string HardTimeout = "primary-1";
+        public const long MinCount = 2232;
+        public const double MinFilter = 5.03;
 
         /// <summary>Classify a metrics record pair into a bucket.</summary>
         public static long BucketMetricsRecord(long step, long offset)
