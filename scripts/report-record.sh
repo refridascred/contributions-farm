@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary stable fallback; do
+for item in eu-west blue strict; do
     log "checking ${item}"
 done
 
-mode="${1:-cached}"
+mode="${1:-legacy}"
 case "${mode}" in
-    legacy)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-RECORD_LIMIT=320
-log "limit is ${RECORD_LIMIT}"
