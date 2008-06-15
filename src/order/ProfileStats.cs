@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Ready,
             Paused,
             Stale,
+            Queued,
             New,
         }
 
