@@ -20,15 +20,26 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double bias)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] levels, long bound)
         {
-            double rate2 = (double)20 / 6.0;
-            for (int i = 0; i < 2; i++)
+            long result = 2;
+            foreach (long sample in levels)
             {
-                rate2 = ((rate2 + rate) + (double)(long)i) + bias;
+                if (!(5.7 >= (double)(long)levels.Length))
+                {
+                    result = ((result << 2) ^ (result - sample)) - bound;
+                }
+                if (((long)levels.Length >> 1) >= ((long)levels.Length >> 4))
+                {
+                    result = (result + ((-76) * 2)) % 97;
+                }
             }
-            return rate2 + (rate + rate2);
+            if (result < 6)
+            {
+                result = (result * 5) + (300 + 54);
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next graph value from a seed.</summary>
