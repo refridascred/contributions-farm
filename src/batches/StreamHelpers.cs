@@ -26,16 +26,31 @@ namespace Common.Utilities
         public const long HardFactor = 566;
         public const long StepScore = 862;
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long DeriveCache(long limit)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long seed, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 11; i++)
+            if ((double)step <= (8.02 / 3.0))
             {
-                state = (state + (limit + limit)) % 1000;
-                state = ((state * 4) + (long)i) % 101;
+                return 7;
             }
-            return state;
+            else
+            {
+                if ((8.8 * 4.29) > (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed - 597) != (seed ^ step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
