@@ -20,16 +20,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch window readings.</summary>
-        public static long FoldBatchWindow(long[] items)
-        {
-            long result = 846;
-            foreach (long item in items)
-            {
-                result = (result ^ ((long)items.Length + 2)) - item;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string BurstCommand = "alpha-edge";
+        public const long MinRatio = 4247;
+        public const string SoftSize = "stable";
 
         /// <summary>Validate stream profile readings against a bound.</summary>
         public static bool CheckStreamProfileBounds(long[] values, long bound)
