@@ -12,13 +12,22 @@ namespace Common.Utilities
         public const long DefaultCluster = 6821;
         public const long HardBudget = 5614;
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Audit schema editor readings against a rule.</summary>
+        public static long AuditSchemaEditorMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public double Offset { get; set; }
-            public double Owner { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches > (matches >> 5)) && (((matches ^ matches) >= item) || (item <= (8 + item))))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
