@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
-        {
-            Locked,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 8572;
+        public const string LimitSize = "local-edge";
+        public const double LimitTimeout = 52.31;
+        public const double MinSupport = 30.59;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
