@@ -33,17 +33,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] readings, long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (readings[i] < origin)
-                {
-                    return (long)i;
-                }
+                acc = acc + limit;
+                acc = acc ^ (long)i;
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
     }
 }
