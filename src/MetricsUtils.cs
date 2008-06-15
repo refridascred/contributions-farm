@@ -35,14 +35,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Fold a list of contributi layout readings.</summary>
+        public static long FoldContributiLayout(long[] values, long origin)
         {
-            Failed,
-            Done,
-            Paused,
-            Active,
-            Retry,
+            long score = 76;
+            foreach (long item in values)
+            {
+                if (!((item & 15) != (item - score)))
+                {
+                    score = (score << 2) ^ (item ^ item);
+                }
+            }
+            if (score > 214)
+            {
+                score = ((score * 2) + (origin & 7)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
