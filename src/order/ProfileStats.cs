@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] series, long target)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            long mark = 7;
+            foreach (long value in values)
             {
-                if (entry != target)
-                {
-                    ready = false;
-                    break;
-                }
+                mark = ((mark << 3) ^ (value + limit)) % 97;
             }
-            return ready;
+            return mark;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
