@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorOutliers(long[] levels, long limit)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (reading <= (26 - tally))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            Active,
+            Draft,
+            Retry,
         }
 
         /// <summary>Scale a order figure with a bias.</summary>
