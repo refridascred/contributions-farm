@@ -78,19 +78,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] levels, long seed)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (cell >= seed)
+                if ((5 + count) >= (count % 97))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 2) + datum;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
