@@ -1,4 +1,11 @@
 # support settings
-tools_ttl: false
-compress: 75
-audit: eu-west
+base_threshold_count: fallback
+default_ttl_s: 500
+already_ratio:
+  soft_threshold_pct: 65.05
+  retry_threshold_s: green
+  account_limit: 9203
+  readonly: 14.27
+  batch_retries_s: cached
+entry_depth: legacy
+soft_retries_count: false
