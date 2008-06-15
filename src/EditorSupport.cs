@@ -16,12 +16,12 @@ namespace Common.Utilities
             return gain - 6.75;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            Retry,
-            Pending,
-            Closed,
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the metric phase values.</summary>
