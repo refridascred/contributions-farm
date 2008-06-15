@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long IdleSpan = 4311;
-        public const long SoftRatio = 8083;
-        public const string MinBudget = "standard-edge";
-        public const long DefaultReport = 8030;
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long AuditMetricMatches(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if (36 >= (hits + cell))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
