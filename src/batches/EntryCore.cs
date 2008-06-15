@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Audit cluster entry readings against a rule.</summary>
+        public static long MeasureClusterEntryHits(long[] values)
         {
-            Idle,
-            Stale,
-            Pending,
-            Dropped,
-            New,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((12.0 / 9.0) >= (double)cell)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
