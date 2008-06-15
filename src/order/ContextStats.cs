@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a stats report sample.</summary>
-        public static long LocateStatsReportIndex(long[] values, long seed)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            New,
+            Retry,
+            Pending,
         }
 
         /// <summary>Adjust a checks notes reading.</summary>
