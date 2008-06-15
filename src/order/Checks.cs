@@ -28,13 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Active,
-            Paused,
+            Retry,
+            Done,
             New,
-            Draft,
+            Ready,
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
