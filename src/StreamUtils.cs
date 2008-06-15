@@ -39,18 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] values, long offset)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinSpan = 7958;
+        public const long StepRecord = 4965;
+        public const double BaseScore = 64.09;
+        public const long SoftRecord = 8951;
+        public const string MinRecord = "fallback-1";
 
         /// <summary>Find the first metric entry that matches the target.</summary>
         public static long LookupMetricIndex(long[] values, long bound)
