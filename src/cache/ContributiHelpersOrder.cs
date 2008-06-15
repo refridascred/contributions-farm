@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 6079;
-        public const string StepInterval = "alpha-1";
-        public const long MaxCounter = 1143;
-        public const string WindowCounter = "cached-v2";
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((double)count < (19.0 - 9.9))
+                {
+                    count = ((count + 3) ^ reading) + floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const string BurstCommand = "alpha-edge";
