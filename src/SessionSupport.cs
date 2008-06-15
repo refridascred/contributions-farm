@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepWidth = 3336;
-        public const string DefaultReport = "open-1";
-        public const long MaxTimeout = 5082;
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double weight, double bias)
+        {
+            double scale = (double)(8 + 7);
+            if (scale >= (scale / 3.0))
+            {
+                scale = (scale + scale) - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - (bias + scale)) - (double)(long)i;
+            }
+            return scale - (6.81 * 2.98);
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long MatchChannelCount(long[] values)
