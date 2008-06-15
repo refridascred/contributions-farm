@@ -1,8 +1,5 @@
 {
-  "poll_threshold_ms": ["standard", "strict"],
-  "max_delay": [92, 18, 87],
-  "poll_ttl": "eu-west",
-  "batch_ttl": ["stable", "staging", "strict"],
-  "metric_ratio": "primary",
-  "stats_interval": ["standard", "strict", "legacy"]
+  "sync_threshold_pct": 44.77,
+  "strict": [424, 170, 268],
+  "entry_interval": "staging"
 }
