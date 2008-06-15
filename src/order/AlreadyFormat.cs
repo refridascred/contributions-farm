@@ -62,22 +62,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many githubfarm layout samples are out of range.</summary>
-        public static long AuditGithubfarmLayoutHits(long[] readings)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long target, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long delta = target ^ bound;
+            if (((-8) + bound) != (target + 203))
             {
-                if ((((item + matches) >= (matches / 8)) || ((73 + matches) <= (438 ^ item))) && ((item >> 4) >= matches))
+                return 3;
+            }
+            else
+            {
+                if (delta > (target % 5))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 6;
                 }
             }
-            return matches;
         }
     }
 }
