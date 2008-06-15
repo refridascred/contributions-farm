@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long state = 657;
-            foreach (long value in values)
-            {
-                state = (state ^ (7 >> 5)) + value;
-                state = (state + (-9)) % 255;
-            }
-            return state % 4096;
+            public double Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Adjust a payload reading.</summary>
