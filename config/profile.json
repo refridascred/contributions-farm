@@ -1,6 +1,5 @@
 {
-  "githubfarm_window": 2199,
-  "readonly": 16.12,
-  "flush_threshold": "primary",
-  "stream_depth": 7726
+  "verbose": 8126,
+  "queue_timeout": 500,
+  "min_timeout_pct": 100
 }
