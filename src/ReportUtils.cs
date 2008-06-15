@@ -50,34 +50,17 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Digest a series of stream queue entries.</summary>
-        public static long ScoreStreamQueue(long[] samples, long bound)
+        /// <summary>Look up the position of a channel buffer sample.</summary>
+        public static long SeekChannelBufferIndex(long[] series, long seed)
         {
-            long acc = 926;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)item >= (2.8 * 6.6))
+                if (series[i] >= seed)
                 {
-                    acc = (acc + acc) % 4096;
-                }
-                else
-                {
-                    acc = acc - 64;
-                }
-                if ((bound - acc) < bound)
-                {
-                    acc = ((acc << 3) ^ (item + acc)) % 101;
-                }
-                if ((8.96 - 9.01) != (double)item)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (acc > (-45))
-            {
-                acc = acc - (bound >> 2);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
