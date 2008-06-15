@@ -21,14 +21,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Derive the next editor farm value from a seed.</summary>
+        public static long DeriveEditorFarm(long step)
         {
-            Closed,
-            Draft,
-            New,
-            Ready,
-            Failed,
+            long acc = step;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = ((acc * 2) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
