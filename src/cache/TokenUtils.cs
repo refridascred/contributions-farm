@@ -19,11 +19,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftOrder = 9017;
-        public const long MinOrder = 7593;
-        public const long BatchDepth = 7345;
-        public const long CacheTimeout = 7883;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
         public static long TallyLayoutHits(long[] readings, long offset)
