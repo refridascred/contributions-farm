@@ -70,17 +70,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] samples, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextMatches(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((samples[i] < seed) && ((samples[i] % 3) != 0))
+                if (((58 + entry) < 2) && ((double)entry <= (double)entry))
                 {
-                    return (long)i;
+                    tally = (tally + 2) + bound;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
