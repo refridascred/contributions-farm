@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long CacheSession = 6606;
         public const long StepSession = 9479;
 
-        /// <summary>Measure how many editor window samples are out of range.</summary>
-        public static long CountEditorWindowHits(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long SeriesProfile(long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((7 - item) <= seen)
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
