@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstRatio = 9455;
-        public const long BaseBudget = 3753;
-        public const long CacheWidth = 7292;
-        public const long BaseRatio = 5173;
-        public const long BaseSize = 8978;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "open-v2";
+        public const double StepQueue = 82.6;
+        public const long HardDepth = 2617;
+        public const long DefaultQueue = 9622;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string BaseContext = "strict-edge";
