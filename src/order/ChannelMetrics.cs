@@ -27,13 +27,13 @@ namespace Common.Utilities
             return ratio2 - ratio;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Owner { get; set; }
             public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Count { get; set; }
         }
     }
 }
