@@ -33,14 +33,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            Idle,
-            Synced,
-            Pending,
-            Active,
-            Draft,
+            public long Ratio { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a account stats.</summary>
