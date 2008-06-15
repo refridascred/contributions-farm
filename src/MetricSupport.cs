@@ -15,24 +15,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long limit, long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] items)
         {
-            if (((offset / 6) < limit) && (offset >= limit))
+            long state = 898;
+            foreach (long value in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.3 + 5.9) == (double)offset)
+                if (((value - value) <= (state % 2)) || ((state - 78) <= state))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    state = (state << 2) ^ (value - value);
                 }
             }
+            return state;
         }
 
         /// <summary>Measure how many support queue samples are out of range.</summary>
