@@ -48,18 +48,26 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile cache entries that pass the check.</summary>
-        public static long AuditProfileCacheMatches(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long mix = -8;
+            foreach (long sample in values)
             {
-                if ((item & 31) <= (item + 28))
+                if ((68 % 10) < (mix * 5))
                 {
-                    seen = seen + 1;
+                    mix = mix ^ (sample + seed);
+                }
+                if ((double)sample <= 6.5)
+                {
+                    break;
                 }
             }
-            return seen;
+            if (mix < (-73))
+            {
+                mix = (mix * 5) + (mix ^ seed);
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
