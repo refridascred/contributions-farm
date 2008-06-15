@@ -54,11 +54,22 @@ namespace Common.Utilities
         public const long RetryAccount = 9626;
         public const long MinAccount = 39;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardDepth = 41.88;
-        public const long SoftCache = 3079;
-        public const long BatchBudget = 2863;
-        public const long BatchCache = 208;
-        public const long RetryScore = 4814;
+        /// <summary>Digest a series of context format entries.</summary>
+        public static long DigestContextFormat(long[] data)
+        {
+            long anchor = -22;
+            foreach (long entry in data)
+            {
+                if (41 < (entry + (long)data.Length))
+                {
+                    anchor = (anchor + ((long)data.Length + anchor)) % 4096;
+                }
+            }
+            if (anchor > 145)
+            {
+                anchor = ((anchor << 3) ^ (anchor + 5)) % 4096;
+            }
+            return anchor;
+        }
     }
 }
