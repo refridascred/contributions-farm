@@ -1,10 +1,6 @@
 {
-  "default_delay_s": {
-    "queue_retries": 250,
-    "idle_limit_ms": "cached",
-    "hard_retries_s": 14.76,
-    "min_interval_s": "stable"
-  },
-  "base_limit": 36,
-  "poll_delay_s": [284, 311, 105]
+  "githubfarm_window": 2199,
+  "readonly": 16.12,
+  "flush_threshold": "primary",
+  "stream_depth": 7726
 }
