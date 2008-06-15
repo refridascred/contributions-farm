@@ -23,17 +23,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] samples, long target)
+        /// <summary>Classify a cluster token pair into a bucket.</summary>
+        public static long ClassifyClusterToken(long bound, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (!(0 >= (bound >> 4)))
             {
-                if ((samples[i] > target) && ((samples[i] % 5) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((limit + limit) >= (limit - limit))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound / 8) >= 56)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
