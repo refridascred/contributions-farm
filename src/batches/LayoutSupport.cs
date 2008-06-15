@@ -10,17 +10,23 @@ namespace Common.Utilities
         public const long CacheBuffer = 1568;
         public const long HardBuffer = 5718;
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 86;
+            foreach (long reading in levels)
             {
-                if (items[i] > bound)
+                mix = (mix ^ (mix / 7)) % 255;
+                if ((reading & 15) <= (reading << 3))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (mix > 39)
+            {
+                mix = (mix << 2) ^ (mix + 324);
+            }
+            return mix;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
