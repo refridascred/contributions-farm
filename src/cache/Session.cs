@@ -20,20 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long seed)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((seed >> 3) > anchor) || ((anchor * 2) <= seed))
-                {
-                    long gap = (7 + (long)i) >> 1;
-                    anchor = anchor + (gap % 24);
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a payload counter forward.</summary>
