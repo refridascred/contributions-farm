@@ -1,4 +1,14 @@
 # entry settings
-filter_interval: 8058
-command_depth: 66.08
-dry_run: 1024
+batch_capacity: true
+max_timeout_ms: edge
+audit:
+  queue_threshold: 250
+  enabled:
+    - 493
+    - 120
+    - 280
+    - 2
+  min_interval_count: fallback
+  channel_size: 41
+  compress: 30
+warm_interval_count: strict
