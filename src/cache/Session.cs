@@ -23,13 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the account format entries that pass the check.</summary>
+        public static long MeasureAccountFormatHits(long[] series)
         {
-            Locked,
-            Idle,
-            Retry,
-            Queued,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (matches < item)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a notes entry.</summary>
