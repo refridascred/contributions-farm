@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 5868;
-        public const string SoftSize = "open-v2";
-        public const long DefaultWidth = 729;
-        public const long StepAccount = 3019;
-        public const long MinAccount = 781;
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] levels, long seed)
