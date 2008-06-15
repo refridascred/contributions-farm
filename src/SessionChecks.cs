@@ -50,18 +50,14 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] data)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if ((seen - entry) != (seen + 77))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            New,
+            Retry,
+            Pending,
+            Synced,
         }
     }
 }
