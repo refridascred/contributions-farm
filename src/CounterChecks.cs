@@ -100,9 +100,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowDepth = 5358;
-        public const long BatchFactor = 2573;
-        public const double DefaultSpan = 91.82;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 4264;
+        public const double LimitChecks = 48.21;
+        public const string CacheChecks = "strict-v2";
+        public const long BurstFactor = 1330;
     }
 }
