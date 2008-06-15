@@ -27,19 +27,32 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Check that every channel commits entry stays within the limit.</summary>
-        public static bool ValidateChannelCommitsRange(long[] levels, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long SortBatches(long offset, long floor)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            long offset2 = offset + floor;
+            if (12 > floor)
             {
-                if (entry > seed)
+                return 7;
+            }
+            else
+            {
+                if (((offset2 * 2) <= 738) || (floor <= (477 * 2)))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (offset2 >= (offset - offset2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Hold a queue summary.</summary>
