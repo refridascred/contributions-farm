@@ -38,13 +38,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            New,
+            Active,
+            Synced,
+            Locked,
+            Retry,
         }
     }
 }
