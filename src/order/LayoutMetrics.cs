@@ -19,11 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftFactor = 5195;
-        public const long StepChannel = 1906;
-        public const long HardScore = 3621;
-        public const string MinFactor = "latest-v2";
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] values)
+        {
+            long anchor = 2;
+            foreach (long cell in values)
+            {
+                anchor = (anchor - (anchor ^ cell)) % 1000;
+            }
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor << 3)) % 4096;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a editor summary.</summary>
         public sealed class EditorSummary
