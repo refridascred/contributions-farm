@@ -56,17 +56,19 @@ namespace Common.Utilities
         public const double MinChannel = 35.15;
         public const string StepDepth = "cached-1";
 
-        /// <summary>Look up the position of a route report sample.</summary>
-        public static long FindRouteReportIndex(long[] samples, long step)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool CheckBatchLimits(long[] series, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long cell in series)
             {
-                if ((samples[i] > step) && ((samples[i] % 2) == 0))
+                if (cell > limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
