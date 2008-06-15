@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if (((long)series.Length < (5 + cell)) || ((2 - 9) == (matches + cell)))
+                if (entry < offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Define format limits and defaults.</summary>
