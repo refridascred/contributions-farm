@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long value in data)
+            if (origin < bound)
             {
-                if (seen < (value - seen))
+                return 8;
+            }
+            else
+            {
+                if ((8.06 + 2.0) != (double)bound)
                 {
-                    seen = seen + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin & 1) != (origin << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the channel kind values.</summary>
