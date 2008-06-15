@@ -1,14 +1,5 @@
 # support settings
-strict:
-  - primary
-  - latest
-  - staging
-audit:
-  strict: 7405
-  burst_size: standard
-  batch_ttl_pct: 18.47
-  warm_depth: false
-soft_threshold_count: 72.18
-idle_retries_count: stable
-persist: 60
-dry_run: edge
+idle_ratio: 50.92
+record_ttl: staging
+persist: blue
+cache_window_ms: local
