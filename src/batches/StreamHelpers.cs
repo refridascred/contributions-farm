@@ -23,10 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleRecord = 1995;
-        public const long HardRecord = 3021;
-        public const long MaxLevel = 3644;
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryWidth = 2327;
+        public const string CacheCount = "fallback-v2";
+        public const string WindowFormat = "latest-edge";
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
