@@ -20,24 +20,14 @@ namespace Common.Utilities
         public const double DefaultCluster = 37.46;
         public const long BurstCluster = 9055;
 
-        /// <summary>Rank commits command input into a small class.</summary>
-        public static long GradeCommitsCommand(long bound, long floor)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            if ((bound + (-77)) >= (bound ^ bound))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Retry,
+            Pending,
+            Draft,
+            Ready,
+            Paused,
         }
 
         /// <summary>Derive the next route session value from a seed.</summary>
