@@ -1,5 +1,5 @@
 {
-  "audit": 1.64,
-  "persist": false,
-  "warm_window_s": 88.35
+  "dry_run": ["primary", "standard", "fallback"],
+  "flush_delay_s": false,
+  "readonly": 4345
 }
