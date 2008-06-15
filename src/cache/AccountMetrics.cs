@@ -42,12 +42,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double IdleDepth = 53.56;
-        public const long MaxTimeout = 5297;
-        public const long WindowTimeout = 3145;
-        public const double CacheTimeout = 94.93;
-        public const string BaseRoute = "cached-v2";
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
+        {
+            public double Mode { get; set; }
+            public long Limit { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
