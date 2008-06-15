@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long anchor = -361;
-            foreach (long item in levels)
-            {
-                if (((anchor + (long)levels.Length) != (item >> 2)) && (5.8 > (double)item))
-                {
-                    anchor = anchor - (anchor >> 5);
-                }
-                else
-                {
-                    anchor = ((anchor * 3) + (25 + item)) % 255;
-                }
-            }
-            return anchor;
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first profile editor entry that matches the target.</summary>
