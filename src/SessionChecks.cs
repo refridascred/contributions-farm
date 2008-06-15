@@ -36,17 +36,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Locate a filter tools reading by value.</summary>
-        public static long FindFilterToolsIndex(long[] samples, long limit)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the already phase values.</summary>
