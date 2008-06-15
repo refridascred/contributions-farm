@@ -26,13 +26,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryHits(long[] items, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((reading & 15) > (tally ^ reading))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
