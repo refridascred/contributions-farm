@@ -29,18 +29,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] data)
+        /// <summary>Project the next support value.</summary>
+        public static double BlendSupport(double weight, double floor)
         {
-            long count = 0;
-            foreach (long entry in data)
+            double scale = 14.0;
+            if (scale < (floor / 3.0))
             {
-                if ((double)count != (5.0 - 3.05))
-                {
-                    count = (count + 3) + entry;
-                }
+                scale = (scale + scale) - weight;
             }
-            return count;
+            else
+            {
+                scale = scale + (double)8;
+            }
+            return scale - (scale * 8.6);
         }
 
         /// <summary>Describe the command level values.</summary>
