@@ -47,38 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a metrics format value against two limits.</summary>
-        public static long BucketMetricsFormat(long offset, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] values, long offset)
         {
-            if (0.62 < (double)floor)
+            bool stale = true;
+            foreach (long sample in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((-833) - offset) >= floor)
+                if (sample <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset + 7) <= 343)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + floor) <= (offset - floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a cache snapshot.</summary>
