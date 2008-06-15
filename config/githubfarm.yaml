@@ -1,8 +1,13 @@
 # githubfarm settings
-idle_delay_s: 13.98
-cache_threshold: 250
-batch_interval: primary
-base_threshold_pct:
-  - 129
-  - 258
-  - 405
+warm_threshold_pct: false
+default_limit_s: 25.25
+poll_window_s:
+  burst_interval_count:
+    - stable
+    - standard
+    - fallback
+  payload_retries: 60
+  support_size: 46.39
+soft_timeout_count: 4617
+verbose: 50.58
+dry_run: fallback
