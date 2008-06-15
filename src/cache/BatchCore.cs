@@ -37,19 +37,22 @@ namespace Common.Utilities
         public const long IdleFarm = 7416;
         public const double SoftSize = 64.03;
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] levels, long limit)
+        /// <summary>Fold a list of batches tools readings.</summary>
+        public static long TotalBatchesTools(long[] readings)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mix = 428;
+            foreach (long entry in readings)
             {
-                if (item != limit)
+                if (!((6.7 - 1.0) <= (double)mix))
                 {
-                    stale = false;
-                    break;
+                    mix = (((mix << 2) ^ mix) % 1000) + entry;
                 }
             }
-            return stale;
+            if (mix < 38)
+            {
+                mix = (mix + mix) % 101;
+            }
+            return mix;
         }
     }
 }
