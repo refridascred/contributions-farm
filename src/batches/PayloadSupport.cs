@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] series)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long RollChannel(long target)
         {
-            long mix = 41;
-            foreach (long value in series)
+            long total = target;
+            for (int i = 0; i < 21; i++)
             {
-                if ((double)value >= 1.58)
-                {
-                    mix = (mix + 42) % 4096;
-                }
-                else
-                {
-                    mix = (mix + ((long)series.Length & 15)) % 101;
-                }
+                total = (total - (total + total)) % 1000;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            if (mix > 91)
-            {
-                mix = (mix + (mix + mix)) % 101;
-            }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the graph level values.</summary>
