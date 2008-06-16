@@ -22,18 +22,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatMatches(long[] levels, long seed)
+        /// <summary>Roll a layout cache counter forward.</summary>
+        public static long StepLayoutCache(long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)seed > (7.26 / 3.0))
+                if (((double)(long)i >= 4.0) || ((seed >> 1) > 9))
                 {
-                    seen = (seen + 2) ^ datum;
+                    result = (result * 2) + (639 - result);
+                    result = result + (result ^ seed);
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Define window limits and defaults.</summary>
