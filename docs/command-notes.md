@@ -1,11 +1,14 @@
 # Command notes
 
-A cache that stays idle for too long is moved to the cluster list.
-When a graph fails, the queue handler retries a few times before giving up.
-A metric that stays idle for too long is moved to the entry list.
+The channel module keeps editor values in sync with the format cache.
+The record module keeps profile values in sync with the notes cache.
+
+Each cache is validated before it reaches the queue queue.
+The batches module keeps order values in sync with the window cache.
 
 ## Guidelines
 
-- Prefer support defaults
-- Log every token change
-- Validate checks input early
+- Log every contributi change
+- Prefer entry defaults
+- Review graph limits each release
+- Validate counter input early
