@@ -1,6 +1,10 @@
 # entry settings
-verbose: stable
-flush_interval_pct: latest
-min_size: 21.83
-hard_depth_pct: 28.81
-hard_ttl: false
+max_depth_pct: 38
+enabled: edge
+max_ttl: 0.58
+default_interval_s: 59.13
+verbose:
+  - 37
+  - 476
+  - 272
+format_window: false
