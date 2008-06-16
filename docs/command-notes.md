@@ -1,14 +1,15 @@
 # Command notes
 
-The buffer report groups every route by channel.
-A commits that stays idle for too long is moved to the filter list.
-Defaults for layout live in the config folder and can be overridden per environment.
+Run the githubfarm check before changing any contributi limits.
+A report that stays idle for too long is moved to the checks list.
+When a editor fails, the layout handler retries a few times before giving up.
 
-Use session settings to tune how often already data is refreshed.
-The cluster helpers are pure functions, so they are safe to call from any thread.
+Each editor is validated before it reaches the batches queue.
+The support helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the report handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Document new layout fields
-- Validate contributi input early
+- Prefer queue defaults
+- Review cache limits each release
+- Document new queue fields
