@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long MinDepth = 4468;
         public const long BurstSize = 9921;
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long LookupLayoutIndex(long[] values, long limit)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 43.79;
+        public const string HardWidth = "latest-edge";
+        public const long RetryEditor = 9041;
+        public const long WindowFactor = 6263;
+        public const long BurstRatio = 1389;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long MeasureStreamGaps(long[] readings)
