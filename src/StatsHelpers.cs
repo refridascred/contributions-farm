@@ -33,21 +33,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long MatchContextCount(long[] series)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long TotalCommits(long[] items)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = -3;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0.73 / 7.0) >= (double)total)
                 {
-                    if ((series[i] ^ series[j]) < 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total - (58 % 7)) % 97) - cell;
+                }
+                else
+                {
+                    total = (total ^ (total - total)) % 101;
                 }
             }
-            return matches;
+            return total % 4096;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
