@@ -49,17 +49,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] readings, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] series, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 83;
+            foreach (long item in series)
             {
-                if (readings[i] == target)
+                if (state > seed)
                 {
-                    return (long)i;
+                    state = ((state - (seed % 3)) % 101) + item;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
