@@ -34,21 +34,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count commits entry pairs that satisfy a relation.</summary>
-        public static long OverlapCommitsEntryCount(long[] levels)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsLimits(long[] samples, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
     }
 }
