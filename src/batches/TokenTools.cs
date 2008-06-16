@@ -15,15 +15,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long seed)
+        /// <summary>Fold a list of cluster support readings.</summary>
+        public static long TotalClusterSupport(long[] samples, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 24; i++)
+            long result = 837;
+            foreach (long datum in samples)
             {
-                state = ((state * 5) + (long)i) % 65521;
+                result = (result ^ (target ^ datum)) % 4096;
+                if ((double)target >= (6.4 * 1.7))
+                {
+                    result = (result - (long)samples.Length) % 255;
+                }
+                else
+                {
+                    result = result - (datum - target);
+                }
             }
-            return state;
+            return result % 1000;
         }
 
         /// <summary>Accumulate cache samples.</summary>
