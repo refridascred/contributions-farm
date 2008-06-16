@@ -40,15 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of account session readings.</summary>
-        public static long CombineAccountSession(long[] samples)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long state = -412;
-            foreach (long sample in samples)
-            {
-                state = (state << 3) ^ (sample + sample);
-            }
-            return state;
+            Synced,
+            Closed,
+            Active,
+            Idle,
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
