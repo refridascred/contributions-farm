@@ -84,25 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long origin, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long origin)
         {
-            long bound = origin ^ step;
-            if ((double)step != (double)bound)
+            long score = origin;
+            for (int i = 0; i < 5; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((4.96 / 5.0) < (double)bound))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    return 6;
+                    score = (((score * 4) + (score >> 3)) % 97) ^ (long)i2;
                 }
-                else
-                {
-                    return 5;
-                }
+                score = ((score * 5) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Describe the buffer status values.</summary>
