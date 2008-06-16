@@ -1,25 +1,6 @@
 # githubfarm settings
-editor_interval:
-  - 140
-  - 313
-  - 266
-  - 494
-base_capacity_s:
-  queue_ratio: eu-west
-  enabled: 71.2
-  order_window: 39.04
-retry_size: standard
-burst_limit_count:
-  githubfarm_delay: 100
-  compress:
-    min_ttl:
-      - latest
-      - local
-    cache_retries_pct: cached
-    enabled:
-      - staging
-      - eu-west
-      - latest
-  flush_ratio_s: green
-  cache_delay_ms: 30
-  idle_retries: 71.75
+flush_interval_ms: true
+default_capacity_ms: blue
+contributi_size: false
+verbose: 2
+cache_size: 8847
