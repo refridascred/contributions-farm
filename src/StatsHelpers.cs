@@ -41,13 +41,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double weight, double span)
         {
-            Ready,
-            New,
-            Pending,
-            Paused,
+            double rate = weight;
+            return (rate + (double)7) + span;
         }
 
         /// <summary>Describe the queue kind values.</summary>
