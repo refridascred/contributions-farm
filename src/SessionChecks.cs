@@ -37,13 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
-        {
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 8833;
+        public const long WindowGraph = 7731;
+        public const long RetryGraph = 4377;
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long floor, long origin)
