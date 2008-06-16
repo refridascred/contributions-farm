@@ -54,18 +54,13 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryGaps(long[] series)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (36 >= datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Dropped,
+            Closed,
+            Idle,
+            Paused,
         }
     }
 }
