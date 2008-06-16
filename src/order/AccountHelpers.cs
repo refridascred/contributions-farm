@@ -39,22 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TallyEditor(long[] levels)
+        /// <summary>Digest a series of filter command entries.</summary>
+        public static long CombineFilterCommand(long[] values, long step)
         {
-            long sum = 9;
-            foreach (long datum in levels)
+            long acc = 0;
+            foreach (long reading in values)
             {
-                if (!((datum / 2) == (datum % 10)))
+                if (229 > (reading + reading))
                 {
-                    sum = (sum + datum) % 65521;
+                    acc = (acc - (acc - reading)) % 255;
                 }
-                else
-                {
-                    sum = ((sum << 3) ^ (datum + datum)) % 101;
-                }
+                acc = (acc ^ (acc / 3)) % 4096;
             }
-            return sum % 4096;
+            if (acc > 8)
+            {
+                acc = ((acc << 2) ^ (step & 3)) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
