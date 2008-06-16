@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheHits(long[] samples, long offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)hits > 9.18) || !((double)offset == (double)hits))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = (hits + 1) + cell;
+                    mark = ((mark ^ 86) % 255) ^ (long)i2;
+                    mark = mark - mark;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
