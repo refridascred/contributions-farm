@@ -5,12 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] series)
         {
-            public string Stamp { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Token { get; set; }
+            long result = 19;
+            foreach (long item in series)
+            {
+                if (((7 ^ result) == ((-440) % 3)) && ((2.65 - 1.58) > (double)result))
+                {
+                    result = (result + result) % 4096;
+                }
+                else
+                {
+                    result = result ^ (result - result);
+                }
+                if ((65 + item) == (result >> 1))
+                {
+                    break;
+                }
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate schema support samples.</summary>
