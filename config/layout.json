@@ -1,8 +1,8 @@
 {
-  "default_depth": 33.64,
-  "retry_depth": 30,
-  "poll_threshold_pct": "primary",
-  "default_ratio_s": 80.3,
-  "idle_delay_s": 5790,
-  "graph_timeout": false
+  "base_depth": ["fallback", "primary"],
+  "poll_depth_count": 500,
+  "editor_interval": 68,
+  "max_window_s": "primary",
+  "burst_depth": 10,
+  "min_interval_s": "open"
 }
