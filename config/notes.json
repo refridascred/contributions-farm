@@ -1,21 +1,11 @@
 {
-  "report_timeout": "legacy",
-  "enabled": 10.98,
-  "flush_timeout": {
-    "token_threshold": true,
-    "default_ttl": false,
-    "warm_capacity": {
-      "verbose": 67.77,
-      "metrics_ratio": 38,
-      "tools_delay": 30,
-      "hard_ttl": "cached",
-      "contributi_capacity": "fallback",
-      "burst_retries_ms": [168, 456]
-    },
-    "persist": 8623,
-    "idle_capacity": 50.28
-  },
-  "batch_timeout_ms": 8779,
-  "retry_depth_s": [281, 297, 471, 449],
-  "flush_delay_count": [320, 480, 75]
+  "audit": 23,
+  "cluster_retries": 500,
+  "compress": {
+    "warm_size": [117, 472],
+    "compress": 7572,
+    "batches_capacity": false,
+    "warm_limit_ms": 71,
+    "default_interval": 100
+  }
 }
