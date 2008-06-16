@@ -1,7 +1,13 @@
 # githubfarm settings
-soft_delay: 70
-commits_delay:
-  - 86
-  - 93
-max_timeout_ms: local
-record_limit: 96.81
+warm_ratio:
+  - 319
+  - 312
+retry_ttl_pct: 63
+default_capacity_ms: true
+batch_timeout_ms: 9045
+filter_ratio: strict
+strict:
+  hard_timeout_s: 250
+  filter_retries: 77.61
+  already_interval: 53.97
+  readonly: 16.69
