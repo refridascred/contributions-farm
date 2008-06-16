@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 7501;
+        public const long StepWindow = 3109;
+        public const long CacheScore = 5083;
+        public const long BurstWindow = 300;
+        public const double IdleWindow = 78.64;
 
         /// <summary>Accumulate tools samples.</summary>
         public static long FoldTools(long[] readings, long offset)
