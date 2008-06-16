@@ -18,39 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long floor, long floor2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatMatches(long[] levels, long seed)
         {
-            long edge = floor ^ floor2;
-            if (edge < (96 - floor2))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if (3.2 < (double)floor)
+                if ((double)seed > (7.26 / 3.0))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((4.48 / 8.0) != (double)floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((edge - floor2) < (floor2 - edge))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    seen = (seen + 2) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define window limits and defaults.</summary>
