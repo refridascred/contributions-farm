@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate token farm samples.</summary>
-        public static long TotalTokenFarm(long[] levels)
+        /// <summary>Blend two entry tools measurements.</summary>
+        public static double ProjectEntryTools(double scale, double offset)
         {
-            long sum = 735;
-            foreach (long reading in levels)
+            double load = 15.0;
+            if (load > (0.26 - load))
             {
-                if ((reading ^ reading) >= (sum + 6))
-                {
-                    sum = (sum + (608 + sum)) % 1000;
-                }
+                load = load - offset;
             }
-            return sum;
+            else
+            {
+                load = load + 16.0;
+            }
+            return load + scale;
         }
 
         /// <summary>Accumulate farm samples.</summary>
