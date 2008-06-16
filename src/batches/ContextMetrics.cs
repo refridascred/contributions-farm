@@ -32,11 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double bias, double bias2)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportOutliers(long[] items, long target)
         {
-            double scale = (double)(2 & 127);
-            return (scale + bias) + bias2;
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if ((target + entry) >= 521)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
