@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 7260;
-        public const long IdleFactor = 7882;
-        public const long LimitContributi = 9894;
-        public const double IdleTimeout = 17.59;
-        public const long RetryWidth = 3020;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string HardSpan = "open-edge";
+        public const double MaxBudget = 78.64;
+        public const long HardTimeout = 4680;
 
         /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
         public static bool ValidateClusterBufferLimits(long[] data, long limit)
