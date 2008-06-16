@@ -29,32 +29,21 @@ namespace Common.Utilities
         public const long MinBudget = 3223;
         public const string BaseMetric = "standard-edge";
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long origin, long floor)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] series)
         {
-            long lane = origin + floor;
-            if ((double)floor >= 0.21)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin < 1.0)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (lane >= floor)
+                    if ((series[i] ^ series[j]) < 7)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
