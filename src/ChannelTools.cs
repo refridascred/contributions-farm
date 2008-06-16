@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double ratio, double floor)
         {
-            public long Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public long Offset { get; set; }
+            double rate = ratio;
+            if (rate >= 19.0)
+            {
+                rate = rate - 0.1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (ratio + floor)) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
