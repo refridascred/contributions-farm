@@ -42,18 +42,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] readings, long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)seen >= (3.5 / 6.0)) || ((68 % 60) >= (offset >> 3)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + reading;
+                    if ((readings[i] + readings[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a metrics summary.</summary>
