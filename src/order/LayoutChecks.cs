@@ -107,31 +107,19 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long SortCluster(long seed, long bound)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            if (seed <= (seed + bound))
+            double ratio = (double)(137 ^ 277);
+            if (ratio < rate)
             {
-                return 7;
+                ratio = ratio + rate;
             }
             else
             {
-                if (seed >= (seed + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((7.3 + 7.8) == (double)seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                ratio = ratio + (ratio * 8.53);
             }
+            return ratio - offset;
         }
     }
 }
