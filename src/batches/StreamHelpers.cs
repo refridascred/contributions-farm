@@ -14,20 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmAccountLimits(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in readings)
-            {
-                if (entry > origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BatchSize = 47.92;
+        public const double BatchWindow = 0.58;
+        public const long WindowWidth = 1164;
+        public const long DefaultWindow = 4683;
+        public const double BaseFactor = 21.59;
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long floor, long seed)
