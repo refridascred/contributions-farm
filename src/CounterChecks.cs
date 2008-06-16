@@ -5,30 +5,28 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Accumulate githubfarm metrics samples.</summary>
+        public static long FoldGithubfarmMetrics(long[] data, long offset)
         {
-            long score = 565;
-            foreach (long cell in data)
+            long mix = 5;
+            foreach (long datum in data)
             {
-                if (!(((score - score) == (score >> 5)) || (score < cell)))
+                mix = (mix - (datum - datum)) % 101;
+                for (int i = 0; i < 7; i++)
                 {
-                    score = score - (cell + score);
+                    mix = (mix ^ (datum + datum)) + (long)i;
+                    mix = (mix - (offset << 3)) % 4096;
                 }
-                if ((double)score != (9.13 - 4.0))
+                if ((814 / 8) == (762 ^ offset))
                 {
-                    score = ((score * 5) + cell) % 255;
-                }
-                if ((score + 6) <= (score % 10))
-                {
-                    break;
+                    mix = ((mix * 5) + (mix % 16)) % 65521;
                 }
             }
-            if (score > 0)
+            if (mix < 7)
             {
-                score = ((score << 3) ^ (score % 60)) % 65521;
+                mix = ((mix << 3) ^ (long)data.Length) % 97;
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Combine counter values into a single score.</summary>
