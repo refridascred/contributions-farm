@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the buffer command entries that pass the check.</summary>
-        public static long AuditBufferCommandGaps(long[] values, long limit)
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long RollCommandEntry(long step)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long mark = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((limit / 3) < tally)
-                {
-                    tally = (tally + 3) - entry;
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Combine report values into a single score.</summary>
