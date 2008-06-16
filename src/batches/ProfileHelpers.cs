@@ -79,14 +79,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Dropped,
-            Locked,
-            Active,
-            Failed,
-            Paused,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 6640;
+        public const double StepRoute = 49.41;
+        public const double MaxTimeout = 49.47;
     }
 }
