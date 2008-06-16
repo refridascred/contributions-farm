@@ -27,19 +27,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long WeighSupport(long[] readings)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] data, long origin)
         {
-            long acc = 399;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((acc + entry) >= 353))
+                if (data[i] > origin)
                 {
-                    acc = (acc * 3) + (882 << 2);
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (-462)) % 97;
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Project the next window stats value.</summary>
