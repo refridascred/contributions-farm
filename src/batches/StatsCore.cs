@@ -70,20 +70,13 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long mark = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = (mark << 2) ^ mark;
-                if ((double)83 == (double)offset)
-                {
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Closed,
+            Pending,
+            New,
+            Idle,
         }
     }
 }
