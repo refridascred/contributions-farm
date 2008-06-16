@@ -46,18 +46,17 @@ namespace Common.Utilities
         public const string BurstAlready = "local-1";
         public const string LimitAlready = "staging";
 
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long TotalSupportFilter(long[] samples, long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] series, long seed)
         {
-            long result = 8;
-            foreach (long sample in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((-754) < origin)
+                if ((series[i] <= seed) && ((series[i] % 3) == 0))
                 {
-                    result = (result << 2) ^ (sample + 902);
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Combine checks profile values into a single score.</summary>
