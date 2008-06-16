@@ -1,8 +1,24 @@
 {
-  "batch_limit": "fallback",
-  "base_ratio": "legacy",
-  "cluster_limit": 49,
-  "already_ratio": "standard",
-  "account_ratio": 66.85,
-  "batches_size": "eu-west"
+  "default_retries_s": {
+    "max_limit_pct": {
+      "command_timeout": "green",
+      "base_retries_ms": 404,
+      "idle_interval_s": true
+    },
+    "verbose": 21.11,
+    "session_capacity": {
+      "compress": "legacy",
+      "max_capacity_s": ["strict", "legacy"],
+      "base_retries": "standard",
+      "idle_ttl_s": false,
+      "base_delay_pct": false
+    },
+    "session_ttl": 7970,
+    "payload_timeout": 100,
+    "entry_depth": true
+  },
+  "enabled": [213, 134, 453, 456],
+  "base_size": 60,
+  "strict": "latest",
+  "min_limit": "standard"
 }
