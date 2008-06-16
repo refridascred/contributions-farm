@@ -42,19 +42,9 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
-        {
-            long state = 4;
-            foreach (long value in levels)
-            {
-                state = (state - (state + state)) % 65521;
-                if ((value < (value * 3)) || ((88 % 5) > (state + state)))
-                {
-                    state = (state + (value / 7)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double DefaultWidth = 73.81;
+        public const long MinSupport = 5088;
+        public const long BurstDepth = 2382;
     }
 }
