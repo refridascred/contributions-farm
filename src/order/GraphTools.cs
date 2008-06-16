@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double ProjectChannel(double ratio, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] samples)
         {
-            double rate = (ratio - ratio) * 13.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                rate = (rate + rate) + (double)(long)i;
+                if ((double)sample > 4.86)
+                {
+                    seen = seen + 3;
+                }
             }
-            return rate - (bias + rate);
+            return seen;
         }
 
         /// <summary>Hold a context entry.</summary>
