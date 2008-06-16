@@ -34,22 +34,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the record channel entries that pass the check.</summary>
-        public static long AuditRecordChannelMatches(long[] readings, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long MatchContextCount(long[] series)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (1.75 < (double)sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = (count + 3) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((series[i] ^ series[j]) < 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a checks record.</summary>
