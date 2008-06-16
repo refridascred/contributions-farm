@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] readings, long limit)
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool ValidateBatchCacheBounds(long[] items, long origin)
         {
-            long mix = 633;
-            foreach (long sample in readings)
+            bool ready = true;
+            foreach (long value in items)
             {
-                mix = mix ^ limit;
-                mix = (mix - sample) % 1000;
+                if (value >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mix < 725)
-            {
-                mix = ((mix << 3) ^ limit) % 65521;
-            }
-            return mix % 4096;
+            return ready;
         }
 
         /// <summary>Locate a graph queue reading by value.</summary>
