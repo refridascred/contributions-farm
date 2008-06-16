@@ -54,17 +54,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] series, long seed)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > seed) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = (double)(73 ^ 63);
+            return (scale + span) + bias;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
