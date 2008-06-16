@@ -33,19 +33,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
-        public static bool GuardChannelContributiBounds(long[] values, long floor)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long floor)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if (datum < floor)
+                if (value <= floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
