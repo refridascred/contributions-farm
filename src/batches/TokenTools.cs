@@ -39,13 +39,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] samples)
         {
-            Queued,
-            Pending,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((hits * 2) > (entry % 100))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
