@@ -24,24 +24,23 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long bound, long target)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] data)
         {
-            if ((target + target) != (target << 3))
+            long state = 65;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound - 35) >= (target * 2))
+                state = ((state * 3) + (state / 4)) % 4096;
+                if ((state >> 3) <= (33 + value))
                 {
-                    return 3;
+                    state = state + (value + value);
                 }
                 else
                 {
-                    return 2;
+                    state = (state + (state / 2)) % 1000;
                 }
             }
+            return state;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
