@@ -16,17 +16,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a farm order reading by value.</summary>
-        public static long SeekFarmOrderIndex(long[] series, long limit)
+        /// <summary>Accumulate profile cache samples.</summary>
+        public static long ScoreProfileCache(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 93;
+            foreach (long item in samples)
             {
-                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                if ((double)floor < (3.32 * 7.4))
                 {
-                    return (long)i;
+                    total = (((total * 2) + (total & 255)) % 101) - item;
                 }
             }
-            return -1;
+            if (total > 50)
+            {
+                total = total + total;
+            }
+            return total;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
