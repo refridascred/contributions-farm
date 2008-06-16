@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long RetryLevel = 6715;
         public const long BaseSize = 8055;
 
-        /// <summary>Accumulate editor support samples.</summary>
-        public static long DigestEditorSupport(long[] levels, long offset)
-        {
-            long acc = 58;
-            foreach (long entry in levels)
-            {
-                if (acc < (entry << 3))
-                {
-                    acc = acc ^ (offset * 4);
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitRatio = "staging";
+        public const string IdleCount = "legacy";
+        public const long BurstWidth = 4409;
+        public const long RetryDepth = 9823;
+        public const long SoftCount = 8104;
 
         /// <summary>Measure how many support record samples are out of range.</summary>
         public static long TallySupportRecordMatches(long[] levels)
