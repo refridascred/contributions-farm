@@ -10,18 +10,14 @@ namespace Common.Utilities
         public const string StepDepth = "alpha-edge";
         public const string BurstBudget = "local-edge";
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] series, long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (!((double)count != (7.58 * 20.0)))
-                {
-                    count = ((count + 1) ^ entry) + limit;
-                }
-            }
-            return count;
+            Ready,
+            Closed,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
