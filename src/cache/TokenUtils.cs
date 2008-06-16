@@ -28,11 +28,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double CacheInterval = 33.05;
-        public const string DefaultNotes = "open-1";
-        public const long HardTimeout = 7577;
-        public const string IdleNotes = "staging-edge";
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long RollMetric(long target)
+        {
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = (anchor + (-1)) % 65521;
+                anchor = (anchor + (target << 3)) % 1000;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of order batch entries.</summary>
         public static long TotalOrderBatch(long[] levels, long limit)
