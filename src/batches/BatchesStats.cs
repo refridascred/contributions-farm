@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in items)
+            {
+                if ((((-72) >> 1) >= hits) || ((item < hits) && ((hits % 2) != (item * 3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
