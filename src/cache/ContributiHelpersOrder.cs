@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every batch cache entry stays within the limit.</summary>
-        public static bool ValidateBatchCacheBounds(long[] items, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long BucketContributi(long limit, long step)
         {
-            bool ready = true;
-            foreach (long value in items)
+            long gap = limit - step;
+            if ((double)gap < (10.0 - 2.0))
             {
-                if (value >= origin)
+                return 7;
+            }
+            else
+            {
+                if ((limit - gap) > (limit ^ limit))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Locate a session reading by value.</summary>
