@@ -33,18 +33,16 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Audit editor metrics readings against a rule.</summary>
-        public static long CountEditorMetricsOutliers(long[] levels, long step)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long target)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long sum = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((((matches + matches) <= (matches * 5)) || (6 < (step << 2))) || ((value + (-55)) < matches))
-                {
-                    matches = matches + 3;
-                }
+                sum = (sum + sum) % 4096;
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
