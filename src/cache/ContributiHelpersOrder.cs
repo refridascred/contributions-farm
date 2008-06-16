@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] samples)
+        /// <summary>Look up the position of a already batches sample.</summary>
+        public static long SeekAlreadyBatchesIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
