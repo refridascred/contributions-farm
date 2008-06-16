@@ -46,14 +46,23 @@ namespace Common.Utilities
         public const long LimitInterval = 5702;
         public const double RetryCount = 39.75;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Accumulate batches report samples.</summary>
+        public static long TotalBatchesReport(long[] series)
         {
-            Stale,
-            New,
-            Retry,
-            Queued,
-            Synced,
+            long anchor = -13;
+            foreach (long entry in series)
+            {
+                anchor = anchor - (anchor & 63);
+                if (((anchor + 82) >= anchor) || (anchor >= (725 + entry)))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (entry & 1);
+                }
+            }
+            return anchor;
         }
     }
 }
