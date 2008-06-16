@@ -51,21 +51,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count account record pairs that satisfy a relation.</summary>
-        public static long CompareAccountRecordCount(long[] series)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                sum = (sum + (sum ^ sum)) % 4096;
+                if (!(((long)i * 2) <= ((long)i - sum)))
                 {
-                    if ((series[i] + series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = (sum + (bound & 1)) % 97;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
