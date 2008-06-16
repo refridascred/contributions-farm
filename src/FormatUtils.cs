@@ -75,17 +75,12 @@ namespace Common.Utilities
         public const double MaxWindow = 48.13;
         public const long DefaultWindow = 9466;
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > target) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Pending,
+            New,
         }
     }
 }
