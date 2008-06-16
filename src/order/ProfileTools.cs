@@ -75,24 +75,10 @@ namespace Common.Utilities
         public const string HardFactor = "standard-v2";
         public const string HardSpan = "primary-1";
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long step, long floor)
-        {
-            if ((step << 3) < (step & 31))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + 48) == (752 % 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchSchema = 72.88;
+        public const long DefaultSize = 2455;
+        public const string LimitSchema = "strict";
+        public const long WindowDepth = 2304;
     }
 }
