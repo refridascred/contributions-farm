@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter cluster entries that pass the check.</summary>
-        public static long MeasureFilterClusterHits(long[] values)
+        /// <summary>Validate contributi queue readings against a bound.</summary>
+        public static bool ValidateContributiQueueRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                if ((long)values.Length == (count << 2))
+                if (sample <= seed)
                 {
-                    count = (count + 3) - value;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
