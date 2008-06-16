@@ -20,23 +20,14 @@ namespace Common.Utilities
             return load - weight;
         }
 
-        /// <summary>Accumulate notes support samples.</summary>
-        public static long TotalNotesSupport(long[] samples, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long sum = 431;
-            foreach (long value in samples)
-            {
-                sum = ((sum + sum) % 101) - value;
-                if ((offset % 97) == (offset * 4))
-                {
-                    sum = sum + (offset + 613);
-                }
-                else
-                {
-                    sum = (sum - (offset << 3)) % 97;
-                }
-            }
-            return sum;
+            Stale,
+            Draft,
+            Closed,
+            Locked,
+            Paused,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
