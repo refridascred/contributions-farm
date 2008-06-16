@@ -41,25 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long bound, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long step = bound - offset;
-            if ((step >> 2) < (step + bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (bound <= (offset + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Idle,
+            Queued,
+            Closed,
         }
     }
 }
