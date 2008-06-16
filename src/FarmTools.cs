@@ -48,18 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many support batch samples are out of range.</summary>
-        public static long MeasureSupportBatchGaps(long[] values, long seed)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((matches + 9) > cell)
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            public bool Size { get; set; }
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
