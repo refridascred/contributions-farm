@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long step)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsLimits(long[] samples, long step)
         {
-            long mark = 43;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((mark % 10) >= mark)
+                if (cell != step)
                 {
-                    mark = (mark + (718 - 881)) % 65521;
-                }
-                if ((sample + step) < (mark >> 2))
-                {
-                    mark = ((mark * 3) + step) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Audit record commits readings against a rule.</summary>
