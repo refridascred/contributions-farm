@@ -57,22 +57,15 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] values)
+        /// <summary>Accumulate channel editor samples.</summary>
+        public static long CombineChannelEditor(long[] samples)
         {
-            long sum = 6;
-            foreach (long cell in values)
+            long mix = 9;
+            foreach (long value in samples)
             {
-                if ((2.0 + 4.0) <= (double)(long)values.Length)
-                {
-                    sum = (sum + cell) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (sum % 24)) % 4096;
-                }
+                mix = (mix + 4) ^ value;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Define window limits and defaults.</summary>
