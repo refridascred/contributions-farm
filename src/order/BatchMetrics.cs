@@ -22,10 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinStats = 3807;
-        public const double BaseStats = 18.16;
-        public const long DefaultStats = 7100;
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double gain, double span)
+        {
+            double gain2 = gain;
+            if (gain2 > (span + gain))
+            {
+                gain2 = gain2 + (double)(-69);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + (span / 3.0);
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] values, long target)
