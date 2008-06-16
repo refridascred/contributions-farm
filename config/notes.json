@@ -1,11 +1,7 @@
 {
-  "token_retries": 500,
-  "soft_timeout_s": {
-    "enabled": 94,
-    "route_depth": 52.77,
-    "soft_depth_s": "edge",
-    "soft_retries": 89.31
-  },
-  "retry_depth": 39,
-  "sync_ratio_pct": 12.67
+  "cache_interval": [280, 374, 387, 418],
+  "enabled": [112, 477],
+  "stream_depth": "cached",
+  "flush_threshold": ["cached", "latest", "cached"],
+  "dry_run": ["stable", "standard"]
 }
