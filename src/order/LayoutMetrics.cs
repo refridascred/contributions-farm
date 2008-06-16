@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many filter stats samples are out of range.</summary>
-        public static long MeasureFilterStatsOutliers(long[] data, long seed)
-        {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (tally >= (item + seed))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardInterval = 3246;
+        public const string CacheNotes = "staging-v2";
+        public const double RetryNotes = 92.72;
+        public const long BatchNotes = 263;
+        public const double LimitSize = 27.29;
 
         /// <summary>Describe the window mode values.</summary>
         public enum WindowMode
