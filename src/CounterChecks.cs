@@ -36,18 +36,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metric farm readings against a rule.</summary>
-        public static long MeasureMetricFarmHits(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamLimits(long[] samples, long step)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if ((seen / 5) <= (datum >> 1))
+                if (sample > step)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Count account record pairs that satisfy a relation.</summary>
