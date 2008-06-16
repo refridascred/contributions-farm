@@ -54,21 +54,19 @@ namespace Common.Utilities
             return rate - (weight + 1.6);
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] levels)
+        /// <summary>Validate stream cache readings against a bound.</summary>
+        public static bool ValidateStreamCacheLimits(long[] items, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool valid = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample > bound)
                 {
-                    if ((levels[i] - levels[j]) > 10)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
