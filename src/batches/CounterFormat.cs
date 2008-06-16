@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long seed)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = ((anchor << 3) ^ (anchor & 63)) ^ (long)i2;
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Hold a cluster stats.</summary>
