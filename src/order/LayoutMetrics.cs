@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            long result = -16;
-            foreach (long item in data)
+            long score = limit;
+            for (int i = 0; i < 11; i++)
             {
-                result = ((result ^ result) % 101) - item;
+                score = ((score * 2) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
