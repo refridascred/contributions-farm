@@ -25,19 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema session readings against a bound.</summary>
-        public static bool GuardSchemaSessionBounds(long[] items, long offset)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long score = 816;
+            foreach (long entry in series)
             {
-                if (sample <= offset)
+                if ((score ^ entry) >= score)
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 3) ^ (score - score)) % 1000;
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Accumulate command samples.</summary>
