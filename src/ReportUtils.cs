@@ -45,12 +45,24 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxSpan = 9779;
-        public const long BaseAlready = 6083;
-        public const string DefaultAlready = "local-v2";
-        public const string BurstTimeout = "primary-v2";
-        public const long BatchBudget = 2889;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double ratio, double span)
+        {
+            double mean = span / 9.0;
+            if (mean > (double)391)
+            {
+                mean = mean + (mean - span);
+            }
+            else
+            {
+                mean = mean + ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (span + mean)) + (double)(long)i;
+            }
+            return mean + (ratio / 7.0);
+        }
 
         /// <summary>Grade a cache account value against two limits.</summary>
         public static long SortCacheAccount(long origin, long floor)
