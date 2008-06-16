@@ -40,22 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] series, long step)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] items)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long total = 4;
+            foreach (long entry in items)
             {
-                if ((datum << 1) < (seen * 4))
-                {
-                    seen = (seen + 3) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = (total ^ entry) % 255;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
