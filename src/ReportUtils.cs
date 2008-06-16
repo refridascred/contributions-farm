@@ -45,18 +45,20 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] values)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)(long)values.Length < 3.6)
+                score = score ^ (958 << 2);
+                if ((82 << 1) >= (score % 5))
                 {
-                    seen = (seen + 3) ^ entry;
+                    score = score - (step / 4);
                 }
+                score = ((score * 2) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
