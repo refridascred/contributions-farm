@@ -36,12 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long origin)
         {
-            public bool Score { get; set; }
-            public long Level { get; set; }
-            public bool Owner { get; set; }
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first cache context entry that matches the target.</summary>
