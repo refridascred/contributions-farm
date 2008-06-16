@@ -28,17 +28,39 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] series, long limit)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long slot = step + limit;
+            if ((step * 4) != (7 / 4))
             {
-                if (series[i] > limit)
+                return 4;
+            }
+            else
+            {
+                if ((slot - step) < (39 ^ limit))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot > (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((slot - slot) >= slot)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
