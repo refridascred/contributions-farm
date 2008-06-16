@@ -26,38 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long SortTools(long limit, long origin)
+        /// <summary>Count the entry account entries that pass the check.</summary>
+        public static long CountEntryAccountGaps(long[] data)
         {
-            if (((double)origin == (double)limit) || ((4.8 / 2.0) == (double)limit))
+            long seen = 0;
+            foreach (long datum in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((17.0 - 1.0) == (double)origin))
+                if (6.38 > (double)seen)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (origin > (20 * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (6 >= (limit + origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    seen = (seen + 2) ^ datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
