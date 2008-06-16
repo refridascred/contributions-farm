@@ -1,6 +1,5 @@
 # entry settings
-warm_size_pct: 16
-max_interval_count: true
-strict: 250
-default_threshold: latest
-soft_ttl_s: 87.34
+farm_retries: standard
+commits_size: 4731
+dry_run: cached
+warm_ttl_pct: 500
