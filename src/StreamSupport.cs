@@ -41,17 +41,21 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long SeekRouteIndex(long[] items, long bound)
+        /// <summary>Compare every pair of report already readings.</summary>
+        public static long OverlapReportAlreadyCount(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((items[i] > bound) && ((items[i] % 3) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) > 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
