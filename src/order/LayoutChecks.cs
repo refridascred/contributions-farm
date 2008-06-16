@@ -102,19 +102,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] values)
         {
-            double ratio = (double)(137 ^ 277);
-            if (ratio < rate)
+            long anchor = 344;
+            foreach (long entry in values)
             {
-                ratio = ratio + rate;
+                if (((double)entry <= 2.35) && ((487 + entry) > (entry % 97)))
+                {
+                    anchor = (anchor ^ ((long)values.Length + 882)) % 101;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio * 8.53);
-            }
-            return ratio - offset;
+            return anchor;
         }
     }
 }
