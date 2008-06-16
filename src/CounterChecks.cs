@@ -16,14 +16,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            Done,
-            Active,
-            Draft,
-            Dropped,
-            Locked,
+            long state = 314;
+            foreach (long entry in levels)
+            {
+                if (((state + state) == (entry - state)) || ((long)levels.Length < (state << 3)))
+                {
+                    state = (state * 2) + (487 & 3);
+                }
+                else
+                {
+                    state = state ^ (state - (long)levels.Length);
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
