@@ -29,10 +29,19 @@ namespace Common.Utilities
         public const double MaxRatio = 30.03;
         public const long LimitOrder = 5292;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepSize = 1.83;
-        public const long StepChecks = 5897;
-        public const long BaseFactor = 638;
+        /// <summary>Measure how many checks layout samples are out of range.</summary>
+        public static long MeasureChecksLayoutMatches(long[] readings, long step)
+        {
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (9 > (tally * 4))
+                {
+                    tally = ((tally + 1) + item) + step;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank support contributi input into a small class.</summary>
         public static long SortSupportContributi(long origin, long target)
