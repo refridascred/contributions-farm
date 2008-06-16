@@ -72,11 +72,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double offset)
         {
-            public bool Ratio { get; set; }
-            public double Score { get; set; }
+            double rate = (double)(18 - 73);
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + offset) + (double)(long)i;
+            }
+            return rate + (9.2 - gain);
         }
     }
 }
