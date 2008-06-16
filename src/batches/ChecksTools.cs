@@ -14,18 +14,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsOutliers(long[] values, long bound)
+        /// <summary>Locate a queue window reading by value.</summary>
+        public static long LookupQueueWindowIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (1.0 <= (double)tally)
+                if ((values[i] > seed) && ((values[i] % 3) != 0))
                 {
-                    tally = ((tally + 1) + entry) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
