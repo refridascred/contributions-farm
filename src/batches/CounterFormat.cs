@@ -20,11 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double SmoothStream(double gain, double floor)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            double bias = gain;
-            return (bias + (16.0 * 8.13)) + floor;
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank format input into a small class.</summary>
