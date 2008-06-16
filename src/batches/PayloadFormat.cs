@@ -45,17 +45,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long FindAlreadyIndex(long[] readings, long origin)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Flag { get; set; }
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
