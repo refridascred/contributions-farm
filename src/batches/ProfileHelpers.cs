@@ -59,19 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double SmoothOrder(double gain, double floor)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            double scale = (double)(2 - 27);
-            if (scale <= (floor * 7.1))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale + (gain - gain);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + gain) + (double)(long)i;
-            }
-            return scale - floor;
+            return hits;
         }
 
         /// <summary>Describe the graph state values.</summary>
