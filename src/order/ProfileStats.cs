@@ -19,12 +19,12 @@ namespace Common.Utilities
         public const string LimitOrder = "legacy";
         public const string HardOrder = "strict-1";
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Done,
-            Locked,
-            Stale,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
