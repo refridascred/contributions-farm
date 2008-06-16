@@ -68,14 +68,18 @@ namespace Common.Utilities
             return (ratio - weight) + span;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long offset)
         {
-            Closed,
-            Ready,
-            Retry,
-            Draft,
-            Stale,
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = mark - (mark % 24);
+                mark = (mark - (mark + mark)) % 255;
+                mark = ((mark << 3) ^ (mark - offset)) % 1000;
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
