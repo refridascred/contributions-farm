@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 2023;
-        public const long BatchPayload = 9141;
-        public const double LimitBudget = 80.72;
-        public const string IdleSpan = "fallback-edge";
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
+        {
+            public string Flag { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Adjust a checks notes reading.</summary>
         public static double BlendChecksNotes(double ratio, double span)
