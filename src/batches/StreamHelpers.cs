@@ -39,18 +39,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] readings)
+        /// <summary>Rank account channel input into a small class.</summary>
+        public static long BucketAccountChannel(long seed, long target)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            if (((target + target) < (seed >> 3)) && ((seed * 3) > (54 / 9)))
             {
-                if ((((entry % 8) >= matches) || ((1.73 * 8.4) == (double)matches)) || (((entry << 2) < (entry << 1)) || ((matches & 255) < (38 ^ matches))))
+                return 2;
+            }
+            else
+            {
+                if ((target >> 2) >= (595 / 9))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if ((491 + 740) > seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target & 7) < target) || ((2.61 / 7.0) != (double)target))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the command level values.</summary>
