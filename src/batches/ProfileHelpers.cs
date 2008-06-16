@@ -74,22 +74,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many window tools samples are out of range.</summary>
-        public static long TallyWindowToolsHits(long[] items)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long DigestCounter(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long score = 504;
+            foreach (long reading in data)
             {
-                if (((hits - entry) > (entry >> 4)) || (((entry - entry) == (hits & 31)) && ((hits ^ entry) <= entry)))
+                if (((floor & 63) > score) || ((double)floor <= (13.0 / 9.0)))
                 {
-                    hits = hits + 1;
+                    score = (score + (score << 2)) % 101;
                 }
-                else
+                if ((reading + score) >= floor)
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (score < (-91))
+            {
+                score = score - (score + score);
+            }
+            return score;
         }
     }
 }
