@@ -16,18 +16,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] readings, long target)
+        /// <summary>Fold a list of session queue readings.</summary>
+        public static long WeighSessionQueue(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            long anchor = 996;
+            foreach (long value in levels)
             {
-                if ((target / 4) > (reading ^ target))
-                {
-                    count = count + 1;
-                }
+                anchor = ((anchor << 3) ^ (576 + anchor)) + value;
             }
-            return count;
+            if (anchor < 271)
+            {
+                anchor = anchor + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
