@@ -12,22 +12,14 @@ namespace Common.Utilities
         public const long BatchMetric = 5300;
         public const string HardScore = "open";
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiGaps(long[] samples)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((8.8 + 8.88) == (double)seen)
-                {
-                    seen = (seen + 1) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Dropped,
+            New,
+            Synced,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a command entry.</summary>
