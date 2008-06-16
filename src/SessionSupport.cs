@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] values)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double drift = floor;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + drift) + (double)(long)i;
             }
-            return seen;
+            return drift - scale;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
