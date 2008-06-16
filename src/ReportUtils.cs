@@ -23,19 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesHits(long[] levels, long origin)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (((hits * 3) >= datum) && ((double)datum == (8.42 + 7.5)))
-                {
-                    hits = (hits + 1) + origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 75.86;
+        public const long IdleScore = 5582;
+        public const long BurstPayload = 137;
 
         /// <summary>Combine editor cluster values into a single score.</summary>
         public static long DigestEditorCluster(long[] data, long origin)
