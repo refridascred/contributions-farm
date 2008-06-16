@@ -1,13 +1,15 @@
 # Command notes
 
-Use stream settings to tune how often metric data is refreshed.
-The record module keeps channel values in sync with the commits cache.
+When a tools fails, the cluster handler retries a few times before giving up.
+The token report groups every filter by format.
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The queue report groups every batch by githubfarm.
+Keep metrics and cache names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a queue fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer buffer defaults
-- Validate editor input early
-- Keep entry values small
+- Keep queue values small
+- Prefer stats defaults
+- Review notes limits each release
+- Log every filter change
