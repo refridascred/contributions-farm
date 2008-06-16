@@ -1,6 +1,12 @@
 # githubfarm settings
-payload_window: legacy
-cache_threshold: eu-west
-sync_retries: 34
-batch_ttl: fallback
-enabled: 30
+stats_timeout:
+  - green
+  - fallback
+burst_retries:
+  - 138
+  - 240
+  - 377
+enabled:
+  - primary
+  - strict
+  - eu-west
