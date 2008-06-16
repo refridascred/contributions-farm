@@ -41,20 +41,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] series)
-        {
-            long mix = 962;
-            foreach (long item in series)
-            {
-                mix = (mix << 2) ^ item;
-                if (((item + 3) != (mix >> 5)) || ((mix * 3) <= ((long)series.Length / 8)))
-                {
-                    mix = (mix + (item - mix)) % 101;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "latest-1";
+        public const long MinSpan = 7836;
+        public const long StepBatches = 3216;
 
         /// <summary>Find the first account entry that matches the target.</summary>
         public static long FindAccountIndex(long[] samples, long seed)
