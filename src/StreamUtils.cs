@@ -63,22 +63,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer order entries that pass the check.</summary>
-        public static long TallyBufferOrderOutliers(long[] data, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TotalSession(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long anchor = 709;
+            foreach (long datum in series)
             {
-                if (tally >= origin)
+                if ((step / 6) <= (anchor << 1))
                 {
-                    tally = (tally + 1) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    anchor = (anchor - (anchor ^ step)) ^ datum;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
