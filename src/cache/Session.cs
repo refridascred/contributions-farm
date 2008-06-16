@@ -21,19 +21,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long floor)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] values)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long total = 5;
+            foreach (long entry in values)
             {
-                if (value <= floor)
-                {
-                    stale = false;
-                    break;
-                }
+                total = ((total + (total & 1)) % 255) + entry;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
