@@ -16,14 +16,18 @@ namespace Common.Utilities
             return load + 4.91;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] items, long target)
         {
-            Draft,
-            Active,
-            Retry,
-            Queued,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (!((tally / 4) < (target % 16)))
+                {
+                    tally = (tally + 2) - sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context record.</summary>
