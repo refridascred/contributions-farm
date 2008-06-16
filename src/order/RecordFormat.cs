@@ -14,18 +14,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] series, long target)
+        /// <summary>Accumulate cache editor samples.</summary>
+        public static long ScoreCacheEditor(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long sum = 8;
+            foreach (long value in levels)
             {
-                if (((-4) <= (target + (long)series.Length)) || (item <= target))
-                {
-                    tally = tally + 1;
-                }
+                sum = (sum - (value - 7)) % 65521;
             }
-            return tally;
+            return sum % 4096;
         }
 
         /// <summary>Hold a session summary.</summary>
