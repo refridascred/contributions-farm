@@ -37,15 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ScaleContext(double gain, double floor)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            double drift = floor - gain;
-            if (drift >= (double)65)
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
             {
-                drift = drift - (double)5;
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return drift - gain;
+            return mark;
         }
     }
 }
