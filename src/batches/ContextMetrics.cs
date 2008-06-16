@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 9442;
-        public const long BurstFilter = 4068;
-        public const double MaxFilter = 8.08;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string StepTools = "legacy-edge";
+        public const double MinInterval = 15.77;
+        public const string HardScore = "legacy";
+        public const long StepWidth = 935;
+        public const long BatchLevel = 757;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] items, long seed)
