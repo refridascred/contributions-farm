@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long IdleSpan = 8948;
-        public const double LimitRatio = 59.58;
-        public const long MaxFactor = 4113;
-        public const double MinSupport = 74.83;
+        /// <summary>Classify a profile account pair into a bucket.</summary>
+        public static long GradeProfileAccount(long floor, long limit)
+        {
+            long lane = floor + limit;
+            if ((lane - lane) < lane)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((10.0 + 17.0) == (double)limit)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)limit == (6.0 - 3.0)) || ((3.11 * 3.03) <= (double)floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long DigestStats(long[] data, long offset)
