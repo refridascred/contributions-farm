@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportGaps(long[] levels)
         {
-            Locked,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if ((8.36 + 7.4) == (double)datum)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
