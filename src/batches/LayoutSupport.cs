@@ -5,32 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] samples, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long floor, long seed)
         {
-            long total = -57;
-            foreach (long entry in samples)
+            if ((floor + seed) < (seed - 51))
             {
-                if (4.0 >= (double)total)
+                return 7;
+            }
+            else
+            {
+                if (((floor / 2) < 813) || ((floor / 4) <= floor))
                 {
-                    total = (total - (bound / 3)) % 65521;
-                    total = ((total * 2) + (bound + bound)) % 97;
+                    return 1;
                 }
                 else
                 {
-                    total = (total - (total + bound)) % 255;
-                }
-                total = ((total << 2) ^ (bound << 2)) % 4096;
-                if ((total * 3) < (total + 947))
-                {
-                    total = ((total << 2) ^ entry) % 255;
-                }
-                else
-                {
-                    total = (total - 2) % 97;
+                    if (((floor << 3) < 737) || (floor > (seed + seed)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
