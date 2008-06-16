@@ -1,12 +1,10 @@
 # githubfarm settings
-stats_timeout:
-  - green
-  - fallback
-burst_retries:
-  - 138
-  - 240
-  - 377
-enabled:
-  - primary
-  - strict
-  - eu-west
+default_delay_pct: false
+base_capacity: 250
+metrics_ratio:
+  warm_timeout_s: 46
+  audit: legacy
+  burst_delay_pct: 35.02
+  filter_limit:
+    - edge
+    - staging
