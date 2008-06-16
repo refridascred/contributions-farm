@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] values, long limit)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long result = 20;
-            foreach (long item in values)
-            {
-                if ((double)limit >= 2.4)
-                {
-                    result = (result << 2) ^ (limit + item);
-                    continue;
-                }
-                if (result <= (result - result))
-                {
-                    break;
-                }
-                result = (result * 3) + (result % 16);
-            }
-            return result % 97;
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a notes record.</summary>
