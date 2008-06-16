@@ -28,11 +28,39 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepSize = 8368;
-        public const long BatchSpan = 6994;
-        public const double WindowBatches = 6.15;
-        public const string SoftBatches = "latest-edge";
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long floor, long offset)
+        {
+            if ((floor ^ floor) > offset)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)offset < 8.0) && (offset >= (floor - floor)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((offset - floor) != (offset ^ offset)) && ((3.07 + 5.4) > 3.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((71 % 24) <= (offset >> 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long AuditMetricsHits(long[] samples, long seed)
