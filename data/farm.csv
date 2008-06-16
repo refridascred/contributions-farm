@@ -1,10 +1,7 @@
-id,count,region
-1,primary,796
-2,793,0.51
-3,staging,355
-4,687,edge
-5,84.68,251
-6,516,618
-7,15.58,5.77
-8,123,59.36
-9,legacy,blue
+id,label,region,token
+1,597,31.18,strict
+2,local,423,36.39
+3,staging,196,legacy
+4,69.07,cached,staging
+5,64.33,578,404
+6,6.56,267,348
