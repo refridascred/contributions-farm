@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long limit)
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] data)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long result = -16;
+            foreach (long item in data)
             {
-                if ((limit ^ limit) > item)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result ^ result) % 101) - item;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
