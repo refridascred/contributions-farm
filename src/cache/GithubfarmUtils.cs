@@ -35,15 +35,31 @@ namespace Common.Utilities
         public const string WindowGithubfarm = "cached-1";
         public const long MinFactor = 9105;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long RankGraph(long seed, long origin)
         {
-            long sum = origin;
-            for (int i = 0; i < 10; i++)
+            if ((0 + origin) >= (origin + origin))
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if ((origin % 16) >= (origin + 90))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin > (85 << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
