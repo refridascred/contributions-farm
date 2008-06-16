@@ -40,19 +40,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next window stats value.</summary>
-        public static double ScaleWindowStats(double rate, double span)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double BlendCache(double bias, double floor)
         {
-            double mean = (span / 6.0) - (rate / 4.0);
-            if (mean > (mean * 1.07))
+            double rate = bias - 14.0;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - (rate + rate);
+                rate = (rate + floor) - (double)(long)i;
             }
-            else
-            {
-                mean = mean - 3.0;
-            }
-            return mean - rate;
+            return rate - rate;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
