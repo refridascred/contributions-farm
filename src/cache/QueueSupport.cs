@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] samples, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            long sum = 2;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                sum = (((sum << 3) ^ (sum - target)) % 1000) ^ value;
+                if ((cell * 2) > (matches << 2))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
