@@ -52,11 +52,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double DefaultProfile = 48.92;
-        public const string BaseWidth = "primary-1";
-        public const double StepProfile = 12.06;
-        public const long MaxSpan = 8750;
-        public const long StepLevel = 8529;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 7603;
+        public const double MinMetrics = 37.92;
+        public const long BurstMetrics = 9699;
+        public const long CacheMetrics = 5394;
+        public const double IdleSpan = 40.21;
     }
 }
