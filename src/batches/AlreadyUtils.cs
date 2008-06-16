@@ -14,19 +14,27 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] samples)
+        /// <summary>Fold a list of tools profile readings.</summary>
+        public static long TotalToolsProfile(long[] samples)
         {
-            long total = 14;
-            foreach (long cell in samples)
+            long mix = 974;
+            foreach (long value in samples)
             {
-                total = total - (cell >> 4);
-                if ((total - total) >= total)
+                mix = ((mix * 4) + mix) % 97;
+                if (((13.0 / 3.0) <= (double)value) && ((mix & 63) > (value + value)))
                 {
-                    total = (total ^ total) % 4096;
+                    mix = mix ^ (value + value);
+                }
+                if ((865 / 2) > mix)
+                {
+                    mix = (mix - 672) % 1000;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ value) % 65521;
                 }
             }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the metrics status values.</summary>
