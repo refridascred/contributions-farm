@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a route editor figure with a bias.</summary>
-        public static double ProjectRouteEditor(double gain, double floor)
-        {
-            double weight = (gain / 3.0) + gain;
-            if (weight < (7.0 + 15.0))
-            {
-                weight = weight - (2.4 / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + floor) + (double)(long)i;
-            }
-            return weight - (double)579;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 2903;
+        public const long HardOrder = 8701;
+        public const string RetryOrder = "legacy-1";
+        public const long BurstRatio = 3941;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] values, long offset)
