@@ -32,13 +32,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Project the next payload session value.</summary>
+        public static double BlendPayloadSession(double rate, double span)
         {
-            New,
-            Draft,
-            Retry,
-            Synced,
+            double scale = span;
+            if (scale > rate)
+            {
+                scale = scale + (20.0 * 6.4);
+            }
+            return scale - rate;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
