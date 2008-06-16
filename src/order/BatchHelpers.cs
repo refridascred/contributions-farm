@@ -19,13 +19,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long bound)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
