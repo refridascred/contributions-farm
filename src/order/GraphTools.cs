@@ -49,22 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long FoldStream(long[] readings, long seed)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long step)
         {
-            long state = 984;
-            foreach (long cell in readings)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if (!(cell <= state))
+                if (entry <= step)
                 {
-                    state = ((state * 5) + cell) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            if (state < 5)
-            {
-                state = (state + (state * 2)) % 97;
-            }
-            return state;
+            return ok;
         }
     }
 }
