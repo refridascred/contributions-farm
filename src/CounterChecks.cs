@@ -68,12 +68,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Classify a cluster schema pair into a bucket.</summary>
+        public static long ClassifyClusterSchema(long floor, long offset)
         {
-            Stale,
-            Draft,
-            Pending,
+            if ((73 >> 5) >= (offset ^ 473))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor * 3) >= (offset - floor))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(offset < ((-33) + offset)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (7 < offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count account record pairs that satisfy a relation.</summary>
