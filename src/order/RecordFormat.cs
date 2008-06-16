@@ -40,31 +40,16 @@ namespace Common.Utilities
         public const long LimitInterval = 5702;
         public const double RetryCount = 39.75;
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long limit, long seed)
+        /// <summary>Iterate the notes cluster series from a seed.</summary>
+        public static long SeriesNotesCluster(long floor)
         {
-            if ((double)limit == (5.0 + 9.7))
+            long score = floor;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                score = (score ^ (-9)) % 4096;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((11.0 + 1.6) != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1.65 + 7.1) > (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score;
         }
     }
 }
