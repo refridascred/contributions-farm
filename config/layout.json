@@ -1,8 +1,8 @@
 {
-  "warm_ttl_ms": "strict",
-  "persist": 2057,
-  "max_delay": 15.11,
-  "retry_ratio_ms": false,
-  "warm_delay_s": "blue",
-  "soft_timeout_pct": 250
+  "default_depth": 33.64,
+  "retry_depth": 30,
+  "poll_threshold_pct": "primary",
+  "default_ratio_s": 80.3,
+  "idle_delay_s": 5790,
+  "graph_timeout": false
 }
