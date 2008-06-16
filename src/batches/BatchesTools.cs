@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings, long offset)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] values, long target)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((offset & 3) == (sample * 4))
+                if ((target >> 4) == (target & 15))
                 {
-                    tally = tally + 1;
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
