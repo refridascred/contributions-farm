@@ -75,10 +75,22 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BurstDepth = 5.73;
-        public const long LimitSpan = 5624;
-        public const long MinBudget = 3600;
-        public const long StepGraph = 6851;
+        /// <summary>Audit stats checks readings against a rule.</summary>
+        public static long MeasureStatsChecksOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (!(7 <= (item << 3)))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
