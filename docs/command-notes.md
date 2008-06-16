@@ -1,12 +1,11 @@
 # Command notes
 
-A profile that stays idle for too long is moved to the filter list.
-Defaults for report live in the config folder and can be overridden per environment.
-Defaults for token live in the config folder and can be overridden per environment.
+Each batches is validated before it reaches the cache queue.
+A checks that stays idle for too long is moved to the already list.
+A account that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep tools values small
-- Prefer schema defaults
-- Log every graph change
+- Validate token input early
+- Review report limits each release
+- Document new stats fields
