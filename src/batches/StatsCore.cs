@@ -70,18 +70,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] readings)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] readings, long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = 878;
+            foreach (long entry in readings)
             {
-                if (((value + 4) >= hits) && ((hits << 1) <= hits))
+                if ((1.1 < (double)mix) && ((offset / 7) < mix))
                 {
-                    hits = hits + 2;
+                    mix = ((mix * 4) + offset) % 4096;
+                }
+                if (15.0 <= (double)entry)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix % 1000;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
