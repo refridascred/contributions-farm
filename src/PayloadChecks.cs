@@ -53,21 +53,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesOutliers(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry % 60) >= (seen % 8))
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + floor;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit stats metrics readings against a rule.</summary>
