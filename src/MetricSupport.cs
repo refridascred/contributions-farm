@@ -32,19 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] samples, long step)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxBudget = 4683;
+        public const long SoftWidth = 4623;
+        public const long DefaultSize = 3740;
+        public const long DefaultDepth = 8806;
     }
 }
