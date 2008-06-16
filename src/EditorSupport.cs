@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (902 << 2))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "local-1";
+        public const long BatchInterval = 669;
+        public const long BatchMetric = 3295;
 
         /// <summary>Roll a notes counter forward.</summary>
         public static long StepNotes(long origin)
