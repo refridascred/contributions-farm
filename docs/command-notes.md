@@ -1,11 +1,10 @@
 # Command notes
 
-A batch that stays idle for too long is moved to the tools list.
-Use profile settings to tune how often editor data is refreshed.
-A order that stays idle for too long is moved to the graph list.
+Defaults for entry live in the config folder and can be overridden per environment.
+Use window settings to tune how often metric data is refreshed.
 
 ## Guidelines
 
-- Validate queue input early
-- Prefer buffer defaults
-- Document new batches fields
+- Validate commits input early
+- Document new route fields
+- Review githubfarm limits each release
