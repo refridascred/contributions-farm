@@ -45,13 +45,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long IterateBatches(long floor)
         {
-            Locked,
-            Draft,
-            Paused,
-            Queued,
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((floor >> 1) >= floor))
+                {
+                    mix = (mix * 4) + floor;
+                }
+                else
+                {
+                    mix = (mix + (floor + 448)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Describe the editor phase values.</summary>
