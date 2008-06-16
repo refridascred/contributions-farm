@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up already schema samples.</summary>
-        public static long PairAlreadySchemaCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double MaxFactor = 2.12;
+        public const string WindowSpan = "cached-edge";
+        public const double RetryCount = 2.83;
+        public const long RetryCommits = 3366;
+        public const long MinCommits = 4484;
 
         /// <summary>Accumulate schema support samples.</summary>
         public static long FoldSchemaSupport(long[] levels, long step)
