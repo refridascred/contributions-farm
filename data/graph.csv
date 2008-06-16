@@ -1,11 +1,6 @@
-id,count,level
-1,577,strict
-2,353,420
-3,20.46,15.48
-4,95.88,cached
-5,54.22,open
-6,stable,693
-7,89.87,959
-8,38.53,899
-9,eu-west,64.1
-10,legacy,7.17
+id,label,token,weight
+1,80.06,825,green
+2,844,primary,408
+3,staging,29.63,370
+4,eu-west,standard,94.19
+5,726,298,7.95
