@@ -1,6 +1,5 @@
 {
-  "hard_depth_pct": 1024,
-  "strict": 69,
-  "command_delay": 14.01,
-  "filter_ttl": 9398
+  "cache_size_s": ["legacy", "standard", "edge", "latest"],
+  "enabled": true,
+  "burst_delay": ["edge", "legacy", "latest", "strict"]
 }
