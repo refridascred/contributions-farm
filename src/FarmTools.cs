@@ -32,12 +32,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Blend two profile already measurements.</summary>
+        public static double ProjectProfileAlready(double bias, double floor)
         {
-            public bool Size { get; set; }
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            double weight = (double)56 - floor;
+            if (weight < (floor - floor))
+            {
+                weight = weight - 9.0;
+            }
+            return weight - bias;
         }
     }
 }
