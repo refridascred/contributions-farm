@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long seed, long limit)
-        {
-            long delta = seed + limit;
-            if (seed > (seed >> 2))
-            {
-                return 3;
-            }
-            else
-            {
-                if (224 <= (delta % 16))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed >= (7.86 + 5.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftEntry = 3935;
+        public const long MaxLevel = 5667;
+        public const long MaxEntry = 1645;
+        public const long MinInterval = 741;
 
         /// <summary>Audit record commits readings against a rule.</summary>
         public static long AuditRecordCommitsMatches(long[] values, long target)
