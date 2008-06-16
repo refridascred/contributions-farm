@@ -16,14 +16,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] levels)
         {
-            Synced,
-            Queued,
-            Stale,
-            New,
-            Active,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if (!(value <= (869 * 2)) && (((double)value >= (3.2 / 9.0)) && ((hits ^ hits) >= hits)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
