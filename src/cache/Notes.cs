@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long floor)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Rank { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
