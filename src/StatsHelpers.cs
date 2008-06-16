@@ -56,14 +56,10 @@ namespace Common.Utilities
         public const string RetryInterval = "staging-edge";
         public const double BaseFactor = 50.01;
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Failed,
-            Locked,
-            Idle,
-            Done,
-            Synced,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BatchToken = 75.52;
+        public const long DefaultLevel = 3465;
+        public const long HardDepth = 6632;
+        public const long StepDepth = 153;
     }
 }
