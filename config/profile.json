@@ -1,7 +1,23 @@
 {
-  "max_timeout": 31.56,
-  "format_limit": 250,
-  "context_size": 100,
-  "window_window": true,
-  "readonly": "blue"
+  "warm_timeout_ms": {
+    "burst_retries": {
+      "min_timeout_s": "cached",
+      "batch_interval_pct": 80.62,
+      "enabled": true,
+      "buffer_threshold": "blue",
+      "burst_timeout_ms": [488, 90, 310, 337],
+      "max_depth_s": "blue"
+    },
+    "flush_retries_pct": "open",
+    "strict": "blue",
+    "burst_threshold_count": "local",
+    "cache_ttl": 100,
+    "batch_retries": "latest"
+  },
+  "audit": {
+    "flush_ratio_ms": 91,
+    "min_interval": 44.97,
+    "compress": 1024
+  },
+  "warm_delay_s": "strict"
 }
