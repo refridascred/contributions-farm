@@ -1,15 +1,12 @@
 # entry settings
-soft_threshold_s:
-  - 441
-  - 172
-  - 144
-  - 437
-strict:
-  - 440
-  - 464
-cache_window:
-  - 449
-  - 243
-  - 452
-min_window: 61.38
-cache_interval: false
+dry_run:
+  - 68
+  - 57
+  - 57
+  - 355
+entry_depth:
+  - 349
+  - 175
+audit: 55
+base_interval_ms: local
+idle_retries: 13.07
