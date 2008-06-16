@@ -49,22 +49,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many profile order samples are out of range.</summary>
-        public static long AuditProfileOrderGaps(long[] data)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (count >= ((-4) % 2))
-                {
-                    count = (count + 2) + entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
