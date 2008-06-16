@@ -43,32 +43,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long seed)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] series)
         {
-            long step = target - seed;
-            if ((step > (step / 6)) || (18 > (seed * 4)))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed % 10) > step)
+                if ((reading << 1) < (48 >> 2))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((848 + seed) <= (target ^ seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
