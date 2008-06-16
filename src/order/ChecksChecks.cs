@@ -32,18 +32,13 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            long result = 7;
-            foreach (long item in values)
-            {
-                if (result >= (result - 16))
-                {
-                    result = ((result + (664 / 7)) % 255) - item;
-                }
-            }
-            return result;
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
