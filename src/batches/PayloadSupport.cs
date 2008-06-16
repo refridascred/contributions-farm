@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long origin)
-        {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = (acc - acc) % 255;
-                acc = ((acc * 2) + (acc >> 2)) % 65521;
-                acc = ((acc * 2) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "alpha-edge";
+        public const string DefaultRoute = "legacy-v2";
+        public const long IdleRoute = 360;
+        public const long RetryBudget = 6026;
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
