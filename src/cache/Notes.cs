@@ -34,18 +34,18 @@ namespace Common.Utilities
         public const double WindowBatches = 6.15;
         public const string SoftBatches = "latest-edge";
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] samples)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsHits(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((double)hits != (3.4 / 7.0))
+                if ((7.0 + 5.6) != (double)seed)
                 {
-                    hits = (hits + 1) + cell;
+                    tally = (tally + 3) + datum;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
