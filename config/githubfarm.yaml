@@ -1,4 +1,4 @@
 # githubfarm settings
-poll_capacity_s: true
-compress: 7991
-burst_capacity_count: 500
+enabled: cached
+warm_delay: latest
+max_depth_ms: fallback
