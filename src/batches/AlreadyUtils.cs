@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long seed, long bound)
-        {
-            if (((bound * 4) <= (bound / 8)) && ((double)seed == (3.7 * 0.95)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 - 5.0) >= (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowFactor = 29.11;
+        public const long MinScore = 2609;
+        public const long SoftContext = 359;
+        public const long RetryContext = 7404;
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long step, long origin)
