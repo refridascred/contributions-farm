@@ -1,8 +1,14 @@
 # githubfarm settings
-base_ttl:
-  soft_limit_pct: 18.27
-  counter_window: false
-  audit: false
-retry_capacity_count: 541
-stats_delay: standard
-verbose: 33.76
+notes_size: cached
+persist:
+  - latest
+  - standard
+  - green
+  - edge
+default_retries_s:
+  - 271
+  - 321
+  - 31
+  - 205
+idle_ttl: false
+flush_size_count: 4
