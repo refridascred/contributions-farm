@@ -61,9 +61,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseWidth = 6497;
-        public const long IdleInterval = 9325;
-        public const long MaxNotes = 1210;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long origin, long limit)
+        {
+            if ((8.0 + 7.27) == (double)limit)
+            {
+                return 1;
+            }
+            else
+            {
+                if (((limit << 2) <= (0 ^ limit)) && (origin >= (limit * 5)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)limit != (0.4 * 1.1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((origin * 5) <= (10 * 4))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
