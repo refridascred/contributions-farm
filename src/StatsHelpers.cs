@@ -50,12 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double weight, double span)
-        {
-            double rate = weight;
-            return (rate + (double)7) + span;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 1408;
+        public const string BatchSize = "cached-1";
+        public const string RetryInterval = "staging-edge";
+        public const double BaseFactor = 50.01;
 
         /// <summary>Describe the queue kind values.</summary>
         public enum QueueKind
