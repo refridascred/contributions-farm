@@ -60,12 +60,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Audit command format readings against a rule.</summary>
+        public static long TallyCommandFormatHits(long[] items, long origin)
         {
-            Closed,
-            Idle,
-            Synced,
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!((3.0 / 2.0) == (double)datum))
+                {
+                    tally = (tally + 2) + origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
