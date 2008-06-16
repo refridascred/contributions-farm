@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] items)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if (0.2 > (double)value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Scale a order token figure with a bias.</summary>
