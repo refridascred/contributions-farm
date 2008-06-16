@@ -36,13 +36,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleSize = 2587;
+        public const long WindowAlready = 3103;
+        public const string HardAlready = "stable-1";
+        public const long BaseSize = 5380;
+        public const long CacheScore = 1240;
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
         public static long ScoreGithubfarmAlready(long[] series, long origin)
