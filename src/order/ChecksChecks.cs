@@ -23,18 +23,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricMatches(long[] levels, long seed)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((seed + (long)levels.Length) <= (item << 3))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate graph samples.</summary>
