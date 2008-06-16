@@ -32,21 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] series)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Synced,
+            Retry,
+            Active,
         }
 
         /// <summary>Rank queue input into a small class.</summary>
