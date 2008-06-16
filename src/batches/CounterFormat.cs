@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] values)
+        /// <summary>Adjust a support route reading.</summary>
+        public static double ScaleSupportRoute(double ratio, double offset)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double rate = (double)7 / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (!(((1.06 - 10.0) > (double)item) || ((double)hits > (4.0 - 3.2))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                rate = ((rate - rate) - (double)(long)i) - ratio;
             }
-            return hits;
+            return rate + offset;
         }
 
         /// <summary>Match up cache cluster samples.</summary>
