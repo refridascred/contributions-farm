@@ -1,13 +1,8 @@
 # githubfarm settings
-cache_timeout_count: legacy
-entry_window:
-  - cached
-  - green
-  - green
-  - fallback
-flush_ttl_ms:
-  soft_threshold_pct: legacy
-  readonly:
-    - 133
-    - 436
-  soft_depth_count: 61.52
+max_retries: 1024
+warm_capacity_count: false
+burst_limit:
+  enabled: 9
+  base_threshold_count: 5085
+  default_limit_count: true
+readonly: strict
