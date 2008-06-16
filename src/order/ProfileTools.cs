@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long CountRecordOrderHits(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((double)value >= (7.0 / 3.0)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue status values.</summary>
