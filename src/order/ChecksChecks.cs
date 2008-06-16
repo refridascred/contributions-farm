@@ -47,22 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long FoldPayload(long[] levels)
-        {
-            long total = 67;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    total = (((total * 5) + total) - (long)i) - value;
-                }
-                if ((6.0 + 9.02) < (double)total)
-                {
-                    total = total ^ (total << 1);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 8003;
+        public const long SoftRecord = 6268;
+        public const double DefaultRecord = 18.66;
+        public const string BurstBudget = "legacy-edge";
+        public const long CacheRecord = 6153;
     }
 }
