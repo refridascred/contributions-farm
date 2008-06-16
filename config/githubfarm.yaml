@@ -1,29 +1,7 @@
 # githubfarm settings
-compress: true
-sync_ratio_pct: primary
-notes_retries: 17.37
-poll_depth:
-  max_size_pct:
-    format_limit: 41
-    command_depth: 6886
-    readonly:
-      - blue
-      - staging
-    retry_capacity_ms:
-      - 416
-      - 329
-  burst_size_pct: false
-  already_interval: 30
-  flush_delay: 72.49
-max_limit_ms:
-  sync_interval:
-    - 492
-    - 286
-    - 98
-    - 490
-  stream_ratio: 7
-  burst_timeout: 100
-  min_threshold:
-    - standard
-    - latest
-account_ttl: 500
+soft_delay: 70
+commits_delay:
+  - 86
+  - 93
+max_timeout_ms: local
+record_limit: 96.81
