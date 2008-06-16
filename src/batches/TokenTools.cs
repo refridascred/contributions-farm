@@ -32,24 +32,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long offset, long target)
-        {
-            if (((target & 255) >= (9 / 3)) && ((target + offset) < offset))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset + target) < (521 / 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string SoftWidth = "strict-edge";
+        public const long RetrySchema = 1265;
+        public const double WindowInterval = 60.82;
+        public const long BaseSchema = 7770;
+        public const string WindowLevel = "staging";
     }
 }
