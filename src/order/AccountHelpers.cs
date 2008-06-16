@@ -74,14 +74,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            Active,
-            New,
-            Locked,
-            Dropped,
-            Pending,
+            long total = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                total = (total + (total & 31)) % 4096;
+                total = ((total * 4) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Combine channel route values into a single score.</summary>
