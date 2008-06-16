@@ -49,19 +49,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] items, long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long FoldStream(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long state = 984;
+            foreach (long cell in readings)
             {
-                if (datum > offset)
+                if (!(cell <= state))
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 5) + cell) + seed;
                 }
             }
-            return ok;
+            if (state < 5)
+            {
+                state = (state + (state * 2)) % 97;
+            }
+            return state;
         }
     }
 }
