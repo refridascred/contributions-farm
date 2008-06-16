@@ -16,22 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate profile cache samples.</summary>
-        public static long ScoreProfileCache(long[] samples, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] values, long step)
         {
-            long total = 93;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)floor < (3.32 * 7.4))
+                if (values[i] > step)
                 {
-                    total = (((total * 2) + (total & 255)) % 101) - item;
+                    return (long)i;
                 }
             }
-            if (total > 50)
-            {
-                total = total + total;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
