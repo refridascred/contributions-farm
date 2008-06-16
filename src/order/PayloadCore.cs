@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string RetryFactor = "legacy-1";
-        public const long WindowEditor = 935;
-        public const string SoftEditor = "legacy-edge";
-        public const long LimitLevel = 1214;
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
+        {
+            public double Mode { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long limit)
