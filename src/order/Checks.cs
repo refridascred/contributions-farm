@@ -29,15 +29,13 @@ namespace Common.Utilities
         public const string SoftLevel = "stable-edge";
         public const double WindowOrder = 29.57;
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double ratio, double floor)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            double scale = floor;
-            if (scale <= (ratio - floor))
-            {
-                scale = scale + ratio;
-            }
-            return scale - ratio;
+            Dropped,
+            Retry,
+            Done,
+            New,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
