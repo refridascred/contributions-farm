@@ -25,21 +25,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of account schema readings.</summary>
-        public static long CompareAccountSchemaCount(long[] values)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                score = (score * 5) + (offset - (long)i);
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    if ((values[i] ^ values[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score + ((long)i + offset)) - (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
     }
 }
