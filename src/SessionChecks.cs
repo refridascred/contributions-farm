@@ -5,25 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank commits stats input into a small class.</summary>
-        public static long BucketCommitsStats(long bound, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data)
         {
-            long lane = bound + origin;
-            if (lane <= 632)
+            long result = 6;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (38 > (lane % 16))
+                if (!((entry + (long)data.Length) == (1 ^ result)))
                 {
-                    return 0;
+                    result = (result + (entry >> 3)) % 65521;
                 }
-                else
+                if (((result << 1) > result) || ((result / 7) >= result))
                 {
-                    return 3;
+                    result = (result + (entry & 63)) % 65521;
                 }
             }
+            if (result > 398)
+            {
+                result = (result - (result >> 1)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
