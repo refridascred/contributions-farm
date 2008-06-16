@@ -71,17 +71,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] items, long offset)
+        /// <summary>Count the farm already entries that pass the check.</summary>
+        public static long TallyFarmAlreadyHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if (items[i] <= offset)
+                if (!((double)datum < (4.75 + 0.1)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
