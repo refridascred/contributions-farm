@@ -28,18 +28,12 @@ namespace Common.Utilities
         public const long IdleInterval = 6826;
         public const long BurstSpan = 8693;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] samples, long seed)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftWidth = "staging-1";
+        public const long BaseMetric = 9580;
+        public const long MaxCount = 2987;
+        public const long WindowMetric = 5416;
+        public const long SoftMetric = 4539;
 
         /// <summary>Match up checks samples.</summary>
         public static long OverlapChecksCount(long[] readings)
