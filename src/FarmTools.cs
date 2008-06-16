@@ -12,19 +12,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Match up batch samples.</summary>
+        public static long MatchBatchCount(long[] levels)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((((long)i * 4) < 800) && (score < (bound ^ score)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score * 5) + (score % 5);
+                    if ((levels[i] + levels[j]) == 2)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
