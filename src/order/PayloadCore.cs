@@ -61,18 +61,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] samples, long bound)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((sample + 49) <= 1))
+                if (values[i] > step)
                 {
-                    matches = (matches + 2) - bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
