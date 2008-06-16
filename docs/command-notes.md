@@ -1,11 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often githubfarm data is refreshed.
-When a support fails, the entry handler retries a few times before giving up.
-Use counter settings to tune how often buffer data is refreshed.
+When a editor fails, the stats handler retries a few times before giving up.
+A session that stays idle for too long is moved to the buffer list.
+
+The stream helpers are pure functions, so they are safe to call from any thread.
+Keep route and githubfarm names short and lowercase.
+The queue module keeps record values in sync with the farm cache.
 
 ## Guidelines
 
-- Document new editor fields
-- Review command limits each release
-- Keep already values small
+- Keep notes values small
+- Document new support fields
+- Validate metrics input early
