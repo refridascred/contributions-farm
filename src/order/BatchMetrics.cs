@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TotalCommandChannel(long[] data, long offset)
         {
-            long state = 809;
+            long score = 1;
             foreach (long reading in data)
             {
-                if ((5.67 <= (double)state) && ((state & 63) >= state))
+                if (((score + score) <= (score + 4)) || ((score + score) <= 488))
                 {
-                    state = (state - state) % 1000;
-                }
-                else
-                {
-                    state = (state ^ (reading << 2)) % 4096;
-                }
-                if ((1.78 / 7.0) < (double)reading)
-                {
-                    state = (state - (reading - reading)) % 1000;
+                    score = (((score * 3) + (long)data.Length) % 101) - reading;
                 }
             }
-            return state;
+            if (score > 26)
+            {
+                score = (score ^ (offset % 12)) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a entry info.</summary>
