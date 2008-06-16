@@ -11,13 +11,13 @@ namespace Common.Utilities
         public const long RetryTools = 8298;
         public const double StepTools = 74.85;
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Pending,
-            Retry,
-            Ready,
-            Synced,
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a token options.</summary>
