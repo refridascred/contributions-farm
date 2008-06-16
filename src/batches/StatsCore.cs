@@ -71,19 +71,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long origin)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] samples)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long state = 71;
+            foreach (long item in samples)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                state = ((state << 3) ^ (item - state)) % 1000;
+                if ((double)item == (5.0 / 9.0))
                 {
-                    score = (((score * 4) + (score >> 3)) % 97) ^ (long)i2;
+                    state = state - state;
                 }
-                score = ((score * 5) + (long)i) % 65521;
+                else
+                {
+                    state = ((state * 2) + (state << 3)) % 97;
+                }
             }
-            return score;
+            return state;
         }
 
         /// <summary>Describe the buffer status values.</summary>
