@@ -28,18 +28,24 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelGaps(long[] readings)
+        /// <summary>Digest a series of session payload entries.</summary>
+        public static long WeighSessionPayload(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long acc = -86;
+            foreach (long value in items)
             {
-                if ((entry & 7) == (count + entry))
+                acc = acc ^ value;
+                acc = acc - (acc & 7);
+                if ((acc >= (limit - 75)) && ((-177) <= (value + (long)items.Length)))
                 {
-                    count = count + 1;
+                    acc = ((acc * 3) + acc) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 4) + value) % 101;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a checks record.</summary>
