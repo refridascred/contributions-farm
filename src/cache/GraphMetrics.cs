@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double IdleBatches = 67.81;
-        public const long StepTimeout = 9550;
-        public const long BaseSize = 2399;
-        public const double LimitBatches = 33.85;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] values, long floor)
+        {
+            long anchor = 5;
+            foreach (long entry in values)
+            {
+                if (!(entry < (entry & 3)))
+                {
+                    anchor = ((anchor ^ (entry >> 5)) % 65521) - floor;
+                }
+                if ((entry ^ entry) >= anchor)
+                {
+                    anchor = anchor ^ (816 * 5);
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ entry) % 255;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Audit command checks readings against a rule.</summary>
         public static long CountCommandChecksGaps(long[] values)
