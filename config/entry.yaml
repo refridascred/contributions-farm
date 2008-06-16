@@ -1,18 +1,16 @@
 # entry settings
-payload_size:
-  - standard
-  - blue
-  - fallback
-payload_depth: 89.52
-hard_interval: open
-poll_retries_s: primary
-poll_limit_s:
-  retry_timeout: false
-  min_timeout_ms: 24.96
-  idle_ttl:
+min_interval_ms: stable
+burst_timeout:
+  cache_ratio:
     - blue
-    - open
-    - primary
+    - green
     - stable
-  stream_ttl: 79.39
-cache_depth_s: 1024
+    - standard
+  retry_timeout:
+    default_ttl_s: strict
+    filter_timeout: true
+    enabled: 10.17
+    min_depth_count: cached
+  warm_interval_pct: true
+account_size: latest
+max_delay_count: 58.7
