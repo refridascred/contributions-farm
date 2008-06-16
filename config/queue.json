@@ -1,5 +1,6 @@
 {
-  "verbose": 58,
-  "channel_window": [82, 225],
-  "idle_delay_count": "open"
+  "hard_capacity_ms": 69.24,
+  "tools_threshold": 48.41,
+  "strict": 60,
+  "queue_interval": true
 }
