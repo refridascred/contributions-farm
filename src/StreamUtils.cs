@@ -39,14 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] data, long limit)
         {
-            Stale,
-            Draft,
-            Closed,
-            Locked,
-            Paused,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((limit + cell) < 964)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
