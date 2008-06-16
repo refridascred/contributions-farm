@@ -37,21 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string StepLevel = "stable-edge";
+        public const long BurstInterval = 255;
+        public const long RetryFactor = 1221;
+        public const long MaxEntry = 5753;
+        public const string DefaultTimeout = "latest-1";
     }
 }
