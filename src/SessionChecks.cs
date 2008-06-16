@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] items)
+        /// <summary>Rank commits stats input into a small class.</summary>
+        public static long BucketCommitsStats(long bound, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = bound + origin;
+            if (lane <= 632)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if (38 > (lane % 16))
                 {
-                    if ((items[i] - items[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
