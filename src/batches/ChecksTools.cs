@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] series, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(((4.06 + 4.0) < (double)origin) && ((3.2 / 6.0) >= (double)seen)))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public double Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
