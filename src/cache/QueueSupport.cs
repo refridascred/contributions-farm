@@ -16,17 +16,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] values, long step)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Scale a metric figure with a bias.</summary>
