@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            Active,
-            Stale,
-            Dropped,
             Retry,
-            Closed,
+            Pending,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
