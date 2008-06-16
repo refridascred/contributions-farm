@@ -43,23 +43,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double ratio, double bias)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double scale = (double)85 * 2.85;
-            if (scale < 1.95)
-            {
-                scale = (scale + bias) + ratio;
-            }
-            else
-            {
-                scale = scale + (bias / 8.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - bias) + (double)(long)i;
-            }
-            return scale - (1.7 / 3.0);
+            Synced,
+            Idle,
+            Pending,
+            New,
+            Draft,
         }
     }
 }
