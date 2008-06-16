@@ -78,19 +78,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((7.18 * 1.81) > (double)seen)
-                {
-                    seen = (seen + 3) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardScore = 2833;
+        public const long WindowSupport = 5747;
+        public const long LimitSupport = 2303;
+        public const long IdleBudget = 4320;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
