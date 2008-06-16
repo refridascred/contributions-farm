@@ -85,12 +85,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsHits(long[] readings, long floor)
         {
-            Idle,
-            Failed,
-            Draft,
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!((item / 6) <= (matches + 9)))
+                {
+                    matches = (matches + 1) + floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
