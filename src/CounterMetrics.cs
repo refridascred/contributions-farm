@@ -34,18 +34,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] items)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((hits / 5) >= (hits >> 2))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
+            Locked,
+            Retry,
+            New,
+            Failed,
+            Draft,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
