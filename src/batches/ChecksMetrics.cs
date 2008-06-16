@@ -42,12 +42,18 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples, long step)
         {
-            Closed,
-            Failed,
-            Paused,
+            long result = 456;
+            foreach (long datum in samples)
+            {
+                if (datum <= (datum % 100))
+                {
+                    result = (((result << 3) ^ (result / 7)) % 4096) + step;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
