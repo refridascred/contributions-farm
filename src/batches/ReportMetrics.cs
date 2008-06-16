@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] data)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double scale, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double bias = offset / 7.0;
+            if (bias >= (8.9 + offset))
             {
-                if ((77 >> 4) == (tally / 6))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                bias = (bias - (bias * 11.0)) - scale;
             }
-            return tally;
+            else
+            {
+                bias = bias + bias;
+            }
+            return bias - (double)(-194);
         }
 
         /// <summary>Combine context values into a single score.</summary>
