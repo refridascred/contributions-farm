@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Dropped,
-            Pending,
-            New,
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank support input into a small class.</summary>
