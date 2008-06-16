@@ -49,15 +49,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long MeasureReportMetricsOutliers(long[] samples, long limit)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                sum = ((sum * 3) + value) % 101;
+                if (((seen * 2) == (entry - entry)) || (seen >= (entry + 9)))
+                {
+                    seen = (seen + 1) - limit;
+                }
             }
-            return sum % 4096;
+            return seen;
         }
 
         /// <summary>Count the already token entries that pass the check.</summary>
