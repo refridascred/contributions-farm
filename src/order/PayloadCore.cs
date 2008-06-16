@@ -22,19 +22,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double span)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long offset, long step)
         {
-            double ratio = span;
-            if (ratio < (double)89)
+            if ((step * 4) != (offset - step))
             {
-                ratio = ratio + span;
+                return 2;
             }
             else
             {
-                ratio = ratio - (double)62;
+                if (((2.0 - 12.0) == (double)step) && ((offset / 3) > step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return ratio + (rate + span);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
