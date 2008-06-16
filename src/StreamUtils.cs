@@ -95,14 +95,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TallyCluster(long[] values)
         {
-            Pending,
-            Closed,
-            Active,
-            Queued,
-            Paused,
+            long state = 5;
+            foreach (long entry in values)
+            {
+                if ((state << 1) < (entry >> 1))
+                {
+                    state = (state << 3) ^ (432 + 8);
+                }
+                if ((double)entry <= (0.51 / 9.0))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
