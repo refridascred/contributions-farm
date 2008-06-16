@@ -41,15 +41,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long AuditCommitsHits(long[] readings, long target)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesHits(long[] levels)
         {
             long count = 0;
-            foreach (long cell in readings)
+            foreach (long item in levels)
             {
-                if (target <= (target % 60))
+                if (count >= (52 + item))
                 {
-                    count = (count + 3) + cell;
+                    count = count + 1;
                 }
             }
             return count;
