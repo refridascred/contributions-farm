@@ -13,10 +13,28 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double CacheRoute = 56.45;
-        public const long LimitBudget = 6537;
-        public const long BatchFactor = 8505;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] readings, long offset)
+        {
+            long total = 79;
+            foreach (long reading in readings)
+            {
+                if ((reading / 8) != (reading & 15))
+                {
+                    total = (total ^ (reading + reading)) % 101;
+                    total = total ^ (reading * 3);
+                }
+                if ((80 - offset) > (total / 3))
+                {
+                    total = (total << 3) ^ (2 & 63);
+                }
+            }
+            if (total < (-47))
+            {
+                total = total - 38;
+            }
+            return total % 1000;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string WindowCount = "local";
