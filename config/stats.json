@@ -1,5 +1,6 @@
 {
-  "audit": false,
-  "token_interval": "latest",
-  "soft_depth_s": "blue"
+  "idle_window": "blue",
+  "batch_ttl_s": ["stable", "primary", "eu-west", "staging"],
+  "compress": 30,
+  "default_delay": 80.58
 }
