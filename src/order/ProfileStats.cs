@@ -47,10 +47,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchRatio = 7531;
-        public const double MaxInterval = 30.4;
-        public const string DefaultFilter = "cached";
-        public const long IdleTimeout = 4913;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardCount = 7160;
+        public const double CacheRatio = 76.16;
+        public const long MaxCluster = 659;
+        public const string HardLevel = "fallback-v2";
+        public const string LimitCluster = "legacy-v2";
     }
 }
