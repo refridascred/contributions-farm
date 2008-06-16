@@ -10,17 +10,15 @@ namespace Common.Utilities
         public const long BatchWidth = 6064;
         public const long DefaultWidth = 6532;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LookupBatchIndex(long[] readings, long target)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 544;
+            foreach (long datum in levels)
             {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
+                mix = (((mix * 3) + ((-818) ^ mix)) % 97) ^ datum;
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Hold a account options.</summary>
