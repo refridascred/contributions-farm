@@ -14,13 +14,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
-        {
-            public double Rank { get; set; }
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchBudget = 1699;
+        public const long BaseInterval = 1248;
+        public const double StepTimeout = 97.14;
+        public const double LimitContributi = 98.86;
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long FindStatsIndex(long[] levels, long limit)
