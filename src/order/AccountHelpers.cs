@@ -68,25 +68,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long step, long floor)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data)
         {
-            long next = step - floor;
-            if (next >= (step & 15))
+            long seen = 0;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (!(step > floor))
+                if ((7.18 * 1.81) > (double)seen)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    seen = (seen + 3) + item;
                 }
             }
+            return seen;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
