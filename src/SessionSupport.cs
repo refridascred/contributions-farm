@@ -30,12 +30,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long WeighContributi(long[] samples, long origin)
         {
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            long anchor = 9;
+            foreach (long reading in samples)
+            {
+                if ((double)reading >= (14.0 + 5.55))
+                {
+                    anchor = (anchor + (reading << 1)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (anchor % 10)) % 4096;
+                }
+                if (((origin + anchor) != (reading & 127)) && (reading > anchor))
+                {
+                    anchor = (anchor - (origin << 3)) % 1000;
+                }
+            }
+            return anchor;
         }
     }
 }
