@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a payload metric pair into a bucket.</summary>
-        public static long ClassifyPayloadMetric(long floor, long step)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] items, long seed)
         {
-            if ((step - 8) <= (floor - floor))
+            bool found = true;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((2 + step) > (floor * 4))
+                if (sample < seed)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
