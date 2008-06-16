@@ -12,12 +12,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitInterval = 3281;
-        public const long SoftAccount = 9745;
-        public const long IdleSize = 6696;
-        public const string RetryAccount = "cached";
-        public const string StepCount = "latest-v2";
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
+        {
+            public long Flag { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
