@@ -25,15 +25,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] data, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if (seed > (seed + (-25)))
+                {
+                    tally = (tally + 3) - item;
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the account mode values.</summary>
