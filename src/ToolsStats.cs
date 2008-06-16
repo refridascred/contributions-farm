@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelLimits(long[] series, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Token { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
