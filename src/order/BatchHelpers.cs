@@ -37,14 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool CheckFarmNotesBounds(long[] series, long offset)
         {
-            Active,
-            Queued,
-            Pending,
-            Failed,
-            Locked,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
