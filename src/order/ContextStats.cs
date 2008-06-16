@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Project the next notes schema value.</summary>
+        public static double ProjectNotesSchema(double weight, double span)
         {
-            Locked,
-            Done,
-            Idle,
-            Paused,
+            double weight2 = weight + (weight + weight);
+            if (weight2 > weight)
+            {
+                weight2 = weight2 + (11.0 - weight);
+            }
+            else
+            {
+                weight2 = weight2 - (weight2 / 8.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + weight2) + (double)(long)i;
+            }
+            return weight2 - (weight - span);
         }
 
         /// <summary>Roll a payload counter forward.</summary>
