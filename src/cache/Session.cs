@@ -40,12 +40,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Grade a commits support value against two limits.</summary>
+        public static long ClassifyCommitsSupport(long limit, long seed)
         {
-            Stale,
-            Paused,
-            Locked,
+            if (limit <= (limit & 127))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit >> 5) <= limit) && ((seed ^ seed) >= (limit - seed)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)seed > (0.88 * 9.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((7 + seed) < limit) || ((seed * 4) != (seed + limit)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
