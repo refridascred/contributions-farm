@@ -38,15 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a stream session counter forward.</summary>
-        public static long IterateStreamSession(long limit)
+        /// <summary>Validate farm context readings against a bound.</summary>
+        public static bool CheckFarmContextLimits(long[] data, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long cell in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (cell >= floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
