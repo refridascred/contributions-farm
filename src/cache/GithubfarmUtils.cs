@@ -37,15 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
-        {
-            Locked,
-            Stale,
-            Pending,
-            Draft,
-            Closed,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "fallback";
+        public const string DefaultFactor = "fallback-1";
+        public const long SoftCommand = 9580;
+        public const string LimitTimeout = "alpha";
+        public const string DefaultCommand = "standard-1";
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyMatches(long[] readings)
