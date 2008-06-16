@@ -54,11 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long GradeEditor(long floor, long floor2)
         {
-            double scale = (double)(73 ^ 63);
-            return (scale + span) + bias;
+            long delta = floor ^ floor2;
+            if ((double)delta < 5.39)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((((-40) ^ floor2) > floor) || ((7 + delta) <= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((-332) ^ floor) < 52)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((floor << 2) != (delta % 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
