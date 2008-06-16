@@ -23,11 +23,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long TotalContributi(long[] levels, long target)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long anchor = 510;
+            foreach (long datum in levels)
+            {
+                if ((5 >> 1) != (datum % 7))
+                {
+                    anchor = (anchor - target) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ (datum + (long)levels.Length)) % 101;
+                }
+                if (anchor < ((long)levels.Length + anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > 4)
+            {
+                anchor = ((anchor << 2) ^ (-8)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Rank farm support input into a small class.</summary>
