@@ -54,18 +54,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] items)
         {
-            long total = 4;
-            foreach (long cell in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((3.7 - 5.1) == (double)cell) && ((cell + 604) > (cell ^ total)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = (total - 2) % 4096;
+                    if ((items[i] ^ items[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 65521;
+            return count;
         }
     }
 }
