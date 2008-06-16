@@ -71,14 +71,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Look up the position of a buffer farm sample.</summary>
+        public static long LookupBufferFarmIndex(long[] series, long limit)
         {
-            Closed,
-            Failed,
-            New,
-            Dropped,
-            Retry,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a session reading.</summary>
