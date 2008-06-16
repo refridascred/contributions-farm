@@ -1,11 +1,7 @@
 # entry settings
-payload_ttl: 63
-filter_retries: 3474
-batch_interval:
-  - 417
-  - 498
-  - 186
-warm_ratio: 88
-min_ratio:
-  - blue
-  - stable
+persist: 4692
+cache_depth_ms: 38.01
+hard_window: 71.6
+warm_ttl: 3854
+warm_retries_pct: primary
+max_window_ms: 60
