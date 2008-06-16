@@ -39,18 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] samples, long seed)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (28 <= seen)
-                {
-                    seen = ((seen + 3) ^ value) + seed;
-                }
-            }
-            return seen;
+            New,
+            Stale,
+            Retry,
+            Pending,
+            Ready,
         }
 
         /// <summary>Hold a filter snapshot.</summary>
