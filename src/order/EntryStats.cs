@@ -16,23 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a metrics editor reading.</summary>
-        public static double SmoothMetricsEditor(double ratio, double bias)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesGaps(long[] levels)
         {
-            double rate = bias;
-            if (rate <= (bias + bias))
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                rate = rate - rate;
+                if ((matches + matches) > cell)
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                rate = rate + (16.0 * 11.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - 15.0) + (double)(long)i;
-            }
-            return rate - (ratio + 8.8);
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
