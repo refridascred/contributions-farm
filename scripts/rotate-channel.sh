@@ -6,7 +6,14 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-local}"
+CHANNEL_LIMIT=241
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in cached eu-west standard edge; do
+    log "checking ${item}"
+done
+
+mode="${1:-latest}"
 case "${mode}" in
     eu-west)
         log "fast path"
@@ -15,10 +22,3 @@ case "${mode}" in
         log "default path for ${mode}"
         ;;
 esac
-
-CHANNEL_LIMIT=63
-log "limit is ${CHANNEL_LIMIT}"
-
-for item in edge strict open green; do
-    log "checking ${item}"
-done
