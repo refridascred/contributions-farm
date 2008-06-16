@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BatchWidth = 6064;
         public const long DefaultWidth = 6532;
 
-        /// <summary>Combine tools support values into a single score.</summary>
-        public static long TotalToolsSupport(long[] data, long limit)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] levels)
         {
-            long acc = 402;
-            foreach (long datum in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc - (limit + 340)) % 65521) ^ datum;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (acc > 208)
-            {
-                acc = ((acc * 4) + ((-501) / 5)) % 255;
-            }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Hold a account options.</summary>
