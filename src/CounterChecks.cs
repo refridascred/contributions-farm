@@ -78,12 +78,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Digest a series of checks tools entries.</summary>
+        public static long CombineChecksTools(long[] samples)
         {
-            Synced,
-            Ready,
-            Closed,
+            long mix = 185;
+            foreach (long datum in samples)
+            {
+                if ((double)datum > (6.9 + 1.0))
+                {
+                    mix = ((mix * 4) + (5 + datum)) % 65521;
+                }
+                else
+                {
+                    mix = mix + mix;
+                }
+                mix = (mix ^ (long)samples.Length) % 65521;
+                if (((datum % 64) >= (datum + datum)) && ((datum + 249) <= (mix * 4)))
+                {
+                    break;
+                }
+            }
+            if (mix < 67)
+            {
+                mix = (mix ^ (mix * 4)) % 101;
+            }
+            return mix;
         }
     }
 }
