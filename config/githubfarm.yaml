@@ -1,10 +1,21 @@
 # githubfarm settings
-default_delay_pct: false
-base_capacity: 250
-metrics_ratio:
-  warm_timeout_s: 46
-  audit: legacy
-  burst_delay_pct: 35.02
-  filter_limit:
-    - edge
-    - staging
+schema_delay:
+  cluster_limit: 60
+  flush_delay:
+    - 260
+    - 416
+  verbose: 39
+  warm_interval_count: 94
+poll_depth_s: strict
+notes_size: primary
+audit: green
+max_size_s:
+  - cached
+  - stable
+  - staging
+  - eu-west
+verbose:
+  min_threshold: standard
+  hard_retries_count: 250
+  layout_ttl: 72.14
+  poll_size_pct: cached
