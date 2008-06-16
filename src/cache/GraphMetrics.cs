@@ -35,38 +35,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long ClassifyQueue(long offset, long step)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            if ((step % 2) < offset)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step > ((-4) + step))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset > (step ^ 4))
+                    if ((readings[i] - readings[j]) < 3)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((12.0 / 7.0) <= (double)offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
