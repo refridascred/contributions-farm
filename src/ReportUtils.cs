@@ -40,10 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 75.86;
-        public const long IdleScore = 5582;
-        public const long BurstPayload = 137;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheScore = "staging-edge";
+        public const long MinTimeout = 6657;
+        public const long RetryMetrics = 6099;
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long seed)
