@@ -26,14 +26,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] readings, long seed)
         {
-            Draft,
-            Paused,
-            Done,
-            Retry,
-            New,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum > seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
