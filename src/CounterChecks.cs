@@ -49,19 +49,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowOutliers(long[] values, long bound)
+        /// <summary>Audit metric farm readings against a rule.</summary>
+        public static long MeasureMetricFarmHits(long[] series)
         {
             long seen = 0;
-            foreach (long sample in values)
+            foreach (long datum in series)
             {
-                if (!((double)sample > (double)893))
+                if ((seen / 5) <= (datum >> 1))
                 {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
