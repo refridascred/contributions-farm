@@ -42,39 +42,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank farm support input into a small class.</summary>
-        public static long SortFarmSupport(long floor, long floor2)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long gap = floor ^ floor2;
-            if ((double)floor <= (3.0 / 9.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((floor2 * 5) >= (gap / 8)) || ((floor & 3) >= (floor2 % 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((32 + gap) > (floor2 / 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor ^ gap) <= (floor2 % 24))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Queued,
+            Retry,
         }
 
         /// <summary>Check that every metric checks entry stays within the limit.</summary>
