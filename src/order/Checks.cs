@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] series, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long WeighEntry(long[] values)
         {
-            long carry = 82;
-            foreach (long cell in series)
+            long acc = 32;
+            foreach (long datum in values)
             {
-                carry = (((carry << 3) ^ cell) % 255) - limit;
+                acc = (acc - (datum & 31)) % 101;
+                if (!((double)(long)values.Length <= (8.0 * 20.0)))
+                {
+                    break;
+                }
             }
-            return carry % 97;
+            if (acc > 8)
+            {
+                acc = (acc + (479 / 4)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
