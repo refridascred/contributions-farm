@@ -45,16 +45,27 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long WeighCache(long[] values, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            long score = 5;
+            foreach (long datum in values)
             {
-                sum = sum + (seed - seed);
-                sum = ((sum * 5) + (long)i) % 97;
+                if ((double)score <= (double)step)
+                {
+                    score = (score + (datum - score)) % 65521;
+                }
+                else
+                {
+                    score = score - (score % 3);
+                }
+                score = (score ^ (-941)) % 1000;
             }
-            return sum;
+            if (score > 453)
+            {
+                score = (score - (step ^ 427)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
