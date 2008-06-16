@@ -31,19 +31,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double AdjustFormat(double ratio, double offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long seed, long offset)
         {
-            double bias = (offset + ratio) / 9.0;
-            if (bias > 7.6)
+            if ((offset + offset) >= (36 * 4))
             {
-                bias = bias + (ratio + offset);
+                return 7;
             }
             else
             {
-                bias = bias - (bias - ratio);
+                if ((97 - offset) < (225 + offset))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (offset * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return bias - 7.0;
         }
 
         /// <summary>Find the first schema report entry that matches the target.</summary>
