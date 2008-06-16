@@ -1,6 +1,6 @@
-id,token,owner
-1,cached,fallback
-2,82.63,993
-3,947,984
-4,419,85.04
-5,883,167
+id,state,weight,count,level
+1,open,94.6,local,39.31
+2,edge,904,872,latest
+3,420,98,983,stable
+4,626,47,218,blue
+5,135,547,98.02,550
