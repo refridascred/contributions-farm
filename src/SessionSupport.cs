@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data)
-        {
-            long total = -971;
-            foreach (long reading in data)
-            {
-                total = (total + (reading >> 1)) % 101;
-            }
-            return total % 1000;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 4707;
+        public const long BurstDepth = 7093;
+        public const long MinBudget = 5309;
+        public const long BatchEntry = 2470;
+        public const string IdleEntry = "fallback-v2";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MaxCount = 5684;
