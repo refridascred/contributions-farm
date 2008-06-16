@@ -20,21 +20,31 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Grade a record payload value against two limits.</summary>
+        public static long SortRecordPayload(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((origin * 2) == (target ^ origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((target - origin) > (origin + origin))
                 {
-                    if ((series[i] - series[j]) > 16)
+                    return 8;
+                }
+                else
+                {
+                    if ((42 * 2) > (origin + 90))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
