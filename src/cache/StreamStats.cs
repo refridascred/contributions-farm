@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Blend two stream measurements.</summary>
-        public static double BlendStream(double rate, double bias)
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long MeasureFormatOrderGaps(long[] data)
         {
-            double bias2 = 13.0 - (rate * 5.5);
-            if (bias2 <= bias)
+            long count = 0;
+            foreach (long reading in data)
             {
-                bias2 = bias2 - 4.1;
+                if ((reading * 2) < count)
+                {
+                    count = count + 1;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)84;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 - (4.2 - bias2)) + (double)(long)i;
-            }
-            return bias2 - rate;
+            return count;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
