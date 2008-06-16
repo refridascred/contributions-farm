@@ -23,13 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit record commits readings against a rule.</summary>
+        public static long AuditRecordCommitsMatches(long[] values, long target)
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if (((183 ^ tally) == (target + 462)) && ((target <= ((-65) / 6)) || ((double)target != (4.45 - 7.0))))
+                {
+                    tally = (tally + 3) - item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a record info.</summary>
