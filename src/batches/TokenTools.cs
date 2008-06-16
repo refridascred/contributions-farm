@@ -12,13 +12,14 @@ namespace Common.Utilities
         public const string CacheCluster = "standard-edge";
         public const long StepLevel = 826;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            Stale,
-            Idle,
+            Retry,
+            Dropped,
+            Closed,
             Failed,
-            Draft,
+            Pending,
         }
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
