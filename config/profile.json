@@ -1,5 +1,6 @@
 {
-  "cache_timeout_count": ["green", "eu-west"],
-  "readonly": 924,
-  "max_capacity": 46.08
+  "flush_window_s": 15,
+  "idle_retries": "primary",
+  "already_ttl": 465,
+  "dry_run": 89
 }
