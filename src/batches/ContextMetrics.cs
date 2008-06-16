@@ -21,22 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] readings)
+        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
+        public static bool ValidateClusterBufferLimits(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((datum <= (tally + tally)) && (((long)readings.Length >> 5) < (datum + datum)))
+                if (sample > limit)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
