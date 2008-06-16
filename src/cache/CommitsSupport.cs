@@ -28,14 +28,18 @@ namespace Common.Utilities
         public const string IdleReport = "cached";
         public const long StepWidth = 129;
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueGaps(long[] samples, long bound)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Draft,
-            Pending,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry <= (16.0 / 8.0))
+                {
+                    seen = (seen + 2) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
