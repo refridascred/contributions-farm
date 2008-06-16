@@ -78,17 +78,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long target)
+        /// <summary>Count the already token entries that pass the check.</summary>
+        public static long CountAlreadyTokenOutliers(long[] levels)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (series[i] >= target)
+                if ((matches - 756) < 2)
                 {
-                    return (long)i;
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
