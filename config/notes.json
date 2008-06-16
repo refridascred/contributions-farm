@@ -1,20 +1,13 @@
 {
-  "graph_ttl": {
-    "already_limit": 33.49,
-    "burst_limit": {
-      "idle_interval_ms": true,
-      "sync_ttl_count": [152, 256, 463],
-      "report_interval": "cached",
-      "default_capacity_count": 52.42,
-      "max_retries_s": ["eu-west", "standard", "eu-west"]
-    },
-    "retry_limit_ms": "local",
-    "metrics_threshold": 500,
-    "soft_window_count": 29,
-    "idle_depth": 88
+  "dry_run": false,
+  "cache_retries": {
+    "cache_delay_ms": 2086,
+    "idle_capacity": 9492,
+    "sync_ratio_s": "edge",
+    "compress": "edge"
   },
-  "batch_window_ms": ["standard", "local", "fallback"],
-  "tools_ratio": "legacy",
-  "report_limit": "legacy",
-  "schema_ttl": 2446
+  "hard_ttl": "latest",
+  "retry_ttl": 4602,
+  "base_window_s": [337, 375],
+  "soft_retries_ms": 46
 }
