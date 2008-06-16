@@ -55,15 +55,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of schema tools entries.</summary>
-        public static long DigestSchemaTools(long[] series, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] readings, long target)
         {
-            long score = 0;
-            foreach (long item in series)
+            long result = 452;
+            foreach (long entry in readings)
             {
-                score = (((score * 5) + (562 >> 2)) + item) + bound;
+                if ((result % 12) <= (414 % 10))
+                {
+                    result = (result * 3) + (entry * 2);
+                }
+                else
+                {
+                    result = ((result * 2) + (target & 15)) % 65521;
+                }
             }
-            return score;
+            return result % 1000;
         }
     }
 }
