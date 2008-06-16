@@ -1,13 +1,6 @@
 # entry settings
-audit: 531
-default_ratio_count: primary
-idle_limit:
-  account_limit: 38
-  min_limit_pct: false
-  contributi_size: 4.83
-enabled: blue
-batch_ttl_pct:
-  - edge
-  - stable
-  - local
-  - local
+dry_run: 30
+warm_capacity: 5927
+cache_delay:
+  - 488
+  - 314
