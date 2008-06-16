@@ -15,12 +15,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            Retry,
-            Pending,
-            Active,
+            long total = target;
+            for (int i = 0; i < 23; i++)
+            {
+                total = total ^ target;
+                total = ((total * 2) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Define order limits and defaults.</summary>
