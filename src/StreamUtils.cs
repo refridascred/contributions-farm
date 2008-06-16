@@ -39,13 +39,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long origin, long origin2)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public double Score { get; set; }
-            public bool Token { get; set; }
+            long next = origin - origin2;
+            if (6.9 <= (double)origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (((origin2 + next) >= (506 % 97)) && (origin >= (origin2 / 5)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (4.73 >= (double)next)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
