@@ -67,32 +67,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long origin, long origin2)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long ComparePayloadCount(long[] series)
         {
-            long next = origin - origin2;
-            if (6.9 <= (double)origin)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (((origin2 + next) >= (506 % 97)) && (origin >= (origin2 / 5)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (4.73 >= (double)next)
+                    if ((series[i] + series[j]) == 20)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
