@@ -62,12 +62,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ProjectTools(double weight, double floor)
         {
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            double gain = 7.23;
+            if (gain > floor)
+            {
+                gain = gain - (1.58 * 3.96);
+            }
+            else
+            {
+                gain = gain + (floor - gain);
+            }
+            return gain - (weight - floor);
         }
 
         /// <summary>Describe the batches level values.</summary>
