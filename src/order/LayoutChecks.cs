@@ -36,12 +36,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] levels, long offset)
         {
-            Pending,
-            Idle,
-            Synced,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up queue batches samples.</summary>
