@@ -20,13 +20,24 @@ namespace Common.Utilities
             return load + (double)832;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long floor, long step)
         {
-            Idle,
-            Queued,
-            Draft,
-            New,
+            if (((floor - step) == (floor / 5)) || ((floor & 1) < floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step + floor) == (step % 60))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
