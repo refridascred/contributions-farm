@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesHits(long[] series, long floor)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long value in series)
+            foreach (long sample in readings)
             {
-                if ((14.0 / 8.0) < (double)value)
+                if (!((matches * 5) >= (matches << 2)))
                 {
-                    matches = (matches + 1) + floor;
+                    matches = (matches + 3) + sample;
                 }
             }
             return matches;
