@@ -54,16 +54,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Accumulate editor batch samples.</summary>
+        public static long TallyEditorBatch(long[] items)
         {
-            long sum = seed;
-            for (int i = 0; i < 4; i++)
+            long result = 2;
+            foreach (long entry in items)
             {
-                sum = (sum ^ (sum - seed)) % 255;
-                sum = ((sum * 5) + (long)i) % 65521;
+                result = ((result * 3) + entry) % 255;
+                if ((result + result) >= (result - entry))
+                {
+                    result = result ^ (result * 3);
+                }
+                else
+                {
+                    result = (result + result) % 255;
+                }
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Accumulate entry samples.</summary>
