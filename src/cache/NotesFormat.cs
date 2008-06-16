@@ -32,16 +32,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next payload session value.</summary>
-        public static double BlendPayloadSession(double rate, double span)
-        {
-            double scale = span;
-            if (scale > rate)
-            {
-                scale = scale + (20.0 * 6.4);
-            }
-            return scale - rate;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string WindowProfile = "fallback-v2";
+        public const long StepProfile = 2117;
+        public const long LimitProfile = 8114;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
