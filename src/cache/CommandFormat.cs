@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long CacheBatch = 5293;
         public const long StepWidth = 6253;
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Match up context entry samples.</summary>
+        public static long MatchContextEntryCount(long[] data)
         {
-            public bool Label { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a contributi entry.</summary>
