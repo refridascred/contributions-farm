@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 9442;
+        public const long BurstFilter = 4068;
+        public const double MaxFilter = 8.08;
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] items, long seed)
