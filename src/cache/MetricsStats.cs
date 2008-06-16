@@ -23,24 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] values)
-        {
-            long acc = 73;
-            foreach (long datum in values)
-            {
-                long prev = acc;
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = (acc - (prev + (long)i)) % 97;
-                }
-                if ((datum + datum) <= (datum ^ (long)values.Length))
-                {
-                    acc = (acc ^ (70 >> 5)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftBudget = 9322;
+        public const string IdleMetrics = "alpha-edge";
+        public const string BaseMetrics = "latest";
+        public const long HardWidth = 5848;
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long origin)
