@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            New,
-            Pending,
-            Synced,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double LimitPayload = 86.89;
+        public const long BurstTimeout = 3498;
+        public const double DefaultPayload = 46.69;
+        public const long BurstFactor = 1257;
+        public const double RetryPayload = 3.09;
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long step, long offset)
