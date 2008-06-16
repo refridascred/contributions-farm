@@ -32,21 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Combine route order values into a single score.</summary>
+        public static long CombineRouteOrder(long[] values, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = 675;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)reading == (20.0 + 6.63))
                 {
-                    if ((items[i] ^ items[j]) != 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score - (reading + score)) % 97) - bound;
                 }
             }
-            return seen;
+            return score % 4096;
         }
 
         /// <summary>Locate a command reading by value.</summary>
