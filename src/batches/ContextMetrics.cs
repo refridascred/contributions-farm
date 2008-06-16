@@ -30,18 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] data)
+        /// <summary>Look up the position of a cluster command sample.</summary>
+        public static long LookupClusterCommandIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((item ^ (long)data.Length) > (-1)) || ((matches >= (matches + (long)data.Length)) && ((matches / 9) < ((long)data.Length ^ matches))))
+                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Fold a list of account session readings.</summary>
