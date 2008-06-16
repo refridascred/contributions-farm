@@ -44,22 +44,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long carry = -674;
-            foreach (long reading in values)
-            {
-                if ((carry - reading) == (carry + carry))
-                {
-                    carry = (carry + reading) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (93 - reading)) % 65521;
-                }
-            }
-            return carry % 97;
+            public long Flag { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route class values.</summary>
