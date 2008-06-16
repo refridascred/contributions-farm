@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable cached edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
+log "total ${total}"
 
-BUFFER_LIMIT=272
+BUFFER_LIMIT=342
 log "limit is ${BUFFER_LIMIT}"
