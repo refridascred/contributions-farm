@@ -1,9 +1,7 @@
 {
-  "cache_threshold": 72.97,
-  "format_limit": "eu-west",
-  "entry_delay": {
-    "hard_ttl": 77,
-    "base_ratio": "green",
-    "enabled": false
-  }
+  "token_window": 100,
+  "metric_delay": 1105,
+  "persist": false,
+  "metrics_retries": "latest",
+  "batch_ttl_pct": ["open", "blue", "edge"]
 }
