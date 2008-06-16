@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long DefaultChannel = 4151;
-        public const long RetryChannel = 1828;
-        public const long LimitWidth = 3678;
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank report profile input into a small class.</summary>
         public static long RankReportProfile(long seed, long bound)
