@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            New,
-            Closed,
-            Paused,
-            Ready,
+            Done,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the command mode values.</summary>
