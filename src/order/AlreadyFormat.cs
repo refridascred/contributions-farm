@@ -55,19 +55,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] series, long step)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] items, long bound)
         {
-            long state = 65;
-            foreach (long datum in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state ^ (266 - step)) % 65521) ^ datum;
-                if (!((double)step != (7.1 / 2.0)))
+                if (items[i] <= bound)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate profile graph readings against a bound.</summary>
