@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Count the schema channel entries that pass the check.</summary>
+        public static long AuditSchemaChannelGaps(long[] readings)
         {
-            Dropped,
-            Synced,
-            Queued,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((1.0 * 12.0) < (double)cell)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
