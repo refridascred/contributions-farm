@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double ratio, double floor)
+        /// <summary>Grade a payload stats value against two limits.</summary>
+        public static long GradePayloadStats(long offset, long target)
         {
-            double rate = ratio;
-            if (rate >= 19.0)
+            if ((double)69 != (double)offset)
             {
-                rate = rate - 0.1;
+                return 5;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate + (ratio + floor)) + (double)(long)i;
+                if ((target * 4) >= (offset / 8))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 3) > offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target >> 3) >= (offset >> 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            return rate + rate;
         }
 
         /// <summary>Grade a record payload value against two limits.</summary>
