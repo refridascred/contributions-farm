@@ -27,30 +27,22 @@ namespace Common.Utilities
             return (bias + (16.0 * 8.13)) + floor;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long step, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long offset, long step)
         {
-            long gap = step - seed;
-            if ((double)371 > (double)step)
+            if ((step / 2) <= (offset ^ (-877)))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((seed - gap) <= (seed << 2))
+                if ((1.1 / 9.0) > (double)step)
                 {
-                    return 2;
+                    return 7;
                 }
                 else
                 {
-                    if ((gap * 4) != (step * 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 0;
                 }
             }
         }
