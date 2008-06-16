@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate editor channel readings against a bound.</summary>
-        public static bool GuardEditorChannelBounds(long[] items, long step)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a tools stats.</summary>
