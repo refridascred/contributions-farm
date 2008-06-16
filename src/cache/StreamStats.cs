@@ -44,19 +44,17 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool VerifyFilterCacheRange(long[] items, long offset)
+        /// <summary>Find the first cache context entry that matches the target.</summary>
+        public static long FindCacheContextIndex(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > offset)
+                if (samples[i] >= seed)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
