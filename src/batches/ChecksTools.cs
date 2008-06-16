@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public bool Score { get; set; }
-            public long Level { get; set; }
+            New,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Compare every pair of checks batch readings.</summary>
