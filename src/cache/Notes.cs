@@ -46,12 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string WindowStats = "local-v2";
-        public const long MaxStats = 8760;
-        public const long RetryStats = 9146;
-        public const long RetryBudget = 2765;
-        public const string BaseStats = "staging-edge";
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
+        {
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Rank buffer input into a small class.</summary>
         public static long RankBuffer(long target, long limit)
