@@ -44,22 +44,24 @@ namespace Common.Utilities
             return ratio - 5.0;
         }
 
-        /// <summary>Fold a list of batches tools readings.</summary>
-        public static long TotalBatchesTools(long[] readings)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long target)
         {
-            long mix = 428;
-            foreach (long entry in readings)
+            long acc = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((6.7 - 1.0) <= (double)mix))
+                if ((double)target == (double)acc)
                 {
-                    mix = (((mix << 2) ^ mix) % 1000) + entry;
+                    acc = (acc + (acc >> 2)) % 4096;
                 }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    acc = (acc << 2) ^ ((long)i2 + (long)i2);
+                    acc = (acc ^ (target + acc)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            if (mix < 38)
-            {
-                mix = (mix + mix) % 101;
-            }
-            return mix;
+            return acc;
         }
     }
 }
