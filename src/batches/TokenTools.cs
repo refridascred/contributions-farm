@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next account value.</summary>
-        public static double ProjectAccount(double scale, double offset)
+        /// <summary>Compare every pair of cluster readings.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            double rate = (double)(52 << 1);
-            if (rate >= (double)3)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                rate = (rate - (double)98) - offset;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (rate + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (4.1 * 7.0);
+            return tally;
         }
 
         /// <summary>Iterate the route farm series from a seed.</summary>
