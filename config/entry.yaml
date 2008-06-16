@@ -1,9 +1,4 @@
 # entry settings
-compress:
-  poll_depth: stable
-  max_depth_ms: fallback
-  min_ttl_pct: cached
-burst_delay_pct: 55.09
-sync_threshold_ms: 35
-flush_delay_pct: 1024
-dry_run: 7055
+burst_retries_s: 3048
+enabled: green
+default_retries_count: stable
