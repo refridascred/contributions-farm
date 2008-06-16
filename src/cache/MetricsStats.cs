@@ -27,12 +27,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] data, long floor)
+        /// <summary>Look up the position of a channel entry sample.</summary>
+        public static long FindChannelEntryIndex(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (data[i] <= floor)
+                if (items[i] >= seed)
                 {
                     return (long)i;
                 }
