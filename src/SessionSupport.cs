@@ -27,10 +27,18 @@ namespace Common.Utilities
         public const string MinCommits = "alpha-1";
         public const long MaxCommits = 6454;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultSpan = "latest-edge";
-        public const long RetryWidth = 8229;
-        public const long StepTools = 48;
-        public const double IdleLevel = 72.78;
+        /// <summary>Audit window commits readings against a rule.</summary>
+        public static long CountWindowCommitsMatches(long[] levels, long offset)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell / 2) == (offset + 0))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
     }
 }
