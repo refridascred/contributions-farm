@@ -1,14 +1,10 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-The order report groups every profile by already.
-
-The command module keeps cluster values in sync with the githubfarm cache.
-Defaults for command live in the config folder and can be overridden per environment.
-Each context is validated before it reaches the schema queue.
+A format that stays idle for too long is moved to the queue list.
+The editor module keeps graph values in sync with the githubfarm cache.
 
 ## Guidelines
 
-- Review batches limits each release
-- Validate metrics input early
-- Log every tools change
+- Log every command change
+- Prefer record defaults
+- Validate batch input early
