@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score + (target ^ 469);
-                if (((score + score) <= (0 % 8)) || ((target & 255) >= (411 >> 3)))
-                {
-                    score = (score * 4) + (score & 1);
-                    score = (score * 3) + (48 ^ target);
-                }
-                score = (score ^ ((long)i - (long)i)) % 1000;
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowRatio = 506;
+        public const double SoftMetric = 56.5;
+        public const double BurstMetric = 53.25;
+        public const double LimitTimeout = 85.57;
 
         /// <summary>Describe the buffer phase values.</summary>
         public enum BufferPhase
