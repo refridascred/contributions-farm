@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string IdleSize = "open-1";
         public const string BurstWidth = "cached-v2";
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long origin)
         {
-            Pending,
-            Retry,
-            Idle,
-            Queued,
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
