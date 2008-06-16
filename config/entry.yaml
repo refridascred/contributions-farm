@@ -1,28 +1,32 @@
 # entry settings
-batch_delay:
-  audit: 75.67
-  flush_depth: 9693
-  poll_limit_ms: false
-cache_limit:
-  report_window:
-    - legacy
-    - cached
-    - open
-  base_ttl_ms: 14.36
-  entry_depth: latest
-  cache_ttl: latest
-hard_ratio_s:
-  batch_delay_pct:
-    - 402
-    - 17
-  persist:
-    max_retries: 57.69
-    flush_interval: eu-west
-    strict:
-      - 357
-      - 38
-      - 58
-    cache_window_ms: 94.79
-  retry_ratio_s: false
-  batches_limit: primary
-  batch_window_s: primary
+flush_size_pct: green
+queue_retries:
+  default_depth_count: stable
+  soft_retries_count: 19
+  queue_retries: 7148
+burst_ratio:
+  record_size: 500
+  profile_ttl:
+    sync_capacity: true
+    max_window_pct: 98
+    cluster_size: 63.73
+    soft_retries_ms: true
+  metric_depth: 31
+  soft_capacity:
+    - 245
+    - 392
+    - 469
+max_window_pct:
+  batch_interval_s: false
+  idle_interval_count: false
+  burst_retries:
+    idle_retries_pct: 71
+    cache_ttl: 9.51
+    base_delay_count: standard
+    cluster_capacity: 4449
+    cache_delay: 2.85
+  flush_timeout: 29.43
+  poll_depth_ms: 250
+  idle_retries: true
+hard_ratio: 29.45
+entry_capacity: eu-west
