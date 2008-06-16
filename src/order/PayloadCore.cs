@@ -10,14 +10,15 @@ namespace Common.Utilities
         public const long BaseWindow = 925;
         public const long DefaultWindow = 9028;
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long StepCommits(long limit)
         {
-            Closed,
-            Retry,
-            Queued,
-            Locked,
-            Synced,
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Find the first record filter entry that matches the target.</summary>
