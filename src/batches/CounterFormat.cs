@@ -27,24 +27,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long offset, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterOutliers(long[] samples)
         {
-            if ((step / 2) <= (offset ^ (-877)))
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.1 / 9.0) > (double)step)
+                if (!((457 - hits) >= (item + hits)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
