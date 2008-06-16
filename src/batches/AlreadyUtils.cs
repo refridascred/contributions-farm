@@ -66,10 +66,18 @@ namespace Common.Utilities
             return (ratio - weight) + span;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BaseCounter = 6360;
-        public const long RetryCounter = 4609;
-        public const long DefaultRatio = 606;
-        public const string IdleRatio = "fallback-edge";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueMatches(long[] samples, long limit)
+        {
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value - limit) > value)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
     }
 }
