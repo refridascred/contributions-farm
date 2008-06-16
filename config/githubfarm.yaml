@@ -1,12 +1,15 @@
 # githubfarm settings
-idle_window:
-  compress:
-    poll_size_s: standard
-    record_timeout: 95
-    editor_size: false
-  soft_ttl_count: 500
-  max_depth_s: 50
-min_timeout_ms: 25.85
-burst_capacity_count: standard
-audit: 66.68
-record_threshold: 95
+flush_ttl: open
+poll_timeout_s: true
+poll_delay_pct:
+  base_window:
+    - staging
+    - eu-west
+    - edge
+  compress: 13.37
+  counter_retries: 78
+  strict:
+    max_ttl_count: strict
+    cache_interval_pct: 2
+    editor_ratio: staging
+  payload_size: false
