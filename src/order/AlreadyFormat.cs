@@ -10,27 +10,22 @@ namespace Common.Utilities
         public const double MaxWidth = 91.88;
         public const long StepWindow = 4424;
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long CombineRecord(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] values)
         {
-            long mix = 149;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((mix + mix) != (datum - mix))
+                if ((count - value) == (count * 4))
                 {
-                    mix = ((mix * 3) + (mix - mix)) % 255;
+                    count = count + 2;
                 }
-                mix = mix ^ mix;
-                if (!(mix <= (39 + mix)))
+                else
                 {
-                    mix = ((mix * 5) + 761) % 97;
+                    count = count - 1;
                 }
             }
-            if (mix < 185)
-            {
-                mix = (mix + (25 - mix)) % 1000;
-            }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
