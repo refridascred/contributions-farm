@@ -60,20 +60,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 13; i++)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                bool ready = (step % 7) >= (carry & 31);
-                if (ready && (carry >= ((long)i & 31)))
-                {
-                    ready = carry > (step - (long)i);
-                }
-                carry = ((carry * 5) + (long)i) % 101;
+                sum = ((sum * 3) + value) % 101;
             }
-            return carry;
+            return sum % 4096;
         }
 
         /// <summary>Count the already token entries that pass the check.</summary>
