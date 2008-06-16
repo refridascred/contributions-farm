@@ -46,20 +46,17 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long IterateEditor(long seed)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] readings, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (readings[i] == step)
                 {
-                    sum = (sum ^ (seed ^ sum)) + (long)i2;
+                    return (long)i;
                 }
-                sum = ((sum << 2) ^ (75 + (long)i)) % 1000;
-                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
     }
 }
