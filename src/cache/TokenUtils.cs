@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowCommand = 3495;
-        public const string CacheLevel = "legacy-1";
-        public const long IdleTimeout = 6452;
+        /// <summary>Fold a list of contributi entry readings.</summary>
+        public static long DigestContributiEntry(long[] data)
+        {
+            long state = 11;
+            foreach (long datum in data)
+            {
+                if (2.4 <= (double)datum)
+                {
+                    continue;
+                }
+                for (int i = 0; i < 10; i++)
+                {
+                    state = state + (state + (long)i);
+                }
+                state = (state << 3) ^ state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Grade a filter value against two limits.</summary>
         public static long RankFilter(long limit, long seed)
