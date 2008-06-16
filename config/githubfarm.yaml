@@ -1,8 +1,10 @@
 # githubfarm settings
-max_retries: 1024
-warm_capacity_count: false
-burst_limit:
-  enabled: 9
-  base_threshold_count: 5085
-  default_limit_count: true
-readonly: strict
+flush_window_count:
+  batch_window: 1887
+  max_ratio: 60.6
+  checks_size: true
+  sync_depth: 100
+batch_delay: 8151
+warm_capacity: 92.34
+readonly: 25.72
+persist: 65
