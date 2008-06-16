@@ -24,13 +24,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public double Count { get; set; }
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Size { get; set; } = "";
+            Idle,
+            Draft,
+            Ready,
         }
 
         /// <summary>Check that every session stream entry stays within the limit.</summary>
