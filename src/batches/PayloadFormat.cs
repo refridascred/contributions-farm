@@ -22,17 +22,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] values, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 39;
+            foreach (long reading in series)
             {
-                if ((values[i] >= step) && ((values[i] % 2) == 0))
+                if (((score ^ 4) == (reading + origin)) || ((origin / 8) >= (reading * 4)))
                 {
-                    return (long)i;
+                    score = score + 67;
+                }
+                if ((reading * 3) < (origin + (-394)))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (score > 78)
+            {
+                score = score ^ (score * 2);
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up notes filter samples.</summary>
