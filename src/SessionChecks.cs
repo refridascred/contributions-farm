@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile context measurements.</summary>
-        public static double AdjustProfileContext(double scale, double floor)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] data, long target)
         {
-            double mean = 2.47;
-            if (mean >= (double)209)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + mean) + floor;
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (scale * 6.0)) - (double)(long)i;
-            }
-            return mean + scale;
+            return -1;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
