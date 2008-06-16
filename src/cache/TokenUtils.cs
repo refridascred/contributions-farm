@@ -24,24 +24,18 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long limit, long seed)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] samples)
         {
-            if (!((seed - limit) >= (seed + limit)))
+            long seen = 0;
+            foreach (long value in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit * 5) == (limit >> 5))
+                if ((seen << 3) != (value * 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue options.</summary>
