@@ -45,22 +45,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] samples)
         {
-            long carry = 822;
-            foreach (long reading in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading == (12.0 + 1.6))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    carry = (carry - reading) % 4096;
-                }
-                else
-                {
-                    carry = (carry + (reading + 3)) % 4096;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Hold a metric entry.</summary>
