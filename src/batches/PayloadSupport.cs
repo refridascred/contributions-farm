@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next contributi context value from a seed.</summary>
-        public static long IterateContributiContext(long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Paused,
+            Locked,
+            Draft,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
