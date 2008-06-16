@@ -75,19 +75,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesMatches(long[] data, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (511 >= (offset ^ (-9)))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 12.36;
+        public const double BaseWindow = 88.44;
+        public const long MaxDepth = 4463;
+        public const long StepLevel = 235;
+        public const long BatchWindow = 4030;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
