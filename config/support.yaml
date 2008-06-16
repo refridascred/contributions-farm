@@ -1,6 +1,6 @@
 # support settings
-base_ttl_s:
-  - 407
-  - 179
-stream_window: true
-warm_ttl: 6495
+dry_run: 1556
+min_size_s:
+  - green
+  - staging
+strict: staging
