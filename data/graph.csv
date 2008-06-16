@@ -1,6 +1,10 @@
-id,state,ratio,score
-1,66.71,994,177
-2,primary,940,58.0
-3,752,60.8,latest
-4,767,239,53.53
-5,42,879,open
+id,level,region,label
+1,77.54,52.35,71.95
+2,staging,92.12,16.85
+3,74.97,195,87.0
+4,882,staging,89.93
+5,765,eu-west,91.87
+6,320,strict,669
+7,green,12,49.48
+8,green,25.29,26.72
+9,strict,757,24.57
