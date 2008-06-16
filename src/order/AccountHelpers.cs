@@ -107,22 +107,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine channel route values into a single score.</summary>
-        public static long TotalChannelRoute(long[] samples)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
         {
-            long state = 9;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((datum / 6) > (18 / 4)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    state = (state * 3) + datum;
+                    if ((readings[i] + readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (state < 389)
-            {
-                state = (state + (state & 31)) % 65521;
-            }
-            return state % 65521;
+            return matches;
         }
     }
 }
