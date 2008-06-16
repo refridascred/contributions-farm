@@ -22,14 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesRange(long[] values, long floor)
         {
-            Closed,
-            Locked,
-            Pending,
-            Synced,
-            Failed,
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
