@@ -39,13 +39,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            Active,
-            Failed,
-            Locked,
             Stale,
+            Retry,
+            Failed,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the filter level values.</summary>
