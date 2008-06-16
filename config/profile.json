@@ -1,7 +1,5 @@
 {
-  "hard_capacity_s": 16.22,
-  "cache_retries": 64,
-  "default_retries_count": 13,
-  "compress": false,
-  "route_depth": false
+  "poll_interval": [164, 323],
+  "poll_threshold_pct": false,
+  "min_limit": [441, 288, 468]
 }
