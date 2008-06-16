@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a batch notes figure with a bias.</summary>
-        public static double SmoothBatchNotes(double bias, double span)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long IterateToken(long limit)
         {
-            double scale = bias;
-            if (scale > (scale + span))
+            long sum = limit;
+            for (int i = 0; i < 19; i++)
             {
-                scale = scale + scale;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return scale - (span * 2.55);
+            return sum;
         }
 
         /// <summary>Match up support samples.</summary>
