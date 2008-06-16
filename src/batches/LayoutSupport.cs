@@ -55,14 +55,15 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next context farm value.</summary>
+        public static double ProjectContextFarm(double weight, double offset)
         {
-            New,
-            Queued,
-            Paused,
-            Active,
-            Draft,
+            double gain = 2.5;
+            if (gain < (double)6)
+            {
+                gain = (gain + (double)46) - offset;
+            }
+            return gain + (weight - gain);
         }
     }
 }
