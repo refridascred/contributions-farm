@@ -57,17 +57,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] items, long floor)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public double Ratio { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
