@@ -23,13 +23,11 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Synced,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultRatio = 8.05;
+        public const string CacheMetric = "fallback";
+        public const long MinBudget = 3223;
+        public const string BaseMetric = "standard-edge";
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long origin, long floor)
