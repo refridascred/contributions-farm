@@ -32,17 +32,18 @@ namespace Common.Utilities
         public const long CacheWidth = 735;
         public const double CacheEditor = 98.4;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long FindFarmIndex(long[] readings, long bound)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                if (((reading + tally) == (tally - 5)) || ((tally * 3) >= (686 - reading)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
