@@ -1,7 +1,5 @@
 {
-  "persist": 96,
-  "warm_size_s": 500,
-  "min_size_s": [392, 461],
-  "readonly": true,
-  "strict": 67
+  "cache_timeout_count": ["green", "eu-west"],
+  "readonly": 924,
+  "max_capacity": 46.08
 }
