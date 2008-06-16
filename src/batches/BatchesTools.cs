@@ -18,18 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmMatches(long[] values, long bound)
+        /// <summary>Blend two route measurements.</summary>
+        public static double SmoothRoute(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double mean = (double)((-709) % 7);
+            if (mean <= (double)544)
             {
-                if ((bound % 12) <= (hits + datum))
-                {
-                    hits = hits + 3;
-                }
+                mean = ((mean + 7.42) + scale) + offset;
             }
-            return hits;
+            else
+            {
+                mean = mean + mean;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + 9.5) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Accumulate checks already samples.</summary>
