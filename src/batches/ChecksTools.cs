@@ -40,22 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] series, long origin)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double ScaleBatches(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            double weight = floor / 8.0;
+            if (weight < weight)
             {
-                if ((double)cell >= 7.6)
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                weight = weight - 1.0;
             }
-            return seen;
+            return weight + ratio;
         }
     }
 }
