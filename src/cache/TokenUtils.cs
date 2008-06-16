@@ -48,12 +48,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
-        {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string HardBudget = "alpha-edge";
+        public const long BurstTimeout = 3961;
+        public const double LimitFormat = 31.9;
     }
 }
