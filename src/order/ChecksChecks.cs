@@ -35,18 +35,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit record commits readings against a rule.</summary>
-        public static long AuditRecordCommitsMatches(long[] values, long target)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((183 ^ tally) == (target + 462)) && ((target <= ((-65) / 6)) || ((double)target != (4.45 - 7.0))))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a report options.</summary>
