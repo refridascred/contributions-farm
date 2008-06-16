@@ -25,19 +25,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] readings)
+        /// <summary>Classify a context entry pair into a bucket.</summary>
+        public static long BucketContextEntry(long step, long bound)
         {
-            long score = 48;
-            foreach (long value in readings)
+            if ((step + 769) == (7 / 3))
             {
-                score = (score - (value + 159)) % 101;
+                return 0;
             }
-            if (score < 91)
+            else
             {
-                score = score - (score + score);
+                if ((double)bound <= (11.0 * 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return score;
         }
 
         /// <summary>Describe the queue state values.</summary>
