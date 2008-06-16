@@ -1,11 +1,9 @@
 # support settings
-format_threshold:
-  retry_threshold_count:
-    - standard
-    - staging
-    - eu-west
-    - stable
-  warm_limit: 6429
-  order_ttl: false
-batch_interval: blue
-verbose: true
+batches_ratio: 1598
+default_threshold_ms: 529
+warm_timeout_pct:
+  - 33
+  - 270
+persist: 100
+max_ratio_ms: 69.28
+enabled: 53.05
