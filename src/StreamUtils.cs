@@ -123,15 +123,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long bound)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] items, long limit)
         {
-            long mark = bound;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if (items[i] <= limit)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
