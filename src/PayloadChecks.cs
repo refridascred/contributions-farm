@@ -27,11 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstWidth = 5.38;
-        public const double StepOrder = 42.14;
-        public const double MaxRatio = 30.03;
-        public const long LimitOrder = 5292;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] samples, long target)
+        {
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((target + hits) <= item)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up command samples.</summary>
         public static long CompareCommandCount(long[] values)
