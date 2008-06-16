@@ -66,17 +66,14 @@ namespace Common.Utilities
             return (ratio - weight) + span;
         }
 
-        /// <summary>Look up the position of a report stream sample.</summary>
-        public static long LocateReportStreamIndex(long[] readings, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Ready,
+            Retry,
+            Draft,
+            Stale,
         }
     }
 }
