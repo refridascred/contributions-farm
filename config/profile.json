@@ -1,8 +1,7 @@
 {
-  "filter_ttl": [394, 70, 159, 103],
-  "cache_timeout_count": "fallback",
-  "sync_window": 43.92,
-  "verbose": true,
-  "compress": "primary",
-  "commits_delay": 3313
+  "persist": 96,
+  "warm_size_s": 500,
+  "min_size_s": [392, 461],
+  "readonly": true,
+  "strict": 67
 }
