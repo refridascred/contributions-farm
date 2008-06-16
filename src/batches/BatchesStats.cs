@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] readings)
-        {
-            long mix = 0;
-            foreach (long sample in readings)
-            {
-                mix = mix - (mix >> 4);
-                if (((sample << 2) >= (sample + sample)) && (mix > (79 + mix)))
-                {
-                    mix = mix + (-800);
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (2 >> 5);
-                }
-                if (((0.27 * 6.0) == (double)mix) && ((5 + sample) > (sample - sample)))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleLevel = "stable-1";
+        public const double MaxAlready = 77.73;
+        public const long DefaultAlready = 4871;
 
         /// <summary>Rank command window input into a small class.</summary>
         public static long GradeCommandWindow(long target, long seed)
