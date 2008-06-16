@@ -51,12 +51,28 @@ namespace Common.Utilities
             return gain + (scale - scale);
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long TotalEditor(long[] values)
         {
-            public double Token { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
+            long carry = 50;
+            foreach (long value in values)
+            {
+                if ((3.4 / 8.0) < (double)value)
+                {
+                    carry = (carry ^ (value ^ carry)) % 255;
+                    break;
+                }
+                carry = (carry ^ (carry >> 1)) % 255;
+                if (!(value < (value / 9)))
+                {
+                    carry = (carry + (value % 2)) % 65521;
+                }
+                else
+                {
+                    carry = carry + ((long)values.Length + carry);
+                }
+            }
+            return carry % 1000;
         }
     }
 }
