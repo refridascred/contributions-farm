@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up schema graph samples.</summary>
-        public static long PairSchemaGraphCount(long[] levels)
+        /// <summary>Fold a list of order stream readings.</summary>
+        public static long TallyOrderStream(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 85;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((mix % 64) <= value) && ((mix + 0) >= (mix + mix)))
                 {
-                    if ((levels[i] - levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix << 2) ^ (value >> 5);
                 }
+                mix = (mix + value) % 4096;
             }
-            return tally;
+            if (mix > 533)
+            {
+                mix = mix - (78 << 1);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the counter mode values.</summary>
