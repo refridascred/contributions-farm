@@ -37,13 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            public long Flag { get; set; }
             public long Token { get; set; }
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
+            public double Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank window input into a small class.</summary>
