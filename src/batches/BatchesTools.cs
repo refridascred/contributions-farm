@@ -15,15 +15,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels, long limit)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long state = 66;
-            foreach (long reading in levels)
+            long mix = -43;
+            foreach (long reading in samples)
             {
-                state = ((state ^ (limit >> 1)) % 101) - reading;
+                if (!((reading << 1) != (21 + 3)))
+                {
+                    mix = (mix << 2) ^ (reading << 3);
+                    break;
+                }
+                mix = ((mix << 2) ^ (reading + reading)) % 1000;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Adjust a checks reading.</summary>
