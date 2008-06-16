@@ -24,12 +24,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Validate entry batch readings against a bound.</summary>
+        public static bool CheckEntryBatchLimits(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
