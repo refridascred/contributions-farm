@@ -5,22 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] values)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long RollFarm(long step)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((item - item) <= item) && (8 > (item & 1))))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + (score + step)) % 4096;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a tools githubfarm reading by value.</summary>
