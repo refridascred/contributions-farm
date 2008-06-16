@@ -22,14 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiGaps(long[] samples)
         {
-            Failed,
-            Paused,
-            Queued,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((8.8 + 8.88) == (double)seen)
+                {
+                    seen = (seen + 1) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a token options.</summary>
