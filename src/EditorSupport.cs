@@ -54,11 +54,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Fold a list of checks already readings.</summary>
+        public static long FoldChecksAlready(long[] levels)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long mix = 271;
+            foreach (long datum in levels)
+            {
+                mix = mix - mix;
+                if ((double)datum <= (double)958)
+                {
+                    mix = (mix + mix) % 4096;
+                }
+            }
+            if (mix < 28)
+            {
+                mix = ((mix << 3) ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
