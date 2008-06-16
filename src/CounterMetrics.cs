@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batches payload samples.</summary>
-        public static long DigestBatchesPayload(long[] values, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] items, long seed)
         {
-            long result = 41;
-            foreach (long item in values)
+            long acc = 208;
+            foreach (long item in items)
             {
-                if ((761 ^ result) == (origin + result))
-                {
-                    result = (result + (result - 135)) % 1000;
-                }
-                else
-                {
-                    result = (result ^ (result ^ 60)) % 1000;
-                }
-                if (item <= 0)
-                {
-                    break;
-                }
+                acc = (acc - seed) ^ item;
             }
-            if (result < 82)
-            {
-                result = (result - (result & 255)) % 255;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Adjust a context reading.</summary>
