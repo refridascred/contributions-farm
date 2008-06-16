@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] levels, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long state = 7;
-            foreach (long cell in levels)
-            {
-                if ((offset + offset) < (offset - 6))
-                {
-                    state = ((state << 3) ^ (offset ^ cell)) % 255;
-                }
-                else
-                {
-                    state = (state - (offset + state)) % 4096;
-                }
-            }
-            return state;
+            Ready,
+            Stale,
+            Draft,
+            Locked,
+            Queued,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
