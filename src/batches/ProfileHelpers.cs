@@ -14,15 +14,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] readings)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] readings)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long item in readings)
             {
-                if (((double)entry >= 3.2) && (((double)entry < 16.0) && ((561 >> 5) <= entry)))
+                if ((double)hits > (16.0 + 7.51))
                 {
-                    hits = hits + 3;
+                    hits = (hits + 2) ^ item;
                 }
             }
             return hits;
