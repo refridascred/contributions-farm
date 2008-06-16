@@ -57,15 +57,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel editor samples.</summary>
-        public static long CombineChannelEditor(long[] samples)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long StepAlready(long target)
         {
-            long mix = 9;
-            foreach (long value in samples)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = (mix + 4) ^ value;
+                carry = ((carry << 2) ^ (carry + target)) % 4096;
+                double gain = (0.9 + 3.8) + (2.4 + 10.0);
+                if ((gain / 5.0) >= (gain - gain))
+                {
+                    gain = gain - gain;
+                }
+                else
+                {
+                    gain = gain + gain;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
