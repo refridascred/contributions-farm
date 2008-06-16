@@ -28,12 +28,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 5691;
-        public const long MaxBudget = 1066;
-        public const long BatchEditor = 4523;
-        public const long MaxEditor = 4239;
-        public const double CacheInterval = 76.13;
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                acc = acc - (acc * 3);
+                if (((18.0 - 14.0) != (double)acc) || (acc <= ((long)i / 9)))
+                {
+                    acc = ((acc * 4) + offset) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a cache editor sample.</summary>
         public static long SeekCacheEditorIndex(long[] samples, long bound)
