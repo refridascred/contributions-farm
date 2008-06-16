@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long target)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double SmoothLayout(double ratio, double span)
         {
-            long sum = 873;
-            foreach (long sample in samples)
+            double ratio2 = (double)(411 + 854);
+            for (int i = 0; i < 2; i++)
             {
-                if ((sample * 3) < sum)
-                {
-                    sum = (sum * 5) + sample;
-                }
+                ratio2 = ((ratio2 + (span + 6.0)) + (double)(long)i) - ratio;
             }
-            if (sum > 16)
-            {
-                sum = sum + target;
-            }
-            return sum % 65521;
+            return ratio2 - (double)6;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
