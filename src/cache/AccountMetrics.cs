@@ -13,12 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] readings)
         {
-            Ready,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!(((value >> 5) >= (value % 100)) || ((long)readings.Length <= value)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate layout samples.</summary>
