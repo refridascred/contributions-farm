@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const double BurstMetric = 53.25;
         public const double LimitTimeout = 85.57;
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double rate, double bias)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            double load = rate;
-            return (load + rate) + bias;
+            long state = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    state = ((state << 3) ^ seed) - (long)i2;
+                    state = (state - (seed - state)) % 255;
+                }
+                state = ((state * 4) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
