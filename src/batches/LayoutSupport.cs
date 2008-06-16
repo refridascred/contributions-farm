@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double ratio, double span)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteOutliers(long[] series)
         {
-            double ratio2 = (double)(411 + 854);
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                ratio2 = ((ratio2 + (span + 6.0)) + (double)(long)i) - ratio;
+                if (matches >= reading)
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return ratio2 - (double)6;
+            return matches;
         }
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
