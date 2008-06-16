@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long seed)
+        /// <summary>Accumulate channel batch samples.</summary>
+        public static long TotalChannelBatch(long[] samples)
         {
-            long mark = seed;
-            for (int i = 0; i < 9; i++)
+            long mark = 850;
+            foreach (long value in samples)
             {
-                mark = mark - (seed + seed);
-                mark = ((mark * 3) + (seed % 2)) % 1000;
-                if (seed > ((long)i >> 5))
+                if ((mark & 1) < (mark + value))
                 {
-                    mark = (mark + (seed / 3)) % 255;
-                    mark = (mark * 3) + (mark >> 4);
+                    mark = (mark * 3) + (mark >> 2);
                 }
-                mark = ((mark * 3) + (long)i) % 97;
+                else
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 97;
+                }
+                if ((9.0 / 9.0) == (double)mark)
+                {
+                    break;
+                }
             }
-            return mark;
+            return mark % 97;
         }
 
         /// <summary>Hold a tools stats.</summary>
