@@ -92,18 +92,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] values)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long sum = 485;
-            foreach (long datum in values)
-            {
-                if (40 <= (84 ^ sum))
-                {
-                    sum = (((sum << 2) ^ sum) % 4096) - datum;
-                }
-            }
-            return sum;
+            public long Stamp { get; set; }
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
