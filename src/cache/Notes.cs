@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const long BatchWidth = 6064;
         public const long DefaultWidth = 6532;
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LookupBatchIndex(long[] readings, long target)
         {
-            Queued,
-            Done,
-            Synced,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a account options.</summary>
