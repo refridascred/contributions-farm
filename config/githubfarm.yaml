@@ -1,6 +1,9 @@
 # githubfarm settings
-flush_interval_ms: true
-default_capacity_ms: blue
-contributi_size: false
-verbose: 2
-cache_size: 8847
+idle_depth_ms: 5.01
+soft_ttl_pct: false
+burst_ttl_ms: 872
+min_interval:
+  - 373
+  - 143
+  - 114
+  - 494
