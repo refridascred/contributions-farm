@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] samples)
         {
-            public bool Total { get; set; }
-            public double Weight { get; set; }
-            public double Mode { get; set; }
+            long anchor = 6;
+            foreach (long item in samples)
+            {
+                if (((double)item != (2.1 + 8.6)) || (anchor <= (item + (long)samples.Length)))
+                {
+                    anchor = (anchor ^ (anchor / 4)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define format limits and defaults.</summary>
