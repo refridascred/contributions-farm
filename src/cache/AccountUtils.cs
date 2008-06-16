@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long RollFarm(long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] levels, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            foreach (long value in levels)
             {
-                score = (score + (score + step)) % 4096;
-                score = ((score * 4) + (long)i) % 97;
+                if (((value >> 3) != (56 + value)) || (floor >= (value + count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
