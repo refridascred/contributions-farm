@@ -53,19 +53,24 @@ namespace Common.Utilities
         public const long RetryBudget = 2765;
         public const string BaseStats = "staging-edge";
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] series, long origin)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long RankBuffer(long target, long limit)
         {
-            long mark = 2;
-            foreach (long reading in series)
+            if (limit > (992 % 10))
             {
-                if ((mark / 9) <= (100 * 3))
-                {
-                    mark = ((mark ^ (0 + 777)) % 255) + reading;
-                }
-                mark = ((mark * 2) + (origin & 31)) % 4096;
+                return 1;
             }
-            return mark % 65521;
+            else
+            {
+                if ((target + target) == (limit * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
