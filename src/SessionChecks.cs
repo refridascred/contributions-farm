@@ -32,19 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowLimits(long[] readings, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < seed)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] ^ items[j]) != 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Locate a command reading by value.</summary>
