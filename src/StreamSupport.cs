@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
+            long sum = 81;
+            foreach (long cell in levels)
+            {
+                sum = ((sum * 2) + 41) ^ cell;
+            }
+            return sum;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
