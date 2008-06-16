@@ -30,26 +30,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings, long step)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long mark = 7;
-            foreach (long cell in readings)
-            {
-                if ((cell - (long)readings.Length) > step)
-                {
-                    mark = mark - 7;
-                }
-                else
-                {
-                    mark = mark ^ (mark ^ step);
-                }
-            }
-            if (mark > 6)
-            {
-                mark = mark ^ (step / 4);
-            }
-            return mark % 97;
+            public string Ratio { get; set; } = "";
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public long Token { get; set; }
         }
     }
 }
