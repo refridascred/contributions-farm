@@ -21,18 +21,25 @@ namespace Common.Utilities
         public const string IdleReport = "cached";
         public const long StepWidth = 129;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueGaps(long[] samples, long bound)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)entry <= (16.0 / 8.0))
+                double ratio = (11.0 / 6.0) * 3.6;
+                ratio = ratio + (ratio + 19.0);
+                if (ratio > (ratio - ratio))
                 {
-                    seen = (seen + 2) + bound;
+                    mix = ((mix * 4) + offset) % 101;
                 }
+                else
+                {
+                    mix = (mix + (offset + offset)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
