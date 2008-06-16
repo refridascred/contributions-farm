@@ -39,35 +39,35 @@ namespace Common.Utilities
         public const long DefaultSpan = 7518;
         public const long MinNotes = 4751;
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long limit)
+        /// <summary>Grade a cache window value against two limits.</summary>
+        public static long RankCacheWindow(long bound, long step)
         {
-            long slot = step + limit;
-            if ((step * 4) != (7 / 4))
+            long edge = bound ^ step;
+            if ((double)edge <= (17.0 - 15.0))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((slot - step) < (39 ^ limit))
+                if (step <= (step + 66))
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((double)slot > (double)step)
+                    if ((double)bound >= (3.0 - 9.7))
                     {
-                        return 5;
+                        return 4;
                     }
                     else
                     {
-                        if ((slot - slot) >= slot)
+                        if (((double)edge >= (9.11 - 14.0)) || ((edge + edge) <= (213 & 63)))
                         {
-                            return 3;
+                            return 1;
                         }
                         else
                         {
-                            return 0;
+                            return 8;
                         }
                     }
                 }
