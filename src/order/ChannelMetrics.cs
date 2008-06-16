@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long SortGithubfarm(long seed, long seed2)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            if ((seed - seed) <= (seed2 << 2))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((20.0 / 3.0) >= (double)seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((seed * 4) == (seed - 487))
+                    if ((values[i] ^ values[j]) == 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a order options.</summary>
