@@ -1,7 +1,6 @@
 # githubfarm settings
-order_timeout: fallback
-batch_timeout_pct: 74
-burst_interval_s: open
-soft_depth: 98.84
-poll_ratio_count: blue
-min_size: green
+dry_run: 5375
+stats_limit: primary
+format_window: primary
+format_threshold: false
+hard_delay: latest
