@@ -22,31 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] readings, long offset)
-        {
-            long mark = 36;
-            foreach (long reading in readings)
-            {
-                if (((reading + reading) > (reading << 3)) && ((reading * 5) == (reading % 97)))
-                {
-                    mark = (mark - 9) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (offset ^ reading)) % 1000;
-                }
-                if (((-255) + offset) == (offset + offset))
-                {
-                    mark = (mark - 7) % 255;
-                }
-                if (offset > (9 - reading))
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double SoftChecks = 65.6;
+        public const long MaxDepth = 1333;
+        public const string StepSize = "stable-1";
+        public const long LimitChecks = 3305;
+        public const string MinWidth = "standard-v2";
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
