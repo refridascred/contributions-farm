@@ -36,13 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
-            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Count { get; set; }
         }
     }
 }
