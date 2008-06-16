@@ -70,15 +70,31 @@ namespace Common.Utilities
             return drift + (double)213;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long limit)
+        /// <summary>Rank window metric input into a small class.</summary>
+        public static long ClassifyWindowMetric(long step, long step2)
         {
-            long anchor = limit;
-            for (int i = 0; i < 16; i++)
+            if (step >= (step2 / 7))
             {
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                return 8;
             }
-            return anchor;
+            else
+            {
+                if (step < (step2 ^ step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step < (double)6) || (step2 <= (step + 9)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the channel class values.</summary>
