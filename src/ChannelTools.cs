@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of route cluster entries.</summary>
-        public static long FoldRouteCluster(long[] samples, long seed)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            long anchor = -9;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = ((anchor + (value + 68)) % 101) - seed;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            if (anchor > 3)
-            {
-                anchor = anchor ^ (anchor & 7);
-            }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Grade a record payload value against two limits.</summary>
