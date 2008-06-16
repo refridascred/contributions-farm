@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 3265;
-        public const string MaxTimeout = "legacy-1";
-        public const string MaxMetric = "open-1";
-        public const long BatchMetric = 5300;
-        public const string HardScore = "open";
+        /// <summary>Project the next context value.</summary>
+        public static double ScaleContext(double scale, double offset)
+        {
+            double gain = offset * 12.0;
+            if (gain > (double)779)
+            {
+                gain = gain - (scale * 0.87);
+            }
+            return gain + scale;
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
