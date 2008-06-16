@@ -2,12 +2,10 @@
 CREATE TABLE IF NOT EXISTS layout_items (
     id INTEGER PRIMARY KEY,
     state TEXT NOT NULL DEFAULT 'new',
-    region TEXT,
+    created_at TIMESTAMP,
     weight REAL,
+    count INTEGER NOT NULL DEFAULT 0,
     ratio REAL
 );
 
-CREATE INDEX IF NOT EXISTS idx_layout_items_region ON layout_items (region);
-
-INSERT INTO layout_items (state, region, weight, ratio) VALUES ('fallback', 'stable', 84.09, 14.41);
-INSERT INTO layout_items (state, region, weight, ratio) VALUES ('standard', 'green', 18.8, 7.13);
+CREATE INDEX IF NOT EXISTS idx_layout_items_ratio ON layout_items (ratio);
