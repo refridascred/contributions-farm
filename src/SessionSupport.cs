@@ -37,21 +37,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] samples)
+        /// <summary>Rank metrics filter input into a small class.</summary>
+        public static long GradeMetricsFilter(long limit, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((target + target) < (219 & 127))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((6.5 / 5.0) <= (double)limit)
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
+                    return 1;
+                }
+                else
+                {
+                    if (((double)limit < 6.87) && ((limit + target) <= limit))
                     {
-                        tally = tally + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
