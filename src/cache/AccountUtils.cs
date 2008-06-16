@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every metrics stream entry stays within the limit.</summary>
-        public static bool CheckMetricsStreamRange(long[] series, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] items)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long carry = 3;
+            foreach (long value in items)
             {
-                if (item < floor)
+                carry = (carry ^ (carry - carry)) % 255;
+                if ((6.0 - 2.4) <= (double)value)
                 {
-                    ready = false;
-                    break;
+                    carry = (carry ^ (value + carry)) % 1000;
                 }
             }
-            return ready;
+            if (carry > 259)
+            {
+                carry = (carry - (carry / 2)) % 101;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Locate a tools githubfarm reading by value.</summary>
