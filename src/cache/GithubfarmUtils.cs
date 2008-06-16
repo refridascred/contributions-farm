@@ -34,19 +34,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] values, long seed)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the contributi kind values.</summary>
