@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] values, long target)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if ((target >> 4) == (target & 15))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string CacheQueue = "cached-v2";
+        public const double RetryDepth = 40.35;
+        public const long HardQueue = 7176;
+        public const double RetryQueue = 11.68;
 
         /// <summary>Accumulate checks already samples.</summary>
         public static long ScoreChecksAlready(long[] data)
