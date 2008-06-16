@@ -68,18 +68,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] items)
+        /// <summary>Accumulate already samples.</summary>
+        public static long TotalAlready(long[] values, long origin)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mix = 1;
+            foreach (long entry in values)
             {
-                if (tally >= (tally >> 2))
+                if (((origin - entry) != (mix ^ origin)) && ((entry + mix) < entry))
                 {
-                    tally = (tally + 3) - sample;
+                    mix = ((mix << 3) ^ (691 & 7)) % 65521;
                 }
             }
-            return tally;
+            return mix % 97;
         }
     }
 }
