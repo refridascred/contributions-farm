@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Iterate the filter record series from a seed.</summary>
+        public static long SeriesFilterRecord(long offset)
         {
-            Stale,
-            Closed,
-            Queued,
-            Paused,
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                score = score + (offset * 5);
+                score = ((score * 5) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
