@@ -1,19 +1,12 @@
 # support settings
-flush_size_s: 10.0
-warm_timeout:
-  notes_interval:
-    metrics_interval: strict
-    audit: false
-    metric_limit: cached
-    verbose: 500
-    context_window: 18.33
-    enabled: 53
-  max_capacity_count: 88.39
-  cache_retries_s: 54.7
-sync_interval: fallback
+batch_delay_ms: eu-west
+default_depth_s: 100
+verbose: legacy
+order_threshold: green
+compress:
+  - blue
+  - stable
 strict:
-  - strict
-  - edge
-  - cached
-channel_retries: 4649
-enabled: 30
+  - eu-west
+  - primary
+  - eu-west
