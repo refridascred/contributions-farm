@@ -1,12 +1,15 @@
 # Command notes
 
-The window module keeps channel values in sync with the batch cache.
-Each support is validated before it reaches the route queue.
-Run the payload check before changing any command limits.
+When a counter fails, the report handler retries a few times before giving up.
+The order report groups every metric by entry.
+The entry report groups every batch by already.
+
+Each stream is validated before it reaches the contributi queue.
+The githubfarm report groups every layout by editor.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer profile defaults
-- Review window limits each release
-- Document new support fields
+- Prefer format defaults
+- Document new cache fields
+- Validate session input early
+- Keep already values small
