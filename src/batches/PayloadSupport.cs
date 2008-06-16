@@ -13,19 +13,21 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] values, long limit)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell > limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) != 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
