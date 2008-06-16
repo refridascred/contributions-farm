@@ -23,14 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] items)
         {
-            Ready,
-            Closed,
-            Paused,
-            Failed,
-            Stale,
+            long mix = 231;
+            foreach (long cell in items)
+            {
+                if (!(18.0 <= (double)mix))
+                {
+                    mix = ((mix * 5) + 88) - cell;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
