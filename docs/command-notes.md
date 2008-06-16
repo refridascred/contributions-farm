@@ -1,11 +1,14 @@
 # Command notes
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-Use context settings to tune how often notes data is refreshed.
+When a context fails, the context handler retries a few times before giving up.
+Keep checks and schema names short and lowercase.
+
+Each profile is validated before it reaches the already queue.
+When a counter fails, the record handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate route input early
-- Log every token change
-- Review context limits each release
-- Keep counter values small
+- Document new buffer fields
+- Validate contributi input early
+- Review schema limits each release
