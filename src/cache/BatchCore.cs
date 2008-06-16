@@ -54,23 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the window order series from a seed.</summary>
-        public static long DeriveWindowOrder(long floor)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!((floor + floor) >= total))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    continue;
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
-                else
-                {
-                    total = (total ^ ((long)i + floor)) % 65521;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return count;
         }
     }
 }
