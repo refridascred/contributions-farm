@@ -1,7 +1,8 @@
 {
-  "base_ttl_pct": "primary",
-  "soft_threshold_pct": 14,
-  "idle_interval": 1.86,
-  "flush_threshold_s": "fallback",
-  "sync_timeout_count": [183, 245, 175, 475]
+  "warm_size_ms": 21,
+  "sync_retries_s": true,
+  "retry_capacity_count": false,
+  "hard_capacity": 500,
+  "report_size": true,
+  "max_timeout": 25.86
 }
