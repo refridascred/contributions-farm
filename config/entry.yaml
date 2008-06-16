@@ -1,15 +1,8 @@
 # entry settings
-stats_threshold: 50
-token_timeout: 60
-poll_limit_ms: legacy
-retry_window_pct: fallback
-enabled:
-  max_ratio: strict
-  warm_ttl:
-    - latest
-    - cached
-  sync_limit_s:
-    - blue
-    - fallback
-    - stable
-flush_retries_pct: 42.47
+cache_depth: false
+hard_capacity_ms: 649
+poll_size_pct:
+  - cached
+  - cached
+poll_ratio: edge
+warm_threshold: 98.26
