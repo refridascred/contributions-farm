@@ -47,14 +47,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyMatches(long[] readings)
         {
-            Closed,
-            Pending,
-            Retry,
-            Dropped,
-            Idle,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (value > matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
