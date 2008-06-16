@@ -31,22 +31,13 @@ namespace Common.Utilities
             return gain + 6.1;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] data, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (!!(sample >= (count + limit)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Region { get; set; } = "";
+            public bool Token { get; set; }
+            public long Mode { get; set; }
+            public long Score { get; set; }
         }
     }
 }
