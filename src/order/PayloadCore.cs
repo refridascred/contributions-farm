@@ -26,19 +26,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphBounds(long[] values, long seed)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Paused,
+            Dropped,
+            Stale,
+            Retry,
         }
 
         /// <summary>Locate a layout reading by value.</summary>
