@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] data, long bound)
-        {
-            long mark = 9;
-            foreach (long item in data)
-            {
-                if ((mark % 60) != (mark - item))
-                {
-                    mark = ((mark ^ (656 & 127)) % 255) + bound;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (item * 2)) % 101;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double WindowSession = 77.06;
+        public const string SoftSize = "local-v2";
+        public const string IdleSize = "open-1";
+        public const string BurstWidth = "cached-v2";
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
