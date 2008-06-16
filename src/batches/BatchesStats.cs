@@ -13,31 +13,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long origin, long limit)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            if ((origin / 3) > (160 - 109))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((1.6 + 7.0) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((origin + 1) >= (limit >> 4)) || ((limit + limit) >= origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Digest a series of commits stream entries.</summary>
