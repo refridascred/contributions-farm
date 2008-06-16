@@ -34,13 +34,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] readings)
         {
-            public double Weight { get; set; }
-            public double Region { get; set; }
-            public double Label { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
