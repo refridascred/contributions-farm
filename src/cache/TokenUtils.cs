@@ -34,21 +34,15 @@ namespace Common.Utilities
         public const long HardTimeout = 7577;
         public const string IdleNotes = "staging-edge";
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] samples)
+        /// <summary>Digest a series of order batch entries.</summary>
+        public static long TotalOrderBatch(long[] levels, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 57;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                sum = (sum + value) - limit;
             }
-            return hits;
+            return sum;
         }
     }
 }
