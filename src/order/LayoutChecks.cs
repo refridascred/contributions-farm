@@ -39,14 +39,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long floor, long offset)
         {
-            New,
-            Stale,
-            Retry,
-            Pending,
-            Ready,
+            if (!((2 + floor) == (floor - offset)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((offset << 1) < floor) || ((double)floor >= (8.5 - 8.46)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
