@@ -1,14 +1,14 @@
 # Command notes
 
-Keep context and account names short and lowercase.
-The support module keeps window values in sync with the counter cache.
-Run the batches check before changing any schema limits.
+Run the session check before changing any payload limits.
+When a entry fails, the metrics handler retries a few times before giving up.
+Keep support and record names short and lowercase.
 
-The metric module keeps graph values in sync with the graph cache.
-When a window fails, the filter handler retries a few times before giving up.
+When a editor fails, the cluster handler retries a few times before giving up.
+Keep layout and payload names short and lowercase.
 
 ## Guidelines
 
-- Document new queue fields
-- Log every profile change
-- Prefer stream defaults
+- Log every layout change
+- Keep payload values small
+- Review counter limits each release
