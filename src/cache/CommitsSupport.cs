@@ -70,19 +70,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry session measurements.</summary>
-        public static double SmoothEntrySession(double scale, double floor)
+        /// <summary>Combine checks profile values into a single score.</summary>
+        public static long DigestChecksProfile(long[] readings, long limit)
         {
-            double bias = scale;
-            if (bias <= bias)
+            long mix = 608;
+            foreach (long sample in readings)
             {
-                bias = (bias - 2.51) - floor;
+                mix = (((mix << 3) ^ (mix - 371)) + sample) + limit;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - (double)389) - (double)(long)i;
-            }
-            return bias + scale;
+            return mix;
         }
     }
 }
