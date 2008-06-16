@@ -16,20 +16,10 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteLimits(long[] data, long step)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample >= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 2116;
+        public const long StepSpan = 5328;
+        public const long StepFormat = 790;
 
         /// <summary>Rank metrics filter input into a small class.</summary>
         public static long GradeMetricsFilter(long limit, long target)
