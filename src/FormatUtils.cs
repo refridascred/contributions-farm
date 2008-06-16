@@ -58,13 +58,17 @@ namespace Common.Utilities
         public const double MaxWindow = 48.13;
         public const long DefaultWindow = 9466;
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long SeekGithubfarmIndex(long[] series, long target)
         {
-            Dropped,
-            Idle,
-            Pending,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > target) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
