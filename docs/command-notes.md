@@ -1,10 +1,10 @@
 # Command notes
 
-A format that stays idle for too long is moved to the queue list.
-The editor module keeps graph values in sync with the githubfarm cache.
+The layout report groups every cache by payload.
+The filter report groups every layout by channel.
 
 ## Guidelines
 
-- Log every command change
-- Prefer record defaults
-- Validate batch input early
+- Log every record change
+- Review report limits each release
+- Keep payload values small
