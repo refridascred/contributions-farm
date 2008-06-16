@@ -26,19 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] data)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long anchor = 36;
-            foreach (long reading in data)
-            {
-                anchor = (anchor + (anchor + anchor)) ^ reading;
-            }
-            if (anchor > 1)
-            {
-                anchor = (anchor ^ anchor) % 4096;
-            }
-            return anchor % 1000;
+            public string Ratio { get; set; } = "";
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Compare every pair of report already readings.</summary>
