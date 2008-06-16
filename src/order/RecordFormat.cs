@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] readings, long step)
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((matches < (step << 1)) && (((cell - matches) > matches) || ((matches ^ cell) > (827 & 15))))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            double load = (double)10 + (ratio * 14.0);
+            return (load - load) + span;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
