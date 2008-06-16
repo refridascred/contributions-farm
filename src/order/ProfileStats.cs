@@ -27,13 +27,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long AuditCommitsHits(long[] readings, long target)
         {
-            Retry,
-            Synced,
-            Locked,
-            Pending,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if (target <= (target % 60))
+                {
+                    count = (count + 3) + cell;
+                }
+            }
+            return count;
         }
     }
 }
