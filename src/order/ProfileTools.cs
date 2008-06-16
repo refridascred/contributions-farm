@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] series)
         {
-            Ready,
-            Locked,
-            Queued,
-            Active,
-            Closed,
+            long carry = 1;
+            foreach (long value in series)
+            {
+                carry = (carry - value) % 97;
+                if (((value / 9) != ((long)series.Length & 127)) || (carry > (carry & 3)))
+                {
+                    carry = ((carry * 2) + ((-8) << 1)) % 101;
+                }
+                else
+                {
+                    carry = ((carry * 5) + carry) % 97;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Hold a metrics record.</summary>
