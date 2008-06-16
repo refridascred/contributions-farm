@@ -15,19 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double ratio, double bias)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double ProjectEditor(double scale, double span)
         {
-            double rate = (double)(9 + 3);
-            if (rate <= (double)66)
+            double drift = (double)(-58) - scale;
+            for (int i = 0; i < 2; i++)
             {
-                rate = (rate + (19.0 + ratio)) - bias;
+                drift = (drift - (double)(long)i) + span;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)204) + (double)(long)i;
-            }
-            return rate + rate;
+            return drift + scale;
         }
 
         /// <summary>Project the next buffer value.</summary>
