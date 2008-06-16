@@ -53,13 +53,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Combine support context values into a single score.</summary>
+        public static long TotalSupportContext(long[] series)
         {
-            Pending,
-            Paused,
-            Closed,
-            Locked,
+            long carry = -7;
+            foreach (long cell in series)
+            {
+                carry = carry + (5 >> 2);
+                carry = ((carry << 2) ^ cell) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
