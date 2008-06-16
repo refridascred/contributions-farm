@@ -10,39 +10,13 @@ namespace Common.Utilities
         public const long BatchWidth = 6064;
         public const long DefaultWidth = 6532;
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long GradeBatches(long step, long floor)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long cur = step ^ floor;
-            if ((floor - 595) >= (7 + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((floor + cur) > step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor << 3) >= (365 % 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + cur) > (step ^ 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Done,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a account options.</summary>
