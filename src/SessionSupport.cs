@@ -16,14 +16,11 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
-        {
-            public string Offset { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxCount = 5684;
+        public const long RetryDepth = 5286;
+        public const long BurstProfile = 7521;
+        public const long HardTimeout = 3599;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long CountStreamMatches(long[] series)
