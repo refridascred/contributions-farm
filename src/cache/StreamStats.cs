@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long ClassifyCommits(long floor, long target)
+        /// <summary>Validate checks graph readings against a bound.</summary>
+        public static bool CheckChecksGraphLimits(long[] data, long bound)
         {
-            long prev = floor - target;
-            if ((8 >> 2) > (floor - target))
+            bool ready = true;
+            foreach (long sample in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(floor > 1))
+                if (sample != bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (5.58 < (double)prev)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (267 <= (floor - 886))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Grade a editor value against two limits.</summary>
