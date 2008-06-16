@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] items, long offset)
         {
-            Pending,
-            Ready,
-            New,
-            Dropped,
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
