@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 2399;
         public const double LimitBatches = 33.85;
 
-        /// <summary>Combine farm window values into a single score.</summary>
-        public static long ScoreFarmWindow(long[] series, long step)
+        /// <summary>Audit command checks readings against a rule.</summary>
+        public static long CountCommandChecksGaps(long[] values)
         {
-            long sum = 2;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (((cell / 2) >= cell) && ((step * 2) != (sum << 2)))
+                if ((8.5 + 2.8) >= 5.4)
                 {
-                    sum = (sum ^ (cell << 2)) % 1000;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
