@@ -1,11 +1,15 @@
 # Command notes
 
-The report report groups every metric by account.
-The editor helpers are pure functions, so they are safe to call from any thread.
-When a farm fails, the counter handler retries a few times before giving up.
+Keep buffer and route names short and lowercase.
+Run the editor check before changing any window limits.
+
+Keep window and context names short and lowercase.
+Run the format check before changing any window limits.
+Each metric is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Validate notes input early
-- Review buffer limits each release
+- Review support limits each release
+- Prefer cache defaults
+- Log every support change
+- Keep profile values small
