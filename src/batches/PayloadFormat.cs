@@ -71,18 +71,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((item + count) <= floor)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 7696;
+        public const long BatchFactor = 4911;
+        public const long HardFarm = 314;
+        public const long StepFarm = 5742;
+        public const long SoftFarm = 4450;
     }
 }
