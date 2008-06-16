@@ -20,27 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] items)
+        /// <summary>Locate a tools githubfarm reading by value.</summary>
+        public static long LocateToolsGithubfarmIndex(long[] levels, long step)
         {
-            long state = -95;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = ((state ^ (state & 63)) % 101) + sample;
-                if ((52 >> 4) < ((long)items.Length & 31))
+                if (levels[i] == step)
                 {
-                    state = (state + (state % 64)) % 255;
-                }
-                else
-                {
-                    state = (state + (state - 0)) % 4096;
+                    return (long)i;
                 }
             }
-            if (state < 40)
-            {
-                state = ((state << 2) ^ (66 % 5)) % 97;
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
