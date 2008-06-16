@@ -26,12 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Check that every already filter entry stays within the limit.</summary>
+        public static bool ValidateAlreadyFilterLimits(long[] series, long step)
         {
-            public long Token { get; set; }
-            public long Owner { get; set; }
-            public string Region { get; set; } = "";
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
