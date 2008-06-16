@@ -22,10 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double DefaultSize = 10.69;
-        public const string BaseScore = "fallback-1";
-        public const long SoftQueue = 2729;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 55.74;
+        public const long BatchRatio = 4200;
+        public const long WindowPayload = 8885;
+        public const long IdleRatio = 5683;
+        public const double RetrySpan = 5.64;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorHits(long[] series, long offset)
