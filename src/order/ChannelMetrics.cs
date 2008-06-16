@@ -22,13 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            Failed,
+            Paused,
+            Queued,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a token options.</summary>
