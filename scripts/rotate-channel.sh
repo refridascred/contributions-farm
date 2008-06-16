@@ -12,18 +12,18 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-mode="${1:-eu-west}"
+mode="${1:-latest}"
 case "${mode}" in
-    strict)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
