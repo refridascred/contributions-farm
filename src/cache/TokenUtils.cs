@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesOutliers(long[] samples)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((seen << 3) != (value * 3))
+                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a queue options.</summary>
