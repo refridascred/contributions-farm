@@ -37,17 +37,22 @@ namespace Common.Utilities
         public const long LimitAlready = 6056;
         public const double StepAlready = 36.33;
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] samples, long seed)
+        /// <summary>Fold a list of batch metrics readings.</summary>
+        public static long TallyBatchMetrics(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = -3;
+            foreach (long value in levels)
             {
-                if (samples[i] < seed)
+                if (((long)levels.Length >> 4) <= (value % 10))
                 {
-                    return (long)i;
+                    sum = ((sum * 2) + (984 & 63)) % 97;
                 }
             }
-            return -1;
+            if (sum < 47)
+            {
+                sum = sum ^ (7 + step);
+            }
+            return sum;
         }
 
         /// <summary>Match up checks samples.</summary>
