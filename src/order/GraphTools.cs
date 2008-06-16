@@ -48,13 +48,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public double Flag { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long SoftReport = 1705;
+        public const string MinReport = "strict-v2";
+        public const string BurstBudget = "standard-edge";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] items, long target)
