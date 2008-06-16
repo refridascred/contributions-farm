@@ -68,12 +68,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double IdleWindow = 12.36;
-        public const double BaseWindow = 88.44;
-        public const long MaxDepth = 4463;
-        public const long StepLevel = 235;
-        public const long BatchWindow = 4030;
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long limit, long limit2)
+        {
+            if ((limit2 >> 3) < (limit2 - limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((limit2 % 7) <= limit) || ((0 + limit) < (limit2 / 9)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((limit2 << 2) <= (limit2 * 4)) || ((limit ^ limit2) == (limit2 << 3)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
