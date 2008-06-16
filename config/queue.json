@@ -1,5 +1,5 @@
 {
-  "audit": ["primary", "cached", "standard", "stable"],
-  "graph_capacity": ["green", "standard", "staging", "legacy"],
-  "poll_window_ms": [375, 17, 93, 102]
+  "base_ratio_ms": "stable",
+  "flush_threshold_count": "staging",
+  "burst_capacity_s": [300, 8, 217, 162]
 }
