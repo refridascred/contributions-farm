@@ -1,25 +1,9 @@
 # entry settings
-default_depth:
-  - open
-  - fallback
-  - open
-soft_capacity: true
-readonly:
-  strict:
-    buffer_capacity: latest
-    compress: 98.65
-    account_retries: 500
-    stream_threshold: green
-    batch_capacity: strict
-  hard_size:
-    - 371
-    - 81
-  persist:
-    - edge
-    - primary
-    - open
-  flush_limit_pct:
-    - 162
-    - 88
-persist: strict
-hard_window: true
+compress:
+  poll_depth: stable
+  max_depth_ms: fallback
+  min_ttl_pct: cached
+burst_delay_pct: 55.09
+sync_threshold_ms: 35
+flush_delay_pct: 1024
+dry_run: 7055
