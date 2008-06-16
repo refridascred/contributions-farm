@@ -25,21 +25,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long CompareTokenCount(long[] items)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return seen;
+            return anchor;
         }
     }
 }
