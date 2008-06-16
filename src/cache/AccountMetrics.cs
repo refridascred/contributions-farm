@@ -75,11 +75,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long LimitNotes = 7266;
-        public const string MaxNotes = "latest-v2";
-        public const string IdleWidth = "alpha-edge";
-        public const double RetryRatio = 3.55;
-        public const double SoftNotes = 9.57;
+        /// <summary>Count the farm context entries that pass the check.</summary>
+        public static long MeasureFarmContextHits(long[] levels, long bound)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample - count) < (161 % 2)) && (bound <= (17 + sample)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
