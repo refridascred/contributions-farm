@@ -67,11 +67,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryRatio = 10.62;
-        public const long BatchSize = 7890;
-        public const long RetryPayload = 466;
-        public const long MinSpan = 5318;
-        public const long BurstTimeout = 2275;
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
+        {
+            public bool Label { get; set; }
+            public bool Size { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
