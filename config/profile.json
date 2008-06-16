@@ -1,12 +1,7 @@
 {
-  "idle_delay_ms": {
-    "notes_retries": false,
-    "verbose": true,
-    "dry_run": "edge"
-  },
-  "persist": "stable",
-  "readonly": "edge",
-  "retry_timeout_s": 100,
-  "poll_threshold_pct": "latest",
-  "default_limit": 5760
+  "hard_capacity_s": 16.22,
+  "cache_retries": 64,
+  "default_retries_count": 13,
+  "compress": false,
+  "route_depth": false
 }
