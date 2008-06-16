@@ -47,19 +47,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double ratio, double floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] data, long step)
         {
-            double ratio2 = floor * 13.0;
-            if (ratio2 >= (double)6)
+            bool flag = true;
+            foreach (long item in data)
             {
-                ratio2 = (ratio2 + (ratio2 - 0.3)) + ratio;
+                if (item != step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - (double)83;
-            }
-            return ratio2 - (3.4 * 9.06);
+            return flag;
         }
     }
 }
