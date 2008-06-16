@@ -22,32 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a record payload value against two limits.</summary>
-        public static long SortRecordPayload(long origin, long target)
-        {
-            if ((origin * 2) == (target ^ origin))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((target - origin) > (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((42 * 2) > (origin + 90))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardQueue = 560;
+        public const long RetryDepth = 4546;
+        public const long CacheCount = 5716;
+        public const string BaseRatio = "primary-1";
+        public const double MinWidth = 90.36;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MaxCluster = "cached-edge";
