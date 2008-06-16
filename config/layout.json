@@ -1,8 +1,8 @@
 {
-  "cache_window_count": 24.0,
-  "sync_threshold": 60,
-  "enabled": 81.18,
-  "warm_timeout_s": 97.55,
-  "hard_retries_pct": ["latest", "legacy", "cached"],
-  "filter_capacity": 14.81
+  "warm_ttl_ms": "strict",
+  "persist": 2057,
+  "max_delay": 15.11,
+  "retry_ratio_ms": false,
+  "warm_delay_s": "blue",
+  "soft_timeout_pct": 250
 }
