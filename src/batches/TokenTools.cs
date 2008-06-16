@@ -14,15 +14,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long origin)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatLimits(long[] data, long seed)
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (datum <= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return acc;
+            return found;
         }
 
         /// <summary>Describe the command kind values.</summary>
