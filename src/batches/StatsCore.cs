@@ -85,18 +85,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] values)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long reading in series)
             {
-                if (((31 + datum) <= (datum ^ datum)) && (((matches % 3) < (62 << 3)) || (43 > (datum % 7))))
+                if ((step - reading) >= 7)
                 {
-                    matches = matches + 2;
+                    count = count + 1;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
