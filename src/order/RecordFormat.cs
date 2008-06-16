@@ -25,18 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many notes layout samples are out of range.</summary>
-        public static long AuditNotesLayoutOutliers(long[] levels)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.5 - 9.52) < (double)count)
+                if (values[i] < limit)
                 {
-                    count = (count + 3) - datum;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
