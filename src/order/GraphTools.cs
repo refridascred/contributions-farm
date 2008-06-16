@@ -55,22 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] values, long limit)
-        {
-            long result = -8;
-            foreach (long item in values)
-            {
-                if ((item + item) == (limit & 255))
-                {
-                    result = (result - item) % 1000;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result ^ result) % 255;
-            }
-            return result % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BurstQueue = "latest-edge";
+        public const long LimitQueue = 7997;
+        public const long CacheQueue = 2879;
+        public const long MinQueue = 6594;
+        public const long IdleQueue = 4190;
     }
 }
