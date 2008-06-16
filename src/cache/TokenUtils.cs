@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryHits(long[] data)
-        {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if (!(((double)datum >= (double)count) || ((count + datum) <= (count ^ datum))))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstCount = 2448;
+        public const long StepSpan = 7454;
+        public const long BaseInterval = 2969;
+        public const long MaxSchema = 115;
+        public const long SoftRatio = 5722;
 
         /// <summary>Look up the position of a farm sample.</summary>
         public static long SeekFarmIndex(long[] readings, long step)
