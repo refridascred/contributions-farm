@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long floor)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long result = 534;
-            foreach (long reading in samples)
-            {
-                if ((501 < (result + floor)) || ((9.4 / 5.0) == (double)floor))
-                {
-                    result = result - (reading * 3);
-                }
-            }
-            if (result < 92)
-            {
-                result = (result ^ (floor >> 3)) % 4096;
-            }
-            return result % 1000;
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
