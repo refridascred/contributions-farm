@@ -1,6 +1,19 @@
 {
-  "readonly": 42.29,
-  "compress": ["edge", "primary"],
-  "warm_size_s": "edge",
-  "burst_window_s": "strict"
+  "hard_ratio": "stable",
+  "verbose": true,
+  "min_delay_pct": {
+    "batch_delay_pct": 85,
+    "max_ttl_s": 10,
+    "dry_run": 1024,
+    "cache_ttl_pct": [223, 262, 321, 436],
+    "notes_interval": {
+      "cache_depth": 250,
+      "min_retries_ms": 1331,
+      "persist": 1024,
+      "dry_run": "edge",
+      "burst_capacity": false
+    },
+    "metrics_capacity": 3730
+  },
+  "poll_ttl_pct": 60.27
 }
