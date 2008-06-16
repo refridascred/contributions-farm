@@ -10,19 +10,13 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long origin)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the profile state values.</summary>
