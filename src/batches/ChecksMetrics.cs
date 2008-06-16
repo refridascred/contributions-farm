@@ -54,12 +54,22 @@ namespace Common.Utilities
             return rate - (weight + 1.6);
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 3148;
-        public const long SoftDepth = 4825;
-        public const double RetryBudget = 23.21;
-        public const long CacheBudget = 8532;
-        public const long CacheBuffer = 5131;
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] items)
