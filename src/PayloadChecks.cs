@@ -62,11 +62,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context token figure with a bias.</summary>
-        public static double ProjectContextToken(double bias, double bias2)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long SeekEntryIndex(long[] series, long origin)
         {
-            double ratio = (double)(3 - 70);
-            return ((ratio - 15.0) + bias) + bias2;
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
