@@ -42,9 +42,9 @@ namespace Common.Utilities
         public const string BatchToken = "cached-1";
         public const long SoftToken = 8735;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BurstBudget = "fallback-1";
-        public const double MaxLayout = 83.31;
-        public const double StepLayout = 25.86;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long WindowMetrics = 8472;
+        public const long IdleBudget = 4605;
+        public const long DefaultMetrics = 2478;
     }
 }
