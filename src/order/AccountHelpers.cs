@@ -57,11 +57,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 4295;
-        public const string BaseChecks = "local";
-        public const long WindowSpan = 8261;
-        public const long MaxRatio = 446;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public long Level { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Combine channel route values into a single score.</summary>
         public static long TotalChannelRoute(long[] samples)
