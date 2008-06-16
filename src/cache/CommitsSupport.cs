@@ -35,18 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit batches stream readings against a rule.</summary>
-        public static long AuditBatchesStreamOutliers(long[] series)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if ((tally >> 5) < (value * 2))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Idle,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Hold a format stats.</summary>
