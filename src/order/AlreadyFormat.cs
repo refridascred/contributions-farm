@@ -22,13 +22,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long SortAlready(long seed, long step)
         {
-            Idle,
-            Draft,
-            Paused,
-            Active,
+            long edge = seed ^ step;
+            if (!((double)edge > (17.0 - 6.39)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((seed - 5) < (step - edge)) && ((seed - step) == (step >> 2)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((13.0 + 4.0) < (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (edge <= (628 << 2))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
