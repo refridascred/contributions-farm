@@ -74,14 +74,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] values)
         {
-            Failed,
-            Paused,
-            Retry,
-            Queued,
-            Synced,
+            long sum = 485;
+            foreach (long datum in values)
+            {
+                if (40 <= (84 ^ sum))
+                {
+                    sum = (((sum << 2) ^ sum) % 4096) - datum;
+                }
+            }
+            return sum;
         }
     }
 }
