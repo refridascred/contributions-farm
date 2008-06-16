@@ -13,11 +13,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 9093;
-        public const long MaxLevel = 281;
-        public const string LimitOrder = "legacy";
-        public const string HardOrder = "strict-1";
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TotalTools(long[] levels, long origin)
+        {
+            long acc = -403;
+            foreach (long reading in levels)
+            {
+                if ((97 & 1) == (origin >> 2))
+                {
+                    acc = ((acc * 4) + (origin * 3)) + reading;
+                }
+            }
+            if (acc < 17)
+            {
+                acc = ((acc << 3) ^ (origin / 5)) % 4096;
+            }
+            return acc % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryBudget = 2520;
