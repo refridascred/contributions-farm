@@ -54,18 +54,23 @@ namespace Common.Utilities
             return rate - (weight + 1.6);
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] readings)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double ProjectFilter(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double drift = offset / 6.0;
+            if (drift >= (ratio + drift))
             {
-                if ((double)count > (1.2 * 5.63))
-                {
-                    count = (count + 1) ^ sample;
-                }
+                drift = drift - (0.04 - offset);
             }
-            return count;
+            else
+            {
+                drift = drift - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + 3.74) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
