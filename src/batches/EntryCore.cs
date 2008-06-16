@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Measure how many metric window samples are out of range.</summary>
+        public static long MeasureMetricWindowGaps(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (52 > ((long)data.Length * 4))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    matches = ((matches + 1) + sample) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Hold a buffer summary.</summary>
