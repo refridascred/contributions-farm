@@ -20,13 +20,14 @@ namespace Common.Utilities
         public const double WindowFactor = 59.33;
         public const double StepRecord = 0.61;
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Token { get; set; }
-            public long Region { get; set; }
-            public long Offset { get; set; }
-            public string Weight { get; set; } = "";
+            Pending,
+            Stale,
+            Locked,
+            Paused,
+            Queued,
         }
     }
 }
