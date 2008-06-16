@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 2903;
-        public const long HardOrder = 8701;
-        public const string RetryOrder = "legacy-1";
-        public const long BurstRatio = 3941;
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
+        {
+            Failed,
+            Dropped,
+            Active,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long DigestFarm(long[] values, long offset)
