@@ -1,5 +1,5 @@
 {
-  "readonly": [459, 338],
-  "command_ratio": true,
-  "compress": ["primary", "fallback", "green"]
+  "idle_delay_s": "eu-west",
+  "cache_timeout_ms": 78.63,
+  "tools_limit": "green"
 }
