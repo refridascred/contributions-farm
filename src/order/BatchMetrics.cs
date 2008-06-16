@@ -57,13 +57,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long target, long seed)
         {
-            Draft,
-            Done,
-            Idle,
-            Synced,
+            if ((seed / 8) < target)
+            {
+                return 0;
+            }
+            else
+            {
+                if (target > (608 + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed >> 2) <= (target ^ target)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the already token entries that pass the check.</summary>
