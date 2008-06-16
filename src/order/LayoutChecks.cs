@@ -86,19 +86,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] samples, long origin)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Size { get; set; } = "";
+            public bool Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
