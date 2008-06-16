@@ -1,6 +1,5 @@
 # entry settings
-dry_run: 30
-warm_capacity: 5927
-cache_delay:
-  - 488
-  - 314
+min_interval_s: cached
+flush_window_ms: 85.99
+cluster_size: 3452
+readonly: 30
