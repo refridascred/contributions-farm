@@ -37,19 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double rate, double span)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            double weight = span;
-            if (weight > (2.54 / 9.0))
-            {
-                weight = (weight - (double)91) + rate;
-            }
-            else
-            {
-                weight = weight - (double)(-79);
-            }
-            return weight - (5.9 - 14.0);
+            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
