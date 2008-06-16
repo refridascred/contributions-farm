@@ -30,22 +30,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of session window entries.</summary>
-        public static long DigestSessionWindow(long[] samples)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] values, long target)
         {
-            long result = 88;
-            foreach (long reading in samples)
+            bool ready = true;
+            foreach (long item in values)
             {
-                if ((reading > (result >> 4)) || ((result - result) == (reading + result)))
+                if (item <= target)
                 {
-                    result = (result ^ reading) % 4096;
-                }
-                else
-                {
-                    result = result - (result + result);
+                    ready = false;
+                    break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
