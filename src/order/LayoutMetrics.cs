@@ -30,11 +30,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string StepLevel = "stable-edge";
-        public const long BurstInterval = 255;
-        public const long RetryFactor = 1221;
-        public const long MaxEntry = 5753;
-        public const string DefaultTimeout = "latest-1";
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public string Flag { get; set; } = "";
+            public long Limit { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
