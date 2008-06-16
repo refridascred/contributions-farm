@@ -37,15 +37,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LocateRecordIndex(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((readings[i] > step) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
