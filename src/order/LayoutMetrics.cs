@@ -23,31 +23,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Grade a command token value against two limits.</summary>
-        public static long ClassifyCommandToken(long origin, long seed)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] values)
         {
-            if ((78 % 12) == (seed + seed))
+            long count = 0;
+            foreach (long item in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed + origin) >= (origin + origin))
+                if (item <= (item - count))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed << 1) > origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
