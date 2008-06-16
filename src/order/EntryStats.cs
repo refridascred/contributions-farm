@@ -27,11 +27,22 @@ namespace Common.Utilities
             return drift + (floor - drift);
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string CacheBatch = "latest-v2";
-        public const long WindowBatch = 9537;
-        public const string DefaultWidth = "local-edge";
-        public const string MinSize = "strict-1";
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long OverlapChecksCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of support channel readings.</summary>
         public static long CompareSupportChannelCount(long[] series)
