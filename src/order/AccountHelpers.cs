@@ -31,25 +31,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long StepAlready(long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long target)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                carry = ((carry << 2) ^ (carry + target)) % 4096;
-                double gain = (0.9 + 3.8) + (2.4 + 10.0);
-                if ((gain / 5.0) >= (gain - gain))
+                anchor = ((anchor * 2) + (long)i) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    gain = gain - gain;
+                    anchor = (anchor - 2) ^ (long)i2;
+                    anchor = (anchor + (target / 5)) % 65521;
                 }
-                else
-                {
-                    gain = gain + gain;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
