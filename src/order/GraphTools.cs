@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] readings, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value <= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Stale,
+            Failed,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Define already limits and defaults.</summary>
