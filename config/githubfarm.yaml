@@ -1,21 +1,9 @@
 # githubfarm settings
-schema_delay:
-  cluster_limit: 60
-  flush_delay:
-    - 260
-    - 416
-  verbose: 39
-  warm_interval_count: 94
-poll_depth_s: strict
-notes_size: primary
-audit: green
-max_size_s:
-  - cached
-  - stable
-  - staging
-  - eu-west
-verbose:
-  min_threshold: standard
-  hard_retries_count: 250
-  layout_ttl: 72.14
-  poll_size_pct: cached
+flush_delay_pct: 17.83
+strict:
+  - 89
+  - 176
+contributi_capacity: 87.11
+min_depth: 250
+already_delay: 60
+payload_ttl: false
