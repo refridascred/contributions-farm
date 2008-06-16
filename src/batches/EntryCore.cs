@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next format stats value from a seed.</summary>
-        public static long StepFormatStats(long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            double rate = weight + weight;
+            if (rate > rate)
             {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    result = (((result << 2) ^ (seed - 95)) % 255) ^ (long)i2;
-                }
-                if ((double)result <= 4.0)
-                {
-                    result = (result * 2) + (seed & 255);
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                rate = (rate - 3.96) + span;
             }
-            return result;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + (weight - rate)) - (double)(long)i;
+            }
+            return rate - (double)62;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
