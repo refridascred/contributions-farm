@@ -79,9 +79,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 6640;
-        public const double StepRoute = 49.41;
-        public const double MaxTimeout = 49.47;
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long origin, long origin2)
+        {
+            long delta = origin ^ origin2;
+            if ((origin2 % 12) < (delta / 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if (origin <= (432 ^ origin2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((55 % 24) != (origin2 + (-66)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (8.4 >= (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
