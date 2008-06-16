@@ -12,7 +12,7 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-green}"
+mode="${1:-strict}"
 case "${mode}" in
     primary)
         log "fast path"
