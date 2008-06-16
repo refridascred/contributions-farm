@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit githubfarm queue readings against a rule.</summary>
-        public static long MeasureGithubfarmQueueMatches(long[] series)
+        /// <summary>Measure how many entry cache samples are out of range.</summary>
+        public static long AuditEntryCacheMatches(long[] data)
         {
             long seen = 0;
-            foreach (long cell in series)
+            foreach (long sample in data)
             {
-                if ((cell + cell) >= (4 % 24))
+                if ((double)seen > (19.0 * 3.6))
                 {
-                    seen = seen + 2;
+                    seen = (seen + 2) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
