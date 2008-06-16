@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a support route reading.</summary>
-        public static double ScaleSupportRoute(double ratio, double offset)
+        /// <summary>Accumulate already queue samples.</summary>
+        public static long CombineAlreadyQueue(long[] levels, long offset)
         {
-            double rate = (double)7 / 2.0;
-            for (int i = 0; i < 2; i++)
+            long mix = 994;
+            foreach (long sample in levels)
             {
-                rate = ((rate - rate) - (double)(long)i) - ratio;
+                mix = mix ^ (62 - offset);
+                if ((mix + sample) < offset)
+                {
+                    continue;
+                }
+                if (464 >= ((long)levels.Length & 15))
+                {
+                    mix = mix ^ (mix - mix);
+                }
             }
-            return rate + offset;
+            return mix;
         }
 
         /// <summary>Rank report profile input into a small class.</summary>
