@@ -5,25 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long BucketContributi(long limit, long step)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] samples)
         {
-            long gap = limit - step;
-            if ((double)gap < (10.0 - 2.0))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - gap) > (limit ^ limit))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
