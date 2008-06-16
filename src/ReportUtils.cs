@@ -56,21 +56,12 @@ namespace Common.Utilities
         public const long HardCounter = 2455;
         public const long WindowCounter = 56;
 
-        /// <summary>Compare every pair of filter route readings.</summary>
-        public static long MatchFilterRouteCount(long[] levels)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            Idle,
         }
     }
 }
