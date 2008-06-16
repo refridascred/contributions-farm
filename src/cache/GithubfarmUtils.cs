@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueBounds(long[] samples, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            double scale = (floor / 9.0) - (gain - gain);
+            if (scale >= scale)
             {
-                if (sample > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                scale = scale - (floor + 6.56);
             }
-            return flag;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (gain + gain)) + (double)(long)i;
+            }
+            return scale + (double)77;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
