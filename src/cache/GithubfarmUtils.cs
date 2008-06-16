@@ -32,18 +32,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] data)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long SeekNotesIndex(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((tally / 2) > 64)
+                if (items[i] <= origin)
                 {
-                    tally = (tally + 1) ^ sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
