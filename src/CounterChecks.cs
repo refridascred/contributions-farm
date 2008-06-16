@@ -11,30 +11,17 @@ namespace Common.Utilities
         public const long BurstLayout = 6036;
         public const long RetrySize = 6830;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] items, long target)
+        /// <summary>Look up the position of a notes sample.</summary>
+        public static long LocateNotesIndex(long[] values, long offset)
         {
-            long anchor = 701;
-            foreach (long datum in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                if (values[i] == offset)
                 {
-                    anchor = (anchor ^ (91 % 10)) ^ (long)i;
-                }
-                if (12 >= (anchor + datum))
-                {
-                    anchor = (anchor ^ (target + anchor)) % 101;
-                }
-                if ((target & 1) > (anchor & 255))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (anchor > (-88))
-            {
-                anchor = anchor + (target - anchor);
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
