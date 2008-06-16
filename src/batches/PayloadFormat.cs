@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            Queued,
-            Dropped,
-            Idle,
-            Locked,
-            Retry,
+            Stale,
+            Failed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
