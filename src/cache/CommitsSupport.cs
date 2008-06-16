@@ -21,22 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long MatchBatchCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BaseReport = 57.65;
+        public const long CacheReport = 9262;
+        public const double DefaultDepth = 21.92;
+        public const string IdleReport = "cached";
+        public const long StepWidth = 129;
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
