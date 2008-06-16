@@ -23,22 +23,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                long hits = (seed - seed) / 8;
-                if ((hits > (seed - 112)) && ((score << 1) >= (hits ^ (long)i)))
-                {
-                    hits = (hits ^ ((long)i / 7)) % 65521;
-                    score = (score + seed) % 97;
-                }
-                score = ((score * 3) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstWidth = 5.38;
+        public const double StepOrder = 42.14;
+        public const double MaxRatio = 30.03;
+        public const long LimitOrder = 5292;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double StepSize = 1.83;
