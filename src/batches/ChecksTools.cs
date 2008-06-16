@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine filter token values into a single score.</summary>
-        public static long DigestFilterToken(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long TallyStatsHits(long[] series, long origin)
         {
-            long total = 29;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if ((total / 6) != (total ^ total))
+                if (!(((4.06 + 4.0) < (double)origin) && ((3.2 / 6.0) >= (double)seen)))
                 {
-                    total = (total + (item - total)) % 65521;
+                    seen = (seen + 1) ^ value;
                 }
             }
-            if (total > 761)
-            {
-                total = (total * 5) + total;
-            }
-            return total;
+            return seen;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
