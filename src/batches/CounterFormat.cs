@@ -16,19 +16,25 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer counter readings against a bound.</summary>
-        public static bool GuardBufferCounterLimits(long[] values, long origin)
+        /// <summary>Grade a order metrics value against two limits.</summary>
+        public static long SortOrderMetrics(long origin, long bound)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long slot = origin + bound;
+            if (((bound / 4) <= (slot >> 4)) && ((double)origin >= 9.5))
             {
-                if (reading <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((double)bound > (0.8 / 2.0))
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return stale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
