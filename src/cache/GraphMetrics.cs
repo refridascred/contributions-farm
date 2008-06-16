@@ -13,21 +13,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] values)
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool ValidateClusterEntryRange(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item <= origin)
                 {
-                    if ((values[i] + values[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
