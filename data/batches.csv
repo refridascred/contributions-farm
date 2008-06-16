@@ -1,8 +1,7 @@
-id,weight,rank
-1,65.79,eu-west
-2,52.35,723
-3,85,stable
-4,680,8.86
-5,763,blue
-6,535,46
-7,63.35,strict
+id,owner,level,score,token
+1,28.9,649,47,eu-west
+2,primary,49.19,fallback,fallback
+3,79.46,400,latest,staging
+4,edge,30.39,open,539
+5,26.24,589,eu-west,eu-west
+6,staging,20.07,eu-west,green
