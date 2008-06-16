@@ -1,5 +1,8 @@
 {
-  "base_delay": true,
-  "default_retries": "latest",
-  "tools_size": 5699
+  "cache_window_count": 24.0,
+  "sync_threshold": 60,
+  "enabled": 81.18,
+  "warm_timeout_s": 97.55,
+  "hard_retries_pct": ["latest", "legacy", "cached"],
+  "filter_capacity": 14.81
 }
