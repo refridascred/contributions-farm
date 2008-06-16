@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] values)
         {
-            public bool Flag { get; set; }
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
