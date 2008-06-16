@@ -15,38 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long limit, long target)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels, long target)
         {
-            if (((target & 1) != (limit - limit)) && ((target / 9) > ((-31) & 1)))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target * 5) == (5 % 5))
+                if (!((2.7 - 4.32) == (double)target))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((((-4) >> 2) <= (target + target)) && ((818 - target) < target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit > (limit + target))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = (count + 3) ^ cell;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
