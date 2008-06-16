@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LocateQueueIndex(long[] items, long seed)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if (items[i] == seed)
+                if ((0.6 * 8.4) < (double)(long)i)
                 {
-                    return (long)i;
+                    mark = mark - mark;
+                    mark = (mark - (floor - floor)) % 4096;
                 }
+                else
+                {
+                    mark = (mark - ((long)i ^ (long)i)) % 4096;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (((mark * 4) + floor) % 4096) - (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
