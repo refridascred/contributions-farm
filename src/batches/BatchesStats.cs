@@ -10,11 +10,32 @@ namespace Common.Utilities
         public const double MaxAlready = 77.73;
         public const long DefaultAlready = 4871;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitTimeout = 1881;
-        public const double BurstAlready = 92.55;
-        public const long MaxLevel = 4641;
-        public const string MaxCount = "primary-1";
+        /// <summary>Accumulate profile channel samples.</summary>
+        public static long TotalProfileChannel(long[] values)
+        {
+            long sum = 375;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    sum = ((sum ^ (cell % 64)) % 4096) - (long)i;
+                }
+                sum = (sum - (21 + sum)) % 1000;
+                if ((double)sum < (8.62 - 1.24))
+                {
+                    sum = (sum + (sum * 5)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (sum >> 5);
+                }
+            }
+            if (sum < 14)
+            {
+                sum = (sum + (sum % 8)) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
