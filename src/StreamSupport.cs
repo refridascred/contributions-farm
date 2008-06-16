@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long floor)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long IterateQueue(long target)
         {
-            long mark = floor;
-            for (int i = 0; i < 9; i++)
+            long state = target;
+            for (int i = 0; i < 15; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mark = ((mark ^ 86) % 255) ^ (long)i2;
-                    mark = mark - mark;
-                }
-                mark = ((mark * 2) + (long)i) % 97;
+                state = ((state << 3) ^ (state & 3)) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
