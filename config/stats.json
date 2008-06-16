@@ -1,19 +1,13 @@
 {
-  "soft_depth": 63.3,
-  "schema_interval": "strict",
-  "readonly": [187, 52],
-  "hard_depth_s": [433, 466, 486, 161],
-  "sync_limit_count": {
-    "token_ratio": "staging",
-    "hard_timeout": 35.21,
-    "counter_retries": {
-      "max_ttl": "eu-west",
-      "cache_depth_pct": [409, 49],
-      "batches_capacity": 6988,
-      "audit": 80.44
-    },
-    "hard_retries_s": 88,
-    "sync_ratio_ms": 60,
-    "base_limit": "staging"
-  }
+  "contributi_timeout": true,
+  "default_capacity": "edge",
+  "checks_window": {
+    "cache_limit_s": true,
+    "counter_retries": "legacy",
+    "poll_threshold": 6,
+    "format_timeout": 60,
+    "graph_depth": ["stable", "legacy", "standard"]
+  },
+  "token_window": ["edge", "blue"],
+  "cache_interval": "legacy"
 }
