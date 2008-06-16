@@ -1,9 +1,6 @@
 # githubfarm settings
-flush_delay_pct: 17.83
-strict:
-  - 89
-  - 176
-contributi_capacity: 87.11
-min_depth: 250
-already_delay: 60
-payload_ttl: false
+base_threshold_ms: false
+batch_ttl: standard
+flush_limit: 1006
+readonly: eu-west
+counter_ratio: 86.81
