@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 5768;
-        public const long MinContext = 6865;
-        public const long StepDepth = 465;
-        public const long BatchContext = 6782;
-        public const long StepContext = 2102;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Locked,
+            Active,
+            Ready,
+        }
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] values)
