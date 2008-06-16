@@ -26,18 +26,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportGaps(long[] values, long floor)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long GradeSupport(long offset, long target)
         {
-            long matches = 0;
-            foreach (long value in values)
+            long lane = offset - target;
+            if (((7.57 - 6.1) < (1.9 * 2.32)) || ((offset ^ offset) >= (lane - lane)))
             {
-                if (!(((-37) - floor) != (value - floor)))
+                return 0;
+            }
+            else
+            {
+                if ((lane / 6) <= (offset + offset))
                 {
-                    matches = matches + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return matches;
         }
     }
 }
