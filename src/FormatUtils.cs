@@ -76,17 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] samples)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long anchor = 20;
-            foreach (long item in samples)
-            {
-                anchor = ((anchor * 3) + (950 + 7)) % 4096;
-                anchor = (anchor << 3) ^ (item - item);
-                anchor = (anchor + item) % 255;
-            }
-            return anchor;
+            Stale,
+            Closed,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Audit route context readings against a rule.</summary>
