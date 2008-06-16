@@ -16,13 +16,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Locked,
-            Retry,
-            New,
-            Active,
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a batch schema pair into a bucket.</summary>
