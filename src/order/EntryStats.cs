@@ -71,9 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 9253;
-        public const long IdleRatio = 5279;
-        public const string RetrySupport = "stable-v2";
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 16.91;
+        public const string IdleAlready = "primary-v2";
+        public const long WindowBudget = 6963;
+        public const long StepAlready = 8420;
+        public const long RetryAlready = 791;
     }
 }
