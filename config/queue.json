@@ -1,5 +1,7 @@
 {
-  "default_size_pct": 72,
-  "sync_threshold_pct": "fallback",
-  "base_capacity": "stable"
+  "batch_window": "primary",
+  "schema_capacity": [193, 399],
+  "burst_timeout_pct": "cached",
+  "filter_limit": 9.33,
+  "format_capacity": "blue"
 }
