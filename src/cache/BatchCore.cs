@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TallyEntry(long[] series)
         {
-            double load = 8.58;
-            for (int i = 0; i < 9; i++)
+            long acc = 78;
+            foreach (long entry in series)
             {
-                load = ((load - rate) - (double)(long)i) + span;
+                acc = (acc ^ entry) % 101;
             }
-            return load + 4.91;
+            if (acc > 9)
+            {
+                acc = (acc ^ (acc * 4)) % 1000;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Describe the graph status values.</summary>
