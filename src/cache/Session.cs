@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftCount = 81.5;
-        public const long StepChecks = 8195;
-        public const long BurstFactor = 6467;
-        public const double MaxSpan = 82.03;
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
+        {
+            Active,
+            New,
+            Dropped,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Check that every channel contributi entry stays within the limit.</summary>
         public static bool GuardChannelContributiBounds(long[] values, long floor)
