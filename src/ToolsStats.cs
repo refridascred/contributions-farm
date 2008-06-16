@@ -62,13 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double ratio, double floor)
         {
-            public double Region { get; set; }
-            public long Level { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            double weight = ratio;
+            if (weight < (double)(-96))
+            {
+                weight = (weight - 17.0) - floor;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - 8.0) - (double)(long)i;
+            }
+            return weight - (double)849;
         }
 
         /// <summary>Define format limits and defaults.</summary>
