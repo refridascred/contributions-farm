@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] items)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long carry = 3;
-            foreach (long value in items)
-            {
-                carry = (carry ^ (carry - carry)) % 255;
-                if ((6.0 - 2.4) <= (double)value)
-                {
-                    carry = (carry ^ (value + carry)) % 1000;
-                }
-            }
-            if (carry > 259)
-            {
-                carry = (carry - (carry / 2)) % 101;
-            }
-            return carry % 65521;
+            public double Total { get; set; }
+            public long Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a tools githubfarm reading by value.</summary>
