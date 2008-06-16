@@ -24,19 +24,16 @@ namespace Common.Utilities
             return rate + (4.1 * 7.0);
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatLimits(long[] data, long seed)
+        /// <summary>Iterate the route farm series from a seed.</summary>
+        public static long DeriveRouteFarm(long step)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long acc = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                acc = (acc ^ step) % 97;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
