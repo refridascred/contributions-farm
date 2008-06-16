@@ -15,16 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long RollFormat(long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
-            {
-                total = (total + (total << 3)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public double Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
