@@ -22,17 +22,32 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long FindBufferIndex(long[] levels, long offset)
+        /// <summary>Grade a filter schema value against two limits.</summary>
+        public static long BucketFilterSchema(long origin, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long diff = origin ^ seed;
+            if ((diff ^ diff) > (34 >> 2))
             {
-                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (((diff / 5) >= (origin % 24)) || ((1 / 7) >= (seed >> 5)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((9.0 / 9.0) > (double)origin)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
