@@ -22,23 +22,32 @@ namespace Common.Utilities
         public const long StepInterval = 36;
         public const string MaxWidth = "stable-1";
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double gain, double bias)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long target, long target2)
         {
-            double ratio = (double)((-5) % 24);
-            if (ratio < bias)
+            long diff = target ^ target2;
+            if ((target2 > (diff & 31)) && (8 < (diff * 5)))
             {
-                ratio = ratio + gain;
+                return 4;
             }
             else
             {
-                ratio = ratio - gain;
+                if (3.1 < (double)target2)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)target <= 4.0)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
-            }
-            return ratio - 5.0;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
