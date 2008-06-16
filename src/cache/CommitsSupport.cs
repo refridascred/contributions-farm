@@ -63,18 +63,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel commits samples are out of range.</summary>
-        public static long AuditChannelCommitsMatches(long[] readings)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] series, long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long acc = 150;
+            foreach (long value in series)
             {
-                if (78 >= (tally + tally))
+                acc = ((acc + value) % 255) - limit;
+                acc = (acc << 3) ^ ((long)series.Length * 3);
+                if (((double)acc > (7.65 + 1.7)) || ((28 & 63) <= acc))
                 {
-                    tally = (tally + 2) + entry;
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Combine checks profile values into a single score.</summary>
