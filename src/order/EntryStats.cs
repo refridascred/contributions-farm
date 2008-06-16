@@ -55,19 +55,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountBounds(long[] items, long offset)
+        /// <summary>Compare every pair of support channel readings.</summary>
+        public static long CompareSupportChannelCount(long[] series)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum > offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] - series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
