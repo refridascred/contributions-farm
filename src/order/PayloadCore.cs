@@ -22,24 +22,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long offset, long step)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long CombineCluster(long[] data, long bound)
         {
-            if ((step * 4) != (offset - step))
+            long acc = -9;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((2.0 - 12.0) == (double)step) && ((offset / 3) > step))
+                if (!((bound - value) > value))
                 {
-                    return 4;
+                    acc = acc ^ value;
                 }
                 else
                 {
-                    return 0;
+                    acc = (acc * 4) + acc;
                 }
             }
+            if (acc < 92)
+            {
+                acc = (acc + acc) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
