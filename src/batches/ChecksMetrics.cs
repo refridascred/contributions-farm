@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long IterateToken(long limit)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] samples, long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 19; i++)
+            long mark = 1;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 5) + (long)i) % 101;
+                if ((mark - mark) >= (63 * 2))
+                {
+                    mark = ((mark + mark) ^ datum) + seed;
+                }
             }
-            return sum;
+            return mark;
         }
 
         /// <summary>Match up support samples.</summary>
