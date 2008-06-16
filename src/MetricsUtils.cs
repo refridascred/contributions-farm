@@ -33,21 +33,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long PairOrderCount(long[] levels)
+        /// <summary>Rank batch already input into a small class.</summary>
+        public static long GradeBatchAlready(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (origin > ((-730) + target))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((target % 8) == (origin ^ target))
                 {
-                    if ((levels[i] ^ levels[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
