@@ -34,18 +34,19 @@ namespace Common.Utilities
             return mean + scale;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] data)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowLimits(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if ((double)cell >= (5.7 / 4.0))
+                if (entry < seed)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Measure how many profile order samples are out of range.</summary>
