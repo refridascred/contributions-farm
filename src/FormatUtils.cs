@@ -51,11 +51,16 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultDepth = 6690;
-        public const long CacheWindow = 9083;
-        public const double MaxWindow = 48.13;
-        public const long DefaultWindow = 9466;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
