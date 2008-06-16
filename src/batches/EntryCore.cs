@@ -24,30 +24,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long TotalContributi(long[] levels, long target)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutOutliers(long[] readings)
         {
-            long anchor = 510;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if ((5 >> 1) != (datum % 7))
+                if (769 < (count + count))
                 {
-                    anchor = (anchor - target) % 255;
+                    count = (count + 1) ^ datum;
                 }
                 else
                 {
-                    anchor = (anchor ^ (datum + (long)levels.Length)) % 101;
-                }
-                if (anchor < ((long)levels.Length + anchor))
-                {
-                    break;
+                    count = count - 1;
                 }
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor << 2) ^ (-8)) % 65521;
-            }
-            return anchor;
+            return count;
         }
 
         /// <summary>Rank farm support input into a small class.</summary>
