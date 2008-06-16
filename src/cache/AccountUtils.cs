@@ -26,19 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] items, long limit)
+        /// <summary>Validate window session readings against a bound.</summary>
+        public static bool CheckWindowSessionBounds(long[] data, long offset)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if (cell >= limit)
+                if (cell > offset)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
     }
 }
