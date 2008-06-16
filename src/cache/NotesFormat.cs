@@ -15,10 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseWidth = 40;
-        public const double WindowFactor = 59.33;
-        public const double StepRecord = 0.61;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] levels)
+        {
+            long score = 85;
+            foreach (long reading in levels)
+            {
+                score = score + (score / 4);
+                score = (score ^ (score ^ reading)) % 101;
+            }
+            if (score > 404)
+            {
+                score = (score ^ (score ^ score)) % 255;
+            }
+            return score;
+        }
 
         /// <summary>Describe the cache status values.</summary>
         public enum CacheStatus
