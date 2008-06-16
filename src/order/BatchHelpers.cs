@@ -34,18 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] series)
-        {
-            long count = 0;
-            foreach (long reading in series)
-            {
-                if ((reading ^ reading) >= (count * 3))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double IdleBudget = 86.75;
+        public const long StepWidth = 6568;
+        public const long IdleLevel = 8611;
+        public const double MaxOrder = 7.16;
+        public const long StepFactor = 4784;
     }
 }
