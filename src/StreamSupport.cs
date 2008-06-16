@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] items, long bound)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long diff = seed ^ target;
+            if (291 >= (diff * 3))
             {
-                if (items[i] >= bound)
+                return 3;
+            }
+            else
+            {
+                if (25 <= (seed / 5))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
