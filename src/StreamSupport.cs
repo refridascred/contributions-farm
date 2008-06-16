@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long step, long origin)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferBounds(long[] levels, long offset)
         {
-            long gap = step ^ origin;
-            if ((step / 7) > (gap & 3))
+            bool found = true;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((gap - origin) > (86 + step))
+                if (datum < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
