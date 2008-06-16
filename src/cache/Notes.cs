@@ -19,22 +19,25 @@ namespace Common.Utilities
         public const double StepTimeout = 97.14;
         public const double LimitContributi = 98.86;
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] data, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long value in data)
+            long next = origin - origin2;
+            if ((origin < (origin + 50)) || ((origin - next) == (origin2 + origin)))
             {
-                if ((((step * 5) < (77 + count)) || ((count + 16) != (value ^ 115))) && ((245 - 1) != (step - value)))
+                return 1;
+            }
+            else
+            {
+                if ((origin2 ^ origin2) != (origin2 + 70))
                 {
-                    count = count + 1;
+                    return 5;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
