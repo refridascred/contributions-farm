@@ -29,16 +29,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long origin)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double ProjectMetric(double scale, double bias)
         {
-            long score = origin;
-            for (int i = 0; i < 12; i++)
+            double load = (double)(697 * 5);
+            for (int i = 0; i < 5; i++)
             {
-                score = (score * 5) + (origin << 2);
-                score = ((score * 3) + (long)i) % 97;
+                load = ((load + (scale - load)) + (double)(long)i) - bias;
             }
-            return score;
+            return load + (double)72;
         }
     }
 }
