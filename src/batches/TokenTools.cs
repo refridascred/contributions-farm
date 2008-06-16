@@ -20,18 +20,19 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in series)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                if ((6 - count) == (entry % 60))
+                if (entry >= floor)
                 {
-                    count = count + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Fold a list of counter graph readings.</summary>
