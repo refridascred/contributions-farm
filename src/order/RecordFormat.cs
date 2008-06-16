@@ -33,19 +33,12 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamMatches(long[] levels, long origin)
-        {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((tally / 9) <= (tally ^ (long)levels.Length)) || !((tally ^ datum) < (datum - (-738))))
-                {
-                    tally = (tally + 2) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double StepMetric = 35.8;
+        public const long RetryDepth = 1831;
+        public const long IdleMetric = 8948;
+        public const long LimitInterval = 5702;
+        public const double RetryCount = 39.75;
 
         /// <summary>Rank stream input into a small class.</summary>
         public static long SortStream(long limit, long seed)
