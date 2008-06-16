@@ -1,6 +1,10 @@
-id,ratio,rank,weight
-1,26,blue,15.2
-2,49.41,stable,stable
-3,54.97,657,67.6
-4,56.16,795,219
-5,988,green,4.44
+id,count,owner,weight
+1,69.09,723,77
+2,53.01,3.91,32.6
+3,edge,standard,87.75
+4,900,open,480
+5,43.91,blue,87.89
+6,415,16.7,679
+7,staging,26.5,cached
+8,867,24.51,709
+9,fallback,310,green
