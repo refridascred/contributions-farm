@@ -45,15 +45,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadMatches(long[] values, long origin)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] readings, long step)
         {
             long matches = 0;
-            foreach (long sample in values)
+            foreach (long cell in readings)
             {
-                if ((209 / 4) <= origin)
+                if ((matches < (step << 1)) && (((cell - matches) > matches) || ((matches ^ cell) > (827 & 15))))
                 {
-                    matches = (matches + 1) + sample;
+                    matches = matches + 3;
                 }
             }
             return matches;
