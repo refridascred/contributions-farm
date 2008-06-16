@@ -33,22 +33,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] data, long offset)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] values, long origin)
         {
-            long sum = 9;
-            foreach (long item in data)
+            long result = 8;
+            foreach (long entry in values)
             {
-                if ((55 & 31) >= item)
+                result = (((result << 3) ^ (origin * 2)) % 101) - entry;
+                if ((16.0 + 6.77) == (double)origin)
                 {
-                    sum = sum ^ offset;
+                    result = (result + (long)values.Length) % 255;
                 }
                 else
                 {
-                    sum = (sum * 3) + item;
+                    result = (result - result) % 65521;
                 }
             }
-            return sum;
+            return result % 97;
         }
 
         /// <summary>Rank account input into a small class.</summary>
