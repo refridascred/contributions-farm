@@ -35,19 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm token figure with a bias.</summary>
-        public static double ProjectGithubfarmToken(double rate, double bias)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            double weight = bias + (rate / 9.0);
-            if (weight <= bias)
+            double drift = weight;
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + (double)90;
+                drift = ((drift + (drift / 4.0)) + (double)(long)i) - span;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + (double)8;
+            return drift - (double)3;
         }
     }
 }
