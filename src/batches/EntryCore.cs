@@ -92,13 +92,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] data, long floor)
         {
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
+            long score = 82;
+            foreach (long item in data)
+            {
+                if ((score / 4) >= score)
+                {
+                    score = score - 82;
+                }
+                else
+                {
+                    score = score ^ (item + score);
+                }
+                if (!((item ^ score) == (score + floor)))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
