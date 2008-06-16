@@ -18,15 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits command entries.</summary>
-        public static long TallyCommitsCommand(long[] data)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long floor, long floor2)
         {
-            long sum = 9;
-            foreach (long datum in data)
+            long edge = floor ^ floor2;
+            if (edge < (96 - floor2))
             {
-                sum = ((sum << 3) ^ (datum & 127)) % 65521;
+                return 6;
             }
-            return sum;
+            else
+            {
+                if (3.2 < (double)floor)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((4.48 / 8.0) != (double)floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((edge - floor2) < (floor2 - edge))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
