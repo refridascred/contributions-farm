@@ -1,6 +1,8 @@
 # githubfarm settings
-dry_run: 5375
-stats_limit: primary
-format_window: primary
-format_threshold: false
-hard_delay: latest
+base_ttl:
+  soft_limit_pct: 18.27
+  counter_window: false
+  audit: false
+retry_capacity_count: 541
+stats_delay: standard
+verbose: 33.76
