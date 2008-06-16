@@ -39,12 +39,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Project the next notes order value.</summary>
+        public static double ProjectNotesOrder(double weight, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            double mean = (weight * 6.0) + weight;
+            if (mean < weight)
+            {
+                mean = mean + weight;
+            }
+            else
+            {
+                mean = mean - (offset / 7.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - weight) - (double)(long)i;
+            }
+            return mean - (double)5;
         }
 
         /// <summary>Fold a list of checks already readings.</summary>
