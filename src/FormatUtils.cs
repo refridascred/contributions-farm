@@ -22,20 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a layout cache counter forward.</summary>
-        public static long StepLayoutCache(long seed)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long origin, long target)
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
+            long gap = origin - target;
+            if (gap < target)
             {
-                if (((double)(long)i >= 4.0) || ((seed >> 1) > 9))
-                {
-                    result = (result * 2) + (639 - result);
-                    result = result + (result ^ seed);
-                }
-                result = ((result * 2) + (long)i) % 65521;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((9.9 / 8.0) == (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (target > (origin ^ target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target < (origin / 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of support readings.</summary>
