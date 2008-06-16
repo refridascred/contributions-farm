@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the report checks entries that pass the check.</summary>
-        public static long MeasureReportChecksGaps(long[] readings)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long score = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((((3.82 * 9.23) != (double)tally) || ((tally >> 5) < 0)) || (((-7) > (tally * 2)) || ((tally >> 2) <= (tally % 3))))
+                score = score + (target ^ 469);
+                if (((score + score) <= (0 % 8)) || ((target & 255) >= (411 >> 3)))
                 {
-                    tally = (tally + 3) ^ item;
+                    score = (score * 4) + (score & 1);
+                    score = (score * 3) + (48 ^ target);
                 }
+                score = (score ^ ((long)i - (long)i)) % 1000;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the buffer phase values.</summary>
