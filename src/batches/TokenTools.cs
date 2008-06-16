@@ -34,23 +34,19 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] values, long step)
+        /// <summary>Scale a tools channel figure with a bias.</summary>
+        public static double ScaleToolsChannel(double scale, double bias)
         {
-            long mark = 255;
-            foreach (long reading in values)
+            double ratio = (double)(902 + 71);
+            if (ratio >= bias)
             {
-                if ((97 - mark) < (reading % 3))
-                {
-                    mark = (mark ^ (step << 3)) % 255;
-                }
-                mark = mark - reading;
+                ratio = (ratio - bias) - scale;
             }
-            if (mark < 72)
+            else
             {
-                mark = ((mark * 3) + (mark >> 4)) % 65521;
+                ratio = ratio + (double)0;
             }
-            return mark % 1000;
+            return ratio + 5.9;
         }
     }
 }
