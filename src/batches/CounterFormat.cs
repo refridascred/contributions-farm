@@ -19,10 +19,11 @@ namespace Common.Utilities
         public const string RetryAccount = "cached";
         public const string StepCount = "latest-v2";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BatchRatio = "fallback";
-        public const long SoftFormat = 3212;
-        public const double CacheLevel = 72.05;
-        public const long HardSize = 4407;
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public long Total { get; set; }
+            public double Rank { get; set; }
+        }
     }
 }
