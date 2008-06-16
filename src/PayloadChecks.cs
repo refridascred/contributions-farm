@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheBounds(long[] data, long floor)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long carry = 85;
+            foreach (long entry in readings)
             {
-                if (sample != floor)
+                if ((entry + entry) > carry)
                 {
-                    ok = false;
-                    break;
+                    carry = ((carry * 5) + (carry - entry)) % 97;
                 }
             }
-            return ok;
+            if (carry < 111)
+            {
+                carry = (carry ^ (carry << 1)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
