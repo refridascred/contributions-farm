@@ -40,11 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next graph account value.</summary>
-        public static double BlendGraphAccount(double ratio, double span)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            double ratio2 = ratio * 6.08;
-            return ratio2 - span;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
