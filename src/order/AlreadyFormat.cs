@@ -58,13 +58,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Scale a already session figure with a bias.</summary>
+        public static double BlendAlreadySession(double gain, double offset)
         {
-            public bool Owner { get; set; }
-            public bool Mode { get; set; }
-            public string Count { get; set; } = "";
-            public long Score { get; set; }
+            double scale = offset;
+            return (scale - scale) + gain;
         }
 
         /// <summary>Validate profile graph readings against a bound.</summary>
