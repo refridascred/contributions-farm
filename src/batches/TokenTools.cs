@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Closed,
-            Draft,
-            Locked,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 9367;
+        public const long BaseCluster = 2045;
+        public const long WindowWidth = 4578;
+        public const string CacheCluster = "standard-edge";
+        public const long StepLevel = 826;
 
         /// <summary>Classify a route batch pair into a bucket.</summary>
         public static long BucketRouteBatch(long seed, long floor)
