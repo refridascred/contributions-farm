@@ -43,11 +43,12 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
