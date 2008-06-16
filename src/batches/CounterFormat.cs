@@ -38,11 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] values, long step)
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
