@@ -37,20 +37,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryLimits(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item >= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheToken = 952;
+        public const string BatchToken = "cached-1";
+        public const long SoftToken = 8735;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const string BurstBudget = "fallback-1";
