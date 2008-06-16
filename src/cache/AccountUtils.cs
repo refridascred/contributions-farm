@@ -60,12 +60,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] values, long limit)
         {
-            Paused,
-            Draft,
-            Failed,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum != limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
