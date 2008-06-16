@@ -1,7 +1,13 @@
 {
-  "batch_window": "primary",
-  "schema_capacity": [193, 399],
-  "burst_timeout_pct": "cached",
-  "filter_limit": 9.33,
-  "format_capacity": "blue"
+  "poll_depth_s": false,
+  "default_retries": "edge",
+  "soft_size_s": ["primary", "fallback"],
+  "stats_ratio": true,
+  "already_delay": 67,
+  "audit": {
+    "entry_retries": "green",
+    "checks_delay": 26,
+    "sync_ttl_s": ["latest", "legacy", "cached", "eu-west"],
+    "idle_interval_s": 96.57
+  }
 }
