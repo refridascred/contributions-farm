@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsLimits(long[] samples, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long OverlapWindowCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Audit record commits readings against a rule.</summary>
