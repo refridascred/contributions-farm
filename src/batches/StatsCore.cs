@@ -52,22 +52,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] readings, long offset)
+        /// <summary>Digest a series of batch session entries.</summary>
+        public static long FoldBatchSession(long[] data, long target)
         {
-            long mix = 878;
-            foreach (long entry in readings)
+            long result = 71;
+            foreach (long reading in data)
             {
-                if ((1.1 < (double)mix) && ((offset / 7) < mix))
-                {
-                    mix = ((mix * 4) + offset) % 4096;
-                }
-                if (15.0 <= (double)entry)
-                {
-                    break;
-                }
+                result = (((result * 4) + (reading >> 1)) % 4096) - target;
             }
-            return mix % 1000;
+            return result;
         }
 
         /// <summary>Describe the farm mode values.</summary>
