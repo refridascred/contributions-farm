@@ -32,13 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > floor) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
