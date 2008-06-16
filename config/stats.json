@@ -1,6 +1,5 @@
 {
-  "cache_window_pct": "green",
-  "poll_limit": "latest",
-  "strict": "stable",
-  "audit": true
+  "audit": false,
+  "token_interval": "latest",
+  "soft_depth_s": "blue"
 }
