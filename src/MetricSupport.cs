@@ -31,21 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] readings, long limit)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] items, long origin)
         {
-            long state = 87;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state * 5) + state) + limit;
-                state = state - (-883);
-                state = ((state * 4) + item) % 101;
+                if (items[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (state < (-220))
-            {
-                state = (state * 2) + (state ^ state);
-            }
-            return state;
+            return -1;
         }
     }
 }
