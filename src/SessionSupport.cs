@@ -12,11 +12,33 @@ namespace Common.Utilities
         public const long BatchEntry = 2470;
         public const string IdleEntry = "fallback-v2";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxCount = 5684;
-        public const long RetryDepth = 5286;
-        public const long BurstProfile = 7521;
-        public const long HardTimeout = 3599;
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long seed, long bound)
+        {
+            long next = seed - bound;
+            if ((next + seed) != (next + 4))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed / 4) >= (seed * 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (bound <= (seed ^ 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
         public sealed class GithubfarmSnapshot
