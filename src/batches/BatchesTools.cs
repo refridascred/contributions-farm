@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] series)
+        /// <summary>Match up already schema samples.</summary>
+        public static long PairAlreadySchemaCount(long[] levels)
         {
-            long result = 19;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((7 ^ result) == ((-440) % 3)) && ((2.65 - 1.58) > (double)result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = (result + result) % 4096;
-                }
-                else
-                {
-                    result = result ^ (result - result);
-                }
-                if ((65 + item) == (result >> 1))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Accumulate schema support samples.</summary>
