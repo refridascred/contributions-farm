@@ -63,10 +63,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardBuffer = 17.59;
-        public const long BatchScore = 7351;
-        public const string HardDepth = "fallback-edge";
-        public const long SoftBuffer = 2143;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool VerifyQueueRange(long[] samples, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
