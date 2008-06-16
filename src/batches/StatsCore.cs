@@ -32,18 +32,25 @@ namespace Common.Utilities
         public const long RetryLevel = 8705;
         public const double WindowBatches = 43.18;
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long origin, long step)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long bound = origin ^ step;
+            if ((double)step != (double)bound)
             {
-                if ((6.52 + 6.0) >= (double)datum)
+                return 4;
+            }
+            else
+            {
+                if (!((4.96 / 5.0) < (double)bound))
                 {
-                    hits = hits + 2;
+                    return 6;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the buffer status values.</summary>
