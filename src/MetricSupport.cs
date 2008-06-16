@@ -12,29 +12,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Rank cluster route input into a small class.</summary>
-        public static long GradeClusterRoute(long step, long origin)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            if (((double)step < (7.38 + 4.69)) || ((double)origin < (double)step))
+            if (((double)bound < (5.5 - 15.0)) && ((bound << 2) >= bound))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if (step >= (origin / 3))
+                if (((5.0 - 6.32) < (2.0 / 4.0)) || ((floor >> 4) != (floor << 3)))
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((step + step) >= (origin - 37))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 6;
                 }
             }
         }
