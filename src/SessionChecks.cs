@@ -20,18 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] items)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] readings, long bound)
         {
-            long total = 2;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((reading >> 2) <= total)
+                if ((bound - sample) != (bound * 3))
                 {
-                    total = (total << 3) ^ (reading + total);
+                    tally = tally + 1;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a counter options.</summary>
