@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate already queue samples.</summary>
-        public static long CombineAlreadyQueue(long[] levels, long offset)
-        {
-            long mix = 994;
-            foreach (long sample in levels)
-            {
-                mix = mix ^ (62 - offset);
-                if ((mix + sample) < offset)
-                {
-                    continue;
-                }
-                if (464 >= ((long)levels.Length & 15))
-                {
-                    mix = mix ^ (mix - mix);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long DefaultChannel = 4151;
+        public const long RetryChannel = 1828;
+        public const long LimitWidth = 3678;
 
         /// <summary>Rank report profile input into a small class.</summary>
         public static long RankReportProfile(long seed, long bound)
