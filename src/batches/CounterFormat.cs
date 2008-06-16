@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string SoftTimeout = "standard-edge";
-        public const double WindowCounter = 58.2;
-        public const long RetryWidth = 5980;
-        public const string LimitCounter = "latest";
-        public const long MinCounter = 494;
+        /// <summary>Match up cache cluster samples.</summary>
+        public static long OverlapCacheClusterCount(long[] items)
+        {
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long limit)
