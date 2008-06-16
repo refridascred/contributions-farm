@@ -1,13 +1,8 @@
 {
-  "contributi_timeout": true,
-  "default_capacity": "edge",
-  "checks_window": {
-    "cache_limit_s": true,
-    "counter_retries": "legacy",
-    "poll_threshold": 6,
-    "format_timeout": 60,
-    "graph_depth": ["stable", "legacy", "standard"]
-  },
-  "token_window": ["edge", "blue"],
-  "cache_interval": "legacy"
+  "max_ratio_pct": "green",
+  "base_delay_pct": 34.01,
+  "max_timeout": false,
+  "stream_delay": 25,
+  "flush_depth_ms": "local",
+  "max_limit": 25.28
 }
