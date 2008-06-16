@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesMatches(long[] samples, long seed)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((471 & 15) < hits)
-                {
-                    hits = ((hits + 1) + entry) - seed;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Owner { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Locate a token counter reading by value.</summary>
