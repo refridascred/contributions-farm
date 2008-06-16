@@ -28,13 +28,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelGaps(long[] readings)
         {
-            Stale,
-            Paused,
-            Queued,
-            Pending,
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 7) == (count + entry))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks record.</summary>
