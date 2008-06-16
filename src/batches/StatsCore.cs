@@ -44,10 +44,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryBudget = 1.06;
-        public const long LimitSpan = 9469;
-        public const string SoftCluster = "alpha-v2";
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((6.52 + 6.0) >= (double)datum)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
