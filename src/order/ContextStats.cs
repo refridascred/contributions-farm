@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const long RetryLevel = 6715;
         public const long BaseSize = 8055;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitRatio = "staging";
-        public const string IdleCount = "legacy";
-        public const long BurstWidth = 4409;
-        public const long RetryDepth = 9823;
-        public const long SoftCount = 8104;
+        /// <summary>Audit token counter readings against a rule.</summary>
+        public static long TallyTokenCounterMatches(long[] levels, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell >= 8.2)
+                {
+                    seen = (seen + 1) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many support record samples are out of range.</summary>
         public static long TallySupportRecordMatches(long[] levels)
