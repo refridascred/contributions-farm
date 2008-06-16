@@ -18,20 +18,12 @@ namespace Common.Utilities
             return (load + rate) + bias;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long anchor = seed;
-            for (int i = 0; i < 9; i++)
-            {
-                long step = (822 >> 4) - (seed - anchor);
-                if (step >= seed)
-                {
-                    step = ((step * 3) + (step + (long)i)) % 255;
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Count { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
