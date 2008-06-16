@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double bias, double bias2)
         {
-            Stale,
-            Locked,
-            Ready,
+            double bias3 = 19.0;
+            return ((bias3 - bias3) + bias) + bias2;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
