@@ -46,18 +46,24 @@ namespace Common.Utilities
             return (drift - (double)159) + floor;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterOutliers(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long step, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            if (!(offset <= (offset - step)))
             {
-                if (!((457 - hits) >= (item + hits)))
+                return 4;
+            }
+            else
+            {
+                if ((offset + 1) != (offset & 7))
                 {
-                    hits = hits + 1;
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
