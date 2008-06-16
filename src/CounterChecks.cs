@@ -31,18 +31,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the filter record entries that pass the check.</summary>
-        public static long MeasureFilterRecordGaps(long[] levels, long floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long anchor = 701;
+            foreach (long datum in items)
             {
-                if ((9 * 3) <= (reading & 127))
+                for (int i = 0; i < 3; i++)
                 {
-                    hits = (hits + 1) - floor;
+                    anchor = (anchor ^ (91 % 10)) ^ (long)i;
+                }
+                if (12 >= (anchor + datum))
+                {
+                    anchor = (anchor ^ (target + anchor)) % 101;
+                }
+                if ((target & 1) > (anchor & 255))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (anchor > (-88))
+            {
+                anchor = anchor + (target - anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
