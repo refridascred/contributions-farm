@@ -1,7 +1,25 @@
 {
-  "cache_interval": [280, 374, 387, 418],
-  "enabled": [112, 477],
-  "stream_depth": "cached",
-  "flush_threshold": ["cached", "latest", "cached"],
-  "dry_run": ["stable", "standard"]
+  "readonly": 5.57,
+  "burst_timeout_s": {
+    "readonly": true,
+    "default_ratio_ms": 22.64,
+    "base_delay_s": 60
+  },
+  "metric_timeout": 1024,
+  "cache_interval_ms": {
+    "layout_timeout": {
+      "cache_capacity": "cached",
+      "window_ratio": "latest",
+      "stream_ratio": ["standard", "latest"],
+      "farm_delay": "green",
+      "cache_delay_pct": false
+    },
+    "max_delay": 83.58,
+    "account_retries": false,
+    "min_size_count": 26.6,
+    "enabled": true,
+    "idle_timeout_s": false
+  },
+  "poll_depth_pct": 36,
+  "compress": 100
 }
