@@ -48,23 +48,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] samples)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long state = 71;
-            foreach (long item in samples)
-            {
-                state = ((state << 3) ^ (item - state)) % 1000;
-                if ((double)item == (5.0 / 9.0))
-                {
-                    state = state - state;
-                }
-                else
-                {
-                    state = ((state * 2) + (state << 3)) % 97;
-                }
-            }
-            return state;
+            Queued,
+            Paused,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
