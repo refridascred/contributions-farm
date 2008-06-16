@@ -44,22 +44,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the payload stats entries that pass the check.</summary>
-        public static long MeasurePayloadStatsOutliers(long[] values)
+        /// <summary>Digest a series of githubfarm already entries.</summary>
+        public static long ScoreGithubfarmAlready(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = -846;
+            foreach (long datum in series)
             {
-                if (((4.25 / 9.0) >= (double)seen) && ((seen ^ datum) == (datum + seen)))
+                if (origin > 30)
                 {
-                    seen = seen + 1;
+                    acc = (acc - datum) % 4096;
                 }
-                else
+                if (((10 + datum) < (21 / 4)) && ((origin & 63) != (acc + origin)))
                 {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Look up the position of a command entry sample.</summary>
