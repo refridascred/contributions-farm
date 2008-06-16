@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long offset, long step)
         {
-            Paused,
-            Ready,
-            Closed,
-            Retry,
+            if (((step / 2) == (step << 2)) && (step >= (offset << 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step - offset) > step) || ((double)37 == (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((10.0 * 5.0) >= (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a stream info.</summary>
