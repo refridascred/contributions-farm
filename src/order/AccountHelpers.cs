@@ -5,23 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Blend two session format measurements.</summary>
-        public static double AdjustSessionFormat(double weight, double span)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long offset, long limit)
         {
-            double scale = (weight * 2.15) / 4.0;
-            if (scale < scale)
+            if ((double)offset <= (9.1 * 4.2))
             {
-                scale = scale + (double)25;
+                return 5;
             }
             else
             {
-                scale = scale + span;
+                if (((offset - offset) == (947 << 3)) || ((3.0 - 17.0) == (double)limit))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset >> 2) <= 506)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((637 & 15) <= (offset + 512))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = scale - (double)(long)i;
-            }
-            return scale + span;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
