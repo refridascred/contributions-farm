@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=147
-log "limit is ${RECORD_LIMIT}"
-
-for item in cached local; do
+for item in latest local stable; do
     log "checking ${item}"
 done
+
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+RECORD_LIMIT=290
+log "limit is ${RECORD_LIMIT}"
