@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsHits(long[] levels, long step)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= (step << 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
