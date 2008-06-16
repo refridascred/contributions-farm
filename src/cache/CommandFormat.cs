@@ -26,18 +26,16 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterGaps(long[] items)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long state = 0;
+            foreach (long datum in readings)
             {
-                if ((9.4 + 2.0) < (double)matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
+                state = ((state * 4) + datum) % 65521;
+                state = ((state * 4) + (state + state)) % 97;
             }
-            return matches;
+            return state % 4096;
         }
     }
 }
