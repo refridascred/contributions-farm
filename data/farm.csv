@@ -1,7 +1,6 @@
-id,label,region,token
-1,597,31.18,strict
-2,local,423,36.39
-3,staging,196,legacy
-4,69.07,cached,staging
-5,64.33,578,404
-6,6.56,267,348
+id,score
+1,blue
+2,blue
+3,91.74
+4,849
+5,78.25
