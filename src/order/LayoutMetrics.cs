@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count report route pairs that satisfy a relation.</summary>
-        public static long CompareReportRouteCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MinReport = "stable-edge";
+        public const long BatchReport = 4875;
+        public const string MaxCount = "strict-edge";
+        public const long MaxReport = 3712;
+        public const long LimitFactor = 6037;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 8551;
