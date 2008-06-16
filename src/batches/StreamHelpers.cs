@@ -20,11 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmAccountLimits(long[] readings, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
