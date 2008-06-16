@@ -57,13 +57,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Roll a payload graph counter forward.</summary>
+        public static long SeriesPayloadGraph(long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 12; i++)
+            long mark = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mark = ((mark * 3) + (long)i) % 4093;
+                if ((8.8 / 9.0) >= (double)61)
+                {
+                    mark = mark ^ (94 >> 1);
+                    break;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
             return mark;
         }
