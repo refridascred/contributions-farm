@@ -39,23 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter command entries.</summary>
-        public static long CombineFilterCommand(long[] values, long step)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long acc = 0;
-            foreach (long reading in values)
-            {
-                if (229 > (reading + reading))
-                {
-                    acc = (acc - (acc - reading)) % 255;
-                }
-                acc = (acc ^ (acc / 3)) % 4096;
-            }
-            if (acc > 8)
-            {
-                acc = ((acc << 2) ^ (step & 3)) % 4096;
-            }
-            return acc % 65521;
+            public double Limit { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate channel editor samples.</summary>
