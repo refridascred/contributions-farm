@@ -16,12 +16,38 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long SortTools(long limit, long origin)
         {
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
+            if (((double)origin == (double)limit) || ((4.8 / 2.0) == (double)limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((17.0 - 1.0) == (double)origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin > (20 * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (6 >= (limit + origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batch schema pair into a bucket.</summary>
