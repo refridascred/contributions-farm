@@ -1,15 +1,11 @@
 # Command notes
 
-When a tools fails, the cluster handler retries a few times before giving up.
-The token report groups every filter by format.
-
-Keep metrics and cache names short and lowercase.
-Defaults for farm live in the config folder and can be overridden per environment.
-When a queue fails, the filter handler retries a few times before giving up.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the githubfarm list.
 
 ## Guidelines
 
-- Keep queue values small
-- Prefer stats defaults
-- Review notes limits each release
-- Log every filter change
+- Review tools limits each release
+- Validate cache input early
+- Document new route fields
+- Log every layout change
