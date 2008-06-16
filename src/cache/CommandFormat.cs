@@ -42,9 +42,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double DefaultWidth = 73.81;
-        public const long MinSupport = 5088;
-        public const long BurstDepth = 2382;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterGaps(long[] items)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((9.4 + 2.0) < (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
