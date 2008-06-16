@@ -30,15 +30,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Digest a series of farm support entries.</summary>
+        public static long CombineFarmSupport(long[] levels, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 19; i++)
+            long result = 7;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if ((double)datum < (double)result)
+                {
+                    result = (result * 2) + (result % 100);
+                }
             }
-            return anchor;
+            if (result < 65)
+            {
+                result = (result + (limit - limit)) % 255;
+            }
+            return result % 4096;
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
