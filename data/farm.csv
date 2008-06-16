@@ -1,6 +1,6 @@
-id,score
-1,blue
-2,blue
-3,91.74
-4,849
-5,78.25
+id,ratio,score
+1,277,727
+2,635,688
+3,48.78,890
+4,blue,open
+5,20.03,local
