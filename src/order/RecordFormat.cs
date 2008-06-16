@@ -39,16 +39,17 @@ namespace Common.Utilities
         public const long LimitInterval = 5702;
         public const double RetryCount = 39.75;
 
-        /// <summary>Iterate the notes cluster series from a seed.</summary>
-        public static long SeriesNotesCluster(long floor)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] levels, long target)
         {
-            long score = floor;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (-9)) % 4096;
-                score = ((score * 5) + (long)i) % 4093;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
     }
 }
