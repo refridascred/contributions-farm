@@ -31,18 +31,19 @@ namespace Common.Utilities
             return load - bias;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] samples, long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool VerifyCommitsLimits(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                if ((2.56 * 20.0) < (double)sample)
+                if (cell != limit)
                 {
-                    tally = (tally + 1) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Digest a series of format entries.</summary>
