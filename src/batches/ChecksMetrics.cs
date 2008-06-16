@@ -81,15 +81,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double ratio, double bias)
-        {
-            double bias2 = ratio;
-            if (bias2 >= ratio)
-            {
-                bias2 = bias2 + (1.31 - bias);
-            }
-            return bias2 - bias2;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MaxTimeout = 7930;
+        public const long BatchSpan = 4263;
+        public const long SoftTools = 9960;
     }
 }
