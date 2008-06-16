@@ -39,20 +39,11 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Validate profile graph readings against a bound.</summary>
-        public static bool ValidateProfileGraphBounds(long[] samples, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftCount = 2737;
+        public const long MaxCache = 6322;
+        public const long BatchCache = 6249;
+        public const long HardFactor = 8362;
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double ratio, double floor)
