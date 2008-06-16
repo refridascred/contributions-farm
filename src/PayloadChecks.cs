@@ -75,22 +75,30 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long offset, long floor)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long floor, long step)
         {
-            if ((697 / 4) > (offset * 5))
+            long span = floor - step;
+            if (((floor + 10) < (floor & 255)) || ((double)span > (double)floor))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (((floor & 127) > (offset - floor)) && ((double)offset >= (1.0 - 4.0)))
+                if ((span + floor) >= (floor - floor))
                 {
                     return 0;
                 }
                 else
                 {
-                    return 6;
+                    if ((floor + 1) > (span + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
