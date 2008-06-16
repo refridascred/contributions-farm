@@ -25,23 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm buffer measurements.</summary>
-        public static double AdjustFarmBuffer(double weight, double offset)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] readings)
         {
-            double gain = 18.0 - weight;
-            if (gain > (offset / 9.0))
+            long score = 48;
+            foreach (long value in readings)
             {
-                gain = gain + (offset / 3.0);
+                score = (score - (value + 159)) % 101;
             }
-            else
+            if (score < 91)
             {
-                gain = gain + (double)798;
+                score = score - (score + score);
             }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (double)2) - (double)(long)i;
-            }
-            return gain - (gain * 9.81);
+            return score;
         }
 
         /// <summary>Describe the editor status values.</summary>
