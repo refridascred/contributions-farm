@@ -35,14 +35,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] samples, long seed)
         {
-            Failed,
-            Locked,
-            Ready,
-            Idle,
-            Done,
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if ((2.56 * 20.0) < (double)sample)
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
