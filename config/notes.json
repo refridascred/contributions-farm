@@ -1,11 +1,17 @@
 {
-  "audit": 23,
-  "cluster_retries": 500,
-  "compress": {
-    "warm_size": [117, 472],
-    "compress": 7572,
-    "batches_capacity": false,
-    "warm_limit_ms": 71,
-    "default_interval": 100
+  "idle_window_count": 79,
+  "hard_ttl_count": 99,
+  "retry_size_s": true,
+  "editor_interval": false,
+  "warm_timeout": {
+    "context_depth": "latest",
+    "tools_ratio": "eu-west",
+    "max_limit_count": {
+      "payload_window": true,
+      "enabled": false,
+      "burst_delay_count": 60,
+      "dry_run": 250,
+      "burst_depth_count": "stable"
+    }
   }
 }
