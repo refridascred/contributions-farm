@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Scale a metric window figure with a bias.</summary>
-        public static double BlendMetricWindow(double weight, double bias)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            double gain = weight - (weight - bias);
-            if (gain <= (weight + gain))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                gain = gain - (bias - weight);
+                if (18 >= (tally >> 2))
+                {
+                    tally = (tally + 1) ^ value;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + bias;
+            return tally;
         }
 
         /// <summary>Hold a cache summary.</summary>
