@@ -76,12 +76,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values, long origin)
         {
-            Failed,
-            Pending,
-            New,
+            long state = 59;
+            foreach (long reading in values)
+            {
+                if ((double)origin == (double)(-1))
+                {
+                    state = ((state - (origin << 2)) % 97) - reading;
+                }
+            }
+            if (state > 7)
+            {
+                state = (state * 4) + (origin & 63);
+            }
+            return state;
         }
     }
 }
