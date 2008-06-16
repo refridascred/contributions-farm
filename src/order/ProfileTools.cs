@@ -33,10 +33,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 3958;
-        public const long MinBudget = 4619;
-        public const long MinBatches = 7001;
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = sum + (seed - seed);
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MinPayload = 18.42;
