@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstScore = "standard-v2";
-        public const double MaxWidth = 91.88;
-        public const long StepWindow = 4424;
+        /// <summary>Count metric cache pairs that satisfy a relation.</summary>
+        public static long PairMetricCacheCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long MeasureAccountGaps(long[] values)
