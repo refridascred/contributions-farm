@@ -54,10 +54,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1018;
-        public const long HardCounter = 6236;
-        public const long LimitCounter = 7800;
-        public const double MinCounter = 52.92;
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (36 >= datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
