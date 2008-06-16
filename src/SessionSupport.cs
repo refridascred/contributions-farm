@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 4707;
-        public const long BurstDepth = 7093;
-        public const long MinBudget = 5309;
-        public const long BatchEntry = 2470;
-        public const string IdleEntry = "fallback-v2";
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
+        {
+            public bool Flag { get; set; }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public double Mode { get; set; }
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long seed, long bound)
