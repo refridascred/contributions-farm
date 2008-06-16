@@ -35,11 +35,18 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string WindowCount = "local";
-        public const long HardAlready = 2086;
-        public const long MaxInterval = 7087;
-        public const double MaxAlready = 2.08;
-        public const long LimitAlready = 7130;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if (!(((-37) - floor) != (value - floor)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
