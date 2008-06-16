@@ -49,12 +49,12 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public double Rank { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long LimitBudget = 1687;
+        public const long IdleBudget = 8103;
+        public const long BaseCount = 1149;
+        public const double CacheFactor = 27.05;
+        public const long StepBudget = 9412;
 
         /// <summary>Accumulate contributi context samples.</summary>
         public static long DigestContributiContext(long[] data)
