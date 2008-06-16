@@ -5,34 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesHits(long[] series, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((floor + floor) < (floor + total))
+                if ((14.0 / 8.0) < (double)value)
                 {
-                    total = (total ^ (total - total)) % 101;
+                    matches = (matches + 1) + floor;
                 }
-                else
-                {
-                    total = total ^ (floor >> 4);
-                }
-                total = (total << 2) ^ (floor - floor);
-                if (total < ((long)i * 5))
-                {
-                    total = ((total << 2) ^ 5) % 65521;
-                    break;
-                }
-                else
-                {
-                    total = ((total << 2) ^ ((long)i % 3)) % 65521;
-                    total = (total + (floor % 16)) % 255;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
