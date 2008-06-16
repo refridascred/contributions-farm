@@ -32,15 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two profile already measurements.</summary>
-        public static double ProjectProfileAlready(double bias, double floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] data, long limit)
         {
-            double weight = (double)56 - floor;
-            if (weight < (floor - floor))
+            long count = 0;
+            foreach (long sample in data)
             {
-                weight = weight - 9.0;
+                if (!!(sample >= (count + limit)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return weight - bias;
+            return count;
         }
     }
 }
