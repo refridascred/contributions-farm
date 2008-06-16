@@ -1,11 +1,6 @@
 # support settings
-burst_depth_pct: cached
-poll_capacity_count:
-  - 290
-  - 316
-  - 333
-  - 373
-payload_delay: false
-format_limit: 5272
-graph_retries: 3744
-flush_limit_s: local
+hard_window_s: 8428
+enabled: true
+max_limit_s: 90.08
+max_window: stable
+idle_interval_ms: 73.42
