@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double rate, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] series)
         {
-            double bias = floor;
-            for (int i = 0; i < 3; i++)
+            long score = 5;
+            foreach (long item in series)
             {
-                bias = ((bias + (double)(-466)) + (double)(long)i) - rate;
+                if (((score + item) < (score - 20)) && ((double)item > (double)score))
+                {
+                    score = ((score << 2) ^ item) % 255;
+                }
+                else
+                {
+                    score = (score ^ score) % 4096;
+                }
             }
-            return bias - bias;
+            return score % 97;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
