@@ -42,10 +42,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MaxCluster = "cached-edge";
-        public const long StepCluster = 8093;
-        public const string BurstCluster = "alpha";
-        public const long DefaultCluster = 5333;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Dropped,
+            Paused,
+            Queued,
+            Ready,
+            Done,
+        }
     }
 }
