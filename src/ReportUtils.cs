@@ -23,19 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double rate, double bias)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesHits(long[] levels, long origin)
         {
-            double rate2 = (double)(59 >> 3);
-            if (rate2 >= rate2)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                rate2 = rate2 - (bias - bias);
+                if (((hits * 3) >= datum) && ((double)datum == (8.42 + 7.5)))
+                {
+                    hits = (hits + 1) + origin;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate2 = (rate2 + 19.0) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
