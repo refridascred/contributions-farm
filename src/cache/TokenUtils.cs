@@ -28,17 +28,13 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long RollMetric(long target)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = (anchor + (-1)) % 65521;
-                anchor = (anchor + (target << 3)) % 1000;
-                anchor = ((anchor * 2) + (long)i) % 4093;
-            }
-            return anchor;
+            Stale,
+            Paused,
+            Queued,
+            Pending,
         }
 
         /// <summary>Digest a series of order batch entries.</summary>
