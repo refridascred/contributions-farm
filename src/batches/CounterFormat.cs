@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Grade a batches counter value against two limits.</summary>
+        public static long GradeBatchesCounter(long target, long origin)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            if (((15.0 / 2.0) < (double)target) && (origin < (829 - origin)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((11.0 - 9.0) <= (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((524 ^ target) == (3 * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((target - origin) == ((-2) / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
