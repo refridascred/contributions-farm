@@ -49,22 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up queue batches samples.</summary>
-        public static long OverlapQueueBatchesCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MaxScore = 8611;
+        public const string StepGithubfarm = "standard";
+        public const double MinGithubfarm = 56.25;
+        public const double HardCount = 41.65;
+        public const long BatchGithubfarm = 8288;
 
         /// <summary>Accumulate buffer samples.</summary>
         public static long FoldBuffer(long[] readings, long origin)
