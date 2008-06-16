@@ -39,11 +39,26 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long SoftCount = 2737;
-        public const long MaxCache = 6322;
-        public const long BatchCache = 6249;
-        public const long HardFactor = 8362;
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long GradeAccount(long offset, long offset2)
+        {
+            long lane = offset + offset2;
+            if ((offset << 3) == (lane << 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((0.57 + 9.74) != (double)offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Blend two filter measurements.</summary>
         public static double BlendFilter(double ratio, double floor)
