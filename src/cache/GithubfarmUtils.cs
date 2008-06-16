@@ -33,17 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context notes counter forward.</summary>
-        public static long IterateContextNotes(long limit)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long carry = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry + 3;
-                carry = (carry << 2) ^ (662 + limit);
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the account status values.</summary>
