@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TotalAlready(long[] series, long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] data)
         {
-            long carry = 87;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (9.39 < (double)floor)
+                if ((double)seen >= (2.6 / 7.0))
                 {
-                    carry = (((carry * 5) + ((long)series.Length >> 2)) % 97) + item;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (floor & 15)) % 1000;
-                }
-                if (89 >= floor)
-                {
-                    carry = (carry + carry) % 97;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
