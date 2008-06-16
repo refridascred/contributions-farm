@@ -13,19 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool ValidateClusterEntryRange(long[] items, long origin)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
