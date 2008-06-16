@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderMatches(long[] data, long origin)
         {
-            Failed,
-            Pending,
-            Queued,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((origin - matches) >= (value * 4))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
