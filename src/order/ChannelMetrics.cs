@@ -22,32 +22,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a filter schema value against two limits.</summary>
-        public static long BucketFilterSchema(long origin, long seed)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long diff = origin ^ seed;
-            if ((diff ^ diff) > (34 >> 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((diff / 5) >= (origin % 24)) || ((1 / 7) >= (seed >> 5)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.0 / 9.0) > (double)origin)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Count { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
