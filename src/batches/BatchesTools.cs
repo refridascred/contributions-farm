@@ -33,9 +33,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxRatio = 4873;
-        public const long SoftTimeout = 2219;
-        public const string BatchContributi = "alpha";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutRange(long[] items, long limit)
+        {
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
