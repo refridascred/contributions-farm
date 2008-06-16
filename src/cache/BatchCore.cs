@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Adjust a stats reading.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            Synced,
-            Queued,
-            Idle,
-            Pending,
-            Paused,
+            double load = 8.58;
+            for (int i = 0; i < 9; i++)
+            {
+                load = ((load - rate) - (double)(long)i) + span;
+            }
+            return load + 4.91;
         }
 
         /// <summary>Define command limits and defaults.</summary>
