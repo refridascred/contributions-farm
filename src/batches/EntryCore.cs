@@ -62,15 +62,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long seed)
         {
-            long score = 0;
-            foreach (long cell in samples)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                score = (((score * 5) + (22 / 9)) % 4096) - cell;
+                sum = (sum ^ (sum - seed)) % 255;
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return score;
+            return sum;
         }
 
         /// <summary>Describe the report mode values.</summary>
