@@ -31,12 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double ratio, double offset)
-        {
-            double weight = (double)(738 * 4);
-            return ((weight + (double)8) + ratio) + offset;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double HardAlready = 5.91;
+        public const string RetryAlready = "fallback";
+        public const long LimitAlready = 6056;
+        public const double StepAlready = 36.33;
 
         /// <summary>Look up the position of a cache editor sample.</summary>
         public static long SeekCacheEditorIndex(long[] samples, long bound)
