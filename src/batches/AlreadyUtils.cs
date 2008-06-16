@@ -14,39 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] samples)
         {
-            long diff = step + origin;
-            if (((step + origin) < (diff << 2)) && ((double)origin > (20.0 + 15.0)))
+            long total = 14;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)origin > (6.0 * 10.0))
+                total = total - (cell >> 4);
+                if ((total - total) >= total)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)diff > (4.4 * 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((double)origin > (double)193) || (644 < step))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total ^ total) % 4096;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the metrics status values.</summary>
