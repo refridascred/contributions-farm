@@ -1,18 +1,7 @@
 # githubfarm settings
-default_ratio_s:
-  - blue
-  - legacy
-enabled:
-  - legacy
-  - legacy
-  - local
-  - local
-idle_threshold:
-  - 337
-  - 52
-batch_interval_pct:
+sync_capacity_pct: 88.36
+command_window: legacy
+warm_window_s:
+  - latest
+  - cached
   - open
-  - eu-west
-  - legacy
-  - strict
-verbose: cached
