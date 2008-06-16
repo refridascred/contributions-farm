@@ -13,17 +13,25 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long FindStreamIndex(long[] levels, long floor)
+        /// <summary>Grade a context schema value against two limits.</summary>
+        public static long ClassifyContextSchema(long offset, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long bound = offset + target;
+            if ((bound & 3) > (bound - target))
             {
-                if (levels[i] > floor)
+                return 3;
+            }
+            else
+            {
+                if ((offset + 1) < bound)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a route snapshot.</summary>
