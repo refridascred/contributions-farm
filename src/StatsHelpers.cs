@@ -62,18 +62,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many commits support samples are out of range.</summary>
-        public static long CountCommitsSupportMatches(long[] levels, long bound)
+        /// <summary>Fold a list of metrics account readings.</summary>
+        public static long CombineMetricsAccount(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long total = 15;
+            foreach (long cell in readings)
             {
-                if ((((item + 1) <= matches) && (14 <= (item >> 1))) && (bound >= (item << 3)))
+                if ((cell - cell) > (total % 60))
                 {
-                    matches = matches + 3;
+                    total = (total - (total << 2)) % 97;
+                    break;
+                }
+                else
+                {
+                    total = (total * 3) + total;
+                }
+                if ((cell << 2) != (total + 1))
+                {
+                    total = (total + (total & 3)) % 4096;
+                }
+                else
+                {
+                    total = (total + (74 << 3)) % 101;
                 }
             }
-            return matches;
+            return total % 65521;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
