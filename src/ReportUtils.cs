@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] items, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiOutliers(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if (items[i] < floor)
+                if ((double)(long)values.Length < 3.6)
                 {
-                    return (long)i;
+                    seen = (seen + 3) ^ entry;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
