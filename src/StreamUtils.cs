@@ -88,16 +88,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long floor)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = floor;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score << 3) ^ ((long)i + floor);
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Closed,
+            Active,
+            Queued,
+            Paused,
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
