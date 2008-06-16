@@ -10,21 +10,39 @@ namespace Common.Utilities
         public const long BatchWidth = 6064;
         public const long DefaultWidth = 6532;
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long GradeBatches(long step, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long cur = step ^ floor;
+            if ((floor - 595) >= (7 + floor))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!((floor + cur) > step))
                 {
-                    if ((levels[i] + levels[j]) != 15)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor << 3) >= (365 % 2))
                     {
-                        count = count + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + cur) > (step ^ 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a account options.</summary>
