@@ -26,11 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9827;
-        public const string MinRatio = "fallback-v2";
-        public const long CacheWidth = 735;
-        public const double CacheEditor = 98.4;
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 63) > (matches + matches))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long LookupContributiIndex(long[] samples, long limit)
