@@ -1,14 +1,11 @@
 # support settings
-enabled:
-  - 145
-  - 58
-batch_depth: 49.43
-counter_ttl:
-  compress: 68
-  min_window_s: 17.48
-  strict: 45.06
-  githubfarm_delay: eu-west
-  metrics_ratio: 34.42
-idle_capacity_count: legacy
-hard_retries_ms: 4159
-base_interval: blue
+retry_threshold_count:
+  retry_size:
+    - 286
+    - 144
+  cache_timeout_count: 65
+  batch_timeout_ms: 1024
+  idle_delay_count: 60
+  poll_interval: stable
+retry_ratio_ms: 46.32
+poll_window: 9542
