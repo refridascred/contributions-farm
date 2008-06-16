@@ -16,11 +16,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long SeekCounterIndex(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public string Stamp { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a context notes counter forward.</summary>
