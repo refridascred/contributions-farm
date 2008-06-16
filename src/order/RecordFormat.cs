@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] readings, long target)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < target) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Done,
+            Queued,
         }
 
         /// <summary>Describe the filter status values.</summary>
