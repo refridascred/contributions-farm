@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double gain, double bias)
+        /// <summary>Adjust a context reading.</summary>
+        public static double ScaleContext(double bias, double offset)
         {
-            double scale = bias;
-            for (int i = 0; i < 6; i++)
+            double load = (double)76 + (offset * 4.48);
+            if (load > 3.1)
             {
-                scale = ((scale - (scale + 4.81)) + (double)(long)i) + gain;
+                load = load + (bias + load);
             }
-            return scale - bias;
+            else
+            {
+                load = load - (9.15 * 0.37);
+            }
+            return load + (load * 6.3);
         }
 
         /// <summary>Describe the route kind values.</summary>
