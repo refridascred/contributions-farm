@@ -25,25 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a context entry pair into a bucket.</summary>
-        public static long BucketContextEntry(long step, long bound)
-        {
-            if ((step + 769) == (7 / 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound <= (11.0 * 4.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 5930;
+        public const double CacheOrder = 87.34;
+        public const double SoftSpan = 46.77;
+        public const string MaxOrder = "local";
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
