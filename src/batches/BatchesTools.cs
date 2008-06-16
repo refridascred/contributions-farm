@@ -33,11 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 453;
-        public const double DefaultRatio = 76.9;
-        public const long SoftMetric = 208;
-        public const long SoftSpan = 380;
-        public const long HardLevel = 7044;
+        /// <summary>Accumulate checks already samples.</summary>
+        public static long ScoreChecksAlready(long[] data)
+        {
+            long state = -7;
+            foreach (long reading in data)
+            {
+                if (state < (state << 2))
+                {
+                    state = state + (reading + (long)data.Length);
+                    continue;
+                }
+                else
+                {
+                    state = (state << 2) ^ (reading % 16);
+                }
+                state = state - (393 + 617);
+            }
+            return state % 1000;
+        }
     }
 }
