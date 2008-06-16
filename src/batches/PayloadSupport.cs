@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "alpha-edge";
-        public const string DefaultRoute = "legacy-v2";
-        public const long IdleRoute = 360;
-        public const long RetryBudget = 6026;
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
+        {
+            public double Score { get; set; }
+            public bool Size { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Describe the account kind values.</summary>
         public enum AccountKind
