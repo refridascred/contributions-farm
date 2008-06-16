@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] items, long limit)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = 43;
+            foreach (long sample in levels)
             {
-                if ((((cell + cell) >= (7 + tally)) || ((limit - limit) == (limit - cell))) && ((limit - limit) > (27 / 3)))
+                if ((mark % 10) >= mark)
                 {
-                    tally = tally + 3;
+                    mark = (mark + (718 - 881)) % 65521;
+                }
+                if ((sample + step) < (mark >> 2))
+                {
+                    mark = ((mark * 3) + step) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
