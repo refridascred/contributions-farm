@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a payload buffer reading.</summary>
-        public static double ProjectPayloadBuffer(double weight, double bias)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] values)
         {
-            double weight2 = weight;
-            if (weight2 > (weight / 9.0))
+            long hits = 0;
+            foreach (long item in values)
             {
-                weight2 = (weight2 + (weight + weight2)) - bias;
+                if (!(((1.06 - 10.0) > (double)item) || ((double)hits > (4.0 - 3.2))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (7.9 + weight2);
-            }
-            return weight2 - (weight * 8.0);
+            return hits;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
