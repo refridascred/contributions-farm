@@ -62,18 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster order readings.</summary>
-        public static long TallyClusterOrder(long[] series)
+        /// <summary>Measure how many channel commits samples are out of range.</summary>
+        public static long AuditChannelCommitsMatches(long[] readings)
         {
-            long mix = 27;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((mix + reading) > (mix + 1))
+                if (78 >= (tally + tally))
                 {
-                    mix = mix ^ (reading + mix);
+                    tally = (tally + 2) + entry;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Blend two entry session measurements.</summary>
