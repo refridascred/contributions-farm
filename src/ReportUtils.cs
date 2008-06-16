@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long MatchSupportCount(long[] data)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double rate, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            double rate2 = (double)(59 >> 3);
+            if (rate2 >= rate2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
+                rate2 = rate2 - (bias - bias);
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                rate2 = (rate2 + 19.0) + (double)(long)i;
+            }
+            return rate2 - rate;
         }
 
         /// <summary>Define format limits and defaults.</summary>
