@@ -39,12 +39,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MaxMetrics = 66;
-        public const double LimitMetrics = 53.84;
-        public const long WindowMetrics = 6127;
-        public const long RetryDepth = 6654;
-        public const double MinMetrics = 93.82;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool VerifyFarmLimits(long[] series, long floor)
+        {
+            bool flag = true;
+            foreach (long entry in series)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
