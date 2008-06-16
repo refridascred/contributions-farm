@@ -32,38 +32,13 @@ namespace Common.Utilities
         public const long DefaultFormat = 7966;
         public const double MaxFormat = 35.3;
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long floor, long origin)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            if (floor > origin)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((207 * 3) >= floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((origin / 4) == (origin - origin)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin + floor) > (floor - origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Project the next graph value.</summary>
