@@ -39,13 +39,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Synced,
-            Active,
-            Stale,
             New,
+            Queued,
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
