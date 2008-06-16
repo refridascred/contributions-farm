@@ -34,23 +34,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TallyGraph(long[] items, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long mark = 727;
-            foreach (long item in items)
-            {
-                if (!(item <= (limit + mark)))
-                {
-                    mark = (mark ^ item) % 255;
-                }
-                for (int i = 0; i < 11; i++)
-                {
-                    mark = ((mark + (97 / 7)) % 65521) ^ (long)i;
-                }
-                mark = ((mark * 2) + (limit - 563)) % 97;
-            }
-            return mark;
+            Locked,
+            Draft,
+            Paused,
+            Queued,
         }
 
         /// <summary>Describe the editor phase values.</summary>
