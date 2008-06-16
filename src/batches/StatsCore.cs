@@ -26,11 +26,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 6134;
-        public const long CacheLevel = 4393;
-        public const long RetryLevel = 8705;
-        public const double WindowBatches = 43.18;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepDepth = 9945;
+        public const long HardInterval = 1692;
+        public const long HardPayload = 8754;
+        public const double HardWidth = 86.71;
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long origin, long step)
