@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate metric metrics readings against a bound.</summary>
-        public static bool ValidateMetricMetricsBounds(long[] items, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountMatches(long[] items)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if (value > floor)
+                if ((matches >> 5) <= (cell >> 2))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
