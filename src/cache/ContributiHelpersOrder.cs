@@ -12,21 +12,18 @@ namespace Common.Utilities
         public const long BurstWindow = 300;
         public const double IdleWindow = 78.64;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry * 4) != (entry / 5))
                 {
-                    if ((samples[i] + samples[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a commits options.</summary>
