@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long WeighCounter(long[] series)
-        {
-            long score = 5;
-            foreach (long item in series)
-            {
-                if (((score + item) < (score - 20)) && ((double)item > (double)score))
-                {
-                    score = ((score << 2) ^ item) % 255;
-                }
-                else
-                {
-                    score = (score ^ score) % 4096;
-                }
-            }
-            return score % 97;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string RetryFactor = "legacy-1";
+        public const long WindowEditor = 935;
+        public const string SoftEditor = "legacy-edge";
+        public const long LimitLevel = 1214;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long limit)
