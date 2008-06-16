@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 1028;
-        public const double BaseStats = 82.17;
-        public const long WindowCount = 4432;
-        public const long MinDepth = 4468;
-        public const long BurstSize = 9921;
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long limit)
+        {
+            long carry = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                if (!((carry + limit) >= (carry / 4)))
+                {
+                    carry = carry + carry;
+                    carry = carry - carry;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double HardEditor = 43.79;
