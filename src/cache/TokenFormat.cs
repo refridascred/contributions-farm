@@ -37,19 +37,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every format counter entry stays within the limit.</summary>
-        public static bool VerifyFormatCounterRange(long[] readings, long offset)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long CompareTokenCount(long[] items)
         {
-            bool found = true;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
