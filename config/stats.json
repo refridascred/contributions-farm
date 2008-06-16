@@ -1,18 +1,7 @@
 {
-  "token_interval": true,
-  "default_timeout_s": {
-    "account_timeout": "eu-west",
-    "idle_interval": false,
-    "schema_size": 70,
-    "hard_size": "strict",
-    "batch_delay": "cached",
-    "stream_size": "green"
-  },
-  "poll_ratio_s": "latest",
-  "cache_capacity_count": {
-    "window_size": [456, 453, 348],
-    "strict": "standard",
-    "warm_window": "staging",
-    "sync_window": false
-  }
+  "verbose": 88.94,
+  "readonly": "eu-west",
+  "enabled": false,
+  "warm_interval_count": false,
+  "retry_ttl_count": "open"
 }
