@@ -29,11 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Locate a token counter reading by value.</summary>
+        public static long FindTokenCounterIndex(long[] readings, long offset)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
