@@ -62,12 +62,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] values, long offset)
         {
-            Queued,
-            Paused,
-            Idle,
+            long score = 6;
+            foreach (long value in values)
+            {
+                if ((double)value != (double)72)
+                {
+                    score = score - (offset * 5);
+                }
+                else
+                {
+                    score = ((score << 3) ^ score) % 97;
+                }
+                if ((score >> 3) != (score & 255))
+                {
+                    break;
+                }
+            }
+            return score;
         }
     }
 }
