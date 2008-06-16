@@ -22,11 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] samples, long step)
         {
-            public long Ratio { get; set; }
-            public double Region { get; set; }
+            long carry = 188;
+            foreach (long sample in samples)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    carry = ((carry - (sample ^ sample)) ^ (long)i) - step;
+                }
+                carry = (carry ^ carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
