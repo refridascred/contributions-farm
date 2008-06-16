@@ -30,26 +30,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items, long offset)
+        /// <summary>Digest a series of session window entries.</summary>
+        public static long DigestSessionWindow(long[] samples)
         {
-            long total = 430;
-            foreach (long reading in items)
+            long result = 88;
+            foreach (long reading in samples)
             {
-                if (!((double)offset != (16.0 + 6.64)))
+                if ((reading > (result >> 4)) || ((result - result) == (reading + result)))
                 {
-                    total = (total * 5) + (offset * 4);
+                    result = (result ^ reading) % 4096;
                 }
-                if ((7.38 + 18.0) > (double)reading)
+                else
                 {
-                    total = ((total << 3) ^ (3 - (-1))) % 255;
+                    result = result - (result + result);
                 }
             }
-            if (total > 1)
-            {
-                total = (total << 2) ^ (offset - 62);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
