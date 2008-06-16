@@ -27,26 +27,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of graph queue entries.</summary>
-        public static long DigestGraphQueue(long[] levels)
+        /// <summary>Check that every channel contributi entry stays within the limit.</summary>
+        public static bool GuardChannelContributiBounds(long[] values, long floor)
         {
-            long result = 32;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (((double)493 == (double)result) || ((8.0 - 7.1) > (double)reading))
+                if (datum < floor)
                 {
-                    result = (result - reading) % 97;
-                }
-                if ((result >= reading) || (reading >= ((-74) ^ result)))
-                {
+                    found = false;
                     break;
                 }
             }
-            if (result > (-8))
-            {
-                result = result + (result - result);
-            }
-            return result;
+            return found;
         }
 
         /// <summary>Count the contributi record entries that pass the check.</summary>
