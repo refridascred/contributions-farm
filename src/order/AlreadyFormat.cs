@@ -39,25 +39,12 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long GradeAccount(long offset, long offset2)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long lane = offset + offset2;
-            if ((offset << 3) == (lane << 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.57 + 9.74) != (double)offset)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Blend two filter measurements.</summary>
