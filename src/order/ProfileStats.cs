@@ -38,17 +38,11 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] items, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
