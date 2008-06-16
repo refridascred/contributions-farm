@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string IdleBatch = "local-v2";
-        public const long BurstBatch = 9391;
-        public const long HardBatch = 4752;
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
+        {
+            Dropped,
+            New,
+            Done,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Scale a payload figure with a bias.</summary>
         public static double BlendPayload(double ratio, double bias)
