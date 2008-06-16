@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double scale, double offset)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            double bias = offset / 7.0;
-            if (bias >= (8.9 + offset))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                bias = (bias - (bias * 11.0)) - scale;
+                if (matches >= (reading - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                bias = bias + bias;
-            }
-            return bias - (double)(-194);
+            return matches;
         }
 
         /// <summary>Combine context values into a single score.</summary>
