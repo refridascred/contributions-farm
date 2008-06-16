@@ -1,11 +1,6 @@
-id,score,region
-1,526,683
-2,stable,35.14
-3,local,234
-4,9.54,37.93
-5,77.97,edge
-6,open,strict
-7,701,399
-8,109,29.71
-9,767,282
-10,latest,19.81
+id,level,owner,ratio,score
+1,stable,42.99,staging,434
+2,926,legacy,48.42,primary
+3,53.51,80.67,633,55
+4,517,100,stable,977
+5,66.65,98,39.36,eu-west
