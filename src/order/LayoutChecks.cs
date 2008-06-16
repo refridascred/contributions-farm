@@ -49,19 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate layout editor readings against a bound.</summary>
-        public static bool GuardLayoutEditorRange(long[] readings, long floor)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool stale = true;
-            foreach (long entry in readings)
-            {
-                if (entry != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Failed,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the filter level values.</summary>
