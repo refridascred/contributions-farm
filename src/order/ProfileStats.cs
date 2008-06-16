@@ -47,11 +47,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardCount = 7160;
-        public const double CacheRatio = 76.16;
-        public const long MaxCluster = 659;
-        public const string HardLevel = "fallback-v2";
-        public const string LimitCluster = "legacy-v2";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstBudget = 734;
+        public const string HardSize = "strict-edge";
+        public const long CacheRatio = 2778;
+        public const string RetryCount = "latest";
     }
 }
