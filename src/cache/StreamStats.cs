@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long MeasureBatchesWindowHits(long[] series, long step)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)hits >= 3.8)
-                {
-                    hits = ((hits + 2) - value) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 28.96;
+        public const long BaseWidth = 6043;
+        public const long BatchFactor = 9730;
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long floor, long target)
