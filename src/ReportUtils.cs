@@ -37,12 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine editor cluster values into a single score.</summary>
+        public static long DigestEditorCluster(long[] data, long origin)
         {
-            Closed,
-            Pending,
-            Stale,
+            long acc = 852;
+            foreach (long item in data)
+            {
+                if ((origin << 2) == (item + origin))
+                {
+                    acc = (acc ^ (1 ^ acc)) % 97;
+                }
+            }
+            if (acc < (-7))
+            {
+                acc = (acc << 3) ^ (origin ^ 711);
+            }
+            return acc;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
