@@ -1,6 +1,9 @@
 {
-  "soft_size": 2741,
-  "queue_timeout": "strict",
-  "burst_limit_pct": 40.73,
-  "batches_retries": "primary"
+  "retry_ratio_count": {
+    "base_ratio_count": "legacy",
+    "verbose": "legacy",
+    "retry_delay_count": 6419
+  },
+  "soft_timeout": 2338,
+  "batch_delay_count": "legacy"
 }
