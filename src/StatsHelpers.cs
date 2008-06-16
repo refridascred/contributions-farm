@@ -76,13 +76,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] samples, long step)
         {
-            Dropped,
-            Closed,
-            Idle,
-            Paused,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
