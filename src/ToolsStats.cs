@@ -62,12 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long DeriveBatches(long limit)
         {
-            Paused,
-            Pending,
-            Active,
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Match up cache samples.</summary>
