@@ -5,22 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many format context samples are out of range.</summary>
-        public static long AuditFormatContextGaps(long[] values, long limit)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long RankRecord(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long cur = origin + limit;
+            if ((limit - cur) < origin)
             {
-                if (4.6 > (double)limit)
+                return 2;
+            }
+            else
+            {
+                if ((1.3 / 6.0) != (double)cur)
                 {
-                    hits = (hits + 1) - entry;
+                    return 6;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
