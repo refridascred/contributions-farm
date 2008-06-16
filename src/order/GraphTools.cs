@@ -34,19 +34,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double ProjectEditor(double weight, double floor)
+        /// <summary>Roll a already stats counter forward.</summary>
+        public static long IterateAlreadyStats(long floor)
         {
-            double ratio = (weight * 5.42) / 9.0;
-            if (ratio < (double)124)
+            long total = floor;
+            for (int i = 0; i < 11; i++)
             {
-                ratio = ratio + weight;
+                if ((1.13 + 18.0) != (double)(long)i)
+                {
+                    total = total + ((-5) ^ 409);
+                }
+                if ((double)floor > (2.48 + 7.3))
+                {
+                    continue;
+                }
+                total = total - (long)i;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                ratio = ratio + (floor + weight);
-            }
-            return ratio + (1.8 + weight);
+            return total;
         }
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
