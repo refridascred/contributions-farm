@@ -50,11 +50,40 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 1408;
-        public const string BatchSize = "cached-1";
-        public const string RetryInterval = "staging-edge";
-        public const double BaseFactor = 50.01;
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long ClassifyBatches(long step, long limit)
+        {
+            long cur = step + limit;
+            if (step > (step + 30))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((9.5 + 8.01) < (double)cur)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step <= 0.06)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit == (double)step)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1018;
