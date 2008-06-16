@@ -75,38 +75,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long GradeCounter(long offset, long bound)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] readings, long step)
         {
-            if ((5.31 - 2.0) != (double)offset)
+            long acc = 75;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)2 > (double)offset)
+                for (int i = 0; i < 9; i++)
                 {
-                    return 2;
+                    acc = (((acc * 2) + (reading % 97)) % 65521) + (long)i;
                 }
-                else
+                acc = acc + (3 - 77);
+                if (!((4.3 - 7.0) <= (double)acc))
                 {
-                    if ((0.77 - 1.43) == (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((offset / 8) <= (bound * 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (acc > 3)
+            {
+                acc = ((acc << 3) ^ (acc ^ step)) % 101;
+            }
+            return acc % 97;
         }
     }
 }
