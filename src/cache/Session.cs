@@ -41,18 +41,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi record entries that pass the check.</summary>
-        public static long MeasureContributiRecordHits(long[] readings, long bound)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((hits % 12) <= entry)
-                {
-                    hits = (hits + 2) + bound;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Locked,
         }
     }
 }
