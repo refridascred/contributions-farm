@@ -1,25 +1,13 @@
 # githubfarm settings
-retry_interval:
-  min_threshold_s: staging
-  batch_capacity:
-    - 445
-    - 77
-    - 271
-    - 412
-  burst_size: cached
-  burst_retries: 568
-poll_window: 67
-retry_capacity:
-  stats_limit: blue
-  burst_limit_pct: latest
-  idle_ttl_ms: 2517
-  poll_delay_count: 45
-  readonly:
-    hard_window: strict
-    format_ttl: 30
-    dry_run: 13
-    token_interval: 250
-    retry_retries: 12
-  soft_ttl_pct: false
-readonly: standard
-metrics_limit: legacy
+report_window:
+  sync_retries: stable
+  stream_delay: 3096
+  enabled: legacy
+  batch_threshold: 57.77
+  record_capacity:
+    - 386
+    - 377
+    - 334
+persist: 54.43
+cache_capacity_ms: local
+verbose: green
