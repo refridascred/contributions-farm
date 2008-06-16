@@ -41,23 +41,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] series)
         {
-            long mix = 64;
-            foreach (long cell in values)
+            long mix = 962;
+            foreach (long item in series)
             {
-                mix = (mix * 3) + (mix - 18);
-                if ((616 + 0) > cell)
+                mix = (mix << 2) ^ item;
+                if (((item + 3) != (mix >> 5)) || ((mix * 3) <= ((long)series.Length / 8)))
                 {
-                    break;
+                    mix = (mix + (item - mix)) % 101;
                 }
             }
-            if (mix > (-52))
-            {
-                mix = ((mix * 3) + mix) % 1000;
-            }
-            return mix % 65521;
+            return mix % 97;
         }
 
         /// <summary>Audit command format readings against a rule.</summary>
