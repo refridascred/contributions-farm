@@ -29,22 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterGaps(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if (!((double)matches >= (2.59 + 13.0)))
-                {
-                    matches = ((matches + 2) ^ cell) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSize = 2893;
+        public const long StepBuffer = 2679;
+        public const double BaseRatio = 75.92;
+        public const long MaxBuffer = 398;
     }
 }
