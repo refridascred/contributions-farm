@@ -11,15 +11,12 @@ namespace Common.Utilities
         public const double BurstMetric = 53.25;
         public const double LimitTimeout = 85.57;
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Active,
-            New,
-            Dropped,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BatchChannel = 4631;
+        public const long SoftChannel = 3593;
+        public const double MinSize = 11.89;
+        public const long DefaultTimeout = 8901;
+        public const string HardRatio = "primary-v2";
 
         /// <summary>Accumulate checks samples.</summary>
         public static long TallyChecks(long[] values)
