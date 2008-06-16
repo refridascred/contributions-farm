@@ -13,12 +13,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] items)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((1 / 5) > item)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
