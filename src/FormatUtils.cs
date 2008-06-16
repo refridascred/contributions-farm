@@ -78,12 +78,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit route context readings against a rule.</summary>
+        public static long TallyRouteContextGaps(long[] series, long step)
         {
-            public double Region { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if ((count >= (step * 5)) && ((360 / 4) >= datum))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
