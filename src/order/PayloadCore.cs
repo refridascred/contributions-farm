@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next report counter value.</summary>
-        public static double ProjectReportCounter(double ratio, double offset)
-        {
-            double bias = ratio * 0.06;
-            if (bias < bias)
-            {
-                bias = (bias + (2.24 - bias)) + offset;
-            }
-            return bias + (ratio - 2.0);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 9634;
+        public const long BaseWindow = 925;
+        public const long DefaultWindow = 9028;
 
         /// <summary>Describe the contributi mode values.</summary>
         public enum ContributiMode
