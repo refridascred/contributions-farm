@@ -28,12 +28,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleSize = 2587;
-        public const long WindowAlready = 3103;
-        public const string HardAlready = "stable-1";
-        public const long BaseSize = 5380;
-        public const long CacheScore = 1240;
+        /// <summary>Audit account context readings against a rule.</summary>
+        public static long AuditAccountContextHits(long[] values, long offset)
+        {
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (!((item + 5) >= (item << 3)) || ((item + (-7)) > (item & 127)))
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
         public static long ScoreGithubfarmAlready(long[] series, long origin)
