@@ -63,22 +63,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] series, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (!(1 > (matches + limit)))
-                {
-                    matches = (matches + 3) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
