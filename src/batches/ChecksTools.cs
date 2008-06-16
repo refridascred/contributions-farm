@@ -23,21 +23,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of checks batch readings.</summary>
-        public static long CompareChecksBatchCount(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 835;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = result + (datum / 3);
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Hold a context summary.</summary>
