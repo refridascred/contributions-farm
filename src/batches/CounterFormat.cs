@@ -16,25 +16,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a order metrics value against two limits.</summary>
-        public static long SortOrderMetrics(long origin, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double floor)
         {
-            long slot = origin + bound;
-            if (((bound / 4) <= (slot >> 4)) && ((double)origin >= 9.5))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound > (0.8 / 2.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            double drift = weight;
+            return (drift - (double)159) + floor;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
