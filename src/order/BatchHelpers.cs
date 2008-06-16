@@ -34,10 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitCount = 5404;
-        public const long StepBudget = 6455;
-        public const string CacheStream = "standard-1";
-        public const long BaseStream = 189;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((reading ^ reading) >= (count * 3))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
