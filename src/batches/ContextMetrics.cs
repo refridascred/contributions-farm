@@ -12,17 +12,12 @@ namespace Common.Utilities
         public const long StepWidth = 935;
         public const long BatchLevel = 757;
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] values, long target)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Stale,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
