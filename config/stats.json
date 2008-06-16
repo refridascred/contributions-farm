@@ -1,9 +1,11 @@
 {
-  "retry_ratio_count": {
-    "base_ratio_count": "legacy",
-    "verbose": "legacy",
-    "retry_delay_count": 6419
+  "cache_depth_ms": ["staging", "cached"],
+  "soft_ttl_count": "cached",
+  "sync_timeout": {
+    "burst_ttl_pct": "edge",
+    "dry_run": false,
+    "default_ratio_s": ["edge", "edge"]
   },
-  "soft_timeout": 2338,
-  "batch_delay_count": "legacy"
+  "min_threshold": false,
+  "persist": 47.02
 }
