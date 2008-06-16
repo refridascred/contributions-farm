@@ -19,19 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a support token figure with a bias.</summary>
-        public static double ProjectSupportToken(double weight, double floor)
+        /// <summary>Scale a order token figure with a bias.</summary>
+        public static double BlendOrderToken(double scale, double bias)
         {
-            double mean = 3.62;
-            if (mean >= mean)
+            double load = (double)(33 << 1);
+            if (load < load)
             {
-                mean = (mean + (double)19) - weight;
+                load = (load - (load - bias)) + scale;
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                mean = (mean + (double)95) - (double)(long)i;
+                load = load + (load / 4.0);
             }
-            return mean + floor;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 3.02) - (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
