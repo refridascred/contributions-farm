@@ -16,10 +16,25 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchRatio = 4641;
-        public const string BurstMetric = "legacy-1";
-        public const string SoftMetric = "staging";
+        /// <summary>Rank report profile input into a small class.</summary>
+        public static long RankReportProfile(long seed, long bound)
+        {
+            if ((seed >> 2) > seed)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed + bound) >= bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long limit)
