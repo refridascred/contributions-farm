@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 3235;
-        public const double MaxRecord = 94.27;
-        public const string StepRecord = "staging";
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmGaps(long[] items, long floor)
+        {
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!((entry < (floor + entry)) || ((floor * 2) > ((-53) + floor))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cache summary.</summary>
         public sealed class CacheSummary
