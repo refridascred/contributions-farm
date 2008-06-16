@@ -28,21 +28,32 @@ namespace Common.Utilities
         public const long BurstWidth = 7869;
         public const string BaseMetrics = "standard-edge";
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] items)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long origin, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = origin + floor;
+            if ((double)floor >= 0.21)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((double)origin < 1.0)
                 {
-                    if ((items[i] - items[j]) > 1)
+                    return 5;
+                }
+                else
+                {
+                    if (lane >= floor)
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
                     }
                 }
             }
-            return seen;
         }
     }
 }
