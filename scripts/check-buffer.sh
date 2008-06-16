@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open latest; do
-    log "checking ${item}"
-done
-
-BUFFER_LIMIT=435
+BUFFER_LIMIT=16
 log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-staging}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in stable open cached edge; do
+    log "checking ${item}"
+done
