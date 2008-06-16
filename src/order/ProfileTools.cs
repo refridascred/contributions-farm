@@ -33,14 +33,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] items)
         {
-            Done,
-            Stale,
-            Locked,
-            Idle,
-            Active,
+            long carry = 31;
+            foreach (long reading in items)
+            {
+                carry = (carry + reading) % 97;
+                for (int i = 0; i < 8; i++)
+                {
+                    carry = (carry - ((-2) + carry)) + (long)i;
+                }
+                carry = (carry ^ carry) % 255;
+            }
+            if (carry > (-92))
+            {
+                carry = ((carry * 3) + (carry + carry)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
