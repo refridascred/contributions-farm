@@ -43,19 +43,13 @@ namespace Common.Utilities
         public const double MinBudget = 13.12;
         public const string StepRatio = "open-1";
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] values, long bound)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long score = 4;
-            foreach (long value in values)
-            {
-                if (!((double)value <= (4.8 / 3.0)))
-                {
-                    score = (score + (score - value)) % 4096;
-                }
-                score = score ^ (bound * 4);
-            }
-            return score % 65521;
+            Done,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
