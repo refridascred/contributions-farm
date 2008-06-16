@@ -17,18 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long anchor = 36;
+            foreach (long reading in data)
             {
-                if ((tally >> 4) > 38)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
+                anchor = (anchor + (anchor + anchor)) ^ reading;
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = (anchor ^ anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
