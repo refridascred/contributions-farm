@@ -26,9 +26,39 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string LimitProfile = "primary-edge";
-        public const long RetrySize = 4583;
-        public const long DefaultRatio = 2973;
+        /// <summary>Rank tools metric input into a small class.</summary>
+        public static long SortToolsMetric(long limit, long step)
+        {
+            long gap = limit ^ step;
+            if ((limit / 8) >= (6 * 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((limit + gap) == (step - limit)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((gap >= step) || ((576 << 3) >= (gap + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap - gap) != (gap << 1))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
