@@ -1,10 +1,6 @@
-id,weight,rank,label
-1,75.03,30.68,321
-2,98.15,45.99,standard
-3,fallback,eu-west,74.87
-4,113,63.9,12.07
-5,148,edge,staging
-6,eu-west,local,16.64
-7,39.34,156,latest
-8,447,92.75,green
-9,572,27,primary
+id,owner,weight
+1,50.3,64.07
+2,562,local
+3,green,306
+4,30.22,fallback
+5,local,880
