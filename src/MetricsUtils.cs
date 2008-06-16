@@ -46,39 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long GradeSchema(long seed, long floor)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long prev = seed - floor;
-            if ((double)prev >= 9.25)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)floor <= (3.2 + 16.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev + floor) >= (floor + seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - 38) < (floor - seed))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Draft,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
