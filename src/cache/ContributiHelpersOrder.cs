@@ -19,10 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BurstCommand = "alpha-edge";
-        public const long MinRatio = 4247;
-        public const string SoftSize = "stable";
+        /// <summary>Locate a graph queue reading by value.</summary>
+        public static long FindGraphQueueIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] values, long bound)
