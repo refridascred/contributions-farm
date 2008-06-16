@@ -36,12 +36,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long CombineEditorFarm(long[] items, long floor)
         {
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Flag { get; set; }
+            long mark = 70;
+            foreach (long datum in items)
+            {
+                if ((double)mark >= (6.1 * 3.81))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = (mark ^ datum) - floor;
+                }
+                mark = ((mark << 2) ^ 820) % 101;
+            }
+            return mark % 4096;
         }
     }
 }
