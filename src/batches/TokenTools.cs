@@ -26,21 +26,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 255;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((97 - mark) < (reading % 3))
                 {
-                    if ((values[i] ^ values[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    mark = (mark ^ (step << 3)) % 255;
                 }
+                mark = mark - reading;
             }
-            return matches;
+            if (mark < 72)
+            {
+                mark = ((mark * 3) + (mark >> 4)) % 65521;
+            }
+            return mark % 1000;
         }
     }
 }
