@@ -75,12 +75,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long ClassifySupport(long step, long bound)
         {
-            Stale,
-            Queued,
-            Paused,
+            long step2 = step - bound;
+            if (bound >= (step2 & 31))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((47 ^ step) <= (step2 - bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)670 < (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
