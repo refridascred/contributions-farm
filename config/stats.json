@@ -1,9 +1,8 @@
 {
-  "queue_ratio": ["green", "blue", "local"],
-  "poll_depth_s": ["standard", "cached", "green"],
-  "dry_run": {
-    "soft_interval_pct": "primary",
-    "already_capacity": 51,
-    "poll_size_s": false
-  }
+  "schema_interval": ["edge", "open", "eu-west"],
+  "retry_retries_s": 7105,
+  "burst_retries_s": 44.32,
+  "cache_interval": 100,
+  "warm_delay": "green",
+  "githubfarm_ratio": false
 }
