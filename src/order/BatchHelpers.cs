@@ -34,17 +34,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LocateSchemaIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitCount = 5404;
+        public const long StepBudget = 6455;
+        public const string CacheStream = "standard-1";
+        public const long BaseStream = 189;
     }
 }
