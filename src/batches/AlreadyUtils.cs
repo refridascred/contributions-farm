@@ -60,24 +60,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long step, long step2)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LookupToolsIndex(long[] levels, long target)
         {
-            if ((double)step2 >= 1.6)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((step / 3) <= step2))
+                if ((levels[i] > target) && ((levels[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next order value.</summary>
