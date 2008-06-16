@@ -66,19 +66,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a buffer metrics reading.</summary>
-        public static double ScaleBufferMetrics(double bias, double span)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] items, long target)
         {
-            double mean = bias;
-            if (mean > bias)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                mean = mean + (mean * 3.8);
+                if ((double)entry > (9.4 + 10.0))
+                {
+                    tally = (tally + 3) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - span) + (double)(long)i;
-            }
-            return mean - bias;
+            return tally;
         }
     }
 }
