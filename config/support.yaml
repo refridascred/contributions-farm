@@ -1,17 +1,4 @@
 # support settings
-audit: 2599
-compress: true
-counter_size: 66
-batch_limit:
-  entry_limit: 35.81
-  payload_delay: local
-  enabled: 500
-  context_ratio: false
-  soft_ratio_count:
-    - latest
-    - stable
-    - fallback
-    - stable
-  base_size_count: 73.87
-sync_delay_s: standard
-retry_retries: 86.15
+session_ttl: open
+filter_delay: 182
+max_ratio_s: true
