@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long target, long bound)
         {
-            Closed,
-            Retry,
-            Draft,
-            New,
+            long lane = target - bound;
+            if (lane > (lane % 60))
+            {
+                return 4;
+            }
+            else
+            {
+                if (lane > bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((2 & 255) >= bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
