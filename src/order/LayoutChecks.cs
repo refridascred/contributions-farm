@@ -49,12 +49,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MaxScore = 8611;
-        public const string StepGithubfarm = "standard";
-        public const double MinGithubfarm = 56.25;
-        public const double HardCount = 41.65;
-        public const long BatchGithubfarm = 8288;
+        /// <summary>Validate layout editor readings against a bound.</summary>
+        public static bool GuardLayoutEditorRange(long[] readings, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in readings)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
