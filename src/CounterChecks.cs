@@ -55,10 +55,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double StepSpan = 18.94;
-        public const long BaseDepth = 9778;
-        public const string BurstBudget = "fallback-edge";
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long IterateOrder(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 24; i++)
+            {
+                result = ((result << 2) ^ (step + (long)i)) % 101;
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long CountWindowOutliers(long[] values, long bound)
