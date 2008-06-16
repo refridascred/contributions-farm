@@ -1,14 +1,11 @@
 # Command notes
 
-Run the session check before changing any payload limits.
-When a entry fails, the metrics handler retries a few times before giving up.
-Keep support and record names short and lowercase.
-
-When a editor fails, the cluster handler retries a few times before giving up.
-Keep layout and payload names short and lowercase.
+Use filter settings to tune how often stats data is refreshed.
+A command that stays idle for too long is moved to the entry list.
 
 ## Guidelines
 
-- Log every layout change
-- Keep payload values small
-- Review counter limits each release
+- Document new support fields
+- Keep order values small
+- Prefer stats defaults
+- Log every tools change
