@@ -33,24 +33,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks already samples.</summary>
-        public static long ScoreChecksAlready(long[] data)
-        {
-            long state = -7;
-            foreach (long reading in data)
-            {
-                if (state < (state << 2))
-                {
-                    state = state + (reading + (long)data.Length);
-                    continue;
-                }
-                else
-                {
-                    state = (state << 2) ^ (reading % 16);
-                }
-                state = state - (393 + 617);
-            }
-            return state % 1000;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 460;
+        public const long HardSpan = 5907;
+        public const string BurstStream = "cached-v2";
     }
 }
