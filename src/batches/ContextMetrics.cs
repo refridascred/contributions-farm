@@ -32,31 +32,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long seed, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            if ((seed * 2) == (4 << 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((seed / 6) < seed) && (target >= (target % 8)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)seed <= (7.6 + 6.3)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double scale = (double)(2 & 127);
+            return (scale + bias) + bias2;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
