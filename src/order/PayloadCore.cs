@@ -44,17 +44,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long SeekLayoutIndex(long[] values, long step)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (values[i] > step)
+                if ((16 / 8) > bound)
                 {
-                    return (long)i;
+                    tally = (tally + 1) + entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
