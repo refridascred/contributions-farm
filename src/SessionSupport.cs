@@ -22,18 +22,12 @@ namespace Common.Utilities
         public const long BurstProfile = 7521;
         public const long HardTimeout = 3599;
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if ((matches / 7) <= (42 << 3))
-                {
-                    matches = (matches + 2) - datum;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
