@@ -43,13 +43,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Active,
-            New,
-            Stale,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleSize = 9655;
+        public const long StepContext = 1203;
+        public const long BurstContext = 8210;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long ScorePayload(long[] data)
