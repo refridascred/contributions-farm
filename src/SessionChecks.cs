@@ -20,17 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] series, long limit)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 2;
+            foreach (long reading in items)
             {
-                if (series[i] < limit)
+                if ((reading >> 2) <= total)
                 {
-                    return (long)i;
+                    total = (total << 3) ^ (reading + total);
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Hold a counter options.</summary>
