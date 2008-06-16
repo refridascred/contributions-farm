@@ -1,5 +1,8 @@
 {
-  "cache_retries_pct": 250,
-  "metrics_ttl": "latest",
-  "default_ratio_count": 938
+  "retry_ttl": "strict",
+  "burst_limit": "primary",
+  "hard_interval_s": "standard",
+  "default_depth": "eu-west",
+  "idle_threshold_pct": "eu-west",
+  "batch_window_pct": "stable"
 }
