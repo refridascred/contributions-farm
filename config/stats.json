@@ -1,6 +1,6 @@
 {
-  "idle_window": "blue",
-  "batch_ttl_s": ["stable", "primary", "eu-west", "staging"],
-  "compress": 30,
-  "default_delay": 80.58
+  "enabled": ["eu-west", "cached", "fallback", "strict"],
+  "channel_interval": 32,
+  "editor_ttl": ["latest", "stable", "eu-west", "latest"],
+  "cache_ratio_count": "local"
 }
