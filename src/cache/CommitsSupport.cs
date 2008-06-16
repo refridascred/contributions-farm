@@ -41,26 +41,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long limit, long origin)
-        {
-            long step = limit ^ origin;
-            if ((step + step) >= (limit * 4))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step < (limit << 2))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 3441;
+        public const string BurstAlready = "local-1";
+        public const string LimitAlready = "staging";
 
         /// <summary>Fold a list of support filter readings.</summary>
         public static long TotalSupportFilter(long[] samples, long origin)
