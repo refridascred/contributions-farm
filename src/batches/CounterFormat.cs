@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] series)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double scale, double offset)
         {
-            long mark = 954;
-            foreach (long reading in series)
+            double gain = 1.1 - (2.6 - scale);
+            if (gain < offset)
             {
-                if ((reading ^ mark) <= (mark - mark))
-                {
-                    mark = ((mark << 3) ^ (reading << 3)) % 101;
-                }
-                if (((657 * 2) == (mark & 255)) || ((double)mark >= (double)reading))
-                {
-                    break;
-                }
+                gain = gain - (double)3;
             }
-            return mark % 97;
+            else
+            {
+                gain = gain + 4.13;
+            }
+            return gain + (scale + offset);
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
