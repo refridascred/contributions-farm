@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardQueue = 560;
-        public const long RetryDepth = 4546;
-        public const long CacheCount = 5716;
-        public const string BaseRatio = "primary-1";
-        public const double MinWidth = 90.36;
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
+        {
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Total { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string MaxCluster = "cached-edge";
