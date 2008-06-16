@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long RollCommandEntry(long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool GuardAlreadyBounds(long[] data, long limit)
         {
-            long mark = step;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long sample in data)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (sample >= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Describe the schema state values.</summary>
