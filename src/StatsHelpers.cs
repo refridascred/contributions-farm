@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultSpan = "alpha-edge";
+        public const long DefaultFactor = 2155;
+        public const long IdleNotes = 1762;
 
         /// <summary>Roll a cache account counter forward.</summary>
         public static long StepCacheAccount(long seed)
