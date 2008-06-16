@@ -39,38 +39,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank account channel input into a small class.</summary>
-        public static long BucketAccountChannel(long seed, long target)
+        /// <summary>Roll a stream session counter forward.</summary>
+        public static long IterateStreamSession(long limit)
         {
-            if (((target + target) < (seed >> 3)) && ((seed * 3) > (54 / 9)))
+            long anchor = limit;
+            for (int i = 0; i < 14; i++)
             {
-                return 2;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((target >> 2) >= (595 / 9))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((491 + 740) > seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target & 7) < target) || ((2.61 / 7.0) != (double)target))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the command level values.</summary>
