@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest standard fallback; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-COMMAND_LIMIT=41
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-fallback}"
+case "${mode}" in
+    primary)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
