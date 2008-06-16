@@ -36,16 +36,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] readings)
-        {
-            long state = 0;
-            foreach (long datum in readings)
-            {
-                state = ((state * 4) + datum) % 65521;
-                state = ((state * 4) + (state + state)) % 97;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 4769;
+        public const double WindowFactor = 33.67;
+        public const long HardStream = 4979;
+        public const double IdleRatio = 65.1;
+        public const long CacheStream = 9050;
     }
 }
