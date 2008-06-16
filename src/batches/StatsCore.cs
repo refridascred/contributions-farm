@@ -70,13 +70,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] readings)
         {
-            Retry,
-            Locked,
-            Synced,
-            New,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((value + 4) >= hits) && ((hits << 1) <= hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
