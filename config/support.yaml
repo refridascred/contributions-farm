@@ -1,10 +1,7 @@
 # support settings
-base_retries_ms: 13
-cache_interval_s:
-  - 305
-  - 295
-retry_limit_count:
-  - 232
-  - 77
-  - 288
-  - 213
+retry_threshold_pct: false
+min_ttl: 70
+burst_depth_pct: 65.02
+min_ratio_pct: false
+idle_timeout_ms: staging
+compress: 30
