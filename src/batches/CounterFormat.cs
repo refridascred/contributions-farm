@@ -23,11 +23,16 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor - (829 + 1)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
