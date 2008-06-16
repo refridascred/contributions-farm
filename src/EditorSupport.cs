@@ -45,12 +45,12 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 3590;
-        public const double BurstFilter = 17.96;
-        public const double MinFactor = 8.2;
-        public const string IdleLevel = "alpha";
-        public const long DefaultFilter = 8423;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Project the next account value.</summary>
         public static double SmoothAccount(double rate, double bias)
