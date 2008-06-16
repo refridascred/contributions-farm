@@ -36,18 +36,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window queue readings.</summary>
-        public static long WeighWindowQueue(long[] data)
+        /// <summary>Validate order format readings against a bound.</summary>
+        public static bool ValidateOrderFormatLimits(long[] series, long origin)
         {
-            long acc = 986;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if ((double)datum <= 9.32)
+                if (item >= origin)
                 {
-                    acc = acc + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return acc;
+            return stale;
         }
 
         /// <summary>Compare every pair of support channel readings.</summary>
