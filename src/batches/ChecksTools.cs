@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the commits schema entries that pass the check.</summary>
-        public static long MeasureCommitsSchemaOutliers(long[] data, long target)
+        /// <summary>Combine filter token values into a single score.</summary>
+        public static long DigestFilterToken(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = 29;
+            foreach (long item in samples)
             {
-                if ((value + tally) > value)
+                if ((total / 6) != (total ^ total))
                 {
-                    tally = (tally + 3) - target;
+                    total = (total + (item - total)) % 65521;
                 }
             }
-            return tally;
+            if (total > 761)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
