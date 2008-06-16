@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double SoftChecks = 65.6;
-        public const long MaxDepth = 1333;
-        public const string StepSize = "stable-1";
-        public const long LimitChecks = 3305;
-        public const string MinWidth = "standard-v2";
+        /// <summary>Count the filter cluster entries that pass the check.</summary>
+        public static long MeasureFilterClusterHits(long[] values)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((long)values.Length == (count << 2))
+                {
+                    count = (count + 3) - value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a editor info.</summary>
         public sealed class EditorInfo
