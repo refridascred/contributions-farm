@@ -41,15 +41,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next channel contributi value from a seed.</summary>
-        public static long StepChannelContributi(long floor)
+        /// <summary>Combine metrics context values into a single score.</summary>
+        public static long DigestMetricsContext(long[] items, long target)
         {
-            long result = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 35;
+            foreach (long sample in items)
             {
-                result = ((result * 3) + (long)i) % 97;
+                state = ((state << 3) ^ (sample + sample)) - target;
             }
-            return result;
+            return state % 4096;
         }
     }
 }
