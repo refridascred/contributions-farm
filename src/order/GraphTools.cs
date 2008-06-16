@@ -21,25 +21,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a context schema value against two limits.</summary>
-        public static long ClassifyContextSchema(long offset, long target)
+        /// <summary>Count account queue pairs that satisfy a relation.</summary>
+        public static long CompareAccountQueueCount(long[] values)
         {
-            long bound = offset + target;
-            if ((bound & 3) > (bound - target))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset + 1) < bound)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    if ((values[i] ^ values[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a route snapshot.</summary>
