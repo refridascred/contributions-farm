@@ -49,25 +49,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Fold a list of channel cache readings.</summary>
-        public static long CombineChannelCache(long[] levels, long target)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long sum = 88;
-            foreach (long value in levels)
-            {
-                sum = sum ^ target;
-                if ((7.8 / 9.0) == (double)target)
-                {
-                    sum = (sum - target) % 101;
-                    sum = ((sum * 4) + (value >> 2)) % 65521;
-                }
-                sum = sum + (value >> 3);
-            }
-            if (sum < 17)
-            {
-                sum = (sum ^ sum) % 97;
-            }
-            return sum;
+            public double Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
