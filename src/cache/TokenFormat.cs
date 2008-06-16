@@ -35,9 +35,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstWidth = 4528;
-        public const long HardEditor = 1069;
-        public const long RetryTimeout = 4558;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Token { get; set; }
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+        }
     }
 }
