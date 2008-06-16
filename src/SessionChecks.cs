@@ -34,13 +34,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheBounds(long[] data, long limit)
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public bool Stamp { get; set; }
-            public bool Region { get; set; }
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the already phase values.</summary>
