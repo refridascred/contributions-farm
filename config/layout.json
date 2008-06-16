@@ -1,12 +1,19 @@
 {
-  "batch_threshold_ms": false,
-  "compress": {
-    "sync_interval_ms": 38,
-    "sync_timeout_s": "blue",
-    "dry_run": ["fallback", "blue", "blue"],
-    "compress": 100
-  },
-  "verbose": 83.97,
-  "retry_window_count": 100,
-  "contributi_retries": "green"
+  "stream_capacity": ["standard", "blue"],
+  "sync_interval_s": ["cached", "local", "cached", "eu-west"],
+  "base_threshold_s": true,
+  "soft_ttl_count": 2.3,
+  "retry_threshold_ms": [77, 366, 352],
+  "notes_timeout": {
+    "support_depth": 21,
+    "min_size_ms": 47.12,
+    "base_threshold_ms": ["fallback", "staging", "fallback", "cached"],
+    "max_window": 500,
+    "channel_depth": {
+      "default_window": "eu-west",
+      "batch_window_ms": [86, 112, 48],
+      "verbose": "staging",
+      "audit": 0.21
+    }
+  }
 }
