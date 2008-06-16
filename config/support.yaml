@@ -1,4 +1,11 @@
 # support settings
-session_ttl: open
-filter_delay: 182
-max_ratio_s: true
+format_threshold:
+  retry_threshold_count:
+    - standard
+    - staging
+    - eu-west
+    - stable
+  warm_limit: 6429
+  order_ttl: false
+batch_interval: blue
+verbose: true
