@@ -62,31 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of metrics account readings.</summary>
-        public static long CombineMetricsAccount(long[] readings)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenLimits(long[] values, long offset)
         {
-            long total = 15;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if ((cell - cell) > (total % 60))
+                if (item != offset)
                 {
-                    total = (total - (total << 2)) % 97;
+                    stale = false;
                     break;
                 }
-                else
-                {
-                    total = (total * 3) + total;
-                }
-                if ((cell << 2) != (total + 1))
-                {
-                    total = (total + (total & 3)) % 4096;
-                }
-                else
-                {
-                    total = (total + (74 << 3)) % 101;
-                }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
