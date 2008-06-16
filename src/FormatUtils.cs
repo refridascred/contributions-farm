@@ -97,15 +97,32 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] series)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long offset, long seed)
         {
-            long state = 6;
-            foreach (long datum in series)
+            long gap = offset + seed;
+            if (gap >= (gap - offset))
             {
-                state = (state - (datum * 5)) % 97;
+                return 4;
             }
-            return state;
+            else
+            {
+                if ((-8) < seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((offset + offset) >= seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
