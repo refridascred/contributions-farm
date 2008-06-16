@@ -26,20 +26,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] readings, long seed)
-        {
-            bool valid = true;
-            foreach (long datum in readings)
-            {
-                if (datum > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double LimitAlready = 96.66;
+        public const long BaseLevel = 4001;
+        public const long DefaultAlready = 5020;
+        public const string StepAlready = "stable-edge";
 
         /// <summary>Iterate the metrics series from a seed.</summary>
         public static long DeriveMetrics(long origin)
