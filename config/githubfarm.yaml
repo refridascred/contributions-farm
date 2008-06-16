@@ -1,12 +1,16 @@
 # githubfarm settings
-flush_delay:
-  persist: 8.52
-  max_threshold: legacy
-  cache_capacity: blue
-  enabled: 9770
-soft_ratio_count:
-  max_delay: 78.9
-  dry_run: primary
-  entry_depth: fallback
-burst_retries_count: 48.44
-stats_size: primary
+retry_capacity_ms: 81.2
+burst_retries_pct:
+  min_retries_s: true
+  readonly:
+    burst_limit_count: false
+    flush_window: cached
+    enabled: 57
+  cache_timeout_ms: cached
+  farm_delay: latest
+  persist: false
+batch_timeout_ms: 94.33
+cache_delay_pct:
+  - 17
+  - 210
+  - 180
