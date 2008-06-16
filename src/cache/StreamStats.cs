@@ -36,12 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Ready,
-            Retry,
-            Done,
+            public bool Score { get; set; }
+            public long Level { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
