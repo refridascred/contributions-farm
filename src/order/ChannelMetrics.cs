@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string IdleTools = "latest-edge";
-        public const long WindowTools = 6575;
-        public const long RetryTools = 8298;
-        public const double StepTools = 74.85;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordGaps(long[] items, long bound)
+        {
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((3.73 / 5.0) != (double)seen)
+                {
+                    seen = ((seen + 1) ^ reading) - bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
