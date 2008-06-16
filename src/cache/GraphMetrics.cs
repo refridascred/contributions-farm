@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const long BaseSize = 2399;
         public const double LimitBatches = 33.85;
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long bound, long target)
+        /// <summary>Combine farm window values into a single score.</summary>
+        public static long ScoreFarmWindow(long[] series, long step)
         {
-            long edge = bound + target;
-            if ((2.15 - 9.69) != (double)bound)
+            long sum = 2;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)target > (19.0 / 7.0))
+                if (((cell / 2) >= cell) && ((step * 2) != (sum << 2)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((651 + bound) != (edge + target))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    sum = (sum ^ (cell << 2)) % 1000;
                 }
             }
+            return sum;
         }
 
         /// <summary>Hold a token entry.</summary>
