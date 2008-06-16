@@ -1,16 +1,25 @@
 # githubfarm settings
-retry_capacity_ms: 81.2
-burst_retries_pct:
-  min_retries_s: true
+retry_interval:
+  min_threshold_s: staging
+  batch_capacity:
+    - 445
+    - 77
+    - 271
+    - 412
+  burst_size: cached
+  burst_retries: 568
+poll_window: 67
+retry_capacity:
+  stats_limit: blue
+  burst_limit_pct: latest
+  idle_ttl_ms: 2517
+  poll_delay_count: 45
   readonly:
-    burst_limit_count: false
-    flush_window: cached
-    enabled: 57
-  cache_timeout_ms: cached
-  farm_delay: latest
-  persist: false
-batch_timeout_ms: 94.33
-cache_delay_pct:
-  - 17
-  - 210
-  - 180
+    hard_window: strict
+    format_ttl: 30
+    dry_run: 13
+    token_interval: 250
+    retry_retries: 12
+  soft_ttl_pct: false
+readonly: standard
+metrics_limit: legacy
