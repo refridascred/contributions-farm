@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Fold a list of stats schema readings.</summary>
+        public static long FoldStatsSchema(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 96;
+            foreach (long datum in values)
             {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (result * 3)) - datum;
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
