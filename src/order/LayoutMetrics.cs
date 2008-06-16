@@ -23,11 +23,32 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultRatio = 8.05;
-        public const string CacheMetric = "fallback";
-        public const long MinBudget = 3223;
-        public const string BaseMetric = "standard-edge";
+        /// <summary>Grade a command token value against two limits.</summary>
+        public static long ClassifyCommandToken(long origin, long seed)
+        {
+            if ((78 % 12) == (seed + seed))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed + origin) >= (origin + origin))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((seed << 1) > origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Compare every pair of cache readings.</summary>
         public static long PairCacheCount(long[] series)
