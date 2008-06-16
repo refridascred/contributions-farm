@@ -23,22 +23,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long state = 795;
-            foreach (long sample in samples)
-            {
-                if (!((double)state <= (8.16 / 8.0)))
-                {
-                    state = ((state ^ (state * 5)) % 101) + sample;
-                }
-            }
-            if (state > (-6))
-            {
-                state = state - (6 % 64);
-            }
-            return state % 4096;
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
