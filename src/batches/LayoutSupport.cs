@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples, long origin)
+        /// <summary>Accumulate token farm samples.</summary>
+        public static long TotalTokenFarm(long[] levels)
         {
-            long carry = 815;
-            foreach (long reading in samples)
+            long sum = 735;
+            foreach (long reading in levels)
             {
-                carry = ((carry - (261 & 1)) % 4096) ^ reading;
+                if ((reading ^ reading) >= (sum + 6))
+                {
+                    sum = (sum + (608 + sum)) % 1000;
+                }
             }
-            if (carry > 367)
-            {
-                carry = (carry * 4) + (origin - 285);
-            }
-            return carry % 1000;
+            return sum;
         }
 
         /// <summary>Accumulate farm samples.</summary>
