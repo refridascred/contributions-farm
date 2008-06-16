@@ -19,14 +19,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] series, long origin)
         {
-            Done,
-            Locked,
-            Ready,
-            Queued,
-            Stale,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((entry - matches) <= (matches << 3))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
