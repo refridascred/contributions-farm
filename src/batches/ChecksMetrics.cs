@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples, long step)
+        /// <summary>Blend two filter profile measurements.</summary>
+        public static double ScaleFilterProfile(double ratio, double span)
         {
-            long result = 456;
-            foreach (long datum in samples)
-            {
-                if (datum <= (datum % 100))
-                {
-                    result = (((result << 3) ^ (result / 7)) % 4096) + step;
-                }
-            }
-            return result;
+            double rate = (ratio * 16.0) * 1.5;
+            return rate - (ratio + span);
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
