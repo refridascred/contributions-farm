@@ -1,12 +1,4 @@
 # entry settings
-dry_run:
-  - 68
-  - 57
-  - 57
-  - 355
-entry_depth:
-  - 349
-  - 175
-audit: 55
-base_interval_ms: local
-idle_retries: 13.07
+base_limit_pct: 21.12
+soft_size: staging
+sync_ttl: fallback
