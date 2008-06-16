@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterRange(long[] samples, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long seed, long bound)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            if (((bound * 4) <= (bound / 8)) && ((double)seed == (3.7 * 0.95)))
             {
-                if (sample > origin)
+                return 4;
+            }
+            else
+            {
+                if ((6.0 - 5.0) >= (double)bound)
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
