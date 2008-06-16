@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatMatches(long[] series)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if ((datum << 2) > (count - datum))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
