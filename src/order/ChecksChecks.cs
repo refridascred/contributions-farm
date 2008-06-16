@@ -35,14 +35,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
-        {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxEditor = 2819;
+        public const long BurstScore = 7023;
+        public const long BurstEditor = 7126;
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
