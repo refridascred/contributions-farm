@@ -1,6 +1,18 @@
 # githubfarm settings
-enabled: cached
-stats_depth: true
-payload_delay: 21
-hard_threshold: standard
-sync_interval_count: 1024
+enabled: 1509
+burst_window_pct:
+  window_interval: strict
+  base_ratio_pct: false
+  base_limit: 17.43
+  soft_retries_s:
+    min_interval_pct: strict
+    soft_ratio_pct: 13.63
+    burst_limit_ms: true
+    sync_capacity_s: false
+  max_timeout:
+    route_capacity: 26.26
+    verbose: 88.85
+    burst_window_s: local
+  base_capacity_pct: primary
+max_timeout_s: open
+queue_delay: true
