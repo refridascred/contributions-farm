@@ -27,31 +27,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long bound)
+        /// <summary>Match up order samples.</summary>
+        public static long CompareOrderCount(long[] series)
         {
-            if ((double)target > (8.2 / 7.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (target > (4 >> 1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound << 2) < (180 + (-72)))
+                    if ((series[i] ^ series[j]) != 10)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
