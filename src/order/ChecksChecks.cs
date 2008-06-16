@@ -16,11 +16,22 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double BlendChecks(double ratio, double offset)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long RollQueue(long target)
         {
-            double rate = (double)(369 + 699);
-            return ((rate - (rate * 4.2)) + ratio) + offset;
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((3.15 * 8.6) != (double)target))
+                {
+                    carry = carry + (89 - target);
+                    carry = carry - (37 - 3);
+                }
+                carry = (carry - (target - carry)) % 255;
+                carry = ((carry * 2) + (target / 3)) % 97;
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of editor farm entries.</summary>
