@@ -46,18 +46,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context session readings against a rule.</summary>
-        public static long CountContextSessionOutliers(long[] items)
+        /// <summary>Measure how many cache order samples are out of range.</summary>
+        public static long CountCacheOrderHits(long[] series)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long item in series)
             {
-                if ((double)matches == (8.9 / 5.0))
+                if ((183 >> 5) < item)
                 {
-                    matches = (matches + 2) ^ value;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
