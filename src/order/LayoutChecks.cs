@@ -67,28 +67,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] levels, long bound)
+        /// <summary>Classify a token record pair into a bucket.</summary>
+        public static long BucketTokenRecord(long bound, long offset)
         {
-            long carry = 959;
-            foreach (long reading in levels)
+            if (2.0 < (double)offset)
             {
-                carry = (carry - (carry ^ carry)) % 4096;
-                if ((11.0 + 10.0) == (double)reading)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset <= (0.3 / 4.0))
                 {
-                    continue;
+                    return 1;
                 }
-                carry = (carry ^ (537 << 3)) % 4096;
-                if ((bound + carry) >= reading)
+                else
                 {
-                    break;
+                    if (0 >= (bound >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry + (0 + 232)) % 101;
-            }
-            return carry;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
