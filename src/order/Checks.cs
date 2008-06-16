@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxEntry = 776;
-        public const long BatchEntry = 4850;
-        public const double WindowEntry = 41.51;
-        public const long DefaultEntry = 4764;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Idle,
+            Retry,
+            Ready,
+            Closed,
+            Synced,
+        }
 
         /// <summary>Blend two metric measurements.</summary>
         public static double SmoothMetric(double scale, double offset)
