@@ -44,15 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double scale, double span)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            double drift = scale;
-            for (int i = 0; i < 8; i++)
-            {
-                drift = ((drift + scale) - (double)(long)i) - span;
-            }
-            return drift - (double)0;
+            public double Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Project the next context farm value.</summary>
