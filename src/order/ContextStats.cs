@@ -39,12 +39,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferOutliers(long[] levels, long floor)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((double)seen < (8.0 - 4.3))
+                {
+                    seen = ((seen + 3) ^ value) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
