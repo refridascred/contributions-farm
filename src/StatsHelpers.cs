@@ -23,16 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics contributi entries.</summary>
-        public static long ScoreMetricsContributi(long[] readings)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long bound)
         {
-            long anchor = 7;
-            foreach (long item in readings)
+            long anchor = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)anchor > (1.0 * 1.3))
-                {
-                    anchor = ((anchor ^ (anchor + (long)readings.Length)) % 97) + item;
-                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
             return anchor;
         }
