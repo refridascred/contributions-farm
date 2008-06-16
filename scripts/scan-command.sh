@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-open}"
+mode="${1:-strict}"
 case "${mode}" in
-    standard)
+    fallback)
         log "fast path"
         ;;
     *)
@@ -17,10 +17,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 11); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-COMMAND_LIMIT=95
-log "limit is ${COMMAND_LIMIT}"
