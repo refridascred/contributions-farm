@@ -19,12 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            public double Level { get; set; }
-            public bool Owner { get; set; }
-            public string Limit { get; set; } = "";
+            Idle,
+            Closed,
+            Queued,
+            New,
         }
 
         /// <summary>Match up order samples.</summary>
