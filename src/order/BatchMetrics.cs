@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] samples, long step)
-        {
-            long carry = 188;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = ((carry - (sample ^ sample)) ^ (long)i) - step;
-                }
-                carry = (carry ^ carry) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 3807;
+        public const double BaseStats = 18.16;
+        public const long DefaultStats = 7100;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] values, long target)
