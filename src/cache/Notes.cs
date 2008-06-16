@@ -32,14 +32,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Find the first record route entry that matches the target.</summary>
+        public static long LookupRecordRouteIndex(long[] data, long origin)
         {
-            New,
-            Queued,
-            Retry,
-            Failed,
-            Locked,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
