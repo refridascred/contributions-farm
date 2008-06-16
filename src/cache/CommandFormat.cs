@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            Closed,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a stream info.</summary>
