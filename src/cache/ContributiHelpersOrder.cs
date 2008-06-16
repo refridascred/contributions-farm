@@ -26,20 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool VerifyFarmLimits(long[] items, long target)
-        {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9827;
+        public const string MinRatio = "fallback-v2";
+        public const long CacheWidth = 735;
+        public const double CacheEditor = 98.4;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long FindFarmIndex(long[] readings, long bound)
