@@ -40,13 +40,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Roll a editor buffer counter forward.</summary>
+        public static long IterateEditorBuffer(long target)
         {
-            New,
-            Synced,
-            Locked,
-            Queued,
+            long sum = target;
+            for (int i = 0; i < 17; i++)
+            {
+                sum = (sum << 3) ^ ((long)i << 1);
+                sum = ((sum * 5) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of schema tools entries.</summary>
