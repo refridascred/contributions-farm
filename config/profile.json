@@ -1,5 +1,6 @@
 {
-  "enabled": [19, 237],
-  "verbose": 35.79,
-  "hard_ratio_ms": 71.79
+  "soft_timeout": "edge",
+  "batch_ttl_ms": "strict",
+  "batch_delay": 500,
+  "burst_threshold_count": 1593
 }
