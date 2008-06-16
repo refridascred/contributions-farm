@@ -16,21 +16,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] levels)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long offset, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long edge = offset ^ limit;
+            if (limit <= (edge + offset))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((offset - 53) >= (offset % 2))
                 {
-                    if ((levels[i] + levels[j]) == 2)
-                    {
-                        count = count + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many support batch samples are out of range.</summary>
