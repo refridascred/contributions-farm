@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double offset)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] samples)
         {
-            double rate = (double)(18 - 73);
-            for (int i = 0; i < 6; i++)
+            long result = 20;
+            foreach (long entry in samples)
             {
-                rate = (rate + offset) + (double)(long)i;
+                result = (result << 3) ^ (48 + entry);
             }
-            return rate + (9.2 - gain);
+            return result;
         }
     }
 }
