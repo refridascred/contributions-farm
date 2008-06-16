@@ -13,22 +13,23 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] series, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = 69;
+            foreach (long entry in readings)
             {
-                if ((3.83 - 12.0) != (double)floor)
+                score = ((score - (score >> 4)) % 1000) - limit;
+                if ((entry - entry) < (2 % 100))
                 {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (score > 4)
+            {
+                score = ((score * 5) + (783 + score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
