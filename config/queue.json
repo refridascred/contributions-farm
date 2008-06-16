@@ -1,9 +1,5 @@
 {
-  "min_ratio_count": {
-    "batch_ttl_count": ["stable", "standard", "legacy", "blue"],
-    "dry_run": "stable",
-    "flush_depth": [117, 134]
-  },
-  "entry_depth": 250,
-  "soft_interval_s": 7226
+  "verbose": 58,
+  "channel_window": [82, 225],
+  "idle_delay_count": "open"
 }
