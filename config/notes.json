@@ -1,17 +1,17 @@
 {
-  "idle_window_count": 79,
-  "hard_ttl_count": 99,
-  "retry_size_s": true,
-  "editor_interval": false,
-  "warm_timeout": {
-    "context_depth": "latest",
-    "tools_ratio": "eu-west",
-    "max_limit_count": {
-      "payload_window": true,
-      "enabled": false,
-      "burst_delay_count": 60,
-      "dry_run": 250,
-      "burst_depth_count": "stable"
-    }
-  }
+  "graph_size": 6438,
+  "soft_size_count": {
+    "default_window_s": 17.0,
+    "farm_interval": 27,
+    "audit": {
+      "max_interval": "stable",
+      "flush_window_s": 26.52,
+      "batches_timeout": 1702
+    },
+    "batch_limit_count": "fallback",
+    "warm_retries_s": "edge",
+    "sync_ratio": 67
+  },
+  "metrics_threshold": 59,
+  "readonly": "fallback"
 }
