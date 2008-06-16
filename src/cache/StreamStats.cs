@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long acc = offset;
-            for (int i = 0; i < 15; i++)
+            long carry = -715;
+            foreach (long value in items)
             {
-                acc = (acc * 2) + 59;
-                acc = (acc * 5) + (long)i;
-                acc = ((acc * 5) + (long)i) % 65521;
+                if ((5.38 + 2.4) <= (double)carry)
+                {
+                    carry = ((carry * 3) + value) % 4096;
+                }
             }
-            return acc;
+            if (carry > 82)
+            {
+                carry = (carry + carry) % 4096;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
