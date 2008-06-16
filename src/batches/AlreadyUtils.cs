@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate session token samples.</summary>
-        public static long WeighSessionToken(long[] data, long floor)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long carry = -18;
-            foreach (long reading in data)
-            {
-                if ((double)reading <= (4.0 - 9.0))
-                {
-                    carry = (carry ^ (reading << 2)) + floor;
-                }
-            }
-            return carry;
+            New,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
