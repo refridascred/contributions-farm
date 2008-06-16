@@ -47,20 +47,11 @@ namespace Common.Utilities
             return gain + (double)504;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] levels, long bound)
-        {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepGithubfarm = 48;
+        public const string LimitGithubfarm = "standard";
+        public const string MinDepth = "cached";
+        public const long MinGithubfarm = 5794;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] readings, long step)
