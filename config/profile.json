@@ -1,5 +1,12 @@
 {
-  "soft_threshold_pct": 2.94,
-  "strict": false,
-  "readonly": 38.3
+  "batch_interval": true,
+  "soft_window_s": 789,
+  "flush_retries": false,
+  "min_retries_pct": {
+    "session_size": 30,
+    "route_size": "strict",
+    "persist": "fallback",
+    "notes_ttl": 65.4
+  },
+  "sync_ratio_pct": 1.21
 }
