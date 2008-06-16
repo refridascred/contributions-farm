@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ProjectLayout(double gain, double floor)
+        /// <summary>Grade a cache metrics value against two limits.</summary>
+        public static long GradeCacheMetrics(long floor, long seed)
         {
-            double mean = gain * 8.83;
-            for (int i = 0; i < 4; i++)
+            long diff = floor - seed;
+            if ((6 / 4) >= (seed % 100))
             {
-                mean = ((mean - gain) + (double)(long)i) + floor;
+                return 8;
             }
-            return mean - gain;
+            else
+            {
+                if (diff < seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (seed >= 8)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
