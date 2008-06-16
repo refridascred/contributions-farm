@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a cache metrics value against two limits.</summary>
-        public static long GradeCacheMetrics(long floor, long seed)
+        /// <summary>Scale a metric window figure with a bias.</summary>
+        public static double BlendMetricWindow(double weight, double bias)
         {
-            long diff = floor - seed;
-            if ((6 / 4) >= (seed % 100))
+            double gain = weight - (weight - bias);
+            if (gain <= (weight + gain))
             {
-                return 8;
+                gain = gain - (bias - weight);
             }
             else
             {
-                if (diff < seed)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (seed >= 8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                gain = gain + gain;
             }
+            return gain + bias;
         }
 
         /// <summary>Hold a cache summary.</summary>
