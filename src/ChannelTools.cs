@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a payload stats value against two limits.</summary>
-        public static long GradePayloadStats(long offset, long target)
+        /// <summary>Digest a series of route cluster entries.</summary>
+        public static long FoldRouteCluster(long[] samples, long seed)
         {
-            if ((double)69 != (double)offset)
+            long anchor = -9;
+            foreach (long value in samples)
             {
-                return 5;
+                anchor = ((anchor + (value + 68)) % 101) - seed;
             }
-            else
+            if (anchor > 3)
             {
-                if ((target * 4) >= (offset / 8))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 3) > offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target >> 3) >= (offset >> 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = anchor ^ (anchor & 7);
             }
+            return anchor % 97;
         }
 
         /// <summary>Grade a record payload value against two limits.</summary>
