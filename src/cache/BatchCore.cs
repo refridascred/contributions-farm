@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
-        {
-            public long Total { get; set; }
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseRatio = 6332;
+        public const long CacheCommand = 2978;
+        public const long StepCommand = 9884;
+        public const long StepInterval = 36;
+        public const string MaxWidth = "stable-1";
 
         /// <summary>Scale a editor figure with a bias.</summary>
         public static double ProjectEditor(double gain, double bias)
