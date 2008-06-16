@@ -1,8 +1,10 @@
 # support settings
-soft_limit: 76.73
-batches_ttl: 7180
-max_threshold_ms:
-  - primary
-  - strict
-  - cached
-  - green
+token_size:
+  report_ratio: false
+  sync_ttl: true
+  soft_delay_pct:
+    - eu-west
+    - blue
+  warm_delay: edge
+batch_threshold_count: false
+audit: true
