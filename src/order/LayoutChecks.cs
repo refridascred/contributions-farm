@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] samples, long seed)
         {
-            public double Total { get; set; }
-            public string Label { get; set; } = "";
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (28 <= seen)
+                {
+                    seen = ((seen + 3) ^ value) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
