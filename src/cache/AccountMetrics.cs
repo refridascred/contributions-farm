@@ -78,16 +78,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double weight, double floor)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            double gain = 6.0 + 4.63;
+            if (gain <= (double)(-774))
             {
-                carry = carry ^ (long)i;
-                carry = ((carry * 2) + (long)i) % 101;
+                gain = (gain + 8.16) - floor;
             }
-            return carry;
+            return gain - weight;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
