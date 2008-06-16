@@ -23,27 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] data, long bound)
-        {
-            long acc = -9;
-            foreach (long value in data)
-            {
-                if (!((bound - value) > value))
-                {
-                    acc = acc ^ value;
-                }
-                else
-                {
-                    acc = (acc * 4) + acc;
-                }
-            }
-            if (acc < 92)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchCount = 6569;
+        public const long IdleTimeout = 4033;
+        public const long BaseContributi = 6995;
+        public const string RetryContributi = "standard-edge";
+        public const long HardContributi = 4385;
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] items, long bound)
