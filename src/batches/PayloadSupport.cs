@@ -22,17 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long bound)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ScaleLayout(double gain, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias = 2.0;
+            if (bias > (gain - bias))
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                bias = (bias + (bias + gain)) + span;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias + (double)211) + (double)(long)i;
+            }
+            return bias - (double)1;
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
