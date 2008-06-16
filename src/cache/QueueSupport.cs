@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchMatches(long[] samples, long seed)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ScaleContext(double gain, double floor)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double drift = floor - gain;
+            if (drift >= (double)65)
             {
-                if (345 < (29 + seed))
-                {
-                    matches = (matches + 3) + reading;
-                }
+                drift = drift - (double)5;
             }
-            return matches;
+            return drift - gain;
         }
     }
 }
