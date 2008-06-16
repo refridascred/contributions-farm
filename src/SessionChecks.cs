@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] readings, long bound)
+        /// <summary>Scale a stats channel figure with a bias.</summary>
+        public static double AdjustStatsChannel(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            double load = 14.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound - sample) != (bound * 3))
-                {
-                    tally = tally + 1;
-                }
+                load = (((load - (14.0 * 1.7)) - (double)(long)i) - gain) + offset;
             }
-            return tally;
+            return load - load;
         }
 
         /// <summary>Describe the route class values.</summary>
