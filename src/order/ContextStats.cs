@@ -25,18 +25,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many support record samples are out of range.</summary>
-        public static long TallySupportRecordMatches(long[] levels)
+        /// <summary>Grade a token entry value against two limits.</summary>
+        public static long RankTokenEntry(long seed, long limit)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long delta = seed - limit;
+            if ((3.6 * 0.4) < (double)seed)
             {
-                if ((6.57 + 3.14) >= (double)count)
+                return 6;
+            }
+            else
+            {
+                if ((limit + delta) == (3 + seed))
                 {
-                    count = (count + 3) - item;
+                    return 3;
+                }
+                else
+                {
+                    if ((delta % 64) != (delta - delta))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)seed == (4.6 - 7.54))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
