@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const double StepTimeout = 97.14;
         public const double LimitContributi = 98.86;
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long limit)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long value in data)
             {
-                if ((levels[i] < limit) && ((levels[i] % 3) == 0))
+                if ((((step * 5) < (77 + count)) || ((count + 16) != (value ^ 115))) && ((245 - 1) != (step - value)))
                 {
-                    return (long)i;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
