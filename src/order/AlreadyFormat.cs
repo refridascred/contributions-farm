@@ -23,39 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long SortAlready(long seed, long step)
+        /// <summary>Measure how many token editor samples are out of range.</summary>
+        public static long CountTokenEditorMatches(long[] data)
         {
-            long edge = seed ^ step;
-            if (!((double)edge > (17.0 - 6.39)))
+            long count = 0;
+            foreach (long value in data)
             {
-                return 5;
-            }
-            else
-            {
-                if (((seed - 5) < (step - edge)) && ((seed - step) == (step >> 2)))
+                if ((value & 255) <= count)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((13.0 + 4.0) < (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (edge <= (628 << 2))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Scale a already session figure with a bias.</summary>
