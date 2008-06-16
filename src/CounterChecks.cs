@@ -42,21 +42,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
-        public static long PairMetricsBufferCount(long[] readings)
+        /// <summary>Check that every format stats entry stays within the limit.</summary>
+        public static bool CheckFormatStatsLimits(long[] series, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item > seed)
                 {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
