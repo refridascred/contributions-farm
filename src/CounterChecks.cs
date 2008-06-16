@@ -57,16 +57,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 10; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double StepSpan = 18.94;
+        public const long BaseDepth = 9778;
+        public const string BurstBudget = "fallback-edge";
 
         /// <summary>Classify a cluster schema pair into a bucket.</summary>
         public static long ClassifyClusterSchema(long floor, long offset)
