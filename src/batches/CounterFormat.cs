@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double scale, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long seed)
         {
-            double gain = 1.1 - (2.6 - scale);
-            if (gain < offset)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                gain = gain - (double)3;
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (anchor & 63)) ^ (long)i2;
+                }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                gain = gain + 4.13;
-            }
-            return gain + (scale + offset);
+            return anchor;
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
