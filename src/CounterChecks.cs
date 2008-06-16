@@ -45,28 +45,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] samples, long floor)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long sum = 453;
-            foreach (long sample in samples)
-            {
-                if ((floor - sum) >= (sample % 97))
-                {
-                    sum = (sum ^ sample) % 65521;
-                }
-                else
-                {
-                    sum = (sum + (floor & 15)) % 101;
-                }
-                sum = ((sum << 3) ^ (sample % 8)) % 255;
-                sum = ((sum * 3) + ((-58) + sample)) % 255;
-            }
-            if (sum > 732)
-            {
-                sum = sum ^ (sum >> 5);
-            }
-            return sum;
+            public double Weight { get; set; }
+            public double Region { get; set; }
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
