@@ -91,11 +91,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchRatio = 30.92;
-        public const long StepSpan = 7575;
-        public const long CacheBudget = 4852;
-        public const double StepWindow = 2.66;
-        public const long SoftLevel = 6211;
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public long Owner { get; set; }
+        }
     }
 }
