@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] levels, long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TotalWindow(long[] readings, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long total = 2;
+            foreach (long cell in readings)
             {
-                if ((item & 255) > (offset >> 4))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total - (origin ^ 75)) % 4096) ^ cell;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Count the entry account entries that pass the check.</summary>
