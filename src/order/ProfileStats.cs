@@ -26,13 +26,10 @@ namespace Common.Utilities
         public const string LimitOrder = "legacy";
         public const string HardOrder = "strict-1";
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
-        {
-            Closed,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryBudget = 2520;
+        public const long MinTimeout = 5806;
+        public const long IdleChecks = 7688;
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] readings, long target)
