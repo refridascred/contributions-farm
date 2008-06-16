@@ -1,8 +1,13 @@
 {
-  "max_ratio_pct": "green",
-  "base_delay_pct": 34.01,
-  "max_timeout": false,
-  "stream_delay": 25,
-  "flush_depth_ms": "local",
-  "max_limit": 25.28
+  "soft_depth": 70,
+  "persist": "green",
+  "cache_threshold_pct": 250,
+  "max_ttl": {
+    "max_retries_ms": false,
+    "dry_run": 71.49,
+    "max_delay_s": "edge",
+    "hard_timeout_s": 25.99,
+    "base_interval_s": "blue",
+    "default_ratio_pct": "cached"
+  }
 }
