@@ -1,10 +1,5 @@
 {
-  "max_interval_pct": {
-    "batch_retries": false,
-    "flush_timeout": 7091,
-    "hard_delay_count": 30
-  },
-  "dry_run": 92,
-  "strict": ["staging", "legacy", "eu-west", "edge"],
-  "cache_window_pct": ["standard", "green", "strict", "fallback"]
+  "readonly": 8254,
+  "flush_threshold_count": [367, 3],
+  "min_window_ms": 8406
 }
