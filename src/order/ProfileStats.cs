@@ -41,12 +41,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Idle,
-            Queued,
-            Closed,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryWidth = 1103;
+        public const string MinCommits = "stable-1";
+        public const long HardCommits = 7034;
+        public const long IdleCommits = 3993;
     }
 }
