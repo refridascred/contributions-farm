@@ -48,13 +48,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            Done,
+            Closed,
+            New,
+            Pending,
+            Stale,
         }
     }
 }
