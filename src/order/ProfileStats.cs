@@ -27,10 +27,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstBudget = 734;
-        public const string HardSize = "strict-edge";
-        public const long CacheRatio = 2778;
-        public const string RetryCount = "latest";
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Retry,
+            Synced,
+            Locked,
+            Pending,
+        }
     }
 }
