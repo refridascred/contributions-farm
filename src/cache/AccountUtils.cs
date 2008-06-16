@@ -17,17 +17,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a tools githubfarm reading by value.</summary>
-        public static long LocateToolsGithubfarmIndex(long[] levels, long step)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long ScoreTools(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 836;
+            foreach (long cell in levels)
             {
-                if (levels[i] == step)
-                {
-                    return (long)i;
-                }
+                score = ((score ^ (cell - score)) % 255) - floor;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Describe the queue state values.</summary>
