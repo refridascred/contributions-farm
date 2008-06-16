@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double scale, double floor)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long LocateQueueIndex(long[] items, long seed)
         {
-            double load = floor - (floor * 7.82);
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                load = ((load - load) + (double)(long)i) - scale;
+                if (items[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return load + 6.4;
+            return -1;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
