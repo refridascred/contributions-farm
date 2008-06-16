@@ -47,14 +47,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            Locked,
-            Retry,
-            Failed,
-            Draft,
-            Active,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if ((datum + seen) < (datum & 3))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count editor commits pairs that satisfy a relation.</summary>
