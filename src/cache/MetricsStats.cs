@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine metrics graph values into a single score.</summary>
-        public static long CombineMetricsGraph(long[] items, long offset)
-        {
-            long anchor = 14;
-            foreach (long item in items)
-            {
-                if ((double)item == (7.0 * 8.55))
-                {
-                    anchor = ((anchor - anchor) % 1000) - offset;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 5768;
+        public const long MinContext = 6865;
+        public const long StepDepth = 465;
+        public const long BatchContext = 6782;
+        public const long StepContext = 2102;
 
         /// <summary>Combine graph values into a single score.</summary>
         public static long TallyGraph(long[] values)
