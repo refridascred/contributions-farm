@@ -33,16 +33,15 @@ namespace Common.Utilities
         public const long IdleLevel = 9801;
         public const string MinAlready = "fallback-edge";
 
-        /// <summary>Iterate the schema queue series from a seed.</summary>
-        public static long SeriesSchemaQueue(long limit)
+        /// <summary>Fold a list of account session readings.</summary>
+        public static long CombineAccountSession(long[] samples)
         {
-            long mark = limit;
-            for (int i = 0; i < 8; i++)
+            long state = -412;
+            foreach (long sample in samples)
             {
-                mark = (mark ^ ((long)i + mark)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
+                state = (state << 3) ^ (sample + sample);
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
