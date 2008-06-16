@@ -55,22 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphGaps(long[] readings, long floor)
+        /// <summary>Derive the next format account value from a seed.</summary>
+        public static long StepFormatAccount(long offset)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long state = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((6.8 - 8.0) == (double)count)
+                if (((double)offset <= (12.0 * 2.0)) || (((long)i - state) < ((long)i >> 1)))
                 {
-                    count = ((count + 1) ^ item) + floor;
+                    state = (state ^ (840 << 2)) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Count the farm already entries that pass the check.</summary>
