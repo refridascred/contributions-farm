@@ -27,23 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
+        public static long MeasureGithubfarmContributiGaps(long[] items)
         {
-            long anchor = 280;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                anchor = (anchor ^ (item ^ item)) % 4096;
-                if ((double)anchor < (4.6 * 9.03))
+                if (((item % 60) <= item) || ((double)item > (18.0 - 1.3)))
                 {
-                    anchor = (anchor - (item % 24)) % 65521;
+                    matches = matches + 1;
                 }
             }
-            if (anchor > 1)
-            {
-                anchor = (anchor * 5) + anchor;
-            }
-            return anchor % 97;
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
