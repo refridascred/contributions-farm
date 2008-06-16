@@ -70,13 +70,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] levels, long floor)
         {
-            Failed,
-            Pending,
-            Dropped,
-            Draft,
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((tally + floor) <= (tally * 2))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
