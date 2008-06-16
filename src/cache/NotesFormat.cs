@@ -32,10 +32,24 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string WindowProfile = "fallback-v2";
-        public const long StepProfile = 2117;
-        public const long LimitProfile = 8114;
+        /// <summary>Project the next metrics value.</summary>
+        public static double AdjustMetrics(double scale, double bias)
+        {
+            double gain = scale;
+            if (gain < (gain / 6.0))
+            {
+                gain = gain + bias;
+            }
+            else
+            {
+                gain = gain + scale;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + bias) + (double)(long)i;
+            }
+            return gain + (scale - scale);
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
