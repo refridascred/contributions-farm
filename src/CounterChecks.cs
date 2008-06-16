@@ -60,32 +60,22 @@ namespace Common.Utilities
         public const long BaseDepth = 9778;
         public const string BurstBudget = "fallback-edge";
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long limit, long origin)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowOutliers(long[] values, long bound)
         {
-            long offset = limit + origin;
-            if ((-954) < (offset + limit))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin == (13.0 * 6.42))
+                if (!((double)sample > (double)893))
                 {
-                    return 8;
+                    seen = (seen + 1) - bound;
                 }
                 else
                 {
-                    if (limit < offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count account record pairs that satisfy a relation.</summary>
