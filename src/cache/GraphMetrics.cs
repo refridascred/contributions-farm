@@ -52,22 +52,17 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsHits(long[] readings, long floor)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((item / 6) <= (matches + 9)))
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
-                    matches = (matches + 1) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
