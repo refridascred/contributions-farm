@@ -57,32 +57,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long GradeFilter(long target, long floor)
+        /// <summary>Project the next order value.</summary>
+        public static double SmoothOrder(double gain, double floor)
         {
-            long delta = target - floor;
-            if ((floor * 3) == (floor + floor))
+            double scale = (double)(2 - 27);
+            if (scale <= (floor * 7.1))
             {
-                return 2;
+                scale = scale + (gain - gain);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((floor - floor) <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((0.9 / 8.0) != (double)delta)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                scale = (scale + gain) + (double)(long)i;
             }
+            return scale - floor;
         }
 
         /// <summary>Describe the stats state values.</summary>
