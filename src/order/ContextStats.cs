@@ -42,23 +42,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a order queue counter forward.</summary>
-        public static long RollOrderQueue(long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] items, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            long mix = 8;
+            foreach (long reading in items)
             {
-                if (!(((long)i + score) <= (limit + (-67))))
+                long slot = reading + (reading << 1);
+                mix = (mix ^ (slot * 4)) % 101;
+                if (reading < (floor % 5))
                 {
-                    score = (score - (score + limit)) % 4096;
+                    mix = (mix ^ (floor + 5)) % 65521;
                 }
-                if (((score - 80) >= score) && ((double)limit <= (double)(long)i))
-                {
-                    score = (score + (long)i) % 101;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
+            if (mix > 9)
+            {
+                mix = (mix - floor) % 65521;
+            }
+            return mix;
         }
     }
 }
