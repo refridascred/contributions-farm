@@ -64,18 +64,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first entry token entry that matches the target.</summary>
-        public static long FindEntryTokenIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 5542;
+        public const long BaseLevel = 1181;
+        public const long CacheBudget = 1351;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] values, long offset)
