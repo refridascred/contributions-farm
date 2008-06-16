@@ -22,19 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double ScaleLayout(double gain, double span)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            double bias = 2.0;
-            if (bias > (gain - bias))
-            {
-                bias = (bias + (bias + gain)) + span;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias + (double)211) + (double)(long)i;
-            }
-            return bias - (double)1;
+            Closed,
+            Locked,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Adjust a githubfarm reading.</summary>
