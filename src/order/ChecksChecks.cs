@@ -20,11 +20,19 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseLevel = 1552;
-        public const long RetryEntry = 3391;
-        public const string CacheWidth = "alpha-edge";
-        public const double WindowEntry = 20.07;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricMatches(long[] levels, long seed)
+        {
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((seed + (long)levels.Length) <= (item << 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank batch filter input into a small class.</summary>
         public static long SortBatchFilter(long step, long offset)
