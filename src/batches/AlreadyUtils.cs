@@ -75,19 +75,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] series, long target)
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double weight, double span)
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double ratio = (weight / 3.0) / 8.0;
+            return (ratio - weight) + span;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
