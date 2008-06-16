@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmHits(long[] series)
         {
-            New,
-            Closed,
-            Draft,
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((entry / 8) == (entry + count))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
