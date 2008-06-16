@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mean + ratio;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] samples, long floor)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry >= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Retry,
+            Idle,
+            Queued,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
