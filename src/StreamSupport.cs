@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long IterateQueue(long target)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] items, long bound)
         {
-            long state = target;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state << 3) ^ (state & 3)) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                if (items[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
