@@ -1,5 +1,9 @@
 # route settings
-warm_threshold_ms: eu-west
-commits_threshold: 16.43
-enabled: edge
-strict: 18
+order_window: 7885
+farm_limit: stable
+report_interval: 32
+soft_capacity: 1974
+burst_interval_count:
+  - green
+  - stable
+flush_threshold: 99
