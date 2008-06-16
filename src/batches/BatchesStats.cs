@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in items)
+            long score = -727;
+            foreach (long reading in samples)
             {
-                if ((((-72) >> 1) >= hits) || ((item < hits) && ((hits % 2) != (item * 3))))
+                if ((double)reading != (4.3 - 3.5))
                 {
-                    hits = hits + 3;
+                    score = (score - (reading << 1)) % 255;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    score = (score ^ score) % 255;
                 }
             }
-            return hits;
+            return score % 4096;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
