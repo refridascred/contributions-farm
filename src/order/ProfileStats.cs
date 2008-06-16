@@ -13,23 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TotalTools(long[] levels, long origin)
-        {
-            long acc = -403;
-            foreach (long reading in levels)
-            {
-                if ((97 & 1) == (origin >> 2))
-                {
-                    acc = ((acc * 4) + (origin * 3)) + reading;
-                }
-            }
-            if (acc < 17)
-            {
-                acc = ((acc << 3) ^ (origin / 5)) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinContributi = 6674;
+        public const long CacheContributi = 9284;
+        public const double IdleBudget = 48.45;
+        public const double WindowContributi = 5.96;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long RetryBudget = 2520;
