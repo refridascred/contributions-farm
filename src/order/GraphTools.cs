@@ -40,23 +40,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] series, long floor)
         {
-            long total = 517;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                if (((0.36 / 7.0) != (double)entry) || ((572 % 10) >= total))
+                if (entry < floor)
                 {
-                    total = (total ^ (9 % 100)) % 97;
-                    continue;
-                }
-                if ((total / 4) > entry)
-                {
-                    total = (total - (193 - total)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
