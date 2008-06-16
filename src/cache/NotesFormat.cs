@@ -14,20 +14,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] levels)
+        /// <summary>Project the next editor metric value.</summary>
+        public static double ProjectEditorMetric(double scale, double span)
         {
-            long score = 85;
-            foreach (long reading in levels)
+            double rate = span;
+            for (int i = 0; i < 9; i++)
             {
-                score = score + (score / 4);
-                score = (score ^ (score ^ reading)) % 101;
+                rate = (rate - scale) - (double)(long)i;
             }
-            if (score > 404)
-            {
-                score = (score ^ (score ^ score)) % 255;
-            }
-            return score;
+            return rate + (span * 8.5);
         }
 
         /// <summary>Describe the cache status values.</summary>
