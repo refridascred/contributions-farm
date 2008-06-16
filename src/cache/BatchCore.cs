@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TallyEntry(long[] series)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long MatchPayloadCount(long[] levels)
         {
-            long acc = 78;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = (acc ^ entry) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (acc > 9)
-            {
-                acc = (acc ^ (acc * 4)) % 1000;
-            }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Describe the graph status values.</summary>
