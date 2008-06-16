@@ -5,10 +5,33 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const string BatchSupport = "alpha-1";
-        public const long BatchWidth = 6064;
-        public const long DefaultWidth = 6532;
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long BucketCache(long target, long bound)
+        {
+            long slot = target + bound;
+            if (((bound - 652) != (0 + bound)) && (bound <= (slot + bound)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((((-1) << 1) <= (target << 1)) || ((9.64 - 7.8) > (double)bound))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((target / 4) <= (763 + slot)) && ((double)slot != (12.0 / 9.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cache entries.</summary>
         public static long TotalCache(long[] levels)
