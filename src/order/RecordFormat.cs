@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const long WindowFactor = 6263;
         public const long BurstRatio = 1389;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long offset)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if ((0.74 - 3.8) > (double)(long)i)
-                {
-                    continue;
-                }
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
