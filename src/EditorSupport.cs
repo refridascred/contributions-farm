@@ -67,18 +67,39 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportHits(long[] items, long target)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long seed, long target)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long diff = seed + target;
+            if ((seed * 2) >= (seed + seed))
             {
-                if ((hits + target) <= (target ^ target))
+                return 5;
+            }
+            else
+            {
+                if ((21 >> 3) != (seed + seed))
                 {
-                    hits = (hits + 2) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)seed >= (0.8 * 2.0)) || ((seed >> 5) <= (diff + 5)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff ^ diff) <= ((-4) / 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
