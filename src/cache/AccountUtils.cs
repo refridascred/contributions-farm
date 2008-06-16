@@ -32,32 +32,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a route batch pair into a bucket.</summary>
-        public static long ClassifyRouteBatch(long origin, long origin2)
+        /// <summary>Measure how many payload window samples are out of range.</summary>
+        public static long MeasurePayloadWindowHits(long[] samples)
         {
-            long lane = origin ^ origin2;
-            if (!((2.9 - 2.0) != (double)origin2))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin * 2) != (origin2 % 100))
+                if ((((item ^ seen) >= (item >> 1)) && ((8.5 / 6.0) < (double)item)) || ((double)seen > (1.42 / 8.0)))
                 {
-                    return 3;
+                    seen = seen + 2;
                 }
                 else
                 {
-                    if (((origin * 3) >= ((-43) - 906)) && ((430 ^ lane) < (origin2 >> 3)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
