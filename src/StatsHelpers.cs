@@ -56,10 +56,10 @@ namespace Common.Utilities
         public const string RetryInterval = "staging-edge";
         public const double BaseFactor = 50.01;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BatchToken = 75.52;
-        public const long DefaultLevel = 3465;
-        public const long HardDepth = 6632;
-        public const long StepDepth = 153;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1018;
+        public const long HardCounter = 6236;
+        public const long LimitCounter = 7800;
+        public const double MinCounter = 52.92;
     }
 }
