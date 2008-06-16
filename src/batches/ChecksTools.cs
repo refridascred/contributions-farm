@@ -40,15 +40,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double ScaleBatches(double ratio, double floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            double weight = floor / 8.0;
-            if (weight < weight)
-            {
-                weight = weight - 1.0;
-            }
-            return weight + ratio;
+            public long Weight { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
