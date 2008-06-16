@@ -40,28 +40,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long target)
+        /// <summary>Look up the position of a counter report sample.</summary>
+        public static long LookupCounterReportIndex(long[] items, long seed)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = acc + target;
-                if ((17.0 - 4.38) <= (double)target)
+                if (items[i] <= seed)
                 {
-                    acc = (acc + ((long)i - (long)i)) % 101;
+                    return (long)i;
                 }
-                if (((double)target < (double)(long)i) && ((target % 12) <= (658 - target)))
-                {
-                    acc = (acc + ((long)i / 3)) % 1000;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (target / 6);
-                }
-                acc = ((acc * 5) + (long)i) % 101;
             }
-            return acc;
+            return -1;
         }
     }
 }
