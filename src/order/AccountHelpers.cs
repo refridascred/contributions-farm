@@ -14,12 +14,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TallyEditor(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long sum = 9;
+            foreach (long datum in levels)
+            {
+                if (!((datum / 2) == (datum % 10)))
+                {
+                    sum = (sum + datum) % 65521;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (datum + datum)) % 101;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Combine support values into a single score.</summary>
