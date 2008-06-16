@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] samples)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long seed, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed + limit;
+            if (seed > (seed >> 2))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (224 <= (delta % 16))
                 {
-                    if ((samples[i] ^ samples[j]) < 4)
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed >= (7.86 + 5.0))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit record commits readings against a rule.</summary>
