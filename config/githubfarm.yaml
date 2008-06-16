@@ -1,22 +1,7 @@
 # githubfarm settings
-base_delay: false
-poll_size_s:
-  base_interval:
-    verbose: false
-    poll_ratio_s: 100
-    farm_limit: blue
-  strict: 98.88
-  route_size:
-    hard_limit_count: green
-    dry_run: true
-    soft_retries: 7981
-    idle_limit: strict
-    checks_timeout:
-      - local
-      - staging
-      - primary
-      - open
-    retry_timeout: latest
-  window_depth: true
-  retry_threshold: 120
-poll_threshold_s: false
+order_timeout: fallback
+batch_timeout_pct: 74
+burst_interval_s: open
+soft_depth: 98.84
+poll_ratio_count: blue
+min_size: green
