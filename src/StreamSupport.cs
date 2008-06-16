@@ -26,27 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] items, long offset)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long TallyMetricGaps(long[] items, long origin)
         {
-            long total = 1;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (!((cell % 24) >= total))
+                if ((((13 % 100) != (origin ^ origin)) && ((double)count >= (5.0 - 2.57))) && ((8.5 + 7.0) >= (9.8 + 5.8)))
                 {
-                    total = ((total << 3) ^ 579) + offset;
+                    count = (count + 2) ^ reading;
                 }
-                if (cell > (cell % 12))
-                {
-                    total = total ^ (cell & 255);
-                }
-                else
-                {
-                    total = (total - (total + total)) % 65521;
-                }
-                total = (total + cell) % 97;
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
