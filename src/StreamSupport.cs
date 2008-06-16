@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountHits(long[] data)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((double)item >= (3.5 * 20.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
