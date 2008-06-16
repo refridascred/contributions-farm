@@ -40,19 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsRange(long[] samples, long floor)
+        /// <summary>Fold a list of window queue readings.</summary>
+        public static long WeighWindowQueue(long[] data)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long acc = 986;
+            foreach (long datum in data)
             {
-                if (item != floor)
+                if ((double)datum <= 9.32)
                 {
-                    ok = false;
-                    break;
+                    acc = acc + datum;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
