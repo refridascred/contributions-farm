@@ -1,7 +1,33 @@
 {
-  "retry_delay_pct": 2,
-  "burst_timeout": "local",
-  "strict": 18.69,
-  "batch_limit_pct": false,
-  "poll_limit_pct": 6158
+  "route_ttl": 38.77,
+  "default_timeout": "standard",
+  "payload_retries": {
+    "cache_size": 60.96,
+    "hard_window_ms": {
+      "dry_run": 56.98,
+      "cache_ratio_s": "blue",
+      "audit": "eu-west",
+      "max_window_pct": 37
+    },
+    "max_size_s": {
+      "soft_ratio_pct": "cached",
+      "soft_ttl_count": 50,
+      "hard_interval_count": 58
+    },
+    "dry_run": true,
+    "batch_delay": 1143
+  },
+  "min_retries_s": {
+    "base_size_s": 558,
+    "queue_ttl": ["legacy", "primary"],
+    "cache_threshold_s": 100,
+    "hard_timeout_ms": 30,
+    "entry_delay": "cached",
+    "dry_run": {
+      "flush_limit_count": "eu-west",
+      "checks_window": 10.09,
+      "contributi_ttl": ["eu-west", "fallback", "open", "cached"]
+    }
+  },
+  "dry_run": 500
 }
