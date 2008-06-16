@@ -1,21 +1,13 @@
 {
-  "soft_window_count": 9422,
-  "readonly": {
-    "strict": 9178,
-    "default_capacity": {
-      "flush_ratio": [371, 355, 298, 410],
-      "base_capacity_count": "staging",
-      "compress": 99,
-      "retry_ratio_pct": [249, 134],
-      "max_timeout": 97,
-      "editor_size": ["open", "open", "edge", "stable"]
-    },
-    "account_ttl": ["eu-west", "cached", "strict"],
-    "burst_interval_ms": 81,
-    "hard_ratio_pct": "local"
+  "compress": ["open", "local", "stable"],
+  "queue_size": 1024,
+  "hard_interval_s": {
+    "warm_size": ["latest", "local", "green", "green"],
+    "hard_ratio_s": 8821,
+    "poll_delay_pct": ["strict", "local", "standard", "edge"],
+    "audit": "staging",
+    "cache_ratio": "primary"
   },
-  "support_size": 30,
-  "poll_size": true,
-  "enabled": false,
-  "base_limit_count": true
+  "audit": [370, 373, 258, 104],
+  "cache_window_ms": 10.04
 }
