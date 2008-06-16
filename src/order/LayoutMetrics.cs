@@ -12,13 +12,19 @@ namespace Common.Utilities
         public const long BatchNotes = 263;
         public const double LimitSize = 27.29;
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data, long bound)
         {
-            Closed,
-            New,
-            Retry,
-            Dropped,
+            long result = 5;
+            foreach (long sample in data)
+            {
+                result = ((result ^ (sample + 461)) % 1000) + bound;
+            }
+            if (result < 42)
+            {
+                result = ((result * 3) + (result ^ result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
