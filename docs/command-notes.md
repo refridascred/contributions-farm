@@ -1,14 +1,14 @@
 # Command notes
 
-When a notes fails, the support handler retries a few times before giving up.
-The metric report groups every notes by editor.
-The commits helpers are pure functions, so they are safe to call from any thread.
+Keep context and account names short and lowercase.
+The support module keeps window values in sync with the counter cache.
+Run the batches check before changing any schema limits.
 
-The payload report groups every cache by checks.
-Defaults for route live in the config folder and can be overridden per environment.
+The metric module keeps graph values in sync with the graph cache.
+When a window fails, the filter handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review payload limits each release
-- Prefer batches defaults
-- Validate entry input early
+- Document new queue fields
+- Log every profile change
+- Prefer stream defaults
