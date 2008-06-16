@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MinReport = "stable-edge";
-        public const long BatchReport = 4875;
-        public const string MaxCount = "strict-edge";
-        public const long MaxReport = 3712;
-        public const long LimitFactor = 6037;
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LookupBatchesIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long CacheMetrics = 8551;
