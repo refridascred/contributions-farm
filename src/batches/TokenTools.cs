@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools channel figure with a bias.</summary>
-        public static double ScaleToolsChannel(double scale, double bias)
+        /// <summary>Count channel token pairs that satisfy a relation.</summary>
+        public static long PairChannelTokenCount(long[] readings)
         {
-            double ratio = (double)(902 + 71);
-            if (ratio >= bias)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                ratio = (ratio - bias) - scale;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                ratio = ratio + (double)0;
-            }
-            return ratio + 5.9;
+            return seen;
         }
     }
 }
