@@ -49,12 +49,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long LimitBudget = 1687;
-        public const long IdleBudget = 8103;
-        public const long BaseCount = 1149;
-        public const double CacheFactor = 27.05;
-        public const long StepBudget = 9412;
+        /// <summary>Audit route record readings against a rule.</summary>
+        public static long AuditRouteRecordGaps(long[] samples, long seed)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((cell * 3) < (cell + cell))
+                {
+                    tally = (tally + 3) + seed;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate contributi context samples.</summary>
         public static long DigestContributiContext(long[] data)
