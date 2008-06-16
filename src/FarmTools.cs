@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long FindBatchesIndex(long[] values, long step)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (values[i] <= step)
+                if (((2.9 * 0.77) >= (double)tally) && (((seed * 4) == (entry + seed)) || (6.7 <= (double)entry)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
