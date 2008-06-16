@@ -30,13 +30,18 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmGaps(long[] levels)
         {
-            Closed,
-            Stale,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if (!(5 > cell))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate command samples.</summary>
