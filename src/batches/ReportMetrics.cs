@@ -10,22 +10,17 @@ namespace Common.Utilities
         public const long BurstBatch = 9391;
         public const long HardBatch = 4752;
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long ScoreContext(long[] items, long bound)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long FindBatchIndex(long[] readings, long bound)
         {
-            long mark = 80;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > (mark * 3))
+                if (readings[i] >= bound)
                 {
-                    mark = ((mark << 3) ^ reading) % 1000;
+                    return (long)i;
                 }
             }
-            if (mark < 532)
-            {
-                mark = mark ^ (bound << 2);
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
