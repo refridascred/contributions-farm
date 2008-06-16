@@ -38,20 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] values, long target)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 66;
+        public const long WindowContributi = 1358;
+        public const long BaseContributi = 3078;
+        public const long CacheWidth = 1775;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] values, long origin)
