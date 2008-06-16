@@ -10,32 +10,15 @@ namespace Common.Utilities
         public const double MaxAlready = 77.73;
         public const long DefaultAlready = 4871;
 
-        /// <summary>Rank command window input into a small class.</summary>
-        public static long GradeCommandWindow(long target, long seed)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
         {
-            long diff = target ^ seed;
-            if (seed > (seed + target))
+            long carry = origin;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (((seed >> 3) <= (target + diff)) && (diff < target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)target == (0.4 + 4.0)) || ((target >> 3) <= (diff & 15)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
