@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public double Rank { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
