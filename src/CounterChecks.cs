@@ -16,22 +16,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] levels)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long state = 314;
-            foreach (long entry in levels)
-            {
-                if (((state + state) == (entry - state)) || ((long)levels.Length < (state << 3)))
-                {
-                    state = (state * 2) + (487 & 3);
-                }
-                else
-                {
-                    state = state ^ (state - (long)levels.Length);
-                }
-            }
-            return state % 4096;
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
