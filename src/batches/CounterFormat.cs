@@ -16,11 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Validate buffer counter readings against a bound.</summary>
+        public static bool GuardBufferCounterLimits(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
