@@ -45,19 +45,12 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsOutliers(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((floor % 97) <= (item - item))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 3590;
+        public const double BurstFilter = 17.96;
+        public const double MinFactor = 8.2;
+        public const string IdleLevel = "alpha";
+        public const long DefaultFilter = 8423;
 
         /// <summary>Hold a already options.</summary>
         public sealed class AlreadyOptions
