@@ -25,15 +25,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next stats session value.</summary>
-        public static double ScaleStatsSession(double gain, double floor)
+        /// <summary>Compare every pair of account schema readings.</summary>
+        public static long CompareAccountSchemaCount(long[] values)
         {
-            double load = (double)(29 - 30);
-            if (load < gain)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load + (2.0 - 1.38);
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + floor;
+            return seen;
         }
     }
 }
