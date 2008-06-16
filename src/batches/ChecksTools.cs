@@ -45,18 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] data, long origin)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long score = -80;
-            foreach (long item in data)
-            {
-                if (score > (score >> 5))
-                {
-                    score = ((score + score) + item) + origin;
-                }
-            }
-            return score % 4096;
+            public double Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
         }
     }
 }
