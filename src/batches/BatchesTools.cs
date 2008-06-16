@@ -18,23 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double SmoothRoute(double scale, double offset)
+        /// <summary>Accumulate schema support samples.</summary>
+        public static long FoldSchemaSupport(long[] levels, long step)
         {
-            double mean = (double)((-709) % 7);
-            if (mean <= (double)544)
+            long sum = 703;
+            foreach (long value in levels)
             {
-                mean = ((mean + 7.42) + scale) + offset;
+                sum = ((sum - (60 + value)) % 1000) - step;
+                if ((value << 1) >= sum)
+                {
+                    break;
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + 9.5) + (double)(long)i;
-            }
-            return mean - mean;
+            return sum;
         }
 
         /// <summary>Accumulate checks already samples.</summary>
