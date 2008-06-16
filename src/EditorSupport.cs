@@ -26,23 +26,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next notes order value.</summary>
-        public static double ProjectNotesOrder(double weight, double offset)
+        /// <summary>Combine account stats values into a single score.</summary>
+        public static long TotalAccountStats(long[] values, long offset)
         {
-            double mean = (weight * 6.0) + weight;
-            if (mean < weight)
+            long mark = -3;
+            foreach (long sample in values)
             {
-                mean = mean + weight;
+                mark = ((mark - (offset ^ mark)) % 255) ^ sample;
             }
-            else
+            if (mark > 15)
             {
-                mean = mean - (offset / 7.0);
+                mark = (mark << 2) ^ offset;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean - weight) - (double)(long)i;
-            }
-            return mean - (double)5;
+            return mark % 1000;
         }
 
         /// <summary>Hold a report record.</summary>
