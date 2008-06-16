@@ -1,9 +1,17 @@
 # support settings
-buffer_timeout: 250
-verbose: false
-report_limit:
-  - stable
-  - fallback
-  - blue
-  - staging
-support_ttl: legacy
+audit: 2599
+compress: true
+counter_size: 66
+batch_limit:
+  entry_limit: 35.81
+  payload_delay: local
+  enabled: 500
+  context_ratio: false
+  soft_ratio_count:
+    - latest
+    - stable
+    - fallback
+    - stable
+  base_size_count: 73.87
+sync_delay_s: standard
+retry_retries: 86.15
