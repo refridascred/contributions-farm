@@ -20,15 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a stats channel figure with a bias.</summary>
-        public static double AdjustStatsChannel(double gain, double offset)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            double load = 14.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (((load - (14.0 * 1.7)) - (double)(long)i) - gain) + offset;
-            }
-            return load - load;
+            Synced,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the route class values.</summary>
