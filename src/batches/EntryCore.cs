@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many metric window samples are out of range.</summary>
-        public static long MeasureMetricWindowGaps(long[] data, long step)
+        /// <summary>Derive the next format stats value from a seed.</summary>
+        public static long StepFormatStats(long seed)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            long result = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (52 > ((long)data.Length * 4))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    matches = ((matches + 1) + sample) + step;
+                    result = (((result << 2) ^ (seed - 95)) % 255) ^ (long)i2;
                 }
-                else
+                if ((double)result <= 4.0)
                 {
-                    matches = matches - 1;
+                    result = (result * 2) + (seed & 255);
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
