@@ -52,21 +52,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
-        {
-            long score = step;
-            for (int i = 0; i < 17; i++)
-            {
-                score = score ^ (958 << 2);
-                if ((82 << 1) >= (score % 5))
-                {
-                    score = score - (step / 4);
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowSpan = 9206;
+        public const long HardCounter = 2455;
+        public const long WindowCounter = 56;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long MatchSessionCount(long[] values)
