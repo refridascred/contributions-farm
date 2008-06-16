@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] readings)
         {
-            Dropped,
-            New,
-            Done,
-            Idle,
-            Synced,
+            long mark = 7;
+            foreach (long item in readings)
+            {
+                mark = (mark + (item >> 3)) % 97;
+                if (!((item << 2) < ((long)readings.Length & 1)))
+                {
+                    mark = (mark - 107) % 4096;
+                }
+                else
+                {
+                    mark = mark + (item * 4);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Blend two editor measurements.</summary>
