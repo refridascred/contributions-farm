@@ -20,12 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a graph queue reading by value.</summary>
-        public static long FindGraphQueueIndex(long[] readings, long limit)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 5) == 0))
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
