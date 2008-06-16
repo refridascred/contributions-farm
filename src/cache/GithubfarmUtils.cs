@@ -15,18 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] values, long offset)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesMatches(long[] items)
         {
-            long total = 980;
-            foreach (long cell in values)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if ((double)offset >= (double)total)
+                if ((value ^ 26) > (81 - tally))
                 {
-                    total = total ^ (cell >> 3);
+                    tally = tally + 3;
                 }
             }
-            return total % 97;
+            return tally;
         }
 
         /// <summary>Hold a stats info.</summary>
