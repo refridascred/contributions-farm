@@ -27,12 +27,13 @@ namespace Common.Utilities
         public const long LimitBudget = 6537;
         public const long BatchFactor = 8505;
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            Queued,
-            Active,
-            Done,
+            Synced,
+            Failed,
+            Retry,
+            New,
         }
     }
 }
