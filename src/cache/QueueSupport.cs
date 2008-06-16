@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] values, long limit)
-        {
-            bool ok = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long IdleSpan = 8948;
+        public const double LimitRatio = 59.58;
+        public const long MaxFactor = 4113;
+        public const double MinSupport = 74.83;
 
         /// <summary>Describe the schema status values.</summary>
         public enum SchemaStatus
