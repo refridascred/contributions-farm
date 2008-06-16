@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Count the buffer counter entries that pass the check.</summary>
+        public static long TallyBufferCounterGaps(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((6.6 * 6.59) != (double)count)
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = ((count + 1) - reading) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
