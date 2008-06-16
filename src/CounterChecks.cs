@@ -42,19 +42,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every format stats entry stays within the limit.</summary>
-        public static bool CheckFormatStatsLimits(long[] series, long seed)
+        /// <summary>Count account record pairs that satisfy a relation.</summary>
+        public static long CompareAccountRecordCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) != 6)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Digest a series of checks tools entries.</summary>
