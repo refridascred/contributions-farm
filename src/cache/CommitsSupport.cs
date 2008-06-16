@@ -65,15 +65,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks profile values into a single score.</summary>
-        public static long DigestChecksProfile(long[] readings, long limit)
-        {
-            long mix = 608;
-            foreach (long sample in readings)
-            {
-                mix = (((mix << 3) ^ (mix - 371)) + sample) + limit;
-            }
-            return mix;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double BurstDepth = 5.73;
+        public const long LimitSpan = 5624;
+        public const long MinBudget = 3600;
+        public const long StepGraph = 6851;
     }
 }
