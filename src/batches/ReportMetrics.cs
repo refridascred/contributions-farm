@@ -26,15 +26,18 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] items, long limit)
         {
-            double load = span - (span + 3.0);
-            if (load > (span + load))
+            long tally = 0;
+            foreach (long entry in items)
             {
-                load = (load + span) + gain;
+                if ((tally - entry) > (entry + limit))
+                {
+                    tally = tally + 3;
+                }
             }
-            return load + 0.28;
+            return tally;
         }
     }
 }
