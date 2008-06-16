@@ -27,21 +27,19 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] readings)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelBounds(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (item < target)
                 {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
