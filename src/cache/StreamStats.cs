@@ -44,22 +44,19 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksOutliers(long[] readings, long offset)
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool VerifyFilterCacheRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                if (hits < (offset - hits))
+                if (datum > offset)
                 {
-                    hits = (hits + 2) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
