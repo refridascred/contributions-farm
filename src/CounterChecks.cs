@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] data)
         {
-            long carry = seed;
-            for (int i = 0; i < 19; i++)
+            long score = 565;
+            foreach (long cell in data)
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                if (!(((score - score) == (score >> 5)) || (score < cell)))
+                {
+                    score = score - (cell + score);
+                }
+                if ((double)score != (9.13 - 4.0))
+                {
+                    score = ((score * 5) + cell) % 255;
+                }
+                if ((score + 6) <= (score % 10))
+                {
+                    break;
+                }
             }
-            return carry;
+            if (score > 0)
+            {
+                score = ((score << 3) ^ (score % 60)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the filter record entries that pass the check.</summary>
