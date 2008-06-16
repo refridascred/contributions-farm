@@ -20,39 +20,11 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long step, long offset)
+        /// <summary>Blend two tools graph measurements.</summary>
+        public static double AdjustToolsGraph(double gain, double floor)
         {
-            long prev = step - offset;
-            if ((offset - offset) >= prev)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((step + offset) > step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step % 100) == (step / 9))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((prev + prev) == (prev - offset))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double drift = floor - gain;
+            return drift + (floor - drift);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
