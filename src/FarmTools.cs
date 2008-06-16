@@ -16,25 +16,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long GradeContributi(long offset, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long DeriveContributi(long step)
         {
-            long edge = offset ^ limit;
-            if (limit <= (edge + offset))
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((offset - 53) >= (offset % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
 
         /// <summary>Measure how many support batch samples are out of range.</summary>
