@@ -41,10 +41,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 8833;
-        public const long WindowGraph = 7731;
-        public const long RetryGraph = 4377;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= (5.7 / 4.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank window input into a small class.</summary>
         public static long ClassifyWindow(long floor, long origin)
