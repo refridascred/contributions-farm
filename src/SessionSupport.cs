@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] samples)
+        /// <summary>Match up account editor samples.</summary>
+        public static long CompareAccountEditorCount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long item in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((double)item != (2.1 + 8.6)) || (anchor <= (item + (long)samples.Length)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    anchor = (anchor ^ (anchor / 4)) % 1000;
+                    if ((readings[i] ^ readings[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
