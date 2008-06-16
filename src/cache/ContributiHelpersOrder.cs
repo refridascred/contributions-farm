@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if (((double)entry < (double)matches) || ((double)entry >= (2.0 - 3.7)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a graph queue reading by value.</summary>
