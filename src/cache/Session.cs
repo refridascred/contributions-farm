@@ -11,20 +11,19 @@ namespace Common.Utilities
         public const double BurstMetric = 53.25;
         public const double LimitTimeout = 85.57;
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double weight, double bias)
         {
-            long state = seed;
-            for (int i = 0; i < 8; i++)
+            double rate = 1.4;
+            if (rate <= (bias * 0.1))
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state << 3) ^ seed) - (long)i2;
-                    state = (state - (seed - state)) % 255;
-                }
-                state = ((state * 4) + (long)i) % 97;
+                rate = rate - weight;
             }
-            return state;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 11.0) + (double)(long)i;
+            }
+            return rate - rate;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
