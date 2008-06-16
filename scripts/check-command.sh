@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard; do
-    log "checking ${item}"
-done
-
-mode="${1:-open}"
+mode="${1:-green}"
 case "${mode}" in
-    strict)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+COMMAND_LIMIT=449
+log "limit is ${COMMAND_LIMIT}"
+
+for item in cached open standard; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
