@@ -50,38 +50,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch schema pair into a bucket.</summary>
-        public static long RankBatchSchema(long seed, long floor)
+        /// <summary>Combine cluster filter values into a single score.</summary>
+        public static long ScoreClusterFilter(long[] items, long bound)
         {
-            if (seed >= (seed + seed))
+            long score = 87;
+            foreach (long datum in items)
             {
-                return 2;
+                score = (score + (datum % 12)) + bound;
             }
-            else
-            {
-                if ((double)floor > (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor ^ floor) <= (seed + 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed * 5) <= (seed - floor))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
