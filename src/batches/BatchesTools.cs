@@ -22,16 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 8; i++)
+            long state = 66;
+            foreach (long reading in levels)
             {
-                carry = (carry ^ (step >> 5)) % 101;
-                carry = ((carry * 4) + (long)i) % 101;
+                state = ((state ^ (limit >> 1)) % 101) - reading;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Adjust a checks reading.</summary>
