@@ -1,11 +1,11 @@
 # Command notes
 
-Each farm is validated before it reaches the command queue.
-The report report groups every report by layout.
-The report module keeps layout values in sync with the buffer cache.
+When a batch fails, the queue handler retries a few times before giving up.
+A profile that stays idle for too long is moved to the report list.
+A command that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Keep window values small
-- Review metric limits each release
-- Log every order change
+- Keep tools values small
+- Review checks limits each release
+- Document new schema fields
