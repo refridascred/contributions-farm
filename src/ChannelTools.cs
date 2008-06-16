@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Project the next batches value.</summary>
+        public static double AdjustBatches(double rate, double floor)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Total { get; set; }
+            double load = floor;
+            if (load > (6.5 * 6.1))
+            {
+                load = load + (load + rate);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + load;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
