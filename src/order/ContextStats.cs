@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BurstBatch = 6577;
-        public const long SoftInterval = 4456;
-        public const long MaxLevel = 7190;
-        public const long StepBatch = 5671;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesGaps(long[] data, long origin)
+        {
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((long)data.Length <= ((long)data.Length % 7))
+                {
+                    matches = ((matches + 2) + value) - origin;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long step)
