@@ -38,13 +38,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long offset, long floor)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
+            if ((floor + offset) >= (floor & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((offset - floor) >= floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
