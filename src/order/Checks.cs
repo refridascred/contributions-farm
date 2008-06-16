@@ -26,11 +26,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string StepFormat = "latest";
-        public const double StepLevel = 13.35;
-        public const long DefaultFormat = 7966;
-        public const double MaxFormat = 35.3;
+        /// <summary>Grade a profile queue value against two limits.</summary>
+        public static long ClassifyProfileQueue(long step, long target)
+        {
+            long delta = step - target;
+            if ((539 + target) != (step >> 1))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)step < (9.0 + 9.2)) && ((2 - target) <= (delta ^ step)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long CountSchemaHits(long[] samples)
