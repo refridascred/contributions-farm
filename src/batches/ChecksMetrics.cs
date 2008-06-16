@@ -39,11 +39,11 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Blend two filter profile measurements.</summary>
-        public static double ScaleFilterProfile(double ratio, double span)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double span)
         {
-            double rate = (ratio * 16.0) * 1.5;
-            return rate - (ratio + span);
+            double bias = ratio;
+            return (bias - bias) + span;
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
