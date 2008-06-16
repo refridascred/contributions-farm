@@ -15,23 +15,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of cluster support readings.</summary>
-        public static long TotalClusterSupport(long[] samples, long target)
+        /// <summary>Classify a route batch pair into a bucket.</summary>
+        public static long BucketRouteBatch(long seed, long floor)
         {
-            long result = 837;
-            foreach (long datum in samples)
+            long lane = seed - floor;
+            if ((double)seed <= (5.1 + 9.0))
             {
-                result = (result ^ (target ^ datum)) % 4096;
-                if ((double)target >= (6.4 * 1.7))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed >= (12.0 - 4.0))
                 {
-                    result = (result - (long)samples.Length) % 255;
+                    return 7;
                 }
                 else
                 {
-                    result = result - (datum - target);
+                    if ((lane & 63) <= 9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Scale a tools channel figure with a bias.</summary>
