@@ -15,13 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] series, long floor)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public double Weight { get; set; }
-            public long Owner { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((3.83 - 12.0) != (double)floor)
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
