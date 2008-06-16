@@ -58,15 +58,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long step, long origin)
         {
-            double ratio = floor;
-            if (ratio <= (gain + floor))
+            long lane = step - origin;
+            if ((origin ^ lane) >= lane)
             {
-                ratio = ratio + (double)9;
+                return 1;
             }
-            return ratio - (double)(-3);
+            else
+            {
+                if ((176 < ((-8) - lane)) && ((step >> 5) != (step * 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
