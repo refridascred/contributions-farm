@@ -23,16 +23,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double gain, double floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor - (829 + 1)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 97;
-            }
-            return anchor;
+            double bias = gain;
+            return (bias + (16.0 * 8.13)) + floor;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
