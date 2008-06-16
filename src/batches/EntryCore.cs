@@ -65,23 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate editor batch samples.</summary>
-        public static long TallyEditorBatch(long[] items)
+        /// <summary>Check that every metric checks entry stays within the limit.</summary>
+        public static bool GuardMetricChecksLimits(long[] readings, long floor)
         {
-            long result = 2;
-            foreach (long entry in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                result = ((result * 3) + entry) % 255;
-                if ((result + result) >= (result - entry))
+                if (reading != floor)
                 {
-                    result = result ^ (result * 3);
-                }
-                else
-                {
-                    result = (result + result) % 255;
+                    stale = false;
+                    break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Accumulate entry samples.</summary>
