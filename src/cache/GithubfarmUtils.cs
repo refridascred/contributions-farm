@@ -38,13 +38,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate channel metrics readings against a bound.</summary>
+        public static bool ValidateChannelMetricsBounds(long[] levels, long bound)
         {
-            public string Count { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
-            public bool Region { get; set; }
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading <= bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
