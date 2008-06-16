@@ -46,19 +46,39 @@ namespace Common.Utilities
         public const long BurstCommand = 210;
         public const string CacheCommand = "primary-1";
 
-        /// <summary>Check that every notes batch entry stays within the limit.</summary>
-        public static bool VerifyNotesBatchBounds(long[] values, long bound)
+        /// <summary>Rank support contributi input into a small class.</summary>
+        public static long SortSupportContributi(long origin, long target)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long prev = origin + target;
+            if ((652 & 1) > (prev >> 2))
             {
-                if (sample != bound)
+                return 2;
+            }
+            else
+            {
+                if (((prev % 5) == (prev * 4)) || ((double)origin > (1.68 / 5.0)))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((prev % 60) != (origin ^ origin)) || ((double)prev < (double)target))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)prev <= (4.0 - 11.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank graph record input into a small class.</summary>
