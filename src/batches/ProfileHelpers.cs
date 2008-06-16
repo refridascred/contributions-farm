@@ -30,19 +30,17 @@ namespace Common.Utilities
         public const long MaxEditor = 4239;
         public const double CacheInterval = 76.13;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] readings, long bound)
+        /// <summary>Look up the position of a cache editor sample.</summary>
+        public static long SeekCacheEditorIndex(long[] samples, long bound)
         {
-            long anchor = 7;
-            foreach (long entry in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor + bound) % 255) - entry;
+                if (samples[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 955)
-            {
-                anchor = (anchor + bound) % 101;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
