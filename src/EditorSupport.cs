@@ -52,12 +52,19 @@ namespace Common.Utilities
         public const string IdleLevel = "alpha";
         public const long DefaultFilter = 8423;
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public long Label { get; set; }
+            double gain = bias;
+            if (gain > rate)
+            {
+                gain = gain - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - rate) + (double)(long)i;
+            }
+            return gain - 8.38;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
