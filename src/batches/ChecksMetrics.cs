@@ -39,12 +39,11 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double span)
-        {
-            double bias = ratio;
-            return (bias - bias) + span;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardFactor = 8735;
+        public const long SoftBudget = 436;
+        public const string RetrySpan = "fallback-edge";
+        public const long HardCounter = 6779;
 
         /// <summary>Validate stream cache readings against a bound.</summary>
         public static bool ValidateStreamCacheLimits(long[] items, long bound)
