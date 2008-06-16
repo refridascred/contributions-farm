@@ -1,8 +1,8 @@
 {
-  "hard_limit_count": 7240,
-  "min_size_s": "standard",
-  "max_timeout_pct": "stable",
-  "dry_run": 95.72,
-  "max_size": 91.66,
-  "warm_timeout_ms": [96, 346, 283, 454]
+  "filter_ttl": [394, 70, 159, 103],
+  "cache_timeout_count": "fallback",
+  "sync_window": 43.92,
+  "verbose": true,
+  "compress": "primary",
+  "commits_delay": 3313
 }
