@@ -47,14 +47,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepSize = 1.83;
+        public const long StepChecks = 5897;
+        public const long BaseFactor = 638;
 
         /// <summary>Rank support contributi input into a small class.</summary>
         public static long SortSupportContributi(long origin, long target)
