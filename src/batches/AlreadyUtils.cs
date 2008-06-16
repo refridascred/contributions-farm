@@ -66,13 +66,17 @@ namespace Common.Utilities
             return (ratio - weight) + span;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Look up the position of a report stream sample.</summary>
+        public static long LocateReportStreamIndex(long[] readings, long origin)
         {
-            Ready,
-            Queued,
-            Stale,
-            Pending,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
