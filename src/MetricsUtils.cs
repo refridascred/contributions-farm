@@ -46,10 +46,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 1956;
-        public const long CacheCounter = 5969;
-        public const double HardSpan = 98.24;
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long GradeSchema(long seed, long floor)
+        {
+            long prev = seed - floor;
+            if ((double)prev >= 9.25)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor <= (3.2 + 16.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((prev + floor) >= (floor + seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - 38) < (floor - seed))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
         public static long SeekFilterIndex(long[] readings, long target)
