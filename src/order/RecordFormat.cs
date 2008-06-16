@@ -46,23 +46,18 @@ namespace Common.Utilities
         public const long LimitInterval = 5702;
         public const double RetryCount = 39.75;
 
-        /// <summary>Accumulate batches report samples.</summary>
-        public static long TotalBatchesReport(long[] series)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordMatches(long[] data)
         {
-            long anchor = -13;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                anchor = anchor - (anchor & 63);
-                if (((anchor + 82) >= anchor) || (anchor >= (725 + entry)))
+                if ((cell ^ hits) == (cell % 8))
                 {
-                    anchor = ((anchor << 2) ^ anchor) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ (entry & 1);
+                    hits = hits + 2;
                 }
             }
-            return anchor;
+            return hits;
         }
     }
 }
