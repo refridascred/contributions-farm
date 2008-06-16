@@ -25,12 +25,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool GuardAccountLimits(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
-            public bool Size { get; set; }
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item >= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
