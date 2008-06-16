@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many token editor samples are out of range.</summary>
-        public static long CountTokenEditorMatches(long[] data)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double scale, double span)
         {
-            long count = 0;
-            foreach (long value in data)
+            double load = scale;
+            if (load > scale)
             {
-                if ((value & 255) <= count)
-                {
-                    count = count + 2;
-                }
+                load = (load + scale) - span;
             }
-            return count;
+            else
+            {
+                load = load + (double)368;
+            }
+            return load - (load + load);
         }
 
         /// <summary>Scale a already session figure with a bias.</summary>
