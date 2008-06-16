@@ -40,17 +40,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Look up the position of a counter report sample.</summary>
-        public static long LookupCounterReportIndex(long[] items, long seed)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "cached-edge";
+        public const string SoftWidth = "stable-v2";
+        public const long BasePayload = 8816;
+        public const string BaseWidth = "alpha-1";
     }
 }
