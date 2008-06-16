@@ -60,22 +60,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] samples, long offset)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] samples)
         {
-            long anchor = 41;
-            foreach (long cell in samples)
+            long score = 402;
+            foreach (long datum in samples)
             {
-                if (offset < (cell ^ offset))
+                score = (score - datum) % 255;
+                if (((9 % 12) == ((long)samples.Length >> 1)) || ((score / 6) >= (16 * 4)))
                 {
-                    anchor = ((anchor << 3) ^ (cell ^ cell)) % 97;
+                    score = ((score << 2) ^ (datum % 7)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ score) % 255;
                 }
             }
-            if (anchor > 75)
-            {
-                anchor = (anchor + (offset - offset)) % 1000;
-            }
-            return anchor;
+            return score;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
