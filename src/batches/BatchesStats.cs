@@ -16,19 +16,13 @@ namespace Common.Utilities
         public const long MaxLevel = 4641;
         public const string MaxCount = "primary-1";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] levels, long offset)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Synced,
+            Locked,
+            Queued,
         }
 
         /// <summary>Digest a series of schema tools entries.</summary>
