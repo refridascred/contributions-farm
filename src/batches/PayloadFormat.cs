@@ -71,12 +71,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] levels, long floor)
         {
-            public bool Label { get; set; }
-            public bool Size { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((item + count) <= floor)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
