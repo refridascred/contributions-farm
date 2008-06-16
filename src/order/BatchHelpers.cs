@@ -14,11 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 5930;
-        public const double CacheOrder = 87.34;
-        public const double SoftSpan = 46.77;
-        public const string MaxOrder = "local";
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((double)(long)series.Length < (double)tally)
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the queue state values.</summary>
         public enum QueueState
