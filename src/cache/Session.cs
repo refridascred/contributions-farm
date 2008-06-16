@@ -44,13 +44,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            public bool Count { get; set; }
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
