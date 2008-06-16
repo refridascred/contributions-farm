@@ -14,24 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a cache account counter forward.</summary>
-        public static long StepCacheAccount(long seed)
+        /// <summary>Digest a series of metrics contributi entries.</summary>
+        public static long ScoreMetricsContributi(long[] readings)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = 7;
+            foreach (long item in readings)
             {
-                if ((long)i <= (seed + (long)i))
+                if ((double)anchor > (1.0 * 1.3))
                 {
-                    state = ((state << 3) ^ (seed & 127)) % 101;
-                    break;
+                    anchor = ((anchor ^ (anchor + (long)readings.Length)) % 97) + item;
                 }
-                else
-                {
-                    state = (state ^ (seed - (long)i)) % 65521;
-                }
-                state = ((state * 4) + (long)i) % 65521;
             }
-            return state;
+            return anchor;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
