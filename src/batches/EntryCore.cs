@@ -46,17 +46,19 @@ namespace Common.Utilities
         public const long MinSpan = 7836;
         public const long StepBatches = 3216;
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] samples, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
+                if (datum < origin)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
