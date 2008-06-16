@@ -51,19 +51,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every metric checks entry stays within the limit.</summary>
-        public static bool GuardMetricChecksLimits(long[] readings, long floor)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long value in series)
             {
-                if (reading != floor)
+                if ((bound * 4) >= (seen ^ seen))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Accumulate notes samples.</summary>
