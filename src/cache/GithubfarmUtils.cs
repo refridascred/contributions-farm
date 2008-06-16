@@ -37,24 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long origin, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double rate, double span)
         {
-            if ((origin / 4) > (origin % 8))
+            double weight = span;
+            if (weight > (2.54 / 9.0))
             {
-                return 7;
+                weight = (weight - (double)91) + rate;
             }
             else
             {
-                if ((origin * 3) > (target + origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
+                weight = weight - (double)(-79);
             }
+            return weight - (5.9 - 14.0);
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
