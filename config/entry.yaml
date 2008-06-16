@@ -1,7 +1,6 @@
 # entry settings
-account_delay: false
-persist: 93.92
-flush_ratio_pct:
-  - green
-  - stable
-  - staging
+warm_size_pct: 16
+max_interval_count: true
+strict: 250
+default_threshold: latest
+soft_ttl_s: 87.34
