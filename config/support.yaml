@@ -1,6 +1,4 @@
 # support settings
-dry_run: 1556
-min_size_s:
-  - green
-  - staging
-strict: staging
+soft_interval_pct: 3692
+idle_ttl_count: 80
+burst_retries_count: false
