@@ -44,26 +44,19 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Roll a contributi channel counter forward.</summary>
-        public static long SeriesContributiChannel(long limit)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphLimits(long[] samples, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                total = (total ^ (total ^ (long)i)) % 4096;
-                total = ((total * 4) + limit) % 101;
-                if (!(3.4 < (double)limit))
+                if (sample <= limit)
                 {
-                    total = ((total * 3) + ((long)i ^ 42)) % 101;
-                    total = ((total * 2) + 330) % 1000;
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    total = ((total * 2) + (limit + limit)) % 255;
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return found;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
