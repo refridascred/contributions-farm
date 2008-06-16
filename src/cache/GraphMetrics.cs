@@ -47,12 +47,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long origin)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (readings[i] <= origin)
+                if (levels[i] < seed)
                 {
                     return (long)i;
                 }
