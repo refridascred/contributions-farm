@@ -1,6 +1,6 @@
 {
-  "sync_timeout_pct": ["latest", "latest", "standard"],
-  "readonly": 60,
-  "cluster_ttl": [364, 206],
-  "batch_timeout_pct": [128, 432, 21]
+  "poll_timeout_ms": ["eu-west", "eu-west"],
+  "retry_timeout_count": 7581,
+  "payload_retries": true,
+  "persist": "fallback"
 }
