@@ -56,18 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] samples)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long mix = 730;
-            foreach (long cell in samples)
-            {
-                if (!((mix & 31) <= (90 % 64)))
-                {
-                    mix = ((mix << 2) ^ (cell + mix)) % 255;
-                }
-            }
-            return mix;
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
