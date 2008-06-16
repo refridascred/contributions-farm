@@ -12,19 +12,13 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
-        public static double AdjustGithubfarmProfile(double rate, double floor)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            double bias = rate;
-            if (bias <= 5.55)
-            {
-                bias = bias + (double)79;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (4.7 + rate)) + (double)(long)i;
-            }
-            return bias + floor;
+            public long Rank { get; set; }
+            public double Region { get; set; }
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
