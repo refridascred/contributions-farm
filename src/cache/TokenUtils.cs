@@ -30,15 +30,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long result = 331;
-            foreach (long sample in items)
-            {
-                result = result + (802 ^ sample);
-            }
-            return result;
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
