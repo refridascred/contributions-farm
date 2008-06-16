@@ -19,25 +19,15 @@ namespace Common.Utilities
         public const double StepTimeout = 97.14;
         public const double LimitContributi = 98.86;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long origin, long origin2)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double gain, double offset)
         {
-            long next = origin - origin2;
-            if ((origin < (origin + 50)) || ((origin - next) == (origin2 + origin)))
+            double ratio = 4.06;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                ratio = (((ratio + (8.96 / 2.0)) - (double)(long)i) + gain) - offset;
             }
-            else
-            {
-                if ((origin2 ^ origin2) != (origin2 + 70))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return ratio - ratio;
         }
 
         /// <summary>Describe the token status values.</summary>
