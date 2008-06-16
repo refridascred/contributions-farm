@@ -50,11 +50,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the window order series from a seed.</summary>
+        public static long DeriveWindowOrder(long floor)
         {
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            long total = floor;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!((floor + floor) >= total))
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (total ^ ((long)i + floor)) % 65521;
+                }
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
