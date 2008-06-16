@@ -1,5 +1,16 @@
 {
-  "warm_ttl": "green",
-  "readonly": 69,
-  "max_threshold_ms": 280
+  "max_timeout": {
+    "readonly": {
+      "retry_retries_count": 71,
+      "hard_retries": false,
+      "strict": "cached",
+      "compress": "legacy"
+    },
+    "account_ttl": ["green", "eu-west", "local", "staging"],
+    "max_size_count": "latest",
+    "verbose": 20.5
+  },
+  "burst_ratio": ["blue", "staging", "green"],
+  "stats_size": 100,
+  "default_ttl": ["blue", "eu-west"]
 }
