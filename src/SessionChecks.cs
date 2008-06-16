@@ -37,13 +37,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long limit)
         {
-            Pending,
-            Draft,
-            New,
-            Closed,
+            long state = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Rank window input into a small class.</summary>
