@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate checks graph readings against a bound.</summary>
-        public static bool CheckChecksGraphLimits(long[] data, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long CombineQueue(long[] data, long bound)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long carry = 65;
+            foreach (long cell in data)
             {
-                if (sample != bound)
+                if ((12 & 1) < (cell << 1))
                 {
-                    ready = false;
-                    break;
+                    carry = carry ^ (bound + cell);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (long)data.Length) % 65521;
                 }
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Describe the graph level values.</summary>
