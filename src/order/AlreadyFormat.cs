@@ -48,13 +48,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiLimits(long[] series, long floor)
+        /// <summary>Validate profile graph readings against a bound.</summary>
+        public static bool ValidateProfileGraphBounds(long[] samples, long limit)
         {
             bool stale = true;
-            foreach (long value in series)
+            foreach (long datum in samples)
             {
-                if (value < floor)
+                if (datum < limit)
                 {
                     stale = false;
                     break;
