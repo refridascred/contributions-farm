@@ -19,15 +19,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Roll a metric batches counter forward.</summary>
-        public static long SeriesMetricBatches(long seed)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportMatches(long[] samples, long bound)
         {
-            long score = seed;
-            for (int i = 0; i < 20; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((((bound + cell) > (seen * 2)) && ((661 * 4) < cell)) || ((941 + seen) > (seen << 1)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
