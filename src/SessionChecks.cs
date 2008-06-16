@@ -34,19 +34,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheBounds(long[] data, long limit)
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            Ready,
+            New,
+            Active,
+            Dropped,
         }
 
         /// <summary>Describe the already phase values.</summary>
