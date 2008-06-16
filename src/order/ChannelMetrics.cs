@@ -30,12 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
