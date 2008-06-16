@@ -56,19 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ProjectTools(double weight, double floor)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ScaleSchema(double weight, double offset)
         {
-            double gain = 7.23;
-            if (gain > floor)
+            double drift = weight;
+            if (drift >= drift)
             {
-                gain = gain - (1.58 * 3.96);
+                drift = drift - weight;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                gain = gain + (floor - gain);
+                drift = (drift + (drift - drift)) + (double)(long)i;
             }
-            return gain - (weight - floor);
+            return drift + offset;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
