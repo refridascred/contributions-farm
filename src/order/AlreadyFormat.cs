@@ -39,13 +39,22 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] data, long bound)
         {
-            Failed,
-            Active,
-            Paused,
-            Pending,
+            long mark = 186;
+            foreach (long value in data)
+            {
+                if ((bound >> 1) < (39 - mark))
+                {
+                    mark = (mark - (value >> 3)) % 4096;
+                }
+                if ((value ^ value) >= mark)
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
