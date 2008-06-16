@@ -16,19 +16,38 @@ namespace Common.Utilities
             return scale + (double)1;
         }
 
-        /// <summary>Accumulate schema support samples.</summary>
-        public static long FoldSchemaSupport(long[] levels, long step)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long step, long bound)
         {
-            long sum = 703;
-            foreach (long value in levels)
+            if ((bound << 3) > (bound + bound))
             {
-                sum = ((sum - (60 + value)) % 1000) - step;
-                if ((value << 1) >= sum)
+                return 2;
+            }
+            else
+            {
+                if (bound >= (bound - step))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((bound << 3) >= (67 % 24))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step << 2) == (step / 5)) || (step < (step ^ bound)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
