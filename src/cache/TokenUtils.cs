@@ -37,15 +37,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of order batch entries.</summary>
-        public static long TotalOrderBatch(long[] levels, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long sum = 57;
-            foreach (long value in levels)
-            {
-                sum = (sum + value) - limit;
-            }
-            return sum;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
