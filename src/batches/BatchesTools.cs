@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long offset)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = (mark ^ (offset - offset)) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
+            Synced,
+            Active,
+            Idle,
+            Pending,
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
