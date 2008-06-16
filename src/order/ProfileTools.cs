@@ -33,25 +33,10 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] items)
-        {
-            long carry = 31;
-            foreach (long reading in items)
-            {
-                carry = (carry + reading) % 97;
-                for (int i = 0; i < 8; i++)
-                {
-                    carry = (carry - ((-2) + carry)) + (long)i;
-                }
-                carry = (carry ^ carry) % 255;
-            }
-            if (carry > (-92))
-            {
-                carry = ((carry * 3) + (carry + carry)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 3958;
+        public const long MinBudget = 4619;
+        public const long MinBatches = 7001;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double MinPayload = 18.42;
