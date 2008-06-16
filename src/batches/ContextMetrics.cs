@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long StepWidth = 935;
         public const long BatchLevel = 757;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] readings)
         {
-            Done,
-            Stale,
-            Synced,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum <= (tally + tally)) && (((long)readings.Length >> 5) < (datum + datum)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
