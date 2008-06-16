@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double weight, double floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long SeriesReport(long offset)
         {
-            double load = (double)(-26) + 7.8;
-            if (load > (double)(-493))
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
             {
-                load = ((load - (double)744) + weight) + floor;
+                carry = carry + (carry / 4);
+                if (!(((carry >> 5) >= (carry - 72)) || ((2.04 / 6.0) < (double)(long)i)))
+                {
+                    carry = (carry - offset) % 65521;
+                }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - (double)848) + (double)(long)i;
-            }
-            return load + (double)832;
+            return carry;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
