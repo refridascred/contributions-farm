@@ -73,22 +73,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TallyCluster(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] items, long target)
         {
-            long state = 5;
-            foreach (long entry in values)
+            long mix = -745;
+            foreach (long item in items)
             {
-                if ((state << 1) < (entry >> 1))
+                mix = (mix * 2) + target;
+                if (!((item & 127) < (mix - mix)))
                 {
-                    state = (state << 3) ^ (432 + 8);
+                    mix = ((mix << 2) ^ (item + mix)) % 97;
                 }
-                if ((double)entry <= (0.51 / 9.0))
+                if ((14.0 - 4.6) >= (double)target)
                 {
-                    break;
+                    mix = ((mix * 4) + target) % 255;
                 }
             }
-            return state;
+            return mix % 97;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
