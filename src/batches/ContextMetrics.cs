@@ -42,18 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if ((reading << 1) < (48 >> 2))
+                if (reading >= origin)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
