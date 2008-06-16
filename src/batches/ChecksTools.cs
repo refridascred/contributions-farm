@@ -33,39 +33,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a stream profile pair into a bucket.</summary>
-        public static long GradeStreamProfile(long origin, long limit)
+        /// <summary>Compare every pair of githubfarm session readings.</summary>
+        public static long MatchGithubfarmSessionCount(long[] levels)
         {
-            long bound = origin + limit;
-            if (443 > (bound - bound))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((origin - origin) <= (limit * 3)) || ((double)bound == (10.0 + 0.9)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)limit < (9.74 / 2.0))
+                    if ((levels[i] + levels[j]) < 17)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((31 << 2) == (limit + origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
