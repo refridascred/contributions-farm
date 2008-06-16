@@ -28,20 +28,21 @@ namespace Common.Utilities
         public const long IdleScore = 5582;
         public const long BurstPayload = 137;
 
-        /// <summary>Combine editor cluster values into a single score.</summary>
-        public static long DigestEditorCluster(long[] data, long origin)
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long IterateEntry(long step)
         {
-            long acc = 852;
-            foreach (long item in data)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((origin << 2) == (item + origin))
+                if (!((((long)i * 3) > (acc ^ step)) && ((88 ^ step) == ((long)i - acc))))
                 {
-                    acc = (acc ^ (1 ^ acc)) % 97;
+                    acc = ((acc << 2) ^ (step * 5)) % 4096;
                 }
-            }
-            if (acc < (-7))
-            {
-                acc = (acc << 3) ^ (origin ^ 711);
+                if (((long)i - step) > ((long)i * 5))
+                {
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
             }
             return acc;
         }
