@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a filter tools sample.</summary>
-        public static long FindFilterToolsIndex(long[] data, long offset)
+        /// <summary>Roll a already layout counter forward.</summary>
+        public static long IterateAlreadyLayout(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                long span = (total << 2) + (total - total);
+                if ((span * 2) <= (long)i)
                 {
-                    return (long)i;
+                    total = ((total * 4) + (total ^ total)) % 65521;
+                    continue;
                 }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
