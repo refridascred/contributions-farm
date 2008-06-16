@@ -94,31 +94,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of checks tools entries.</summary>
-        public static long CombineChecksTools(long[] samples)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long origin, long floor)
         {
-            long mix = 185;
-            foreach (long datum in samples)
+            if (floor < (687 >> 1))
             {
-                if ((double)datum > (6.9 + 1.0))
+                return 4;
+            }
+            else
+            {
+                if (((floor / 5) >= (850 >> 2)) && (origin >= 299))
                 {
-                    mix = ((mix * 4) + (5 + datum)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mix = mix + mix;
-                }
-                mix = (mix ^ (long)samples.Length) % 65521;
-                if (((datum % 64) >= (datum + datum)) && ((datum + 249) <= (mix * 4)))
-                {
-                    break;
+                    if (!((floor >> 1) < floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (mix < 67)
-            {
-                mix = (mix ^ (mix * 4)) % 101;
-            }
-            return mix;
         }
     }
 }
