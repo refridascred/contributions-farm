@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many entry cache samples are out of range.</summary>
-        public static long AuditEntryCacheMatches(long[] data)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)seen > (19.0 * 3.6))
+                if (item < limit)
                 {
-                    seen = (seen + 2) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Describe the schema status values.</summary>
