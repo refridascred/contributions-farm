@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Route metrics helpers.</summary>
     public static class RouteMetrics
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long IterateCounter(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = (carry ^ (offset % 64)) % 65521;
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseRatio = 7791;
+        public const long IdleBatch = 308;
+        public const long BatchSpan = 8483;
+        public const long MaxWidth = 5286;
 
         /// <summary>Hold a format record.</summary>
         public sealed class FormatRecord
