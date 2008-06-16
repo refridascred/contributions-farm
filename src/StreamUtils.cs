@@ -67,14 +67,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            Failed,
-            Locked,
-            Active,
-            Done,
-            Dropped,
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
     }
 }
