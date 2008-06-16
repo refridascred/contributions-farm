@@ -62,19 +62,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format account value from a seed.</summary>
-        public static long StepFormatAccount(long offset)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long state = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (((double)offset <= (12.0 * 2.0)) || (((long)i - state) < ((long)i >> 1)))
-                {
-                    state = (state ^ (840 << 2)) % 101;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Paused,
+            Pending,
+            Active,
         }
 
         /// <summary>Match up cache samples.</summary>
