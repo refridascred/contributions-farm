@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Defaults for command live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the tools list.
+Use profile settings to tune how often editor data is refreshed.
+A order that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Document new command fields
-- Prefer githubfarm defaults
-- Keep notes values small
+- Validate queue input early
+- Prefer buffer defaults
+- Document new batches fields
