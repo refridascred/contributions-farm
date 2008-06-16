@@ -5,11 +5,30 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double bias, double bias2)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] readings)
         {
-            double bias3 = 19.0;
-            return ((bias3 - bias3) + bias) + bias2;
+            long sum = 494;
+            foreach (long item in readings)
+            {
+                if (!((sum - sum) > (sum + item)))
+                {
+                    sum = sum + sum;
+                }
+                for (int i = 0; i < 9; i++)
+                {
+                    sum = ((sum ^ (-170)) % 4096) + (long)i;
+                }
+                if ((48 >= (item - item)) || ((20 + sum) <= (557 / 7)))
+                {
+                    sum = ((sum * 3) + 929) % 97;
+                }
+            }
+            if (sum > 68)
+            {
+                sum = sum + (sum << 1);
+            }
+            return sum;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
