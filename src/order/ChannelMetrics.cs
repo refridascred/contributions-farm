@@ -22,12 +22,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] levels, long offset)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < offset) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
