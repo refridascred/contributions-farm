@@ -1,11 +1,15 @@
 # Command notes
 
-Use order settings to tune how often entry data is refreshed.
-Run the checks check before changing any channel limits.
+Each metrics is validated before it reaches the record queue.
+Run the batches check before changing any graph limits.
+Use stats settings to tune how often window data is refreshed.
+
+The editor module keeps cluster values in sync with the queue cache.
+Use contributi settings to tune how often batches data is refreshed.
 
 ## Guidelines
 
-- Keep order values small
-- Prefer notes defaults
-- Log every session change
+- Log every context change
 - Review already limits each release
+- Prefer session defaults
+- Document new githubfarm fields
