@@ -47,18 +47,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long MeasureReportMetricsOutliers(long[] samples, long limit)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((seen * 2) == (entry - entry)) || (seen >= (entry + 9)))
-                {
-                    seen = (seen + 1) - limit;
-                }
-            }
-            return seen;
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Label { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
