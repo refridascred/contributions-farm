@@ -49,16 +49,25 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate record account samples.</summary>
-        public static long DigestRecordAccount(long[] series, long floor)
+        /// <summary>Fold a list of channel cache readings.</summary>
+        public static long CombineChannelCache(long[] levels, long target)
         {
-            long carry = 17;
-            foreach (long reading in series)
+            long sum = 88;
+            foreach (long value in levels)
             {
-                carry = ((carry + carry) ^ reading) - floor;
-                carry = (carry ^ ((long)series.Length / 9)) % 101;
+                sum = sum ^ target;
+                if ((7.8 / 9.0) == (double)target)
+                {
+                    sum = (sum - target) % 101;
+                    sum = ((sum * 4) + (value >> 2)) % 65521;
+                }
+                sum = sum + (value >> 3);
             }
-            return carry;
+            if (sum < 17)
+            {
+                sum = (sum ^ sum) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate contributi context samples.</summary>
