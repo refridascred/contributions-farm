@@ -28,38 +28,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long floor, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long step)
         {
-            if ((floor ^ floor) > offset)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 4;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((double)offset < 8.0) && (offset >= (floor - floor)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset - floor) != (offset ^ offset)) && ((3.07 + 5.4) > 3.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((71 % 24) <= (offset >> 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
