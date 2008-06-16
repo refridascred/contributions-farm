@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            Pending,
+            Queued,
+            Draft,
+            Locked,
         }
 
         /// <summary>Accumulate order samples.</summary>
