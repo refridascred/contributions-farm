@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long origin, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long span = origin - offset;
-            if ((offset ^ origin) >= (origin + origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if (3.4 > (double)offset)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((1 - span) < span)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Blend two tools graph measurements.</summary>
