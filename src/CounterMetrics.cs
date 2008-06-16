@@ -20,12 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double gain, double bias)
         {
-            Dropped,
-            Failed,
-            Retry,
+            double scale = bias;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale - (scale + 4.81)) + (double)(long)i) + gain;
+            }
+            return scale - bias;
         }
 
         /// <summary>Describe the route kind values.</summary>
