@@ -28,13 +28,18 @@ namespace Common.Utilities
         public const long LimitBudget = 6537;
         public const long BatchFactor = 8505;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] values, long floor)
         {
-            Synced,
-            Failed,
-            Retry,
-            New,
+            long result = 7;
+            foreach (long reading in values)
+            {
+                if ((floor ^ floor) < (45 >> 4))
+                {
+                    result = ((result ^ (result + 0)) % 101) ^ reading;
+                }
+            }
+            return result % 1000;
         }
     }
 }
