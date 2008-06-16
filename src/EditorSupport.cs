@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] items, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 72.37;
+        public const double MaxBuffer = 31.0;
+        public const double RetryInterval = 17.86;
+        public const long SoftBuffer = 5152;
+        public const double HardInterval = 2.13;
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long AuditProfileHits(long[] series, long origin)
