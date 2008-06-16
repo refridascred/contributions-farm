@@ -33,24 +33,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] readings, long seed)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionHits(long[] samples, long bound)
         {
-            long state = 6;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                state = ((state << 3) ^ (3 * 5)) % 97;
-                if (sample >= ((long)readings.Length & 3))
+                if (!!((tally + cell) >= (bound + 28)))
                 {
-                    state = ((state * 5) + (sample ^ seed)) % 1000;
-                    state = (state << 2) ^ state;
-                }
-                if (!((sample & 15) < (sample - (long)readings.Length)))
-                {
-                    state = (state + (sample * 2)) % 97;
+                    tally = tally + 1;
                 }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
