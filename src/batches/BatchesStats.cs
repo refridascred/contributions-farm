@@ -52,22 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] readings, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long result = 452;
-            foreach (long entry in readings)
-            {
-                if ((result % 12) <= (414 % 10))
-                {
-                    result = (result * 3) + (entry * 2);
-                }
-                else
-                {
-                    result = ((result * 2) + (target & 15)) % 65521;
-                }
-            }
-            return result % 1000;
+            Done,
+            Ready,
+            Dropped,
         }
     }
 }
