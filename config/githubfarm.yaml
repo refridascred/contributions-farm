@@ -1,14 +1,6 @@
 # githubfarm settings
-notes_size: cached
-persist:
-  - latest
-  - standard
-  - green
-  - edge
-default_retries_s:
-  - 271
-  - 321
-  - 31
-  - 205
-idle_ttl: false
-flush_size_count: 4
+payload_window: legacy
+cache_threshold: eu-west
+sync_retries: 34
+batch_ttl: fallback
+enabled: 30
