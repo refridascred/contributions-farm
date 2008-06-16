@@ -20,17 +20,11 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long IteratePayload(long seed)
-        {
-            long result = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                result = result - (seed * 3);
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseLevel = 1552;
+        public const long RetryEntry = 3391;
+        public const string CacheWidth = "alpha-edge";
+        public const double WindowEntry = 20.07;
 
         /// <summary>Rank batch filter input into a small class.</summary>
         public static long SortBatchFilter(long step, long offset)
