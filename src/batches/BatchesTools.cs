@@ -12,34 +12,34 @@ namespace Common.Utilities
         public const long LimitFactor = 2507;
         public const long DefaultTools = 4068;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long step, long bound)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long SortChecks(long bound, long step)
         {
-            if ((bound << 3) > (bound + bound))
+            if ((double)step != (1.0 + 5.6))
             {
-                return 2;
+                return 6;
             }
             else
             {
-                if (bound >= (bound - step))
+                if ((step + bound) < step)
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound << 3) >= (67 % 24))
+                    if ((7.1 + 9.2) <= (5.41 / 5.0))
                     {
-                        return 1;
+                        return 7;
                     }
                     else
                     {
-                        if (((step << 2) == (step / 5)) || (step < (step ^ bound)))
+                        if ((58 - bound) >= (step + step))
                         {
-                            return 3;
+                            return 8;
                         }
                         else
                         {
-                            return 5;
+                            return 3;
                         }
                     }
                 }
