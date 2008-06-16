@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long limit)
         {
-            public string Flag { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Mode { get; set; }
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((limit & 3) <= (5 + (-15))) || (((long)i << 1) <= (result / 6)))
+                {
+                    result = ((result << 3) ^ (result << 1)) % 97;
+                }
+                result = ((result << 3) ^ ((long)i - limit)) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Compare every pair of batch readings.</summary>
