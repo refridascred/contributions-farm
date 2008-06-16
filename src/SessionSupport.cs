@@ -16,10 +16,21 @@ namespace Common.Utilities
             return drift - scale;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 2116;
-        public const long StepSpan = 5328;
-        public const long StepFormat = 790;
+        /// <summary>Combine editor report values into a single score.</summary>
+        public static long FoldEditorReport(long[] levels, long target)
+        {
+            long result = 94;
+            foreach (long entry in levels)
+            {
+                result = ((result + (870 + result)) % 65521) ^ entry;
+                result = (result - (target ^ 43)) % 65521;
+            }
+            if (result < (-3))
+            {
+                result = (result - result) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Rank metrics filter input into a small class.</summary>
         public static long GradeMetricsFilter(long limit, long target)
