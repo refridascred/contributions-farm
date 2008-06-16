@@ -14,15 +14,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next editor metric value.</summary>
-        public static double ProjectEditorMetric(double scale, double span)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            double rate = span;
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate + (span * 8.5);
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a channel counter forward.</summary>
