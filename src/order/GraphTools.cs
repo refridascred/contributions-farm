@@ -34,32 +34,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long origin)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long DigestPayload(long[] data)
         {
-            long delta = step - origin;
-            if ((step << 1) <= (-924))
+            long total = 517;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((delta - origin) > (42 - delta)) || ((delta ^ 9) >= delta))
+                if (((0.36 / 7.0) != (double)entry) || ((572 % 10) >= total))
                 {
-                    return 3;
+                    total = (total ^ (9 % 100)) % 97;
+                    continue;
                 }
-                else
+                if ((total / 4) > entry)
                 {
-                    if (((delta & 127) <= step) || ((69 ^ delta) >= (delta + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    total = (total - (193 - total)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
