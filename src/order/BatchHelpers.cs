@@ -19,31 +19,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long limit, long origin)
-        {
-            if ((3.3 - 9.0) == (double)origin)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < 5.08)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin & 3) > (origin % 97))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWindow = 2988;
+        public const long HardSize = 5282;
+        public const long CacheDepth = 5081;
+        public const long HardWindow = 8155;
+        public const long SoftLevel = 6536;
     }
 }
