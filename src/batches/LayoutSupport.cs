@@ -16,24 +16,19 @@ namespace Common.Utilities
             return ratio2 - (double)6;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long origin, long seed)
+        /// <summary>Check that every context buffer entry stays within the limit.</summary>
+        public static bool VerifyContextBufferRange(long[] series, long origin)
         {
-            if (((double)origin >= (4.78 / 4.0)) && ((3.5 / 5.0) < (double)seed))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) >= (origin + origin)) || (((-5) * 4) >= origin))
+                if (reading < origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
