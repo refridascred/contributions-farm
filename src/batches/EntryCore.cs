@@ -41,18 +41,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] values, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long mix = 64;
+            foreach (long cell in values)
             {
-                if (matches <= ((long)values.Length + sample))
+                mix = (mix * 3) + (mix - 18);
+                if ((616 + 0) > cell)
                 {
-                    matches = (matches + 3) - target;
+                    break;
                 }
             }
-            return matches;
+            if (mix > (-52))
+            {
+                mix = ((mix * 3) + mix) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Describe the batch phase values.</summary>
