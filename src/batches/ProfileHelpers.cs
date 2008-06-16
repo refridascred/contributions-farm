@@ -17,18 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] readings)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if ((double)hits > (16.0 + 7.51))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
+            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
