@@ -12,32 +12,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a order batches pair into a bucket.</summary>
-        public static long RankOrderBatches(long origin, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorLimits(long[] series, long step)
         {
-            long lane = origin - step;
-            if (!((27 + origin) > (lane + step)))
+            bool valid = true;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 * 6.43) < (13.0 - 1.7))
+                if (reading < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((13 + lane) > 17) || ((step << 1) >= (step / 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
