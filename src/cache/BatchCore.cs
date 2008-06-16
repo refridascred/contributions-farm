@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long MatchPayloadCount(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 36;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)sum != (3.69 / 5.0))
                 {
-                    if ((levels[i] ^ levels[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 2) ^ (sum & 255)) % 101;
+                }
+                else
+                {
+                    sum = sum ^ entry;
+                }
+                if (sum <= (entry ^ entry))
+                {
+                    sum = ((sum << 3) ^ (entry + entry)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + (entry % 12)) % 255;
                 }
             }
-            return tally;
+            return sum % 97;
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
