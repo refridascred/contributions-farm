@@ -51,24 +51,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] items, long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long OverlapQueueCount(long[] readings)
         {
-            long mix = 8;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                long slot = reading + (reading << 1);
-                mix = (mix ^ (slot * 4)) % 101;
-                if (reading < (floor % 5))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ (floor + 5)) % 65521;
+                    if ((readings[i] ^ readings[j]) > 19)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > 9)
-            {
-                mix = (mix - floor) % 65521;
-            }
-            return mix;
+            return seen;
         }
     }
 }
