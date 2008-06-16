@@ -32,13 +32,18 @@ namespace Common.Utilities
         public const long DefaultFormat = 7966;
         public const double MaxFormat = 35.3;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaHits(long[] samples)
         {
-            Paused,
-            Stale,
-            Failed,
-            Active,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((7.0 * 7.0) > (double)item)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next graph value.</summary>
