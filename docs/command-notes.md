@@ -1,11 +1,12 @@
 # Command notes
 
-Each commits is validated before it reaches the report queue.
-The counter module keeps account values in sync with the metrics cache.
+Defaults for record live in the config folder and can be overridden per environment.
+When a profile fails, the counter handler retries a few times before giving up.
+The batch helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate commits input early
-- Document new batch fields
-- Review cluster limits each release
-- Log every commits change
+- Log every payload change
+- Validate already input early
+- Prefer editor defaults
+- Keep window values small
