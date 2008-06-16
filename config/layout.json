@@ -1,5 +1,6 @@
 {
-  "persist": ["green", "eu-west"],
-  "githubfarm_delay": true,
-  "strict": 92.26
+  "warm_window_pct": 93.63,
+  "hard_size_pct": true,
+  "base_threshold": "legacy",
+  "burst_timeout": false
 }
