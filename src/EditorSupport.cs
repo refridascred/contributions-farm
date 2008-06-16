@@ -75,21 +75,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long OverlapContributiCount(long[] samples)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Queued,
+            Paused,
         }
     }
 }
