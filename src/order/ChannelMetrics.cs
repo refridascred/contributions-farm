@@ -16,12 +16,13 @@ namespace Common.Utilities
             return gain + scale;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Paused,
-            Closed,
+            Dropped,
+            Idle,
             Stale,
+            Retry,
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
