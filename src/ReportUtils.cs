@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the notes commits entries that pass the check.</summary>
-        public static long TallyNotesCommitsMatches(long[] values)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long RankOrder(long limit, long seed)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long cur = limit - seed;
+            if ((limit < (limit - cur)) || ((cur * 5) != (cur ^ cur)))
             {
-                if (((820 ^ cell) != (cell & 1)) && !(cell <= (matches & 255)))
+                return 5;
+            }
+            else
+            {
+                if ((cur * 5) <= seed)
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (4.8 > (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (cur > (cur - limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
