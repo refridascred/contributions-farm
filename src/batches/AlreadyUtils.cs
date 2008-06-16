@@ -54,19 +54,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long offset)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long sum = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                if (((sum + offset) == (offset + sum)) && ((sum - sum) <= (sum >> 1)))
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Closed,
+            Stale,
+            Ready,
+            Active,
+            Done,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
