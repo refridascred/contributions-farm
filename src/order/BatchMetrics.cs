@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TotalCommandChannel(long[] data, long offset)
+        /// <summary>Match up editor token samples.</summary>
+        public static long OverlapEditorTokenCount(long[] samples)
         {
-            long score = 1;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((score + score) <= (score + 4)) || ((score + score) <= 488))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (((score * 3) + (long)data.Length) % 101) - reading;
+                    if ((samples[i] - samples[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 26)
-            {
-                score = (score ^ (offset % 12)) % 97;
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Hold a entry info.</summary>
