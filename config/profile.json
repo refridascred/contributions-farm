@@ -1,6 +1,8 @@
 {
-  "soft_timeout": "edge",
-  "batch_ttl_ms": "strict",
-  "batch_delay": 500,
-  "burst_threshold_count": 1593
+  "hard_limit_count": 7240,
+  "min_size_s": "standard",
+  "max_timeout_pct": "stable",
+  "dry_run": 95.72,
+  "max_size": 91.66,
+  "warm_timeout_ms": [96, 346, 283, 454]
 }
