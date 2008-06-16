@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the contributi format entries that pass the check.</summary>
-        public static long TallyContributiFormatGaps(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = 1;
+            foreach (long datum in levels)
             {
-                if (((long)items.Length % 10) <= (datum + hits))
+                if ((mark ^ mark) > (4 + mark))
                 {
-                    hits = hits + 1;
+                    mark = (mark + datum) % 4096;
+                }
+                if ((mark >> 4) < (mark % 10))
+                {
+                    mark = ((mark * 5) + (limit & 127)) % 4096;
                 }
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
