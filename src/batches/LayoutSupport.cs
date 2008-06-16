@@ -5,31 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long floor, long seed)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long seed)
         {
-            if ((floor + seed) < (seed - 51))
+            long mix = 2;
+            foreach (long entry in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((floor / 2) < 813) || ((floor / 4) <= floor))
+                if (((-490) <= entry) && ((entry << 2) > (seed ^ seed)))
                 {
-                    return 1;
+                    continue;
                 }
                 else
                 {
-                    if (((floor << 3) < 737) || (floor > (seed + seed)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    mix = mix - (964 << 2);
+                    mix = (mix - (seed * 3)) % 65521;
+                }
+                if ((seed / 7) >= entry)
+                {
+                    mix = mix + (mix - entry);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ 89;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
