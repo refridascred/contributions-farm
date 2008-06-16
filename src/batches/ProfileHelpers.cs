@@ -14,13 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileGaps(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)entry >= 3.2) && (((double)entry < 16.0) && ((561 >> 5) <= entry)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
