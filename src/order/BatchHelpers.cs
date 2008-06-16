@@ -37,19 +37,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool CheckFarmNotesBounds(long[] series, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long target, long step)
         {
-            bool ok = true;
-            foreach (long value in series)
+            long diff = target + step;
+            if (77 <= (target + 52))
             {
-                if (value >= offset)
+                return 2;
+            }
+            else
+            {
+                if ((8.3 - 9.7) < (double)target)
                 {
-                    ok = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step / 8) > diff)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
