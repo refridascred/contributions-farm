@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi queue readings against a bound.</summary>
-        public static bool ValidateContributiQueueRange(long[] data, long seed)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long offset)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample <= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                score = score - (offset / 8);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
