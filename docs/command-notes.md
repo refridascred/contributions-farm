@@ -1,11 +1,12 @@
 # Command notes
 
-The cluster helpers are pure functions, so they are safe to call from any thread.
-A tools that stays idle for too long is moved to the githubfarm list.
+The record module keeps batch values in sync with the layout cache.
+When a schema fails, the githubfarm handler retries a few times before giving up.
+Run the layout check before changing any record limits.
 
 ## Guidelines
 
-- Review tools limits each release
-- Validate cache input early
-- Document new route fields
-- Log every layout change
+- Prefer batch defaults
+- Keep window values small
+- Log every filter change
+- Review cluster limits each release
