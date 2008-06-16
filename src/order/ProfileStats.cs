@@ -41,13 +41,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long bound, long offset)
         {
-            Retry,
-            New,
-            Paused,
-            Idle,
+            long step = bound - offset;
+            if ((step >> 2) < (step + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if (bound <= (offset + step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
