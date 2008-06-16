@@ -37,11 +37,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long target)
         {
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
+            long result = target;
+            for (int i = 0; i < 15; i++)
+            {
+                result = (result << 3) ^ (target % 97);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
