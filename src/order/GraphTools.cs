@@ -62,21 +62,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
+        /// <summary>Adjust a buffer metrics reading.</summary>
+        public static double ScaleBufferMetrics(double bias, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = bias;
+            if (mean > bias)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mean = mean + (mean * 3.8);
             }
-            return count;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - span) + (double)(long)i;
+            }
+            return mean - bias;
         }
     }
 }
