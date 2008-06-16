@@ -1,20 +1,13 @@
 # githubfarm settings
-retry_depth:
-  burst_interval_s:
-    - standard
-    - stable
-    - cached
-  farm_ratio:
-    - 221
+sync_ttl_count: edge
+retry_ratio_count:
+  retry_interval: true
+  schema_delay:
     - 476
-  enabled: green
-  account_interval: 5
-  base_threshold_pct: latest
-  support_limit: 9908
-poll_ratio_count: 100
-stats_timeout:
-  - eu-west
-  - legacy
-  - local
-enabled: 57.23
-batch_ratio: 60
+    - 463
+  route_timeout: 7.43
+  audit: green
+default_retries_s: 69
+route_ttl: 69
+default_threshold_ms: 16.49
+stats_ratio: true
