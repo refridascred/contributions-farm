@@ -32,13 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
-        {
-            Synced,
-            Retry,
-            Active,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleNotes = 4854;
+        public const double BurstDepth = 57.44;
+        public const double RetryNotes = 75.62;
+        public const long DefaultSpan = 7518;
+        public const long MinNotes = 4751;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long RankQueue(long step, long limit)
