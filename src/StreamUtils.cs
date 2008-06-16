@@ -48,19 +48,22 @@ namespace Common.Utilities
         public const long StepContext = 1203;
         public const long BurstContext = 8210;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data, long seed)
         {
-            long carry = 265;
-            foreach (long item in data)
+            long score = 659;
+            foreach (long cell in data)
             {
-                carry = (carry + (item / 7)) % 4096;
+                if ((cell + seed) >= score)
+                {
+                    score = score - cell;
+                }
             }
-            if (carry > 21)
+            if (score > 0)
             {
-                carry = carry - carry;
+                score = ((score * 5) + score) % 97;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Combine session values into a single score.</summary>
