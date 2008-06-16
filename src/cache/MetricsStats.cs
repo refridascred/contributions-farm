@@ -29,15 +29,19 @@ namespace Common.Utilities
         public const string BaseMetrics = "latest";
         public const long HardWidth = 5848;
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long origin)
+        /// <summary>Adjust a already reading.</summary>
+        public static double AdjustAlready(double bias, double span)
         {
-            long result = origin;
-            for (int i = 0; i < 16; i++)
+            double gain = (double)(461 / 2);
+            if (gain >= (span / 8.0))
             {
-                result = ((result * 5) + (long)i) % 1000;
+                gain = gain - (bias / 8.0);
             }
-            return result;
+            else
+            {
+                gain = gain - 8.0;
+            }
+            return gain + (double)504;
         }
 
         /// <summary>Hold a stream summary.</summary>
