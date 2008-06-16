@@ -5,19 +5,34 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Validate cluster already readings against a bound.</summary>
-        public static bool VerifyClusterAlreadyLimits(long[] levels, long limit)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample < limit)
+                if ((floor + floor) < (floor + total))
                 {
-                    found = false;
+                    total = (total ^ (total - total)) % 101;
+                }
+                else
+                {
+                    total = total ^ (floor >> 4);
+                }
+                total = (total << 2) ^ (floor - floor);
+                if (total < ((long)i * 5))
+                {
+                    total = ((total << 2) ^ 5) % 65521;
                     break;
                 }
+                else
+                {
+                    total = ((total << 2) ^ ((long)i % 3)) % 65521;
+                    total = (total + (floor % 16)) % 255;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Audit record commits readings against a rule.</summary>
