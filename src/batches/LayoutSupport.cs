@@ -60,19 +60,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsBounds(long[] samples, long limit)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long bound, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long prev = bound ^ floor;
+            if (((double)prev != (6.1 + 9.9)) || ((double)bound <= (1.0 + 3.4)))
             {
-                if (cell > limit)
+                return 0;
+            }
+            else
+            {
+                if ((prev ^ (-90)) != (bound + 9))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((bound + floor) < (prev - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
