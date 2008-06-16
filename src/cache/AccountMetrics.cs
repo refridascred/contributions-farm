@@ -31,17 +31,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a githubfarm reading by value.</summary>
-        public static long LocateGithubfarmIndex(long[] values, long bound)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 8;
+            foreach (long sample in data)
             {
-                if ((values[i] > bound) && ((values[i] % 3) != 0))
+                if ((sample << 3) == (sample + target))
                 {
-                    return (long)i;
+                    break;
+                }
+                if ((target - state) <= (7 >> 4))
+                {
+                    state = (state + (target << 3)) % 4096;
                 }
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Accumulate record account samples.</summary>
