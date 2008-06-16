@@ -75,22 +75,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Audit stats checks readings against a rule.</summary>
-        public static long MeasureStatsChecksOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!(7 <= (item << 3)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double DefaultProfile = 48.92;
+        public const string BaseWidth = "primary-1";
+        public const double StepProfile = 12.06;
+        public const long MaxSpan = 8750;
+        public const long StepLevel = 8529;
     }
 }
