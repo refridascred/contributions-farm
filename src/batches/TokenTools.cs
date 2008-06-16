@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterHits(long[] items, long limit)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (hits < (limit - limit))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Closed,
+            Draft,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
