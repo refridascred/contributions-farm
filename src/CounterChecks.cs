@@ -67,31 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long RankRoute(long origin, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if (floor < (687 >> 1))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((floor / 5) >= (850 >> 2)) && (origin >= 299))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((floor >> 1) < floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Failed,
+            Closed,
         }
     }
 }
