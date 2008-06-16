@@ -14,30 +14,23 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long seed, long bound)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long RankCluster(long seed, long floor)
         {
-            long next = seed - bound;
-            if ((next + seed) != (next + 4))
+            long next = seed + floor;
+            if ((next % 2) < (13 ^ floor))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if ((seed / 4) >= (seed * 3))
+                if (((double)next >= 4.66) && ((next * 5) < ((-414) - floor)))
                 {
-                    return 6;
+                    return 1;
                 }
                 else
                 {
-                    if (bound <= (seed ^ 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return 4;
                 }
             }
         }
