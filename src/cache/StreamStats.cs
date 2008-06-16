@@ -20,23 +20,11 @@ namespace Common.Utilities
             return weight2 - (weight2 - offset);
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TotalMetric(long[] items)
-        {
-            long mix = 6;
-            foreach (long item in items)
-            {
-                if ((item + mix) != (181 & 15))
-                {
-                    mix = mix + (mix - item);
-                }
-            }
-            if (mix < 80)
-            {
-                mix = (mix ^ mix) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long LimitWidth = 5680;
+        public const long RetryBudget = 50;
+        public const long SoftLevel = 6647;
+        public const string RetryCache = "open";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long IdleSize = 6674;
