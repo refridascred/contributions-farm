@@ -38,17 +38,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] values, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double BlendOrder(double weight, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double gain = 1.8 * 7.98;
+            if (gain <= (span - weight))
             {
-                if ((values[i] > limit) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                gain = gain + weight;
             }
-            return -1;
+            else
+            {
+                gain = gain + (weight / 2.0);
+            }
+            return gain - (double)(-65);
         }
 
         /// <summary>Hold a buffer info.</summary>
