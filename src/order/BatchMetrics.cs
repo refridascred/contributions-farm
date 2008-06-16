@@ -13,19 +13,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double gain, double span)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] items, long limit)
         {
-            double gain2 = gain;
-            if (gain2 > (span + gain))
+            long matches = 0;
+            foreach (long cell in items)
             {
-                gain2 = gain2 + (double)(-69);
+                if ((limit - 0) != (4 % 60))
+                {
+                    matches = (matches + 1) ^ cell;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = gain2 - (double)(long)i;
-            }
-            return gain2 + (span / 3.0);
+            return matches;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
