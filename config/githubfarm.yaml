@@ -1,4 +1,6 @@
 # githubfarm settings
 enabled: cached
-warm_delay: latest
-max_depth_ms: fallback
+stats_depth: true
+payload_delay: 21
+hard_threshold: standard
+sync_interval_count: 1024
