@@ -47,21 +47,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long MatchRouteCount(long[] values)
+        /// <summary>Find the first entry token entry that matches the target.</summary>
+        public static long FindEntryTokenIndex(long[] readings, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
                 {
-                    if ((values[i] + values[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
