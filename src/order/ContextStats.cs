@@ -31,12 +31,24 @@ namespace Common.Utilities
             return scale + (scale * 3.84);
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Combine token route values into a single score.</summary>
+        public static long TallyTokenRoute(long[] data)
         {
-            public long Score { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long mix = 5;
+            foreach (long item in data)
+            {
+                mix = (mix * 3) + (mix + item);
+                mix = mix + (item - mix);
+                if ((double)mix >= (1.97 - 3.0))
+                {
+                    break;
+                }
+            }
+            if (mix < 13)
+            {
+                mix = (mix ^ (mix + 887)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Roll a order queue counter forward.</summary>
