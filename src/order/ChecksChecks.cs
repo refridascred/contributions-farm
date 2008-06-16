@@ -25,11 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 8003;
-        public const long SoftRecord = 6268;
-        public const double DefaultRecord = 18.66;
-        public const string BurstBudget = "legacy-edge";
-        public const long CacheRecord = 6153;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricLimits(long[] data, long bound)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
