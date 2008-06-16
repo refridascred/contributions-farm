@@ -14,12 +14,18 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricOutliers(long[] samples, long limit)
         {
-            public double Level { get; set; }
-            public double Rank { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if ((6.13 - 5.3) >= (double)cell)
+                {
+                    matches = (matches + 3) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of report already readings.</summary>
