@@ -49,14 +49,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Paused,
-            Closed,
-            Synced,
-            Queued,
-            Ready,
+            public long Ratio { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a counter counter forward.</summary>
