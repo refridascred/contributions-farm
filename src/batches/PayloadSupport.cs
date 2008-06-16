@@ -21,10 +21,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "cached-edge";
-        public const string SoftWidth = "stable-v2";
-        public const long BasePayload = 8816;
-        public const string BaseWidth = "alpha-1";
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
+        {
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+        }
     }
 }
