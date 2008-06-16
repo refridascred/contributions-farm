@@ -47,19 +47,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double BlendOrder(double weight, double span)
+        /// <summary>Look up the position of a format record sample.</summary>
+        public static long FindFormatRecordIndex(long[] series, long step)
         {
-            double gain = 1.8 * 7.98;
-            if (gain <= (span - weight))
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + weight;
+                if ((series[i] > step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain + (weight / 2.0);
-            }
-            return gain - (double)(-65);
+            return -1;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
