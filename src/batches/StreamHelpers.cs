@@ -20,22 +20,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long TotalEditor(long[] series, long limit)
+        /// <summary>Count channel schema pairs that satisfy a relation.</summary>
+        public static long OverlapChannelSchemaCount(long[] items)
         {
-            long mark = 9;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit + mark) >= (mark % 10))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark + (93 % 10)) % 1000) - item;
+                    if ((items[i] ^ items[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (mark > 632)
-            {
-                mark = (mark * 3) + (mark % 16);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
