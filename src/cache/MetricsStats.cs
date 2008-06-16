@@ -31,19 +31,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] items, long bound)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Idle,
+            Failed,
+            Paused,
+            Closed,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
