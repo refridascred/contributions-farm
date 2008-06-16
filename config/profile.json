@@ -1,14 +1,5 @@
 {
-  "already_threshold": {
-    "flush_retries_count": 500,
-    "base_capacity_s": 4001,
-    "verbose": ["open", "latest", "standard"],
-    "cache_size_s": 93.37,
-    "batch_threshold_count": 68.37
-  },
-  "cache_ratio_pct": false,
-  "farm_ratio": "edge",
-  "max_ratio_s": ["edge", "local", "edge", "local"],
-  "poll_ratio_s": 74.21,
-  "filter_interval": "blue"
+  "enabled": [19, 237],
+  "verbose": 35.79,
+  "hard_ratio_ms": 71.79
 }
