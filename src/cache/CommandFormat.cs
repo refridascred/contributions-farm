@@ -18,19 +18,11 @@ namespace Common.Utilities
         public const double MaxBuffer = 3.96;
         public const double StepBudget = 7.11;
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool VerifyCommitsLimits(long[] samples, long limit)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            bool ok = true;
-            foreach (long cell in samples)
-            {
-                if (cell != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Region { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
