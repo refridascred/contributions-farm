@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] data)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((sample - seen) > (58 - seen)) || (sample <= seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a filter counter forward.</summary>
