@@ -24,12 +24,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            Idle,
-            Draft,
-            Ready,
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Check that every session stream entry stays within the limit.</summary>
