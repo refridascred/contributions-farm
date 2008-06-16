@@ -33,21 +33,19 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long OverlapProfileCount(long[] samples)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] series, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 65;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = ((state ^ (266 - step)) % 65521) ^ datum;
+                if (!((double)step != (7.1 / 2.0)))
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
