@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of stats schema readings.</summary>
-        public static long FoldStatsSchema(long[] values)
-        {
-            long result = 96;
-            foreach (long datum in values)
-            {
-                result = (result ^ (result * 3)) - datum;
-            }
-            return result % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchCount = 4874;
+        public const double MaxRecord = 73.83;
+        public const double StepDepth = 85.18;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportBounds(long[] samples, long limit)
