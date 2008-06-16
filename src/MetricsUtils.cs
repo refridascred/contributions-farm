@@ -33,10 +33,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchChannel = "strict-1";
-        public const double CacheFactor = 33.71;
-        public const string CacheChannel = "cached-v2";
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public bool Limit { get; set; }
+            public bool Size { get; set; }
+        }
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
