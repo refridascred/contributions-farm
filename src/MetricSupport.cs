@@ -12,24 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long floor, long bound)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            if (((double)bound < (5.5 - 15.0)) && ((bound << 2) >= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((5.0 - 6.32) < (2.0 / 4.0)) || ((floor >> 4) != (floor << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Score { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
