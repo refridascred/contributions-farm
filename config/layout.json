@@ -1,8 +1,7 @@
 {
-  "warm_size_ms": 21,
-  "sync_retries_s": true,
-  "retry_capacity_count": false,
-  "hard_capacity": 500,
-  "report_size": true,
-  "max_timeout": 25.86
+  "retry_delay_pct": 2,
+  "burst_timeout": "local",
+  "strict": 18.69,
+  "batch_limit_pct": false,
+  "poll_limit_pct": 6158
 }
