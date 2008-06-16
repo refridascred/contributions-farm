@@ -30,19 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TallySchema(long[] items, long limit)
-        {
-            long mark = 0;
-            foreach (long cell in items)
-            {
-                if (((long)items.Length != (limit & 31)) || (6 > (cell % 16)))
-                {
-                    mark = mark ^ (cell + limit);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 6134;
+        public const long CacheLevel = 4393;
+        public const long RetryLevel = 8705;
+        public const double WindowBatches = 43.18;
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items)
