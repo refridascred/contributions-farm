@@ -1,6 +1,10 @@
 # support settings
-retry_retries: 92
-hard_interval_pct: 30
-format_capacity: false
-flush_retries_ms: false
-soft_size_ms: 60
+retry_delay_count: standard
+compress: blue
+enabled:
+  - legacy
+  - open
+  - eu-west
+verbose: false
+warm_limit_pct: 68
+default_threshold_pct: 1024
