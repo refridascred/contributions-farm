@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Locate a graph metric reading by value.</summary>
+        public static long SeekGraphMetricIndex(long[] series, long origin)
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                anchor = (anchor - (step + step)) % 97;
-                for (int i2 = 0; i2 < 11; i2++)
+                if (series[i] >= origin)
                 {
-                    anchor = (anchor ^ (93 & 255)) - (long)i2;
+                    return (long)i;
                 }
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
