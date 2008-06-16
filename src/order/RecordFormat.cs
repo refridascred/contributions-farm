@@ -5,20 +5,31 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long SortMetric(long step, long offset)
         {
-            long carry = limit;
-            for (int i = 0; i < 12; i++)
+            if ((offset + step) >= (offset >> 3))
             {
-                if (!((carry + limit) >= (carry / 4)))
-                {
-                    carry = carry + carry;
-                    carry = carry - carry;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((offset << 1) < offset)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((double)step <= (double)6) && ((offset + step) == (70 << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
