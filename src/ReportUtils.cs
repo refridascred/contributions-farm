@@ -38,15 +38,18 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatMatches(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                score = ((score * 5) + (long)i) % 101;
+                if ((datum << 2) > (count - datum))
+                {
+                    count = count + 2;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
