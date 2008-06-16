@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next notes schema value.</summary>
-        public static double ProjectNotesSchema(double weight, double span)
-        {
-            double weight2 = weight + (weight + weight);
-            if (weight2 > weight)
-            {
-                weight2 = weight2 + (11.0 - weight);
-            }
-            else
-            {
-                weight2 = weight2 - (weight2 / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 + weight2) + (double)(long)i;
-            }
-            return weight2 - (weight - span);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BurstBatch = 6577;
+        public const long SoftInterval = 4456;
+        public const long MaxLevel = 7190;
+        public const long StepBatch = 5671;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long step)
