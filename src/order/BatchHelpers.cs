@@ -12,23 +12,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double SmoothReport(double ratio, double bias)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            double weight = bias - (double)179;
-            if (weight > (double)87)
-            {
-                weight = weight + (double)8;
-            }
-            else
-            {
-                weight = weight - (double)2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (ratio + weight)) + (double)(long)i;
-            }
-            return weight - 0.93;
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Locate a farm editor reading by value.</summary>
