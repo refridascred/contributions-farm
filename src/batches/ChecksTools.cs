@@ -14,13 +14,16 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long StepCommand(long floor)
         {
-            New,
-            Failed,
-            Closed,
-            Done,
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                anchor = (anchor - 61) % 4096;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
