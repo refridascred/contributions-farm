@@ -1,11 +1,10 @@
 # githubfarm settings
-flush_limit:
+soft_depth_pct:
+  - strict
   - cached
-  - edge
-  - staging
-compress: 5698
-enabled:
-  - 372
-  - 492
-  - 251
-  - 36
+  - local
+warm_delay: standard
+metrics_size: local
+readonly: edge
+base_threshold_count: 5966
+sync_depth_s: 60
