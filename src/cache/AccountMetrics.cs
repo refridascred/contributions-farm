@@ -72,32 +72,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Rank filter graph input into a small class.</summary>
-        public static long GradeFilterGraph(long offset, long offset2)
-        {
-            long edge = offset - offset2;
-            if ((edge + edge) < offset)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((14.0 - 11.0) != (double)offset2)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset2 < edge)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double RetryDepth = 35.08;
+        public const long MaxSpan = 8653;
+        public const string BurstInterval = "fallback-v2";
+        public const long MaxBudget = 1714;
     }
 }
