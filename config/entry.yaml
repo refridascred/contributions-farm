@@ -1,14 +1,7 @@
 # entry settings
-report_interval: 45
-batch_size_pct:
-  min_ratio_pct:
-    - stable
-    - eu-west
-    - cached
-    - local
-  audit: green
-  compress: blue
-  warm_size_count: 250
-  dry_run: true
-cache_capacity_count: blue
-sync_size_count: local
+account_delay: false
+persist: 93.92
+flush_ratio_pct:
+  - green
+  - stable
+  - staging
