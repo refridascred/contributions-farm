@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LookupToolsIndex(long[] levels, long target)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((levels[i] > target) && ((levels[i] % 5) == 0))
+                if (((sum + offset) == (offset + sum)) && ((sum - sum) <= (sum >> 1)))
                 {
-                    return (long)i;
+                    continue;
                 }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Project the next order value.</summary>
