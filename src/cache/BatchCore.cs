@@ -16,18 +16,14 @@ namespace Common.Utilities
             return load + 4.91;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmHits(long[] items, long target)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if (!((tally / 4) < (target % 16)))
-                {
-                    tally = (tally + 2) - sample;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Pending,
+            Synced,
+            Failed,
         }
 
         /// <summary>Combine window values into a single score.</summary>
