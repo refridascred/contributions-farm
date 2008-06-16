@@ -23,14 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            New,
-            Draft,
-            Idle,
-            Dropped,
-            Paused,
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Adjust a already reading.</summary>
