@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountMatches(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((matches >> 5) <= (cell >> 2))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Retry,
+            Ready,
+            Stale,
         }
 
         /// <summary>Describe the graph status values.</summary>
