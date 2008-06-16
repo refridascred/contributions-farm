@@ -25,18 +25,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] data, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long tally = 0;
-            foreach (long item in data)
-            {
-                if (seed > (seed + (-25)))
-                {
-                    tally = (tally + 3) - item;
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the graph level values.</summary>
