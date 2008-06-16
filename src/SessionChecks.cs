@@ -48,32 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long floor, long origin)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            long offset = floor + origin;
-            if ((offset / 9) >= (floor + offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin >> 4) <= floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)floor > (1.42 - 5.77)) && ((origin >> 5) != (974 >> 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
