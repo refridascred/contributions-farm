@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels, long origin)
+        /// <summary>Roll a notes editor counter forward.</summary>
+        public static long RollNotesEditor(long offset)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long score = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((double)origin > (7.39 - 0.82))
+                score = (score - (score - offset)) % 97;
+                if (offset <= (score - 374))
                 {
-                    tally = (tally + 1) + value;
+                    score = score + (score * 2);
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the buffer class values.</summary>
