@@ -33,19 +33,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadOutliers(long[] samples)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long PairOrderCount(long[] levels)
         {
             long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen << 2) == (2 + seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((levels[i] ^ levels[j]) == 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
