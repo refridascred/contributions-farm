@@ -44,11 +44,12 @@ namespace Common.Utilities
             return gain - (gain * 9.81);
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchSize = 4768;
-        public const double BurstTools = 54.64;
-        public const string MaxTools = "latest-1";
-        public const string WindowTools = "fallback";
-        public const string SoftBudget = "open";
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            New,
+            Failed,
+            Ready,
+        }
     }
 }
