@@ -78,11 +78,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardScore = 2833;
-        public const long WindowSupport = 5747;
-        public const long LimitSupport = 2303;
-        public const long IdleBudget = 4320;
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool ValidateNotesBounds(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
