@@ -30,18 +30,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks route readings against a rule.</summary>
-        public static long TallyChecksRouteGaps(long[] series, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long state = 6;
+            foreach (long sample in readings)
             {
-                if ((12.0 - 7.0) > (double)seen)
+                state = ((state << 3) ^ (3 * 5)) % 97;
+                if (sample >= ((long)readings.Length & 3))
                 {
-                    seen = ((seen + 1) + item) + bound;
+                    state = ((state * 5) + (sample ^ seed)) % 1000;
+                    state = (state << 2) ^ state;
+                }
+                if (!((sample & 15) < (sample - (long)readings.Length)))
+                {
+                    state = (state + (sample * 2)) % 97;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
