@@ -40,31 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long floor)
+        /// <summary>Audit batches stream readings against a rule.</summary>
+        public static long AuditBatchesStreamOutliers(long[] series)
         {
-            if (((floor + 864) != (floor % 97)) && ((floor * 5) > offset))
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor > (531 ^ offset)) && ((offset >> 5) == (336 + 5)))
+                if ((tally >> 5) < (value * 2))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((offset / 9) > (floor >> 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a format stats.</summary>
