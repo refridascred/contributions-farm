@@ -41,18 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesHits(long[] levels)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (count >= (52 + item))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Paused,
+            Idle,
         }
     }
 }
