@@ -23,15 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            long anchor = bound;
-            for (int i = 0; i < 5; i++)
+            long mark = -13;
+            foreach (long reading in samples)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (!((reading - reading) <= 203))
+                {
+                    mark = mark - (reading ^ mark);
+                }
+                for (int i = 0; i < 3; i++)
+                {
+                    mark = (mark << 2) ^ (74 ^ (long)i);
+                }
+                if ((13.0 * 3.8) <= (double)reading)
+                {
+                    mark = (mark - (reading - mark)) % 255;
+                }
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
