@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardContext = "stable";
-        public const long MinContext = 8547;
-        public const long LimitContext = 6115;
-        public const long StepScore = 1391;
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long step, long seed)
+        {
+            if ((double)45 <= (double)step)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((step > seed) && ((double)seed == (10.0 + 6.8)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step + step) < seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step ^ step) <= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
