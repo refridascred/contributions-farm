@@ -27,12 +27,24 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinBudget = 82.73;
-        public const double CacheRatio = 89.82;
-        public const string IdleInterval = "local-edge";
-        public const long BurstRatio = 4249;
-        public const long LimitWindow = 9982;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double gain, double bias)
+        {
+            double ratio = (double)((-5) % 24);
+            if (ratio < bias)
+            {
+                ratio = ratio + gain;
+            }
+            else
+            {
+                ratio = ratio - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio / 8.0)) + (double)(long)i;
+            }
+            return ratio - 5.0;
+        }
 
         /// <summary>Fold a list of batches tools readings.</summary>
         public static long TotalBatchesTools(long[] readings)
