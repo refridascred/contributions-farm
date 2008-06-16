@@ -49,19 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricLimits(long[] data, long bound)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
