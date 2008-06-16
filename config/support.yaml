@@ -1,21 +1,8 @@
 # support settings
-hard_threshold: 46
-sync_depth_ms: 250
-dry_run: 4975
-session_capacity:
-  readonly: blue
-  warm_ttl: standard
-  order_capacity:
-    min_timeout_s: cached
-    default_capacity_pct:
-      - 305
-      - 453
-      - 203
-    audit: open
-    burst_ttl:
-      - cached
-      - latest
-    route_threshold: 85.3
-  cluster_capacity: 10.57
-  default_ratio_pct: 86
-  soft_ratio_pct: 30
+sync_retries_pct:
+  hard_size_s: false
+  schema_delay: 15.68
+  graph_limit: 81.68
+max_timeout_s: 9000
+sync_ratio_pct: 96
+command_delay: staging
