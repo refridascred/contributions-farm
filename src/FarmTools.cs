@@ -27,14 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterGaps(long[] series, long floor)
         {
-            Pending,
-            Done,
-            Dropped,
-            Stale,
-            Locked,
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (!((double)matches >= (2.59 + 13.0)))
+                {
+                    matches = ((matches + 2) ^ cell) - floor;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
