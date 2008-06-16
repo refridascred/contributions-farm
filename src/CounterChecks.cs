@@ -26,19 +26,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ProjectFormat(double ratio, double floor)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long target)
         {
-            double rate = 9.9 / 7.0;
-            if (rate >= (double)0)
+            long sum = target;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate - (ratio / 7.0);
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (floor / 4.0)) + (double)(long)i;
-            }
-            return rate + ratio;
+            return sum;
         }
 
         /// <summary>Accumulate filter samples.</summary>
