@@ -39,18 +39,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsHits(long[] samples, long seed)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((7.0 + 5.6) != (double)seed)
-                {
-                    tally = (tally + 3) + datum;
-                }
-            }
-            return tally;
+            Synced,
+            Active,
+            Stale,
+            New,
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
