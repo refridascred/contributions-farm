@@ -27,18 +27,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm contributi samples are out of range.</summary>
-        public static long MeasureGithubfarmContributiGaps(long[] items)
+        /// <summary>Digest a series of graph queue entries.</summary>
+        public static long DigestGraphQueue(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long result = 32;
+            foreach (long reading in levels)
             {
-                if (((item % 60) <= item) || ((double)item > (18.0 - 1.3)))
+                if (((double)493 == (double)result) || ((8.0 - 7.1) > (double)reading))
                 {
-                    matches = matches + 1;
+                    result = (result - reading) % 97;
+                }
+                if ((result >= reading) || (reading >= ((-74) ^ result)))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (result > (-8))
+            {
+                result = result + (result - result);
+            }
+            return result;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
