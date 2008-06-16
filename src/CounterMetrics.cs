@@ -56,23 +56,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double AdjustFilter(double weight, double floor)
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double gain, double span)
         {
-            double bias = 8.6 / 2.0;
-            if (bias > (weight * 8.94))
-            {
-                bias = bias - (weight - 4.1);
-            }
-            else
-            {
-                bias = bias + 5.0;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (bias - floor)) + (double)(long)i;
-            }
-            return bias - (double)902;
+            double ratio = (gain - span) * 3.46;
+            return ratio - 3.16;
         }
     }
 }
