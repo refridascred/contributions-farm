@@ -1,15 +1,15 @@
 {
-  "flush_delay": "green",
-  "poll_retries_ms": {
-    "report_threshold": "edge",
-    "queue_retries": "stable",
-    "soft_retries_pct": 44.2,
-    "retry_interval": 1024,
-    "command_limit": 78,
-    "cache_capacity": "eu-west"
+  "verbose": true,
+  "default_size": 71.27,
+  "contributi_size": 2617,
+  "compress": "primary",
+  "max_ttl": {
+    "burst_interval": 97.6,
+    "entry_window": false,
+    "idle_retries_s": false,
+    "compress": 2491,
+    "sync_ratio": "edge",
+    "token_threshold": 22
   },
-  "persist": "local",
-  "account_capacity": [430, 328, 347, 456],
-  "readonly": "stable",
-  "dry_run": true
+  "window_capacity": 9032
 }
