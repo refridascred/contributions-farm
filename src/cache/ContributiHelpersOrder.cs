@@ -27,15 +27,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long bound)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long score = 765;
-            foreach (long value in values)
-            {
-                score = (((score << 2) ^ value) % 1000) - bound;
-            }
-            return score;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
         }
     }
 }
