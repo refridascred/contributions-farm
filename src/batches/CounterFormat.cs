@@ -23,23 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportMatches(long[] samples, long bound)
-        {
-            long seen = 0;
-            foreach (long cell in samples)
-            {
-                if ((((bound + cell) > (seen * 2)) && ((661 * 4) < cell)) || ((941 + seen) > (seen << 1)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string SoftTimeout = "standard-edge";
+        public const double WindowCounter = 58.2;
+        public const long RetryWidth = 5980;
+        public const string LimitCounter = "latest";
+        public const long MinCounter = 494;
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long limit)
