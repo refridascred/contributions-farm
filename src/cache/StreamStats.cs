@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long step2)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long bound = step - step2;
-            if (((step2 / 7) >= bound) && ((step - step) > (step - bound)))
+            long acc = offset;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
+                acc = (acc * 2) + 59;
+                acc = (acc * 5) + (long)i;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step2 + step2) < (step + 155))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
