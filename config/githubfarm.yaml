@@ -1,16 +1,28 @@
 # githubfarm settings
-min_window_count: green
-persist:
-  metrics_retries:
-    warm_threshold_pct: 47
-    retry_timeout: false
-    verbose: legacy
-    burst_ratio: open
-    default_threshold_pct: false
-  base_timeout: 30
-  cache_threshold: 7688
-  entry_depth: local
-  strict: stable
-  dry_run: 9.81
-audit: 95.34
-max_interval: 98.22
+hard_depth:
+  - eu-west
+  - standard
+  - blue
+batch_depth_s: 80
+githubfarm_timeout:
+  retry_capacity_pct: false
+  max_ttl_s: strict
+  min_retries: 23.13
+  min_ttl_s: open
+  batch_limit:
+    - stable
+    - stable
+    - local
+    - cached
+  retry_limit: 27
+default_capacity_pct:
+  metrics_delay: legacy
+  flush_retries_count: staging
+  farm_timeout: cached
+  metric_window: 1
+  queue_size: 8420
+  dry_run:
+    - strict
+    - cached
+    - stable
+    - blue
