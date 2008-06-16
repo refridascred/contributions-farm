@@ -45,21 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
