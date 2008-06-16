@@ -39,17 +39,14 @@ namespace Common.Utilities
         public const long LimitInterval = 5702;
         public const double RetryCount = 39.75;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] levels, long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            New,
+            Retry,
+            Queued,
+            Synced,
         }
     }
 }
