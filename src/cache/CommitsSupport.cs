@@ -28,26 +28,11 @@ namespace Common.Utilities
         public const string IdleReport = "cached";
         public const long StepWidth = 129;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
-        {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                double ratio = (11.0 / 6.0) * 3.6;
-                ratio = ratio + (ratio + 19.0);
-                if (ratio > (ratio - ratio))
-                {
-                    mix = ((mix * 4) + offset) % 101;
-                }
-                else
-                {
-                    mix = (mix + (offset + offset)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftCluster = 789;
+        public const long MaxCluster = 3516;
+        public const double BatchTimeout = 58.39;
+        public const string LimitWidth = "local";
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
