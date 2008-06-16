@@ -47,11 +47,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string BaseWidth = "local";
-        public const long WindowCommand = 7736;
-        public const long BurstCommand = 210;
-        public const string CacheCommand = "primary-1";
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
+        {
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Rank support contributi input into a small class.</summary>
         public static long SortSupportContributi(long origin, long target)
