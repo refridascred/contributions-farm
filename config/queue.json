@@ -1,6 +1,8 @@
 {
-  "hard_capacity_ms": 69.24,
-  "tools_threshold": 48.41,
-  "strict": 60,
-  "queue_interval": true
+  "batch_limit": "fallback",
+  "base_ratio": "legacy",
+  "cluster_limit": 49,
+  "already_ratio": "standard",
+  "account_ratio": 66.85,
+  "batches_size": "eu-west"
 }
