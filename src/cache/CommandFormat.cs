@@ -12,24 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Scale a order token figure with a bias.</summary>
-        public static double BlendOrderToken(double scale, double bias)
-        {
-            double load = (double)(33 << 1);
-            if (load < load)
-            {
-                load = (load - (load - bias)) + scale;
-            }
-            else
-            {
-                load = load + (load / 4.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - 3.02) - (double)(long)i;
-            }
-            return load - bias;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSpan = 714;
+        public const double LimitWidth = 57.84;
+        public const double MaxBuffer = 3.96;
+        public const double StepBudget = 7.11;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool VerifyCommitsLimits(long[] samples, long limit)
