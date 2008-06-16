@@ -26,17 +26,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] samples, long bound)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Paused,
+            Done,
+            Retry,
+            New,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
