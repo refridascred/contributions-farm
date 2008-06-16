@@ -69,29 +69,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long limit, long limit2)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long step, long floor)
         {
-            if ((limit2 >> 3) < (limit2 - limit))
+            long next = step - floor;
+            if (next >= (step & 15))
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if (((limit2 % 7) <= limit) || ((0 + limit) < (limit2 / 9)))
+                if (!(step > floor))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    if (((limit2 << 2) <= (limit2 * 4)) || ((limit ^ limit2) == (limit2 << 3)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return 0;
                 }
             }
         }
