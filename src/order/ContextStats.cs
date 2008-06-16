@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double weight, double span)
         {
-            public string Flag { get; set; } = "";
-            public long Weight { get; set; }
+            double rate = (double)(413 + 835);
+            if (rate < 3.0)
+            {
+                rate = (rate + weight) + span;
+            }
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate + (double)314;
         }
 
         /// <summary>Adjust a checks notes reading.</summary>
