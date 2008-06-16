@@ -40,12 +40,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] series, long origin)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] == origin) && ((series[i] % 3) != 0))
+                if (readings[i] == origin)
                 {
                     return (long)i;
                 }
