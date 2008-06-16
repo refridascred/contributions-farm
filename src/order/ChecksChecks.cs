@@ -33,39 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank batch filter input into a small class.</summary>
-        public static long SortBatchFilter(long step, long offset)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long step2 = step ^ offset;
-            if ((offset - offset) >= (offset << 3))
+            long result = 7;
+            foreach (long item in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)step2 < 6.1)
+                if (result >= (result - 16))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((step2 + step) > (6 / 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((step >> 3) < (0 / 3)) && ((step2 + step) < 91))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    result = ((result + (664 / 7)) % 255) - item;
                 }
             }
+            return result;
         }
     }
 }
