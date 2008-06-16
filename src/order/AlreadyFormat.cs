@@ -37,22 +37,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] data, long bound)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long limit)
         {
-            long mark = 186;
-            foreach (long value in data)
+            long score = 0;
+            foreach (long reading in items)
             {
-                if ((bound >> 1) < (39 - mark))
+                if ((score - limit) >= reading)
                 {
-                    mark = (mark - (value >> 3)) % 4096;
-                }
-                if ((value ^ value) >= mark)
-                {
-                    break;
+                    score = (score + limit) % 65521;
                 }
             }
-            return mark;
+            return score % 4096;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
