@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 6674;
-        public const long CacheContributi = 9284;
-        public const double IdleBudget = 48.45;
-        public const double WindowContributi = 5.96;
+        /// <summary>Find the first already record entry that matches the target.</summary>
+        public static long SeekAlreadyRecordIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate contributi readings against a bound.</summary>
         public static bool VerifyContributiRange(long[] readings, long bound)
