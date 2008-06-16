@@ -1,6 +1,11 @@
 {
-  "flush_window_s": 15,
-  "idle_retries": "primary",
-  "already_ttl": 465,
-  "dry_run": 89
+  "cache_capacity": true,
+  "strict": {
+    "max_capacity_count": "cached",
+    "channel_retries": "strict",
+    "poll_interval_ms": 68,
+    "compress": true,
+    "cache_interval_ms": 250
+  },
+  "sync_threshold": 40.97
 }
