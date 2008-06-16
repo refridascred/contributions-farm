@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long RetryLevel = 6715;
         public const long BaseSize = 8055;
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long RollPayload(long step)
+        /// <summary>Accumulate editor support samples.</summary>
+        public static long DigestEditorSupport(long[] levels, long offset)
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
+            long acc = 58;
+            foreach (long entry in levels)
             {
-                if ((((-336) / 6) > (mix + step)) || ((step << 3) <= (9 & 3)))
+                if (acc < (entry << 3))
                 {
-                    mix = ((mix << 3) ^ ((long)i - (long)i)) % 255;
+                    acc = acc ^ (offset * 4);
                 }
-                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Measure how many support record samples are out of range.</summary>
