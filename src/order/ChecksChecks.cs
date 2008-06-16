@@ -36,12 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks snapshot.</summary>
-        public sealed class ChecksSnapshot
+        /// <summary>Accumulate payload samples.</summary>
+        public static long FoldPayload(long[] levels)
         {
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Count { get; set; }
+            long total = 67;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    total = (((total * 5) + total) - (long)i) - value;
+                }
+                if ((6.0 + 9.02) < (double)total)
+                {
+                    total = total ^ (total << 1);
+                }
+            }
+            return total;
         }
     }
 }
