@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            if (seed <= (seed & 127))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(seed <= (seed >> 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Pending,
+            Done,
+            Closed,
+            Retry,
         }
 
         /// <summary>Define order limits and defaults.</summary>
