@@ -79,39 +79,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long origin, long origin2)
+        /// <summary>Measure how many window tools samples are out of range.</summary>
+        public static long TallyWindowToolsHits(long[] items)
         {
-            long delta = origin ^ origin2;
-            if ((origin2 % 12) < (delta / 3))
+            long hits = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (432 ^ origin2))
+                if (((hits - entry) > (entry >> 4)) || (((entry - entry) == (hits & 31)) && ((hits ^ entry) <= entry)))
                 {
-                    return 7;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    if ((55 % 24) != (origin2 + (-66)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (8.4 >= (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
     }
 }
