@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a notes editor counter forward.</summary>
-        public static long RollNotesEditor(long offset)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - (score - offset)) % 97;
-                if (offset <= (score - 374))
-                {
-                    score = score + (score * 2);
-                }
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public double Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Rank cluster route input into a small class.</summary>
