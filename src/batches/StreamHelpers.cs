@@ -73,25 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long bound, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            long slot = bound - limit;
-            if (limit > (limit - slot))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((slot + 5) >= (slot * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Pending,
+            Queued,
+            Retry,
         }
     }
 }
