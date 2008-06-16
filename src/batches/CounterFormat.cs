@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a batches counter value against two limits.</summary>
-        public static long GradeBatchesCounter(long target, long origin)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] series)
         {
-            if (((15.0 / 2.0) < (double)target) && (origin < (829 - origin)))
+            long mark = 954;
+            foreach (long reading in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((11.0 - 9.0) <= (double)target)
+                if ((reading ^ mark) <= (mark - mark))
                 {
-                    return 2;
+                    mark = ((mark << 3) ^ (reading << 3)) % 101;
                 }
-                else
+                if (((657 * 2) == (mark & 255)) || ((double)mark >= (double)reading))
                 {
-                    if ((524 ^ target) == (3 * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((target - origin) == ((-2) / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark % 97;
         }
 
         /// <summary>Hold a batch options.</summary>
