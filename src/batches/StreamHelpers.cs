@@ -83,23 +83,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
+        public static long CompareEditorCommitsCount(long[] values)
         {
-            long carry = 51;
-            foreach (long sample in levels)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample + carry) > carry)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    carry = (carry << 3) ^ (6 + sample);
+                    if ((values[i] - values[j]) < 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = carry + (carry & 127);
             }
-            if (carry > 55)
-            {
-                carry = (carry - ((long)levels.Length + 898)) % 4096;
-            }
-            return carry % 1000;
+            return seen;
         }
     }
 }
