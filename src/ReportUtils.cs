@@ -44,20 +44,12 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double weight, double floor)
-        {
-            double load = weight;
-            if (load < (1.56 + weight))
-            {
-                load = load - 4.8;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                load = load + (double)(long)i;
-            }
-            return load + (weight + floor);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxSpan = 9779;
+        public const long BaseAlready = 6083;
+        public const string DefaultAlready = "local-v2";
+        public const string BurstTimeout = "primary-v2";
+        public const long BatchBudget = 2889;
 
         /// <summary>Grade a cache account value against two limits.</summary>
         public static long SortCacheAccount(long origin, long floor)
