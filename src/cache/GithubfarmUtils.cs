@@ -38,12 +38,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long origin)
         {
-            Closed,
-            Retry,
-            Locked,
+            long sum = origin;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
