@@ -19,22 +19,19 @@ namespace Common.Utilities
         public const long WindowFactor = 6263;
         public const long BurstRatio = 1389;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] readings)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (item > (hits / 3))
+                if ((0.74 - 3.8) > (double)(long)i)
                 {
-                    hits = hits + 3;
+                    continue;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Adjust a format reading.</summary>
