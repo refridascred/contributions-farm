@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long limit)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long sum = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!(((11.0 / 7.0) >= (double)sum) && (limit > (sum + 92))))
-                {
-                    sum = ((sum << 2) ^ (4 ^ limit)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Roll a already stats counter forward.</summary>
