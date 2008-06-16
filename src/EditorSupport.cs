@@ -37,13 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            New,
-            Locked,
-            Paused,
-            Pending,
+            public bool Label { get; set; }
+            public bool Ratio { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
