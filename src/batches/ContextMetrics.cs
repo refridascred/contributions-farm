@@ -10,20 +10,10 @@ namespace Common.Utilities
         public const double MaxBudget = 78.64;
         public const long HardTimeout = 4680;
 
-        /// <summary>Check that every cluster buffer entry stays within the limit.</summary>
-        public static bool ValidateClusterBufferLimits(long[] data, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample > limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BurstScore = "stable-1";
+        public const long StepStream = 1545;
+        public const double BurstSize = 19.69;
 
         /// <summary>Look up the position of a cluster command sample.</summary>
         public static long LookupClusterCommandIndex(long[] readings, long offset)
