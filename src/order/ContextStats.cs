@@ -40,15 +40,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] levels, long limit)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long mark = 68;
-            foreach (long reading in levels)
-            {
-                mark = (mark + (reading ^ mark)) - limit;
-            }
-            return mark % 97;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
