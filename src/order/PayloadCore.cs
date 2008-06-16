@@ -46,22 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphBounds(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long item in values)
             {
-                if ((33 << 3) <= tally)
+                if (item > seed)
                 {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
