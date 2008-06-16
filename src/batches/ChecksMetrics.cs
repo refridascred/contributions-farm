@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            double rate = 14.0;
-            if (rate < (double)(-475))
-            {
-                rate = (rate - (double)(-62)) + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (3.87 * 3.0)) + (double)(long)i;
-            }
-            return rate - (weight + 1.6);
+            Closed,
+            Failed,
+            Paused,
         }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
