@@ -1,7 +1,33 @@
 # entry settings
-order_ttl: 9762
-dry_run: primary
-base_retries_s:
-  - 380
-  - 465
-  - 372
+base_limit_ms: true
+retry_depth: green
+burst_size_s: true
+retry_size:
+  idle_threshold_pct:
+    - fallback
+    - primary
+    - fallback
+  poll_limit: 92.31
+  compress: primary
+  support_capacity:
+    retry_depth_pct: 72.88
+    flush_limit:
+      - 177
+      - 412
+      - 373
+      - 130
+    metrics_size: false
+  hard_threshold_s: latest
+  metrics_size: stable
+compress: false
+base_depth:
+  route_window:
+    stats_ratio: 500
+    verbose: blue
+    poll_timeout_ms:
+      - 199
+      - 163
+      - 34
+      - 407
+  poll_delay: edge
+  default_threshold: open
