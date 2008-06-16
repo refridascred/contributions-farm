@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const double MaxAlready = 77.73;
         public const long DefaultAlready = 4871;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
-        {
-            long carry = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitTimeout = 1881;
+        public const double BurstAlready = 92.55;
+        public const long MaxLevel = 4641;
+        public const string MaxCount = "primary-1";
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] levels, long offset)
