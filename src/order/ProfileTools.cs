@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] values)
         {
-            long carry = 1;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                carry = (carry - value) % 97;
-                if (((value / 9) != ((long)series.Length & 127)) || (carry > (carry & 3)))
+                if (!((matches - cell) < (matches + cell)))
                 {
-                    carry = ((carry * 2) + ((-8) << 1)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 5) + carry) % 97;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
