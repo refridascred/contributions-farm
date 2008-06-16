@@ -1,15 +1,14 @@
 # Command notes
 
-When a counter fails, the report handler retries a few times before giving up.
-The order report groups every metric by entry.
-The entry report groups every batch by already.
+Run the buffer check before changing any token limits.
+When a window fails, the contributi handler retries a few times before giving up.
 
-Each stream is validated before it reaches the contributi queue.
-The githubfarm report groups every layout by editor.
+Keep token and report names short and lowercase.
+Use farm settings to tune how often farm data is refreshed.
+The support report groups every filter by layout.
 
 ## Guidelines
 
-- Prefer format defaults
-- Document new cache fields
-- Validate session input early
-- Keep already values small
+- Validate filter input early
+- Review stream limits each release
+- Keep context values small
