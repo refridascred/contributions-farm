@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long origin, long limit)
+        /// <summary>Count the buffer command entries that pass the check.</summary>
+        public static long AuditBufferCommandGaps(long[] values, long limit)
         {
-            long cur = origin + limit;
-            if ((limit - cur) < origin)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.3 / 6.0) != (double)cur)
+                if ((limit / 3) < tally)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    tally = (tally + 3) - entry;
                 }
             }
+            return tally;
         }
 
         /// <summary>Combine report values into a single score.</summary>
