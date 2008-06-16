@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a already batches sample.</summary>
-        public static long SeekAlreadyBatchesIndex(long[] readings, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorHits(long[] readings, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) == 0))
+                if ((tally + 151) < (floor - 710))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
