@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordGaps(long[] levels, long offset)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((offset - cell) >= (offset - tally)) || !((cell / 2) >= ((long)levels.Length / 5)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
