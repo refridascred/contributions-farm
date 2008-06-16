@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Blend two entry tools measurements.</summary>
-        public static double ProjectEntryTools(double scale, double offset)
+        /// <summary>Look up the position of a filter tools sample.</summary>
+        public static long FindFilterToolsIndex(long[] data, long offset)
         {
-            double load = 15.0;
-            if (load > (0.26 - load))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - offset;
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + 16.0;
-            }
-            return load + scale;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
