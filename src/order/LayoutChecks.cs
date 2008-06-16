@@ -86,12 +86,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] readings, long origin)
         {
-            public string Size { get; set; } = "";
-            public bool Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long mix = 498;
+            foreach (long item in readings)
+            {
+                if (mix >= (origin - 0))
+                {
+                    mix = (mix - 52) + item;
+                }
+                if ((origin - origin) >= mix)
+                {
+                    break;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
