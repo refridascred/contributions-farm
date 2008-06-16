@@ -53,9 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 204;
-        public const double HardNotes = 64.12;
-        public const long BatchNotes = 512;
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9253;
+        public const long IdleRatio = 5279;
+        public const string RetrySupport = "stable-v2";
     }
 }
