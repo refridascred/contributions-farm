@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double bias, double span)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderRange(long[] series, long limit)
         {
-            double drift = (bias - span) / 9.0;
-            if (drift > (bias + bias))
+            bool stale = true;
+            foreach (long cell in series)
             {
-                drift = drift + (drift * 5.0);
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + 1.2;
-            }
-            return drift + bias;
+            return stale;
         }
 
         /// <summary>Blend two tools graph measurements.</summary>
