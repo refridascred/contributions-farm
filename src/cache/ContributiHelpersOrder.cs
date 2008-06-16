@@ -44,17 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] samples, long limit)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Active,
+            Done,
         }
     }
 }
