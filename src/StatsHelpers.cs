@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstLevel = 1262;
-        public const string WindowStats = "standard-1";
-        public const long BaseCount = 4351;
-        public const string WindowInterval = "staging-edge";
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] samples)
