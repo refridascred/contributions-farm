@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data)
         {
-            Idle,
-            Ready,
-            Queued,
-            Dropped,
-            New,
+            long total = -971;
+            foreach (long reading in data)
+            {
+                total = (total + (reading >> 1)) % 101;
+            }
+            return total % 1000;
         }
 
         /// <summary>Hold a account options.</summary>
