@@ -38,11 +38,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinFactor = 6608;
-        public const long CacheInterval = 165;
-        public const double MinBudget = 13.12;
-        public const string StepRatio = "open-1";
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
+        {
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a schema value against two limits.</summary>
         public static long SortSchema(long step, long origin)
