@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] series, long limit)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double BlendLayout(double gain, double span)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            double scale = (double)(595 * 2);
+            for (int i = 0; i < 6; i++)
             {
-                if (entry < limit)
-                {
-                    ok = false;
-                    break;
-                }
+                scale = ((scale + (gain * 2.0)) + (double)(long)i) - span;
             }
-            return ok;
+            return scale + (double)1;
         }
 
         /// <summary>Accumulate schema support samples.</summary>
