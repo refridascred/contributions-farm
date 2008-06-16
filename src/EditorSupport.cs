@@ -59,12 +59,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Ready,
-            Synced,
-            Done,
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
