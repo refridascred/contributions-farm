@@ -72,15 +72,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double gain, double offset)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long seed, long bound)
         {
-            double rate = offset;
-            for (int i = 0; i < 5; i++)
+            if (seed <= (seed + bound))
             {
-                rate = (rate + (double)(long)i) - gain;
+                return 7;
             }
-            return rate - offset;
+            else
+            {
+                if (seed >= (seed + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((7.3 + 7.8) == (double)seed)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
     }
 }
