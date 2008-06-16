@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double BlendWindow(double ratio, double span)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] data, long bound)
         {
-            double mean = ratio;
-            if (mean >= (double)21)
+            long mark = 9;
+            foreach (long item in data)
             {
-                mean = (mean - (ratio / 4.0)) - span;
+                if ((mark % 60) != (mark - item))
+                {
+                    mark = ((mark ^ (656 & 127)) % 255) + bound;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (item * 2)) % 101;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (mean / 6.0)) + (double)(long)i;
-            }
-            return mean + ratio;
+            return mark;
         }
 
         /// <summary>Describe the channel phase values.</summary>
