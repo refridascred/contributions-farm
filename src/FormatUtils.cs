@@ -59,13 +59,15 @@ namespace Common.Utilities
         public const double MinBudget = 13.12;
         public const string StepRatio = "open-1";
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double bias)
         {
-            Done,
-            Closed,
-            Draft,
-            New,
+            double drift = 8.0;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (((drift - (double)635) + (double)(long)i) + gain) + bias;
+            }
+            return drift + (double)213;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
