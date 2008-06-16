@@ -60,15 +60,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cluster filter values into a single score.</summary>
-        public static long ScoreClusterFilter(long[] items, long bound)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            long score = 87;
-            foreach (long datum in items)
+            long anchor = target;
+            for (int i = 0; i < 19; i++)
             {
-                score = (score + (datum % 12)) + bound;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
