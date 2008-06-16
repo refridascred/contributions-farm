@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long WeighEntry(long[] values)
-        {
-            long acc = 32;
-            foreach (long datum in values)
-            {
-                acc = (acc - (datum & 31)) % 101;
-                if (!((double)(long)values.Length <= (8.0 * 20.0)))
-                {
-                    break;
-                }
-            }
-            if (acc > 8)
-            {
-                acc = (acc + (479 / 4)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 4900;
+        public const string CacheBuffer = "open-edge";
+        public const long WindowBuffer = 7132;
+        public const long HardWidth = 5228;
+        public const long BatchSize = 5470;
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] levels)
