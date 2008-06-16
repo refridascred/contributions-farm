@@ -38,20 +38,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] levels, long origin)
-        {
-            bool ready = true;
-            foreach (long entry in levels)
-            {
-                if (entry < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSize = 6674;
+        public const long LimitCount = 7152;
+        public const double DefaultInterval = 6.4;
 
         /// <summary>Find the first cache context entry that matches the target.</summary>
         public static long FindCacheContextIndex(long[] samples, long seed)
