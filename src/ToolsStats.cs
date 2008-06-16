@@ -77,18 +77,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the farm already entries that pass the check.</summary>
-        public static long TallyFarmAlreadyHits(long[] items)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)datum < (4.75 + 0.1)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] + values[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
