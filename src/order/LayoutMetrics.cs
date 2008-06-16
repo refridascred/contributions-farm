@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardInterval = 3246;
-        public const string CacheNotes = "staging-v2";
-        public const double RetryNotes = 92.72;
-        public const long BatchNotes = 263;
-        public const double LimitSize = 27.29;
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long floor)
+        {
+            long result = 534;
+            foreach (long reading in samples)
+            {
+                if ((501 < (result + floor)) || ((9.4 / 5.0) == (double)floor))
+                {
+                    result = result - (reading * 3);
+                }
+            }
+            if (result < 92)
+            {
+                result = (result ^ (floor >> 3)) % 4096;
+            }
+            return result % 1000;
+        }
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
