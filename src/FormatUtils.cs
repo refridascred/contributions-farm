@@ -33,25 +33,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long seed, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] series)
         {
-            long edge = seed ^ limit;
-            if ((double)seed < 18.0)
+            long state = -34;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((edge ^ limit) < (seed + (-8))))
+                if ((sample ^ state) == (sample + sample))
                 {
-                    return 7;
+                    state = state + (state >> 5);
                 }
                 else
                 {
-                    return 8;
+                    state = state ^ 651;
                 }
             }
+            return state % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
