@@ -82,24 +82,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] items, long target)
-        {
-            long mix = -745;
-            foreach (long item in items)
-            {
-                mix = (mix * 2) + target;
-                if (!((item & 127) < (mix - mix)))
-                {
-                    mix = ((mix << 2) ^ (item + mix)) % 97;
-                }
-                if ((14.0 - 4.6) >= (double)target)
-                {
-                    mix = ((mix * 4) + target) % 255;
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchBudget = 6727;
+        public const long MaxSize = 666;
+        public const double BatchGraph = 0.3;
+        public const long BaseGraph = 7050;
+        public const string CacheWidth = "cached-edge";
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] items, long limit)
