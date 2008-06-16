@@ -57,17 +57,38 @@ namespace Common.Utilities
             return mean - rate;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] levels, long seed)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long ClassifyQueue(long offset, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((step % 2) < offset)
             {
-                if (levels[i] < seed)
+                return 3;
+            }
+            else
+            {
+                if (step > ((-4) + step))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (offset > (step ^ 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((12.0 / 7.0) <= (double)offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
