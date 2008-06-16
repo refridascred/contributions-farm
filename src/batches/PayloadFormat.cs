@@ -35,13 +35,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public double Region { get; set; }
-            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
