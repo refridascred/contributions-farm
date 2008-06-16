@@ -13,13 +13,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] values, long limit)
         {
-            Closed,
-            Locked,
-            Synced,
-            Dropped,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a account reading by value.</summary>
