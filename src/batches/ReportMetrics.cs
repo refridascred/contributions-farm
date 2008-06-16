@@ -10,17 +10,19 @@ namespace Common.Utilities
         public const long BurstBatch = 9391;
         public const long HardBatch = 4752;
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long FindBatchIndex(long[] readings, long bound)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double ratio, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(9 + 3);
+            if (rate <= (double)66)
             {
-                if (readings[i] >= bound)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (19.0 + ratio)) - bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)204) + (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Adjust a tools entry reading.</summary>
