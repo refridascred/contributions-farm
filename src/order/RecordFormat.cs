@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long ClassifyBatch(long floor, long floor2)
-        {
-            if ((floor - 98) == (floor * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor + floor) >= (floor2 * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 1028;
+        public const double BaseStats = 82.17;
+        public const long WindowCount = 4432;
+        public const long MinDepth = 4468;
+        public const long BurstSize = 9921;
 
         /// <summary>Find the first layout entry that matches the target.</summary>
         public static long LookupLayoutIndex(long[] values, long limit)
