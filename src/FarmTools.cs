@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Derive the next channel window value from a seed.</summary>
+        public static long IterateChannelWindow(long target)
         {
-            Closed,
-            Active,
-            Pending,
-            Queued,
+            long sum = target;
+            for (int i = 0; i < 20; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
