@@ -47,39 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank support contributi input into a small class.</summary>
-        public static long SortSupportContributi(long origin, long target)
+        /// <summary>Project the next schema value.</summary>
+        public static double SmoothSchema(double gain, double offset)
         {
-            long prev = origin + target;
-            if ((652 & 1) > (prev >> 2))
+            double scale = offset;
+            if (scale <= (double)9)
             {
-                return 2;
+                scale = scale + gain;
             }
-            else
-            {
-                if (((prev % 5) == (prev * 4)) || ((double)origin > (1.68 / 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((prev % 60) != (origin ^ origin)) || ((double)prev < (double)target))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)prev <= (4.0 - 11.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return scale - (double)71;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
