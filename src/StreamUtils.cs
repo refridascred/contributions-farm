@@ -39,18 +39,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] data, long limit)
+        /// <summary>Grade a stream filter value against two limits.</summary>
+        public static long RankStreamFilter(long target, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long gap = target + bound;
+            if (((gap + bound) >= (bound * 2)) && ((double)bound < (1.0 / 3.0)))
             {
-                if ((limit + cell) < 964)
+                return 0;
+            }
+            else
+            {
+                if ((double)target == (6.9 / 7.0))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
