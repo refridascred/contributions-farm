@@ -76,15 +76,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] samples)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long bound)
         {
-            long result = 20;
-            foreach (long entry in samples)
+            long mark = bound;
+            for (int i = 0; i < 9; i++)
             {
-                result = (result << 3) ^ (48 + entry);
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return result;
+            return mark;
         }
     }
 }
