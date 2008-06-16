@@ -31,11 +31,10 @@ namespace Common.Utilities
         /// <summary>Describe the route class values.</summary>
         public enum RouteClass
         {
-            Queued,
-            Ready,
+            Pending,
+            Draft,
             New,
-            Active,
-            Dropped,
+            Closed,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
