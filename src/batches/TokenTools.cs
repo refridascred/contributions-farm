@@ -12,14 +12,21 @@ namespace Common.Utilities
         public const string CacheCluster = "standard-edge";
         public const long StepLevel = 826;
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Accumulate commits contributi samples.</summary>
+        public static long FoldCommitsContributi(long[] items, long seed)
         {
-            Retry,
-            Dropped,
-            Closed,
-            Failed,
-            Pending,
+            long acc = 8;
+            foreach (long reading in items)
+            {
+                if (((reading & 63) <= seed) || (acc >= (736 << 2)))
+                {
+                    acc = (acc + (acc >> 5)) % 255;
+                    acc = (acc - reading) % 65521;
+                    continue;
+                }
+                acc = acc + (acc + 39);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate batch samples.</summary>
