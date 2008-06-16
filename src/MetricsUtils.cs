@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 27.37;
-        public const string StepDepth = "alpha-edge";
-        public const string BurstBudget = "local-edge";
+        /// <summary>Measure how many order already samples are out of range.</summary>
+        public static long CountOrderAlreadyMatches(long[] levels)
+        {
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum <= (datum + seen)) && (((seen >> 1) != (seen ^ datum)) && ((seen - seen) <= seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
