@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const double WindowSession = 77.06;
-        public const string SoftSize = "local-v2";
-        public const string IdleSize = "open-1";
-        public const string BurstWidth = "cached-v2";
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((sample - seen) > (58 - seen)) || (sample <= seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long SeriesFilter(long origin)
