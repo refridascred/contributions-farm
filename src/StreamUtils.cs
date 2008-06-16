@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 6; i++)
+            long acc = 66;
+            foreach (long reading in samples)
             {
-                score = ((score * 2) + (long)i) % 65521;
+                if ((origin << 2) < (origin + reading))
+                {
+                    acc = (acc + acc) % 255;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + 157)) % 101;
+                }
             }
-            return score;
+            if (acc > 511)
+            {
+                acc = (acc * 2) + (acc << 2);
+            }
+            return acc % 97;
         }
 
         /// <summary>Grade a stream filter value against two limits.</summary>
