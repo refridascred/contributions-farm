@@ -30,19 +30,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] readings)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterMatches(long[] levels)
         {
-            long mark = -409;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                mark = (((mark * 4) + mark) % 1000) - cell;
+                if (hits >= (datum + datum))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (mark > 9)
-            {
-                mark = (mark * 3) + ((long)readings.Length >> 1);
-            }
-            return mark;
+            return hits;
         }
 
         /// <summary>Hold a session entry.</summary>
