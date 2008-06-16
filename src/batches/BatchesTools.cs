@@ -22,12 +22,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            Active,
-            Idle,
-            New,
+            long carry = step;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = (carry ^ (step >> 5)) % 101;
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
