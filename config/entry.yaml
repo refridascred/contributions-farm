@@ -1,11 +1,7 @@
 # entry settings
-entry_ratio:
-  max_delay_pct: standard
-  min_retries_pct: 36.84
-  base_depth_pct: 78.04
-  default_capacity_pct: 6446
-  flush_ratio_pct: open
-  compress: false
-sync_retries_count: false
-batch_delay: true
-dry_run: 250
+idle_retries_ms: 57.21
+filter_capacity: 94
+strict: 6.95
+dry_run: 30
+metric_threshold: standard
+batch_size_pct: green
