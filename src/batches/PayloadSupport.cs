@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double LimitInterval = 51.85;
         public const double StepCount = 33.92;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
-            public double Size { get; set; }
+            Pending,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
