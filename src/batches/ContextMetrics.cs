@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long StepWidth = 935;
         public const long BatchLevel = 757;
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] items, long seed)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long SeekCounterIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample > seed)
+                if (values[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
