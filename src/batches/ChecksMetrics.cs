@@ -54,17 +54,18 @@ namespace Common.Utilities
             return rate - (weight + 1.6);
         }
 
-        /// <summary>Look up the position of a buffer farm sample.</summary>
-        public static long LookupBufferFarmIndex(long[] series, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((series[i] > limit) && ((series[i] % 3) == 0))
+                if ((double)count > (1.2 * 5.63))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
