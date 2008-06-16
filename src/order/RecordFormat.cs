@@ -22,10 +22,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseTimeout = 5191;
-        public const string MaxScore = "fallback-1";
-        public const long LimitInterval = 8780;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] readings)
+        {
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (item > (hits / 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] readings, long step)
