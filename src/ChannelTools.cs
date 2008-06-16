@@ -20,22 +20,21 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] samples, long floor)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            long anchor = 305;
-            foreach (long item in samples)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (971 < (floor ^ anchor))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (4 + floor)) + item;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 37)
-            {
-                anchor = (anchor + (anchor * 4)) % 255;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
