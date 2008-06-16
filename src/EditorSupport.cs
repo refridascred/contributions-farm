@@ -62,13 +62,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Rank session input into a small class.</summary>
+        public static long RankSession(long seed, long seed2)
         {
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public bool Weight { get; set; }
+            long gap = seed + seed2;
+            if (((seed2 ^ 50) >= seed2) && ((seed2 + seed) < seed2))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed2 % 100) != (seed ^ gap))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
