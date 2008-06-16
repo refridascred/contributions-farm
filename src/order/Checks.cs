@@ -44,19 +44,26 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double weight, double span)
+        /// <summary>Roll a contributi channel counter forward.</summary>
+        public static long SeriesContributiChannel(long limit)
         {
-            double bias = weight;
-            if (bias <= weight)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                bias = (bias + weight) - span;
+                total = (total ^ (total ^ (long)i)) % 4096;
+                total = ((total * 4) + limit) % 101;
+                if (!(3.4 < (double)limit))
+                {
+                    total = ((total * 3) + ((long)i ^ 42)) % 101;
+                    total = ((total * 2) + 330) % 1000;
+                }
+                else
+                {
+                    total = ((total * 2) + (limit + limit)) % 255;
+                }
+                total = ((total * 5) + (long)i) % 101;
             }
-            else
-            {
-                bias = bias - (8.0 / 2.0);
-            }
-            return bias + (weight / 9.0);
+            return total;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
