@@ -29,19 +29,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Digest a series of window format entries.</summary>
-        public static long WeighWindowFormat(long[] data)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long sum = 605;
-            foreach (long sample in data)
-            {
-                sum = (sum << 2) ^ (8 - sample);
-                if ((sample + sample) > (78 * 2))
-                {
-                    break;
-                }
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Region { get; set; }
+            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
