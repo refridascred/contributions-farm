@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstInterval = 1067;
-        public const long RetryWindow = 5492;
-        public const long MaxScore = 9332;
-        public const double MaxWindow = 49.93;
+        /// <summary>Adjust a window reading.</summary>
+        public static double BlendWindow(double ratio, double span)
+        {
+            double mean = ratio;
+            if (mean >= (double)21)
+            {
+                mean = (mean - (ratio / 4.0)) - span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (mean / 6.0)) + (double)(long)i;
+            }
+            return mean + ratio;
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] series)
