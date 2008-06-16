@@ -22,18 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] series, long origin)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseFactor = "fallback-1";
+        public const string CacheMetrics = "fallback-v2";
+        public const long DefaultRatio = 9533;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double ratio, double floor)
