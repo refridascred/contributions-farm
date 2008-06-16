@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of order stream readings.</summary>
-        public static long TallyOrderStream(long[] values)
+        /// <summary>Measure how many filter stats samples are out of range.</summary>
+        public static long MeasureFilterStatsOutliers(long[] data, long seed)
         {
-            long mix = 85;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((mix % 64) <= value) && ((mix + 0) >= (mix + mix)))
+                if (tally >= (item + seed))
                 {
-                    mix = (mix << 2) ^ (value >> 5);
+                    tally = tally + 1;
                 }
-                mix = (mix + value) % 4096;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (mix > 533)
-            {
-                mix = mix - (78 << 1);
-            }
-            return mix % 65521;
+            return tally;
         }
 
         /// <summary>Describe the order level values.</summary>
