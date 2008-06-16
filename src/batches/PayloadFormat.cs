@@ -64,11 +64,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 7696;
-        public const long BatchFactor = 4911;
-        public const long HardFarm = 314;
-        public const long StepFarm = 5742;
-        public const long SoftFarm = 4450;
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
+        {
+            Retry,
+            Synced,
+            Queued,
+            Idle,
+        }
     }
 }
