@@ -23,17 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first metrics command entry that matches the target.</summary>
-        public static long FindMetricsCommandIndex(long[] data, long seed)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Region { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Hold a channel header.</summary>
