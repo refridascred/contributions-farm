@@ -81,22 +81,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph record input into a small class.</summary>
-        public static long ClassifyGraphRecord(long floor, long step)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long offset, long floor)
         {
-            if ((step * 5) != (4 / 2))
+            if ((697 / 4) > (offset * 5))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if ((7.04 + 2.0) <= (double)floor)
+                if (((floor & 127) > (offset - floor)) && ((double)offset >= (1.0 - 4.0)))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
