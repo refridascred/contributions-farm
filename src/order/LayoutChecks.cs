@@ -67,13 +67,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Match up queue batches samples.</summary>
+        public static long OverlapQueueBatchesCount(long[] levels)
         {
-            Draft,
-            Dropped,
-            Closed,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
