@@ -22,25 +22,15 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long RankProfile(long seed, long offset)
+        /// <summary>Iterate the graph githubfarm series from a seed.</summary>
+        public static long SeriesGraphGithubfarm(long target)
         {
-            long offset2 = seed + offset;
-            if ((offset >= (92 / 8)) || ((offset2 + offset2) >= offset2))
+            long total = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset <= (seed * 3)) || ((double)offset2 >= (4.03 + 8.7)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
