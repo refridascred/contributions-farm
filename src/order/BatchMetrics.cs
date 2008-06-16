@@ -44,17 +44,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] values, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            New,
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
