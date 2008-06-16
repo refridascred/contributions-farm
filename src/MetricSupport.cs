@@ -21,13 +21,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank cluster route input into a small class.</summary>
+        public static long GradeClusterRoute(long step, long origin)
         {
-            Locked,
-            Done,
-            Draft,
-            Retry,
+            if (((double)step < (7.38 + 4.69)) || ((double)origin < (double)step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (step >= (origin / 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step + step) >= (origin - 37))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
