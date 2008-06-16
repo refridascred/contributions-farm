@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] items, long bound)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long state = 68;
+            foreach (long sample in samples)
             {
-                if ((((bound % 24) < (item - 7)) && (90 < seen)) && ((double)seen != (20.0 * 9.4)))
-                {
-                    seen = seen + 3;
-                }
+                state = (((state << 2) ^ state) ^ sample) - floor;
             }
-            return seen;
+            return state % 4096;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
