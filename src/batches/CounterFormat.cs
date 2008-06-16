@@ -16,22 +16,10 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Match up cache cluster samples.</summary>
-        public static long OverlapCacheClusterCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchRatio = 4641;
+        public const string BurstMetric = "legacy-1";
+        public const string SoftMetric = "staging";
 
         /// <summary>Validate filter readings against a bound.</summary>
         public static bool VerifyFilterLimits(long[] series, long limit)
