@@ -30,20 +30,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long offset)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowBounds(long[] levels, long limit)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                acc = acc - (acc * 3);
-                if (((18.0 - 14.0) != (double)acc) || (acc <= ((long)i / 9)))
+                if (datum <= limit)
                 {
-                    acc = ((acc * 4) + offset) % 65521;
+                    flag = false;
+                    break;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Look up the position of a cache editor sample.</summary>
