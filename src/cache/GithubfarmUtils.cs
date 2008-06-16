@@ -34,10 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetrySize = 49.36;
-        public const long StepRoute = 8608;
-        public const string BaseRoute = "alpha-1";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally / 2) > 64)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
