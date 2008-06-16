@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] data, long origin)
         {
-            New,
-            Synced,
-            Active,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
