@@ -34,16 +34,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long target)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] values, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 6; i++)
+            long score = 341;
+            foreach (long cell in values)
             {
-                sum = (sum + sum) % 4096;
-                sum = ((sum * 3) + (long)i) % 101;
+                if (((cell + 14) != (score / 2)) || ((cell / 6) > (cell << 1)))
+                {
+                    score = (score ^ cell) - seed;
+                }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
