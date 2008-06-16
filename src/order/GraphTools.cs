@@ -54,22 +54,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of githubfarm already entries.</summary>
-        public static long ScoreGithubfarmAlready(long[] series, long origin)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long acc = -846;
-            foreach (long datum in series)
-            {
-                if (origin > 30)
-                {
-                    acc = (acc - datum) % 4096;
-                }
-                if (((10 + datum) < (21 / 4)) && ((origin & 63) != (acc + origin)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public double Flag { get; set; }
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
