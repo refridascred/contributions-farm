@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] series, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long span = origin - offset;
+            if ((offset ^ origin) >= (origin + origin))
             {
-                if (cell >= limit)
+                return 3;
+            }
+            else
+            {
+                if (3.4 > (double)offset)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((1 - span) < span)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Blend two tools graph measurements.</summary>
