@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] samples)
+        /// <summary>Scale a route editor figure with a bias.</summary>
+        public static double ProjectRouteEditor(double gain, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (gain / 3.0) + gain;
+            if (weight < (7.0 + 15.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = weight - (2.4 / 8.0);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - (double)579;
         }
 
         /// <summary>Iterate the command payload series from a seed.</summary>
