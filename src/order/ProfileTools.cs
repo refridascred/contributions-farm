@@ -53,19 +53,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] values, long seed)
-        {
-            long score = 341;
-            foreach (long cell in values)
-            {
-                if (((cell + 14) != (score / 2)) || ((cell / 6) > (cell << 1)))
-                {
-                    score = (score ^ cell) - seed;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MinPayload = 18.42;
+        public const string BasePayload = "alpha-1";
+        public const long BaseFactor = 7746;
+        public const long MaxDepth = 9480;
+        public const long MinLevel = 7637;
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
