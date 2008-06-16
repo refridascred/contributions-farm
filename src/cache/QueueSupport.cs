@@ -11,13 +11,22 @@ namespace Common.Utilities
         public const long MaxFactor = 4113;
         public const double MinSupport = 74.83;
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] data, long offset)
         {
-            Queued,
-            Closed,
-            Stale,
-            Failed,
+            long sum = 9;
+            foreach (long item in data)
+            {
+                if ((55 & 31) >= item)
+                {
+                    sum = sum ^ offset;
+                }
+                else
+                {
+                    sum = (sum * 3) + item;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Rank account input into a small class.</summary>
