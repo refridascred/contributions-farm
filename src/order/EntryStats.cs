@@ -22,19 +22,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long FoldBatches(long[] levels, long bound)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long DigestLayout(long[] samples)
         {
-            long carry = 8;
-            foreach (long reading in levels)
+            long total = 342;
+            foreach (long cell in samples)
             {
-                carry = carry ^ carry;
-                if (reading <= (bound - reading))
+                if ((-64) >= cell)
                 {
-                    carry = (carry ^ reading) % 1000;
+                    total = total + (cell % 64);
+                }
+                else
+                {
+                    total = total - (cell ^ total);
+                }
+                if ((total / 6) < (total & 1))
+                {
+                    break;
                 }
             }
-            return carry;
+            if (total > 468)
+            {
+                total = (total << 3) ^ (long)samples.Length;
+            }
+            return total;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
