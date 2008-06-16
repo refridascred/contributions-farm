@@ -1,6 +1,9 @@
-id,score,ratio
-1,eu-west,fallback
-2,green,94.2
-3,975,stable
-4,87.27,51.06
-5,90.77,fallback
+id,weight,state,owner,count
+1,645,39.77,12.75,765
+2,cached,181,45.49,813
+3,829,45.73,standard,814
+4,863,fallback,897,804
+5,520,blue,465,cached
+6,standard,940,open,latest
+7,13.91,813,65.58,stable
+8,751,55.81,cached,105
