@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const string CacheCluster = "standard-edge";
         public const long StepLevel = 826;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            public bool Label { get; set; }
-            public bool Total { get; set; }
-            public string Level { get; set; } = "";
-            public string Flag { get; set; } = "";
+            Stale,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
