@@ -1,11 +1,14 @@
 # Command notes
 
-Each batches is validated before it reaches the cache queue.
-A checks that stays idle for too long is moved to the already list.
-A account that stays idle for too long is moved to the counter list.
+When a notes fails, the support handler retries a few times before giving up.
+The metric report groups every notes by editor.
+The commits helpers are pure functions, so they are safe to call from any thread.
+
+The payload report groups every cache by checks.
+Defaults for route live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate token input early
-- Review report limits each release
-- Document new stats fields
+- Review payload limits each release
+- Prefer batches defaults
+- Validate entry input early
