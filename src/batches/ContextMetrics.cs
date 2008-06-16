@@ -47,14 +47,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the payload cluster entries that pass the check.</summary>
+        public static long TallyPayloadClusterGaps(long[] levels, long floor)
         {
-            Paused,
-            Idle,
-            Done,
-            Draft,
-            Failed,
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (88 >= floor)
+                {
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
