@@ -31,19 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsLimits(long[] samples, long seed)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double drift = (gain - floor) - (gain + floor);
+            if (drift < (double)69)
             {
-                if (datum <= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (gain + drift);
             }
-            return ok;
+            else
+            {
+                drift = drift - floor;
+            }
+            return drift + (double)3;
         }
     }
 }
