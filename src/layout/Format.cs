@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long floor, long step)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] data)
         {
-            if (5.4 >= (double)step)
+            long anchor = 753;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (7 >= (step & 15))
+                if ((datum ^ anchor) > datum)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
+                    anchor = anchor ^ (datum ^ datum);
                 }
             }
+            return anchor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
