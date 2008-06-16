@@ -49,11 +49,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BurstQueue = "latest-edge";
-        public const long LimitQueue = 7997;
-        public const long CacheQueue = 2879;
-        public const long MinQueue = 6594;
-        public const long IdleQueue = 4190;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchRange(long[] items, long offset)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
