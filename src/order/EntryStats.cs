@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] values)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 10)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two tools graph measurements.</summary>
