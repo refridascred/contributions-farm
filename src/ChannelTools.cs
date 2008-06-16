@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count channel pairs that satisfy a relation.</summary>
-        public static long MatchChannelCount(long[] levels)
+        /// <summary>Blend two layout measurements.</summary>
+        public static double ProjectLayout(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = gain * 8.83;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = ((mean - gain) + (double)(long)i) + floor;
             }
-            return hits;
+            return mean - gain;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
