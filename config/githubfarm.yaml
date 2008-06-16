@@ -1,14 +1,10 @@
 # githubfarm settings
-max_interval: false
-dry_run: false
-hard_ttl_ms: cached
-compress:
-  sync_ratio:
-    - legacy
-    - green
-    - open
-  idle_ratio_count: true
-  min_depth_ms:
-    - latest
-    - stable
-  batch_interval_ms: 89.71
+dry_run:
+  poll_size: 40.7
+  warm_ratio_s: 26
+  persist:
+    - 203
+    - 350
+    - 181
+route_timeout: 13.73
+readonly: 4
