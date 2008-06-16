@@ -30,11 +30,32 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long step, long seed)
         {
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            long gap = step - seed;
+            if ((double)371 > (double)step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((seed - gap) <= (seed << 2))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((gap * 4) != (step * 4))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
