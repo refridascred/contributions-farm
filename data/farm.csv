@@ -1,9 +1,6 @@
-id,region,weight,token,owner
-1,fallback,88.8,edge,66.74
-2,57.75,64,cached,15.99
-3,911,129,staging,654
-4,green,969,836,stable
-5,89.79,80.68,429,edge
-6,fallback,12.9,203,blue
-7,717,87.28,edge,86.89
-8,green,299,strict,open
+id,region,count
+1,360,74.79
+2,455,8.25
+3,42.02,9.82
+4,22.07,169
+5,390,64.04
