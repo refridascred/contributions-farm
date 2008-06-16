@@ -16,16 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double bias, double offset)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            double gain = bias;
+            if (gain < gain)
             {
-                score = score - (offset / 8);
-                score = ((score * 5) + (long)i) % 1000;
+                gain = gain - (offset - offset);
             }
-            return score;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (offset + 6.7)) + (double)(long)i;
+            }
+            return gain + 6.1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
