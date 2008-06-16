@@ -39,12 +39,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinSpan = 7958;
-        public const long StepRecord = 4965;
-        public const double BaseScore = 64.09;
-        public const long SoftRecord = 8951;
-        public const string MinRecord = "fallback-1";
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] data, long origin)
