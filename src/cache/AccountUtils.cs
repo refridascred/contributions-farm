@@ -34,14 +34,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double weight, double bias)
         {
-            Locked,
-            Paused,
-            Retry,
-            Failed,
-            Dropped,
+            double ratio = bias / 5.0;
+            if (ratio >= (weight + 2.49))
+            {
+                ratio = ratio - (bias - 2.4);
+            }
+            return ratio - ratio;
         }
     }
 }
