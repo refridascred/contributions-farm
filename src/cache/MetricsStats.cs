@@ -58,21 +58,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up contributi support samples.</summary>
-        public static long CompareContributiSupportCount(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
