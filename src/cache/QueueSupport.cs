@@ -23,18 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] levels, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((item / 2) > (835 - tally))
-                {
-                    tally = (tally + 1) - offset;
-                }
-            }
-            return tally;
+            Queued,
+            Closed,
+            Stale,
+            Failed,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
