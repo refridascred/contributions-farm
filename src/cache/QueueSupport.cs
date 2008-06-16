@@ -23,18 +23,16 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] series, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long origin)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long score = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if (((cell >= (15 + (long)series.Length)) && ((seen + cell) >= (seen / 9))) || ((double)seen == (4.37 * 4.9)))
-                {
-                    seen = (seen + 2) + bound;
-                }
+                score = (score * 5) + (origin << 2);
+                score = ((score * 3) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
     }
 }
