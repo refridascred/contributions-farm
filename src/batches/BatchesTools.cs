@@ -15,20 +15,39 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Classify a queue context pair into a bucket.</summary>
+        public static long BucketQueueContext(long step, long seed)
         {
-            long mix = -43;
-            foreach (long reading in samples)
+            long span = step - seed;
+            if (step >= (step - span))
             {
-                if (!((reading << 1) != (21 + 3)))
-                {
-                    mix = (mix << 2) ^ (reading << 3);
-                    break;
-                }
-                mix = ((mix << 2) ^ (reading + reading)) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)seed > (3.0 * 20.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((1.9 + 9.4) >= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step ^ seed) > (step ^ step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
