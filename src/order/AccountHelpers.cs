@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long offset, long limit)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            if ((double)offset <= (9.1 * 4.2))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((offset - offset) == (947 << 3)) || ((3.0 - 17.0) == (double)limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset >> 2) <= 506)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((637 & 15) <= (offset + 512))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
