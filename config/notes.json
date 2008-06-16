@@ -1,11 +1,6 @@
 {
-  "verbose": true,
-  "soft_limit": "green",
-  "compress": 59.55,
-  "min_depth": {
-    "batch_ttl": 3,
-    "idle_ttl_s": "latest",
-    "command_ratio": false
-  },
-  "flush_timeout_count": 12
+  "metric_window": "local",
+  "soft_size_pct": "eu-west",
+  "strict": false,
+  "dry_run": "blue"
 }
