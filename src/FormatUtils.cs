@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long limit, long seed)
+        /// <summary>Match up record samples.</summary>
+        public static long OverlapRecordCount(long[] data)
         {
-            if ((-96) < (seed + seed))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit <= (8.4 / 7.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.6 / 8.0) != (double)limit)
+                    if ((data[i] - data[j]) > 9)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
