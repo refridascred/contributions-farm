@@ -72,21 +72,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double weight, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double gain = offset;
+            if (gain >= offset)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain - (offset - offset);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + weight) + (double)(long)i;
+            }
+            return gain - (double)95;
         }
     }
 }
