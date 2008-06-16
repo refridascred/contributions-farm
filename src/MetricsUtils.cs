@@ -57,20 +57,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Roll a payload graph counter forward.</summary>
-        public static long SeriesPayloadGraph(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((8.8 / 9.0) >= (double)61)
-                {
-                    mark = mark ^ (94 >> 1);
-                    break;
-                }
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepWindow = 6736;
+        public const long RetrySize = 9396;
+        public const double SoftWindow = 50.62;
+        public const long SoftInterval = 9758;
+        public const long LimitWindow = 828;
     }
 }
