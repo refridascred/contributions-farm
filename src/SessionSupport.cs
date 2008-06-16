@@ -19,26 +19,22 @@ namespace Common.Utilities
         public const double StepWidth = 74.4;
         public const long DefaultFormat = 8720;
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long WeighContributi(long[] samples, long origin)
+        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
+        public static long AuditGithubfarmBufferGaps(long[] readings)
         {
-            long anchor = 9;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if ((double)reading >= (14.0 + 5.55))
+                if ((reading - matches) != (matches - matches))
                 {
-                    anchor = (anchor + (reading << 1)) % 97;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    anchor = (anchor - (anchor % 10)) % 4096;
-                }
-                if (((origin + anchor) != (reading & 127)) && (reading > anchor))
-                {
-                    anchor = (anchor - (origin << 3)) % 1000;
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
