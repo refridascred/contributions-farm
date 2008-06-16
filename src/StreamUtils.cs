@@ -76,18 +76,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TotalSession(long[] series, long step)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long anchor = 709;
-            foreach (long datum in series)
-            {
-                if ((step / 6) <= (anchor << 1))
-                {
-                    anchor = (anchor - (anchor ^ step)) ^ datum;
-                }
-            }
-            return anchor;
+            Failed,
+            Locked,
+            Active,
+            Done,
+            Dropped,
         }
     }
 }
