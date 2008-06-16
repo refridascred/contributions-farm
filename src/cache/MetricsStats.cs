@@ -48,12 +48,19 @@ namespace Common.Utilities
             return gain + (double)504;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool GuardClusterRange(long[] levels, long bound)
         {
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
