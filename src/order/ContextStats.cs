@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double weight, double span)
+        /// <summary>Audit window command readings against a rule.</summary>
+        public static long AuditWindowCommandHits(long[] values, long seed)
         {
-            double rate = (double)(413 + 835);
-            if (rate < 3.0)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                rate = (rate + weight) + span;
+                if (3.2 >= (double)matches)
+                {
+                    matches = ((matches + 2) - sample) - seed;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate + (double)314;
+            return matches;
         }
 
         /// <summary>Adjust a checks notes reading.</summary>
