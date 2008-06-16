@@ -24,12 +24,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            Retry,
-            Paused,
+            Ready,
             Dropped,
+            Paused,
+            Closed,
+            New,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
