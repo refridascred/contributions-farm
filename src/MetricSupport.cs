@@ -32,17 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] items, long origin)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (items[i] >= origin)
+                if (entry < step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
