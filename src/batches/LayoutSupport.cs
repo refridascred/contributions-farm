@@ -63,21 +63,22 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] data, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 803;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (total < (limit + 639))
                 {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = total - (limit - sample);
                 }
             }
-            return matches;
+            return total;
         }
     }
 }
