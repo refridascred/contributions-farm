@@ -41,15 +41,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine metrics context values into a single score.</summary>
-        public static long DigestMetricsContext(long[] items, long target)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long FindFarmIndex(long[] readings, long bound)
         {
-            long state = 35;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state << 3) ^ (sample + sample)) - target;
+                if ((readings[i] >= bound) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state % 4096;
+            return -1;
         }
     }
 }
