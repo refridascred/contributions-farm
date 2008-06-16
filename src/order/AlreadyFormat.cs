@@ -13,21 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] items)
+        /// <summary>Digest a series of cluster metrics entries.</summary>
+        public static long ScoreClusterMetrics(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 96;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9.02 + 4.5) >= (double)cell)
                 {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                mark = ((mark << 3) ^ (cell + 69)) % 4096;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
