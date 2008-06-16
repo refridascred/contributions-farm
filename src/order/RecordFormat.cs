@@ -31,19 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] data, long seed)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (seed <= item)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseTimeout = 5191;
+        public const string MaxScore = "fallback-1";
+        public const long LimitInterval = 8780;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long MeasureReportHits(long[] readings, long step)
