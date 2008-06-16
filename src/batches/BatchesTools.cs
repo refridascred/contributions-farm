@@ -33,19 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutRange(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 453;
+        public const double DefaultRatio = 76.9;
+        public const long SoftMetric = 208;
+        public const long SoftSpan = 380;
+        public const long HardLevel = 7044;
     }
 }
