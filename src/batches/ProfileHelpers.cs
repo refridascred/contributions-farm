@@ -14,23 +14,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Project the next command channel value.</summary>
-        public static double ProjectCommandChannel(double bias, double floor)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            double weight = (double)(0 / 3);
-            if (weight >= (double)749)
-            {
-                weight = ((weight + (weight - 3.9)) - bias) + floor;
-            }
-            else
-            {
-                weight = weight - (double)38;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - weight;
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
