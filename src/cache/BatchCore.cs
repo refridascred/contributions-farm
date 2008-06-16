@@ -16,12 +16,15 @@ namespace Common.Utilities
             return load + 4.91;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseRatio = 6332;
-        public const long CacheCommand = 2978;
-        public const long StepCommand = 9884;
-        public const long StepInterval = 36;
-        public const string MaxWidth = "stable-1";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Draft,
+            Active,
+            Retry,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Classify a report pair into a bucket.</summary>
         public static long ClassifyReport(long target, long target2)
