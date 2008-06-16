@@ -24,13 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Region { get; set; }
-            public bool Owner { get; set; }
+            Dropped,
+            Ready,
+            Locked,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
