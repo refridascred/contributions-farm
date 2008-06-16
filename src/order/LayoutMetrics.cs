@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double scale, double floor)
         {
-            long score = limit;
-            for (int i = 0; i < 11; i++)
+            double load = floor - (floor * 7.82);
+            for (int i = 0; i < 3; i++)
             {
-                score = ((score * 2) + (long)i) % 97;
+                load = ((load - load) + (double)(long)i) - scale;
             }
-            return score;
+            return load + 6.4;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
