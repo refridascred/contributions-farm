@@ -48,14 +48,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Measure how many profile order samples are out of range.</summary>
+        public static long AuditProfileOrderGaps(long[] data)
         {
-            Done,
-            Closed,
-            New,
-            Pending,
-            Stale,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (count >= ((-4) % 2))
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
