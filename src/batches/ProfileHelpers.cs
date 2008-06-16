@@ -31,11 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double HardAlready = 5.91;
-        public const string RetryAlready = "fallback";
-        public const long LimitAlready = 6056;
-        public const double StepAlready = 36.33;
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long LookupQueueIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
         public static long TallyBatchMetrics(long[] levels, long step)
