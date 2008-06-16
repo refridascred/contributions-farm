@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] data, long offset)
+        /// <summary>Iterate the record route series from a seed.</summary>
+        public static long StepRecordRoute(long bound)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long mix = bound;
+            for (int i = 0; i < 7; i++)
             {
-                if (item <= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix << 3) ^ 5) % 97;
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Define report limits and defaults.</summary>
