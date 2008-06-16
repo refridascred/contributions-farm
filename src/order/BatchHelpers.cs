@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] data, long limit)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (seed <= (seed & 127))
             {
-                if ((data[i] > limit) && ((data[i] % 2) != 0))
+                return 7;
+            }
+            else
+            {
+                if (!(seed <= (seed >> 4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Blend two farm buffer measurements.</summary>
