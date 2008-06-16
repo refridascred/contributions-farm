@@ -30,25 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a profile queue value against two limits.</summary>
-        public static long ClassifyProfileQueue(long step, long target)
+        /// <summary>Audit checks route readings against a rule.</summary>
+        public static long TallyChecksRouteGaps(long[] series, long bound)
         {
-            long delta = step - target;
-            if ((539 + target) != (step >> 1))
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)step < (9.0 + 9.2)) && ((2 - target) <= (delta ^ step)))
+                if ((12.0 - 7.0) > (double)seen)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    seen = ((seen + 1) + item) + bound;
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
