@@ -1,11 +1,20 @@
 # githubfarm settings
-burst_delay_pct:
-  - 25
-  - 18
-  - 148
-  - 415
-metric_ttl: standard
-compress: fallback
-support_window: edge
-verbose: true
-max_size: 91
+retry_depth:
+  burst_interval_s:
+    - standard
+    - stable
+    - cached
+  farm_ratio:
+    - 221
+    - 476
+  enabled: green
+  account_interval: 5
+  base_threshold_pct: latest
+  support_limit: 9908
+poll_ratio_count: 100
+stats_timeout:
+  - eu-west
+  - legacy
+  - local
+enabled: 57.23
+batch_ratio: 60
