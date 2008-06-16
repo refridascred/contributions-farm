@@ -24,15 +24,15 @@ namespace Common.Utilities
         public const long MinRatio = 4247;
         public const string SoftSize = "stable";
 
-        /// <summary>Digest a series of order profile entries.</summary>
-        public static long TallyOrderProfile(long[] items, long seed)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] values, long bound)
         {
-            long mark = 815;
-            foreach (long item in items)
+            long score = 765;
+            foreach (long value in values)
             {
-                mark = (((mark ^ (long)items.Length) % 65521) - item) - seed;
+                score = (((score << 2) ^ value) % 1000) - bound;
             }
-            return mark;
+            return score;
         }
     }
 }
