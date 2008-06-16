@@ -1,8 +1,5 @@
 {
-  "retry_ttl": "strict",
-  "burst_limit": "primary",
-  "hard_interval_s": "standard",
-  "default_depth": "eu-west",
-  "idle_threshold_pct": "eu-west",
-  "batch_window_pct": "stable"
+  "idle_limit_ms": true,
+  "editor_size": true,
+  "hard_threshold_s": ["local", "open", "green"]
 }
