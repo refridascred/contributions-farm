@@ -1,23 +1,15 @@
 # entry settings
-default_interval_count: stable
-channel_depth: strict
+soft_threshold_s:
+  - 441
+  - 172
+  - 144
+  - 437
 strict:
-  idle_capacity_ms:
-    - staging
-    - blue
-    - local
-    - standard
-  batch_retries_s: staging
-  burst_ratio:
-    persist: 32
-    sync_window_s:
-      - 338
-      - 457
-      - 382
-    stats_threshold:
-      - 317
-      - 120
-      - 269
-    flush_window: 60
-  default_window: true
-  batch_capacity_count: false
+  - 440
+  - 464
+cache_window:
+  - 449
+  - 243
+  - 452
+min_window: 61.38
+cache_interval: false
