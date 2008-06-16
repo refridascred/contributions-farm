@@ -30,19 +30,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelBounds(long[] values, long target)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (item < target)
+                if (345 < (29 + seed))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
