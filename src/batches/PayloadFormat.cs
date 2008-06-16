@@ -44,21 +44,31 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up notes filter samples.</summary>
-        public static long CompareNotesFilterCount(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((1.4 * 0.4) >= (double)limit)
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((target + target) == ((-51) ^ target)) || ((limit - target) <= (target * 5)))
                 {
-                    if ((levels[i] ^ levels[j]) != 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((1.56 / 3.0) != (double)target)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
