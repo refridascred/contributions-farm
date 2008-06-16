@@ -61,9 +61,18 @@ namespace Common.Utilities
         public const long CacheBudget = 8532;
         public const long CacheBuffer = 5131;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitChecks = 6639;
-        public const long HardChecks = 3526;
-        public const string BurstLevel = "strict-edge";
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (tally >= (tally >> 2))
+                {
+                    tally = (tally + 3) - sample;
+                }
+            }
+            return tally;
+        }
     }
 }
