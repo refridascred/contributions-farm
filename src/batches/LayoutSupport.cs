@@ -67,22 +67,18 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] data, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] series, long limit)
         {
-            long total = 803;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (total < (limit + 639))
+                if (!!((limit + hits) != (hits * 3)))
                 {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = total - (limit - sample);
+                    hits = (hits + 3) + entry;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
