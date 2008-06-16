@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] samples)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long anchor = -568;
-            foreach (long datum in samples)
-            {
-                if ((anchor / 9) <= (anchor + datum))
-                {
-                    anchor = anchor + anchor;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor + datum);
-                }
-            }
-            return anchor;
+            Ready,
+            Locked,
+            Queued,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a metrics record.</summary>
