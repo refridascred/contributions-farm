@@ -33,18 +33,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data, long bound)
+        /// <summary>Accumulate buffer route samples.</summary>
+        public static long CombineBufferRoute(long[] values)
         {
-            long acc = 668;
-            foreach (long reading in data)
+            long score = 6;
+            foreach (long value in values)
             {
-                if ((0.8 * 7.0) < (double)bound)
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = (acc + reading) % 1000;
+                    score = score ^ (long)i;
+                }
+                if ((value <= (9 - value)) || ((double)score < (9.6 / 3.0)))
+                {
+                    score = (score - (value + score)) % 101;
                 }
             }
-            return acc;
+            if (score > 4)
+            {
+                score = score ^ (score + score);
+            }
+            return score;
         }
     }
 }
