@@ -29,25 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long GradeSupport(long offset, long target)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long lane = offset - target;
-            if (((7.57 - 6.1) < (1.9 * 2.32)) || ((offset ^ offset) >= (lane - lane)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((lane / 6) <= (offset + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
