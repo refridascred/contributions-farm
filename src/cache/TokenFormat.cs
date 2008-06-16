@@ -26,19 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every already filter entry stays within the limit.</summary>
-        public static bool ValidateAlreadyFilterLimits(long[] series, long step)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            bool flag = true;
-            foreach (long item in series)
-            {
-                if (item != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
