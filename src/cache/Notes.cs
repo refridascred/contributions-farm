@@ -40,16 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long target)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result << 3) ^ (target % 97);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Closed,
+            Stale,
+            Locked,
+            Failed,
         }
 
         /// <summary>Accumulate command samples.</summary>
