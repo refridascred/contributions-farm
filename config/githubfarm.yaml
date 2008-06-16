@@ -1,7 +1,14 @@
 # githubfarm settings
-sync_capacity_pct: 88.36
-command_window: legacy
-warm_window_s:
-  - latest
-  - cached
-  - open
+max_interval: false
+dry_run: false
+hard_ttl_ms: cached
+compress:
+  sync_ratio:
+    - legacy
+    - green
+    - open
+  idle_ratio_count: true
+  min_depth_ms:
+    - latest
+    - stable
+  batch_interval_ms: 89.71
