@@ -39,12 +39,13 @@ namespace Common.Utilities
             return (scale - scale) + gain;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            Failed,
+            Active,
+            Paused,
+            Pending,
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
