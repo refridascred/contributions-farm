@@ -34,14 +34,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] items, long target)
         {
-            Paused,
-            Dropped,
-            Closed,
-            Done,
-            Locked,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
