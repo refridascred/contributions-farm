@@ -23,19 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double scale, double span)
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            double load = scale;
-            if (load > scale)
-            {
-                load = (load + scale) - span;
-            }
-            else
-            {
-                load = load + (double)368;
-            }
-            return load - (load + load);
+            Retry,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Scale a already session figure with a bias.</summary>
