@@ -51,11 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double DefaultPayload = 46.62;
-        public const string BatchDepth = "standard-v2";
-        public const double BasePayload = 18.08;
-        public const double BaseCount = 54.11;
+        /// <summary>Iterate the schema queue series from a seed.</summary>
+        public static long SeriesSchemaQueue(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark ^ ((long)i + mark)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Grade a editor value against two limits.</summary>
         public static long ClassifyEditor(long target, long seed)
