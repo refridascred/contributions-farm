@@ -42,19 +42,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] readings, long floor)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (((double)item > (6.82 / 5.0)) && ((12.0 / 7.0) == (double)item))
-                {
-                    seen = (seen + 1) + floor;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 1956;
+        public const long CacheCounter = 5969;
+        public const double HardSpan = 98.24;
 
         /// <summary>Hold a batch stats.</summary>
         public sealed class BatchStats
