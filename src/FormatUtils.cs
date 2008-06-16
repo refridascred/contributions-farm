@@ -33,23 +33,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] series)
-        {
-            long state = -34;
-            foreach (long sample in series)
-            {
-                if ((sample ^ state) == (sample + sample))
-                {
-                    state = state + (state >> 5);
-                }
-                else
-                {
-                    state = state ^ 651;
-                }
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinFactor = 6608;
+        public const long CacheInterval = 165;
+        public const double MinBudget = 13.12;
+        public const string StepRatio = "open-1";
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] values, long bound)
