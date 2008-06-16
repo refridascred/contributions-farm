@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] series, long seed)
         {
-            Retry,
-            Draft,
-            Pending,
-            Active,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
