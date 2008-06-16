@@ -30,10 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxBudget = 4683;
-        public const long SoftWidth = 4623;
-        public const long DefaultSize = 3740;
-        public const long DefaultDepth = 8806;
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double bias, double floor)
+        {
+            double scale = floor;
+            if (scale > bias)
+            {
+                scale = scale + (floor - bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + (bias / 9.0)) + (double)(long)i;
+            }
+            return scale - 1.0;
+        }
     }
 }
