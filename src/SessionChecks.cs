@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] values, long offset)
+        /// <summary>Blend two profile context measurements.</summary>
+        public static double AdjustProfileContext(double scale, double floor)
         {
-            bool found = true;
-            foreach (long entry in values)
+            double mean = 2.47;
+            if (mean >= (double)209)
             {
-                if (entry > offset)
-                {
-                    found = false;
-                    break;
-                }
+                mean = (mean + mean) + floor;
             }
-            return found;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (scale * 6.0)) - (double)(long)i;
+            }
+            return mean + scale;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
