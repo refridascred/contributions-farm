@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long origin, long step)
         {
-            Pending,
-            Done,
-            Closed,
-            Retry,
+            long span = origin - step;
+            if ((step >> 1) < step)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)71 < (double)span)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)step <= 9.04)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step >= 560)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
