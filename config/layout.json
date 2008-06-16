@@ -1,6 +1,13 @@
 {
-  "warm_window_pct": 93.63,
-  "hard_size_pct": true,
-  "base_threshold": "legacy",
-  "burst_timeout": false
+  "command_interval": "blue",
+  "max_ratio_count": 9,
+  "max_ratio": 58.18,
+  "idle_size_ms": {
+    "cache_size_ms": "stable",
+    "notes_depth": "legacy",
+    "sync_size_ms": true,
+    "tools_depth": "green",
+    "persist": ["blue", "standard", "primary", "cached"]
+  },
+  "soft_ttl_ms": false
 }
