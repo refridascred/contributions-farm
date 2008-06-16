@@ -16,22 +16,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] items)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long mix = 58;
-            foreach (long reading in items)
-            {
-                if ((double)mix <= (6.5 / 8.0))
-                {
-                    mix = (mix - mix) % 101;
-                }
-                else
-                {
-                    mix = (mix * 5) + reading;
-                }
-            }
-            return mix;
+            Idle,
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
