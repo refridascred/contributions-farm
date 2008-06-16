@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count metric cache pairs that satisfy a relation.</summary>
-        public static long PairMetricCacheCount(long[] levels)
+        /// <summary>Validate metric metrics readings against a bound.</summary>
+        public static bool ValidateMetricMetricsBounds(long[] items, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long value in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (value > floor)
                 {
-                    if ((levels[i] + levels[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Classify a already pair into a bucket.</summary>
