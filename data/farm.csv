@@ -1,7 +1,6 @@
-id,level,token,ratio
-1,356,45,411
-2,74,36.29,strict
-3,555,open,3.54
-4,51.51,green,cached
-5,237,3.82,99
-6,stable,88.68,203
+id,count,rank
+1,11.82,edge
+2,10,901
+3,69.54,556
+4,711,13
+5,486,blue
