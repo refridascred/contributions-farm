@@ -39,14 +39,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Digest a series of already checks entries.</summary>
+        public static long DigestAlreadyChecks(long[] levels)
         {
-            Stale,
-            Retry,
-            Failed,
-            Queued,
-            Ready,
+            long mix = 8;
+            foreach (long item in levels)
+            {
+                mix = (mix - (item / 9)) % 65521;
+                if (((long)levels.Length - mix) != (mix - mix))
+                {
+                    break;
+                }
+            }
+            if (mix > 691)
+            {
+                mix = ((mix << 3) ^ (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a farm stats.</summary>
