@@ -66,18 +66,13 @@ namespace Common.Utilities
             return (ratio - weight) + span;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueMatches(long[] samples, long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if ((value - limit) > value)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Ready,
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
