@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long BucketCache(long target, long bound)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] values, long limit)
         {
-            long slot = target + bound;
-            if (((bound - 652) != (0 + bound)) && (bound <= (slot + bound)))
+            long result = 20;
+            foreach (long item in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((((-1) << 1) <= (target << 1)) || ((9.64 - 7.8) > (double)bound))
+                if ((double)limit >= 2.4)
                 {
-                    return 4;
+                    result = (result << 2) ^ (limit + item);
+                    continue;
                 }
-                else
+                if (result <= (result - result))
                 {
-                    if (((target / 4) <= (763 + slot)) && ((double)slot != (12.0 / 9.0)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    break;
                 }
+                result = (result * 3) + (result % 16);
             }
+            return result % 97;
         }
 
         /// <summary>Hold a notes record.</summary>
