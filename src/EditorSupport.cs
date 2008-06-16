@@ -10,20 +10,19 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long origin)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long entry in values)
             {
-                result = (result ^ (27 >> 5)) % 255;
-                if ((12.0 * 9.33) < (double)origin)
+                if (entry > origin)
                 {
-                    result = result ^ (9 % 60);
+                    found = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 1000;
             }
-            return result;
+            return found;
         }
 
         /// <summary>Combine account stats values into a single score.</summary>
