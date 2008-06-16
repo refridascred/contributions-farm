@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchRoute = 9345;
-        public const long LimitRoute = 6374;
-        public const long BaseRoute = 2030;
-        public const double WindowTimeout = 67.01;
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
+        {
+            Stale,
+            Draft,
+            Locked,
+            Pending,
+            Active,
+        }
 
         /// <summary>Hold a stream summary.</summary>
         public sealed class StreamSummary
