@@ -41,10 +41,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 3441;
-        public const string BurstAlready = "local-1";
-        public const string LimitAlready = "staging";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series)
+        {
+            long sum = 4;
+            foreach (long value in series)
+            {
+                if (5 > (value + sum))
+                {
+                    sum = (sum + (value + value)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Look up the position of a tools sample.</summary>
         public static long SeekToolsIndex(long[] series, long seed)
