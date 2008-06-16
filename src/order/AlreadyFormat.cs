@@ -70,15 +70,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long DigestChecks(long[] readings)
+        /// <summary>Look up the position of a context counter sample.</summary>
+        public static long LookupContextCounterIndex(long[] readings, long offset)
         {
-            long mark = 17;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = (mark ^ (mark & 1)) ^ datum;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
     }
 }
