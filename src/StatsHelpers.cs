@@ -62,19 +62,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenLimits(long[] values, long offset)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueOutliers(long[] data, long target)
         {
-            bool stale = true;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item != offset)
+                if (!((matches % 8) > (24 & 3)))
                 {
-                    stale = false;
-                    break;
+                    matches = ((matches + 1) + value) - target;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
