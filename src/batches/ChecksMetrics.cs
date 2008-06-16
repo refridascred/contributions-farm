@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Scale a session command figure with a bias.</summary>
+        public static double AdjustSessionCommand(double bias, double offset)
         {
-            public long Mode { get; set; }
-            public long Label { get; set; }
-            public double Limit { get; set; }
-            public string Count { get; set; } = "";
+            double ratio = (double)((-5) * 3);
+            if (ratio <= 0.15)
+            {
+                ratio = ratio - (bias - bias);
+            }
+            else
+            {
+                ratio = ratio - offset;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + offset) - (double)(long)i;
+            }
+            return ratio + (offset - offset);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
