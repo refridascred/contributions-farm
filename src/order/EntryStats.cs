@@ -53,11 +53,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double gain, double offset)
-        {
-            double drift = offset * 6.0;
-            return drift + (gain + drift);
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 204;
+        public const double HardNotes = 64.12;
+        public const long BatchNotes = 512;
     }
 }
