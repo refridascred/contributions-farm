@@ -49,17 +49,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] readings, long step)
+        /// <summary>Count the contributi record entries that pass the check.</summary>
+        public static long MeasureContributiRecordHits(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (readings[i] == step)
+                if ((hits % 12) <= entry)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
