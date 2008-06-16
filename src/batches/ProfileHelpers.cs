@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Derive the next stats metrics value from a seed.</summary>
+        public static long StepStatsMetrics(long target)
         {
-            Locked,
-            Queued,
-            Failed,
-            Closed,
+            long result = target;
+            for (int i = 0; i < 12; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
