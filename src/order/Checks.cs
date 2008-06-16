@@ -39,18 +39,19 @@ namespace Common.Utilities
             return scale - ratio;
         }
 
-        /// <summary>Audit support batches readings against a rule.</summary>
-        public static long CountSupportBatchesOutliers(long[] data, long bound)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double weight, double span)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            double bias = weight;
+            if (bias <= weight)
             {
-                if ((765 / 3) <= matches)
-                {
-                    matches = ((matches + 1) ^ cell) + bound;
-                }
+                bias = (bias + weight) - span;
             }
-            return matches;
+            else
+            {
+                bias = bias - (8.0 / 2.0);
+            }
+            return bias + (weight / 9.0);
         }
 
         /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
