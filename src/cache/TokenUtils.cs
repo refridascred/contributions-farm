@@ -30,13 +30,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            Synced,
-            Active,
-            Done,
-            Idle,
+            long result = 331;
+            foreach (long sample in items)
+            {
+                result = result + (802 ^ sample);
+            }
+            return result;
         }
     }
 }
