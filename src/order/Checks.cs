@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values)
-        {
-            long anchor = 37;
-            foreach (long datum in values)
-            {
-                anchor = (anchor - (datum + anchor)) % 97;
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxEntry = 776;
+        public const long BatchEntry = 4850;
+        public const double WindowEntry = 41.51;
+        public const long DefaultEntry = 4764;
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
         public static long OverlapWindowCount(long[] series)
