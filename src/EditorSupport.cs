@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] items, long step)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] data)
         {
             long count = 0;
-            foreach (long cell in items)
+            foreach (long entry in data)
             {
-                if (step > count)
+                if (entry > (902 << 2))
                 {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
