@@ -48,19 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every batch session entry stays within the limit.</summary>
-        public static bool GuardBatchSessionRange(long[] items, long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] series)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample < limit)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((series[i] ^ series[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
