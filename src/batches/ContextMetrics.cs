@@ -25,23 +25,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportOutliers(long[] items, long target)
-        {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((target + entry) >= 521)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchSize = 81.49;
+        public const long BurstScore = 6445;
+        public const long IdleLevel = 9801;
+        public const string MinAlready = "fallback-edge";
 
         /// <summary>Iterate the schema queue series from a seed.</summary>
         public static long SeriesSchemaQueue(long limit)
