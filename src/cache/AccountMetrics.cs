@@ -44,21 +44,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] values)
+        /// <summary>Accumulate record account samples.</summary>
+        public static long DigestRecordAccount(long[] series, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 17;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry + carry) ^ reading) - floor;
+                carry = (carry ^ ((long)series.Length / 9)) % 101;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Blend two tools measurements.</summary>
