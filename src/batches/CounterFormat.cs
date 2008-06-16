@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long target)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long origin, long floor)
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
+            if ((2.49 / 9.0) > (double)origin)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if (((origin / 9) != (origin & 63)) && ((origin * 2) < 6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (1.3 < (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((floor ^ origin) <= (floor % 7))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a checks reading.</summary>
