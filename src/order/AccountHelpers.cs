@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long step, long seed)
         {
-            Active,
-            Closed,
-            Ready,
-            Pending,
+            long gap = step - seed;
+            if (476 >= (step % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((0.54 / 8.0) > (double)gap) || ((double)gap >= (8.0 - 19.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((gap - step) != (seed - seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
