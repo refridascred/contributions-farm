@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits / 4) < hits)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) ^ sample;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
