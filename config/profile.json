@@ -1,5 +1,5 @@
 {
-  "cache_window": 100,
-  "strict": 55,
-  "window_interval": 9969
+  "base_depth_ms": [165, 333, 374],
+  "hard_ratio": false,
+  "readonly": "standard"
 }
