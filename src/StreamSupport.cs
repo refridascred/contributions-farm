@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            public bool Size { get; set; }
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a batch snapshot.</summary>
