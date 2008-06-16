@@ -46,24 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a queue batches value against two limits.</summary>
-        public static long ClassifyQueueBatches(long origin, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] series, long origin)
         {
-            if (!((seed ^ origin) < origin))
+            long mark = 2;
+            foreach (long reading in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (!(1.3 <= (double)origin))
+                if ((mark / 9) <= (100 * 3))
                 {
-                    return 0;
+                    mark = ((mark ^ (0 + 777)) % 255) + reading;
                 }
-                else
-                {
-                    return 2;
-                }
+                mark = ((mark * 2) + (origin & 31)) % 4096;
             }
+            return mark % 65521;
         }
     }
 }
