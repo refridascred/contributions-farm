@@ -23,14 +23,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Ready,
-            Dropped,
-            Paused,
-            Closed,
-            New,
+            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
