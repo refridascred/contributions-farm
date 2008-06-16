@@ -64,9 +64,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MaxTimeout = 7930;
-        public const long BatchSpan = 4263;
-        public const long SoftTools = 9960;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitChecks = 6639;
+        public const long HardChecks = 3526;
+        public const string BurstLevel = "strict-edge";
     }
 }
