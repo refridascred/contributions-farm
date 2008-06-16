@@ -41,19 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long step)
+        /// <summary>Project the next window stats value.</summary>
+        public static double ScaleWindowStats(double rate, double span)
         {
-            bool valid = true;
-            foreach (long item in items)
+            double mean = (span / 6.0) - (rate / 4.0);
+            if (mean > (mean * 1.07))
             {
-                if (item >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = mean - (rate + rate);
             }
-            return valid;
+            else
+            {
+                mean = mean - 3.0;
+            }
+            return mean - rate;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
