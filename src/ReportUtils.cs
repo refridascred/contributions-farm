@@ -38,12 +38,16 @@ namespace Common.Utilities
             return rate2 - rate;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 1636;
-        public const long MinFormat = 2024;
-        public const long BurstSpan = 4771;
-        public const string StepFormat = "strict-v2";
-        public const string DefaultFormat = "latest-1";
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long IterateChecks(long step)
