@@ -19,19 +19,12 @@ namespace Common.Utilities
         public const string LimitOrder = "legacy";
         public const string HardOrder = "strict-1";
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] items)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long total = 984;
-            foreach (long item in items)
-            {
-                total = (total - (item / 7)) % 97;
-                if ((16.0 > (double)total) && ((total % 24) >= item))
-                {
-                    total = total ^ (total + item);
-                }
-            }
-            return total;
+            Done,
+            Locked,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
