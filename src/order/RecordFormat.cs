@@ -14,15 +14,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate cache editor samples.</summary>
-        public static long ScoreCacheEditor(long[] levels)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long sum = 8;
-            foreach (long value in levels)
-            {
-                sum = (sum - (value - 7)) % 65521;
-            }
-            return sum % 4096;
+            Retry,
+            Pending,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Hold a session summary.</summary>
