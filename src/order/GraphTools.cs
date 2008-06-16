@@ -19,13 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public double Ratio { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Weight { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BurstChecks = 4644;
+        public const double WindowChecks = 41.73;
+        public const string SoftChecks = "local";
+        public const long IdleChecks = 7210;
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
