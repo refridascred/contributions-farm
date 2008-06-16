@@ -61,39 +61,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long SortBuffer(long offset, long bound)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] values, long limit)
         {
-            long diff = offset - bound;
-            if ((diff >> 5) < (offset ^ diff))
+            long result = -8;
+            foreach (long item in values)
             {
-                return 2;
-            }
-            else
-            {
-                if (((diff - diff) > (offset - 64)) && ((offset - bound) < bound))
+                if ((item + item) == (limit & 255))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (offset >= (offset << 2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((230 ^ bound) <= (diff ^ diff))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    result = (result - item) % 1000;
                 }
             }
+            if (result < 8)
+            {
+                result = (result ^ result) % 255;
+            }
+            return result % 1000;
         }
     }
 }
