@@ -26,19 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window session readings against a bound.</summary>
-        public static bool CheckWindowSessionBounds(long[] data, long offset)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Paused,
+            Retry,
+            Failed,
+            Dropped,
         }
     }
 }
