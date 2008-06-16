@@ -1,15 +1,14 @@
 # githubfarm settings
-flush_ttl: open
-poll_timeout_s: true
-poll_delay_pct:
-  base_window:
-    - staging
-    - eu-west
-    - edge
-  compress: 13.37
-  counter_retries: 78
-  strict:
-    max_ttl_count: strict
-    cache_interval_pct: 2
-    editor_ratio: staging
-  payload_size: false
+min_size_pct: 16.95
+burst_interval: open
+hard_timeout:
+  burst_ratio_ms: 97
+  checks_delay: latest
+  flush_capacity_s:
+    - 103
+    - 162
+    - 133
+  account_retries: false
+metric_size: 60
+sync_size: 30
+githubfarm_capacity: edge
