@@ -1,6 +1,18 @@
 {
-  "base_capacity": false,
-  "compress": false,
-  "base_depth_s": 500,
-  "warm_size": 90.57
+  "strict": "local",
+  "stats_limit": 39.65,
+  "soft_size": 31.62,
+  "default_depth_pct": 98,
+  "audit": {
+    "compress": {
+      "readonly": "latest",
+      "batches_capacity": "local",
+      "strict": [80, 303],
+      "audit": 7,
+      "cache_timeout_s": "open"
+    },
+    "githubfarm_ratio": "eu-west",
+    "poll_ratio_pct": true
+  },
+  "burst_limit_ms": 90
 }
