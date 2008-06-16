@@ -1,10 +1,11 @@
 # support settings
-token_size:
-  report_ratio: false
-  sync_ttl: true
-  soft_delay_pct:
-    - eu-west
-    - blue
-  warm_delay: edge
-batch_threshold_count: false
-audit: true
+burst_depth_pct: cached
+poll_capacity_count:
+  - 290
+  - 316
+  - 333
+  - 373
+payload_delay: false
+format_limit: 5272
+graph_retries: 3744
+flush_limit_s: local
