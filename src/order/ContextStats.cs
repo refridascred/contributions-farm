@@ -29,22 +29,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TallyStats(long[] data, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] samples, long bound)
         {
-            long score = -74;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + item) <= (long)data.Length)
+                if (samples[i] >= bound)
                 {
-                    score = (score * 3) + (score - 8);
-                }
-                else
-                {
-                    score = (score + (score ^ target)) % 4096;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Compare every pair of queue readings.</summary>
