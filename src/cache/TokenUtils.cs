@@ -25,11 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
-        {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "staging-1";
+        public const double SoftChannel = 97.12;
+        public const string BurstLevel = "legacy-edge";
     }
 }
