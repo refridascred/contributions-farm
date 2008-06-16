@@ -1,20 +1,5 @@
 {
-  "window_limit": true,
-  "payload_interval": 100,
-  "flush_timeout_s": true,
-  "base_limit_pct": 11,
-  "record_limit": {
-    "githubfarm_ttl": {
-      "max_limit_ms": ["stable", "local", "staging", "stable"],
-      "entry_size": true,
-      "max_limit_s": 250,
-      "soft_ratio_ms": 60,
-      "base_depth_count": "strict",
-      "batch_limit_count": false
-    },
-    "persist": 91.7,
-    "verbose": false,
-    "route_size": true
-  },
-  "burst_timeout_pct": 36.16
+  "enabled": [243, 384, 335],
+  "warm_interval_count": "latest",
+  "hard_window": 24
 }
