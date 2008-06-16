@@ -71,11 +71,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitReport = 56.05;
-        public const string IdleSpan = "fallback-v2";
-        public const double SoftTimeout = 5.6;
-        public const double MaxReport = 27.92;
-        public const long RetryInterval = 7568;
+        /// <summary>Match up editor filter samples.</summary>
+        public static long CompareEditorFilterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
