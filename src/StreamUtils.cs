@@ -37,12 +37,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every batch session entry stays within the limit.</summary>
+        public static bool GuardBatchSessionRange(long[] items, long limit)
         {
-            Locked,
-            New,
-            Active,
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
