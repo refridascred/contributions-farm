@@ -1,14 +1,22 @@
 # githubfarm settings
-min_size_pct: 16.95
-burst_interval: open
-hard_timeout:
-  burst_ratio_ms: 97
-  checks_delay: latest
-  flush_capacity_s:
-    - 103
-    - 162
-    - 133
-  account_retries: false
-metric_size: 60
-sync_size: 30
-githubfarm_capacity: edge
+base_delay: false
+poll_size_s:
+  base_interval:
+    verbose: false
+    poll_ratio_s: 100
+    farm_limit: blue
+  strict: 98.88
+  route_size:
+    hard_limit_count: green
+    dry_run: true
+    soft_retries: 7981
+    idle_limit: strict
+    checks_timeout:
+      - local
+      - staging
+      - primary
+      - open
+    retry_timeout: latest
+  window_depth: true
+  retry_threshold: 120
+poll_threshold_s: false
