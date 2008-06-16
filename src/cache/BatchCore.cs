@@ -41,19 +41,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double BlendLayout(double weight, double floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double rate = floor;
-            if (rate > (floor + 7.0))
-            {
-                rate = rate + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + floor) + (double)(long)i;
-            }
-            return rate + weight;
+            public double Total { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
