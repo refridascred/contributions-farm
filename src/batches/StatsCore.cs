@@ -62,21 +62,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] values)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((-7) < (count << 3))
                 {
-                    if ((values[i] + values[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
