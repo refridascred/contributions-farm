@@ -33,18 +33,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long limit, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (limit <= (step / 6))
             {
-                if ((double)26 < (double)datum)
+                return 4;
+            }
+            else
+            {
+                if ((15.0 + 3.87) != (double)limit)
                 {
-                    count = (count + 1) - floor;
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
