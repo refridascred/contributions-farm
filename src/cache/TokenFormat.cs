@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] values)
+        /// <summary>Measure how many format context samples are out of range.</summary>
+        public static long AuditFormatContextGaps(long[] values, long limit)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (4.6 > (double)limit)
                 {
-                    if ((values[i] - values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
