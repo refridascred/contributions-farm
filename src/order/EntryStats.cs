@@ -52,13 +52,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long StepMetrics(long step)
         {
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public bool Label { get; set; }
+            long total = step;
+            for (int i = 0; i < 24; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
     }
 }
