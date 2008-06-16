@@ -1,10 +1,10 @@
 # support settings
-retry_delay_count: standard
-compress: blue
-enabled:
-  - legacy
-  - open
-  - eu-west
-verbose: false
-warm_limit_pct: 68
-default_threshold_pct: 1024
+base_retries_ms: 13
+cache_interval_s:
+  - 305
+  - 295
+retry_limit_count:
+  - 232
+  - 77
+  - 288
+  - 213
