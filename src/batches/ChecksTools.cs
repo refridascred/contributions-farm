@@ -65,17 +65,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = acc + limit;
-                acc = acc ^ (long)i;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string BurstBudget = "fallback-1";
+        public const double MaxLayout = 83.31;
+        public const double StepLayout = 25.86;
     }
 }
