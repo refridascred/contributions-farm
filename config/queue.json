@@ -1,11 +1,11 @@
 {
-  "retry_depth_s": 3805,
-  "warm_timeout_pct": [234, 378, 251],
-  "notes_threshold": {
-    "max_threshold_count": 1024,
-    "enabled": 15.65,
-    "stream_capacity": 500,
-    "warm_retries": "standard"
+  "farm_ttl": 34,
+  "soft_delay_count": false,
+  "buffer_size": "open",
+  "sync_retries": {
+    "batches_threshold": "fallback",
+    "cache_size": [214, 78],
+    "counter_ttl": true
   },
-  "max_limit_pct": 100
+  "order_window": 3806
 }
