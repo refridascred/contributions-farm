@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if ((double)step < (double)state)
-                {
-                    state = ((state << 2) ^ (146 - (long)i)) % 255;
-                }
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
