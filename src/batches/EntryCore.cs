@@ -56,22 +56,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit command format readings against a rule.</summary>
-        public static long TallyCommandFormatHits(long[] items, long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] samples, long seed)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((3.0 / 2.0) == (double)datum))
+                if ((samples[i] > seed) && ((samples[i] % 5) != 0))
                 {
-                    tally = (tally + 2) + origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
