@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of checks context entries.</summary>
-        public static long FoldChecksContext(long[] data)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long floor, long floor2)
         {
-            long mix = 367;
-            foreach (long value in data)
+            long span = floor ^ floor2;
+            if (floor2 < (floor * 5))
             {
-                mix = (mix ^ (mix + mix)) + value;
+                return 6;
             }
-            return mix % 4096;
+            else
+            {
+                if ((floor2 < (floor2 + 466)) && ((span << 1) < (floor + floor2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank tools input into a small class.</summary>
