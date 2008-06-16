@@ -22,10 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinSpan = 5407;
-        public const string MinCommits = "alpha-1";
-        public const long MaxCommits = 6454;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public string Offset { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Audit window commits readings against a rule.</summary>
         public static long CountWindowCommitsMatches(long[] levels, long offset)
