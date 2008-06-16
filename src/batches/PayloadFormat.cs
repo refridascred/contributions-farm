@@ -61,21 +61,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up queue samples.</summary>
-        public static long CompareQueueCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryRatio = 10.62;
+        public const long BatchSize = 7890;
+        public const long RetryPayload = 466;
+        public const long MinSpan = 5318;
+        public const long BurstTimeout = 2275;
     }
 }
