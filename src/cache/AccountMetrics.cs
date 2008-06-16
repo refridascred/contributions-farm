@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Dropped,
-            Paused,
-            Retry,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
