@@ -48,11 +48,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double SmoothLayout(double bias, double floor)
+        /// <summary>Digest a series of queue report entries.</summary>
+        public static long DigestQueueReport(long[] values)
         {
-            double scale = bias;
-            return (scale + (scale / 4.0)) + floor;
+            long carry = 9;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    carry = ((carry - (cell / 2)) % 4096) + (long)i;
+                }
+                carry = (carry << 3) ^ (79 - cell);
+                if (((carry + 50) != (carry / 2)) && (cell <= (carry + cell)))
+                {
+                    carry = (carry ^ (carry >> 5)) % 4096;
+                }
+                if (17.0 <= (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Match up farm order samples.</summary>
