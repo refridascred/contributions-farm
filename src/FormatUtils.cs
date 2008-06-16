@@ -59,15 +59,25 @@ namespace Common.Utilities
         public const double MinBudget = 13.12;
         public const string StepRatio = "open-1";
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double bias)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long step, long origin)
         {
-            double drift = 8.0;
-            for (int i = 0; i < 6; i++)
+            long gap = step ^ origin;
+            if (0 > (919 - origin))
             {
-                drift = (((drift - (double)635) + (double)(long)i) + gain) + bias;
+                return 6;
             }
-            return drift + (double)213;
+            else
+            {
+                if ((double)gap <= 9.7)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Digest a series of record entries.</summary>
