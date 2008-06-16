@@ -20,22 +20,11 @@ namespace Common.Utilities
             return rate - (double)62;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutOutliers(long[] readings)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (769 < (count + count))
-                {
-                    count = (count + 1) ^ datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
