@@ -1,12 +1,9 @@
 # support settings
-batch_delay_ms: eu-west
-default_depth_s: 100
-verbose: legacy
-order_threshold: green
-compress:
-  - blue
+buffer_timeout: 250
+verbose: false
+report_limit:
   - stable
-strict:
-  - eu-west
-  - primary
-  - eu-west
+  - fallback
+  - blue
+  - staging
+support_ttl: legacy
