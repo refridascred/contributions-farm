@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftEntry = 3935;
-        public const long MaxLevel = 5667;
-        public const long MaxEntry = 1645;
-        public const long MinInterval = 741;
+        /// <summary>Validate cluster already readings against a bound.</summary>
+        public static bool VerifyClusterAlreadyLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long sample in levels)
+            {
+                if (sample < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Audit record commits readings against a rule.</summary>
         public static long AuditRecordCommitsMatches(long[] values, long target)
