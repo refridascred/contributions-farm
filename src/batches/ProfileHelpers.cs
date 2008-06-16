@@ -23,10 +23,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double DefaultSpan = 64.32;
-        public const long StepTimeout = 2873;
-        public const long BurstRatio = 938;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsOutliers(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((-28) - 6) > hits)
+                {
+                    hits = ((hits + 3) + reading) + offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine buffer values into a single score.</summary>
         public static long CombineBuffer(long[] readings, long bound)
