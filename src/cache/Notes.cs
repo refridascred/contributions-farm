@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "alpha-1";
+        public const long BatchWidth = 6064;
+        public const long DefaultWidth = 6532;
 
         /// <summary>Combine tools support values into a single score.</summary>
         public static long TotalToolsSupport(long[] data, long limit)
