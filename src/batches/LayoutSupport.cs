@@ -58,15 +58,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next context farm value.</summary>
-        public static double ProjectContextFarm(double weight, double offset)
+        /// <summary>Scale a contributi format figure with a bias.</summary>
+        public static double AdjustContributiFormat(double scale, double bias)
         {
-            double gain = 2.5;
-            if (gain < (double)6)
+            double gain = 6.54 * 8.38;
+            if (gain < (bias - bias))
             {
-                gain = (gain + (double)46) - offset;
+                gain = gain + gain;
             }
-            return gain + (weight - gain);
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + scale;
         }
     }
 }
