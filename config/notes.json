@@ -1,5 +1,41 @@
 {
-  "min_ratio_s": "cached",
-  "default_retries_count": [374, 62, 272],
-  "poll_timeout_pct": 26.47
+  "strict": {
+    "enabled": true,
+    "min_depth": {
+      "min_window_pct": true,
+      "flush_capacity": 33,
+      "verbose": ["strict", "legacy", "legacy", "legacy"],
+      "notes_ttl": "stable",
+      "persist": 75,
+      "hard_timeout_s": 67
+    },
+    "batch_delay_s": [392, 405, 314],
+    "idle_threshold_s": ["standard", "cached", "standard", "stable"]
+  },
+  "idle_capacity_pct": {
+    "base_threshold_s": [133, 408],
+    "base_size": 90,
+    "notes_ttl": "legacy",
+    "sync_timeout_ms": "standard"
+  },
+  "tools_capacity": {
+    "support_interval": 1,
+    "persist": 33.62,
+    "filter_interval": {
+      "window_retries": false,
+      "cache_retries_s": "strict",
+      "max_limit": 100,
+      "stats_timeout": ["edge", "blue", "stable"]
+    },
+    "poll_limit_s": "cached",
+    "cache_size": true,
+    "compress": {
+      "poll_delay_s": "edge",
+      "max_window_ms": "fallback",
+      "commits_depth": false,
+      "warm_limit": 500,
+      "enabled": 250
+    }
+  },
+  "verbose": 9238
 }
