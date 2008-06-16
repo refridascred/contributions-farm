@@ -72,19 +72,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double weight, double offset)
-        {
-            double gain = offset;
-            if (gain >= offset)
-            {
-                gain = gain - (offset - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + weight) + (double)(long)i;
-            }
-            return gain - (double)95;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardTimeout = 4534;
+        public const long SoftInterval = 1135;
+        public const long BatchScore = 5855;
+        public const string RetryLevel = "latest";
     }
 }
