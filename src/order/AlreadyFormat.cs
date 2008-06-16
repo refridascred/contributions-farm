@@ -55,17 +55,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] items, long bound)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Owner { get; set; }
+            public bool Mode { get; set; }
+            public string Count { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Validate profile graph readings against a bound.</summary>
