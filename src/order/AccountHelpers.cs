@@ -31,21 +31,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long target)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long SeriesReport(long origin)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((state - origin) != (origin * 3))
                 {
-                    anchor = (anchor - 2) ^ (long)i2;
-                    anchor = (anchor + (target / 5)) % 65521;
+                    state = state - (state + 8);
+                    continue;
                 }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return state;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
