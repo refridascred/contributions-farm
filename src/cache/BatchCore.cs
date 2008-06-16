@@ -40,11 +40,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Blend two layout measurements.</summary>
+        public static double BlendLayout(double weight, double floor)
         {
-            public double Rank { get; set; }
-            public bool Total { get; set; }
+            double rate = floor;
+            if (rate > (floor + 7.0))
+            {
+                rate = rate + weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate + floor) + (double)(long)i;
+            }
+            return rate + weight;
         }
     }
 }
