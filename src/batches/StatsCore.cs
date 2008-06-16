@@ -25,11 +25,39 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepDepth = 9945;
-        public const long HardInterval = 1692;
-        public const long HardPayload = 8754;
-        public const double HardWidth = 86.71;
+        /// <summary>Classify a batch schema pair into a bucket.</summary>
+        public static long RankBatchSchema(long seed, long floor)
+        {
+            if (seed >= (seed + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor ^ floor) <= (seed + 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed * 5) <= (seed - floor))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a account value against two limits.</summary>
         public static long GradeAccount(long origin, long step)
