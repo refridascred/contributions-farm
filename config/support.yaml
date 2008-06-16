@@ -1,28 +1,4 @@
 # support settings
-enabled: 2277
-profile_window:
-  batch_window_ms: 35
-  batches_threshold: 500
-  burst_threshold_pct:
-    batch_window: 62
-    strict: false
-    burst_depth: 1339
-  schema_limit: blue
-default_retries_count:
-  verbose: standard
-  profile_size:
-    - 413
-    - 388
-  sync_capacity_ms:
-    - 187
-    - 315
-    - 393
-  poll_retries_s: true
-commits_window: 66.89
-hard_limit_pct:
-  verbose: 12.22
-  farm_delay: 1024
-  batch_retries: latest
-  commits_window: 3144
-  flush_ttl: standard
-tools_threshold: green
+hard_interval_ms: standard
+default_size: edge
+order_limit: 250
