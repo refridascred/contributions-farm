@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long score = step;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 4) + (long)i) % 1000;
-            }
-            return score;
+            New,
+            Pending,
+            Synced,
+            Failed,
+            Draft,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
