@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BurstChecks = 4644;
-        public const double WindowChecks = 41.73;
-        public const string SoftChecks = "local";
-        public const long IdleChecks = 7210;
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public bool Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a route snapshot.</summary>
         public sealed class RouteSnapshot
