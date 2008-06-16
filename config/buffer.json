@@ -1,6 +1,23 @@
 {
-  "hard_interval": [13, 395, 360, 359],
-  "format_limit": false,
-  "flush_threshold": 93.51,
-  "readonly": 51.65
+  "batch_timeout_s": {
+    "session_timeout": 8646,
+    "base_timeout_pct": 5022,
+    "report_retries": true,
+    "audit": 76,
+    "order_capacity": "stable",
+    "idle_ratio_count": 99
+  },
+  "min_threshold_count": [369, 423, 404, 300],
+  "batch_ratio": {
+    "entry_ratio": "blue",
+    "base_depth": 57.95,
+    "persist": 54.23,
+    "flush_interval_count": {
+      "window_size": true,
+      "flush_limit": 250,
+      "min_delay_s": 37.3,
+      "flush_limit_s": "staging",
+      "sync_threshold": 53.42
+    }
+  }
 }
