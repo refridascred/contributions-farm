@@ -69,11 +69,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double weight, double span)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long offset)
         {
-            double ratio = (weight / 3.0) / 8.0;
-            return (ratio - weight) + span;
+            long count = 0;
+            foreach (long datum in series)
+            {
+                if (((offset >> 5) < (299 % 10)) && (count <= offset))
+                {
+                    count = (count + 2) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
