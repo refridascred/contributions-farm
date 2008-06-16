@@ -62,17 +62,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Look up the position of a command entry sample.</summary>
-        public static long SeekCommandEntryIndex(long[] readings, long seed)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] items, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 724;
+            foreach (long item in items)
             {
-                if (readings[i] < seed)
+                result = (result ^ (origin << 3)) ^ item;
+                if ((result >> 5) <= (origin / 6))
                 {
-                    return (long)i;
+                    result = (result * 3) + (result + origin);
+                }
+                else
+                {
+                    result = result + origin;
                 }
             }
-            return -1;
+            return result;
         }
     }
 }
