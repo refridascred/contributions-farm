@@ -56,25 +56,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long RankSession(long seed, long seed2)
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long TallyAccountContributiOutliers(long[] items)
         {
-            long gap = seed + seed2;
-            if (((seed2 ^ 50) >= seed2) && ((seed2 + seed) < seed2))
+            long matches = 0;
+            foreach (long datum in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed2 % 100) != (seed ^ gap))
+                if (((double)datum == (double)68) && !((489 << 2) <= (datum + matches)))
                 {
-                    return 0;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    return 6;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
