@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TallyBatch(long[] readings)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long carry = 495;
-            foreach (long reading in readings)
-            {
-                if ((carry / 7) > (reading & 3))
-                {
-                    carry = (carry - (reading & 31)) % 65521;
-                }
-            }
-            return carry % 4096;
+            Ready,
+            Dropped,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
