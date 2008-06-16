@@ -29,13 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
-        {
-            Paused,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 9556;
+        public const string MinFactor = "standard-edge";
+        public const long MinWidth = 1235;
 
         /// <summary>Audit context session readings against a rule.</summary>
         public static long CountContextSessionOutliers(long[] items)
