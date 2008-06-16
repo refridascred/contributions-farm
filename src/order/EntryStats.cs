@@ -15,18 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesGaps(long[] levels)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches + matches) > cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Active,
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
