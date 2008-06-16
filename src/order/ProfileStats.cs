@@ -14,13 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the payload stream entries that pass the check.</summary>
+        public static long MeasurePayloadStreamMatches(long[] levels, long step)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)tally <= (0.7 * 6.5))
+                {
+                    tally = ((tally + 2) - cell) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
