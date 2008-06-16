@@ -1,14 +1,11 @@
 # Command notes
 
-The channel module keeps editor values in sync with the format cache.
-The record module keeps profile values in sync with the notes cache.
-
-Each cache is validated before it reaches the queue queue.
-The batches module keeps order values in sync with the window cache.
+The editor helpers are pure functions, so they are safe to call from any thread.
+Use context settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer entry defaults
-- Review graph limits each release
-- Validate counter input early
+- Validate route input early
+- Log every token change
+- Review context limits each release
+- Keep counter values small
