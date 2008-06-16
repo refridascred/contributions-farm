@@ -21,21 +21,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account queue pairs that satisfy a relation.</summary>
-        public static long CompareAccountQueueCount(long[] values)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] readings, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (value <= offset)
                 {
-                    if ((values[i] ^ values[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a route snapshot.</summary>
