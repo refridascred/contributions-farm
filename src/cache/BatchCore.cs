@@ -30,11 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Combine window values into a single score.</summary>
+        public static long WeighWindow(long[] readings)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            long mark = -409;
+            foreach (long cell in readings)
+            {
+                mark = (((mark * 4) + mark) % 1000) - cell;
+            }
+            if (mark > 9)
+            {
+                mark = (mark * 3) + ((long)readings.Length >> 1);
+            }
+            return mark;
         }
 
         /// <summary>Blend two layout measurements.</summary>
