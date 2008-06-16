@@ -16,19 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double ScaleContext(double bias, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long target)
         {
-            double load = (double)76 + (offset * 4.48);
-            if (load > 3.1)
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                load = load + (bias + load);
+                if (sample > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (9.15 * 0.37);
-            }
-            return load + (load * 6.3);
+            return ok;
         }
 
         /// <summary>Describe the route kind values.</summary>
