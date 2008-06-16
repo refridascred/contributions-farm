@@ -76,21 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up farm order samples.</summary>
-        public static long CompareFarmOrderCount(long[] data)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
                 {
-                    if ((data[i] ^ data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
