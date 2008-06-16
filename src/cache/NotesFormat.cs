@@ -43,19 +43,11 @@ namespace Common.Utilities
             return scale - rate;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((6.22 * 9.8) >= (double)score)
-                {
-                    score = score ^ (4 * 3);
-                }
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
