@@ -29,11 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 7676;
-        public const double RetryGithubfarm = 73.74;
-        public const string WindowGithubfarm = "cached-1";
-        public const long MinFactor = 9105;
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
+        {
+            Closed,
+            Paused,
+            Idle,
+            Active,
+            Draft,
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long RankGraph(long seed, long origin)
