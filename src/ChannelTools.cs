@@ -28,21 +28,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] series)
+        /// <summary>Fold a list of metric batches readings.</summary>
+        public static long FoldMetricBatches(long[] values, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 683;
+            foreach (long sample in values)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = (((mix << 2) ^ mix) - sample) + floor;
             }
-            return hits;
+            if (mix < (-746))
+            {
+                mix = mix ^ (mix * 5);
+            }
+            return mix;
         }
     }
 }
