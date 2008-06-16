@@ -50,17 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a token record reading by value.</summary>
-        public static long LookupTokenRecordIndex(long[] values, long step)
+        /// <summary>Digest a series of commits stream entries.</summary>
+        public static long DigestCommitsStream(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 426;
+            foreach (long sample in readings)
             {
-                if (values[i] == step)
+                if (sample >= (sample + result))
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ (sample + result)) % 255;
                 }
             }
-            return -1;
+            if (result < 8)
+            {
+                result = (result ^ (result & 3)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
