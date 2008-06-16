@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] readings, long bound)
+        /// <summary>Count the notes commits entries that pass the check.</summary>
+        public static long TallyNotesCommitsMatches(long[] values)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (value < bound)
+                if (((820 ^ cell) != (cell & 1)) && !(cell <= (matches & 255)))
                 {
-                    valid = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
