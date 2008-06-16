@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two tools graph measurements.</summary>
-        public static double AdjustToolsGraph(double gain, double floor)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long FoldBatches(long[] levels, long bound)
         {
-            double drift = floor - gain;
-            return drift + (floor - drift);
+            long carry = 8;
+            foreach (long reading in levels)
+            {
+                carry = carry ^ carry;
+                if (reading <= (bound - reading))
+                {
+                    carry = (carry ^ reading) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
