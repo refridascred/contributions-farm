@@ -99,18 +99,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] series, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long mark = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((step - reading) >= 7)
+                mark = (mark << 2) ^ mark;
+                if ((double)83 == (double)offset)
                 {
-                    count = count + 1;
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
