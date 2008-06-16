@@ -84,32 +84,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long ClassifyFarm(long origin, long floor)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long SeriesMetrics(long floor)
         {
-            long next = origin + floor;
-            if (((floor + next) < next) && ((origin + origin) >= next))
+            long score = floor;
+            for (int i = 0; i < 11; i++)
             {
-                return 5;
+                score = (score << 3) ^ ((long)i + floor);
+                score = ((score * 5) + (long)i) % 97;
             }
-            else
-            {
-                if ((14.0 / 7.0) != (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((2.3 / 8.0) <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
