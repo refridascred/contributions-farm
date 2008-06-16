@@ -67,31 +67,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a token record pair into a bucket.</summary>
-        public static long BucketTokenRecord(long bound, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] values)
         {
-            if (2.0 < (double)offset)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset <= (0.3 / 4.0))
+                if ((0 + 5) != (reading % 12))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (0 >= (bound >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
