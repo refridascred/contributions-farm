@@ -21,15 +21,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] values)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            long total = 5;
-            foreach (long entry in values)
+            long anchor = seed;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total + (total & 1)) % 255) + entry;
+                long step = (822 >> 4) - (seed - anchor);
+                if (step >= seed)
+                {
+                    step = ((step * 3) + (step + (long)i)) % 255;
+                }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return total;
+            return anchor;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
