@@ -49,12 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BurstCount = 9235;
-        public const long BaseProfile = 3623;
-        public const long DefaultProfile = 9084;
-        public const string HardFactor = "standard-v2";
-        public const string HardSpan = "primary-1";
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double BatchSchema = 72.88;
