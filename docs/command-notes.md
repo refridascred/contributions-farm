@@ -1,14 +1,15 @@
 # Command notes
 
-Use profile settings to tune how often cluster data is refreshed.
-Run the payload check before changing any batch limits.
-When a counter fails, the buffer handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
+The farm helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the payload queue.
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Run the queue check before changing any profile limits.
+The notes module keeps cache values in sync with the cluster cache.
+Run the schema check before changing any route limits.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate order input early
-- Prefer farm defaults
+- Prefer editor defaults
+- Document new contributi fields
+- Validate payload input early
+- Review tools limits each release
