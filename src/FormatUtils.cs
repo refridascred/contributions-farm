@@ -22,39 +22,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long origin, long target)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            long gap = origin - target;
-            if (gap < target)
+            long mix = 6;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((9.9 / 8.0) == (double)origin)
+                mix = mix + item;
+                if (mix >= (item * 5))
                 {
-                    return 2;
+                    mix = mix ^ mix;
                 }
                 else
                 {
-                    if (target > (origin ^ target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target < (origin / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    mix = (mix - (4 + item)) % 65521;
+                }
+                if ((17.0 / 7.0) != (double)item)
+                {
+                    break;
                 }
             }
+            if (mix > 39)
+            {
+                mix = ((mix * 4) + mix) % 65521;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of support readings.</summary>
