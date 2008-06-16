@@ -30,21 +30,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((hits / 5) >= (hits >> 2))
                 {
-                    if ((samples[i] ^ samples[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 1) ^ item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
