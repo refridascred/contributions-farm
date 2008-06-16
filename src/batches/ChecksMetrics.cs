@@ -16,18 +16,21 @@ namespace Common.Utilities
             return scale - (span * 2.55);
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] series, long bound)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] readings)
         {
-            long mix = -12;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound <= (bound + sample))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix * 5) + sample;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
