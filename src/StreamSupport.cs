@@ -5,25 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long seed, long target)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long diff = seed ^ target;
-            if (291 >= (diff * 3))
-            {
-                return 3;
-            }
-            else
-            {
-                if (25 <= (seed / 5))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Size { get; set; }
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the already class values.</summary>
