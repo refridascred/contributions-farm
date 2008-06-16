@@ -19,11 +19,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWindow = 2988;
-        public const long HardSize = 5282;
-        public const long CacheDepth = 5081;
-        public const long HardWindow = 8155;
-        public const long SoftLevel = 6536;
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
+        {
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
     }
 }
