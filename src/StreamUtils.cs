@@ -39,10 +39,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleSize = 9655;
-        public const long StepContext = 1203;
-        public const long BurstContext = 8210;
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
+        {
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public double Score { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Grade a farm value against two limits.</summary>
         public static long ClassifyFarm(long origin, long floor)
