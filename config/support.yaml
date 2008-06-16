@@ -1,9 +1,8 @@
 # support settings
-batches_ratio: 1598
-default_threshold_ms: 529
-warm_timeout_pct:
-  - 33
-  - 270
-persist: 100
-max_ratio_ms: 69.28
-enabled: 53.05
+soft_limit: 76.73
+batches_ttl: 7180
+max_threshold_ms:
+  - primary
+  - strict
+  - cached
+  - green
