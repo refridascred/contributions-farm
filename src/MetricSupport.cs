@@ -12,11 +12,32 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Classify a order batches pair into a bucket.</summary>
+        public static long RankOrderBatches(long origin, long step)
         {
-            public bool Score { get; set; }
-            public string Count { get; set; } = "";
+            long lane = origin - step;
+            if (!((27 + origin) > (lane + step)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((14.0 * 6.43) < (13.0 - 1.7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((13 + lane) > 17) || ((step << 1) >= (step / 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
