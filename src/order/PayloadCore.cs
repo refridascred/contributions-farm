@@ -27,17 +27,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Find the first record filter entry that matches the target.</summary>
-        public static long LocateRecordFilterIndex(long[] readings, long bound)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = span;
+            if (ratio < (double)89)
             {
-                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + span;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (double)62;
+            }
+            return ratio + (rate + span);
         }
 
         /// <summary>Locate a layout reading by value.</summary>
