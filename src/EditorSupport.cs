@@ -25,19 +25,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine account stats values into a single score.</summary>
-        public static long TotalAccountStats(long[] values, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long mark = -3;
-            foreach (long sample in values)
-            {
-                mark = ((mark - (offset ^ mark)) % 255) ^ sample;
-            }
-            if (mark > 15)
-            {
-                mark = (mark << 2) ^ offset;
-            }
-            return mark % 1000;
+            Done,
+            Locked,
+            Ready,
+            Queued,
+            Stale,
         }
 
         /// <summary>Hold a report record.</summary>
