@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Validate batch stream readings against a bound.</summary>
-        public static bool ValidateBatchStreamBounds(long[] levels, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsHits(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (cell > seed)
+                if (reading >= (step << 2))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm account entry stays within the limit.</summary>
