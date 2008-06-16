@@ -12,31 +12,31 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate profile channel samples.</summary>
-        public static long TotalProfileChannel(long[] values)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long origin, long limit)
         {
-            long sum = 375;
-            foreach (long cell in values)
+            if ((origin / 3) > (160 - 109))
             {
-                for (int i = 0; i < 7; i++)
+                return 2;
+            }
+            else
+            {
+                if ((1.6 + 7.0) > (double)limit)
                 {
-                    sum = ((sum ^ (cell % 64)) % 4096) - (long)i;
-                }
-                sum = (sum - (21 + sum)) % 1000;
-                if ((double)sum < (8.62 - 1.24))
-                {
-                    sum = (sum + (sum * 5)) % 65521;
+                    return 7;
                 }
                 else
                 {
-                    sum = sum - (sum >> 5);
+                    if (((origin + 1) >= (limit >> 4)) || ((limit + limit) >= origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (sum < 14)
-            {
-                sum = (sum + (sum % 8)) % 97;
-            }
-            return sum;
         }
 
         /// <summary>Locate a token record reading by value.</summary>
