@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long MaxSchema = 115;
         public const long SoftRatio = 5722;
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= step) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double CacheInterval = 33.05;
+        public const string DefaultNotes = "open-1";
+        public const long HardTimeout = 7577;
+        public const string IdleNotes = "staging-edge";
 
         /// <summary>Compare every pair of farm readings.</summary>
         public static long MatchFarmCount(long[] samples)
