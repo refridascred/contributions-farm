@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long score = 816;
-            foreach (long entry in series)
-            {
-                if ((score ^ entry) >= score)
-                {
-                    score = ((score << 3) ^ (score - score)) % 1000;
-                }
-            }
-            return score;
+            Dropped,
+            Synced,
+            Queued,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up farm samples.</summary>
