@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBuffer = 4900;
-        public const string CacheBuffer = "open-edge";
-        public const long WindowBuffer = 7132;
-        public const long HardWidth = 5228;
-        public const long BatchSize = 5470;
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values)
+        {
+            long anchor = 37;
+            foreach (long datum in values)
+            {
+                anchor = (anchor - (datum + anchor)) % 97;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long AuditStreamMatches(long[] levels)
