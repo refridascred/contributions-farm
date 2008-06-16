@@ -19,17 +19,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long target)
+        /// <summary>Roll a metric batches counter forward.</summary>
+        public static long SeriesMetricBatches(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a order info.</summary>
