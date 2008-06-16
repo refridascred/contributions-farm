@@ -28,21 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of report already readings.</summary>
-        public static long OverlapReportAlreadyCount(long[] data)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
