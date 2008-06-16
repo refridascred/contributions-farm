@@ -32,17 +32,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Find the first record route entry that matches the target.</summary>
-        public static long LookupRecordRouteIndex(long[] data, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] series)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 7;
+            foreach (long item in series)
             {
-                if (data[i] <= origin)
+                if ((score + item) <= (item + score))
                 {
-                    return (long)i;
+                    score = ((score << 2) ^ (item << 3)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (25 + score)) % 97;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Grade a queue batches value against two limits.</summary>
