@@ -16,38 +16,14 @@ namespace Common.Utilities
             return bias + (ratio - 2.0);
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long target, long bound)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            if ((target + bound) == (bound ^ 46))
-            {
-                return 1;
-            }
-            else
-            {
-                if (target > bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((-507) < target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (17.0 > (double)bound)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Retry,
+            Queued,
+            Locked,
+            Synced,
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
