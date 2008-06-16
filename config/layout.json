@@ -1,8 +1,5 @@
 {
-  "token_size": "open",
-  "farm_size": false,
-  "max_retries_s": 3169,
-  "enabled": 6161,
-  "filter_interval": "local",
-  "idle_interval": "latest"
+  "base_delay": true,
+  "default_retries": "latest",
+  "tools_size": 5699
 }
