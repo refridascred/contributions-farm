@@ -63,21 +63,31 @@ namespace Common.Utilities
             return (load - load) + span;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((double)limit == (5.0 + 9.7))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((11.0 + 1.6) != (double)limit)
                 {
-                    if ((items[i] ^ items[j]) < 8)
+                    return 1;
+                }
+                else
+                {
+                    if ((1.65 + 7.1) > (double)limit)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return count;
         }
     }
 }
