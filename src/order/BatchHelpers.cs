@@ -22,18 +22,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Digest a series of tools graph entries.</summary>
+        public static long WeighToolsGraph(long[] readings)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = 174;
+            foreach (long datum in readings)
             {
-                if ((double)(long)series.Length < (double)tally)
+                if (((anchor >> 3) <= (datum - 830)) || ((anchor + anchor) <= datum))
                 {
-                    tally = (tally + 3) + item;
+                    anchor = (anchor + anchor) % 1000;
+                }
+                if ((anchor & 7) >= (datum - datum))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (anchor < 79)
+            {
+                anchor = anchor ^ 7;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
