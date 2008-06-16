@@ -62,10 +62,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchSchema = 72.88;
-        public const long DefaultSize = 2455;
-        public const string LimitSchema = "strict";
-        public const long WindowDepth = 2304;
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
+        {
+            public bool Token { get; set; }
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
