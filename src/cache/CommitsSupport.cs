@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (seen >= (seen - (-9)))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
