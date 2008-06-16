@@ -24,13 +24,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] readings, long offset)
         {
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
