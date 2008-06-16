@@ -1,11 +1,7 @@
 # support settings
-retry_threshold_count:
-  retry_size:
-    - 286
-    - 144
-  cache_timeout_count: 65
-  batch_timeout_ms: 1024
-  idle_delay_count: 60
-  poll_interval: stable
-retry_ratio_ms: 46.32
-poll_window: 9542
+cache_ratio: 89
+poll_timeout_count: legacy
+dry_run:
+  - 119
+  - 300
+  - 497
