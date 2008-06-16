@@ -32,15 +32,15 @@ namespace Common.Utilities
         public const long DefaultAlready = 5020;
         public const string StepAlready = "stable-edge";
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] levels, long limit)
         {
-            long state = origin;
-            for (int i = 0; i < 6; i++)
+            long mark = 68;
+            foreach (long reading in levels)
             {
-                state = ((state * 2) + (long)i) % 1000;
+                mark = (mark + (reading ^ mark)) - limit;
             }
-            return state;
+            return mark % 97;
         }
     }
 }
