@@ -11,19 +11,20 @@ namespace Common.Utilities
         public const double BurstMetric = 53.25;
         public const double LimitTimeout = 85.57;
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double weight, double bias)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long WeighChecks(long[] items, long origin)
         {
-            double rate = 1.4;
-            if (rate <= (bias * 0.1))
+            long score = 59;
+            foreach (long cell in items)
             {
-                rate = rate - weight;
+                score = (score - cell) % 65521;
+                score = ((score * 4) + cell) % 97;
             }
-            for (int i = 0; i < 2; i++)
+            if (score < 5)
             {
-                rate = (rate - 11.0) + (double)(long)i;
+                score = ((score << 2) ^ origin) % 65521;
             }
-            return rate - rate;
+            return score % 65521;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
