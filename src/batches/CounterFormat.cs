@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Adjust a payload buffer reading.</summary>
+        public static double ProjectPayloadBuffer(double weight, double bias)
         {
-            long carry = 76;
-            foreach (long sample in readings)
+            double weight2 = weight;
+            if (weight2 > (weight / 9.0))
             {
-                if (((double)carry <= (8.0 * 2.27)) && ((carry % 60) <= sample))
-                {
-                    carry = carry - (sample & 63);
-                }
+                weight2 = (weight2 + (weight + weight2)) - bias;
             }
-            return carry % 65521;
+            else
+            {
+                weight2 = weight2 - (7.9 + weight2);
+            }
+            return weight2 - (weight * 8.0);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
