@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long step)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] readings, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (series[i] < step)
+                if ((limit - cell) > (limit & 255))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
