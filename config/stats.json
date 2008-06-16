@@ -1,13 +1,9 @@
 {
-  "compress": 5552,
-  "persist": 29.63,
-  "retry_timeout": false,
-  "readonly": ["stable", "local"],
-  "poll_delay_pct": {
-    "base_ttl_pct": 100,
-    "soft_capacity_s": "blue",
-    "default_timeout": "latest",
-    "audit": "green"
-  },
-  "min_interval": true
+  "queue_ratio": ["green", "blue", "local"],
+  "poll_depth_s": ["standard", "cached", "green"],
+  "dry_run": {
+    "soft_interval_pct": "primary",
+    "already_capacity": 51,
+    "poll_size_s": false
+  }
 }
