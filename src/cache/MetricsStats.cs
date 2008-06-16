@@ -32,12 +32,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
