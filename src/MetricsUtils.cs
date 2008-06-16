@@ -33,24 +33,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank batch already input into a small class.</summary>
-        public static long GradeBatchAlready(long target, long origin)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LocateContributiIndex(long[] items, long offset)
         {
-            if (origin > ((-730) + target))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target % 8) == (origin ^ target))
+                if (items[i] <= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
