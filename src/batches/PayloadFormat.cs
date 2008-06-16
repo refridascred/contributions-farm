@@ -35,12 +35,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Stamp { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
