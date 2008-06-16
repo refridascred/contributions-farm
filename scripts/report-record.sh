@@ -6,12 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in staging local; do
+    log "checking ${item}"
+done
+
+mode="${1:-cached}"
+case "${mode}" in
+    stable)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
 count=0
-while [ "${count}" -lt 2 ]; do
+while [ "${count}" -lt 9 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
-
-for item in standard edge fallback; do
-    log "checking ${item}"
-done
