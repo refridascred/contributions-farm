@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long floor, long floor2)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] levels, long offset)
         {
-            long span = floor ^ floor2;
-            if (floor2 < (floor * 5))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((floor2 < (floor2 + 466)) && ((span << 1) < (floor + floor2)))
+                if ((item & 255) > (offset >> 4))
                 {
-                    return 8;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the entry account entries that pass the check.</summary>
