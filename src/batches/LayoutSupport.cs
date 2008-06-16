@@ -67,18 +67,19 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] series, long limit)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutRange(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (!!((limit + hits) != (hits * 3)))
+                if (item <= limit)
                 {
-                    hits = (hits + 3) + entry;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
