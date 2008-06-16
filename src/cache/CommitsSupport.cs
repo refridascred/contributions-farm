@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the record route series from a seed.</summary>
-        public static long StepRecordRoute(long bound)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long mix = bound;
-            for (int i = 0; i < 7; i++)
+            long carry = 495;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 3) ^ 5) % 97;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((carry / 7) > (reading & 3))
+                {
+                    carry = (carry - (reading & 31)) % 65521;
+                }
             }
-            return mix;
+            return carry % 4096;
         }
 
         /// <summary>Define report limits and defaults.</summary>
