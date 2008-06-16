@@ -48,21 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Ready,
+            Paused,
+            Closed,
         }
     }
 }
