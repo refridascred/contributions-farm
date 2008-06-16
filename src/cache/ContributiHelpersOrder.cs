@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] readings, long limit)
         {
-            public long Region { get; set; }
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public long Score { get; set; }
+            long mix = 633;
+            foreach (long sample in readings)
+            {
+                mix = mix ^ limit;
+                mix = (mix - sample) % 1000;
+            }
+            if (mix < 725)
+            {
+                mix = ((mix << 3) ^ limit) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Locate a graph queue reading by value.</summary>
