@@ -49,19 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long step)
+        /// <summary>Look up the position of a command entry sample.</summary>
+        public static long SeekCommandEntryIndex(long[] readings, long seed)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= step)
+                if (readings[i] < seed)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
