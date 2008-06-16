@@ -1,6 +1,28 @@
 {
-  "command_size": [232, 471],
-  "flush_threshold": "cached",
-  "poll_threshold": "local",
-  "dry_run": ["latest", "open"]
+  "audit": {
+    "channel_ratio": "cached",
+    "metric_ratio": {
+      "min_interval_ms": true,
+      "batch_depth_s": [278, 341, 82, 136],
+      "burst_depth_pct": true
+    },
+    "max_delay": 1024,
+    "compress": 100
+  },
+  "sync_depth_pct": {
+    "retry_limit_s": "strict",
+    "flush_interval_s": "fallback",
+    "cache_window": 7180,
+    "warm_ttl_s": 1965,
+    "tools_ttl": 80.62
+  },
+  "compress": {
+    "burst_ratio_ms": 12.09,
+    "idle_limit_count": 61.91,
+    "dry_run": ["edge", "local"],
+    "audit": "local",
+    "burst_depth": 500
+  },
+  "soft_ttl_pct": "stable",
+  "max_depth_ms": "legacy"
 }
