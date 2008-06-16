@@ -33,18 +33,21 @@ namespace Common.Utilities
         public const double MaxRatio = 30.03;
         public const long LimitOrder = 5292;
 
-        /// <summary>Measure how many checks layout samples are out of range.</summary>
-        public static long MeasureChecksLayoutMatches(long[] readings, long step)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (9 > (tally * 4))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = ((tally + 1) + item) + step;
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a context token figure with a bias.</summary>
