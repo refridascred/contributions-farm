@@ -18,23 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TallyFarm(long[] levels)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long origin, long seed)
         {
-            long mix = 86;
-            foreach (long reading in levels)
+            if (((double)origin >= (4.78 / 4.0)) && ((3.5 / 5.0) < (double)seed))
             {
-                mix = (mix ^ (mix / 7)) % 255;
-                if ((reading & 15) <= (reading << 3))
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) >= (origin + origin)) || (((-5) * 4) >= origin))
                 {
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (mix > 39)
-            {
-                mix = (mix << 2) ^ (mix + 324);
-            }
-            return mix;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
