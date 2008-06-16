@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleLevel = 940;
-        public const string MaxDepth = "staging-1";
-        public const long DefaultMetrics = 6854;
-        public const double HardTimeout = 61.39;
+        /// <summary>Validate editor channel readings against a bound.</summary>
+        public static bool GuardEditorChannelBounds(long[] items, long step)
+        {
+            bool ok = true;
+            foreach (long datum in items)
+            {
+                if (datum > step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
