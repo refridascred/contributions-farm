@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
+            public long Flag { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
