@@ -23,11 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftBudget = 9322;
-        public const string IdleMetrics = "alpha-edge";
-        public const string BaseMetrics = "latest";
-        public const long HardWidth = 5848;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen + origin) != (seen / 2))
+                {
+                    seen = (seen + 2) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double bias, double span)
