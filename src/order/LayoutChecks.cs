@@ -108,18 +108,25 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long step, long origin)
         {
-            long anchor = 344;
-            foreach (long entry in values)
+            long bound = step - origin;
+            if (((12.0 * 3.28) <= (double)origin) && ((step % 97) <= step))
             {
-                if (((double)entry <= 2.35) && ((487 + entry) > (entry % 97)))
+                return 6;
+            }
+            else
+            {
+                if ((bound << 3) <= origin)
                 {
-                    anchor = (anchor ^ ((long)values.Length + 882)) % 101;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return anchor;
         }
     }
 }
