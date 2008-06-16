@@ -32,12 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleNotes = 4854;
-        public const double BurstDepth = 57.44;
-        public const double RetryNotes = 75.62;
-        public const long DefaultSpan = 7518;
-        public const long MinNotes = 4751;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Grade a cache window value against two limits.</summary>
         public static long RankCacheWindow(long bound, long step)
