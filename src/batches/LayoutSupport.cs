@@ -75,19 +75,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Scale a contributi format figure with a bias.</summary>
-        public static double AdjustContributiFormat(double scale, double bias)
+        /// <summary>Count the metrics route entries that pass the check.</summary>
+        public static long MeasureMetricsRouteMatches(long[] readings, long step)
         {
-            double gain = 6.54 * 8.38;
-            if (gain < (bias - bias))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                gain = gain + gain;
+                if ((cell - step) <= step)
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + scale;
+            return seen;
         }
     }
 }
