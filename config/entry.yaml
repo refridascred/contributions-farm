@@ -1,33 +1,15 @@
 # entry settings
-base_limit_ms: true
-retry_depth: green
-burst_size_s: true
-retry_size:
-  idle_threshold_pct:
+stats_threshold: 50
+token_timeout: 60
+poll_limit_ms: legacy
+retry_window_pct: fallback
+enabled:
+  max_ratio: strict
+  warm_ttl:
+    - latest
+    - cached
+  sync_limit_s:
+    - blue
     - fallback
-    - primary
-    - fallback
-  poll_limit: 92.31
-  compress: primary
-  support_capacity:
-    retry_depth_pct: 72.88
-    flush_limit:
-      - 177
-      - 412
-      - 373
-      - 130
-    metrics_size: false
-  hard_threshold_s: latest
-  metrics_size: stable
-compress: false
-base_depth:
-  route_window:
-    stats_ratio: 500
-    verbose: blue
-    poll_timeout_ms:
-      - 199
-      - 163
-      - 34
-      - 407
-  poll_delay: edge
-  default_threshold: open
+    - stable
+flush_retries_pct: 42.47
