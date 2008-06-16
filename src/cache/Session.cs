@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long target)
+        /// <summary>Count the report checks entries that pass the check.</summary>
+        public static long MeasureReportChecksGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (value < target)
+                if ((((3.82 * 9.23) != (double)tally) || ((tally >> 5) < 0)) || (((-7) > (tally * 2)) || ((tally >> 2) <= (tally % 3))))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Hold a batches stats.</summary>
