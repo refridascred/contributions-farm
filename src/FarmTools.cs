@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next channel window value from a seed.</summary>
-        public static long IterateChannelWindow(long target)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Blend two window measurements.</summary>
