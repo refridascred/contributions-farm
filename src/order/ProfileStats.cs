@@ -26,19 +26,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool VerifyContributiRange(long[] readings, long bound)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Dropped,
+            Closed,
+            Done,
+            Locked,
         }
 
         /// <summary>Grade a token value against two limits.</summary>
