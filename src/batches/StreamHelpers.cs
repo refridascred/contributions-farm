@@ -34,17 +34,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] data, long step)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long floor, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (seed <= (seed >> 5))
             {
-                if (data[i] == step)
+                return 5;
+            }
+            else
+            {
+                if (seed > (floor + 8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
