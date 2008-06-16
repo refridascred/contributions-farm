@@ -53,16 +53,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine support context values into a single score.</summary>
-        public static long TotalSupportContext(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] levels, long seed)
         {
-            long carry = -7;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                carry = carry + (5 >> 2);
-                carry = ((carry << 2) ^ cell) % 4096;
+                if (seed < (seed >> 4))
+                {
+                    hits = (hits + 1) + entry;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
