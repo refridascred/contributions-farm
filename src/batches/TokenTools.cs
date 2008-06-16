@@ -30,11 +30,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string SoftWidth = "strict-edge";
-        public const long RetrySchema = 1265;
-        public const double WindowInterval = 60.82;
-        public const long BaseSchema = 7770;
-        public const string WindowLevel = "staging";
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double offset)
+        {
+            double load = (double)0 / 9.0;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (((load - (load - load)) + (double)(long)i) - bias) - offset;
+            }
+            return load - load;
+        }
     }
 }
