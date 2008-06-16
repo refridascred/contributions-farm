@@ -30,19 +30,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double bias, double floor)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings, long step)
         {
-            double scale = floor;
-            if (scale > bias)
+            long mark = 7;
+            foreach (long cell in readings)
             {
-                scale = scale + (floor - bias);
+                if ((cell - (long)readings.Length) > step)
+                {
+                    mark = mark - 7;
+                }
+                else
+                {
+                    mark = mark ^ (mark ^ step);
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (mark > 6)
             {
-                scale = (scale + (bias / 9.0)) + (double)(long)i;
+                mark = mark ^ (step / 4);
             }
-            return scale - 1.0;
+            return mark % 97;
         }
     }
 }
