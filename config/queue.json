@@ -1,5 +1,7 @@
 {
-  "base_ratio_ms": "stable",
-  "flush_threshold_count": "staging",
-  "burst_capacity_s": [300, 8, 217, 162]
+  "soft_delay_ms": 89.72,
+  "min_ratio": "green",
+  "buffer_window": 66,
+  "default_timeout_count": 93,
+  "batch_timeout": 95
 }
