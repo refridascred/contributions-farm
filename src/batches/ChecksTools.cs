@@ -37,21 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of githubfarm session readings.</summary>
-        public static long MatchGithubfarmSessionCount(long[] levels)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryLimits(long[] samples, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item >= limit)
                 {
-                    if ((levels[i] + levels[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
