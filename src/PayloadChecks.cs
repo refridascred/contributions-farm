@@ -47,15 +47,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double SmoothSchema(double gain, double offset)
+        /// <summary>Scale a context token figure with a bias.</summary>
+        public static double ProjectContextToken(double bias, double bias2)
         {
-            double scale = offset;
-            if (scale <= (double)9)
-            {
-                scale = scale + gain;
-            }
-            return scale - (double)71;
+            double ratio = (double)(3 - 70);
+            return ((ratio - 15.0) + bias) + bias2;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
