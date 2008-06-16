@@ -26,19 +26,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandLimits(long[] samples, long offset)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long seed, long limit)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long edge = seed ^ limit;
+            if ((double)seed < 18.0)
             {
-                if (sample <= offset)
+                return 1;
+            }
+            else
+            {
+                if (!((edge ^ limit) < (seed + (-8))))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Blend two entry measurements.</summary>
