@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchMatches(long[] data)
         {
-            public double Token { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((5 >> 3) <= (sample * 4))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
