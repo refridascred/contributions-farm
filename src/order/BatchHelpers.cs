@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long origin, long step)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] levels, long target)
         {
-            long span = origin - step;
-            if ((step >> 1) < step)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)71 < (double)span)
+                if ((value % 7) < (value * 3))
                 {
-                    return 1;
+                    seen = (seen + 3) - target;
                 }
                 else
                 {
-                    if ((double)step <= 9.04)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step >= 560)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
