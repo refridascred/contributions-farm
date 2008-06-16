@@ -23,13 +23,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long step)
         {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
+            long diff = origin ^ step;
+            if ((step << 1) >= (step - origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin > (step % 8)) && ((step + step) >= (origin + step)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.04 + 2.98) >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((diff & 3) > (origin >> 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a already reading.</summary>
