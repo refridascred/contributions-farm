@@ -44,12 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Check that every format counter entry stays within the limit.</summary>
+        public static bool VerifyFormatCounterRange(long[] readings, long offset)
         {
-            public long Token { get; set; }
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long value in readings)
+            {
+                if (value <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
