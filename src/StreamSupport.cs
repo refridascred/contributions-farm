@@ -30,11 +30,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double scale, double offset)
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
+            double bias = (double)37 / 3.0;
+            if (bias >= (bias * 3.1))
+            {
+                bias = ((bias - (double)6) - scale) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - (double)3) + (double)(long)i;
+            }
+            return bias - (double)4;
         }
     }
 }
