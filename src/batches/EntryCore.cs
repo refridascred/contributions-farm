@@ -47,17 +47,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LookupBatchesIndex(long[] series, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                if (matches <= ((long)values.Length + sample))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate notes samples.</summary>
