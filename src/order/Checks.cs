@@ -53,23 +53,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long step, long origin)
+        /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
+        public static long BucketMetricsGithubfarm(long step, long bound)
         {
-            long lane = step - origin;
-            if ((origin ^ lane) >= lane)
+            long next = step ^ bound;
+            if ((bound - step) <= (step ^ next))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if ((176 < ((-8) - lane)) && ((step >> 5) != (step * 5)))
+                if ((next >> 3) <= (step - next))
                 {
                     return 4;
                 }
                 else
                 {
-                    return 0;
+                    if (((double)bound <= (5.2 * 8.0)) || ((13.0 * 6.5) == (double)next))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
