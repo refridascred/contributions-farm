@@ -20,21 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] data)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (!(((11.0 / 7.0) >= (double)sum) && (limit > (sum + 92))))
                 {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 2) ^ (4 ^ limit)) % 101;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Roll a already stats counter forward.</summary>
