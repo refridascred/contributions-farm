@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next context value.</summary>
-        public static double ScaleContext(double scale, double offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double gain = offset * 12.0;
-            if (gain > (double)779)
-            {
-                gain = gain - (scale * 0.87);
-            }
-            return gain + scale;
+            Queued,
+            Retry,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the editor kind values.</summary>
