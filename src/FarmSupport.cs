@@ -5,39 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long target, long limit)
-        {
-            if (((limit << 3) == (target + target)) || (limit > (target - target)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (target < (target & 31))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (limit <= target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (limit * 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "latest-1";
+        public const long CacheBatches = 1450;
+        public const double MaxInterval = 92.81;
 
         /// <summary>Roll a queue counter forward.</summary>
         public static long IterateQueue(long origin)
