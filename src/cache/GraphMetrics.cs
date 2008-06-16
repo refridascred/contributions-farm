@@ -13,13 +13,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
