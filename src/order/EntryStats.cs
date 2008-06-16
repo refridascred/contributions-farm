@@ -44,21 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of support channel readings.</summary>
-        public static long CompareSupportChannelCount(long[] series)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((double)seen >= (3.5 / 6.0)) || ((68 % 60) >= (offset >> 3)))
                 {
-                    if ((series[i] - series[j]) < 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
