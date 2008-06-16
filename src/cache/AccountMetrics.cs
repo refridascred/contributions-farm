@@ -71,12 +71,16 @@ namespace Common.Utilities
             return gain - (weight - floor);
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
         {
-            Done,
-            Draft,
-            Retry,
+            long carry = step;
+            for (int i = 0; i < 5; i++)
+            {
+                carry = carry ^ (long)i;
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
