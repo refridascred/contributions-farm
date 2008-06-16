@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] items, long limit)
         {
-            double bias = offset;
-            if (bias <= (offset / 9.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                bias = (bias + bias) - scale;
+                if ((((cell + cell) >= (7 + tally)) || ((limit - limit) == (limit - cell))) && ((limit - limit) > (27 / 3)))
+                {
+                    tally = tally + 3;
+                }
             }
-            else
-            {
-                bias = bias - (offset * 15.0);
-            }
-            return bias - offset;
+            return tally;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
