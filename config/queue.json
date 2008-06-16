@@ -1,16 +1,11 @@
 {
-  "max_timeout": {
-    "readonly": {
-      "retry_retries_count": 71,
-      "hard_retries": false,
-      "strict": "cached",
-      "compress": "legacy"
-    },
-    "account_ttl": ["green", "eu-west", "local", "staging"],
-    "max_size_count": "latest",
-    "verbose": 20.5
-  },
-  "burst_ratio": ["blue", "staging", "green"],
-  "stats_size": 100,
-  "default_ttl": ["blue", "eu-west"]
+  "hard_timeout_pct": true,
+  "hard_capacity_count": ["local", "open"],
+  "flush_limit_ms": "stable",
+  "burst_delay": true,
+  "filter_retries": {
+    "readonly": ["local", "cached", "fallback"],
+    "batch_depth_pct": true,
+    "cache_limit": "eu-west"
+  }
 }
