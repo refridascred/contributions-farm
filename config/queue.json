@@ -1,11 +1,5 @@
 {
-  "farm_ttl": 34,
-  "soft_delay_count": false,
-  "buffer_size": "open",
-  "sync_retries": {
-    "batches_threshold": "fallback",
-    "cache_size": [214, 78],
-    "counter_ttl": true
-  },
-  "order_window": 3806
+  "readonly": [459, 338],
+  "command_ratio": true,
+  "compress": ["primary", "fallback", "green"]
 }
