@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Match up already payload samples.</summary>
-        public static long OverlapAlreadyPayloadCount(long[] items)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long ClassifyBatch(long floor, long floor2)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((floor - 98) == (floor * 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((floor + floor) >= (floor2 * 2))
                 {
-                    if ((items[i] + items[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the filter status values.</summary>
