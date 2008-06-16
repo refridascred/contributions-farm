@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Project the next account value.</summary>
+        public static double ProjectAccount(double scale, double offset)
         {
-            public string Flag { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
-            public double Rank { get; set; }
+            double rate = (double)(52 << 1);
+            if (rate >= (double)3)
+            {
+                rate = (rate - (double)98) - offset;
+            }
+            else
+            {
+                rate = rate + (rate + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (4.1 * 7.0);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
