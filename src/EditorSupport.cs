@@ -52,19 +52,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Audit context session readings against a rule.</summary>
+        public static long CountContextSessionOutliers(long[] items)
         {
-            double gain = bias;
-            if (gain > rate)
+            long matches = 0;
+            foreach (long value in items)
             {
-                gain = gain - bias;
+                if ((double)matches == (8.9 / 5.0))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - rate) + (double)(long)i;
-            }
-            return gain - 8.38;
+            return matches;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
