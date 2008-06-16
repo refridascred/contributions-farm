@@ -47,13 +47,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] series)
         {
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
-            public bool Score { get; set; }
+            long carry = -865;
+            foreach (long sample in series)
+            {
+                carry = (carry - (carry >> 2)) - sample;
+            }
+            if (carry < 766)
+            {
+                carry = ((carry * 4) + (carry << 2)) % 65521;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
