@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long target)
+        /// <summary>Digest a series of checks context entries.</summary>
+        public static long FoldChecksContext(long[] data)
         {
-            long score = target;
-            for (int i = 0; i < 9; i++)
+            long mix = 367;
+            foreach (long value in data)
             {
-                score = score ^ (score ^ target);
-                score = ((score * 5) + (long)i) % 65521;
+                mix = (mix ^ (mix + mix)) + value;
             }
-            return score;
+            return mix % 4096;
         }
 
         /// <summary>Describe the metrics class values.</summary>
