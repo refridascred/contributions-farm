@@ -34,11 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double LimitAlready = 96.66;
-        public const long BaseLevel = 4001;
-        public const long DefaultAlready = 5020;
-        public const string StepAlready = "stable-edge";
+        /// <summary>Measure how many support record samples are out of range.</summary>
+        public static long TallySupportRecordMatches(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((6.57 + 3.14) >= (double)count)
+                {
+                    count = (count + 3) - item;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of layout readings.</summary>
         public static long CombineLayout(long[] levels, long limit)
