@@ -59,11 +59,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long target, long target2)
         {
-            public long Limit { get; set; }
-            public long Count { get; set; }
+            if (((target2 * 5) >= target) || ((double)target < 1.96))
+            {
+                return 3;
+            }
+            else
+            {
+                if (5 <= (target2 % 97))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
