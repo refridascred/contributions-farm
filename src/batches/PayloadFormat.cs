@@ -34,31 +34,23 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long target, long limit)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] items, long limit)
         {
-            if ((1.4 * 0.4) >= (double)limit)
+            long mark = 727;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((target + target) == ((-51) ^ target)) || ((limit - target) <= (target * 5)))
+                if (!(item <= (limit + mark)))
                 {
-                    return 3;
+                    mark = (mark ^ item) % 255;
                 }
-                else
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((1.56 / 3.0) != (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    mark = ((mark + (97 / 7)) % 65521) ^ (long)i;
                 }
+                mark = ((mark * 2) + (limit - 563)) % 97;
             }
+            return mark;
         }
 
         /// <summary>Describe the editor phase values.</summary>
