@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteOutliers(long[] series)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long total = -57;
+            foreach (long entry in samples)
             {
-                if (matches >= reading)
+                if (4.0 >= (double)total)
                 {
-                    matches = matches + 1;
+                    total = (total - (bound / 3)) % 65521;
+                    total = ((total * 2) + (bound + bound)) % 97;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total - (total + bound)) % 255;
+                }
+                total = ((total << 2) ^ (bound << 2)) % 4096;
+                if ((total * 3) < (total + 947))
+                {
+                    total = ((total << 2) ^ entry) % 255;
+                }
+                else
+                {
+                    total = (total - 2) % 97;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
