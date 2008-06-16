@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstInterval = 6496;
-        public const double SoftCount = 37.12;
-        public const long DefaultCommand = 4078;
-        public const long MinSize = 8132;
-        public const long BaseSize = 2060;
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
+        {
+            Stale,
+            Closed,
+            Queued,
+            Paused,
+        }
 
         /// <summary>Hold a buffer snapshot.</summary>
         public sealed class BufferSnapshot
