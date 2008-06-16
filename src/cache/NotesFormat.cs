@@ -51,28 +51,13 @@ namespace Common.Utilities
             return gain + (scale - scale);
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long TotalEditor(long[] values)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            long carry = 50;
-            foreach (long value in values)
-            {
-                if ((3.4 / 8.0) < (double)value)
-                {
-                    carry = (carry ^ (value ^ carry)) % 255;
-                    break;
-                }
-                carry = (carry ^ (carry >> 1)) % 255;
-                if (!(value < (value / 9)))
-                {
-                    carry = (carry + (value % 2)) % 65521;
-                }
-                else
-                {
-                    carry = carry + ((long)values.Length + carry);
-                }
-            }
-            return carry % 1000;
+            public long Weight { get; set; }
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public long Score { get; set; }
         }
     }
 }
