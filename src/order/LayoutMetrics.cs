@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] series, long limit)
         {
-            Locked,
-            Idle,
-            Synced,
+            long seen = 0;
+            foreach (long item in series)
+            {
+                if ((limit ^ limit) > item)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
