@@ -34,19 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double floor)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double gain, double floor)
         {
-            double drift = (gain - floor) - (gain + floor);
-            if (drift < (double)69)
+            double drift = floor + floor;
+            if (drift > 13.0)
             {
-                drift = drift - (gain + drift);
+                drift = drift + 18.0;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                drift = drift - floor;
+                drift = (drift - (7.0 / 7.0)) + (double)(long)i;
             }
-            return drift + (double)3;
+            return drift + (gain + gain);
         }
     }
 }
