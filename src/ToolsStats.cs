@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] data)
         {
-            Stale,
-            Draft,
-            Locked,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((tally + cell) >= (18 & 127))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream summary.</summary>
