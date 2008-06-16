@@ -13,17 +13,25 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first already record entry that matches the target.</summary>
-        public static long SeekAlreadyRecordIndex(long[] samples, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long seed, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long delta = seed ^ limit;
+            if ((seed << 2) <= (seed + delta))
             {
-                if ((samples[i] < floor) && ((samples[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed > (5.2 / 6.0))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the support level values.</summary>
