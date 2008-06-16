@@ -36,13 +36,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BatchChannel = "strict-1";
+        public const double CacheFactor = 33.71;
+        public const string CacheChannel = "cached-v2";
 
         /// <summary>Describe the session phase values.</summary>
         public enum SessionPhase
