@@ -19,17 +19,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a channel entry sample.</summary>
-        public static long FindChannelEntryIndex(long[] items, long seed)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TallyGraph(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 73;
+            foreach (long datum in values)
             {
-                if (items[i] >= seed)
+                long prev = acc;
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = (acc - (prev + (long)i)) % 97;
+                }
+                if ((datum + datum) <= (datum ^ (long)values.Length))
+                {
+                    acc = (acc ^ (70 >> 5)) % 4096;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a cache info.</summary>
