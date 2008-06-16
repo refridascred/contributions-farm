@@ -67,11 +67,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 16.91;
-        public const string IdleAlready = "primary-v2";
-        public const long WindowBudget = 6963;
-        public const long StepAlready = 8420;
-        public const long RetryAlready = 791;
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
+        {
+            public long Mode { get; set; }
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public bool Label { get; set; }
+        }
     }
 }
