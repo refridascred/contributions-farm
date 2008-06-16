@@ -19,12 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] items, long limit)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] items, long floor)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] <= limit) && ((items[i] % 2) != 0))
+                if (items[i] < floor)
                 {
                     return (long)i;
                 }
