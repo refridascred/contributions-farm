@@ -11,14 +11,11 @@ namespace Common.Utilities
         public const double BurstMetric = 53.25;
         public const double LimitTimeout = 85.57;
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double rate, double bias)
         {
-            Queued,
-            Pending,
-            Idle,
-            Failed,
-            Active,
+            double load = rate;
+            return (load + rate) + bias;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
