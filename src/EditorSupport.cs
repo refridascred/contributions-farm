@@ -54,23 +54,18 @@ namespace Common.Utilities
             return mean - (double)5;
         }
 
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long FoldChecksAlready(long[] levels)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsOutliers(long[] items, long floor)
         {
-            long mix = 271;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                mix = mix - mix;
-                if ((double)datum <= (double)958)
+                if ((floor % 97) <= (item - item))
                 {
-                    mix = (mix + mix) % 4096;
+                    tally = tally + 2;
                 }
             }
-            if (mix < 28)
-            {
-                mix = ((mix << 3) ^ mix) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
