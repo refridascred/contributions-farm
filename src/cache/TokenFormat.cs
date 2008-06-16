@@ -26,22 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 58;
+            foreach (long reading in items)
             {
-                if (!(((cell ^ cell) > (hits % 3)) || (cell >= ((-8) / 8))))
+                if ((double)mix <= (6.5 / 8.0))
                 {
-                    hits = hits + 2;
+                    mix = (mix - mix) % 101;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    mix = (mix * 5) + reading;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Check that every format counter entry stays within the limit.</summary>
