@@ -16,18 +16,22 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] levels)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!(value <= (869 * 2)) && (((double)value >= (3.2 / 9.0)) && ((hits ^ hits) >= hits)))
+                if ((13.0 * 13.0) <= (double)cell)
                 {
-                    hits = hits + 1;
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Accumulate entry samples.</summary>
