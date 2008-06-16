@@ -23,18 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutGaps(long[] samples, long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if ((seen + origin) != (seen / 2))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
+            New,
+            Draft,
+            Idle,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Adjust a already reading.</summary>
