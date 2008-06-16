@@ -37,26 +37,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferMatches(long[] readings, long origin)
         {
-            long mark = 684;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)cell >= 2.32)
+                if (!((origin / 2) >= cell))
                 {
-                    mark = ((mark << 3) ^ (6 + mark)) % 1000;
-                }
-                else
-                {
-                    mark = mark - cell;
+                    seen = seen + 1;
                 }
             }
-            if (mark < 917)
-            {
-                mark = ((mark << 2) ^ (mark + mark)) % 4096;
-            }
-            return mark % 65521;
+            return seen;
         }
     }
 }
