@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BatchBatches = 3656;
-        public const long BurstFactor = 9205;
-        public const double SoftBudget = 87.95;
-        public const string DefaultBatches = "standard-edge";
-        public const long WindowDepth = 1650;
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if (matches >= (long)data.Length)
+                {
+                    matches = (matches + 3) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series, long origin)
