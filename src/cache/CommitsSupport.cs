@@ -38,12 +38,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
-            public string Region { get; set; } = "";
+            Closed,
+            Dropped,
+            Stale,
+            Draft,
+            Pending,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
