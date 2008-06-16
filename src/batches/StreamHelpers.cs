@@ -12,12 +12,14 @@ namespace Common.Utilities
         public const long MinSize = 8132;
         public const long BaseSize = 2060;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Draft,
-            Ready,
-            Failed,
+            New,
+            Synced,
+            Queued,
+            Active,
+            Retry,
         }
 
         /// <summary>Count channel schema pairs that satisfy a relation.</summary>
