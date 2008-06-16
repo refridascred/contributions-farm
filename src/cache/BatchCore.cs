@@ -50,24 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long acc = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((double)target == (double)acc)
-                {
-                    acc = (acc + (acc >> 2)) % 4096;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = (acc << 2) ^ ((long)i2 + (long)i2);
-                    acc = (acc ^ (target + acc)) % 1000;
-                }
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
