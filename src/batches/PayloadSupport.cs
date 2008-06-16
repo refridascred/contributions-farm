@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long step)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] items)
         {
-            long total = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
