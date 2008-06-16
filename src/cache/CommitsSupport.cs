@@ -40,18 +40,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long floor)
         {
-            long sum = 4;
-            foreach (long value in series)
+            if (((floor + 864) != (floor % 97)) && ((floor * 5) > offset))
             {
-                if (5 > (value + sum))
+                return 1;
+            }
+            else
+            {
+                if ((floor > (531 ^ offset)) && ((offset >> 5) == (336 + 5)))
                 {
-                    sum = (sum + (value + value)) % 101;
+                    return 4;
+                }
+                else
+                {
+                    if (!((offset / 9) > (floor >> 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Hold a format stats.</summary>
