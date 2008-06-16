@@ -16,15 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long DeriveContributi(long step)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 5) + (long)i) % 1000;
-            }
-            return state;
+            Ready,
+            Closed,
+            New,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Measure how many support batch samples are out of range.</summary>
