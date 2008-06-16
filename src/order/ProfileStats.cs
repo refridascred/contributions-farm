@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long GradeChannel(long seed, long limit)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            long delta = seed ^ limit;
-            if ((seed << 2) <= (seed + delta))
+            double drift = (scale * 4.0) / 8.0;
+            if (drift < drift)
             {
-                return 2;
+                drift = (drift + scale) + span;
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)seed > (5.2 / 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift + scale;
         }
 
         /// <summary>Locate a window reading by value.</summary>
