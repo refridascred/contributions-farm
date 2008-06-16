@@ -48,15 +48,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsGaps(long[] samples)
         {
-            long carry = offset;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                if ((8 & 1) > (tally << 1))
+                {
+                    tally = (tally + 3) + item;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of batch session entries.</summary>
