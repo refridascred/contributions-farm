@@ -20,18 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the schema channel entries that pass the check.</summary>
-        public static long AuditSchemaChannelGaps(long[] readings)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.0 * 12.0) < (double)cell)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Dropped,
+            Failed,
+            Retry,
         }
 
         /// <summary>Describe the route kind values.</summary>
