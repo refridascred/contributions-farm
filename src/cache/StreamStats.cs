@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryPayload = 75.24;
-        public const long BaseTimeout = 1275;
-        public const string CachePayload = "local-v2";
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LookupOrderIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TotalMetric(long[] items)
