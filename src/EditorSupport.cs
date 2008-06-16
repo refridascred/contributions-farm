@@ -37,13 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Roll a order counter forward.</summary>
+        public static long SeriesOrder(long step)
         {
-            Paused,
-            Stale,
-            Retry,
-            Active,
+            long mix = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many cache order samples are out of range.</summary>
