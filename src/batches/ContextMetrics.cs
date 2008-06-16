@@ -49,14 +49,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long seed, long target)
         {
-            Failed,
-            Done,
-            Pending,
-            Idle,
-            Synced,
+            if ((seed * 2) == (4 << 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((seed / 6) < seed) && (target >= (target % 8)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)seed <= (7.6 + 6.3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
