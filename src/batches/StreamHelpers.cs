@@ -41,19 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate farm context readings against a bound.</summary>
-        public static bool CheckFarmContextLimits(long[] data, long floor)
+        /// <summary>Project the next layout value.</summary>
+        public static double SmoothLayout(double bias, double floor)
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double scale = bias;
+            return (scale + (scale / 4.0)) + floor;
         }
 
         /// <summary>Match up farm order samples.</summary>
