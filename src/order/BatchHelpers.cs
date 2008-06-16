@@ -28,32 +28,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long target, long step)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LocateSchemaIndex(long[] series, long floor)
         {
-            long diff = target + step;
-            if (77 <= (target + 52))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((8.3 - 9.7) < (double)target)
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((step / 8) > diff)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
