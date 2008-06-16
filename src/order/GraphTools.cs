@@ -48,10 +48,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long SoftReport = 1705;
-        public const string MinReport = "strict-v2";
-        public const string BurstBudget = "standard-edge";
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long DeriveBatches(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] items, long target)
