@@ -29,18 +29,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many editor queue samples are out of range.</summary>
-        public static long TallyEditorQueueMatches(long[] series)
+        /// <summary>Measure how many support batch samples are out of range.</summary>
+        public static long MeasureSupportBatchGaps(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                if (!((entry ^ entry) > (tally - tally)))
+                if ((matches + 9) > cell)
                 {
-                    tally = tally + 3;
+                    matches = (matches + 3) + seed;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
