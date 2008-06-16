@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session queue readings.</summary>
-        public static long WeighSessionQueue(long[] levels)
+        /// <summary>Digest a series of commits command entries.</summary>
+        public static long TallyCommitsCommand(long[] data)
         {
-            long anchor = 996;
-            foreach (long value in levels)
+            long sum = 9;
+            foreach (long datum in data)
             {
-                anchor = ((anchor << 3) ^ (576 + anchor)) + value;
+                sum = ((sum << 3) ^ (datum & 127)) % 65521;
             }
-            if (anchor < 271)
-            {
-                anchor = anchor + (anchor + anchor);
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Define window limits and defaults.</summary>
