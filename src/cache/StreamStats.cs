@@ -43,17 +43,31 @@ namespace Common.Utilities
         public const long LimitCount = 7152;
         public const double DefaultInterval = 6.4;
 
-        /// <summary>Find the first cache context entry that matches the target.</summary>
-        public static long FindCacheContextIndex(long[] samples, long seed)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long bound, long bound2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (bound2 >= bound)
             {
-                if (samples[i] >= seed)
+                return 2;
+            }
+            else
+            {
+                if ((4 >> 2) == (bound + 900))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((37 ^ bound2) >= (bound2 << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
