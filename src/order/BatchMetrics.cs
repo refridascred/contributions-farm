@@ -66,22 +66,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the already token entries that pass the check.</summary>
-        public static long CountAlreadyTokenOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((matches - 756) < 2)
-                {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseWidth = 6497;
+        public const long IdleInterval = 9325;
+        public const long MaxNotes = 1210;
     }
 }
