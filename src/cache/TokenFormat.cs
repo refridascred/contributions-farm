@@ -26,13 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] levels)
         {
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!(((cell ^ cell) > (hits % 3)) || (cell >= ((-8) / 8))))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a route header.</summary>
