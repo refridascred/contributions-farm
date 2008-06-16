@@ -48,22 +48,32 @@ namespace Common.Utilities
         public const long StepContext = 1203;
         public const long BurstContext = 8210;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data, long seed)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long ClassifyFarm(long origin, long floor)
         {
-            long score = 659;
-            foreach (long cell in data)
+            long next = origin + floor;
+            if (((floor + next) < next) && ((origin + origin) >= next))
             {
-                if ((cell + seed) >= score)
+                return 5;
+            }
+            else
+            {
+                if ((14.0 / 7.0) != (double)origin)
                 {
-                    score = score - cell;
+                    return 2;
+                }
+                else
+                {
+                    if ((2.3 / 8.0) <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (score > 0)
-            {
-                score = ((score * 5) + score) % 97;
-            }
-            return score;
         }
 
         /// <summary>Combine session values into a single score.</summary>
