@@ -56,12 +56,11 @@ namespace Common.Utilities
         public const long CacheCounter = 5969;
         public const double HardSpan = 98.24;
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            public double Weight { get; set; }
+            public long Total { get; set; }
         }
     }
 }
