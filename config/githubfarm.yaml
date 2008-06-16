@@ -1,9 +1,11 @@
 # githubfarm settings
-idle_depth_ms: 5.01
-soft_ttl_pct: false
-burst_ttl_ms: 872
-min_interval:
-  - 373
-  - 143
-  - 114
-  - 494
+flush_limit:
+  - cached
+  - edge
+  - staging
+compress: 5698
+enabled:
+  - 372
+  - 492
+  - 251
+  - 36
