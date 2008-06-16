@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesGaps(long[] data, long origin)
-        {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((long)data.Length <= ((long)data.Length % 7))
-                {
-                    matches = ((matches + 2) + value) - origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BatchChecks = 70.14;
+        public const long MaxChecks = 231;
+        public const long RetryLevel = 6715;
+        public const long BaseSize = 8055;
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long RollPayload(long step)
