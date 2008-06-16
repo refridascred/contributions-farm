@@ -15,22 +15,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadGaps(long[] items)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double bias, double floor)
         {
-            long count = 0;
-            foreach (long reading in items)
+            double load = (double)(8 + 29);
+            if (load > (floor / 2.0))
             {
-                if (!(828 <= count) && ((count - reading) >= count))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                load = (load - load) + bias;
             }
-            return count;
+            return load + (double)9;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
