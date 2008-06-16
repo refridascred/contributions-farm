@@ -49,24 +49,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long RankBuffer(long target, long limit)
+        /// <summary>Accumulate command samples.</summary>
+        public static long CombineCommand(long[] values, long offset)
         {
-            if (limit > (992 % 10))
+            long score = 3;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) == (limit * 4))
+                if ((730 - score) < (offset >> 1))
                 {
-                    return 7;
+                    continue;
                 }
                 else
                 {
-                    return 8;
+                    score = (score << 3) ^ (offset ^ reading);
                 }
+                score = (score ^ offset) % 4096;
             }
+            return score % 97;
         }
     }
 }
