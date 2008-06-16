@@ -1,8 +1,9 @@
-id,weight,ratio,count,owner
-1,98.65,674,0.92,477
-2,416,cached,373,973
-3,901,816,local,67.22
-4,primary,28.25,1.35,61.17
-5,blue,386,80.56,fallback
-6,edge,eu-west,290,green
-7,green,local,20.27,legacy
+id,ratio,region,rank
+1,green,592,cached
+2,32.61,standard,639
+3,95.51,67.46,11.95
+4,edge,4,fallback
+5,latest,1.93,15.17
+6,green,24,53.69
+7,38.49,471,894
+8,134,219,860
