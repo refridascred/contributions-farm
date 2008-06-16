@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long FoldBuffer(long[] levels, long floor)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Locked,
+            long anchor = 94;
+            foreach (long sample in levels)
+            {
+                anchor = ((anchor * 5) + (sample - floor)) % 97;
+                anchor = (anchor ^ (anchor >> 4)) % 101;
+            }
+            if (anchor > 43)
+            {
+                anchor = (anchor - floor) % 1000;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define report limits and defaults.</summary>
