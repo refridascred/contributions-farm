@@ -78,15 +78,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            long state = 78;
-            foreach (long sample in data)
-            {
-                state = (((state << 2) ^ (state - state)) % 65521) ^ sample;
-            }
-            return state;
+            public double Region { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
