@@ -22,26 +22,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools graph entries.</summary>
-        public static long WeighToolsGraph(long[] readings)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long seed, long limit)
         {
-            long anchor = 174;
-            foreach (long datum in readings)
+            long diff = seed - limit;
+            if ((double)limit > (8.0 - 1.59))
             {
-                if (((anchor >> 3) <= (datum - 830)) || ((anchor + anchor) <= datum))
+                return 8;
+            }
+            else
+            {
+                if ((diff >> 4) == (seed + diff))
                 {
-                    anchor = (anchor + anchor) % 1000;
+                    return 2;
                 }
-                if ((anchor & 7) >= (datum - datum))
+                else
                 {
-                    break;
+                    if (diff <= seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)diff >= (11.0 + 9.5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor < 79)
-            {
-                anchor = anchor ^ 7;
-            }
-            return anchor % 65521;
         }
 
         /// <summary>Define order limits and defaults.</summary>
