@@ -54,19 +54,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double gain, double floor)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] readings)
         {
-            double drift = floor + floor;
-            if (drift > 13.0)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                drift = drift + 18.0;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (7.0 / 7.0)) + (double)(long)i;
-            }
-            return drift + (gain + gain);
+            return count;
         }
     }
 }
