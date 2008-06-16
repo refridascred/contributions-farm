@@ -37,19 +37,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel metrics readings against a bound.</summary>
-        public static bool ValidateChannelMetricsBounds(long[] levels, long bound)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Stale,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
