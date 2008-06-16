@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowBounds(long[] levels, long limit)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double ratio, double offset)
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double weight = (double)(738 * 4);
+            return ((weight + (double)8) + ratio) + offset;
         }
 
         /// <summary>Look up the position of a cache editor sample.</summary>
