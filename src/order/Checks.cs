@@ -33,18 +33,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionHits(long[] samples, long bound)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double scale = floor;
+            if (scale <= (ratio - floor))
             {
-                if (!!((tally + cell) >= (bound + 28)))
-                {
-                    tally = tally + 1;
-                }
+                scale = scale + ratio;
             }
-            return tally;
+            return scale - ratio;
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
