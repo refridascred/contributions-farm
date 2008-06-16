@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
-        {
-            Closed,
-            Draft,
-            Dropped,
-            Failed,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BatchBatches = 3656;
+        public const long BurstFactor = 9205;
+        public const double SoftBudget = 87.95;
+        public const string DefaultBatches = "standard-edge";
+        public const long WindowDepth = 1650;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long DigestGithubfarm(long[] series, long origin)
