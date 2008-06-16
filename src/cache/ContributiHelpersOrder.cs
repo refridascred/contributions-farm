@@ -32,18 +32,17 @@ namespace Common.Utilities
         public const long CacheWidth = 735;
         public const double CacheEditor = 98.4;
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] series)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((reading + tally) == (tally - 5)) || ((tally * 3) >= (686 - reading)))
+                if (samples[i] == limit)
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
