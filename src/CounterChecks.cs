@@ -62,19 +62,32 @@ namespace Common.Utilities
         public const long BaseDepth = 9778;
         public const string BurstBudget = "fallback-edge";
 
-        /// <summary>Iterate the buffer window series from a seed.</summary>
-        public static long SeriesBufferWindow(long bound)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long limit, long origin)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long offset = limit + origin;
+            if ((-954) < (offset + limit))
             {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    sum = ((sum * 5) + bound) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 97;
+                return 4;
             }
-            return sum;
+            else
+            {
+                if ((double)origin == (13.0 * 6.42))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (limit < offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Count account record pairs that satisfy a relation.</summary>
