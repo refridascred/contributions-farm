@@ -50,19 +50,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] series, long floor)
+        /// <summary>Count the payload stats entries that pass the check.</summary>
+        public static long MeasurePayloadStatsOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (entry < floor)
+                if (((4.25 / 9.0) >= (double)seen) && ((seen ^ datum) == (datum + seen)))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Look up the position of a command entry sample.</summary>
