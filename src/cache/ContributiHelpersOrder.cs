@@ -12,27 +12,18 @@ namespace Common.Utilities
         public const long BurstWindow = 300;
         public const double IdleWindow = 78.64;
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] readings, long offset)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamMatches(long[] levels, long target)
         {
-            long total = 79;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((reading / 8) != (reading & 15))
+                if ((seen / 4) < (target + reading))
                 {
-                    total = (total ^ (reading + reading)) % 101;
-                    total = total ^ (reading * 3);
-                }
-                if ((80 - offset) > (total / 3))
-                {
-                    total = (total << 3) ^ (2 & 63);
+                    seen = seen + 3;
                 }
             }
-            if (total < (-47))
-            {
-                total = total - 38;
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
