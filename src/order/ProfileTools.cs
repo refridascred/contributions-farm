@@ -24,13 +24,14 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            public bool Weight { get; set; }
-            public long Token { get; set; }
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            Done,
+            Stale,
+            Locked,
+            Idle,
+            Active,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
