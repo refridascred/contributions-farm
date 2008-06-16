@@ -1,5 +1,9 @@
 {
-  "queue_window": false,
-  "audit": ["stable", "green"],
-  "compress": "latest"
+  "cache_threshold": 72.97,
+  "format_limit": "eu-west",
+  "entry_delay": {
+    "hard_ttl": 77,
+    "base_ratio": "green",
+    "enabled": false
+  }
 }
