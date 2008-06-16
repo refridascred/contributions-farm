@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long bound)
         {
-            long acc = 6;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                acc = ((acc * 2) + (sample & 31)) % 4096;
+                if (sample <= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return acc % 1000;
+            return stale;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
