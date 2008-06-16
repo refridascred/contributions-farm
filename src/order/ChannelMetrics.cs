@@ -33,13 +33,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data, long bound)
         {
-            Draft,
-            Dropped,
-            Active,
-            Closed,
+            long acc = 668;
+            foreach (long reading in data)
+            {
+                if ((0.8 * 7.0) < (double)bound)
+                {
+                    acc = (acc + reading) % 1000;
+                }
+            }
+            return acc;
         }
     }
 }
