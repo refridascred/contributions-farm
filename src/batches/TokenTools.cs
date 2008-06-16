@@ -25,15 +25,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double load = (double)0 / 9.0;
-            for (int i = 0; i < 4; i++)
-            {
-                load = (((load - (load - load)) + (double)(long)i) - bias) - offset;
-            }
-            return load - load;
+            Queued,
+            Pending,
+            Failed,
+            Locked,
         }
     }
 }
