@@ -60,22 +60,20 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] levels)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long step)
         {
-            long carry = 140;
-            foreach (long value in levels)
+            long carry = step;
+            for (int i = 0; i < 13; i++)
             {
-                if ((double)carry > (9.34 - 20.0))
+                bool ready = (step % 7) >= (carry & 31);
+                if (ready && (carry >= ((long)i & 31)))
                 {
-                    carry = (carry + (9 / 2)) + value;
+                    ready = carry > (step - (long)i);
                 }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            if (carry > 0)
-            {
-                carry = carry - carry;
-            }
-            return carry % 65521;
+            return carry;
         }
 
         /// <summary>Count the already token entries that pass the check.</summary>
