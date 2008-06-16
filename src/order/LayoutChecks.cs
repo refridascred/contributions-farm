@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long SortChannel(long origin, long step)
         {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Total { get; set; }
+            if (5 >= (origin + origin))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((53 * 2) >= origin) || ((8.69 / 5.0) > (double)origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((-35) <= (origin ^ origin)) || (5 >= (origin << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (20.0 * 2.54))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
