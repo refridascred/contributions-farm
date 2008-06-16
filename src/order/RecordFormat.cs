@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 43.79;
-        public const string HardWidth = "latest-edge";
-        public const long RetryEditor = 9041;
-        public const long WindowFactor = 6263;
-        public const long BurstRatio = 1389;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] series, long target)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (((-4) <= (target + (long)series.Length)) || (item <= target))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
