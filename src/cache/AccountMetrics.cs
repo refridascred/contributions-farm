@@ -75,22 +75,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the farm context entries that pass the check.</summary>
-        public static long MeasureFarmContextHits(long[] levels, long bound)
+        /// <summary>Rank filter graph input into a small class.</summary>
+        public static long GradeFilterGraph(long offset, long offset2)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long edge = offset - offset2;
+            if ((edge + edge) < offset)
             {
-                if (((sample - count) < (161 % 2)) && (bound <= (17 + sample)))
+                return 1;
+            }
+            else
+            {
+                if ((14.0 - 11.0) != (double)offset2)
                 {
-                    count = count + 2;
+                    return 6;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (offset2 < edge)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
     }
 }
