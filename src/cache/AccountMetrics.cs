@@ -70,18 +70,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] levels, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if ((tally + floor) <= (tally * 2))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
