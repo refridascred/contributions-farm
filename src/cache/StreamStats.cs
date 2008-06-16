@@ -31,31 +31,15 @@ namespace Common.Utilities
         public const long LimitCount = 7152;
         public const double DefaultInterval = 6.4;
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long bound, long bound2)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long step)
         {
-            if (bound2 >= bound)
+            long state = step;
+            for (int i = 0; i < 23; i++)
             {
-                return 2;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            else
-            {
-                if ((4 >> 2) == (bound + 900))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((37 ^ bound2) >= (bound2 << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
