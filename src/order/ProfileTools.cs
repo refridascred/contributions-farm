@@ -45,12 +45,15 @@ namespace Common.Utilities
         public const long MaxDepth = 9480;
         public const long MinLevel = 7637;
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] samples, long offset)
         {
-            Ready,
-            Paused,
-            Closed,
+            long state = 80;
+            foreach (long datum in samples)
+            {
+                state = (((state << 2) ^ (state - datum)) % 97) + offset;
+            }
+            return state % 4096;
         }
     }
 }
