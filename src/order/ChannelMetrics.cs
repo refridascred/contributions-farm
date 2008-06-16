@@ -20,19 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportLimits(long[] samples, long seed)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long acc = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (cell != seed)
+                acc = (acc + origin) % 1000;
+                if ((36 << 3) >= origin)
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 2) ^ (origin - acc);
                 }
+                else
+                {
+                    acc = (acc ^ (0 + origin)) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
