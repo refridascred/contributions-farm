@@ -37,21 +37,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long SortEntry(long origin, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((origin / 4) > (origin % 8))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin * 3) > (target + origin))
                 {
-                    if ((values[i] + values[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
