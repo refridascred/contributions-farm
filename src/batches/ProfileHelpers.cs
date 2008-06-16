@@ -74,28 +74,14 @@ namespace Common.Utilities
             return scale - floor;
         }
 
-        /// <summary>Derive the next context counter value from a seed.</summary>
-        public static long StepContextCounter(long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (limit > ((long)i & 1))
-                {
-                    anchor = (anchor ^ (limit & 15)) % 97;
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor - (anchor << 3)) % 1000;
-                }
-                if ((limit - limit) >= limit)
-                {
-                    anchor = ((anchor << 3) ^ limit) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            Dropped,
+            Locked,
+            Active,
+            Failed,
+            Paused,
         }
     }
 }
