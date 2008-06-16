@@ -1,15 +1,13 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-Keep route and farm names short and lowercase.
-Use tools settings to tune how often route data is refreshed.
+The entry report groups every stream by batch.
+A profile that stays idle for too long is moved to the cluster list.
 
-Defaults for command live in the config folder and can be overridden per environment.
-Keep context and contributi names short and lowercase.
+The filter report groups every route by already.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new report fields
-- Log every stats change
-- Validate stats input early
-- Review filter limits each release
+- Keep githubfarm values small
+- Validate record input early
+- Prefer batch defaults
