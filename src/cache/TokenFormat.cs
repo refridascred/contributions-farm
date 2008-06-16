@@ -31,12 +31,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Locate a token counter reading by value.</summary>
-        public static long FindTokenCounterIndex(long[] readings, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 5) != 0))
+                if ((readings[i] <= seed) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
