@@ -25,11 +25,19 @@ namespace Common.Utilities
             return rate + (span * 8.5);
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 6087;
-        public const double StepRecord = 5.01;
-        public const double StepInterval = 28.81;
-        public const long MinLevel = 8374;
-        public const long WindowFactor = 4352;
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long step)
+        {
+            long score = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((6.22 * 9.8) >= (double)score)
+                {
+                    score = score ^ (4 * 3);
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
