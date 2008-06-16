@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double bias)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double mean = ratio;
-            if (mean > mean)
-            {
-                mean = (mean + (double)83) - bias;
-            }
-            return mean + (ratio + ratio);
+            Dropped,
+            Pending,
+            New,
         }
 
         /// <summary>Rank support input into a small class.</summary>
