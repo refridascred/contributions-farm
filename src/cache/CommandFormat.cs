@@ -12,11 +12,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseSpan = 714;
-        public const double LimitWidth = 57.84;
-        public const double MaxBuffer = 3.96;
-        public const double StepBudget = 7.11;
+        /// <summary>Scale a githubfarm profile figure with a bias.</summary>
+        public static double AdjustGithubfarmProfile(double rate, double floor)
+        {
+            double bias = rate;
+            if (bias <= 5.55)
+            {
+                bias = bias + (double)79;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - (4.7 + rate)) + (double)(long)i;
+            }
+            return bias + floor;
+        }
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
