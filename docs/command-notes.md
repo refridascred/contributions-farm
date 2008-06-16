@@ -1,14 +1,13 @@
 # Command notes
 
-Run the buffer check before changing any token limits.
-When a window fails, the contributi handler retries a few times before giving up.
+Use stream settings to tune how often metric data is refreshed.
+The record module keeps channel values in sync with the commits cache.
 
-Keep token and report names short and lowercase.
-Use farm settings to tune how often farm data is refreshed.
-The support report groups every filter by layout.
+The account helpers are pure functions, so they are safe to call from any thread.
+The queue report groups every batch by githubfarm.
 
 ## Guidelines
 
-- Validate filter input early
-- Review stream limits each release
-- Keep context values small
+- Prefer buffer defaults
+- Validate editor input early
+- Keep entry values small
