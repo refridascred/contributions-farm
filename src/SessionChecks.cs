@@ -41,14 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            Active,
-            New,
-            Retry,
-            Pending,
-            Synced,
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
     }
 }
