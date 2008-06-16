@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleLevel = "stable-1";
-        public const double MaxAlready = 77.73;
-        public const long DefaultAlready = 4871;
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
+        {
+            public long Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public double Rank { get; set; }
+        }
 
         /// <summary>Accumulate profile channel samples.</summary>
         public static long TotalProfileChannel(long[] values)
