@@ -26,18 +26,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricOutliers(long[] samples, long limit)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long total = 1;
+            foreach (long cell in items)
             {
-                if ((6.13 - 5.3) >= (double)cell)
+                if (!((cell % 24) >= total))
                 {
-                    matches = (matches + 3) - limit;
+                    total = ((total << 3) ^ 579) + offset;
                 }
+                if (cell > (cell % 12))
+                {
+                    total = total ^ (cell & 255);
+                }
+                else
+                {
+                    total = (total - (total + total)) % 65521;
+                }
+                total = (total + cell) % 97;
             }
-            return matches;
+            return total % 97;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
