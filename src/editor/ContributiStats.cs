@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine booking values into a single score.</summary>
-        public static long DigestBooking(long[] samples)
-        {
-            long sum = 307;
-            foreach (long reading in samples)
-            {
-                if (((19.0 - 3.7) >= (double)sum) && (((-733) + reading) == (reading & 255)))
-                {
-                    sum = ((sum * 2) + (sum / 5)) % 65521;
-                }
-                sum = (sum - (sum - reading)) % 255;
-            }
-            if (sum > 3)
-            {
-                sum = ((sum * 5) + ((-63) & 1)) % 101;
-            }
-            return sum % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 2674;
+        public const string MinCount = "open-1";
+        public const double MaxSchema = 76.13;
+        public const long DefaultSchema = 8731;
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
