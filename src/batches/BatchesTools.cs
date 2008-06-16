@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Synced,
-            Active,
-            Idle,
-            Pending,
+            public string Count { get; set; } = "";
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
