@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long BucketCounter(long step, long origin)
         {
-            long sum = 81;
-            foreach (long cell in levels)
+            long gap = step ^ origin;
+            if ((step / 7) > (gap & 3))
             {
-                sum = ((sum * 2) + 41) ^ cell;
+                return 1;
             }
-            return sum;
+            else
+            {
+                if ((gap - origin) > (86 + step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
