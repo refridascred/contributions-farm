@@ -14,11 +14,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            New,
+            Draft,
+            Retry,
+            Synced,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
