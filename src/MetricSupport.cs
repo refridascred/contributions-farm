@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] readings, long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((limit - cell) > (limit & 255))
+                if ((double)origin > (7.39 - 0.82))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
