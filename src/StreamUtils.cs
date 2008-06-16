@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double weight, double offset)
-        {
-            double load = offset;
-            if (load < (double)17)
-            {
-                load = load + (offset - 5.8);
-            }
-            else
-            {
-                load = load + load;
-            }
-            return load - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardContext = "stable";
+        public const long MinContext = 8547;
+        public const long LimitContext = 6115;
+        public const long StepScore = 1391;
 
         /// <summary>Describe the account level values.</summary>
         public enum AccountLevel
