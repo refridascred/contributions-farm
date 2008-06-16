@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionHits(long[] items, long seed)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if (((2.9 * 0.77) >= (double)tally) && (((seed * 4) == (entry + seed)) || (6.7 <= (double)entry)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Closed,
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
