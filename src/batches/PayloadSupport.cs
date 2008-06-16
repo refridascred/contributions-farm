@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            Paused,
             Locked,
-            Draft,
+            Pending,
+            Retry,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
