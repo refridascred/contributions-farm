@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] data, long offset)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (((limit & 3) <= (5 + (-15))) || (((long)i << 1) <= (result / 6)))
+                if (item <= offset)
                 {
-                    result = ((result << 3) ^ (result << 1)) % 97;
+                    ok = false;
+                    break;
                 }
-                result = ((result << 3) ^ ((long)i - limit)) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Define report limits and defaults.</summary>
