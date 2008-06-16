@@ -52,12 +52,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultSize = 4050;
-        public const long LimitSpan = 8763;
-        public const long MinChecks = 5926;
-        public const string LimitChecks = "primary-v2";
-        public const long IdleBudget = 2207;
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double scale, double span)
+        {
+            double drift = scale;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = ((drift + scale) - (double)(long)i) - span;
+            }
+            return drift - (double)0;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string MinQueue = "standard-1";
