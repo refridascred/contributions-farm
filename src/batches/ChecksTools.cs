@@ -14,17 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long floor)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public bool Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
