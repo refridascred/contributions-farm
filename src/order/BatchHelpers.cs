@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ProjectBatch(double weight, double span)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            double scale = weight;
-            if (scale <= span)
-            {
-                scale = scale - (1.55 / 8.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + weight) + (double)(long)i;
-            }
-            return scale - (scale * 2.54);
+            Stale,
+            Synced,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the contributi class values.</summary>
