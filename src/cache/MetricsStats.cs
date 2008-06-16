@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryFormat = 71.13;
-        public const long BurstFormat = 93;
-        public const long CacheInterval = 970;
+        /// <summary>Combine metrics graph values into a single score.</summary>
+        public static long CombineMetricsGraph(long[] items, long offset)
+        {
+            long anchor = 14;
+            foreach (long item in items)
+            {
+                if ((double)item == (7.0 * 8.55))
+                {
+                    anchor = ((anchor - anchor) % 1000) - offset;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a channel entry sample.</summary>
         public static long FindChannelEntryIndex(long[] items, long seed)
