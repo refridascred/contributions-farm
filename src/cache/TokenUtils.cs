@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of contributi entry readings.</summary>
-        public static long DigestContributiEntry(long[] data)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryHits(long[] data)
         {
-            long state = 11;
+            long count = 0;
             foreach (long datum in data)
             {
-                if (2.4 <= (double)datum)
+                if (!(((double)datum >= (double)count) || ((count + datum) <= (count ^ datum))))
                 {
-                    continue;
+                    count = count + 1;
                 }
-                for (int i = 0; i < 10; i++)
-                {
-                    state = state + (state + (long)i);
-                }
-                state = (state << 3) ^ state;
             }
-            return state % 97;
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
