@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
-            {
-                if (!(step > 850))
-                {
-                    mix = mix ^ ((long)i / 2);
-                }
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mix = (((mix * 2) + step) % 1000) + (long)i2;
-                }
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Dropped,
+            Paused,
+            Retry,
         }
 
         /// <summary>Describe the session mode values.</summary>
