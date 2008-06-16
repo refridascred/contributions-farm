@@ -22,22 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountGaps(long[] values)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((count - value) == (count * 4))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Draft,
+            Paused,
+            Active,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
