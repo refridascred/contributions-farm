@@ -1,6 +1,10 @@
-id,level,owner,ratio,score
-1,stable,42.99,staging,434
-2,926,legacy,48.42,primary
-3,53.51,80.67,633,55
-4,517,100,stable,977
-5,66.65,98,39.36,eu-west
+id,rank,ratio,owner,region
+1,217,911,primary,361
+2,19.99,open,87.64,896
+3,open,180,19,staging
+4,88.01,stable,45.68,6.56
+5,39.38,cached,94.68,11.26
+6,711,83.91,62,local
+7,2.31,709,fallback,854
+8,latest,15.7,962,869
+9,964,standard,546,32.65
