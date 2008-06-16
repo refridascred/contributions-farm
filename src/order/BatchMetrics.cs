@@ -13,18 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MinChannel = "stable-v2";
+        public const long IdleChannel = 803;
+        public const long MaxSize = 9255;
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long SeekGraphIndex(long[] samples, long offset)
