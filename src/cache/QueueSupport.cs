@@ -22,12 +22,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] levels, long offset)
         {
-            public long Limit { get; set; }
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item / 2) > (835 - tally))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
