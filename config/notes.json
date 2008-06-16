@@ -1,13 +1,18 @@
 {
-  "dry_run": false,
-  "cache_retries": {
-    "cache_delay_ms": 2086,
-    "idle_capacity": 9492,
-    "sync_ratio_s": "edge",
-    "compress": "edge"
+  "tools_interval": {
+    "metrics_size": {
+      "profile_window": "eu-west",
+      "cache_delay_count": 500,
+      "burst_size_count": false
+    },
+    "graph_ttl": 790,
+    "hard_window_s": 75
   },
-  "hard_ttl": "latest",
-  "retry_ttl": 4602,
-  "base_window_s": [337, 375],
-  "soft_retries_ms": 46
+  "poll_ratio": true,
+  "base_ratio_count": {
+    "format_timeout": "eu-west",
+    "verbose": 53.67,
+    "default_depth_s": true,
+    "poll_delay_pct": 85.54
+  }
 }
