@@ -22,10 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BaseFactor = "fallback-1";
-        public const string CacheMetrics = "fallback-v2";
-        public const long DefaultRatio = 9533;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long HardOrder = 4831;
+        public const string BatchSize = "staging";
+        public const long MinOrder = 1495;
+        public const string SoftLevel = "stable-edge";
+        public const double WindowOrder = 29.57;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double BlendCommits(double ratio, double floor)
