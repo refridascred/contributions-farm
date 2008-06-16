@@ -67,18 +67,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] values)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if ((0 + 5) != (reading % 12))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Draft,
+            Dropped,
+            Closed,
+            Queued,
         }
 
         /// <summary>Accumulate buffer samples.</summary>
