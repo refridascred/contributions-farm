@@ -22,21 +22,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count channel token pairs that satisfy a relation.</summary>
-        public static long PairChannelTokenCount(long[] readings)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] data, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 2;
+            foreach (long item in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor + item) % 255;
+                if (!((double)origin != (9.56 * 1.65)))
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 3)
+            {
+                anchor = anchor ^ (anchor << 1);
+            }
+            return anchor % 4096;
         }
     }
 }
