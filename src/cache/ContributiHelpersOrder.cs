@@ -26,19 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] data, long seed)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmLimits(long[] items, long target)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if (entry >= seed)
+                if (cell != target)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Find the first farm entry that matches the target.</summary>
