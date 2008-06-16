@@ -22,15 +22,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Iterate the graph githubfarm series from a seed.</summary>
-        public static long SeriesGraphGithubfarm(long target)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] values)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long sum = 6;
+            foreach (long cell in values)
             {
-                total = ((total * 4) + (long)i) % 65521;
+                if ((2.0 + 4.0) <= (double)(long)values.Length)
+                {
+                    sum = (sum + cell) % 65521;
+                }
+                else
+                {
+                    sum = (sum + (sum % 24)) % 4096;
+                }
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
