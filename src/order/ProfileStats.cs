@@ -19,10 +19,20 @@ namespace Common.Utilities
         public const double IdleBudget = 48.45;
         public const double WindowContributi = 5.96;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryBudget = 2520;
-        public const long MinTimeout = 5806;
-        public const long IdleChecks = 7688;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool VerifyContributiRange(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long AuditCommitsHits(long[] readings, long target)
