@@ -62,11 +62,19 @@ namespace Common.Utilities
             return gain - (double)(-65);
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsBounds(long[] samples, long limit)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Scale a contributi format figure with a bias.</summary>
