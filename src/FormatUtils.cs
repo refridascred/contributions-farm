@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long DeriveFarm(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor ^ ((long)i + 7)) % 65521;
+                anchor = (anchor ^ (floor + floor)) % 101;
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Combine window values into a single score.</summary>
