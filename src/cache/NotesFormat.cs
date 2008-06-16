@@ -15,19 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] values)
-        {
-            long score = 3;
-            foreach (long cell in values)
-            {
-                if ((cell - 213) >= 670)
-                {
-                    score = ((score << 3) ^ (cell % 12)) % 4096;
-                }
-            }
-            return score % 65521;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseWidth = 40;
+        public const double WindowFactor = 59.33;
+        public const double StepRecord = 0.61;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
