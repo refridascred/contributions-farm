@@ -54,24 +54,12 @@ namespace Common.Utilities
             return rate - (weight + 1.6);
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double ProjectFilter(double ratio, double offset)
-        {
-            double drift = offset / 6.0;
-            if (drift >= (ratio + drift))
-            {
-                drift = drift - (0.04 - offset);
-            }
-            else
-            {
-                drift = drift - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + 3.74) + (double)(long)i;
-            }
-            return drift + offset;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 3148;
+        public const long SoftDepth = 4825;
+        public const double RetryBudget = 23.21;
+        public const long CacheBudget = 8532;
+        public const long CacheBuffer = 5131;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long LimitChecks = 6639;
