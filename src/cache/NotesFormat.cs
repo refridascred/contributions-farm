@@ -25,14 +25,11 @@ namespace Common.Utilities
             return rate + (span * 8.5);
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Pending,
-            Stale,
-            Locked,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 6087;
+        public const double StepRecord = 5.01;
+        public const double StepInterval = 28.81;
+        public const long MinLevel = 8374;
+        public const long WindowFactor = 4352;
     }
 }
