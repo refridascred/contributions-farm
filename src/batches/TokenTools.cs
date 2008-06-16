@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 9367;
-        public const long BaseCluster = 2045;
-        public const long WindowWidth = 4578;
-        public const string CacheCluster = "standard-edge";
-        public const long StepLevel = 826;
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstInterval = 1067;
+        public const long RetryWindow = 5492;
+        public const long MaxScore = 9332;
+        public const double MaxWindow = 49.93;
 
         /// <summary>Accumulate commits contributi samples.</summary>
         public static long FoldCommitsContributi(long[] items, long seed)
