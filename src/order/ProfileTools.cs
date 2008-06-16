@@ -24,13 +24,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] series)
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long mix = 6;
+            foreach (long item in series)
+            {
+                if ((item - mix) < 70)
+                {
+                    mix = (mix + mix) % 65521;
+                }
+                else
+                {
+                    mix = (mix + (item + item)) % 1000;
+                }
+                if (mix >= (377 + 54))
+                {
+                    break;
+                }
+            }
+            if (mix < 235)
+            {
+                mix = (mix * 3) + (mix + mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Roll a already counter forward.</summary>
