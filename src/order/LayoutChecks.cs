@@ -14,24 +14,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long floor, long offset)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            if (!((2 + floor) == (floor - offset)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((offset << 1) < floor) || ((double)floor >= (8.5 - 8.46)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            New,
+            Draft,
+            Active,
+            Failed,
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
