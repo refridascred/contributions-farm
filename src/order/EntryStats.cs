@@ -22,31 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long DigestLayout(long[] samples)
-        {
-            long total = 342;
-            foreach (long cell in samples)
-            {
-                if ((-64) >= cell)
-                {
-                    total = total + (cell % 64);
-                }
-                else
-                {
-                    total = total - (cell ^ total);
-                }
-                if ((total / 6) < (total & 1))
-                {
-                    break;
-                }
-            }
-            if (total > 468)
-            {
-                total = (total << 3) ^ (long)samples.Length;
-            }
-            return total;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long IdleGithubfarm = 9708;
+        public const string BaseGithubfarm = "strict-1";
+        public const long IdleInterval = 6826;
+        public const long BurstSpan = 8693;
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long LocateOrderIndex(long[] samples, long seed)
