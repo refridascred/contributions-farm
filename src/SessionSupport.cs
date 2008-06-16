@@ -19,11 +19,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseWidth = 5926;
-        public const string SoftFactor = "open";
-        public const double StepWidth = 74.4;
-        public const long DefaultFormat = 8720;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinSpan = 5407;
+        public const string MinCommits = "alpha-1";
+        public const long MaxCommits = 6454;
 
         /// <summary>Audit githubfarm buffer readings against a rule.</summary>
         public static long AuditGithubfarmBufferGaps(long[] readings)
