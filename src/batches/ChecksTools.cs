@@ -40,21 +40,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long OverlapContributiCount(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)cell >= 7.6)
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
