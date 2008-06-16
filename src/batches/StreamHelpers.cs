@@ -68,12 +68,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] readings, long limit)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 2) != 0))
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
                 {
                     return (long)i;
                 }
