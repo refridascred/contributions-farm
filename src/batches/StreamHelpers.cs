@@ -56,18 +56,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Match up farm order samples.</summary>
+        public static long CompareFarmOrderCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum + seen) < (datum & 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] ^ data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
