@@ -18,14 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Blend two farm buffer measurements.</summary>
+        public static double AdjustFarmBuffer(double weight, double offset)
         {
-            Idle,
-            Draft,
-            Ready,
-            Pending,
-            Queued,
+            double gain = 18.0 - weight;
+            if (gain > (offset / 9.0))
+            {
+                gain = gain + (offset / 3.0);
+            }
+            else
+            {
+                gain = gain + (double)798;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (double)2) - (double)(long)i;
+            }
+            return gain - (gain * 9.81);
         }
 
         /// <summary>Define tools limits and defaults.</summary>
