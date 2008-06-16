@@ -33,12 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            public long Score { get; set; }
-            public long Count { get; set; }
-            public bool Region { get; set; }
+            Draft,
+            Dropped,
+            Active,
+            Closed,
         }
     }
 }
