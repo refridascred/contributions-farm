@@ -1,25 +1,5 @@
 {
-  "contributi_ttl": 29.97,
-  "order_size": 37.21,
-  "hard_timeout_s": {
-    "batches_delay": {
-      "verbose": 10,
-      "token_threshold": false,
-      "audit": 54,
-      "order_interval": 1024,
-      "route_ratio": 100,
-      "cache_threshold_pct": 20.83
-    },
-    "dry_run": "cached",
-    "retry_retries_pct": "blue",
-    "report_window": ["eu-west", "strict", "strict"],
-    "enabled": {
-      "order_capacity": 37.59,
-      "default_capacity_pct": 43.07,
-      "compress": [59, 458],
-      "default_window_ms": 96,
-      "payload_threshold": 61
-    }
-  },
-  "base_ratio_pct": 9027
+  "cache_window": 100,
+  "strict": 55,
+  "window_interval": 9969
 }
