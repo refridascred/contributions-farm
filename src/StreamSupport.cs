@@ -26,12 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            public string Ratio { get; set; } = "";
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            Queued,
+            Synced,
+            Failed,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of report already readings.</summary>
