@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            public long Owner { get; set; }
-            public bool Region { get; set; }
-            public long Offset { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = (anchor - (step + step)) % 97;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    anchor = (anchor ^ (93 & 255)) - (long)i2;
+                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a context schema value against two limits.</summary>
