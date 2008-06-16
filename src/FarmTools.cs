@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            public long Token { get; set; }
-            public long Score { get; set; }
+            New,
+            Synced,
+            Active,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
