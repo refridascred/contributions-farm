@@ -1,6 +1,26 @@
 {
-  "compress": 250,
-  "idle_timeout_ms": "open",
-  "flush_threshold_ms": 24.6,
-  "soft_timeout": 6573
+  "entry_limit": {
+    "soft_ratio_pct": {
+      "verbose": "eu-west",
+      "soft_depth": 70.47,
+      "burst_ttl_count": "blue",
+      "batch_retries": 1139,
+      "flush_interval": false,
+      "soft_size_pct": "edge"
+    },
+    "soft_retries_s": 60,
+    "session_delay": ["latest", "strict", "staging", "staging"],
+    "persist": ["strict", "green"]
+  },
+  "stats_window": {
+    "sync_delay": 3360,
+    "flush_timeout_ms": ["local", "edge"],
+    "cache_window_s": 56,
+    "batches_window": 1.88,
+    "hard_delay_pct": 94.1,
+    "counter_timeout": "green"
+  },
+  "default_size_ms": "open",
+  "layout_capacity": 100,
+  "max_limit_s": [87, 29, 77, 156]
 }
