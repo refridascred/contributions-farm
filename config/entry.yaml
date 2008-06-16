@@ -1,4 +1,18 @@
 # entry settings
-burst_retries_s: 3048
-enabled: green
-default_retries_count: stable
+payload_size:
+  - standard
+  - blue
+  - fallback
+payload_depth: 89.52
+hard_interval: open
+poll_retries_s: primary
+poll_limit_s:
+  retry_timeout: false
+  min_timeout_ms: 24.96
+  idle_ttl:
+    - blue
+    - open
+    - primary
+    - stable
+  stream_ttl: 79.39
+cache_depth_s: 1024
