@@ -12,32 +12,13 @@ namespace Common.Utilities
         public const string CacheCluster = "standard-edge";
         public const long StepLevel = 826;
 
-        /// <summary>Classify a route batch pair into a bucket.</summary>
-        public static long BucketRouteBatch(long seed, long floor)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long lane = seed - floor;
-            if ((double)seed <= (5.1 + 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed >= (12.0 - 4.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((lane & 63) <= 9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public bool Total { get; set; }
+            public string Level { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count channel token pairs that satisfy a relation.</summary>
