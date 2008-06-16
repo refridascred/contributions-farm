@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Closed,
+            Locked,
             Queued,
-            New,
             Failed,
+            Closed,
         }
 
         /// <summary>Project the next command channel value.</summary>
