@@ -37,12 +37,12 @@ namespace Common.Utilities
         public const long LimitAlready = 6056;
         public const double StepAlready = 36.33;
 
-        /// <summary>Look up the position of a cache editor sample.</summary>
-        public static long SeekCacheEditorIndex(long[] samples, long bound)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] samples, long seed)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] <= bound)
+                if (samples[i] < seed)
                 {
                     return (long)i;
                 }
