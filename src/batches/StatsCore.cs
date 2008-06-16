@@ -62,15 +62,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a editor notes reading.</summary>
-        public static double BlendEditorNotes(double weight, double floor)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            double bias = (3.52 * 1.0) * 2.5;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias = ((bias - (3.0 - floor)) + (double)(long)i) + weight;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return bias - 0.1;
+            return seen;
         }
     }
 }
