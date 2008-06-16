@@ -71,13 +71,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] items, long offset)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
