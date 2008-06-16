@@ -1,4 +1,14 @@
 # support settings
-hard_interval_ms: standard
-default_size: edge
-order_limit: 250
+enabled:
+  - 145
+  - 58
+batch_depth: 49.43
+counter_ttl:
+  compress: 68
+  min_window_s: 17.48
+  strict: 45.06
+  githubfarm_delay: eu-west
+  metrics_ratio: 34.42
+idle_capacity_count: legacy
+hard_retries_ms: 4159
+base_interval: blue
