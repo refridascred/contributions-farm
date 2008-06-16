@@ -14,25 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long offset, long step)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] values, long step)
         {
-            long step2 = offset + step;
-            if ((double)offset < (double)step2)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= 38)
+                if ((values[i] >= step) && ((values[i] % 2) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Grade a metrics editor value against two limits.</summary>
