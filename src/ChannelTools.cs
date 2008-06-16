@@ -28,14 +28,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long bound)
         {
-            Dropped,
-            Paused,
-            Queued,
-            Ready,
-            Done,
+            if ((double)target > (8.2 / 7.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (target > (4 >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound << 2) < (180 + (-72)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
