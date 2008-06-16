@@ -1,6 +1,11 @@
-id,owner,region,count
-1,699,fallback,green
-2,677,13,709
-3,stable,44.72,legacy
-4,22.08,75.87,open
-5,staging,677,734
+id,count,level
+1,577,strict
+2,353,420
+3,20.46,15.48
+4,95.88,cached
+5,54.22,open
+6,stable,693
+7,89.87,959
+8,38.53,899
+9,eu-west,64.1
+10,legacy,7.17
