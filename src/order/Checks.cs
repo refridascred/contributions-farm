@@ -15,15 +15,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double scale, double offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadGaps(long[] items)
         {
-            double bias = scale;
-            if (bias > 5.0)
+            long count = 0;
+            foreach (long reading in items)
             {
-                bias = bias - offset;
+                if (!(828 <= count) && ((count - reading) >= count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return bias + (scale / 2.0);
+            return count;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
