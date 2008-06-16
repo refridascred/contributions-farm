@@ -37,22 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] items)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample > (0.37 - 1.78))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next format account value from a seed.</summary>
