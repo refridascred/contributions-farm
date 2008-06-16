@@ -97,22 +97,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit route context readings against a rule.</summary>
-        public static long TallyRouteContextGaps(long[] series, long step)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] series)
         {
-            long count = 0;
+            long state = 6;
             foreach (long datum in series)
             {
-                if ((count >= (step * 5)) && ((360 / 4) >= datum))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state - (datum * 5)) % 97;
             }
-            return count;
+            return state;
         }
     }
 }
