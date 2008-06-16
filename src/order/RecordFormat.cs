@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long SortMetric(long step, long offset)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            if ((offset + step) >= (offset >> 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((offset << 1) < offset)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)step <= (double)6) && ((offset + step) == (70 << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Pending,
+            Dropped,
+            Closed,
+            Retry,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
