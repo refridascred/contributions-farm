@@ -12,12 +12,12 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 75.85;
-        public const long DefaultNotes = 7077;
-        public const long StepDepth = 9475;
-        public const long BaseScore = 2775;
-        public const long StepNotes = 6097;
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Count { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Rank farm support input into a small class.</summary>
         public static long SortFarmSupport(long floor, long floor2)
