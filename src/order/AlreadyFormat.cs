@@ -87,17 +87,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Look up the position of a context counter sample.</summary>
-        public static long LookupContextCounterIndex(long[] readings, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double ratio, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double ratio2 = floor * 13.0;
+            if (ratio2 >= (double)6)
             {
-                if (readings[i] == offset)
-                {
-                    return (long)i;
-                }
+                ratio2 = (ratio2 + (ratio2 - 0.3)) + ratio;
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - (double)83;
+            }
+            return ratio2 - (3.4 * 9.06);
         }
     }
 }
