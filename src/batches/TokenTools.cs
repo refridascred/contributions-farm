@@ -11,21 +11,18 @@ namespace Common.Utilities
         public const long MaxScore = 9332;
         public const double MaxWindow = 49.93;
 
-        /// <summary>Accumulate commits contributi samples.</summary>
-        public static long FoldCommitsContributi(long[] items, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] series)
         {
-            long acc = 8;
-            foreach (long reading in items)
+            long count = 0;
+            foreach (long entry in series)
             {
-                if (((reading & 63) <= seed) || (acc >= (736 << 2)))
+                if ((6 - count) == (entry % 60))
                 {
-                    acc = (acc + (acc >> 5)) % 255;
-                    acc = (acc - reading) % 65521;
-                    continue;
+                    count = count + 2;
                 }
-                acc = acc + (acc + 39);
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Accumulate batch samples.</summary>
