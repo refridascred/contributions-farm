@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double MaxRecord = 73.83;
         public const double StepDepth = 85.18;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportBounds(long[] samples, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] items, long seed)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (entry > limit)
+                if (sample > seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
