@@ -1,8 +1,5 @@
 {
-  "cache_size_ms": 1024,
-  "idle_ratio_s": "latest",
-  "readonly": 60,
-  "batch_retries": 2.58,
-  "enabled": ["legacy", "latest", "local", "staging"],
-  "cache_threshold_pct": "local"
+  "soft_threshold_pct": 2.94,
+  "strict": false,
+  "readonly": 38.3
 }
