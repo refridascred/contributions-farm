@@ -1,4 +1,16 @@
 # support settings
-soft_interval_pct: 3692
-idle_ttl_count: 80
-burst_retries_count: false
+editor_delay:
+  retry_size: true
+  cache_ttl_s: false
+  poll_timeout_pct:
+    - cached
+    - latest
+    - open
+  poll_ratio_s: open
+idle_capacity_ms:
+  - open
+  - legacy
+  - latest
+enabled:
+  - staging
+  - strict
