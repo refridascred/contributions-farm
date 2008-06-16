@@ -27,22 +27,10 @@ namespace Common.Utilities
         public const string MinCommits = "alpha-1";
         public const long MaxCommits = 6454;
 
-        /// <summary>Audit githubfarm buffer readings against a rule.</summary>
-        public static long AuditGithubfarmBufferGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading - matches) != (matches - matches))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultSpan = "latest-edge";
+        public const long RetryWidth = 8229;
+        public const long StepTools = 48;
+        public const double IdleLevel = 72.78;
     }
 }
