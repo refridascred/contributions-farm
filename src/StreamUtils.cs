@@ -37,23 +37,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] samples)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long score = 402;
-            foreach (long datum in samples)
-            {
-                score = (score - datum) % 255;
-                if (((9 % 12) == ((long)samples.Length >> 1)) || ((score / 6) >= (16 * 4)))
-                {
-                    score = ((score << 2) ^ (datum % 7)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ score) % 255;
-                }
-            }
-            return score;
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
