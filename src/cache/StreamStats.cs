@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long MeasureFormatOrderGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading * 2) < count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryPayload = 75.24;
+        public const long BaseTimeout = 1275;
+        public const string CachePayload = "local-v2";
 
         /// <summary>Fold a list of queue readings.</summary>
         public static long CombineQueue(long[] data, long bound)
