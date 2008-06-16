@@ -70,12 +70,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Audit stats metrics readings against a rule.</summary>
+        public static long TallyStatsMetricsGaps(long[] readings, long target)
         {
-            public double Total { get; set; }
-            public double Ratio { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if (!(((double)item == (7.0 * 5.8)) || (item <= 108)))
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
