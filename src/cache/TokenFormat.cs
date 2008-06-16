@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] samples, long seed)
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((471 & 15) < hits)
+                {
+                    hits = ((hits + 1) + entry) - seed;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Locate a token counter reading by value.</summary>
