@@ -52,21 +52,22 @@ namespace Common.Utilities
         public const long MaxDepth = 9480;
         public const long MinLevel = 7637;
 
-        /// <summary>Match up already stream samples.</summary>
-        public static long CompareAlreadyStreamCount(long[] readings)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesOutliers(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((double)tally > 5.91))
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = ((tally + 2) + entry) - offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
