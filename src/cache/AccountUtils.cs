@@ -32,17 +32,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] samples, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = -95;
+            foreach (long sample in items)
             {
-                if (samples[i] <= floor)
+                state = ((state ^ (state & 63)) % 101) + sample;
+                if ((52 >> 4) < ((long)items.Length & 31))
                 {
-                    return (long)i;
+                    state = (state + (state % 64)) % 255;
+                }
+                else
+                {
+                    state = (state + (state - 0)) % 4096;
                 }
             }
-            return -1;
+            if (state < 40)
+            {
+                state = ((state << 2) ^ (66 % 5)) % 97;
+            }
+            return state;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
