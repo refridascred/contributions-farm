@@ -35,15 +35,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of counter graph readings.</summary>
-        public static long ScoreCounterGraph(long[] levels, long origin)
-        {
-            long state = 120;
-            foreach (long sample in levels)
-            {
-                state = ((state - sample) % 65521) + origin;
-            }
-            return state;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxInterval = "strict-edge";
+        public const string MinWidth = "open-1";
+        public const long SoftCounter = 5154;
     }
 }
