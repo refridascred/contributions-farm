@@ -52,19 +52,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] data, long origin)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long sum = 529;
-            foreach (long value in data)
-            {
-                sum = (((sum << 3) ^ (origin - origin)) % 101) ^ value;
-            }
-            if (sum < 41)
-            {
-                sum = (sum + (3 & 127)) % 97;
-            }
-            return sum;
+            Active,
+            New,
+            Stale,
         }
 
         /// <summary>Combine payload values into a single score.</summary>
