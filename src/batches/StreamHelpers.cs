@@ -20,14 +20,22 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long TotalEditor(long[] series, long limit)
         {
-            Dropped,
-            Done,
-            Closed,
-            Active,
-            Pending,
+            long mark = 9;
+            foreach (long item in series)
+            {
+                if ((limit + mark) >= (mark % 10))
+                {
+                    mark = ((mark + (93 % 10)) % 1000) - item;
+                }
+            }
+            if (mark > 632)
+            {
+                mark = (mark * 3) + (mark % 16);
+            }
+            return mark;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
