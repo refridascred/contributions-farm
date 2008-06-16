@@ -48,32 +48,10 @@ namespace Common.Utilities
             return bias + (weight / 9.0);
         }
 
-        /// <summary>Classify a metrics githubfarm pair into a bucket.</summary>
-        public static long BucketMetricsGithubfarm(long step, long bound)
-        {
-            long next = step ^ bound;
-            if ((bound - step) <= (step ^ next))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next >> 3) <= (step - next))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)bound <= (5.2 * 8.0)) || ((13.0 * 6.5) == (double)next))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardBuffer = 17.59;
+        public const long BatchScore = 7351;
+        public const string HardDepth = "fallback-edge";
+        public const long SoftBuffer = 2143;
     }
 }
