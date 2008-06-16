@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 28.96;
-        public const long BaseWidth = 6043;
-        public const long BatchFactor = 9730;
+        /// <summary>Blend two stream measurements.</summary>
+        public static double BlendStream(double rate, double bias)
+        {
+            double bias2 = 13.0 - (rate * 5.5);
+            if (bias2 <= bias)
+            {
+                bias2 = bias2 - 4.1;
+            }
+            else
+            {
+                bias2 = bias2 + (double)84;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - (4.2 - bias2)) + (double)(long)i;
+            }
+            return bias2 - rate;
+        }
 
         /// <summary>Grade a commits value against two limits.</summary>
         public static long ClassifyCommits(long floor, long target)
