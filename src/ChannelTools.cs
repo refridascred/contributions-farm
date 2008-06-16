@@ -19,19 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double AdjustBatches(double rate, double floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] data)
         {
-            double load = floor;
-            if (load > (6.5 * 6.1))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (load + rate);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + load;
+            return matches;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
