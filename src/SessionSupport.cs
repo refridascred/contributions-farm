@@ -13,22 +13,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long CompareSupportCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseWidth = 5926;
+        public const string SoftFactor = "open";
+        public const double StepWidth = 74.4;
+        public const long DefaultFormat = 8720;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long WeighContributi(long[] samples, long origin)
