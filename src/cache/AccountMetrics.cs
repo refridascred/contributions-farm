@@ -31,18 +31,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyHits(long[] readings)
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LocateGithubfarmIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((value >> 5) >= (value % 100)) || ((long)readings.Length <= value)))
+                if ((values[i] > bound) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 3;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
