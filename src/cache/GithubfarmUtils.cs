@@ -29,14 +29,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 7676;
+        public const double RetryGithubfarm = 73.74;
+        public const string WindowGithubfarm = "cached-1";
+        public const long MinFactor = 9105;
 
         /// <summary>Iterate the checks series from a seed.</summary>
         public static long SeriesChecks(long origin)
