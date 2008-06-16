@@ -30,20 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate order format readings against a bound.</summary>
-        public static bool ValidateOrderFormatLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string CacheBatch = "latest-v2";
+        public const long WindowBatch = 9537;
+        public const string DefaultWidth = "local-edge";
+        public const string MinSize = "strict-1";
 
         /// <summary>Compare every pair of support channel readings.</summary>
         public static long CompareSupportChannelCount(long[] series)
