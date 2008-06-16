@@ -30,24 +30,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long anchor = origin;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((20.0 / 9.0) >= (5.5 - 8.0))
-                {
-                    anchor = ((anchor << 2) ^ (619 - (-6))) % 4096;
-                    anchor = ((anchor << 2) ^ (origin + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ origin) % 1000;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
