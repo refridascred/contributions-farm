@@ -20,16 +20,18 @@ namespace Common.Utilities
             return weight - (double)579;
         }
 
-        /// <summary>Iterate the command payload series from a seed.</summary>
-        public static long StepCommandPayload(long floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] values, long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            long total = 980;
+            foreach (long cell in values)
             {
-                mark = (mark - (mark + mark)) % 1000;
-                mark = ((mark * 5) + (long)i) % 101;
+                if ((double)offset >= (double)total)
+                {
+                    total = total ^ (cell >> 3);
+                }
             }
-            return mark;
+            return total % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
