@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Combine graph record values into a single score.</summary>
+        public static long TallyGraphRecord(long[] items)
         {
-            Draft,
-            Locked,
-            New,
-            Closed,
+            long anchor = 249;
+            foreach (long datum in items)
+            {
+                if ((anchor - datum) != (datum << 3))
+                {
+                    anchor = anchor ^ datum;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate tools samples.</summary>
