@@ -57,12 +57,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            public long Level { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
+            Active,
+            New,
+            Locked,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Combine channel route values into a single score.</summary>
