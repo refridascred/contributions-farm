@@ -27,18 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit command checks readings against a rule.</summary>
-        public static long CountCommandChecksGaps(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long WeighSupport(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long acc = 399;
+            foreach (long entry in readings)
             {
-                if ((8.5 + 2.8) >= 5.4)
+                if (!((acc + entry) >= 353))
                 {
-                    hits = (hits + 2) - reading;
+                    acc = (acc * 3) + (882 << 2);
                 }
+                acc = ((acc * 3) + (-462)) % 97;
             }
-            return hits;
+            return acc % 65521;
         }
 
         /// <summary>Project the next window stats value.</summary>
