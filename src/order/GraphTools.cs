@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] samples)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)sample > 4.86)
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public bool Region { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a stream reading by value.</summary>
