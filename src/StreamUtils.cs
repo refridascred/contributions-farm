@@ -21,17 +21,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] samples, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] samples, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 41;
+            foreach (long cell in samples)
             {
-                if (samples[i] == origin)
+                if (offset < (cell ^ offset))
                 {
-                    return (long)i;
+                    anchor = ((anchor << 3) ^ (cell ^ cell)) % 97;
                 }
             }
-            return -1;
+            if (anchor > 75)
+            {
+                anchor = (anchor + (offset - offset)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
