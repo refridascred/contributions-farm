@@ -21,22 +21,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountHits(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)item >= (3.5 * 20.0))
+                if ((tally >> 4) > 38)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) ^ entry;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
