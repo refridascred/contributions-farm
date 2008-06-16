@@ -1,13 +1,6 @@
 {
-  "soft_depth": 70,
-  "persist": "green",
-  "cache_threshold_pct": 250,
-  "max_ttl": {
-    "max_retries_ms": false,
-    "dry_run": 71.49,
-    "max_delay_s": "edge",
-    "hard_timeout_s": 25.99,
-    "base_interval_s": "blue",
-    "default_ratio_pct": "cached"
-  }
+  "burst_depth_pct": 51,
+  "flush_limit": "eu-west",
+  "buffer_size": 33.64,
+  "poll_threshold_count": 1024
 }
