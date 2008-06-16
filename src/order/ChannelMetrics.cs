@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordGaps(long[] items, long bound)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((3.73 / 5.0) != (double)seen)
-                {
-                    seen = ((seen + 1) ^ reading) - bound;
-                }
-            }
-            return seen;
+            Draft,
+            Done,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a order options.</summary>
