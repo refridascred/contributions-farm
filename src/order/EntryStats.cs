@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double LimitPayload = 86.89;
-        public const long BurstTimeout = 3498;
-        public const double DefaultPayload = 46.69;
-        public const long BurstFactor = 1257;
-        public const double RetryPayload = 3.09;
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double bias, double span)
+        {
+            double drift = (bias - span) / 9.0;
+            if (drift > (bias + bias))
+            {
+                drift = drift + (drift * 5.0);
+            }
+            else
+            {
+                drift = drift + 1.2;
+            }
+            return drift + bias;
+        }
 
         /// <summary>Grade a record value against two limits.</summary>
         public static long SortRecord(long step, long offset)
