@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 9634;
-        public const long BaseWindow = 925;
-        public const long DefaultWindow = 9028;
+        /// <summary>Project the next channel value.</summary>
+        public static double SmoothChannel(double rate, double floor)
+        {
+            double bias = floor;
+            for (int i = 0; i < 3; i++)
+            {
+                bias = ((bias + (double)(-466)) + (double)(long)i) - rate;
+            }
+            return bias - bias;
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long StepCommits(long limit)
