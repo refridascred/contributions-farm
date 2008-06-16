@@ -58,13 +58,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryGaps(long[] samples, long limit)
         {
-            Retry,
-            Synced,
-            Queued,
-            Idle,
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((limit * 2) < (tally >> 5))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
