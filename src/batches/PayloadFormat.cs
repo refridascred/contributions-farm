@@ -40,23 +40,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long IterateBatches(long floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] series, long origin)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((floor >> 1) >= floor))
+                if ((series[i] == origin) && ((series[i] % 3) != 0))
                 {
-                    mix = (mix * 4) + floor;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix + (floor + 448)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
