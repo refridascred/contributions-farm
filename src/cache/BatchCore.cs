@@ -26,18 +26,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] items)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + matches) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Blend two layout measurements.</summary>
