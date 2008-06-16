@@ -19,30 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Match up checks samples.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            long mix = 6;
-            foreach (long item in series)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item - mix) < 70)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix + mix) % 65521;
-                }
-                else
-                {
-                    mix = (mix + (item + item)) % 1000;
-                }
-                if (mix >= (377 + 54))
-                {
-                    break;
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < 235)
-            {
-                mix = (mix * 3) + (mix + mix);
-            }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
