@@ -39,19 +39,12 @@ namespace Common.Utilities
         public const long StepRoute = 8608;
         public const string BaseRoute = "alpha-1";
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long SeriesFormat(long origin)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long acc = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                if (!(12 < ((long)i & 15)))
-                {
-                    acc = ((acc * 5) + (968 * 5)) % 65521;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            Closed,
+            Retry,
+            Locked,
         }
     }
 }
