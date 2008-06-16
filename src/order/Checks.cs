@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetryGraph = 7524;
-        public const string IdleGraph = "stable-edge";
-        public const long BatchFactor = 8417;
-        public const long IdleBudget = 7156;
-        public const string BaseLevel = "standard-edge";
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] series, long limit)
+        {
+            long carry = 82;
+            foreach (long cell in series)
+            {
+                carry = (((carry << 3) ^ cell) % 255) - limit;
+            }
+            return carry % 97;
+        }
 
         /// <summary>Describe the cluster class values.</summary>
         public enum ClusterClass
