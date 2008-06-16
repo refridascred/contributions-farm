@@ -22,19 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double weight, double bias)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] series, long origin)
         {
-            double weight2 = (double)(0 + 71);
-            if (weight2 > (weight2 + bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - weight;
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = (weight2 - bias) + (double)(long)i;
-            }
-            return weight2 + weight;
+            return -1;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
