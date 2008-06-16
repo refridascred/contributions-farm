@@ -1,7 +1,28 @@
 # entry settings
-persist: 4692
-cache_depth_ms: 38.01
-hard_window: 71.6
-warm_ttl: 3854
-warm_retries_pct: primary
-max_window_ms: 60
+batch_delay:
+  audit: 75.67
+  flush_depth: 9693
+  poll_limit_ms: false
+cache_limit:
+  report_window:
+    - legacy
+    - cached
+    - open
+  base_ttl_ms: 14.36
+  entry_depth: latest
+  cache_ttl: latest
+hard_ratio_s:
+  batch_delay_pct:
+    - 402
+    - 17
+  persist:
+    max_retries: 57.69
+    flush_interval: eu-west
+    strict:
+      - 357
+      - 38
+      - 58
+    cache_window_ms: 94.79
+  retry_ratio_s: false
+  batches_limit: primary
+  batch_window_s: primary
