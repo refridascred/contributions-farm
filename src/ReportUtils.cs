@@ -45,23 +45,17 @@ namespace Common.Utilities
         public const string StepFormat = "strict-v2";
         public const string DefaultFormat = "latest-1";
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double ratio, double span)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] items, long floor)
         {
-            double mean = span / 9.0;
-            if (mean > (double)391)
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean + (mean - span);
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean + ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (span + mean)) + (double)(long)i;
-            }
-            return mean + (ratio / 7.0);
+            return -1;
         }
 
         /// <summary>Grade a cache account value against two limits.</summary>
