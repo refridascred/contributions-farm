@@ -1,6 +1,10 @@
-id,owner,level
-1,83.11,669
-2,838,109
-3,498,455
-4,cached,79.41
-5,open,stable
+id,ratio,rank,region
+1,legacy,84,primary
+2,803,fallback,923
+3,698,220,71.01
+4,335,93.46,local
+5,121,cached,latest
+6,11.32,legacy,0.48
+7,75.1,43.91,69.82
+8,474,eu-west,511
+9,573,open,8.98
