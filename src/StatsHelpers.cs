@@ -45,13 +45,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Measure how many commits support samples are out of range.</summary>
+        public static long CountCommitsSupportMatches(long[] levels, long bound)
         {
-            public long Label { get; set; }
-            public bool Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((((item + 1) <= matches) && (14 <= (item >> 1))) && (bound >= (item << 3)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the record level values.</summary>
