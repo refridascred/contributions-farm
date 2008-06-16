@@ -1,14 +1,25 @@
 # entry settings
-warm_size_count:
-  account_timeout: false
-  cache_ttl: 59
-  flush_window: 60
-retry_size_count: fallback
-soft_interval_s: local
-readonly: green
-burst_ttl_pct: 500
-base_ttl_count:
-  - staging
-  - blue
-  - strict
-  - eu-west
+default_depth:
+  - open
+  - fallback
+  - open
+soft_capacity: true
+readonly:
+  strict:
+    buffer_capacity: latest
+    compress: 98.65
+    account_retries: 500
+    stream_threshold: green
+    batch_capacity: strict
+  hard_size:
+    - 371
+    - 81
+  persist:
+    - edge
+    - primary
+    - open
+  flush_limit_pct:
+    - 162
+    - 88
+persist: strict
+hard_window: true
