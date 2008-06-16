@@ -37,20 +37,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every account batches entry stays within the limit.</summary>
-        public static bool ValidateAccountBatchesLimits(long[] values, long offset)
-        {
-            bool stale = true;
-            foreach (long value in values)
-            {
-                if (value > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetrySize = 49.36;
+        public const long StepRoute = 8608;
+        public const string BaseRoute = "alpha-1";
 
         /// <summary>Derive the next format value from a seed.</summary>
         public static long SeriesFormat(long origin)
