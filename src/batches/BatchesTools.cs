@@ -22,38 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long SortChecks(long bound, long step)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            if ((double)step != (1.0 + 5.6))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step + bound) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.1 + 9.2) <= (5.41 / 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((58 - bound) >= (step + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
