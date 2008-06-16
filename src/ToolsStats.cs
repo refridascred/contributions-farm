@@ -37,24 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long limit, long step)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] items)
         {
-            if (limit <= (step / 6))
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((15.0 + 3.87) != (double)limit)
+                if ((double)sample > (0.37 - 1.78))
                 {
-                    return 7;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    return 0;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
