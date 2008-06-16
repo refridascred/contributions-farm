@@ -25,23 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long origin)
+        /// <summary>Fold a list of counter graph readings.</summary>
+        public static long ScoreCounterGraph(long[] levels, long origin)
         {
-            long anchor = 2;
-            foreach (long item in data)
+            long state = 120;
+            foreach (long sample in levels)
             {
-                anchor = (anchor + item) % 255;
-                if (!((double)origin != (9.56 * 1.65)))
-                {
-                    break;
-                }
+                state = ((state - sample) % 65521) + origin;
             }
-            if (anchor > 3)
-            {
-                anchor = anchor ^ (anchor << 1);
-            }
-            return anchor % 4096;
+            return state;
         }
     }
 }
