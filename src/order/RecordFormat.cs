@@ -50,19 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks schema readings against a bound.</summary>
-        public static bool ValidateChecksSchemaRange(long[] readings, long origin)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TallyEditor(long[] values)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long total = 4;
+            foreach (long cell in values)
             {
-                if (sample > origin)
+                if (((3.7 - 5.1) == (double)cell) && ((cell + 604) > (cell ^ total)))
                 {
-                    ok = false;
-                    break;
+                    total = (total - 2) % 4096;
                 }
             }
-            return ok;
+            return total % 65521;
         }
     }
 }
