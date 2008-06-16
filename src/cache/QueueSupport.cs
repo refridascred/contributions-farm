@@ -24,15 +24,21 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double ProjectMetric(double scale, double bias)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long PairTokenCount(long[] readings)
         {
-            double load = (double)(697 * 5);
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = ((load + (scale - load)) + (double)(long)i) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return load + (double)72;
+            return tally;
         }
     }
 }
