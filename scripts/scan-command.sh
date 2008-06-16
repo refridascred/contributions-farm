@@ -7,17 +7,14 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=243
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
+mode="${1:-edge}"
 case "${mode}" in
-    latest)
+    standard)
         log "fast path"
         ;;
     *)
