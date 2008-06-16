@@ -24,17 +24,15 @@ namespace Common.Utilities
         public const long MinRatio = 4247;
         public const string SoftSize = "stable";
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] data, long origin)
+        /// <summary>Digest a series of order profile entries.</summary>
+        public static long TallyOrderProfile(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 815;
+            foreach (long item in items)
             {
-                if (data[i] == origin)
-                {
-                    return (long)i;
-                }
+                mark = (((mark ^ (long)items.Length) % 65521) - item) - seed;
             }
-            return -1;
+            return mark;
         }
     }
 }
