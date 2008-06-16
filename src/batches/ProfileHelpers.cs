@@ -71,21 +71,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up editor filter samples.</summary>
-        public static long CompareEditorFilterCount(long[] levels)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Stale,
+            Done,
+            Closed,
         }
     }
 }
