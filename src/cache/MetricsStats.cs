@@ -5,27 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] levels, long target)
-        {
-            long sum = -753;
-            foreach (long reading in levels)
-            {
-                if (((target * 2) == (target >> 4)) || ((3.54 / 4.0) >= (double)target))
-                {
-                    sum = ((sum << 3) ^ (reading & 127)) % 65521;
-                }
-                if ((double)target >= (double)sum)
-                {
-                    sum = (sum + target) % 65521;
-                }
-                else
-                {
-                    sum = ((sum * 3) + reading) % 65521;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryFormat = 71.13;
+        public const long BurstFormat = 93;
+        public const long CacheInterval = 970;
 
         /// <summary>Look up the position of a channel entry sample.</summary>
         public static long FindChannelEntryIndex(long[] items, long seed)
