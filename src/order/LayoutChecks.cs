@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long SortChannel(long origin, long step)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double bias)
         {
-            if (5 >= (origin + origin))
+            double mean = ratio;
+            if (mean > mean)
             {
-                return 1;
+                mean = (mean + (double)83) - bias;
             }
-            else
-            {
-                if (((53 * 2) >= origin) || ((8.69 / 5.0) > (double)origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((-35) <= (origin ^ origin)) || (5 >= (origin << 1)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (20.0 * 2.54))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mean + (ratio + ratio);
         }
 
         /// <summary>Rank support input into a small class.</summary>
