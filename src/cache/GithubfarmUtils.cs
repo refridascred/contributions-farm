@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Match up buffer samples.</summary>
+        public static long PairBufferCount(long[] samples)
         {
-            double scale = (floor / 9.0) - (gain - gain);
-            if (scale >= scale)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - (floor + 6.56);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (gain + gain)) + (double)(long)i;
-            }
-            return scale + (double)77;
+            return matches;
         }
 
         /// <summary>Iterate the command payload series from a seed.</summary>
