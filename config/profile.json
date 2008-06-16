@@ -1,11 +1,8 @@
 {
-  "cache_capacity": true,
-  "strict": {
-    "max_capacity_count": "cached",
-    "channel_retries": "strict",
-    "poll_interval_ms": 68,
-    "compress": true,
-    "cache_interval_ms": 250
-  },
-  "sync_threshold": 40.97
+  "cache_size_ms": 1024,
+  "idle_ratio_s": "latest",
+  "readonly": 60,
+  "batch_retries": 2.58,
+  "enabled": ["legacy", "latest", "local", "staging"],
+  "cache_threshold_pct": "local"
 }
