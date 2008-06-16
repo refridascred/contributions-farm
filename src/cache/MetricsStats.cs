@@ -41,13 +41,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] items, long bound)
         {
-            Draft,
-            Pending,
-            Done,
-            Dropped,
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
