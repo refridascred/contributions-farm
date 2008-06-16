@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long BucketEntry(long limit, long origin)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] samples, long origin)
         {
-            if ((limit + origin) == (limit * 3))
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)6 > (double)origin)
+                if (cell != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (319 < (limit << 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a cluster options.</summary>
