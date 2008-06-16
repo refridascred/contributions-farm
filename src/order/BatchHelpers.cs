@@ -40,12 +40,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            New,
+            Active,
+            Queued,
+            Pending,
             Failed,
-            Ready,
+            Locked,
         }
     }
 }
