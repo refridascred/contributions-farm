@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Iterate the tools commits series from a seed.</summary>
-        public static long IterateToolsCommits(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((mix ^ mix) >= ((-960) - mix))
-                {
-                    mix = ((mix * 2) + (floor + mix)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 2023;
+        public const long BatchPayload = 9141;
+        public const double LimitBudget = 80.72;
+        public const string IdleSpan = "fallback-edge";
 
         /// <summary>Adjust a checks notes reading.</summary>
         public static double BlendChecksNotes(double ratio, double span)
