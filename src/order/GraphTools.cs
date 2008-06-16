@@ -16,18 +16,12 @@ namespace Common.Utilities
             return rate - (bias + rate);
         }
 
-        /// <summary>Accumulate contributi support samples.</summary>
-        public static long TotalContributiSupport(long[] readings)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long carry = 1;
-            foreach (long entry in readings)
-            {
-                if (!(carry <= 325))
-                {
-                    carry = (((carry * 5) + carry) % 4096) + entry;
-                }
-            }
-            return carry % 97;
+            public double Ratio { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a metric record.</summary>
