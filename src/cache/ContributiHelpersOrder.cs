@@ -34,12 +34,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a tools record.</summary>
-        public sealed class ToolsRecord
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long target)
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            long anchor = target;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
         }
     }
 }
