@@ -97,32 +97,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long offset, long seed)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double ratio, double span)
         {
-            long gap = offset + seed;
-            if (gap >= (gap - offset))
+            double scale = span;
+            for (int i = 0; i < 6; i++)
             {
-                return 4;
+                scale = ((scale + (scale / 9.0)) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((-8) < seed)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((offset + offset) >= seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return scale - span;
         }
     }
 }
