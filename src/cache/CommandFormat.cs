@@ -12,27 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of support filter entries.</summary>
-        public static long TotalSupportFilter(long[] readings)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long acc = 18;
-            foreach (long entry in readings)
-            {
-                if (!((entry & 1) == (entry << 3)))
-                {
-                    continue;
-                }
-                acc = ((acc * 4) + (acc >> 3)) % 65521;
-                if ((double)entry != (13.0 / 9.0))
-                {
-                    break;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = ((acc * 5) + acc) % 255;
-            }
-            return acc % 97;
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a contributi entry.</summary>
