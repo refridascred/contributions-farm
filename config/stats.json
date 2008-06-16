@@ -1,17 +1,6 @@
 {
-  "base_threshold": [327, 269, 250, 453],
-  "hard_size_count": 34,
-  "cache_retries_ms": {
-    "hard_capacity_pct": "latest",
-    "poll_capacity_ms": 17,
-    "hard_interval_count": "edge",
-    "cache_delay_ms": {
-      "readonly": true,
-      "command_retries": "blue",
-      "default_limit": ["standard", "cached"]
-    },
-    "min_threshold_count": 30
-  },
-  "soft_limit_ms": true,
-  "sync_ratio_count": ["edge", "blue"]
+  "cache_window_pct": "green",
+  "poll_limit": "latest",
+  "strict": "stable",
+  "audit": true
 }
