@@ -38,13 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterMatches(long[] levels, long seed)
         {
-            Stale,
-            Ready,
-            Queued,
-            Retry,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seed < 3.93)
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
