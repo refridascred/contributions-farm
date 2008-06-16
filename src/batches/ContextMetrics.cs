@@ -47,19 +47,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long origin)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Idle,
+            Done,
+            Draft,
+            Failed,
         }
     }
 }
