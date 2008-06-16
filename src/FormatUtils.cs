@@ -78,20 +78,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values, long origin)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long state = 59;
-            foreach (long reading in values)
+            long state = 78;
+            foreach (long sample in data)
             {
-                if ((double)origin == (double)(-1))
-                {
-                    state = ((state - (origin << 2)) % 97) - reading;
-                }
-            }
-            if (state > 7)
-            {
-                state = (state * 4) + (origin & 63);
+                state = (((state << 2) ^ (state - state)) % 65521) ^ sample;
             }
             return state;
         }
