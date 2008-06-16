@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double BlendTools(double gain, double floor)
+        /// <summary>Accumulate session token samples.</summary>
+        public static long WeighSessionToken(long[] data, long floor)
         {
-            double weight = (double)(754 + (-896));
-            if (weight < (double)418)
+            long carry = -18;
+            foreach (long reading in data)
             {
-                weight = ((weight - (double)(-205)) - gain) + floor;
+                if ((double)reading <= (4.0 - 9.0))
+                {
+                    carry = (carry ^ (reading << 2)) + floor;
+                }
             }
-            return weight - (weight / 7.0);
+            return carry;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
