@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long state = 7;
+            foreach (long cell in levels)
             {
-                if ((tally + cell) >= (18 & 127))
+                if ((offset + offset) < (offset - 6))
                 {
-                    tally = tally + 3;
+                    state = ((state << 3) ^ (offset ^ cell)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    state = (state - (offset + state)) % 4096;
                 }
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a stream summary.</summary>
