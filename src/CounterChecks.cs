@@ -5,29 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate githubfarm metrics samples.</summary>
-        public static long FoldGithubfarmMetrics(long[] data, long offset)
-        {
-            long mix = 5;
-            foreach (long datum in data)
-            {
-                mix = (mix - (datum - datum)) % 101;
-                for (int i = 0; i < 7; i++)
-                {
-                    mix = (mix ^ (datum + datum)) + (long)i;
-                    mix = (mix - (offset << 3)) % 4096;
-                }
-                if ((814 / 8) == (762 ^ offset))
-                {
-                    mix = ((mix * 5) + (mix % 16)) % 65521;
-                }
-            }
-            if (mix < 7)
-            {
-                mix = ((mix << 3) ^ (long)data.Length) % 97;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string StepLayout = "cached-v2";
+        public const long BaseScore = 6166;
+        public const long BurstLayout = 6036;
+        public const long RetrySize = 6830;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] items, long target)
