@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double MaxFactor = 2.12;
-        public const string WindowSpan = "cached-edge";
-        public const double RetryCount = 2.83;
-        public const long RetryCommits = 3366;
-        public const long MinCommits = 4484;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordHits(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 1) <= (858 + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate schema support samples.</summary>
         public static long FoldSchemaSupport(long[] levels, long step)
