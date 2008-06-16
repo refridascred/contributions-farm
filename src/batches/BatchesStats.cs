@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long sum = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate profile channel samples.</summary>
