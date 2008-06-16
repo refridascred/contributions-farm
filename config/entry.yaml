@@ -1,7 +1,7 @@
 # entry settings
-idle_retries_ms: 57.21
-filter_capacity: 94
-strict: 6.95
-dry_run: 30
-metric_threshold: standard
-batch_size_pct: green
+order_ttl: 9762
+dry_run: primary
+base_retries_s:
+  - 380
+  - 465
+  - 372
