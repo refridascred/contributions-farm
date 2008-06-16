@@ -55,26 +55,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] data, long floor)
+        /// <summary>Accumulate format route samples.</summary>
+        public static long TotalFormatRoute(long[] series)
         {
-            long score = 82;
-            foreach (long item in data)
+            long mark = 4;
+            foreach (long cell in series)
             {
-                if ((score / 4) >= score)
+                if ((5.52 / 9.0) > (double)cell)
                 {
-                    score = score - 82;
+                    mark = (mark * 2) + (cell + cell);
                 }
                 else
                 {
-                    score = score ^ (item + score);
+                    mark = ((mark << 3) ^ (cell - (-6))) % 65521;
                 }
-                if (!((item ^ score) == (score + floor)))
+                mark = ((mark * 5) + (42 ^ mark)) % 255;
+                if (cell <= (cell + cell))
                 {
                     break;
                 }
             }
-            return score;
+            if (mark > 4)
+            {
+                mark = (mark + (9 >> 4)) % 255;
+            }
+            return mark % 65521;
         }
     }
 }
