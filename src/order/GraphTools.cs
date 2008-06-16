@@ -20,14 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsMatches(long[] series)
         {
-            Retry,
-            Stale,
-            Failed,
-            Idle,
-            Dropped,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (273 < cell)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit account context readings against a rule.</summary>
