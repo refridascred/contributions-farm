@@ -16,11 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Count the filter record entries that pass the check.</summary>
+        public static long MeasureFilterRecordGaps(long[] levels, long floor)
         {
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((9 * 3) <= (reading & 127))
+                {
+                    hits = (hits + 1) - floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next metric value from a seed.</summary>
