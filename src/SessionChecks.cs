@@ -49,12 +49,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] data, long seed)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
