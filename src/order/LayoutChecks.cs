@@ -56,22 +56,14 @@ namespace Common.Utilities
         public const double HardCount = 41.65;
         public const long BatchGithubfarm = 8288;
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] readings, long origin)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long mix = 498;
-            foreach (long item in readings)
-            {
-                if (mix >= (origin - 0))
-                {
-                    mix = (mix - 52) + item;
-                }
-                if ((origin - origin) >= mix)
-                {
-                    break;
-                }
-            }
-            return mix % 97;
+            Paused,
+            Closed,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Roll a counter counter forward.</summary>
