@@ -50,9 +50,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long WindowMetrics = 8472;
-        public const long IdleBudget = 4605;
-        public const long DefaultMetrics = 2478;
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] data, long origin)
+        {
+            long score = -80;
+            foreach (long item in data)
+            {
+                if (score > (score >> 5))
+                {
+                    score = ((score + score) + item) + origin;
+                }
+            }
+            return score % 4096;
+        }
     }
 }
