@@ -43,15 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long SeriesMetrics(long target)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long GradeFilter(long target, long floor)
         {
-            long score = target;
-            for (int i = 0; i < 16; i++)
+            long delta = target - floor;
+            if ((floor * 3) == (floor + floor))
             {
-                score = ((score * 5) + (long)i) % 4093;
+                return 2;
             }
-            return score;
+            else
+            {
+                if ((floor - floor) <= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((0.9 / 8.0) != (double)delta)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Define report limits and defaults.</summary>
