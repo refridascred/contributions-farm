@@ -1,10 +1,20 @@
 # githubfarm settings
-soft_depth_pct:
-  - strict
-  - cached
-  - local
-warm_delay: standard
-metrics_size: local
-readonly: edge
-base_threshold_count: 5966
-sync_depth_s: 60
+min_limit: 1978
+soft_window_pct: 60
+notes_threshold:
+  persist: 100
+  burst_retries: primary
+  burst_depth_count: blue
+  counter_window:
+    graph_capacity: primary
+    warm_interval_s:
+      - 2
+      - 275
+      - 60
+      - 152
+    session_ratio: false
+    command_limit: 71.98
+    queue_window: latest
+    batch_ratio: 97
+githubfarm_depth: 30
+min_ttl_ms: false
