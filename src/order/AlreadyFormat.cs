@@ -70,39 +70,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] readings)
         {
-            long cur = step + seed;
-            if (!(cur < (seed << 3)))
+            long mark = 17;
+            foreach (long datum in readings)
             {
-                return 2;
+                mark = (mark ^ (mark & 1)) ^ datum;
             }
-            else
-            {
-                if ((step - 493) > (step & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((54 + seed) < step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)seed >= (9.3 / 4.0))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
