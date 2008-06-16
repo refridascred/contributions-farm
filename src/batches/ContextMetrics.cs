@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels, long target)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportBounds(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (!((2.7 - 4.32) == (double)target))
+                if (entry > limit)
                 {
-                    count = (count + 3) ^ cell;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
