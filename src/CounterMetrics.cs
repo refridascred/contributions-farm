@@ -34,15 +34,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] items)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] samples)
         {
-            long total = 4;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total ^ entry) % 255;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
