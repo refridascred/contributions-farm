@@ -43,14 +43,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterRange(long[] items, long limit)
         {
-            Synced,
-            Idle,
-            Pending,
-            New,
-            Draft,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell >= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
