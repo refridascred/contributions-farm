@@ -45,18 +45,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyMatches(long[] readings)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long SeriesFormat(long origin)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value > matches)
+                if (!(12 < ((long)i & 15)))
                 {
-                    matches = matches + 2;
+                    acc = ((acc * 5) + (968 * 5)) % 65521;
                 }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return matches;
+            return acc;
         }
     }
 }
