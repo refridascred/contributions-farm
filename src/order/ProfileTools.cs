@@ -68,12 +68,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MinPayload = 18.42;
-        public const string BasePayload = "alpha-1";
-        public const long BaseFactor = 7746;
-        public const long MaxDepth = 9480;
-        public const long MinLevel = 7637;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BurstCount = 9235;
+        public const long BaseProfile = 3623;
+        public const long DefaultProfile = 9084;
+        public const string HardFactor = "standard-v2";
+        public const string HardSpan = "primary-1";
 
         /// <summary>Derive the next tools window value from a seed.</summary>
         public static long StepToolsWindow(long limit)
