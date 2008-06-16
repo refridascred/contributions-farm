@@ -84,10 +84,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double RetryDepth = 35.08;
-        public const long MaxSpan = 8653;
-        public const string BurstInterval = "fallback-v2";
-        public const long MaxBudget = 1714;
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
