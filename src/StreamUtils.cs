@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long GradeEditor(long step, long seed)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            if ((double)45 <= (double)step)
+            long score = floor;
+            for (int i = 0; i < 6; i++)
             {
-                return 1;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step > seed) && ((double)seed == (10.0 + 6.8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step + step) < seed)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step ^ step) <= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Grade a stream filter value against two limits.</summary>
