@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] levels, long seed)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 1) >= seed)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public string Region { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate batch samples.</summary>
