@@ -44,16 +44,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double BlendCache(double bias, double floor)
-        {
-            double rate = bias - 14.0;
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + floor) - (double)(long)i;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 4782;
+        public const long MinScore = 5848;
+        public const long HardScore = 2252;
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long offset, long step)
