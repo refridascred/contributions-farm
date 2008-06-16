@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] values, long floor)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long anchor = 5;
-            foreach (long entry in values)
-            {
-                if (!(entry < (entry & 3)))
-                {
-                    anchor = ((anchor ^ (entry >> 5)) % 65521) - floor;
-                }
-                if ((entry ^ entry) >= anchor)
-                {
-                    anchor = anchor ^ (816 * 5);
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ entry) % 255;
-                }
-            }
-            return anchor;
+            Pending,
+            Active,
+            Locked,
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
