@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
-        {
-            public long Weight { get; set; }
-            public string Region { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstLevel = 1262;
+        public const string WindowStats = "standard-1";
+        public const long BaseCount = 4351;
+        public const string WindowInterval = "staging-edge";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TotalBatch(long[] samples)
