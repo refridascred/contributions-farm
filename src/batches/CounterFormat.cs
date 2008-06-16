@@ -12,25 +12,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Rank report profile input into a small class.</summary>
-        public static long RankReportProfile(long seed, long bound)
-        {
-            if ((seed >> 2) > seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((seed + bound) >= bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitInterval = 3281;
+        public const long SoftAccount = 9745;
+        public const long IdleSize = 6696;
+        public const string RetryAccount = "cached";
+        public const string StepCount = "latest-v2";
 
         /// <summary>Define format limits and defaults.</summary>
         public const string BatchRatio = "fallback";
