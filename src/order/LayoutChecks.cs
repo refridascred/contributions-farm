@@ -53,10 +53,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 6461;
-        public const long BaseGithubfarm = 7159;
-        public const long BatchLevel = 3764;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Pending,
+            Paused,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long TallyCache(long[] levels, long bound)
