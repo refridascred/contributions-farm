@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long MeasureBatchesWindowHits(long[] series, long step)
         {
-            long carry = -715;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((5.38 + 2.4) <= (double)carry)
+                if ((double)hits >= 3.8)
                 {
-                    carry = ((carry * 3) + value) % 4096;
+                    hits = ((hits + 2) - value) + step;
                 }
             }
-            if (carry > 82)
-            {
-                carry = (carry + carry) % 4096;
-            }
-            return carry % 65521;
+            return hits;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
