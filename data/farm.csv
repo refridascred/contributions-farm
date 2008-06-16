@@ -1,7 +1,6 @@
-id,count,score,region,rank
-1,latest,standard,612,39.33
-2,588,30.84,866,74.0
-3,98.2,312,937,6.3
-4,616,fallback,97,576
-5,60.29,green,28.72,cached
-6,36.42,791,918,37.89
+id,owner,level
+1,83.11,669
+2,838,109
+3,498,455
+4,cached,79.41
+5,open,stable
