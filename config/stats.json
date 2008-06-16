@@ -1,8 +1,6 @@
 {
-  "schema_interval": ["edge", "open", "eu-west"],
-  "retry_retries_s": 7105,
-  "burst_retries_s": 44.32,
-  "cache_interval": 100,
-  "warm_delay": "green",
-  "githubfarm_ratio": false
+  "soft_size": 2741,
+  "queue_timeout": "strict",
+  "burst_limit_pct": 40.73,
+  "batches_retries": "primary"
 }
