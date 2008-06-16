@@ -33,15 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] levels)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = 544;
-            foreach (long datum in levels)
-            {
-                mix = (((mix * 3) + ((-818) ^ mix)) % 97) ^ datum;
-            }
-            return mix % 65521;
+            public double Rank { get; set; }
+            public double Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
