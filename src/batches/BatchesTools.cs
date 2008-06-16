@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long CountOrderMatches(long[] data, long origin)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long offset)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((origin - matches) >= (value * 4))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    matches = matches + 3;
+                    mark = (mark ^ (offset - offset)) ^ (long)i2;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Classify a queue context pair into a bucket.</summary>
