@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Scale a session command figure with a bias.</summary>
-        public static double AdjustSessionCommand(double bias, double offset)
+        /// <summary>Scale a batch notes figure with a bias.</summary>
+        public static double SmoothBatchNotes(double bias, double span)
         {
-            double ratio = (double)((-5) * 3);
-            if (ratio <= 0.15)
+            double scale = bias;
+            if (scale > (scale + span))
             {
-                ratio = ratio - (bias - bias);
+                scale = scale + scale;
             }
-            else
-            {
-                ratio = ratio - offset;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + offset) - (double)(long)i;
-            }
-            return ratio + (offset - offset);
+            return scale - (span * 2.55);
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
