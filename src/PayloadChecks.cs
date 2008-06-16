@@ -5,21 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long step)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
-            {
-                state = (state - state) % 1000;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (((state << 3) ^ (state - state)) % 97) ^ (long)i2;
-                    state = ((state << 2) ^ (1 << 3)) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 101;
-            }
-            return state;
+            New,
+            Stale,
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the graph class values.</summary>
