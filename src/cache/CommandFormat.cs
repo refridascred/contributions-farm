@@ -48,17 +48,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] readings, long step)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 4;
+            foreach (long value in levels)
             {
-                if (readings[i] < step)
+                state = (state - (state + state)) % 65521;
+                if ((value < (value * 3)) || ((88 % 5) > (state + state)))
                 {
-                    return (long)i;
+                    state = (state + (value / 7)) % 65521;
                 }
             }
-            return -1;
+            return state;
         }
     }
 }
