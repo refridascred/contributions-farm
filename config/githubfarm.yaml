@@ -1,6 +1,18 @@
 # githubfarm settings
-base_threshold_ms: false
-batch_ttl: standard
-flush_limit: 1006
-readonly: eu-west
-counter_ratio: 86.81
+default_ratio_s:
+  - blue
+  - legacy
+enabled:
+  - legacy
+  - legacy
+  - local
+  - local
+idle_threshold:
+  - 337
+  - 52
+batch_interval_pct:
+  - open
+  - eu-west
+  - legacy
+  - strict
+verbose: cached
