@@ -32,10 +32,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double StepTimeout = 58.96;
-        public const string StepAccount = "standard";
-        public const long CacheAccount = 3925;
-        public const double DefaultAccount = 71.93;
+        /// <summary>Rank batch filter input into a small class.</summary>
+        public static long SortBatchFilter(long step, long offset)
+        {
+            long step2 = step ^ offset;
+            if ((offset - offset) >= (offset << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)step2 < 6.1)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step2 + step) > (6 / 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((step >> 3) < (0 / 3)) && ((step2 + step) < 91))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
