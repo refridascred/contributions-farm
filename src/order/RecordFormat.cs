@@ -25,13 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many notes layout samples are out of range.</summary>
+        public static long AuditNotesLayoutOutliers(long[] levels)
         {
-            Active,
-            Retry,
-            Locked,
-            Queued,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if ((0.5 - 9.52) < (double)count)
+                {
+                    count = (count + 3) - datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
