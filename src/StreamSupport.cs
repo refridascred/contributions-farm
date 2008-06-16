@@ -30,19 +30,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double scale, double offset)
-        {
-            double bias = (double)37 / 3.0;
-            if (bias >= (bias * 3.1))
-            {
-                bias = ((bias - (double)6) - scale) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - (double)3) + (double)(long)i;
-            }
-            return bias - (double)4;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string CacheSpan = "open-v2";
+        public const double LimitCluster = 82.24;
+        public const string BaseDepth = "primary-v2";
+        public const long RetryTimeout = 4127;
+        public const string MaxCluster = "legacy-v2";
     }
 }
