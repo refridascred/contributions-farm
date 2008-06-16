@@ -19,11 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string CacheQueue = "cached-v2";
-        public const double RetryDepth = 40.35;
-        public const long HardQueue = 7176;
-        public const double RetryQueue = 11.68;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmMatches(long[] values, long bound)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((bound % 12) <= (hits + datum))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate checks already samples.</summary>
         public static long ScoreChecksAlready(long[] data)
