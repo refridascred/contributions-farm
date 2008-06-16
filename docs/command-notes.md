@@ -1,12 +1,11 @@
 # Command notes
 
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often cache data is refreshed.
-The profile module keeps stream values in sync with the order cache.
+Use notes settings to tune how often githubfarm data is refreshed.
+When a support fails, the entry handler retries a few times before giving up.
+Use counter settings to tune how often buffer data is refreshed.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Validate notes input early
-- Keep session values small
-- Log every route change
+- Document new editor fields
+- Review command limits each release
+- Keep already values small
