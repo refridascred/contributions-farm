@@ -1,7 +1,5 @@
 {
-  "verbose": 88.94,
-  "readonly": "eu-west",
-  "enabled": false,
-  "warm_interval_count": false,
-  "retry_ttl_count": "open"
+  "cache_window": true,
+  "base_ttl_pct": ["cached", "open", "open", "legacy"],
+  "soft_timeout_ms": 250
 }
