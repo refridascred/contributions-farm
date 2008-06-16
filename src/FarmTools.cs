@@ -22,14 +22,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] readings, long offset)
         {
-            Ready,
-            Closed,
-            New,
-            Dropped,
-            Retry,
+            long mark = 36;
+            foreach (long reading in readings)
+            {
+                if (((reading + reading) > (reading << 3)) && ((reading * 5) == (reading % 97)))
+                {
+                    mark = (mark - 9) % 4096;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (offset ^ reading)) % 1000;
+                }
+                if (((-255) + offset) == (offset + offset))
+                {
+                    mark = (mark - 7) % 255;
+                }
+                if (offset > (9 - reading))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Measure how many support batch samples are out of range.</summary>
