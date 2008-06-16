@@ -1,12 +1,6 @@
 {
-  "batch_interval": true,
-  "soft_window_s": 789,
-  "flush_retries": false,
-  "min_retries_pct": {
-    "session_size": 30,
-    "route_size": "strict",
-    "persist": "fallback",
-    "notes_ttl": 65.4
-  },
-  "sync_ratio_pct": 1.21
+  "readonly": 42.29,
+  "compress": ["edge", "primary"],
+  "warm_size_s": "edge",
+  "burst_window_s": "strict"
 }
