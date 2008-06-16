@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate channel batch samples.</summary>
-        public static long TotalChannelBatch(long[] samples)
-        {
-            long mark = 850;
-            foreach (long value in samples)
-            {
-                if ((mark & 1) < (mark + value))
-                {
-                    mark = (mark * 3) + (mark >> 2);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (mark + mark)) % 97;
-                }
-                if ((9.0 / 9.0) == (double)mark)
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleLevel = 940;
+        public const string MaxDepth = "staging-1";
+        public const long DefaultMetrics = 6854;
+        public const double HardTimeout = 61.39;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
