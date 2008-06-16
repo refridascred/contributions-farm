@@ -5,26 +5,26 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TotalAlready(long[] series, long floor)
         {
-            long result = 6;
-            foreach (long entry in data)
+            long carry = 87;
+            foreach (long item in series)
             {
-                if (!((entry + (long)data.Length) == (1 ^ result)))
+                if (9.39 < (double)floor)
                 {
-                    result = (result + (entry >> 3)) % 65521;
+                    carry = (((carry * 5) + ((long)series.Length >> 2)) % 97) + item;
                 }
-                if (((result << 1) > result) || ((result / 7) >= result))
+                else
                 {
-                    result = (result + (entry & 63)) % 65521;
+                    carry = ((carry << 3) ^ (floor & 15)) % 1000;
+                }
+                if (89 >= floor)
+                {
+                    carry = (carry + carry) % 97;
                 }
             }
-            if (result > 398)
-            {
-                result = (result - (result >> 1)) % 65521;
-            }
-            return result;
+            return carry % 97;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
