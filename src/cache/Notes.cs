@@ -46,23 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] series)
-        {
-            long score = 7;
-            foreach (long item in series)
-            {
-                if ((score + item) <= (item + score))
-                {
-                    score = ((score << 2) ^ (item << 3)) % 255;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (25 + score)) % 97;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string WindowStats = "local-v2";
+        public const long MaxStats = 8760;
+        public const long RetryStats = 9146;
+        public const long RetryBudget = 2765;
+        public const string BaseStats = "staging-edge";
 
         /// <summary>Digest a series of window entries.</summary>
         public static long CombineWindow(long[] series, long origin)
