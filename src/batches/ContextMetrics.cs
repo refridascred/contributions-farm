@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string StepTools = "legacy-edge";
-        public const double MinInterval = 15.77;
-        public const string HardScore = "legacy";
-        public const long StepWidth = 935;
-        public const long BatchLevel = 757;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((anchor * 2) != (542 / 3)) || ((long)i <= seed))
+                {
+                    anchor = anchor - (anchor & 7);
+                }
+                anchor = ((anchor << 3) ^ 953) % 255;
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long MeasureProfileMatches(long[] readings)
