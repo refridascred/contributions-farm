@@ -45,15 +45,21 @@ namespace Common.Utilities
         public const long MaxDepth = 9480;
         public const long MinLevel = 7637;
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] samples, long offset)
+        /// <summary>Match up already stream samples.</summary>
+        public static long CompareAlreadyStreamCount(long[] readings)
         {
-            long state = 80;
-            foreach (long datum in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (((state << 2) ^ (state - datum)) % 97) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state % 4096;
+            return matches;
         }
     }
 }
