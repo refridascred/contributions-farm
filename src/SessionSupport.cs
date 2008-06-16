@@ -40,12 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public bool Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
