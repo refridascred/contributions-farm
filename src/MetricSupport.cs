@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchLevel = 51;
-        public const long WindowInterval = 9711;
-        public const string MaxTimeout = "local-edge";
-        public const double CacheFactor = 34.79;
-        public const string WindowSupport = "standard-v2";
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
+        {
+            Locked,
+            Done,
+            Draft,
+            Retry,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long MaxBudget = 4683;
