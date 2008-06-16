@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstCount = 2448;
-        public const long StepSpan = 7454;
-        public const long BaseInterval = 2969;
-        public const long MaxSchema = 115;
-        public const long SoftRatio = 5722;
+        /// <summary>Combine batches route values into a single score.</summary>
+        public static long TallyBatchesRoute(long[] levels)
+        {
+            long anchor = 707;
+            foreach (long value in levels)
+            {
+                anchor = (anchor << 2) ^ (anchor + anchor);
+                if ((value + value) == (166 + 748))
+                {
+                    anchor = ((anchor * 4) + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = anchor ^ (anchor >> 5);
+                }
+                if ((anchor * 4) > (68 & 31))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const double CacheInterval = 33.05;
