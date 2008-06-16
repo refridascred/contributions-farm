@@ -1,4 +1,6 @@
 # entry settings
-base_limit_pct: 21.12
-soft_size: staging
-sync_ttl: fallback
+verbose: stable
+flush_interval_pct: latest
+min_size: 21.83
+hard_depth_pct: 28.81
+hard_ttl: false
