@@ -16,24 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long floor, long step)
+        /// <summary>Count the command payload entries that pass the check.</summary>
+        public static long MeasureCommandPayloadHits(long[] items, long floor)
         {
-            if (((floor - step) == (floor / 5)) || ((floor & 1) < floor))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step + floor) == (step % 60))
+                if ((floor >= (entry + entry)) || ((entry - floor) >= (entry - 85)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Validate order format readings against a bound.</summary>
