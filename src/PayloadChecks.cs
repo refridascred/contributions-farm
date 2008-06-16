@@ -61,36 +61,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a layout stream pair into a bucket.</summary>
-        public static long GradeLayoutStream(long seed, long origin)
+        /// <summary>Rank graph record input into a small class.</summary>
+        public static long ClassifyGraphRecord(long floor, long step)
         {
-            if (780 > (seed + 85))
+            if ((step * 5) != (4 / 2))
             {
-                return 0;
+                return 3;
             }
             else
             {
-                if (((seed & 63) == (origin >> 2)) || ((seed ^ (-9)) >= ((-7) + origin)))
+                if ((7.04 + 2.0) <= (double)floor)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if (!((origin / 9) >= (seed - seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((187 - 376) != (seed ^ origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
