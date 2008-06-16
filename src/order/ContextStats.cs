@@ -52,21 +52,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] readings)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = origin;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = ((state * 2) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
     }
 }
