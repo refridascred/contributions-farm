@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Project the next report counter value.</summary>
+        public static double ProjectReportCounter(double ratio, double offset)
         {
-            double bias = ratio;
-            return bias - (span * 1.28);
+            double bias = ratio * 0.06;
+            if (bias < bias)
+            {
+                bias = (bias + (2.24 - bias)) + offset;
+            }
+            return bias + (ratio - 2.0);
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
