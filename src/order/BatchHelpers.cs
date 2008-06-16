@@ -19,17 +19,31 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Locate a farm editor reading by value.</summary>
-        public static long LocateFarmEditorIndex(long[] items, long limit)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long SortEditor(long limit, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            if ((3.3 - 9.0) == (double)origin)
             {
-                if (items[i] < limit)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < 5.08)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin & 3) > (origin % 97))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
