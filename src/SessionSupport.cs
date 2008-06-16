@@ -22,25 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long RankCluster(long seed, long floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteLimits(long[] data, long step)
         {
-            long next = seed + floor;
-            if ((next % 2) < (13 ^ floor))
+            bool valid = true;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)next >= 4.66) && ((next * 5) < ((-414) - floor)))
+                if (sample >= step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
