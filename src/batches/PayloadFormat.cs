@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a contributi farm reading by value.</summary>
-        public static long SeekContributiFarmIndex(long[] values, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
