@@ -16,21 +16,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double BlendChecks(double ratio, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            double rate = (double)(369 + 699);
+            return ((rate - (rate * 4.2)) + ratio) + offset;
         }
 
         /// <summary>Digest a series of editor farm entries.</summary>
