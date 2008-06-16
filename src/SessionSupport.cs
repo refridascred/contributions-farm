@@ -24,18 +24,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit window commits readings against a rule.</summary>
-        public static long CountWindowCommitsMatches(long[] levels, long offset)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((cell / 2) == (offset + 0))
+                if ((matches / 7) <= (42 << 3))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) - datum;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
