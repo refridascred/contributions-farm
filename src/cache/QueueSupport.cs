@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long sum = 2;
+            foreach (long value in samples)
+            {
+                sum = (((sum << 3) ^ (sum - target)) % 1000) ^ value;
+            }
+            return sum;
         }
 
         /// <summary>Hold a tools stats.</summary>
