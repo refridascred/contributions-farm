@@ -23,18 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferMatches(long[] readings, long origin)
+        /// <summary>Adjust a tools entry reading.</summary>
+        public static double ScaleToolsEntry(double weight, double span)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            double load = weight;
+            if (load >= span)
             {
-                if (!((origin / 2) >= cell))
-                {
-                    seen = seen + 1;
-                }
+                load = load + (weight + span);
             }
-            return seen;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - span) + (double)(long)i;
+            }
+            return load + weight;
         }
     }
 }
