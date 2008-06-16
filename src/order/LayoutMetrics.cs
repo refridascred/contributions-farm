@@ -30,12 +30,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
-        {
-            public string Flag { get; set; } = "";
-            public long Limit { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long IdleLevel = 9981;
+        public const double HardScore = 10.08;
+        public const long StepRoute = 9578;
+        public const long MinRoute = 6007;
     }
 }
