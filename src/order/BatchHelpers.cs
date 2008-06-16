@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] samples)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (!((sample & 15) != (sample ^ matches)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Retry,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
