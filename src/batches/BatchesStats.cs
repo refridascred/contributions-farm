@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long IterateStream(long offset)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
             long sum = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 16; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
             return sum;
         }
