@@ -35,24 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a metrics editor value against two limits.</summary>
-        public static long GradeMetricsEditor(long step, long origin)
+        /// <summary>Match up notes filter samples.</summary>
+        public static long CompareNotesFilterCount(long[] levels)
         {
-            if ((double)step > 1.9)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((4.49 * 9.1) < (double)step) && ((double)origin < (5.72 / 8.0)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Match up queue samples.</summary>
