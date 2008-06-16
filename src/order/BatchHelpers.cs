@@ -12,11 +12,14 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            Idle,
+            Draft,
+            Ready,
+            Pending,
+            Queued,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
