@@ -62,23 +62,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] items, long origin)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
         {
-            long result = 724;
-            foreach (long item in items)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = (result ^ (origin << 3)) ^ item;
-                if ((result >> 5) <= (origin / 6))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = (result * 3) + (result + origin);
-                }
-                else
-                {
-                    result = result + origin;
+                    if ((readings[i] + readings[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return result;
+            return count;
         }
     }
 }
