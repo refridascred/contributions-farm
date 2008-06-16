@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] samples)
+        /// <summary>Find the first order session entry that matches the target.</summary>
+        public static long LocateOrderSessionIndex(long[] series, long bound)
         {
-            long score = -727;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)reading != (4.3 - 3.5))
+                if (series[i] == bound)
                 {
-                    score = (score - (reading << 1)) % 255;
-                }
-                else
-                {
-                    score = (score ^ score) % 255;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Classify a metric pair into a bucket.</summary>
