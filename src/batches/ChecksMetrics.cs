@@ -53,22 +53,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate cache buffer samples.</summary>
-        public static long FoldCacheBuffer(long[] series, long offset)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] values, long origin)
         {
-            long mark = 8;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 6; i++)
+                if (item <= origin)
                 {
-                    mark = (((mark - (5 + mark)) % 4096) ^ (long)i) + entry;
-                }
-                if (((-506) + 0) == (offset + offset))
-                {
-                    mark = (mark * 2) + (offset >> 5);
+                    valid = false;
+                    break;
                 }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Look up the position of a buffer farm sample.</summary>
