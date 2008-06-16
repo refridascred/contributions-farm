@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long step)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long score = step;
+            for (int i = 0; i < 23; i++)
             {
-                carry = carry + (carry / 4);
-                if (!(((carry >> 5) >= (carry - 72)) || ((2.04 / 6.0) < (double)(long)i)))
-                {
-                    carry = (carry - offset) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
