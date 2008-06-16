@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long FindCommitsIndex(long[] readings, long step)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long limit, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((-96) < (seed + seed))
             {
-                if ((readings[i] < step) && ((readings[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if ((double)limit <= (8.4 / 7.0))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((4.6 / 8.0) != (double)limit)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
