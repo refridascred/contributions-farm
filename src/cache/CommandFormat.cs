@@ -19,20 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long DeriveOrder(long step)
+        /// <summary>Scale a support token figure with a bias.</summary>
+        public static double ProjectSupportToken(double weight, double floor)
         {
-            long score = step;
-            for (int i = 0; i < 22; i++)
+            double mean = 3.62;
+            if (mean >= mean)
             {
-                if (!((score ^ 61) != (score >> 1)))
-                {
-                    score = (score ^ (step + (-236))) % 255;
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 4093;
+                mean = (mean + (double)19) - weight;
             }
-            return score;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean + (double)95) - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
