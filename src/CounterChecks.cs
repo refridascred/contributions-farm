@@ -65,11 +65,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next graph tools value.</summary>
-        public static double ProjectGraphTools(double ratio, double span)
+        /// <summary>Count metrics buffer pairs that satisfy a relation.</summary>
+        public static long PairMetricsBufferCount(long[] readings)
         {
-            double bias = ratio;
-            return (bias - bias) + span;
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the batch level values.</summary>
