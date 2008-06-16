@@ -25,15 +25,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long offset)
+        /// <summary>Project the next stats session value.</summary>
+        public static double ScaleStatsSession(double gain, double floor)
         {
-            long anchor = offset;
-            for (int i = 0; i < 13; i++)
+            double load = (double)(29 - 30);
+            if (load < gain)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                load = load + (2.0 - 1.38);
             }
-            return anchor;
+            return load + floor;
         }
     }
 }
