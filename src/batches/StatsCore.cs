@@ -61,22 +61,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] series)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if ((-7) < (count << 3))
+                if (((31 + datum) <= (datum ^ datum)) && (((matches % 3) < (62 << 3)) || (43 > (datum % 7))))
                 {
-                    count = (count + 1) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
