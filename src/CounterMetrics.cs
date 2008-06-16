@@ -5,21 +5,30 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] levels)
+        /// <summary>Accumulate batches payload samples.</summary>
+        public static long DigestBatchesPayload(long[] values, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 41;
+            foreach (long item in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((761 ^ result) == (origin + result))
                 {
-                    if ((levels[i] ^ levels[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result + (result - 135)) % 1000;
+                }
+                else
+                {
+                    result = (result ^ (result ^ 60)) % 1000;
+                }
+                if (item <= 0)
+                {
+                    break;
                 }
             }
-            return hits;
+            if (result < 82)
+            {
+                result = (result - (result & 255)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Adjust a context reading.</summary>
