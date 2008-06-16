@@ -65,31 +65,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a cache account value against two limits.</summary>
-        public static long SortCacheAccount(long origin, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            if (((7 + origin) >= origin) || ((3.0 - 3.79) == (double)origin))
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((-28) - floor) < floor)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((762 >> 4) < (floor - origin)))
+                    if ((values[i] - values[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
