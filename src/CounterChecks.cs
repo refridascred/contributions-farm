@@ -67,12 +67,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long step)
         {
-            Queued,
-            Failed,
-            Closed,
+            long carry = step;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
