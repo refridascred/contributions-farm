@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            Failed,
-            Dropped,
-            New,
-            Idle,
+            public string Stamp { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Accumulate schema support samples.</summary>
