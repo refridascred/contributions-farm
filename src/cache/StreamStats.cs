@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long BaseTimeout = 1275;
         public const string CachePayload = "local-v2";
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long CombineQueue(long[] data, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TotalMetric(long[] items)
         {
-            long carry = 65;
-            foreach (long cell in data)
+            long mix = 6;
+            foreach (long item in items)
             {
-                if ((12 & 1) < (cell << 1))
+                if ((item + mix) != (181 & 15))
                 {
-                    carry = carry ^ (bound + cell);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (long)data.Length) % 65521;
+                    mix = mix + (mix - item);
                 }
             }
-            return carry;
+            if (mix < 80)
+            {
+                mix = (mix ^ mix) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph level values.</summary>
