@@ -16,13 +16,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Locate a farm order reading by value.</summary>
+        public static long SeekFarmOrderIndex(long[] series, long limit)
         {
-            public string Total { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
