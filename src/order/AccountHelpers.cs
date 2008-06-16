@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Blend two session format measurements.</summary>
+        public static double AdjustSessionFormat(double weight, double span)
         {
-            New,
-            Synced,
-            Retry,
-            Dropped,
+            double scale = (weight * 2.15) / 4.0;
+            if (scale < scale)
+            {
+                scale = scale + (double)25;
+            }
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = scale - (double)(long)i;
+            }
+            return scale + span;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
