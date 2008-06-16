@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowFactor = 29.11;
-        public const long MinScore = 2609;
-        public const long SoftContext = 359;
-        public const long RetryContext = 7404;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double BlendTools(double gain, double floor)
+        {
+            double weight = (double)(754 + (-896));
+            if (weight < (double)418)
+            {
+                weight = ((weight - (double)(-205)) - gain) + floor;
+            }
+            return weight - (weight / 7.0);
+        }
 
         /// <summary>Grade a graph value against two limits.</summary>
         public static long SortGraph(long step, long origin)
