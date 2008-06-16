@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Paused,
-            Stale,
-            Queued,
-            New,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitBudget = 5739;
+        public const string MinFilter = "cached";
+        public const string DefaultFilter = "primary-1";
 
         /// <summary>Describe the command mode values.</summary>
         public enum CommandMode
