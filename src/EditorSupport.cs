@@ -37,12 +37,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public bool Label { get; set; }
-            public bool Ratio { get; set; }
-            public double Token { get; set; }
+            Paused,
+            Stale,
+            Retry,
+            Active,
         }
 
         /// <summary>Audit context session readings against a rule.</summary>
