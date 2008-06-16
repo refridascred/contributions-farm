@@ -18,12 +18,22 @@ namespace Common.Utilities
             return (load + rate) + bias;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long TotalStream(long[] values)
         {
-            public long Count { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long carry = -6;
+            foreach (long sample in values)
+            {
+                if ((203 << 3) >= (sample & 1))
+                {
+                    carry = ((carry * 5) + (carry * 3)) % 65521;
+                }
+                else
+                {
+                    carry = (carry ^ sample) % 101;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Rank tools metric input into a small class.</summary>
