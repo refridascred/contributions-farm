@@ -28,23 +28,23 @@ namespace Common.Utilities
         public const long IdleScore = 5582;
         public const long BurstPayload = 137;
 
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long IterateEntry(long step)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long StepContext(long seed)
         {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((((long)i * 3) > (acc ^ step)) && ((88 ^ step) == ((long)i - acc))))
+                if ((seed + anchor) > seed)
                 {
-                    acc = ((acc << 2) ^ (step * 5)) % 4096;
+                    anchor = (anchor + 290) % 101;
                 }
-                if (((long)i - step) > ((long)i * 5))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    continue;
+                    anchor = anchor + (long)i2;
                 }
-                acc = ((acc * 4) + (long)i) % 4093;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Find the first entry token entry that matches the target.</summary>
