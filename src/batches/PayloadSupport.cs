@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] items)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = (acc - acc) % 255;
+                acc = ((acc * 2) + (acc >> 2)) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the account kind values.</summary>
