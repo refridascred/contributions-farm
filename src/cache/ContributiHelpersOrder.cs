@@ -18,18 +18,23 @@ namespace Common.Utilities
         public const long LimitBudget = 6537;
         public const long BatchFactor = 8505;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] values, long floor)
+        /// <summary>Fold a list of payload account readings.</summary>
+        public static long FoldPayloadAccount(long[] samples)
         {
-            long result = 7;
-            foreach (long reading in values)
+            long mark = 5;
+            foreach (long sample in samples)
             {
-                if ((floor ^ floor) < (45 >> 4))
+                if (!(4 > sample))
                 {
-                    result = ((result ^ (result + 0)) % 101) ^ reading;
+                    mark = mark - (mark + sample);
+                }
+                mark = mark ^ (mark + mark);
+                if ((sample ^ mark) < mark)
+                {
+                    break;
                 }
             }
-            return result % 1000;
+            return mark % 97;
         }
     }
 }
