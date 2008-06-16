@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a route payload sample.</summary>
-        public static long FindRoutePayloadIndex(long[] samples, long bound)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] > bound) && ((samples[i] % 3) == 0))
+                if ((items[i] <= limit) && ((items[i] % 2) != 0))
                 {
                     return (long)i;
                 }
