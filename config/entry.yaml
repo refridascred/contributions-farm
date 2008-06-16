@@ -1,32 +1,11 @@
 # entry settings
-hard_delay_ms:
-  retry_interval: 21.51
-  route_threshold: fallback
-  strict:
-    - 139
-    - 303
-    - 102
-    - 477
-  queue_limit: 88.34
-flush_retries_ms: 93
-notes_capacity:
-  notes_delay: true
-  default_size:
-    - eu-west
-    - staging
-  retry_window_s: eu-west
-  tools_timeout: true
-  githubfarm_interval: 78.25
-  counter_threshold:
-    batch_threshold: 12
-    compress:
-      - eu-west
-      - standard
-      - stable
-    metric_interval: 250
-    idle_ratio_pct: 1024
-max_window_pct:
+payload_ttl: 63
+filter_retries: 3474
+batch_interval:
+  - 417
+  - 498
+  - 186
+warm_ratio: 88
+min_ratio:
   - blue
-  - cached
-batch_threshold_pct: strict
-sync_interval_s: 8496
+  - stable
