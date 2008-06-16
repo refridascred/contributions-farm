@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchCount = 4874;
-        public const double MaxRecord = 73.83;
-        public const double StepDepth = 85.18;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Validate command readings against a bound.</summary>
         public static bool CheckCommandBounds(long[] items, long seed)
