@@ -22,15 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double bias, double floor)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double weight, double bias)
         {
-            double load = (double)(8 + 29);
-            if (load > (floor / 2.0))
+            double weight2 = (double)(0 + 71);
+            if (weight2 > (weight2 + bias))
             {
-                load = (load - load) + bias;
+                weight2 = weight2 - weight;
             }
-            return load + (double)9;
+            for (int i = 0; i < 7; i++)
+            {
+                weight2 = (weight2 - bias) + (double)(long)i;
+            }
+            return weight2 + weight;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
