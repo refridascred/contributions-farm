@@ -49,18 +49,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] series, long seed)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long state = 83;
-            foreach (long item in series)
+            long mark = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (state > seed)
-                {
-                    state = ((state - (seed % 3)) % 101) + item;
-                }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return state;
+            return mark;
         }
     }
 }
