@@ -24,13 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Dropped,
-            Ready,
-            Locked,
-            Retry,
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
