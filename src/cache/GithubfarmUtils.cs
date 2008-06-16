@@ -20,22 +20,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] values)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < (5 ^ count))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] - values[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate channel metrics readings against a bound.</summary>
