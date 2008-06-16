@@ -1,14 +1,11 @@
 # Command notes
 
-When a editor fails, the stats handler retries a few times before giving up.
-A session that stays idle for too long is moved to the buffer list.
-
-The stream helpers are pure functions, so they are safe to call from any thread.
-Keep route and githubfarm names short and lowercase.
-The queue module keeps record values in sync with the farm cache.
+Each farm is validated before it reaches the command queue.
+The report report groups every report by layout.
+The report module keeps layout values in sync with the buffer cache.
 
 ## Guidelines
 
-- Keep notes values small
-- Document new support fields
-- Validate metrics input early
+- Keep window values small
+- Review metric limits each release
+- Log every order change
