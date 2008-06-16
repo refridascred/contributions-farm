@@ -14,22 +14,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the payload stream entries that pass the check.</summary>
-        public static long MeasurePayloadStreamMatches(long[] levels, long step)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)tally <= (0.7 * 6.5))
-                {
-                    tally = ((tally + 2) - cell) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Idle,
+            Active,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Combine window values into a single score.</summary>
