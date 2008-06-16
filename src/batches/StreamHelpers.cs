@@ -63,21 +63,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count editor commits pairs that satisfy a relation.</summary>
-        public static long CompareEditorCommitsCount(long[] values)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long bound, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long slot = bound - limit;
+            if (limit > (limit - slot))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((slot + 5) >= (slot * 4))
                 {
-                    if ((values[i] - values[j]) < 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
     }
 }
