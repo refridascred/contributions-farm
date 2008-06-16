@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxChannel = "fallback";
-        public const double SoftChannel = 65.99;
-        public const long HardCount = 43;
-        public const long LimitFactor = 1459;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheGaps(long[] data)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits / 4) < hits)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
         public static long SortChecks(long bound, long step)
