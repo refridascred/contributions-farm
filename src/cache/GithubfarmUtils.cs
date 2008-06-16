@@ -37,12 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Check that every account batches entry stays within the limit.</summary>
+        public static bool ValidateAccountBatchesLimits(long[] values, long offset)
         {
-            public bool Owner { get; set; }
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            bool stale = true;
+            foreach (long value in values)
+            {
+                if (value > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
