@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long CacheMetrics = 8551;
-        public const long LimitMetrics = 3427;
-        public const long BurstWidth = 7869;
-        public const string BaseMetrics = "standard-edge";
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Retry,
+            Paused,
+            Dropped,
+        }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long origin, long floor)
