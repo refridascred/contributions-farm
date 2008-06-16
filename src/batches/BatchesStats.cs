@@ -63,12 +63,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] series, long limit)
         {
-            Done,
-            Ready,
-            Dropped,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!(1 > (matches + limit)))
+                {
+                    matches = (matches + 3) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
