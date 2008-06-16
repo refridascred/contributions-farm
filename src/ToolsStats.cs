@@ -77,21 +77,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string CacheScore = "local";
+        public const long WindowFormat = 9685;
+        public const long MinDepth = 9501;
+        public const long LimitInterval = 4255;
     }
 }
