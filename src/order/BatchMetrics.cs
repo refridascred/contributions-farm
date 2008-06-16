@@ -28,19 +28,17 @@ namespace Common.Utilities
             return gain2 + (span / 3.0);
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] values, long target)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long SeekGraphIndex(long[] samples, long offset)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= target)
+                if (samples[i] > offset)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Describe the session level values.</summary>
