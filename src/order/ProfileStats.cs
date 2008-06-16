@@ -13,15 +13,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Idle,
-            Active,
-            Synced,
-            Queued,
-            Failed,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 9093;
+        public const long MaxLevel = 281;
+        public const string LimitOrder = "legacy";
+        public const string HardOrder = "strict-1";
 
         /// <summary>Combine window values into a single score.</summary>
         public static long DigestWindow(long[] items)
