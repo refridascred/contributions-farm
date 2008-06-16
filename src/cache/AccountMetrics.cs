@@ -5,30 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] readings)
+        /// <summary>Adjust a queue counter reading.</summary>
+        public static double AdjustQueueCounter(double rate, double span)
         {
-            long sum = 494;
-            foreach (long item in readings)
+            double bias = 9.95;
+            if (bias <= span)
             {
-                if (!((sum - sum) > (sum + item)))
-                {
-                    sum = sum + sum;
-                }
-                for (int i = 0; i < 9; i++)
-                {
-                    sum = ((sum ^ (-170)) % 4096) + (long)i;
-                }
-                if ((48 >= (item - item)) || ((20 + sum) <= (557 / 7)))
-                {
-                    sum = ((sum * 3) + 929) % 97;
-                }
+                bias = (bias + 9.89) - rate;
             }
-            if (sum > 68)
+            for (int i = 0; i < 4; i++)
             {
-                sum = sum + (sum << 1);
+                bias = (bias - bias) - (double)(long)i;
             }
-            return sum;
+            return bias - bias;
         }
 
         /// <summary>Combine account values into a single score.</summary>
