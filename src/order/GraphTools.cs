@@ -33,19 +33,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every session stream entry stays within the limit.</summary>
-        public static bool VerifySessionStreamRange(long[] values, long limit)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long origin)
         {
-            bool found = true;
-            foreach (long cell in values)
+            long delta = step - origin;
+            if ((step << 1) <= (-924))
             {
-                if (cell <= limit)
+                return 7;
+            }
+            else
+            {
+                if (((delta - origin) > (42 - delta)) || ((delta ^ 9) >= delta))
                 {
-                    found = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if (((delta & 127) <= step) || ((69 ^ delta) >= (delta + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
