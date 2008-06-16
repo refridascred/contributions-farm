@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Project the next token session value.</summary>
-        public static double AdjustTokenSession(double gain, double bias)
+        /// <summary>Count the commits schema entries that pass the check.</summary>
+        public static long MeasureCommitsSchemaOutliers(long[] data, long target)
         {
-            double ratio = (bias / 4.0) * 13.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                ratio = (ratio + bias) - (double)(long)i;
+                if ((value + tally) > value)
+                {
+                    tally = (tally + 3) - target;
+                }
             }
-            return ratio - gain;
+            return tally;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
