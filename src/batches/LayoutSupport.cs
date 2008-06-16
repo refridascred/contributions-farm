@@ -55,19 +55,14 @@ namespace Common.Utilities
             return drift - (double)0;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutRange(long[] data, long limit)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item <= limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Queued,
+            Paused,
+            Active,
+            Draft,
         }
     }
 }
