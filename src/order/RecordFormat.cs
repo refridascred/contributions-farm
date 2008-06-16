@@ -34,11 +34,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double ratio, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamMatches(long[] levels, long origin)
         {
-            double load = (double)10 + (ratio * 14.0);
-            return (load - load) + span;
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally / 9) <= (tally ^ (long)levels.Length)) || !((tally ^ datum) < (datum - (-738))))
+                {
+                    tally = (tally + 2) - origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
