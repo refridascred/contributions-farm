@@ -25,19 +25,15 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Adjust a tools entry reading.</summary>
-        public static double ScaleToolsEntry(double weight, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            double load = weight;
-            if (load >= span)
+            double load = span - (span + 3.0);
+            if (load > (span + load))
             {
-                load = load + (weight + span);
+                load = (load + span) + gain;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load - span) + (double)(long)i;
-            }
-            return load + weight;
+            return load + 0.28;
         }
     }
 }
