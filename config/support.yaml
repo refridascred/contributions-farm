@@ -1,8 +1,6 @@
 # support settings
-sync_retries_pct:
-  hard_size_s: false
-  schema_delay: 15.68
-  graph_limit: 81.68
-max_timeout_s: 9000
-sync_ratio_pct: 96
-command_delay: staging
+base_ttl_s:
+  - 407
+  - 179
+stream_window: true
+warm_ttl: 6495
