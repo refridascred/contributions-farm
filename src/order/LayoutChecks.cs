@@ -53,18 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] levels, long seed)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (seed < (seed >> 4))
-                {
-                    hits = (hits + 1) + entry;
-                }
-            }
-            return hits;
+            public long Limit { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of cache readings.</summary>
