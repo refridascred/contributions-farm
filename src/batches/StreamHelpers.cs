@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long MinSize = 8132;
         public const long BaseSize = 2060;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            New,
-            Synced,
-            Queued,
-            Active,
-            Retry,
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count channel schema pairs that satisfy a relation.</summary>
