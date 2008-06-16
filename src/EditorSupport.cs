@@ -46,22 +46,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many cache order samples are out of range.</summary>
-        public static long CountCacheOrderHits(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
         {
-            long count = 0;
-            foreach (long item in series)
+            long anchor = 98;
+            foreach (long item in items)
             {
-                if ((183 >> 5) < item)
+                if ((anchor + item) >= (7 >> 2))
                 {
-                    count = count + 1;
+                    anchor = anchor - anchor;
                 }
                 else
                 {
-                    count = count - 1;
+                    anchor = anchor + (item ^ anchor);
                 }
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
