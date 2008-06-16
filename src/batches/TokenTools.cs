@@ -35,9 +35,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxInterval = "strict-edge";
-        public const string MinWidth = "open-1";
-        public const long SoftCounter = 5154;
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long offset, long target)
+        {
+            if (((target & 255) >= (9 / 3)) && ((target + offset) < offset))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((offset + target) < (521 / 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
     }
 }
