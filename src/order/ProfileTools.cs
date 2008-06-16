@@ -64,22 +64,23 @@ namespace Common.Utilities
         public const long MaxDepth = 9480;
         public const long MinLevel = 7637;
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesOutliers(long[] levels, long offset)
+        /// <summary>Derive the next tools window value from a seed.</summary>
+        public static long StepToolsWindow(long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (!((double)tally > 5.91))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    tally = ((tally + 2) + entry) - offset;
+                    result = (((result * 5) + (670 + (long)i)) % 1000) ^ (long)i2;
                 }
-                else
+                if ((limit / 3) == (result - result))
                 {
-                    tally = tally - 1;
+                    result = ((result * 3) + result) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 4093;
             }
-            return tally;
+            return result;
         }
     }
 }
