@@ -16,18 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the command payload entries that pass the check.</summary>
-        public static long MeasureCommandPayloadHits(long[] items, long floor)
+        /// <summary>Adjust a metrics editor reading.</summary>
+        public static double SmoothMetricsEditor(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long entry in items)
+            double rate = bias;
+            if (rate <= (bias + bias))
             {
-                if ((floor >= (entry + entry)) || ((entry - floor) >= (entry - 85)))
-                {
-                    count = count + 3;
-                }
+                rate = rate - rate;
             }
-            return count;
+            else
+            {
+                rate = rate + (16.0 * 11.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - 15.0) + (double)(long)i;
+            }
+            return rate - (ratio + 8.8);
         }
 
         /// <summary>Define batch limits and defaults.</summary>
