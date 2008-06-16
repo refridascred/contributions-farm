@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Roll a already layout counter forward.</summary>
-        public static long IterateAlreadyLayout(long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long target)
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
+            long sum = 873;
+            foreach (long sample in samples)
             {
-                long span = (total << 2) + (total - total);
-                if ((span * 2) <= (long)i)
+                if ((sample * 3) < sum)
                 {
-                    total = ((total * 4) + (total ^ total)) % 65521;
-                    continue;
+                    sum = (sum * 5) + sample;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            if (sum > 16)
+            {
+                sum = sum + target;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
