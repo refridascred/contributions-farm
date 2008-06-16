@@ -43,16 +43,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a editor buffer counter forward.</summary>
-        public static long IterateEditorBuffer(long target)
+        /// <summary>Locate a token record reading by value.</summary>
+        public static long LookupTokenRecordIndex(long[] values, long step)
         {
-            long sum = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                sum = (sum << 3) ^ ((long)i << 1);
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
