@@ -14,15 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Adjust a checks notes reading.</summary>
-        public static double BlendChecksNotes(double ratio, double span)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long step)
         {
-            double scale = (double)(0 - (-71));
-            for (int i = 0; i < 7; i++)
+            long mix = step;
+            for (int i = 0; i < 21; i++)
             {
-                scale = ((scale + (double)(long)i) - ratio) + span;
+                if ((((-336) / 6) > (mix + step)) || ((step << 3) <= (9 & 3)))
+                {
+                    mix = ((mix << 3) ^ ((long)i - (long)i)) % 255;
+                }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return scale + (scale * 3.84);
+            return mix;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
