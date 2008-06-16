@@ -84,25 +84,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long step, long origin)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long limit)
         {
-            long bound = step - origin;
-            if (((12.0 * 3.28) <= (double)origin) && ((step % 97) <= step))
+            long mix = limit;
+            for (int i = 0; i < 15; i++)
             {
-                return 6;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound << 3) <= origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mix;
         }
     }
 }
