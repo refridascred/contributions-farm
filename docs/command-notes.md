@@ -1,14 +1,12 @@
 # Command notes
 
-The token module keeps batches values in sync with the stream cache.
-The contributi report groups every contributi by payload.
-
-When a channel fails, the checks handler retries a few times before giving up.
-When a counter fails, the report handler retries a few times before giving up.
-A batches that stays idle for too long is moved to the notes list.
+A profile that stays idle for too long is moved to the filter list.
+Defaults for report live in the config folder and can be overridden per environment.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new token fields
-- Validate layout input early
-- Review notes limits each release
+- Review profile limits each release
+- Keep tools values small
+- Prefer schema defaults
+- Log every graph change
