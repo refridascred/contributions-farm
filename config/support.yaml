@@ -1,7 +1,6 @@
 # support settings
-cache_ratio: 89
-poll_timeout_count: legacy
-dry_run:
-  - 119
-  - 300
-  - 497
+retry_retries: 92
+hard_interval_pct: 30
+format_capacity: false
+flush_retries_ms: false
+soft_size_ms: 60
