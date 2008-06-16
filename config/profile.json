@@ -1,18 +1,12 @@
 {
-  "strict": "local",
-  "stats_limit": 39.65,
-  "soft_size": 31.62,
-  "default_depth_pct": 98,
-  "audit": {
-    "compress": {
-      "readonly": "latest",
-      "batches_capacity": "local",
-      "strict": [80, 303],
-      "audit": 7,
-      "cache_timeout_s": "open"
-    },
-    "githubfarm_ratio": "eu-west",
-    "poll_ratio_pct": true
+  "idle_delay_ms": {
+    "notes_retries": false,
+    "verbose": true,
+    "dry_run": "edge"
   },
-  "burst_limit_ms": 90
+  "persist": "stable",
+  "readonly": "edge",
+  "retry_timeout_s": 100,
+  "poll_threshold_pct": "latest",
+  "default_limit": 5760
 }
