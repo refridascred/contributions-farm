@@ -1,10 +1,11 @@
 # Command notes
 
-The layout report groups every cache by payload.
-The filter report groups every layout by channel.
+Each commits is validated before it reaches the report queue.
+The counter module keeps account values in sync with the metrics cache.
 
 ## Guidelines
 
-- Log every record change
-- Review report limits each release
-- Keep payload values small
+- Validate commits input early
+- Document new batch fields
+- Review cluster limits each release
+- Log every commits change
