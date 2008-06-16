@@ -62,20 +62,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long WeighCounter(long[] series, long limit)
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long TotalSupportFilter(long[] samples, long origin)
         {
-            long acc = 150;
-            foreach (long value in series)
+            long result = 8;
+            foreach (long sample in samples)
             {
-                acc = ((acc + value) % 255) - limit;
-                acc = (acc << 3) ^ ((long)series.Length * 3);
-                if (((double)acc > (7.65 + 1.7)) || ((28 & 63) <= acc))
+                if ((-754) < origin)
                 {
-                    break;
+                    result = (result << 2) ^ (sample + 902);
                 }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Combine checks profile values into a single score.</summary>
