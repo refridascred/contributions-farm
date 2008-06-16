@@ -56,19 +56,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ScaleSchema(double weight, double offset)
+        /// <summary>Accumulate contributi context samples.</summary>
+        public static long DigestContributiContext(long[] data)
         {
-            double drift = weight;
-            if (drift >= drift)
+            long carry = 434;
+            foreach (long item in data)
             {
-                drift = drift - weight;
+                carry = carry ^ (item >> 5);
+                if ((double)carry > (double)item)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift + offset;
+            return carry;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
