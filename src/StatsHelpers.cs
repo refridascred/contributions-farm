@@ -32,13 +32,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Count the record channel entries that pass the check.</summary>
+        public static long AuditRecordChannelMatches(long[] readings, long bound)
         {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Owner { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (1.75 < (double)sample)
+                {
+                    count = (count + 3) - bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
