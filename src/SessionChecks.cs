@@ -35,22 +35,30 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long offset, long floor)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long ClassifyWindow(long floor, long origin)
         {
-            if ((floor + offset) >= (floor & 1))
+            long offset = floor + origin;
+            if ((offset / 9) >= (floor + offset))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((offset - floor) >= floor)
+                if ((origin >> 4) <= floor)
                 {
-                    return 7;
+                    return 1;
                 }
                 else
                 {
-                    return 2;
+                    if (((double)floor > (1.42 - 5.77)) && ((origin >> 5) != (974 >> 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
