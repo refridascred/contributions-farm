@@ -50,39 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long ClassifyBatches(long step, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long cur = step + limit;
-            if (step > (step + 30))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((9.5 + 8.01) < (double)cur)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step <= 0.06)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit == (double)step)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public bool Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
