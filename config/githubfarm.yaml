@@ -1,39 +1,4 @@
 # githubfarm settings
-sync_timeout:
-  min_depth:
-    - edge
-    - legacy
-  batch_limit: primary
-  metric_threshold: 65.48
-  batch_ratio_s: false
-  strict: 7.09
-  readonly:
-    compress: 5822
-    hard_timeout_s: 30
-    soft_ratio_count: 6503
-    persist: true
-    max_ratio: true
-    report_size: false
-context_delay: green
-stream_window:
-  - 138
-  - 491
-  - 84
-dry_run:
-  cache_window:
-    flush_depth: 65.85
-    window_ttl:
-      - legacy
-      - stable
-    flush_ratio: standard
-    commits_delay:
-      - edge
-      - standard
-  retry_threshold_pct: staging
-  min_limit_pct: legacy
-  persist: primary
-idle_interval:
-  persist: true
-  audit: 3858
-  base_delay_s: false
-  cluster_delay: local
+poll_capacity_s: true
+compress: 7991
+burst_capacity_count: 500
