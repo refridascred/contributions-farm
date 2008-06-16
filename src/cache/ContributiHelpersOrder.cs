@@ -33,15 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long target)
+        /// <summary>Derive the next channel contributi value from a seed.</summary>
+        public static long StepChannelContributi(long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 4; i++)
+            long result = floor;
+            for (int i = 0; i < 11; i++)
             {
-                anchor = ((anchor * 2) + (long)i) % 97;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
     }
 }
