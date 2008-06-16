@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const double WindowEntry = 41.51;
         public const long DefaultEntry = 4764;
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] series)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double scale, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale;
+            if (bias > 5.0)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - offset;
             }
-            return tally;
+            return bias + (scale / 2.0);
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
