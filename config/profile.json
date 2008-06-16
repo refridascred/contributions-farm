@@ -1,8 +1,6 @@
 {
-  "soft_size": 3241,
-  "poll_window_s": [344, 41],
-  "poll_delay_pct": "strict",
-  "githubfarm_capacity": "staging",
+  "base_capacity": false,
   "compress": false,
-  "cache_delay": 2738
+  "base_depth_s": 500,
+  "warm_size": 90.57
 }
