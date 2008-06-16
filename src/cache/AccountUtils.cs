@@ -32,22 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many payload window samples are out of range.</summary>
-        public static long MeasurePayloadWindowHits(long[] samples)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((((item ^ seen) >= (item >> 1)) && ((8.5 / 6.0) < (double)item)) || ((double)seen > (1.42 / 8.0)))
+                if (samples[i] <= floor)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
