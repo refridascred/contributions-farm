@@ -34,18 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account context readings against a rule.</summary>
-        public static long AuditAccountContextHits(long[] values, long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double ProjectEditor(double weight, double floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double ratio = (weight * 5.42) / 9.0;
+            if (ratio < (double)124)
             {
-                if (!((item + 5) >= (item << 3)) || ((item + (-7)) > (item & 127)))
-                {
-                    hits = (hits + 2) - offset;
-                }
+                ratio = ratio + weight;
             }
-            return hits;
+            else
+            {
+                ratio = ratio + (floor + weight);
+            }
+            return ratio + (1.8 + weight);
         }
 
         /// <summary>Digest a series of githubfarm already entries.</summary>
