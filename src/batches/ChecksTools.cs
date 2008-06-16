@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Locate a queue window reading by value.</summary>
-        public static long LookupQueueWindowIndex(long[] values, long seed)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] > seed) && ((values[i] % 3) != 0))
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
