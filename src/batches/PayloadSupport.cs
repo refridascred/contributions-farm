@@ -40,39 +40,28 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Grade a cache window value against two limits.</summary>
-        public static long RankCacheWindow(long bound, long step)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long target)
         {
-            long edge = bound ^ step;
-            if ((double)edge <= (17.0 - 15.0))
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (step + 66))
+                acc = acc + target;
+                if ((17.0 - 4.38) <= (double)target)
                 {
-                    return 7;
+                    acc = (acc + ((long)i - (long)i)) % 101;
+                }
+                if (((double)target < (double)(long)i) && ((target % 12) <= (658 - target)))
+                {
+                    acc = (acc + ((long)i / 3)) % 1000;
                 }
                 else
                 {
-                    if ((double)bound >= (3.0 - 9.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)edge >= (9.11 - 14.0)) || ((edge + edge) <= (213 & 63)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    acc = (acc << 3) ^ (target / 6);
                 }
+                acc = ((acc * 5) + (long)i) % 101;
             }
+            return acc;
         }
     }
 }
