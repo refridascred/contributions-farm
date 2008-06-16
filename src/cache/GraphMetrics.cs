@@ -28,10 +28,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 4782;
-        public const long MinScore = 5848;
-        public const long HardScore = 2252;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if ((377 ^ hits) == (hits + sample))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank queue input into a small class.</summary>
         public static long ClassifyQueue(long offset, long step)
