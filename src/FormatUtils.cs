@@ -70,31 +70,17 @@ namespace Common.Utilities
             return drift + (double)213;
         }
 
-        /// <summary>Rank window metric input into a small class.</summary>
-        public static long ClassifyWindowMetric(long step, long step2)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] samples)
         {
-            if (step >= (step2 / 7))
+            long anchor = 20;
+            foreach (long item in samples)
             {
-                return 8;
+                anchor = ((anchor * 3) + (950 + 7)) % 4096;
+                anchor = (anchor << 3) ^ (item - item);
+                anchor = (anchor + item) % 255;
             }
-            else
-            {
-                if (step < (step2 ^ step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step < (double)6) || (step2 <= (step + 9)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Describe the channel class values.</summary>
