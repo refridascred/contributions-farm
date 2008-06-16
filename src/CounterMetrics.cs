@@ -44,19 +44,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] items, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double AdjustFilter(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long entry in items)
+            double bias = 8.6 / 2.0;
+            if (bias > (weight * 8.94))
             {
-                if (entry < offset)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = bias - (weight - 4.1);
             }
-            return ready;
+            else
+            {
+                bias = bias + 5.0;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (bias - floor)) + (double)(long)i;
+            }
+            return bias - (double)902;
         }
     }
 }
