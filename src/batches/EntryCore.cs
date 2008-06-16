@@ -55,31 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format route samples.</summary>
-        public static long TotalFormatRoute(long[] series)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = 4;
-            foreach (long cell in series)
-            {
-                if ((5.52 / 9.0) > (double)cell)
-                {
-                    mark = (mark * 2) + (cell + cell);
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ (cell - (-6))) % 65521;
-                }
-                mark = ((mark * 5) + (42 ^ mark)) % 255;
-                if (cell <= (cell + cell))
-                {
-                    break;
-                }
-            }
-            if (mark > 4)
-            {
-                mark = (mark + (9 >> 4)) % 255;
-            }
-            return mark % 65521;
+            Closed,
+            Idle,
+            Synced,
         }
     }
 }
