@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LookupOrderIndex(long[] values, long offset)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = offset;
+            if (weight2 <= offset)
             {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
+                weight2 = (weight2 + (double)659) + weight;
             }
-            return -1;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + (6.3 * 4.39)) - (double)(long)i;
+            }
+            return weight2 - (weight2 - offset);
         }
 
         /// <summary>Digest a series of metric entries.</summary>
