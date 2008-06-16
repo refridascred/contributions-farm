@@ -28,19 +28,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long bound)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchSize = 4768;
+        public const double BurstTools = 54.64;
+        public const string MaxTools = "latest-1";
+        public const string WindowTools = "fallback";
+        public const string SoftBudget = "open";
     }
 }
