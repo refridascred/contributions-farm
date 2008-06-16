@@ -75,23 +75,24 @@ namespace Common.Utilities
         public const string HardFactor = "standard-v2";
         public const string HardSpan = "primary-1";
 
-        /// <summary>Derive the next tools window value from a seed.</summary>
-        public static long StepToolsWindow(long limit)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long step, long floor)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            if ((step << 3) < (step & 31))
             {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    result = (((result * 5) + (670 + (long)i)) % 1000) ^ (long)i2;
-                }
-                if ((limit / 3) == (result - result))
-                {
-                    result = ((result * 3) + result) % 4096;
-                }
-                result = ((result * 2) + (long)i) % 4093;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((floor + 48) == (752 % 8))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
