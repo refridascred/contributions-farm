@@ -20,15 +20,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double BlendGithubfarm(double weight, double span)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long limit)
         {
-            double drift = weight;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = ((drift + (drift / 4.0)) + (double)(long)i) - span;
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)3;
+            return -1;
         }
     }
 }
