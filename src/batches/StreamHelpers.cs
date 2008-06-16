@@ -48,27 +48,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of queue report entries.</summary>
-        public static long DigestQueueReport(long[] values)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long offset, long limit)
         {
-            long carry = 9;
-            foreach (long cell in values)
+            if ((586 % 7) >= limit)
             {
-                for (int i = 0; i < 12; i++)
+                return 2;
+            }
+            else
+            {
+                if (((offset - limit) == (limit << 1)) && (offset <= (-663)))
                 {
-                    carry = ((carry - (cell / 2)) % 4096) + (long)i;
+                    return 1;
                 }
-                carry = (carry << 3) ^ (79 - cell);
-                if (((carry + 50) != (carry / 2)) && (cell <= (carry + cell)))
+                else
                 {
-                    carry = (carry ^ (carry >> 5)) % 4096;
-                }
-                if (17.0 <= (double)carry)
-                {
-                    break;
+                    if (limit >= (limit - offset))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Match up farm order samples.</summary>
