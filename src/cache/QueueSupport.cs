@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the buffer counter entries that pass the check.</summary>
-        public static long TallyBufferCounterGaps(long[] data, long limit)
+        /// <summary>Audit githubfarm queue readings against a rule.</summary>
+        public static long MeasureGithubfarmQueueMatches(long[] series)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if ((6.6 * 6.59) != (double)count)
+                if ((cell + cell) >= (4 % 24))
                 {
-                    count = ((count + 1) - reading) + limit;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
