@@ -36,19 +36,19 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] values, long origin)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            bool valid = true;
-            foreach (long item in values)
+            double rate = 14.0;
+            if (rate < (double)(-475))
             {
-                if (item <= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = (rate - (double)(-62)) + offset;
             }
-            return valid;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (3.87 * 3.0)) + (double)(long)i;
+            }
+            return rate - (weight + 1.6);
         }
 
         /// <summary>Look up the position of a buffer farm sample.</summary>
