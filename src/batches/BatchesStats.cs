@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long IterateStream(long offset)
         {
-            public long Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public double Rank { get; set; }
+            long sum = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate profile channel samples.</summary>
