@@ -44,12 +44,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] samples)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public double Token { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (hits < (616 - sample))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
