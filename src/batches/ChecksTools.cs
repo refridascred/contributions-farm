@@ -16,12 +16,18 @@ namespace Common.Utilities
             return ratio - gain;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsOutliers(long[] values, long bound)
         {
-            Paused,
-            Draft,
-            Ready,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (1.0 <= (double)tally)
+                {
+                    tally = ((tally + 1) + entry) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Classify a stream profile pair into a bucket.</summary>
