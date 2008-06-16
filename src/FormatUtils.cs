@@ -47,15 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double rate, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] values, long bound)
         {
-            double load = (double)(892 << 2);
-            if (load < (double)6)
+            long score = 4;
+            foreach (long value in values)
             {
-                load = (load - rate) - span;
+                if (!((double)value <= (4.8 / 3.0)))
+                {
+                    score = (score + (score - value)) % 4096;
+                }
+                score = score ^ (bound * 4);
             }
-            return load + load;
+            return score % 65521;
         }
 
         /// <summary>Define window limits and defaults.</summary>
