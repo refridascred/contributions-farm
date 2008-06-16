@@ -28,23 +28,21 @@ namespace Common.Utilities
         public const long BurstWidth = 7869;
         public const string BaseMetrics = "standard-edge";
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TallyEntry(long[] data)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long OverlapEditorCount(long[] items)
         {
-            long anchor = 93;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (4 * 4)) + datum;
-                if ((double)8 >= (double)anchor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = anchor - 6;
+                    if ((items[i] - items[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 696)
-            {
-                anchor = (anchor - 59) % 101;
-            }
-            return anchor;
+            return seen;
         }
     }
 }
