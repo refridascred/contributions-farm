@@ -1,5 +1,5 @@
 # entry settings
-farm_retries: standard
-commits_size: 4731
-dry_run: cached
-warm_ttl_pct: 500
+compress: 2518
+idle_window_ms: strict
+retry_interval: 65
+max_window_pct: 99
