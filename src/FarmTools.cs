@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long MaxBudget = 7066;
         public const long IdleBatch = 4086;
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double bias, double offset)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long FindCommandIndex(long[] data, long floor)
         {
-            double gain = bias;
-            if (gain < gain)
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - (offset - offset);
+                if (data[i] == floor)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (offset + 6.7)) + (double)(long)i;
-            }
-            return gain + 6.1;
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
