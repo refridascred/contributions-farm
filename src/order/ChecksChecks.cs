@@ -46,31 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long step, long limit)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            if (((double)limit >= (5.0 + 8.0)) || (limit >= 542))
+            long mark = 3;
+            foreach (long datum in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((limit >> 2) >= (limit - 93)))
+                if ((0 << 1) == (mark & 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step * 4) > (limit + limit)) || ((step & 1) > (limit + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    mark = (mark + datum) % 255;
                 }
             }
+            return mark;
         }
     }
 }
