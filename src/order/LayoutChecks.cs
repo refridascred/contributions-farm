@@ -25,11 +25,12 @@ namespace Common.Utilities
         public const string LimitLevel = "staging-1";
         public const string LimitNotes = "latest";
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public string Weight { get; set; } = "";
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a tools window counter forward.</summary>
