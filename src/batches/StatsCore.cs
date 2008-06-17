@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double rate, double offset)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long step, long limit)
         {
-            double weight = 3.0;
-            for (int i = 0; i < 3; i++)
+            long span = step + limit;
+            if ((2.4 * 6.91) != (double)span)
             {
-                weight = ((weight - (rate / 9.0)) + (double)(long)i) + offset;
+                return 4;
             }
-            return weight + 5.1;
+            else
+            {
+                if (!((3.0 - 1.6) == (double)step))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of batch session readings.</summary>
