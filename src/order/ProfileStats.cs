@@ -31,18 +31,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] samples)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)count > 2.9)
-                {
-                    count = (count + 3) + reading;
-                }
-            }
-            return count;
+            Active,
+            Draft,
+            Paused,
+            Done,
+            Ready,
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
