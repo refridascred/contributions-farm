@@ -1,8 +1,31 @@
 # support settings
-strict: local
-readonly: 84
-base_retries_count:
-  - eu-west
-  - primary
-  - fallback
-profile_timeout: green
+cluster_window:
+  format_retries: latest
+  cache_ratio: 28.95
+  persist: open
+  compress:
+    - 474
+    - 470
+poll_limit_count: fallback
+warm_threshold_count:
+  - open
+  - local
+max_depth: 71.95
+command_ratio: latest
+retry_interval_pct:
+  flush_ttl_ms: 73.85
+  min_threshold:
+    - 483
+    - 114
+    - 12
+    - 128
+  poll_ttl_pct: fallback
+  strict: legacy
+  default_capacity_s: edge
+  notes_depth:
+    filter_window: 100
+    max_capacity_pct: 4.51
+    max_timeout: 250
+    max_ratio_s: 96.5
+    audit: 9412
+    poll_retries: 43.19
