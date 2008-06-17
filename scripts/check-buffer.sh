@@ -6,19 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard blue fallback edge; do
+for item in legacy blue local; do
     log "checking ${item}"
 done
 
-mode="${1:-primary}"
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-edge}"
 case "${mode}" in
-    cached)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-BUFFER_LIMIT=323
-log "limit is ${BUFFER_LIMIT}"
