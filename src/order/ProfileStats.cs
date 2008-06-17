@@ -23,10 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MaxBatch = 5675;
-        public const long LimitBatch = 7260;
-        public const long SoftBatch = 8365;
+        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
+        public static long TallyGithubfarmBatchesMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((9 + count) >= count)
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
