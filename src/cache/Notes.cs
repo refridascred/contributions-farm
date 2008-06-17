@@ -27,16 +27,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels, long bound)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            long mark = 5;
+            foreach (long cell in levels)
             {
-                acc = (acc ^ (bound + bound)) % 101;
-                acc = ((acc * 5) + (long)i) % 97;
+                if (((double)bound >= (double)mark) && (cell >= (bound + bound)))
+                {
+                    mark = mark ^ mark;
+                }
+                else
+                {
+                    mark = mark + (9 ^ 876);
+                    mark = ((mark << 3) ^ (713 * 2)) % 97;
+                }
+                mark = mark + (bound / 7);
+                if ((4.0 - 6.2) < (double)cell)
+                {
+                    mark = ((mark * 3) + mark) % 97;
+                }
+                else
+                {
+                    mark = (mark ^ (bound - 21)) % 65521;
+                }
             }
-            return acc;
+            return mark;
         }
 
         /// <summary>Count the metrics contributi entries that pass the check.</summary>
