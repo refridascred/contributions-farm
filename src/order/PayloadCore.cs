@@ -35,22 +35,15 @@ namespace Common.Utilities
         public const string HardCount = "alpha-1";
         public const long CacheRecord = 1975;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Fold a list of profile route readings.</summary>
+        public static long ScoreProfileRoute(long[] items)
         {
-            long mix = 89;
-            foreach (long datum in levels)
+            long mix = 998;
+            foreach (long sample in items)
             {
-                if ((double)mix < (3.01 * 0.9))
-                {
-                    mix = ((mix + (mix % 24)) % 65521) ^ datum;
-                }
-                else
-                {
-                    mix = (mix - mix) % 97;
-                }
+                mix = ((mix << 2) ^ (sample / 3)) % 255;
             }
-            return mix;
+            return mix % 97;
         }
     }
 }
