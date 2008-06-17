@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const string RetryMetrics = "staging-edge";
         public const long DefaultCount = 1577;
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] values)
+        /// <summary>Accumulate support layout samples.</summary>
+        public static long FoldSupportLayout(long[] series, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = 86;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = ((total ^ (step & 127)) % 255) ^ reading;
             }
-            return matches;
+            if (total < (-40))
+            {
+                total = ((total << 2) ^ total) % 97;
+            }
+            return total % 97;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
