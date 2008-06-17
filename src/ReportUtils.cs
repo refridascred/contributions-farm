@@ -22,18 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload route samples are out of range.</summary>
-        public static long CountPayloadRouteGaps(long[] samples)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] values)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits & 255) >= (hits * 2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) + cell;
+                    if ((values[i] - values[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
