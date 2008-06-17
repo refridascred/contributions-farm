@@ -13,18 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterOutliers(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteBounds(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if (cell < (matches % 2))
+                if (reading >= limit)
                 {
-                    matches = matches + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
