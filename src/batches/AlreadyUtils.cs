@@ -47,15 +47,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] samples, long floor)
         {
-            double mean = 0.19;
-            if (mean < (mean + rate))
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean + (mean * 4.5)) - offset;
+                if (samples[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return mean + 1.23;
+            return -1;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
