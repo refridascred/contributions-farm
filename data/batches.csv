@@ -1,7 +1,9 @@
-id,weight
-1,standard
-2,blue
-3,fallback
-4,eu-west
-5,82.17
-6,green
+id,rank,state,score
+1,42.33,33.19,585
+2,36.08,715,456
+3,727,443,28.92
+4,33.26,6.04,79
+5,local,76.19,eu-west
+6,85,32.81,72.16
+7,50,821,eu-west
+8,261,347,8.91
