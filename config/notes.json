@@ -1,5 +1,5 @@
 {
-  "strict": 39,
-  "batch_size_s": false,
-  "poll_retries": "primary"
+  "warm_retries_pct": "standard",
+  "farm_capacity": 250,
+  "compress": "eu-west"
 }
