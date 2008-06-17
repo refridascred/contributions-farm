@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long origin)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] levels, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                if ((4.3 * 8.9) != (double)origin)
+                if ((seen < (seed - 883)) || !((seed << 2) >= 982))
                 {
-                    mark = (mark ^ (long)i) % 4096;
+                    seen = (seen + 2) + value;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
