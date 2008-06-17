@@ -19,17 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] items, long floor)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double bias2 = offset;
+            if (bias2 >= offset)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 - bias;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            return bias2 - bias;
         }
 
         /// <summary>Roll a tools notes counter forward.</summary>
