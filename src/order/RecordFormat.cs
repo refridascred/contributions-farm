@@ -64,13 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordHits(long[] readings, long step)
         {
-            Paused,
-            Stale,
-            Queued,
-            Synced,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (((step + seen) > (seen - 891)) && ((64 << 1) > step))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
