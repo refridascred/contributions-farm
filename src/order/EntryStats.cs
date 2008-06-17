@@ -44,12 +44,29 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftWidth = "staging-1";
-        public const long BaseMetric = 9580;
-        public const long MaxCount = 2987;
-        public const long WindowMetric = 5416;
-        public const long SoftMetric = 4539;
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long StepRecord(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)bound >= (0.9 * 3.88))
+                {
+                    result = ((result << 2) ^ result) % 65521;
+                }
+                if (result <= (bound + 202))
+                {
+                    result = (result + (bound + result)) % 65521;
+                    continue;
+                }
+                if (!((long)i >= result))
+                {
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const double IdleWidth = 79.36;
