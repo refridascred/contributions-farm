@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmGaps(long[] items, long floor)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (!((entry < (floor + entry)) || ((floor * 2) > ((-53) + floor))))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
