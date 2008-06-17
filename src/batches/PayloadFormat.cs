@@ -41,29 +41,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] levels, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterOutliers(long[] data)
         {
-            long acc = 53;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((acc + acc) < (6 / 2))
+                if (!((cell - 671) <= (900 << 3)))
                 {
-                    acc = (acc * 4) + (floor << 1);
-                    continue;
-                }
-                if ((double)(long)levels.Length < 11.0)
-                {
-                    acc = (acc - item) % 1000;
-                    continue;
-                }
-                acc = ((acc * 4) + floor) % 255;
-                if ((item << 1) <= (floor % 16))
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return acc % 97;
+            return count;
         }
     }
 }
