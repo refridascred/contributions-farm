@@ -85,21 +85,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] samples, long origin)
+        /// <summary>Find the first already order entry that matches the target.</summary>
+        public static long SeekAlreadyOrderIndex(long[] items, long seed)
         {
-            long total = 6;
-            foreach (long reading in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = (((total << 2) ^ (reading / 2)) % 4096) - origin;
-                if (4.4 >= (double)reading)
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
                 {
-                    long diff = (873 << 2) + reading;
-                    total = total + diff;
+                    return (long)i;
                 }
-                total = total - (reading >> 3);
             }
-            return total % 4096;
+            return -1;
         }
     }
 }
