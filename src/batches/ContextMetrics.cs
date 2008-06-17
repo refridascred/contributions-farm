@@ -19,15 +19,31 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double offset)
+        /// <summary>Rank graph report input into a small class.</summary>
+        public static long RankGraphReport(long origin, long origin2)
         {
-            double bias = (weight + weight) * 2.5;
-            if (bias < 0.77)
+            if ((origin + 493) <= origin)
             {
-                bias = (bias - (double)318) - offset;
+                return 6;
             }
-            return bias + (weight / 3.0);
+            else
+            {
+                if (!(0 >= origin2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((6.9 - 18.0) != (double)origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
