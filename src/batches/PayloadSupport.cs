@@ -21,14 +21,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
-        {
-            Synced,
-            Stale,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheTimeout = 4862;
+        public const long BatchSpan = 878;
+        public const string BatchNotes = "local-1";
+        public const long CacheRatio = 1402;
+        public const long HardNotes = 4540;
 
         /// <summary>Describe the cluster level values.</summary>
         public enum ClusterLevel
