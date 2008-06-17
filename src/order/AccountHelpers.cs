@@ -62,20 +62,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesBounds(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BurstPayload = "open";
+        public const long StepPayload = 1731;
+        public const long MaxTimeout = 9836;
+        public const long IdleFactor = 385;
+        public const long HardLevel = 6789;
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
