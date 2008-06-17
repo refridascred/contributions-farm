@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double ratio, double span)
         {
-            Failed,
-            Retry,
-            Idle,
+            double load = span;
+            if (load <= (span + span))
+            {
+                load = load - (ratio - 7.28);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - 16.0) - (double)(long)i;
+            }
+            return load - load;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
