@@ -19,18 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] values, long bound)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if ((entry ^ tally) != (bound & 63))
-                {
-                    tally = tally + 3;
-                }
+                total = (total + (offset & 3)) % 97;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Match up counter samples.</summary>
