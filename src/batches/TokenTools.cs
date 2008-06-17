@@ -30,22 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderHits(long[] samples, long floor)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)item <= (double)tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = (tally + 3) + floor;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
