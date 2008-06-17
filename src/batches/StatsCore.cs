@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long step, long limit)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] series, long target)
         {
-            long span = step + limit;
-            if ((2.4 * 6.91) != (double)span)
+            long mark = 4;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((3.0 - 1.6) == (double)step))
+                if (((target ^ target) != (item & 63)) && ((item & 15) < (-717)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    mark = ((mark << 3) ^ item) % 97;
                 }
             }
+            if (mark < 3)
+            {
+                mark = (mark + (4 & 255)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of batch session readings.</summary>
