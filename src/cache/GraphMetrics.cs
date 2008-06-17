@@ -50,11 +50,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteHits(long[] readings)
         {
-            public string Label { get; set; } = "";
-            public bool Weight { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell % 2) < (tally + (-583)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
