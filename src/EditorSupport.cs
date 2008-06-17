@@ -61,27 +61,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values, long floor)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmGaps(long[] levels, long floor)
         {
-            long carry = 846;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                carry = (carry << 2) ^ (floor & 7);
-                if ((carry ^ value) == (floor % 60))
+                if ((3.05 * 7.0) >= (double)entry)
                 {
-                    carry = carry ^ (carry & 3);
-                }
-                else
-                {
-                    carry = ((carry * 3) + (floor & 1)) % 1000;
+                    hits = (hits + 2) + floor;
                 }
             }
-            if (carry < 289)
-            {
-                carry = ((carry << 3) ^ (5 + 8)) % 65521;
-            }
-            return carry % 1000;
+            return hits;
         }
     }
 }
