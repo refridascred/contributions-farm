@@ -20,12 +20,18 @@ namespace Common.Utilities
         public const string HardBatch = "stable-edge";
         public const long BaseBatch = 8825;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterHits(long[] samples)
         {
-            New,
-            Active,
-            Locked,
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry != (double)tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
