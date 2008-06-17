@@ -26,38 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank context graph input into a small class.</summary>
-        public static long GradeContextGraph(long seed, long limit)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueHits(long[] values)
         {
-            if ((seed / 3) > (4 >> 5))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed >= (limit * 3)) || ((4.0 - 5.61) <= (double)seed))
+                if ((double)cell <= (1.7 - 0.32))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit == (double)21)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((54 >> 2) < limit) && ((11.0 * 5.1) >= (double)limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
