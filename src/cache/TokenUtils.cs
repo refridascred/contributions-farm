@@ -14,17 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long SeekCounterIndex(long[] values, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
