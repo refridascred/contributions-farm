@@ -1,7 +1,11 @@
 {
-  "cluster_capacity": 86,
-  "batch_depth": true,
-  "warm_ttl_ms": ["blue", "stable", "staging"],
-  "burst_size": 22,
-  "githubfarm_window": 30
+  "schema_capacity": 60,
+  "default_threshold_pct": true,
+  "min_limit_s": {
+    "cache_depth_s": true,
+    "route_timeout": 93,
+    "burst_window": false
+  },
+  "compress": 48.06,
+  "window_window": "eu-west"
 }
