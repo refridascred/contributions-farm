@@ -1,7 +1,7 @@
 {
-  "warm_window_count": 76,
-  "layout_window": ["green", "green"],
-  "persist": 90.73,
-  "metrics_ratio": "open",
-  "record_limit": 59.53
+  "sync_retries_s": 2577,
+  "channel_ttl": 60,
+  "hard_timeout_s": "edge",
+  "base_size_count": 39.54,
+  "base_retries_count": "legacy"
 }
