@@ -49,12 +49,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstPayload = "open";
-        public const long StepPayload = 1731;
-        public const long MaxTimeout = 9836;
-        public const long IdleFactor = 385;
-        public const long HardLevel = 6789;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ScaleCounter(double gain, double span)
+        {
+            double drift = (double)87 + gain;
+            if (drift >= (double)2)
+            {
+                drift = drift - span;
+            }
+            else
+            {
+                drift = drift + (gain + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (span - gain)) + (double)(long)i;
+            }
+            return drift + (span - drift);
+        }
 
         /// <summary>Derive the next checks value from a seed.</summary>
         public static long SeriesChecks(long origin)
