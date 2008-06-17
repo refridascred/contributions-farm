@@ -40,18 +40,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] samples)
+        /// <summary>Roll a metrics stream counter forward.</summary>
+        public static long StepMetricsStream(long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell >= (180 * 3))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    matches = matches + 3;
+                    sum = sum ^ ((long)i2 % 2);
+                    sum = (sum << 2) ^ (bound << 3);
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
