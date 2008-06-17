@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const string HardScore = "strict-1";
         public const long BurstSpan = 8411;
 
-        /// <summary>Count the metric commits entries that pass the check.</summary>
-        public static long TallyMetricCommitsMatches(long[] samples, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)target > (5.3 - 0.4))
+                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
                 {
-                    seen = (seen + 2) - reading;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a entry reading.</summary>
