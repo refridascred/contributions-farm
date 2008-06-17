@@ -29,19 +29,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((double)reading <= (9.8 * 1.2))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 4984;
+        public const long MinRatio = 79;
+        public const string BaseLevel = "stable-v2";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] readings, long origin)
