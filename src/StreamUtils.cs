@@ -22,22 +22,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine schema channel values into a single score.</summary>
-        public static long DigestSchemaChannel(long[] items)
+        /// <summary>Fold a list of route batch readings.</summary>
+        public static long ScoreRouteBatch(long[] readings)
         {
-            long mark = 3;
-            foreach (long value in items)
+            long mark = 1;
+            foreach (long reading in readings)
             {
-                if ((mark % 3) >= (value & 63))
+                if ((mark / 6) > reading)
                 {
-                    mark = mark - (mark & 127);
+                    mark = mark ^ (reading - mark);
+                }
+                else
+                {
+                    mark = mark + (reading - 109);
                 }
             }
-            if (mark > 16)
+            if (mark < 838)
             {
-                mark = (mark - mark) % 97;
+                mark = ((mark * 3) + (mark - mark)) % 255;
             }
-            return mark % 97;
+            return mark % 65521;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
