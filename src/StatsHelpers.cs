@@ -69,15 +69,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportRange(long[] data, long floor)
         {
-            double load = weight;
-            if (load >= (weight - load))
+            bool ok = true;
+            foreach (long cell in data)
             {
-                load = load - (double)(-46);
+                if (cell < floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return load + (span * 7.51);
+            return ok;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
