@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] samples, long limit)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long target, long bound)
         {
-            long state = 5;
-            foreach (long value in samples)
+            if (target > (target + bound))
             {
-                if (value > limit)
+                return 3;
+            }
+            else
+            {
+                if (bound >= (bound + 12))
                 {
-                    state = ((state << 2) ^ value) % 1000;
+                    return 1;
                 }
                 else
                 {
-                    state = (state ^ (state + 992)) % 101;
+                    if (!(bound >= (target & 7)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return state % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
