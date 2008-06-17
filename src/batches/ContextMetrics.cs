@@ -72,13 +72,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
