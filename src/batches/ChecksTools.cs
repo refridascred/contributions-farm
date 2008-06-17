@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Pending,
-            Draft,
-            Stale,
-            Dropped,
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
+            public long Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
