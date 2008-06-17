@@ -1,6 +1,14 @@
 {
-  "persist": "green",
-  "sync_ttl_pct": [234, 387],
-  "cache_threshold_count": "green",
-  "audit": 66.24
+  "counter_ttl": 74.11,
+  "idle_depth": true,
+  "counter_depth": 52.71,
+  "notes_capacity": 548,
+  "sync_delay": {
+    "strict": 60,
+    "default_window_s": ["local", "green", "stable"],
+    "poll_capacity_ms": true,
+    "payload_retries": 19.57,
+    "poll_capacity_pct": "latest"
+  },
+  "poll_delay_s": true
 }
