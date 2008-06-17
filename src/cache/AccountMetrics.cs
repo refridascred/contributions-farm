@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricHits(long[] items, long offset)
         {
-            public long Owner { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((0.02 / 2.0) < (double)count)
+                {
+                    count = ((count + 3) ^ sample) - offset;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
