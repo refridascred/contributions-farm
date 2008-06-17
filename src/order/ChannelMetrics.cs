@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiGaps(long[] series, long seed)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public string Label { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if (!((matches + matches) != (entry % 16)))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
