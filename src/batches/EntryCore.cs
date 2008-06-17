@@ -54,22 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLayout = 91.75;
+        public const long StepInterval = 8555;
+        public const string IdleLayout = "stable";
+        public const string MinInterval = "standard";
+        public const double StepLayout = 74.39;
 
         /// <summary>Check that every report entry stays within the limit.</summary>
         public static bool VerifyReportBounds(long[] data, long origin)
