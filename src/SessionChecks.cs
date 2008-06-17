@@ -19,18 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatOutliers(long[] values)
+        /// <summary>Look up the position of a profile window sample.</summary>
+        public static long LocateProfileWindowIndex(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((matches % 24) == (item + matches))
+                if (readings[i] > origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
