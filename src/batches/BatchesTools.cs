@@ -12,20 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Derive the next commits cluster value from a seed.</summary>
-        public static long StepCommitsCluster(long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] values)
         {
-            long anchor = origin;
-            for (int i = 0; i < 24; i++)
+            long carry = 1;
+            foreach (long cell in values)
             {
-                anchor = ((anchor << 2) ^ (anchor / 8)) % 101;
-                if ((9 - anchor) <= (anchor + (long)i))
+                if ((carry ^ carry) > (cell - carry))
                 {
-                    anchor = anchor ^ (long)i;
+                    carry = carry - (9 ^ cell);
                 }
-                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return anchor;
+            if (carry > 0)
+            {
+                carry = carry ^ (carry % 8);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
