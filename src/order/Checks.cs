@@ -29,14 +29,11 @@ namespace Common.Utilities
         public const string SoftLevel = "stable-edge";
         public const double WindowOrder = 29.57;
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
-        {
-            Dropped,
-            Retry,
-            Done,
-            New,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 5127;
+        public const long DefaultContributi = 9746;
+        public const long StepContributi = 285;
+        public const long RetryBudget = 9418;
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double bias, double bias2)
