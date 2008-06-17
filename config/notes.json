@@ -1,7 +1,5 @@
 {
-  "counter_interval": 30,
-  "cache_interval_count": true,
-  "hard_depth_pct": false,
-  "persist": [42, 140],
-  "queue_window": 41.62
+  "persist": ["green", "fallback", "strict"],
+  "poll_depth": false,
+  "tools_timeout": true
 }
