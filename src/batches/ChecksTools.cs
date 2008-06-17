@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] readings, long target)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsRange(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long sample in readings)
             {
-                if (reading > target)
+                if (sample >= seed)
                 {
-                    flag = false;
+                    valid = false;
                     break;
                 }
             }
-            return flag;
+            return valid;
         }
 
         /// <summary>Rank counter input into a small class.</summary>
