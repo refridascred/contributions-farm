@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
+mode="${1:-cached}"
 case "${mode}" in
-    local)
+    green)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,12 @@ case "${mode}" in
         ;;
 esac
 
+for item in strict latest; do
+    log "checking ${item}"
+done
+
 count=0
-while [ "${count}" -lt 6 ]; do
+while [ "${count}" -lt 4 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
