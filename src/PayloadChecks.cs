@@ -22,17 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] items, long step)
+        /// <summary>Measure how many contributi payload samples are out of range.</summary>
+        public static long CountContributiPayloadHits(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((items[i] == step) && ((items[i] % 5) != 0))
+                if ((long)items.Length == (value + value))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the metrics level values.</summary>
