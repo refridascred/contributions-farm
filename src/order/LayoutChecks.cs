@@ -48,15 +48,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsLimits(long[] items, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            bool ready = true;
+            foreach (long value in items)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
