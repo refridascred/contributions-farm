@@ -1,7 +1,15 @@
 {
-  "route_size": 166,
-  "readonly": 3135,
-  "session_delay": "strict",
-  "default_retries_count": ["strict", "blue"],
-  "support_interval": "legacy"
+  "account_size": 56.42,
+  "checks_retries": "eu-west",
+  "token_ttl": "latest",
+  "idle_capacity_ms": {
+    "route_timeout": {
+      "base_delay": 63.83,
+      "record_timeout": 84,
+      "retry_size_s": 8593
+    },
+    "burst_depth_s": "open",
+    "base_interval_s": 30
+  },
+  "burst_depth_s": true
 }
