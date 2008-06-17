@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] samples, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
         {
-            long carry = 32;
-            foreach (long cell in samples)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (origin <= (origin & 1))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    carry = ((carry - (carry & 31)) % 1000) + cell;
+                    mix = (((mix * 4) + mix) % 97) ^ (long)i2;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            if (carry > 47)
-            {
-                carry = ((carry * 2) + (origin % 16)) % 97;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Define route limits and defaults.</summary>
