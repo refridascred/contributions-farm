@@ -53,11 +53,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double IdleBudget = 86.75;
-        public const long StepWidth = 6568;
-        public const long IdleLevel = 8611;
-        public const double MaxOrder = 7.16;
-        public const long StepFactor = 4784;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Failed,
+            Draft,
+            Retry,
+            Idle,
+            New,
+        }
     }
 }
