@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsMatches(long[] values, long offset)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if ((8.15 + 7.2) >= (double)count)
-                {
-                    count = ((count + 1) + cell) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
