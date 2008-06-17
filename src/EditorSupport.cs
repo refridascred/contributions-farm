@@ -31,12 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
-        {
-            public long Level { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double MaxSupport = 53.58;
+        public const long IdleWidth = 4963;
+        public const string SoftSupport = "alpha-v2";
+        public const double IdleSupport = 59.23;
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool ValidateFormatLimits(long[] readings, long offset)
