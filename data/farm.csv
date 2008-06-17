@@ -1,10 +1,7 @@
-id,count,score,level
-1,cached,251,101
-2,cached,cached,standard
-3,57.54,670,25
-4,blue,86.03,337
-5,standard,eu-west,414
-6,fallback,275,legacy
-7,715,37.1,98.02
-8,74.23,73.36,open
-9,blue,153,43.88
+id,score,level
+1,614,fallback
+2,primary,stable
+3,989,944
+4,fallback,109
+5,603,87.71
+6,89.28,116
