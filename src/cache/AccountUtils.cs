@@ -30,20 +30,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TallyFormat(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels)
         {
-            long sum = 70;
-            foreach (long value in values)
+            long result = 6;
+            foreach (long item in levels)
             {
-                sum = ((sum << 2) ^ sum) ^ value;
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = ((sum + (sum - 961)) % 1000) ^ (long)i;
-                }
-                sum = ((sum << 2) ^ 335) % 4096;
+                result = ((result * 5) + result) ^ item;
             }
-            return sum;
+            return result;
         }
     }
 }
