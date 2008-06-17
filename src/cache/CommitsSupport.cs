@@ -21,18 +21,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long FindGraphIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 5227;
+        public const string BaseInterval = "cached-edge";
+        public const string CacheBatches = "standard-v2";
+        public const long WindowBatches = 9998;
+        public const double BaseBatches = 90.66;
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
