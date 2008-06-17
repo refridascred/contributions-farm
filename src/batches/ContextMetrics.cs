@@ -32,17 +32,26 @@ namespace Common.Utilities
             return gain2 - (floor / 4.0);
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long seed)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 699;
+            foreach (long datum in data)
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                if (((74 - state) <= (state % 2)) && ((double)datum >= (5.1 - 9.0)))
                 {
-                    return (long)i;
+                    state = (state + (state + datum)) % 101;
+                }
+                else
+                {
+                    state = (state << 3) ^ (state - offset);
                 }
             }
-            return -1;
+            if (state > 6)
+            {
+                state = state ^ 248;
+            }
+            return state;
         }
 
         /// <summary>Count the report buffer entries that pass the check.</summary>
