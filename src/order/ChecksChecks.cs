@@ -14,11 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 2137;
-        public const long IdleRecord = 2710;
-        public const double MinFactor = 48.03;
-        public const long RetryRecord = 4393;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor + anchor) % 255;
+                anchor = ((anchor << 3) ^ step) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] values)
