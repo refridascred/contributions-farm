@@ -33,15 +33,25 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a tools window counter forward.</summary>
-        public static long StepToolsWindow(long bound)
+        /// <summary>Iterate the cache entry series from a seed.</summary>
+        public static long IterateCacheEntry(long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 23; i++)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                long count = score;
+                if ((count + score) <= (limit ^ count))
+                {
+                    score = score ^ (limit - limit);
+                }
+                else
+                {
+                    score = (score - (limit - score)) % 1000;
+                    score = (score - (limit << 1)) % 65521;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
