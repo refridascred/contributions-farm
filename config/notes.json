@@ -1,6 +1,6 @@
 {
-  "farm_ttl": false,
-  "flush_delay": "strict",
-  "readonly": [374, 321],
-  "idle_retries": 19
+  "default_capacity_count": 10.15,
+  "warm_ttl_pct": 0.45,
+  "window_limit": true,
+  "farm_threshold": 3362
 }
