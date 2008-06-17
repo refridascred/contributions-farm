@@ -21,19 +21,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long step)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long mark = step;
-            for (int i = 0; i < 5; i++)
-            {
-                if (mark < (long)i)
-                {
-                    break;
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
+            Draft,
+            Retry,
+            New,
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
