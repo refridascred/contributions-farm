@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items, long target)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            long state = 0;
+            foreach (long sample in items)
             {
-                if ((reading / 6) < (reading - reading))
+                if (((723 << 3) > (sample & 255)) || ((11.0 / 4.0) == (double)state))
                 {
-                    hits = (hits + 3) + target;
+                    state = ((state * 3) + (state + state)) % 65521;
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 4096;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
