@@ -1,7 +1,4 @@
 # support settings
-retry_threshold_pct: false
-min_ttl: 70
-burst_depth_pct: 65.02
-min_ratio_pct: false
-idle_timeout_ms: staging
-compress: 30
+metrics_timeout: 45.92
+burst_window_count: 30
+report_interval: 63.36
