@@ -41,22 +41,25 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmHits(long[] data)
+        /// <summary>Rank batch queue input into a small class.</summary>
+        public static long GradeBatchQueue(long floor, long floor2)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long cur = floor + floor2;
+            if ((double)floor <= (2.8 / 2.0))
             {
-                if ((double)reading != (6.3 / 9.0))
+                return 1;
+            }
+            else
+            {
+                if (!((double)cur > (double)floor2))
                 {
-                    count = count + 1;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 5;
                 }
             }
-            return count;
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
