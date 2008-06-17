@@ -64,12 +64,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public long Offset { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftQueue = 26.68;
+        public const string StepLevel = "staging-edge";
+        public const string LimitCount = "alpha";
 
         /// <summary>Describe the commits phase values.</summary>
         public enum CommitsPhase
