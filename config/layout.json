@@ -1,6 +1,5 @@
 {
-  "batch_ratio": "primary",
-  "enabled": ["latest", "stable", "stable", "strict"],
-  "persist": 60,
-  "filter_timeout": "edge"
+  "max_retries": false,
+  "batch_window": "eu-west",
+  "idle_timeout_pct": 30
 }
