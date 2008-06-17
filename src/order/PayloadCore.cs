@@ -25,11 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            public bool Score { get; set; }
-            public long Region { get; set; }
+            Locked,
+            Active,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of notes readings.</summary>
