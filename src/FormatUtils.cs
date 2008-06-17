@@ -43,15 +43,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double rate, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long BucketReport(long bound, long origin)
         {
-            double drift = rate;
-            if (drift > rate)
+            long next = bound - origin;
+            if ((double)bound < (20.0 / 2.0))
             {
-                drift = (drift + (double)166) - span;
+                return 0;
             }
-            return drift + (drift * 8.5);
+            else
+            {
+                if ((bound - bound) >= (bound / 6))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((next + 81) < bound))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((4.0 / 3.0) != (double)next)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
