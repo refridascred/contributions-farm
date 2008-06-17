@@ -53,20 +53,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Match up entry notes samples.</summary>
+        public static long OverlapEntryNotesCount(long[] data)
         {
-            long sum = bound;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = (sum + (sum ^ sum)) % 4096;
-                if (!(((long)i * 2) <= ((long)i - sum)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (sum + (bound & 1)) % 97;
+                    if ((data[i] + data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
