@@ -23,13 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Adjust a batches reading.</summary>
+        public static double AdjustBatches(double rate, double offset)
         {
-            New,
-            Dropped,
-            Locked,
-            Idle,
+            double weight = 9.3 - (rate * 7.0);
+            if (weight < weight)
+            {
+                weight = (weight - (double)59) - offset;
+            }
+            return weight + (2.0 / 5.0);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
