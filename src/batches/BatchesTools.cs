@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] samples)
-        {
-            long anchor = 454;
-            foreach (long cell in samples)
-            {
-                anchor = ((anchor + anchor) % 101) - cell;
-            }
-            return anchor;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheRatio = 68.43;
+        public const string IdleScore = "fallback-1";
+        public const long IdleSpan = 555;
+        public const long IdleBatch = 4538;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long seed, long target)
