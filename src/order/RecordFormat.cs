@@ -33,18 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] levels, long offset)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            double mean = ratio;
+            if (mean <= (floor * 1.0))
             {
-                if (!((reading + offset) > reading))
-                {
-                    seen = seen + 3;
-                }
+                mean = mean - 2.0;
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + ratio) + (double)(long)i;
+            }
+            return mean - (8.79 * 2.0);
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
