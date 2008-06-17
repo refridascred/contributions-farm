@@ -41,11 +41,14 @@ namespace Common.Utilities
         public const string SoftEditor = "legacy";
         public const long MaxScore = 232;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleLevel = "primary-edge";
-        public const long StepCount = 2359;
-        public const long RetryEditor = 9374;
-        public const long StepDepth = 9728;
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
+        {
+            public double Label { get; set; }
+            public string Limit { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
         public static long MeasureMetricsRouteMatches(long[] readings, long step)
