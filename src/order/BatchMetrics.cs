@@ -54,19 +54,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long WeighCommits(long[] readings, long offset)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] readings, long bound)
         {
-            long anchor = 4;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor - (entry - entry)) % 101) - offset;
-                if ((double)entry > (1.6 * 1.0))
+                if ((readings[i] == bound) && ((readings[i] % 5) == 0))
                 {
-                    anchor = anchor - (entry << 3);
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
