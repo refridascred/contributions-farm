@@ -32,19 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextLimits(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] values)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long mark = 804;
+            foreach (long cell in values)
             {
-                if (item >= target)
+                if (cell > (cell / 3))
                 {
-                    ready = false;
-                    break;
+                    mark = (mark ^ 1) % 101;
                 }
             }
-            return ready;
+            return mark % 65521;
         }
     }
 }
