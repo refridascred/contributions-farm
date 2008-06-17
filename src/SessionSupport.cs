@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long limit, long step)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long step, long limit)
         {
-            if ((7 + 4) > ((-7) ^ step))
+            if ((step - step) == (limit >> 2))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((step % 7) < (limit * 4))
+                if (step > (step & 255))
                 {
                     return 7;
                 }
                 else
                 {
-                    return 5;
+                    return 3;
                 }
             }
         }
