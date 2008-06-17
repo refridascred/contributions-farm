@@ -24,25 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long bound, long origin)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] data, long floor)
         {
-            long lane = bound ^ origin;
-            if ((891 - 518) != (origin + lane))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((3.6 + 9.0) > (double)bound)
+                if (data[i] > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a buffer record.</summary>
