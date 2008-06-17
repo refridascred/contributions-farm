@@ -42,17 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first notes metric entry that matches the target.</summary>
-        public static long SeekNotesMetricIndex(long[] levels, long seed)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long reading in levels)
             {
-                if (levels[i] <= seed)
+                if ((score & 7) >= (score * 3))
                 {
-                    return (long)i;
+                    score = ((score + score) % 101) ^ reading;
                 }
             }
-            return -1;
+            return score;
         }
     }
 }
