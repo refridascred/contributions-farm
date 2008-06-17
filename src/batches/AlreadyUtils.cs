@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] levels, long offset)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((94 + datum) > offset)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Locked,
+            Pending,
+            Draft,
+            Stale,
         }
 
         /// <summary>Combine report values into a single score.</summary>
