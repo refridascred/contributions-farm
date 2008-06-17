@@ -58,19 +58,21 @@ namespace Common.Utilities
             return weight + (span / 9.0);
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long FoldBatches(long[] values)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] samples)
         {
-            long mark = 259;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 12; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = (((mark << 2) ^ (mark / 2)) % 4096) ^ (long)i;
+                    if ((samples[i] + samples[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mark = (mark - item) % 97;
             }
-            return mark % 97;
+            return matches;
         }
     }
 }
