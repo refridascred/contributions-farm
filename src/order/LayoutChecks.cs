@@ -90,18 +90,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] readings, long step)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((91 << 1) == ((long)readings.Length & 63))
-                {
-                    seen = ((seen + 1) + reading) + step;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
