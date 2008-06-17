@@ -54,19 +54,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every session account entry stays within the limit.</summary>
-        public static bool ValidateSessionAccountLimits(long[] values, long step)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum != step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Ready,
+            Retry,
+            Idle,
+            Closed,
         }
     }
 }
