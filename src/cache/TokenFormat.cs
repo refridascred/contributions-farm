@@ -32,22 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadMatches(long[] items, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterHits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                if (((step / 6) > 71) && ((count & 31) > (entry + (-152))))
+                if ((floor << 2) >= tally)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = (tally + 3) ^ item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
