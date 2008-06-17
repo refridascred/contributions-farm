@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long RankStatsWindow(long offset, long bound)
         {
-            Done,
-            Ready,
-            Draft,
-            New,
-            Queued,
+            if ((offset & 7) > bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (6.9 / 4.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) < (bound - (-39)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a githubfarm pair into a bucket.</summary>
