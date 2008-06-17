@@ -45,10 +45,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryWidth = 1103;
-        public const string MinCommits = "stable-1";
-        public const long HardCommits = 7034;
-        public const long IdleCommits = 3993;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Locked,
+            Done,
+            Ready,
+            Idle,
+        }
     }
 }
