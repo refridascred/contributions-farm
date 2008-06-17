@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a profile report pair into a bucket.</summary>
-        public static long ClassifyProfileReport(long target, long limit)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteGaps(long[] readings, long floor)
         {
-            long prev = target - limit;
-            if ((16 ^ 49) != (prev + prev))
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < 17.0) && ((prev << 2) >= target))
+                if ((seen >= (floor & 3)) && ((double)floor > (4.76 / 9.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((double)82 != (double)limit) || (limit >= (prev & 7)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = (seen + 3) + datum;
                 }
             }
+            return seen;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
