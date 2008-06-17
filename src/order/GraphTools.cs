@@ -23,18 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] samples, long target)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if (!((count > target) && ((target / 2) < (-20))))
-                {
-                    count = (count + 3) ^ entry;
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
