@@ -61,13 +61,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Fold a list of contributi context readings.</summary>
+        public static long WeighContributiContext(long[] readings)
         {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long total = 0;
+            foreach (long entry in readings)
+            {
+                total = ((total << 3) ^ (total ^ 133)) - entry;
+            }
+            return total;
         }
     }
 }
