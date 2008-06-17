@@ -69,27 +69,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] data, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] data, long target)
         {
-            long carry = 605;
-            foreach (long datum in data)
+            long anchor = 7;
+            foreach (long cell in data)
             {
-                carry = ((carry * 5) + carry) % 65521;
-                if ((datum + datum) != (carry << 3))
-                {
-                    carry = carry + (954 ^ target);
-                }
-                else
-                {
-                    carry = ((carry << 2) ^ (carry + target)) % 1000;
-                }
+                anchor = (((anchor << 2) ^ target) % 97) + cell;
+                anchor = (anchor ^ (target & 1)) % 255;
             }
-            if (carry > 414)
-            {
-                carry = (carry << 3) ^ (carry ^ carry);
-            }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
