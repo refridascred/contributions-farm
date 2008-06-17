@@ -80,13 +80,18 @@ namespace Common.Utilities
             return load + (span * 7.51);
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderMatches(long[] readings)
         {
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public string Region { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((87 / 8) != (item + item))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
