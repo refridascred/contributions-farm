@@ -60,19 +60,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already editor readings against a bound.</summary>
-        public static bool ValidateAlreadyEditorBounds(long[] values, long step)
+        /// <summary>Scale a stream report figure with a bias.</summary>
+        public static double SmoothStreamReport(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long value in values)
+            double mean = scale / 5.0;
+            if (mean < (0.2 + offset))
             {
-                if (value > step)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = mean - (offset + offset);
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean + (9.38 * 7.4);
         }
     }
 }
