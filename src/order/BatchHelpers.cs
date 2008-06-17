@@ -20,17 +20,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] data, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long MatchStreamCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] < seed) && ((data[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
