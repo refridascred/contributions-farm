@@ -38,16 +38,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next batches payload value from a seed.</summary>
-        public static long IterateBatchesPayload(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] readings, long origin)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                carry = (carry - (target - carry)) % 65521;
-                carry = ((carry * 5) + (long)i) % 97;
+                if (item >= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
     }
 }
