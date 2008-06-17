@@ -39,22 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            double weight = (span + span) / 7.0;
+            if (weight < (weight * 9.0))
             {
-                if (((value & 127) < (value % 10)) || ((double)value <= (double)hits))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - (weight / 5.0);
             }
-            return hits;
+            else
+            {
+                weight = weight + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + (weight + span)) + (double)(long)i;
+            }
+            return weight + (span / 9.0);
         }
 
         /// <summary>Digest a series of batches entries.</summary>
