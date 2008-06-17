@@ -47,14 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Measure how many queue token samples are out of range.</summary>
+        public static long MeasureQueueTokenHits(long[] items)
         {
-            Failed,
-            Stale,
-            Retry,
-            Closed,
-            Draft,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((double)value < 7.56)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
