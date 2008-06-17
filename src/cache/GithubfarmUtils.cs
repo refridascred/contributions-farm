@@ -31,22 +31,14 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Audit window counter readings against a rule.</summary>
-        public static long TallyWindowCounterMatches(long[] items, long step)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (reading <= (reading / 3))
-                {
-                    hits = (hits + 2) + step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Failed,
+            Stale,
+            Ready,
         }
     }
 }
