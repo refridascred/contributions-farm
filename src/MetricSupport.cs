@@ -27,13 +27,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] samples, long floor)
         {
-            public string Ratio { get; set; } = "";
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((floor ^ cell) > (hits + hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
