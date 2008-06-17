@@ -12,5 +12,15 @@ while [ "${count}" -lt 8 ]; do
 done
 log "ran ${count} rounds"
 
-CHANNEL_LIMIT=448
+mode="${1:-legacy}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+CHANNEL_LIMIT=277
 log "limit is ${CHANNEL_LIMIT}"
