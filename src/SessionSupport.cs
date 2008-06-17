@@ -18,24 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank metrics buffer input into a small class.</summary>
-        public static long SortMetricsBuffer(long target, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            if ((target + target) == (4 & 255))
+            long hits = 0;
+            foreach (long sample in items)
             {
-                return 0;
-            }
-            else
-            {
-                if (6.8 > (double)origin)
+                if ((double)hits >= (5.78 / 2.0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
+                    hits = (hits + 3) ^ sample;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next order layout value from a seed.</summary>
