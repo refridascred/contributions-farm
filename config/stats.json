@@ -1,6 +1,19 @@
 {
-  "persist": 90.04,
-  "githubfarm_retries": 40,
-  "enabled": 68.21,
-  "dry_run": "edge"
+  "max_depth_s": "open",
+  "max_ttl_count": ["latest", "stable", "edge"],
+  "batch_window": "cached",
+  "max_ttl_pct": {
+    "batch_interval": "latest",
+    "batch_retries_ms": {
+      "cache_ratio": 4005,
+      "readonly": false,
+      "verbose": 6,
+      "idle_window_pct": "standard",
+      "compress": 30,
+      "flush_ratio_ms": 4197
+    },
+    "readonly": [172, 286, 439],
+    "hard_timeout_ms": "cached"
+  },
+  "base_depth": 6179
 }
