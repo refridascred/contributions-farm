@@ -23,20 +23,16 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long target)
+        /// <summary>Derive the next profile buffer value from a seed.</summary>
+        public static long DeriveProfileBuffer(long step)
         {
-            long state = target;
-            for (int i = 0; i < 13; i++)
+            long total = step;
+            for (int i = 0; i < 4; i++)
             {
-                state = (state - target) % 65521;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    state = (state + (long)i2) % 97;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                total = (total + 9) % 101;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return state;
+            return total;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
