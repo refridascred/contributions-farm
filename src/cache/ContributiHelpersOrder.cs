@@ -12,18 +12,26 @@ namespace Common.Utilities
         public const long BurstWindow = 300;
         public const double IdleWindow = 78.64;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long origin)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long mark = 73;
+            foreach (long sample in readings)
             {
-                if (((long)levels.Length - 8) > 118)
+                if ((origin + 4) < (sample >> 2))
                 {
-                    seen = ((seen + 3) ^ cell) - origin;
+                    mark = (mark * 5) + (-585);
+                }
+                else
+                {
+                    mark = mark - mark;
                 }
             }
-            return seen;
+            if (mark < 374)
+            {
+                mark = mark ^ (814 << 3);
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a stats filter reading by value.</summary>
