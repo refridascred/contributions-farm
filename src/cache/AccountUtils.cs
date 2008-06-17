@@ -16,15 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmOutliers(long[] series)
         {
-            long score = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((matches ^ sample) != (sample % 60))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Fold a list of format readings.</summary>
