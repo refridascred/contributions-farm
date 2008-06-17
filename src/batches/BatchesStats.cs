@@ -34,15 +34,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            New,
-            Queued,
-            Idle,
-            Ready,
-            Done,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 9152;
+        public const long BatchGithubfarm = 1415;
+        public const string BurstLevel = "local-edge";
+        public const string CacheGithubfarm = "stable-edge";
+        public const double BurstGithubfarm = 86.03;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
