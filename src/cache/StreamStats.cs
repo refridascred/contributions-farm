@@ -20,19 +20,21 @@ namespace Common.Utilities
             return weight2 - (weight2 - offset);
         }
 
-        /// <summary>Digest a series of stream filter entries.</summary>
-        public static long WeighStreamFilter(long[] values, long seed)
+        /// <summary>Compare every pair of checks account readings.</summary>
+        public static long MatchChecksAccountCount(long[] items)
         {
-            long mark = 3;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark * 4) + (33 - seed);
-                if (item <= (93 - item))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark * 4) + (item << 1)) % 1000;
+                    if ((items[i] ^ items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
