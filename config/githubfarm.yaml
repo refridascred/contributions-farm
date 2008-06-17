@@ -1,17 +1,9 @@
 # githubfarm settings
-entry_interval: fallback
-hard_retries_pct: false
-sync_timeout_s:
-  profile_window: 11
-  metric_depth: false
-  hard_limit_s: 32
-  default_ttl_pct: 30
-poll_capacity_pct: 9.44
-strict:
-  base_limit_pct: 45.85
-  audit: strict
-  payload_retries:
-    - eu-west
-    - strict
-    - eu-west
-  enabled: primary
+enabled:
+  poll_threshold: true
+  warm_retries: blue
+  context_threshold: blue
+  audit: 8.86
+notes_interval: true
+max_delay: 40
+flush_retries: fallback
