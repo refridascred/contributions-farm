@@ -53,11 +53,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string CacheSpan = "open-v2";
-        public const double LimitCluster = 82.24;
-        public const string BaseDepth = "primary-v2";
-        public const long RetryTimeout = 4127;
-        public const string MaxCluster = "legacy-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 7667;
+        public const double IdleNotes = 9.07;
+        public const string CacheBudget = "cached";
+        public const long RetryFactor = 6451;
     }
 }
