@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] samples)
-        {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((value ^ count) > (value ^ value))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheLevel = 4461;
+        public const long BurstFactor = 199;
+        public const long StepCommand = 5091;
+        public const double WindowCommand = 48.05;
 
         /// <summary>Digest a series of tools githubfarm entries.</summary>
         public static long ScoreToolsGithubfarm(long[] items, long origin)
