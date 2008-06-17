@@ -33,18 +33,38 @@ namespace Common.Utilities
         public const long BaseWidth = 2720;
         public const string HardScore = "local-v2";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings, long floor)
+        /// <summary>Classify a metric filter pair into a bucket.</summary>
+        public static long GradeMetricFilter(long floor, long target)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            if ((floor >> 3) != (floor / 3))
             {
-                if ((19.0 - 8.0) < (double)item)
+                return 2;
+            }
+            else
+            {
+                if (((target << 2) == (floor ^ target)) || (2.9 > (double)floor))
                 {
-                    tally = (tally + 1) - floor;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)2 <= (double)floor)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target % 3) != (target >> 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
