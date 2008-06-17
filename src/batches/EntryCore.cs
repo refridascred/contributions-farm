@@ -40,18 +40,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] series, long target)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((4.87 / 9.0) >= (double)reading)
-                {
-                    matches = (matches + 1) - target;
-                }
-            }
-            return matches;
+            public double Count { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Define layout limits and defaults.</summary>
