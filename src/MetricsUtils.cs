@@ -39,16 +39,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next metric queue value from a seed.</summary>
-        public static long DeriveMetricQueue(long origin)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long sum = origin;
-            for (int i = 0; i < 6; i++)
-            {
-                sum = (sum - (sum & 255)) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
+            Retry,
+            Ready,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the session phase values.</summary>
