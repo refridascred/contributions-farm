@@ -32,19 +32,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every context buffer entry stays within the limit.</summary>
-        public static bool VerifyContextBufferRange(long[] series, long origin)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool valid = true;
-            foreach (long reading in series)
-            {
-                if (reading < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a format record sample.</summary>
