@@ -54,15 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TallyToken(long[] items, long step)
+        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
+        public static long CountMetricGithubfarmOutliers(long[] data, long offset)
         {
-            long carry = 4;
-            foreach (long datum in items)
+            long count = 0;
+            foreach (long datum in data)
             {
-                carry = (((carry << 2) ^ (carry - datum)) % 4096) - step;
+                if (!((count + offset) > (offset ^ datum)))
+                {
+                    count = count + 3;
+                }
             }
-            return carry % 1000;
+            return count;
         }
 
         /// <summary>Hold a layout summary.</summary>
