@@ -66,15 +66,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long DeriveCommits(long step)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] values, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                carry = ((carry * 3) + (long)i) % 1000;
+                if (reading <= step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return carry;
+            return valid;
         }
     }
 }
