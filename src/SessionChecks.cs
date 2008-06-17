@@ -23,23 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine farm githubfarm values into a single score.</summary>
-        public static long CombineFarmGithubfarm(long[] series, long origin)
-        {
-            long mix = 434;
-            foreach (long value in series)
-            {
-                if ((double)mix >= (double)origin)
-                {
-                    mix = (mix ^ (mix << 3)) ^ value;
-                }
-            }
-            if (mix > 159)
-            {
-                mix = mix ^ origin;
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 4678;
+        public const long SoftReport = 7386;
+        public const long LimitReport = 7993;
+        public const long MaxReport = 2899;
+        public const long MinReport = 1442;
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] series)
