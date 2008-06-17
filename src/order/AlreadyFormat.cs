@@ -41,18 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long score = 0;
-            foreach (long reading in items)
-            {
-                if ((score - limit) >= reading)
-                {
-                    score = (score + limit) % 65521;
-                }
-            }
-            return score % 4096;
+            public bool Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
