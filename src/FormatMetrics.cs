@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format metrics helpers.</summary>
     public static class FormatMetrics
     {
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordOutliers(long[] data)
-        {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((((long)data.Length + matches) < (0 * 2)) && ((71 / 6) == (entry - entry)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetryPayload = "stable";
+        public const double WindowPayload = 4.0;
+        public const double MinFactor = 32.12;
+        public const long MaxPayload = 4905;
+        public const long BatchPayload = 7412;
 
         /// <summary>Audit support readings against a rule.</summary>
         public static long TallySupportMatches(long[] levels)
