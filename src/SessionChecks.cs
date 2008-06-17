@@ -32,22 +32,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Digest a series of notes githubfarm entries.</summary>
+        public static long TallyNotesGithubfarm(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = 672;
+            foreach (long reading in data)
             {
-                if (!(((double)matches > (0.8 * 2.72)) && (value >= (value - matches))))
+                if ((mark & 255) > (reading - 741))
                 {
-                    matches = matches + 1;
+                    mark = ((mark << 3) ^ (mark + reading)) % 255;
                 }
-                else
+                if (((double)reading >= (2.35 - 6.02)) && ((double)reading <= (2.85 / 7.0)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            if (mark > 322)
+            {
+                mark = ((mark * 2) + seed) % 97;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
