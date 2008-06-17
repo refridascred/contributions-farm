@@ -1,6 +1,6 @@
 {
-  "poll_capacity": ["blue", "primary"],
-  "max_delay": 6.19,
-  "retry_capacity_s": true,
-  "min_timeout_s": "green"
+  "farm_ttl": false,
+  "flush_delay": "strict",
+  "readonly": [374, 321],
+  "idle_retries": 19
 }
