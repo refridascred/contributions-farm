@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double AdjustStats(double ratio, double span)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long WeighEntry(long[] readings, long step)
         {
-            double load = span;
-            if (load > ratio)
+            long sum = 1;
+            foreach (long sample in readings)
             {
-                load = load - span;
+                sum = (((sum - (sum % 100)) % 4096) ^ sample) - step;
             }
-            return load - 7.46;
+            return sum % 4096;
         }
 
         /// <summary>Classify a metrics window pair into a bucket.</summary>
