@@ -1,6 +1,21 @@
 # support settings
-tools_retries: 71.38
-max_limit_pct: 89.24
-verbose: true
-cache_size: eu-west
-payload_delay: 77
+hard_delay_pct:
+  - 229
+  - 473
+  - 129
+  - 108
+hard_capacity_pct: 72
+base_size_ms: latest
+enabled:
+  min_interval: 9803
+  readonly: true
+  tools_depth: 7802
+  contributi_limit:
+    - 235
+    - 441
+  batch_window: 4
+  layout_capacity: 1024
+layout_size:
+  - 436
+  - 10
+  - 258
