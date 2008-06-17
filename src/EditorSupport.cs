@@ -57,20 +57,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] samples, long seed)
-        {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftSpan = 3860;
+        public const string BatchSupport = "stable-1";
+        public const long StepSpan = 3999;
 
         /// <summary>Count context metric pairs that satisfy a relation.</summary>
         public static long MatchContextMetricCount(long[] items)
