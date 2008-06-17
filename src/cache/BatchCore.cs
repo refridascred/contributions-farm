@@ -35,13 +35,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiRange(long[] values, long origin)
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Owner { get; set; }
-            public bool Size { get; set; }
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
