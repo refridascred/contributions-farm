@@ -14,12 +14,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double ratio, double floor)
         {
-            Idle,
-            Synced,
-            Closed,
+            double gain = 4.1;
+            return ((gain + (3.24 / 8.0)) + ratio) + floor;
         }
 
         /// <summary>Hold a queue record.</summary>
