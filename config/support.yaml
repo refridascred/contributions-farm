@@ -1,19 +1,12 @@
 # support settings
-retry_retries_pct: true
-burst_capacity:
-  - 480
-  - 47
-  - 469
-sync_timeout: true
-readonly: true
-idle_depth_ms:
-  burst_limit_count:
-    verbose: 250
-    filter_retries: green
-    window_size: fallback
-    burst_interval: local
-  route_limit:
-    - 101
-    - 241
-    - 303
-  soft_window_pct: false
+cache_depth_count:
+  - cached
+  - blue
+  - open
+burst_retries_ms: staging
+warm_interval: true
+enabled:
+  - 396
+  - 233
+  - 179
+  - 468
