@@ -19,17 +19,15 @@ namespace Common.Utilities
         public const string HardScore = "strict-1";
         public const long BurstSpan = 8411;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long target)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Adjust a entry reading.</summary>
