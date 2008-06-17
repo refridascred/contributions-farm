@@ -38,19 +38,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] samples, long limit)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            bool found = true;
-            foreach (long sample in samples)
-            {
-                if (sample <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Idle,
+            Paused,
+            Stale,
+            Done,
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
