@@ -34,18 +34,12 @@ namespace Common.Utilities
         public const double StepSchema = 15.68;
         public const long DefaultSchema = 2758;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordHits(long[] data, long floor)
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            long matches = 0;
-            foreach (long sample in data)
-            {
-                if ((matches & 127) < (floor % 100))
-                {
-                    matches = (matches + 3) - sample;
-                }
-            }
-            return matches;
+            Draft,
+            Queued,
+            Active,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
