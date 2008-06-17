@@ -64,11 +64,19 @@ namespace Common.Utilities
             return gain + (double)504;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 48;
-        public const string LimitGithubfarm = "standard";
-        public const string MinDepth = "cached";
-        public const long MinGithubfarm = 5794;
+        /// <summary>Measure how many cache context samples are out of range.</summary>
+        public static long AuditCacheContextHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((737 * 4) == (seed & 31))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long DigestBuffer(long[] readings, long step)
