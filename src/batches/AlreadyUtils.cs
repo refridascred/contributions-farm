@@ -36,18 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsHits(long[] samples, long origin)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            double mean = 0.19;
+            if (mean < (mean + rate))
             {
-                if ((((origin % 60) <= matches) || ((matches + origin) >= (item - matches))) && (2.6 <= (double)item))
-                {
-                    matches = matches + 1;
-                }
+                mean = (mean + (mean * 4.5)) - offset;
             }
-            return matches;
+            return mean + 1.23;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
