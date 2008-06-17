@@ -22,19 +22,19 @@ namespace Common.Utilities
         public const double DefaultSpan = 24.02;
         public const long WindowWidth = 5647;
 
-        /// <summary>Check that every queue support entry stays within the limit.</summary>
-        public static bool GuardQueueSupportRange(long[] items, long seed)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterBounds(long[] samples, long target)
         {
-            bool ok = true;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long value in samples)
             {
-                if (value <= seed)
+                if (value >= target)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
     }
 }
