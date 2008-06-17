@@ -74,13 +74,38 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const string LimitCount = "alpha";
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long ClassifyAlready(long limit, long seed)
         {
-            Pending,
-            Dropped,
-            New,
-            Closed,
+            if ((15.0 + 7.8) > (double)limit)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!(limit > (seed % 10)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)(-82) != (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)limit != (19.0 / 6.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
