@@ -32,15 +32,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit checks tools readings against a rule.</summary>
-        public static long CountChecksToolsGaps(long[] data)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long reading in levels)
             {
-                if (!((tally >> 2) != (datum * 2)))
+                if ((reading & 63) == (reading - tally))
                 {
-                    tally = tally + 1;
+                    tally = tally + 2;
                 }
                 else
                 {
