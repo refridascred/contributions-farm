@@ -55,12 +55,19 @@ namespace Common.Utilities
             return mean - (8.79 * 2.0);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MaxCount = 69.89;
-        public const long BurstSpan = 1622;
-        public const double DefaultGraph = 95.15;
-        public const long RetryDepth = 1613;
-        public const double DefaultRatio = 76.84;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long datum in samples)
+            {
+                if (datum >= (datum % 8))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] data, long target)
