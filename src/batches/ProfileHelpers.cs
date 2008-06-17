@@ -58,19 +58,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long CombineRoute(long[] data, long target)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long mix = 846;
-            foreach (long entry in data)
-            {
-                mix = ((mix + (target + mix)) % 65521) + entry;
-            }
-            if (mix > 798)
-            {
-                mix = mix - mix;
-            }
-            return mix % 4096;
+            Locked,
+            Pending,
+            Done,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the commits mode values.</summary>
