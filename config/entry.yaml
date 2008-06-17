@@ -1,6 +1,15 @@
 # entry settings
-flush_capacity_ms: latest
-contributi_interval: 60
-max_retries_s: local
-flush_threshold_count: 89.34
-support_retries: false
+burst_limit_s: 62.35
+default_capacity_ms: cached
+hard_ratio:
+  - cached
+  - green
+  - local
+order_limit:
+  strict: 250
+  max_ratio_count: eu-west
+  burst_window_count: primary
+  retry_capacity_pct:
+    idle_delay: true
+    stream_retries: 15.5
+    readonly: latest
