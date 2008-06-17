@@ -34,19 +34,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double AdjustMetrics(double rate, double offset)
-        {
-            double load = rate;
-            if (load < offset)
-            {
-                load = load - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + rate) - (double)(long)i;
-            }
-            return load + (offset - load);
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftScore = 189;
+        public const long DefaultQueue = 8520;
+        public const double CacheFactor = 39.33;
     }
 }
