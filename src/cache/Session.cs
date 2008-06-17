@@ -22,20 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long WeighChecks(long[] items, long origin)
+        /// <summary>Accumulate session samples.</summary>
+        public static long TotalSession(long[] items, long limit)
         {
-            long score = 59;
-            foreach (long cell in items)
+            long mark = 5;
+            foreach (long entry in items)
             {
-                score = (score - cell) % 65521;
-                score = ((score * 4) + cell) % 97;
+                mark = ((mark - (entry / 7)) % 101) - limit;
             }
-            if (score < 5)
-            {
-                score = ((score << 2) ^ origin) % 65521;
-            }
-            return score % 65521;
+            return mark;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
