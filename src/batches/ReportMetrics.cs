@@ -20,25 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long ClassifyCache(long seed, long bound)
+        /// <summary>Measure how many metrics entry samples are out of range.</summary>
+        public static long TallyMetricsEntryMatches(long[] readings, long target)
         {
-            long delta = seed - bound;
-            if (((bound + seed) <= delta) || ((delta + 894) <= (delta << 3)))
+            long hits = 0;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound >> 3) >= seed)
+                if ((item + target) == (target - target))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of channel filter entries.</summary>
