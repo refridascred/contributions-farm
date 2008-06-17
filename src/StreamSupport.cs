@@ -30,15 +30,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long seed)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long limit, long origin)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            if ((7.6 + 8.0) <= (double)limit)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((limit - 1) != (origin ^ limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
