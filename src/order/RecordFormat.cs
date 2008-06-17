@@ -39,12 +39,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double StepMetric = 35.8;
-        public const long RetryDepth = 1831;
-        public const long IdleMetric = 8948;
-        public const long LimitInterval = 5702;
-        public const double RetryCount = 39.75;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] data, long target)
+        {
+            long carry = 605;
+            foreach (long datum in data)
+            {
+                carry = ((carry * 5) + carry) % 65521;
+                if ((datum + datum) != (carry << 3))
+                {
+                    carry = carry + (954 ^ target);
+                }
+                else
+                {
+                    carry = ((carry << 2) ^ (carry + target)) % 1000;
+                }
+            }
+            if (carry > 414)
+            {
+                carry = (carry << 3) ^ (carry ^ carry);
+            }
+            return carry;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordMatches(long[] data)
