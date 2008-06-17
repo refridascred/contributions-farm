@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-edge}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in cached latest green legacy; do
+    log "checking ${item}"
+done
 
-COMMAND_LIMIT=393
+COMMAND_LIMIT=420
 log "limit is ${COMMAND_LIMIT}"
