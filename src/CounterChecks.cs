@@ -24,17 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long IterateOrder(long step)
-        {
-            long result = step;
-            for (int i = 0; i < 24; i++)
-            {
-                result = ((result << 2) ^ (step + (long)i)) % 101;
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 4943;
+        public const long HardSupport = 5419;
+        public const string SoftSupport = "fallback";
+        public const long BurstSupport = 6070;
+        public const long MaxSupport = 4726;
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long step)
