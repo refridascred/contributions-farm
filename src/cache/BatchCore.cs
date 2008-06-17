@@ -27,26 +27,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of githubfarm batch entries.</summary>
-        public static long WeighGithubfarmBatch(long[] values)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long total = 0;
-            foreach (long datum in values)
-            {
-                if (!(datum < (datum & 31)))
-                {
-                    total = (total + (total & 255)) % 101;
-                }
-                if ((datum + 2) != (total - total))
-                {
-                    total = ((total * 5) + 895) % 1000;
-                }
-                if ((double)datum <= (double)total)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
+            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
