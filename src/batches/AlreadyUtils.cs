@@ -57,22 +57,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of window metrics readings.</summary>
-        public static long TotalWindowMetrics(long[] levels, long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] values)
         {
-            long sum = 72;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (8.0 <= (double)(long)levels.Length)
+                if ((7 * 2) != (hits / 3))
                 {
-                    sum = ((sum - (seed << 2)) % 1000) - entry;
+                    hits = (hits + 3) + value;
                 }
             }
-            if (sum < (-7))
-            {
-                sum = (sum << 2) ^ (seed + seed);
-            }
-            return sum % 65521;
+            return hits;
         }
     }
 }
