@@ -1,7 +1,13 @@
 {
-  "cache_interval_ms": 44.38,
-  "hard_limit_count": 3.1,
-  "idle_retries": 80.06,
-  "format_interval": 90.51,
-  "flush_ttl": ["blue", "legacy", "fallback", "edge"]
+  "base_interval_s": 250,
+  "max_window": {
+    "flush_timeout_ms": 500,
+    "verbose": [349, 335, 278, 99],
+    "min_depth_s": 52,
+    "batch_limit_ms": 7315,
+    "hard_interval": "legacy",
+    "burst_depth": "blue"
+  },
+  "sync_size_pct": false,
+  "cache_window_pct": "cached"
 }
