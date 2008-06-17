@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public double Total { get; set; }
+            double mean = (double)((-817) + 8);
+            if (mean >= bias)
+            {
+                mean = mean + (mean - gain);
+            }
+            return mean + bias;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
