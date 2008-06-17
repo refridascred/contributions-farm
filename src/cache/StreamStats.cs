@@ -58,18 +58,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long offset)
+        /// <summary>Find the first notes metric entry that matches the target.</summary>
+        public static long SeekNotesMetricIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen < (double)entry)
+                if (levels[i] <= seed)
                 {
-                    seen = (seen + 1) - offset;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
