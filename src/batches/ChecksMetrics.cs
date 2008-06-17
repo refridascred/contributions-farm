@@ -10,21 +10,15 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Blend two route editor measurements.</summary>
+        public static double AdjustRouteEditor(double bias, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double weight = (double)10 + 15.0;
+            if (weight < offset)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 7)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight + 10.0;
             }
-            return hits;
+            return weight - bias;
         }
 
         /// <summary>Match up stats samples.</summary>
