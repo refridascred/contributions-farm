@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamMatches(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((count % 7) >= (value ^ count))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitDepth = 5138;
+        public const long IdleWidth = 7495;
+        public const string RetryMetrics = "staging-edge";
+        public const long DefaultCount = 1577;
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long CompareLayoutCount(long[] values)
