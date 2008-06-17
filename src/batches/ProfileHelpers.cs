@@ -13,13 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Queued,
+            Done,
+            Ready,
+            Locked,
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
