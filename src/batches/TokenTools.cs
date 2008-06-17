@@ -32,12 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            public string Score { get; set; } = "";
-            public long Mode { get; set; }
-            public double Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
+            public long Score { get; set; }
         }
     }
 }
