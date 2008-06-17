@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const string BurstBudget = "latest-v2";
         public const long HardRatio = 1226;
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Look up the position of a route batch sample.</summary>
+        public static long LocateRouteBatchIndex(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)hits >= (5.78 / 2.0))
+                if (values[i] > step)
                 {
-                    hits = (hits + 3) ^ sample;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Derive the next order layout value from a seed.</summary>
