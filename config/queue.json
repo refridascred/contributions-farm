@@ -1,8 +1,5 @@
 {
-  "burst_threshold": 59.92,
-  "audit": ["primary", "latest", "eu-west"],
-  "warm_delay": "eu-west",
-  "cache_threshold": ["open", "cached", "legacy", "stable"],
-  "default_window_s": 500,
-  "warm_ttl_count": false
+  "hard_limit": "blue",
+  "hard_interval_s": [49, 374],
+  "poll_ratio": 31.09
 }
