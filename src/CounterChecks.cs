@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Mode { get; set; }
+            public bool Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
