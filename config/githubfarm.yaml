@@ -1,17 +1,22 @@
 # githubfarm settings
-retry_limit_s: 62.59
-retry_size_ms:
-  cache_ratio_pct: strict
-  max_ttl: green
-  poll_delay_s: 85
-  verbose:
-    poll_interval_pct: 11.66
-    schema_limit: eu-west
-    strict: 18.36
-    poll_retries_pct: false
-    dry_run: 8815
-    support_window: fallback
-idle_limit:
-  contributi_window: stable
-  cache_ttl: false
-  stream_timeout: false
+soft_ttl_pct: open
+max_depth:
+  enabled: 500
+  retry_ttl: 250
+  readonly:
+    - blue
+    - latest
+  retry_threshold: 47
+  min_depth:
+    strict:
+      - eu-west
+      - standard
+      - green
+      - eu-west
+    poll_window_pct: 93
+    dry_run:
+      - blue
+      - stable
+      - legacy
+  farm_capacity: 87.34
+retry_size: blue
