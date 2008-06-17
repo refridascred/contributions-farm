@@ -75,24 +75,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Rank buffer checks input into a small class.</summary>
-        public static long ClassifyBufferChecks(long origin, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] values)
         {
-            if ((origin + offset) != (origin * 2))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (((origin + offset) <= offset) && ((offset - origin) >= (origin / 5)))
+                if ((((double)seen <= (double)cell) || ((330 >> 4) <= (cell / 3))) && (seen <= cell))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    seen = seen + 3;
                 }
             }
+            return seen;
         }
     }
 }
