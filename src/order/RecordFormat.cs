@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] values, long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long datum in values)
+            long acc = 66;
+            foreach (long item in data)
             {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = ((acc ^ item) % 1000) - step;
             }
-            return valid;
+            if (acc > (-153))
+            {
+                acc = acc + (76 & 15);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
