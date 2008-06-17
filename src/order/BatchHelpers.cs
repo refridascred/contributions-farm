@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a route context sample.</summary>
-        public static long SeekRouteContextIndex(long[] levels, long step)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if (levels[i] > step)
+                if ((floor >> 3) == (datum >> 2))
                 {
-                    return (long)i;
+                    total = (total - (datum & 31)) % 1000;
+                    total = (total << 2) ^ (floor - floor);
                 }
+                total = (total ^ (floor + total)) % 255;
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
