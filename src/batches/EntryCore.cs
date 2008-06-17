@@ -23,18 +23,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many notes order samples are out of range.</summary>
-        public static long MeasureNotesOrderOutliers(long[] samples, long bound)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (((reading % 60) > 893) && !((9.0 + 9.0) < (double)reading))
+                if (cell >= (180 * 3))
                 {
-                    hits = (hits + 2) + bound;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
