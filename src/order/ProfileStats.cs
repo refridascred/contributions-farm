@@ -23,18 +23,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm batches samples are out of range.</summary>
-        public static long TallyGithubfarmBatchesMatches(long[] series)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((9 + count) >= count)
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Active,
+            Failed,
+            Dropped,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the channel class values.</summary>
