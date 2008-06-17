@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] levels, long bound)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] items, long target)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long anchor = 6;
+            foreach (long reading in items)
             {
-                if (datum < bound)
+                if (!(reading >= (reading + 46)))
                 {
-                    valid = false;
-                    break;
+                    anchor = (anchor + target) % 65521;
+                }
+                if (target > (reading / 9))
+                {
+                    anchor = ((anchor << 2) ^ anchor) % 255;
+                }
+                else
+                {
+                    anchor = (anchor - (reading % 5)) % 97;
                 }
             }
-            return valid;
+            return anchor % 97;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
