@@ -14,21 +14,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up window format samples.</summary>
-        public static long PairWindowFormatCount(long[] series)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
