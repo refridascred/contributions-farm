@@ -97,13 +97,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Derive the next contributi editor value from a seed.</summary>
+        public static long StepContributiEditor(long offset)
         {
-            Synced,
-            Idle,
-            New,
-            Pending,
+            long score = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
