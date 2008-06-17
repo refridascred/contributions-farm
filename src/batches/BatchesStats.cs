@@ -11,16 +11,24 @@ namespace Common.Utilities
         public const long DefaultWindow = 5545;
         public const string BurstWindow = "legacy-1";
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long bound)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long bound, long step)
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
+            if ((bound << 2) == (step ^ bound))
             {
-                score = (score * 3) + score;
-                score = ((score * 4) + (long)i) % 101;
+                return 6;
             }
-            return score;
+            else
+            {
+                if (((step - bound) <= bound) && ((bound - bound) >= bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Hold a farm entry.</summary>
