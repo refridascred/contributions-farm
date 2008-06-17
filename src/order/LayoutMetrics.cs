@@ -23,11 +23,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long SortMetric(long origin, long target)
         {
-            public bool Owner { get; set; }
-            public bool Region { get; set; }
+            if ((double)target < (5.5 * 6.7))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target ^ target) <= (target + origin))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
