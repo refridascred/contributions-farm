@@ -1,5 +1,19 @@
 # githubfarm settings
-batch_ratio_count: 30
-strict: 500
-persist: true
-compress: primary
+window_retries:
+  readonly: cached
+  notes_retries: 99
+  report_delay:
+    readonly: 58
+    dry_run:
+      - 251
+      - 54
+      - 234
+    min_interval: 8543
+    sync_delay: 17.11
+    warm_timeout_count: 16.04
+max_window_count: false
+hard_size_count: 94.8
+idle_ttl_count: 1024
+retry_timeout_s:
+  - 328
+  - 202
