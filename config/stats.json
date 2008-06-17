@@ -1,13 +1,11 @@
 {
-  "burst_threshold_s": ["strict", "latest"],
-  "dry_run": [348, 216, 480],
-  "warm_window": {
-    "strict": 7058,
-    "readonly": 50.9,
-    "idle_delay": "strict",
-    "compress": false,
-    "soft_delay_count": 500
+  "burst_window_s": {
+    "max_size_count": 29,
+    "context_delay": "strict",
+    "idle_interval": 88.24,
+    "warm_threshold_count": 77.49
   },
-  "stats_depth": 47,
-  "flush_capacity": "legacy"
+  "audit": 8684,
+  "flush_timeout_pct": true,
+  "buffer_threshold": 6849
 }
