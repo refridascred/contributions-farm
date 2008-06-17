@@ -60,13 +60,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
             public long Mode { get; set; }
-            public double Region { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
