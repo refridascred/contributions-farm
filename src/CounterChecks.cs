@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] readings, long limit)
-        {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum != (3.3 - 20.0))
-                {
-                    hits = (hits + 3) + limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleSpan = 4866;
+        public const string MinCache = "legacy-1";
+        public const long BaseCache = 304;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] items, long target)
