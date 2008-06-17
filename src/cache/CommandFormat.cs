@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const long CacheBatch = 5293;
         public const long StepWidth = 6253;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BurstDepth = "strict-1";
-        public const string HardContext = "open-v2";
-        public const double DefaultTimeout = 87.36;
-        public const long WindowContext = 114;
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the metric commits entries that pass the check.</summary>
         public static long TallyMetricCommitsMatches(long[] samples, long target)
