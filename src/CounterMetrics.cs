@@ -22,18 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long total = 15;
-            foreach (long value in data)
-            {
-                if (total >= (total * 4))
-                {
-                    total = ((total * 5) + (4 / 7)) + value;
-                }
-            }
-            return total % 97;
+            public long Level { get; set; }
+            public bool Mode { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
