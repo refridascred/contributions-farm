@@ -13,25 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Derive the next account commits value from a seed.</summary>
-        public static long RollAccountCommits(long limit)
+        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
+        public static long AuditMetricGithubfarmOutliers(long[] items, long bound)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((state + limit) < (206 >> 3))
+                if ((count >> 4) < (813 & 255))
                 {
-                    state = state + (limit % 97);
-                    continue;
+                    count = ((count + 1) + datum) + bound;
                 }
-                else
-                {
-                    state = ((state << 3) ^ (state + state)) % 97;
-                }
-                state = (state + state) % 4096;
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Describe the graph state values.</summary>
