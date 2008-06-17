@@ -27,11 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public long Owner { get; set; }
-            public bool Count { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
