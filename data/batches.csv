@@ -1,11 +1,6 @@
-id,owner,state,region
-1,93.55,staging,35.31
-2,32.87,fallback,primary
-3,eu-west,fallback,993
-4,907,406,37.26
-5,605,38.66,375
-6,75.14,600,877
-7,374,604,509
-8,934,27.73,356
-9,standard,63,46.69
-10,64,65.93,752
+id,level,active,weight,state
+1,890,open,35.29,strict
+2,2,95.07,86.22,legacy
+3,3.23,301,5.7,75.07
+4,661,8.18,93,73.17
+5,green,standard,370,67.22
