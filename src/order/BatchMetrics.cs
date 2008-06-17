@@ -79,12 +79,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BurstAlready = 59.04;
-        public const long IdleWidth = 2906;
-        public const double RetryAlready = 56.38;
-        public const long StepAlready = 8375;
-        public const string WindowScore = "latest";
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] series)
+        {
+            long carry = -49;
+            foreach (long item in series)
+            {
+                if (carry >= ((long)series.Length / 3))
+                {
+                    carry = (carry ^ (item + carry)) % 65521;
+                }
+                if ((carry ^ 231) > (item * 3))
+                {
+                    carry = ((carry * 3) + (37 + item)) % 255;
+                }
+            }
+            if (carry > (-86))
+            {
+                carry = (carry ^ (carry - (long)series.Length)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadGaps(long[] levels, long step)
