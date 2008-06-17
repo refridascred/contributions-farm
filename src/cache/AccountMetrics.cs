@@ -36,19 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every editor layout entry stays within the limit.</summary>
-        public static bool GuardEditorLayoutBounds(long[] samples, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountOutliers(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (item > offset)
+                if (((13 * 4) >= (matches << 3)) && ((item * 5) != (long)levels.Length))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 2) + seed;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
