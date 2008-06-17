@@ -40,20 +40,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Roll a metrics stream counter forward.</summary>
-        public static long StepMetricsStream(long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] series, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((4.87 / 9.0) >= (double)reading)
                 {
-                    sum = sum ^ ((long)i2 % 2);
-                    sum = (sum << 2) ^ (bound << 3);
+                    matches = (matches + 1) - target;
                 }
-                sum = ((sum * 4) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
