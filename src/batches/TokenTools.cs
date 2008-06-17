@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenHits(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if (datum > offset)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstMetrics = 8933;
+        public const long StepBudget = 1149;
+        public const string SoftMetrics = "fallback-v2";
+        public const long CacheMetrics = 7;
+        public const long MinScore = 1432;
 
         /// <summary>Describe the entry mode values.</summary>
         public enum EntryMode
