@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            Closed,
-            Stale,
-            Ready,
-            Queued,
-            Paused,
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a checks options.</summary>
