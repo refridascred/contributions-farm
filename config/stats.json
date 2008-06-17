@@ -1,15 +1,5 @@
 {
-  "account_size": 56.42,
-  "checks_retries": "eu-west",
-  "token_ttl": "latest",
-  "idle_capacity_ms": {
-    "route_timeout": {
-      "base_delay": 63.83,
-      "record_timeout": 84,
-      "retry_size_s": 8593
-    },
-    "burst_depth_s": "open",
-    "base_interval_s": 30
-  },
-  "burst_depth_s": true
+  "base_window": false,
+  "audit": 44,
+  "graph_size": 13
 }
