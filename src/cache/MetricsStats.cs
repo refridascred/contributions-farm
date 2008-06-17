@@ -40,17 +40,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long SeekTokenIndex(long[] data, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 924;
+            foreach (long value in items)
             {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
+                state = (state * 2) + (value << 3);
+                state = (state - (value / 4)) % 101;
+                state = ((state << 3) ^ (value ^ state)) % 65521;
             }
-            return -1;
+            if (state < 324)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
