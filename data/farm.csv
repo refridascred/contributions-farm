@@ -1,8 +1,8 @@
-id,state
-1,935
-2,77.14
-3,136
-4,15.23
-5,49.59
-6,401
-7,blue
+id,region,state,token,weight
+1,staging,10.98,61.29,523
+2,871,472,960,3.02
+3,edge,fallback,open,6.33
+4,95.66,eu-west,70.98,72.71
+5,34.09,96.64,91.99,162
+6,52.94,153,open,legacy
+7,793,strict,608,stable
