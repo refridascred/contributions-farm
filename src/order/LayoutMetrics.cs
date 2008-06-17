@@ -14,23 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] data)
-        {
-            long score = 3;
-            foreach (long cell in data)
-            {
-                if ((score - cell) <= (cell ^ score))
-                {
-                    score = score + cell;
-                }
-            }
-            if (score > 18)
-            {
-                score = score + (score + score);
-            }
-            return score;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchSize = 8786;
+        public const double BurstCommand = 31.76;
+        public const long SoftCommand = 832;
+        public const double WindowCommand = 42.31;
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
