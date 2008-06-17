@@ -1,7 +1,8 @@
 {
-  "sync_retries_s": 2577,
-  "channel_ttl": 60,
-  "hard_timeout_s": "edge",
-  "base_size_count": 39.54,
-  "base_retries_count": "legacy"
+  "retry_limit_count": 81.16,
+  "persist": 1024,
+  "burst_capacity": "eu-west",
+  "warm_capacity_ms": "latest",
+  "poll_delay_pct": "fallback",
+  "batch_capacity_s": [346, 214, 450]
 }
