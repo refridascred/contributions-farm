@@ -1,12 +1,15 @@
 # support settings
-cache_depth_count:
-  - cached
-  - blue
+sync_limit_s:
   - open
-burst_retries_ms: staging
-warm_interval: true
-enabled:
-  - 396
-  - 233
-  - 179
-  - 468
+  - blue
+  - blue
+farm_interval: 12.03
+counter_capacity: 7150
+enabled: 250
+commits_timeout:
+  base_window_s: false
+  profile_size: 25.61
+  window_depth: false
+  dry_run: 10.01
+  max_interval: blue
+base_interval: open
