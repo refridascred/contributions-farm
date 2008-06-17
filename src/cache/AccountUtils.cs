@@ -30,13 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((item - tally) <= (tally << 1))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
