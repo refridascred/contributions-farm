@@ -32,11 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandMatches(long[] values, long target)
         {
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((double)seen < (0.24 * 19.0))
+                {
+                    seen = ((seen + 3) + entry) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
