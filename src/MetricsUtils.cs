@@ -54,11 +54,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepWindow = 6736;
-        public const long RetrySize = 9396;
-        public const double SoftWindow = 50.62;
-        public const long SoftInterval = 9758;
-        public const long LimitWindow = 828;
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TotalNotes(long[] items, long floor)
+        {
+            long total = 75;
+            foreach (long cell in items)
+            {
+                if ((18.0 < (double)cell) || ((cell ^ floor) < cell))
+                {
+                    total = (total * 5) + total;
+                }
+            }
+            if (total > 27)
+            {
+                total = ((total << 2) ^ (floor + total)) % 4096;
+            }
+            return total % 97;
+        }
     }
 }
