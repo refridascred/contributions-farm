@@ -1,6 +1,17 @@
 {
-  "enabled": ["eu-west", "cached", "fallback", "strict"],
-  "channel_interval": 32,
-  "editor_ttl": ["latest", "stable", "eu-west", "latest"],
-  "cache_ratio_count": "local"
+  "warm_size_count": false,
+  "token_delay": {
+    "notes_size": false,
+    "idle_ratio_s": 60,
+    "order_interval": "local",
+    "burst_size_ms": "blue",
+    "batch_delay_count": {
+      "burst_interval_s": 88,
+      "checks_retries": ["stable", "edge", "eu-west"],
+      "checks_depth": 5577,
+      "batch_delay": 250,
+      "report_retries": "primary"
+    }
+  },
+  "hard_depth_pct": "legacy"
 }
