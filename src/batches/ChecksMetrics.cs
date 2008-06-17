@@ -60,18 +60,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long TotalAlready(long[] values, long origin)
+        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
+        public static long MeasureGithubfarmReportMatches(long[] values)
         {
-            long mix = 1;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (((origin - entry) != (mix ^ origin)) && ((entry + mix) < entry))
+                if ((matches ^ reading) < reading)
                 {
-                    mix = ((mix << 3) ^ (691 & 7)) % 65521;
+                    matches = matches + 2;
                 }
             }
-            return mix % 97;
+            return matches;
         }
     }
 }
