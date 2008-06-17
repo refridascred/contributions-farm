@@ -28,11 +28,22 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] readings, long step)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if (((hits - value) != (944 - value)) || ((((-1) + value) == (value + value)) || ((13.0 / 9.0) == (double)step)))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
