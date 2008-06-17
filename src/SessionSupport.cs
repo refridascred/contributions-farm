@@ -38,24 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Derive the next order layout value from a seed.</summary>
+        public static long StepOrderLayout(long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                long step = (seed ^ mark) - (mark << 2);
-                if ((seed % 24) > step)
-                {
-                    step = (step << 3) ^ ((long)i - 8);
-                }
-                else
-                {
-                    mark = (mark ^ step) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
+                score = (score - (seed ^ score)) % 1000;
+                score = (score ^ (score % 12)) % 4096;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return mark;
+            return score;
         }
     }
 }
