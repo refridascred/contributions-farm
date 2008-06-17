@@ -44,14 +44,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double bias, double bias2)
         {
-            Locked,
-            Pending,
-            Done,
-            Retry,
-            Synced,
+            double scale = (double)(29 << 3);
+            if (scale >= (scale + bias2))
+            {
+                scale = scale - 9.0;
+            }
+            else
+            {
+                scale = scale - scale;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + bias) - (double)(long)i;
+            }
+            return scale - (double)3;
         }
 
         /// <summary>Project the next order value.</summary>
