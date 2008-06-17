@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long DefaultQueue = 1258;
-        public const double IdleFactor = 29.0;
-        public const long IdleQueue = 6272;
-        public const long HardTimeout = 5581;
-        public const long HardSize = 1644;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long RankCounter(long step, long step2)
