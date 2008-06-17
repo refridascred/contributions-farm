@@ -1,15 +1,5 @@
 # githubfarm settings
-retry_ttl_ms:
-  schema_interval: strict
-  context_limit:
-    - edge
-    - latest
-    - cached
-    - green
-  stream_interval: standard
-layout_threshold: fallback
-max_ratio_pct:
-  - 178
-  - 76
-profile_capacity: 3847
-dry_run: open
+batch_ratio_count: 30
+strict: 500
+persist: true
+compress: primary
