@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] items, long limit)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long mark = 73;
-            foreach (long cell in items)
-            {
-                mark = ((mark + (cell % 10)) % 101) - limit;
-            }
-            return mark;
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a record header.</summary>
