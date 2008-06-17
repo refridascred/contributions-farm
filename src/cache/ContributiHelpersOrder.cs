@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitBudget = 1828;
-        public const double StepCount = 98.91;
-        public const string CacheEntry = "primary";
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long limit)
+        {
+            long total = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total << 3) ^ 7) % 4096;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
