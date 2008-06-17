@@ -65,22 +65,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of record layout readings.</summary>
-        public static long FoldRecordLayout(long[] levels, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long anchor = 6;
-            foreach (long reading in levels)
-            {
-                if ((1.0 + 1.52) != (double)origin)
-                {
-                    anchor = ((anchor * 2) + (3 % 7)) + reading;
-                }
-                else
-                {
-                    anchor = anchor + (anchor - anchor);
-                }
-            }
-            return anchor;
+            public string Region { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Rank buffer checks input into a small class.</summary>
