@@ -60,22 +60,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] series)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((value > (value << 3)) && ((value - hits) == (90 - value)))
+                if (matches <= (234 / 5))
                 {
-                    hits = hits + 1;
+                    matches = ((matches + 3) ^ entry) + floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
