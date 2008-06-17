@@ -1,22 +1,36 @@
 # githubfarm settings
-soft_ttl_pct: open
-max_depth:
-  enabled: 500
-  retry_ttl: 250
-  readonly:
-    - blue
-    - latest
-  retry_threshold: 47
-  min_depth:
-    strict:
-      - eu-west
-      - standard
-      - green
-      - eu-west
-    poll_window_pct: 93
-    dry_run:
-      - blue
-      - stable
+farm_retries:
+  audit:
+    flush_depth: 500
+    verbose:
+      - 330
+      - 122
+    enabled:
+      - 132
+      - 216
+    default_ttl_ms:
+      - 468
+      - 493
+      - 34
+    strict: open
+    retry_ratio_count:
+      - primary
       - legacy
-  farm_capacity: 87.34
-retry_size: blue
+  warm_size_pct: true
+  idle_ttl_s: true
+  readonly:
+    - 123
+    - 366
+    - 115
+  batches_window:
+    readonly: 1659
+    retry_interval: 52.51
+    audit: 91
+    persist: local
+    route_limit:
+      - strict
+      - strict
+      - eu-west
+  idle_window: 1024
+editor_depth: 45
+compress: 54.51
