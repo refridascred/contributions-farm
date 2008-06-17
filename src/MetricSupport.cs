@@ -25,22 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiOutliers(long[] items, long step)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if ((hits - hits) >= hits)
-                {
-                    hits = ((hits + 3) - cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Synced,
+            Idle,
+            Pending,
+            Dropped,
+            Active,
         }
     }
 }
