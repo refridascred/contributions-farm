@@ -57,13 +57,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] samples, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmRange(long[] readings, long floor)
         {
             bool flag = true;
-            foreach (long datum in samples)
+            foreach (long value in readings)
             {
-                if (datum != floor)
+                if (value <= floor)
                 {
                     flag = false;
                     break;
