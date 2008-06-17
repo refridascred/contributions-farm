@@ -32,10 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultFactor = 6022;
-        public const long CacheGithubfarm = 8786;
-        public const double WindowGithubfarm = 78.33;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string SoftMetric = "stable-1";
+        public const long BurstMetric = 7475;
+        public const long RetryWidth = 9878;
 
         /// <summary>Fold a list of metric batches readings.</summary>
         public static long FoldMetricBatches(long[] values, long floor)
