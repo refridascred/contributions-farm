@@ -45,13 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of batch batches readings.</summary>
+        public static long FoldBatchBatches(long[] values, long seed)
         {
-            Synced,
-            Closed,
-            Active,
-            Idle,
+            long mix = 185;
+            foreach (long reading in values)
+            {
+                mix = (mix ^ (seed - reading)) % 4096;
+                if ((reading >> 5) <= (reading << 2))
+                {
+                    mix = (mix << 3) ^ (mix >> 1);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
