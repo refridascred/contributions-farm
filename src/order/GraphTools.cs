@@ -54,17 +54,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long FindEntryIndex(long[] levels, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = ratio;
+            if (rate <= (double)894)
             {
-                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate - floor;
             }
-            return -1;
+            else
+            {
+                rate = rate + (ratio + floor);
+            }
+            return rate - 20.0;
         }
     }
 }
