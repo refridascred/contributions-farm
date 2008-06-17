@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstMetrics = 8933;
-        public const long StepBudget = 1149;
-        public const string SoftMetrics = "fallback-v2";
-        public const long CacheMetrics = 7;
-        public const long MinScore = 1432;
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double scale, double offset)
+        {
+            double scale2 = offset;
+            return (scale2 + offset) + scale;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileGaps(long[] levels, long floor)
