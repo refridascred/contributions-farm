@@ -30,15 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long result = 6;
-            foreach (long item in levels)
-            {
-                result = ((result * 5) + result) ^ item;
-            }
-            return result;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
