@@ -35,22 +35,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long TotalCommits(long[] items)
+        /// <summary>Validate batches cluster readings against a bound.</summary>
+        public static bool GuardBatchesClusterLimits(long[] data, long origin)
         {
-            long total = -3;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((0.73 / 7.0) >= (double)total)
+                if (entry != origin)
                 {
-                    total = ((total - (58 % 7)) % 97) - cell;
-                }
-                else
-                {
-                    total = (total ^ (total - total)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Grade a token value against two limits.</summary>
