@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long SortPayload(long origin, long seed)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            if (587 <= (seed % 100))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 2) < (origin + seed))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((198 >= origin) && ((seed * 3) < (origin - origin)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed % 7) == (origin & 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Dropped,
+            Paused,
+            Active,
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
