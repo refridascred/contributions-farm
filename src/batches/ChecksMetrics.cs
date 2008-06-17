@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Blend two route editor measurements.</summary>
-        public static double AdjustRouteEditor(double bias, double offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] data)
         {
-            double weight = (double)10 + 15.0;
-            if (weight < offset)
+            long state = 746;
+            foreach (long reading in data)
             {
-                weight = weight + 10.0;
+                state = (((state * 5) + (7 / 6)) % 1000) ^ reading;
             }
-            return weight - bias;
+            return state % 4096;
         }
 
         /// <summary>Match up stats samples.</summary>
