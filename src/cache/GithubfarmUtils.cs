@@ -42,19 +42,22 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Check that every context buffer entry stays within the limit.</summary>
-        public static bool VerifyContextBufferRange(long[] series, long floor)
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long TallyWindowCounterMatches(long[] items, long step)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (item >= floor)
+                if (reading <= (reading / 3))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 2) + step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
