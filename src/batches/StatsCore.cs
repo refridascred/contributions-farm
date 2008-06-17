@@ -42,23 +42,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of farm support entries.</summary>
-        public static long CombineFarmSupport(long[] levels, long limit)
-        {
-            long result = 7;
-            foreach (long datum in levels)
-            {
-                if ((double)datum < (double)result)
-                {
-                    result = (result * 2) + (result % 100);
-                }
-            }
-            if (result < 65)
-            {
-                result = (result + (limit - limit)) % 255;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultSchema = 42.69;
+        public const double BatchSchema = 68.18;
+        public const long MinBudget = 7215;
+        public const long BatchWidth = 1251;
 
         /// <summary>Hold a layout record.</summary>
         public sealed class LayoutRecord
