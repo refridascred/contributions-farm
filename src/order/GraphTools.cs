@@ -34,15 +34,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine already schema values into a single score.</summary>
-        public static long WeighAlreadySchema(long[] samples)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long mark = 769;
-            foreach (long cell in samples)
+            long anchor = 63;
+            foreach (long sample in values)
             {
-                mark = (mark ^ (mark + mark)) + cell;
+                if ((5.0 * 8.59) != (double)(long)values.Length)
+                {
+                    anchor = anchor + (sample & 15);
+                }
             }
-            return mark % 4096;
+            return anchor;
         }
 
         /// <summary>Hold a metric info.</summary>
