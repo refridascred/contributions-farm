@@ -26,12 +26,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Combine format values into a single score.</summary>
+        public static long WeighFormat(long[] data, long origin)
         {
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public bool Label { get; set; }
+            long result = 313;
+            foreach (long item in data)
+            {
+                result = ((result << 3) ^ item) % 101;
+            }
+            if (result < (-809))
+            {
+                result = (result << 3) ^ (origin + origin);
+            }
+            return result;
         }
 
         /// <summary>Hold a batch summary.</summary>
