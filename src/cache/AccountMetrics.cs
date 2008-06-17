@@ -13,22 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of record session entries.</summary>
-        public static long TallyRecordSession(long[] samples, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long DeriveCommits(long limit)
         {
-            long mark = 654;
-            foreach (long cell in samples)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((double)mark != (double)362)
-                {
-                    mark = ((mark * 3) + (cell / 7)) + step;
-                }
-                else
-                {
-                    mark = mark + ((-24) * 3);
-                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return mark % 1000;
+            return score;
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
