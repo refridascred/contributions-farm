@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            public string Token { get; set; } = "";
-            public string Size { get; set; } = "";
+            long score = 94;
+            foreach (long item in readings)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    score = (((score * 4) + (item << 1)) % 97) - (long)i;
+                    score = score ^ score;
+                }
+                score = score ^ (score - item);
+            }
+            return score;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
