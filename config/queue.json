@@ -1,17 +1,5 @@
 {
-  "idle_ttl_ms": "fallback",
-  "retry_retries_s": {
-    "flush_delay_ms": "green",
-    "persist": 79.34,
-    "order_ratio": true,
-    "cache_capacity": ["cached", "cached", "primary"]
-  },
-  "strict": "eu-west",
-  "sync_size": ["staging", "cached", "staging", "eu-west"],
-  "poll_ratio": {
-    "graph_size": "local",
-    "retry_ratio_count": 42,
-    "readonly": false,
-    "already_depth": "latest"
-  }
+  "sync_ratio_s": "edge",
+  "already_retries": "fallback",
+  "cache_delay": 49.55
 }
