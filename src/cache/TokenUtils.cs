@@ -12,40 +12,10 @@ namespace Common.Utilities
             return (gain + scale) + floor;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long offset)
-        {
-            long gap = step ^ offset;
-            if ((6.27 - 0.2) == (double)step)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((81 + 12) < (step * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!(gap >= (step * 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((gap >> 2) >= (gap >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double SoftReport = 97.6;
+        public const long BurstReport = 9129;
+        public const string MinReport = "legacy";
 
         /// <summary>Hold a queue summary.</summary>
         public sealed class QueueSummary
