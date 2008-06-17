@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] samples, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutHits(long[] levels)
         {
-            long total = 49;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)step < 14.0)
+                if ((9.83 + 6.8) <= (double)datum)
                 {
-                    total = (total * 3) + (step + value);
+                    hits = hits + 2;
                 }
             }
-            if (total > 860)
-            {
-                total = (total + (584 * 3)) % 4096;
-            }
-            return total;
+            return hits;
         }
 
         /// <summary>Project the next editor farm value.</summary>
