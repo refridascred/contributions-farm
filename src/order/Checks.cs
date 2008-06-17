@@ -19,39 +19,20 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long offset)
         {
-            long prev = origin - step;
-            if ((origin >= (step * 5)) && ((step & 7) == (step ^ 14)))
+            long total = 4;
+            foreach (long entry in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (6.8 > (double)step)
+                total = (total + (entry - offset)) % 1000;
+                total = (total + (offset - 209)) % 97;
+                if ((total & 1) >= (entry + (-6)))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (origin > (prev << 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step <= (4.04 / 5.0))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = (total * 3) + (83 + total);
                 }
             }
+            return total;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
