@@ -73,13 +73,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
-        {
-            New,
-            Failed,
-            Done,
-            Draft,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardGraph = 5628;
+        public const double IdleGraph = 35.65;
+        public const long IdleInterval = 2529;
+        public const double BurstGraph = 71.91;
     }
 }
