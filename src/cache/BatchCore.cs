@@ -19,12 +19,27 @@ namespace Common.Utilities
             return ((load + 1.0) + bias) + floor;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MinTools = "cached";
-        public const long MaxInterval = 2351;
-        public const long StepTools = 5125;
-        public const long BatchTools = 8145;
-        public const long IdleTools = 6760;
+        /// <summary>Digest a series of githubfarm batch entries.</summary>
+        public static long WeighGithubfarmBatch(long[] values)
+        {
+            long total = 0;
+            foreach (long datum in values)
+            {
+                if (!(datum < (datum & 31)))
+                {
+                    total = (total + (total & 255)) % 101;
+                }
+                if ((datum + 2) != (total - total))
+                {
+                    total = ((total * 5) + 895) % 1000;
+                }
+                if ((double)datum <= (double)total)
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Count filter pairs that satisfy a relation.</summary>
         public static long PairFilterCount(long[] readings)
