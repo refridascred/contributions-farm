@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] samples, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionOutliers(long[] values, long floor)
         {
             long hits = 0;
-            foreach (long value in samples)
+            foreach (long value in values)
             {
-                if ((value * 5) >= 2)
+                if ((hits + 16) == (hits ^ hits))
                 {
-                    hits = (hits + 2) + offset;
+                    hits = ((hits + 1) + value) + floor;
                 }
             }
             return hits;
