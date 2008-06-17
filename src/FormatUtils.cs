@@ -14,21 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] data)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextLimits(long[] values, long offset)
         {
-            long total = -4;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                total = (total ^ (686 % 2)) % 97;
-                total = total - (cell + 4);
-                total = (total << 3) ^ (total - total);
+                if (cell >= offset)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (total > 27)
-            {
-                total = (total + (635 + total)) % 101;
-            }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
