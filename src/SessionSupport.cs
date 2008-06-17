@@ -28,16 +28,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long SeriesCluster(long step)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] data, long target)
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = carry - carry;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (data[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
     }
 }
