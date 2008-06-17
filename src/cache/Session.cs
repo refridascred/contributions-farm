@@ -61,15 +61,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of context account entries.</summary>
-        public static long ScoreContextAccount(long[] items)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] data, long limit)
         {
-            long total = 6;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                total = ((total - (27 >> 3)) % 1000) - sample;
+                if ((data[i] < limit) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
