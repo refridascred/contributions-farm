@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 5491;
-        public const long RetryChannel = 7720;
-        public const double CacheChannel = 78.0;
-        public const long LimitCount = 2600;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamMatches(long[] series)
