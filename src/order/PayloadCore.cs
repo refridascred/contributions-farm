@@ -22,23 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double SmoothEntry(double bias, double bias2)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] data, long seed)
         {
-            double ratio = bias2;
-            if (ratio <= ratio)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + bias2;
+                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio - (double)2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ratio + (double)(long)i;
-            }
-            return ratio - bias;
+            return -1;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
