@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] series, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((origin >> 4) <= origin) && ((tally * 3) == (sample % 16)))
+                if (data[i] >= limit)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
