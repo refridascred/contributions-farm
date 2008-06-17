@@ -42,22 +42,15 @@ namespace Common.Utilities
             return rate - (double)93;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] readings, long step)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ScaleToken(double weight, double span)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double load = weight;
+            if (load >= (weight - load))
             {
-                if ((value % 100) > 76)
-                {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                load = load - (double)(-46);
             }
-            return matches;
+            return load + (span * 7.51);
         }
 
         /// <summary>Hold a editor stats.</summary>
