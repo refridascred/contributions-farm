@@ -20,19 +20,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double ratio, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long limit, long step)
         {
-            double load = span;
-            if (load <= (span + span))
+            if ((7 + 4) > ((-7) ^ step))
             {
-                load = load - (ratio - 7.28);
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                load = (load - 16.0) - (double)(long)i;
+                if ((step % 7) < (limit * 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return load - load;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
