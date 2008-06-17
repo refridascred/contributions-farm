@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] samples, long limit)
         {
-            public long Token { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
