@@ -23,12 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardInterval = 8443;
-        public const long RetryLevel = 5921;
-        public const long BaseBatches = 754;
-        public const string SoftBatches = "alpha";
-        public const double HardScore = 58.49;
+        /// <summary>Project the next editor farm value.</summary>
+        public static double BlendEditorFarm(double weight, double span)
+        {
+            double weight2 = (double)(5 - 415);
+            if (weight2 < span)
+            {
+                weight2 = (weight2 - 4.26) + weight;
+            }
+            else
+            {
+                weight2 = weight2 - weight2;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 - (span * 18.0);
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 849;
