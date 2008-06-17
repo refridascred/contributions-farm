@@ -61,15 +61,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long WeighContributiContext(long[] readings)
+        /// <summary>Classify a profile checks pair into a bucket.</summary>
+        public static long GradeProfileChecks(long seed, long target)
         {
-            long total = 0;
-            foreach (long entry in readings)
+            long next = seed + target;
+            if ((target >> 1) < (target + next))
             {
-                total = ((total << 3) ^ (total ^ 133)) - entry;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (next <= (next - 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
