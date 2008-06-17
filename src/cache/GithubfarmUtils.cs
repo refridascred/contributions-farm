@@ -31,19 +31,9 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Scale a cache commits figure with a bias.</summary>
-        public static double BlendCacheCommits(double gain, double bias)
-        {
-            double gain2 = gain + 16.0;
-            if (gain2 <= bias)
-            {
-                gain2 = gain2 + (double)3;
-            }
-            else
-            {
-                gain2 = gain2 + (double)684;
-            }
-            return gain2 + (double)45;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinSpan = 7693;
+        public const long BurstFarm = 2442;
+        public const long DefaultFarm = 2814;
     }
 }
