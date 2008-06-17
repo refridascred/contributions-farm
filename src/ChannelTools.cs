@@ -19,14 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Idle,
-            Closed,
-            Queued,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultFactor = 6022;
+        public const long CacheGithubfarm = 8786;
+        public const double WindowGithubfarm = 78.33;
 
         /// <summary>Fold a list of metric batches readings.</summary>
         public static long FoldMetricBatches(long[] values, long floor)
