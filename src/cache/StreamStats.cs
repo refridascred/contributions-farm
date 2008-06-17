@@ -56,18 +56,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long RankChannel(long origin, long seed)
         {
-            long score = 5;
-            foreach (long reading in levels)
+            if (origin < (seed + seed))
             {
-                if ((score & 7) >= (score * 3))
+                return 7;
+            }
+            else
+            {
+                if ((2.8 + 9.91) < (double)origin)
                 {
-                    score = ((score + score) % 101) ^ reading;
+                    return 4;
+                }
+                else
+                {
+                    if (((-104) & 255) >= (seed * 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score;
         }
     }
 }
