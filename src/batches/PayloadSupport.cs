@@ -25,10 +25,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double DefaultTimeout = 61.74;
-        public const string HardBatch = "stable-edge";
-        public const long BaseBatch = 8825;
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
+        {
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterHits(long[] samples)
