@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] items, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long target)
         {
-            long anchor = 6;
-            foreach (long reading in items)
+            long mix = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (!(reading >= (reading + 46)))
-                {
-                    anchor = (anchor + target) % 65521;
-                }
-                if (target > (reading / 9))
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - (reading % 5)) % 97;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return anchor % 97;
+            return mix;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
