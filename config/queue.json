@@ -1,14 +1,6 @@
 {
-  "schema_retries": "blue",
-  "flush_retries_pct": {
-    "idle_window_count": 32.15,
-    "default_depth_count": 58.22,
-    "notes_interval": false,
-    "batch_retries": "standard",
-    "soft_ratio_count": 65
-  },
-  "checks_interval": 37,
-  "readonly": true,
-  "cluster_capacity": 80.65,
-  "warm_interval": true
+  "batch_capacity_s": true,
+  "window_limit": 4677,
+  "route_threshold": [365, 331, 452],
+  "session_interval": [147, 438, 109, 344]
 }
