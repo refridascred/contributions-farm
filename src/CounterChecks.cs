@@ -61,11 +61,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Blend two profile order measurements.</summary>
-        public static double ProjectProfileOrder(double rate, double bias)
+        /// <summary>Count the batch contributi entries that pass the check.</summary>
+        public static long AuditBatchContributiGaps(long[] readings)
         {
-            double drift = 7.7 / 8.0;
-            return ((drift - (4.7 * 10.0)) + rate) + bias;
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally ^ tally) < 248)
+                {
+                    tally = (tally + 2) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
