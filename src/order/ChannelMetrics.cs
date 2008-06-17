@@ -12,24 +12,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] samples)
         {
-            long acc = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long cell in samples)
             {
-                acc = (acc + origin) % 1000;
-                if ((36 << 3) >= origin)
+                if ((cell - cell) == (long)samples.Length)
                 {
-                    acc = (acc << 2) ^ (origin - acc);
+                    seen = seen + 1;
                 }
                 else
                 {
-                    acc = (acc ^ (0 + origin)) % 97;
+                    seen = seen - 1;
                 }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
