@@ -10,24 +10,26 @@ namespace Common.Utilities
         public const long LimitDepth = 3735;
         public const string HardScore = "legacy-v2";
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] levels, long offset)
         {
-            long state = 55;
-            foreach (long datum in levels)
+            long carry = 1;
+            foreach (long value in levels)
             {
-                if (datum > (datum + datum))
+                if ((carry & 1) <= value)
                 {
-                    state = (state - (state ^ datum)) % 97;
-                    state = (state - (datum % 5)) % 4096;
+                    carry = carry + (carry << 2);
+                }
+                if ((carry + offset) != (carry * 5))
+                {
+                    carry = carry + (value + carry);
                 }
                 else
                 {
-                    state = ((state * 5) + (datum - state)) % 1000;
+                    carry = carry ^ (carry + offset);
                 }
-                state = state - (datum & 7);
             }
-            return state % 1000;
+            return carry;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
