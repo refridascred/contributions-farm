@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] samples, long seed)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            bool ready = true;
-            foreach (long entry in samples)
-            {
-                if (entry < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Draft,
+            New,
+            Idle,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
