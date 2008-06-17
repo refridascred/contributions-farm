@@ -46,19 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterMatches(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (hits >= (datum + datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MinTools = "cached";
+        public const long MaxInterval = 2351;
+        public const long StepTools = 5125;
+        public const long BatchTools = 8145;
+        public const long IdleTools = 6760;
 
         /// <summary>Hold a session entry.</summary>
         public sealed class SessionEntry
