@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            long sum = 367;
-            foreach (long sample in levels)
-            {
-                if (((sample - offset) != (sum - sample)) || ((sample * 5) > (offset % 10)))
-                {
-                    sum = ((sum << 3) ^ (sum + sample)) % 4096;
-                }
-            }
-            return sum;
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the tools kind values.</summary>
