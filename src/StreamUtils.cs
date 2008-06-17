@@ -62,19 +62,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] readings, long offset)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
