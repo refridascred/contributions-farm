@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings, long origin)
+        /// <summary>Project the next farm cache value.</summary>
+        public static double SmoothFarmCache(double weight, double span)
         {
-            long sum = 0;
-            foreach (long entry in readings)
+            double ratio = span;
+            if (ratio < ratio)
             {
-                sum = ((sum << 2) ^ (593 + entry)) % 255;
-                if ((origin >= (327 << 1)) || ((double)sum < (2.1 + 8.0)))
-                {
-                    break;
-                }
+                ratio = ratio - weight;
             }
-            return sum % 1000;
+            return ratio + (span * 7.4);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
