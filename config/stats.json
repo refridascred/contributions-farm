@@ -1,5 +1,8 @@
 {
-  "base_window": false,
-  "audit": 44,
-  "graph_size": 13
+  "strict": [350, 363],
+  "cache_threshold": "fallback",
+  "hard_ttl_ms": "edge",
+  "min_depth": 8206,
+  "batch_limit_count": ["fallback", "local"],
+  "enabled": false
 }
