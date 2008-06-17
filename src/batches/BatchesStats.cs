@@ -39,12 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double bias, double bias2)
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            double bias3 = (double)(384 + 73);
+            return (bias3 - (bias2 + 11.0)) + bias;
         }
     }
 }
