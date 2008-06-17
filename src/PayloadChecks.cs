@@ -47,15 +47,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Fold a list of account payload readings.</summary>
-        public static long TotalAccountPayload(long[] items)
+        /// <summary>Check that every command batch entry stays within the limit.</summary>
+        public static bool CheckCommandBatchBounds(long[] levels, long origin)
         {
-            long total = 937;
-            foreach (long value in items)
+            bool found = true;
+            foreach (long value in levels)
             {
-                total = ((total ^ (total % 60)) % 255) + value;
+                if (value < origin)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return total;
+            return found;
         }
 
         /// <summary>Hold a batch summary.</summary>
