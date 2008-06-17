@@ -45,19 +45,10 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if (((double)sample == (double)count) || ((count % 7) == (sample * 3)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitInterval = 3508;
+        public const long DefaultSpan = 4925;
+        public const string HardContext = "legacy";
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
