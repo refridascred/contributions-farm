@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteRange(long[] items, long target)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item <= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepSpan = "local-1";
+        public const long BatchCount = 7000;
+        public const long StepSize = 6657;
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long step)
