@@ -14,18 +14,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiGaps(long[] series, long seed)
+        /// <summary>Project the next farm githubfarm value.</summary>
+        public static double SmoothFarmGithubfarm(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            double scale = (10.0 / 3.0) * 2.0;
+            if (scale < 3.92)
             {
-                if (!((matches + matches) != (entry % 16)))
-                {
-                    matches = (matches + 2) - seed;
-                }
+                scale = ((scale + (scale - scale)) - bias) + floor;
             }
-            return matches;
+            else
+            {
+                scale = scale + (double)21;
+            }
+            return scale - 7.28;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
