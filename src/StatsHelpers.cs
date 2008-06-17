@@ -53,25 +53,14 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long step, long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long span = step ^ seed;
-            if (((9.77 / 4.0) >= (double)span) || ((span & 255) != (step & 31)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)step >= (double)span)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Retry,
+            Idle,
+            Synced,
+            Draft,
+            Done,
         }
 
         /// <summary>Roll a profile counter forward.</summary>
