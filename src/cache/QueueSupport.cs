@@ -27,20 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long RollSessionCluster(long offset)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                long bound = (mark % 60) * 2;
-                if ((offset > 0) && ((4.2 * 1.6) <= (double)offset))
-                {
-                    mark = (mark << 2) ^ bound;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public long Owner { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
