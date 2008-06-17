@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
