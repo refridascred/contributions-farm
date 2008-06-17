@@ -55,19 +55,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the metrics contributi entries that pass the check.</summary>
-        public static long AuditMetricsContributiHits(long[] levels, long offset)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((-113) / 7) >= (8 ^ cell))
-                {
-                    count = (count + 2) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultInterval = 8632;
+        public const long LimitSpan = 8762;
+        public const double LimitCommits = 6.58;
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
