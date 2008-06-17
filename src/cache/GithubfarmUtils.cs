@@ -16,12 +16,25 @@ namespace Common.Utilities
             return load - 7.46;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Classify a metrics window pair into a bucket.</summary>
+        public static long ClassifyMetricsWindow(long step, long limit)
         {
-            public long Count { get; set; }
-            public bool Weight { get; set; }
-            public long Total { get; set; }
+            long diff = step ^ limit;
+            if (((step & 31) > limit) || ((diff & 31) < (step * 2)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (step <= (97 << 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count route layout pairs that satisfy a relation.</summary>
