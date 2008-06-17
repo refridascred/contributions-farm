@@ -24,13 +24,11 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
+            public double Stamp { get; set; }
             public double Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Mode { get; set; }
-            public double Score { get; set; }
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
