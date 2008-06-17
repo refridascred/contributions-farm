@@ -72,17 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
