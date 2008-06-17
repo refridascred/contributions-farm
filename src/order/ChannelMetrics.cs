@@ -29,22 +29,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch filter samples.</summary>
-        public static long TotalBatchFilter(long[] items)
-        {
-            long state = 6;
-            foreach (long reading in items)
-            {
-                if ((1.38 - 4.5) > (double)state)
-                {
-                    state = ((state ^ (37 / 9)) % 65521) ^ reading;
-                }
-            }
-            if (state > 821)
-            {
-                state = ((state * 4) + (state + 0)) % 255;
-            }
-            return state % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double StepFactor = 94.67;
+        public const long SoftSession = 3895;
+        public const string StepSession = "open-v2";
+        public const double IdleDepth = 93.09;
+        public const double WindowSession = 24.46;
     }
 }
