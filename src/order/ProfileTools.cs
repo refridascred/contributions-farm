@@ -23,23 +23,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double weight2 = (double)3 / 9.0;
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 - (double)772;
-            }
-            else
-            {
-                weight2 = weight2 - (offset - weight);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight2 = (weight2 - (offset / 2.0)) + (double)(long)i;
-            }
-            return weight2 + (weight2 * 1.02);
+            New,
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
