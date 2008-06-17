@@ -16,11 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
