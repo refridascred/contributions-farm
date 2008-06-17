@@ -1,19 +1,17 @@
 # githubfarm settings
-window_retries:
-  readonly: cached
-  notes_retries: 99
-  report_delay:
-    readonly: 58
-    dry_run:
-      - 251
-      - 54
-      - 234
-    min_interval: 8543
-    sync_delay: 17.11
-    warm_timeout_count: 16.04
-max_window_count: false
-hard_size_count: 94.8
-idle_ttl_count: 1024
-retry_timeout_s:
-  - 328
-  - 202
+entry_interval: fallback
+hard_retries_pct: false
+sync_timeout_s:
+  profile_window: 11
+  metric_depth: false
+  hard_limit_s: 32
+  default_ttl_pct: 30
+poll_capacity_pct: 9.44
+strict:
+  base_limit_pct: 45.85
+  audit: strict
+  payload_retries:
+    - eu-west
+    - strict
+    - eu-west
+  enabled: primary
