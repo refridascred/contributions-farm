@@ -43,22 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterGaps(long[] values)
+        /// <summary>Measure how many account record samples are out of range.</summary>
+        public static long CountAccountRecordOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (((double)(long)values.Length <= (17.0 - 5.0)) || ((2.5 / 3.0) >= (double)tally))
+                if ((count << 2) < count)
                 {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = (count + 1) - cell;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
