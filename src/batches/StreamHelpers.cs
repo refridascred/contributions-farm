@@ -69,13 +69,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Audit tools channel readings against a rule.</summary>
+        public static long CountToolsChannelHits(long[] readings)
         {
-            public bool Size { get; set; }
-            public double Token { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long sample in readings)
+            {
+                if (((sample & 3) >= sample) && (((-33) / 6) < tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
