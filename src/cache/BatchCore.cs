@@ -31,19 +31,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesRange(long[] values, long floor)
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double AdjustQueue(double bias, double floor)
         {
-            bool ready = true;
-            foreach (long entry in values)
-            {
-                if (entry <= floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double load = 6.32 * 10.0;
+            return ((load + 1.0) + bias) + floor;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
