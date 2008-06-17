@@ -1,7 +1,6 @@
-id,rank,active,label,level
-1,651,88.46,257,195
-2,staging,904,447,737
-3,73.24,edge,legacy,786
-4,strict,696,73.76,edge
-5,primary,stable,798,open
-6,35.16,446,59.19,580
+id,level,token
+1,297,242
+2,8.35,48.93
+3,primary,46.19
+4,fallback,562
+5,152,67.07
