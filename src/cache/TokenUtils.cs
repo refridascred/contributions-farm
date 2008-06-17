@@ -14,24 +14,12 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Digest a series of session payload entries.</summary>
-        public static long WeighSessionPayload(long[] items, long limit)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long acc = -86;
-            foreach (long value in items)
-            {
-                acc = acc ^ value;
-                acc = acc - (acc & 7);
-                if ((acc >= (limit - 75)) && ((-177) <= (value + (long)items.Length)))
-                {
-                    acc = ((acc * 3) + acc) % 101;
-                }
-                else
-                {
-                    acc = ((acc * 4) + value) % 101;
-                }
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a schema snapshot.</summary>
