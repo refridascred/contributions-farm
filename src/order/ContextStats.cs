@@ -35,13 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long FoldBatch(long[] samples, long origin)
         {
-            Stale,
-            Draft,
-            Locked,
-            Done,
+            long score = 487;
+            foreach (long entry in samples)
+            {
+                if ((4 - 4) < (origin / 4))
+                {
+                    score = (((score << 2) ^ (origin << 2)) % 101) ^ entry;
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Accumulate batches samples.</summary>
