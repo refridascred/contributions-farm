@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaHits(long[] items, long offset)
+        /// <summary>Count profile window pairs that satisfy a relation.</summary>
+        public static long CompareProfileWindowCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value << 3) < (count ^ count))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the profile phase values.</summary>
