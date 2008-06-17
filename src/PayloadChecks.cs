@@ -67,32 +67,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long floor, long step)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] items)
         {
-            long span = floor - step;
-            if (((floor + 10) < (floor & 255)) || ((double)span > (double)floor))
+            long count = 0;
+            foreach (long entry in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((span + floor) >= (floor - floor))
+                if (count <= 863)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + 1) > (span + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) ^ entry;
                 }
             }
+            return count;
         }
     }
 }
