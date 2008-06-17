@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long StepCommits(long limit)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a contributi stats.</summary>
