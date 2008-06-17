@@ -60,11 +60,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstTimeout = 7211;
-        public const long CachePayload = 9081;
-        public const long MinPayload = 7669;
-        public const long BasePayload = 7978;
-        public const double BurstPayload = 89.32;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (!((hits - reading) < (hits / 8)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
