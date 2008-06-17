@@ -16,19 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportMatches(long[] levels, long seed)
-        {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell & 31) <= (seed - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardWindow = 1365;
+        public const long BatchBudget = 2618;
+        public const long WindowBudget = 7889;
+        public const long MaxWindow = 6889;
+        public const double RetryBudget = 80.47;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
