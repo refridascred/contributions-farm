@@ -1,12 +1,5 @@
 {
-  "audit": 60,
-  "notes_threshold": {
-    "warm_window_s": "blue",
-    "idle_window_s": 885,
-    "channel_window": ["legacy", "local"],
-    "metric_limit": "edge",
-    "flush_limit": ["strict", "cached"],
-    "max_threshold": [17, 107, 37]
-  },
-  "hard_size": 10.17
+  "idle_timeout_ms": 500,
+  "readonly": "legacy",
+  "strict": 250
 }
