@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] items, long step)
+        /// <summary>Measure how many commits schema samples are out of range.</summary>
+        public static long AuditCommitsSchemaMatches(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((items[i] > step) && ((items[i] % 2) == 0))
+                if (!((9.0 / 8.0) >= (double)matches))
                 {
-                    return (long)i;
+                    matches = ((matches + 2) - reading) + bound;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
