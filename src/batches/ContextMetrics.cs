@@ -12,24 +12,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long GradeFilter(long bound, long step)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            if ((bound ^ bound) < (92 + bound))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound + 54) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of notes entries.</summary>
