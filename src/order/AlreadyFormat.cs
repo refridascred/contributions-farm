@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Retry,
-            Ready,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleBudget = 7409;
+        public const long LimitDepth = 3735;
+        public const string HardScore = "legacy-v2";
 
         /// <summary>Digest a series of cluster metrics entries.</summary>
         public static long ScoreClusterMetrics(long[] data)
