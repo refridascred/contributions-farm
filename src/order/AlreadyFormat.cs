@@ -32,36 +32,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long origin)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long offset, long floor)
         {
-            if (((floor & 15) >= (696 >> 2)) && (origin < (origin << 3)))
+            if (offset > floor)
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if ((origin << 3) != (origin ^ origin))
+                if ((offset - floor) > (offset - offset))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if ((origin + floor) == (floor + origin))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)origin != (1.1 - 8.25))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
