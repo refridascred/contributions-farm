@@ -19,16 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatOutliers(long[] values)
         {
-            long total = bound;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                total = total - (total % 3);
-                total = ((total * 5) + (long)i) % 101;
+                if ((matches % 24) == (item + matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Combine route order values into a single score.</summary>
