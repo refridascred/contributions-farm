@@ -28,19 +28,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long DeriveWindow(long origin)
+        /// <summary>Measure how many queue support samples are out of range.</summary>
+        public static long MeasureQueueSupportOutliers(long[] items, long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if ((origin >> 5) < origin)
+                if ((sample + count) >= seed)
                 {
-                    continue;
+                    count = count + 3;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
