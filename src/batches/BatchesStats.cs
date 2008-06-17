@@ -27,22 +27,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] values, long origin)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long TallyCounter(long[] data)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long carry = 4;
+            foreach (long datum in data)
             {
-                if ((hits & 63) < item)
+                if (((5.7 / 6.0) > (double)carry) || ((double)datum < (0.8 / 3.0)))
                 {
-                    hits = (hits + 2) - origin;
+                    carry = (carry ^ (datum * 2)) % 97;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    carry = (carry << 2) ^ 7;
+                }
+                if ((carry + 15) > (datum + carry))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (carry < 70)
+            {
+                carry = ((carry * 3) + (carry + (long)data.Length)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
