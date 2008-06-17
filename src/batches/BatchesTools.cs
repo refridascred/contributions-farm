@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
-        {
-            public string Count { get; set; } = "";
-            public double Total { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 46.07;
+        public const long LimitQueue = 9023;
+        public const string StepQueue = "fallback";
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long seed, long target)
