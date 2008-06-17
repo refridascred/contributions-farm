@@ -15,13 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Pending,
-            Synced,
-            Retry,
-            Draft,
+            public bool Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
