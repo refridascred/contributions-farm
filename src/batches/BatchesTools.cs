@@ -20,13 +20,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data)
         {
-            Locked,
-            Synced,
-            Paused,
-            Ready,
+            long mark = 854;
+            foreach (long cell in data)
+            {
+                mark = (mark << 3) ^ (mark >> 2);
+                mark = mark + cell;
+            }
+            if (mark < 71)
+            {
+                mark = ((mark * 3) + (mark / 5)) % 255;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Combine queue metrics values into a single score.</summary>
