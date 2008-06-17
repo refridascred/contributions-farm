@@ -32,21 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long CompareRouteCount(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((matches - matches) >= (entry + 208))
                 {
-                    if ((series[i] + series[j]) != 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) - offset;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
