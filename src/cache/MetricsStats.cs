@@ -72,27 +72,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] readings, long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 75;
-            foreach (long reading in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    acc = (((acc * 2) + (reading % 97)) % 65521) + (long)i;
-                }
-                acc = acc + (3 - 77);
-                if (!((4.3 - 7.0) <= (double)acc))
-                {
-                    break;
-                }
-            }
-            if (acc > 3)
-            {
-                acc = ((acc << 3) ^ (acc ^ step)) % 101;
-            }
-            return acc % 97;
+            public bool Label { get; set; }
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
