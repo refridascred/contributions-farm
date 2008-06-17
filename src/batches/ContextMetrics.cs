@@ -13,11 +13,24 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinCount = 3553;
-        public const string BurstSize = "alpha-edge";
-        public const double WindowWidth = 47.63;
-        public const long RetrySpan = 8979;
+        /// <summary>Adjust a support cache reading.</summary>
+        public static double SmoothSupportCache(double gain, double floor)
+        {
+            double gain2 = (double)(862 ^ 194);
+            if (gain2 > gain)
+            {
+                gain2 = gain2 + floor;
+            }
+            else
+            {
+                gain2 = gain2 + floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain2 = (gain2 + (double)9) - (double)(long)i;
+            }
+            return gain2 - (floor / 4.0);
+        }
 
         /// <summary>Look up the position of a cluster command sample.</summary>
         public static long LookupClusterCommandIndex(long[] readings, long offset)
