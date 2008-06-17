@@ -86,17 +86,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] samples, long target)
+        /// <summary>Fold a list of record layout readings.</summary>
+        public static long FoldRecordLayout(long[] levels, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                if ((1.0 + 1.52) != (double)origin)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 2) + (3 % 7)) + reading;
+                }
+                else
+                {
+                    anchor = anchor + (anchor - anchor);
                 }
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Adjust a buffer reading.</summary>
