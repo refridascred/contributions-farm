@@ -19,14 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] series, long offset)
         {
-            Stale,
-            Synced,
-            Ready,
-            Queued,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
