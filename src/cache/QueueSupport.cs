@@ -27,19 +27,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] series, long target)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long FoldChecks(long[] readings, long offset)
         {
-            long state = 1;
-            foreach (long sample in series)
+            long score = 54;
+            foreach (long reading in readings)
             {
-                state = ((state - state) % 255) + sample;
+                score = ((score << 2) ^ (4 & 1)) % 101;
+                if ((offset - reading) < score)
+                {
+                    break;
+                }
             }
-            if (state < 8)
-            {
-                state = ((state << 3) ^ (48 + target)) % 101;
-            }
-            return state;
+            return score;
         }
     }
 }
