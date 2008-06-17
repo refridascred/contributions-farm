@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            long result = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result - (origin + result)) % 1000;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the notes class values.</summary>
