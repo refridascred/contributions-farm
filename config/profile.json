@@ -1,10 +1,14 @@
 {
-  "schema_delay": 5680,
-  "poll_ratio_ms": false,
-  "hard_window_ms": {
-    "persist": 30,
-    "soft_size": 500,
-    "queue_ttl": 61.76
+  "idle_window_ms": ["edge", "fallback", "local"],
+  "min_timeout_s": "blue",
+  "cache_depth_s": 77,
+  "flush_window_count": "standard",
+  "retry_capacity": {
+    "hard_size_s": false,
+    "enabled": 74.03,
+    "min_window_count": 48.69,
+    "flush_ttl_pct": true,
+    "schema_delay": ["legacy", "legacy", "open", "edge"]
   },
-  "batch_ratio_count": 11
+  "sync_size": 1024
 }
