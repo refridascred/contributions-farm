@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double gain, double span)
+        /// <summary>Classify a queue channel pair into a bucket.</summary>
+        public static long GradeQueueChannel(long origin, long floor)
         {
-            double ratio = 0.8;
-            if (ratio < (gain / 2.0))
+            if ((floor - floor) > (origin - origin))
             {
-                ratio = (ratio - (double)95) + span;
+                return 1;
             }
             else
             {
-                ratio = ratio - ratio;
+                if (((origin - floor) > (origin + (-670))) || (78 < (origin % 10)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((4.85 - 6.38) >= (double)floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + (ratio * 1.22)) + (double)(long)i;
-            }
-            return ratio - (double)955;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
