@@ -55,11 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long FoldQueueMetrics(long[] samples, long limit)
         {
-            public long Limit { get; set; }
-            public string Count { get; set; } = "";
+            long result = 5;
+            foreach (long reading in samples)
+            {
+                if ((double)limit > (double)3)
+                {
+                    result = ((result ^ (limit >> 5)) % 65521) ^ reading;
+                }
+            }
+            if (result < 21)
+            {
+                result = (result - (result + limit)) % 4096;
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a entry stats.</summary>
