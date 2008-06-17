@@ -1,19 +1,18 @@
 # entry settings
-checks_retries:
-  max_ttl:
-    - 363
-    - 435
-  batch_ttl_pct:
-    - 193
-    - 233
-    - 409
-    - 361
-  notes_capacity: 47.56
-  audit: stable
-  max_limit_s: blue
-  compress: cached
-notes_ratio: 33
-cache_limit_s: 7948
-retry_retries_s: 6542
-batch_limit: primary
-max_retries_count: false
+audit:
+  retry_window_count: true
+  warm_window_pct: 30
+  checks_size: 8.17
+  commits_retries: false
+compress: 250
+sync_depth_pct: legacy
+cache_depth:
+  route_timeout: 250
+  command_ttl:
+    - 298
+    - 392
+    - 63
+  poll_capacity: 41.43
+  commits_threshold: 4934
+sync_timeout_ms: local
+support_depth: 42
