@@ -36,19 +36,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] samples, long seed)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                if (reading < offset)
+                if (item <= seed)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
