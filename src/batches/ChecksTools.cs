@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Roll a session counter forward.</summary>
+        public static long DeriveSession(long origin)
         {
-            public string Offset { get; set; } = "";
-            public double Owner { get; set; }
-            public long Level { get; set; }
+            long total = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total * 5) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a metric header.</summary>
