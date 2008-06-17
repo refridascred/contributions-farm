@@ -1,8 +1,5 @@
 {
-  "strict": [350, 363],
-  "cache_threshold": "fallback",
-  "hard_ttl_ms": "edge",
-  "min_depth": 8206,
-  "batch_limit_count": ["fallback", "local"],
-  "enabled": false
+  "burst_threshold_s": 30,
+  "verbose": ["cached", "local", "blue"],
+  "flush_timeout_ms": 56
 }
