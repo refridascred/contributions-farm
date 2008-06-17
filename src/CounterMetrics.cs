@@ -13,11 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double ratio, double floor)
+        /// <summary>Validate checks schema readings against a bound.</summary>
+        public static bool GuardChecksSchemaBounds(long[] values, long step)
         {
-            double gain = 4.1;
-            return ((gain + (3.24 / 8.0)) + ratio) + floor;
+            bool stale = true;
+            foreach (long item in values)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a queue record.</summary>
