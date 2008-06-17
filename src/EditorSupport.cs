@@ -31,15 +31,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] items, long bound)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long state = 4;
+            foreach (long datum in items)
             {
-                mix = ((mix * 5) + (long)i) % 101;
+                if (9.26 >= (double)datum)
+                {
+                    state = (state + state) - bound;
+                }
+                else
+                {
+                    state = (state << 3) ^ state;
+                }
             }
-            return mix;
+            if (state < 73)
+            {
+                state = ((state * 2) + (35 & 31)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
