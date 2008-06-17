@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate layout stream samples.</summary>
-        public static long TotalLayoutStream(long[] samples)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long score = -93;
-            foreach (long cell in samples)
-            {
-                long count = (cell / 8) + (cell * 4);
-                if (((double)count <= (9.3 + 14.0)) && ((double)score > (11.0 + 20.0)))
-                {
-                    score = (score ^ (score - count)) % 97;
-                    score = ((score * 3) + (7 % 24)) % 1000;
-                }
-                if (((cell ^ cell) <= (793 % 12)) && ((cell ^ cell) == (cell ^ (-443))))
-                {
-                    score = score + (cell ^ 3);
-                }
-            }
-            return score;
+            public long Level { get; set; }
+            public string Weight { get; set; } = "";
+            public double Flag { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
