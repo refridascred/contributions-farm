@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many report layout samples are out of range.</summary>
-        public static long TallyReportLayoutGaps(long[] samples)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((hits - reading) != (reading + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 8612;
+        public const long SoftDepth = 8873;
+        public const long StepFactor = 448;
+        public const double RetryReport = 31.4;
+        public const string BurstReport = "fallback-edge";
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] items, long bound)
