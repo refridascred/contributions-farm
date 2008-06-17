@@ -1,6 +1,5 @@
 {
-  "burst_ttl_count": 11,
-  "route_ttl": "latest",
-  "metrics_ttl": 30,
-  "burst_timeout": 535
+  "burst_ttl_pct": 6469,
+  "max_capacity_ms": [446, 47, 176, 257],
+  "batch_capacity": 2256
 }
