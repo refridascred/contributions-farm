@@ -1,17 +1,5 @@
 {
-  "min_threshold_s": "local",
-  "compress": {
-    "report_depth": "cached",
-    "persist": 100,
-    "batches_ratio": true,
-    "enabled": {
-      "schema_size": "stable",
-      "editor_delay": "edge",
-      "soft_threshold_ms": "green",
-      "poll_window": true,
-      "dry_run": 26
-    },
-    "min_window": 70.96
-  },
-  "farm_size": "stable"
+  "default_depth_pct": "local",
+  "readonly": true,
+  "strict": 500
 }
