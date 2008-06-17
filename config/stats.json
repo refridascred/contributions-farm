@@ -1,11 +1,7 @@
 {
-  "burst_window_s": {
-    "max_size_count": 29,
-    "context_delay": "strict",
-    "idle_interval": 88.24,
-    "warm_threshold_count": 77.49
-  },
-  "audit": 8684,
-  "flush_timeout_pct": true,
-  "buffer_threshold": 6849
+  "warm_size": 9357,
+  "context_capacity": true,
+  "idle_threshold_ms": ["edge", "blue", "local", "local"],
+  "base_threshold_s": 7657,
+  "command_depth": "standard"
 }
