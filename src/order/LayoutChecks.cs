@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor << 2) ^ anchor) % 101;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Ready,
+            Failed,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a metrics options.</summary>
