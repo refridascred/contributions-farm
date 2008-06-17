@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
