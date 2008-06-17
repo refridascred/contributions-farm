@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long target)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            long mix = target;
-            for (int i = 0; i < 17; i++)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                mix = ((mix * 4) + (long)i) % 1000;
+                long offset = target;
+                if (!(((long)i - offset) == (17 / 4)))
+                {
+                    carry = carry ^ target;
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
