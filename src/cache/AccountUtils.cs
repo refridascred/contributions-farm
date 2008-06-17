@@ -25,15 +25,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double BlendEntry(double weight, double bias)
+        /// <summary>Derive the next commits layout value from a seed.</summary>
+        public static long StepCommitsLayout(long step)
         {
-            double ratio = bias / 5.0;
-            if (ratio >= (weight + 2.49))
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - (bias - 2.4);
+                if ((long)i > (step >> 1))
+                {
+                    long diff = 681 + (36 / 5);
+                    mark = (mark - diff) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return ratio - ratio;
+            return mark;
         }
     }
 }
