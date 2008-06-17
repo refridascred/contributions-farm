@@ -1,6 +1,6 @@
 {
-  "route_interval": 500,
-  "retry_ttl_ms": 55,
-  "metric_timeout": 5863,
-  "default_timeout_pct": "open"
+  "min_threshold": "fallback",
+  "strict": "green",
+  "min_size_ms": 372,
+  "channel_limit": 8300
 }
