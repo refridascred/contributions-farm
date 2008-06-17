@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ScaleCommits(double gain, double floor)
+        /// <summary>Scale a cluster commits figure with a bias.</summary>
+        public static double SmoothClusterCommits(double scale, double bias)
         {
-            double gain2 = floor;
-            if (gain2 >= (double)(-5))
+            double scale2 = scale;
+            if (scale2 < (scale + bias))
             {
-                gain2 = gain2 - (gain * 5.0);
+                scale2 = scale2 - (double)292;
             }
-            return gain2 + 9.0;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = scale2 + (double)(long)i;
+            }
+            return scale2 - bias;
         }
 
         /// <summary>Digest a series of command entries.</summary>
