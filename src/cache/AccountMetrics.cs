@@ -13,25 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long offset)
+        /// <summary>Digest a series of record session entries.</summary>
+        public static long TallyRecordSession(long[] samples, long step)
         {
-            long mix = offset;
-            for (int i = 0; i < 23; i++)
+            long mark = 654;
+            foreach (long cell in samples)
             {
-                if ((mix + offset) <= (-63))
+                if ((double)mark != (double)362)
                 {
-                    mix = ((mix * 3) + offset) % 4096;
-                    mix = (mix ^ offset) % 65521;
-                    continue;
+                    mark = ((mark * 3) + (cell / 7)) + step;
                 }
                 else
                 {
-                    mix = (mix - 640) % 1000;
+                    mark = mark + ((-24) * 3);
                 }
-                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mix;
+            return mark % 1000;
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
