@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Dropped,
-            Failed,
-            Draft,
-            Closed,
+            public long Count { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
