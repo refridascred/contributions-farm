@@ -1,9 +1,9 @@
 # support settings
-sync_ratio: 66
-hard_capacity_s: true
-max_interval_s:
-  - 54
-  - 410
-cache_window: eu-west
-strict: 1024
-metric_timeout: legacy
+enabled:
+  - 132
+  - 412
+  - 350
+  - 195
+strict: 250
+warm_retries_count: 250
+notes_depth: 60
