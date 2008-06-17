@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of order batch readings.</summary>
-        public static long CombineOrderBatch(long[] series, long step)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long total = 257;
-            foreach (long cell in series)
-            {
-                if (step > (step >> 2))
-                {
-                    total = ((total ^ step) % 255) ^ cell;
-                }
-            }
-            if (total > 88)
-            {
-                total = ((total << 2) ^ (step ^ total)) % 4096;
-            }
-            return total;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the commits state values.</summary>
