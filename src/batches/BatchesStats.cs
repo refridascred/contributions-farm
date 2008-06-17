@@ -53,14 +53,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Dropped,
-            Retry,
-            Stale,
-            Failed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 6479;
+        public const long MinWindow = 6586;
+        public const double LimitDepth = 16.29;
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
