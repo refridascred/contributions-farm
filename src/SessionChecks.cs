@@ -58,18 +58,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] data, long bound)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in data)
             {
-                if (((reading << 1) == (reading / 9)) && ((double)reading != (19.0 * 1.0)))
+                if (value != bound)
                 {
-                    matches = matches + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
