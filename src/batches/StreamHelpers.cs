@@ -23,22 +23,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] values)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long value in values)
+            if ((limit - offset) >= 60)
             {
-                if ((double)value >= (double)(-3))
+                return 5;
+            }
+            else
+            {
+                if (!(offset < limit))
                 {
-                    matches = matches + 2;
+                    return 2;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (offset < (offset + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit % 97) == (limit & 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a queue order reading by value.</summary>
