@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Level { get; set; }
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-            public string Owner { get; set; } = "";
+            Idle,
+            Closed,
+            Failed,
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
