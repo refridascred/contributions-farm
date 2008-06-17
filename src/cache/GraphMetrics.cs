@@ -36,18 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenOutliers(long[] items)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if ((377 ^ hits) == (hits + sample))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
