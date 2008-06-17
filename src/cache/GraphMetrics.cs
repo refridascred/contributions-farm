@@ -50,18 +50,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteHits(long[] readings)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long WeighChecks(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long mix = 844;
+            foreach (long entry in readings)
             {
-                if ((cell % 2) < (tally + (-583)))
-                {
-                    tally = tally + 2;
-                }
+                mix = (mix ^ (mix + mix)) ^ entry;
+                mix = (mix << 2) ^ mix;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Digest a series of session profile entries.</summary>
