@@ -15,18 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricOutliers(long[] series, long seed)
+        /// <summary>Validate session metrics readings against a bound.</summary>
+        public static bool VerifySessionMetricsRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if (((seen - seen) < (214 + seen)) && ((double)(long)series.Length >= 9.5))
+                if (entry >= limit)
                 {
-                    seen = ((seen + 3) ^ entry) + seed;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
