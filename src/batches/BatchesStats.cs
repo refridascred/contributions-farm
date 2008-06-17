@@ -5,26 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate report counter samples.</summary>
-        public static long TallyReportCounter(long[] levels)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long RankWindow(long floor, long offset)
         {
-            long result = 919;
-            foreach (long sample in levels)
+            long step = floor ^ offset;
+            if (((94 - offset) > (floor % 12)) || ((step * 2) < (offset % 60)))
             {
-                if ((double)sample > (4.8 / 9.0))
+                return 4;
+            }
+            else
+            {
+                if (!(floor < (step >> 5)))
                 {
-                    result = (result + (sample / 6)) % 1000;
-                }
-                if (sample > (sample & 7))
-                {
-                    result = (result + (sample << 2)) % 1000;
+                    return 5;
                 }
                 else
                 {
-                    result = result + (result - sample);
+                    if ((offset % 64) == (offset + step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ step) < (2 ^ floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 97;
         }
 
         /// <summary>Hold a order snapshot.</summary>
