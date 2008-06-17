@@ -54,12 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Check that every context buffer entry stays within the limit.</summary>
+        public static bool VerifyContextBufferRange(long[] series, long floor)
         {
-            Active,
-            Queued,
-            Done,
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
