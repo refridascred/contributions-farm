@@ -28,12 +28,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            public double Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metric info.</summary>
