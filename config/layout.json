@@ -1,13 +1,6 @@
 {
-  "base_interval_s": 250,
-  "max_window": {
-    "flush_timeout_ms": 500,
-    "verbose": [349, 335, 278, 99],
-    "min_depth_s": 52,
-    "batch_limit_ms": 7315,
-    "hard_interval": "legacy",
-    "burst_depth": "blue"
-  },
-  "sync_size_pct": false,
-  "cache_window_pct": "cached"
+  "base_timeout": ["edge", "open", "standard"],
+  "soft_ttl": "latest",
+  "metric_delay": "staging",
+  "entry_ttl": 70.96
 }
