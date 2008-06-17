@@ -20,36 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine support buffer values into a single score.</summary>
-        public static long TotalSupportBuffer(long[] series, long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long seed, long bound)
         {
-            long result = 410;
-            foreach (long entry in series)
+            long delta = seed - bound;
+            if (((bound + seed) <= delta) || ((delta + 894) <= (delta << 3)))
             {
-                if ((entry + limit) == (25 ^ result))
+                return 3;
+            }
+            else
+            {
+                if ((bound >> 3) >= seed)
                 {
-                    result = result ^ (limit + entry);
+                    return 8;
                 }
                 else
                 {
-                    result = result - entry;
-                    result = ((result * 2) + limit) % 255;
+                    return 6;
                 }
-                if ((limit >= (91 / 8)) || ((entry ^ result) >= (result ^ limit)))
-                {
-                    result = result + (514 - result);
-                }
-                else
-                {
-                    result = result + result;
-                }
-                result = result + (entry - entry);
             }
-            if (result > 4)
-            {
-                result = (result + (limit - (long)series.Length)) % 65521;
-            }
-            return result;
         }
 
         /// <summary>Describe the profile phase values.</summary>
