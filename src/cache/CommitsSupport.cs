@@ -57,26 +57,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] samples, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long TallyCommitsHits(long[] readings, long bound)
         {
-            long sum = 106;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (((seed % 3) <= (sum - seed)) && ((double)sum >= (0.16 * 0.46)))
+                if ((count >> 3) != (count >> 4))
                 {
-                    sum = (sum + (seed / 9)) ^ item;
-                }
-                else
-                {
-                    sum = sum - (seed << 2);
+                    count = ((count + 2) + sample) + bound;
                 }
             }
-            if (sum > 85)
-            {
-                sum = sum ^ (-1);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
