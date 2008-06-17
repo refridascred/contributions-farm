@@ -1,4 +1,11 @@
 # support settings
-metrics_ttl: 60
-cache_window_count: true
-soft_interval_s: 30
+warm_interval_count:
+  - 420
+  - 90
+  - 42
+  - 103
+max_depth: true
+channel_interval: primary
+soft_timeout: 7306
+max_ratio: 17
+flush_window_pct: false
