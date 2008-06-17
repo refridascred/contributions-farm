@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowRatio = 506;
-        public const double SoftMetric = 56.5;
-        public const double BurstMetric = 53.25;
-        public const double LimitTimeout = 85.57;
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long CompareReportCount(long[] series)
+        {
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Combine checks values into a single score.</summary>
         public static long WeighChecks(long[] items, long origin)
