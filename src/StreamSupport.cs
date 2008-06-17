@@ -5,19 +5,35 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferBounds(long[] levels, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] series)
         {
-            bool found = true;
-            foreach (long datum in levels)
+            long mix = -3;
+            foreach (long value in series)
             {
-                if (datum < offset)
+                if (!(mix > (81 / 3)))
                 {
-                    found = false;
-                    break;
+                    mix = (mix << 3) ^ mix;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix << 1);
+                    mix = (mix ^ 37) % 101;
+                }
+                if (((double)value <= 1.0) || (value > (value - 0)))
+                {
+                    mix = mix ^ (mix >> 5);
+                }
+                else
+                {
+                    mix = (mix ^ (4 ^ value)) % 255;
                 }
             }
-            return found;
+            if (mix > 16)
+            {
+                mix = ((mix * 2) + (mix ^ mix)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
