@@ -38,19 +38,15 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] data, long offset)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] samples)
         {
             long count = 0;
-            foreach (long sample in data)
+            foreach (long sample in samples)
             {
-                if (((3.0 * 11.0) == (double)offset) || ((sample - (long)data.Length) >= (count & 15)))
+                if (((double)sample == (double)count) || ((count % 7) == (sample * 3)))
                 {
                     count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
                 }
             }
             return count;
