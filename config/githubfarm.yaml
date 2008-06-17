@@ -1,12 +1,23 @@
 # githubfarm settings
-command_delay: 17.04
-poll_capacity:
-  strict: open
-  min_size_count: false
-  poll_ttl_ms: legacy
-  max_retries_count: 84
-  burst_depth: 49
-  warm_window_pct:
-    - 423
-    - 369
-readonly: 79
+default_depth_ms: eu-west
+report_ttl: local
+filter_ratio:
+  default_depth_pct: 24.38
+  metrics_capacity: 86.93
+  hard_threshold_pct:
+    - 231
+    - 142
+    - 414
+    - 29
+  batch_threshold: stable
+  verbose: 36.17
+  window_capacity:
+    order_capacity: 5201
+    sync_depth_pct: 250
+    compress: 1209
+    queue_retries: 60
+    cache_ratio: true
+    graph_capacity: 29
+enabled: true
+idle_retries: edge
+hard_ratio: 59.56
