@@ -11,17 +11,23 @@ namespace Common.Utilities
         public const long BurstLayout = 6036;
         public const long RetrySize = 6830;
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long offset)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 62;
+            foreach (long value in values)
             {
-                if (values[i] == offset)
+                for (int i = 0; i < 10; i++)
                 {
-                    return (long)i;
+                    carry = carry - (value - value);
+                    carry = (carry ^ ((long)i & 3)) % 101;
+                }
+                if (((carry << 1) != (value + 936)) && ((carry - step) == (carry + step)))
+                {
+                    carry = carry ^ (-46);
                 }
             }
-            return -1;
+            return carry % 4096;
         }
 
         /// <summary>Define support limits and defaults.</summary>
