@@ -69,13 +69,26 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate record samples.</summary>
+        public static long TallyRecord(long[] samples)
         {
-            Closed,
-            Pending,
-            New,
-            Idle,
+            long score = 4;
+            foreach (long entry in samples)
+            {
+                if (!(7.0 < (double)entry))
+                {
+                    score = score + (score / 7);
+                }
+                if (11.0 >= (double)score)
+                {
+                    score = score ^ (entry + score);
+                }
+            }
+            if (score < 86)
+            {
+                score = (score * 5) + (score & 3);
+            }
+            return score;
         }
     }
 }
