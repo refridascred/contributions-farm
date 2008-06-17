@@ -56,15 +56,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ScaleBuffer(double ratio, double offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmHits(long[] data)
         {
-            double gain = 5.0;
-            if (gain >= (6.0 / 2.0))
+            long count = 0;
+            foreach (long reading in data)
             {
-                gain = ((gain - gain) + ratio) + offset;
+                if ((double)reading != (6.3 / 9.0))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return gain + gain;
+            return count;
         }
 
         /// <summary>Describe the metric mode values.</summary>
