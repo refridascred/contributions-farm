@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long limit)
+        /// <summary>Audit context farm readings against a rule.</summary>
+        public static long CountContextFarmGaps(long[] data, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (data[i] <= limit)
+                if ((double)seed > (double)375)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
