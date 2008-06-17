@@ -44,19 +44,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowLimits(long[] readings, long offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] values, long limit)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading >= offset)
+                if (values[i] >= limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
