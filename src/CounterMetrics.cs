@@ -37,19 +37,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double SmoothNotes(double weight, double bias)
         {
-            double weight = (double)(60 + 33);
-            if (weight > (double)669)
+            double load = weight;
+            if (load <= bias)
             {
-                weight = (weight + (double)53) - scale;
+                load = load + (weight + weight);
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight + (weight - bias)) + (double)(long)i;
-            }
-            return weight + (double)57;
+            return load + (double)(-219);
         }
     }
 }
