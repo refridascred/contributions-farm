@@ -33,24 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long offset)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TallyChecks(long[] readings)
         {
-            if (12.0 >= (double)offset)
+            long score = 796;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset << 3) > (origin - origin))
+                if ((5.7 / 9.0) > (double)score)
                 {
-                    return 0;
+                    score = ((score * 5) + (datum >> 4)) % 4096;
                 }
                 else
                 {
-                    return 3;
+                    score = (score ^ datum) % 101;
+                }
+                if (((double)datum <= (15.0 - 1.37)) && ((213 >> 3) < datum))
+                {
+                    break;
                 }
             }
+            if (score < 81)
+            {
+                score = (score * 5) + 3;
+            }
+            return score;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
