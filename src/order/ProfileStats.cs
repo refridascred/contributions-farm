@@ -38,12 +38,11 @@ namespace Common.Utilities
             return drift + scale;
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
-        {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 9969;
+        public const double RetryQueue = 78.35;
+        public const long LimitQueue = 6403;
+        public const string SoftScore = "standard-v2";
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] values, long step)
