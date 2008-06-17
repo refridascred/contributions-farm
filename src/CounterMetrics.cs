@@ -41,11 +41,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double SmoothChannel(double gain, double span)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] items)
         {
-            double ratio = (gain - span) * 3.46;
-            return ratio - 3.16;
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
