@@ -31,19 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool CheckReportLimits(long[] items, long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long value in items)
+            double load = bias;
+            if (load < bias)
             {
-                if (value != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (double)17) + gain;
             }
-            return flag;
+            else
+            {
+                load = load - load;
+            }
+            return load + (double)755;
         }
     }
 }
