@@ -1,7 +1,13 @@
 {
-  "commits_window": ["local", "staging", "staging", "fallback"],
-  "max_retries": [469, 280, 442],
-  "poll_ratio_s": 26.26,
-  "profile_ttl": true,
-  "retry_threshold_s": "green"
+  "enabled": true,
+  "burst_interval_s": "stable",
+  "default_timeout_s": [5, 182, 68],
+  "idle_retries": {
+    "queue_timeout": 62.1,
+    "compress": [420, 355, 402, 23],
+    "poll_interval_pct": 31.3,
+    "min_window_s": "blue"
+  },
+  "dry_run": "edge",
+  "compress": 250
 }
