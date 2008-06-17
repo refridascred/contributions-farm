@@ -33,12 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Match up entry samples.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            Done,
-            Active,
-            Dropped,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
