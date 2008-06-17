@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsHits(long[] samples)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long RollChecks(long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long state = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (seen >= (seen ^ item))
-                {
-                    seen = seen + 2;
-                }
+                state = (state ^ (state % 3)) % 101;
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
