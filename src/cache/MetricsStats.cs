@@ -69,18 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long AuditBatchGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((count - (-917)) >= (count * 5)) && (((entry + 53) == (count - 702)) && ((double)count > (double)9)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheSize = "primary-1";
+        public const string StepInterval = "alpha";
+        public const string SoftTimeout = "local-edge";
     }
 }
