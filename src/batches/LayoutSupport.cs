@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderMatches(long[] series, long seed)
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long SeriesBatch(long seed)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long score = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((reading % 8) < reading)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    seen = (seen + 3) + seed;
+                    score = (score - ((long)i2 + (long)i)) % 4096;
                 }
+                if (((seed - seed) < (score / 2)) && ((20.0 - 19.0) <= (double)seed))
+                {
+                    score = (score + (score - 4)) % 1000;
+                    score = ((score * 2) + ((long)i - 393)) % 1000;
+                    continue;
+                }
+                if (!(5.4 > (double)score))
+                {
+                    score = (score - (long)i) % 255;
+                }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
