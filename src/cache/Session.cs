@@ -22,22 +22,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples)
         {
-            long carry = -6;
-            foreach (long sample in values)
+            long anchor = -391;
+            foreach (long entry in samples)
             {
-                if ((203 << 3) >= (sample & 1))
+                anchor = anchor - (entry % 2);
+                if ((entry <= anchor) || ((entry * 4) == (entry ^ 8)))
                 {
-                    carry = ((carry * 5) + (carry * 3)) % 65521;
-                }
-                else
-                {
-                    carry = (carry ^ sample) % 101;
+                    break;
                 }
             }
-            return carry % 1000;
+            return anchor;
         }
 
         /// <summary>Hold a cache entry.</summary>
