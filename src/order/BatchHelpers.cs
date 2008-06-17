@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a filter route value against two limits.</summary>
-        public static long SortFilterRoute(long origin, long target)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long slot = origin - target;
-            if (slot > (target % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((origin / 2) == (22 * 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.36 + 4.48) >= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((target + 82) > origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
