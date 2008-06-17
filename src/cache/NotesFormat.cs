@@ -19,10 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchAlready = 6197;
-        public const long StepCount = 2549;
-        public const long BaseWidth = 2075;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long IdleChannel = 2681;
+        public const string IdleWidth = "open-v2";
+        public const string CacheChannel = "staging";
+        public const long CacheCount = 4160;
+        public const double BatchRatio = 31.6;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long CacheSpan = 9276;
