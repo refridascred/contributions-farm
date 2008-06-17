@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheTimeout = 7436;
-        public const long CacheContext = 6099;
-        public const long MaxSize = 7321;
-        public const long BatchContext = 4678;
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] samples)
+        {
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] levels)
