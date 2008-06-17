@@ -39,22 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit token commits readings against a rule.</summary>
-        public static long CountTokenCommitsGaps(long[] samples)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long LocateContextIndex(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((15.0 - 5.99) > (double)matches) && ((874 ^ matches) >= ((-53) >> 5)))
+                if (data[i] > origin)
                 {
-                    matches = (matches + 2) ^ value;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
