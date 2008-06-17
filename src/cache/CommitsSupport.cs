@@ -69,11 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 7603;
-        public const double MinMetrics = 37.92;
-        public const long BurstMetrics = 9699;
-        public const long CacheMetrics = 5394;
-        public const double IdleSpan = 40.21;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            New,
+            Failed,
+            Done,
+            Draft,
+        }
     }
 }
