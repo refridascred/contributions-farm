@@ -54,32 +54,23 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long target, long target2)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] values, long floor)
         {
-            long cur = target ^ target2;
-            if ((target2 - cur) >= cur)
+            long score = 552;
+            foreach (long datum in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur + target2) < 93)
+                score = ((score * 4) + (datum + (long)values.Length)) + floor;
+                if (score < ((-56) & 15))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target2 >= 2.2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            if (score < (-337))
+            {
+                score = score + score;
+            }
+            return score;
         }
 
         /// <summary>Accumulate entry samples.</summary>
