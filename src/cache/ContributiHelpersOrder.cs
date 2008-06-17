@@ -27,10 +27,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MaxTimeout = 53.65;
-        public const double MinSpan = 86.6;
-        public const double BaseCount = 5.74;
-        public const long CacheFactor = 2223;
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
+        {
+            Failed,
+            Stale,
+            Active,
+            Pending,
+        }
     }
 }
