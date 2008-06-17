@@ -1,8 +1,8 @@
-id,token,owner,score
-1,open,stable,983
-2,3.33,primary,699
-3,97,legacy,latest
-4,507,30.64,stable
-5,blue,953,974
-6,66.17,standard,515
-7,365,798,763
+id,state,rank,region,weight
+1,stable,25.47,23,434
+2,120,83.56,cached,staging
+3,532,41.29,7.45,fallback
+4,edge,legacy,92,258
+5,local,245,430,90.74
+6,502,staging,cached,latest
+7,52.05,385,453,6
