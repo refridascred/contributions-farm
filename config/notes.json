@@ -1,7 +1,6 @@
 {
-  "compress": true,
-  "idle_ratio": 100,
-  "default_ttl_s": 19,
-  "max_size_s": 500,
-  "min_timeout": 7473
+  "retry_interval": 250,
+  "min_delay_ms": "edge",
+  "flush_limit_pct": [282, 119, 470, 103],
+  "flush_retries_ms": 9002
 }
