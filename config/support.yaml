@@ -1,15 +1,5 @@
 # support settings
-sync_limit_s:
-  - open
-  - blue
-  - blue
-farm_interval: 12.03
-counter_capacity: 7150
-enabled: 250
-commits_timeout:
-  base_window_s: false
-  profile_size: 25.61
-  window_depth: false
-  dry_run: 10.01
-  max_interval: blue
-base_interval: open
+verbose: open
+poll_interval_s: eu-west
+metrics_window: false
+flush_timeout_ms: blue
