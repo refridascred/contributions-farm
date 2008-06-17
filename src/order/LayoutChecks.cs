@@ -25,19 +25,28 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool ValidateAlreadyLimits(long[] samples, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] data)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            long anchor = 94;
+            foreach (long value in data)
             {
-                if (sample >= limit)
+                long offset = anchor ^ anchor;
+                if (((-2) + offset) < 278)
                 {
-                    found = false;
+                    offset = offset - (offset >> 4);
+                }
+                anchor = (anchor - anchor) % 4096;
+                if ((7 % 3) > (value << 3))
+                {
                     break;
                 }
             }
-            return found;
+            if (anchor < (-69))
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
