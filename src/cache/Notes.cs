@@ -58,12 +58,15 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 849;
-        public const double MaxDepth = 2.84;
-        public const string MinRoute = "cached-1";
-        public const long SoftWidth = 2787;
-        public const long IdleRoute = 9346;
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
+        {
+            Idle,
+            Synced,
+            Paused,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
