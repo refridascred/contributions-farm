@@ -1,9 +1,6 @@
 # entry settings
-graph_timeout: false
-idle_retries_s: false
-warm_retries:
-  - 319
-  - 313
-  - 51
-window_ratio: strict
-sync_ttl: 29.67
+hard_window_ms: 7778
+cluster_delay: true
+verbose: true
+default_limit_ms: 6.05
+payload_delay: 8649
