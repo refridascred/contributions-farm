@@ -73,39 +73,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cache command pair into a bucket.</summary>
-        public static long BucketCacheCommand(long bound, long limit)
-        {
-            if (((bound / 9) < limit) || ((limit << 3) <= (bound + limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 5) == (bound - limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound % 7) != (45 / 4)) && (limit >= (bound << 2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (bound <= 9)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double MinToken = 18.81;
+        public const double IdleToken = 76.0;
+        public const double RetryToken = 13.43;
+        public const long SoftInterval = 8987;
 
         /// <summary>Adjust a checks reading.</summary>
         public static double ProjectChecks(double bias, double bias2)
