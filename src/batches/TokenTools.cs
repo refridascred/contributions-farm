@@ -39,21 +39,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultLevel = 7450;
+        public const string CacheNotes = "primary";
+        public const long StepWidth = 2718;
+        public const long MinTimeout = 932;
+        public const long IdleNotes = 6410;
     }
 }
