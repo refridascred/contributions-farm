@@ -36,11 +36,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double MaxSupport = 53.58;
-        public const long IdleWidth = 4963;
-        public const string SoftSupport = "alpha-v2";
-        public const double IdleSupport = 59.23;
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in readings)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Digest a series of context farm entries.</summary>
         public static long ScoreContextFarm(long[] readings, long origin)
