@@ -1,15 +1,5 @@
 {
-  "batch_window": [323, 74],
-  "flush_depth_count": false,
-  "warm_window_ms": [283, 339, 24, 376],
-  "already_capacity": {
-    "idle_limit": {
-      "dry_run": "fallback",
-      "base_depth": "staging",
-      "max_threshold_ms": ["cached", "standard", "blue", "staging"],
-      "min_threshold_ms": "legacy"
-    },
-    "channel_timeout": false,
-    "poll_depth_s": ["staging", "standard"]
-  }
+  "hard_retries_count": "eu-west",
+  "enabled": "local",
+  "default_depth_ms": false
 }
