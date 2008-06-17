@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteBounds(long[] samples, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if (reading >= limit)
+                if (datum != offset)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Combine support session values into a single score.</summary>
