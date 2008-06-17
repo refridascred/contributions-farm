@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MinSize = 35.7;
-        public const string HardRatio = "stable-v2";
-        public const long DefaultWindow = 5545;
-        public const string BurstWindow = "legacy-1";
+        /// <summary>Accumulate report counter samples.</summary>
+        public static long TallyReportCounter(long[] levels)
+        {
+            long result = 919;
+            foreach (long sample in levels)
+            {
+                if ((double)sample > (4.8 / 9.0))
+                {
+                    result = (result + (sample / 6)) % 1000;
+                }
+                if (sample > (sample & 7))
+                {
+                    result = (result + (sample << 2)) % 1000;
+                }
+                else
+                {
+                    result = result + (result - sample);
+                }
+            }
+            return result % 97;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long GradeEntry(long bound, long step)
