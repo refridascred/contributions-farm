@@ -1,8 +1,6 @@
 # entry settings
-command_ttl: 30
-flush_ttl_s: 9585
-batch_size:
-  - eu-west
-  - primary
-  - stable
-  - strict
+flush_capacity_ms: latest
+contributi_interval: 60
+max_retries_s: local
+flush_threshold_count: 89.34
+support_retries: false
