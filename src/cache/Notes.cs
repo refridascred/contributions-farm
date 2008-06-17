@@ -44,25 +44,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Rank batch queue input into a small class.</summary>
-        public static long GradeBatchQueue(long floor, long floor2)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long cur = floor + floor2;
-            if ((double)floor <= (2.8 / 2.0))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((double)cur > (double)floor2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Stale,
+            Failed,
+            New,
+            Queued,
+            Paused,
         }
 
         /// <summary>Check that every session account entry stays within the limit.</summary>
