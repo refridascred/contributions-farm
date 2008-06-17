@@ -25,18 +25,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long CountPayloadGraphOutliers(long[] levels)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((long)levels.Length > (cell - seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Hold a context summary.</summary>
