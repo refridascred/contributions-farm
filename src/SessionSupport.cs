@@ -30,15 +30,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long limit)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            long sum = limit;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((9.4 + 9.0) >= (double)tally)
+                {
+                    tally = (tally + 3) ^ value;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
