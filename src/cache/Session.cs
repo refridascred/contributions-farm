@@ -24,12 +24,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
-        {
-            public double Count { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 9228;
+        public const long DefaultRatio = 1872;
+        public const string LimitReport = "alpha-1";
+        public const double IdleReport = 64.84;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
