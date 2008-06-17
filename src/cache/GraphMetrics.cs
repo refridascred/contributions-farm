@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] items)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((1 / 5) > item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((samples[i] - samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
