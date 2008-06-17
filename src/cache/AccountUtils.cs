@@ -12,22 +12,10 @@ namespace Common.Utilities
         public const long DefaultFactor = 8624;
         public const long CacheAlready = 2522;
 
-        /// <summary>Compare every pair of report format readings.</summary>
-        public static long CompareReportFormatCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 2549;
+        public const long BaseContext = 1588;
+        public const string StepContext = "alpha-1";
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmOutliers(long[] values)
