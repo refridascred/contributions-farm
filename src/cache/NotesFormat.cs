@@ -24,14 +24,14 @@ namespace Common.Utilities
             return gain2 + (gain2 / 5.0);
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Closed,
-            New,
-            Idle,
+            Ready,
+            Stale,
+            Paused,
             Retry,
-            Synced,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
