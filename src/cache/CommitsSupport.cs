@@ -70,13 +70,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long bound, long limit)
         {
-            Draft,
-            Done,
-            Retry,
-            Failed,
+            long diff = bound + limit;
+            if (((diff - diff) > (diff ^ bound)) && (diff < (bound / 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((5.9 + 1.8) >= (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Project the next tools value.</summary>
