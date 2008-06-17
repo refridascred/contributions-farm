@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Rank { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
+            Ready,
+            Stale,
+            Active,
+            Idle,
         }
 
         /// <summary>Hold a metric summary.</summary>
