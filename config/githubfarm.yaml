@@ -1,10 +1,5 @@
 # githubfarm settings
-burst_timeout: 45.66
-max_size:
-  - 250
-  - 471
-  - 147
-cache_ttl_count: blue
-default_interval: 1024
-soft_ratio_s: fallback
-compress: 500
+sync_retries_s: 24.2
+schema_retries: open
+farm_delay: cached
+soft_interval_s: cached
