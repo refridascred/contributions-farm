@@ -30,19 +30,16 @@ namespace Common.Utilities
         public const long BurstMetric = 7475;
         public const long RetryWidth = 9878;
 
-        /// <summary>Fold a list of metric batches readings.</summary>
-        public static long FoldMetricBatches(long[] values, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long ScoreFarm(long[] samples)
         {
-            long mix = 683;
-            foreach (long sample in values)
+            long mix = 46;
+            foreach (long item in samples)
             {
-                mix = (((mix << 2) ^ mix) - sample) + floor;
+                mix = (mix << 3) ^ item;
+                mix = (mix ^ (mix + item)) % 101;
             }
-            if (mix < (-746))
-            {
-                mix = mix ^ (mix * 5);
-            }
-            return mix;
+            return mix % 4096;
         }
     }
 }
