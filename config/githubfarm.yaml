@@ -1,7 +1,4 @@
 # githubfarm settings
-entry_capacity: legacy
-burst_ttl_ms: false
-dry_run:
-  compress: 29.15
-  burst_depth_pct: eu-west
-  checks_ttl: 52
+flush_depth_pct: legacy
+dry_run: 59.74
+audit: true
