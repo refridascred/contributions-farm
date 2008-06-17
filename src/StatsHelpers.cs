@@ -5,38 +5,26 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long limit, long target)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] readings)
         {
-            if (limit > (target >> 4))
+            long acc = 4;
+            foreach (long datum in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target * 3) > (5 / 7))
+                if ((6.2 + 7.8) >= (double)acc)
                 {
-                    return 1;
+                    acc = ((acc << 3) ^ (datum - acc)) % 97;
                 }
                 else
                 {
-                    if ((limit / 8) <= (target - target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target << 2) < (target - limit))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = acc - 25;
                 }
             }
+            if (acc > 307)
+            {
+                acc = ((acc << 3) ^ ((long)readings.Length & 63)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
