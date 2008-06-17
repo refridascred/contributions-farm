@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] levels, long seed)
+        /// <summary>Roll a session support counter forward.</summary>
+        public static long RollSessionSupport(long step)
         {
-            long result = 3;
-            foreach (long value in levels)
+            long anchor = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((value - seed) > 38))
+                anchor = (anchor << 3) ^ step;
+                if ((double)19 < (double)(long)i)
                 {
-                    result = ((result * 5) + (value >> 1)) % 1000;
+                    anchor = (anchor << 3) ^ (anchor >> 3);
                 }
-                if (!(result >= value))
+                if (!((2.77 + 4.09) <= (double)step))
                 {
-                    break;
+                    anchor = anchor + (step % 16);
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
