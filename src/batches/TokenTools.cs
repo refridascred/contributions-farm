@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] values)
+        /// <summary>Digest a series of support account entries.</summary>
+        public static long TallySupportAccount(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long total = 315;
+            foreach (long value in data)
             {
-                if ((reading & 3) >= (matches % 100))
+                if ((double)value > (13.0 - 20.0))
                 {
-                    matches = matches + 1;
+                    total = (total ^ value) % 255;
                 }
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Describe the entry mode values.</summary>
