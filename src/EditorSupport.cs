@@ -19,15 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes contributi value.</summary>
-        public static double ProjectNotesContributi(double rate, double span)
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            double rate2 = rate;
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = ((rate2 - rate) + (double)(long)i) + span;
-            }
-            return rate2 + rate;
+            public string Offset { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the report status values.</summary>
