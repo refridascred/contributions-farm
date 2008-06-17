@@ -1,5 +1,7 @@
 {
-  "warm_retries_pct": "standard",
-  "farm_capacity": 250,
-  "compress": "eu-west"
+  "account_retries": "fallback",
+  "schema_depth": [53, 160],
+  "hard_capacity": "strict",
+  "strict": 50.59,
+  "idle_capacity_pct": 3887
 }
