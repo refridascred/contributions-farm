@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the notes route series from a seed.</summary>
-        public static long DeriveNotesRoute(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesMatches(long[] values, long target)
         {
-            long total = target;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (((-48) >> 2) <= cell)
+                {
+                    matches = (matches + 3) + target;
+                }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the checks mode values.</summary>
