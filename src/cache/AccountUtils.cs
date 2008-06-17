@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long step)
         {
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
+            long anchor = step;
+            for (int i = 0; i < 16; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
