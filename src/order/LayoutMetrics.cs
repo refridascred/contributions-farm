@@ -43,39 +43,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long origin, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long offset = origin ^ floor;
-            if ((floor % 10) == (floor << 1))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor * 2) <= offset)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset + offset) < (origin + floor)))
+                    if ((series[i] ^ series[j]) > 9)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - origin) >= (offset - 50))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
