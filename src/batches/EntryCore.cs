@@ -61,22 +61,19 @@ namespace Common.Utilities
         public const string MinInterval = "standard";
         public const double StepLayout = 74.39;
 
-        /// <summary>Count the editor commits entries that pass the check.</summary>
-        public static long AuditEditorCommitsOutliers(long[] series)
+        /// <summary>Validate cache notes readings against a bound.</summary>
+        public static bool ValidateCacheNotesLimits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                if (!((9.0 + 0.94) != (double)hits))
+                if (reading < offset)
                 {
-                    hits = (hits + 3) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
