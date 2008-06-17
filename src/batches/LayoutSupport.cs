@@ -41,20 +41,11 @@ namespace Common.Utilities
         public const string SoftEditor = "legacy";
         public const long MaxScore = 232;
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = ((acc ^ seed) % 4096) + (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleLevel = "primary-edge";
+        public const long StepCount = 2359;
+        public const long RetryEditor = 9374;
+        public const long StepDepth = 9728;
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
         public static long MeasureMetricsRouteMatches(long[] readings, long step)
