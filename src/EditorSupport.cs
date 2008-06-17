@@ -26,18 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] data)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long state = 707;
-            foreach (long cell in data)
-            {
-                if (!((-892) >= state))
-                {
-                    state = ((state ^ (state - 200)) % 65521) + cell;
-                }
-            }
-            return state;
+            Synced,
+            New,
+            Pending,
+            Stale,
+            Closed,
         }
 
         /// <summary>Define support limits and defaults.</summary>
