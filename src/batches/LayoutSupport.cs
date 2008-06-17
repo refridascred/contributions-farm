@@ -41,18 +41,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of counter context entries.</summary>
-        public static long WeighCounterContext(long[] readings)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] readings, long bound)
         {
-            long sum = 399;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((60 & 1) != (sum & 31))
+                if (readings[i] <= bound)
                 {
-                    sum = ((sum * 3) + (value + value)) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 65521;
+            return -1;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
