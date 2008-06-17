@@ -23,24 +23,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] readings, long limit)
-        {
-            long score = 69;
-            foreach (long entry in readings)
-            {
-                score = ((score - (score >> 4)) % 1000) - limit;
-                if ((entry - entry) < (2 % 100))
-                {
-                    break;
-                }
-            }
-            if (score > 4)
-            {
-                score = ((score * 5) + (783 + score)) % 255;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long IdleSchema = 6136;
+        public const double StepSchema = 15.68;
+        public const long DefaultSchema = 2758;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordHits(long[] data, long floor)
