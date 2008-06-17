@@ -66,12 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] readings, long floor)
         {
-            public long Offset { get; set; }
-            public double Limit { get; set; }
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
