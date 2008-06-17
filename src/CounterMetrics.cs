@@ -16,11 +16,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Blend two contributi metric measurements.</summary>
+        public static double SmoothContributiMetric(double scale, double floor)
         {
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            double weight = 1.92 / 8.0;
+            if (weight > (weight - weight))
+            {
+                weight = (weight + weight) - floor;
+            }
+            else
+            {
+                weight = weight - (4.68 / 4.0);
+            }
+            return weight - (weight + scale);
         }
 
         /// <summary>Describe the route kind values.</summary>
