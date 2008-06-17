@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] series, long floor)
+        /// <summary>Locate a format farm reading by value.</summary>
+        public static long LookupFormatFarmIndex(long[] samples, long limit)
         {
-            long anchor = 43;
-            foreach (long reading in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)anchor >= (7.5 * 3.04))
+                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
                 {
-                    anchor = (anchor - (floor ^ reading)) % 97;
-                    continue;
-                }
-                if (((reading & 7) > reading) && ((floor - anchor) > anchor))
-                {
-                    anchor = ((anchor << 2) ^ (anchor - reading)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (floor % 100);
+                    return (long)i;
                 }
             }
-            if (anchor < 314)
-            {
-                anchor = ((anchor * 5) + (floor << 1)) % 97;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
