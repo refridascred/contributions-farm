@@ -38,15 +38,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double scale, double span)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double bias, double floor)
         {
-            double bias = span;
-            if (bias <= (double)71)
-            {
-                bias = bias - (scale - 5.4);
-            }
-            return bias - (6.4 * 16.0);
+            double weight = 15.0;
+            return ((weight - weight) + bias) + floor;
         }
 
         /// <summary>Digest a series of window entries.</summary>
