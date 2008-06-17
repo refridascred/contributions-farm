@@ -46,19 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] readings, long seed)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] levels, long bound)
         {
-            long mix = 2;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mix = (mix - (cell + 841)) + seed;
-                if ((long)readings.Length > (mix + 327))
+                if (hits <= (hits - hits))
                 {
-                    mix = (mix - (mix - cell)) % 4096;
+                    hits = ((hits + 1) ^ item) + bound;
                 }
             }
-            return mix % 1000;
+            return hits;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
