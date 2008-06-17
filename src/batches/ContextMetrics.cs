@@ -72,13 +72,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
-        {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftBudget = 3090;
+        public const long CacheFormat = 4783;
+        public const long LimitFormat = 1618;
+        public const long BurstSize = 6246;
     }
 }
