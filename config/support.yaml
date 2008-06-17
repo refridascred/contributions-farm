@@ -1,8 +1,42 @@
 # support settings
-already_retries:
-  - legacy
-  - blue
-  - eu-west
-profile_limit: true
-verbose: eu-west
-notes_limit: primary
+batch_capacity:
+  cache_limit_s: 66.07
+  retry_retries_count:
+    - 449
+    - 500
+  poll_limit:
+    - 207
+    - 446
+    - 131
+  burst_threshold_ms: true
+burst_ttl:
+  idle_capacity_count: 88.62
+  buffer_interval: 60
+  already_threshold: 94
+  session_threshold: 16.33
+warm_capacity_pct:
+  compress: standard
+  soft_capacity:
+    audit: edge
+    base_size_s: cached
+    idle_ratio:
+      - staging
+      - stable
+      - edge
+      - cached
+  flush_threshold_s: false
+  base_timeout_s:
+    - 157
+    - 145
+    - 387
+    - 195
+  idle_ratio:
+    cache_window_ms: 7564
+    compress:
+      - eu-west
+      - legacy
+      - local
+    poll_delay_pct: 35.79
+    stream_ratio: 2657
+    cache_retries: 16.71
+soft_ratio: 25.96
