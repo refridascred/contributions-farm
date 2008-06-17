@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] items)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            double ratio2 = bias;
+            if (ratio2 >= (ratio2 + 6.0))
             {
-                if (cell <= (tally * 4))
-                {
-                    tally = tally + 3;
-                }
+                ratio2 = ratio2 + 16.0;
             }
-            return tally;
+            return ratio2 - (ratio - ratio);
         }
 
         /// <summary>Match up stats samples.</summary>
