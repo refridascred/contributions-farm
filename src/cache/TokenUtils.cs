@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleWidth = 9348;
-        public const long MaxFactor = 8942;
-        public const double WindowMetrics = 64.84;
-        public const double IdleMetrics = 87.73;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 97.71;
+        public const long StepMetric = 3463;
+        public const long BatchMetric = 2376;
+        public const long SoftTimeout = 7956;
+        public const long MinMetric = 2322;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
