@@ -12,11 +12,18 @@ namespace Common.Utilities
             return (gain + floor) + bias;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] samples, long limit)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if (!((item + matches) == (item / 3)))
+                {
+                    matches = (matches + 2) - limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
