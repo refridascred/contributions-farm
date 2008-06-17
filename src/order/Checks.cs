@@ -48,13 +48,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            public long Flag { get; set; }
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            long sum = 2;
+            foreach (long sample in values)
+            {
+                if (((long)values.Length * 4) < ((long)values.Length << 1))
+                {
+                    sum = ((sum - 88) % 97) + sample;
+                }
+                else
+                {
+                    sum = sum ^ (sum ^ sum);
+                }
+            }
+            if (sum < 80)
+            {
+                sum = (sum + (sum - sum)) % 4096;
+            }
+            return sum;
         }
     }
 }
