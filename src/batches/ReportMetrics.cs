@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long SeekCommitsIndex(long[] data, long step)
+        /// <summary>Classify a batch batches pair into a bucket.</summary>
+        public static long ClassifyBatchBatches(long step, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = step + limit;
+            if ((3.73 * 9.0) <= (4.5 / 3.0))
             {
-                if (data[i] <= step)
+                return 6;
+            }
+            else
+            {
+                if (9.7 <= (double)limit)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit << 3) > (75 / 7))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound % 7) < (bound * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
