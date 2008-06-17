@@ -1,5 +1,20 @@
 {
-  "soft_ttl": 73.08,
-  "poll_size_s": 8741,
-  "warm_retries": "latest"
+  "dry_run": 8456,
+  "min_interval_pct": {
+    "soft_ttl_count": {
+      "session_threshold": ["fallback", "latest"],
+      "strict": 500,
+      "checks_retries": "legacy",
+      "cache_ratio_count": 30,
+      "metric_limit": true
+    },
+    "hard_timeout_ms": {
+      "enabled": [357, 71, 87, 430],
+      "warm_retries": ["eu-west", "latest", "blue"],
+      "poll_ttl_pct": [55, 59, 459, 289]
+    },
+    "order_capacity": 6438,
+    "max_depth": "edge"
+  },
+  "hard_delay_pct": 64.76
 }
