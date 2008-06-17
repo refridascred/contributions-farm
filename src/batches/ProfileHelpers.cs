@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const long BaseLevel = 2444;
         public const long CacheFormat = 1498;
 
-        /// <summary>Count command schema pairs that satisfy a relation.</summary>
-        public static long PairCommandSchemaCount(long[] readings)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] levels, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 117;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int i = 0; i < 8; i++)
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((((sum << 2) ^ sum) % 1000) - (long)i) - value;
                 }
+                sum = (sum << 3) ^ (limit << 1);
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Digest a series of record entries.</summary>
