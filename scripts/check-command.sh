@@ -12,6 +12,18 @@ while [ "${count}" -lt 6 ]; do
 done
 log "ran ${count} rounds"
 
-for item in latest cached open green; do
-    log "checking ${item}"
+mode="${1:-standard}"
+case "${mode}" in
+    blue)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
 done
+log "total ${total}"
