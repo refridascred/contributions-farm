@@ -69,16 +69,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] data, long target)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] values, long target)
         {
-            long anchor = 7;
-            foreach (long cell in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                anchor = (((anchor << 2) ^ target) % 97) + cell;
-                anchor = (anchor ^ (target & 1)) % 255;
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
