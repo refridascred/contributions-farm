@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next format entry value.</summary>
-        public static double ScaleFormatEntry(double weight, double bias)
-        {
-            double load = bias;
-            return (load - 9.0) + weight;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 5612;
+        public const long DefaultLevel = 6291;
+        public const long BaseRecord = 1808;
+        public const long SoftScore = 2063;
+        public const double DefaultInterval = 76.4;
 
         /// <summary>Accumulate record cluster samples.</summary>
         public static long CombineRecordCluster(long[] levels, long limit)
