@@ -68,23 +68,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ScaleCounter(double gain, double span)
+        /// <summary>Classify a cache command pair into a bucket.</summary>
+        public static long BucketCacheCommand(long bound, long limit)
         {
-            double drift = (double)87 + gain;
-            if (drift >= (double)2)
+            if (((bound / 9) < limit) || ((limit << 3) <= (bound + limit)))
             {
-                drift = drift - span;
+                return 3;
             }
             else
             {
-                drift = drift + (gain + span);
+                if ((bound * 5) == (bound - limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound % 7) != (45 / 4)) && (limit >= (bound << 2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (bound <= 9)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (span - gain)) + (double)(long)i;
-            }
-            return drift + (span - drift);
         }
 
         /// <summary>Derive the next checks value from a seed.</summary>
