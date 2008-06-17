@@ -12,10 +12,15 @@ namespace Common.Utilities
             return (gain + scale) + floor;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double SoftReport = 97.6;
-        public const long BurstReport = 9129;
-        public const string MinReport = "legacy";
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Locked,
+            Failed,
+            Retry,
+            Dropped,
+            Draft,
+        }
 
         /// <summary>Hold a cluster record.</summary>
         public sealed class ClusterRecord
