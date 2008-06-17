@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long SeriesFormat(long offset)
-        {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                if (offset > result)
-                {
-                    result = ((result * 4) + (offset >> 5)) % 97;
-                }
-                result = ((result << 3) ^ (result << 2)) % 101;
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 2564;
+        public const long SoftPayload = 2371;
+        public const long WindowFactor = 8068;
+        public const string RetrySize = "latest-edge";
+        public const long BatchRatio = 224;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
