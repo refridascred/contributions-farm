@@ -44,11 +44,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 1025;
-        public const long DefaultFarm = 1302;
-        public const long BurstFarm = 778;
-        public const string CacheInterval = "fallback-1";
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LocateGraphIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < limit) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowReport = 6397;
