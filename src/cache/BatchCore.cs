@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool ValidateTokenRecordRange(long[] items, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            bool valid = true;
-            foreach (long cell in items)
-            {
-                if (cell < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Limit { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit already readings against a rule.</summary>
