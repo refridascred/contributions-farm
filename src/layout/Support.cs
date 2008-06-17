@@ -32,19 +32,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate checks metrics readings against a bound.</summary>
-        public static bool GuardChecksMetricsLimits(long[] samples, long bound)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchMatches(long[] items, long seed)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (reading >= bound)
+                if (((3.78 * 0.85) >= (double)hits) || ((double)6 != (double)cell))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 1) - seed;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Check that every format checks entry stays within the limit.</summary>
