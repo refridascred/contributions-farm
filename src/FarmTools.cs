@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a metric filter counter forward.</summary>
-        public static long SeriesMetricFilter(long offset)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((result >= (offset >> 3)) || ((offset + result) < offset))
-                {
-                    long next = (offset ^ offset) ^ ((long)i << 3);
-                    result = result - next;
-                    continue;
-                }
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Match up report queue samples.</summary>
