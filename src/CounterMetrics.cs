@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the queue layout entries that pass the check.</summary>
+        public static long CountQueueLayoutGaps(long[] data, long seed)
         {
-            public double Rank { get; set; }
-            public bool Score { get; set; }
-            public long Mode { get; set; }
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((double)seed >= 2.6)
+                {
+                    hits = (hits + 1) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
