@@ -67,16 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long origin)
-        {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 2) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BurstAlready = 59.04;
+        public const long IdleWidth = 2906;
+        public const double RetryAlready = 56.38;
+        public const long StepAlready = 8375;
+        public const string WindowScore = "latest";
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadGaps(long[] levels, long step)
