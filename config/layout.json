@@ -1,5 +1,18 @@
 {
-  "editor_capacity": 8618,
-  "batch_ratio_s": false,
-  "stats_threshold": 17.14
+  "persist": false,
+  "hard_limit": true,
+  "session_delay": {
+    "flush_timeout_pct": {
+      "layout_retries": 5118,
+      "counter_capacity": false,
+      "profile_ratio": 500,
+      "support_threshold": ["edge", "standard", "latest"],
+      "flush_ttl": ["open", "stable", "eu-west"],
+      "min_capacity": false
+    },
+    "enabled": "edge",
+    "retry_timeout_s": 60,
+    "poll_limit_s": 98
+  },
+  "min_interval_s": "stable"
 }
