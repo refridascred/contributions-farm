@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] values)
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = ((mark * 5) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
