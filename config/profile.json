@@ -1,7 +1,19 @@
 {
-  "poll_ttl_pct": "primary",
-  "base_capacity_ms": "eu-west",
-  "cache_interval": [441, 494, 352, 346],
-  "context_limit": false,
-  "flush_ttl": ["blue", "legacy"]
+  "warm_interval": {
+    "flush_window": 56.33,
+    "idle_depth_ms": false,
+    "burst_capacity": "stable",
+    "idle_limit_pct": "green",
+    "enabled": 17.38,
+    "context_interval": [299, 429, 58]
+  },
+  "window_interval": 29.24,
+  "readonly": {
+    "channel_interval": 37.35,
+    "readonly": "strict",
+    "retry_timeout_ms": 99,
+    "persist": 9213,
+    "editor_delay": 11,
+    "retry_delay": [458, 223, 70, 360]
+  }
 }
