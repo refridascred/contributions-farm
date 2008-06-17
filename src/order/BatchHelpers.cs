@@ -30,18 +30,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of token order entries.</summary>
-        public static long ScoreTokenOrder(long[] readings)
-        {
-            long mark = 596;
-            foreach (long entry in readings)
-            {
-                if ((mark % 7) != (mark - entry))
-                {
-                    mark = (mark ^ 0) % 4096;
-                }
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchSpan = 9745;
+        public const long BatchFilter = 8512;
+        public const string SoftLevel = "local";
     }
 }
