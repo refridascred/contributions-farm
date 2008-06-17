@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit route session readings against a rule.</summary>
-        public static long TallyRouteSessionGaps(long[] values)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (((item << 2) < (seen ^ item)) || ((double)seen < (5.8 + 0.55)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Retry,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
