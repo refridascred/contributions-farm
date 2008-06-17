@@ -57,18 +57,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueOutliers(long[] data, long target)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if (!((matches % 8) > (24 & 3)))
-                {
-                    matches = ((matches + 1) + value) - target;
-                }
-            }
-            return matches;
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
