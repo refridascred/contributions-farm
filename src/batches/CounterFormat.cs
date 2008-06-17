@@ -27,12 +27,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            Done,
-            Failed,
-            Locked,
+            public double Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
