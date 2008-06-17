@@ -34,18 +34,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of channel filter entries.</summary>
-        public static long WeighChannelFilter(long[] levels)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long PairPayloadCount(long[] levels)
         {
-            long score = -51;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value < score)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score + score) % 255;
+                    if ((levels[i] - levels[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
     }
 }
