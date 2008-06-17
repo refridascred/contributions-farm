@@ -68,19 +68,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long TallyAccountContributiOutliers(long[] items)
+        /// <summary>Compare every pair of route counter readings.</summary>
+        public static long MatchRouteCounterCount(long[] data)
         {
             long matches = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((double)datum == (double)68) && !((489 << 2) <= (datum + matches)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
