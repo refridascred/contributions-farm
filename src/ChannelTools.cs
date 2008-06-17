@@ -23,12 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] readings, long origin)
         {
-            public string Offset { get; set; } = "";
-            public double Level { get; set; }
-            public bool Rank { get; set; }
+            long acc = 169;
+            foreach (long entry in readings)
+            {
+                if ((entry + acc) > acc)
+                {
+                    acc = (acc ^ entry) - origin;
+                }
+                else
+                {
+                    acc = (acc << 3) ^ (acc >> 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the tools kind values.</summary>
