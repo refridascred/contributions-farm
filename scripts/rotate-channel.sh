@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=225
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-edge}"
+mode="${1:-local}"
 case "${mode}" in
-    stable)
+    standard)
         log "fast path"
         ;;
     *)
@@ -19,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in primary eu-west; do
+for item in standard legacy green eu-west; do
     log "checking ${item}"
 done
