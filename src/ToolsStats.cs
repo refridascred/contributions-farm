@@ -51,13 +51,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            Active,
-            Retry,
-            Locked,
-            Pending,
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
