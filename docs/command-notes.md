@@ -1,13 +1,14 @@
 # Command notes
 
-A format that stays idle for too long is moved to the contributi list.
-Defaults for window live in the config folder and can be overridden per environment.
+Use session settings to tune how often filter data is refreshed.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any commits limits.
 
-Defaults for batches live in the config folder and can be overridden per environment.
-Use queue settings to tune how often token data is refreshed.
+Defaults for context live in the config folder and can be overridden per environment.
+A editor that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Log every stats change
-- Validate counter input early
-- Document new tools fields
+- Review editor limits each release
+- Keep contributi values small
+- Document new record fields
