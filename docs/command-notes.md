@@ -1,11 +1,15 @@
 # Command notes
 
-Run the payload check before changing any checks limits.
-When a already fails, the batch handler retries a few times before giving up.
-A report that stays idle for too long is moved to the buffer list.
+Defaults for session live in the config folder and can be overridden per environment.
+A batch that stays idle for too long is moved to the farm list.
+The batch module keeps queue values in sync with the checks cache.
+
+The filter module keeps queue values in sync with the contributi cache.
+The support helpers are pure functions, so they are safe to call from any thread.
+Each account is validated before it reaches the metric queue.
 
 ## Guidelines
 
-- Keep channel values small
-- Log every queue change
-- Validate editor input early
+- Document new token fields
+- Review graph limits each release
+- Prefer window defaults
