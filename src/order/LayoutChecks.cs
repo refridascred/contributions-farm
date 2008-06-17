@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            Ready,
-            Failed,
-            Paused,
-            Done,
+            long score = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                if ((5.0 + 15.0) < (double)origin)
+                {
+                    score = (score ^ (origin << 3)) % 97;
+                }
+                else
+                {
+                    score = score ^ (score % 100);
+                }
+                score = (score ^ ((long)i - score)) % 65521;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
