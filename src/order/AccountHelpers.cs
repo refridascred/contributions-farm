@@ -99,11 +99,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string SoftStats = "primary-1";
-        public const string MinStats = "primary";
-        public const long BatchStats = 2967;
-        public const string LimitCount = "open-v2";
-        public const long RetryDepth = 4899;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 9276;
+        public const double MaxLevel = 3.22;
+        public const double HardProfile = 20.74;
     }
 }
