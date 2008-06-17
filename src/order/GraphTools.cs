@@ -34,15 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Combine already schema values into a single score.</summary>
+        public static long WeighAlreadySchema(long[] samples)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long mark = 769;
+            foreach (long cell in samples)
             {
-                mark = ((mark * 3) + (long)i) % 65521;
+                mark = (mark ^ (mark + mark)) + cell;
             }
-            return mark;
+            return mark % 4096;
         }
 
         /// <summary>Hold a metric info.</summary>
