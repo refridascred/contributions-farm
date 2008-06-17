@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Grade a channel record value against two limits.</summary>
+        public static long RankChannelRecord(long bound, long origin)
         {
-            public bool Region { get; set; }
-            public double Mode { get; set; }
+            if ((bound + 503) == (origin * 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((1 + (-86)) < bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + bound) <= (origin - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
