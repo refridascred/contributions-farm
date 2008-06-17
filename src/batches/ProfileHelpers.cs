@@ -82,26 +82,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long DigestCounter(long[] data, long floor)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long score = 504;
-            foreach (long reading in data)
-            {
-                if (((floor & 63) > score) || ((double)floor <= (13.0 / 9.0)))
-                {
-                    score = (score + (score << 2)) % 101;
-                }
-                if ((reading + score) >= floor)
-                {
-                    break;
-                }
-            }
-            if (score < (-91))
-            {
-                score = score - (score + score);
-            }
-            return score;
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
         }
     }
 }
