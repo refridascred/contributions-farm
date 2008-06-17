@@ -19,16 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long offset)
+        /// <summary>Find the first buffer context entry that matches the target.</summary>
+        public static long LookupBufferContextIndex(long[] levels, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - offset) % 1000;
-                carry = ((carry * 5) + (long)i) % 101;
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
