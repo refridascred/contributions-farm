@@ -22,38 +22,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank checks metric input into a small class.</summary>
-        public static long SortChecksMetric(long floor, long seed)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if (seed > (floor * 4))
-            {
-                return 3;
-            }
-            else
-            {
-                if (floor < (seed % 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor + floor) <= (floor ^ seed))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((78 / 5) == (seed / 5)) && ((double)seed <= (double)floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Synced,
+            Pending,
+            Done,
         }
     }
 }
