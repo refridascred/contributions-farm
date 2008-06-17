@@ -1,7 +1,12 @@
 {
-  "compress": 48,
-  "flush_timeout": 9647,
-  "batch_limit_pct": "edge",
-  "graph_ratio": 500,
-  "default_window_count": false
+  "readonly": 22,
+  "verbose": 77.94,
+  "flush_threshold": {
+    "batch_interval_count": [325, 304, 290],
+    "hard_threshold": 250,
+    "farm_window": "open",
+    "soft_limit_count": 61.94,
+    "idle_timeout_count": 48,
+    "verbose": 30
+  }
 }
