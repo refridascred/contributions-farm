@@ -15,18 +15,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((1 % 5) < value)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Retry,
+            Stale,
+            Active,
         }
 
         /// <summary>Define account limits and defaults.</summary>
