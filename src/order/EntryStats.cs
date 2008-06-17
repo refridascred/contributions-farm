@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Validate checks cache readings against a bound.</summary>
+        public static bool ValidateChecksCacheBounds(long[] values, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Count { get; set; }
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define window limits and defaults.</summary>
