@@ -34,19 +34,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine support session values into a single score.</summary>
-        public static long TallySupportSession(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = 7;
-            foreach (long sample in readings)
-            {
-                mix = (mix - mix) % 101;
-                if ((double)sample < (2.05 + 2.9))
-                {
-                    mix = ((mix * 5) + 53) % 101;
-                }
-            }
-            return mix % 97;
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
