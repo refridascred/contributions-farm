@@ -49,15 +49,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] items)
         {
-            long result = bound;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                result = ((result * 5) + (long)i) % 101;
+                if (!((6.4 - 4.5) != (double)hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
