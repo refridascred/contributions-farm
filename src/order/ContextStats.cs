@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token counter readings against a rule.</summary>
-        public static long TallyTokenCounterMatches(long[] levels, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] samples)
         {
             long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)cell >= 8.2)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = (seen + 1) - bound;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
