@@ -52,32 +52,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long bound, long floor)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long SeekAlreadyIndex(long[] data, long offset)
         {
-            long prev = bound ^ floor;
-            if (((double)prev != (6.1 + 9.9)) || ((double)bound <= (1.0 + 3.4)))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((prev ^ (-90)) != (bound + 9))
+                if (data[i] == offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound + floor) < (prev - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
