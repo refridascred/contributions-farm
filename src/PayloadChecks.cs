@@ -40,22 +40,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] samples, long target)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if ((target + hits) <= item)
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
