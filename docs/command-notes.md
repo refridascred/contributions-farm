@@ -1,11 +1,10 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-Keep schema and format names short and lowercase.
+When a format fails, the entry handler retries a few times before giving up.
+A notes that stays idle for too long is moved to the editor list.
 
 ## Guidelines
 
-- Review counter limits each release
-- Document new tools fields
-- Validate notes input early
-- Keep layout values small
+- Review token limits each release
+- Document new cluster fields
+- Keep graph values small
