@@ -22,27 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Match up report queue samples.</summary>
+        public static long OverlapReportQueueCount(long[] series)
         {
-            long sum = 92;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = sum ^ (sum * 2);
-                if (value > 321)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = sum - value;
-                }
-                if (((4.9 / 9.0) < (double)sum) && ((8.4 + 18.0) > (double)sum))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 1)
-            {
-                sum = (sum ^ (sum / 2)) % 255;
-            }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
