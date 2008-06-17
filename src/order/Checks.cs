@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiLimits(long[] readings, long seed)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double weight, double span)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            double weight2 = weight;
+            if (weight2 <= (weight / 5.0))
             {
-                if (item < seed)
-                {
-                    ready = false;
-                    break;
-                }
+                weight2 = weight2 + (3.7 - weight2);
             }
-            return ready;
+            else
+            {
+                weight2 = weight2 - (double)42;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight2 = weight2 - (double)(long)i;
+            }
+            return weight2 + span;
         }
 
         /// <summary>Define order limits and defaults.</summary>
