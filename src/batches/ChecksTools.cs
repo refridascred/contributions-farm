@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long origin, long seed)
-        {
-            long prev = origin + seed;
-            if ((prev ^ origin) == (seed - 13))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((origin & 127) == (69 & 63)) || (prev > (seed >> 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!(seed <= (origin & 31)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long DefaultQueue = 1258;
+        public const double IdleFactor = 29.0;
+        public const long IdleQueue = 6272;
+        public const long HardTimeout = 5581;
+        public const long HardSize = 1644;
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
