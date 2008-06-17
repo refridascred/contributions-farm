@@ -13,16 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long StepCommand(long floor)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                anchor = (anchor - 61) % 4096;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine notes values into a single score.</summary>
