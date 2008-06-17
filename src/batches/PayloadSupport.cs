@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long floor)
         {
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
-            public double Rank { get; set; }
+            long result = floor;
+            for (int i = 0; i < 15; i++)
+            {
+                if (!((8.0 - 16.0) <= (double)result))
+                {
+                    result = ((result << 2) ^ (5 * 3)) % 65521;
+                    continue;
+                }
+                result = ((result * 3) + (long)i) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the command mode values.</summary>
