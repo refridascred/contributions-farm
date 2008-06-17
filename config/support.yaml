@@ -1,6 +1,7 @@
 # support settings
-flush_depth_pct: 45
-verbose: eu-west
-retry_window_ms: false
-strict: 1862
-max_window_count: true
+retry_threshold_pct:
+  - 292
+  - 313
+audit: standard
+payload_ratio: 41
+warm_depth_count: 21
