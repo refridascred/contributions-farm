@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long offset)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i >> 2) >= state)
-                {
-                    state = ((state << 2) ^ state) % 255;
-                }
-                if (((long)i >= (state - state)) && (1.74 <= (double)offset))
-                {
-                    state = (state + ((long)i + state)) % 97;
-                    state = (state << 2) ^ (offset >> 3);
-                }
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = ((state * 5) + offset) ^ (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 1000;
-            }
-            return state;
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Describe the support class values.</summary>
