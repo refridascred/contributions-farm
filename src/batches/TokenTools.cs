@@ -25,23 +25,22 @@ namespace Common.Utilities
         public const double CacheFarm = 32.89;
         public const double CacheSpan = 27.05;
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double AdjustProfile(double ratio, double offset)
+        /// <summary>Count the profile checks entries that pass the check.</summary>
+        public static long MeasureProfileChecksHits(long[] levels, long seed)
         {
-            double gain = 4.94;
-            if (gain > (7.3 - ratio))
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                gain = gain - (ratio * 7.98);
+                if (tally < (46 ^ seed))
+                {
+                    tally = (tally + 3) - sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                gain = gain - (offset - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = gain - (double)(long)i;
-            }
-            return gain - gain;
+            return tally;
         }
     }
 }
