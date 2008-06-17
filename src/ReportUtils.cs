@@ -20,15 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] values)
+        /// <summary>Count the session payload entries that pass the check.</summary>
+        public static long MeasureSessionPayloadHits(long[] levels, long target)
         {
-            long score = 801;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                score = (score - (score / 4)) ^ reading;
+                if (!((entry >> 3) != (entry ^ 82)) || (((0.35 / 6.0) < (double)entry) || ((double)target < (3.9 + 2.5))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
