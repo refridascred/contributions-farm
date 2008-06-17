@@ -5,30 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long mark = 84;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((cell - 23) < mark)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
-                }
-                if (cell < 865)
-                {
-                    mark = mark + (0 + cell);
-                }
-                if ((6.0 * 16.0) >= (double)mark)
-                {
-                    break;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 5)
-            {
-                mark = ((mark << 2) ^ (633 + mark)) % 101;
-            }
-            return mark % 1000;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
