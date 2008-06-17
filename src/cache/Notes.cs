@@ -36,13 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
-        {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 849;
+        public const double MaxDepth = 2.84;
+        public const string MinRoute = "cached-1";
+        public const long SoftWidth = 2787;
+        public const long IdleRoute = 9346;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
