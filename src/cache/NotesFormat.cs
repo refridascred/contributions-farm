@@ -13,24 +13,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double AdjustMetrics(double scale, double bias)
-        {
-            double gain = scale;
-            if (gain < (gain / 6.0))
-            {
-                gain = gain + bias;
-            }
-            else
-            {
-                gain = gain + scale;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain + (scale - scale);
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchAlready = 6197;
+        public const long StepCount = 2549;
+        public const long BaseWidth = 2075;
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
         public static long GradeBuffer(long offset, long limit)
