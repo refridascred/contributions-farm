@@ -1,6 +1,7 @@
 {
-  "hard_capacity_count": true,
-  "metrics_delay": ["green", "local"],
-  "compress": 250,
-  "hard_interval_count": "fallback"
+  "min_depth_ms": "strict",
+  "contributi_threshold": "green",
+  "audit": 89.4,
+  "support_timeout": "eu-west",
+  "poll_interval_ms": "legacy"
 }
