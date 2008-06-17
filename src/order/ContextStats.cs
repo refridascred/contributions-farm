@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BatchChecks = 70.14;
-        public const long MaxChecks = 231;
-        public const long RetryLevel = 6715;
-        public const long BaseSize = 8055;
+        /// <summary>Count the context editor entries that pass the check.</summary>
+        public static long CountContextEditorGaps(long[] readings, long floor)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value + 77) > floor)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit token counter readings against a rule.</summary>
         public static long TallyTokenCounterMatches(long[] levels, long bound)
