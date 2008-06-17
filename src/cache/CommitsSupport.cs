@@ -60,14 +60,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Draft,
-            Failed,
-            Paused,
-            Done,
-            Dropped,
+            public long Token { get; set; }
+            public double Label { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
