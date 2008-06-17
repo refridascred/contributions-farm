@@ -12,11 +12,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowGaps(long[] series)
         {
-            public double Region { get; set; }
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen != (7.0 * 2.31))
+                {
+                    seen = (seen + 3) - sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank graph report input into a small class.</summary>
