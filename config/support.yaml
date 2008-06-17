@@ -1,24 +1,12 @@
 # support settings
-poll_ratio_ms:
-  base_limit:
-    poll_window: false
-    profile_delay: open
-    warm_interval_s: 55.84
-    checks_depth:
-      - 170
-      - 416
-      - 169
-      - 398
-  burst_threshold: 1111
-  burst_size: open
-  flush_ttl_pct: 48
-persist: 62
-burst_depth:
-  - legacy
-  - staging
-  - green
-retry_depth_ms:
-  - primary
-  - legacy
-  - local
-  - standard
+audit: latest
+sync_depth_ms: 7868
+farm_interval: false
+soft_size_s: staging
+base_limit_pct: 30
+notes_interval:
+  editor_size: 2830
+  default_ratio_count: eu-west
+  persist: 16
+  record_retries: false
+  poll_ratio_pct: 89
