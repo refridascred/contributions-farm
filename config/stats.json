@@ -1,6 +1,7 @@
 {
-  "session_retries": ["fallback", "primary", "latest", "standard"],
-  "queue_depth": 24.34,
-  "order_ratio": "latest",
-  "burst_ttl_ms": 6918
+  "warm_window_count": 76,
+  "layout_window": ["green", "green"],
+  "persist": 90.73,
+  "metrics_ratio": "open",
+  "record_limit": 59.53
 }
