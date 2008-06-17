@@ -38,18 +38,22 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples, long floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] data, long offset)
         {
-            long total = 309;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (datum < (total + (long)samples.Length))
+                if (((3.0 * 11.0) == (double)offset) || ((sample - (long)data.Length) >= (count & 15)))
                 {
-                    total = ((total ^ (total ^ datum)) % 65521) + floor;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
