@@ -39,14 +39,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadMatches(long[] items, long step)
         {
-            Pending,
-            Failed,
-            Ready,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if (((step / 6) > 71) && ((count & 31) > (entry + (-152))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
