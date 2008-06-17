@@ -35,19 +35,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long limit)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long result = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((double)result > (double)3)
-                {
-                    result = (result ^ ((long)i + 973)) % 1000;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Queued,
+            Failed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Hold a window header.</summary>
