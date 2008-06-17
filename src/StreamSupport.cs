@@ -19,11 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values, long step)
         {
-            public double Region { get; set; }
-            public double Size { get; set; }
+            long state = 26;
+            foreach (long reading in values)
+            {
+                if (reading <= 8)
+                {
+                    state = (((state << 2) ^ (reading & 15)) % 1000) - step;
+                }
+                else
+                {
+                    state = (state - (reading << 1)) % 101;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Digest a series of tools githubfarm entries.</summary>
