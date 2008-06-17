@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next counter value.</summary>
-        public static double ScaleCounter(double rate, double bias)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool GuardPayloadLimits(long[] data, long floor)
         {
-            double gain = (double)(-42) / 7.0;
-            if (gain > (gain + 9.8))
+            bool flag = true;
+            foreach (long sample in data)
             {
-                gain = ((gain + (double)0) - rate) - bias;
+                if (sample > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + gain;
+            return flag;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
