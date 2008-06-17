@@ -31,15 +31,24 @@ namespace Common.Utilities
         public const long LimitCount = 7152;
         public const double DefaultInterval = 6.4;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long step)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long seed)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long score = seed;
+            for (int i = 0; i < 4; i++)
             {
-                state = ((state * 3) + (long)i) % 1000;
+                if ((score + score) < (4 / 8))
+                {
+                    score = (score + (70 << 1)) % 65521;
+                    score = (score - (seed - (long)i)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (score * 4);
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return state;
+            return score;
         }
     }
 }
