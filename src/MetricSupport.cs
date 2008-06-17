@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] data, long floor)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Accumulate checks samples.</summary>
