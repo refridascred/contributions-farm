@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const string BurstBudget = "latest-v2";
         public const long HardRatio = 1226;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] items, long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool stale = true;
-            foreach (long datum in items)
-            {
-                if (datum > bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Failed,
+            Stale,
+            Synced,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
