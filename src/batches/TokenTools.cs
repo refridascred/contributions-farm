@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LocateCounterIndex(long[] levels, long bound)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 5;
+            foreach (long cell in readings)
             {
-                if (levels[i] == bound)
+                result = result + (cell / 2);
+                if ((result + result) >= result)
                 {
-                    return (long)i;
+                    result = (result * 3) + (4 % 2);
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Adjust a filter reading.</summary>
