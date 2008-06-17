@@ -32,18 +32,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueHits(long[] values)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((double)cell <= (1.7 - 0.32))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
