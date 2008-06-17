@@ -1,6 +1,8 @@
 {
-  "filter_retries": "edge",
-  "dry_run": "green",
-  "soft_delay_count": 4490,
-  "audit": [134, 318, 291]
+  "flush_ttl_s": 40,
+  "max_interval": 1,
+  "warm_timeout": false,
+  "cache_retries": 40.8,
+  "sync_capacity": 30,
+  "max_size": 32.8
 }
