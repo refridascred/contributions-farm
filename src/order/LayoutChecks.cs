@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the context buffer series from a seed.</summary>
-        public static long IterateContextBuffer(long offset)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LocateBufferIndex(long[] values, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                long offset2 = (offset & 3) + (8 ^ acc);
-                if (offset2 <= (offset2 - acc))
+                if ((values[i] == origin) && ((values[i] % 2) == 0))
                 {
-                    acc = ((acc << 3) ^ (offset + offset2)) % 97;
+                    return (long)i;
                 }
-                acc = (acc << 3) ^ acc;
-                acc = ((acc * 5) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
