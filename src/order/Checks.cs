@@ -40,12 +40,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            Paused,
-            Active,
-            New,
+            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
