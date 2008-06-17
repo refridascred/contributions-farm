@@ -44,15 +44,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryGaps(long[] samples, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] values)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long cell in values)
             {
-                if ((limit * 2) < (tally >> 5))
+                if (((double)(long)values.Length <= (17.0 - 5.0)) || ((2.5 / 3.0) >= (double)tally))
                 {
-                    tally = (tally + 1) + datum;
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
