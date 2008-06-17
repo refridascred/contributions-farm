@@ -22,26 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] levels, long bound)
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
         {
-            long carry = 650;
-            foreach (long reading in levels)
-            {
-                if ((carry >> 5) != (bound >> 2))
-                {
-                    carry = (((carry << 3) ^ (carry & 255)) % 255) ^ reading;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (carry * 3)) % 65521;
-                }
-            }
-            if (carry > 22)
-            {
-                carry = ((carry << 2) ^ ((long)levels.Length + 2)) % 1000;
-            }
-            return carry;
+            Stale,
+            Synced,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
