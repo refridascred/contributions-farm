@@ -5,35 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] series)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] samples, long target)
         {
-            long mix = -3;
-            foreach (long value in series)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (!(mix > (81 / 3)))
+                if (value < target)
                 {
-                    mix = (mix << 3) ^ mix;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix << 1);
-                    mix = (mix ^ 37) % 101;
-                }
-                if (((double)value <= 1.0) || (value > (value - 0)))
-                {
-                    mix = mix ^ (mix >> 5);
-                }
-                else
-                {
-                    mix = (mix ^ (4 ^ value)) % 255;
+                    flag = false;
+                    break;
                 }
             }
-            if (mix > 16)
-            {
-                mix = ((mix * 2) + (mix ^ mix)) % 255;
-            }
-            return mix;
+            return flag;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
