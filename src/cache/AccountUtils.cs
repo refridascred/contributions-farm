@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long RankStats(long target, long target2)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] data)
         {
-            if (!(target >= (target + target2)))
+            long total = 0;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target != (7.6 + 10.0)) && ((target2 << 2) < (77 >> 5)))
+                if ((value * 3) != (total << 3))
                 {
-                    return 7;
+                    total = ((total << 3) ^ (total << 3)) % 97;
                 }
                 else
                 {
-                    if ((double)709 <= (double)target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((target * 3) < (target2 >> 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    total = total + (total * 3);
+                }
+                if (((6 - total) != (value + total)) || ((6 % 12) != (value - 541)))
+                {
+                    break;
                 }
             }
+            if (total > 402)
+            {
+                total = (total + (total ^ total)) % 4096;
+            }
+            return total % 4096;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
