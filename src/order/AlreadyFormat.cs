@@ -28,11 +28,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long StepCluster(long limit)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            long score = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                if (limit < (limit * 5))
+                {
+                    score = score ^ (score - limit);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
