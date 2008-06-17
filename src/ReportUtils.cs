@@ -40,18 +40,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountMatches(long[] data, long seed)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long limit, long seed)
         {
-            long count = 0;
-            foreach (long entry in data)
+            if (limit > seed)
             {
-                if ((((seed % 97) > ((long)data.Length & 3)) || ((8.0 - 0.03) < (9.6 - 1.4))) || (((17.0 / 9.0) <= (double)count) || (((-537) >> 4) >= seed)))
+                return 8;
+            }
+            else
+            {
+                if ((double)seed <= (7.8 - 1.0))
                 {
-                    count = (count + 1) + entry;
+                    return 5;
+                }
+                else
+                {
+                    if ((6.4 - 9.97) >= (double)limit)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a commits info.</summary>
