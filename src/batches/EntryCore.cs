@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long target, long bound)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] readings, long origin)
         {
-            if (target > (target + bound))
+            long score = 38;
+            foreach (long reading in readings)
             {
-                return 3;
+                score = ((score + (score * 4)) ^ reading) + origin;
             }
-            else
-            {
-                if (bound >= (bound + 12))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!(bound >= (target & 7)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
