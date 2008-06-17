@@ -16,24 +16,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank notes order input into a small class.</summary>
-        public static long SortNotesOrder(long seed, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] series, long target)
         {
-            if ((3.2 - 12.0) == (double)limit)
+            long acc = -914;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)limit < (double)seed) || ((double)seed <= 9.32))
+                if ((double)target < (17.0 / 4.0))
                 {
-                    return 8;
+                    acc = acc + (84 - 977);
                 }
                 else
                 {
-                    return 6;
+                    acc = (acc << 2) ^ item;
                 }
             }
+            if (acc > 2)
+            {
+                acc = acc ^ (target & 3);
+            }
+            return acc;
         }
 
         /// <summary>Describe the route mode values.</summary>
