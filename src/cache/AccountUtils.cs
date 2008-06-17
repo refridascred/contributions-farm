@@ -32,32 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long seed)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LocateStatsIndex(long[] readings, long offset)
         {
-            long bound = step - seed;
-            if ((step + step) != (bound << 1))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step * 3) <= seed)
+                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + 901) >= seed)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
