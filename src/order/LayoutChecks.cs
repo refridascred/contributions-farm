@@ -40,11 +40,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Check that every counter stats entry stays within the limit.</summary>
+        public static bool CheckCounterStatsBounds(long[] data, long seed)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
