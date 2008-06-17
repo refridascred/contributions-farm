@@ -16,12 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            Active,
-            Locked,
-            Pending,
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next filter value.</summary>
