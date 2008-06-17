@@ -19,19 +19,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Blend two contributi metric measurements.</summary>
-        public static double SmoothContributiMetric(double scale, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double weight = 1.92 / 8.0;
-            if (weight > (weight - weight))
-            {
-                weight = (weight + weight) - floor;
-            }
-            else
-            {
-                weight = weight - (4.68 / 4.0);
-            }
-            return weight - (weight + scale);
+            Queued,
+            Locked,
+            Failed,
+            Active,
+            Dropped,
         }
 
         /// <summary>Accumulate record samples.</summary>
