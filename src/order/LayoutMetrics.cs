@@ -23,24 +23,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long target)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ScaleEntry(double scale, double bias)
         {
-            if ((double)target < (5.5 * 6.7))
+            double gain = 2.01;
+            for (int i = 0; i < 7; i++)
             {
-                return 7;
+                gain = ((gain + (bias / 2.0)) + (double)(long)i) + scale;
             }
-            else
-            {
-                if ((target ^ target) <= (target + origin))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return gain - (bias * 3.1);
         }
     }
 }
