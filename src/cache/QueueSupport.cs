@@ -33,14 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] data, long limit)
         {
-            Queued,
-            Idle,
-            Draft,
-            Paused,
-            New,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((double)count > (2.7 + 0.6))
+                {
+                    count = ((count + 3) ^ entry) + limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of report entries.</summary>
