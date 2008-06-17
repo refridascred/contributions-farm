@@ -16,11 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long MeasureMetricsCommitsGaps(long[] data, long step)
         {
-            public long Score { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if ((step >> 4) <= (tally << 1))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Project the next filter value.</summary>
