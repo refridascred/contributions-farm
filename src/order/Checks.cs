@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long SeekNotesIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string HardSpan = "cached-v2";
+        public const double DefaultSpan = 56.22;
+        public const double DefaultInterval = 78.11;
+        public const long SoftSize = 8575;
+        public const long MinBuffer = 7426;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
