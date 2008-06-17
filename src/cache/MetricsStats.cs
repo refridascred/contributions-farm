@@ -40,22 +40,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many entry already samples are out of range.</summary>
-        public static long TallyEntryAlreadyOutliers(long[] levels, long step)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long SeekTokenIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item >= matches)
+                if (data[i] > seed)
                 {
-                    matches = (matches + 3) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
