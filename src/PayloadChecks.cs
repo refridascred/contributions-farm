@@ -63,22 +63,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] values, long seed)
-        {
-            long state = -92;
-            foreach (long value in values)
-            {
-                if (seed > value)
-                {
-                    state = (state - (state << 2)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ state) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 5392;
+        public const long DefaultChannel = 8700;
+        public const long HardTimeout = 3636;
     }
 }
