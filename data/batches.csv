@@ -1,7 +1,8 @@
-id,score,region
-1,strict,450
-2,548,208
-3,700,39.18
-4,strict,9.39
-5,812,471
-6,669,354
+id,count,state
+1,cached,16.43
+2,823,green
+3,927,latest
+4,7.12,7.65
+5,17.12,96.06
+6,green,82.68
+7,open,53.74
