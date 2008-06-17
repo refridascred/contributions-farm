@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long bound)
+        /// <summary>Grade a checks farm value against two limits.</summary>
+        public static long ClassifyChecksFarm(long bound, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((bound > step) || ((step << 3) <= (bound % 5)))
             {
-                if (data[i] <= bound)
+                return 7;
+            }
+            else
+            {
+                if (!((239 ^ 4) <= (bound << 1)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
