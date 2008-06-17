@@ -37,23 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long StepContext(long seed)
+        /// <summary>Compare every pair of channel report readings.</summary>
+        public static long CompareChannelReportCount(long[] series)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seed + anchor) > seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor + 290) % 101;
+                    if ((series[i] + series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    anchor = anchor + (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
