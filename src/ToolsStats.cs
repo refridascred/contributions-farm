@@ -65,37 +65,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long BucketChecks(long floor, long offset)
+        /// <summary>Grade a stats batch value against two limits.</summary>
+        public static long GradeStatsBatch(long bound, long origin)
         {
-            long edge = floor ^ offset;
-            if ((edge << 3) > (offset & 15))
+            long diff = bound + origin;
+            if ((3.83 / 8.0) == (double)bound)
             {
-                return 5;
+                return 6;
             }
             else
             {
-                if (((floor % 8) == (floor / 9)) && (offset > (81 - floor)))
+                if (((bound ^ diff) != (7 + 512)) && ((bound + 83) >= (0 ^ 26)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    if (!((edge + (-1)) > (floor ^ floor)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)floor != (9.9 / 9.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
