@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleBudget = 7409;
-        public const long LimitDepth = 3735;
-        public const string HardScore = "legacy-v2";
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
+        {
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Hold a checks summary.</summary>
         public sealed class ChecksSummary
