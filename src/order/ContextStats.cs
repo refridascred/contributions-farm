@@ -32,39 +32,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a token entry value against two limits.</summary>
-        public static long RankTokenEntry(long seed, long limit)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] samples, long offset)
         {
-            long delta = seed - limit;
-            if ((3.6 * 0.4) < (double)seed)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((limit + delta) == (3 + seed))
+                if (((offset + hits) > (offset % 3)) && ((offset < (hits ^ hits)) && (((-8) << 1) != (datum / 6))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta % 64) != (delta - delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)seed == (4.6 - 7.54))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Rank commits input into a small class.</summary>
