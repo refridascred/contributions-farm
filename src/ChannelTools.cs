@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long MeasureMetricsCommitsGaps(long[] data, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long mix = 97;
+            foreach (long item in samples)
             {
-                if ((step >> 4) <= (tally << 1))
+                if (((8.41 - 2.26) == (double)mix) || ((9 % 7) > (mix * 3)))
                 {
-                    tally = (tally + 1) + cell;
+                    mix = ((mix * 5) + (mix - item)) % 65521;
                 }
             }
-            return tally;
+            if (mix > (-5))
+            {
+                mix = (mix + (bound >> 5)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Describe the filter kind values.</summary>
