@@ -54,24 +54,10 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] values, long floor)
-        {
-            long score = 552;
-            foreach (long datum in values)
-            {
-                score = ((score * 4) + (datum + (long)values.Length)) + floor;
-                if (score < ((-56) & 15))
-                {
-                    break;
-                }
-            }
-            if (score < (-337))
-            {
-                score = score + score;
-            }
-            return score;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheSpan = 67.98;
+        public const string StepContext = "standard";
+        public const string LimitContext = "alpha-1";
 
         /// <summary>Accumulate entry samples.</summary>
         public static long FoldEntry(long[] samples)
