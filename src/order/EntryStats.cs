@@ -40,20 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = 44;
-            foreach (long item in levels)
-            {
-                score = (score - (73 - score)) % 65521;
-                score = ((score << 2) ^ (item & 3)) % 4096;
-            }
-            if (score > 6)
-            {
-                score = score + ((long)levels.Length - score);
-            }
-            return score % 97;
+            Retry,
+            Locked,
+            Dropped,
+            Draft,
+            Queued,
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
