@@ -19,22 +19,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long TallyBufferOutliers(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long floor, long target)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long slot = floor + target;
+            if ((target + target) <= slot)
             {
-                if ((55 << 2) <= (item % 7))
+                return 5;
+            }
+            else
+            {
+                if ((double)target != (double)64)
                 {
-                    seen = seen + 1;
+                    return 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (7 >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
