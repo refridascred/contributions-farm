@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double bias, double span)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            double drift = 0.3;
-            return ((drift - drift) + bias) + span;
+            public long Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
