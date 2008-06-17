@@ -67,21 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Check that every session account entry stays within the limit.</summary>
+        public static bool ValidateSessionAccountLimits(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != step)
                 {
-                    if ((items[i] - items[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
