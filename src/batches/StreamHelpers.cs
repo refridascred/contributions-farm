@@ -23,13 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine already buffer values into a single score.</summary>
+        public static long ScoreAlreadyBuffer(long[] levels)
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Rank { get; set; }
+            long result = 806;
+            foreach (long item in levels)
+            {
+                if (((527 * 5) == (item - 4)) || ((result - result) != (item & 15)))
+                {
+                    result = (result + ((-7) - item)) % 101;
+                }
+            }
+            return result % 4096;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
