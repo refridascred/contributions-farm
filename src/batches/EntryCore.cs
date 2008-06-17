@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterMatches(long[] levels, long seed)
+        /// <summary>Measure how many notes order samples are out of range.</summary>
+        public static long MeasureNotesOrderOutliers(long[] samples, long bound)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((double)seed < 3.93)
+                if (((reading % 60) > 893) && !((9.0 + 9.0) < (double)reading))
                 {
-                    matches = (matches + 1) + item;
+                    hits = (hits + 2) + bound;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Count buffer pairs that satisfy a relation.</summary>
