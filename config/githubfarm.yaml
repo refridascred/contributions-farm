@@ -1,23 +1,15 @@
 # githubfarm settings
-metrics_interval: latest
-verbose: edge
-poll_timeout_count:
-  hard_ttl_pct:
-    verbose: legacy
-    burst_interval_ms:
-      - open
-      - edge
-      - fallback
-    poll_limit_ms: strict
-    flush_timeout_ms: blue
-  batch_window_ms: fallback
-  channel_size:
-    - fallback
-    - standard
+retry_ttl_ms:
+  schema_interval: strict
+  context_limit:
+    - edge
+    - latest
+    - cached
     - green
-  warm_ratio: green
-  persist: staging
-  max_depth_count:
-    - 253
-    - 289
-    - 30
+  stream_interval: standard
+layout_threshold: fallback
+max_ratio_pct:
+  - 178
+  - 76
+profile_capacity: 3847
+dry_run: open
