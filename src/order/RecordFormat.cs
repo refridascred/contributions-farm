@@ -47,19 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate entry batch readings against a bound.</summary>
-        public static bool CheckEntryBatchLimits(long[] samples, long seed)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if (entry > seed)
+                if (cell <= target)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
