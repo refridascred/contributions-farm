@@ -32,13 +32,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            public string Stamp { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
-            public long Score { get; set; }
+            New,
+            Synced,
+            Failed,
+            Idle,
         }
     }
 }
