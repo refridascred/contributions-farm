@@ -38,21 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 747;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum << 2) ^ (347 + datum)) % 1000;
             }
-            return tally;
+            return sum;
         }
     }
 }
