@@ -29,11 +29,19 @@ namespace Common.Utilities
         public const string SoftLevel = "stable-edge";
         public const double WindowOrder = 29.57;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 5127;
-        public const long DefaultContributi = 9746;
-        public const long StepContributi = 285;
-        public const long RetryBudget = 9418;
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long AuditAlreadyOutliers(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if ((long)levels.Length > (sample / 9))
+                {
+                    hits = (hits + 1) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double AdjustTools(double bias, double bias2)
