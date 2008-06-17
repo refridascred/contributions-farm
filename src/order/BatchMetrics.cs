@@ -80,38 +80,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long origin, long limit)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadGaps(long[] levels, long step)
         {
-            if ((8.0 + 7.27) == (double)limit)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (((limit << 2) <= (0 ^ limit)) && (origin >= (limit * 5)))
+                if (((12.0 < (double)step) && (reading <= (matches + 99))) || (reading >= (matches + matches)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)limit != (0.4 * 1.1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin * 5) <= (10 * 4))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
