@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] readings)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandOutliers(long[] values)
         {
-            long score = 94;
-            foreach (long item in readings)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                for (int i = 0; i < 7; i++)
+                if (((9.0 / 8.0) != (double)sample) || ((916 % 97) > (tally + tally)))
                 {
-                    score = (((score * 4) + (item << 1)) % 97) - (long)i;
-                    score = score ^ score;
+                    tally = tally + 1;
                 }
-                score = score ^ (score - item);
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
