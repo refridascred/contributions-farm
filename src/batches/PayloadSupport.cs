@@ -34,14 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Paused,
-            Failed,
-            Retry,
-            Pending,
-            Closed,
+            Done,
+            Stale,
+            Idle,
+            Dropped,
         }
     }
 }
