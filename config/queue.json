@@ -1,6 +1,7 @@
 {
-  "cache_delay_pct": [122, 27, 264],
-  "readonly": 36,
-  "compress": [102, 357, 291, 458],
-  "max_ttl_pct": "edge"
+  "compress": 48,
+  "flush_timeout": 9647,
+  "batch_limit_pct": "edge",
+  "graph_ratio": 500,
+  "default_window_count": false
 }
