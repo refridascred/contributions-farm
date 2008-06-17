@@ -48,12 +48,18 @@ namespace Common.Utilities
         public const long BurstRatio = 468;
         public const long IdleReport = 2475;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterOutliers(long[] values)
         {
-            public long Token { get; set; }
-            public double Label { get; set; }
-            public bool Flag { get; set; }
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if ((sample < 16) || ((sample << 3) > (seen << 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
