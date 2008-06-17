@@ -1,13 +1,12 @@
 # Command notes
 
-Keep cluster and farm names short and lowercase.
-Run the metrics check before changing any support limits.
-
-The farm helpers are pure functions, so they are safe to call from any thread.
-When a batch fails, the editor handler retries a few times before giving up.
+Use order settings to tune how often account data is refreshed.
+Defaults for schema live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Validate counter input early
-- Document new filter fields
+- Prefer stats defaults
+- Log every stats change
+- Keep stream values small
+- Validate cache input early
