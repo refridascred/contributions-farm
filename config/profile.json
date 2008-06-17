@@ -1,23 +1,7 @@
 {
-  "base_timeout_pct": 60,
-  "route_depth": {
-    "tools_ratio": 96.05,
-    "poll_size": {
-      "soft_depth_pct": 93.34,
-      "queue_delay": ["local", "standard", "strict"],
-      "hard_interval": ["stable", "edge", "fallback"]
-    },
-    "queue_window": false,
-    "context_depth": "blue",
-    "base_size_count": {
-      "support_capacity": 100,
-      "idle_delay": "green",
-      "cache_ratio_count": false,
-      "cache_capacity": false
-    },
-    "max_delay": true
-  },
-  "idle_retries_ms": 7687,
-  "command_depth": true,
-  "enabled": 4261
+  "soft_depth_ms": 500,
+  "context_interval": false,
+  "idle_timeout": "latest",
+  "batch_retries_s": false,
+  "base_ttl_ms": 7860
 }
