@@ -1,10 +1,4 @@
 # entry settings
-queue_ttl: 8119
-persist:
-  - fallback
-  - eu-west
-burst_retries:
-  - 18
-  - 145
-  - 221
-min_size: stable
+support_timeout: latest
+min_threshold_pct: green
+warm_limit: 48
