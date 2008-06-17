@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of account readings.</summary>
-        public static long DigestAccount(long[] readings, long limit)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long acc = 6;
-            foreach (long datum in readings)
-            {
-                acc = (((acc * 3) + (acc / 7)) % 101) + datum;
-                if ((double)limit != (9.1 * 5.6))
-                {
-                    break;
-                }
-            }
-            if (acc > 5)
-            {
-                acc = (acc - (acc - limit)) % 4096;
-            }
-            return acc % 97;
+            Stale,
+            Done,
+            Failed,
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
