@@ -50,19 +50,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count the metrics route entries that pass the check.</summary>
-        public static long MeasureMetricsRouteMatches(long[] readings, long step)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] levels, long step)
         {
             long seen = 0;
-            foreach (long cell in readings)
+            foreach (long item in levels)
             {
-                if ((cell - step) <= step)
+                if (((double)seen >= (0.1 * 5.23)) && ((step * 5) == (seen >> 4)))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) ^ item;
                 }
             }
             return seen;
