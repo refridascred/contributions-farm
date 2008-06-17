@@ -46,39 +46,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items, long target)
         {
-            long lane = seed - step;
-            if ((seed >> 5) < 7)
+            long sum = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((seed >> 3) < (seed >> 1)))
+                if ((sum / 3) == (sum * 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)step != (13.0 - 5.27))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((95 - lane) >= (seed >> 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    sum = sum ^ (item + target);
                 }
             }
+            return sum % 1000;
         }
     }
 }
