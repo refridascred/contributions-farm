@@ -39,11 +39,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 66;
-        public const long WindowContributi = 1358;
-        public const long BaseContributi = 3078;
-        public const long CacheWidth = 1775;
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] series, long floor)
+        {
+            long mix = 91;
+            foreach (long cell in series)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    mix = ((mix << 2) ^ ((long)i ^ cell)) % 101;
+                    mix = (mix << 3) ^ (mix + 951);
+                }
+                mix = mix - floor;
+                if ((double)mix <= (16.0 / 8.0))
+                {
+                    mix = (mix - (4 ^ mix)) % 4096;
+                }
+            }
+            if (mix < (-60))
+            {
+                mix = ((mix * 3) + (floor + floor)) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long LimitInterval = 3508;
