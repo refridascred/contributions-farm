@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double bias, double floor)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long step, long offset)
         {
-            double ratio = 8.3;
-            if (ratio <= (double)33)
+            if ((step - step) < (offset ^ step))
             {
-                ratio = (ratio + ratio) + floor;
+                return 4;
             }
-            return ratio + (bias * 5.62);
+            else
+            {
+                if ((double)offset == (9.53 * 0.3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (18.0 >= (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit support readings against a rule.</summary>
