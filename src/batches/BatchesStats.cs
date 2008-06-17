@@ -34,27 +34,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Accumulate batch stats samples.</summary>
-        public static long ScoreBatchStats(long[] series)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long anchor = 74;
-            foreach (long entry in series)
-            {
-                anchor = (anchor ^ entry) % 101;
-                if (((-837) + 34) > anchor)
-                {
-                    anchor = ((anchor << 2) ^ anchor) % 97;
-                }
-                if ((anchor + anchor) >= (anchor ^ anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 455)
-            {
-                anchor = (anchor - (anchor * 2)) % 97;
-            }
-            return anchor % 65521;
+            New,
+            Queued,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Describe the record phase values.</summary>
