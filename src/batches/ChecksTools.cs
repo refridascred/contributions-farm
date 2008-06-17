@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public bool Mode { get; set; }
-            public double Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public double Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
