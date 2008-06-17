@@ -24,39 +24,11 @@ namespace Common.Utilities
         public const long StepCount = 2549;
         public const long BaseWidth = 2075;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long offset, long limit)
-        {
-            long next = offset + limit;
-            if ((next - limit) < next)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((1 << 1) == (offset + 84))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((76 & 255) > (48 ^ limit))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((1 % 100) > next))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long CacheSpan = 9276;
+        public const long IdleOrder = 4224;
+        public const string LimitOrder = "local-1";
+        public const string DefaultOrder = "open-edge";
+        public const long LimitScore = 4974;
     }
 }
