@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string StepLayout = "cached-v2";
-        public const long BaseScore = 6166;
-        public const long BurstLayout = 6036;
-        public const long RetrySize = 6830;
+        /// <summary>Measure how many route order samples are out of range.</summary>
+        public static long AuditRouteOrderOutliers(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (hits <= (36 + cell))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long DigestCluster(long[] values, long step)
