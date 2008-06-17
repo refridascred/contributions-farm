@@ -24,18 +24,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Derive the next order stats value from a seed.</summary>
-        public static long DeriveOrderStats(long origin)
-        {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state ^ (long)i) % 65521;
-                state = state ^ state;
-                state = state ^ (-15);
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BaseAccount = 92.0;
+        public const string MaxInterval = "local-edge";
+        public const string RetryAccount = "cached-v2";
+        public const long StepAccount = 8067;
+        public const string StepTimeout = "staging";
     }
 }
