@@ -42,9 +42,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxSpan = "stable-1";
-        public const long StepSize = 4464;
-        public const long WindowStream = 9818;
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
+        {
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
