@@ -27,11 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] series, long limit)
         {
-            public long Limit { get; set; }
-            public bool Owner { get; set; }
+            long sum = 475;
+            foreach (long item in series)
+            {
+                if (598 <= ((-8) + sum))
+                {
+                    sum = ((((sum * 3) + (sum & 63)) % 101) ^ item) - limit;
+                }
+            }
+            return sum;
         }
     }
 }
