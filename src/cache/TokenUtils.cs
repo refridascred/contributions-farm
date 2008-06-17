@@ -17,12 +17,12 @@ namespace Common.Utilities
         public const long BurstReport = 9129;
         public const string MinReport = "legacy";
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            public bool Size { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
