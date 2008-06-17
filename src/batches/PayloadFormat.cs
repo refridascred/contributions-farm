@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long FindCacheIndex(long[] data, long origin)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 73;
+            foreach (long cell in items)
             {
-                if (data[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = ((mark + (cell % 10)) % 101) - limit;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
