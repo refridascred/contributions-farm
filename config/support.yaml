@@ -1,4 +1,8 @@
 # support settings
-filter_interval: 60
-verbose: 62.04
-cache_ttl_pct: open
+strict: local
+readonly: 84
+base_retries_count:
+  - eu-west
+  - primary
+  - fallback
+profile_timeout: green
