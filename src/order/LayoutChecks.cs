@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Roll a record format counter forward.</summary>
-        public static long RollRecordFormat(long floor)
+        /// <summary>Fold a list of queue notes readings.</summary>
+        public static long CombineQueueNotes(long[] items, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 19; i++)
+            long carry = 787;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (floor - 473)) % 65521;
-                sum = (sum << 2) ^ (long)i;
-                sum = ((sum * 2) + (long)i) % 1000;
+                if (carry >= (sample / 6))
+                {
+                    carry = ((carry << 2) ^ (carry - seed)) % 97;
+                }
             }
-            return sum;
+            return carry % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
