@@ -59,12 +59,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] readings, long step)
         {
-            Stale,
-            Synced,
-            Queued,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((91 << 1) == ((long)readings.Length & 63))
+                {
+                    seen = ((seen + 1) + reading) + step;
+                }
+            }
+            return seen;
         }
     }
 }
