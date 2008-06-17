@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 1172;
-        public const string MaxRatio = "strict";
-        public const long StepChecks = 9146;
-        public const long BurstChecks = 310;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long WindowTimeout = 1566;
+        public const long MaxBudget = 7066;
+        public const long IdleBatch = 4086;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double bias, double offset)
