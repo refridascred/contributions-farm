@@ -78,14 +78,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a already cluster pair into a bucket.</summary>
+        public static long SortAlreadyCluster(long offset, long offset2)
         {
-            Stale,
-            Closed,
-            Active,
-            Pending,
-            Locked,
+            if (5 >= (offset - 81))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset >> 5) >= (offset / 4))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Blend two payload measurements.</summary>
