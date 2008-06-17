@@ -19,13 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
-        {
-            public string Count { get; set; } = "";
-            public long Region { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BatchBuffer = "primary-1";
+        public const long RetryBuffer = 9438;
+        public const long HardBuffer = 265;
+        public const long HardSpan = 6217;
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
