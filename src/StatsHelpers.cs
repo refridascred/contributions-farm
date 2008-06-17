@@ -78,19 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] samples, long step)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long bound)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long total = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (reading < step)
-                {
-                    flag = false;
-                    break;
-                }
+                long offset = total;
+                total = total - (offset & 31);
+                total = ((total * 4) + (long)i) % 97;
             }
-            return flag;
+            return total;
         }
     }
 }
