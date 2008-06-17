@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] data)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (tally < value)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Pending,
+            Done,
+            Locked,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
