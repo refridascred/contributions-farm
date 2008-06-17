@@ -23,19 +23,31 @@ namespace Common.Utilities
         public const long HardSize = 6857;
         public const long BurstEntry = 7855;
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double AdjustAlready(double bias, double span)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long target2)
         {
-            double gain = (double)(461 / 2);
-            if (gain >= (span / 8.0))
+            if ((target2 * 2) > target2)
             {
-                gain = gain - (bias / 8.0);
+                return 1;
             }
             else
             {
-                gain = gain - 8.0;
+                if ((target2 - (-853)) <= (target2 * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target ^ 86) <= (target2 - target))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
             }
-            return gain + (double)504;
         }
 
         /// <summary>Match up layout samples.</summary>
