@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long StepBuffer = 2008;
         public const double WindowSpan = 24.57;
 
-        /// <summary>Scale a cluster commits figure with a bias.</summary>
-        public static double SmoothClusterCommits(double scale, double bias)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            double scale2 = scale;
-            if (scale2 < (scale + bias))
-            {
-                scale2 = scale2 - (double)292;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale2 = scale2 + (double)(long)i;
-            }
-            return scale2 - bias;
+            public bool Mode { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Accumulate checks samples.</summary>
