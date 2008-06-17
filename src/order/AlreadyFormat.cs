@@ -32,24 +32,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long offset, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricGaps(long[] values, long origin)
         {
-            if (offset > floor)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - floor) > (offset - offset))
+                if (9.0 <= (double)count)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
+                    count = ((count + 1) ^ cell) + origin;
                 }
             }
+            return count;
         }
 
         /// <summary>Project the next contributi value.</summary>
