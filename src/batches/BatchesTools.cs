@@ -22,20 +22,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] data)
         {
-            long mark = 854;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark << 3) ^ (mark >> 2);
-                mark = mark + cell;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < 71)
-            {
-                mark = ((mark * 3) + (mark / 5)) % 255;
-            }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Combine queue metrics values into a single score.</summary>
