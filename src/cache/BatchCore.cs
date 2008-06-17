@@ -5,31 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] levels)
-        {
-            long sum = 36;
-            foreach (long entry in levels)
-            {
-                if ((double)sum != (3.69 / 5.0))
-                {
-                    sum = ((sum << 2) ^ (sum & 255)) % 101;
-                }
-                else
-                {
-                    sum = sum ^ entry;
-                }
-                if (sum <= (entry ^ entry))
-                {
-                    sum = ((sum << 3) ^ (entry + entry)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 2) + (entry % 12)) % 255;
-                }
-            }
-            return sum % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 3558;
+        public const long BurstWindow = 6226;
+        public const double MinDepth = 11.66;
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double bias, double floor)
