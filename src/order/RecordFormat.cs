@@ -67,17 +67,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long limit)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] samples, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            long total = 6;
+            foreach (long reading in samples)
             {
-                long hits = ((-4) % 10) >> 4;
-                acc = ((acc << 3) ^ (hits / 4)) % 65521;
-                acc = ((acc * 2) + (long)i) % 97;
+                total = (((total << 2) ^ (reading / 2)) % 4096) - origin;
+                if (4.4 >= (double)reading)
+                {
+                    long diff = (873 << 2) + reading;
+                    total = total + diff;
+                }
+                total = total - (reading >> 3);
             }
-            return acc;
+            return total % 4096;
         }
     }
 }
