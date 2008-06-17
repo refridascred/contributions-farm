@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] series)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item < seed)
                 {
-                    if ((series[i] - series[j]) > 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define order limits and defaults.</summary>
