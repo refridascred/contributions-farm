@@ -25,20 +25,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next commits layout value from a seed.</summary>
-        public static long StepCommitsLayout(long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if ((long)i > (step >> 1))
-                {
-                    long diff = 681 + (36 / 5);
-                    mark = (mark - diff) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Ready,
+            Pending,
+            Closed,
+            Queued,
+            Dropped,
         }
     }
 }
