@@ -45,21 +45,16 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = step;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                result = (result * 3) + (result + 17);
+                result = ((result * 3) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
