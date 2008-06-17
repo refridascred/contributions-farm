@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesMatches(long[] items)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long StepRoute(long offset)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long result = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value ^ 26) > (81 - tally))
-                {
-                    tally = tally + 3;
-                }
+                result = result ^ (offset >> 2);
+                result = result - ((long)i >> 4);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the contributi class values.</summary>
