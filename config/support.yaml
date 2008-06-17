@@ -1,5 +1,9 @@
 # support settings
-compress: eu-west
-cache_retries: edge
-enabled: fallback
-farm_interval: blue
+retry_threshold:
+  - 277
+  - 313
+  - 191
+  - 495
+commits_interval: blue
+default_window: edge
+retry_ttl_ms: 4360
