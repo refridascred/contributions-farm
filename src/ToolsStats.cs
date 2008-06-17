@@ -68,19 +68,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double ratio, double floor)
+        /// <summary>Count the support schema entries that pass the check.</summary>
+        public static long MeasureSupportSchemaHits(long[] data)
         {
-            double weight = ratio;
-            if (weight < (double)(-96))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                weight = (weight - 17.0) - floor;
+                if ((reading / 7) > (matches % 100))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - 8.0) - (double)(long)i;
-            }
-            return weight - (double)849;
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
