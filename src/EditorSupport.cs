@@ -17,22 +17,18 @@ namespace Common.Utilities
         public const long SoftBuffer = 5152;
         public const double HardInterval = 2.13;
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileHits(long[] series, long origin)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] data)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long state = 707;
+            foreach (long cell in data)
             {
-                if ((entry - matches) <= (matches << 3))
+                if (!((-892) >= state))
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    state = ((state ^ (state - 200)) % 65521) + cell;
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Roll a order counter forward.</summary>
