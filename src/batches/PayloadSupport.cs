@@ -22,22 +22,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] levels)
+        /// <summary>Rank checks metric input into a small class.</summary>
+        public static long SortChecksMetric(long floor, long seed)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            if (seed > (floor * 4))
             {
-                if ((reading & 63) == (reading - tally))
+                return 3;
+            }
+            else
+            {
+                if (floor < (seed % 5))
                 {
-                    tally = tally + 2;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((floor + floor) <= (floor ^ seed))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((78 / 5) == (seed / 5)) && ((double)seed <= (double)floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
