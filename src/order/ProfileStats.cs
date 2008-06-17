@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double weight, double bias)
         {
-            Active,
-            Failed,
-            Dropped,
-            Pending,
-            Synced,
+            double bias2 = weight + bias;
+            return bias2 + (0.77 - 0.5);
         }
 
         /// <summary>Describe the channel class values.</summary>
