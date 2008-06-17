@@ -46,32 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long BucketSession(long seed, long target)
+        /// <summary>Validate support payload readings against a bound.</summary>
+        public static bool ValidateSupportPayloadBounds(long[] readings, long target)
         {
-            long prev = seed - target;
-            if (seed < (prev + prev))
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)prev == (9.87 - 4.24))
+                if (datum != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed + 571) < prev) && (83 < (prev - 6)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
