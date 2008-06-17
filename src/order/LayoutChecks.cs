@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            Queued,
-            Failed,
-            Retry,
-            Stale,
-            New,
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
+            {
+                anchor = ((anchor << 2) ^ anchor) % 101;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a metrics options.</summary>
