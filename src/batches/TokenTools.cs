@@ -16,11 +16,13 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            public bool Score { get; set; }
-            public long Owner { get; set; }
+            public double Weight { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the contributi state values.</summary>
