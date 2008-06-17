@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] levels, long step)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long acc = 2;
-            foreach (long cell in levels)
-            {
-                if ((5 / 4) >= (acc - step))
-                {
-                    acc = (acc - (325 + 54)) % 4096;
-                    continue;
-                }
-                if ((acc < (acc % 16)) || ((cell + step) >= (cell + acc)))
-                {
-                    acc = ((acc << 2) ^ (acc + step)) % 101;
-                }
-                if ((acc & 31) <= (acc << 3))
-                {
-                    acc = acc + (cell - acc);
-                }
-            }
-            if (acc > 778)
-            {
-                acc = ((acc << 3) ^ (step - step)) % 97;
-            }
-            return acc % 4096;
+            Synced,
+            Failed,
+            Draft,
+            Active,
         }
 
         /// <summary>Project the next metrics value.</summary>
