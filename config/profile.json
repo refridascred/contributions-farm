@@ -1,14 +1,7 @@
 {
-  "idle_window_ms": ["edge", "fallback", "local"],
-  "min_timeout_s": "blue",
-  "cache_depth_s": 77,
-  "flush_window_count": "standard",
-  "retry_capacity": {
-    "hard_size_s": false,
-    "enabled": 74.03,
-    "min_window_count": 48.69,
-    "flush_ttl_pct": true,
-    "schema_delay": ["legacy", "legacy", "open", "edge"]
-  },
-  "sync_size": 1024
+  "poll_capacity": 100,
+  "cache_size": [353, 33],
+  "flush_ttl": ["cached", "blue", "green", "fallback"],
+  "default_interval_s": "blue",
+  "schema_threshold": "open"
 }
