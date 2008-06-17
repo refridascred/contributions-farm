@@ -32,14 +32,28 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] samples, long origin)
         {
-            Draft,
-            Idle,
-            New,
-            Paused,
-            Dropped,
+            long anchor = 95;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor ^ reading) % 1000) - origin;
+                anchor = (anchor + anchor) % 1000;
+                if (reading > (118 % 3))
+                {
+                    anchor = (anchor - (reading + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + (reading ^ reading)) % 97;
+                }
+            }
+            if (anchor < 53)
+            {
+                anchor = anchor + (anchor * 3);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the order phase values.</summary>
