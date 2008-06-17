@@ -47,19 +47,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] values, long bound)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long OverlapFarmCount(long[] items)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading > bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
