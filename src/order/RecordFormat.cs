@@ -14,14 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] values, long floor)
         {
-            Retry,
-            Pending,
-            New,
-            Active,
-            Queued,
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
