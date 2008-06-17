@@ -32,22 +32,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] levels, long bound)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if (((-9) << 3) > (count * 4))
-                {
-                    count = ((count + 3) + cell) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Synced,
+            Queued,
         }
 
         /// <summary>Fold a list of support readings.</summary>
