@@ -41,30 +41,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of tools githubfarm entries.</summary>
-        public static long ScoreToolsGithubfarm(long[] items, long origin)
+        /// <summary>Project the next counter tools value.</summary>
+        public static double AdjustCounterTools(double weight, double span)
         {
-            long acc = 238;
-            foreach (long entry in items)
+            double gain = (double)(364 / 3);
+            if (gain <= span)
             {
-                if (origin > (origin + entry))
-                {
-                    acc = acc + 723;
-                }
-                else
-                {
-                    acc = acc + (entry - 7);
-                }
-                if ((origin - origin) >= (entry * 3))
-                {
-                    break;
-                }
+                gain = (gain + gain) - weight;
             }
-            if (acc > 776)
+            else
             {
-                acc = acc - (origin << 3);
+                gain = gain - gain;
             }
-            return acc;
+            return gain + (span * 4.59);
         }
     }
 }
