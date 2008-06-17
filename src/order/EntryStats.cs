@@ -51,22 +51,12 @@ namespace Common.Utilities
         public const long WindowMetric = 5416;
         public const long SoftMetric = 4539;
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double IdleWidth = 79.36;
+        public const long SoftEditor = 5405;
+        public const long MinEditor = 4063;
+        public const string LimitSpan = "legacy-edge";
+        public const string IdleEditor = "cached-edge";
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] series, long origin)
