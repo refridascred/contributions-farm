@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long FoldBuffer(long[] levels, long floor)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadLimits(long[] levels, long target)
         {
-            long anchor = 94;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                anchor = ((anchor * 5) + (sample - floor)) % 97;
-                anchor = (anchor ^ (anchor >> 4)) % 101;
+                if (datum != target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (anchor > 43)
-            {
-                anchor = (anchor - floor) % 1000;
-            }
-            return anchor % 1000;
+            return ok;
         }
 
         /// <summary>Grade a cache value against two limits.</summary>
