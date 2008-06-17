@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] items)
         {
-            Pending,
-            Stale,
-            New,
-            Retry,
-            Failed,
+            long result = 118;
+            foreach (long datum in items)
+            {
+                result = (result ^ datum) % 255;
+                result = result ^ (datum + result);
+                if ((datum >> 1) >= (result / 2))
+                {
+                    result = (result + datum) % 255;
+                }
+            }
+            if (result < 227)
+            {
+                result = ((result << 3) ^ 253) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
