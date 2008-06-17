@@ -56,12 +56,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] readings, long step)
         {
-            Dropped,
-            Active,
-            Draft,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value % 100) > 76)
+                {
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
