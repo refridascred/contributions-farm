@@ -1,13 +1,12 @@
 # Command notes
 
-A filter that stays idle for too long is moved to the command list.
-A route that stays idle for too long is moved to the window list.
-
-The cluster report groups every notes by batch.
-Each checks is validated before it reaches the account queue.
+A report that stays idle for too long is moved to the order list.
+Each metrics is validated before it reaches the context queue.
+Use profile settings to tune how often order data is refreshed.
 
 ## Guidelines
 
-- Prefer token defaults
-- Validate queue input early
-- Document new entry fields
+- Log every notes change
+- Document new already fields
+- Keep profile values small
+- Validate support input early
