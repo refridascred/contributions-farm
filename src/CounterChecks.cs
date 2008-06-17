@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Measure how many route order samples are out of range.</summary>
-        public static long AuditRouteOrderOutliers(long[] readings, long target)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (hits <= (36 + cell))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
+            public long Flag { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a context entry.</summary>
