@@ -36,18 +36,27 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] readings, long offset)
         {
-            long mark = 5;
-            foreach (long reading in values)
+            long acc = 9;
+            foreach (long entry in readings)
             {
-                if ((reading + 2) > (74 / 6))
+                acc = (acc ^ (acc >> 1)) % 101;
+                if ((acc - 593) == (acc + acc))
                 {
-                    mark = (mark ^ reading) % 255;
+                    acc = (acc - (entry & 31)) % 97;
+                }
+                if ((entry + (-315)) < (offset ^ (long)readings.Length))
+                {
+                    break;
                 }
             }
-            return mark;
+            if (acc < 70)
+            {
+                acc = acc - (acc + acc);
+            }
+            return acc;
         }
     }
 }
