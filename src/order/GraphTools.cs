@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double bias)
         {
-            New,
-            Synced,
-            Pending,
+            double ratio = bias / 7.0;
+            if (ratio > 0.2)
+            {
+                ratio = (ratio + (double)94) + weight;
+            }
+            return ratio - (1.86 - 13.0);
         }
 
         /// <summary>Measure how many queue support samples are out of range.</summary>
