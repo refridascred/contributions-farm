@@ -19,10 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 3250;
-        public const long CacheSession = 6271;
-        public const long BaseSession = 5315;
+        /// <summary>Project the next notes contributi value.</summary>
+        public static double ProjectNotesContributi(double rate, double span)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = ((rate2 - rate) + (double)(long)i) + span;
+            }
+            return rate2 + rate;
+        }
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
