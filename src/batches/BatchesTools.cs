@@ -31,22 +31,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long FoldQueueMetrics(long[] levels, long floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = 34;
-            foreach (long sample in levels)
-            {
-                if ((sample - (-735)) < sample)
-                {
-                    result = (((result << 3) ^ (sample + result)) % 65521) - floor;
-                }
-            }
-            if (result > 45)
-            {
-                result = ((result * 5) + result) % 255;
-            }
-            return result % 4096;
+            public double Limit { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
