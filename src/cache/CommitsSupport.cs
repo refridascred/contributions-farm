@@ -57,18 +57,15 @@ namespace Common.Utilities
         public const long BurstRatio = 468;
         public const long IdleReport = 2475;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterOutliers(long[] values)
+        /// <summary>Project the next tools value.</summary>
+        public static double BlendTools(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double ratio = 12.0 / 4.0;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample < 16) || ((sample << 3) > (seen << 2)))
-                {
-                    seen = seen + 3;
-                }
+                ratio = ((ratio + ratio) + (double)(long)i) + offset;
             }
-            return seen;
+            return ratio - gain;
         }
     }
 }
