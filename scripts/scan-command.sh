@@ -6,22 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict cached; do
-    log "checking ${item}"
-done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-mode="${1:-edge}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    fallback)
+    primary)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 2))
+done
+log "total ${total}"
