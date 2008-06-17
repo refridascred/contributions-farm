@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
-        {
-            Pending,
-            Closed,
-            Dropped,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MaxBatch = 5675;
+        public const long LimitBatch = 7260;
+        public const long SoftBatch = 8365;
 
         /// <summary>Describe the channel class values.</summary>
         public enum ChannelClass
