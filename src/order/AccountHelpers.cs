@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next farm cache value.</summary>
-        public static double SmoothFarmCache(double weight, double span)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] values)
         {
-            double ratio = span;
-            if (ratio < ratio)
+            long acc = 2;
+            foreach (long cell in values)
             {
-                ratio = ratio - weight;
+                if (((440 / 4) >= acc) || (87 > (cell + (-5))))
+                {
+                    acc = (acc - (acc + acc)) % 255;
+                }
+                else
+                {
+                    acc = (acc * 4) + cell;
+                }
             }
-            return ratio + (span * 7.4);
+            return acc % 65521;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
