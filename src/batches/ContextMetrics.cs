@@ -12,19 +12,31 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate tools context readings against a bound.</summary>
-        public static bool ValidateToolsContextLimits(long[] readings, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long SortProfile(long step, long target)
         {
-            bool found = true;
-            foreach (long sample in readings)
+            if ((18 << 3) < (target & 63))
             {
-                if (sample > seed)
+                return 5;
+            }
+            else
+            {
+                if ((double)target <= (1.62 * 6.0))
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (970 >= (target ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Blend two counter measurements.</summary>
