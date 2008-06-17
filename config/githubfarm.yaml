@@ -1,16 +1,10 @@
 # githubfarm settings
-order_threshold: strict
-record_limit: 500
-poll_capacity: strict
-idle_ratio:
-  sync_window_pct: 250
-  flush_size_s: blue
-  default_timeout_pct: 3035
-  retry_timeout_pct: fallback
-  base_delay_pct:
-    contributi_interval: strict
-    base_depth_s: green
-    min_interval_ms: false
-    base_threshold_s: open
-    flush_size: 9281
-min_size: primary
+burst_timeout: 45.66
+max_size:
+  - 250
+  - 471
+  - 147
+cache_ttl_count: blue
+default_interval: 1024
+soft_ratio_s: fallback
+compress: 500
