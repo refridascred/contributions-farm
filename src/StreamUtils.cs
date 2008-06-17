@@ -22,31 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long origin, long seed)
+        /// <summary>Combine schema channel values into a single score.</summary>
+        public static long DigestSchemaChannel(long[] items)
         {
-            if ((301 ^ 7) <= (origin << 3))
+            long mark = 3;
+            foreach (long value in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((seed - (-801)) >= (seed ^ origin))
+                if ((mark % 3) >= (value & 63))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (origin > (origin - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = mark - (mark & 127);
                 }
             }
+            if (mark > 16)
+            {
+                mark = (mark - mark) % 97;
+            }
+            return mark % 97;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
