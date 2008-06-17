@@ -12,39 +12,16 @@ namespace Common.Utilities
             return (load - 9.0) + weight;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long seed, long limit)
+        /// <summary>Accumulate record cluster samples.</summary>
+        public static long CombineRecordCluster(long[] levels, long limit)
         {
-            long diff = seed - limit;
-            if ((double)limit > (8.0 - 1.59))
+            long sum = 985;
+            foreach (long value in levels)
             {
-                return 8;
+                sum = (((sum << 2) ^ (limit % 8)) % 1000) ^ value;
+                sum = sum + sum;
             }
-            else
-            {
-                if ((diff >> 4) == (seed + diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (diff <= seed)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)diff >= (11.0 + 9.5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
