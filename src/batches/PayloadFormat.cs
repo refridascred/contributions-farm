@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double bias, double floor)
         {
-            public long Flag { get; set; }
-            public double Level { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
+            double ratio = 8.3;
+            if (ratio <= (double)33)
+            {
+                ratio = (ratio + ratio) + floor;
+            }
+            return ratio + (bias * 5.62);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
