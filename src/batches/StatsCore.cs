@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] series, long target)
+        /// <summary>Compare every pair of already record readings.</summary>
+        public static long OverlapAlreadyRecordCount(long[] items)
         {
-            long mark = 4;
-            foreach (long item in series)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((target ^ target) != (item & 63)) && ((item & 15) < (-717)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = ((mark << 3) ^ item) % 97;
+                    if ((items[i] + items[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 3)
-            {
-                mark = (mark + (4 & 255)) % 4096;
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Fold a list of batch session readings.</summary>
