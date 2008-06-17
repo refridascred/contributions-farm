@@ -31,13 +31,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public double Limit { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Total { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstRatio = 7885;
+        public const double LimitBudget = 16.32;
+        public const long IdleSize = 4106;
+        public const long CacheSize = 9553;
     }
 }
