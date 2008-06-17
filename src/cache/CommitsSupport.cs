@@ -73,22 +73,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema checks samples are out of range.</summary>
-        public static long MeasureSchemaChecksGaps(long[] series, long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((2.0 + 15.0) <= (double)entry)
-                {
-                    tally = (tally + 1) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Failed,
+            Paused,
+            Done,
+            Dropped,
         }
     }
 }
