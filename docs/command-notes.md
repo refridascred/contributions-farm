@@ -1,15 +1,14 @@
 # Command notes
 
-Each order is validated before it reaches the tools queue.
-A session that stays idle for too long is moved to the channel list.
-Run the counter check before changing any stats limits.
+Defaults for report live in the config folder and can be overridden per environment.
+Keep cache and stream names short and lowercase.
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-The report module keeps counter values in sync with the command cache.
+When a cache fails, the report handler retries a few times before giving up.
+The metrics module keeps buffer values in sync with the session cache.
 
 ## Guidelines
 
-- Log every support change
-- Keep notes values small
-- Review editor limits each release
-- Document new route fields
+- Validate command input early
+- Review cluster limits each release
+- Keep profile values small
+- Prefer metrics defaults
