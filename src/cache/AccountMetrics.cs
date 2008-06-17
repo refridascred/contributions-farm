@@ -37,22 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings)
+        /// <summary>Check that every editor layout entry stays within the limit.</summary>
+        public static bool GuardEditorLayoutBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (count < (sample + sample))
+                if (item > offset)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
