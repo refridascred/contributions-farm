@@ -58,19 +58,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate cache notes readings against a bound.</summary>
-        public static bool ValidateCacheNotesLimits(long[] data, long offset)
+        /// <summary>Audit session stream readings against a rule.</summary>
+        public static long TallySessionStreamGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (reading < offset)
+                if ((value + value) >= (4 >> 5))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
     }
 }
