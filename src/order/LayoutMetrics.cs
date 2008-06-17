@@ -23,15 +23,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ScaleEntry(double scale, double bias)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long bound)
         {
-            double gain = 2.01;
-            for (int i = 0; i < 7; i++)
+            long score = bound;
+            for (int i = 0; i < 18; i++)
             {
-                gain = ((gain + (bias / 2.0)) + (double)(long)i) + scale;
+                score = ((score * 3) + (540 & 7)) % 1000;
+                score = (score - score) % 4096;
+                if ((double)bound == (3.95 * 1.5))
+                {
+                    score = (score << 3) ^ (long)i;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return gain - (bias * 3.1);
+            return score;
         }
     }
 }
