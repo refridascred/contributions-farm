@@ -23,17 +23,11 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Derive the next profile buffer value from a seed.</summary>
-        public static long DeriveProfileBuffer(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 4; i++)
-            {
-                total = (total + 9) % 101;
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double MaxLevel = 73.84;
+        public const string HardCount = "open-v2";
+        public const double RetryEditor = 62.95;
+        public const long WindowRatio = 1652;
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long origin, long floor)
