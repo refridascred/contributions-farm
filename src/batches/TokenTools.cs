@@ -21,15 +21,14 @@ namespace Common.Utilities
         public const double CacheFarm = 32.89;
         public const double CacheSpan = 27.05;
 
-        /// <summary>Adjust a githubfarm window reading.</summary>
-        public static double AdjustGithubfarmWindow(double gain, double floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double rate = (gain * 6.1) - (double)5;
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - floor) - (double)(long)i;
-            }
-            return rate + 9.0;
+            Idle,
+            Pending,
+            Synced,
+            Locked,
+            Stale,
         }
     }
 }
