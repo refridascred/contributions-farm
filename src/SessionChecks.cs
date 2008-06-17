@@ -58,22 +58,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountMatches(long[] levels, long floor)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] readings, long step)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (4 >= floor)
+                if (readings[i] <= step)
                 {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
