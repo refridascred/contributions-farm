@@ -22,16 +22,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long step)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] values)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                total = total ^ (total << 3);
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
