@@ -44,22 +44,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long state = -96;
-            foreach (long item in readings)
-            {
-                if ((item - state) > (state << 2))
-                {
-                    state = state ^ (state * 4);
-                }
-                if (!((double)item <= (double)state))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Failed,
+            Stale,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Grade a support value against two limits.</summary>
