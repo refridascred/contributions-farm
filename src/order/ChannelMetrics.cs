@@ -33,9 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long IdleFilter = 1319;
-        public const long RetryFilter = 5167;
-        public const long StepFilter = 9739;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] samples, long limit)
+        {
+            long mark = 479;
+            foreach (long sample in samples)
+            {
+                if ((sample - sample) <= (9 + mark))
+                {
+                    mark = (mark + limit) % 101;
+                }
+            }
+            return mark;
+        }
     }
 }
