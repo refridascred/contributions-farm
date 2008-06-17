@@ -26,19 +26,15 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long WeighFormat(long[] data, long origin)
+        /// <summary>Fold a list of account payload readings.</summary>
+        public static long TotalAccountPayload(long[] items)
         {
-            long result = 313;
-            foreach (long item in data)
+            long total = 937;
+            foreach (long value in items)
             {
-                result = ((result << 3) ^ item) % 101;
+                total = ((total ^ (total % 60)) % 255) + value;
             }
-            if (result < (-809))
-            {
-                result = (result << 3) ^ (origin + origin);
-            }
-            return result;
+            return total;
         }
 
         /// <summary>Hold a batch summary.</summary>
