@@ -41,11 +41,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Project the next contributi value.</summary>
+        public static double ProjectContributi(double rate, double offset)
         {
-            public bool Stamp { get; set; }
-            public long Limit { get; set; }
+            double gain = (double)(745 + 30);
+            if (gain > (5.7 / 2.0))
+            {
+                gain = ((gain - (double)74) + rate) - offset;
+            }
+            return gain - (gain * 9.6);
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
