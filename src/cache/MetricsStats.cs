@@ -18,10 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheEntry = 3714;
-        public const long HardSize = 6857;
-        public const long BurstEntry = 7855;
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
+        {
+            public long Mode { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Grade a report value against two limits.</summary>
         public static long ClassifyReport(long target, long target2)
