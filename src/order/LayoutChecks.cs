@@ -25,28 +25,11 @@ namespace Common.Utilities
         public const string LimitLevel = "staging-1";
         public const string LimitNotes = "latest";
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] data)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long anchor = 94;
-            foreach (long value in data)
-            {
-                long offset = anchor ^ anchor;
-                if (((-2) + offset) < 278)
-                {
-                    offset = offset - (offset >> 4);
-                }
-                anchor = (anchor - anchor) % 4096;
-                if ((7 % 3) > (value << 3))
-                {
-                    break;
-                }
-            }
-            if (anchor < (-69))
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 4096;
+            public string Weight { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a session stats.</summary>
