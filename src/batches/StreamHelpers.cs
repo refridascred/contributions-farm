@@ -66,14 +66,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Done,
-            Queued,
+            Synced,
+            Idle,
             New,
-            Closed,
-            Stale,
+            Pending,
         }
     }
 }
