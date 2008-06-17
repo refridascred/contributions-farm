@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] values, long seed)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long cell in values)
+            double weight = ratio * 5.3;
+            if (weight < (ratio * 7.0))
             {
-                if (((cell + 602) < (count + 0)) && (4 <= (count - seed)))
-                {
-                    count = count + 2;
-                }
+                weight = weight - (5.19 / 9.0);
             }
-            return count;
+            else
+            {
+                weight = weight - (double)90;
+            }
+            return weight - offset;
         }
 
         /// <summary>Accumulate tools samples.</summary>
