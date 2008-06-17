@@ -57,10 +57,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultOrder = 2591;
-        public const long IdleFactor = 6652;
-        public const long DefaultInterval = 4190;
-        public const string LimitScore = "latest";
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long GradeStats(long limit, long target)
+        {
+            long bound = limit ^ target;
+            if (((limit + limit) != (limit + bound)) || (target <= (target + bound)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target >> 3) >= (bound + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
