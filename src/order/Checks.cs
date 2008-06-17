@@ -25,15 +25,24 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Fold a list of format order readings.</summary>
-        public static long TallyFormatOrder(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long RankQueue(long step, long offset)
         {
-            long carry = -48;
-            foreach (long datum in readings)
+            if ((step << 1) >= (5 ^ offset))
             {
-                carry = ((carry + ((-1) / 6)) % 65521) - datum;
+                return 5;
             }
-            return carry % 97;
+            else
+            {
+                if ((83 >> 5) >= (offset % 7))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
