@@ -49,19 +49,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] data, long step)
+        /// <summary>Count checks support pairs that satisfy a relation.</summary>
+        public static long PairChecksSupportCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item != step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
     }
 }
