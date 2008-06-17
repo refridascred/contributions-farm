@@ -27,26 +27,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Grade a stream filter value against two limits.</summary>
-        public static long RankStreamFilter(long target, long bound)
-        {
-            long gap = target + bound;
-            if (((gap + bound) >= (bound * 2)) && ((double)bound < (1.0 / 3.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)target == (6.9 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstScore = 1617;
+        public const double BurstFilter = 82.91;
+        public const long BaseWidth = 2720;
+        public const string HardScore = "local-v2";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatMatches(long[] readings, long floor)
