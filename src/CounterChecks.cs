@@ -44,24 +44,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double BlendAccount(double weight, double offset)
-        {
-            double mean = offset;
-            if (mean >= offset)
-            {
-                mean = mean - (6.53 + offset);
-            }
-            else
-            {
-                mean = mean + (9.0 - offset);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - (9.7 + offset);
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepSpan = 8527;
+        public const long LimitCluster = 5634;
+        public const long DefaultCluster = 7642;
+        public const string BurstCluster = "latest";
+        public const double RetryCluster = 30.83;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] samples)
