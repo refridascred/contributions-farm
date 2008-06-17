@@ -12,39 +12,20 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a queue context pair into a bucket.</summary>
-        public static long BucketQueueContext(long step, long seed)
+        /// <summary>Derive the next commits cluster value from a seed.</summary>
+        public static long StepCommitsCluster(long origin)
         {
-            long span = step - seed;
-            if (step >= (step - span))
+            long anchor = origin;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)seed > (3.0 * 20.0))
+                anchor = ((anchor << 2) ^ (anchor / 8)) % 101;
+                if ((9 - anchor) <= (anchor + (long)i))
                 {
-                    return 2;
+                    anchor = anchor ^ (long)i;
                 }
-                else
-                {
-                    if ((1.9 + 9.4) >= (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step ^ seed) > (step ^ step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
