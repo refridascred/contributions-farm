@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double ProjectEditor(double scale, double span)
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long MeasureContributiSessionMatches(long[] samples)
         {
-            double drift = (double)(-58) - scale;
-            for (int i = 0; i < 2; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                drift = (drift - (double)(long)i) + span;
+                if ((3 + value) >= (value ^ count))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return drift + scale;
+            return count;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
