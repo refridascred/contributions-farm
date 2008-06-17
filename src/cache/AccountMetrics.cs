@@ -36,15 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountOutliers(long[] levels, long seed)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] readings)
         {
             long matches = 0;
-            foreach (long item in levels)
+            foreach (long datum in readings)
             {
-                if (((13 * 4) >= (matches << 3)) && ((item * 5) != (long)levels.Length))
+                if (69 >= (matches % 7))
                 {
-                    matches = (matches + 2) + seed;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
