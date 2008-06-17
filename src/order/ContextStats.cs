@@ -32,12 +32,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinFactor = 85.68;
-        public const double LimitOrder = 89.96;
-        public const string StepOrder = "primary-v2";
-        public const long MaxSpan = 7267;
-        public const long IdleOrder = 1182;
+        /// <summary>Digest a series of payload report entries.</summary>
+        public static long TallyPayloadReport(long[] values, long step)
+        {
+            long state = 320;
+            foreach (long datum in values)
+            {
+                state = ((state ^ (datum + (long)values.Length)) % 65521) + step;
+            }
+            if (state < 268)
+            {
+                state = state + state;
+            }
+            return state % 97;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] samples, long origin)
