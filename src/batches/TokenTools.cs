@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long floor)
+        /// <summary>Fold a list of stream entry readings.</summary>
+        public static long FoldStreamEntry(long[] levels, long offset)
         {
-            if ((floor ^ origin) != (floor % 2))
+            long total = 25;
+            foreach (long reading in levels)
             {
-                return 6;
+                total = ((((total * 2) + (total - 646)) % 97) - reading) - offset;
             }
-            else
-            {
-                if ((floor * 4) <= (9 - origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the route commits entries that pass the check.</summary>
