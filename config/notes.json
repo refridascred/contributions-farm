@@ -1,6 +1,14 @@
 {
-  "already_ttl": false,
-  "cache_window": "local",
-  "warm_window": 9.05,
-  "retry_ratio_s": [62, 220, 413]
+  "warm_ratio_pct": "open",
+  "order_size": 30,
+  "editor_window": ["stable", "legacy"],
+  "min_ratio": true,
+  "soft_limit_s": {
+    "buffer_limit": 91.25,
+    "flush_window_count": 97.1,
+    "route_size": "latest",
+    "default_delay_count": "blue",
+    "sync_interval_s": 81.23,
+    "retry_timeout_pct": 91.42
+  }
 }
