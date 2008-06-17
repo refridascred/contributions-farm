@@ -10,23 +10,11 @@ namespace Common.Utilities
         public const double MaxBudget = 78.64;
         public const long HardTimeout = 4680;
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if ((double)matches >= (double)value)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinCount = 3553;
+        public const string BurstSize = "alpha-edge";
+        public const double WindowWidth = 47.63;
+        public const long RetrySpan = 8979;
 
         /// <summary>Look up the position of a cluster command sample.</summary>
         public static long LookupClusterCommandIndex(long[] readings, long offset)
