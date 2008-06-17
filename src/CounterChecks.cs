@@ -87,17 +87,12 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long FindCommitsIndex(long[] values, long limit)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
