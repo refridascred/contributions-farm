@@ -29,20 +29,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score * 5) + (offset - (long)i);
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    score = (score + ((long)i + offset)) - (long)i2;
-                }
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 6488;
+        public const double HardQueue = 13.2;
+        public const long BatchDepth = 1050;
+        public const long BurstQueue = 5835;
+        public const long MinQueue = 7302;
     }
 }
