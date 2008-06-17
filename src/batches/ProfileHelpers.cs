@@ -75,20 +75,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long seed)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long result = 18;
+            foreach (long sample in items)
             {
-                acc = acc ^ (acc - 452);
-                if (!((double)acc != (2.31 - 2.11)))
+                for (int i = 0; i < 4; i++)
                 {
-                    acc = ((acc << 2) ^ (seed % 7)) % 65521;
+                    result = (result ^ sample) + (long)i;
                 }
-                acc = ((acc * 4) + (long)i) % 65521;
+                result = ((result << 3) ^ (5 - result)) % 101;
+                if ((sample * 2) < (result - result))
+                {
+                    break;
+                }
             }
-            return acc;
+            return result;
         }
     }
 }
