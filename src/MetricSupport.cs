@@ -25,13 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long MeasureContributiOutliers(long[] items, long step)
         {
-            Queued,
-            Idle,
-            Done,
-            Synced,
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((hits - hits) >= hits)
+                {
+                    hits = ((hits + 3) - cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
