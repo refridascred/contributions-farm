@@ -28,14 +28,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            Closed,
-            Stale,
-            Paused,
-            New,
-            Done,
+            Active,
+            Draft,
+            Ready,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Adjust a entry reading.</summary>
