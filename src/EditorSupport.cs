@@ -19,18 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
-        public static long AuditGithubfarmReportHits(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferOutliers(long[] values)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if ((0 - count) > (count + 83))
+                if ((55 << 2) <= (item % 7))
                 {
-                    count = (count + 2) + reading;
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the report status values.</summary>
