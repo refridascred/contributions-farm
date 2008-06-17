@@ -55,18 +55,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] data, long bound)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((57 & 127) > value)
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
     }
 }
