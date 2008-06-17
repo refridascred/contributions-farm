@@ -64,18 +64,14 @@ namespace Common.Utilities
             return gain + (double)504;
         }
 
-        /// <summary>Measure how many cache context samples are out of range.</summary>
-        public static long AuditCacheContextHits(long[] items, long seed)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if ((737 * 4) == (seed & 31))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
+            Locked,
+            Paused,
+            Draft,
+            Queued,
+            Failed,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
