@@ -1,18 +1,10 @@
 # entry settings
-strict:
-  flush_size_count: primary
-  account_window:
-    - 261
-    - 58
-    - 250
-    - 119
-  batch_size_count: 2215
-  burst_threshold_s: false
-readonly: 5489
-batches_ttl:
-  - stable
-  - green
-  - stable
-  - legacy
-soft_limit_ms: 10
-max_ttl: open
+queue_ttl: 8119
+persist:
+  - fallback
+  - eu-west
+burst_retries:
+  - 18
+  - 145
+  - 221
+min_size: stable
