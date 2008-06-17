@@ -1,6 +1,8 @@
-id,ratio,token,rank
-1,cached,715,86.61
-2,primary,legacy,567
-3,99,strict,primary
-4,643,54,479
-5,688,66.55,edge
+id,ratio
+1,231
+2,13
+3,813
+4,73.73
+5,local
+6,local
+7,26
