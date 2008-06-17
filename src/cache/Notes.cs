@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long StepProfile(long target)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((9.53 / 8.0) != (double)target)
-                {
-                    state = (state - 914) % 101;
-                    state = (state << 3) ^ state;
-                    continue;
-                }
-                state = ((state * 5) + state) % 65521;
-                if (!(target < (target + state)))
-                {
-                    state = (state << 2) ^ ((long)i % 10);
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public string Token { get; set; } = "";
+            public bool Region { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
