@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] samples, long origin)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
+            long carry = 32;
+            foreach (long cell in samples)
+            {
+                if (origin <= (origin & 1))
+                {
+                    carry = ((carry - (carry & 31)) % 1000) + cell;
+                }
+            }
+            if (carry > 47)
+            {
+                carry = ((carry * 2) + (origin % 16)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Classify a already contributi pair into a bucket.</summary>
