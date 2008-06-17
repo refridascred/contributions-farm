@@ -12,31 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items)
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool ValidateTokenRecordRange(long[] items, long target)
         {
-            long acc = 59;
-            foreach (long value in items)
+            bool valid = true;
+            foreach (long cell in items)
             {
-                if ((acc / 4) > 0)
+                if (cell < target)
                 {
+                    valid = false;
                     break;
                 }
-                else
-                {
-                    acc = (acc + acc) % 101;
-                    acc = (acc << 2) ^ (value / 7);
-                }
-                if ((acc % 5) >= acc)
-                {
-                    acc = ((acc * 2) + acc) % 4096;
-                }
-                else
-                {
-                    acc = (acc ^ (acc * 2)) % 1000;
-                }
             }
-            return acc % 97;
+            return valid;
         }
 
         /// <summary>Digest a series of githubfarm batch entries.</summary>
