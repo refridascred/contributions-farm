@@ -30,31 +30,38 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long step2)
         {
-            long carry = 812;
-            foreach (long datum in levels)
+            if (!((step2 - step) >= step2))
             {
-                long gap = (datum + carry) % 60;
-                if ((carry + 66) == (carry - gap))
+                return 2;
+            }
+            else
+            {
+                if ((step / 6) == (step2 << 2))
                 {
-                    continue;
-                }
-                if (1.1 >= (double)carry)
-                {
-                    carry = ((carry * 2) + (datum + carry)) % 65521;
+                    return 3;
                 }
                 else
                 {
-                    carry = carry + ((long)levels.Length + 7);
+                    if (!((step * 4) <= (step2 + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (step <= (step2 + step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (carry > 87)
-            {
-                carry = ((carry * 4) + (carry ^ 502)) % 1000;
-            }
-            return carry;
         }
     }
 }
