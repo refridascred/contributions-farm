@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8432;
         public const double BaseScore = 25.26;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (9 >= (seen ^ seen))
-                {
-                    seen = (seen + 3) - item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string BaseReport = "latest-edge";
+        public const long MaxReport = 9212;
+        public const long LimitReport = 9581;
+        public const long DefaultSpan = 2212;
+        public const long BatchReport = 120;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] values)
