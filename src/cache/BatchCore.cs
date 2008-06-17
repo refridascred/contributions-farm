@@ -12,10 +12,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftBudget = 6765;
-        public const double MaxAlready = 96.22;
-        public const string WindowAlready = "open-v2";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample < 8.98)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] data)
