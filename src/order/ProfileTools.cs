@@ -23,21 +23,28 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Accumulate record counter samples.</summary>
+        public static long CombineRecordCounter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 631;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (anchor + (datum & 63)) % 1000;
+                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
+                if ((980 - anchor) >= (anchor + datum))
                 {
-                    if ((readings[i] ^ readings[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor ^ (54 >> 5)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor + anchor) % 4096;
+                }
+                if ((double)datum < (8.95 * 1.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
