@@ -53,13 +53,9 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Ready,
-            Dropped,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchBudget = 49.98;
+        public const string WindowScore = "alpha-v2";
+        public const double SoftRatio = 25.65;
     }
 }
