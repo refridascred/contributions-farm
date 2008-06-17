@@ -36,18 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] samples)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((hits * 2) > (entry % 100))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Score { get; set; } = "";
+            public long Mode { get; set; }
+            public double Count { get; set; }
         }
     }
 }
