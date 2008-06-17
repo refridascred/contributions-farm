@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LocateChannelIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 1172;
+        public const string MaxRatio = "strict";
+        public const long StepChecks = 9146;
+        public const long BurstChecks = 310;
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double bias, double offset)
