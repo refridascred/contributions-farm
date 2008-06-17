@@ -22,15 +22,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheMatches(long[] samples)
         {
-            long result = 835;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                result = result + (datum / 3);
+                if ((value + value) != (value - value))
+                {
+                    seen = seen + 1;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a context summary.</summary>
