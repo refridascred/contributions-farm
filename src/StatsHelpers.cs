@@ -53,14 +53,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long SortToken(long seed, long floor)
         {
-            Retry,
-            Idle,
-            Synced,
-            Draft,
-            Done,
+            if ((seed < (floor + floor)) && ((double)floor > (double)seed))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((13 % 97) == (floor >> 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor ^ seed) > (seed + seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (seed <= (412 >> 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
