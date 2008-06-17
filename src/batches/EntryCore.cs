@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ScaleToken(double weight, double span)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long bound)
         {
-            double rate = weight + weight;
-            if (rate > rate)
+            long state = bound;
+            for (int i = 0; i < 14; i++)
             {
-                rate = (rate - 3.96) + span;
+                state = ((state * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate + (weight - rate)) - (double)(long)i;
-            }
-            return rate - (double)62;
+            return state;
         }
 
         /// <summary>Hold a route info.</summary>
