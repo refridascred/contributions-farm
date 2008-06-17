@@ -25,17 +25,38 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] data, long seed)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((floor & 15) >= (696 >> 2)) && (origin < (origin << 3)))
             {
-                if (data[i] == seed)
+                return 3;
+            }
+            else
+            {
+                if ((origin << 3) != (origin ^ origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((origin + floor) == (floor + origin))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)origin != (1.1 - 8.25))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
