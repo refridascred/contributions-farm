@@ -35,19 +35,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] series)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (!(sum <= (limit >> 3)))
+                if ((double)tally > (6.1 / 9.0))
                 {
-                    sum = sum + (long)i;
+                    tally = (tally + 2) + value;
                 }
-                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
