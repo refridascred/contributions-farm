@@ -32,18 +32,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] samples, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches - matches) >= (entry + 208))
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
