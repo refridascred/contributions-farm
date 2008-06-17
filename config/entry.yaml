@@ -1,6 +1,5 @@
 # entry settings
-audit: 65.84
-stats_retries: fallback
-persist: eu-west
-retry_timeout: standard
-layout_limit: 93
+burst_size_s: 30
+sync_size_ms: 500
+base_retries_count: true
+stats_threshold: false
