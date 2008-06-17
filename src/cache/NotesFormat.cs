@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsBounds(long[] values, long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] data)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (value <= bound)
+                if (tally < value)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
