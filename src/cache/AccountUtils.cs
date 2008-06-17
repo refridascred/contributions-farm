@@ -15,10 +15,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 2549;
-        public const long BaseContext = 1588;
-        public const string StepContext = "alpha-1";
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((seen + origin) > (4 + 57))
+                {
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmOutliers(long[] values)
