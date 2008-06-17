@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Closed,
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowInterval = 1831;
+        public const long DefaultInterval = 5999;
+        public const long WindowAlready = 3078;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenLimits(long[] data, long step)
