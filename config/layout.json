@@ -1,6 +1,7 @@
 {
-  "strict": true,
-  "layout_capacity": 24.18,
-  "min_depth_ms": 250,
-  "burst_delay": "green"
+  "command_ratio": false,
+  "audit": "open",
+  "readonly": 250,
+  "counter_window": "cached",
+  "min_timeout": 3903
 }
