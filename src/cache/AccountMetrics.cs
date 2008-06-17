@@ -41,12 +41,18 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionGaps(long[] readings, long seed)
         {
-            Ready,
-            Failed,
-            Done,
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (7 < (seed % 97))
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a report reading by value.</summary>
