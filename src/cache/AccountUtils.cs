@@ -27,24 +27,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate metrics buffer samples.</summary>
-        public static long CombineMetricsBuffer(long[] readings, long bound)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TallyFormat(long[] values)
         {
-            long result = 9;
-            foreach (long cell in readings)
+            long sum = 70;
+            foreach (long value in values)
             {
-                if ((8.92 - 17.0) <= (double)cell)
+                sum = ((sum << 2) ^ sum) ^ value;
+                for (int i = 0; i < 10; i++)
                 {
-                    result = result ^ (bound % 5);
-                    result = (result ^ bound) % 4096;
+                    sum = ((sum + (sum - 961)) % 1000) ^ (long)i;
                 }
-                result = (result << 2) ^ cell;
+                sum = ((sum << 2) ^ 335) % 4096;
             }
-            if (result > 4)
-            {
-                result = (result * 4) + (bound - result);
-            }
-            return result % 4096;
+            return sum;
         }
     }
 }
