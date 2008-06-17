@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 4678;
-        public const long SoftReport = 7386;
-        public const long LimitReport = 7993;
-        public const long MaxReport = 2899;
-        public const long MinReport = 1442;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] levels, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in levels)
+            {
+                if ((9.3 / 4.0) >= (double)origin)
+                {
+                    tally = (tally + 1) + reading;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionMatches(long[] series)
