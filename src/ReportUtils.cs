@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long limit, long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatBounds(long[] readings, long limit)
         {
-            long cur = limit - seed;
-            if ((limit < (limit - cur)) || ((cur * 5) != (cur ^ cur)))
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((cur * 5) <= seed)
+                if (entry != limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (4.8 > (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (cur > (cur - limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
