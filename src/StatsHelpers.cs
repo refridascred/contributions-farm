@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                state = state ^ (state + (long)i);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public string Level { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate batch samples.</summary>
