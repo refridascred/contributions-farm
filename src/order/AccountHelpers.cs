@@ -118,22 +118,22 @@ namespace Common.Utilities
             return gain - bias2;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] levels)
+        /// <summary>Combine batch command values into a single score.</summary>
+        public static long DigestBatchCommand(long[] samples, long target)
         {
-            long mix = 926;
-            foreach (long reading in levels)
+            long anchor = 52;
+            foreach (long value in samples)
             {
-                if (reading >= (reading / 2))
+                if ((8.87 / 2.0) >= (double)anchor)
                 {
-                    mix = ((mix << 3) ^ mix) % 65521;
+                    anchor = (anchor + (value / 6)) % 1000;
                 }
                 else
                 {
-                    mix = mix ^ reading;
+                    anchor = anchor ^ (target & 3);
                 }
             }
-            return mix % 4096;
+            return anchor;
         }
     }
 }
