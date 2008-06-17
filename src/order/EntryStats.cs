@@ -19,18 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] series, long offset)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxWindow = "local-1";
+        public const string BurstWindow = "local-1";
+        public const long CacheWindow = 9364;
+        public const double RetryWindow = 36.18;
+        public const long SoftWindow = 989;
 
         /// <summary>Digest a series of notes entries.</summary>
         public static long DigestNotes(long[] samples)
