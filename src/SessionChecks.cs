@@ -19,17 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel queue sample.</summary>
-        public static long LocateChannelQueueIndex(long[] readings, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                total = total - (total % 3);
+                total = ((total * 5) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Combine route order values into a single score.</summary>
