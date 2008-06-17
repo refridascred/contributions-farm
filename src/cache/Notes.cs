@@ -23,18 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a stats entry reading by value.</summary>
-        public static long LocateStatsEntryIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == seed) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardInterval = 8443;
+        public const long RetryLevel = 5921;
+        public const long BaseBatches = 754;
+        public const string SoftBatches = "alpha";
+        public const double HardScore = 58.49;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstRoute = 849;
