@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionOutliers(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits + 16) == (hits ^ hits))
-                {
-                    hits = ((hits + 1) + value) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double CacheSupport = 2.52;
+        public const long MinLevel = 4345;
+        public const string WindowSupport = "latest-v2";
+        public const double BurstFactor = 93.74;
+        public const long HardRatio = 6685;
 
         /// <summary>Find the first checks token entry that matches the target.</summary>
         public static long FindChecksTokenIndex(long[] readings, long target)
