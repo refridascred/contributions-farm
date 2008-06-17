@@ -1,7 +1,8 @@
-id,score,level
-1,614,fallback
-2,primary,stable
-3,989,944
-4,fallback,109
-5,603,87.71
-6,89.28,116
+id,score,region
+1,legacy,37.32
+2,54,green
+3,open,legacy
+4,88.44,47.45
+5,85.54,10.84
+6,474,690
+7,87.64,729
