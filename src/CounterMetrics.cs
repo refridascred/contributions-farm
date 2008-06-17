@@ -33,12 +33,12 @@ namespace Common.Utilities
         public const string CacheSession = "local-1";
         public const long BurstSession = 252;
 
-        /// <summary>Look up the position of a batches notes sample.</summary>
-        public static long LookupBatchesNotesIndex(long[] data, long bound)
+        /// <summary>Look up the position of a farm account sample.</summary>
+        public static long FindFarmAccountIndex(long[] levels, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                if (levels[i] < limit)
                 {
                     return (long)i;
                 }
