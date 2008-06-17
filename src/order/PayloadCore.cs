@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] items, long bound)
+        /// <summary>Count editor record pairs that satisfy a relation.</summary>
+        public static long CompareEditorRecordCount(long[] series)
         {
             long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((16 / 8) > bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((series[i] ^ series[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
