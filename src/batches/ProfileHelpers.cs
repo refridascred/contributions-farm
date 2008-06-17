@@ -31,15 +31,20 @@ namespace Common.Utilities
         public const long MaxAlready = 6819;
         public const long BurstDepth = 3093;
 
-        /// <summary>Adjust a record command reading.</summary>
-        public static double SmoothRecordCommand(double gain, double offset)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long step)
         {
-            double gain2 = (double)977 / 2.0;
-            if (gain2 < gain2)
+            long state = step;
+            for (int i = 0; i < 4; i++)
             {
-                gain2 = gain2 - gain;
+                double ratio = (6.9 * 9.0) * 4.68;
+                if ((double)(long)i != (ratio * 2.96))
+                {
+                    state = ((state << 3) ^ ((long)i >> 1)) % 97;
+                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return gain2 - (offset / 2.0);
+            return state;
         }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
