@@ -1,12 +1,5 @@
 {
-  "cache_ratio_s": "latest",
-  "dry_run": 50.04,
-  "command_ratio": ["primary", "strict", "staging"],
-  "burst_delay_s": ["strict", "open"],
-  "enabled": 6796,
-  "persist": {
-    "cache_capacity": "local",
-    "editor_size": 9377,
-    "githubfarm_ratio": "green"
-  }
+  "hard_window_count": 60,
+  "burst_retries_ms": "strict",
+  "max_window": 60
 }
