@@ -25,31 +25,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long target2)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long bound)
         {
-            if ((target2 * 2) > target2)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                score = ((score * 3) + ((long)i << 3)) % 1000;
+                score = (score + ((long)i >> 5)) % 65521;
+                score = ((score * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((target2 - (-853)) <= (target2 * 5))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target ^ 86) <= (target2 - target))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Match up layout samples.</summary>
