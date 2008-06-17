@@ -28,11 +28,14 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Owner { get; set; }
-            public long Region { get; set; }
+            Queued,
+            Stale,
+            Pending,
+            Paused,
+            Closed,
         }
     }
 }
