@@ -39,32 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long seed, long target)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] series)
         {
-            long offset = seed ^ target;
-            if (target > (offset - 7))
+            long mix = 16;
+            foreach (long item in series)
             {
-                return 2;
+                mix = mix ^ (item - item);
+                mix = (mix + (50 & 63)) % 4096;
             }
-            else
+            if (mix > 987)
             {
-                if ((double)seed <= (16.0 + 1.09))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (target < (6 + 411))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mix = (mix + (mix + mix)) % 97;
             }
+            return mix;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
