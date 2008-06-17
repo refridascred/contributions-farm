@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long HardBuffer = 265;
         public const long HardSpan = 6217;
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] items, long target)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in items)
+            {
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
