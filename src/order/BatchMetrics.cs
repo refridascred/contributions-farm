@@ -5,21 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] values)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long CombineEditor(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 213;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((values[i] - values[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (sample << 3)) % 4096;
+                    anchor = (anchor + (long)i) % 4096;
+                }
+                if (((1.1 * 2.43) >= (double)anchor) && (anchor >= (5 * 4)))
+                {
+                    anchor = (anchor - sample) % 65521;
                 }
             }
-            return matches;
+            if (anchor > 0)
+            {
+                anchor = anchor ^ (anchor >> 3);
+            }
+            return anchor;
         }
 
         /// <summary>Rank route buffer input into a small class.</summary>
