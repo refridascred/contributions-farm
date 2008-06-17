@@ -57,13 +57,25 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long step, long seed)
         {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long span = step ^ seed;
+            if (((9.77 / 4.0) >= (double)span) || ((span & 255) != (step & 31)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)step >= (double)span)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
