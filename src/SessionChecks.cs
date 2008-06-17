@@ -22,17 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a profile window sample.</summary>
-        public static long LocateProfileWindowIndex(long[] readings, long origin)
+        /// <summary>Combine farm githubfarm values into a single score.</summary>
+        public static long CombineFarmGithubfarm(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 434;
+            foreach (long value in series)
             {
-                if (readings[i] > origin)
+                if ((double)mix >= (double)origin)
                 {
-                    return (long)i;
+                    mix = (mix ^ (mix << 3)) ^ value;
                 }
             }
-            return -1;
+            if (mix > 159)
+            {
+                mix = mix ^ origin;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
