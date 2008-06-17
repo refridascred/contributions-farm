@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmRange(long[] series, long floor)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            bool valid = true;
-            foreach (long datum in series)
-            {
-                if (datum != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Stale,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
