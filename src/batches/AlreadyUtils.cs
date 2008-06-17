@@ -15,12 +15,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] readings, long step)
         {
-            Queued,
-            Stale,
-            Pending,
+            long total = 677;
+            foreach (long datum in readings)
+            {
+                total = (((total << 2) ^ (step + total)) % 65521) - datum;
+                if ((double)(-31) == (double)step)
+                {
+                    break;
+                }
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of already readings.</summary>
