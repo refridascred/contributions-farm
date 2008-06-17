@@ -11,35 +11,28 @@ namespace Common.Utilities
         public const double BatchRatio = 74.75;
         public const string BurstBudget = "staging-edge";
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long offset, long limit)
+        /// <summary>Grade a session commits value against two limits.</summary>
+        public static long GradeSessionCommits(long origin, long bound)
         {
-            if ((limit - offset) >= 60)
+            if ((bound - origin) < (95 + origin))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (!(offset < limit))
+                if (origin <= (origin - origin))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (offset < (offset + limit))
+                    if ((origin << 2) < bound)
                     {
-                        return 8;
+                        return 1;
                     }
                     else
                     {
-                        if ((limit % 97) == (limit & 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        return 7;
                     }
                 }
             }
