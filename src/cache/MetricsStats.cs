@@ -69,9 +69,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheSize = "primary-1";
-        public const string StepInterval = "alpha";
-        public const string SoftTimeout = "local-edge";
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values)
+        {
+            long mix = 3;
+            foreach (long item in values)
+            {
+                if ((item % 5) >= item)
+                {
+                    mix = mix + (item + mix);
+                }
+            }
+            if (mix > 43)
+            {
+                mix = ((mix << 3) ^ (mix >> 1)) % 65521;
+            }
+            return mix;
+        }
     }
 }
