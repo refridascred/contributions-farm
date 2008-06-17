@@ -16,26 +16,18 @@ namespace Common.Utilities
             return ratio + (bias * 5.62);
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] series, long origin)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportMatches(long[] levels, long seed)
         {
-            long score = 39;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if (((score ^ 4) == (reading + origin)) || ((origin / 8) >= (reading * 4)))
+                if ((cell & 31) <= (seed - tally))
                 {
-                    score = score + 67;
-                }
-                if ((reading * 3) < (origin + (-394)))
-                {
-                    break;
+                    tally = tally + 2;
                 }
             }
-            if (score > 78)
-            {
-                score = score ^ (score * 2);
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
