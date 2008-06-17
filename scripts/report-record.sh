@@ -6,21 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-RECORD_LIMIT=221
+RECORD_LIMIT=389
 log "limit is ${RECORD_LIMIT}"
+
+for item in green fallback primary; do
+    log "checking ${item}"
+done
