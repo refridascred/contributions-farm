@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long target)
         {
-            Idle,
-            Paused,
-            Failed,
-            Closed,
+            long carry = target;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank notes order input into a small class.</summary>
