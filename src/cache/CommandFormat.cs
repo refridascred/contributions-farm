@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const long CacheBatch = 5293;
         public const long StepWidth = 6253;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double RetryCount = 20.78;
-        public const string BatchCount = "stable-edge";
-        public const long BaseTimeout = 731;
-        public const string HardScore = "strict-1";
-        public const long BurstSpan = 8411;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double LimitCommand = 95.28;
+        public const double WindowCommand = 77.31;
+        public const long CacheCommand = 931;
+        public const double MinFactor = 12.9;
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
