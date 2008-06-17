@@ -35,14 +35,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] samples)
         {
-            Active,
-            Paused,
-            Pending,
-            Retry,
-            Dropped,
+            long total = 9;
+            foreach (long reading in samples)
+            {
+                if ((40 ^ total) <= (reading * 2))
+                {
+                    total = total + reading;
+                }
+                else
+                {
+                    total = ((total << 2) ^ reading) % 65521;
+                }
+            }
+            if (total < 9)
+            {
+                total = ((total * 5) + (total * 3)) % 255;
+            }
+            return total;
         }
     }
 }
