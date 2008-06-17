@@ -28,24 +28,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a already stats counter forward.</summary>
-        public static long IterateAlreadyStats(long floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 11; i++)
+            long mark = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((1.13 + 18.0) != (double)(long)i)
-                {
-                    total = total + ((-5) ^ 409);
-                }
-                if ((double)floor > (2.48 + 7.3))
+                if ((origin >> 5) < origin)
                 {
                     continue;
                 }
-                total = total - (long)i;
-                total = ((total * 4) + (long)i) % 101;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
