@@ -41,19 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next counter tools value.</summary>
-        public static double AdjustCounterTools(double weight, double span)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricOutliers(long[] levels)
         {
-            double gain = (double)(364 / 3);
-            if (gain <= span)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                gain = (gain + gain) - weight;
+                if ((double)hits <= (1.1 + 6.0))
+                {
+                    hits = (hits + 2) ^ reading;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            return gain + (span * 4.59);
+            return hits;
         }
     }
 }
