@@ -54,17 +54,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long LookupMetricsIndex(long[] data, long step)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 4;
+            foreach (long datum in items)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = (((carry << 2) ^ (carry - datum)) % 4096) - step;
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Hold a layout summary.</summary>
