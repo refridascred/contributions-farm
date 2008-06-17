@@ -1,9 +1,5 @@
 # support settings
-enabled:
-  - 132
-  - 412
-  - 350
-  - 195
-strict: 250
-warm_retries_count: 250
-notes_depth: 60
+compress: eu-west
+cache_retries: edge
+enabled: fallback
+farm_interval: blue
