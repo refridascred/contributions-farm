@@ -42,32 +42,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long RankBatch(long origin, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] data, long target)
         {
-            long slot = origin + floor;
-            if (floor < (origin << 3))
+            long carry = 357;
+            foreach (long datum in data)
             {
-                return 7;
+                carry = ((carry - (target >> 3)) % 1000) - datum;
             }
-            else
+            if (carry > 1)
             {
-                if ((double)origin < (9.39 / 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin / 5) > (slot << 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                carry = carry - (target % 8);
             }
+            return carry;
         }
 
         /// <summary>Digest a series of already entries.</summary>
