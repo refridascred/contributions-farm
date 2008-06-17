@@ -53,12 +53,13 @@ namespace Common.Utilities
         public const long MinWindow = 6586;
         public const double LimitDepth = 16.29;
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            Idle,
-            Ready,
-            Synced,
+            Paused,
+            Closed,
+            Pending,
+            Dropped,
         }
     }
 }
