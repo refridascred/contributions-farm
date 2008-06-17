@@ -19,10 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double IdleStats = 42.45;
-        public const string BaseSize = "legacy-edge";
-        public const double DefaultLevel = 4.49;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Locked,
+            Synced,
+            Paused,
+            Ready,
+        }
 
         /// <summary>Combine queue metrics values into a single score.</summary>
         public static long FoldQueueMetrics(long[] levels, long floor)
