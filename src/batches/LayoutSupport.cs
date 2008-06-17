@@ -45,17 +45,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a batches metric sample.</summary>
-        public static long SeekBatchesMetricIndex(long[] samples, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 17; i++)
             {
-                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    return (long)i;
+                    acc = ((acc ^ seed) % 4096) + (long)i2;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
