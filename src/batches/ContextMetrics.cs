@@ -12,12 +12,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Validate tools context readings against a bound.</summary>
+        public static bool ValidateToolsContextLimits(long[] readings, long seed)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long sample in readings)
+            {
+                if (sample > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
