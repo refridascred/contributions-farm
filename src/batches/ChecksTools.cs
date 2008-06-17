@@ -22,15 +22,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheMatches(long[] samples)
+        /// <summary>Measure how many payload graph samples are out of range.</summary>
+        public static long CountPayloadGraphOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long value in samples)
+            foreach (long cell in levels)
             {
-                if ((value + value) != (value - value))
+                if ((long)levels.Length > (cell - seen))
                 {
-                    seen = seen + 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
