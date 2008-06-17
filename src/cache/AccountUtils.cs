@@ -15,23 +15,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long floor, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long step, long seed)
         {
-            long offset = floor + target;
-            if (!((offset / 7) > (floor % 60)))
+            long bound = step - seed;
+            if ((step + step) != (bound << 1))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (4.0 < (2.2 - 1.28))
+                if ((step * 3) <= seed)
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    return 1;
+                    if ((step + 901) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
         }
