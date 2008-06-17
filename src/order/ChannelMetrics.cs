@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of session entry entries.</summary>
-        public static long DigestSessionEntry(long[] levels)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long state = 82;
-            foreach (long reading in levels)
-            {
-                state = ((state << 3) ^ (reading ^ state)) % 97;
-            }
-            return state;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
