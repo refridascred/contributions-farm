@@ -1,17 +1,17 @@
 # githubfarm settings
-min_interval_s: fallback
-counter_ttl: 2141
-buffer_size:
-  retry_interval_count: 83.91
-  counter_size:
-    soft_retries: 98.93
-    retry_retries_count:
-      - stable
-      - stable
-    warm_window:
-      - fallback
-      - local
-  batch_interval:
-    - 365
-    - 282
-    - 151
+default_capacity_s:
+  - 357
+  - 379
+idle_capacity_s:
+  dry_run: blue
+  default_limit_ms: 32.53
+  flush_depth_pct: 250
+  readonly: 30
+  batches_ttl: 70.81
+  cache_retries: latest
+flush_window:
+  - 181
+  - 422
+  - 345
+strict: 38.66
+record_threshold: 60
