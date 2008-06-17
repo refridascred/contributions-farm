@@ -31,20 +31,12 @@ namespace Common.Utilities
             return mean - (8.79 * 2.0);
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long cell in readings)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MaxCount = 69.89;
+        public const long BurstSpan = 1622;
+        public const double DefaultGraph = 95.15;
+        public const long RetryDepth = 1613;
+        public const double DefaultRatio = 76.84;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] data, long target)
