@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public bool Weight { get; set; }
-            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Check that every queue support entry stays within the limit.</summary>
