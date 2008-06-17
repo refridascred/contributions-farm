@@ -24,14 +24,13 @@ namespace Common.Utilities
             return gain2 + (gain2 / 5.0);
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            Ready,
-            Stale,
-            Paused,
-            Retry,
             Pending,
+            Done,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
