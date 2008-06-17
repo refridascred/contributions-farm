@@ -1,6 +1,6 @@
-id,level,weight
-1,653,200
-2,2.67,45.66
-3,865,0.89
-4,green,60
-5,167,430
+id,ratio,count
+1,690,599
+2,52.66,strict
+3,868,green
+4,legacy,21.74
+5,65.11,latest
