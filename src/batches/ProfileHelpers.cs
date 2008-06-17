@@ -80,18 +80,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long bound)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long mark = 1;
-            foreach (long item in levels)
-            {
-                if ((item << 2) == (item ^ item))
-                {
-                    mark = (mark ^ (item / 7)) - bound;
-                }
-            }
-            return mark % 4096;
+            Closed,
+            Ready,
+            Done,
         }
     }
 }
