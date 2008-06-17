@@ -37,24 +37,17 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long floor, long seed)
+        /// <summary>Locate a queue order reading by value.</summary>
+        public static long LocateQueueOrderIndex(long[] readings, long step)
         {
-            if (seed <= (seed >> 5))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (seed > (floor + 8))
+                if (readings[i] > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
