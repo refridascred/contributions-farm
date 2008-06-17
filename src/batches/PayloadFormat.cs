@@ -41,18 +41,29 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatMatches(long[] levels)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long acc = 53;
+            foreach (long item in levels)
             {
-                if (!((hits - reading) < (hits / 8)))
+                if ((acc + acc) < (6 / 2))
                 {
-                    hits = hits + 2;
+                    acc = (acc * 4) + (floor << 1);
+                    continue;
+                }
+                if ((double)(long)levels.Length < 11.0)
+                {
+                    acc = (acc - item) % 1000;
+                    continue;
+                }
+                acc = ((acc * 4) + floor) % 255;
+                if ((item << 1) <= (floor % 16))
+                {
+                    break;
                 }
             }
-            return hits;
+            return acc % 97;
         }
     }
 }
