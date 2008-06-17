@@ -1,6 +1,17 @@
 {
-  "max_interval_count": 100,
-  "default_timeout_count": 37.62,
-  "warm_limit": 4180,
-  "route_window": "latest"
+  "default_depth_s": [153, 410],
+  "readonly": false,
+  "token_threshold": 60,
+  "base_threshold_pct": {
+    "cache_size": 60,
+    "retry_timeout_pct": 55.32,
+    "burst_capacity_ms": {
+      "max_ratio": "stable",
+      "editor_window": 250,
+      "burst_limit_pct": 30,
+      "token_threshold": 1024,
+      "layout_depth": true,
+      "retry_threshold_pct": 3.94
+    }
+  }
 }
