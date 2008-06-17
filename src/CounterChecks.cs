@@ -19,13 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public double Flag { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
+            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
