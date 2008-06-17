@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "local-v2";
-        public const long MaxRatio = 4069;
-        public const string DefaultSpan = "stable-edge";
-        public const long SoftStream = 1328;
-        public const string MinStream = "alpha";
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] data)
