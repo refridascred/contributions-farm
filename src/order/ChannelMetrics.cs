@@ -34,26 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate buffer route samples.</summary>
-        public static long CombineBufferRoute(long[] values)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long score = 6;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    score = score ^ (long)i;
-                }
-                if ((value <= (9 - value)) || ((double)score < (9.6 / 3.0)))
-                {
-                    score = (score - (value + score)) % 101;
-                }
-            }
-            if (score > 4)
-            {
-                score = score ^ (score + score);
-            }
-            return score;
+            Active,
+            Synced,
+            Done,
         }
     }
 }
