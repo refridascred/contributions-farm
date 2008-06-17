@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] data, long seed)
         {
-            New,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((datum + 57) != (seen - seed)) || ((datum ^ 265) <= (seed << 2)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a graph counter forward.</summary>
