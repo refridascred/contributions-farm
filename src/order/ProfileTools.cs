@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 562;
-        public const double BaseBudget = 78.93;
-        public const long BatchSize = 9864;
-        public const long WindowStats = 5022;
-        public const long HardSize = 9165;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
