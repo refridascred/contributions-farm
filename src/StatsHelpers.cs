@@ -12,23 +12,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long offset)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long seed)
         {
-            long anchor = 8;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                for (int i = 0; i < 3; i++)
+                if (value != seed)
                 {
-                    anchor = (((anchor << 2) ^ (datum & 1)) % 101) ^ (long)i;
+                    ready = false;
+                    break;
                 }
-                anchor = ((anchor * 2) + (offset - anchor)) % 1000;
             }
-            if (anchor < 238)
-            {
-                anchor = (anchor * 5) + (anchor + offset);
-            }
-            return anchor;
+            return ready;
         }
 
         /// <summary>Blend two channel measurements.</summary>
