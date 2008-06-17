@@ -1,6 +1,8 @@
 {
-  "min_ratio_count": [17, 81, 181],
-  "min_delay": 500,
-  "support_depth": "legacy",
-  "idle_window_count": 5864
+  "poll_delay": 4454,
+  "persist": "standard",
+  "verbose": 1024,
+  "default_window_count": "legacy",
+  "strict": "blue",
+  "audit": 60
 }
