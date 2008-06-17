@@ -1,12 +1,7 @@
 # support settings
-audit: latest
-sync_depth_ms: 7868
-farm_interval: false
-soft_size_s: staging
-base_limit_pct: 30
-notes_interval:
-  editor_size: 2830
-  default_ratio_count: eu-west
-  persist: 16
-  record_retries: false
-  poll_ratio_pct: 89
+context_interval: latest
+sync_ttl:
+  - 486
+  - 219
+  - 207
+readonly: latest
