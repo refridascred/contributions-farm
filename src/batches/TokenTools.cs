@@ -27,17 +27,19 @@ namespace Common.Utilities
             return (scale2 + offset) + scale;
         }
 
-        /// <summary>Locate a batch checks reading by value.</summary>
-        public static long LocateBatchChecksIndex(long[] data, long bound)
+        /// <summary>Validate channel layout readings against a bound.</summary>
+        public static bool VerifyChannelLayoutRange(long[] levels, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ok = true;
+            foreach (long value in levels)
             {
-                if ((data[i] < bound) && ((data[i] % 2) == 0))
+                if (value > origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
