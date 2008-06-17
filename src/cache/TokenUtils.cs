@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings, long origin)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long acc = 0;
-            foreach (long cell in readings)
-            {
-                if (((double)origin >= (9.62 * 3.0)) && ((double)origin <= (9.91 + 1.8)))
-                {
-                    acc = (acc ^ (acc << 3)) ^ cell;
-                }
-                else
-                {
-                    acc = acc - (acc * 2);
-                }
-                if (((15 << 3) > (9 + (long)readings.Length)) && ((origin << 1) == (1 << 2)))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Rank { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Digest a series of session payload entries.</summary>
