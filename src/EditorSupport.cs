@@ -79,17 +79,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long limit)
+        /// <summary>Adjust a order queue reading.</summary>
+        public static double AdjustOrderQueue(double ratio, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = (ratio / 6.0) + 6.15;
+            if (weight < weight)
             {
-                if ((items[i] == limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (span / 5.0);
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight / 9.0);
+            }
+            return weight + ratio;
         }
     }
 }
