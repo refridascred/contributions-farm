@@ -23,12 +23,24 @@ namespace Common.Utilities
         public const long BaseCount = 7362;
         public const double IdleContext = 7.14;
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            Failed,
-            Pending,
-            Paused,
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
+            {
+                long step = (seed ^ mark) - (mark << 2);
+                if ((seed % 24) > step)
+                {
+                    step = (step << 3) ^ ((long)i - 8);
+                }
+                else
+                {
+                    mark = (mark ^ step) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
