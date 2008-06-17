@@ -58,19 +58,17 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] series, long origin)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > origin)
+                if (levels[i] == limit)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
