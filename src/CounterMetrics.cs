@@ -16,11 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route kind values.</summary>
