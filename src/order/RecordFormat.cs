@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ProjectFarm(double weight, double floor)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long limit2)
         {
-            double bias = weight - 0.4;
-            for (int i = 0; i < 5; i++)
+            long edge = limit ^ limit2;
+            if ((limit2 & 31) == (limit - 729))
             {
-                bias = ((bias - (5.9 - bias)) + (double)(long)i) - floor;
+                return 6;
             }
-            return bias - weight;
+            else
+            {
+                if (((edge * 4) == (78 - (-263))) || ((limit + limit2) > (edge - limit2)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!(9.52 < (double)limit2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((6.3 - 16.0) == (double)limit)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next farm value.</summary>
