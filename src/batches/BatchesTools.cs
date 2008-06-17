@@ -39,38 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batch entry pair into a bucket.</summary>
-        public static long SortBatchEntry(long target, long seed)
-        {
-            if ((seed / 9) >= (seed - seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((double)seed <= (9.6 + 4.0)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((target + seed) < (seed * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (0.63 - 2.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetrySize = 8623;
+        public const double CacheMetrics = 69.09;
+        public const double BatchMetrics = 50.0;
+        public const long SoftInterval = 4085;
+        public const long StepCount = 1176;
     }
 }
