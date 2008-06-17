@@ -22,20 +22,21 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long step)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long origin)
         {
-            long state = step;
-            for (int i = 0; i < 4; i++)
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                double ratio = (6.9 * 9.0) * 4.68;
-                if ((double)(long)i != (ratio * 2.96))
+                sum = (sum - (origin - origin)) % 1000;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    state = ((state << 3) ^ ((long)i >> 1)) % 97;
+                    sum = ((sum + ((long)i + sum)) % 97) ^ (long)i2;
+                    sum = (sum ^ (sum + sum)) % 1000;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return state;
+            return sum;
         }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
