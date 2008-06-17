@@ -1,13 +1,14 @@
 {
-  "max_delay": 57,
-  "batches_interval": 67,
-  "hard_depth_ms": {
-    "min_capacity_pct": 98,
-    "cache_threshold_ms": 3093,
-    "batch_interval_pct": "standard",
-    "account_retries": ["legacy", "blue", "eu-west", "latest"],
-    "poll_retries_ms": "latest"
+  "base_interval_pct": {
+    "metric_interval": 30,
+    "persist": {
+      "readonly": true,
+      "default_depth": 1024,
+      "burst_threshold_ms": 44,
+      "min_delay": "standard"
+    },
+    "dry_run": 78
   },
-  "batch_ratio_count": 2548,
-  "idle_timeout_s": ["local", "open", "blue", "blue"]
+  "soft_threshold_pct": "fallback",
+  "token_timeout": "fallback"
 }
