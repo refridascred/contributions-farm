@@ -46,21 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count checks support pairs that satisfy a relation.</summary>
-        public static long PairChecksSupportCount(long[] samples)
+        /// <summary>Rank format record input into a small class.</summary>
+        public static long RankFormatRecord(long floor, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((708 << 1) < floor) && ((double)limit != (9.0 - 3.0)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((limit - limit) > floor)
                 {
-                    if ((samples[i] - samples[j]) < 3)
+                    return 7;
+                }
+                else
+                {
+                    if ((limit >> 3) <= limit)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return hits;
         }
     }
 }
