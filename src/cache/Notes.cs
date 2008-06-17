@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            New,
-            Queued,
-            Dropped,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (hits > (hits * 4))
+                {
+                    hits = (hits + 3) ^ value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
