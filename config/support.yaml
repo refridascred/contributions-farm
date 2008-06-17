@@ -1,11 +1,7 @@
 # support settings
-warm_interval_count:
-  - 420
-  - 90
-  - 42
-  - 103
-max_depth: true
-channel_interval: primary
-soft_timeout: 7306
-max_ratio: 17
-flush_window_pct: false
+base_depth_count: 45.28
+batch_timeout: 30
+max_retries: 70.28
+layout_limit: local
+readonly: 79
+hard_threshold_pct: fallback
