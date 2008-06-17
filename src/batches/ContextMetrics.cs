@@ -50,19 +50,17 @@ namespace Common.Utilities
         public const long MaxBudget = 253;
         public const long WindowReport = 8626;
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] readings, long origin)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= origin)
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
