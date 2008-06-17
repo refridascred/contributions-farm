@@ -74,39 +74,10 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a order command value against two limits.</summary>
-        public static long GradeOrderCommand(long step, long floor)
-        {
-            long lane = step - floor;
-            if (954 <= lane)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((4 & 31) >= (step & 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((floor >> 3) >= floor) && ((step + step) > (lane - 6)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 6) > (lane << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinFormat = 525;
+        public const long DefaultFormat = 9497;
+        public const long StepFormat = 6584;
+        public const long MaxBudget = 6414;
     }
 }
