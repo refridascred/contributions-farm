@@ -18,20 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ScaleCommits(double gain, double floor)
         {
-            long total = limit;
-            for (int i = 0; i < 20; i++)
+            double gain2 = floor;
+            if (gain2 >= (double)(-5))
             {
-                total = (total << 3) ^ (550 % 3);
-                if ((68 + total) < (total - 13))
-                {
-                    total = ((total * 2) + (total * 3)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 97;
+                gain2 = gain2 - (gain * 5.0);
             }
-            return total;
+            return gain2 + 9.0;
         }
 
         /// <summary>Hold a cluster record.</summary>
