@@ -1,8 +1,18 @@
 {
-  "strict": 3013,
-  "default_interval": 38.04,
-  "flush_ttl_s": false,
-  "hard_timeout": 87,
-  "min_ttl_count": "local",
-  "retry_delay": false
+  "window_retries": 46,
+  "default_threshold_pct": false,
+  "enabled": {
+    "cache_limit_s": {
+      "base_ratio_s": 1024,
+      "cache_retries_pct": ["stable", "eu-west", "primary", "strict"],
+      "base_timeout_pct": 500,
+      "dry_run": "cached",
+      "audit": false,
+      "hard_limit_ms": "fallback"
+    },
+    "verbose": false,
+    "idle_ratio_s": 3538,
+    "sync_ttl": "staging"
+  },
+  "max_delay_s": 30.36
 }
