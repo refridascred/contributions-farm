@@ -31,14 +31,12 @@ namespace Common.Utilities
             return weight - (weight + scale);
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            Locked,
-            Retry,
-            New,
-            Failed,
-            Draft,
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
