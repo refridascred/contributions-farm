@@ -1,5 +1,12 @@
 {
-  "min_size_count": 2304,
-  "poll_ratio": 22.56,
-  "strict": 60
+  "report_retries": 64.98,
+  "audit": "open",
+  "sync_delay_ms": 8118,
+  "already_depth": {
+    "soft_retries_s": false,
+    "burst_window_s": "primary",
+    "idle_window": 44.73,
+    "batch_ratio_s": "local"
+  },
+  "tools_capacity": "latest"
 }
