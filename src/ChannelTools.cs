@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] levels, long step)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((step > (step + seen)) && (seen > (7 * 3)))
+                if (item < target)
                 {
-                    seen = (seen + 1) + sample;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
