@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long BucketProfile(long limit, long target)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long IterateFarm(long origin)
         {
-            if (((double)limit >= 5.3) || ((double)target <= (13.0 * 5.83)))
+            long sum = origin;
+            for (int i = 0; i < 15; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target * 5) < (target - limit))
+                if (!(((long)i - sum) == (0 / 6)))
                 {
-                    return 3;
+                    sum = (sum - sum) % 1000;
                 }
-                else
-                {
-                    if (((target + limit) > (limit / 8)) || ((target >> 5) <= (target & 31)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (4.26 < (double)limit)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Derive the next checks window value from a seed.</summary>
