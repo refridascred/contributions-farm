@@ -15,12 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public long Score { get; set; }
-            public double Region { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 6737;
+        public const long HardInterval = 1896;
+        public const long BurstTimeout = 8542;
+        public const double SoftBatch = 87.21;
 
         /// <summary>Accumulate already samples.</summary>
         public static long WeighAlready(long[] samples)
