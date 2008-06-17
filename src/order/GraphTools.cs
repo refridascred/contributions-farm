@@ -43,18 +43,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (value > (value + hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Idle,
+            Retry,
+            Queued,
+            Active,
         }
     }
 }
