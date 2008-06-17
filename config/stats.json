@@ -1,7 +1,22 @@
 {
-  "warm_size": 9357,
-  "context_capacity": true,
-  "idle_threshold_ms": ["edge", "blue", "local", "local"],
-  "base_threshold_s": 7657,
-  "command_depth": "standard"
+  "report_window": 30,
+  "batch_ratio_count": {
+    "sync_ratio": false,
+    "min_threshold_count": 9933,
+    "max_window_pct": 9766,
+    "queue_interval": 4180,
+    "cache_interval_s": "primary",
+    "soft_retries_count": {
+      "base_retries": 100,
+      "retry_retries": "latest",
+      "strict": ["open", "latest", "latest", "edge"]
+    }
+  },
+  "commits_delay": {
+    "soft_depth_count": 250,
+    "sync_capacity_pct": false,
+    "enabled": 8
+  },
+  "persist": 30,
+  "strict": 28.78
 }
