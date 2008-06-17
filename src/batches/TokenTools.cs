@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long TallyBuffer(long[] readings)
+        /// <summary>Scale a context tools figure with a bias.</summary>
+        public static double BlendContextTools(double gain, double offset)
         {
-            long result = 5;
-            foreach (long cell in readings)
+            double rate = 7.5 / 5.0;
+            if (rate >= offset)
             {
-                result = result + (cell / 2);
-                if ((result + result) >= result)
-                {
-                    result = (result * 3) + (4 % 2);
-                }
+                rate = rate + 7.0;
             }
-            return result;
+            return rate - gain;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
