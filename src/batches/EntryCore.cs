@@ -32,12 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] series, long seed)
         {
-            Locked,
-            Dropped,
-            Ready,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the context stream entries that pass the check.</summary>
