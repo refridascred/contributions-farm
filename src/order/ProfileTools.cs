@@ -23,15 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double AdjustBatches(double rate, double offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferHits(long[] series)
         {
-            double weight = 9.3 - (rate * 7.0);
-            if (weight < weight)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                weight = (weight - (double)59) - offset;
+                if (!((datum + datum) < (datum * 2)))
+                {
+                    hits = hits + 2;
+                }
             }
-            return weight + (2.0 / 5.0);
+            return hits;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
