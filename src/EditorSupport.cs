@@ -40,10 +40,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftSpan = 3860;
-        public const string BatchSupport = "stable-1";
-        public const long StepSpan = 3999;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Retry,
+            Synced,
+            Draft,
+        }
 
         /// <summary>Count context metric pairs that satisfy a relation.</summary>
         public static long MatchContextMetricCount(long[] items)
