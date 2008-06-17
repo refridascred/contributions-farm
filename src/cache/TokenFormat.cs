@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] series, long target)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            long acc = -914;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if ((double)target < (17.0 / 4.0))
+                if (cell > (count >> 5))
                 {
-                    acc = acc + (84 - 977);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ item;
+                    count = count + 2;
                 }
             }
-            if (acc > 2)
-            {
-                acc = acc ^ (target & 3);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
