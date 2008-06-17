@@ -1,6 +1,16 @@
 {
-  "poll_limit": 61.32,
-  "persist": [244, 455],
-  "retry_ratio": 32.76,
-  "metric_capacity": false
+  "poll_threshold": "open",
+  "channel_threshold": "fallback",
+  "max_size_s": {
+    "entry_threshold": 100,
+    "cache_ttl": ["primary", "stable"],
+    "persist": 9339,
+    "metric_capacity": "local",
+    "cache_capacity_count": {
+      "min_timeout_ms": "stable",
+      "context_limit": true,
+      "entry_window": [271, 249, 54]
+    },
+    "min_timeout": 136
+  }
 }
