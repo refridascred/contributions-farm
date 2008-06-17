@@ -54,10 +54,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 7667;
-        public const double IdleNotes = 9.07;
-        public const string CacheBudget = "cached";
-        public const long RetryFactor = 6451;
+        /// <summary>Digest a series of tools githubfarm entries.</summary>
+        public static long ScoreToolsGithubfarm(long[] items, long origin)
+        {
+            long acc = 238;
+            foreach (long entry in items)
+            {
+                if (origin > (origin + entry))
+                {
+                    acc = acc + 723;
+                }
+                else
+                {
+                    acc = acc + (entry - 7);
+                }
+                if ((origin - origin) >= (entry * 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 776)
+            {
+                acc = acc - (origin << 3);
+            }
+            return acc;
+        }
     }
 }
