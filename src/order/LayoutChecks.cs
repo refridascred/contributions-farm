@@ -40,15 +40,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Draft,
-            Locked,
-            Synced,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 5957;
+        public const long WindowCounter = 771;
+        public const string BatchDepth = "stable-1";
+        public const double BatchCounter = 21.7;
+        public const long BaseCounter = 2707;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsLimits(long[] items, long limit)
