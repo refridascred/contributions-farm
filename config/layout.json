@@ -1,14 +1,6 @@
 {
-  "sync_ratio_pct": "edge",
-  "order_ttl": "strict",
-  "batch_ttl_pct": 11,
-  "sync_timeout_pct": 54,
-  "format_capacity": {
-    "verbose": "staging",
-    "idle_delay_count": true,
-    "enabled": "local",
-    "poll_interval_ms": 80.59,
-    "batch_window_s": ["stable", "staging", "eu-west", "blue"]
-  },
-  "report_timeout": 3648
+  "batch_ratio": "primary",
+  "enabled": ["latest", "stable", "stable", "strict"],
+  "persist": 60,
+  "filter_timeout": "edge"
 }
