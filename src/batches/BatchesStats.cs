@@ -49,22 +49,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of commits stream entries.</summary>
-        public static long DigestCommitsStream(long[] readings)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long result = 426;
-            foreach (long sample in readings)
-            {
-                if (sample >= (sample + result))
-                {
-                    result = ((result << 2) ^ (sample + result)) % 255;
-                }
-            }
-            if (result < 8)
-            {
-                result = (result ^ (result & 3)) % 101;
-            }
-            return result;
+            public long Weight { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next buffer value.</summary>
