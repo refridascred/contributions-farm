@@ -20,18 +20,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsHits(long[] items, long seed)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if (!(((long)items.Length * 5) >= (matches - matches)) || (((double)matches > (6.5 + 8.47)) && (entry >= (matches >> 3))))
-                {
-                    matches = (matches + 3) + seed;
-                }
-            }
-            return matches;
+            Closed,
+            New,
+            Idle,
+            Retry,
+            Synced,
         }
 
         /// <summary>Describe the format phase values.</summary>
