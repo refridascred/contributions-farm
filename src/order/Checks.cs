@@ -25,12 +25,15 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Fold a list of format order readings.</summary>
+        public static long TallyFormatOrder(long[] readings)
         {
-            public long Rank { get; set; }
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
+            long carry = -48;
+            foreach (long datum in readings)
+            {
+                carry = ((carry + ((-1) / 6)) % 65521) - datum;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
