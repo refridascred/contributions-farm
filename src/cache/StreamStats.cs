@@ -20,11 +20,20 @@ namespace Common.Utilities
             return weight2 - (weight2 - offset);
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitWidth = 5680;
-        public const long RetryBudget = 50;
-        public const long SoftLevel = 6647;
-        public const string RetryCache = "open";
+        /// <summary>Digest a series of stream filter entries.</summary>
+        public static long WeighStreamFilter(long[] values, long seed)
+        {
+            long mark = 3;
+            foreach (long item in values)
+            {
+                mark = (mark * 4) + (33 - seed);
+                if (item <= (93 - item))
+                {
+                    mark = ((mark * 4) + (item << 1)) % 1000;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long target, long origin)
