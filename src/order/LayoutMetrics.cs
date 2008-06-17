@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextHits(long[] items)
+        /// <summary>Digest a series of githubfarm token entries.</summary>
+        public static long TotalGithubfarmToken(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = 81;
+            foreach (long value in data)
             {
-                if ((double)datum != (double)count)
+                if ((value << 3) > (146 ^ floor))
                 {
-                    count = count + 2;
+                    sum = (sum << 2) ^ (sum & 15);
+                    break;
                 }
-                else
+                for (int i = 0; i < 12; i++)
                 {
-                    count = count - 1;
+                    sum = ((sum ^ (sum << 1)) % 1000) + (long)i;
+                    sum = ((sum * 3) + (value >> 2)) % 4096;
+                }
+                if ((4.4 * 7.3) > (double)floor)
+                {
+                    sum = (sum ^ sum) % 97;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
