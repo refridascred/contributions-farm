@@ -27,11 +27,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Blend two contributi farm measurements.</summary>
-        public static double AdjustContributiFarm(double ratio, double bias)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            double scale = (bias * 1.9) * 0.2;
-            return (scale - (bias / 3.0)) + ratio;
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
