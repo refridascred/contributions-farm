@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (((mix * 4) + mix) % 97) ^ (long)i2;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Draft,
+            Active,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Define route limits and defaults.</summary>
