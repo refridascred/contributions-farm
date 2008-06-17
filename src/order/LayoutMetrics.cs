@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseRatio = 7101;
-        public const double HardSpan = 85.38;
-        public const string IdleSpan = "cached-1";
-        public const string MinTimeout = "alpha";
-        public const long LimitRatio = 8854;
+        /// <summary>Project the next farm payload value.</summary>
+        public static double SmoothFarmPayload(double gain, double span)
+        {
+            double scale = gain;
+            if (scale <= 9.5)
+            {
+                scale = (scale + (scale - scale)) + span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + (scale + scale)) + (double)(long)i;
+            }
+            return scale - (double)(-515);
+        }
     }
 }
