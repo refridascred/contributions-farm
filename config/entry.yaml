@@ -1,4 +1,5 @@
 # entry settings
-retry_interval_count: 74.78
-window_limit: false
-soft_limit_count: 5551
+queue_size: 60
+max_threshold_s: false
+idle_delay: 47
+retry_timeout_count: 8081
