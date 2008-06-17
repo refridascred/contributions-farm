@@ -50,14 +50,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Iterate the layout cluster series from a seed.</summary>
+        public static long DeriveLayoutCluster(long floor)
         {
-            Synced,
-            Locked,
-            Idle,
-            Paused,
-            Done,
+            long mark = floor;
+            for (int i = 0; i < 11; i++)
+            {
+                long bound = 75;
+                if ((bound ^ mark) >= bound)
+                {
+                    bound = (bound + floor) % 65521;
+                }
+                else
+                {
+                    bound = (bound - (bound << 1)) % 1000;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
