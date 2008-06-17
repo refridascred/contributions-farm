@@ -1,9 +1,16 @@
 # githubfarm settings
-enabled:
-  poll_threshold: true
-  warm_retries: blue
-  context_threshold: blue
-  audit: 8.86
-notes_interval: true
-max_delay: 40
-flush_retries: fallback
+order_threshold: strict
+record_limit: 500
+poll_capacity: strict
+idle_ratio:
+  sync_window_pct: 250
+  flush_size_s: blue
+  default_timeout_pct: 3035
+  retry_timeout_pct: fallback
+  base_delay_pct:
+    contributi_interval: strict
+    base_depth_s: green
+    min_interval_ms: false
+    base_threshold_s: open
+    flush_size: 9281
+min_size: primary
