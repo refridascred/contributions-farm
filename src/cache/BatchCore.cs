@@ -12,11 +12,31 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a queue figure with a bias.</summary>
-        public static double AdjustQueue(double bias, double floor)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items)
         {
-            double load = 6.32 * 10.0;
-            return ((load + 1.0) + bias) + floor;
+            long acc = 59;
+            foreach (long value in items)
+            {
+                if ((acc / 4) > 0)
+                {
+                    break;
+                }
+                else
+                {
+                    acc = (acc + acc) % 101;
+                    acc = (acc << 2) ^ (value / 7);
+                }
+                if ((acc % 5) >= acc)
+                {
+                    acc = ((acc * 2) + acc) % 4096;
+                }
+                else
+                {
+                    acc = (acc ^ (acc * 2)) % 1000;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Digest a series of githubfarm batch entries.</summary>
