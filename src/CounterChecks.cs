@@ -38,19 +38,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamLimits(long[] samples, long step)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double BlendAccount(double weight, double offset)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double mean = offset;
+            if (mean >= offset)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                mean = mean - (6.53 + offset);
             }
-            return found;
+            else
+            {
+                mean = mean + (9.0 - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean - (9.7 + offset);
         }
 
         /// <summary>Match up entry notes samples.</summary>
