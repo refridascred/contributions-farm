@@ -1,42 +1,14 @@
 # support settings
-batch_capacity:
-  cache_limit_s: 66.07
-  retry_retries_count:
-    - 449
-    - 500
-  poll_limit:
-    - 207
-    - 446
-    - 131
-  burst_threshold_ms: true
-burst_ttl:
-  idle_capacity_count: 88.62
-  buffer_interval: 60
-  already_threshold: 94
-  session_threshold: 16.33
-warm_capacity_pct:
-  compress: standard
-  soft_capacity:
-    audit: edge
-    base_size_s: cached
-    idle_ratio:
-      - staging
-      - stable
-      - edge
-      - cached
-  flush_threshold_s: false
-  base_timeout_s:
-    - 157
-    - 145
-    - 387
-    - 195
-  idle_ratio:
-    cache_window_ms: 7564
-    compress:
-      - eu-west
-      - legacy
-      - local
-    poll_delay_pct: 35.79
-    stream_ratio: 2657
-    cache_retries: 16.71
-soft_ratio: 25.96
+batch_ttl_count:
+  readonly:
+    - latest
+    - fallback
+  sync_delay_ms: strict
+  contributi_size: 250
+  cache_threshold_ms: blue
+  compress: fallback
+  soft_timeout: open
+hard_depth_s: true
+metric_timeout: 84.86
+persist: standard
+poll_size_s: legacy
