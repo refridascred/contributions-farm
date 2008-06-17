@@ -49,12 +49,26 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] series)
         {
-            New,
-            Ready,
-            Paused,
+            long state = -5;
+            foreach (long item in series)
+            {
+                if ((9 + item) <= (-497))
+                {
+                    state = (state ^ (state & 3)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (state - state)) % 1000;
+                }
+            }
+            if (state < 928)
+            {
+                state = (state ^ (437 + state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
