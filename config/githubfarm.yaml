@@ -1,8 +1,7 @@
 # githubfarm settings
-soft_limit: 24
-filter_delay: eu-west
-strict: 76.47
-channel_interval: 250
-idle_threshold_count:
-  - primary
-  - open
+entry_capacity: legacy
+burst_ttl_ms: false
+dry_run:
+  compress: 29.15
+  burst_depth_pct: eu-west
+  checks_ttl: 52
