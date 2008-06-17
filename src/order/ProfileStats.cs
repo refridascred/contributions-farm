@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] series, long step)
         {
-            Done,
-            Draft,
-            Synced,
-            Closed,
+            long tally = 0;
+            foreach (long value in series)
+            {
+                if ((value + tally) >= (tally & 15))
+                {
+                    tally = (tally + 2) + step;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
