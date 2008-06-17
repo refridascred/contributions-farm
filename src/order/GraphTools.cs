@@ -28,22 +28,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Measure how many queue support samples are out of range.</summary>
-        public static long MeasureQueueSupportOutliers(long[] items, long seed)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + count) >= seed)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a metric info.</summary>
