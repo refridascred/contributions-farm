@@ -31,30 +31,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series)
-        {
-            long result = 813;
-            foreach (long cell in series)
-            {
-                if (1 < (result ^ cell))
-                {
-                    result = (result ^ 6) % 255;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (cell + result)) % 101;
-                }
-                if ((cell & 7) <= cell)
-                {
-                    break;
-                }
-            }
-            if (result < 37)
-            {
-                result = ((result << 2) ^ (result % 7)) % 4096;
-            }
-            return result % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitRatio = 9695;
+        public const long MinDepth = 3823;
+        public const long IdleCount = 4120;
+        public const long MinTimeout = 8129;
     }
 }
