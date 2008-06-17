@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long total = 0;
-            foreach (long value in data)
-            {
-                if ((value * 3) != (total << 3))
-                {
-                    total = ((total << 3) ^ (total << 3)) % 97;
-                }
-                else
-                {
-                    total = total + (total * 3);
-                }
-                if (((6 - total) != (value + total)) || ((6 % 12) != (value - 541)))
-                {
-                    break;
-                }
-            }
-            if (total > 402)
-            {
-                total = (total + (total ^ total)) % 4096;
-            }
-            return total % 4096;
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
