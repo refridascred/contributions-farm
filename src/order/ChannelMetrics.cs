@@ -16,13 +16,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] samples, long bound)
         {
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (datum < (datum & 7))
+                {
+                    tally = (tally + 2) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
