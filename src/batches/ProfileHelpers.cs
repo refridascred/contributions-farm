@@ -59,21 +59,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Fold a list of already account readings.</summary>
+        public static long TotalAlreadyAccount(long[] samples)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 217;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total + (datum % 97);
+                if ((datum & 7) < ((long)samples.Length << 3))
                 {
-                    if ((samples[i] - samples[j]) != 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return total % 4096;
         }
 
         /// <summary>Hold a filter summary.</summary>
