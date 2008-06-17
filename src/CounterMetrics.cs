@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] data, long bound)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = 77;
-            foreach (long item in data)
-            {
-                if ((double)item < (2.03 - 4.66))
-                {
-                    acc = acc ^ (bound + bound);
-                }
-            }
-            return acc % 4096;
+            public long Level { get; set; }
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the buffer level values.</summary>
