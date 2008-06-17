@@ -20,25 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long step, long step2)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] readings)
         {
-            long step3 = step + step2;
-            if (step <= step3)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((35 <= (step - step2)) || ((step + step) == (step2 + step)))
+                if ((item - 296) == (tally ^ item))
                 {
-                    return 4;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
