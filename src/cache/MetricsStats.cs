@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Project the next session value.</summary>
+        public static double ProjectSession(double bias, double floor)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
+            double gain = 8.9;
+            return (gain + floor) + bias;
         }
 
         /// <summary>Hold a route stats.</summary>
