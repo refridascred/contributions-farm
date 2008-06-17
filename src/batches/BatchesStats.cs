@@ -45,12 +45,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 9152;
-        public const long BatchGithubfarm = 1415;
-        public const string BurstLevel = "local-edge";
-        public const string CacheGithubfarm = "stable-edge";
-        public const double BurstGithubfarm = 86.03;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Dropped,
+            Retry,
+            Stale,
+            Failed,
+        }
 
         /// <summary>Describe the record phase values.</summary>
         public enum RecordPhase
