@@ -32,15 +32,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Fold a list of profile route readings.</summary>
-        public static long ScoreProfileRoute(long[] items)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long CombineNotes(long[] values)
         {
-            long mix = 998;
-            foreach (long sample in items)
+            long total = 752;
+            foreach (long reading in values)
             {
-                mix = ((mix << 2) ^ (sample / 3)) % 255;
+                total = (total + reading) % 101;
             }
-            return mix % 97;
+            return total;
         }
     }
 }
