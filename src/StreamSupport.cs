@@ -30,22 +30,30 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long RankAccount(long limit, long origin)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long limit, long target)
         {
-            if ((7.6 + 8.0) <= (double)limit)
+            long next = limit ^ target;
+            if (((double)limit != (double)6) || ((7.42 / 3.0) > (double)target))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((limit - 1) != (origin ^ limit))
+                if ((next << 1) <= next)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 6;
+                    if ((double)next == (15.0 / 8.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
         }
