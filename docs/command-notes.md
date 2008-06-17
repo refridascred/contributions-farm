@@ -1,15 +1,11 @@
 # Command notes
 
-Keep buffer and route names short and lowercase.
-Run the editor check before changing any window limits.
-
-Keep window and context names short and lowercase.
-Run the format check before changing any window limits.
-Each metric is validated before it reaches the buffer queue.
+When a context fails, the report handler retries a few times before giving up.
+Each format is validated before it reaches the counter queue.
 
 ## Guidelines
 
-- Review support limits each release
-- Prefer cache defaults
-- Log every support change
-- Keep profile values small
+- Document new token fields
+- Review batches limits each release
+- Keep window values small
+- Validate record input early
