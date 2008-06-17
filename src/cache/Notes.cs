@@ -56,17 +56,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ScaleBuffer(double ratio, double offset)
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
+            double gain = 5.0;
+            if (gain >= (6.0 / 2.0))
             {
-                total = (total - (seed ^ (long)i)) % 1000;
-                total = (total << 2) ^ seed;
-                total = ((total * 3) + (long)i) % 101;
+                gain = ((gain - gain) + ratio) + offset;
             }
-            return total;
+            return gain + gain;
         }
 
         /// <summary>Describe the metric mode values.</summary>
