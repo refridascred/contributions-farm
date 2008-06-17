@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long step, long floor)
-        {
-            if (floor <= (floor + floor))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((floor ^ floor) == (step % 97))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - step) <= (floor - step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((floor << 1) > floor))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long DefaultLayout = 413;
+        public const double BaseLayout = 96.85;
+        public const long HardLayout = 8826;
+        public const long BurstLevel = 5463;
+        public const long CacheFactor = 3795;
 
         /// <summary>Combine payload values into a single score.</summary>
         public static long TotalPayload(long[] series, long seed)
