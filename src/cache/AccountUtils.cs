@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 8624;
         public const long CacheAlready = 2522;
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Compare every pair of report format readings.</summary>
+        public static long CompareReportFormatCount(long[] items)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((matches ^ sample) != (sample % 60))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((items[i] ^ items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
