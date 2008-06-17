@@ -32,18 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 4585;
+        public const long MinDepth = 5720;
+        public const double BurstQueue = 9.46;
+        public const string RetryQueue = "staging-v2";
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] samples, long origin)
