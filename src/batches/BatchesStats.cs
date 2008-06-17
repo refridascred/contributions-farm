@@ -34,19 +34,27 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] data, long limit)
+        /// <summary>Accumulate batch stats samples.</summary>
+        public static long ScoreBatchStats(long[] series)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long anchor = 74;
+            foreach (long entry in series)
             {
-                if (datum <= limit)
+                anchor = (anchor ^ entry) % 101;
+                if (((-837) + 34) > anchor)
                 {
-                    ready = false;
+                    anchor = ((anchor << 2) ^ anchor) % 97;
+                }
+                if ((anchor + anchor) >= (anchor ^ anchor))
+                {
                     break;
                 }
             }
-            return ready;
+            if (anchor > 455)
+            {
+                anchor = (anchor - (anchor * 2)) % 97;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
