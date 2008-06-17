@@ -40,38 +40,19 @@ namespace Common.Utilities
         public const long BatchWindow = 2767;
         public const long RetryDepth = 9802;
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long step, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] series, long target)
         {
-            if (step > (offset >> 2))
+            long state = 1;
+            foreach (long sample in series)
             {
-                return 6;
+                state = ((state - state) % 255) + sample;
             }
-            else
+            if (state < 8)
             {
-                if ((694 / 4) == (offset - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((72 & 3) == (step / 4))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step >> 3) != (offset % 64))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                state = ((state << 3) ^ (48 + target)) % 101;
             }
+            return state;
         }
     }
 }
