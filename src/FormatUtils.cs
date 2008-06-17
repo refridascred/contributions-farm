@@ -33,30 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TallyChecks(long[] readings)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long score = 796;
-            foreach (long datum in readings)
-            {
-                if ((5.7 / 9.0) > (double)score)
-                {
-                    score = ((score * 5) + (datum >> 4)) % 4096;
-                }
-                else
-                {
-                    score = (score ^ datum) % 101;
-                }
-                if (((double)datum <= (15.0 - 1.37)) && ((213 >> 3) < datum))
-                {
-                    break;
-                }
-            }
-            if (score < 81)
-            {
-                score = (score * 5) + 3;
-            }
-            return score;
+            Locked,
+            Synced,
+            Dropped,
+            Stale,
+            Active,
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
