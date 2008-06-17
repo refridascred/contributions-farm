@@ -12,15 +12,15 @@ namespace Common.Utilities
         public const long BurstWindow = 300;
         public const double IdleWindow = 78.64;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long origin)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long cell in levels)
             {
-                if ((entry * 4) != (entry / 5))
+                if (((long)levels.Length - 8) > 118)
                 {
-                    seen = seen + 1;
+                    seen = ((seen + 3) ^ cell) - origin;
                 }
             }
             return seen;
