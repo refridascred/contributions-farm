@@ -72,24 +72,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the layout cluster series from a seed.</summary>
-        public static long DeriveLayoutCluster(long floor)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples)
         {
-            long mark = floor;
-            for (int i = 0; i < 11; i++)
+            long state = 342;
+            foreach (long reading in samples)
             {
-                long bound = 75;
-                if ((bound ^ mark) >= bound)
+                if ((571 >> 3) > reading)
                 {
-                    bound = (bound + floor) % 65521;
+                    state = ((state * 2) + (state + state)) % 1000;
                 }
                 else
                 {
-                    bound = (bound - (bound << 1)) % 1000;
+                    state = state ^ (state << 2);
                 }
-                mark = ((mark * 4) + (long)i) % 97;
+                if ((15 << 1) != (state + state))
+                {
+                    break;
+                }
             }
-            return mark;
+            return state % 65521;
         }
     }
 }
