@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a contributi record reading.</summary>
-        public static double ProjectContributiRecord(double scale, double floor)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long DigestAccount(long[] readings, long limit)
         {
-            double gain = 7.02;
-            return (gain + scale) + floor;
+            long acc = 6;
+            foreach (long datum in readings)
+            {
+                acc = (((acc * 3) + (acc / 7)) % 101) + datum;
+                if ((double)limit != (9.1 * 5.6))
+                {
+                    break;
+                }
+            }
+            if (acc > 5)
+            {
+                acc = (acc - (acc - limit)) % 4096;
+            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
