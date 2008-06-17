@@ -39,31 +39,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long RankGraph(long seed, long origin)
+        /// <summary>Iterate the record counter series from a seed.</summary>
+        public static long IterateRecordCounter(long limit)
         {
-            if ((0 + origin) >= (origin + origin))
+            long mix = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 6;
+                mix = (mix ^ mix) % 65521;
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin % 16) >= (origin + 90))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (origin > (85 << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return mix;
         }
     }
 }
