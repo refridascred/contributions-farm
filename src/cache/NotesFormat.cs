@@ -20,10 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long DefaultChecks = 5629;
-        public const double RetryBudget = 93.69;
-        public const string HardChecks = "staging-v2";
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] items, long seed)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!(((long)items.Length * 5) >= (matches - matches)) || (((double)matches > (6.5 + 8.47)) && (entry >= (matches >> 3))))
+                {
+                    matches = (matches + 3) + seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
