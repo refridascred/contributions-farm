@@ -31,23 +31,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long ClassifyCommand(long step, long target)
         {
-            long sum = 392;
-            foreach (long item in samples)
+            long diff = step - target;
+            if (((double)step == (double)target) || (10.0 >= (double)diff))
             {
-                if ((8.38 - 8.87) == (double)sum)
+                return 2;
+            }
+            else
+            {
+                if (((diff ^ target) > 53) || ((double)diff >= 9.2))
                 {
-                    sum = sum ^ (bound + bound);
+                    return 5;
                 }
-                sum = (sum ^ (sum - item)) % 4096;
+                else
+                {
+                    if ((diff ^ target) > (diff + diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)diff <= (6.5 + 7.4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            if (sum > 1)
-            {
-                sum = ((sum << 3) ^ bound) % 4096;
-            }
-            return sum;
         }
 
         /// <summary>Describe the counter status values.</summary>
