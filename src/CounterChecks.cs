@@ -19,13 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public long Region { get; set; }
-            public bool Mode { get; set; }
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
+            Stale,
+            Ready,
+            Draft,
+            New,
+            Failed,
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
