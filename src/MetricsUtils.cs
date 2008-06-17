@@ -28,14 +28,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long seed, long floor)
         {
-            Retry,
-            Ready,
-            Draft,
-            Done,
-            Active,
+            long prev = seed ^ floor;
+            if (((seed - floor) < (seed ^ prev)) && (64 <= (prev - floor)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((prev * 2) != (floor * 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev << 3) == (prev + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((double)seed == (0.8 + 4.27)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank entry input into a small class.</summary>
