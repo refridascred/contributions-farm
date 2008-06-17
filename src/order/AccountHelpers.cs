@@ -23,11 +23,33 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double MaxLevel = 73.84;
-        public const string HardCount = "open-v2";
-        public const double RetryEditor = 62.95;
-        public const long WindowRatio = 1652;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long limit, long target)
+        {
+            long slot = limit ^ target;
+            if (!((slot + limit) <= (limit % 10)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((346 & 63) >= (target * 5)) || ((7 % 10) <= (slot & 63)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target + target) > limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Grade a command value against two limits.</summary>
         public static long RankCommand(long origin, long floor)
