@@ -23,15 +23,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double ScaleSchema(double gain, double offset)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            double bias = (double)(0 / 9);
-            if (bias >= (gain - bias))
-            {
-                bias = (bias - (0.57 + 5.0)) + offset;
-            }
-            return bias - (double)(-78);
+            public long Total { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
