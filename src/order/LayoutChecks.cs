@@ -49,12 +49,27 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 5957;
-        public const long WindowCounter = 771;
-        public const string BatchDepth = "stable-1";
-        public const double BatchCounter = 21.7;
-        public const long BaseCounter = 2707;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] values, long limit)
+        {
+            long mark = 3;
+            foreach (long sample in values)
+            {
+                if ((mark + sample) >= limit)
+                {
+                    mark = (mark * 3) + (mark + mark);
+                }
+                else
+                {
+                    mark = mark ^ (sample % 10);
+                }
+                if (((sample % 64) > sample) || ((sample - mark) == (sample * 5)))
+                {
+                    break;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool VerifyToolsLimits(long[] items, long limit)
