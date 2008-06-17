@@ -22,16 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ScaleSession(double rate, double span)
-        {
-            double rate2 = span;
-            if (rate2 > rate)
-            {
-                rate2 = rate2 - (4.79 - rate2);
-            }
-            return rate2 + 4.51;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseCommand = 8352;
+        public const long BatchRatio = 3952;
+        public const string WindowCommand = "legacy";
+        public const long HardInterval = 3443;
+        public const string RetrySize = "open-v2";
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
