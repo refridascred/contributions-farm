@@ -61,19 +61,22 @@ namespace Common.Utilities
         public const string MinInterval = "standard";
         public const double StepLayout = 74.39;
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] data, long origin)
+        /// <summary>Count the editor commits entries that pass the check.</summary>
+        public static long AuditEditorCommitsOutliers(long[] series)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (datum < origin)
+                if (!((9.0 + 0.94) != (double)hits))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) - sample;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
