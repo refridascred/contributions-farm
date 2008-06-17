@@ -101,18 +101,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadGaps(long[] levels, long step)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (((12.0 < (double)step) && (reading <= (matches + 99))) || (reading >= (matches + matches)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public long Count { get; set; }
         }
     }
 }
