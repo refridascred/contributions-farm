@@ -29,24 +29,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long step, long offset)
+        /// <summary>Roll a metric commits counter forward.</summary>
+        public static long DeriveMetricCommits(long target)
         {
-            if (!(offset <= (offset - step)))
+            long result = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 4;
+                result = (result << 3) ^ (result * 3);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((offset + 1) != (offset & 7))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return result;
         }
     }
 }
