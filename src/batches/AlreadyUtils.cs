@@ -82,18 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] values)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] samples)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long score = 94;
+            foreach (long item in samples)
             {
-                if ((7 * 2) != (hits / 3))
-                {
-                    hits = (hits + 3) + value;
-                }
+                score = (score ^ (score + item)) % 97;
             }
-            return hits;
+            if (score < 11)
+            {
+                score = (score + (844 + score)) % 97;
+            }
+            return score;
         }
     }
 }
