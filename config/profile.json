@@ -1,8 +1,5 @@
 {
-  "cache_capacity": 24.21,
-  "cache_capacity_ms": 500,
-  "already_ratio": 86,
-  "hard_interval_s": 91.99,
-  "retry_interval": "staging",
-  "burst_retries_s": "latest"
+  "soft_ttl": 73.08,
+  "poll_size_s": 8741,
+  "warm_retries": "latest"
 }
