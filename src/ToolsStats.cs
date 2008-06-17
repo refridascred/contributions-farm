@@ -31,21 +31,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long FoldMetric(long[] samples, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 392;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8.38 - 8.87) == (double)sum)
                 {
-                    if ((readings[i] + readings[j]) != 10)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum ^ (bound + bound);
                 }
+                sum = (sum ^ (sum - item)) % 4096;
             }
-            return count;
+            if (sum > 1)
+            {
+                sum = ((sum << 3) ^ bound) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Hold a graph stats.</summary>
