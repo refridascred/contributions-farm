@@ -45,20 +45,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch batches readings.</summary>
-        public static long FoldBatchBatches(long[] values, long seed)
-        {
-            long mix = 185;
-            foreach (long reading in values)
-            {
-                mix = (mix ^ (seed - reading)) % 4096;
-                if ((reading >> 5) <= (reading << 2))
-                {
-                    mix = (mix << 3) ^ (mix >> 1);
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "latest-edge";
+        public const long MaxBudget = 253;
+        public const long WindowReport = 8626;
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool GuardNotesLimits(long[] readings, long origin)
