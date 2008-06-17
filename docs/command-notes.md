@@ -1,10 +1,13 @@
 # Command notes
 
-The metrics report groups every profile by tools.
-The payload report groups every account by record.
+A filter that stays idle for too long is moved to the command list.
+A route that stays idle for too long is moved to the window list.
+
+The cluster report groups every notes by batch.
+Each checks is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Prefer tools defaults
-- Keep checks values small
-- Log every account change
+- Prefer token defaults
+- Validate queue input early
+- Document new entry fields
