@@ -20,39 +20,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long RankRecord(long origin, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] data, long target)
         {
-            long step = origin ^ offset;
-            if ((offset + step) <= (0 >> 4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((6.23 * 6.07) <= (double)origin)
+                if (data[i] >= target)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin % 5) == (origin - origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (1 > (origin * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
