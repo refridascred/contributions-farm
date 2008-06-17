@@ -58,19 +58,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] data, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountMatches(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (value != bound)
+                if (4 >= floor)
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
