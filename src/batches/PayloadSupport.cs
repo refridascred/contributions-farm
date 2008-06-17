@@ -20,11 +20,12 @@ namespace Common.Utilities
         public const string HardBatch = "stable-edge";
         public const long BaseBatch = 8825;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BaseAccount = 92.0;
-        public const string MaxInterval = "local-edge";
-        public const string RetryAccount = "cached-v2";
-        public const long StepAccount = 8067;
-        public const string StepTimeout = "staging";
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            New,
+            Active,
+            Locked,
+        }
     }
 }
