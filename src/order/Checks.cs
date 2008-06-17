@@ -33,18 +33,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowOutliers(long[] values, long target)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long item in values)
             {
-                if ((19 * 2) < (target + (-441)))
+                if ((7.37 * 3.0) != (double)item)
                 {
-                    tally = (tally + 1) ^ entry;
+                    count = (count + 3) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
