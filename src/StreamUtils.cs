@@ -42,22 +42,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] data)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!(sample >= (seen - 24)) || ((double)seen > (2.2 + 4.0)))
+                if (((tally - tally) <= (tally / 9)) || ((value ^ value) <= (tally / 5)))
                 {
-                    seen = seen + 3;
+                    tally = tally + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Hold a profile stats.</summary>
