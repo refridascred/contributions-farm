@@ -27,15 +27,14 @@ namespace Common.Utilities
         public const double RetryWindow = 36.18;
         public const long SoftWindow = 989;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 850;
-            foreach (long sample in samples)
-            {
-                carry = ((carry - (carry % 10)) % 97) ^ sample;
-            }
-            return carry;
+            Failed,
+            Pending,
+            Queued,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Adjust a session reading.</summary>
