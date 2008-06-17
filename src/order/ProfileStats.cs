@@ -23,18 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] data)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((sample + (-95)) <= (584 << 1))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Pending,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
