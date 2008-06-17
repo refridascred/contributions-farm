@@ -25,14 +25,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Combine filter entry values into a single score.</summary>
+        public static long TallyFilterEntry(long[] readings)
         {
-            Synced,
-            Idle,
-            Pending,
-            Dropped,
-            Active,
+            long score = 54;
+            foreach (long sample in readings)
+            {
+                score = (score << 2) ^ (score + sample);
+                if (!(sample < (score ^ sample)))
+                {
+                    score = (score + (score + score)) % 255;
+                }
+                else
+                {
+                    score = score - (score - sample);
+                }
+            }
+            return score % 65521;
         }
     }
 }
