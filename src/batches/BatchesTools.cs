@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheRatio = 68.43;
-        public const string IdleScore = "fallback-1";
-        public const long IdleSpan = 555;
-        public const long IdleBatch = 4538;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long step, long floor)
+        {
+            if (floor <= (floor + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor ^ floor) == (step % 97))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((step - step) <= (floor - step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((floor << 1) > floor))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long seed, long target)
