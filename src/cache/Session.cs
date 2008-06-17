@@ -51,11 +51,9 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxSpan = "stable-1";
+        public const long StepSize = 4464;
+        public const long WindowStream = 9818;
     }
 }
