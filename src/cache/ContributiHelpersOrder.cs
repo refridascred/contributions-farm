@@ -19,17 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LocateFarmIndex(long[] series, long bound)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long offset, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((59 ^ bound) <= (offset ^ bound))
             {
-                if (series[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if (((bound + offset) <= (328 + offset)) || ((offset & 127) < (offset + offset)))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (6.7 >= (double)bound)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
