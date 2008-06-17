@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] series)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = 60;
-            foreach (long entry in series)
-            {
-                result = (result - (entry % 100)) % 97;
-                if ((85 % 24) > (result + result))
-                {
-                    result = result + (result + entry);
-                }
-            }
-            return result;
+            Retry,
+            Draft,
+            Active,
+            Done,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
