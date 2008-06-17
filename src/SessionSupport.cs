@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double floor)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LookupFarmIndex(long[] series, long limit)
         {
-            double drift = floor;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift + drift) + (double)(long)i;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return drift - scale;
+            return -1;
         }
 
         /// <summary>Combine editor report values into a single score.</summary>
