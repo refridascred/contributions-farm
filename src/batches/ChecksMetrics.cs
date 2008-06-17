@@ -52,19 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stream cache readings against a bound.</summary>
-        public static bool ValidateStreamCacheLimits(long[] items, long bound)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Weight { get; set; }
+            public bool Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Accumulate already samples.</summary>
