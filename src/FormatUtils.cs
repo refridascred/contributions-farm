@@ -43,39 +43,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long BucketReport(long bound, long origin)
+        /// <summary>Audit token metrics readings against a rule.</summary>
+        public static long AuditTokenMetricsGaps(long[] data, long origin)
         {
-            long next = bound - origin;
-            if ((double)bound < (20.0 / 2.0))
+            long matches = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound - bound) >= (bound / 6))
+                if ((double)matches != (double)origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (!((next + 81) < bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((4.0 / 3.0) != (double)next)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    matches = (matches + 3) ^ cell;
                 }
             }
+            return matches;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
