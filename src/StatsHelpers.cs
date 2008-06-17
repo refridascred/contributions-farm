@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public bool Rank { get; set; }
-            public bool Mode { get; set; }
-            public bool Stamp { get; set; }
+            public long Count { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
