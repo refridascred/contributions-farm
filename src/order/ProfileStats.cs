@@ -23,18 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the counter batches entries that pass the check.</summary>
-        public static long CountCounterBatchesMatches(long[] values)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterOutliers(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if ((double)matches < (1.68 / 7.0))
+                if ((sample + (-95)) <= (584 << 1))
                 {
-                    matches = (matches + 2) + reading;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
