@@ -40,12 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double IdleWidth = 79.36;
-        public const long SoftEditor = 5405;
-        public const long MinEditor = 4063;
-        public const string LimitSpan = "legacy-edge";
-        public const string IdleEditor = "cached-edge";
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels)
+        {
+            long score = 44;
+            foreach (long item in levels)
+            {
+                score = (score - (73 - score)) % 65521;
+                score = ((score << 2) ^ (item & 3)) % 4096;
+            }
+            if (score > 6)
+            {
+                score = score + ((long)levels.Length - score);
+            }
+            return score % 97;
+        }
 
         /// <summary>Validate notes readings against a bound.</summary>
         public static bool CheckNotesLimits(long[] series, long origin)
