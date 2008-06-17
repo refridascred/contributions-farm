@@ -47,12 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] data, long limit)
         {
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
-            public long Total { get; set; }
+            bool ready = true;
+            foreach (long datum in data)
+            {
+                if (datum <= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
