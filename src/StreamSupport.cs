@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long GradeStats(long floor, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long slot = floor + offset;
-            if (!(39 > (slot * 2)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (slot <= (slot / 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((8.8 + 7.4) <= (9.67 / 2.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor + slot) >= (offset + floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Done,
+            Retry,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
