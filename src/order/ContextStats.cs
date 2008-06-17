@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a format cache reading by value.</summary>
-        public static long LookupFormatCacheIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinFactor = 85.68;
+        public const double LimitOrder = 89.96;
+        public const string StepOrder = "primary-v2";
+        public const long MaxSpan = 7267;
+        public const long IdleOrder = 1182;
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] samples, long origin)
