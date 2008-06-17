@@ -35,17 +35,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            long score = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                score = ((score * 3) + ((long)i << 3)) % 1000;
-                score = (score + ((long)i >> 5)) % 65521;
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            Active,
+            Failed,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the route level values.</summary>
