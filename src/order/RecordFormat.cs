@@ -40,19 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double mean = ratio;
-            if (mean <= (floor * 1.0))
-            {
-                mean = mean - 2.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + ratio) + (double)(long)i;
-            }
-            return mean - (8.79 * 2.0);
+            Done,
+            Queued,
+            Failed,
+            Pending,
+            Paused,
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
