@@ -1,23 +1,31 @@
 # githubfarm settings
-default_depth_ms: eu-west
-report_ttl: local
-filter_ratio:
-  default_depth_pct: 24.38
-  metrics_capacity: 86.93
-  hard_threshold_pct:
-    - 231
-    - 142
-    - 414
-    - 29
-  batch_threshold: stable
-  verbose: 36.17
-  window_capacity:
-    order_capacity: 5201
-    sync_depth_pct: 250
-    compress: 1209
-    queue_retries: 60
-    cache_ratio: true
-    graph_capacity: 29
-enabled: true
-idle_retries: edge
-hard_ratio: 59.56
+readonly:
+  batch_threshold: 9930
+  command_threshold: staging
+  base_delay_count: false
+  warm_size_s: 613
+  flush_retries_count:
+    - fallback
+    - local
+    - standard
+    - cached
+commits_limit:
+  - edge
+  - local
+  - primary
+sync_retries_ms:
+  - 175
+  - 463
+  - 236
+verbose:
+  base_capacity_pct: latest
+  enabled:
+    max_ratio_count: legacy
+    compress: strict
+    checks_ratio: legacy
+    strict:
+      - green
+      - latest
+    max_window_pct: 74.37
+  max_window_s: 250
+base_ratio_pct: 4579
