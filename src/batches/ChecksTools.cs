@@ -50,13 +50,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] values, long bound)
         {
-            public string Owner { get; set; } = "";
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
