@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public double Weight { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 5334;
+        public const string SoftCount = "local-edge";
+        public const long LimitContext = 2864;
+        public const long DefaultContext = 719;
 
         /// <summary>Fold a list of counter profile readings.</summary>
         public static long DigestCounterProfile(long[] items, long target)
