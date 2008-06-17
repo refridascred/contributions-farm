@@ -1,8 +1,5 @@
 # entry settings
-compress: strict
-verbose:
-  - fallback
-  - latest
-  - cached
-  - standard
-flush_depth_count: stable
+audit: 98
+burst_window: stable
+cache_size: strict
+poll_capacity_s: stable
