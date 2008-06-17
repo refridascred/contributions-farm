@@ -1,7 +1,10 @@
 {
-  "audit": "stable",
-  "soft_threshold": ["fallback", "strict", "fallback", "stable"],
-  "route_window": "stable",
-  "counter_window": 2131,
-  "sync_capacity_count": false
+  "window_delay": 7909,
+  "cache_depth": "legacy",
+  "sync_ratio": {
+    "soft_threshold_count": false,
+    "dry_run": true,
+    "max_ttl": ["legacy", "blue", "legacy"],
+    "cache_window_pct": "fallback"
+  }
 }
