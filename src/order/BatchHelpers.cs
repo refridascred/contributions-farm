@@ -24,28 +24,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long target)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] data, long seed)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((target ^ anchor) < (anchor * 2)))
+                if ((data[i] < seed) && ((data[i] % 3) != 0))
                 {
-                    anchor = (anchor - (long)i) % 65521;
+                    return (long)i;
                 }
-                if ((anchor <= (348 - anchor)) && (((long)i + anchor) != (long)i))
-                {
-                    anchor = (anchor + (7 + target)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (long)i) % 101;
-                    anchor = (anchor * 5) + (anchor & 1);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
     }
 }
