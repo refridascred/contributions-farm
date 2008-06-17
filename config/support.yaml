@@ -1,22 +1,4 @@
 # support settings
-burst_depth_count:
-  - legacy
-  - staging
-min_threshold_ms:
-  cache_ttl_count: standard
-  idle_interval_ms:
-    batch_delay_count: green
-    sync_capacity_ms: 7571
-    compress: true
-    commits_depth: 500
-    idle_interval_count: green
-  default_depth_count: 90.45
-  schema_threshold: true
-  max_delay: 23
-burst_window_s: true
-idle_limit_pct: 45.43
-sync_ratio:
-  - 237
-  - 249
-  - 348
-  - 418
+hard_size_s: 7452
+readonly: false
+sync_ttl: standard
