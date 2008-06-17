@@ -51,22 +51,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long TallyNotes(long[] series, long limit)
+        /// <summary>Locate a layout graph reading by value.</summary>
+        public static long FindLayoutGraphIndex(long[] levels, long seed)
         {
-            long anchor = 65;
-            foreach (long sample in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit + sample) < (anchor + 92))
+                if (levels[i] >= seed)
                 {
-                    anchor = anchor + (limit + anchor);
+                    return (long)i;
                 }
             }
-            if (anchor < 0)
-            {
-                anchor = ((anchor << 2) ^ 0) % 65521;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
