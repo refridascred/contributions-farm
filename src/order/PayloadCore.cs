@@ -34,21 +34,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count editor record pairs that satisfy a relation.</summary>
-        public static long CompareEditorRecordCount(long[] series)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 89;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)mix < (3.01 * 0.9))
                 {
-                    if ((series[i] ^ series[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = ((mix + (mix % 24)) % 65521) ^ datum;
+                }
+                else
+                {
+                    mix = (mix - mix) % 97;
                 }
             }
-            return tally;
+            return mix;
         }
     }
 }
