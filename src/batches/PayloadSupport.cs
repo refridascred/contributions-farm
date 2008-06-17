@@ -13,12 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            New,
-            Queued,
-            Retry,
+            Synced,
+            Stale,
+            Dropped,
             Locked,
         }
 
