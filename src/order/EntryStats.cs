@@ -52,14 +52,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
+            Active,
+            Synced,
             Draft,
-            Done,
-            Retry,
-            Failed,
-            Locked,
         }
     }
 }
