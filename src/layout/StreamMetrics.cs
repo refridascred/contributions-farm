@@ -62,19 +62,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate channel metric readings against a bound.</summary>
-        public static bool CheckChannelMetricRange(long[] levels, long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long ScoreContributi(long[] items)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            long sum = 72;
+            foreach (long datum in items)
             {
-                if (reading != origin)
+                if (sum >= (datum / 3))
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum * 4) + (37 ^ (long)items.Length)) % 255;
                 }
             }
-            return flag;
+            if (sum < 7)
+            {
+                sum = (sum << 3) ^ (833 * 5);
+            }
+            return sum % 1000;
         }
     }
 }
