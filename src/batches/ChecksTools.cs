@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Derive the next already metric value from a seed.</summary>
+        public static long IterateAlreadyMetric(long seed)
         {
-            Draft,
-            Idle,
-            Pending,
-            Dropped,
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = (sum << 2) ^ sum;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of window entries.</summary>
