@@ -5,31 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Grade a channel record value against two limits.</summary>
-        public static long RankChannelRecord(long bound, long origin)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            if ((bound + 503) == (origin * 2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((1 + (-86)) < bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin + bound) <= (origin - origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public double Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
