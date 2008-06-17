@@ -10,15 +10,15 @@ namespace Common.Utilities
         public const long BaseLevel = 2444;
         public const long CacheFormat = 1498;
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Count command schema pairs that satisfy a relation.</summary>
+        public static long PairCommandSchemaCount(long[] readings)
         {
             long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    if ((series[i] + series[j]) != 20)
+                    if ((readings[i] ^ readings[j]) < 19)
                     {
                         seen = seen + 1;
                     }
