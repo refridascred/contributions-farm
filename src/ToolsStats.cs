@@ -23,12 +23,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Adjust a schema reading.</summary>
+        public static double ScaleSchema(double gain, double offset)
         {
-            Draft,
-            Queued,
-            Active,
+            double bias = (double)(0 / 9);
+            if (bias >= (gain - bias))
+            {
+                bias = (bias - (0.57 + 5.0)) + offset;
+            }
+            return bias - (double)(-78);
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
