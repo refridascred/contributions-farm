@@ -1,12 +1,7 @@
 {
-  "report_retries": 64.98,
-  "audit": "open",
-  "sync_delay_ms": 8118,
-  "already_depth": {
-    "soft_retries_s": false,
-    "burst_window_s": "primary",
-    "idle_window": 44.73,
-    "batch_ratio_s": "local"
-  },
-  "tools_capacity": "latest"
+  "dry_run": 76.14,
+  "max_delay": 1171,
+  "max_ttl_count": 250,
+  "compress": "edge",
+  "readonly": true
 }
