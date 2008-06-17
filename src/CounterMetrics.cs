@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] data, long bound)
         {
-            Idle,
-            Done,
-            Ready,
-            Locked,
+            long acc = 77;
+            foreach (long item in data)
+            {
+                if ((double)item < (2.03 - 4.66))
+                {
+                    acc = acc ^ (bound + bound);
+                }
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two contributi metric measurements.</summary>
