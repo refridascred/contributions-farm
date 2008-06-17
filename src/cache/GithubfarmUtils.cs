@@ -39,16 +39,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the record counter series from a seed.</summary>
-        public static long IterateRecordCounter(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutGaps(long[] items, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                mix = (mix ^ mix) % 65521;
-                mix = ((mix * 5) + (long)i) % 101;
+                if (((step + step) < (datum / 9)) && (2 > matches))
+                {
+                    matches = matches + 2;
+                }
             }
-            return mix;
+            return matches;
         }
     }
 }
