@@ -46,15 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double ProjectContributi(double rate, double offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] readings, long seed)
         {
-            double gain = (double)(745 + 30);
-            if (gain > (5.7 / 2.0))
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                gain = ((gain - (double)74) + rate) - offset;
+                mix = (mix - (cell + 841)) + seed;
+                if ((long)readings.Length > (mix + 327))
+                {
+                    mix = (mix - (mix - cell)) % 4096;
+                }
             }
-            return gain - (gain * 9.6);
+            return mix % 1000;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
