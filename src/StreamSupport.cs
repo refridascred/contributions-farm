@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long TallyMetricGaps(long[] items, long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] items, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((13 % 100) != (origin ^ origin)) && ((double)count >= (5.0 - 2.57))) && ((8.5 + 7.0) >= (9.8 + 5.8)))
+                if (items[i] <= limit)
                 {
-                    count = (count + 2) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
