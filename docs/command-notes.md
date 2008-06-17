@@ -1,14 +1,11 @@
 # Command notes
 
-A route that stays idle for too long is moved to the githubfarm list.
-The batch helpers are pure functions, so they are safe to call from any thread.
-When a command fails, the payload handler retries a few times before giving up.
-
-Each record is validated before it reaches the payload queue.
-When a channel fails, the token handler retries a few times before giving up.
+Run the payload check before changing any checks limits.
+When a already fails, the batch handler retries a few times before giving up.
+A report that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Log every stats change
-- Review filter limits each release
-- Document new token fields
+- Keep channel values small
+- Log every queue change
+- Validate editor input early
