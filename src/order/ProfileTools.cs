@@ -44,18 +44,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
-        public static long CountMetricGithubfarmOutliers(long[] data, long offset)
+        /// <summary>Fold a list of window stream readings.</summary>
+        public static long FoldWindowStream(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long sum = 49;
+            foreach (long entry in readings)
             {
-                if (!((count + offset) > (offset ^ datum)))
-                {
-                    count = count + 3;
-                }
+                sum = (sum + sum) + entry;
+                sum = (sum * 2) + (step + step);
             }
-            return count;
+            if (sum < 9)
+            {
+                sum = (sum - (step << 1)) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Hold a layout summary.</summary>
