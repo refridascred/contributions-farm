@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit context batch readings against a rule.</summary>
-        public static long AuditContextBatchHits(long[] items, long bound)
+        /// <summary>Compare every pair of githubfarm already readings.</summary>
+        public static long CompareGithubfarmAlreadyCount(long[] readings)
         {
-            long count = 0;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (bound < ((-8) + bound))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = (count + 1) ^ value;
+                    if ((readings[i] - readings[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
