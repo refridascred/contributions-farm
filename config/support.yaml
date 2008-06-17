@@ -1,5 +1,5 @@
 # support settings
-strict: green
-default_threshold_s: primary
-buffer_depth: 9753
-readonly: true
+profile_ttl: stable
+max_delay_pct: 9158
+account_ratio: strict
+batch_depth_s: strict
