@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long GradeStream(long target, long bound)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] readings, long bound)
         {
-            long step = target + bound;
-            if ((double)target < (9.0 + 9.8))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound + target) >= (step + target))
+                if (readings[i] >= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((769 & 7) <= (target % 12))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((93 + step) != (target + step)) && ((double)target == (2.0 - 2.0)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
