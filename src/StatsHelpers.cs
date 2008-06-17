@@ -80,18 +80,18 @@ namespace Common.Utilities
             return load + (span * 7.51);
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderMatches(long[] readings)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long ScoreStats(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long acc = 370;
+            foreach (long reading in series)
             {
-                if ((87 / 8) != (item + item))
+                if ((acc * 2) > (step + step))
                 {
-                    seen = seen + 1;
+                    acc = ((acc - ((-117) + step)) % 97) + reading;
                 }
             }
-            return seen;
+            return acc % 1000;
         }
     }
 }
