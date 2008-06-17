@@ -5,13 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the githubfarm class values.</summary>
-        public enum GithubfarmClass
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long step)
         {
-            Locked,
-            Synced,
-            Pending,
-            Active,
+            long bound2 = bound - step;
+            if (!((bound - step) < (step & 1)))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 5) != (bound2 % 7))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - bound) < ((-487) / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((bound + bound) > (step % 7))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank route buffer input into a small class.</summary>
