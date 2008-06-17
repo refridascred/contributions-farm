@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
-        {
-            Paused,
-            Active,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBudget = 5893;
+        public const string RetryBatches = "staging";
+        public const string BurstBudget = "latest-v2";
+        public const long HardRatio = 1226;
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] items)
