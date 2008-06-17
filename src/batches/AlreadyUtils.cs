@@ -47,14 +47,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long target, long target2)
         {
-            Pending,
-            Idle,
-            Dropped,
-            Paused,
-            Stale,
+            long cur = target ^ target2;
+            if ((target2 - cur) >= cur)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((cur + target2) < 93)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target2 >= 2.2)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
