@@ -39,19 +39,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] readings, long limit)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterHits(long[] readings)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (reading > limit)
+                if (count < (sample + sample))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
