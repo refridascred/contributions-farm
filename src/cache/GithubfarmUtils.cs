@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (!((97 % 2) >= hits))
-                {
-                    hits = (hits + 2) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepReport = 5650;
+        public const long DefaultReport = 1450;
+        public const double SoftSpan = 32.37;
+        public const long MaxReport = 8530;
+        public const long BaseReport = 326;
 
         /// <summary>Derive the next route value from a seed.</summary>
         public static long StepRoute(long offset)
