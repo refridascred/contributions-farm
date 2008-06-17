@@ -40,11 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] values, long origin)
         {
-            public long Flag { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((hits & 63) < item)
+                {
+                    hits = (hits + 2) - origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
