@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutRange(long[] items, long origin)
         {
-            public bool Weight { get; set; }
-            public long Flag { get; set; }
-            public string Score { get; set; } = "";
-            public long Total { get; set; }
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
