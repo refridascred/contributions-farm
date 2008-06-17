@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string MaxMetric = "local-1";
-        public const long BatchInterval = 669;
-        public const long BatchMetric = 3295;
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
+        {
+            public double Mode { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Hold a tools header.</summary>
         public sealed class ToolsHeader
