@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long StepProfile(long target)
         {
-            public double Mode { get; set; }
-            public string Limit { get; set; } = "";
+            long state = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((9.53 / 8.0) != (double)target)
+                {
+                    state = (state - 914) % 101;
+                    state = (state << 3) ^ state;
+                    continue;
+                }
+                state = ((state * 5) + state) % 65521;
+                if (!(target < (target + state)))
+                {
+                    state = (state << 2) ^ ((long)i % 10);
+                }
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
