@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 2161;
+        public const long MaxRecord = 8370;
+        public const double BatchRecord = 25.31;
+        public const string HardTimeout = "stable-v2";
+        public const long LimitRecord = 5583;
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long floor)
