@@ -1,12 +1,8 @@
 {
-  "profile_threshold": [220, 248, 498],
-  "enabled": {
-    "poll_timeout_s": "green",
-    "warm_window": 66.9,
-    "min_limit_count": 42.48,
-    "flush_size": 8
-  },
-  "batches_ttl": "cached",
-  "contributi_timeout": ["strict", "staging", "fallback"],
-  "burst_ttl_count": "fallback"
+  "burst_capacity_pct": 10.98,
+  "cluster_interval": [478, 274, 200, 482],
+  "enabled": 100,
+  "hard_limit_pct": "edge",
+  "default_size_pct": "fallback",
+  "githubfarm_depth": "eu-west"
 }
