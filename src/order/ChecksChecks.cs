@@ -46,18 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long mark = 3;
-            foreach (long datum in readings)
-            {
-                if ((0 << 1) == (mark & 1))
-                {
-                    mark = (mark + datum) % 255;
-                }
-            }
-            return mark;
+            Idle,
+            Draft,
+            Ready,
         }
     }
 }
