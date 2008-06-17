@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long LookupRecordIndex(long[] levels, long origin)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] >= origin) && ((levels[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Describe the batches class values.</summary>
