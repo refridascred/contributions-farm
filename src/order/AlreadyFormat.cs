@@ -46,18 +46,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] levels, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long score = 2;
+            foreach (long cell in values)
             {
-                if (hits <= (hits - hits))
-                {
-                    hits = ((hits + 1) ^ item) + bound;
-                }
+                score = ((score - limit) % 4096) + cell;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
