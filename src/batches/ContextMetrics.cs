@@ -59,17 +59,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] values, long target)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
     }
 }
