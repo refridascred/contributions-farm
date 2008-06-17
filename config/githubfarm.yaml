@@ -1,10 +1,9 @@
 # githubfarm settings
-cache_retries_s: 39
-flush_ratio_count: 64
-default_capacity_ms: green
-base_ratio_s: fallback
-token_threshold: 13
-soft_ratio_pct:
-  - legacy
-  - strict
-  - legacy
+burst_depth_s: true
+enabled: blue
+readonly: false
+retry_capacity_s:
+  base_window: blue
+  compress: latest
+  cache_depth: false
+warm_depth_count: 88.34
