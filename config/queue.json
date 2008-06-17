@@ -1,6 +1,6 @@
 {
-  "batch_capacity_s": true,
-  "window_limit": 4677,
-  "route_threshold": [365, 331, 452],
-  "session_interval": [147, 438, 109, 344]
+  "cache_delay_pct": [122, 27, 264],
+  "readonly": 36,
+  "compress": [102, 357, 291, 458],
+  "max_ttl_pct": "edge"
 }
