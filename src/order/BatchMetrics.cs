@@ -68,17 +68,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long SeekGraphIndex(long[] samples, long offset)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double load = bias;
+            if (load > offset)
             {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
+                load = load + (2.0 + offset);
             }
-            return -1;
+            return load + (10.0 + 6.75);
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
