@@ -20,21 +20,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 801;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                score = (score - (score / 4)) ^ reading;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
