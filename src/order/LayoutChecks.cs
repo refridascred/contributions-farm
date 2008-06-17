@@ -15,11 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double BaseToken = 1.24;
-        public const long RetryScore = 3430;
-        public const long BatchDepth = 909;
-        public const long SoftToken = 828;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public bool Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+        }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] samples, long limit)
