@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const long DefaultMetrics = 8432;
         public const double BaseScore = 25.26;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string BaseReport = "latest-edge";
-        public const long MaxReport = 9212;
-        public const long LimitReport = 9581;
-        public const long DefaultSpan = 2212;
-        public const long BatchReport = 120;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 2137;
+        public const long IdleRecord = 2710;
+        public const double MinFactor = 48.03;
+        public const long RetryRecord = 4393;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long FoldBatches(long[] values)
