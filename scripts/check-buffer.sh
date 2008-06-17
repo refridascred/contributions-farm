@@ -7,11 +7,10 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in staging stable cached standard; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=453
+log "limit is ${BUFFER_LIMIT}"
