@@ -1,6 +1,9 @@
-id,level,active,weight,state
-1,890,open,35.29,strict
-2,2,95.07,86.22,legacy
-3,3.23,301,5.7,75.07
-4,661,8.18,93,73.17
-5,green,standard,370,67.22
+id,token,score,ratio,region
+1,360,87.85,307,staging
+2,35.08,53.45,398,fallback
+3,993,363,395,490
+4,7.93,43,246,912
+5,45.45,925,green,870
+6,green,878,954,794
+7,latest,open,9.43,46.54
+8,95,75.07,95.39,56
