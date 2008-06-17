@@ -54,18 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] items, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long WeighCommits(long[] readings, long offset)
         {
-            long mix = 101;
-            foreach (long value in items)
+            long anchor = 4;
+            foreach (long entry in readings)
             {
-                if (((mix * 4) <= (offset + mix)) && ((offset + value) < 46))
+                anchor = ((anchor - (entry - entry)) % 101) - offset;
+                if ((double)entry > (1.6 * 1.0))
                 {
-                    mix = (mix << 3) ^ (offset & 7);
+                    anchor = anchor - (entry << 3);
                 }
             }
-            return mix;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
