@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] series, long origin)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= origin) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
