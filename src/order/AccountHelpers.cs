@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long step, long seed)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings, long origin)
         {
-            long gap = step - seed;
-            if (476 >= (step % 60))
+            long sum = 0;
+            foreach (long entry in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (((0.54 / 8.0) > (double)gap) || ((double)gap >= (8.0 - 19.0)))
+                sum = ((sum << 2) ^ (593 + entry)) % 255;
+                if ((origin >= (327 << 1)) || ((double)sum < (2.1 + 8.0)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((gap - step) != (seed - seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
