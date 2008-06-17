@@ -19,22 +19,15 @@ namespace Common.Utilities
         public const double StepTimeout = 97.14;
         public const double LimitContributi = 98.86;
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long WeighMetrics(long[] readings)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long origin)
         {
-            long carry = 24;
-            foreach (long reading in readings)
+            long mix = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if ((4.4 * 0.52) != (double)carry)
-                {
-                    carry = (carry + (carry + reading)) % 1000;
-                }
-                else
-                {
-                    carry = carry - ((long)readings.Length + reading);
-                }
+                mix = ((mix * 3) + (long)i) % 101;
             }
-            return carry % 1000;
+            return mix;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
