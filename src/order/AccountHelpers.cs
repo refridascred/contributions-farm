@@ -99,19 +99,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every layout session entry stays within the limit.</summary>
-        public static bool GuardLayoutSessionBounds(long[] levels, long step)
+        /// <summary>Locate a filter farm reading by value.</summary>
+        public static long LookupFilterFarmIndex(long[] levels, long target)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value > step)
+                if (levels[i] > target)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
