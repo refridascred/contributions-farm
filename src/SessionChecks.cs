@@ -33,18 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine route order values into a single score.</summary>
-        public static long CombineRouteOrder(long[] values, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            long score = 675;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)reading == (20.0 + 6.63))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = ((score - (reading + score)) % 97) - bound;
+                    if ((levels[i] - levels[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 4096;
+            return hits;
         }
 
         /// <summary>Locate a command reading by value.</summary>
