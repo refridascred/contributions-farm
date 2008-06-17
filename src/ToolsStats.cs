@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many commits schema samples are out of range.</summary>
-        public static long AuditCommitsSchemaMatches(long[] values, long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            bool ok = true;
+            foreach (long cell in values)
             {
-                if (!((9.0 / 8.0) >= (double)matches))
+                if (cell < origin)
                 {
-                    matches = ((matches + 2) - reading) + bound;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
