@@ -41,11 +41,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Score { get; set; }
-            public double Level { get; set; }
+            public bool Stamp { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
