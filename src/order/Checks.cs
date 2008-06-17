@@ -33,15 +33,19 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ProjectSupport(double scale, double offset)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double floor)
         {
-            double scale2 = 0.1;
-            for (int i = 0; i < 9; i++)
+            double weight = (double)(602 >> 3);
+            if (weight < (double)4)
             {
-                scale2 = (scale2 + (double)(long)i) - scale;
+                weight = ((weight - (double)8) - gain) + floor;
             }
-            return scale2 + offset;
+            else
+            {
+                weight = weight + (3.57 * 1.0);
+            }
+            return weight - weight;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
