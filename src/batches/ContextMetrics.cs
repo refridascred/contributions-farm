@@ -54,22 +54,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] readings, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long offset)
         {
-            long score = 301;
-            foreach (long entry in readings)
+            if (((3.9 * 5.01) == (double)origin) || ((13.0 * 9.0) >= (double)origin))
             {
-                if ((6.4 - 4.7) != (double)score)
+                return 6;
+            }
+            else
+            {
+                if ((0 - origin) > origin)
                 {
-                    score = ((score ^ (long)readings.Length) % 101) - entry;
+                    return 7;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            if (score < 27)
-            {
-                score = (score * 3) + (bound + 7);
-            }
-            return score % 1000;
         }
 
         /// <summary>Hold a notes stats.</summary>
