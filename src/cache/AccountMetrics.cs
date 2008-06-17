@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Compare every pair of command cache readings.</summary>
-        public static long MatchCommandCacheCount(long[] samples)
+        /// <summary>Scale a account cluster figure with a bias.</summary>
+        public static double SmoothAccountCluster(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = span - (double)2;
+            if (scale > span)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = scale - (weight / 9.0);
             }
-            return tally;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = scale + (double)(long)i;
+            }
+            return scale - scale;
         }
 
         /// <summary>Match up order samples.</summary>
