@@ -1,16 +1,8 @@
 # entry settings
-tools_ratio: green
-batch_ttl_ms:
-  base_window_s: 74.7
-  metrics_ratio:
-    - primary
-    - legacy
-    - open
-  counter_threshold: 45.72
-  compress: cached
-  cache_threshold: 1485
-  idle_delay_ms: cached
-poll_limit_pct: 30
-base_ttl_ms: 8.5
-min_timeout_ms: true
-notes_interval: 85
+dry_run: standard
+default_ratio_count:
+  - 305
+  - 202
+  - 37
+warm_retries_s: 88
+buffer_ratio: 74
