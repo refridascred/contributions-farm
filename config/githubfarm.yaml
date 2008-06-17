@@ -1,15 +1,4 @@
 # githubfarm settings
-persist:
-  strict:
-    burst_window_count: green
-    verbose: 36.06
-    poll_retries_ms: primary
-  compress:
-    - open
-    - strict
-  sync_delay: open
-  checks_delay: 16.89
-min_delay_pct: 250
-cluster_size: true
-enabled: fallback
-burst_window_ms: staging
+channel_ratio: green
+order_timeout: false
+cache_window_s: eu-west
