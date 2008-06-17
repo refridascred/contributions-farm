@@ -31,11 +31,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            public long Weight { get; set; }
-            public bool Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
