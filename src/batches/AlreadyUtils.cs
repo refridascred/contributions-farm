@@ -59,19 +59,22 @@ namespace Common.Utilities
         public const string StepContext = "standard";
         public const string LimitContext = "alpha-1";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] samples)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] readings, long offset)
         {
-            long score = 94;
-            foreach (long item in samples)
+            long total = 721;
+            foreach (long entry in readings)
             {
-                score = (score ^ (score + item)) % 97;
+                if (entry >= (total % 60))
+                {
+                    total = ((total - total) % 255) - offset;
+                }
+                if ((double)956 > (double)entry)
+                {
+                    break;
+                }
             }
-            if (score < 11)
-            {
-                score = (score + (844 + score)) % 97;
-            }
-            return score;
+            return total;
         }
     }
 }
