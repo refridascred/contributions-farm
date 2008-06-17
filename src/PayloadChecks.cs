@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long MatchSupportCount(long[] values)
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long AuditContextBatchHits(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (bound < ((-8) + bound))
                 {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) ^ value;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many contributi payload samples are out of range.</summary>
