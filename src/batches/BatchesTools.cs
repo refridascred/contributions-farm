@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long item in data)
-            {
-                if (((double)item > (4.3 * 4.54)) && ((double)matches >= (20.0 / 8.0)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long RetryChannel = 6854;
+        public const long WindowChannel = 4730;
+        public const long RetryWidth = 6817;
+        public const string IdleChannel = "staging";
+        public const long IdleSize = 1085;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheSize = 4989;
