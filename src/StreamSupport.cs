@@ -50,18 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricOutliers(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaHits(long[] samples)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                if ((double)hits <= (1.1 + 6.0))
+                if (seen < (6 & 7))
                 {
-                    hits = (hits + 2) ^ reading;
+                    seen = (seen + 2) ^ value;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
