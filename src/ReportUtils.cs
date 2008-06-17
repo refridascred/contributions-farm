@@ -37,21 +37,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of channel report readings.</summary>
-        public static long CompareChannelReportCount(long[] series)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
