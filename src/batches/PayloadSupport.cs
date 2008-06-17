@@ -15,11 +15,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] items)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((1 % 5) < value)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
