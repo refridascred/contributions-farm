@@ -39,12 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the stats commits series from a seed.</summary>
+        public static long DeriveStatsCommits(long bound)
         {
-            Idle,
-            Locked,
-            Dropped,
+            long score = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                score = ((score << 2) ^ (score + score)) % 1000;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a window stats.</summary>
