@@ -67,11 +67,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] data)
         {
-            public long Count { get; set; }
-            public double Region { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((count - (-917)) >= (count * 5)) && (((entry + 53) == (count - 702)) && ((double)count > (double)9)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
