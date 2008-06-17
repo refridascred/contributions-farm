@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((9.0 / 8.0) != (double)sample) || ((916 % 97) > (tally + tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchInterval = 9973;
+        public const double BaseEditor = 24.5;
+        public const long MaxEditor = 6078;
+        public const long RetryEditor = 2617;
+        public const double MinSize = 73.64;
 
         /// <summary>Find the first buffer context entry that matches the target.</summary>
         public static long LookupBufferContextIndex(long[] levels, long target)
