@@ -30,11 +30,9 @@ namespace Common.Utilities
         public const double BatchDepth = 7.8;
         public const string LimitTimeout = "strict-v2";
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public long Limit { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double RetryWidth = 46.1;
+        public const long LimitStats = 1291;
+        public const double MinRatio = 71.1;
     }
 }
