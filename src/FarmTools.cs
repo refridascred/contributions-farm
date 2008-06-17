@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Match up schema filter samples.</summary>
-        public static long CompareSchemaFilterCount(long[] readings)
+        /// <summary>Roll a metric filter counter forward.</summary>
+        public static long SeriesMetricFilter(long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((result >= (offset >> 3)) || ((offset + result) < offset))
                 {
-                    if ((readings[i] + readings[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    long next = (offset ^ offset) ^ ((long)i << 3);
+                    result = result - next;
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Match up report queue samples.</summary>
