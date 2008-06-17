@@ -50,17 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a graph metrics reading by value.</summary>
-        public static long LocateGraphMetricsIndex(long[] data, long offset)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit stats metrics readings against a rule.</summary>
