@@ -39,18 +39,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items, long target)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool GuardWindowLimits(long[] readings, long offset)
         {
-            long sum = 0;
-            foreach (long item in items)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                if ((sum / 3) == (sum * 5))
+                if (item < offset)
                 {
-                    sum = sum ^ (item + target);
+                    ready = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return ready;
         }
     }
 }
