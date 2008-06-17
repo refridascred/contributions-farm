@@ -63,12 +63,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long origin)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate cache notes readings against a bound.</summary>
