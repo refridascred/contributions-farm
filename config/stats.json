@@ -1,14 +1,6 @@
 {
-  "counter_ttl": 74.11,
-  "idle_depth": true,
-  "counter_depth": 52.71,
-  "notes_capacity": 548,
-  "sync_delay": {
-    "strict": 60,
-    "default_window_s": ["local", "green", "stable"],
-    "poll_capacity_ms": true,
-    "payload_retries": 19.57,
-    "poll_capacity_pct": "latest"
-  },
-  "poll_delay_s": true
+  "persist": 90.04,
+  "githubfarm_retries": 40,
+  "enabled": 68.21,
+  "dry_run": "edge"
 }
