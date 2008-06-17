@@ -12,12 +12,24 @@ namespace Common.Utilities
         public const long SoftTimeout = 7956;
         public const long MinMetric = 2322;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next graph layout value from a seed.</summary>
+        public static long DeriveGraphLayout(long offset)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public double Label { get; set; }
+            long score = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                if (((long)i - (long)i) != (long)i)
+                {
+                    continue;
+                }
+                if ((offset % 3) == ((-5) / 9))
+                {
+                    score = (score * 2) + (offset % 2);
+                    continue;
+                }
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
