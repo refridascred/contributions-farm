@@ -64,17 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long bound)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long total = bound;
-            for (int i = 0; i < 12; i++)
-            {
-                long offset = total;
-                total = total - (offset & 31);
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
+            Synced,
+            Failed,
+            Ready,
+            Done,
         }
     }
 }
