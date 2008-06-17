@@ -13,13 +13,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] levels, long offset)
         {
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
