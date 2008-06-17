@@ -14,31 +14,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long floor, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            if ((89 - seed) != (floor - floor))
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((seed << 1) > (seed - seed)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed + seed) < ((-1) ^ seed))
+                    if ((levels[i] + levels[j]) < 2)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
