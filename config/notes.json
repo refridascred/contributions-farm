@@ -1,6 +1,8 @@
 {
-  "cache_window_s": "edge",
-  "token_threshold": 500,
-  "batch_threshold": true,
-  "cache_ttl": "fallback"
+  "githubfarm_size": 74.31,
+  "idle_ratio_count": [37, 191, 57, 265],
+  "strict": 8300,
+  "hard_ttl_ms": 71,
+  "poll_timeout_s": [62, 437],
+  "soft_limit_count": 53
 }
