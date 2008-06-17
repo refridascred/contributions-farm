@@ -30,14 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderHits(long[] samples, long floor)
         {
-            Idle,
-            Pending,
-            Synced,
-            Locked,
-            Stale,
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)item <= (double)tally)
+                {
+                    tally = (tally + 3) + floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
