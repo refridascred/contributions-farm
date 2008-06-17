@@ -12,16 +12,21 @@ namespace Common.Utilities
         public const long SoftScore = 2063;
         public const double DefaultInterval = 76.4;
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score - (long)i) % 1000;
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
