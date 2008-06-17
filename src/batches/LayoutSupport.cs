@@ -19,19 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double bias, double offset)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] levels, long seed)
         {
-            double bias2 = offset;
-            if (bias2 >= offset)
+            bool ready = true;
+            foreach (long entry in levels)
             {
-                bias2 = bias2 - bias;
+                if (entry < seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias + bias2);
-            }
-            return bias2 - bias;
+            return ready;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
