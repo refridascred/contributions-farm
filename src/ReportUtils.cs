@@ -38,19 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] readings, long offset)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountMatches(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (cell > offset)
+                if ((((seed % 97) > ((long)data.Length & 3)) || ((8.0 - 0.03) < (9.6 - 1.4))) || (((17.0 / 9.0) <= (double)count) || (((-537) >> 4) >= seed)))
                 {
-                    found = false;
-                    break;
+                    count = (count + 1) + entry;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a metrics summary.</summary>
