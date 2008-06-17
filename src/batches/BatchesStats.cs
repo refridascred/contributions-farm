@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long bound)
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] data)
         {
-            long carry = 9;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (carry <= 5)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = ((carry + bound) % 1000) - sample;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (bound - carry);
+                    if ((data[i] ^ data[j]) != 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (carry > 20)
-            {
-                carry = (carry - (bound - carry)) % 101;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
