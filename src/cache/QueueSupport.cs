@@ -33,15 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double scale, double bias)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            double weight = scale - (double)342;
-            if (weight < scale)
-            {
-                weight = (weight + (double)344) - bias;
-            }
-            return weight - weight;
+            Queued,
+            Idle,
+            Draft,
+            Paused,
+            New,
         }
 
         /// <summary>Digest a series of report entries.</summary>
