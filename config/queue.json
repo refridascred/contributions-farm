@@ -1,14 +1,6 @@
 {
-  "base_interval_pct": {
-    "metric_interval": 30,
-    "persist": {
-      "readonly": true,
-      "default_depth": 1024,
-      "burst_threshold_ms": 44,
-      "min_delay": "standard"
-    },
-    "dry_run": 78
-  },
-  "soft_threshold_pct": "fallback",
-  "token_timeout": "fallback"
+  "base_limit_count": 90,
+  "dry_run": 60.81,
+  "burst_depth_pct": "fallback",
+  "max_limit_s": "legacy"
 }
