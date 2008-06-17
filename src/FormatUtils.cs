@@ -47,19 +47,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] series, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] readings, long step)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= floor)
+                if (readings[i] > step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
