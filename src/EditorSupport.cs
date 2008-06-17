@@ -46,22 +46,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool ValidateFormatLimits(long[] readings, long offset)
         {
-            long anchor = 98;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in readings)
             {
-                if ((anchor + item) >= (7 >> 2))
+                if (cell < offset)
                 {
-                    anchor = anchor - anchor;
-                }
-                else
-                {
-                    anchor = anchor + (item ^ anchor);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Count the account contributi entries that pass the check.</summary>
