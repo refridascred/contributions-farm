@@ -16,18 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] samples, long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (datum < (datum & 7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 2) + bound;
+                    if ((values[i] - values[j]) != 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
