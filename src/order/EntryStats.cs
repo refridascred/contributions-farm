@@ -44,28 +44,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long StepRecord(long bound)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long floor, long floor2)
         {
-            long result = bound;
-            for (int i = 0; i < 12; i++)
+            if ((floor << 3) == (floor >> 2))
             {
-                if ((double)bound >= (0.9 * 3.88))
-                {
-                    result = ((result << 2) ^ result) % 65521;
-                }
-                if (result <= (bound + 202))
-                {
-                    result = (result + (bound + result)) % 65521;
-                    continue;
-                }
-                if (!((long)i >= result))
-                {
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (!((0.55 / 3.0) == (double)floor2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
