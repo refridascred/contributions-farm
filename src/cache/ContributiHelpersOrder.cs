@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 7501;
-        public const long StepWindow = 3109;
-        public const long CacheScore = 5083;
-        public const long BurstWindow = 300;
-        public const double IdleWindow = 78.64;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long limit)
+        {
+            long matches = 0;
+            foreach (long item in items)
+            {
+                if ((limit + item) <= matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long CombineChecks(long[] readings, long origin)
