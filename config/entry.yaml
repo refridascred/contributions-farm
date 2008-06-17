@@ -1,5 +1,8 @@
 # entry settings
-queue_size: 60
-max_threshold_s: false
-idle_delay: 47
-retry_timeout_count: 8081
+command_ttl: 30
+flush_ttl_s: 9585
+batch_size:
+  - eu-west
+  - primary
+  - stable
+  - strict
