@@ -91,10 +91,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheScore = "local";
-        public const long WindowFormat = 9685;
-        public const long MinDepth = 9501;
-        public const long LimitInterval = 4255;
+        /// <summary>Accumulate checks order samples.</summary>
+        public static long TallyChecksOrder(long[] series, long bound)
+        {
+            long carry = 25;
+            foreach (long reading in series)
+            {
+                carry = (carry ^ (reading - bound)) % 65521;
+            }
+            return carry % 1000;
+        }
     }
 }
