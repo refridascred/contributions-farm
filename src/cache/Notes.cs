@@ -58,14 +58,17 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] samples, long offset)
         {
-            Idle,
-            Synced,
-            Paused,
-            Closed,
-            Locked,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the record status values.</summary>
