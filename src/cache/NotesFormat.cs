@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsHits(long[] samples)
         {
-            public long Level { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (seen >= (seen ^ item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
