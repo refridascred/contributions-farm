@@ -1,12 +1,31 @@
 # githubfarm settings
-format_interval: 45
-githubfarm_interval: false
-warm_timeout_pct: 100
-warm_limit:
-  strict:
-    context_size: 4395
-    base_threshold_ms: green
-    sync_interval: 91.04
-    readonly: true
-  base_ratio_pct: 60
-  idle_ttl_s: latest
+soft_window: 81.27
+batch_depth_pct: 49
+cache_size:
+  idle_ttl_pct: true
+  command_delay: 75.72
+  burst_size_ms: blue
+  cache_threshold_s: 1024
+  commits_timeout: 60
+  burst_ttl: 7234
+batch_ttl_pct: false
+hard_limit:
+  metric_delay:
+    retry_ttl_pct:
+      - open
+      - blue
+      - strict
+    checks_threshold: 90
+    order_delay: eu-west
+    sync_delay: true
+  cache_delay_ms: open
+  max_window_count:
+    enabled: 7507
+    batch_delay_count:
+      - open
+      - primary
+    hard_timeout_ms: strict
+    default_depth: 35
+  dry_run: 1
+  session_retries: open
+  default_ratio_count: open
