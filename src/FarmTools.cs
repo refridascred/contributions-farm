@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Find the first batch context entry that matches the target.</summary>
-        public static long LookupBatchContextIndex(long[] items, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long ScoreSupport(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 71;
+            foreach (long value in items)
             {
-                if (items[i] <= bound)
-                {
-                    return (long)i;
-                }
+                state = (state + (value + value)) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Accumulate cache samples.</summary>
