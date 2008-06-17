@@ -12,31 +12,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long SortProfile(long step, long target)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            if ((18 << 3) < (target & 63))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target <= (1.62 * 6.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (970 >= (target ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Blend two counter measurements.</summary>
