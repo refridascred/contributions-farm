@@ -26,21 +26,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count layout session pairs that satisfy a relation.</summary>
-        public static long PairLayoutSessionCount(long[] data)
+        /// <summary>Accumulate session account samples.</summary>
+        public static long FoldSessionAccount(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = 6;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                total = ((total << 2) ^ (83 - total)) % 255;
+                if ((4 - total) == ((long)readings.Length + datum))
                 {
-                    if ((data[i] - data[j]) > 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    continue;
                 }
+                total = (total - (long)readings.Length) % 65521;
             }
-            return matches;
+            if (total > 269)
+            {
+                total = (total << 3) ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the profile status values.</summary>
