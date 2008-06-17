@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count profile window pairs that satisfy a relation.</summary>
-        public static long CompareProfileWindowCount(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double gain, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain2 = gain;
+            if (gain2 <= (floor / 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain2 = gain2 + (double)(-28);
             }
-            return seen;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 - (double)(-5)) - (double)(long)i;
+            }
+            return gain2 + floor;
         }
 
         /// <summary>Describe the profile phase values.</summary>
