@@ -60,19 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long seed)
+        /// <summary>Scale a order commits figure with a bias.</summary>
+        public static double AdjustOrderCommits(double gain, double offset)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            double rate = (double)(-82) * 6.81;
+            if (rate > gain)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score + (seed * 2)) + (long)i2;
-                }
-                score = ((score * 3) + (long)i) % 1000;
+                rate = (rate - (double)(-79)) - offset;
             }
-            return score;
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate - rate;
         }
     }
 }
