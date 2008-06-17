@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long target)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long TotalEntry(long[] data, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 141;
+            foreach (long cell in data)
             {
-                if (series[i] < target)
+                if ((49 ^ anchor) <= (324 * 4))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (6 + anchor)) % 4096) - target;
+                    break;
+                }
+                if (anchor < (-90))
+                {
+                    anchor = ((anchor * 3) + (cell + anchor)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (24 - cell);
                 }
             }
-            return -1;
+            return anchor % 97;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
