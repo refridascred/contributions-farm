@@ -1,20 +1,25 @@
 # entry settings
-hard_limit_s: green
-batch_depth_pct: 90.77
-soft_ttl_s: true
-idle_window_pct:
-  max_window: 60
-  min_delay_count: green
-  hard_retries_s: 6074
-  soft_window: true
-  enabled:
-    - 118
-    - 319
-    - 334
-    - 263
-persist: false
-notes_window:
-  - 47
-  - 348
-  - 16
-  - 179
+default_timeout_ms:
+  burst_retries: staging
+  batch_limit: primary
+  strict:
+    cache_timeout: 30
+    sync_window_pct: true
+    graph_retries:
+      - 56
+      - 161
+      - 301
+idle_depth_ms:
+  retry_window_pct: primary
+  sync_window:
+    default_size: green
+    hard_ttl_ms: 6640
+    graph_depth:
+      - latest
+      - primary
+      - primary
+  hard_timeout_count:
+    - blue
+    - standard
+    - latest
+burst_capacity: false
