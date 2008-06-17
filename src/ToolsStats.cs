@@ -29,10 +29,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long IdleSchema = 6136;
-        public const double StepSchema = 15.68;
-        public const long DefaultSchema = 2758;
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
+        {
+            Synced,
+            Queued,
+            Draft,
+            New,
+            Dropped,
+        }
 
         /// <summary>Describe the stats state values.</summary>
         public enum StatsState
