@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long step)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine tools values into a single score.</summary>
