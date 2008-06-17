@@ -16,25 +16,14 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a metrics window pair into a bucket.</summary>
-        public static long ClassifyMetricsWindow(long step, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long diff = step ^ limit;
-            if (((step & 31) > limit) || ((diff & 31) < (step * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (step <= (97 << 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Active,
+            New,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
