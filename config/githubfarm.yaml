@@ -1,17 +1,6 @@
 # githubfarm settings
-max_limit_count: local
-default_ratio_pct: 78.55
-strict:
-  min_interval_s:
-    - strict
-    - blue
-  batch_capacity:
-    - 115
-    - 219
-    - 336
-    - 412
-  enabled: false
-  stats_interval: 7432
-  route_retries: false
-  persist: 3953
-cache_timeout: false
+format_interval: 6824
+compress: true
+already_window: 959
+counter_capacity: cached
+idle_interval: primary
