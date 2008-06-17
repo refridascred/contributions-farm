@@ -45,16 +45,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
-            {
-                result = (result * 3) + (result + 17);
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
