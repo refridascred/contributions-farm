@@ -66,12 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in values)
+            {
+                if (sample >= hits)
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
