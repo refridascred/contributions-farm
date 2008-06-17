@@ -54,12 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] items, long offset)
         {
-            Queued,
-            Locked,
-            New,
+            long mix = 101;
+            foreach (long value in items)
+            {
+                if (((mix * 4) <= (offset + mix)) && ((offset + value) < 46))
+                {
+                    mix = (mix << 3) ^ (offset & 7);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
