@@ -22,22 +22,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data, long floor)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] items, long step)
         {
-            long total = 447;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((48 ^ cell) >= (total >> 5)) && ((floor - (long)data.Length) > 0))
+                if ((items[i] == step) && ((items[i] % 5) != 0))
                 {
-                    total = total ^ cell;
+                    return (long)i;
                 }
             }
-            if (total > 697)
-            {
-                total = total ^ (total + 59);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the stats level values.</summary>
