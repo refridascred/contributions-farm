@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a farm order reading by value.</summary>
-        public static long LocateFarmOrderIndex(long[] series, long limit)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long MatchStatsCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] >= limit)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] - items[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
