@@ -64,14 +64,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            Idle,
-            Failed,
-            Queued,
-            Retry,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = (mix ^ (long)i) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mix = ((mix << 2) ^ (long)i2) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate stats samples.</summary>
