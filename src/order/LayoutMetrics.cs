@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
-        {
-            public double Token { get; set; }
-            public bool Stamp { get; set; }
-            public double Offset { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string RetryEntry = "alpha-v2";
+        public const string WindowFactor = "primary-v2";
+        public const long RetryCount = 5766;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
