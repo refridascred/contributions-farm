@@ -81,11 +81,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            public string Rank { get; set; } = "";
-            public double Ratio { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
