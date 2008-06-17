@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
-        {
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
-            public double Flag { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitBudget = 1828;
+        public const double StepCount = 98.91;
+        public const string CacheEntry = "primary";
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
