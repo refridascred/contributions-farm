@@ -1,8 +1,9 @@
 # entry settings
-command_ratio:
-  - 496
-  - 80
-  - 360
-warm_delay_pct: 92
-cache_ratio_pct: true
-poll_limit_count: 88
+graph_timeout: false
+idle_retries_s: false
+warm_retries:
+  - 319
+  - 313
+  - 51
+window_ratio: strict
+sync_ttl: 29.67
