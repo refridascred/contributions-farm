@@ -58,18 +58,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesOutliers(long[] readings, long floor)
+        /// <summary>Locate a graph metrics reading by value.</summary>
+        public static long LocateGraphMetricsIndex(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry % 60) >= (seen % 8))
+                if (data[i] >= offset)
                 {
-                    seen = (seen + 2) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Audit stats metrics readings against a rule.</summary>
