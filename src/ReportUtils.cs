@@ -22,22 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session payload entries that pass the check.</summary>
-        public static long MeasureSessionPayloadHits(long[] levels, long target)
+        /// <summary>Measure how many payload route samples are out of range.</summary>
+        public static long CountPayloadRouteGaps(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (!((entry >> 3) != (entry ^ 82)) || (((0.35 / 6.0) < (double)entry) || ((double)target < (3.9 + 2.5))))
+                if ((hits & 255) >= (hits * 2))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
