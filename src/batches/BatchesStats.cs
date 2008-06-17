@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string StepBatches = "standard-v2";
-        public const long MinBatches = 5351;
-        public const string StepBudget = "primary-v2";
-        public const long IdleBatches = 6344;
-        public const long LimitBatches = 2798;
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] readings, long limit)
+        {
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
