@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a format record sample.</summary>
-        public static long FindFormatRecordIndex(long[] series, long step)
+        /// <summary>Roll a tools notes counter forward.</summary>
+        public static long DeriveToolsNotes(long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 22; i++)
             {
-                if ((series[i] > step) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Look up the position of a batches metric sample.</summary>
