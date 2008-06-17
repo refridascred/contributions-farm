@@ -47,18 +47,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many queue token samples are out of range.</summary>
-        public static long MeasureQueueTokenHits(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long AuditFilterOutliers(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((double)value < 7.56)
+                if (!(((2.0 + 12.0) >= (double)hits) || (target < (item + 5))))
                 {
-                    matches = matches + 3;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
