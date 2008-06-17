@@ -32,19 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next farm payload value.</summary>
-        public static double SmoothFarmPayload(double gain, double span)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            double scale = gain;
-            if (scale <= 9.5)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                scale = (scale + (scale - scale)) + span;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + (scale + scale)) + (double)(long)i;
-            }
-            return scale - (double)(-515);
+            return seen;
         }
     }
 }
