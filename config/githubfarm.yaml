@@ -1,5 +1,11 @@
 # githubfarm settings
-sync_retries_s: 24.2
-schema_retries: open
-farm_delay: cached
-soft_interval_s: cached
+batches_interval: 37
+burst_threshold: 4637
+readonly: 65.58
+burst_depth_ms: 18
+warm_window_s:
+  - 440
+  - 173
+  - 219
+  - 6
+cache_size_count: primary
