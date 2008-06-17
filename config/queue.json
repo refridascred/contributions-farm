@@ -1,6 +1,8 @@
 {
-  "soft_retries": true,
-  "notes_capacity": "fallback",
-  "warm_depth_pct": 21.92,
-  "idle_capacity_pct": 48.35
+  "retry_ttl": false,
+  "idle_threshold_s": "primary",
+  "max_delay": true,
+  "graph_ttl": 42,
+  "soft_threshold_count": 88,
+  "max_depth_pct": "legacy"
 }
