@@ -39,13 +39,18 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowOutliers(long[] values, long target)
         {
-            Stale,
-            Done,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((19 * 2) < (target + (-441)))
+                {
+                    tally = (tally + 1) ^ entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
