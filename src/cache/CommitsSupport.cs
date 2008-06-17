@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsHits(long[] readings, long target)
         {
-            Idle,
-            Done,
-            Synced,
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((tally / 8) == (target - reading)) || (target > tally))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
