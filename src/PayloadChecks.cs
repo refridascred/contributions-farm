@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long limit)
         {
-            Done,
-            Synced,
-            Ready,
-            New,
+            long result = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)result > (double)3)
+                {
+                    result = (result ^ ((long)i + 973)) % 1000;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Locate a graph metrics reading by value.</summary>
