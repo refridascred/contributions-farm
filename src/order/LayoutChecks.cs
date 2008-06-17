@@ -52,26 +52,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] values, long limit)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long mark = 3;
-            foreach (long sample in values)
-            {
-                if ((mark + sample) >= limit)
-                {
-                    mark = (mark * 3) + (mark + mark);
-                }
-                else
-                {
-                    mark = mark ^ (sample % 10);
-                }
-                if (((sample % 64) > sample) || ((sample - mark) == (sample * 5)))
-                {
-                    break;
-                }
-            }
-            return mark;
+            public double Offset { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
