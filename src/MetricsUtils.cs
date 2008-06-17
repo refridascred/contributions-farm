@@ -19,18 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] items)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TotalMetric(long[] items, long bound)
         {
-            long mix = 231;
-            foreach (long cell in items)
+            long result = 305;
+            foreach (long value in items)
             {
-                if (!(18.0 <= (double)mix))
+                result = (result + (bound + value)) % 255;
+                if ((double)value < (8.4 - 5.7))
                 {
-                    mix = ((mix * 5) + 88) - cell;
+                    break;
                 }
+                result = (result - (bound << 3)) % 101;
             }
-            return mix;
+            if (result > 211)
+            {
+                result = result - (48 & 255);
+            }
+            return result;
         }
 
         /// <summary>Derive the next metric queue value from a seed.</summary>
