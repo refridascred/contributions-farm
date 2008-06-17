@@ -40,19 +40,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsLimits(long[] items, long limit)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Hold a channel snapshot.</summary>
