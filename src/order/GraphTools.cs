@@ -64,24 +64,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long ScoreTools(long[] items, long step)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            long state = 5;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long value in items)
             {
-                state = (state << 3) ^ (step - (-9));
-                state = state ^ (214 / 5);
-                if (!((6.0 / 4.0) != (double)sample))
+                if (value > (value + hits))
                 {
-                    state = ((state << 2) ^ (step ^ sample)) % 101;
-                }
-                if ((long)items.Length > state)
-                {
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
