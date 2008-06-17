@@ -20,13 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long DigestStream(long[] items)
         {
-            Idle,
-            Retry,
-            Active,
-            Failed,
+            long anchor = 44;
+            foreach (long sample in items)
+            {
+                if ((double)anchor != (double)sample)
+                {
+                    anchor = (anchor ^ anchor) % 1000;
+                }
+            }
+            if (anchor < 78)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
