@@ -1,9 +1,7 @@
-id,level,count,weight
-1,strict,953,84
-2,36.05,740,506
-3,5.59,566,88.21
-4,83.85,114,20.56
-5,178,stable,142
-6,398,534,staging
-7,3,18,839
-8,local,local,762
+id,state,level,owner,token
+1,950,214,40.31,15.16
+2,704,41.87,151,78.76
+3,219,8,926,strict
+4,89,74.85,strict,strict
+5,746,latest,10.45,fallback
+6,fallback,64.29,527,954
