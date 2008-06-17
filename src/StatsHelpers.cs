@@ -32,19 +32,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate batches cluster readings against a bound.</summary>
-        public static bool GuardBatchesClusterLimits(long[] data, long origin)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Idle,
+            New,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the order phase values.</summary>
