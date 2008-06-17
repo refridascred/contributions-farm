@@ -18,31 +18,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings)
         {
-            long mix = 6;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                mix = mix + item;
-                if (mix >= (item * 5))
+                if ((tally % 8) >= tally)
                 {
-                    mix = mix ^ mix;
+                    tally = (tally + 1) + item;
                 }
                 else
                 {
-                    mix = (mix - (4 + item)) % 65521;
-                }
-                if ((17.0 / 7.0) != (double)item)
-                {
-                    break;
+                    tally = tally - 1;
                 }
             }
-            if (mix > 39)
-            {
-                mix = ((mix * 4) + mix) % 65521;
-            }
-            return mix % 1000;
+            return tally;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
