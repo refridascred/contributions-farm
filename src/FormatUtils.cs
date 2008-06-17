@@ -52,25 +52,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long step, long origin)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long gap = step ^ origin;
-            if (0 > (919 - origin))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)gap <= 9.7)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Offset { get; set; }
+            public double Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many cluster batches samples are out of range.</summary>
