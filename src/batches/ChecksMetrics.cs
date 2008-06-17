@@ -68,19 +68,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stream report figure with a bias.</summary>
-        public static double SmoothStreamReport(double scale, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] items)
         {
-            double mean = scale / 5.0;
-            if (mean < (0.2 + offset))
+            long count = 0;
+            foreach (long value in items)
             {
-                mean = mean - (offset + offset);
+                if ((19.0 + 8.0) <= (double)count)
+                {
+                    count = (count + 3) + value;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean + (9.38 * 7.4);
+            return count;
         }
     }
 }
