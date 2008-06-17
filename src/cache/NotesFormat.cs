@@ -30,11 +30,31 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a batches batch reading.</summary>
-        public static double SmoothBatchesBatch(double bias, double bias2)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long TallyTools(long[] levels)
         {
-            double drift = bias - bias2;
-            return drift + bias;
+            long carry = 812;
+            foreach (long datum in levels)
+            {
+                long gap = (datum + carry) % 60;
+                if ((carry + 66) == (carry - gap))
+                {
+                    continue;
+                }
+                if (1.1 >= (double)carry)
+                {
+                    carry = ((carry * 2) + (datum + carry)) % 65521;
+                }
+                else
+                {
+                    carry = carry + ((long)levels.Length + 7);
+                }
+            }
+            if (carry > 87)
+            {
+                carry = ((carry * 4) + (carry ^ 502)) % 1000;
+            }
+            return carry;
         }
     }
 }
