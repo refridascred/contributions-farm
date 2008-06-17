@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            Failed,
-            Queued,
-            Stale,
+            public bool Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the buffer state values.</summary>
