@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long MaxBudget = 7066;
         public const long IdleBatch = 4086;
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] data, long floor)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mix = 912;
+            foreach (long datum in values)
             {
-                if (data[i] == floor)
+                if (((mix - datum) <= (mix + datum)) && ((datum % 8) <= (mix % 60)))
                 {
-                    return (long)i;
+                    mix = (mix * 5) + (datum - mix);
                 }
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Hold a graph entry.</summary>
