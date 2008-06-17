@@ -13,19 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate checks schema readings against a bound.</summary>
-        public static bool GuardChecksSchemaBounds(long[] values, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool CheckAlreadyBounds(long[] series, long offset)
         {
-            bool stale = true;
-            foreach (long item in values)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (item > step)
+                if (reading < offset)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Hold a queue record.</summary>
