@@ -14,13 +14,10 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
-        {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowRatio = 7287;
+        public const double CacheBudget = 64.69;
+        public const double BaseFilter = 29.94;
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] items, long bound)
