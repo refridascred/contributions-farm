@@ -74,38 +74,19 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const string LimitCount = "alpha";
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long ClassifyAlready(long limit, long seed)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool ValidateSupportBounds(long[] data, long seed)
         {
-            if ((15.0 + 7.8) > (double)limit)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (!(limit > (seed % 10)))
+                if (entry <= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)(-82) != (double)seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)limit != (19.0 / 6.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
