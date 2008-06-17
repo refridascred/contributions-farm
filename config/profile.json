@@ -1,12 +1,17 @@
 {
-  "base_window_s": 4595,
-  "dry_run": true,
-  "retry_retries_count": "edge",
-  "retry_threshold": {
-    "entry_window": "latest",
-    "channel_depth": 64.26,
-    "flush_ratio_count": "eu-west",
-    "soft_depth_pct": true
+  "readonly": {
+    "githubfarm_depth": {
+      "base_interval_pct": "green",
+      "verbose": ["edge", "eu-west"],
+      "max_ratio": 0.48,
+      "flush_threshold_s": "eu-west"
+    },
+    "max_threshold_s": "edge",
+    "strict": 5756,
+    "base_window_ms": false,
+    "account_window": "blue",
+    "poll_timeout_ms": 8.97
   },
-  "warm_capacity_ms": ["edge", "latest"]
+  "batches_ratio": 60,
+  "min_depth_ms": "primary"
 }
