@@ -72,26 +72,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples)
+        /// <summary>Compare every pair of graph report readings.</summary>
+        public static long PairGraphReportCount(long[] values)
         {
-            long state = 342;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((571 >> 3) > reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 2) + (state + state)) % 1000;
-                }
-                else
-                {
-                    state = state ^ (state << 2);
-                }
-                if ((15 << 1) != (state + state))
-                {
-                    break;
+                    if ((values[i] - values[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return state % 65521;
+            return tally;
         }
     }
 }
