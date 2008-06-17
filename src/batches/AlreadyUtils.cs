@@ -23,14 +23,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LocateTokenIndex(long[] series, long seed)
         {
-            Closed,
-            Stale,
-            Ready,
-            Active,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
