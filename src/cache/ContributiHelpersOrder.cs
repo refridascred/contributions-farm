@@ -26,12 +26,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitLevel = 8842;
+        public const string MaxBudget = "local-edge";
+        public const double IdleRatio = 59.67;
     }
 }
