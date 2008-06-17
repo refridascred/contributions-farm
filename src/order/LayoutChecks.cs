@@ -32,12 +32,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Roll a tools window counter forward.</summary>
+        public static long StepToolsWindow(long bound)
         {
-            public double Offset { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Check that every counter stats entry stays within the limit.</summary>
