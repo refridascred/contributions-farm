@@ -45,11 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Look up the position of a batches metric sample.</summary>
+        public static long SeekBatchesMetricIndex(long[] samples, long step)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < step) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
