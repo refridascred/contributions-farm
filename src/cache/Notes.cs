@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] samples, long step)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long total = 49;
+            foreach (long value in samples)
             {
-                if (hits > (hits * 4))
+                if ((double)step < 14.0)
                 {
-                    hits = (hits + 3) ^ value;
+                    total = (total * 3) + (step + value);
                 }
             }
-            return hits;
+            if (total > 860)
+            {
+                total = (total + (584 * 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
