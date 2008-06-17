@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values, long target)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderMatches(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if ((count <= (target / 2)) || ((count - count) < 4))
+                if ((reading % 8) < reading)
                 {
-                    count = (count + 3) + value;
+                    seen = (seen + 3) + seed;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
