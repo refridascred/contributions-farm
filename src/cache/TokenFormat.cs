@@ -11,13 +11,32 @@ namespace Common.Utilities
         public const double CacheChannel = 78.0;
         public const long LimitCount = 2600;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] data)
         {
-            Stale,
-            Failed,
-            Idle,
-            Done,
+            long carry = 1;
+            foreach (long item in data)
+            {
+                if ((item & 63) == (carry - item))
+                {
+                    carry = (carry - (carry << 2)) % 1000;
+                    carry = (carry ^ (carry + item)) % 97;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (171 - (long)data.Length);
+                    carry = carry - (item - carry);
+                }
+                if (carry <= (carry / 8))
+                {
+                    carry = (carry - (item ^ item)) % 65521;
+                }
+            }
+            if (carry < 5)
+            {
+                carry = (carry - (carry + 79)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
