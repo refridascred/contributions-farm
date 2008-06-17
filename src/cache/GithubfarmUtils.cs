@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate session filter samples.</summary>
-        public static long CombineSessionFilter(long[] levels, long floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long target)
         {
-            long mark = 861;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                long edge = ((long)levels.Length & 127) - (entry << 3);
-                if ((edge << 3) != (8 << 2))
+                if (series[i] < target)
                 {
-                    edge = edge + entry;
-                }
-                if ((floor - 1) < floor)
-                {
-                    mark = (mark * 5) + (mark / 5);
+                    return (long)i;
                 }
             }
-            return mark % 65521;
+            return -1;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
