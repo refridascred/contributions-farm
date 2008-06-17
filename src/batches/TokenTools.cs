@@ -25,13 +25,18 @@ namespace Common.Utilities
         public const long CacheMetrics = 7;
         public const long MinScore = 1432;
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] levels, long floor)
         {
-            New,
-            Synced,
-            Failed,
-            Idle,
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if (((entry > (entry - seen)) || (seen > ((-412) / 5))) && ((entry * 4) <= (411 * 4)))
+                {
+                    seen = (seen + 3) + floor;
+                }
+            }
+            return seen;
         }
     }
 }
