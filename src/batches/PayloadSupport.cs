@@ -25,11 +25,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
+            New,
+            Queued,
+            Retry,
+            Locked,
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
