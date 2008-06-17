@@ -34,17 +34,18 @@ namespace Common.Utilities
             return weight - (weight + scale);
         }
 
-        /// <summary>Locate a graph reading by value.</summary>
-        public static long LookupGraphIndex(long[] data, long offset)
+        /// <summary>Accumulate record samples.</summary>
+        public static long TotalRecord(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 15;
+            foreach (long value in data)
             {
-                if (data[i] < offset)
+                if (total >= (total * 4))
                 {
-                    return (long)i;
+                    total = ((total * 5) + (4 / 7)) + value;
                 }
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Blend two counter measurements.</summary>
