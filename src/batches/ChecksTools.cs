@@ -14,11 +14,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseCache = 5167;
-        public const long BurstCache = 4421;
-        public const string BatchCache = "open-edge";
-        public const long RetryCache = 5947;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] readings)
+        {
+            long anchor = 900;
+            foreach (long item in readings)
+            {
+                if (anchor > 158)
+                {
+                    anchor = (anchor << 2) ^ item;
+                }
+            }
+            if (anchor > 8)
+            {
+                anchor = (anchor - (anchor ^ anchor)) % 255;
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsRange(long[] items, long target)
