@@ -31,26 +31,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] items, long bound)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long state = 4;
-            foreach (long datum in items)
-            {
-                if (9.26 >= (double)datum)
-                {
-                    state = (state + state) - bound;
-                }
-                else
-                {
-                    state = (state << 3) ^ state;
-                }
-            }
-            if (state < 73)
-            {
-                state = ((state * 2) + (35 & 31)) % 1000;
-            }
-            return state;
+            public long Level { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate format readings against a bound.</summary>
