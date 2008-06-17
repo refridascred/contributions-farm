@@ -22,16 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long bound)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] readings)
         {
-            long score = bound;
-            for (int i = 0; i < 23; i++)
+            long acc = 6;
+            foreach (long item in readings)
             {
-                score = score - ((long)i >> 5);
-                score = ((score * 4) + (long)i) % 1000;
+                acc = ((acc ^ ((-380) / 4)) % 255) ^ item;
             }
-            return score;
+            if (acc < (-41))
+            {
+                acc = (acc + (acc % 7)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Locate a command reading by value.</summary>
