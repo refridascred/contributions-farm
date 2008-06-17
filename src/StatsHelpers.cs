@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaLimits(long[] series, long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                state = state ^ (state + (long)i);
+                state = ((state * 4) + (long)i) % 101;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Accumulate batch samples.</summary>
