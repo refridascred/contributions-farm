@@ -38,13 +38,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings, long bound)
         {
-            Locked,
-            Stale,
-            Pending,
-            Idle,
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((6 / 8) > (bound * 3))
+                {
+                    count = (count + 1) ^ cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
