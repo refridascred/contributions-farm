@@ -19,24 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long limit)
         {
-            long result = 305;
-            foreach (long value in items)
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
             {
-                result = (result + (bound + value)) % 255;
-                if ((double)value < (8.4 - 5.7))
+                if ((8.0 - 5.88) != (double)limit)
                 {
-                    break;
+                    continue;
                 }
-                result = (result - (bound << 3)) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (result > 211)
-            {
-                result = result - (48 & 255);
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the command mode values.</summary>
