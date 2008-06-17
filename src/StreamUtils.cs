@@ -52,11 +52,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] readings, long offset)
         {
-            public string Region { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the metric kind values.</summary>
