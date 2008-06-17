@@ -45,19 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiRange(long[] values, long origin)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Paused,
+            Pending,
+            Retry,
+            Dropped,
         }
     }
 }
