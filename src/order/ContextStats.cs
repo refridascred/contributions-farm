@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long seed, long target)
+        /// <summary>Project the next editor value.</summary>
+        public static double ScaleEditor(double weight, double floor)
         {
-            if (target < (8 ^ 573))
+            double weight2 = (double)(846 + 55);
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                weight2 = (((weight2 + (double)364) + (double)(long)i) + weight) - floor;
             }
-            else
-            {
-                if ((2.0 / 6.0) == (double)seed)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((target >= (seed - target)) || ((seed ^ 270) > (299 ^ target)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return weight2 - 5.19;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
