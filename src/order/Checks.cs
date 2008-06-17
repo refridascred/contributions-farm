@@ -38,13 +38,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double bias, double bias2)
         {
-            Idle,
-            Paused,
-            Stale,
-            Done,
+            double weight = bias2;
+            if (weight < (double)377)
+            {
+                weight = weight - 10.0;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (bias - weight)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
