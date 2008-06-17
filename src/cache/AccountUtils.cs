@@ -60,18 +60,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long score = 7;
+            foreach (long sample in items)
             {
-                if ((item - tally) <= (tally << 1))
-                {
-                    tally = tally + 2;
-                }
+                score = score - (sample & 31);
+                score = (score ^ (sample % 2)) % 4096;
             }
-            return tally;
+            if (score < 213)
+            {
+                score = score ^ (23 + score);
+            }
+            return score % 1000;
         }
     }
 }
