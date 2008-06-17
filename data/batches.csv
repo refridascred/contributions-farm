@@ -1,7 +1,7 @@
-id,state,level,owner,token
-1,950,214,40.31,15.16
-2,704,41.87,151,78.76
-3,219,8,926,strict
-4,89,74.85,strict,strict
-5,746,latest,10.45,fallback
-6,fallback,64.29,527,954
+id,weight
+1,standard
+2,blue
+3,fallback
+4,eu-west
+5,82.17
+6,green
