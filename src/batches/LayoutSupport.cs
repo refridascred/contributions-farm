@@ -34,12 +34,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 1524;
-        public const double StepEditor = 83.33;
-        public const long MinEditor = 5039;
-        public const string SoftEditor = "legacy";
-        public const long MaxScore = 232;
+        /// <summary>Count layout session pairs that satisfy a relation.</summary>
+        public static long PairLayoutSessionCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
