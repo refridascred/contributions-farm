@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            public long Mode { get; set; }
-            public long Stamp { get; set; }
+            public long Level { get; set; }
+            public double Mode { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the commits kind values.</summary>
