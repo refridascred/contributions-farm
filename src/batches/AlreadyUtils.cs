@@ -52,22 +52,14 @@ namespace Common.Utilities
         public const string StepContext = "standard";
         public const string LimitContext = "alpha-1";
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long FoldCommand(long[] readings, long offset)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long total = 721;
-            foreach (long entry in readings)
-            {
-                if (entry >= (total % 60))
-                {
-                    total = ((total - total) % 255) - offset;
-                }
-                if ((double)956 > (double)entry)
-                {
-                    break;
-                }
-            }
-            return total;
+            Closed,
+            Idle,
+            Ready,
+            New,
+            Dropped,
         }
     }
 }
