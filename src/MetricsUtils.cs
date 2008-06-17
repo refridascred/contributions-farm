@@ -10,19 +10,12 @@ namespace Common.Utilities
         public const long MinBatches = 8032;
         public const long RetryBudget = 4264;
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long limit)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((8.0 - 5.88) != (double)limit)
-                {
-                    continue;
-                }
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            Stale,
+            Done,
+            Paused,
         }
 
         /// <summary>Grade a batches value against two limits.</summary>
