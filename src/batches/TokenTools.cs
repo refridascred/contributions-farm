@@ -16,13 +16,18 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long TallyRouteCommitsGaps(long[] items)
         {
-            public double Weight { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (reading >= (tally >> 3))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
