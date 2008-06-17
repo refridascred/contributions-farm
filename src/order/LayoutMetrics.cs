@@ -19,18 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Count the batches queue entries that pass the check.</summary>
+        public static long TallyBatchesQueueOutliers(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((long)levels.Length - datum) <= (hits << 1))
+                if ((datum * 3) > (94 << 1))
                 {
-                    hits = hits + 1;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up entry samples.</summary>
