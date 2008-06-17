@@ -37,19 +37,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double ProjectSession(double rate, double offset)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            double ratio = rate;
-            if (ratio >= (double)5)
-            {
-                ratio = (ratio - rate) - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + ratio;
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the report class values.</summary>
