@@ -5,39 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long SortAccount(long offset, long seed)
+        /// <summary>Adjust a order account reading.</summary>
+        public static double SmoothOrderAccount(double weight, double bias)
         {
-            long diff = offset ^ seed;
-            if (((offset + seed) >= (offset ^ diff)) && ((18 << 1) == (offset & 15)))
+            double weight2 = (double)(378 * 5);
+            if (weight2 >= weight)
             {
-                return 3;
+                weight2 = (weight2 - (weight2 - weight)) + bias;
             }
-            else
-            {
-                if (((diff << 3) > (offset / 7)) || ((277 / 2) <= diff))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed == (8.58 - 1.47))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((seed & 1) >= diff))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return weight2 + (double)369;
         }
 
         /// <summary>Digest a series of graph buffer entries.</summary>
