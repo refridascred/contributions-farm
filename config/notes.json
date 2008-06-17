@@ -1,6 +1,17 @@
 {
-  "min_threshold": "fallback",
-  "strict": "green",
-  "min_size_ms": 372,
-  "channel_limit": 8300
+  "enabled": {
+    "flush_ratio": 39,
+    "checks_ttl": ["strict", "cached", "fallback"],
+    "verbose": {
+      "notes_delay": 100,
+      "burst_ratio_count": 1024,
+      "checks_threshold": 9733,
+      "soft_retries_pct": true
+    },
+    "soft_limit_pct": ["primary", "open", "green"],
+    "max_ttl": [56, 203, 229, 481]
+  },
+  "hard_size_count": 60,
+  "readonly": "blue",
+  "batch_delay_pct": "eu-west"
 }
