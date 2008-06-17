@@ -1,6 +1,15 @@
 # githubfarm settings
-flush_capacity_count: 20
-poll_window: primary
-default_delay_count: false
-buffer_limit: 3785
-audit: false
+persist:
+  strict:
+    burst_window_count: green
+    verbose: 36.06
+    poll_retries_ms: primary
+  compress:
+    - open
+    - strict
+  sync_delay: open
+  checks_delay: 16.89
+min_delay_pct: 250
+cluster_size: true
+enabled: fallback
+burst_window_ms: staging
