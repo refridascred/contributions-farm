@@ -1,12 +1,6 @@
 {
-  "queue_window": 48.31,
-  "audit": true,
-  "sync_size_count": "blue",
-  "dry_run": [282, 193],
-  "persist": 94.7,
-  "format_limit": {
-    "poll_delay_s": true,
-    "retry_ratio": 835,
-    "compress": 57.77
-  }
+  "strict": true,
+  "layout_capacity": 24.18,
+  "min_depth_ms": 250,
+  "burst_delay": "green"
 }
