@@ -30,18 +30,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long SeriesCluster(long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((9.4 + 9.0) >= (double)tally)
-                {
-                    tally = (tally + 3) ^ value;
-                }
+                carry = carry - carry;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return tally;
+            return carry;
         }
     }
 }
