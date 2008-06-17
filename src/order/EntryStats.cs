@@ -52,17 +52,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] levels, long limit)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Draft,
+            Paused,
         }
     }
 }
