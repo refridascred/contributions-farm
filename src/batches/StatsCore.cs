@@ -48,38 +48,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long GradeGraph(long origin, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] items, long origin)
         {
-            if (seed >= 86)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin >= (origin + seed))
+                if (hits >= (hits & 15))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (origin > (origin & 255))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)seed <= (double)4)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    hits = ((hits + 1) - cell) - origin;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a record summary.</summary>
