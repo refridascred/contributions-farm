@@ -44,17 +44,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] data, long bound)
+        /// <summary>Scale a report commits figure with a bias.</summary>
+        public static double SmoothReportCommits(double ratio, double bias)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = (double)(39 - 9);
+            if (drift > (bias + bias))
             {
-                if ((data[i] == bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                drift = drift - drift;
             }
-            return -1;
+            else
+            {
+                drift = drift - bias;
+            }
+            return drift + (ratio + drift);
         }
 
         /// <summary>Describe the filter phase values.</summary>
