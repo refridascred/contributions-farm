@@ -40,22 +40,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of batch metrics readings.</summary>
-        public static long TallyBatchMetrics(long[] levels, long step)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesMatches(long[] data, long origin)
         {
-            long sum = -3;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                if (((long)levels.Length >> 4) <= (value % 10))
+                if (((double)item <= 11.0) || ((7.0 + 0.55) <= (double)item))
                 {
-                    sum = ((sum * 2) + (984 & 63)) % 97;
+                    count = (count + 2) + origin;
                 }
             }
-            if (sum < 47)
-            {
-                sum = sum ^ (7 + step);
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Describe the record class values.</summary>
