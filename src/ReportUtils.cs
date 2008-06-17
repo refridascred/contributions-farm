@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LocateNotesIndex(long[] samples, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] levels, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (samples[i] == target)
+                if (levels[i] == step)
                 {
                     return (long)i;
                 }
