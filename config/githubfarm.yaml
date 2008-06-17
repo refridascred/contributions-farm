@@ -1,5 +1,6 @@
 # githubfarm settings
-githubfarm_threshold: 2774
-compress: true
-warm_interval: 500
-format_ttl: strict
+flush_capacity_count: 20
+poll_window: primary
+default_delay_count: false
+buffer_limit: 3785
+audit: false
