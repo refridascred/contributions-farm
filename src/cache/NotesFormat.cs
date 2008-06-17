@@ -30,12 +30,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Adjust a batches batch reading.</summary>
+        public static double SmoothBatchesBatch(double bias, double bias2)
         {
-            Ready,
-            New,
-            Dropped,
+            double drift = bias - bias2;
+            return drift + bias;
         }
     }
 }
