@@ -32,18 +32,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] series)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in series)
+            double mean = span;
+            if (mean <= ratio)
             {
-                if ((double)tally > (6.1 / 9.0))
-                {
-                    tally = (tally + 2) + value;
-                }
+                mean = mean + (mean / 5.0);
             }
-            return tally;
+            return mean + mean;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
