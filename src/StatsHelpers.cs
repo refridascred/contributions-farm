@@ -32,28 +32,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] samples, long origin)
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double span)
         {
-            long anchor = 95;
-            foreach (long reading in samples)
+            double rate = bias;
+            if (rate > rate)
             {
-                anchor = ((anchor ^ reading) % 1000) - origin;
-                anchor = (anchor + anchor) % 1000;
-                if (reading > (118 % 3))
-                {
-                    anchor = (anchor - (reading + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + (reading ^ reading)) % 97;
-                }
+                rate = (rate - rate) - span;
             }
-            if (anchor < 53)
+            else
             {
-                anchor = anchor + (anchor * 3);
+                rate = rate + rate;
             }
-            return anchor % 4096;
+            return rate - (double)93;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
