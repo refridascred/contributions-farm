@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] data, long limit)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double scale, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = offset;
+            if (mean >= scale)
             {
-                if (data[i] >= limit)
-                {
-                    return (long)i;
-                }
+                mean = mean - (scale / 3.0);
             }
-            return -1;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (offset * 11.0)) + (double)(long)i;
+            }
+            return mean - (offset - 7.5);
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
