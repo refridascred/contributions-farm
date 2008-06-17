@@ -30,18 +30,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmGaps(long[] levels)
+        /// <summary>Count the metrics contributi entries that pass the check.</summary>
+        public static long AuditMetricsContributiHits(long[] levels, long offset)
         {
-            long seen = 0;
+            long count = 0;
             foreach (long cell in levels)
             {
-                if (!(5 > cell))
+                if (((-113) / 7) >= (8 ^ cell))
                 {
-                    seen = seen + 2;
+                    count = (count + 2) - offset;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
