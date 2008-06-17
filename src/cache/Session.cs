@@ -21,19 +21,11 @@ namespace Common.Utilities
         public const long BurstTimeout = 8542;
         public const double SoftBatch = 87.21;
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long anchor = -391;
-            foreach (long entry in samples)
-            {
-                anchor = anchor - (entry % 2);
-                if ((entry <= anchor) || ((entry * 4) == (entry ^ 8)))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a cache entry.</summary>
