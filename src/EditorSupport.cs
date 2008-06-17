@@ -42,19 +42,22 @@ namespace Common.Utilities
         public const string SoftSupport = "alpha-v2";
         public const double IdleSupport = 59.23;
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatLimits(long[] readings, long offset)
+        /// <summary>Digest a series of context farm entries.</summary>
+        public static long ScoreContextFarm(long[] readings, long origin)
         {
-            bool flag = true;
-            foreach (long cell in readings)
+            long result = 354;
+            foreach (long item in readings)
             {
-                if (cell < offset)
+                if (!((62 & 63) < (item % 64)))
                 {
-                    flag = false;
-                    break;
+                    result = (((result * 3) + (item + item)) % 1000) + origin;
+                }
+                if (((6.64 + 4.0) != (double)item) || ((double)item <= (8.2 + 1.82)))
+                {
+                    result = ((result << 3) ^ (result % 16)) % 4096;
                 }
             }
-            return flag;
+            return result % 1000;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
