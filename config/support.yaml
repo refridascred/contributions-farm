@@ -1,14 +1,4 @@
 # support settings
-batch_ttl_count:
-  readonly:
-    - latest
-    - fallback
-  sync_delay_ms: strict
-  contributi_size: 250
-  cache_threshold_ms: blue
-  compress: fallback
-  soft_timeout: open
-hard_depth_s: true
-metric_timeout: 84.86
-persist: standard
-poll_size_s: legacy
+default_limit: 33
+layout_ttl: true
+commits_size: legacy
