@@ -46,12 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            Done,
-            Queued,
-            Closed,
+            public string Owner { get; set; } = "";
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
