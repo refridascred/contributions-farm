@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportOutliers(long[] levels, long origin)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if (tally > ((long)levels.Length + 17))
+                if (((sample ^ matches) == (target ^ sample)) || ((matches % 12) < 29))
                 {
-                    tally = ((tally + 1) + value) + origin;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Adjust a farm reading.</summary>
