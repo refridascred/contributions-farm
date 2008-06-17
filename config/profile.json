@@ -1,8 +1,6 @@
 {
-  "hard_threshold": true,
-  "audit": [29, 337],
-  "commits_limit": [383, 395],
-  "base_interval_count": 59.48,
-  "soft_ratio": "standard",
-  "warm_size_pct": 2356
+  "max_interval_count": 100,
+  "default_timeout_count": 37.62,
+  "warm_limit": 4180,
+  "route_window": "latest"
 }
