@@ -43,9 +43,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepGithubfarm = 2322;
-        public const long IdleCount = 6481;
-        public const string LimitTimeout = "legacy-edge";
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
+        {
+            Done,
+            Queued,
+            Closed,
+        }
     }
 }
