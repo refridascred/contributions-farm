@@ -29,18 +29,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] values)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileOutliers(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (item <= (item - count))
+                if (!((6.6 + 12.0) >= (double)matches))
                 {
-                    count = count + 3;
+                    matches = (matches + 2) + datum;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
