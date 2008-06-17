@@ -19,26 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] readings, long origin)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long mark = 73;
-            foreach (long sample in readings)
-            {
-                if ((origin + 4) < (sample >> 2))
-                {
-                    mark = (mark * 5) + (-585);
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            if (mark < 374)
-            {
-                mark = mark ^ (814 << 3);
-            }
-            return mark % 97;
+            Idle,
+            Paused,
+            Draft,
         }
 
         /// <summary>Locate a stats filter reading by value.</summary>
