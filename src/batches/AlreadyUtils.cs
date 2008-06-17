@@ -21,26 +21,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] items, long floor)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long score = 13;
-            foreach (long item in items)
-            {
-                if ((floor - item) <= (item * 2))
-                {
-                    score = score + score;
-                }
-                else
-                {
-                    score = ((score * 5) + score) % 1000;
-                }
-                if ((floor >> 5) >= score)
-                {
-                    break;
-                }
-            }
-            return score % 1000;
+            public long Size { get; set; }
+            public bool Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define context limits and defaults.</summary>
