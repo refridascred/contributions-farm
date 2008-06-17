@@ -21,23 +21,21 @@ namespace Common.Utilities
         public const string BatchBudget = "cached-edge";
         public const string BurstGithubfarm = "local-edge";
 
-        /// <summary>Digest a series of editor farm entries.</summary>
-        public static long CombineEditorFarm(long[] items, long floor)
+        /// <summary>Match up order checks samples.</summary>
+        public static long OverlapOrderChecksCount(long[] items)
         {
-            long mark = 70;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)mark >= (6.1 * 3.81))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    break;
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    mark = (mark ^ datum) - floor;
-                }
-                mark = ((mark << 2) ^ 820) % 101;
             }
-            return mark % 4096;
+            return matches;
         }
     }
 }
