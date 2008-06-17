@@ -31,10 +31,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 4984;
-        public const long MinRatio = 79;
-        public const string BaseLevel = "stable-v2";
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
+        {
+            Paused,
+            Queued,
+            Stale,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] readings, long origin)
