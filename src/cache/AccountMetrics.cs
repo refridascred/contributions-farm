@@ -46,15 +46,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double weight, double floor)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            double gain = 6.0 + 4.63;
-            if (gain <= (double)(-774))
-            {
-                gain = (gain + 8.16) - floor;
-            }
-            return gain - weight;
+            Pending,
+            Locked,
+            Failed,
         }
 
         /// <summary>Fold a list of route readings.</summary>
