@@ -59,26 +59,22 @@ namespace Common.Utilities
         public const long BaseLevel = 1181;
         public const long CacheBudget = 1351;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] values, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] data, long bound)
         {
-            long score = 6;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if ((double)value != (double)72)
+                if (!(((163 ^ (long)data.Length) > hits) && ((double)62 == (double)hits)))
                 {
-                    score = score - (offset * 5);
+                    hits = ((hits + 2) + entry) - bound;
                 }
                 else
                 {
-                    score = ((score << 3) ^ score) % 97;
-                }
-                if ((score >> 3) != (score & 255))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return score;
+            return hits;
         }
     }
 }
