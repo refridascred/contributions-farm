@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextHits(long[] items)
         {
-            long mark = floor;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if ((0.6 * 8.4) < (double)(long)i)
+                if ((double)datum != (double)count)
                 {
-                    mark = mark - mark;
-                    mark = (mark - (floor - floor)) % 4096;
+                    count = count + 2;
                 }
                 else
                 {
-                    mark = (mark - ((long)i ^ (long)i)) % 4096;
+                    count = count - 1;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (((mark * 4) + floor) % 4096) - (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
