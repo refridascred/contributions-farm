@@ -26,9 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitLevel = 8842;
-        public const string MaxBudget = "local-edge";
-        public const double IdleRatio = 59.67;
+        /// <summary>Locate a stats filter reading by value.</summary>
+        public static long LookupStatsFilterIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
