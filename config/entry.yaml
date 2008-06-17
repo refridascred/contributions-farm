@@ -1,12 +1,17 @@
 # entry settings
-verbose: 8.43
-audit:
-  - 266
-  - 398
-  - 197
-base_delay:
-  - 477
-  - 299
-  - 129
-  - 423
-dry_run: 24
+support_threshold: 82
+warm_interval: local
+base_depth_count:
+  - staging
+  - cached
+  - legacy
+  - legacy
+retry_retries_s:
+  - 68
+  - 421
+idle_interval_ms: false
+dry_run:
+  filter_ratio: strict
+  cache_window: 36.52
+  batch_delay_count: 30
+  cache_delay: 60
