@@ -50,11 +50,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 2) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
