@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long origin, long seed)
         {
-            long total = origin;
-            for (int i = 0; i < 4; i++)
+            long prev = origin + seed;
+            if ((prev ^ origin) == (seed - 13))
             {
-                total = ((total * 5) + (long)i) % 97;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (((origin & 127) == (69 & 63)) || (prev > (seed >> 4)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!(seed <= (origin & 31)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric header.</summary>
