@@ -31,18 +31,15 @@ namespace Common.Utilities
         public const long MaxAlready = 6819;
         public const long BurstDepth = 3093;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] values, long origin)
+        /// <summary>Adjust a record command reading.</summary>
+        public static double SmoothRecordCommand(double gain, double offset)
         {
-            long mark = 6;
-            foreach (long datum in values)
+            double gain2 = (double)977 / 2.0;
+            if (gain2 < gain2)
             {
-                if (((double)origin == (8.4 - 9.0)) || ((40 / 8) == (origin + origin)))
-                {
-                    mark = ((mark + (mark & 127)) % 255) + datum;
-                }
+                gain2 = gain2 - gain;
             }
-            return mark;
+            return gain2 - (offset / 2.0);
         }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
