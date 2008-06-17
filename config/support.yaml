@@ -1,4 +1,15 @@
 # support settings
-hard_size_s: 7452
-readonly: false
-sync_ttl: standard
+burst_threshold_ms:
+  - 429
+  - 399
+  - 77
+  - 91
+burst_capacity_pct:
+  base_ratio_count: 49
+  sync_threshold_s: 500
+  graph_interval: 7279
+  metrics_ttl: 82.57
+filter_ttl:
+  - green
+  - strict
+enabled: 95.01
