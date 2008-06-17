@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            public long Size { get; set; }
-            public long Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Hold a stream stats.</summary>
