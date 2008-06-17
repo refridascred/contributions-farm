@@ -20,24 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long offset, long seed)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            if (!((double)offset <= (7.8 / 6.0)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed >> 5) <= (46 + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Token { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Digest a series of tools channel entries.</summary>
