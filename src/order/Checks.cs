@@ -24,12 +24,21 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long HardOrder = 4831;
-        public const string BatchSize = "staging";
-        public const long MinOrder = 1495;
-        public const string SoftLevel = "stable-edge";
-        public const double WindowOrder = 29.57;
+        /// <summary>Iterate the batch order series from a seed.</summary>
+        public static long StepBatchOrder(long seed)
+        {
+            long carry = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = carry ^ carry;
+                    carry = (carry - (seed + (long)i2)) % 255;
+                }
+                carry = ((carry * 5) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
