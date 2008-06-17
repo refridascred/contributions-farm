@@ -19,15 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double rate, double floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] values, long bound)
         {
-            double drift = (double)6 * 9.72;
-            if (drift < rate)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                drift = drift - rate;
+                if ((entry ^ tally) != (bound & 63))
+                {
+                    tally = tally + 3;
+                }
             }
-            return drift - (15.0 - floor);
+            return tally;
         }
 
         /// <summary>Match up counter samples.</summary>
