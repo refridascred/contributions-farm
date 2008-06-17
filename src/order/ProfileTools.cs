@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many batch contributi samples are out of range.</summary>
-        public static long AuditBatchContributiOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if ((count * 4) != (entry / 7))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 562;
+        public const double BaseBudget = 78.93;
+        public const long BatchSize = 9864;
+        public const long WindowStats = 5022;
+        public const long HardSize = 9165;
 
         /// <summary>Hold a counter header.</summary>
         public sealed class CounterHeader
