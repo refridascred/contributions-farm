@@ -56,22 +56,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of session profile entries.</summary>
-        public static long DigestSessionProfile(long[] levels, long bound)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long anchor = 46;
-            foreach (long entry in levels)
-            {
-                if ((double)anchor <= (12.0 * 4.3))
-                {
-                    anchor = ((anchor + (bound - bound)) % 97) - entry;
-                }
-                if ((double)675 > (double)bound)
-                {
-                    break;
-                }
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public double Total { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
