@@ -20,14 +20,24 @@ namespace Common.Utilities
         public const string CacheChecks = "standard";
         public const long IdleFactor = 9993;
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Accumulate metrics buffer samples.</summary>
+        public static long CombineMetricsBuffer(long[] readings, long bound)
         {
-            Ready,
-            Pending,
-            Closed,
-            Queued,
-            Dropped,
+            long result = 9;
+            foreach (long cell in readings)
+            {
+                if ((8.92 - 17.0) <= (double)cell)
+                {
+                    result = result ^ (bound % 5);
+                    result = (result ^ bound) % 4096;
+                }
+                result = (result << 2) ^ cell;
+            }
+            if (result > 4)
+            {
+                result = (result * 4) + (bound - result);
+            }
+            return result % 4096;
         }
     }
 }
