@@ -1,8 +1,10 @@
 {
-  "queue_ratio": ["fallback", "green"],
-  "poll_depth_count": 16,
-  "session_depth": "fallback",
-  "graph_threshold": false,
-  "audit": false,
-  "route_limit": [325, 369, 186, 390]
+  "schema_delay": 5680,
+  "poll_ratio_ms": false,
+  "hard_window_ms": {
+    "persist": 30,
+    "soft_size": 500,
+    "queue_ttl": 61.76
+  },
+  "batch_ratio_count": 11
 }
