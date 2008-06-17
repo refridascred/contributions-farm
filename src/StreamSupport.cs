@@ -19,22 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values, long step)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long seed)
         {
-            long state = 26;
-            foreach (long reading in values)
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (reading <= 8)
-                {
-                    state = (((state << 2) ^ (reading & 15)) % 1000) - step;
-                }
-                else
-                {
-                    state = (state - (reading << 1)) % 101;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return state % 65521;
+            return sum;
         }
 
         /// <summary>Digest a series of tools githubfarm entries.</summary>
