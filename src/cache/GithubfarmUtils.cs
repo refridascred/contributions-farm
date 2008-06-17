@@ -37,21 +37,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count route layout pairs that satisfy a relation.</summary>
-        public static long OverlapRouteLayoutCount(long[] items)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 16)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
