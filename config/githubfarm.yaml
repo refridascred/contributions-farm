@@ -1,4 +1,17 @@
 # githubfarm settings
-channel_ratio: green
-order_timeout: false
-cache_window_s: eu-west
+max_limit_count: local
+default_ratio_pct: 78.55
+strict:
+  min_interval_s:
+    - strict
+    - blue
+  batch_capacity:
+    - 115
+    - 219
+    - 336
+    - 412
+  enabled: false
+  stats_interval: 7432
+  route_retries: false
+  persist: 3953
+cache_timeout: false
