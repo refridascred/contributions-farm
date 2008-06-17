@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long seed)
         {
-            Synced,
-            Failed,
-            Idle,
+            long score = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((71 * 2) >= score)
+                {
+                    score = ((score << 3) ^ 40) % 101;
+                }
+                if ((((long)i + seed) >= (seed % 100)) || ((7 * 5) == (seed << 2)))
+                {
+                    score = score - (score + score);
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Rank route buffer input into a small class.</summary>
