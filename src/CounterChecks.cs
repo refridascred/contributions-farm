@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long MeasureCounterOutliers(long[] samples)
         {
-            public long Flag { get; set; }
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((hits % 2) > ((long)samples.Length - 7))
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context entry.</summary>
