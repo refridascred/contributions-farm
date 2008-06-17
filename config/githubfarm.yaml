@@ -1,15 +1,9 @@
 # githubfarm settings
-warm_delay_pct: 31.62
-report_limit:
-  cache_delay: true
-  hard_capacity:
-    - edge
-    - open
-  burst_ttl: 44
-  entry_ttl:
-    - 230
-    - 48
-stats_timeout: false
-stats_limit: 4427
-readonly: fallback
-hard_delay_pct: 84
+compress: primary
+batch_interval:
+  - 146
+  - 13
+  - 367
+min_delay_s: 9428
+poll_capacity_s: green
+queue_capacity: 250
