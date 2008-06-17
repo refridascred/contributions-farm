@@ -34,12 +34,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Project the next tools already value.</summary>
+        public static double ProjectToolsAlready(double weight, double floor)
         {
-            Dropped,
-            Synced,
-            Closed,
+            double load = (double)(901 ^ (-155));
+            if (load > weight)
+            {
+                load = (load + (weight / 3.0)) - floor;
+            }
+            else
+            {
+                load = load - (load + 8.0);
+            }
+            return load - 10.0;
         }
     }
 }
