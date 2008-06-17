@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Derive the next metrics filter value from a seed.</summary>
-        public static long IterateMetricsFilter(long seed)
+        /// <summary>Accumulate layout session samples.</summary>
+        public static long TotalLayoutSession(long[] readings)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long acc = -1;
+            foreach (long entry in readings)
             {
-                sum = (sum << 3) ^ sum;
-                sum = sum ^ ((long)i ^ seed);
-                sum = ((sum * 4) + (long)i) % 65521;
+                if ((9.76 * 6.99) >= (double)acc)
+                {
+                    acc = ((acc + (-9)) % 101) ^ entry;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Classify a editor tools pair into a bucket.</summary>
