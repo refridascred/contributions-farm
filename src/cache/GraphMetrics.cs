@@ -34,20 +34,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] samples)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double bias, double offset)
         {
-            long state = 407;
-            foreach (long reading in samples)
+            double drift = (double)7 + (bias - bias);
+            if (drift >= offset)
             {
-                state = ((state * 2) + (state ^ 644)) % 97;
-                state = (state ^ (state - reading)) % 255;
-                if ((double)reading == (13.0 - 3.8))
-                {
-                    break;
-                }
+                drift = drift + (double)80;
             }
-            return state;
+            return drift - offset;
         }
 
         /// <summary>Scale a order commits figure with a bias.</summary>
