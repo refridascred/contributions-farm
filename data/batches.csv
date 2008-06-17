@@ -1,8 +1,8 @@
-id,count,state
-1,cached,16.43
-2,823,green
-3,927,latest
-4,7.12,7.65
-5,17.12,96.06
-6,green,82.68
-7,open,53.74
+id,level,count
+1,500,38.71
+2,399,212
+3,65.15,green
+4,21.95,10.27
+5,standard,local
+6,581,352
+7,51.52,18.4
