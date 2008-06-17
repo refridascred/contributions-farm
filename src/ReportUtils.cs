@@ -20,10 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheScore = "staging-edge";
-        public const long MinTimeout = 6657;
-        public const long RetryMetrics = 6099;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a context counter forward.</summary>
         public static long StepContext(long seed)
