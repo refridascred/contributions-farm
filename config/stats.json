@@ -1,22 +1,6 @@
 {
-  "burst_size_s": 8338,
-  "dry_run": {
-    "base_ttl_s": 500,
-    "burst_depth_ms": "local",
-    "sync_window_pct": {
-      "base_limit_pct": 250,
-      "warm_retries": 87,
-      "channel_retries": "local",
-      "soft_window": "stable",
-      "warm_delay_ms": 30
-    },
-    "readonly": true
-  },
-  "record_limit": {
-    "flush_capacity": 6.02,
-    "compress": "eu-west",
-    "cache_delay": "latest",
-    "enabled": 1024,
-    "sync_depth": "strict"
-  }
+  "persist": "green",
+  "sync_ttl_pct": [234, 387],
+  "cache_threshold_count": "green",
+  "audit": 66.24
 }
