@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long OverlapRecordCount(long[] values)
+        /// <summary>Derive the next stats report value from a seed.</summary>
+        public static long RollStatsReport(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)state >= (2.0 * 0.61)))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    state = state + state;
                 }
+                state = state - (limit % 5);
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
