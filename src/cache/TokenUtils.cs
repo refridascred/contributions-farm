@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 97.71;
-        public const long StepMetric = 3463;
-        public const long BatchMetric = 2376;
-        public const long SoftTimeout = 7956;
-        public const long MinMetric = 2322;
+        /// <summary>Adjust a contributi record reading.</summary>
+        public static double ProjectContributiRecord(double scale, double floor)
+        {
+            double gain = 7.02;
+            return (gain + scale) + floor;
+        }
 
         /// <summary>Derive the next graph layout value from a seed.</summary>
         public static long DeriveGraphLayout(long offset)
