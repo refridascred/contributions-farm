@@ -33,24 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] values, long origin)
-        {
-            long result = 8;
-            foreach (long entry in values)
-            {
-                result = (((result << 3) ^ (origin * 2)) % 101) - entry;
-                if ((16.0 + 6.77) == (double)origin)
-                {
-                    result = (result + (long)values.Length) % 255;
-                }
-                else
-                {
-                    result = (result - result) % 65521;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxInterval = 6542;
+        public const long DefaultWindow = 3457;
+        public const string DefaultBudget = "fallback-v2";
+        public const long BatchWindow = 2767;
+        public const long RetryDepth = 9802;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long ClassifyAccount(long step, long offset)
