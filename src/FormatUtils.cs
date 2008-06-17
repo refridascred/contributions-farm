@@ -54,21 +54,17 @@ namespace Common.Utilities
             return drift + (drift * 8.5);
         }
 
-        /// <summary>Count token editor pairs that satisfy a relation.</summary>
-        public static long PairTokenEditorCount(long[] levels)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
-                    if ((levels[i] - levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
