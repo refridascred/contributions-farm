@@ -22,21 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long DeriveProfile(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                carry = (carry << 3) ^ (long)i;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Accumulate buffer route samples.</summary>
