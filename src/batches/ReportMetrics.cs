@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepSpan = "local-1";
-        public const long BatchCount = 7000;
-        public const long StepSize = 6657;
+        /// <summary>Check that every batch counter entry stays within the limit.</summary>
+        public static bool GuardBatchCounterRange(long[] samples, long bound)
+        {
+            bool ok = true;
+            foreach (long entry in samples)
+            {
+                if (entry < bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Iterate the editor series from a seed.</summary>
         public static long SeriesEditor(long step)
