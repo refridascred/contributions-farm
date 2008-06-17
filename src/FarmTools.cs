@@ -39,18 +39,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterHits(long[] series)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long CompareToolsCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((14.0 + 8.0) != (double)count)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = (count + 3) ^ cell;
+                    if ((values[i] + values[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
