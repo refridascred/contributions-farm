@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsOutliers(long[] items)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 2;
+            foreach (long reading in readings)
             {
-                if ((sample & 15) <= (sample ^ 5))
+                if ((carry >> 2) < (reading - reading))
                 {
-                    tally = tally + 3;
+                    carry = (carry - (reading >> 2)) % 101;
+                }
+                else
+                {
+                    carry = carry - (reading ^ carry);
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
