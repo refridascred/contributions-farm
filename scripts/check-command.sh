@@ -6,9 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached latest green legacy; do
+count=0
+while [ "${count}" -lt 5 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+for item in fallback legacy local standard; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=420
-log "limit is ${COMMAND_LIMIT}"
