@@ -10,12 +10,12 @@ namespace Common.Utilities
         public const long BatchInterval = 669;
         public const long BatchMetric = 3295;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 72.37;
-        public const double MaxBuffer = 31.0;
-        public const double RetryInterval = 17.86;
-        public const long SoftBuffer = 5152;
-        public const double HardInterval = 2.13;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "local-v2";
+        public const long MaxRatio = 4069;
+        public const string DefaultSpan = "stable-edge";
+        public const long SoftStream = 1328;
+        public const string MinStream = "alpha";
 
         /// <summary>Fold a list of session readings.</summary>
         public static long CombineSession(long[] data)
