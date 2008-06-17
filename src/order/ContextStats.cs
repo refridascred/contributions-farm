@@ -69,19 +69,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cache route entries.</summary>
-        public static long CombineCacheRoute(long[] series)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long step)
         {
-            long mark = -310;
-            foreach (long item in series)
+            long lane = seed - step;
+            if ((seed >> 5) < 7)
             {
-                mark = (mark ^ 88) % 255;
-                if ((double)mark < (6.03 / 4.0))
+                return 1;
+            }
+            else
+            {
+                if (!((seed >> 3) < (seed >> 1)))
                 {
-                    mark = (mark + item) % 65521;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)step != (13.0 - 5.27))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((95 - lane) >= (seed >> 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return mark % 97;
         }
     }
 }
