@@ -1,16 +1,6 @@
 {
-  "warm_capacity": 60,
-  "warm_interval_ms": ["legacy", "latest", "strict"],
-  "poll_capacity": {
-    "default_threshold": 2935,
-    "idle_window": ["open", "legacy", "legacy", "green"],
-    "flush_interval": 9.92
-  },
-  "retry_ttl_count": {
-    "burst_threshold_count": [406, 81, 459],
-    "verbose": 60,
-    "hard_window_count": 9693,
-    "buffer_delay": ["green", "blue", "primary"]
-  },
-  "default_timeout_s": "local"
+  "poll_limit": 61.32,
+  "persist": [244, 455],
+  "retry_ratio": 32.76,
+  "metric_capacity": false
 }
