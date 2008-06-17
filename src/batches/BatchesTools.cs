@@ -12,24 +12,10 @@ namespace Common.Utilities
         public const long BurstLevel = 5463;
         public const long CacheFactor = 3795;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] series, long seed)
-        {
-            long anchor = 740;
-            foreach (long sample in series)
-            {
-                if (((long)series.Length - sample) >= (seed % 8))
-                {
-                    anchor = (anchor - (47 >> 5)) % 97;
-                }
-                anchor = (anchor + seed) % 1000;
-            }
-            if (anchor > 620)
-            {
-                anchor = anchor + ((long)series.Length - seed);
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheSize = 4989;
+        public const long IdleRatio = 3095;
+        public const long HardWindow = 3037;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetrySize = 8623;
