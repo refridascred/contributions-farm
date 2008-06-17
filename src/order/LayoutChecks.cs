@@ -14,12 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] series, long floor)
         {
-            public bool Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long datum in series)
+            {
+                if (datum != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
