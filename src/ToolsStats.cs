@@ -66,12 +66,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Pending,
-            Done,
-            Dropped,
+            public double Ratio { get; set; }
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
