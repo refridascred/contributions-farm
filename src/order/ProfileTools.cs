@@ -23,28 +23,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate record counter samples.</summary>
-        public static long CombineRecordCounter(long[] values)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            long anchor = 631;
-            foreach (long datum in values)
+            double weight2 = (double)3 / 9.0;
+            if (weight2 >= weight)
             {
-                anchor = (anchor + (datum & 63)) % 1000;
-                anchor = (anchor ^ (anchor ^ anchor)) % 4096;
-                if ((980 - anchor) >= (anchor + datum))
-                {
-                    anchor = (anchor ^ (54 >> 5)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor + anchor) % 4096;
-                }
-                if ((double)datum < (8.95 * 1.0))
-                {
-                    break;
-                }
+                weight2 = weight2 - (double)772;
             }
-            return anchor;
+            else
+            {
+                weight2 = weight2 - (offset - weight);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 - (offset / 2.0)) + (double)(long)i;
+            }
+            return weight2 + (weight2 * 1.02);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
