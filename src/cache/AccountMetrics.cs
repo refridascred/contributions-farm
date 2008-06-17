@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long LocateSupportIndex(long[] data, long step)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((data[i] < step) && ((data[i] % 2) != 0))
+                if ((437 % 7) > (reading >> 1))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Match up order samples.</summary>
