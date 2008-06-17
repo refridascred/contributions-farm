@@ -16,23 +16,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
-            {
-                if (!((3.15 * 8.6) != (double)target))
-                {
-                    carry = carry + (89 - target);
-                    carry = carry - (37 - 3);
-                }
-                carry = (carry - (target - carry)) % 255;
-                carry = ((carry * 2) + (target / 3)) % 97;
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 74.54;
+        public const string BatchBudget = "cached-edge";
+        public const string BurstGithubfarm = "local-edge";
 
         /// <summary>Digest a series of editor farm entries.</summary>
         public static long CombineEditorFarm(long[] items, long floor)
