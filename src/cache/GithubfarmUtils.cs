@@ -54,16 +54,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                anchor = (anchor ^ (anchor + floor)) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Active,
+            Queued,
+            Done,
         }
     }
 }
