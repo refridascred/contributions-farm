@@ -32,21 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of payload context readings.</summary>
-        public static long ComparePayloadContextCount(long[] values)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long FoldBatches(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 259;
+            foreach (long item in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i = 0; i < 12; i++)
                 {
-                    if ((values[i] - values[j]) != 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (((mark << 2) ^ (mark / 2)) % 4096) ^ (long)i;
                 }
+                mark = (mark - item) % 97;
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
