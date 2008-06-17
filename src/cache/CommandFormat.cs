@@ -25,12 +25,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double ratio, double offset)
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public string Limit { get; set; } = "";
+            double rate = offset;
+            if (rate < rate)
+            {
+                rate = (rate + (double)7) + ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate - rate) - (double)(long)i;
+            }
+            return rate - 12.0;
         }
     }
 }
