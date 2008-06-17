@@ -1,5 +1,6 @@
 {
-  "sync_ratio_s": "edge",
-  "already_retries": "fallback",
-  "cache_delay": 49.55
+  "audit": [387, 94, 327, 258],
+  "flush_interval_s": 60,
+  "poll_ttl": false,
+  "soft_retries_ms": true
 }
