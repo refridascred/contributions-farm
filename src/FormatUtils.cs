@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long anchor = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor ^ ((long)i + 7)) % 65521;
-                anchor = (anchor ^ (floor + floor)) % 101;
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            Done,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
