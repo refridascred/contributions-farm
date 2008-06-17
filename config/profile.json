@@ -1,8 +1,12 @@
 {
-  "cache_limit": [170, 217],
-  "min_size_pct": 5140,
-  "persist": 66.7,
-  "cache_threshold_s": 92,
-  "flush_ttl_count": 14,
-  "flush_timeout_pct": 49.16
+  "cache_ratio_s": "latest",
+  "dry_run": 50.04,
+  "command_ratio": ["primary", "strict", "staging"],
+  "burst_delay_s": ["strict", "open"],
+  "enabled": 6796,
+  "persist": {
+    "cache_capacity": "local",
+    "editor_size": 9377,
+    "githubfarm_ratio": "green"
+  }
 }
