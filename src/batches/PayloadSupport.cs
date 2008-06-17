@@ -23,12 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheTimeout = 4862;
-        public const long BatchSpan = 878;
-        public const string BatchNotes = "local-1";
-        public const long CacheRatio = 1402;
-        public const long HardNotes = 4540;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if (!((24 ^ item) > count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate tools readings against a bound.</summary>
         public static bool VerifyToolsRange(long[] readings, long offset)
