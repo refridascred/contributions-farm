@@ -22,17 +22,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long step)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long CombineCommand(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 650;
+            foreach (long reading in levels)
             {
-                if (data[i] >= step)
+                if ((carry >> 5) != (bound >> 2))
                 {
-                    return (long)i;
+                    carry = (((carry << 3) ^ (carry & 255)) % 255) ^ reading;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (carry * 3)) % 65521;
                 }
             }
-            return -1;
+            if (carry > 22)
+            {
+                carry = ((carry << 2) ^ ((long)levels.Length + 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
