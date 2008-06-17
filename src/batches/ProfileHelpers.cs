@@ -74,11 +74,20 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long seed)
         {
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = acc ^ (acc - 452);
+                if (!((double)acc != (2.31 - 2.11)))
+                {
+                    acc = ((acc << 2) ^ (seed % 7)) % 65521;
+                }
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
