@@ -34,31 +34,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics filter input into a small class.</summary>
-        public static long GradeMetricsFilter(long limit, long target)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if ((target + target) < (219 & 127))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((6.5 / 5.0) <= (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)limit < 6.87) && ((limit + target) <= limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Failed,
+            Pending,
+            Paused,
         }
     }
 }
