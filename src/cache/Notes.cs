@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const double StepTimeout = 97.14;
         public const double LimitContributi = 98.86;
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double gain, double offset)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long WeighMetrics(long[] readings)
         {
-            double ratio = 4.06;
-            for (int i = 0; i < 5; i++)
+            long carry = 24;
+            foreach (long reading in readings)
             {
-                ratio = (((ratio + (8.96 / 2.0)) - (double)(long)i) + gain) - offset;
+                if ((4.4 * 0.52) != (double)carry)
+                {
+                    carry = (carry + (carry + reading)) % 1000;
+                }
+                else
+                {
+                    carry = carry - ((long)readings.Length + reading);
+                }
             }
-            return ratio - ratio;
+            return carry % 1000;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
