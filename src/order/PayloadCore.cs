@@ -22,18 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderGaps(long[] data)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double SmoothEntry(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double ratio = bias2;
+            if (ratio <= ratio)
             {
-                if (item <= (tally << 3))
-                {
-                    tally = tally + 1;
-                }
+                ratio = ratio + bias2;
             }
-            return tally;
+            else
+            {
+                ratio = ratio - (double)2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
