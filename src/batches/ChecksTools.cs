@@ -14,22 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] readings)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double scale, double bias)
         {
-            long anchor = 900;
-            foreach (long item in readings)
-            {
-                if (anchor > 158)
-                {
-                    anchor = (anchor << 2) ^ item;
-                }
-            }
-            if (anchor > 8)
-            {
-                anchor = (anchor - (anchor ^ anchor)) % 255;
-            }
-            return anchor;
+            double weight = 9.0 - 3.6;
+            return ((weight - (weight / 2.0)) + scale) + bias;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
