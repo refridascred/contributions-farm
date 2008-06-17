@@ -1,5 +1,22 @@
 # support settings
-profile_ttl: stable
-max_delay_pct: 9158
-account_ratio: strict
-batch_depth_s: strict
+flush_threshold_ms: 8
+persist: legacy
+soft_ttl: false
+retry_timeout_s:
+  order_threshold:
+    - 380
+    - 154
+    - 186
+    - 404
+  contributi_ttl: false
+  tools_delay: fallback
+  default_threshold_s:
+    - staging
+    - blue
+  channel_timeout: false
+  enabled: strict
+sync_size:
+  - 417
+  - 193
+  - 483
+  - 35
