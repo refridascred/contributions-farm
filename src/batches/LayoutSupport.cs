@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const long HardCommand = 648;
         public const long StepWidth = 5046;
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] levels, long seed)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            long state = 35;
+            foreach (long value in series)
             {
-                if (entry < seed)
+                for (int i = 0; i < 10; i++)
                 {
-                    ready = false;
-                    break;
+                    state = (state + (floor - state)) ^ (long)i;
+                }
+                if ((6 - floor) < (floor + floor))
+                {
+                    state = ((state * 3) + (value + state)) % 4096;
                 }
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Accumulate session account samples.</summary>
