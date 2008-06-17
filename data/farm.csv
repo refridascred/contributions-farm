@@ -1,7 +1,10 @@
-id,label,rank
-1,open,459
-2,325,edge
-3,stable,448
-4,latest,81.34
-5,786,201
-6,614,open
+id,state,label
+1,669,356
+2,11.93,standard
+3,460,210
+4,eu-west,36.37
+5,973,local
+6,24,open
+7,594,40.63
+8,724,774
+9,55.76,open
