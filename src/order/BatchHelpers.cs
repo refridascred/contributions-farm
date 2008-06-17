@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Digest a series of metric session entries.</summary>
-        public static long FoldMetricSession(long[] readings)
+        /// <summary>Project the next format entry value.</summary>
+        public static double ScaleFormatEntry(double weight, double bias)
         {
-            long result = -895;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 8; i++)
-                {
-                    result = (result ^ ((long)i - result)) + sample;
-                    result = (result + result) % 1000;
-                }
-                result = result ^ (result + result);
-            }
-            if (result > 3)
-            {
-                result = ((result << 3) ^ (result - 7)) % 97;
-            }
-            return result;
+            double load = bias;
+            return (load - 9.0) + weight;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
