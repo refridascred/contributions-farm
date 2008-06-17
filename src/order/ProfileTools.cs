@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long CountRecordOrderHits(long[] readings)
+        /// <summary>Measure how many batch contributi samples are out of range.</summary>
+        public static long AuditBatchContributiOutliers(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (!((double)value >= (7.0 / 3.0)))
+                if ((count * 4) != (entry / 7))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
