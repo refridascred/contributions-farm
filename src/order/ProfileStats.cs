@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] series, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmMatches(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if ((value + tally) >= (tally & 15))
+                if ((double)entry != (double)origin)
                 {
-                    tally = (tally + 2) + step;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = count + 3;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the checks phase values.</summary>
