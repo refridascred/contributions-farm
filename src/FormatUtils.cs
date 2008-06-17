@@ -46,14 +46,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double rate, double span)
         {
-            Failed,
-            Synced,
-            Pending,
-            Paused,
-            Retry,
+            double drift = rate;
+            if (drift > rate)
+            {
+                drift = (drift + (double)166) - span;
+            }
+            return drift + (drift * 8.5);
         }
 
         /// <summary>Count token editor pairs that satisfy a relation.</summary>
