@@ -14,12 +14,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)reading > (5.9 / 5.0))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
