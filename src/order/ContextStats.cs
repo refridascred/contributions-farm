@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long MeasureClusterHits(long[] levels, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((seen < (seed - 883)) || !((seed << 2) >= 982))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            public long Flag { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
