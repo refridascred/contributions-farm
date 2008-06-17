@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double ratio, double offset)
+        /// <summary>Measure how many report layout samples are out of range.</summary>
+        public static long TallyReportLayoutGaps(long[] samples)
         {
-            double weight = ratio * 5.3;
-            if (weight < (ratio * 7.0))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                weight = weight - (5.19 / 9.0);
+                if ((hits - reading) != (reading + hits))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight - (double)90;
-            }
-            return weight - offset;
+            return hits;
         }
 
         /// <summary>Accumulate tools samples.</summary>
