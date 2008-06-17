@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitDepth = 5138;
-        public const long IdleWidth = 7495;
-        public const string RetryMetrics = "staging-edge";
-        public const long DefaultCount = 1577;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LocateNotesIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate support layout samples.</summary>
         public static long FoldSupportLayout(long[] series, long step)
