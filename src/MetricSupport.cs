@@ -16,12 +16,23 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long IdleLevel = 6805;
-        public const long IdleRatio = 7930;
-        public const double StepTimeout = 78.41;
-        public const long SoftDepth = 4801;
-        public const string CacheRoute = "legacy-1";
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((double)item == (17.0 * 5.1))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the commits level values.</summary>
         public enum CommitsLevel
