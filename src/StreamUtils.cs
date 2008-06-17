@@ -83,11 +83,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ProjectBuffer(double scale, double bias)
+        /// <summary>Rank buffer checks input into a small class.</summary>
+        public static long ClassifyBufferChecks(long origin, long offset)
         {
-            double weight = (0.2 + 18.0) * 7.12;
-            return (weight - (scale + weight)) + bias;
+            if ((origin + offset) != (origin * 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((origin + offset) <= offset) && ((offset - origin) >= (origin / 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
