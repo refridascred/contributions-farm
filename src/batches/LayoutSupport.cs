@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values, long target)
         {
-            Paused,
-            Closed,
-            Ready,
-            Retry,
-            Dropped,
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count <= (target / 2)) || ((count - count) < 4))
+                {
+                    count = (count + 3) + value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
