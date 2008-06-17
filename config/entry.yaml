@@ -1,18 +1,8 @@
 # entry settings
-audit:
-  retry_window_count: true
-  warm_window_pct: 30
-  checks_size: 8.17
-  commits_retries: false
-compress: 250
-sync_depth_pct: legacy
-cache_depth:
-  route_timeout: 250
-  command_ttl:
-    - 298
-    - 392
-    - 63
-  poll_capacity: 41.43
-  commits_threshold: 4934
-sync_timeout_ms: local
-support_depth: 42
+compress: strict
+verbose:
+  - fallback
+  - latest
+  - cached
+  - standard
+flush_depth_count: stable
