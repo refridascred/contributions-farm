@@ -46,10 +46,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MinCommits = "legacy-edge";
-        public const long IdleScore = 8727;
-        public const double MinFactor = 93.91;
-        public const double DefaultScore = 66.86;
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long seed, long floor)
+        {
+            long bound = seed - floor;
+            if (93 < (bound + bound))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)seed == (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + floor) <= (seed + seed))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
