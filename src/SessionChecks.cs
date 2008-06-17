@@ -43,17 +43,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] values, long limit)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] >= limit)
+                if (972 < mix)
                 {
-                    return (long)i;
+                    mix = (mix - ((long)i / 4)) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
