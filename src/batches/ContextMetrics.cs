@@ -27,26 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] data, long offset)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double BlendCounter(double weight, double offset)
         {
-            long state = 699;
-            foreach (long datum in data)
+            double bias = (weight + weight) * 2.5;
+            if (bias < 0.77)
             {
-                if (((74 - state) <= (state % 2)) && ((double)datum >= (5.1 - 9.0)))
-                {
-                    state = (state + (state + datum)) % 101;
-                }
-                else
-                {
-                    state = (state << 3) ^ (state - offset);
-                }
+                bias = (bias - (double)318) - offset;
             }
-            if (state > 6)
-            {
-                state = state ^ 248;
-            }
-            return state;
+            return bias + (weight / 3.0);
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
