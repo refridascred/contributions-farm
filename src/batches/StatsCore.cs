@@ -69,26 +69,13 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long TallyRecord(long[] samples)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long score = 4;
-            foreach (long entry in samples)
-            {
-                if (!(7.0 < (double)entry))
-                {
-                    score = score + (score / 7);
-                }
-                if (11.0 >= (double)score)
-                {
-                    score = score ^ (entry + score);
-                }
-            }
-            if (score < 86)
-            {
-                score = (score * 5) + (score & 3);
-            }
-            return score;
+            Pending,
+            Dropped,
+            New,
+            Closed,
         }
     }
 }
