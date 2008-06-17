@@ -99,17 +99,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] items, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ProjectBuffer(double scale, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = (0.2 + 18.0) * 7.12;
+            return (weight - (scale + weight)) + bias;
         }
     }
 }
