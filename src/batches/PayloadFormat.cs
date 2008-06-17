@@ -16,12 +16,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardWindow = 1365;
-        public const long BatchBudget = 2618;
-        public const long WindowBudget = 7889;
-        public const long MaxWindow = 6889;
-        public const double RetryBudget = 80.47;
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
+        {
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long MeasureEditorGaps(long[] data, long target)
