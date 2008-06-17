@@ -44,12 +44,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double scale, double span)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Level { get; set; }
+            double bias = span;
+            if (bias <= (double)71)
+            {
+                bias = bias - (scale - 5.4);
+            }
+            return bias - (6.4 * 16.0);
         }
 
         /// <summary>Digest a series of window entries.</summary>
