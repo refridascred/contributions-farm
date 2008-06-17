@@ -27,18 +27,12 @@ namespace Common.Utilities
         public const string SoftLevel = "stable-edge";
         public const double WindowOrder = 29.57;
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] levels, long target)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long hits = 0;
-            foreach (long sample in levels)
-            {
-                if ((long)levels.Length > (sample / 9))
-                {
-                    hits = (hits + 1) + target;
-                }
-            }
-            return hits;
+            Paused,
+            Active,
+            New,
         }
 
         /// <summary>Project the next tools value.</summary>
