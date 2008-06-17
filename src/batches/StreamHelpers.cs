@@ -23,15 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long TotalMetric(long[] items, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterLimits(long[] samples, long floor)
         {
-            long mix = 2;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                mix = (((mix * 4) + (cell * 3)) % 101) - bound;
+                if (cell > floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mix % 1000;
+            return found;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
