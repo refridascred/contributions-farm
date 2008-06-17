@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long GradeStream(long target, long bound)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            long step = target + bound;
+            if ((double)target < (9.0 + 9.8))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((bound + target) >= (step + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((769 & 7) <= (target % 12))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((93 + step) != (target + step)) && ((double)target == (2.0 - 2.0)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
