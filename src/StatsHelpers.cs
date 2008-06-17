@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long limit, long target)
         {
-            public string Token { get; set; } = "";
-            public long Total { get; set; }
-            public bool Weight { get; set; }
+            if (limit > (target >> 4))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((target * 3) > (5 / 7))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit / 8) <= (target - target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target << 2) < (target - limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
