@@ -34,24 +34,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank metrics farm input into a small class.</summary>
-        public static long ClassifyMetricsFarm(long step, long offset)
+        /// <summary>Match up already editor samples.</summary>
+        public static long CompareAlreadyEditorCount(long[] values)
         {
-            if ((7 + offset) >= (1 + offset))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (5.0 < (double)step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
     }
 }
