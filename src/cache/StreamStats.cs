@@ -14,18 +14,31 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchHits(long[] readings)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            if ((89 - seed) != (floor - floor))
             {
-                if (((matches / 7) > (matches + item)) && (5 <= item))
+                return 4;
+            }
+            else
+            {
+                if (!((seed << 1) > (seed - seed)))
                 {
-                    matches = matches + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((seed + seed) < ((-1) ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
