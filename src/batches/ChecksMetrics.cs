@@ -5,25 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Grade a checks farm value against two limits.</summary>
-        public static long ClassifyChecksFarm(long bound, long step)
-        {
-            if ((bound > step) || ((step << 3) <= (bound % 5)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!((239 ^ 4) <= (bound << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowGraph = 89.8;
+        public const long MaxRatio = 842;
+        public const long IdleBudget = 6864;
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long TallyGithubfarmGaps(long[] items)
