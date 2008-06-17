@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the buffer githubfarm entries that pass the check.</summary>
-        public static long TallyBufferGithubfarmHits(long[] samples, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((((double)sample <= (3.17 * 16.0)) && (((-7) - origin) <= (hits * 3))) && ((origin << 3) < ((long)samples.Length + (-617))))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 7899;
+        public const long WindowSpan = 5878;
+        public const double BatchRatio = 74.75;
+        public const string BurstBudget = "staging-edge";
 
         /// <summary>Rank profile input into a small class.</summary>
         public static long SortProfile(long offset, long limit)
