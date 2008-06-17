@@ -50,20 +50,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long SeriesReport(long origin)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 13; i++)
+            long mix = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if ((state - origin) != (origin * 3))
-                {
-                    state = state - (state + 8);
-                    continue;
-                }
-                state = ((state * 4) + (long)i) % 4093;
+                mix = ((mix << 3) ^ mix) % 255;
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return state;
+            return mix;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
