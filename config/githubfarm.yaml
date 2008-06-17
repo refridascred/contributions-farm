@@ -1,6 +1,13 @@
 # githubfarm settings
-retry_retries_s: 30
-burst_delay_ms: 18.8
-soft_limit: 500
-context_retries: 7699
-batches_ratio: 64
+tools_limit: eu-west
+poll_interval_pct: fallback
+record_ttl:
+  soft_capacity: 250
+  sync_window_s: false
+  farm_threshold:
+    stats_ratio:
+      - 479
+      - 484
+    enabled: 44.65
+    batch_limit_pct: blue
+    soft_retries_pct: fallback
