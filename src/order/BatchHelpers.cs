@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit context filter readings against a rule.</summary>
-        public static long AuditContextFilterMatches(long[] items, long floor)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LookupTokenIndex(long[] levels, long offset)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(hits < (hits - hits)))
+                if (levels[i] == offset)
                 {
-                    hits = ((hits + 1) - sample) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
