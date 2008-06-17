@@ -54,18 +54,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format batches entries that pass the check.</summary>
-        public static long AuditFormatBatchesGaps(long[] samples, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterRange(long[] levels, long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long entry in levels)
             {
-                if (6.0 > (double)hits)
+                if (entry <= floor)
                 {
-                    hits = ((hits + 1) - item) + bound;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Adjust a token reading.</summary>
