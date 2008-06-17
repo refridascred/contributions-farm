@@ -21,12 +21,25 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BaseReport = 57.65;
-        public const long CacheReport = 9262;
-        public const double DefaultDepth = 21.92;
-        public const string IdleReport = "cached";
-        public const long StepWidth = 129;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long offset, long seed)
+        {
+            if (!((double)offset <= (7.8 / 6.0)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed >> 5) <= (46 + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftCluster = 789;
