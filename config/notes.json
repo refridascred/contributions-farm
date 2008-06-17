@@ -1,8 +1,7 @@
 {
-  "burst_capacity_pct": 10.98,
-  "cluster_interval": [478, 274, 200, 482],
-  "enabled": 100,
-  "hard_limit_pct": "edge",
-  "default_size_pct": "fallback",
-  "githubfarm_depth": "eu-west"
+  "soft_size_s": 32.58,
+  "filter_ratio": false,
+  "min_delay_count": "legacy",
+  "tools_size": false,
+  "default_threshold_ms": [334, 425]
 }
