@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const double DefaultTimeout = 87.36;
         public const long WindowContext = 114;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Count the metric commits entries that pass the check.</summary>
+        public static long TallyMetricCommitsMatches(long[] samples, long target)
         {
-            public bool Region { get; set; }
-            public bool Size { get; set; }
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)target > (5.3 - 0.4))
+                {
+                    seen = (seen + 2) - reading;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Adjust a entry reading.</summary>
