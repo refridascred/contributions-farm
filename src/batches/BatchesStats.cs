@@ -20,12 +20,26 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Accumulate checks stream samples.</summary>
+        public static long TallyChecksStream(long[] series)
         {
-            public bool Ratio { get; set; }
-            public long Token { get; set; }
-            public bool Weight { get; set; }
+            long acc = 894;
+            foreach (long item in series)
+            {
+                if (item <= (item % 8))
+                {
+                    acc = (acc << 3) ^ (acc + item);
+                }
+                if ((acc % 2) < (item >> 2))
+                {
+                    break;
+                }
+            }
+            if (acc < 402)
+            {
+                acc = (acc - (acc * 3)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of commits stream entries.</summary>
