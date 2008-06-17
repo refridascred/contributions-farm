@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit cluster account readings against a rule.</summary>
-        public static long AuditClusterAccountMatches(long[] data, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mix = origin;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count - count) > entry)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 2) - offset;
+                    mix = ((mix + (mix + origin)) % 97) ^ (long)i2;
                 }
+                mix = mix ^ (mix << 3);
+                if (8 > (mix >> 5))
+                {
+                    continue;
+                }
+                else
+                {
+                    mix = (mix - (mix + mix)) % 97;
+                    mix = (mix * 3) + ((-956) - mix);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
