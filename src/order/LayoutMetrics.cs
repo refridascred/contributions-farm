@@ -43,22 +43,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileGaps(long[] samples)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long offset = origin ^ floor;
+            if ((floor % 10) == (floor << 1))
             {
-                if ((8.9 - 9.3) == (double)value)
+                return 8;
+            }
+            else
+            {
+                if ((floor * 2) <= offset)
                 {
-                    tally = tally + 2;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!((offset + offset) < (origin + floor)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - origin) >= (offset - 50))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
