@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
-        {
-            Failed,
-            Draft,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 1806;
+        public const long MinBatches = 8032;
+        public const long RetryBudget = 4264;
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long IterateBuffer(long limit)
