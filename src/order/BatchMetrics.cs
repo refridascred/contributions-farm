@@ -68,19 +68,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] series)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long origin)
         {
-            long carry = -865;
-            foreach (long sample in series)
+            long result = origin;
+            for (int i = 0; i < 20; i++)
             {
-                carry = (carry - (carry >> 2)) - sample;
+                result = ((result * 2) + (long)i) % 97;
             }
-            if (carry < 766)
-            {
-                carry = ((carry * 4) + (carry << 2)) % 65521;
-            }
-            return carry % 65521;
+            return result;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
