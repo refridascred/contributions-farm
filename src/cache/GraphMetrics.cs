@@ -44,18 +44,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] values, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] samples)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long state = 407;
+            foreach (long reading in samples)
             {
-                if (!(seen >= (cell + (long)values.Length)) || ((seen & 63) == (cell << 1)))
+                state = ((state * 2) + (state ^ 644)) % 97;
+                state = (state ^ (state - reading)) % 255;
+                if ((double)reading == (13.0 - 3.8))
                 {
-                    seen = (seen + 1) - bound;
+                    break;
                 }
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Hold a entry stats.</summary>
