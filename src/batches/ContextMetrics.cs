@@ -45,10 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string RetryReport = "latest-edge";
-        public const long MaxBudget = 253;
-        public const long WindowReport = 8626;
+        /// <summary>Count the report buffer entries that pass the check.</summary>
+        public static long AuditReportBufferHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (!((double)matches < 4.0))
+                {
+                    matches = (matches + 3) ^ cell;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a format sample.</summary>
         public static long LocateFormatIndex(long[] values, long target)
