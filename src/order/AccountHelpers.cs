@@ -23,25 +23,20 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank metrics support input into a small class.</summary>
-        public static long GradeMetricsSupport(long offset, long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long target)
         {
-            long prev = offset - step;
-            if ((4 & 127) > (offset + prev))
+            long state = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step >> 1) < (prev + offset))
+                state = (state - target) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return 0;
+                    state = (state + (long)i2) % 97;
                 }
-                else
-                {
-                    return 3;
-                }
+                state = ((state * 4) + (long)i) % 1000;
             }
+            return state;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
