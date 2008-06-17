@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long seed)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            if ((seed + (-47)) > (666 + 7))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset <= (seed & 1)) && ((offset >> 1) != (seed << 2)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (offset / 3))
+                    if ((readings[i] + readings[j]) < 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 4;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define command limits and defaults.</summary>
