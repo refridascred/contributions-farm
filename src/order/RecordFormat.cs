@@ -61,18 +61,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] values)
+        /// <summary>Find the first counter buffer entry that matches the target.</summary>
+        public static long LookupCounterBufferIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count % 97) < (20 << 3))
+                if (items[i] < floor)
                 {
-                    count = (count + 1) ^ entry;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
