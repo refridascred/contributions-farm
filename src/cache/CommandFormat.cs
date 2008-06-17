@@ -12,18 +12,12 @@ namespace Common.Utilities
         public const long CacheBatch = 5293;
         public const long StepWidth = 6253;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double RetryCount = 20.78;
+        public const string BatchCount = "stable-edge";
+        public const long BaseTimeout = 731;
+        public const string HardScore = "strict-1";
+        public const long BurstSpan = 8411;
 
         /// <summary>Count the metric commits entries that pass the check.</summary>
         public static long TallyMetricCommitsMatches(long[] samples, long target)
