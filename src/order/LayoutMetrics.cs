@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string WindowFactor = "primary-v2";
         public const long RetryCount = 5766;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] samples, long bound)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                if (((long)levels.Length - datum) <= (hits << 1))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
