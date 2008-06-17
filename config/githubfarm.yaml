@@ -1,17 +1,12 @@
 # githubfarm settings
-default_capacity_s:
-  - 357
-  - 379
-idle_capacity_s:
-  dry_run: blue
-  default_limit_ms: 32.53
-  flush_depth_pct: 250
-  readonly: 30
-  batches_ttl: 70.81
-  cache_retries: latest
-flush_window:
-  - 181
-  - 422
-  - 345
-strict: 38.66
-record_threshold: 60
+command_delay: 17.04
+poll_capacity:
+  strict: open
+  min_size_count: false
+  poll_ttl_ms: legacy
+  max_retries_count: 84
+  burst_depth: 49
+  warm_window_pct:
+    - 423
+    - 369
+readonly: 79
