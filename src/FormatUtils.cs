@@ -73,19 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Measure how many cluster batches samples are out of range.</summary>
+        public static long CountClusterBatchesHits(long[] items)
         {
-            long score = floor;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((6.5 + 4.3) >= (double)(long)i) && ((712 & 15) <= floor))
+                if ((tally + tally) <= (item / 7))
                 {
-                    score = (score - (1 * 4)) % 1000;
+                    tally = tally + 1;
                 }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Blend two payload measurements.</summary>
