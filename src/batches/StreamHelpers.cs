@@ -66,10 +66,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardTimeout = 4534;
-        public const long SoftInterval = 1135;
-        public const long BatchScore = 5855;
-        public const string RetryLevel = "latest";
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
+        {
+            Done,
+            Queued,
+            New,
+            Closed,
+            Stale,
+        }
     }
 }
