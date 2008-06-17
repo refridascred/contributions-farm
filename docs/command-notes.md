@@ -1,14 +1,12 @@
 # Command notes
 
-A stream that stays idle for too long is moved to the report list.
-Run the metric check before changing any session limits.
-The contributi module keeps farm values in sync with the token cache.
-
-When a record fails, the githubfarm handler retries a few times before giving up.
-Run the route check before changing any cache limits.
+Run the cluster check before changing any window limits.
+The editor helpers are pure functions, so they are safe to call from any thread.
+When a report fails, the format handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new record fields
-- Log every graph change
-- Prefer stats defaults
+- Keep tools values small
+- Document new token fields
+- Validate window input early
+- Prefer window defaults
