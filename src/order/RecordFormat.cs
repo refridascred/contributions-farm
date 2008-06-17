@@ -62,18 +62,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordMatches(long[] data)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long limit)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((cell ^ hits) == (cell % 8))
-                {
-                    hits = hits + 2;
-                }
+                long hits = ((-4) % 10) >> 4;
+                acc = ((acc << 3) ^ (hits / 4)) % 65521;
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return hits;
+            return acc;
         }
     }
 }
