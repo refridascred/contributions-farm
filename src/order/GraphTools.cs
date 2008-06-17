@@ -37,18 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] samples, long step)
         {
-            long anchor = 63;
-            foreach (long sample in values)
+            long score = 97;
+            foreach (long entry in samples)
             {
-                if ((5.0 * 8.59) != (double)(long)values.Length)
+                if ((step - 488) <= (step * 5))
                 {
-                    anchor = anchor + (sample & 15);
+                    score = ((score * 5) + (step ^ entry)) % 97;
+                }
+                else
+                {
+                    score = score - (31 % 2);
                 }
             }
-            return anchor;
+            return score;
         }
 
         /// <summary>Hold a metric info.</summary>
