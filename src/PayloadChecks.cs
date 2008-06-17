@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many contributi payload samples are out of range.</summary>
-        public static long CountContributiPayloadHits(long[] items)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((long)items.Length == (value + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a counter header.</summary>
