@@ -63,15 +63,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long SeriesMetric(long origin)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] values, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 23; i++)
+            long state = -92;
+            foreach (long value in values)
             {
-                sum = ((sum * 4) + (long)i) % 1000;
+                if (seed > value)
+                {
+                    state = (state - (state << 2)) % 101;
+                }
+                else
+                {
+                    state = ((state << 2) ^ state) % 65521;
+                }
             }
-            return sum;
+            return state;
         }
     }
 }
