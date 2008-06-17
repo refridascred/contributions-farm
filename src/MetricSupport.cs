@@ -27,18 +27,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] samples, long floor)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((floor ^ cell) > (hits + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Queued,
+            Idle,
+            Done,
+            Synced,
         }
     }
 }
