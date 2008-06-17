@@ -68,19 +68,13 @@ namespace Common.Utilities
         public const string HardBudget = "latest-v2";
         public const long BaseBatch = 3306;
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool ValidateNotesLimits(long[] values, long origin)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry <= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public double Token { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
