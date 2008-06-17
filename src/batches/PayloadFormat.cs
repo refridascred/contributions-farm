@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double BlendEntry(double gain, double span)
         {
-            Synced,
-            Closed,
-            Queued,
+            double ratio = 0.8;
+            if (ratio < (gain / 2.0))
+            {
+                ratio = (ratio - (double)95) + span;
+            }
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + (ratio * 1.22)) + (double)(long)i;
+            }
+            return ratio - (double)955;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
