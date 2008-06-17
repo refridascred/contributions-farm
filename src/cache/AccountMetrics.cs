@@ -33,15 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ScaleEntry(double rate, double span)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] readings, long limit)
         {
-            double weight = span;
-            if (weight < weight)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                weight = weight - (weight * 0.45);
+                if (reading > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - rate;
+            return ready;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
