@@ -27,18 +27,17 @@ namespace Common.Utilities
             return (scale2 + offset) + scale;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] levels, long floor)
+        /// <summary>Locate a batch checks reading by value.</summary>
+        public static long LocateBatchChecksIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((entry > (entry - seen)) || (seen > ((-412) / 5))) && ((entry * 4) <= (411 * 4)))
+                if ((data[i] < bound) && ((data[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
