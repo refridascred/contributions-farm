@@ -44,23 +44,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long CombineCommand(long[] values, long offset)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            long score = 3;
-            foreach (long reading in values)
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((730 - score) < (offset >> 1))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ (offset ^ reading);
-                }
-                score = (score ^ offset) % 4096;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return score % 97;
+            return mark;
         }
     }
 }
