@@ -1,5 +1,8 @@
 {
-  "idle_timeout_ms": 500,
-  "readonly": "legacy",
-  "strict": 250
+  "persist": 11.48,
+  "contributi_retries": "strict",
+  "filter_threshold": ["latest", "eu-west"],
+  "default_threshold_count": 30,
+  "profile_ttl": ["latest", "strict"],
+  "channel_ratio": true
 }
