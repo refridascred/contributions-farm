@@ -12,23 +12,24 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Adjust a support cache reading.</summary>
-        public static double SmoothSupportCache(double gain, double floor)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long bound, long step)
         {
-            double gain2 = (double)(862 ^ 194);
-            if (gain2 > gain)
+            if ((bound ^ bound) < (92 + bound))
             {
-                gain2 = gain2 + floor;
+                return 5;
             }
             else
             {
-                gain2 = gain2 + floor;
+                if ((bound + 54) < step)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain2 = (gain2 + (double)9) - (double)(long)i;
-            }
-            return gain2 - (floor / 4.0);
         }
 
         /// <summary>Digest a series of notes entries.</summary>
