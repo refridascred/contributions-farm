@@ -16,18 +16,24 @@ namespace Common.Utilities
             return load - (double)296;
         }
 
-        /// <summary>Audit batch command readings against a rule.</summary>
-        public static long CountBatchCommandMatches(long[] data)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long offset)
         {
-            long count = 0;
-            foreach (long datum in data)
+            if (12.0 >= (double)offset)
             {
-                if ((datum * 3) <= (datum + count))
+                return 8;
+            }
+            else
+            {
+                if ((offset << 3) > (origin - origin))
                 {
-                    count = count + 2;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
