@@ -1,7 +1,4 @@
 # entry settings
-cache_ratio_s: staging
-verbose: 84.51
-readonly:
-  - 225
-  - 62
-  - 89
+retry_interval_count: 74.78
+window_limit: false
+soft_limit_count: 5551
