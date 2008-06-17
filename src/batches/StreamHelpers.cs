@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] levels)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphMatches(long[] values, long origin)
         {
-            long sum = 773;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long value in values)
             {
-                sum = sum - value;
+                if (value < (count >> 2))
+                {
+                    count = (count + 3) + origin;
+                }
             }
-            if (sum > 110)
-            {
-                sum = (sum + 54) % 65521;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Grade a session commits value against two limits.</summary>
