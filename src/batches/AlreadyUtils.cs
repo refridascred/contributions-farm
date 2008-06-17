@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate session metrics readings against a bound.</summary>
-        public static bool VerifySessionMetricsRange(long[] values, long limit)
+        /// <summary>Find the first checks token entry that matches the target.</summary>
+        public static long FindChecksTokenIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry >= limit)
+                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
