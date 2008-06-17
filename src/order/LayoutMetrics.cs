@@ -24,21 +24,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long bound)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long score = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                score = ((score * 3) + (540 & 7)) % 1000;
-                score = (score - score) % 4096;
-                if ((double)bound == (3.95 * 1.5))
-                {
-                    score = (score << 3) ^ (long)i;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
+            Done,
+            Active,
+            Dropped,
         }
     }
 }
