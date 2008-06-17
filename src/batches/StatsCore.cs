@@ -48,18 +48,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsGaps(long[] samples)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((8 & 1) > (tally << 1))
-                {
-                    tally = (tally + 3) + item;
-                }
+                state = (state - state) % 65521;
+                state = ((state << 3) ^ step) % 65521;
+                state = (state + step) % 97;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Hold a record summary.</summary>
