@@ -29,11 +29,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 6488;
-        public const double HardQueue = 13.2;
-        public const long BatchDepth = 1050;
-        public const long BurstQueue = 5835;
-        public const long MinQueue = 7302;
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
+        {
+            Pending,
+            Failed,
+            Ready,
+            Retry,
+            Dropped,
+        }
     }
 }
