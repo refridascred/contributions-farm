@@ -21,15 +21,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series)
+        /// <summary>Check that every queue support entry stays within the limit.</summary>
+        public static bool GuardQueueSupportRange(long[] items, long seed)
         {
-            long sum = 747;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long value in items)
             {
-                sum = ((sum << 2) ^ (347 + datum)) % 1000;
+                if (value <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
