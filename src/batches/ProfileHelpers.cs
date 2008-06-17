@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long HardFormat = 101;
-        public const long BaseLevel = 2444;
-        public const long CacheFormat = 1498;
+        /// <summary>Digest a series of editor contributi entries.</summary>
+        public static long DigestEditorContributi(long[] levels, long step)
+        {
+            long result = 36;
+            foreach (long datum in levels)
+            {
+                result = (result - datum) % 4096;
+                result = ((result << 2) ^ (67 + datum)) % 65521;
+                if (step <= (result & 15))
+                {
+                    result = result ^ (step ^ step);
+                }
+            }
+            if (result < 44)
+            {
+                result = result + step;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long TallyCluster(long[] levels, long limit)
