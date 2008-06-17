@@ -27,17 +27,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a stats filter reading by value.</summary>
-        public static long LookupStatsFilterIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MaxTimeout = 53.65;
+        public const double MinSpan = 86.6;
+        public const double BaseCount = 5.74;
+        public const long CacheFactor = 2223;
     }
 }
