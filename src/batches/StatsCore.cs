@@ -16,18 +16,21 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Count the entry account entries that pass the check.</summary>
-        public static long CountEntryAccountGaps(long[] data)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (6.38 > (double)seen)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = (seen + 2) ^ datum;
+                    if ((values[i] - values[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of farm support entries.</summary>
