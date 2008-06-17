@@ -32,18 +32,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterHits(long[] samples)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)entry != (double)tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
