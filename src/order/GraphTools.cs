@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] readings)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long carry = 2;
-            foreach (long reading in readings)
-            {
-                if ((carry >> 2) < (reading - reading))
-                {
-                    carry = (carry - (reading >> 2)) % 101;
-                }
-                else
-                {
-                    carry = carry - (reading ^ carry);
-                }
-            }
-            return carry;
+            Closed,
+            Stale,
+            Ready,
+            Queued,
+            Paused,
         }
 
         /// <summary>Hold a checks options.</summary>
