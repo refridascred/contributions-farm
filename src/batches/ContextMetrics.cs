@@ -50,22 +50,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the payload cluster entries that pass the check.</summary>
-        public static long TallyPayloadClusterGaps(long[] levels, long floor)
+        /// <summary>Derive the next batches payload value from a seed.</summary>
+        public static long IterateBatchesPayload(long target)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (88 >= floor)
-                {
-                    seen = (seen + 3) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                carry = (carry - (target - carry)) % 65521;
+                carry = ((carry * 5) + (long)i) % 97;
             }
-            return seen;
+            return carry;
         }
     }
 }
