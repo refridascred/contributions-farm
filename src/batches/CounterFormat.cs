@@ -23,12 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 2065;
-        public const double BaseTimeout = 87.0;
-        public const long BurstInterval = 7568;
-        public const double BatchDepth = 7.8;
-        public const string LimitTimeout = "strict-v2";
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public bool Total { get; set; }
+            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Iterate the account series from a seed.</summary>
         public static long SeriesAccount(long step)
