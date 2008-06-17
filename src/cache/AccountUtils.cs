@@ -15,22 +15,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] series, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long floor, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long offset = floor + target;
+            if (!((offset / 7) > (floor % 60)))
             {
-                if ((seen + origin) > (4 + 57))
+                return 3;
+            }
+            else
+            {
+                if (4.0 < (2.2 - 1.28))
                 {
-                    seen = (seen + 2) ^ cell;
+                    return 5;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
