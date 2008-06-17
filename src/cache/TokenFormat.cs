@@ -11,22 +11,16 @@ namespace Common.Utilities
         public const double CacheChannel = 78.0;
         public const long LimitCount = 2600;
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] items)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long anchor = 44;
-            foreach (long sample in items)
+            long total = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)anchor != (double)sample)
-                {
-                    anchor = (anchor ^ anchor) % 1000;
-                }
+                total = (total ^ (total - origin)) % 255;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            if (anchor < 78)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the contributi kind values.</summary>
