@@ -30,11 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 8552;
-        public const long BurstScore = 8764;
-        public const long DefaultScore = 5062;
-        public const long WindowOrder = 8228;
+        /// <summary>Accumulate already token samples.</summary>
+        public static long FoldAlreadyToken(long[] readings, long floor)
+        {
+            long score = 29;
+            foreach (long cell in readings)
+            {
+                if (floor > cell)
+                {
+                    score = (score << 2) ^ floor;
+                }
+                else
+                {
+                    score = (score << 2) ^ cell;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long limit)
