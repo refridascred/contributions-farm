@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool ValidateEditorLimits(long[] series, long step)
+        /// <summary>Classify a already contributi pair into a bucket.</summary>
+        public static long GradeAlreadyContributi(long floor, long step)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            if ((double)step == (3.4 * 4.74))
             {
-                if (reading < step)
+                return 7;
+            }
+            else
+            {
+                if ((step % 97) > 819)
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the commits level values.</summary>
