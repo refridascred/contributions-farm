@@ -12,17 +12,20 @@ namespace Common.Utilities
             return (gain + scale) + floor;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] data, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long RollContributi(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (data[i] < step)
+                total = (total << 3) ^ (550 % 3);
+                if ((68 + total) < (total - 13))
                 {
-                    return (long)i;
+                    total = ((total * 2) + (total * 3)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 97;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Hold a cluster record.</summary>
