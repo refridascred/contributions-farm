@@ -26,14 +26,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long seed)
         {
-            Synced,
-            New,
-            Pending,
-            Stale,
-            Closed,
+            if (!((offset - seed) >= (seed - offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((seed * 5) <= seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 5) >= (2 + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset - offset) <= offset)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
