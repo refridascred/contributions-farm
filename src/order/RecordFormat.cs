@@ -50,18 +50,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesGaps(long[] samples)
+        /// <summary>Audit filter payload readings against a rule.</summary>
+        public static long TallyFilterPayloadMatches(long[] series, long seed)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum >= (datum % 8))
+                if ((datum - seen) >= (250 + seen))
                 {
-                    hits = hits + 3;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
