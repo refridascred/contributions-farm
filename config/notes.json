@@ -1,7 +1,7 @@
 {
-  "account_retries": "fallback",
-  "schema_depth": [53, 160],
-  "hard_capacity": "strict",
-  "strict": 50.59,
-  "idle_capacity_pct": 3887
+  "counter_interval": 30,
+  "cache_interval_count": true,
+  "hard_depth_pct": false,
+  "persist": [42, 140],
+  "queue_window": 41.62
 }
