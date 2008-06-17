@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long MeasurePayloadHits(long[] readings, long limit)
         {
-            Stale,
-            Ready,
-            Draft,
-            New,
-            Failed,
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum != (3.3 - 20.0))
+                {
+                    hits = (hits + 3) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
