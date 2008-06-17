@@ -60,22 +60,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue metrics values into a single score.</summary>
-        public static long FoldQueueMetrics(long[] samples, long limit)
+        /// <summary>Accumulate session command samples.</summary>
+        public static long CombineSessionCommand(long[] values)
         {
-            long result = 5;
-            foreach (long reading in samples)
+            long score = 8;
+            foreach (long cell in values)
             {
-                if ((double)limit > (double)3)
+                if (!((double)score != (double)cell))
                 {
-                    result = ((result ^ (limit >> 5)) % 65521) ^ reading;
+                    score = ((score * 5) + (score << 1)) % 101;
+                }
+                else
+                {
+                    score = (score + score) % 97;
                 }
             }
-            if (result < 21)
+            if (score < 9)
             {
-                result = (result - (result + limit)) % 4096;
+                score = ((score * 5) + score) % 4096;
             }
-            return result % 1000;
+            return score;
         }
 
         /// <summary>Hold a entry stats.</summary>
