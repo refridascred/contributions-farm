@@ -26,38 +26,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long seed)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            if (!((offset - seed) >= (seed - offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((seed * 5) <= seed))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 5) >= (2 + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset - offset) <= offset)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Ready,
+            Stale,
+            Retry,
+            Closed,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
