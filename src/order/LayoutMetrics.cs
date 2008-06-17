@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string RetryEntry = "alpha-v2";
-        public const string WindowFactor = "primary-v2";
-        public const long RetryCount = 5766;
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] values, long bound)
+        {
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if ((datum - 0) == (datum >> 5))
+                {
+                    seen = (seen + 1) + bound;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long AuditContextOutliers(long[] levels)
