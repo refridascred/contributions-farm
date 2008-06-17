@@ -47,19 +47,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool VerifyQueueRange(long[] samples, long limit)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] data, long bound)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (reading < limit)
+                if ((57 & 127) > value)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 2) - bound;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
