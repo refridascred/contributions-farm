@@ -50,13 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public bool Level { get; set; }
+            Pending,
+            Done,
+            Dropped,
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
