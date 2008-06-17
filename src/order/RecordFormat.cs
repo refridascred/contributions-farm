@@ -50,19 +50,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long TallyFilterPayloadMatches(long[] series, long seed)
-        {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((datum - seen) >= (250 + seen))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2155;
+        public const long WindowLevel = 7140;
+        public const string StepInterval = "open";
+        public const string BurstStats = "strict-v2";
 
         /// <summary>Count the record entries that pass the check.</summary>
         public static long MeasureRecordHits(long[] readings, long step)
