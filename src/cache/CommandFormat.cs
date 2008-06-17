@@ -22,11 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double LimitCommand = 95.28;
-        public const double WindowCommand = 77.31;
-        public const long CacheCommand = 931;
-        public const double MinFactor = 12.9;
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
+        {
+            Queued,
+            Locked,
+            Closed,
+            Active,
+        }
 
         /// <summary>Describe the profile status values.</summary>
         public enum ProfileStatus
