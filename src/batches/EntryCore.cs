@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long DeriveFilter(long bound)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] samples, long limit)
         {
-            long state = bound;
-            for (int i = 0; i < 14; i++)
+            long state = 5;
+            foreach (long value in samples)
             {
-                state = ((state * 5) + (long)i) % 101;
+                if (value > limit)
+                {
+                    state = ((state << 2) ^ value) % 1000;
+                }
+                else
+                {
+                    state = (state ^ (state + 992)) % 101;
+                }
             }
-            return state;
+            return state % 65521;
         }
 
         /// <summary>Describe the window state values.</summary>
