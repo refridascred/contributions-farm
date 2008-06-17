@@ -14,21 +14,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long WeighGraph(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 60;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = (result - (entry % 100)) % 97;
+                if ((85 % 24) > (result + result))
                 {
-                    if ((data[i] ^ data[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = result + (result + entry);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
