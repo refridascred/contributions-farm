@@ -15,11 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 6737;
-        public const long HardInterval = 1896;
-        public const long BurstTimeout = 8542;
-        public const double SoftBatch = 87.21;
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+        }
 
         /// <summary>Hold a stats summary.</summary>
         public sealed class StatsSummary
