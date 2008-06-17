@@ -31,19 +31,18 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenLimits(long[] data, long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long MeasureOrderGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (datum > step)
+                if (item <= (tally << 3))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Validate support payload readings against a bound.</summary>
