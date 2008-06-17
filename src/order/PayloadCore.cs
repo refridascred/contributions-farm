@@ -74,18 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up already editor samples.</summary>
-        public static long CompareAlreadyEditorCount(long[] values)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] series)
         {
             long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value > (value << 3)) && ((value - hits) == (90 - value)))
                 {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
