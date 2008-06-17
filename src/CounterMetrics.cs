@@ -28,14 +28,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
-        {
-            public long Level { get; set; }
-            public bool Mode { get; set; }
-            public double Size { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MaxSize = "strict";
+        public const string CacheSession = "local-1";
+        public const long BurstSession = 252;
 
         /// <summary>Adjust a notes reading.</summary>
         public static double SmoothNotes(double weight, double bias)
