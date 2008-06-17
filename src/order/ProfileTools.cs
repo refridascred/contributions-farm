@@ -19,18 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] data, long seed)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (((datum + 57) != (seen - seed)) || ((datum ^ 265) <= (seed << 2)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Roll a graph counter forward.</summary>
