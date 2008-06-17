@@ -42,19 +42,32 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutBounds(long[] levels, long step)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long RankBatch(long origin, long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long slot = origin + floor;
+            if (floor < (origin << 3))
             {
-                if (value < step)
+                return 7;
+            }
+            else
+            {
+                if ((double)origin < (9.39 / 7.0))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((origin / 5) > (slot << 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the session phase values.</summary>
