@@ -1,17 +1,7 @@
 {
-  "sync_interval_s": "green",
-  "record_threshold": "latest",
-  "hard_delay_ms": "legacy",
-  "default_size_s": 100,
-  "default_capacity_count": {
-    "verbose": 85.26,
-    "persist": "staging",
-    "cache_retries_ms": {
-      "sync_timeout_s": 100,
-      "session_ttl": 94,
-      "context_threshold": 96
-    },
-    "metrics_depth": 73.39,
-    "burst_window_count": 30
-  }
+  "commits_window": ["local", "staging", "staging", "fallback"],
+  "max_retries": [469, 280, 442],
+  "poll_ratio_s": 26.26,
+  "profile_ttl": true,
+  "retry_threshold_s": "green"
 }
