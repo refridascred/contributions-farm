@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long LimitDepth = 3735;
         public const string HardScore = "legacy-v2";
 
-        /// <summary>Digest a series of cluster metrics entries.</summary>
-        public static long ScoreClusterMetrics(long[] data)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] data, long bound)
         {
-            long mark = 96;
+            bool valid = true;
             foreach (long cell in data)
             {
-                if ((9.02 + 4.5) >= (double)cell)
+                if (cell != bound)
                 {
-                    continue;
+                    valid = false;
+                    break;
                 }
-                mark = ((mark << 3) ^ (cell + 69)) % 4096;
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
