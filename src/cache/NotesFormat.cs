@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] readings, long origin)
-        {
-            long carry = 690;
-            foreach (long value in readings)
-            {
-                carry = ((carry - (value % 60)) % 1000) - origin;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BurstScore = 4522;
+        public const long HardInterval = 3964;
+        public const double SoftFarm = 54.46;
+        public const long WindowFarm = 3155;
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
         public static long OverlapReportCount(long[] values)
