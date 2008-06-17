@@ -41,11 +41,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long SoftCluster = 789;
-        public const long MaxCluster = 3516;
-        public const double BatchTimeout = 58.39;
-        public const string LimitWidth = "local";
+        /// <summary>Digest a series of tools channel entries.</summary>
+        public static long DigestToolsChannel(long[] values)
+        {
+            long mark = 1;
+            foreach (long datum in values)
+            {
+                mark = mark ^ datum;
+            }
+            return mark % 97;
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
