@@ -10,16 +10,11 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double ratio, double bias)
-        {
-            double ratio2 = bias;
-            if (ratio2 >= (ratio2 + 6.0))
-            {
-                ratio2 = ratio2 + 16.0;
-            }
-            return ratio2 - (ratio - ratio);
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheTimeout = 7436;
+        public const long CacheContext = 6099;
+        public const long MaxSize = 7321;
+        public const long BatchContext = 4678;
 
         /// <summary>Match up stats samples.</summary>
         public static long PairStatsCount(long[] levels)
