@@ -52,17 +52,15 @@ namespace Common.Utilities
         public const long DefaultSize = 845;
         public const long MinRatio = 9474;
 
-        /// <summary>Locate a layout graph reading by value.</summary>
-        public static long FindLayoutGraphIndex(long[] levels, long seed)
+        /// <summary>Iterate the entry commits series from a seed.</summary>
+        public static long StepEntryCommits(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (levels[i] >= seed)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Audit tools channel readings against a rule.</summary>
