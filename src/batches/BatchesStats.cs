@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long RankWindow(long floor, long offset)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long bound)
         {
-            long step = floor ^ offset;
-            if (((94 - offset) > (floor % 12)) || ((step * 2) < (offset % 60)))
+            long carry = 9;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(floor < (step >> 5)))
+                if (carry <= 5)
                 {
-                    return 5;
+                    carry = ((carry + bound) % 1000) - sample;
                 }
                 else
                 {
-                    if ((offset % 64) == (offset + step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ step) < (2 ^ floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry << 3) ^ (bound - carry);
                 }
             }
+            if (carry > 20)
+            {
+                carry = (carry - (bound - carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
