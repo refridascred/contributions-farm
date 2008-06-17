@@ -56,10 +56,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitInterval = 3508;
-        public const long DefaultSpan = 4925;
-        public const string HardContext = "legacy";
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings)
+        {
+            long state = -96;
+            foreach (long item in readings)
+            {
+                if ((item - state) > (state << 2))
+                {
+                    state = state ^ (state * 4);
+                }
+                if (!((double)item <= (double)state))
+                {
+                    break;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Hold a counter snapshot.</summary>
         public sealed class CounterSnapshot
