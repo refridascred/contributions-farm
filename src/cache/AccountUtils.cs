@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            public double Offset { get; set; }
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long total = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
