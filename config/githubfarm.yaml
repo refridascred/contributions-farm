@@ -1,29 +1,17 @@
 # githubfarm settings
-warm_size_ms:
-  compress: false
-  cache_timeout_count:
-    commits_capacity: 60
-    support_limit: 4296
-    default_ttl_count: 65.5
-  hard_ratio_s: 30
-  strict: false
-burst_delay: 2976
-hard_window:
-  contributi_ratio: 2573
-  checks_window: true
-  batch_limit_pct:
-    warm_threshold_count: 7878
-    min_threshold: eu-west
-    strict: open
-    verbose: 21
-    soft_window: 95
-    compress: 2229
-verbose:
-  poll_threshold_ms: 60
-  readonly: strict
-  persist: 1024
-  editor_threshold: fallback
-  retry_delay_s: 14
-  cache_capacity: 10.07
-route_timeout: false
-sync_limit_count: standard
+retry_limit_s: 62.59
+retry_size_ms:
+  cache_ratio_pct: strict
+  max_ttl: green
+  poll_delay_s: 85
+  verbose:
+    poll_interval_pct: 11.66
+    schema_limit: eu-west
+    strict: 18.36
+    poll_retries_pct: false
+    dry_run: 8815
+    support_window: fallback
+idle_limit:
+  contributi_window: stable
+  cache_ttl: false
+  stream_timeout: false
