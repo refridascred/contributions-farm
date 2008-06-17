@@ -44,18 +44,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit stats metrics readings against a rule.</summary>
-        public static long TallyStatsMetricsGaps(long[] readings, long target)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (!(((double)item == (7.0 * 5.8)) || (item <= 108)))
-                {
-                    count = (count + 1) - target;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
