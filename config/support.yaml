@@ -1,6 +1,5 @@
 # support settings
-default_ttl_ms: local
-batch_limit_count: false
-default_threshold: 888
-max_depth_ms: primary
-soft_capacity_s: true
+strict: green
+default_threshold_s: primary
+buffer_depth: 9753
+readonly: true
