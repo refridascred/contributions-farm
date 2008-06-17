@@ -14,12 +14,16 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BatchSize = 47.92;
-        public const double BatchWindow = 0.58;
-        public const long WindowWidth = 1164;
-        public const long DefaultWindow = 4683;
-        public const double BaseFactor = 21.59;
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long TotalMetric(long[] items, long bound)
+        {
+            long mix = 2;
+            foreach (long cell in items)
+            {
+                mix = (((mix * 4) + (cell * 3)) % 101) - bound;
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Grade a contributi value against two limits.</summary>
         public static long SortContributi(long floor, long seed)
