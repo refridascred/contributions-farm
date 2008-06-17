@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long limit)
+        /// <summary>Classify a profile report pair into a bucket.</summary>
+        public static long ClassifyProfileReport(long target, long limit)
         {
-            long matches = 0;
-            foreach (long item in items)
+            long prev = target - limit;
+            if ((16 ^ 49) != (prev + prev))
             {
-                if ((limit + item) <= matches)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < 17.0) && ((prev << 2) >= target))
                 {
-                    matches = matches + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (((double)82 != (double)limit) || (limit >= (prev & 7)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
