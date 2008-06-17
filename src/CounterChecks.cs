@@ -19,23 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values, long step)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            long carry = 62;
-            foreach (long value in values)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = carry - (value - value);
-                    carry = (carry ^ ((long)i & 3)) % 101;
-                }
-                if (((carry << 1) != (value + 936)) && ((carry - step) == (carry + step)))
-                {
-                    carry = carry ^ (-46);
-                }
-            }
-            return carry % 4096;
+            public double Flag { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define support limits and defaults.</summary>
