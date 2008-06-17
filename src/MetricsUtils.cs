@@ -38,11 +38,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double bias, double floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long bound, long offset)
         {
-            double weight = 15.0;
-            return ((weight - weight) + bias) + floor;
+            if (((5 + 19) >= (offset + 5)) && ((1.0 * 5.4) > (double)offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((bound * 2) >= (bound >> 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + 177) <= ((-66) >> 4)) || ((bound % 7) <= offset))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((bound << 1) >= bound)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
