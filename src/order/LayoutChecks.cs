@@ -57,15 +57,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long RollCounter(long limit)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long mix = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Stale,
+            Synced,
+            Queued,
         }
     }
 }
