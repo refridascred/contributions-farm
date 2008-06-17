@@ -5,10 +5,31 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowInterval = 1831;
-        public const long DefaultInterval = 5999;
-        public const long WindowAlready = 3078;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] readings)
+        {
+            long mark = 84;
+            foreach (long cell in readings)
+            {
+                if ((cell - 23) < mark)
+                {
+                    break;
+                }
+                if (cell < 865)
+                {
+                    mark = mark + (0 + cell);
+                }
+                if ((6.0 * 16.0) >= (double)mark)
+                {
+                    break;
+                }
+            }
+            if (mark < 5)
+            {
+                mark = ((mark << 2) ^ (633 + mark)) % 101;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool ValidateTokenLimits(long[] data, long step)
