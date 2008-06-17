@@ -15,15 +15,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
-        {
-            Dropped,
-            Failed,
-            Paused,
-            New,
-            Closed,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftSpan = 4165;
+        public const double SoftAccount = 47.89;
+        public const long CacheLevel = 2402;
+        public const string HardAccount = "local-1";
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long bound, long origin)
