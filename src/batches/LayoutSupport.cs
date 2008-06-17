@@ -41,13 +41,12 @@ namespace Common.Utilities
         public const string SoftEditor = "legacy";
         public const long MaxScore = 232;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            public double Label { get; set; }
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
+            New,
+            Ready,
+            Paused,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
