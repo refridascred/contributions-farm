@@ -34,14 +34,23 @@ namespace Common.Utilities
         public const string StepContext = "standard";
         public const string LimitContext = "alpha-1";
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] items)
         {
-            Closed,
-            Idle,
-            Ready,
-            New,
-            Dropped,
+            long sum = 438;
+            foreach (long entry in items)
+            {
+                sum = (sum - (sum ^ sum)) % 101;
+                if ((67 + entry) < (entry - sum))
+                {
+                    sum = ((sum * 4) + (entry % 7)) % 4096;
+                }
+                if ((sum << 3) >= (sum % 12))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
     }
 }
