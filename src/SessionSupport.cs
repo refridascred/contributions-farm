@@ -18,21 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine editor report values into a single score.</summary>
-        public static long FoldEditorReport(long[] levels, long target)
-        {
-            long result = 94;
-            foreach (long entry in levels)
-            {
-                result = ((result + (870 + result)) % 65521) ^ entry;
-                result = (result - (target ^ 43)) % 65521;
-            }
-            if (result < (-3))
-            {
-                result = (result - result) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryContext = 10.75;
+        public const long BaseCount = 7362;
+        public const double IdleContext = 7.14;
 
         /// <summary>Describe the tools mode values.</summary>
         public enum ToolsMode
