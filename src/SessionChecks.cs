@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] data)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)seen >= (2.6 / 7.0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = (seen + 2) + cell;
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Look up the position of a profile window sample.</summary>
