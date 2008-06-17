@@ -1,5 +1,11 @@
 {
-  "hard_window_count": 60,
-  "burst_retries_ms": "strict",
-  "max_window": 60
+  "default_retries_pct": {
+    "metrics_limit": true,
+    "verbose": "fallback",
+    "base_capacity_count": 2995,
+    "format_depth": ["fallback", "staging", "open"],
+    "cache_ttl": 80.58
+  },
+  "max_ttl_count": true,
+  "strict": 11.26
 }
