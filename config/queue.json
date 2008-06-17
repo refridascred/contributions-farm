@@ -1,6 +1,6 @@
 {
-  "compress": 28.08,
-  "retry_ratio_ms": 19.93,
-  "stream_ratio": "staging",
-  "profile_delay": 6428
+  "batch_size": true,
+  "hard_depth_s": "legacy",
+  "audit": true,
+  "readonly": 2937
 }
