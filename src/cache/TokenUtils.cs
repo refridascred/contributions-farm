@@ -12,24 +12,39 @@ namespace Common.Utilities
             return (gain + scale) + floor;
         }
 
-        /// <summary>Derive the next graph layout value from a seed.</summary>
-        public static long DeriveGraphLayout(long offset)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long offset)
         {
-            long score = offset;
-            for (int i = 0; i < 8; i++)
+            long gap = step ^ offset;
+            if ((6.27 - 0.2) == (double)step)
             {
-                if (((long)i - (long)i) != (long)i)
-                {
-                    continue;
-                }
-                if ((offset % 3) == ((-5) / 9))
-                {
-                    score = (score * 2) + (offset % 2);
-                    continue;
-                }
-                score = ((score * 5) + (long)i) % 101;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((81 + 12) < (step * 5))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (!(gap >= (step * 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((gap >> 2) >= (gap >> 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a batches pair into a bucket.</summary>
