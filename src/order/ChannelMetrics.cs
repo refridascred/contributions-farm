@@ -16,16 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long DeriveProfile(long floor)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long carry = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                carry = (carry << 3) ^ (long)i;
-                carry = ((carry * 5) + (long)i) % 1000;
-            }
-            return carry;
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
+            public bool Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Define filter limits and defaults.</summary>
