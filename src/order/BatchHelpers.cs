@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] levels, long offset)
+        /// <summary>Grade a filter route value against two limits.</summary>
+        public static long SortFilterRoute(long origin, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = origin - target;
+            if (slot > (target % 7))
             {
-                if (levels[i] == offset)
+                return 5;
+            }
+            else
+            {
+                if ((origin / 2) == (22 * 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((3.36 + 4.48) >= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((target + 82) > origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
