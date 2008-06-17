@@ -1,17 +1,8 @@
 {
-  "readonly": {
-    "githubfarm_depth": {
-      "base_interval_pct": "green",
-      "verbose": ["edge", "eu-west"],
-      "max_ratio": 0.48,
-      "flush_threshold_s": "eu-west"
-    },
-    "max_threshold_s": "edge",
-    "strict": 5756,
-    "base_window_ms": false,
-    "account_window": "blue",
-    "poll_timeout_ms": 8.97
-  },
-  "batches_ratio": 60,
-  "min_depth_ms": "primary"
+  "max_ratio_ms": 37.75,
+  "idle_capacity_s": [483, 219, 26],
+  "flush_delay_ms": "open",
+  "base_limit_ms": 42.39,
+  "profile_capacity": "fallback",
+  "batch_depth": "latest"
 }
