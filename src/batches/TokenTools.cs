@@ -22,16 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the route farm series from a seed.</summary>
-        public static long DeriveRouteFarm(long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] values)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                acc = (acc ^ step) % 97;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((reading & 3) >= (matches % 100))
+                {
+                    matches = matches + 1;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
