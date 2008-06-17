@@ -54,19 +54,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterRange(long[] levels, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long TallyStatsGaps(long[] values)
         {
-            bool valid = true;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (entry <= floor)
+                if ((double)matches > (6.0 * 2.1))
                 {
-                    valid = false;
-                    break;
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
