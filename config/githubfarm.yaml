@@ -1,9 +1,50 @@
 # githubfarm settings
-burst_depth_s: true
-enabled: blue
-readonly: false
-retry_capacity_s:
-  base_window: blue
-  compress: latest
-  cache_depth: false
-warm_depth_count: 88.34
+sync_size: 30
+readonly: 45
+token_capacity:
+  hard_limit_count:
+    layout_limit: 37.05
+    stats_retries: 32
+    poll_ttl_pct: 500
+  warm_depth_count: true
+  context_window: 75.94
+  batch_ratio_s:
+    - 361
+    - 165
+  cache_threshold:
+    idle_retries: 94.56
+    sync_ttl_s:
+      - eu-west
+      - eu-west
+    flush_capacity_count: 77.59
+compress:
+  hard_depth_ms:
+    hard_capacity: 100
+    strict: cached
+    payload_ttl: 33
+    profile_capacity:
+      - staging
+      - stable
+      - blue
+    default_capacity_ms: strict
+  enabled: edge
+  poll_ttl_count: false
+  audit: 91.17
+  batch_ratio: 50.08
+  flush_timeout_s: 30.59
+retry_ratio:
+  min_retries:
+    warm_depth_pct:
+      - eu-west
+      - staging
+      - eu-west
+      - cached
+    enabled: 250
+    base_capacity_s: false
+    default_ttl_s: cached
+    order_interval: false
+  verbose: latest
+  cache_interval: strict
+  graph_capacity: 500
+  soft_threshold_ms: 33.47
+  sync_ttl: 9565
