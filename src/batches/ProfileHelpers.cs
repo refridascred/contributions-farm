@@ -59,20 +59,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of already account readings.</summary>
-        public static long TotalAlreadyAccount(long[] samples)
-        {
-            long total = 217;
-            foreach (long datum in samples)
-            {
-                total = total + (datum % 97);
-                if ((datum & 7) < ((long)samples.Length << 3))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double CacheSize = 76.17;
+        public const long DefaultWidth = 2200;
+        public const string StepTimeout = "primary";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long DeriveMetrics(long seed)
