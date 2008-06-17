@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many metrics entry samples are out of range.</summary>
-        public static long TallyMetricsEntryMatches(long[] readings, long target)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long step)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long total = step;
+            for (int i = 0; i < 24; i++)
             {
-                if ((item + target) == (target - target))
-                {
-                    hits = hits + 1;
-                }
+                total = total ^ (total << 3);
+                total = ((total * 4) + (long)i) % 101;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Digest a series of channel filter entries.</summary>
