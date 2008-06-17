@@ -11,16 +11,13 @@ namespace Common.Utilities
         public const double CacheChannel = 78.0;
         public const long LimitCount = 2600;
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long total = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total ^ (total - origin)) % 255;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            Stale,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the contributi kind values.</summary>
