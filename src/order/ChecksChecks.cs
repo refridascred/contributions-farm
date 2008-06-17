@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > step) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSize = 2796;
+        public const double MinBudget = 1.17;
+        public const long DefaultMetrics = 8432;
+        public const double BaseScore = 25.26;
 
         /// <summary>Audit editor readings against a rule.</summary>
         public static long AuditEditorGaps(long[] samples)
