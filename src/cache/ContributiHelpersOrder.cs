@@ -32,13 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            Failed,
-            Stale,
-            Active,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
