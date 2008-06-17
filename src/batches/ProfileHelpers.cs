@@ -64,12 +64,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Project the next order value.</summary>
+        public static double ScaleOrder(double rate, double offset)
         {
-            Retry,
-            Synced,
-            Failed,
+            double gain = rate;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = ((gain - (double)9) + (double)(long)i) + offset;
+            }
+            return gain + gain;
         }
     }
 }
