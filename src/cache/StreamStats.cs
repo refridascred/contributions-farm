@@ -24,11 +24,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double RetryStats = 58.9;
-        public const string SoftStats = "alpha-1";
-        public const string DefaultBudget = "alpha-v2";
-        public const long BatchCount = 7832;
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double rate, double bias)
+        {
+            double bias2 = rate;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (bias * 7.3)) + (double)(long)i;
+            }
+            return bias2 - (rate + 4.0);
+        }
 
         /// <summary>Rank editor input into a small class.</summary>
         public static long RankEditor(long bound, long origin)
