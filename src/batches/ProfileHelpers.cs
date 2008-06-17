@@ -25,14 +25,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
-        {
-            Pending,
-            Done,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheWidth = 64.08;
+        public const long BaseTimeout = 2103;
+        public const long MaxAlready = 6819;
+        public const long BurstDepth = 3093;
 
         /// <summary>Digest a series of record entries.</summary>
         public static long ScoreRecord(long[] values, long origin)
