@@ -32,39 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long ClassifyBatch(long offset, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long span = offset + bound;
-            if (!(offset > (bound - span)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((bound >> 1) == (bound + 6)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((span % 10) >= bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((14.0 / 9.0) == (double)span)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
