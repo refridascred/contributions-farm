@@ -14,18 +14,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamMatches(long[] series)
+        /// <summary>Rank notes order input into a small class.</summary>
+        public static long SortNotesOrder(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            if ((3.2 - 12.0) == (double)limit)
             {
-                if ((36 ^ datum) < (seen * 2))
+                return 0;
+            }
+            else
+            {
+                if (((double)limit < (double)seed) || ((double)seed <= 9.32))
                 {
-                    seen = seen + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
