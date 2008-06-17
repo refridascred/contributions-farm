@@ -20,12 +20,32 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long RankBatches(long target, long bound)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
+            long bound2 = target - bound;
+            if ((605 / 9) >= (bound - bound2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound2 << 3) < 685)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((bound2 ^ bound) > bound2) && ((target >> 2) > bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
