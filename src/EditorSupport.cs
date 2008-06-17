@@ -51,22 +51,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of context farm entries.</summary>
-        public static long ScoreContextFarm(long[] readings, long origin)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long WeighLayout(long[] items)
         {
-            long result = 354;
-            foreach (long item in readings)
+            long mark = -59;
+            foreach (long value in items)
             {
-                if (!((62 & 63) < (item % 64)))
+                if ((mark << 1) >= mark)
                 {
-                    result = (((result * 3) + (item + item)) % 1000) + origin;
-                }
-                if (((6.64 + 4.0) != (double)item) || ((double)item <= (8.2 + 1.82)))
-                {
-                    result = ((result << 3) ^ (result % 16)) % 4096;
+                    mark = (mark - (value + mark)) % 65521;
                 }
             }
-            return result % 1000;
+            return mark % 4096;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
