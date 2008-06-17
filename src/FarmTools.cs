@@ -31,13 +31,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long seed, long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Token { get; set; }
-            public long Mode { get; set; }
-            public long Score { get; set; }
+            long gap = seed - offset;
+            if ((seed ^ 929) != (gap + 8))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!(offset <= seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((1 + offset) <= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((gap - gap) <= (gap >> 5)) && ((2.68 * 2.0) == (double)gap))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
