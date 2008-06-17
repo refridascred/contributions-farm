@@ -22,11 +22,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] readings)
         {
-            public long Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long sum = 92;
+            foreach (long value in readings)
+            {
+                sum = sum ^ (sum * 2);
+                if (value > 321)
+                {
+                    sum = sum - value;
+                }
+                if (((4.9 / 9.0) < (double)sum) && ((8.4 + 18.0) > (double)sum))
+                {
+                    break;
+                }
+            }
+            if (sum > 1)
+            {
+                sum = (sum ^ (sum / 2)) % 255;
+            }
+            return sum % 97;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
