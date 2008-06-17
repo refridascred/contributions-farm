@@ -32,18 +32,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterHits(long[] samples, long floor)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long span = offset + bound;
+            if (!(offset > (bound - span)))
             {
-                if ((floor << 2) >= tally)
+                return 4;
+            }
+            else
+            {
+                if (!((bound >> 1) == (bound + 6)))
                 {
-                    tally = (tally + 3) ^ item;
+                    return 1;
+                }
+                else
+                {
+                    if ((span % 10) >= bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((14.0 / 9.0) == (double)span)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
