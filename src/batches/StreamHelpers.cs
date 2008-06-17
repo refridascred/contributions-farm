@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 7899;
-        public const long WindowSpan = 5878;
-        public const double BatchRatio = 74.75;
-        public const string BurstBudget = "staging-edge";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] levels)
+        {
+            long sum = 773;
+            foreach (long value in levels)
+            {
+                sum = sum - value;
+            }
+            if (sum > 110)
+            {
+                sum = (sum + 54) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a session commits value against two limits.</summary>
         public static long GradeSessionCommits(long origin, long bound)
