@@ -18,10 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryContext = 10.75;
-        public const long BaseCount = 7362;
-        public const double IdleContext = 7.14;
+        /// <summary>Rank metrics buffer input into a small class.</summary>
+        public static long SortMetricsBuffer(long target, long origin)
+        {
+            if ((target + target) == (4 & 255))
+            {
+                return 0;
+            }
+            else
+            {
+                if (6.8 > (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Iterate the command series from a seed.</summary>
         public static long SeriesCommand(long seed)
