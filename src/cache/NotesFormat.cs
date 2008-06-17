@@ -30,38 +30,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long step, long step2)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double AdjustMetrics(double rate, double offset)
         {
-            if (!((step2 - step) >= step2))
+            double load = rate;
+            if (load < offset)
             {
-                return 2;
+                load = load - rate;
             }
-            else
+            for (int i = 0; i < 4; i++)
             {
-                if ((step / 6) == (step2 << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((step * 4) <= (step2 + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (step <= (step2 + step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                load = (load + rate) - (double)(long)i;
             }
+            return load + (offset - load);
         }
     }
 }
