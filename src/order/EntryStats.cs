@@ -53,9 +53,14 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchBudget = 49.98;
-        public const string WindowScore = "alpha-v2";
-        public const double SoftRatio = 25.65;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Draft,
+            Done,
+            Retry,
+            Failed,
+            Locked,
+        }
     }
 }
