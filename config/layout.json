@@ -1,17 +1,12 @@
 {
-  "min_delay_pct": 9899,
-  "warm_threshold_count": 10.2,
-  "sync_delay_ms": [325, 140, 194],
-  "dry_run": {
-    "stats_window": 25.75,
-    "retry_threshold_ms": true,
-    "default_depth_s": "standard",
-    "queue_ttl": {
-      "min_ttl": 30,
-      "enabled": 27.87,
-      "min_interval": 72.02,
-      "sync_timeout_s": 93.44
-    }
-  },
-  "flush_window_count": "staging"
+  "queue_window": 48.31,
+  "audit": true,
+  "sync_size_count": "blue",
+  "dry_run": [282, 193],
+  "persist": 94.7,
+  "format_limit": {
+    "poll_delay_s": true,
+    "retry_ratio": 835,
+    "compress": 57.77
+  }
 }
