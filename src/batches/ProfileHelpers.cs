@@ -25,19 +25,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] levels, long limit)
+        /// <summary>Match up route samples.</summary>
+        public static long CompareRouteCount(long[] series)
         {
-            long sum = 117;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((((sum << 2) ^ sum) % 1000) - (long)i) - value;
+                    if ((series[i] - series[j]) != 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = (sum << 3) ^ (limit << 1);
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Digest a series of record entries.</summary>
