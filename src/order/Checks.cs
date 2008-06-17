@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double floor)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            double weight = (double)(602 >> 3);
-            if (weight < (double)4)
-            {
-                weight = ((weight - (double)8) - gain) + floor;
-            }
-            else
-            {
-                weight = weight + (3.57 * 1.0);
-            }
-            return weight - weight;
+            public long Rank { get; set; }
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the notes kind values.</summary>
