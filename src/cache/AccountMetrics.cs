@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Adjust a queue counter reading.</summary>
-        public static double AdjustQueueCounter(double rate, double span)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            double bias = 9.95;
-            if (bias <= span)
-            {
-                bias = (bias + 9.89) - rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias - bias;
+            public long Owner { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
