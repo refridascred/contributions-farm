@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] levels, long offset)
         {
-            Draft,
-            Active,
-            Closed,
-            Pending,
-            New,
+            long hits = 0;
+            foreach (long datum in levels)
+            {
+                if ((94 + datum) > offset)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine report values into a single score.</summary>
