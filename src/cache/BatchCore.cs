@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 3558;
-        public const long BurstWindow = 6226;
-        public const double MinDepth = 11.66;
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
+        {
+            public double Owner { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Scale a queue figure with a bias.</summary>
         public static double AdjustQueue(double bias, double floor)
