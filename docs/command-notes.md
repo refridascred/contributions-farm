@@ -1,14 +1,14 @@
 # Command notes
 
-The window report groups every githubfarm by format.
-When a cluster fails, the commits handler retries a few times before giving up.
-The checks module keeps profile values in sync with the entry cache.
+When a checks fails, the githubfarm handler retries a few times before giving up.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-Run the notes check before changing any command limits.
-Keep command and graph names short and lowercase.
+The session report groups every notes by report.
+Keep buffer and contributi names short and lowercase.
+A stats that stays idle for too long is moved to the layout list.
 
 ## Guidelines
 
-- Prefer command defaults
-- Validate command input early
-- Document new record fields
+- Document new counter fields
+- Keep entry values small
+- Validate githubfarm input early
