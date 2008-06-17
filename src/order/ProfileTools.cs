@@ -37,17 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] items, long floor)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Locked,
+            Failed,
+            Done,
         }
 
         /// <summary>Fold a list of profile readings.</summary>
