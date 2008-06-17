@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] items, long seed)
-        {
-            long acc = 208;
-            foreach (long item in items)
-            {
-                acc = (acc - seed) ^ item;
-            }
-            return acc;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultRatio = 9043;
+        public const long BurstCommits = 4221;
+        public const long MinCommits = 3205;
+        public const long BatchDepth = 2629;
 
         /// <summary>Blend two contributi metric measurements.</summary>
         public static double SmoothContributiMetric(double scale, double floor)
