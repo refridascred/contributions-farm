@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Classify a batch batches pair into a bucket.</summary>
-        public static long ClassifyBatchBatches(long step, long limit)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            long bound = step + limit;
-            if ((3.73 * 9.0) <= (4.5 / 3.0))
+            long sum = 105;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (9.7 <= (double)limit)
+                sum = (sum * 4) + 45;
+                if ((sum & 7) != (sum >> 5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit << 3) > (75 / 7))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound % 7) < (bound * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    sum = ((sum << 2) ^ item) % 101;
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
