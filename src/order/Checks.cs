@@ -35,19 +35,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double bias, double bias2)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long MatchStreamCount(long[] series)
         {
-            double weight = bias2;
-            if (weight < (double)377)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight - 10.0;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 9)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (bias - weight)) + (double)(long)i;
-            }
-            return weight + weight;
+            return count;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
