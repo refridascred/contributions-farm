@@ -41,21 +41,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchFactor = 6349;
+        public const long WindowRatio = 4849;
+        public const long BaseScore = 90;
+        public const long BaseProfile = 3910;
+        public const long DefaultRatio = 2110;
     }
 }
