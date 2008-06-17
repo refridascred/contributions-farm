@@ -82,21 +82,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] series)
+        /// <summary>Validate already editor readings against a bound.</summary>
+        public static bool ValidateAlreadyEditorBounds(long[] values, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (value > step)
                 {
-                    if ((series[i] ^ series[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
