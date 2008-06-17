@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterLimits(long[] samples, long floor)
+        /// <summary>Count the order route entries that pass the check.</summary>
+        public static long MeasureOrderRouteHits(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if (cell > floor)
+                if (!(((sample & 15) > sample) || ((double)sample == (3.0 * 9.56))))
                 {
-                    found = false;
-                    break;
+                    count = (count + 3) - seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
