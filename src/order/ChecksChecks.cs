@@ -19,16 +19,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long offset)
+        /// <summary>Classify a commits support pair into a bucket.</summary>
+        public static long SortCommitsSupport(long origin, long origin2)
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
+            if (!((origin2 + origin) > (origin * 2)))
             {
-                total = (total + (offset & 3)) % 97;
-                total = ((total * 2) + (long)i) % 101;
+                return 1;
             }
-            return total;
+            else
+            {
+                if (!(origin >= (origin * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((origin >> 5) < origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
