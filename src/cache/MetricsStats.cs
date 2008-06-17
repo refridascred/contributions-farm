@@ -40,22 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheEntry = 3714;
+        public const long HardSize = 6857;
+        public const long BurstEntry = 7855;
 
         /// <summary>Adjust a already reading.</summary>
         public static double AdjustAlready(double bias, double span)
