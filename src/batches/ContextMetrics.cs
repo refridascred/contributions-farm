@@ -16,22 +16,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowGaps(long[] series)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long DeriveReport(long target)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)seen != (7.0 * 2.31))
+                if (!!((total + total) > target))
                 {
-                    seen = (seen + 3) - sample;
+                    total = (total + target) % 4096;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Accumulate already token samples.</summary>
