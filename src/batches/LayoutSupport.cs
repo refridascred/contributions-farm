@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] data, long seed)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            long mix = 2;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-490) <= entry) && ((entry << 2) > (seed ^ seed)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    continue;
-                }
-                else
-                {
-                    mix = mix - (964 << 2);
-                    mix = (mix - (seed * 3)) % 65521;
-                }
-                if ((seed / 7) >= entry)
-                {
-                    mix = mix + (mix - entry);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ 89;
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Hold a cache summary.</summary>
