@@ -60,21 +60,24 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count account profile pairs that satisfy a relation.</summary>
-        public static long CompareAccountProfileCount(long[] samples)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long ScoreTools(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 5;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = (state << 3) ^ (step - (-9));
+                state = state ^ (214 / 5);
+                if (!((6.0 / 4.0) != (double)sample))
                 {
-                    if ((samples[i] ^ samples[j]) == 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state << 2) ^ (step ^ sample)) % 101;
+                }
+                if ((long)items.Length > state)
+                {
+                    break;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
