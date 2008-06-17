@@ -1,8 +1,6 @@
 {
-  "githubfarm_size": 74.31,
-  "idle_ratio_count": [37, 191, 57, 265],
-  "strict": 8300,
-  "hard_ttl_ms": 71,
-  "poll_timeout_s": [62, 437],
-  "soft_limit_count": 53
+  "poll_capacity": ["blue", "primary"],
+  "max_delay": 6.19,
+  "retry_capacity_s": true,
+  "min_timeout_s": "green"
 }
