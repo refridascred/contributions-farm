@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long SoftAlready = 6555;
         public const long IdleDepth = 1453;
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] readings, long origin)
+        /// <summary>Look up the position of a metrics contributi sample.</summary>
+        public static long LocateMetricsContributiIndex(long[] readings, long floor)
         {
-            long acc = 169;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry + acc) > acc)
+                if (readings[i] >= floor)
                 {
-                    acc = (acc ^ entry) - origin;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (acc >> 2);
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the tools kind values.</summary>
