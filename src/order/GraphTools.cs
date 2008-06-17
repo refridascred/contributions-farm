@@ -37,22 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] samples, long step)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextGaps(long[] items, long offset)
         {
-            long score = 97;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((step - 488) <= (step * 5))
+                if ((entry << 1) == (entry - hits))
                 {
-                    score = ((score * 5) + (step ^ entry)) % 97;
-                }
-                else
-                {
-                    score = score - (31 % 2);
+                    hits = (hits + 3) + offset;
                 }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a metric info.</summary>
