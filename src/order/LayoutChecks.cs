@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public long Level { get; set; }
-            public bool Weight { get; set; }
+            Queued,
+            Failed,
+            Retry,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the counter status values.</summary>
