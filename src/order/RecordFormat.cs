@@ -61,17 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first already order entry that matches the target.</summary>
-        public static long SeekAlreadyOrderIndex(long[] items, long seed)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                if ((count % 97) < (20 << 3))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ entry;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
