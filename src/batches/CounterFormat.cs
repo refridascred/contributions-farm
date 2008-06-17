@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long SeekPayloadIndex(long[] samples, long floor)
         {
-            long acc = 712;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((datum - acc) == (2 - acc))
+                if (samples[i] == floor)
                 {
-                    acc = acc ^ (acc + acc);
-                }
-                if ((datum + datum) < (acc - acc))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc % 65521;
+            return -1;
         }
 
         /// <summary>Count the metric githubfarm entries that pass the check.</summary>
