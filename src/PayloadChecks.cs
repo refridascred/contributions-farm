@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long TallyBatchesHits(long[] series)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long MatchSupportCount(long[] values)
         {
             long hits = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading ^ 704) > (reading << 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((values[i] + values[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
