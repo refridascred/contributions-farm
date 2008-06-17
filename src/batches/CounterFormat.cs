@@ -29,16 +29,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a metric commits counter forward.</summary>
-        public static long DeriveMetricCommits(long target)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long result = target;
-            for (int i = 0; i < 15; i++)
-            {
-                result = (result << 3) ^ (result * 3);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Done,
+            Failed,
+            Locked,
         }
     }
 }
