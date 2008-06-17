@@ -16,19 +16,17 @@ namespace Common.Utilities
         public const double RetryBudget = 93.69;
         public const string HardChecks = "staging-v2";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] levels, long bound)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] levels, long target)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > bound)
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
