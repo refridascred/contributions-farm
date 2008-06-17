@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultRatio = 9043;
-        public const long BurstCommits = 4221;
-        public const long MinCommits = 3205;
-        public const long BatchDepth = 2629;
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
+        {
+            Idle,
+            Done,
+            Ready,
+            Locked,
+        }
 
         /// <summary>Blend two contributi metric measurements.</summary>
         public static double SmoothContributiMetric(double scale, double floor)
