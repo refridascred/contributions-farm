@@ -1,16 +1,7 @@
 {
-  "report_window": "green",
-  "soft_size_s": "staging",
-  "enabled": 30,
-  "batch_limit_ms": {
-    "cache_limit_count": "open",
-    "cache_window": {
-      "flush_timeout_ms": ["edge", "strict"],
-      "soft_window_count": 22,
-      "cache_ratio_s": 30.84
-    },
-    "hard_retries": "edge",
-    "batch_ratio": "blue",
-    "record_window": "strict"
-  }
+  "compress": true,
+  "idle_ratio": 100,
+  "default_ttl_s": 19,
+  "max_size_s": 500,
+  "min_timeout": 7473
 }
