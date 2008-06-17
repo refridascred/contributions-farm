@@ -1,14 +1,11 @@
 # Editor notes
 
-Defaults for command live in the config folder and can be overridden per environment.
-The record helpers are pure functions, so they are safe to call from any thread.
-Each tools is validated before it reaches the schema queue.
-
-Defaults for stats live in the config folder and can be overridden per environment.
-The queue module keeps report values in sync with the context cache.
+Each stats is validated before it reaches the support queue.
+Each githubfarm is validated before it reaches the queue queue.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every support change
+- Keep route values small
 - Prefer order defaults
+- Log every support change
+- Document new farm fields
