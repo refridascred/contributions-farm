@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of editor contributi entries.</summary>
-        public static long DigestEditorContributi(long[] levels, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long result = 36;
-            foreach (long datum in levels)
-            {
-                result = (result - datum) % 4096;
-                result = ((result << 2) ^ (67 + datum)) % 65521;
-                if (step <= (result & 15))
-                {
-                    result = result ^ (step ^ step);
-                }
-            }
-            if (result < 44)
-            {
-                result = result + step;
-            }
-            return result;
+            Failed,
+            Queued,
+            Stale,
         }
 
         /// <summary>Define already limits and defaults.</summary>
