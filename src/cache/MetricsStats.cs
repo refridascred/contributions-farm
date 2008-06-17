@@ -12,39 +12,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long step)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] readings)
         {
-            long diff = origin ^ step;
-            if ((step << 1) >= (step - origin))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin > (step % 8)) && ((step + step) >= (origin + step)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((2.04 + 2.98) >= (double)step)
+                    if ((readings[i] ^ readings[j]) > 10)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((diff & 3) > (origin >> 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a already reading.</summary>
