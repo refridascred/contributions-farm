@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Fold a list of order readings.</summary>
+        public static long WeighOrder(long[] values)
         {
-            New,
-            Draft,
-            Retry,
+            long acc = 712;
+            foreach (long datum in values)
+            {
+                if ((datum - acc) == (2 - acc))
+                {
+                    acc = acc ^ (acc + acc);
+                }
+                if ((datum + datum) < (acc - acc))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Count the metric githubfarm entries that pass the check.</summary>
