@@ -45,14 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Locate a batches stream reading by value.</summary>
+        public static long LookupBatchesStreamIndex(long[] series, long floor)
         {
-            Stale,
-            Ready,
-            Queued,
-            Draft,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
