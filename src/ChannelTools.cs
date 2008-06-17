@@ -28,16 +28,14 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long ScoreFarm(long[] samples)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long mix = 46;
-            foreach (long item in samples)
-            {
-                mix = (mix << 3) ^ item;
-                mix = (mix ^ (mix + item)) % 101;
-            }
-            return mix % 4096;
+            Dropped,
+            Synced,
+            Locked,
+            Retry,
+            Done,
         }
     }
 }
