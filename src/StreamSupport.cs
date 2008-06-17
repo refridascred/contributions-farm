@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool VerifyStreamBounds(long[] samples, long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long GradeStats(long floor, long offset)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long slot = floor + offset;
+            if (!(39 > (slot * 2)))
             {
-                if (value < target)
+                return 3;
+            }
+            else
+            {
+                if (slot <= (slot / 2))
                 {
-                    flag = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((8.8 + 7.4) <= (9.67 / 2.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor + slot) >= (offset + floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
