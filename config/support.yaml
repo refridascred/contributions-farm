@@ -1,9 +1,24 @@
 # support settings
-retry_threshold:
-  - 277
-  - 313
-  - 191
-  - 495
-commits_interval: blue
-default_window: edge
-retry_ttl_ms: 4360
+poll_ratio_ms:
+  base_limit:
+    poll_window: false
+    profile_delay: open
+    warm_interval_s: 55.84
+    checks_depth:
+      - 170
+      - 416
+      - 169
+      - 398
+  burst_threshold: 1111
+  burst_size: open
+  flush_ttl_pct: 48
+persist: 62
+burst_depth:
+  - legacy
+  - staging
+  - green
+retry_depth_ms:
+  - primary
+  - legacy
+  - local
+  - standard
