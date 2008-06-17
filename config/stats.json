@@ -1,8 +1,7 @@
 {
-  "retry_limit_count": 81.16,
-  "persist": 1024,
-  "burst_capacity": "eu-west",
-  "warm_capacity_ms": "latest",
-  "poll_delay_pct": "fallback",
-  "batch_capacity_s": [346, 214, 450]
+  "soft_depth_ms": 6462,
+  "soft_ratio": 73,
+  "verbose": 9036,
+  "stream_ratio": "latest",
+  "default_ratio_ms": ["latest", "legacy", "blue"]
 }
