@@ -57,19 +57,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double floor)
+        /// <summary>Count account profile pairs that satisfy a relation.</summary>
+        public static long CompareAccountProfileCount(long[] samples)
         {
-            double rate = ratio;
-            if (rate <= (double)894)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = rate - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (ratio + floor);
-            }
-            return rate - 20.0;
+            return matches;
         }
     }
 }
