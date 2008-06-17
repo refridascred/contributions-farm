@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "strict-edge";
-        public const long RetryBatches = 7417;
-        public const long DefaultInterval = 4477;
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
+        {
+            Retry,
+            Ready,
+            Done,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long MeasureBatchHits(long[] readings)
