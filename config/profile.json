@@ -1,12 +1,8 @@
 {
-  "persist": false,
-  "base_depth_s": false,
-  "retry_limit": {
-    "max_delay_pct": true,
-    "token_ttl": 9365,
-    "window_window": true
-  },
-  "burst_delay_count": ["staging", "primary"],
-  "report_ttl": 49,
-  "max_capacity": 44.52
+  "cache_capacity": 24.21,
+  "cache_capacity_ms": 500,
+  "already_ratio": 86,
+  "hard_interval_s": 91.99,
+  "retry_interval": "staging",
+  "burst_retries_s": "latest"
 }
