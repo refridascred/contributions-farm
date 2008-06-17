@@ -43,13 +43,9 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
-        {
-            Idle,
-            Retry,
-            Queued,
-            Active,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowSupport = 9587;
+        public const double LimitLevel = 14.31;
+        public const long IdleSupport = 427;
     }
 }
