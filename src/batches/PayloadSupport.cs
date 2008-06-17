@@ -37,19 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsRange(long[] readings, long offset)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Failed,
+            Retry,
+            Pending,
+            Closed,
         }
     }
 }
