@@ -1,15 +1,6 @@
 {
-  "session_size": "staging",
-  "persist": {
-    "cache_delay_count": true,
-    "compress": "blue",
-    "enabled": 29,
-    "idle_threshold_s": 33,
-    "audit": ["legacy", "fallback", "local"],
-    "default_size_s": 37.0
-  },
-  "strict": 79.52,
-  "warm_interval_ms": 66.19,
-  "hard_capacity": [379, 236],
-  "token_size": 60
+  "route_interval": 500,
+  "retry_ttl_ms": 55,
+  "metric_timeout": 5863,
+  "default_timeout_pct": "open"
 }
