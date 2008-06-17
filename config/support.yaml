@@ -1,4 +1,12 @@
 # support settings
-retry_threshold_s: 500
-batch_retries_count: true
-metric_ratio: 4525
+hard_timeout_s:
+  - standard
+  - staging
+  - eu-west
+  - staging
+farm_ttl: 58.01
+compress: staging
+retry_ttl_count:
+  - green
+  - strict
+min_delay_pct: 6263
