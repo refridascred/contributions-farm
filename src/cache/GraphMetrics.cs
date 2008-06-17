@@ -47,16 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long WeighChecks(long[] readings)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] values, long bound)
         {
-            long mix = 844;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                mix = (mix ^ (mix + mix)) ^ entry;
-                mix = (mix << 2) ^ mix;
+                if (!(seen >= (cell + (long)values.Length)) || ((seen & 63) == (cell << 1)))
+                {
+                    seen = (seen + 1) - bound;
+                }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a entry stats.</summary>
