@@ -41,11 +41,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchFactor = 6349;
-        public const long WindowRatio = 4849;
-        public const long BaseScore = 90;
-        public const long BaseProfile = 3910;
-        public const long DefaultRatio = 2110;
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double bias, double offset)
+        {
+            double ratio = offset;
+            if (ratio >= offset)
+            {
+                ratio = ratio + (double)99;
+            }
+            return ratio - (bias - bias);
+        }
     }
 }
