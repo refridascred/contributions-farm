@@ -30,17 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] samples, long bound)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] <= bound)
+                if ((datum + hits) > (1 + hits))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many account record samples are out of range.</summary>
