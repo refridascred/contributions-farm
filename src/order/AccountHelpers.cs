@@ -16,21 +16,22 @@ namespace Common.Utilities
             return ratio + (span * 7.4);
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandOutliers(long[] levels, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seed != (double)945)
                 {
-                    if ((levels[i] ^ levels[j]) != 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
