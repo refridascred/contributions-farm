@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 5334;
-        public const string SoftCount = "local-edge";
-        public const long LimitContext = 2864;
-        public const long DefaultContext = 719;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of counter profile readings.</summary>
         public static long DigestCounterProfile(long[] items, long target)
