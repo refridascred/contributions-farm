@@ -46,32 +46,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long seed, long floor)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series)
         {
-            long bound = seed - floor;
-            if (93 < (bound + bound))
+            long result = 813;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed == (double)floor)
+                if (1 < (result ^ cell))
                 {
-                    return 3;
+                    result = (result ^ 6) % 255;
                 }
                 else
                 {
-                    if ((bound + floor) <= (seed + seed))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    result = ((result << 3) ^ (cell + result)) % 101;
+                }
+                if ((cell & 7) <= cell)
+                {
+                    break;
                 }
             }
+            if (result < 37)
+            {
+                result = ((result << 2) ^ (result % 7)) % 4096;
+            }
+            return result % 4096;
         }
     }
 }
