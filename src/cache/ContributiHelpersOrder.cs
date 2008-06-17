@@ -19,12 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Iterate the notes route series from a seed.</summary>
+        public static long DeriveNotesRoute(long target)
         {
-            Idle,
-            Paused,
-            Draft,
+            long total = target;
+            for (int i = 0; i < 20; i++)
+            {
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Describe the checks mode values.</summary>
