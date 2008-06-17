@@ -13,21 +13,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] levels)
+        /// <summary>Derive the next checks cache value from a seed.</summary>
+        public static long SeriesChecksCache(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((limit - limit) < (94 << 2))
                 {
-                    if ((levels[i] - levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = state - limit;
                 }
+                if (state >= (94 + (long)i))
+                {
+                    break;
+                }
+                state = ((state * 2) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
