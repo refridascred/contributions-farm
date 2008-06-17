@@ -40,18 +40,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesGaps(long[] samples, long bound)
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long CountContextStreamOutliers(long[] series, long offset)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((bound << 2) < bound))
+                if (!((double)(long)series.Length <= (2.3 - 1.67)))
                 {
-                    seen = (seen + 3) + datum;
+                    count = ((count + 1) - cell) + offset;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metric info.</summary>
