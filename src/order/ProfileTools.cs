@@ -25,15 +25,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = bound;
-            for (int i = 0; i < 18; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 101;
-            }
-            return carry;
+            New,
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Fold a list of window stream readings.</summary>
