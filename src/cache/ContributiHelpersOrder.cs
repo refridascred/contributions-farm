@@ -17,14 +17,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public long Ratio { get; set; }
-            public double Count { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 7783;
+        public const long MinCount = 1240;
+        public const long HardRoute = 6981;
+        public const double StepRoute = 10.76;
 
         /// <summary>Check that every queue support entry stays within the limit.</summary>
         public static bool GuardQueueSupportRange(long[] items, long seed)
