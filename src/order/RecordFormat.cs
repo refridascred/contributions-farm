@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a tools route pair into a bucket.</summary>
-        public static long SortToolsRoute(long step, long seed)
+        /// <summary>Project the next farm value.</summary>
+        public static double ProjectFarm(double weight, double floor)
         {
-            long bound = step ^ seed;
-            if (148 >= (step + bound))
+            double bias = weight - 0.4;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                bias = ((bias - (5.9 - bias)) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((seed + step) < bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (bound + seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return bias - weight;
         }
 
         /// <summary>Project the next farm value.</summary>
