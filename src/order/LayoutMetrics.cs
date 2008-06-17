@@ -14,11 +14,14 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchSize = 8786;
-        public const double BurstCommand = 31.76;
-        public const long SoftCommand = 832;
-        public const double WindowCommand = 42.31;
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
+        {
+            public bool Owner { get; set; }
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+        }
 
         /// <summary>Hold a filter stats.</summary>
         public sealed class FilterStats
