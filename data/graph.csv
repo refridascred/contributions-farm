@@ -1,6 +1,7 @@
-id,label,score,level
-1,local,84.5,5.76
-2,719,31.74,0.94
-3,latest,78.94,22.24
-4,blue,752,68
-5,45.13,98.49,60.98
+id,state,owner,active
+1,680,eu-west,standard
+2,fallback,open,87.75
+3,892,36.55,blue
+4,primary,86.21,edge
+5,95.67,159,eu-west
+6,10.75,legacy,legacy
