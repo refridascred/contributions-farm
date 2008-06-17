@@ -33,18 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] data, long limit)
+        /// <summary>Fold a list of farm metric readings.</summary>
+        public static long DigestFarmMetric(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long mark = 623;
+            foreach (long sample in readings)
             {
-                if ((double)count > (2.7 + 0.6))
-                {
-                    count = ((count + 3) ^ entry) + limit;
-                }
+                mark = ((mark ^ (mark & 7)) ^ sample) + bound;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Digest a series of report entries.</summary>
