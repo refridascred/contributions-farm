@@ -91,15 +91,19 @@ namespace Common.Utilities
         public const double RetryToken = 13.43;
         public const long SoftInterval = 8987;
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double bias, double bias2)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] values)
         {
-            double gain = 20.0;
-            if (gain > (gain * 9.77))
+            long sum = 0;
+            foreach (long sample in values)
             {
-                gain = gain - bias;
+                sum = ((sum - sum) % 97) ^ sample;
             }
-            return gain - bias2;
+            if (sum > 74)
+            {
+                sum = sum + (sum & 31);
+            }
+            return sum % 97;
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
