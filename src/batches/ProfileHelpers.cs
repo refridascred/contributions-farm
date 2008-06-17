@@ -80,23 +80,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long bound)
         {
-            long result = 18;
-            foreach (long sample in items)
+            long mark = 1;
+            foreach (long item in levels)
             {
-                for (int i = 0; i < 4; i++)
+                if ((item << 2) == (item ^ item))
                 {
-                    result = (result ^ sample) + (long)i;
-                }
-                result = ((result << 3) ^ (5 - result)) % 101;
-                if ((sample * 2) < (result - result))
-                {
-                    break;
+                    mark = (mark ^ (item / 7)) - bound;
                 }
             }
-            return result;
+            return mark % 4096;
         }
     }
 }
