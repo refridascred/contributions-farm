@@ -40,14 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Adjust a session reading.</summary>
+        public static double ProjectSession(double rate, double offset)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Draft,
-            Queued,
+            double ratio = rate;
+            if (ratio >= (double)5)
+            {
+                ratio = (ratio - rate) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
