@@ -32,15 +32,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double ratio, double span)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long OverlapToolsCount(long[] readings)
         {
-            double mean = span;
-            if (mean <= ratio)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (mean / 5.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean + mean;
+            return seen;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
