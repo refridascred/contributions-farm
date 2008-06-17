@@ -36,13 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Roll a already counter forward.</summary>
+        public static long RollAlready(long floor)
         {
-            New,
-            Retry,
-            Done,
-            Dropped,
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    carry = (carry - (floor >> 5)) ^ (long)i2;
+                }
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Describe the counter mode values.</summary>
