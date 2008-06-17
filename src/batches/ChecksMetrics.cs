@@ -102,15 +102,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
-        public static long MeasureGithubfarmReportMatches(long[] values)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] series)
         {
             long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches ^ reading) < reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((series[i] ^ series[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
