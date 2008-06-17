@@ -1,15 +1,14 @@
 {
-  "burst_threshold": 3530,
-  "batch_delay_count": "eu-west",
-  "cache_capacity": "legacy",
-  "contributi_ttl": {
-    "compress": false,
-    "hard_delay_ms": false,
-    "profile_limit": 45,
-    "warm_timeout_s": "open",
-    "order_ttl": "local",
-    "readonly": false
+  "enabled": {
+    "strict": 40.39,
+    "burst_window_ms": false,
+    "enabled": 15.5,
+    "verbose": [112, 472, 455],
+    "command_threshold": 28.84
   },
-  "compress": "open",
-  "retry_timeout_ms": [107, 160, 278]
+  "poll_size_s": 26,
+  "strict": 500,
+  "sync_ratio_pct": "fallback",
+  "poll_threshold_ms": 0.45,
+  "audit": "stable"
 }
