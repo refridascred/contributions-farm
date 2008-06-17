@@ -32,19 +32,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricGaps(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (9.0 <= (double)count)
-                {
-                    count = ((count + 1) ^ cell) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BaseWidth = "cached-v2";
+        public const long LimitEditor = 8594;
+        public const long RetryTimeout = 70;
+        public const double LimitTimeout = 10.34;
 
         /// <summary>Fold a list of token readings.</summary>
         public static long TallyToken(long[] values, long limit)
