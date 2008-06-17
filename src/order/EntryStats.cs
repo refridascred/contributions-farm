@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportHits(long[] items, long limit)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((hits & 7) < (value * 5))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public string Stamp { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
