@@ -31,9 +31,18 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MinSpan = 7693;
-        public const long BurstFarm = 2442;
-        public const long DefaultFarm = 2814;
+        /// <summary>Audit stats notes readings against a rule.</summary>
+        public static long MeasureStatsNotesHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (7 < hits)
+                {
+                    hits = (hits + 1) ^ item;
+                }
+            }
+            return hits;
+        }
     }
 }
