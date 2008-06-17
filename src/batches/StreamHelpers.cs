@@ -23,18 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already buffer values into a single score.</summary>
-        public static long ScoreAlreadyBuffer(long[] levels)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] values)
         {
-            long result = 806;
-            foreach (long item in levels)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (((527 * 5) == (item - 4)) || ((result - result) != (item & 15)))
+                if ((double)value >= (double)(-3))
                 {
-                    result = (result + ((-7) - item)) % 101;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Locate a queue order reading by value.</summary>
