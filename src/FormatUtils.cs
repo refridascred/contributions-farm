@@ -78,24 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already cluster pair into a bucket.</summary>
-        public static long SortAlreadyCluster(long offset, long offset2)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            if (5 >= (offset - 81))
+            long score = floor;
+            for (int i = 0; i < 22; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset >> 5) >= (offset / 4))
+                if (((6.5 + 4.3) >= (double)(long)i) && ((712 & 15) <= floor))
                 {
-                    return 2;
+                    score = (score - (1 * 4)) % 1000;
                 }
-                else
-                {
-                    return 5;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Blend two payload measurements.</summary>
