@@ -52,21 +52,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] items)
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
+            long state = 26;
+            foreach (long value in items)
             {
-                total = ((total << 3) ^ (total & 15)) % 101;
-                if ((total - total) != ((long)i << 3))
+                state = (state << 3) ^ (value ^ state);
+                state = state - (state - (long)items.Length);
+                if ((value << 1) >= (value ^ value))
                 {
-                    total = (total * 5) + (total >> 2);
-                    total = total - (total + (-874));
+                    break;
                 }
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
+            if (state < 7)
+            {
+                state = state ^ (state + state);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a notes stats.</summary>
