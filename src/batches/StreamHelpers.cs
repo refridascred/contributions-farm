@@ -77,21 +77,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = offset;
+            if (gain > (double)87)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain - (ratio - gain);
             }
-            return count;
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain - (offset - gain);
         }
     }
 }
