@@ -1,6 +1,17 @@
 {
-  "base_limit_count": 90,
-  "dry_run": 60.81,
-  "burst_depth_pct": "fallback",
-  "max_limit_s": "legacy"
+  "idle_ttl_ms": "fallback",
+  "retry_retries_s": {
+    "flush_delay_ms": "green",
+    "persist": 79.34,
+    "order_ratio": true,
+    "cache_capacity": ["cached", "cached", "primary"]
+  },
+  "strict": "eu-west",
+  "sync_size": ["staging", "cached", "staging", "eu-west"],
+  "poll_ratio": {
+    "graph_size": "local",
+    "retry_ratio_count": 42,
+    "readonly": false,
+    "already_depth": "latest"
+  }
 }
