@@ -34,19 +34,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long offset)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] items, long floor)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long score = 13;
+            foreach (long item in items)
             {
-                if (cell <= offset)
+                if ((floor - item) <= (item * 2))
                 {
-                    ready = false;
+                    score = score + score;
+                }
+                else
+                {
+                    score = ((score * 5) + score) % 1000;
+                }
+                if ((floor >> 5) >= score)
+                {
                     break;
                 }
             }
-            return ready;
+            return score % 1000;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
