@@ -60,18 +60,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the command schema entries that pass the check.</summary>
-        public static long MeasureCommandSchemaOutliers(long[] levels)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if ((15.0 * 2.7) == (double)value)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public double Region { get; set; }
         }
     }
 }
