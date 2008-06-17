@@ -18,22 +18,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long MeasureContributiSessionMatches(long[] samples)
+        /// <summary>Combine support buffer values into a single score.</summary>
+        public static long TotalSupportBuffer(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long result = 410;
+            foreach (long entry in series)
             {
-                if ((3 + value) >= (value ^ count))
+                if ((entry + limit) == (25 ^ result))
                 {
-                    count = count + 1;
+                    result = result ^ (limit + entry);
                 }
                 else
                 {
-                    count = count - 1;
+                    result = result - entry;
+                    result = ((result * 2) + limit) % 255;
                 }
+                if ((limit >= (91 / 8)) || ((entry ^ result) >= (result ^ limit)))
+                {
+                    result = result + (514 - result);
+                }
+                else
+                {
+                    result = result + result;
+                }
+                result = result + (entry - entry);
             }
-            return count;
+            if (result > 4)
+            {
+                result = (result + (limit - (long)series.Length)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the layout state values.</summary>
