@@ -31,21 +31,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] data)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 971;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = ((acc << 3) ^ (acc + entry)) % 4096;
             }
-            return count;
+            return acc;
         }
     }
 }
