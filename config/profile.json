@@ -1,11 +1,7 @@
 {
-  "default_retries_pct": {
-    "metrics_limit": true,
-    "verbose": "fallback",
-    "base_capacity_count": 2995,
-    "format_depth": ["fallback", "staging", "open"],
-    "cache_ttl": 80.58
-  },
-  "max_ttl_count": true,
-  "strict": 11.26
+  "poll_ttl_pct": "primary",
+  "base_capacity_ms": "eu-west",
+  "cache_interval": [441, 494, 352, 346],
+  "context_limit": false,
+  "flush_ttl": ["blue", "legacy"]
 }
