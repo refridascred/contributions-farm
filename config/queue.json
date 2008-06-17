@@ -1,8 +1,7 @@
 {
-  "max_ratio_count": 1024,
-  "min_ratio_ms": true,
-  "base_limit": 21.63,
-  "account_size": "blue",
-  "sync_size_ms": 27.17,
-  "batch_ttl": 8403
+  "cache_size_s": 3.55,
+  "dry_run": 75.19,
+  "default_ttl_ms": "eu-west",
+  "flush_timeout_pct": "eu-west",
+  "min_retries_s": "staging"
 }
