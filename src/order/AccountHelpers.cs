@@ -23,18 +23,25 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadHits(long[] items)
+        /// <summary>Rank metrics support input into a small class.</summary>
+        public static long GradeMetricsSupport(long offset, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long prev = offset - step;
+            if ((4 & 127) > (offset + prev))
             {
-                if (cell <= (cell - cell))
+                return 8;
+            }
+            else
+            {
+                if ((step >> 1) < (prev + offset))
                 {
-                    hits = hits + 1;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
