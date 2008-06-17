@@ -11,32 +11,18 @@ namespace Common.Utilities
         public const double CacheChannel = 78.0;
         public const long LimitCount = 2600;
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] data)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamMatches(long[] series)
         {
-            long carry = 1;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((item & 63) == (carry - item))
+                if ((36 ^ datum) < (seen * 2))
                 {
-                    carry = (carry - (carry << 2)) % 1000;
-                    carry = (carry ^ (carry + item)) % 97;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (171 - (long)data.Length);
-                    carry = carry - (item - carry);
-                }
-                if (carry <= (carry / 8))
-                {
-                    carry = (carry - (item ^ item)) % 65521;
+                    seen = seen + 3;
                 }
             }
-            if (carry < 5)
-            {
-                carry = (carry - (carry + 79)) % 255;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
