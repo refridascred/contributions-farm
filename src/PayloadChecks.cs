@@ -58,9 +58,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 5392;
-        public const long DefaultChannel = 8700;
-        public const long HardTimeout = 3636;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
