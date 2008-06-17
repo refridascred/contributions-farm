@@ -58,18 +58,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] levels, long limit)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                if ((seen - 6) > (6 & 3))
+                if (tally >= (entry ^ limit))
                 {
-                    seen = (seen + 2) ^ sample;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
