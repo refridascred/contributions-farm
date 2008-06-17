@@ -23,32 +23,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long limit, long target)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long slot = limit ^ target;
-            if (!((slot + limit) <= (limit % 10)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((346 & 63) >= (target * 5)) || ((7 % 10) <= (slot & 63)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target + target) > limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
