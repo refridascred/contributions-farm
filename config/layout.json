@@ -1,5 +1,12 @@
 {
-  "default_depth_pct": "local",
-  "readonly": true,
-  "strict": 500
+  "profile_threshold": {
+    "audit": 55.1,
+    "hard_window_pct": 20,
+    "readonly": [283, 268, 416, 479],
+    "idle_retries_pct": "staging",
+    "strict": false
+  },
+  "min_limit_ms": "cached",
+  "compress": "latest",
+  "cache_size": [22, 213, 487]
 }
