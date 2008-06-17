@@ -1,9 +1,5 @@
 # githubfarm settings
-compress: 4143
-layout_ratio:
-  - staging
-  - local
-  - open
-  - standard
-default_depth: 1.63
-min_retries_ms: 81
+githubfarm_threshold: 2774
+compress: true
+warm_interval: 500
+format_ttl: strict
