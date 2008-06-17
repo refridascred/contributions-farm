@@ -38,11 +38,19 @@ namespace Common.Utilities
         public const long BaseContributi = 3078;
         public const long CacheWidth = 1775;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardFactor = 8735;
-        public const long SoftBudget = 436;
-        public const string RetrySpan = "fallback-edge";
-        public const long HardCounter = 6779;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples, long floor)
+        {
+            long total = 309;
+            foreach (long datum in samples)
+            {
+                if (datum < (total + (long)samples.Length))
+                {
+                    total = ((total ^ (total ^ datum)) % 65521) + floor;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Validate stream cache readings against a bound.</summary>
         public static bool ValidateStreamCacheLimits(long[] items, long bound)
