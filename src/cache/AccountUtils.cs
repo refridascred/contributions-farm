@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstAlready = 3943;
-        public const long MaxAlready = 2631;
-        public const string StepRatio = "local";
-        public const long DefaultFactor = 8624;
-        public const long CacheAlready = 2522;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Done,
+            Ready,
+            Draft,
+            New,
+            Queued,
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinContext = 2549;
