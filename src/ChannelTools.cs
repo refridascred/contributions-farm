@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit order commits readings against a rule.</summary>
-        public static long AuditOrderCommitsHits(long[] readings, long seed)
-        {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading < 8.1)
-                {
-                    hits = (hits + 3) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double DefaultAlready = 78.2;
+        public const long LimitTimeout = 5293;
+        public const long SoftAlready = 6555;
+        public const long IdleDepth = 1453;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] readings, long origin)
