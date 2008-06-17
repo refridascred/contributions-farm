@@ -1,8 +1,11 @@
 {
-  "retry_ttl": false,
-  "idle_threshold_s": "primary",
-  "max_delay": true,
-  "graph_ttl": 42,
-  "soft_threshold_count": 88,
-  "max_depth_pct": "legacy"
+  "enabled": 250,
+  "sync_size": 59.89,
+  "cache_retries": {
+    "poll_capacity": "primary",
+    "checks_threshold": "stable",
+    "max_ttl": 500,
+    "channel_threshold": 85.42,
+    "cluster_depth": 250
+  }
 }
