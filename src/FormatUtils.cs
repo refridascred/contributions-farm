@@ -89,14 +89,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] data, long target)
         {
-            Active,
-            Locked,
-            Ready,
-            Closed,
-            Stale,
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
