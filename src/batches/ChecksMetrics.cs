@@ -47,19 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long AuditFilterOutliers(long[] levels, long target)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if (!(((2.0 + 12.0) >= (double)hits) || (target < (item + 5))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double MinBatches = 32.94;
+        public const long DefaultBatches = 6518;
+        public const long BaseBatches = 3183;
+        public const string BurstTimeout = "alpha";
+        public const long MaxBudget = 7761;
 
         /// <summary>Audit queue readings against a rule.</summary>
         public static long CountQueueHits(long[] samples, long limit)
