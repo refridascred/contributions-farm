@@ -1,6 +1,11 @@
-id,state,score,region,active
-1,768,139,blue,338
-2,332,567,eu-west,latest
-3,295,82.29,91.81,green
-4,primary,337,5.58,222
-5,755,standard,268,445
+id,owner,level,score
+1,551,282,14.92
+2,454,legacy,945
+3,706,15.46,55.26
+4,87.5,edge,89.67
+5,edge,95.37,924
+6,184,41.08,legacy
+7,75.21,60.83,eu-west
+8,30.08,921,591
+9,81.11,48.22,571
+10,70.58,edge,cached
