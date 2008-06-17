@@ -23,22 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the order route entries that pass the check.</summary>
-        public static long MeasureOrderRouteHits(long[] readings, long seed)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(((sample & 15) > sample) || ((double)sample == (3.0 * 9.56))))
-                {
-                    count = (count + 3) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
