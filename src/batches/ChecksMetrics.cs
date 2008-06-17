@@ -48,32 +48,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long limit, long target)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] levels, long step)
         {
-            long slot = limit ^ target;
-            if (((9.0 - 4.1) >= (double)target) && (slot >= ((-958) ^ slot)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)target < (5.79 + 6.6))
+                if (levels[i] < step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)target < (4.72 * 2.68))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate already editor readings against a bound.</summary>
