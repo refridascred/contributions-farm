@@ -75,18 +75,14 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] values)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((((double)seen <= (double)cell) || ((330 >> 4) <= (cell / 3))) && (seen <= cell))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Draft,
+            Paused,
+            Done,
+            Synced,
+            Stale,
         }
     }
 }
