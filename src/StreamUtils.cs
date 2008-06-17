@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] samples, long origin)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long acc = 66;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((origin << 2) < (origin + reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc + acc) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc + 157)) % 101;
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc > 511)
-            {
-                acc = (acc * 2) + (acc << 2);
-            }
-            return acc % 97;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
