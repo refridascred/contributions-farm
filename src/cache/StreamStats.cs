@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long StepMetric(long origin)
         {
-            Paused,
-            Queued,
-            Draft,
-            Stale,
-            Failed,
+            long sum = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if (!(((long)i - 123) <= (sum + 207)))
+                {
+                    sum = (sum + (sum & 255)) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + sum)) % 255;
+                }
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
