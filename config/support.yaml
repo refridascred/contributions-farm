@@ -1,7 +1,8 @@
 # support settings
-base_depth_count: 45.28
-batch_timeout: 30
-max_retries: 70.28
-layout_limit: local
-readonly: 79
-hard_threshold_pct: fallback
+already_retries:
+  - legacy
+  - blue
+  - eu-west
+profile_limit: true
+verbose: eu-west
+notes_limit: primary
