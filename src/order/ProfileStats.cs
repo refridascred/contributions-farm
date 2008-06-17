@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double gain, double floor)
+        /// <summary>Match up order samples.</summary>
+        public static long MatchOrderCount(long[] series)
         {
-            double gain2 = gain;
-            if (gain2 <= (floor / 4.0))
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain2 = gain2 + (double)(-28);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 - (double)(-5)) - (double)(long)i;
-            }
-            return gain2 + floor;
+            return hits;
         }
 
         /// <summary>Describe the profile phase values.</summary>
