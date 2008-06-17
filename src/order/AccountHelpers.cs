@@ -33,16 +33,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long bound)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long RankCommand(long origin, long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 6; i++)
+            if ((floor + floor) < (origin - origin))
             {
-                mix = ((mix << 3) ^ mix) % 255;
-                mix = ((mix * 5) + (long)i) % 65521;
+                return 3;
             }
-            return mix;
+            else
+            {
+                if ((207 & 7) != (origin / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(origin >= (floor * 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((origin - origin) >= (floor - floor)) && ((double)origin > (10.0 + 4.21)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two counter measurements.</summary>
