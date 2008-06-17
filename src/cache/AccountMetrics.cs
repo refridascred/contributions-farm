@@ -55,19 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long step)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Failed,
+            Done,
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
