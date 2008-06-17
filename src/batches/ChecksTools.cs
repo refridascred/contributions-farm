@@ -21,19 +21,15 @@ namespace Common.Utilities
             return ((weight - (weight / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] items, long target)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double bias, double bias2)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            double gain = bias2;
+            if (gain <= (bias - gain))
             {
-                if (datum <= target)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = gain + bias;
             }
-            return valid;
+            return gain - (gain + bias2);
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
