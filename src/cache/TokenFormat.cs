@@ -5,40 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long ClassifyCommits(long floor, long target)
-        {
-            long bound = floor - target;
-            if (!((double)bound != (double)(-922)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (591 <= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(8.0 <= (double)floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target & 1) >= (bound * 5))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 5491;
+        public const long RetryChannel = 7720;
+        public const double CacheChannel = 78.0;
+        public const long LimitCount = 2600;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long DigestStream(long[] items)
