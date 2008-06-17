@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteRange(long[] items, long target)
         {
-            long sum = 105;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in items)
             {
-                sum = (sum * 4) + 45;
-                if ((sum & 7) != (sum >> 5))
+                if (item <= target)
                 {
-                    sum = ((sum << 2) ^ item) % 101;
+                    stale = false;
+                    break;
                 }
             }
-            return sum % 4096;
+            return stale;
         }
 
         /// <summary>Combine support buffer values into a single score.</summary>
