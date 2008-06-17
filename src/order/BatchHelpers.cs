@@ -12,22 +12,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextGaps(long[] data, long bound)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] data)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long state = 295;
+            foreach (long entry in data)
             {
-                if (((sample - 3) >= (bound << 2)) || ((tally >> 1) > bound))
+                if (((state - entry) > (entry << 1)) || ((state - state) < (state << 2)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    state = state + (entry - state);
                 }
             }
-            return tally;
+            if (state > (-2))
+            {
+                state = ((state << 3) ^ (state / 5)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of token order entries.</summary>
