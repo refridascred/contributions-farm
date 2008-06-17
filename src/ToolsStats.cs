@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] values, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long offset)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if (cell < origin)
+                if (((long)i >> 2) >= state)
                 {
-                    ok = false;
-                    break;
+                    state = ((state << 2) ^ state) % 255;
                 }
+                if (((long)i >= (state - state)) && (1.74 <= (double)offset))
+                {
+                    state = (state + ((long)i + state)) % 97;
+                    state = (state << 2) ^ (offset >> 3);
+                }
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = ((state * 5) + offset) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
