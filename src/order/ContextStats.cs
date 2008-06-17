@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] items, long offset)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long seed, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (target < (8 ^ 573))
             {
-                if ((items[i] == offset) && ((items[i] % 2) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((2.0 / 6.0) == (double)seed)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((target >= (seed - target)) || ((seed ^ 270) > (299 ^ target)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
