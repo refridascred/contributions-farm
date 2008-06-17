@@ -46,10 +46,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxTimeout = 5568;
-        public const long LimitScore = 6018;
-        public const string IdleSize = "strict";
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public double Owner { get; set; }
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] items, long target)
