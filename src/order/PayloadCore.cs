@@ -46,13 +46,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Rank session input into a small class.</summary>
+        public static long BucketSession(long seed, long target)
         {
-            Locked,
-            Active,
-            Failed,
-            Retry,
+            long prev = seed - target;
+            if (seed < (prev + prev))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)prev == (9.87 - 4.24))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed + 571) < prev) && (83 < (prev - 6)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up already editor samples.</summary>
