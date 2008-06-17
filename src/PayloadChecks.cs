@@ -56,18 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] items)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long SeriesMetric(long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long sum = origin;
+            for (int i = 0; i < 23; i++)
             {
-                if (count <= 863)
-                {
-                    count = (count + 2) ^ entry;
-                }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return count;
+            return sum;
         }
     }
 }
