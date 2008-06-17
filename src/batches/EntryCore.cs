@@ -58,20 +58,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a profile metrics counter forward.</summary>
-        public static long IterateProfileMetrics(long limit)
-        {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = (mix + 55) - (long)i2;
-                    mix = (mix * 4) + (628 + limit);
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheTimeout = 4069;
+        public const long IdleToken = 9367;
+        public const long CacheSize = 4852;
     }
 }
