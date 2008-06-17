@@ -60,17 +60,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] values, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] series, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if ((values[i] == seed) && ((values[i] % 3) != 0))
+                if (entry <= floor)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Describe the farm mode values.</summary>
