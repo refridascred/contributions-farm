@@ -55,19 +55,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate contributi context samples.</summary>
-        public static long DigestContributiContext(long[] data)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long step)
         {
-            long carry = 434;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                carry = carry ^ (item >> 5);
-                if ((double)carry > (double)item)
+                if (datum < step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return carry;
+            return valid;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
