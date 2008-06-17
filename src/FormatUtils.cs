@@ -46,12 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public long Offset { get; set; }
-            public double Label { get; set; }
-            public long Score { get; set; }
+            Failed,
+            Synced,
+            Pending,
+            Paused,
+            Retry,
         }
 
         /// <summary>Count token editor pairs that satisfy a relation.</summary>
