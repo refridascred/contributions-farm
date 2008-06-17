@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheGaps(long[] data)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((long)data.Length == (matches % 64))
-                {
-                    matches = (matches + 1) + value;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
