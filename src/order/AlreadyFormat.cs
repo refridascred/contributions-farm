@@ -10,19 +10,17 @@ namespace Common.Utilities
         public const long LimitDepth = 3735;
         public const string HardScore = "legacy-v2";
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] data, long bound)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell != bound)
+                if ((values[i] <= bound) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
