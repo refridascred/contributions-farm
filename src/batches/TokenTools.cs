@@ -20,11 +20,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double scale, double offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double ratio, double bias)
         {
-            double scale2 = offset;
-            return (scale2 + offset) + scale;
+            double drift = bias;
+            if (drift >= (drift / 7.0))
+            {
+                drift = (drift + (drift * 6.1)) + ratio;
+            }
+            else
+            {
+                drift = drift - (double)254;
+            }
+            return drift + bias;
         }
 
         /// <summary>Validate channel layout readings against a bound.</summary>
