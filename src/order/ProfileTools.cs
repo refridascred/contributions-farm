@@ -27,27 +27,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long WeighCache(long[] values, long step)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long bound)
         {
-            long score = 5;
-            foreach (long datum in values)
+            long carry = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)score <= (double)step)
-                {
-                    score = (score + (datum - score)) % 65521;
-                }
-                else
-                {
-                    score = score - (score % 3);
-                }
-                score = (score ^ (-941)) % 1000;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            if (score > 453)
-            {
-                score = (score - (step ^ 427)) % 101;
-            }
-            return score;
+            return carry;
         }
 
         /// <summary>Measure how many metric githubfarm samples are out of range.</summary>
