@@ -32,12 +32,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Audit checks tools readings against a rule.</summary>
+        public static long CountChecksToolsGaps(long[] data)
         {
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (!((tally >> 2) != (datum * 2)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
