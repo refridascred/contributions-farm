@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheWidth = 2953;
-        public const long MinToken = 6275;
-        public const string BaseToken = "staging";
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchLimits(long[] samples, long origin)
+        {
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry < origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
