@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count notes stats pairs that satisfy a relation.</summary>
-        public static long CompareNotesStatsCount(long[] samples)
+        /// <summary>Accumulate report githubfarm samples.</summary>
+        public static long WeighReportGithubfarm(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -691;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                mark = (mark + (mark + mark)) % 65521;
+                if ((entry + mark) <= (mark - mark))
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = mark - (entry * 4);
+                    break;
                 }
+                mark = mark - mark;
             }
-            return seen;
+            if (mark < 362)
+            {
+                mark = (mark * 5) + 19;
+            }
+            return mark;
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
