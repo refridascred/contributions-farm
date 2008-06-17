@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of support account entries.</summary>
-        public static long TallySupportAccount(long[] data)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenHits(long[] values, long offset)
         {
-            long total = 315;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((double)value > (13.0 - 20.0))
+                if (datum > offset)
                 {
-                    total = (total ^ value) % 255;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Describe the entry mode values.</summary>
