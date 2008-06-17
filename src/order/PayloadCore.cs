@@ -25,14 +25,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
-        {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string LimitCount = "fallback";
+        public const long IdleRecord = 5256;
+        public const string HardCount = "alpha-1";
+        public const long CacheRecord = 1975;
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long DigestQueue(long[] levels)
