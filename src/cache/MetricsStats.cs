@@ -12,18 +12,18 @@ namespace Common.Utilities
             return (gain + floor) + bias;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] samples, long limit)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if (!((item + matches) == (item / 3)))
+                if ((hits - entry) != (hits / 4))
                 {
-                    matches = (matches + 2) - limit;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
