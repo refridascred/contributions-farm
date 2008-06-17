@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a context tools figure with a bias.</summary>
-        public static double BlendContextTools(double gain, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long floor)
         {
-            double rate = 7.5 / 5.0;
-            if (rate >= offset)
+            if ((floor ^ origin) != (floor % 2))
             {
-                rate = rate + 7.0;
+                return 6;
             }
-            return rate - gain;
+            else
+            {
+                if ((floor * 4) <= (9 - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Count the route commits entries that pass the check.</summary>
