@@ -73,15 +73,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate checks order samples.</summary>
-        public static long TallyChecksOrder(long[] series, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] samples, long floor)
         {
-            long carry = 25;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                carry = (carry ^ (reading - bound)) % 65521;
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return carry % 1000;
+            return flag;
         }
     }
 }
