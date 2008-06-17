@@ -5,24 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(((long)i - 123) <= (sum + 207)))
-                {
-                    sum = (sum + (sum & 255)) % 1000;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + sum)) % 255;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "strict-edge";
+        public const long RetryBatches = 7417;
+        public const long DefaultInterval = 4477;
 
         /// <summary>Project the next commits value.</summary>
         public static double ScaleCommits(double rate, double bias)
