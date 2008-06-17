@@ -39,18 +39,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] items, long origin)
         {
-            long sum = 475;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (598 <= ((-8) + sum))
+                if (value != origin)
                 {
-                    sum = ((((sum * 3) + (sum & 63)) % 101) ^ item) - limit;
+                    flag = false;
+                    break;
                 }
             }
-            return sum;
+            return flag;
         }
     }
 }
