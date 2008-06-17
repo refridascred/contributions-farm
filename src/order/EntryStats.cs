@@ -29,12 +29,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            Done,
-            Locked,
-            Draft,
+            long carry = 850;
+            foreach (long sample in samples)
+            {
+                carry = ((carry - (carry % 10)) % 97) ^ sample;
+            }
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
