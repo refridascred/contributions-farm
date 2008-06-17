@@ -73,10 +73,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardGraph = 5628;
-        public const double IdleGraph = 35.65;
-        public const long IdleInterval = 2529;
-        public const double BurstGraph = 71.91;
+        /// <summary>Measure how many schema checks samples are out of range.</summary>
+        public static long MeasureSchemaChecksGaps(long[] series, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((2.0 + 15.0) <= (double)entry)
+                {
+                    tally = (tally + 1) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
