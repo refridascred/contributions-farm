@@ -54,12 +54,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLayout = 91.75;
-        public const long StepInterval = 8555;
-        public const string IdleLayout = "stable";
-        public const string MinInterval = "standard";
-        public const double StepLayout = 74.39;
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
+        {
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Validate cache notes readings against a bound.</summary>
         public static bool ValidateCacheNotesLimits(long[] data, long offset)
