@@ -14,22 +14,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenHits(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] values)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = 702;
+            foreach (long item in values)
             {
-                if ((item - 296) == (tally ^ item))
+                if (result <= item)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    result = (result ^ (item + 20)) % 4096;
                 }
             }
-            return tally;
+            return result % 1000;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
