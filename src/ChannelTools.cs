@@ -24,13 +24,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Project the next filter value.</summary>
+        public static double AdjustFilter(double bias, double offset)
         {
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Total { get; set; }
-            public double Token { get; set; }
+            double gain = bias;
+            if (gain < offset)
+            {
+                gain = gain + (gain - bias);
+            }
+            return gain - gain;
         }
     }
 }
