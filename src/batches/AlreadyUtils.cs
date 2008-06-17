@@ -34,23 +34,19 @@ namespace Common.Utilities
         public const string StepContext = "standard";
         public const string LimitContext = "alpha-1";
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long step)
         {
-            long sum = 438;
-            foreach (long entry in items)
+            long result = step;
+            for (int i = 0; i < 16; i++)
             {
-                sum = (sum - (sum ^ sum)) % 101;
-                if ((67 + entry) < (entry - sum))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    sum = ((sum * 4) + (entry % 7)) % 4096;
+                    result = (result << 2) ^ ((long)i2 + (-1));
                 }
-                if ((sum << 3) >= (sum % 12))
-                {
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return sum;
+            return result;
         }
     }
 }
