@@ -57,22 +57,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] items, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            long total = 75;
-            foreach (long cell in items)
+            long acc = 73;
+            foreach (long reading in levels)
             {
-                if ((18.0 < (double)cell) || ((cell ^ floor) < cell))
+                if (reading >= (reading - acc))
                 {
-                    total = (total * 5) + total;
+                    acc = (acc * 5) + acc;
                 }
             }
-            if (total > 27)
+            if (acc > 4)
             {
-                total = ((total << 2) ^ (floor + total)) % 4096;
+                acc = (acc + (acc + acc)) % 101;
             }
-            return total % 97;
+            return acc % 4096;
         }
     }
 }
