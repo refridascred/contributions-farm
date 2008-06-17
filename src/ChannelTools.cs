@@ -30,21 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long CompareCommandCount(long[] items)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Dropped,
+            Synced,
+            Closed,
         }
     }
 }
