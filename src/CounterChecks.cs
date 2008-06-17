@@ -44,12 +44,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepSpan = 8527;
-        public const long LimitCluster = 5634;
-        public const long DefaultCluster = 7642;
-        public const string BurstCluster = "latest";
-        public const double RetryCluster = 30.83;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((count + 548) == (reading - count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long WeighFormat(long[] samples)
