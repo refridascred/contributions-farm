@@ -74,15 +74,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double ratio, double span)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            double scale = span;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + (scale / 9.0)) + (double)(long)i) - ratio;
-            }
-            return scale - span;
+            Active,
+            Locked,
+            Ready,
+            Closed,
+            Stale,
         }
     }
 }
