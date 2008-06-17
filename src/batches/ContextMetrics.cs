@@ -30,32 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank graph report input into a small class.</summary>
-        public static long RankGraphReport(long origin, long origin2)
-        {
-            if ((origin + 493) <= origin)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!(0 >= origin2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((6.9 - 18.0) != (double)origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 8552;
+        public const long BurstScore = 8764;
+        public const long DefaultScore = 5062;
+        public const long WindowOrder = 8228;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long limit)
