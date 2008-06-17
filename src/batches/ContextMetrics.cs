@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Flag { get; set; }
+            public long Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a support cache reading.</summary>
