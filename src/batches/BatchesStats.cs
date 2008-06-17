@@ -27,24 +27,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long bound, long step)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            if ((bound << 2) == (step ^ bound))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((step - bound) <= bound) && ((bound - bound) >= bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Flag { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
