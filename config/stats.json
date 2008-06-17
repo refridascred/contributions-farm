@@ -1,5 +1,7 @@
 {
-  "support_limit": 9441,
-  "flush_timeout_ms": ["latest", "strict"],
-  "counter_ratio": true
+  "route_size": 166,
+  "readonly": 3135,
+  "session_delay": "strict",
+  "default_retries_count": ["strict", "blue"],
+  "support_interval": "legacy"
 }
