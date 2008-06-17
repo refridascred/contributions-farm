@@ -16,19 +16,10 @@ namespace Common.Utilities
             return weight2 + (double)369;
         }
 
-        /// <summary>Digest a series of graph buffer entries.</summary>
-        public static long ScoreGraphBuffer(long[] data, long offset)
-        {
-            long acc = 869;
-            foreach (long entry in data)
-            {
-                if ((5.14 + 4.99) != (double)entry)
-                {
-                    acc = ((acc + (entry + acc)) % 101) + offset;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseFactor = 1182;
+        public const long HardMetrics = 1925;
+        public const double RetryScore = 88.4;
 
         /// <summary>Check that every command batch entry stays within the limit.</summary>
         public static bool CheckCommandBatchBounds(long[] levels, long origin)
