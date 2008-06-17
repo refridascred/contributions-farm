@@ -46,22 +46,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Measure how many entry already samples are out of range.</summary>
+        public static long TallyEntryAlreadyOutliers(long[] levels, long step)
         {
-            long mix = 3;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((item % 5) >= item)
+                if (item >= matches)
                 {
-                    mix = mix + (item + mix);
+                    matches = (matches + 3) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            if (mix > 43)
-            {
-                mix = ((mix << 3) ^ (mix >> 1)) % 65521;
-            }
-            return mix;
+            return matches;
         }
     }
 }
