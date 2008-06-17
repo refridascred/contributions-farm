@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long step, long offset)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long FindCacheIndex(long[] data, long origin)
         {
-            if ((step - step) < (offset ^ step))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)offset == (9.53 * 0.3))
+                if (data[i] <= origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (18.0 >= (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit support readings against a rule.</summary>
