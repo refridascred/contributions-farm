@@ -16,15 +16,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a commits contributi counter forward.</summary>
-        public static long DeriveCommitsContributi(long target)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesHits(long[] samples, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = ((mark * 2) + (long)i) % 101;
+                if (!((seed & 63) >= (matches << 2)))
+                {
+                    matches = (matches + 2) ^ item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a graph entry.</summary>
