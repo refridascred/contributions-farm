@@ -14,15 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] readings, long origin)
         {
-            long mix = 321;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 2) ^ (3 / 7)) + entry;
+                if ((11.0 / 6.0) < (double)origin)
+                {
+                    matches = (matches + 1) + reading;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Combine filter entry values into a single score.</summary>
