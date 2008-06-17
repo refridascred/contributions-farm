@@ -65,18 +65,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmGaps(long[] levels, long floor)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.05 * 7.0) >= (double)entry)
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    hits = (hits + 2) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
