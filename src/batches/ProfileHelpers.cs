@@ -34,17 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] data, long target)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] values, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 6;
+            foreach (long datum in values)
             {
-                if (data[i] < target)
+                if (((double)origin == (8.4 - 9.0)) || ((40 / 8) == (origin + origin)))
                 {
-                    return (long)i;
+                    mark = ((mark + (mark & 127)) % 255) + datum;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Fold a list of batch metrics readings.</summary>
