@@ -27,26 +27,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate checks stream samples.</summary>
-        public static long TallyChecksStream(long[] series)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long bound)
         {
-            long acc = 894;
-            foreach (long item in series)
+            long score = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (item <= (item % 8))
-                {
-                    acc = (acc << 3) ^ (acc + item);
-                }
-                if ((acc % 2) < (item >> 2))
-                {
-                    break;
-                }
+                score = (score * 3) + score;
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (acc < 402)
-            {
-                acc = (acc - (acc * 3)) % 255;
-            }
-            return acc;
+            return score;
         }
 
         /// <summary>Hold a farm entry.</summary>
