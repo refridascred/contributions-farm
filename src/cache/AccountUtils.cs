@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] levels, long floor)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long RankStats(long target, long target2)
         {
-            long count = 0;
-            foreach (long value in levels)
+            if (!(target >= (target + target2)))
             {
-                if (((value >> 3) != (56 + value)) || (floor >= (value + count)))
+                return 6;
+            }
+            else
+            {
+                if (((double)target != (7.6 + 10.0)) && ((target2 << 2) < (77 >> 5)))
                 {
-                    count = count + 1;
+                    return 7;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((double)709 <= (double)target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((target * 3) < (target2 >> 4)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
