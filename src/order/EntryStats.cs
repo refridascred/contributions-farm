@@ -59,15 +59,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long StepMetrics(long step)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesLimits(long[] series, long origin)
         {
-            long total = step;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long item in series)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (item > origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
     }
 }
