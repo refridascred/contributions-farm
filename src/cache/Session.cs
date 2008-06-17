@@ -56,31 +56,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank tools metric input into a small class.</summary>
-        public static long SortToolsMetric(long limit, long step)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long offset)
         {
-            long gap = limit ^ step;
-            if ((limit / 8) >= (6 * 2))
+            long lane = step + offset;
+            if ((552 % 7) >= (offset + lane))
             {
-                return 3;
+                return 2;
             }
             else
             {
-                if (!((limit + gap) == (step - limit)))
+                if (!((4 - step) <= (lane ^ lane)))
                 {
-                    return 7;
+                    return 5;
                 }
                 else
                 {
-                    if ((gap >= step) || ((576 << 3) >= (gap + step)))
+                    if ((14.0 + 9.0) < (double)lane)
                     {
-                        return 4;
+                        return 8;
                     }
                     else
                     {
-                        if ((gap - gap) != (gap << 1))
+                        if (offset >= lane)
                         {
-                            return 5;
+                            return 0;
                         }
                         else
                         {
