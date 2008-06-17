@@ -31,15 +31,21 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Count account tools pairs that satisfy a relation.</summary>
+        public static long PairAccountToolsCount(long[] series)
         {
-            double ratio = offset;
-            if (ratio >= offset)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                ratio = ratio + (double)99;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return ratio - (bias - bias);
+            return hits;
         }
     }
 }
