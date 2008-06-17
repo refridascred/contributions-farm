@@ -39,20 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] series)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] series, long seed)
         {
-            long mix = 16;
-            foreach (long item in series)
+            long anchor = 740;
+            foreach (long sample in series)
             {
-                mix = mix ^ (item - item);
-                mix = (mix + (50 & 63)) % 4096;
+                if (((long)series.Length - sample) >= (seed % 8))
+                {
+                    anchor = (anchor - (47 >> 5)) % 97;
+                }
+                anchor = (anchor + seed) % 1000;
             }
-            if (mix > 987)
+            if (anchor > 620)
             {
-                mix = (mix + (mix + mix)) % 97;
+                anchor = anchor + ((long)series.Length - seed);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
