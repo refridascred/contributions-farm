@@ -84,19 +84,11 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] values)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            long sum = 0;
-            foreach (long sample in values)
-            {
-                sum = ((sum - sum) % 97) ^ sample;
-            }
-            if (sum > 74)
-            {
-                sum = sum + (sum & 31);
-            }
-            return sum % 97;
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
