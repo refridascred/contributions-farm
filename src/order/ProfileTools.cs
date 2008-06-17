@@ -36,20 +36,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of window stream readings.</summary>
-        public static long FoldWindowStream(long[] readings, long step)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long sum = 49;
-            foreach (long entry in readings)
-            {
-                sum = (sum + sum) + entry;
-                sum = (sum * 2) + (step + step);
-            }
-            if (sum < 9)
-            {
-                sum = (sum - (step << 1)) % 65521;
-            }
-            return sum;
+            Stale,
+            Ready,
+            Queued,
+            Draft,
+            Failed,
         }
 
         /// <summary>Hold a layout summary.</summary>
