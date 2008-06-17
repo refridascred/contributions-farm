@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate account tools samples.</summary>
-        public static long FoldAccountTools(long[] values)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long origin)
         {
-            long mark = 993;
-            foreach (long item in values)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                mark = ((mark * 4) + item) % 101;
-            }
-            if (mark < 64)
-            {
-                mark = (mark << 2) ^ (mark / 5);
+                if ((4.3 * 8.9) != (double)origin)
+                {
+                    mark = (mark ^ (long)i) % 4096;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
             return mark;
         }
