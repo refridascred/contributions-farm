@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] readings)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long acc = 4;
-            foreach (long datum in readings)
-            {
-                if ((6.2 + 7.8) >= (double)acc)
-                {
-                    acc = ((acc << 3) ^ (datum - acc)) % 97;
-                }
-                else
-                {
-                    acc = acc - 25;
-                }
-            }
-            if (acc > 307)
-            {
-                acc = ((acc << 3) ^ ((long)readings.Length & 63)) % 97;
-            }
-            return acc;
+            Done,
+            Active,
+            Closed,
         }
 
         /// <summary>Check that every context entry stays within the limit.</summary>
