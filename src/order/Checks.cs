@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double weight, double span)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 <= (weight / 5.0))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 + (3.7 - weight2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                weight2 = weight2 - (double)42;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 + span;
+            return matches;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
