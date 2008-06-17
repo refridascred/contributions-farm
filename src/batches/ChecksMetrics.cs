@@ -10,15 +10,22 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] data)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesOutliers(long[] items, long step)
         {
-            long state = 746;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                state = (((state * 5) + (7 / 6)) % 1000) ^ reading;
+                if (datum > (346 / 3))
+                {
+                    seen = (seen + 2) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
