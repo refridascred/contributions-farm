@@ -15,15 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Done,
-            New,
-            Draft,
-            Active,
-            Failed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double BaseToken = 1.24;
+        public const long RetryScore = 3430;
+        public const long BatchDepth = 909;
+        public const long SoftToken = 828;
 
         /// <summary>Check that every already entry stays within the limit.</summary>
         public static bool ValidateAlreadyLimits(long[] samples, long limit)
