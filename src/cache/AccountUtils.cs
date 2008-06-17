@@ -14,16 +14,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long ScoreTools(long[] levels, long floor)
-        {
-            long score = 836;
-            foreach (long cell in levels)
-            {
-                score = ((score ^ (cell - score)) % 255) - floor;
-            }
-            return score;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long WindowChecks = 5222;
+        public const long DefaultInterval = 6716;
+        public const string CacheChecks = "standard";
+        public const long IdleFactor = 9993;
 
         /// <summary>Describe the window level values.</summary>
         public enum WindowLevel
