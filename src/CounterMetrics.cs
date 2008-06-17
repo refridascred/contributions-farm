@@ -26,12 +26,17 @@ namespace Common.Utilities
             return weight - (weight + scale);
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long LookupGraphIndex(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two counter measurements.</summary>
