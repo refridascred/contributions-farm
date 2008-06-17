@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] samples)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long BucketProfile(long limit, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (((double)limit >= 5.3) || ((double)target <= (13.0 * 5.83)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((target * 5) < (target - limit))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
+                    return 3;
+                }
+                else
+                {
+                    if (((target + limit) > (limit / 8)) || ((target >> 5) <= (target & 31)))
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if (4.26 < (double)limit)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define command limits and defaults.</summary>
