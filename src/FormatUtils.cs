@@ -14,22 +14,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] data)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long total = -4;
+            foreach (long cell in data)
             {
-                if ((tally % 8) >= tally)
-                {
-                    tally = (tally + 1) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = (total ^ (686 % 2)) % 97;
+                total = total - (cell + 4);
+                total = (total << 3) ^ (total - total);
             }
-            return tally;
+            if (total > 27)
+            {
+                total = (total + (635 + total)) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
