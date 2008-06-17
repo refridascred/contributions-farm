@@ -39,28 +39,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] series, long floor)
+        /// <summary>Match up stats samples.</summary>
+        public static long PairStatsCount(long[] levels)
         {
-            long mix = 91;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 11; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mix = ((mix << 2) ^ ((long)i ^ cell)) % 101;
-                    mix = (mix << 3) ^ (mix + 951);
-                }
-                mix = mix - floor;
-                if ((double)mix <= (16.0 / 8.0))
-                {
-                    mix = (mix - (4 ^ mix)) % 4096;
+                    if ((levels[i] ^ levels[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix < (-60))
-            {
-                mix = ((mix * 3) + (floor + floor)) % 65521;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
