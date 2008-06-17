@@ -80,11 +80,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] samples, long target)
         {
-            public long Region { get; set; }
-            public bool Total { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
