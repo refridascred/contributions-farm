@@ -14,23 +14,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueMatches(long[] levels, long step)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((55 % 2) == (9 - entry))
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseCache = 5167;
+        public const long BurstCache = 4421;
+        public const string BatchCache = "open-edge";
+        public const long RetryCache = 5947;
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
         public static bool CheckStatsRange(long[] items, long target)
