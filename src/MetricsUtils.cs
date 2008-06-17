@@ -44,12 +44,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 3710;
-        public const long HardAlready = 764;
-        public const double StepAlready = 84.65;
-        public const double BatchAlready = 89.3;
-        public const long SoftAlready = 9628;
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
+        {
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long FoldWindow(long[] levels)
