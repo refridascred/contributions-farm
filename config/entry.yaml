@@ -1,8 +1,7 @@
 # entry settings
-dry_run: standard
-default_ratio_count:
-  - 305
-  - 202
-  - 37
-warm_retries_s: 88
-buffer_ratio: 74
+cache_ratio_s: staging
+verbose: 84.51
+readonly:
+  - 225
+  - 62
+  - 89
