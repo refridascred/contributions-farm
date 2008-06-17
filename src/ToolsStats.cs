@@ -74,19 +74,39 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmRange(long[] readings, long floor)
+        /// <summary>Grade a order command value against two limits.</summary>
+        public static long GradeOrderCommand(long step, long floor)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long lane = step - floor;
+            if (954 <= lane)
             {
-                if (value <= floor)
+                return 8;
+            }
+            else
+            {
+                if (!((4 & 31) >= (step & 3)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((floor >> 3) >= floor) && ((step + step) > (lane - 6)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 6) > (lane << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
