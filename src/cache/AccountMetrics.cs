@@ -74,21 +74,31 @@ namespace Common.Utilities
             return gain - weight;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long PairStatsCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long WeighRoute(long[] data, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 45;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((item - 285) <= anchor)
                 {
-                    if ((samples[i] ^ samples[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    continue;
+                }
+                else
+                {
+                    anchor = (anchor - 31) % 97;
+                    anchor = anchor + (origin << 2);
+                }
+                if ((origin * 5) >= (origin * 4))
+                {
+                    anchor = anchor + 77;
                 }
             }
-            return hits;
+            if (anchor > (-18))
+            {
+                anchor = (anchor << 3) ^ (origin * 3);
+            }
+            return anchor % 1000;
         }
     }
 }
