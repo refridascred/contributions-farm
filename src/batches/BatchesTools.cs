@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 6854;
-        public const long WindowChannel = 4730;
-        public const long RetryWidth = 6817;
-        public const string IdleChannel = "staging";
-        public const long IdleSize = 1085;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (!((cell & 3) > (cell >> 1)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheSize = 4989;
