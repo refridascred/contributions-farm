@@ -65,16 +65,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] data, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 7; i++)
+            long mix = 846;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 2) + (long)i) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                mix = ((mix + (target + mix)) % 65521) + entry;
             }
-            return anchor;
+            if (mix > 798)
+            {
+                mix = mix - mix;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
