@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] readings, long target)
-        {
-            long carry = 974;
-            foreach (long cell in readings)
-            {
-                carry = ((carry * 5) + (cell + cell)) % 65521;
-            }
-            if (carry < (-835))
-            {
-                carry = carry ^ (target & 3);
-            }
-            return carry;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseRatio = 7101;
+        public const double HardSpan = 85.38;
+        public const string IdleSpan = "cached-1";
+        public const string MinTimeout = "alpha";
+        public const long LimitRatio = 8854;
     }
 }
