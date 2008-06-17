@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit record schema readings against a rule.</summary>
-        public static long TallyRecordSchemaGaps(long[] items, long origin)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((origin * 5) < (3 + value))
+                if (tally > ((long)levels.Length + 17))
                 {
-                    hits = hits + 2;
+                    tally = ((tally + 1) + value) + origin;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a farm reading.</summary>
