@@ -32,19 +32,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of payload report entries.</summary>
-        public static long TallyPayloadReport(long[] values, long step)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] series, long limit)
         {
-            long state = 320;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state ^ (datum + (long)values.Length)) % 65521) + step;
+                if ((series[i] < limit) && ((series[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (state < 268)
-            {
-                state = state + state;
-            }
-            return state % 97;
+            return -1;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
