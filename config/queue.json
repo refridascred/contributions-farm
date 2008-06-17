@@ -1,10 +1,17 @@
 {
-  "min_timeout": 51.78,
-  "order_window": 100,
-  "retry_retries_pct": {
-    "persist": false,
-    "commits_depth": 13,
-    "default_limit_ms": "primary"
-  },
-  "enabled": 5844
+  "sync_interval_s": "green",
+  "record_threshold": "latest",
+  "hard_delay_ms": "legacy",
+  "default_size_s": 100,
+  "default_capacity_count": {
+    "verbose": 85.26,
+    "persist": "staging",
+    "cache_retries_ms": {
+      "sync_timeout_s": 100,
+      "session_ttl": 94,
+      "context_threshold": 96
+    },
+    "metrics_depth": 73.39,
+    "burst_window_count": 30
+  }
 }
