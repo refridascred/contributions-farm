@@ -30,21 +30,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell <= offset)
                 {
-                    if ((items[i] ^ items[j]) != 3)
-                    {
-                        count = count + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
