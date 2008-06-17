@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] series)
+        /// <summary>Fold a list of order batch readings.</summary>
+        public static long CombineOrderBatch(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long total = 257;
+            foreach (long cell in series)
             {
-                if (!((tally % 60) > reading))
+                if (step > (step >> 2))
                 {
-                    tally = tally + 3;
+                    total = ((total ^ step) % 255) ^ cell;
                 }
             }
-            return tally;
+            if (total > 88)
+            {
+                total = ((total << 2) ^ (step ^ total)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Describe the commits state values.</summary>
