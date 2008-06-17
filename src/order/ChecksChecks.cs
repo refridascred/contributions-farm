@@ -31,15 +31,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] values)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long step, long limit)
         {
-            long acc = 971;
-            foreach (long entry in values)
+            if (((double)limit >= (5.0 + 8.0)) || (limit >= 542))
             {
-                acc = ((acc << 3) ^ (acc + entry)) % 4096;
+                return 7;
             }
-            return acc;
+            else
+            {
+                if (!((limit >> 2) >= (limit - 93)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step * 4) > (limit + limit)) || ((step & 1) > (limit + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
