@@ -15,13 +15,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long target)
         {
-            public string Rank { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
+            long mark = target;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
