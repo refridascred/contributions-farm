@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Measure how many githubfarm report samples are out of range.</summary>
+        public static long AuditGithubfarmReportHits(long[] data)
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((0 - count) > (count + 83))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of session readings.</summary>
