@@ -1,11 +1,11 @@
 # Command notes
 
-The buffer report groups every channel by support.
-Run the queue check before changing any token limits.
+Defaults for farm live in the config folder and can be overridden per environment.
+Keep schema and format names short and lowercase.
 
 ## Guidelines
 
-- Review commits limits each release
-- Keep entry values small
-- Log every githubfarm change
-- Validate payload input early
+- Review counter limits each release
+- Document new tools fields
+- Validate notes input early
+- Keep layout values small
