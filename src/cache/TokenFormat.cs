@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool GuardAlreadyBounds(long[] data, long limit)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long ClassifyCommits(long floor, long target)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long bound = floor - target;
+            if (!((double)bound != (double)(-922)))
             {
-                if (sample >= limit)
+                return 6;
+            }
+            else
+            {
+                if (591 <= floor)
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (!(8.0 <= (double)floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((target & 1) >= (bound * 5))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
