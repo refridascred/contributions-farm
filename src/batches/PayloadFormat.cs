@@ -40,18 +40,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many account record samples are out of range.</summary>
-        public static long CountAccountRecordOutliers(long[] readings)
-        {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((count << 2) < count)
-                {
-                    count = (count + 1) - cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstTimeout = 7211;
+        public const long CachePayload = 9081;
+        public const long MinPayload = 7669;
+        public const long BasePayload = 7978;
+        public const double BurstPayload = 89.32;
     }
 }
