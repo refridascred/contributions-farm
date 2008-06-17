@@ -14,17 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 13; i++)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                anchor = (anchor + anchor) % 255;
-                anchor = ((anchor << 3) ^ step) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 101;
+                if (((value & 127) < (value % 10)) || ((double)value <= (double)hits))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
