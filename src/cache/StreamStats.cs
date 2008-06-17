@@ -37,37 +37,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long target, long origin)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long bound, long origin)
         {
-            long next = target - origin;
-            if (((double)next >= (9.83 + 9.0)) && (next <= (origin - next)))
+            long lane = bound ^ origin;
+            if ((891 - 518) != (origin + lane))
             {
                 return 2;
             }
             else
             {
-                if ((target > (origin + target)) || (0.34 < (double)origin))
+                if ((3.6 + 9.0) > (double)bound)
                 {
                     return 7;
                 }
                 else
                 {
-                    if (!(origin < (origin / 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next - next) == (origin - next))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
