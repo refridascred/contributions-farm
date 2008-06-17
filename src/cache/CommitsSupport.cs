@@ -57,12 +57,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 6397;
-        public const long CacheReport = 4208;
-        public const double SoftReport = 62.41;
-        public const long BurstRatio = 468;
-        public const long IdleReport = 2475;
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
+        {
+            Draft,
+            Done,
+            Retry,
+            Failed,
+        }
 
         /// <summary>Project the next tools value.</summary>
         public static double BlendTools(double gain, double offset)
