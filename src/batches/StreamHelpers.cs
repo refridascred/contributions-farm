@@ -70,12 +70,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MaxLevel = "primary-edge";
-        public const string BurstInterval = "staging-v2";
-        public const long LimitRatio = 9866;
-        public const string HardBudget = "latest-v2";
-        public const long BaseBatch = 3306;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] series, long limit)
+        {
+            long anchor = 65;
+            foreach (long sample in series)
+            {
+                if ((limit + sample) < (anchor + 92))
+                {
+                    anchor = anchor + (limit + anchor);
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = ((anchor << 2) ^ 0) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
