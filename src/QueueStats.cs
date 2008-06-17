@@ -41,18 +41,13 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] data)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((matches <= (datum % 97)) || (((909 << 2) <= (matches * 4)) || (18.0 >= (double)datum)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Stale,
+            Synced,
+            Queued,
         }
 
         /// <summary>Describe the checks status values.</summary>
