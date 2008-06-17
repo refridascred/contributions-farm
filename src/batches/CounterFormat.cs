@@ -39,11 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double floor)
+        /// <summary>Audit token commits readings against a rule.</summary>
+        public static long CountTokenCommitsGaps(long[] samples)
         {
-            double drift = weight;
-            return (drift - (double)159) + floor;
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if (((15.0 - 5.99) > (double)matches) && ((874 ^ matches) >= ((-53) >> 5)))
+                {
+                    matches = (matches + 2) ^ value;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
