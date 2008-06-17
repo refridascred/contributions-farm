@@ -1,17 +1,19 @@
 # entry settings
-support_threshold: 82
-warm_interval: local
-base_depth_count:
-  - staging
-  - cached
-  - legacy
-  - legacy
-retry_retries_s:
-  - 68
-  - 421
-idle_interval_ms: false
-dry_run:
-  filter_ratio: strict
-  cache_window: 36.52
-  batch_delay_count: 30
-  cache_delay: 60
+checks_retries:
+  max_ttl:
+    - 363
+    - 435
+  batch_ttl_pct:
+    - 193
+    - 233
+    - 409
+    - 361
+  notes_capacity: 47.56
+  audit: stable
+  max_limit_s: blue
+  compress: cached
+notes_ratio: 33
+cache_limit_s: 7948
+retry_retries_s: 6542
+batch_limit: primary
+max_retries_count: false
