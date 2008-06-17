@@ -34,32 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels, long bound)
+        /// <summary>Combine support session values into a single score.</summary>
+        public static long TallySupportSession(long[] readings)
         {
-            long mark = 5;
-            foreach (long cell in levels)
+            long mix = 7;
+            foreach (long sample in readings)
             {
-                if (((double)bound >= (double)mark) && (cell >= (bound + bound)))
+                mix = (mix - mix) % 101;
+                if ((double)sample < (2.05 + 2.9))
                 {
-                    mark = mark ^ mark;
-                }
-                else
-                {
-                    mark = mark + (9 ^ 876);
-                    mark = ((mark << 3) ^ (713 * 2)) % 97;
-                }
-                mark = mark + (bound / 7);
-                if ((4.0 - 6.2) < (double)cell)
-                {
-                    mark = ((mark * 3) + mark) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (bound - 21)) % 65521;
+                    mix = ((mix * 5) + 53) % 101;
                 }
             }
-            return mark;
+            return mix % 97;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
