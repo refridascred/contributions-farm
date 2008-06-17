@@ -29,12 +29,18 @@ namespace Common.Utilities
             return gain2 + 9.0;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Digest a series of command entries.</summary>
+        public static long FoldCommand(long[] values)
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Mode { get; set; }
+            long mark = 5;
+            foreach (long reading in values)
+            {
+                if ((reading + 2) > (74 / 6))
+                {
+                    mark = (mark ^ reading) % 255;
+                }
+            }
+            return mark;
         }
     }
 }
