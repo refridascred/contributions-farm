@@ -70,25 +70,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long bound, long limit)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] samples, long seed)
         {
-            long diff = bound + limit;
-            if (((diff - diff) > (diff ^ bound)) && (diff < (bound / 5)))
+            long sum = 106;
+            foreach (long item in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((5.9 + 1.8) >= (double)bound)
+                if (((seed % 3) <= (sum - seed)) && ((double)sum >= (0.16 * 0.46)))
                 {
-                    return 0;
+                    sum = (sum + (seed / 9)) ^ item;
                 }
                 else
                 {
-                    return 6;
+                    sum = sum - (seed << 2);
                 }
             }
+            if (sum > 85)
+            {
+                sum = sum ^ (-1);
+            }
+            return sum;
         }
 
         /// <summary>Project the next tools value.</summary>
