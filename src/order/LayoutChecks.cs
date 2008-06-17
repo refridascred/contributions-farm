@@ -40,23 +40,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of already checks entries.</summary>
-        public static long DigestAlreadyChecks(long[] levels)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long OverlapToolsCount(long[] series)
         {
-            long mix = 8;
-            foreach (long item in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (item / 9)) % 65521;
-                if (((long)levels.Length - mix) != (mix - mix))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
+                    if ((series[i] - series[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > 691)
-            {
-                mix = ((mix << 3) ^ (mix + mix)) % 4096;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
