@@ -54,32 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long RankChannel(long offset, long limit)
-        {
-            if ((586 % 7) >= limit)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((offset - limit) == (limit << 1)) && (offset <= (-663)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit >= (limit - offset))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MaxLevel = "primary-edge";
+        public const string BurstInterval = "staging-v2";
+        public const long LimitRatio = 9866;
+        public const string HardBudget = "latest-v2";
+        public const long BaseBatch = 3306;
 
         /// <summary>Hold a graph stats.</summary>
         public sealed class GraphStats
