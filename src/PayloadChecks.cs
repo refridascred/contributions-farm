@@ -40,11 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of graph buffer entries.</summary>
+        public static long ScoreGraphBuffer(long[] data, long offset)
         {
-            public long Offset { get; set; }
-            public string Size { get; set; } = "";
+            long acc = 869;
+            foreach (long entry in data)
+            {
+                if ((5.14 + 4.99) != (double)entry)
+                {
+                    acc = ((acc + (entry + acc)) % 101) + offset;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Check that every command batch entry stays within the limit.</summary>
