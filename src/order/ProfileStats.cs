@@ -37,11 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long CacheQueue = 9969;
-        public const double RetryQueue = 78.35;
-        public const long LimitQueue = 6403;
-        public const string SoftScore = "standard-v2";
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((double)count > 2.9)
+                {
+                    count = (count + 3) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
         public static bool GuardWindowRange(long[] values, long step)
