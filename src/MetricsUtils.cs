@@ -72,22 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long acc = 73;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading >= (reading - acc))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc * 5) + acc;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (acc > 4)
-            {
-                acc = (acc + (acc + acc)) % 101;
-            }
-            return acc % 4096;
+            return matches;
         }
     }
 }
