@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 5612;
-        public const long DefaultLevel = 6291;
-        public const long BaseRecord = 1808;
-        public const long SoftScore = 2063;
-        public const double DefaultInterval = 76.4;
+        /// <summary>Audit context filter readings against a rule.</summary>
+        public static long AuditContextFilterMatches(long[] items, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!(hits < (hits - hits)))
+                {
+                    hits = ((hits + 1) - sample) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a token options.</summary>
         public sealed class TokenOptions
