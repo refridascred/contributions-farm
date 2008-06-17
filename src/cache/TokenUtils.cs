@@ -34,9 +34,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string HardBudget = "alpha-edge";
-        public const long BurstTimeout = 3961;
-        public const double LimitFormat = 31.9;
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
+        {
+            public double Rank { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
