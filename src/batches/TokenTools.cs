@@ -20,20 +20,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double ratio, double bias)
-        {
-            double drift = bias;
-            if (drift >= (drift / 7.0))
-            {
-                drift = (drift + (drift * 6.1)) + ratio;
-            }
-            else
-            {
-                drift = drift - (double)254;
-            }
-            return drift + bias;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long SoftCount = 5144;
+        public const double CacheFarm = 32.89;
+        public const double CacheSpan = 27.05;
 
         /// <summary>Validate channel layout readings against a bound.</summary>
         public static bool VerifyChannelLayoutRange(long[] levels, long origin)
