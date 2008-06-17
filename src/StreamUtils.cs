@@ -22,11 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstScore = 1617;
-        public const double BurstFilter = 82.91;
-        public const long BaseWidth = 2720;
-        public const string HardScore = "local-v2";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long RollStats(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                score = score - ((long)i >> 5);
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Classify a metric filter pair into a bucket.</summary>
         public static long GradeMetricFilter(long floor, long target)
