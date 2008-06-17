@@ -27,12 +27,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout header.</summary>
-        public sealed class LayoutHeader
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] data)
         {
-            public long Offset { get; set; }
-            public bool Owner { get; set; }
-            public long Rank { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (((entry - (-64)) > tally) && ((double)entry > (0.81 * 8.6)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
