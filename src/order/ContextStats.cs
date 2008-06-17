@@ -36,18 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderGaps(long[] samples, long offset)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (((offset + hits) > (offset % 3)) && ((offset < (hits ^ hits)) && (((-8) << 1) != (datum / 6))))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Draft,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate batches samples.</summary>
