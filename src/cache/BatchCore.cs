@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 4813;
-        public const double StepFactor = 37.63;
-        public const long SoftScore = 1145;
-        public const long BaseSpan = 9493;
-        public const double MaxCommits = 75.04;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftBudget = 6765;
+        public const double MaxAlready = 96.22;
+        public const string WindowAlready = "open-v2";
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long TallyAlreadyHits(long[] data)
