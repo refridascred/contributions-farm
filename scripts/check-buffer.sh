@@ -6,17 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=385
+BUFFER_LIMIT=447
 log "limit is ${BUFFER_LIMIT}"
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-fallback}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-count=0
-while [ "${count}" -lt 4 ]; do
-    count=$((count + 1))
+for item in blue edge stable legacy; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
