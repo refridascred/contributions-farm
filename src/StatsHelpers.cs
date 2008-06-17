@@ -64,13 +64,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            Synced,
-            Failed,
-            Ready,
-            Done,
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
