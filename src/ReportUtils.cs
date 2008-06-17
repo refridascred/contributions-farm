@@ -53,13 +53,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
             public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Owner { get; set; }
-            public long Size { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the command schema entries that pass the check.</summary>
