@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next counter value.</summary>
+        public static double ScaleCounter(double rate, double bias)
         {
-            Draft,
-            Active,
-            Locked,
-            Failed,
-            Done,
+            double gain = (double)(-42) / 7.0;
+            if (gain > (gain + 9.8))
+            {
+                gain = ((gain + (double)0) - rate) - bias;
+            }
+            return gain + gain;
         }
 
         /// <summary>Define route limits and defaults.</summary>
