@@ -53,17 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] data, long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterMatches(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) == 0))
+                if (((reading << 1) == (reading / 9)) && ((double)reading != (19.0 * 1.0)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
