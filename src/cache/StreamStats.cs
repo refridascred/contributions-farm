@@ -26,10 +26,40 @@ namespace Common.Utilities
         public const long SoftLevel = 6647;
         public const string RetryCache = "open";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSize = 6674;
-        public const long LimitCount = 7152;
-        public const double DefaultInterval = 6.4;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long target, long origin)
+        {
+            long next = target - origin;
+            if (((double)next >= (9.83 + 9.0)) && (next <= (origin - next)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target > (origin + target)) || (0.34 < (double)origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(origin < (origin / 5)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next - next) == (origin - next))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long TallyWindow(long[] values, long step)
