@@ -1,7 +1,7 @@
 {
-  "dry_run": 76.14,
-  "max_delay": 1171,
-  "max_ttl_count": 250,
-  "compress": "edge",
-  "readonly": true
+  "audit": "stable",
+  "soft_threshold": ["fallback", "strict", "fallback", "stable"],
+  "route_window": "stable",
+  "counter_window": 2131,
+  "sync_capacity_count": false
 }
