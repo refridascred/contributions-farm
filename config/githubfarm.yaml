@@ -1,13 +1,12 @@
 # githubfarm settings
-report_window:
-  sync_retries: stable
-  stream_delay: 3096
-  enabled: legacy
-  batch_threshold: 57.77
-  record_capacity:
-    - 386
-    - 377
-    - 334
-persist: 54.43
-cache_capacity_ms: local
-verbose: green
+format_interval: 45
+githubfarm_interval: false
+warm_timeout_pct: 100
+warm_limit:
+  strict:
+    context_size: 4395
+    base_threshold_ms: green
+    sync_interval: 91.04
+    readonly: true
+  base_ratio_pct: 60
+  idle_ttl_s: latest
