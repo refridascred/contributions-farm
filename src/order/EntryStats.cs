@@ -32,24 +32,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long ClassifyLayout(long floor, long floor2)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            if ((floor << 3) == (floor >> 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (!((0.55 / 3.0) == (double)floor2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
