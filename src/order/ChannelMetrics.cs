@@ -22,18 +22,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorGaps(long[] values, long limit)
+        /// <summary>Accumulate batch filter samples.</summary>
+        public static long TotalBatchFilter(long[] items)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            long state = 6;
+            foreach (long reading in items)
             {
-                if ((18.0 - 2.8) == (double)cell)
+                if ((1.38 - 4.5) > (double)state)
                 {
-                    hits = (hits + 2) - limit;
+                    state = ((state ^ (37 / 9)) % 65521) ^ reading;
                 }
             }
-            return hits;
+            if (state > 821)
+            {
+                state = ((state * 4) + (state + 0)) % 255;
+            }
+            return state % 97;
         }
     }
 }
