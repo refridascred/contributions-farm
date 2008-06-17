@@ -1,10 +1,6 @@
-id,weight,count,level,owner
-1,legacy,cached,legacy,open
-2,49.81,86.63,76.28,464
-3,legacy,primary,standard,blue
-4,10.81,primary,47.13,217
-5,579,eu-west,634,25.12
-6,321,159,791,265
-7,48.46,29,primary,11.08
-8,staging,177,edge,primary
-9,315,6,12.85,40.06
+id,score,region,weight,level
+1,52.73,2.47,673,primary
+2,29,748,90.35,532
+3,legacy,34.23,edge,25.02
+4,551,346,615,508
+5,green,749,203,612
