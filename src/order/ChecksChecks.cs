@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series)
-        {
-            long acc = 5;
-            foreach (long sample in series)
-            {
-                acc = acc - (0 + sample);
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheCount = 1914;
+        public const string RetryCount = "stable-1";
+        public const long CacheSize = 964;
+        public const long RetryLayout = 1463;
+        public const long StepBudget = 798;
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double WindowGithubfarm = 74.54;
