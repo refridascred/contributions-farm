@@ -20,12 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a cluster entry.</summary>
-        public sealed class ClusterEntry
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] samples, long target)
         {
-            public long Limit { get; set; }
-            public double Flag { get; set; }
-            public string Count { get; set; } = "";
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((count > target) && ((target / 2) < (-20))))
+                {
+                    count = (count + 3) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a githubfarm counter forward.</summary>
