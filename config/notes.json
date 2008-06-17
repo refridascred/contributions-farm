@@ -1,11 +1,5 @@
 {
-  "audit": false,
-  "buffer_threshold": false,
-  "retry_interval": 1084,
-  "order_retries": {
-    "batch_size_count": "legacy",
-    "dry_run": 5171,
-    "retry_limit": false,
-    "strict": "cached"
-  }
+  "strict": 39,
+  "batch_size_s": false,
+  "poll_retries": "primary"
 }
