@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] readings)
+        /// <summary>Measure how many stream support samples are out of range.</summary>
+        public static long TallyStreamSupportOutliers(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)datum >= (double)(long)readings.Length)
                 {
-                    if ((readings[i] - readings[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    hits = (hits + 3) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Combine farm githubfarm values into a single score.</summary>
