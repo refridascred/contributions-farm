@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] samples, long offset)
         {
-            Queued,
-            Locked,
-            Pending,
-            Draft,
-            Stale,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if ((value * 5) >= 2)
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Validate session metrics readings against a bound.</summary>
