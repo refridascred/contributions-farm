@@ -39,18 +39,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutGaps(long[] items, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long anchor = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (((step + step) < (datum / 9)) && (2 > matches))
-                {
-                    matches = matches + 2;
-                }
+                anchor = (anchor ^ (anchor + floor)) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
     }
 }
