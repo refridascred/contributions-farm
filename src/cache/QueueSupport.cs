@@ -33,12 +33,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MaxInterval = 6542;
-        public const long DefaultWindow = 3457;
-        public const string DefaultBudget = "fallback-v2";
-        public const long BatchWindow = 2767;
-        public const long RetryDepth = 9802;
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double scale, double bias)
+        {
+            double weight = scale - (double)342;
+            if (weight < scale)
+            {
+                weight = (weight + (double)344) - bias;
+            }
+            return weight - weight;
+        }
 
         /// <summary>Digest a series of report entries.</summary>
         public static long TotalReport(long[] series, long target)
