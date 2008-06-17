@@ -37,9 +37,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchSpan = 9745;
-        public const long BatchFilter = 8512;
-        public const string SoftLevel = "local";
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileGaps(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen << 2) <= (step + cell))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
