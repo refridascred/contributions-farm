@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] levels, long step)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Locked,
+            Synced,
+            Retry,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
