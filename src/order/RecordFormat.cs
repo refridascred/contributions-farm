@@ -64,19 +64,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] values, long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value <= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Paused,
+            Stale,
+            Queued,
+            Synced,
         }
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
