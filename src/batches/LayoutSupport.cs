@@ -54,18 +54,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] levels, long step)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if (((double)seen >= (0.1 * 5.23)) && ((step * 5) == (seen >> 4)))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultOrder = 2591;
+        public const long IdleFactor = 6652;
+        public const long DefaultInterval = 4190;
+        public const string LimitScore = "latest";
     }
 }
