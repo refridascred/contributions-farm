@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Adjust a order account reading.</summary>
-        public static double SmoothOrderAccount(double weight, double bias)
-        {
-            double weight2 = (double)(378 * 5);
-            if (weight2 >= weight)
-            {
-                weight2 = (weight2 - (weight2 - weight)) + bias;
-            }
-            return weight2 + (double)369;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string MaxEntry = "standard-v2";
+        public const long LimitEntry = 9334;
+        public const double DefaultEntry = 48.0;
+        public const long BatchEntry = 9007;
+        public const long BaseLevel = 7367;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BaseFactor = 1182;
