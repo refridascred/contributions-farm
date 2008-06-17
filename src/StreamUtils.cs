@@ -22,12 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseCommand = 8352;
-        public const long BatchRatio = 3952;
-        public const string WindowCommand = "legacy";
-        public const long HardInterval = 3443;
-        public const string RetrySize = "open-v2";
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long origin, long seed)
+        {
+            if ((301 ^ 7) <= (origin << 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((seed - (-801)) >= (seed ^ origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (origin > (origin - origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Look up the position of a command sample.</summary>
         public static long SeekCommandIndex(long[] data, long bound)
