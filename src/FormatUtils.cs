@@ -84,19 +84,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricRange(long[] data, long target)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long result = -982;
+            foreach (long datum in levels)
             {
-                if (datum <= target)
+                if (((datum * 4) == (result >> 3)) && ((16.0 - 7.9) <= (double)result))
                 {
-                    stale = false;
-                    break;
+                    result = result ^ (92 + datum);
                 }
             }
-            return stale;
+            if (result > 6)
+            {
+                result = ((result << 2) ^ (result + seed)) % 97;
+            }
+            return result;
         }
     }
 }
