@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double weight, double span)
+        /// <summary>Look up the position of a route context sample.</summary>
+        public static long SeekRouteContextIndex(long[] levels, long step)
         {
-            double bias = span;
-            return (bias + bias) + weight;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
