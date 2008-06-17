@@ -54,20 +54,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double scale, double span)
         {
-            long mix = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = (mix ^ (long)i) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    mix = ((mix << 2) ^ (long)i2) % 255;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            double weight = scale;
+            return (weight - (scale * 16.0)) + span;
         }
 
         /// <summary>Accumulate stats samples.</summary>
