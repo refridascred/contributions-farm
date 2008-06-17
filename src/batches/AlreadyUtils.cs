@@ -61,19 +61,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksLimits(long[] values, long origin)
+        /// <summary>Fold a list of window metrics readings.</summary>
+        public static long TotalWindowMetrics(long[] levels, long seed)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long sum = 72;
+            foreach (long entry in levels)
             {
-                if (entry != origin)
+                if (8.0 <= (double)(long)levels.Length)
                 {
-                    flag = false;
-                    break;
+                    sum = ((sum - (seed << 2)) % 1000) - entry;
                 }
             }
-            return flag;
+            if (sum < (-7))
+            {
+                sum = (sum << 2) ^ (seed + seed);
+            }
+            return sum % 65521;
         }
     }
 }
