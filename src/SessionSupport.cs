@@ -26,17 +26,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next order layout value from a seed.</summary>
-        public static long StepOrderLayout(long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long limit)
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
+            long sum = limit;
+            for (int i = 0; i < 11; i++)
             {
-                score = (score - (seed ^ score)) % 1000;
-                score = (score ^ (score % 12)) % 4096;
-                score = ((score * 5) + (long)i) % 97;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return score;
+            return sum;
         }
     }
 }
