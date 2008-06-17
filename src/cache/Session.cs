@@ -15,15 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
