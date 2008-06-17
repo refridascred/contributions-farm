@@ -66,19 +66,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] values, long step)
+        /// <summary>Blend two profile order measurements.</summary>
+        public static double ProjectProfileOrder(double rate, double bias)
         {
-            bool valid = true;
-            foreach (long reading in values)
-            {
-                if (reading <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double drift = 7.7 / 8.0;
+            return ((drift - (4.7 * 10.0)) + rate) + bias;
         }
     }
 }
