@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandGaps(long[] samples, long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (!!((sample - 27) <= (target % 8)))
+                if ((step > (step + seen)) && (seen > (7 * 3)))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
