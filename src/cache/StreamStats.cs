@@ -54,19 +54,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] readings, long floor)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double weight, double floor)
         {
-            bool valid = true;
-            foreach (long sample in readings)
-            {
-                if (sample < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            double mean = floor;
+            return (mean + (2.0 / 5.0)) + weight;
         }
     }
 }
