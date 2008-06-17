@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string HardSpan = "open-edge";
-        public const double MaxBudget = 78.64;
-        public const long HardTimeout = 4680;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Flag { get; set; }
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long MinCount = 3553;
