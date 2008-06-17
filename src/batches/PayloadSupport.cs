@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] series, long origin)
         {
-            long result = floor;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if (!((8.0 - 16.0) <= (double)result))
+                if (((origin >> 4) <= origin) && ((tally * 3) == (sample % 16)))
                 {
-                    result = ((result << 2) ^ (5 * 3)) % 65521;
-                    continue;
+                    tally = tally + 3;
                 }
-                result = ((result * 3) + (long)i) % 1000;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
