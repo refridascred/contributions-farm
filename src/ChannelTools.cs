@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double DefaultAlready = 78.2;
-        public const long LimitTimeout = 5293;
-        public const long SoftAlready = 6555;
-        public const long IdleDepth = 1453;
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Digest a series of window entries.</summary>
         public static long TallyWindow(long[] levels, long offset)
