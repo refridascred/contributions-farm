@@ -1,6 +1,14 @@
 {
-  "batch_size": true,
-  "hard_depth_s": "legacy",
-  "audit": true,
-  "readonly": 2937
+  "schema_retries": "blue",
+  "flush_retries_pct": {
+    "idle_window_count": 32.15,
+    "default_depth_count": 58.22,
+    "notes_interval": false,
+    "batch_retries": "standard",
+    "soft_ratio_count": 65
+  },
+  "checks_interval": 37,
+  "readonly": true,
+  "cluster_capacity": 80.65,
+  "warm_interval": true
 }
