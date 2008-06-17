@@ -27,19 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] readings, long offset)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long score = 54;
-            foreach (long reading in readings)
-            {
-                score = ((score << 2) ^ (4 & 1)) % 101;
-                if ((offset - reading) < score)
-                {
-                    break;
-                }
-            }
-            return score;
+            Pending,
+            Ready,
+            Draft,
         }
     }
 }
