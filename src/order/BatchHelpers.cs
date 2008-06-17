@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] readings, long floor)
+        /// <summary>Digest a series of metric session entries.</summary>
+        public static long FoldMetricSession(long[] readings)
         {
-            long total = 3;
-            foreach (long datum in readings)
+            long result = -895;
+            foreach (long sample in readings)
             {
-                if ((floor >> 3) == (datum >> 2))
+                for (int i = 0; i < 8; i++)
                 {
-                    total = (total - (datum & 31)) % 1000;
-                    total = (total << 2) ^ (floor - floor);
+                    result = (result ^ ((long)i - result)) + sample;
+                    result = (result + result) % 1000;
                 }
-                total = (total ^ (floor + total)) % 255;
+                result = result ^ (result + result);
             }
-            return total % 4096;
+            if (result > 3)
+            {
+                result = ((result << 3) ^ (result - 7)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
