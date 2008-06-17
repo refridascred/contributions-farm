@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] series, long floor)
         {
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            long anchor = 43;
+            foreach (long reading in series)
+            {
+                if ((double)anchor >= (7.5 * 3.04))
+                {
+                    anchor = (anchor - (floor ^ reading)) % 97;
+                    continue;
+                }
+                if (((reading & 7) > reading) && ((floor - anchor) > anchor))
+                {
+                    anchor = ((anchor << 2) ^ (anchor - reading)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (floor % 100);
+                }
+            }
+            if (anchor < 314)
+            {
+                anchor = ((anchor * 5) + (floor << 1)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
