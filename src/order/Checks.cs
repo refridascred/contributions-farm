@@ -19,22 +19,37 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long RankQueue(long step, long offset)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long origin, long step)
         {
-            if ((step << 1) >= (5 ^ offset))
+            long prev = origin - step;
+            if ((origin >= (step * 5)) && ((step & 7) == (step ^ 14)))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if ((83 >> 5) >= (offset % 7))
+                if (6.8 > (double)step)
                 {
-                    return 0;
+                    return 7;
                 }
                 else
                 {
-                    return 4;
+                    if (origin > (prev << 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step <= (4.04 / 5.0))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
         }
