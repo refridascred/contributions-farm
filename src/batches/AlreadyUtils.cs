@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] readings, long step)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricOutliers(long[] series, long seed)
         {
-            long total = 677;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                total = (((total << 2) ^ (step + total)) % 65521) - datum;
-                if ((double)(-31) == (double)step)
+                if (((seen - seen) < (214 + seen)) && ((double)(long)series.Length >= 9.5))
                 {
-                    break;
+                    seen = ((seen + 3) ^ entry) + seed;
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
