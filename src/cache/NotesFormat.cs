@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long RollChecks(long origin)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsBounds(long[] values, long bound)
         {
-            long state = origin;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long value in values)
             {
-                state = (state ^ (state % 3)) % 101;
-                state = ((state * 4) + (long)i) % 1000;
+                if (value <= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return state;
+            return ok;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
