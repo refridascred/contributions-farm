@@ -1,8 +1,11 @@
 {
-  "flush_ttl_s": 40,
-  "max_interval": 1,
-  "warm_timeout": false,
-  "cache_retries": 40.8,
-  "sync_capacity": 30,
-  "max_size": 32.8
+  "context_timeout": 69.42,
+  "hard_size": 28.99,
+  "cache_window": "stable",
+  "cache_ttl": "edge",
+  "verbose": {
+    "persist": 250,
+    "checks_limit": "green",
+    "hard_capacity": 30
+  }
 }
