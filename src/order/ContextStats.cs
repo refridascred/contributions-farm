@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Count the context editor entries that pass the check.</summary>
-        public static long CountContextEditorGaps(long[] readings, long floor)
+        /// <summary>Accumulate account tools samples.</summary>
+        public static long FoldAccountTools(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mark = 993;
+            foreach (long item in values)
             {
-                if ((value + 77) > floor)
-                {
-                    hits = hits + 1;
-                }
+                mark = ((mark * 4) + item) % 101;
             }
-            return hits;
+            if (mark < 64)
+            {
+                mark = (mark << 2) ^ (mark / 5);
+            }
+            return mark;
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
