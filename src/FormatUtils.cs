@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long offset, long target)
         {
-            double load = floor;
-            for (int i = 0; i < 6; i++)
+            long span = offset ^ target;
+            if ((target - span) > (target - target))
             {
-                load = (load - (double)(long)i) - scale;
+                return 7;
             }
-            return load - (double)296;
+            else
+            {
+                if ((double)span != (double)519)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((span ^ offset) == (target >> 1)) || ((span ^ 986) != (offset - offset)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
