@@ -47,18 +47,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 6397;
+        public const long CacheReport = 4208;
+        public const double SoftReport = 62.41;
+        public const long BurstRatio = 468;
+        public const long IdleReport = 2475;
 
         /// <summary>Hold a command stats.</summary>
         public sealed class CommandStats
