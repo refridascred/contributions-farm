@@ -1,11 +1,13 @@
 {
-  "hard_timeout_pct": true,
-  "hard_capacity_count": ["local", "open"],
-  "flush_limit_ms": "stable",
-  "burst_delay": true,
-  "filter_retries": {
-    "readonly": ["local", "cached", "fallback"],
-    "batch_depth_pct": true,
-    "cache_limit": "eu-west"
-  }
+  "max_delay": 57,
+  "batches_interval": 67,
+  "hard_depth_ms": {
+    "min_capacity_pct": 98,
+    "cache_threshold_ms": 3093,
+    "batch_interval_pct": "standard",
+    "account_retries": ["legacy", "blue", "eu-west", "latest"],
+    "poll_retries_ms": "latest"
+  },
+  "batch_ratio_count": 2548,
+  "idle_timeout_s": ["local", "open", "blue", "blue"]
 }
