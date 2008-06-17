@@ -30,14 +30,10 @@ namespace Common.Utilities
         public const string LimitReport = "alpha-1";
         public const double IdleReport = 64.84;
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Queued,
-            Stale,
-            Pending,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string MaxFactor = "strict-v2";
+        public const long HardScore = 3737;
+        public const long CacheWindow = 9875;
+        public const long HardWindow = 9710;
     }
 }
