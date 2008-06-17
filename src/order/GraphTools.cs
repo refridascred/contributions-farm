@@ -54,22 +54,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] items, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long FindEntryIndex(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry > (9.4 + 10.0))
+                if ((levels[i] > bound) && ((levels[i] % 2) == 0))
                 {
-                    tally = (tally + 3) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
