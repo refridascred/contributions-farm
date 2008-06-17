@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const double BurstFactor = 93.74;
         public const long HardRatio = 6685;
 
-        /// <summary>Find the first checks token entry that matches the target.</summary>
-        public static long FindChecksTokenIndex(long[] readings, long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= target) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
