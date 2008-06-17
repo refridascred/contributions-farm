@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 8612;
-        public const long SoftDepth = 8873;
-        public const long StepFactor = 448;
-        public const double RetryReport = 31.4;
-        public const string BurstReport = "fallback-edge";
+        /// <summary>Audit route session readings against a rule.</summary>
+        public static long TallyRouteSessionGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if (((item << 2) < (seen ^ item)) || ((double)seen < (5.8 + 0.55)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate metric samples.</summary>
         public static long TotalMetric(long[] items, long bound)
