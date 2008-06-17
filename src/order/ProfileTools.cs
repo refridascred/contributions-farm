@@ -70,25 +70,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a profile checks pair into a bucket.</summary>
-        public static long GradeProfileChecks(long seed, long target)
+        /// <summary>Match up layout context samples.</summary>
+        public static long PairLayoutContextCount(long[] levels)
         {
-            long next = seed + target;
-            if ((target >> 1) < (target + next))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (next <= (next - 5))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
     }
 }
