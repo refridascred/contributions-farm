@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheScore = 8189;
-        public const long SoftCluster = 8836;
-        public const string StepCluster = "latest-v2";
-        public const long BurstFactor = 7421;
-        public const long RetryCluster = 592;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandGaps(long[] samples, long target)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!!((sample - 27) <= (target % 8)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a stream snapshot.</summary>
         public sealed class StreamSnapshot
