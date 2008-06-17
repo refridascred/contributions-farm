@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Iterate the context buffer series from a seed.</summary>
+        public static long IterateContextBuffer(long offset)
         {
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long acc = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                long offset2 = (offset & 3) + (8 ^ acc);
+                if (offset2 <= (offset2 - acc))
+                {
+                    acc = ((acc << 3) ^ (offset + offset2)) % 97;
+                }
+                acc = (acc << 3) ^ acc;
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
