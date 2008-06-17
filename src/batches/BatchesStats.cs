@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] values)
-        {
-            long score = 39;
-            foreach (long cell in values)
-            {
-                score = (score + score) % 101;
-                if ((7.95 / 2.0) >= (double)cell)
-                {
-                    score = ((score * 4) + 3) % 4096;
-                }
-                else
-                {
-                    score = (score + (cell & 127)) % 101;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MinSize = 35.7;
+        public const string HardRatio = "stable-v2";
+        public const long DefaultWindow = 5545;
+        public const string BurstWindow = "legacy-1";
 
         /// <summary>Derive the next graph value from a seed.</summary>
         public static long RollGraph(long bound)
