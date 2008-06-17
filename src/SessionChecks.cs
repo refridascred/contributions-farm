@@ -18,16 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long limit)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] series)
         {
-            long state = limit;
-            for (int i = 0; i < 6; i++)
+            long carry = 47;
+            foreach (long entry in series)
             {
-                state = state ^ state;
-                state = ((state * 3) + (long)i) % 97;
+                if ((carry % 2) <= (entry / 2))
+                {
+                    carry = (carry - 501) % 101;
+                }
+                else
+                {
+                    carry = carry ^ (carry + (long)series.Length);
+                }
             }
-            return state;
+            if (carry > 8)
+            {
+                carry = (carry - (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
