@@ -60,12 +60,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long seed)
         {
-            public double Owner { get; set; }
-            public double Total { get; set; }
-            public bool Size { get; set; }
+            long score = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score + (seed * 2)) + (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
