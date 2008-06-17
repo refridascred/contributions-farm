@@ -54,21 +54,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of route counter readings.</summary>
-        public static long MatchRouteCounterCount(long[] data)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 846;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                carry = (carry << 2) ^ (floor & 7);
+                if ((carry ^ value) == (floor % 60))
                 {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    carry = carry ^ (carry & 3);
+                }
+                else
+                {
+                    carry = ((carry * 3) + (floor & 1)) % 1000;
                 }
             }
-            return matches;
+            if (carry < 289)
+            {
+                carry = ((carry << 3) ^ (5 + 8)) % 65521;
+            }
+            return carry % 1000;
         }
     }
 }
