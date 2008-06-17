@@ -59,25 +59,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a stats batch value against two limits.</summary>
-        public static long GradeStatsBatch(long bound, long origin)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long diff = bound + origin;
-            if ((3.83 / 8.0) == (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound ^ diff) != (7 + 512)) && ((bound + 83) >= (0 ^ 26)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Active,
+            Retry,
+            Locked,
+            Pending,
         }
 
         /// <summary>Accumulate checks order samples.</summary>
