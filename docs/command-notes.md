@@ -1,10 +1,14 @@
 # Command notes
 
-When a already fails, the channel handler retries a few times before giving up.
-The farm module keeps stream values in sync with the layout cache.
+Defaults for stats live in the config folder and can be overridden per environment.
+The editor module keeps editor values in sync with the farm cache.
+
+Defaults for profile live in the config folder and can be overridden per environment.
+A cache that stays idle for too long is moved to the context list.
+Use window settings to tune how often layout data is refreshed.
 
 ## Guidelines
 
-- Validate buffer input early
-- Keep cache values small
-- Log every account change
+- Document new metrics fields
+- Review stats limits each release
+- Validate stream input early
