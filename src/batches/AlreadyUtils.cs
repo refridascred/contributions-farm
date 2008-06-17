@@ -36,18 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] series, long offset)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] samples, long origin)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (((offset >> 5) < (299 % 10)) && (count <= offset))
+                if ((((origin % 60) <= matches) || ((matches + origin) >= (item - matches))) && (2.6 <= (double)item))
                 {
-                    count = (count + 2) ^ datum;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Hold a stats summary.</summary>
