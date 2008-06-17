@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] readings, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] <= step)
+                if ((reading / 6) < (reading - reading))
                 {
-                    return (long)i;
+                    hits = (hits + 3) + target;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a commits stats.</summary>
