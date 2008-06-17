@@ -37,13 +37,39 @@ namespace Common.Utilities
             return gain + (scale - scale);
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long offset, long limit)
         {
-            public long Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Rank { get; set; }
-            public long Score { get; set; }
+            long next = offset + limit;
+            if ((next - limit) < next)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((1 << 1) == (offset + 84))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((76 & 255) > (48 ^ limit))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((1 % 100) > next))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
