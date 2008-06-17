@@ -33,15 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of farm metric readings.</summary>
-        public static long DigestFarmMetric(long[] readings, long bound)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferBounds(long[] data, long offset)
         {
-            long mark = 623;
-            foreach (long sample in readings)
+            bool flag = true;
+            foreach (long item in data)
             {
-                mark = ((mark ^ (mark & 7)) ^ sample) + bound;
+                if (item < offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Digest a series of report entries.</summary>
