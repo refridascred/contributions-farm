@@ -16,18 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Roll a commits contributi counter forward.</summary>
+        public static long DeriveCommitsContributi(long target)
         {
-            long mix = 912;
-            foreach (long datum in values)
+            long mark = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (((mix - datum) <= (mix + datum)) && ((datum % 8) <= (mix % 60)))
-                {
-                    mix = (mix * 5) + (datum - mix);
-                }
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mix;
+            return mark;
         }
 
         /// <summary>Hold a graph entry.</summary>
