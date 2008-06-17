@@ -49,21 +49,13 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Synced,
+            Active,
+            Dropped,
+            Queued,
         }
     }
 }
