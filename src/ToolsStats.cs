@@ -56,22 +56,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the support schema entries that pass the check.</summary>
-        public static long MeasureSupportSchemaHits(long[] data)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long BucketChecks(long floor, long offset)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long edge = floor ^ offset;
+            if ((edge << 3) > (offset & 15))
             {
-                if ((reading / 7) > (matches % 100))
+                return 5;
+            }
+            else
+            {
+                if (((floor % 8) == (floor / 9)) && (offset > (81 - floor)))
                 {
-                    matches = matches + 1;
+                    return 8;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (!((edge + (-1)) > (floor ^ floor)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)floor != (9.9 / 9.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate checks order samples.</summary>
