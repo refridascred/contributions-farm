@@ -32,12 +32,12 @@ namespace Common.Utilities
             return gain2 - (floor / 4.0);
         }
 
-        /// <summary>Look up the position of a cluster command sample.</summary>
-        public static long LookupClusterCommandIndex(long[] readings, long offset)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] readings, long seed)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if ((readings[i] <= offset) && ((readings[i] % 2) != 0))
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
                 {
                     return (long)i;
                 }
