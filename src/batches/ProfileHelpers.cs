@@ -80,12 +80,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            Closed,
-            Ready,
-            Done,
+            Retry,
+            Synced,
+            Failed,
         }
     }
 }
