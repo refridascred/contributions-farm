@@ -30,21 +30,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter graph readings.</summary>
-        public static long PairCounterGraphCount(long[] items)
+        /// <summary>Digest a series of token order entries.</summary>
+        public static long ScoreTokenOrder(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 596;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((mark % 7) != (mark - entry))
                 {
-                    if ((items[i] - items[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    mark = (mark ^ 0) % 4096;
                 }
             }
-            return seen;
+            return mark % 65521;
         }
     }
 }
