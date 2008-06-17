@@ -1,22 +1,21 @@
 # support settings
-flush_threshold_ms: 8
-persist: legacy
-soft_ttl: false
-retry_timeout_s:
-  order_threshold:
-    - 380
-    - 154
-    - 186
-    - 404
-  contributi_ttl: false
-  tools_delay: fallback
-  default_threshold_s:
-    - staging
-    - blue
-  channel_timeout: false
-  enabled: strict
-sync_size:
-  - 417
-  - 193
-  - 483
-  - 35
+format_retries: 30
+min_window:
+  compress: cached
+  base_timeout: edge
+  burst_limit: 6751
+  queue_delay: 250
+poll_threshold_ms:
+  flush_ttl_s: 10.54
+  flush_capacity_ms:
+    - 59
+    - 392
+    - 423
+  readonly: blue
+  idle_window_s: 97
+  retry_ratio_count: 3.72
+  retry_retries_pct:
+    - 76
+    - 374
+schema_capacity: eu-west
+readonly: false
