@@ -72,18 +72,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token metrics readings against a rule.</summary>
-        public static long AuditTokenMetricsGaps(long[] data, long origin)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long acc = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)matches != (double)origin)
+                if ((double)offset > (7.3 / 8.0))
                 {
-                    matches = (matches + 3) ^ cell;
+                    acc = ((acc << 2) ^ ((long)i >> 5)) % 101;
                 }
+                else
+                {
+                    acc = (acc ^ acc) % 97;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a farm info.</summary>
