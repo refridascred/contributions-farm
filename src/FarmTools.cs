@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = 71;
-            foreach (long value in items)
-            {
-                state = (state + (value + value)) % 65521;
-            }
-            return state;
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
