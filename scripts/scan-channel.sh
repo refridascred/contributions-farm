@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+mode="${1:-staging}"
 case "${mode}" in
-    standard)
+    staging)
         log "fast path"
         ;;
     *)
@@ -17,7 +17,11 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 5); do
+for i in $(seq 1 3); do
     total=$((total + i * 4))
 done
 log "total ${total}"
+
+for item in edge strict eu-west standard; do
+    log "checking ${item}"
+done
