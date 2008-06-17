@@ -1,9 +1,7 @@
 # githubfarm settings
-compress: primary
-batch_interval:
-  - 146
-  - 13
-  - 367
-min_delay_s: 9428
-poll_capacity_s: green
-queue_capacity: 250
+hard_interval_count: 1024
+readonly: 1234
+batch_timeout:
+  - open
+  - fallback
+enabled: 30
