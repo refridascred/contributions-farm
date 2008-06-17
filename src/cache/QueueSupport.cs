@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a profile account pair into a bucket.</summary>
-        public static long GradeProfileAccount(long floor, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheGaps(long[] data)
         {
-            long lane = floor + limit;
-            if ((lane - lane) < lane)
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((10.0 + 17.0) == (double)limit)
+                if ((long)data.Length == (matches % 64))
                 {
-                    return 4;
+                    matches = (matches + 1) + value;
                 }
                 else
                 {
-                    if (((double)limit == (6.0 - 3.0)) || ((3.11 * 3.03) <= (double)floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
