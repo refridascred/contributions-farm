@@ -16,11 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long WindowChecks = 5222;
-        public const long DefaultInterval = 6716;
-        public const string CacheChecks = "standard";
-        public const long IdleFactor = 9993;
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long RollCounter(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Accumulate metrics buffer samples.</summary>
         public static long CombineMetricsBuffer(long[] readings, long bound)
