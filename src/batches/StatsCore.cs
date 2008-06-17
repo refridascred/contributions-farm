@@ -50,18 +50,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] items, long origin)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsLimits(long[] items, long step)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                if (hits >= (hits & 15))
+                if (reading != step)
                 {
-                    hits = ((hits + 1) - cell) - origin;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
