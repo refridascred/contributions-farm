@@ -13,11 +13,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheWidth = 64.08;
-        public const long BaseTimeout = 2103;
-        public const long MaxAlready = 6819;
-        public const long BurstDepth = 3093;
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
+        {
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long step)
