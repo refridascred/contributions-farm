@@ -19,12 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long FindMetricIndex(long[] data, long target)
+        /// <summary>Look up the position of a channel queue sample.</summary>
+        public static long LocateChannelQueueIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > target)
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
