@@ -27,15 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long bound)
         {
-            long mix = origin;
-            for (int i = 0; i < 23; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                mix = ((mix * 3) + (long)i) % 101;
+                acc = (acc ^ (bound + bound)) % 101;
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Count the metrics contributi entries that pass the check.</summary>
