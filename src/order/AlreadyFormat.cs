@@ -10,26 +10,12 @@ namespace Common.Utilities
         public const long LimitDepth = 3735;
         public const string HardScore = "legacy-v2";
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] levels, long offset)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long carry = 1;
-            foreach (long value in levels)
-            {
-                if ((carry & 1) <= value)
-                {
-                    carry = carry + (carry << 2);
-                }
-                if ((carry + offset) != (carry * 5))
-                {
-                    carry = carry + (value + carry);
-                }
-                else
-                {
-                    carry = carry ^ (carry + offset);
-                }
-            }
-            return carry;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
