@@ -12,13 +12,25 @@ namespace Common.Utilities
         public const long HardTimeout = 5581;
         public const long HardSize = 1644;
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long RankCounter(long step, long step2)
         {
-            public string Score { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Owner { get; set; }
+            long step3 = step + step2;
+            if (step <= step3)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((35 <= (step - step2)) || ((step + step) == (step2 + step)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the batch class values.</summary>
