@@ -48,17 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] data, long offset)
+        /// <summary>Digest a series of counter context entries.</summary>
+        public static long WeighCounterContext(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = 399;
+            foreach (long value in readings)
             {
-                if (data[i] == offset)
+                if ((60 & 1) != (sum & 31))
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (value + value)) % 97;
                 }
             }
-            return -1;
+            return sum % 65521;
         }
 
         /// <summary>Count the metrics route entries that pass the check.</summary>
