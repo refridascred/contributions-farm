@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] values, long origin)
+        /// <summary>Roll a record format counter forward.</summary>
+        public static long RollRecordFormat(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if ((values[i] == origin) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (floor - 473)) % 65521;
+                sum = (sum << 2) ^ (long)i;
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the already kind values.</summary>
