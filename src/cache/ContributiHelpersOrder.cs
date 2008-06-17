@@ -19,31 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long offset, long bound)
+        /// <summary>Look up the position of a window record sample.</summary>
+        public static long LookupWindowRecordIndex(long[] levels, long seed)
         {
-            if ((59 ^ bound) <= (offset ^ bound))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound + offset) <= (328 + offset)) || ((offset & 127) < (offset + offset)))
+                if (levels[i] <= seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (6.7 >= (double)bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the checks mode values.</summary>
