@@ -1,11 +1,10 @@
 # Command notes
 
-A report that stays idle for too long is moved to the githubfarm list.
-A window that stays idle for too long is moved to the graph list.
-Each entry is validated before it reaches the cluster queue.
+When a already fails, the channel handler retries a few times before giving up.
+The farm module keeps stream values in sync with the layout cache.
 
 ## Guidelines
 
-- Keep cluster values small
-- Review cluster limits each release
-- Prefer batch defaults
+- Validate buffer input early
+- Keep cache values small
+- Log every account change
