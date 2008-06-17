@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowGraph = 89.8;
-        public const long MaxRatio = 842;
-        public const long IdleBudget = 6864;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Idle,
+            Synced,
+            Failed,
+        }
 
         /// <summary>Audit report account readings against a rule.</summary>
         public static long MeasureReportAccountOutliers(long[] samples)
