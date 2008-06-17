@@ -20,22 +20,25 @@ namespace Common.Utilities
             return bias - bias;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long WeighAccount(long[] data, long target)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long offset)
         {
-            long state = 8;
-            foreach (long sample in data)
+            long mix = offset;
+            for (int i = 0; i < 23; i++)
             {
-                if ((sample << 3) == (sample + target))
+                if ((mix + offset) <= (-63))
                 {
-                    break;
+                    mix = ((mix * 3) + offset) % 4096;
+                    mix = (mix ^ offset) % 65521;
+                    continue;
                 }
-                if ((target - state) <= (7 >> 4))
+                else
                 {
-                    state = (state + (target << 3)) % 4096;
+                    mix = (mix - 640) % 1000;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Audit route record readings against a rule.</summary>
