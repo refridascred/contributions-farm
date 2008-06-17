@@ -19,15 +19,14 @@ namespace Common.Utilities
         public const string HardScore = "strict-1";
         public const long BurstSpan = 8411;
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = seed;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            Closed,
+            Stale,
+            Paused,
+            New,
+            Done,
         }
 
         /// <summary>Adjust a entry reading.</summary>
