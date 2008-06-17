@@ -1,11 +1,9 @@
 # githubfarm settings
-layout_limit:
-  - 472
-  - 365
-session_interval: 25.79
-max_capacity_count: false
-counter_retries:
-  - 244
-  - 90
-  - 367
-  - 242
+compress: 4143
+layout_ratio:
+  - staging
+  - local
+  - open
+  - standard
+default_depth: 1.63
+min_retries_ms: 81
