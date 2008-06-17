@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] items)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long origin)
         {
-            long result = 118;
-            foreach (long datum in items)
+            long result = origin;
+            for (int i = 0; i < 18; i++)
             {
-                result = (result ^ datum) % 255;
-                result = result ^ (datum + result);
-                if ((datum >> 1) >= (result / 2))
-                {
-                    result = (result + datum) % 255;
-                }
+                result = (result - (origin + result)) % 1000;
+                result = ((result * 2) + (long)i) % 1000;
             }
-            if (result < 227)
-            {
-                result = ((result << 3) ^ 253) % 101;
-            }
-            return result % 4096;
+            return result;
         }
 
         /// <summary>Describe the notes class values.</summary>
