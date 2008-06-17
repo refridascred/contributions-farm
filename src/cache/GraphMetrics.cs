@@ -35,13 +35,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] data)
         {
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((4 << 1) > matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
