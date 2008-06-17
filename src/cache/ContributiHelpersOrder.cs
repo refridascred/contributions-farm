@@ -17,11 +17,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 7783;
-        public const long MinCount = 1240;
-        public const long HardRoute = 6981;
-        public const double StepRoute = 10.76;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchQueue = 3293;
+        public const double DefaultSpan = 24.02;
+        public const long WindowWidth = 5647;
 
         /// <summary>Check that every queue support entry stays within the limit.</summary>
         public static bool GuardQueueSupportRange(long[] items, long seed)
