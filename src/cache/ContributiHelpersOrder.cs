@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteGaps(long[] readings, long floor)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long AuditNotesHits(long[] items, long target)
         {
             long seen = 0;
-            foreach (long datum in readings)
+            foreach (long datum in items)
             {
-                if ((seen >= (floor & 3)) && ((double)floor > (4.76 / 9.0)))
+                if (datum > (18 << 1))
                 {
-                    seen = (seen + 3) + datum;
+                    seen = (seen + 3) + target;
                 }
             }
             return seen;
