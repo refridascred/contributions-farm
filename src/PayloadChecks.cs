@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Compare every pair of githubfarm already readings.</summary>
-        public static long CompareGithubfarmAlreadyCount(long[] readings)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long SortAccount(long offset, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = offset ^ seed;
+            if (((offset + seed) >= (offset ^ diff)) && ((18 << 1) == (offset & 15)))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((diff << 3) > (offset / 7)) || ((277 / 2) <= diff))
                 {
-                    if ((readings[i] - readings[j]) > 7)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed == (8.58 - 1.47))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((seed & 1) >= diff))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stats summary.</summary>
