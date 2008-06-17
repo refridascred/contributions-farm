@@ -39,11 +39,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultLevel = 7450;
-        public const string CacheNotes = "primary";
-        public const long StepWidth = 2718;
-        public const long MinTimeout = 932;
-        public const long IdleNotes = 6410;
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values, long limit)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) > (seen << 3))
+                {
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
