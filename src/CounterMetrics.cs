@@ -33,15 +33,17 @@ namespace Common.Utilities
         public const string CacheSession = "local-1";
         public const long BurstSession = 252;
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double SmoothNotes(double weight, double bias)
+        /// <summary>Look up the position of a batches notes sample.</summary>
+        public static long LookupBatchesNotesIndex(long[] data, long bound)
         {
-            double load = weight;
-            if (load <= bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + (weight + weight);
+                if ((data[i] <= bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + (double)(-219);
+            return -1;
         }
     }
 }
