@@ -1,5 +1,7 @@
 {
-  "max_retries": false,
-  "batch_window": "eu-west",
-  "idle_timeout_pct": 30
+  "cluster_capacity": 86,
+  "batch_depth": true,
+  "warm_ttl_ms": ["blue", "stable", "staging"],
+  "burst_size": 22,
+  "githubfarm_window": 30
 }
