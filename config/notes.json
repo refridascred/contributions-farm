@@ -1,5 +1,6 @@
 {
-  "persist": ["green", "fallback", "strict"],
-  "poll_depth": false,
-  "tools_timeout": true
+  "cache_window_s": "edge",
+  "token_threshold": 500,
+  "batch_threshold": true,
+  "cache_ttl": "fallback"
 }
