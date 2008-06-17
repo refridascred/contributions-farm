@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a session support counter forward.</summary>
-        public static long RollSessionSupport(long step)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double rate, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 6; i++)
+            double weight = 3.0;
+            for (int i = 0; i < 3; i++)
             {
-                anchor = (anchor << 3) ^ step;
-                if ((double)19 < (double)(long)i)
-                {
-                    anchor = (anchor << 3) ^ (anchor >> 3);
-                }
-                if (!((2.77 + 4.09) <= (double)step))
-                {
-                    anchor = anchor + (step % 16);
-                }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                weight = ((weight - (rate / 9.0)) + (double)(long)i) + offset;
             }
-            return anchor;
+            return weight + 5.1;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
