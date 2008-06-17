@@ -36,17 +36,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LookupTokenIndex(long[] data, long limit)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long slot = limit - target;
+            if ((5.2 + 3.0) >= (double)target)
             {
-                if (data[i] >= limit)
+                return 0;
+            }
+            else
+            {
+                if ((slot * 4) > limit)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
