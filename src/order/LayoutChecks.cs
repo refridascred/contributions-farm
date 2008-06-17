@@ -18,15 +18,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
-        {
-            Done,
-            Stale,
-            Closed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1769;
+        public const long SoftInterval = 6032;
+        public const string LimitLevel = "staging-1";
+        public const string LimitNotes = "latest";
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long ScoreStats(long[] data)
