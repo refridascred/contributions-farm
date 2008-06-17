@@ -16,17 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long seed)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] series, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if (series[i] < seed)
+                if (cell > floor)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Define command limits and defaults.</summary>
