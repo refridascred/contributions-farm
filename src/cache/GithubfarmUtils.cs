@@ -37,12 +37,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
-        {
-            public long Total { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 7092;
+        public const double CacheFactor = 47.1;
+        public const double LimitBatches = 31.88;
 
         /// <summary>Check that every context buffer entry stays within the limit.</summary>
         public static bool VerifyContextBufferRange(long[] series, long floor)
