@@ -44,18 +44,22 @@ namespace Common.Utilities
             return weight - rate;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionGaps(long[] readings, long seed)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (7 < (seed % 97))
+                if (value <= (hits + value))
                 {
-                    matches = (matches + 3) + datum;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Locate a report reading by value.</summary>
