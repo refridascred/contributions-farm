@@ -14,19 +14,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextLimits(long[] values, long offset)
+        /// <summary>Audit batch command readings against a rule.</summary>
+        public static long CountBatchCommandMatches(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell >= offset)
+                if ((datum * 3) <= (datum + count))
                 {
-                    ready = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
