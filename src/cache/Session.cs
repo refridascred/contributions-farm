@@ -5,14 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Combine context values into a single score.</summary>
+        public static long ScoreContext(long[] data, long offset)
         {
-            Ready,
-            Active,
-            Queued,
-            Closed,
-            Retry,
+            long state = 9;
+            foreach (long value in data)
+            {
+                double mean = (5.7 + 1.27) * 7.0;
+                if (!(((offset % 5) < (value ^ value)) || (mean <= (mean + mean))))
+                {
+                    state = ((state * 2) + (offset + value)) % 4096;
+                }
+                if ((value ^ (-196)) >= (offset & 63))
+                {
+                    state = ((state << 2) ^ state) % 97;
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Match up layout samples.</summary>
