@@ -1,19 +1,6 @@
 {
-  "retry_limit": {
-    "window_ttl": [270, 374, 40],
-    "soft_threshold": 250,
-    "audit": [443, 35, 113],
-    "max_ttl_s": false
-  },
-  "soft_interval_s": ["staging", "primary", "cached"],
-  "persist": 98,
-  "cache_ratio": {
-    "audit": false,
-    "stream_ttl": true,
-    "max_timeout_ms": ["fallback", "latest"],
-    "sync_window_ms": "staging",
-    "schema_ratio": [83, 479, 272]
-  },
-  "channel_ratio": 500,
-  "route_retries": ["latest", "open", "local"]
+  "batch_ttl": "strict",
+  "enabled": 6921,
+  "poll_timeout_ms": 47.41,
+  "account_threshold": 7314
 }
