@@ -49,18 +49,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] samples)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample > (sample + sample)) || ((double)matches <= (18.0 - 4.3))) && ((sample * 2) == (sample & 15)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Closed,
+            Draft,
+            Ready,
+            Failed,
+            Retry,
         }
 
         /// <summary>Project the next filter value.</summary>
