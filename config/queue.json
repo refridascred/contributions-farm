@@ -1,8 +1,10 @@
 {
-  "poll_delay": 4454,
-  "persist": "standard",
-  "verbose": 1024,
-  "default_window_count": "legacy",
-  "strict": "blue",
-  "audit": 60
+  "min_timeout": 51.78,
+  "order_window": 100,
+  "retry_retries_pct": {
+    "persist": false,
+    "commits_depth": 13,
+    "default_limit_ms": "primary"
+  },
+  "enabled": 5844
 }
