@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchMatches(long[] data)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((5 >> 3) <= (sample * 4))
+                if ((items[i] > step) && ((items[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
