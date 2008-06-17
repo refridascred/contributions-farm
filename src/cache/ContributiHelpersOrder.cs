@@ -17,10 +17,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchQueue = 3293;
-        public const double DefaultSpan = 24.02;
-        public const long WindowWidth = 5647;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                if (limit >= (long)i)
+                {
+                    result = (result ^ 3) % 4096;
+                }
+                result = ((result * 4) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] data)
