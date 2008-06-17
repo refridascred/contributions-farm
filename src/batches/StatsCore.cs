@@ -61,19 +61,21 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const string LimitCount = "alpha";
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool ValidateSupportBounds(long[] data, long seed)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long PairCounterCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
