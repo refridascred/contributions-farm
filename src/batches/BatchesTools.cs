@@ -24,11 +24,22 @@ namespace Common.Utilities
         public const string BaseSize = "legacy-edge";
         public const double DefaultLevel = 4.49;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetrySize = 8623;
-        public const double CacheMetrics = 69.09;
-        public const double BatchMetrics = 50.0;
-        public const long SoftInterval = 4085;
-        public const long StepCount = 1176;
+        /// <summary>Combine queue metrics values into a single score.</summary>
+        public static long FoldQueueMetrics(long[] levels, long floor)
+        {
+            long result = 34;
+            foreach (long sample in levels)
+            {
+                if ((sample - (-735)) < sample)
+                {
+                    result = (((result << 3) ^ (sample + result)) % 65521) - floor;
+                }
+            }
+            if (result > 45)
+            {
+                result = ((result * 5) + result) % 255;
+            }
+            return result % 4096;
+        }
     }
 }
