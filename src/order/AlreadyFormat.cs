@@ -10,17 +10,24 @@ namespace Common.Utilities
         public const long LimitDepth = 3735;
         public const string HardScore = "legacy-v2";
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] values, long bound)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 55;
+            foreach (long datum in levels)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) != 0))
+                if (datum > (datum + datum))
                 {
-                    return (long)i;
+                    state = (state - (state ^ datum)) % 97;
+                    state = (state - (datum % 5)) % 4096;
                 }
+                else
+                {
+                    state = ((state * 5) + (datum - state)) % 1000;
+                }
+                state = state - (datum & 7);
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
