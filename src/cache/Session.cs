@@ -56,39 +56,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long step, long offset)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long lane = step + offset;
-            if ((552 % 7) >= (offset + lane))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((4 - step) <= (lane ^ lane)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((14.0 + 9.0) < (double)lane)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset >= lane)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
