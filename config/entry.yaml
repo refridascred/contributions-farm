@@ -1,7 +1,20 @@
 # entry settings
-compress: 36.46
-base_interval_count:
-  - 166
-  - 90
-  - 148
-default_capacity: true
+hard_limit_s: green
+batch_depth_pct: 90.77
+soft_ttl_s: true
+idle_window_pct:
+  max_window: 60
+  min_delay_count: green
+  hard_retries_s: 6074
+  soft_window: true
+  enabled:
+    - 118
+    - 319
+    - 334
+    - 263
+persist: false
+notes_window:
+  - 47
+  - 348
+  - 16
+  - 179
