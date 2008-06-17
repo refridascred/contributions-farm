@@ -23,14 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
-        {
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 2065;
+        public const double BaseTimeout = 87.0;
+        public const long BurstInterval = 7568;
+        public const double BatchDepth = 7.8;
+        public const string LimitTimeout = "strict-v2";
 
         /// <summary>Hold a payload entry.</summary>
         public sealed class PayloadEntry
