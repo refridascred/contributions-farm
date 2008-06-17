@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            Done,
-            Stale,
-            New,
-            Draft,
+            double load = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load - (double)(long)i) - scale;
+            }
+            return load - (double)296;
         }
 
         /// <summary>Audit batch command readings against a rule.</summary>
