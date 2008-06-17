@@ -1,12 +1,6 @@
 {
-  "flush_size_pct": ["open", "strict", "local"],
-  "audit": true,
-  "min_depth": "strict",
-  "min_limit_s": 6.54,
-  "verbose": {
-    "min_timeout_count": "stable",
-    "min_size": 24.46,
-    "queue_timeout": 3332
-  },
-  "base_delay_pct": "strict"
+  "already_ttl": false,
+  "cache_window": "local",
+  "warm_window": 9.05,
+  "retry_ratio_s": [62, 220, 413]
 }
