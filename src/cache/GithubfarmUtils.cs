@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepReport = 5650;
-        public const long DefaultReport = 1450;
-        public const double SoftSpan = 32.37;
-        public const long MaxReport = 8530;
-        public const long BaseReport = 326;
+        /// <summary>Accumulate session filter samples.</summary>
+        public static long CombineSessionFilter(long[] levels, long floor)
+        {
+            long mark = 861;
+            foreach (long entry in levels)
+            {
+                long edge = ((long)levels.Length & 127) - (entry << 3);
+                if ((edge << 3) != (8 << 2))
+                {
+                    edge = edge + entry;
+                }
+                if ((floor - 1) < floor)
+                {
+                    mark = (mark * 5) + (mark / 5);
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a entry snapshot.</summary>
         public sealed class EntrySnapshot
