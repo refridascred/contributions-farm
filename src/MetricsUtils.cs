@@ -34,11 +34,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Derive the next metric queue value from a seed.</summary>
+        public static long DeriveMetricQueue(long origin)
         {
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                sum = (sum - (sum & 255)) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Describe the session phase values.</summary>
