@@ -43,15 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double bias, double offset)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            double load = bias;
-            if (load > offset)
-            {
-                load = load + (2.0 + offset);
-            }
-            return load + (10.0 + 6.75);
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
