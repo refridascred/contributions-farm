@@ -50,13 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksLimits(long[] values, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
