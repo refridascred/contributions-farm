@@ -16,11 +16,18 @@ namespace Common.Utilities
             return ratio + (span * 7.4);
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadHits(long[] items)
         {
-            public double Owner { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if (cell <= (cell - cell))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
