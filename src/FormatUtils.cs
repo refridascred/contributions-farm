@@ -54,30 +54,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Count token editor pairs that satisfy a relation.</summary>
+        public static long PairTokenEditorCount(long[] levels)
         {
-            long total = 23;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell ^ 793) <= (cell + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = (total * 5) + (total ^ 81);
-                }
-                if ((total > (cell << 3)) || ((cell >> 1) == (total + cell)))
-                {
-                    total = (total + (total ^ cell)) % 101;
-                }
-                else
-                {
-                    total = ((total << 3) ^ (total << 2)) % 65521;
+                    if ((levels[i] - levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = (total * 3) + total;
-            }
-            return total % 4096;
+            return seen;
         }
 
         /// <summary>Describe the farm mode values.</summary>
