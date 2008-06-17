@@ -20,19 +20,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next checks window value from a seed.</summary>
-        public static long RollChecksWindow(long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                if (floor <= (result << 1))
-                {
-                    result = ((result << 3) ^ (long)i) % 255;
-                }
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public double Region { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Digest a series of tools githubfarm entries.</summary>
