@@ -65,11 +65,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double MinToken = 18.81;
-        public const double IdleToken = 76.0;
-        public const double RetryToken = 13.43;
-        public const long SoftInterval = 8987;
+        /// <summary>Project the next command tools value.</summary>
+        public static double ScaleCommandTools(double scale, double bias)
+        {
+            double gain = bias;
+            if (gain < (double)50)
+            {
+                gain = (gain + gain) - scale;
+            }
+            else
+            {
+                gain = gain + (double)36;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - (gain / 6.0)) - (double)(long)i;
+            }
+            return gain + bias;
+        }
 
         /// <summary>Fold a list of editor readings.</summary>
         public static long TallyEditor(long[] values)
