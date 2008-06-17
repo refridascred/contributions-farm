@@ -47,17 +47,30 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long SeekCacheIndex(long[] readings, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 23;
+            foreach (long cell in readings)
             {
-                if (readings[i] > step)
+                if ((cell ^ 793) <= (cell + cell))
                 {
-                    return (long)i;
+                    total = (total * 5) + (total ^ 81);
+                }
+                if ((total > (cell << 3)) || ((cell >> 1) == (total + cell)))
+                {
+                    total = (total + (total ^ cell)) % 101;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (total << 2)) % 65521;
                 }
             }
-            return -1;
+            if (total > 7)
+            {
+                total = (total * 3) + total;
+            }
+            return total % 4096;
         }
 
         /// <summary>Describe the farm mode values.</summary>
