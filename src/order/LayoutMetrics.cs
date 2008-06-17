@@ -37,21 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] readings, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long carry = 974;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 5) + (cell + cell)) % 65521;
             }
-            return hits;
+            if (carry < (-835))
+            {
+                carry = carry ^ (target & 3);
+            }
+            return carry;
         }
     }
 }
