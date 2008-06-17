@@ -19,10 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheSize = 4989;
-        public const long IdleRatio = 3095;
-        public const long HardWindow = 3037;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double IdleStats = 42.45;
+        public const string BaseSize = "legacy-edge";
+        public const double DefaultLevel = 4.49;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long RetrySize = 8623;
