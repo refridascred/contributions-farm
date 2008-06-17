@@ -15,20 +15,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((step * 5) > (5 + (long)i))
-                {
-                    sum = (sum << 3) ^ (sum >> 1);
-                }
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long StepBudget = 257;
+        public const long RetryTimeout = 5188;
+        public const long MinDepth = 370;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] data)
