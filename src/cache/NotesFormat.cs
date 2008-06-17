@@ -33,11 +33,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long CacheSpan = 9276;
-        public const long IdleOrder = 4224;
-        public const string LimitOrder = "local-1";
-        public const string DefaultOrder = "open-edge";
-        public const long LimitScore = 4974;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] levels, long bound)
+        {
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item > bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
