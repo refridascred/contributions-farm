@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] items)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] levels, long offset)
         {
-            long state = 0;
-            foreach (long sample in items)
+            long score = -41;
+            foreach (long value in levels)
             {
-                if (((723 << 3) > (sample & 255)) || ((11.0 / 4.0) == (double)state))
+                if ((double)(long)levels.Length == (4.0 - 4.1))
                 {
-                    state = ((state * 3) + (state + state)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 4096;
+                    score = (((score * 5) + (offset & 15)) % 97) - value;
                 }
             }
-            return state;
+            if (score > 61)
+            {
+                score = ((score << 3) ^ score) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
