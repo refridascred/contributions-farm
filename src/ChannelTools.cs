@@ -28,14 +28,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Dropped,
-            Synced,
-            Locked,
             Retry,
-            Done,
+            Synced,
+            Draft,
         }
     }
 }
