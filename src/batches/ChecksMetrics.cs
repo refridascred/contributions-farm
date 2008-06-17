@@ -74,12 +74,32 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long limit, long target)
         {
-            public long Weight { get; set; }
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long slot = limit ^ target;
+            if (((9.0 - 4.1) >= (double)target) && (slot >= ((-958) ^ slot)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target < (5.79 + 6.6))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target < (4.72 * 2.68))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many githubfarm report samples are out of range.</summary>
