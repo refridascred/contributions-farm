@@ -19,33 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long BucketCounter(long floor, long target)
-        {
-            long slot = floor + target;
-            if ((target + target) <= slot)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)target != (double)64)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (7 >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 3250;
+        public const long CacheSession = 6271;
+        public const long BaseSession = 5315;
 
         /// <summary>Describe the report status values.</summary>
         public enum ReportStatus
