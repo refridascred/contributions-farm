@@ -15,13 +15,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            Dropped,
-            Locked,
-            New,
-            Failed,
+            public long Score { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Fold a list of stream readings.</summary>
