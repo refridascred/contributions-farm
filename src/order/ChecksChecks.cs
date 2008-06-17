@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long floor, long limit)
         {
-            Ready,
-            Done,
-            Idle,
-            Locked,
+            if ((limit <= (395 & 31)) && ((915 & 1) > floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) != (floor ^ floor))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-96) & 1) < limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((182 + floor) <= (floor & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
