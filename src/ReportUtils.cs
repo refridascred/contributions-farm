@@ -62,22 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] data, long bound)
+        /// <summary>Count the command schema entries that pass the check.</summary>
+        public static long MeasureCommandSchemaOutliers(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!(((163 ^ (long)data.Length) > hits) && ((double)62 == (double)hits)))
+                if ((15.0 * 2.7) == (double)value)
                 {
-                    hits = ((hits + 2) + entry) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
