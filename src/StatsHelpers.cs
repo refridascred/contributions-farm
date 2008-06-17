@@ -13,26 +13,23 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] samples)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings, long offset)
         {
-            long mark = -13;
-            foreach (long reading in samples)
+            long anchor = 8;
+            foreach (long datum in readings)
             {
-                if (!((reading - reading) <= 203))
-                {
-                    mark = mark - (reading ^ mark);
-                }
                 for (int i = 0; i < 3; i++)
                 {
-                    mark = (mark << 2) ^ (74 ^ (long)i);
+                    anchor = (((anchor << 2) ^ (datum & 1)) % 101) ^ (long)i;
                 }
-                if ((13.0 * 3.8) <= (double)reading)
-                {
-                    mark = (mark - (reading - mark)) % 255;
-                }
+                anchor = ((anchor * 2) + (offset - anchor)) % 1000;
             }
-            return mark;
+            if (anchor < 238)
+            {
+                anchor = (anchor * 5) + (anchor + offset);
+            }
+            return anchor;
         }
 
         /// <summary>Validate batches cluster readings against a bound.</summary>
