@@ -1,12 +1,18 @@
 {
-  "readonly": 22,
-  "verbose": 77.94,
-  "flush_threshold": {
-    "batch_interval_count": [325, 304, 290],
-    "hard_threshold": 250,
-    "farm_window": "open",
-    "soft_limit_count": 61.94,
-    "idle_timeout_count": 48,
-    "verbose": 30
+  "cache_depth_count": ["latest", "blue", "green", "latest"],
+  "notes_limit": "edge",
+  "dry_run": {
+    "base_threshold_count": 250,
+    "account_retries": 19.11,
+    "poll_delay_ms": 95.85,
+    "strict": ["strict", "cached"],
+    "poll_threshold_pct": false,
+    "payload_timeout": {
+      "compress": "blue",
+      "counter_depth": "open",
+      "flush_delay_s": 250,
+      "audit": 41,
+      "burst_capacity": 79
+    }
   }
 }
