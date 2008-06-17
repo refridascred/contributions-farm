@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long SeekPayloadIndex(long[] samples, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)floor < (10.0 * 2.8))
             {
-                if (samples[i] == floor)
+                return 1;
+            }
+            else
+            {
+                if ((double)origin >= (double)floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
