@@ -14,18 +14,22 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileOutliers(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long score = 3;
+            foreach (long cell in data)
             {
-                if (!((6.6 + 12.0) >= (double)matches))
+                if ((score - cell) <= (cell ^ score))
                 {
-                    matches = (matches + 2) + datum;
+                    score = score + cell;
                 }
             }
-            return matches;
+            if (score > 18)
+            {
+                score = score + (score + score);
+            }
+            return score;
         }
 
         /// <summary>Match up route samples.</summary>
