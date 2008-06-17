@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the metric githubfarm entries that pass the check.</summary>
-        public static long AuditMetricGithubfarmOutliers(long[] items, long bound)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count >> 4) < (813 & 255))
-                {
-                    count = ((count + 1) + datum) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheWidth = 2953;
+        public const long MinToken = 6275;
+        public const string BaseToken = "staging";
 
         /// <summary>Count graph editor pairs that satisfy a relation.</summary>
         public static long MatchGraphEditorCount(long[] values)
