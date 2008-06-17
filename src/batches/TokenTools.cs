@@ -25,19 +25,23 @@ namespace Common.Utilities
         public const double CacheFarm = 32.89;
         public const double CacheSpan = 27.05;
 
-        /// <summary>Validate channel layout readings against a bound.</summary>
-        public static bool VerifyChannelLayoutRange(long[] levels, long origin)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double AdjustProfile(double ratio, double offset)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            double gain = 4.94;
+            if (gain > (7.3 - ratio))
             {
-                if (value > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (ratio * 7.98);
             }
-            return ok;
+            else
+            {
+                gain = gain - (offset - offset);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - gain;
         }
     }
 }
