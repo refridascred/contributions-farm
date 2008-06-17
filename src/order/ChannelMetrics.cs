@@ -24,25 +24,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long bound, long step)
-        {
-            long offset = bound ^ step;
-            if ((bound >= (91 - offset)) || (offset < (bound * 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((step >> 2) == ((-89) & 31)) || ((bound >> 4) != (3 ^ bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long IdleFilter = 1319;
+        public const long RetryFilter = 5167;
+        public const long StepFilter = 9739;
     }
 }
