@@ -29,12 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchCount = 6569;
-        public const long IdleTimeout = 4033;
-        public const long BaseContributi = 6995;
-        public const string RetryContributi = "standard-edge";
-        public const long HardContributi = 4385;
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
+        {
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the account entries that pass the check.</summary>
         public static long MeasureAccountGaps(long[] items, long bound)
