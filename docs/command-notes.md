@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-A batch that stays idle for too long is moved to the farm list.
-The batch module keeps queue values in sync with the checks cache.
+A stream that stays idle for too long is moved to the report list.
+Run the metric check before changing any session limits.
+The contributi module keeps farm values in sync with the token cache.
 
-The filter module keeps queue values in sync with the contributi cache.
-The support helpers are pure functions, so they are safe to call from any thread.
-Each account is validated before it reaches the metric queue.
+When a record fails, the githubfarm handler retries a few times before giving up.
+Run the route check before changing any cache limits.
 
 ## Guidelines
 
-- Document new token fields
-- Review graph limits each release
-- Prefer window defaults
+- Document new record fields
+- Log every graph change
+- Prefer stats defaults
