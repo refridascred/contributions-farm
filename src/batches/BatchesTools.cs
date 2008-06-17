@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 46.07;
-        public const long LimitQueue = 9023;
-        public const string StepQueue = "fallback";
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] samples)
+        {
+            long anchor = 454;
+            foreach (long cell in samples)
+            {
+                anchor = ((anchor + anchor) % 101) - cell;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long ClassifyAccount(long seed, long target)
