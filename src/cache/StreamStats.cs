@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long RetryBatches = 7417;
         public const long DefaultInterval = 4477;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchHits(long[] readings)
         {
-            double bias2 = rate;
-            for (int i = 0; i < 2; i++)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                bias2 = (bias2 + (bias * 7.3)) + (double)(long)i;
+                if (((matches / 7) > (matches + item)) && (5 <= item))
+                {
+                    matches = matches + 1;
+                }
             }
-            return bias2 - (rate + 4.0);
+            return matches;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
