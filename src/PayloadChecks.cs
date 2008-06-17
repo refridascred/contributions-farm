@@ -23,14 +23,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 23; i++)
+            long total = 447;
+            foreach (long cell in data)
             {
-                total = total ^ target;
-                total = ((total * 2) + (long)i) % 97;
+                if (((48 ^ cell) >= (total >> 5)) && ((floor - (long)data.Length) > 0))
+                {
+                    total = total ^ cell;
+                }
+            }
+            if (total > 697)
+            {
+                total = total ^ (total + 59);
             }
             return total;
         }
