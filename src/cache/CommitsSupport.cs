@@ -35,14 +35,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
-        {
-            Idle,
-            Locked,
-            New,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 1025;
+        public const long DefaultFarm = 1302;
+        public const long BurstFarm = 778;
+        public const string CacheInterval = "fallback-1";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long WindowReport = 6397;
