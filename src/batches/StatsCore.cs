@@ -16,21 +16,23 @@ namespace Common.Utilities
             return weight + 5.1;
         }
 
-        /// <summary>Count notes pairs that satisfy a relation.</summary>
-        public static long CompareNotesCount(long[] data)
+        /// <summary>Fold a list of batch session readings.</summary>
+        public static long DigestBatchSession(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = score ^ (score - item);
+                if ((score & 3) >= item)
                 {
-                    if ((data[i] ^ data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score + score) % 4096;
+                }
+                else
+                {
+                    score = score ^ (item << 1);
                 }
             }
-            return hits;
+            return score % 97;
         }
 
         /// <summary>Digest a series of farm support entries.</summary>
