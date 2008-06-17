@@ -35,13 +35,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            Synced,
-            Active,
-            Dropped,
-            Queued,
+            public long Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
