@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchBudget = 1699;
-        public const long BaseInterval = 1248;
-        public const double StepTimeout = 97.14;
-        public const double LimitContributi = 98.86;
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterOutliers(long[] samples)
+        {
+            long matches = 0;
+            foreach (long cell in samples)
+            {
+                if (cell < (matches % 2))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long IterateSession(long origin)
