@@ -15,13 +15,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Stale,
-            Active,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double DefaultTimeout = 61.74;
+        public const string HardBatch = "stable-edge";
+        public const long BaseBatch = 8825;
 
         /// <summary>Define account limits and defaults.</summary>
         public const double BaseAccount = 92.0;
