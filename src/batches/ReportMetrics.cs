@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long ScoreChannel(long[] readings)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] data, long step)
         {
-            long mark = 7;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (item >> 3)) % 97;
-                if (!((item << 2) < ((long)readings.Length & 1)))
+                if (data[i] <= step)
                 {
-                    mark = (mark - 107) % 4096;
-                }
-                else
-                {
-                    mark = mark + (item * 4);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two editor measurements.</summary>
