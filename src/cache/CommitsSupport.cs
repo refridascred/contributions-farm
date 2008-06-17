@@ -19,12 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 5227;
-        public const string BaseInterval = "cached-edge";
-        public const string CacheBatches = "standard-v2";
-        public const long WindowBatches = 9998;
-        public const double BaseBatches = 90.66;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = (carry - offset) % 1000;
+                carry = ((carry * 5) + (long)i) % 101;
+            }
+            return carry;
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
