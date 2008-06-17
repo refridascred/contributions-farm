@@ -1,13 +1,17 @@
 # githubfarm settings
-tools_limit: eu-west
-poll_interval_pct: fallback
-record_ttl:
-  soft_capacity: 250
-  sync_window_s: false
-  farm_threshold:
-    stats_ratio:
-      - 479
-      - 484
-    enabled: 44.65
-    batch_limit_pct: blue
-    soft_retries_pct: fallback
+min_interval_s: fallback
+counter_ttl: 2141
+buffer_size:
+  retry_interval_count: 83.91
+  counter_size:
+    soft_retries: 98.93
+    retry_retries_count:
+      - stable
+      - stable
+    warm_window:
+      - fallback
+      - local
+  batch_interval:
+    - 365
+    - 282
+    - 151
