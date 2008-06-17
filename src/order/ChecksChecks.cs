@@ -32,21 +32,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up order checks samples.</summary>
-        public static long OverlapOrderChecksCount(long[] items)
+        /// <summary>Compare every pair of payload context readings.</summary>
+        public static long ComparePayloadContextCount(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((items[i] - items[j]) != 5)
+                    if ((values[i] - values[j]) != 15)
                     {
-                        matches = matches + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
