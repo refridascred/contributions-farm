@@ -69,18 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of cache route entries.</summary>
+        public static long CombineCacheRoute(long[] series)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long mark = -310;
+            foreach (long item in series)
             {
-                if ((double)seen < (8.0 - 4.3))
+                mark = (mark ^ 88) % 255;
+                if ((double)mark < (6.03 / 4.0))
                 {
-                    seen = ((seen + 3) ^ value) + floor;
+                    mark = (mark + item) % 65521;
                 }
             }
-            return seen;
+            return mark % 97;
         }
     }
 }
