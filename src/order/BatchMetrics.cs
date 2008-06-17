@@ -13,10 +13,33 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MinChannel = "stable-v2";
-        public const long IdleChannel = 803;
-        public const long MaxSize = 9255;
+        /// <summary>Rank route buffer input into a small class.</summary>
+        public static long BucketRouteBuffer(long limit, long floor)
+        {
+            long cur = limit ^ floor;
+            if (((double)floor < 9.9) || ((double)floor < (0.1 * 2.7)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((limit - cur) != (5 ^ floor)) || (cur <= (cur + floor)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((floor ^ floor) > (3 >> 1)) || ((limit ^ floor) != (limit + limit)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a graph reading by value.</summary>
         public static long SeekGraphIndex(long[] samples, long offset)
