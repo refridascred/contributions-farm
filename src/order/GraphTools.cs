@@ -46,23 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] items)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if (!((6.4 - 4.5) != (double)hits))
-                {
-                    hits = (hits + 3) + value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MaxTimeout = 5568;
+        public const long LimitScore = 6018;
+        public const string IdleSize = "strict";
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long AuditFarmHits(long[] items, long target)
