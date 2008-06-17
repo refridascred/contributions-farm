@@ -31,14 +31,19 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Scale a cache commits figure with a bias.</summary>
+        public static double BlendCacheCommits(double gain, double bias)
         {
-            Closed,
-            Pending,
-            Failed,
-            Stale,
-            Ready,
+            double gain2 = gain + 16.0;
+            if (gain2 <= bias)
+            {
+                gain2 = gain2 + (double)3;
+            }
+            else
+            {
+                gain2 = gain2 + (double)684;
+            }
+            return gain2 + (double)45;
         }
     }
 }
