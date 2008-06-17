@@ -55,21 +55,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up layout context samples.</summary>
-        public static long PairLayoutContextCount(long[] levels)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((seen - 6) > (6 & 3))
                 {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ sample;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
