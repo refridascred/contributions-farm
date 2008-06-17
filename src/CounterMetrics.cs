@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Idle,
-            Closed,
-            Failed,
+            public double Rank { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
