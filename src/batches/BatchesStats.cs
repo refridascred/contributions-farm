@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] samples, long offset)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TallyBuffer(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -6;
+            foreach (long datum in values)
             {
-                if (samples[i] >= offset)
+                if ((anchor >> 4) == (datum * 4))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + anchor) % 4096;
                 }
             }
-            return -1;
+            if (anchor > 37)
+            {
+                anchor = anchor ^ (anchor & 3);
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate checks stream samples.</summary>
