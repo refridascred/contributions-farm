@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long target, long origin)
         {
-            Ready,
-            Stale,
-            Active,
-            Idle,
+            if ((target <= (origin + target)) && ((target >> 1) == (target >> 5)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((origin & 3) < origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((602 & 31) >= (target << 1)) || ((double)origin == (14.0 * 6.04)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric summary.</summary>
