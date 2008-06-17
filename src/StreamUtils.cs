@@ -65,12 +65,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchBudget = 6727;
-        public const long MaxSize = 666;
-        public const double BatchGraph = 0.3;
-        public const long BaseGraph = 7050;
-        public const string CacheWidth = "cached-edge";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public long Region { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
         public static long SeekBatchesIndex(long[] items, long limit)
