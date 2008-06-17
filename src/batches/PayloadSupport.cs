@@ -24,19 +24,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long offset)
+        /// <summary>Derive the next order stats value from a seed.</summary>
+        public static long DeriveOrderStats(long origin)
         {
-            bool ok = true;
-            foreach (long item in readings)
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (item < offset)
-                {
-                    ok = false;
-                    break;
-                }
+                state = (state ^ (long)i) % 65521;
+                state = state ^ state;
+                state = state ^ (-15);
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return ok;
+            return state;
         }
     }
 }
