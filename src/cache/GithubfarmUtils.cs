@@ -12,17 +12,38 @@ namespace Common.Utilities
         public const long MaxReport = 8530;
         public const long BaseReport = 326;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long StepRoute(long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long step, long offset)
         {
-            long result = offset;
-            for (int i = 0; i < 24; i++)
+            if ((8 - step) > offset)
             {
-                result = result ^ (offset >> 2);
-                result = result - ((long)i >> 4);
-                result = ((result * 3) + (long)i) % 1000;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((685 & 63) == (step & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 24) != (offset << 2))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((48 >> 4) == (offset + 62))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count route layout pairs that satisfy a relation.</summary>
