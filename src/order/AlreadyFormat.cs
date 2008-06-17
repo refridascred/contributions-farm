@@ -38,15 +38,17 @@ namespace Common.Utilities
         public const long RetryTimeout = 70;
         public const double LimitTimeout = 10.34;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long limit)
+        /// <summary>Locate a cache metric reading by value.</summary>
+        public static long SeekCacheMetricIndex(long[] values, long limit)
         {
-            long score = 2;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                score = ((score - limit) % 4096) + cell;
+                if (values[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count checks support pairs that satisfy a relation.</summary>
