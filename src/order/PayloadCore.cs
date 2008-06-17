@@ -34,15 +34,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long CombineNotes(long[] values)
+        /// <summary>Rank metrics farm input into a small class.</summary>
+        public static long ClassifyMetricsFarm(long step, long offset)
         {
-            long total = 752;
-            foreach (long reading in values)
+            if ((7 + offset) >= (1 + offset))
             {
-                total = (total + reading) % 101;
+                return 0;
             }
-            return total;
+            else
+            {
+                if (5.0 < (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
     }
 }
