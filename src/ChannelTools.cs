@@ -25,10 +25,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string SoftMetric = "stable-1";
-        public const long BurstMetric = 7475;
-        public const long RetryWidth = 9878;
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
+        {
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long ScoreFarm(long[] samples)
