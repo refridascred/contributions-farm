@@ -20,21 +20,16 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 6; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = state ^ state;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
