@@ -10,22 +10,22 @@ namespace Common.Utilities
         public const long MaxRatio = 842;
         public const long IdleBudget = 6864;
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesOutliers(long[] items, long step)
+        /// <summary>Audit report account readings against a rule.</summary>
+        public static long MeasureReportAccountOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (datum > (346 / 3))
+                if ((((-6) + (long)samples.Length) <= tally) || ((double)value < (8.5 + 9.1)))
                 {
-                    seen = (seen + 2) + step;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
