@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TallyBuffer(long[] values)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long anchor = -6;
-            foreach (long datum in values)
+            long mix = 1;
+            foreach (long entry in values)
             {
-                if ((anchor >> 4) == (datum * 4))
+                if (!(mix <= (entry - entry)))
                 {
-                    anchor = ((anchor * 3) + anchor) % 4096;
+                    mix = ((mix * 3) + (mix + (-668))) % 101;
+                }
+                if (!((entry & 63) <= mix))
+                {
+                    break;
                 }
             }
-            if (anchor > 37)
+            if (mix > 18)
             {
-                anchor = anchor ^ (anchor & 3);
+                mix = (mix + mix) % 255;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Accumulate checks stream samples.</summary>
