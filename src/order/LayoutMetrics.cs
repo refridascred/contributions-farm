@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const string WindowFactor = "primary-v2";
         public const long RetryCount = 5766;
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] samples, long bound)
         {
-            public bool Owner { get; set; }
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= bound) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Blend two entry measurements.</summary>
