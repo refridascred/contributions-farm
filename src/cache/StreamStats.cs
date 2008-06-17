@@ -18,21 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of checks account readings.</summary>
-        public static long MatchChecksAccountCount(long[] items)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Dropped,
+            Failed,
+            Paused,
+            New,
+            Closed,
         }
 
         /// <summary>Rank editor input into a small class.</summary>
