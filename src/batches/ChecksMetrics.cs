@@ -21,21 +21,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score * 5) < score)
                 {
-                    if ((levels[i] ^ levels[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score * 4) + (limit + (long)i)) % 255;
+                    score = score + ((long)i << 2);
                 }
+                score = ((score * 5) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Describe the tools phase values.</summary>
