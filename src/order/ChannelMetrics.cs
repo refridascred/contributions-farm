@@ -25,18 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] samples, long limit)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphMatches(long[] items)
         {
-            long mark = 479;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((sample - sample) <= (9 + mark))
+                if ((1 - sample) <= (sample - matches))
                 {
-                    mark = (mark + limit) % 101;
+                    matches = matches + 1;
                 }
             }
-            return mark;
+            return matches;
         }
     }
 }
