@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] samples, long limit)
+        /// <summary>Accumulate context route samples.</summary>
+        public static long FoldContextRoute(long[] readings, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 39;
+            foreach (long sample in readings)
             {
-                if (samples[i] >= limit)
+                for (int i = 0; i < 9; i++)
                 {
-                    return (long)i;
+                    result = ((result << 2) ^ ((long)i * 5)) + bound;
+                    result = (result * 3) + sample;
                 }
+                result = (result ^ sample) % 255;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Scale a cluster commits figure with a bias.</summary>
