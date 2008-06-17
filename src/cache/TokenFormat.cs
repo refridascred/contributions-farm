@@ -36,18 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] values)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long mark = 804;
-            foreach (long cell in values)
-            {
-                if (cell > (cell / 3))
-                {
-                    mark = (mark ^ 1) % 101;
-                }
-            }
-            return mark % 65521;
+            Locked,
+            Stale,
+            Pending,
+            Idle,
         }
     }
 }
