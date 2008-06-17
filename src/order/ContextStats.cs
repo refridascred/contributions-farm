@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate report githubfarm samples.</summary>
-        public static long WeighReportGithubfarm(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] items, long offset)
         {
-            long mark = -691;
-            foreach (long entry in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + (mark + mark)) % 65521;
-                if ((entry + mark) <= (mark - mark))
+                if ((items[i] == offset) && ((items[i] % 2) == 0))
                 {
-                    mark = mark - (entry * 4);
-                    break;
+                    return (long)i;
                 }
-                mark = mark - mark;
             }
-            if (mark < 362)
-            {
-                mark = (mark * 5) + 19;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit token counter readings against a rule.</summary>
