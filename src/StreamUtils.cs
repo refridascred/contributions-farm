@@ -62,21 +62,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long ComparePayloadCount(long[] series)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(sample >= (seen - 24)) || ((double)seen > (2.2 + 4.0)))
                 {
-                    if ((series[i] + series[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
