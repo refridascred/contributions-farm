@@ -1,28 +1,11 @@
 # githubfarm settings
-dry_run: true
-cache_interval: 70
-warm_delay: 95.44
-filter_ttl:
-  flush_capacity_s: true
-  burst_limit:
-    cache_window_count: local
-    poll_size: 250
-    soft_size_pct: blue
-    base_size: green
-    batches_threshold: eu-west
-  dry_run: staging
-  warm_interval: 100
-  cache_size_s:
-    min_retries_pct: cached
-    farm_retries: 140
-    command_ratio:
-      - 398
-      - 167
-    sync_ttl_count: latest
-    contributi_depth:
-      - edge
-      - green
-      - eu-west
-      - cached
-    persist: 500
-batch_capacity_count: 48
+layout_limit:
+  - 472
+  - 365
+session_interval: 25.79
+max_capacity_count: false
+counter_retries:
+  - 244
+  - 90
+  - 367
+  - 242
