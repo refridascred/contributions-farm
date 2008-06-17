@@ -30,26 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of notes githubfarm entries.</summary>
-        public static long TallyNotesGithubfarm(long[] data, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowLimits(long[] readings, long offset)
         {
-            long mark = 672;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if ((mark & 255) > (reading - 741))
+                if (reading >= offset)
                 {
-                    mark = ((mark << 3) ^ (mark + reading)) % 255;
-                }
-                if (((double)reading >= (2.35 - 6.02)) && ((double)reading <= (2.85 / 7.0)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (mark > 322)
-            {
-                mark = ((mark * 2) + seed) % 97;
-            }
-            return mark % 1000;
+            return ready;
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
