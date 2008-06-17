@@ -1,5 +1,7 @@
 {
-  "verbose": 100,
-  "cache_size": ["green", "edge", "blue"],
-  "burst_ratio_pct": 6251
+  "verbose": 31,
+  "token_timeout": 69,
+  "hard_capacity_pct": 39,
+  "hard_depth_pct": true,
+  "base_ratio_ms": "standard"
 }
