@@ -34,38 +34,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a metric filter pair into a bucket.</summary>
-        public static long GradeMetricFilter(long floor, long target)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long origin)
         {
-            if ((floor >> 3) != (floor / 3))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target << 2) == (floor ^ target)) || (2.9 > (double)floor))
+                if (readings[i] <= origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)2 <= (double)floor)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target % 3) != (target >> 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
