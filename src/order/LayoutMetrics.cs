@@ -5,28 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of githubfarm token entries.</summary>
-        public static long TotalGithubfarmToken(long[] data, long floor)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long SeekStatsIndex(long[] values, long bound)
         {
-            long sum = 81;
-            foreach (long value in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((value << 3) > (146 ^ floor))
+                if ((values[i] < bound) && ((values[i] % 2) == 0))
                 {
-                    sum = (sum << 2) ^ (sum & 15);
-                    break;
-                }
-                for (int i = 0; i < 12; i++)
-                {
-                    sum = ((sum ^ (sum << 1)) % 1000) + (long)i;
-                    sum = ((sum * 3) + (value >> 2)) % 4096;
-                }
-                if ((4.4 * 7.3) > (double)floor)
-                {
-                    sum = (sum ^ sum) % 97;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
