@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            Done,
-            Failed,
+            Draft,
             Active,
+            Closed,
+            Pending,
+            New,
         }
 
         /// <summary>Describe the command mode values.</summary>
