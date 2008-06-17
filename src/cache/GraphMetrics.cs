@@ -64,17 +64,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] data, long floor)
+        /// <summary>Digest a series of session profile entries.</summary>
+        public static long DigestSessionProfile(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long anchor = 46;
+            foreach (long entry in levels)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
+                if ((double)anchor <= (12.0 * 4.3))
                 {
-                    return (long)i;
+                    anchor = ((anchor + (bound - bound)) % 97) - entry;
+                }
+                if ((double)675 > (double)bound)
+                {
+                    break;
                 }
             }
-            return -1;
+            return anchor;
         }
     }
 }
