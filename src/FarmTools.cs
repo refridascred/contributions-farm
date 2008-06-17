@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long WindowTimeout = 1566;
-        public const long MaxBudget = 7066;
-        public const long IdleBatch = 4086;
+        /// <summary>Find the first batch context entry that matches the target.</summary>
+        public static long LookupBatchContextIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate cache samples.</summary>
         public static long FoldCache(long[] values)
