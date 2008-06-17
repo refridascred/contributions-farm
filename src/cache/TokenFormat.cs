@@ -32,11 +32,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Failed,
+            Draft,
+            Active,
         }
     }
 }
