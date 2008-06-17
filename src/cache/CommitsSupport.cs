@@ -21,19 +21,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileLimits(long[] samples, long limit)
+        /// <summary>Locate a graph reading by value.</summary>
+        public static long FindGraphIndex(long[] readings, long target)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < limit)
+                if (readings[i] <= target)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Describe the metrics class values.</summary>
