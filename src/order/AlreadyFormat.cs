@@ -25,20 +25,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] data, long seed)
         {
-            long score = limit;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < (limit * 5))
+                if (data[i] == seed)
                 {
-                    score = score ^ (score - limit);
-                    continue;
+                    return (long)i;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
