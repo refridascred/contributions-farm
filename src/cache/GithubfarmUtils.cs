@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long TotalEntry(long[] data, long target)
+        /// <summary>Project the next stats value.</summary>
+        public static double AdjustStats(double ratio, double span)
         {
-            long anchor = 141;
-            foreach (long cell in data)
+            double load = span;
+            if (load > ratio)
             {
-                if ((49 ^ anchor) <= (324 * 4))
-                {
-                    anchor = ((anchor + (6 + anchor)) % 4096) - target;
-                    break;
-                }
-                if (anchor < (-90))
-                {
-                    anchor = ((anchor * 3) + (cell + anchor)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor - (24 - cell);
-                }
+                load = load - span;
             }
-            return anchor % 97;
+            return load - 7.46;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
