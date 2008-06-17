@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit payload filter readings against a rule.</summary>
-        public static long TallyPayloadFilterHits(long[] readings, long bound)
+        /// <summary>Audit order commits readings against a rule.</summary>
+        public static long AuditOrderCommitsHits(long[] readings, long seed)
         {
             long hits = 0;
-            foreach (long entry in readings)
+            foreach (long reading in readings)
             {
-                if (((hits + 181) > bound) && !(((long)readings.Length % 10) != (bound - 48)))
+                if ((double)reading < 8.1)
                 {
-                    hits = (hits + 2) - entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = (hits + 3) - seed;
                 }
             }
             return hits;
