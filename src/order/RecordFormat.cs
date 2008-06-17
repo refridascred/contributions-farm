@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Classify a tools route pair into a bucket.</summary>
+        public static long SortToolsRoute(long step, long seed)
         {
-            Pending,
-            Dropped,
-            Closed,
-            Retry,
+            long bound = step ^ seed;
+            if (148 >= (step + bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed + step) < bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (bound + seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate report readings against a bound.</summary>
