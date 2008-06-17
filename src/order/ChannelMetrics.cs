@@ -21,18 +21,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphMatches(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorGaps(long[] values, long limit)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((1 - sample) <= (sample - matches))
+                if ((18.0 - 2.8) == (double)cell)
                 {
-                    matches = matches + 1;
+                    hits = (hits + 2) - limit;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
