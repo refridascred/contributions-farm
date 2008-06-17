@@ -33,19 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsHits(long[] levels, long offset)
         {
-            long acc = 66;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc ^ item) % 1000) - step;
+                if (!((reading + offset) > reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc > (-153))
-            {
-                acc = acc + (76 & 15);
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Validate entry batch readings against a bound.</summary>
