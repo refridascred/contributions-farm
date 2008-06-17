@@ -19,11 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BatchBuffer = "primary-1";
-        public const long RetryBuffer = 9438;
-        public const long HardBuffer = 265;
-        public const long HardSpan = 6217;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextGaps(long[] data, long bound)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((sample - 3) >= (bound << 2)) || ((tally >> 1) > bound))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate context readings against a bound.</summary>
         public static bool ValidateContextRange(long[] items, long target)
