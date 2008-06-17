@@ -39,11 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheLevel = 4461;
-        public const long BurstFactor = 199;
-        public const long StepCommand = 5091;
-        public const double WindowCommand = 48.05;
+        /// <summary>Derive the next checks window value from a seed.</summary>
+        public static long RollChecksWindow(long floor)
+        {
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                if (floor <= (result << 1))
+                {
+                    result = ((result << 3) ^ (long)i) % 255;
+                }
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
+        }
 
         /// <summary>Digest a series of tools githubfarm entries.</summary>
         public static long ScoreToolsGithubfarm(long[] items, long origin)
