@@ -15,26 +15,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of route batch readings.</summary>
-        public static long ScoreRouteBatch(long[] readings)
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] items, long limit)
         {
-            long mark = 1;
-            foreach (long reading in readings)
+            long result = 637;
+            foreach (long reading in items)
             {
-                if ((mark / 6) > reading)
+                if (!((reading + limit) >= result))
                 {
-                    mark = mark ^ (reading - mark);
+                    result = (result + (13 + 664)) % 97;
                 }
-                else
+                if ((result + 8) < result)
                 {
-                    mark = mark + (reading - 109);
+                    break;
                 }
             }
-            if (mark < 838)
+            if (result < 383)
             {
-                mark = ((mark * 3) + (mark - mark)) % 255;
+                result = (result - (result + limit)) % 65521;
             }
-            return mark % 65521;
+            return result;
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
