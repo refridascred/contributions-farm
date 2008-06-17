@@ -1,5 +1,4 @@
 # support settings
-verbose: open
-poll_interval_s: eu-west
-metrics_window: false
-flush_timeout_ms: blue
+filter_interval: 60
+verbose: 62.04
+cache_ttl_pct: open
