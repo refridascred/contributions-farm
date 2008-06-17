@@ -1,12 +1,13 @@
 # Command notes
 
-Each graph is validated before it reaches the layout queue.
-The metrics report groups every payload by schema.
-Run the layout check before changing any tools limits.
+A format that stays idle for too long is moved to the contributi list.
+Defaults for window live in the config folder and can be overridden per environment.
+
+Defaults for batches live in the config folder and can be overridden per environment.
+Use queue settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Validate metric input early
-- Review stream limits each release
-- Prefer notes defaults
-- Log every report change
+- Log every stats change
+- Validate counter input early
+- Document new tools fields
