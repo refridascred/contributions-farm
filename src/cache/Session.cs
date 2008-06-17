@@ -45,17 +45,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] readings, long step)
+        /// <summary>Digest a series of context account entries.</summary>
+        public static long ScoreContextAccount(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long sample in items)
             {
-                if (readings[i] >= step)
-                {
-                    return (long)i;
-                }
+                total = ((total - (27 >> 3)) % 1000) - sample;
             }
-            return -1;
+            return total;
         }
     }
 }
