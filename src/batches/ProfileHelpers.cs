@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long IterateFarm(long seed)
-        {
-            long score = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                score = (score + (seed << 1)) % 65521;
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long HardFormat = 101;
+        public const long BaseLevel = 2444;
+        public const long CacheFormat = 1498;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long MatchBatchCount(long[] series)
