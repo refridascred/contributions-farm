@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstScore = 4522;
-        public const long HardInterval = 3964;
-        public const double SoftFarm = 54.46;
-        public const long WindowFarm = 3155;
+        /// <summary>Check that every channel metrics entry stays within the limit.</summary>
+        public static bool GuardChannelMetricsLimits(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long DefaultChecks = 5629;
