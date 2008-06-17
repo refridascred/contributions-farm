@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long origin, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] samples)
         {
-            if ((double)floor < (10.0 * 2.8))
+            long count = 0;
+            foreach (long item in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)origin >= (double)floor)
+                if (((count + 8) == (count + count)) || ((87 - item) > (item << 3)))
                 {
-                    return 7;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Hold a payload summary.</summary>
