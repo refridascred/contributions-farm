@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] readings)
+        /// <summary>Adjust a session reading.</summary>
+        public static double ScaleSession(double rate, double span)
         {
-            long acc = 6;
-            foreach (long item in readings)
+            double rate2 = span;
+            if (rate2 > rate)
             {
-                acc = ((acc ^ ((-380) / 4)) % 255) ^ item;
+                rate2 = rate2 - (4.79 - rate2);
             }
-            if (acc < (-41))
-            {
-                acc = (acc + (acc % 7)) % 1000;
-            }
-            return acc;
+            return rate2 + 4.51;
         }
 
         /// <summary>Hold a metrics summary.</summary>
