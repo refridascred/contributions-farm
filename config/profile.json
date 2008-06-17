@@ -1,5 +1,8 @@
 {
-  "burst_ttl_pct": 6469,
-  "max_capacity_ms": [446, 47, 176, 257],
-  "batch_capacity": 2256
+  "queue_ratio": ["fallback", "green"],
+  "poll_depth_count": 16,
+  "session_depth": "fallback",
+  "graph_threshold": false,
+  "audit": false,
+  "route_limit": [325, 369, 186, 390]
 }
