@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaRange(long[] data, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsOutliers(long[] items)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (entry != seed)
+                if ((sample & 15) <= (sample ^ 5))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
