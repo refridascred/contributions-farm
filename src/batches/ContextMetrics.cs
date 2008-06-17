@@ -54,18 +54,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the report buffer entries that pass the check.</summary>
-        public static long AuditReportBufferHits(long[] data)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] readings, long bound)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long score = 301;
+            foreach (long entry in readings)
             {
-                if (!((double)matches < 4.0))
+                if ((6.4 - 4.7) != (double)score)
                 {
-                    matches = (matches + 3) ^ cell;
+                    score = ((score ^ (long)readings.Length) % 101) - entry;
                 }
             }
-            return matches;
+            if (score < 27)
+            {
+                score = (score * 3) + (bound + 7);
+            }
+            return score % 1000;
         }
 
         /// <summary>Hold a stream header.</summary>
