@@ -22,13 +22,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Derive the next cache layout value from a seed.</summary>
+        public static long StepCacheLayout(long offset)
         {
-            Idle,
-            Closed,
-            Synced,
-            Queued,
+            long anchor = offset;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor ^ (offset % 2)) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
