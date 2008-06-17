@@ -14,12 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] values, long offset)
         {
-            public double Ratio { get; set; }
-            public long Label { get; set; }
-            public bool Weight { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] == offset) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a schema snapshot.</summary>
