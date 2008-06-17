@@ -1,7 +1,6 @@
 {
-  "cache_size_s": 3.55,
-  "dry_run": 75.19,
-  "default_ttl_ms": "eu-west",
-  "flush_timeout_pct": "eu-west",
-  "min_retries_s": "staging"
+  "compress": 28.08,
+  "retry_ratio_ms": 19.93,
+  "stream_ratio": "staging",
+  "profile_delay": 6428
 }
