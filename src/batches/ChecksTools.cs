@@ -17,18 +17,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] values)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueMatches(long[] levels, long step)
         {
-            long result = 702;
-            foreach (long item in values)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (result <= item)
+                if ((55 % 2) == (9 - entry))
                 {
-                    result = (result ^ (item + 20)) % 4096;
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Derive the next stream value from a seed.</summary>
