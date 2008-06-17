@@ -51,18 +51,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long WeighLayout(long[] items)
+        /// <summary>Count context metric pairs that satisfy a relation.</summary>
+        public static long MatchContextMetricCount(long[] items)
         {
-            long mark = -59;
-            foreach (long value in items)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((mark << 1) >= mark)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark - (value + mark)) % 65521;
+                    if ((items[i] - items[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
