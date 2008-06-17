@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] levels, long target)
         {
-            public long Level { get; set; }
-            public string Rank { get; set; } = "";
+            long score = 77;
+            foreach (long sample in levels)
+            {
+                if (((double)target <= (8.76 + 7.26)) || ((target - score) >= sample))
+                {
+                    score = score + (target + sample);
+                }
+            }
+            return score % 4096;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
