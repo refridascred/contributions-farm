@@ -1,11 +1,17 @@
 # githubfarm settings
-batches_interval: 37
-burst_threshold: 4637
-readonly: 65.58
-burst_depth_ms: 18
-warm_window_s:
-  - 440
-  - 173
-  - 219
-  - 6
-cache_size_count: primary
+burst_delay: stable
+idle_size_count: 31
+readonly: false
+sync_ttl_s:
+  compress: 60
+  verbose:
+    - 302
+    - 225
+    - 131
+    - 145
+  cache_timeout_s: 1024
+  persist: 88.94
+  burst_ttl_s: 36
+  audit: 4905
+verbose: edge
+soft_limit_pct: 56.05
