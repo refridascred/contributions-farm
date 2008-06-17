@@ -36,13 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Queued,
-            Failed,
-            Idle,
-            Ready,
+            public long Limit { get; set; }
+            public long Level { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a window header.</summary>
