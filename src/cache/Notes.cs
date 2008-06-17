@@ -56,10 +56,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long DefaultInterval = 8632;
-        public const long LimitSpan = 8762;
-        public const double LimitCommits = 6.58;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
+        {
+            long total = seed;
+            for (int i = 0; i < 21; i++)
+            {
+                total = (total - (seed ^ (long)i)) % 1000;
+                total = (total << 2) ^ seed;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the metric mode values.</summary>
         public enum MetricMode
