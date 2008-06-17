@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] series, long offset)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in series)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (reading < offset)
+                if (((5.0 + 3.9) >= (double)sample) || ((10.0 / 2.0) > (double)sample))
                 {
-                    valid = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Define session limits and defaults.</summary>
