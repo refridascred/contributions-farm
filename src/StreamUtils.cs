@@ -42,22 +42,14 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (((tally - tally) <= (tally / 9)) || ((value ^ value) <= (tally / 5)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Locked,
+            New,
+            Retry,
         }
 
         /// <summary>Hold a profile stats.</summary>
