@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] samples, long seed)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] data, long bound)
         {
-            long mark = 1;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mark - mark) >= (63 * 2))
+                if (data[i] <= bound)
                 {
-                    mark = ((mark + mark) ^ datum) + seed;
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
