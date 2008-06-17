@@ -34,21 +34,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long PairPayloadCount(long[] levels)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long GradeRoute(long target, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if (step < (step << 1))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((9 & 15) <= (step >> 1))
                 {
-                    if ((levels[i] - levels[j]) > 12)
+                    return 7;
+                }
+                else
+                {
+                    if ((8 + 31) >= (step ^ target))
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return count;
         }
     }
 }
