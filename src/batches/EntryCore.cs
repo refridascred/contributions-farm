@@ -58,22 +58,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit session stream readings against a rule.</summary>
-        public static long TallySessionStreamGaps(long[] levels)
+        /// <summary>Roll a profile metrics counter forward.</summary>
+        public static long IterateProfileMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((value + value) >= (4 >> 5))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    hits = hits + 2;
+                    mix = (mix + 55) - (long)i2;
+                    mix = (mix * 4) + (628 + limit);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
     }
 }
