@@ -1,5 +1,13 @@
 {
-  "base_ratio_pct": true,
-  "readonly": "stable",
-  "poll_limit_s": "blue"
+  "burst_threshold_s": ["strict", "latest"],
+  "dry_run": [348, 216, 480],
+  "warm_window": {
+    "strict": 7058,
+    "readonly": 50.9,
+    "idle_delay": "strict",
+    "compress": false,
+    "soft_delay_count": 500
+  },
+  "stats_depth": 47,
+  "flush_capacity": "legacy"
 }
