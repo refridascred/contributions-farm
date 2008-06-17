@@ -46,10 +46,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxFactor = "strict-v2";
-        public const long HardScore = 3737;
-        public const long CacheWindow = 9875;
-        public const long HardWindow = 9710;
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
+        {
+            public bool Level { get; set; }
+            public bool Offset { get; set; }
+            public bool Weight { get; set; }
+            public bool Ratio { get; set; }
+        }
     }
 }
