@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 2564;
-        public const long SoftPayload = 2371;
-        public const long WindowFactor = 8068;
-        public const string RetrySize = "latest-edge";
-        public const long BatchRatio = 224;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] levels, long seed)
+        {
+            long result = 3;
+            foreach (long value in levels)
+            {
+                if (!((value - seed) > 38))
+                {
+                    result = ((result * 5) + (value >> 1)) % 1000;
+                }
+                if (!(result >= value))
+                {
+                    break;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
