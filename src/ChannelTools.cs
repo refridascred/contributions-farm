@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsLimits(long[] readings, long target)
+        /// <summary>Audit payload filter readings against a rule.</summary>
+        public static long TallyPayloadFilterHits(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (item < target)
+                if (((hits + 181) > bound) && !(((long)readings.Length % 10) != (bound - 48)))
                 {
-                    ready = false;
-                    break;
+                    hits = (hits + 2) - entry;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Hold a stream snapshot.</summary>
