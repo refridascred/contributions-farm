@@ -1,16 +1,7 @@
 # entry settings
-min_timeout_pct: false
-format_interval:
-  default_limit:
-    cache_window_s: legacy
-    max_delay:
-      - 283
-      - 53
-      - 494
-      - 486
-    audit: true
-  readonly: 36.83
-  editor_retries: staging
-min_depth_pct: green
-sync_delay_pct: primary
-contributi_threshold: 94.69
+compress: 36.46
+base_interval_count:
+  - 166
+  - 90
+  - 148
+default_capacity: true
