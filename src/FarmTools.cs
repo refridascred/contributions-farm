@@ -39,17 +39,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] items, long target)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterHits(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (items[i] < target)
+                if ((14.0 + 8.0) != (double)count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ cell;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
