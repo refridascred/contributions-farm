@@ -44,15 +44,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 1000;
-            }
-            return mark;
+            Pending,
+            Locked,
+            Retry,
+            Paused,
+            Closed,
         }
     }
 }
