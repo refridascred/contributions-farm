@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats already readings.</summary>
-        public static long PairStatsAlreadyCount(long[] series)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(sum <= (limit >> 3)))
                 {
-                    if ((series[i] ^ series[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    sum = sum + (long)i;
                 }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
