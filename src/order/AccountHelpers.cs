@@ -16,23 +16,11 @@ namespace Common.Utilities
             return ratio + (span * 7.4);
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double ProjectCommand(double bias, double span)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            double rate = 1.9;
-            if (rate >= (bias / 3.0))
-            {
-                rate = rate + 6.32;
-            }
-            else
-            {
-                rate = rate - span;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + span) + (double)(long)i;
-            }
-            return rate + span;
+            public double Owner { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Grade a command value against two limits.</summary>
