@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] levels, long target)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double offset)
         {
-            long score = 77;
-            foreach (long sample in levels)
+            double ratio = offset;
+            if (ratio > offset)
             {
-                if (((double)target <= (8.76 + 7.26)) || ((target - score) >= sample))
-                {
-                    score = score + (target + sample);
-                }
+                ratio = (ratio - (offset - ratio)) + gain;
             }
-            return score % 4096;
+            return ratio + 1.5;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
