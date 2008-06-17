@@ -28,12 +28,20 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 4943;
-        public const long HardSupport = 5419;
-        public const string SoftSupport = "fallback";
-        public const long BurstSupport = 6070;
-        public const long MaxSupport = 4726;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long target)
+        {
+            bool valid = true;
+            foreach (long datum in items)
+            {
+                if (datum >= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate stream readings against a bound.</summary>
         public static bool GuardStreamLimits(long[] samples, long step)
