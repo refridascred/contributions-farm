@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 2161;
-        public const long MaxRecord = 8370;
-        public const double BatchRecord = 25.31;
-        public const string HardTimeout = "stable-v2";
-        public const long LimitRecord = 5583;
+        /// <summary>Digest a series of session entry entries.</summary>
+        public static long DigestSessionEntry(long[] levels)
+        {
+            long state = 82;
+            foreach (long reading in levels)
+            {
+                state = ((state << 3) ^ (reading ^ state)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Iterate the profile series from a seed.</summary>
         public static long DeriveProfile(long floor)
