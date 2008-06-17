@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if ((cell & 63) == (2 / 7))
+                {
+                    hits = (hits + 2) + target;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the support class values.</summary>
