@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a queue order reading by value.</summary>
-        public static long LocateQueueOrderIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double CacheCluster = 21.78;
+        public const long HardInterval = 3081;
+        public const long DefaultSize = 845;
+        public const long MinRatio = 9474;
 
         /// <summary>Locate a layout graph reading by value.</summary>
         public static long FindLayoutGraphIndex(long[] levels, long seed)
