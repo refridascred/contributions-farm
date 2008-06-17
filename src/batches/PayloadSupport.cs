@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long CacheRatio = 1402;
         public const long HardNotes = 4540;
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsRange(long[] readings, long offset)
         {
-            Stale,
-            Synced,
-            Pending,
-            Done,
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
