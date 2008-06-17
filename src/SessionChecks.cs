@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many stream support samples are out of range.</summary>
-        public static long TallyStreamSupportOutliers(long[] readings, long step)
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool ValidateChecksPayloadBounds(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                if ((double)datum >= (double)(long)readings.Length)
+                if (sample >= step)
                 {
-                    hits = (hits + 3) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Match up notes samples.</summary>
