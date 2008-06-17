@@ -1,4 +1,6 @@
 # entry settings
-support_timeout: latest
-min_threshold_pct: green
-warm_limit: 48
+audit: 65.84
+stats_retries: fallback
+persist: eu-west
+retry_timeout: standard
+layout_limit: 93
