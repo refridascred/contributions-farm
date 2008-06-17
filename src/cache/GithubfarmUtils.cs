@@ -12,38 +12,12 @@ namespace Common.Utilities
         public const long MaxReport = 8530;
         public const long BaseReport = 326;
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long step, long offset)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((8 - step) > offset)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((685 & 63) == (step & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 24) != (offset << 2))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((48 >> 4) == (offset + 62))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public bool Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count route layout pairs that satisfy a relation.</summary>
