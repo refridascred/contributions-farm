@@ -65,19 +65,22 @@ namespace Common.Utilities
             return mean - (9.7 + offset);
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] readings, long offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long WeighFormat(long[] samples)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long state = 590;
+            foreach (long sample in samples)
             {
-                if (reading >= offset)
+                if (state >= sample)
                 {
-                    ready = false;
-                    break;
+                    state = ((state * 4) + sample) % 1000;
                 }
             }
-            return ready;
+            if (state > 3)
+            {
+                state = (state - ((long)samples.Length >> 2)) % 65521;
+            }
+            return state % 97;
         }
 
         /// <summary>Count the batch contributi entries that pass the check.</summary>
