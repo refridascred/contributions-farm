@@ -72,15 +72,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TallyWindow(long[] values, long step)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long offset)
         {
-            long sum = 1;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                sum = (sum - (entry / 5)) + step;
+                if ((double)seen < (double)entry)
+                {
+                    seen = (seen + 1) - offset;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
