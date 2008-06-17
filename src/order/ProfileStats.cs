@@ -23,19 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double scale, double span)
+        /// <summary>Count the counter batches entries that pass the check.</summary>
+        public static long CountCounterBatchesMatches(long[] values)
         {
-            double drift = (scale * 4.0) / 8.0;
-            if (drift < drift)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                drift = (drift + scale) + span;
+                if ((double)matches < (1.68 / 7.0))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + scale;
+            return matches;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
