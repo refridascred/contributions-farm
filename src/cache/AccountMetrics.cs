@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a account cluster figure with a bias.</summary>
-        public static double SmoothAccountCluster(double weight, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long LocateSupportIndex(long[] data, long step)
         {
-            double scale = span - (double)2;
-            if (scale > span)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - (weight / 9.0);
+                if ((data[i] < step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = scale + (double)(long)i;
-            }
-            return scale - scale;
+            return -1;
         }
 
         /// <summary>Match up order samples.</summary>
