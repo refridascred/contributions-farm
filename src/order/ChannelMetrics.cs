@@ -28,11 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double StepFactor = 94.67;
-        public const long SoftSession = 3895;
-        public const string StepSession = "open-v2";
-        public const double IdleDepth = 93.09;
-        public const double WindowSession = 24.46;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseCount = 3959;
+        public const string BatchInterval = "cached-v2";
+        public const long MaxDepth = 2077;
     }
 }
