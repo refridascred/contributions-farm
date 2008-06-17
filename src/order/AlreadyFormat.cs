@@ -18,11 +18,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BaseWidth = "cached-v2";
-        public const long LimitEditor = 8594;
-        public const long RetryTimeout = 70;
-        public const double LimitTimeout = 10.34;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a cache metric reading by value.</summary>
         public static long SeekCacheMetricIndex(long[] values, long limit)
