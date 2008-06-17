@@ -1,12 +1,14 @@
 # Command notes
 
-A report that stays idle for too long is moved to the order list.
-Each metrics is validated before it reaches the context queue.
-Use profile settings to tune how often order data is refreshed.
+Each schema is validated before it reaches the batch queue.
+The profile report groups every context by buffer.
+
+Keep notes and report names short and lowercase.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Run the format check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Log every notes change
-- Document new already fields
-- Keep profile values small
-- Validate support input early
+- Keep stats values small
+- Log every channel change
+- Review stats limits each release
