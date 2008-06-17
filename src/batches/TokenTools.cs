@@ -16,10 +16,12 @@ namespace Common.Utilities
             return rate - gain;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long SoftCount = 5144;
-        public const double CacheFarm = 32.89;
-        public const double CacheSpan = 27.05;
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
+        {
+            public bool Score { get; set; }
+            public long Owner { get; set; }
+        }
 
         /// <summary>Describe the contributi state values.</summary>
         public enum ContributiState
