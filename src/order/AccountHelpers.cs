@@ -112,16 +112,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long SeriesChecks(long origin)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double bias, double bias2)
         {
-            long total = origin;
-            for (int i = 0; i < 23; i++)
+            double gain = 20.0;
+            if (gain > (gain * 9.77))
             {
-                total = (total + (total & 31)) % 4096;
-                total = ((total * 4) + (long)i) % 4093;
+                gain = gain - bias;
             }
-            return total;
+            return gain - bias2;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
