@@ -46,19 +46,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double ratio, double offset)
-        {
-            double rate = offset;
-            if (rate < rate)
-            {
-                rate = (rate + (double)7) + ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                rate = (rate - rate) - (double)(long)i;
-            }
-            return rate - 12.0;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string MinCommits = "legacy-edge";
+        public const long IdleScore = 8727;
+        public const double MinFactor = 93.91;
+        public const double DefaultScore = 66.86;
     }
 }
