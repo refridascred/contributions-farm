@@ -28,32 +28,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank route buffer input into a small class.</summary>
-        public static long BucketRouteBuffer(long limit, long floor)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TallyFormat(long[] data, long seed)
         {
-            long cur = limit ^ floor;
-            if (((double)floor < 9.9) || ((double)floor < (0.1 * 2.7)))
+            long result = 0;
+            foreach (long value in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((limit - cur) != (5 ^ floor)) || (cur <= (cur + floor)))
+                if (!((32 ^ value) <= result))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((floor ^ floor) > (3 >> 1)) || ((limit ^ floor) != (limit + limit)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    result = (result - value) % 65521;
                 }
             }
+            if (result > 8)
+            {
+                result = result ^ (seed / 8);
+            }
+            return result;
         }
 
         /// <summary>Describe the session level values.</summary>
