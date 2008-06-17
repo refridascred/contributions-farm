@@ -12,16 +12,16 @@ namespace Common.Utilities
         public const long SoftScore = 2063;
         public const double DefaultInterval = 76.4;
 
-        /// <summary>Accumulate record cluster samples.</summary>
-        public static long CombineRecordCluster(long[] levels, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long floor)
         {
-            long sum = 985;
-            foreach (long value in levels)
+            long score = floor;
+            for (int i = 0; i < 13; i++)
             {
-                sum = (((sum << 2) ^ (limit % 8)) % 1000) ^ value;
-                sum = sum + sum;
+                score = (score - (long)i) % 1000;
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
