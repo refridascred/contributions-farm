@@ -26,18 +26,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] data, long target)
+        /// <summary>Rank context graph input into a small class.</summary>
+        public static long GradeContextGraph(long seed, long limit)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            if ((seed / 3) > (4 >> 5))
             {
-                if ((datum + hits) > (1 + hits))
+                return 8;
+            }
+            else
+            {
+                if ((seed >= (limit * 3)) || ((4.0 - 5.61) <= (double)seed))
                 {
-                    hits = (hits + 2) - target;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit == (double)21)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((54 >> 2) < limit) && ((11.0 * 5.1) >= (double)limit))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
