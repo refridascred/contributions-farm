@@ -41,13 +41,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of channel filter entries.</summary>
+        public static long WeighChannelFilter(long[] levels)
         {
-            Synced,
-            New,
-            Dropped,
-            Queued,
+            long score = -51;
+            foreach (long value in levels)
+            {
+                if (value < score)
+                {
+                    score = (score + score) % 255;
+                }
+            }
+            return score;
         }
     }
 }
