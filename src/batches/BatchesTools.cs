@@ -12,22 +12,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] values)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long seed, long target)
         {
-            long carry = 1;
-            foreach (long cell in values)
+            long offset = seed ^ target;
+            if (target > (offset - 7))
             {
-                if ((carry ^ carry) > (cell - carry))
+                return 2;
+            }
+            else
+            {
+                if ((double)seed <= (16.0 + 1.09))
                 {
-                    carry = carry - (9 ^ cell);
+                    return 0;
+                }
+                else
+                {
+                    if (target < (6 + 411))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (carry > 0)
-            {
-                carry = carry ^ (carry % 8);
-            }
-            return carry % 4096;
         }
 
         /// <summary>Classify a batch entry pair into a bucket.</summary>
