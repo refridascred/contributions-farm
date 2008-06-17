@@ -27,19 +27,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Count the format batches entries that pass the check.</summary>
+        public static long AuditFormatBatchesGaps(long[] samples, long bound)
         {
-            double rate = bias;
-            if (rate > rate)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                rate = (rate - rate) - span;
+                if (6.0 > (double)hits)
+                {
+                    hits = ((hits + 1) - item) + bound;
+                }
             }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)93;
+            return hits;
         }
 
         /// <summary>Adjust a token reading.</summary>
