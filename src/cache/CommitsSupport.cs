@@ -27,12 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 1497;
-        public const long BatchContributi = 3108;
-        public const long SoftBudget = 4248;
-        public const double DefaultContributi = 87.89;
-        public const long StepSize = 950;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Idle,
+            Done,
+            Synced,
+        }
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
