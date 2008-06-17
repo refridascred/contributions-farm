@@ -25,17 +25,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a window record sample.</summary>
-        public static long LookupWindowRecordIndex(long[] levels, long seed)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Weight { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
