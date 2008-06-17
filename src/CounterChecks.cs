@@ -76,22 +76,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the batch contributi entries that pass the check.</summary>
-        public static long AuditBatchContributiGaps(long[] readings)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long FindCommitsIndex(long[] values, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally ^ tally) < 248)
+                if (values[i] <= limit)
                 {
-                    tally = (tally + 2) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
