@@ -61,17 +61,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] levels, long step)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] samples, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (levels[i] < step)
+                if (!((14.0 - 10.0) == (double)reading))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - limit;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Scale a stream report figure with a bias.</summary>
