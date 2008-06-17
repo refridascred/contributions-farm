@@ -1,8 +1,6 @@
-id,ratio
-1,231
-2,13
-3,813
-4,73.73
-5,local
-6,local
-7,26
+id,state,score,region,active
+1,768,139,blue,338
+2,332,567,eu-west,latest
+3,295,82.29,91.81,green
+4,primary,337,5.58,222
+5,755,standard,268,445
