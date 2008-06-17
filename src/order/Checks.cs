@@ -24,20 +24,13 @@ namespace Common.Utilities
             return weight2 + span;
         }
 
-        /// <summary>Iterate the batch order series from a seed.</summary>
-        public static long StepBatchOrder(long seed)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long carry = seed;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = carry ^ carry;
-                    carry = (carry - (seed + (long)i2)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 65521;
-            }
-            return carry;
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two support measurements.</summary>
