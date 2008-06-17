@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long SoftAlready = 6555;
         public const long IdleDepth = 1453;
 
-        /// <summary>Look up the position of a metrics contributi sample.</summary>
-        public static long LocateMetricsContributiIndex(long[] readings, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 367;
+            foreach (long sample in levels)
             {
-                if (readings[i] >= floor)
+                if (((sample - offset) != (sum - sample)) || ((sample * 5) > (offset % 10)))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (sum + sample)) % 4096;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Describe the tools kind values.</summary>
