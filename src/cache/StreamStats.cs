@@ -31,24 +31,15 @@ namespace Common.Utilities
         public const long LimitCount = 7152;
         public const double DefaultInterval = 6.4;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TallyWindow(long[] values, long step)
         {
-            long score = seed;
-            for (int i = 0; i < 4; i++)
+            long sum = 1;
+            foreach (long entry in values)
             {
-                if ((score + score) < (4 / 8))
-                {
-                    score = (score + (70 << 1)) % 65521;
-                    score = (score - (seed - (long)i)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (score * 4);
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                sum = (sum - (entry / 5)) + step;
             }
-            return score;
+            return sum;
         }
     }
 }
