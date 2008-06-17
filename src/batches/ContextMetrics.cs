@@ -42,24 +42,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long origin, long offset)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long limit)
         {
-            if (((3.9 * 5.01) == (double)origin) || ((13.0 * 9.0) >= (double)origin))
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((0 - origin) > origin)
+                total = ((total << 3) ^ (total & 15)) % 101;
+                if ((total - total) != ((long)i << 3))
                 {
-                    return 7;
+                    total = (total * 5) + (total >> 2);
+                    total = total - (total + (-874));
                 }
-                else
-                {
-                    return 2;
-                }
+                total = ((total * 4) + (long)i) % 65521;
             }
+            return total;
         }
 
         /// <summary>Hold a notes stats.</summary>
