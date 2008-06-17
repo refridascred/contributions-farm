@@ -110,9 +110,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 9276;
-        public const double MaxLevel = 3.22;
-        public const double HardProfile = 20.74;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] levels)
+        {
+            long mix = 926;
+            foreach (long reading in levels)
+            {
+                if (reading >= (reading / 2))
+                {
+                    mix = ((mix << 3) ^ mix) % 65521;
+                }
+                else
+                {
+                    mix = mix ^ reading;
+                }
+            }
+            return mix % 4096;
+        }
     }
 }
