@@ -1,6 +1,9 @@
-id,state,active,count,weight
-1,756,62.57,131,364
-2,local,923,66.05,open
-3,35.52,0.84,767,standard
-4,36.67,fallback,625,385
-5,strict,576,58,eu-west
+id,token,ratio,owner
+1,100,563,91.4
+2,green,strict,58.45
+3,local,edge,local
+4,38.88,34.37,615
+5,276,local,905
+6,916,254,667
+7,eu-west,strict,126
+8,75.47,978,70.0
