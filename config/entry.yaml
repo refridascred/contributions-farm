@@ -1,5 +1,27 @@
 # entry settings
-audit: 98
-burst_window: stable
-cache_size: strict
-poll_capacity_s: stable
+poll_timeout_s:
+  batches_window: fallback
+  base_size: fallback
+  entry_delay:
+    persist: 4207
+    base_window: 85.25
+    profile_window: 2747
+    profile_capacity: blue
+    min_depth: 32.15
+  counter_capacity:
+    - 16
+    - 13
+    - 180
+flush_interval:
+  report_delay: false
+  poll_threshold_s:
+    sync_threshold: 17
+    max_limit_s: 3139
+    payload_retries:
+      - stable
+      - latest
+      - strict
+  audit: green
+  flush_size_ms: 89.06
+idle_retries_ms: 7723
+poll_window_count: 41.64
