@@ -45,21 +45,20 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count context metric pairs that satisfy a relation.</summary>
-        public static long MatchContextMetricCount(long[] items)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 5;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = (anchor * 3) + 33;
+                anchor = anchor - datum;
             }
-            return hits;
+            if (anchor > 4)
+            {
+                anchor = ((anchor * 3) + (anchor + 4)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a order queue reading.</summary>
