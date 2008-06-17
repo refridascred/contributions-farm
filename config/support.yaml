@@ -1,12 +1,22 @@
 # support settings
-hard_timeout_s:
-  - standard
-  - staging
-  - eu-west
-  - staging
-farm_ttl: 58.01
-compress: staging
-retry_ttl_count:
-  - green
-  - strict
-min_delay_pct: 6263
+burst_ttl_pct: 69
+dry_run: 23.92
+max_limit_s:
+  readonly:
+    dry_run: edge
+    record_threshold: 62.65
+    compress: true
+  sync_ratio_ms: 69.0
+  contributi_timeout: false
+  retry_delay_s:
+    - 438
+    - 143
+    - 35
+    - 72
+  flush_ttl_pct: open
+  enabled: true
+min_delay:
+  - 124
+  - 59
+  - 82
+sync_threshold: 91.3
