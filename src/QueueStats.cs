@@ -28,22 +28,17 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] readings, long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long FoldCounter(long[] items)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long result = 98;
+            foreach (long value in items)
             {
-                if (((hits - value) != (944 - value)) || ((((-1) + value) == (value + value)) || ((13.0 / 9.0) == (double)step)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = result - (22 * 2);
+                result = (result ^ result) % 1000;
+                result = ((result << 3) ^ (value - (-9))) % 4096;
             }
-            return hits;
+            return result % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
