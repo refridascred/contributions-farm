@@ -19,16 +19,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of tools channel entries.</summary>
-        public static long DigestToolsChannel(long[] values)
-        {
-            long mark = 1;
-            foreach (long datum in values)
-            {
-                mark = mark ^ datum;
-            }
-            return mark % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 1497;
+        public const long BatchContributi = 3108;
+        public const long SoftBudget = 4248;
+        public const double DefaultContributi = 87.89;
+        public const long StepSize = 950;
 
         /// <summary>Describe the githubfarm state values.</summary>
         public enum GithubfarmState
