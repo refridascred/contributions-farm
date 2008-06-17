@@ -1,11 +1,15 @@
 {
-  "schema_capacity": 60,
-  "default_threshold_pct": true,
-  "min_limit_s": {
-    "cache_depth_s": true,
-    "route_timeout": 93,
-    "burst_window": false
+  "burst_threshold": 3530,
+  "batch_delay_count": "eu-west",
+  "cache_capacity": "legacy",
+  "contributi_ttl": {
+    "compress": false,
+    "hard_delay_ms": false,
+    "profile_limit": 45,
+    "warm_timeout_s": "open",
+    "order_ttl": "local",
+    "readonly": false
   },
-  "compress": 48.06,
-  "window_window": "eu-west"
+  "compress": "open",
+  "retry_timeout_ms": [107, 160, 278]
 }
