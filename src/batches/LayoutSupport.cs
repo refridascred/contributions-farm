@@ -34,16 +34,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Roll a tools notes counter forward.</summary>
-        public static long DeriveToolsNotes(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 1524;
+        public const double StepEditor = 83.33;
+        public const long MinEditor = 5039;
+        public const string SoftEditor = "legacy";
+        public const long MaxScore = 232;
 
         /// <summary>Roll a farm counter forward.</summary>
         public static long SeriesFarm(long seed)
