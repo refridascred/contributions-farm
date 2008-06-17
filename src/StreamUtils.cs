@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] readings)
         {
-            New,
-            Failed,
-            Queued,
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of batches entries.</summary>
