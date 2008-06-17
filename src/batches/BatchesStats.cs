@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Stale,
-            Retry,
-            Done,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string StepBatches = "standard-v2";
+        public const long MinBatches = 5351;
+        public const string StepBudget = "primary-v2";
+        public const long IdleBatches = 6344;
+        public const long LimitBatches = 2798;
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
