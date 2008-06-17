@@ -1,7 +1,5 @@
 {
-  "command_ratio": false,
-  "audit": "open",
-  "readonly": 250,
-  "counter_window": "cached",
-  "min_timeout": 3903
+  "editor_capacity": 8618,
+  "batch_ratio_s": false,
+  "stats_threshold": 17.14
 }
