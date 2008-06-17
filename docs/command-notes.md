@@ -1,15 +1,14 @@
 # Command notes
 
-The account helpers are pure functions, so they are safe to call from any thread.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any contributi limits.
+The window report groups every githubfarm by format.
+When a cluster fails, the commits handler retries a few times before giving up.
+The checks module keeps profile values in sync with the entry cache.
 
-Run the graph check before changing any contributi limits.
-The order module keeps session values in sync with the payload cache.
+Run the notes check before changing any command limits.
+Keep command and graph names short and lowercase.
 
 ## Guidelines
 
-- Keep context values small
-- Document new commits fields
-- Log every batch change
-- Validate channel input early
+- Prefer command defaults
+- Validate command input early
+- Document new record fields
