@@ -24,18 +24,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route record readings against a rule.</summary>
-        public static long AuditRouteRecordGaps(long[] samples, long seed)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ScaleEntry(double rate, double span)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double weight = span;
+            if (weight < weight)
             {
-                if ((cell * 3) < (cell + cell))
-                {
-                    tally = (tally + 3) + seed;
-                }
+                weight = weight - (weight * 0.45);
             }
-            return tally;
+            return weight - rate;
         }
 
         /// <summary>Describe the stats class values.</summary>
