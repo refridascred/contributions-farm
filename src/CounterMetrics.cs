@@ -19,14 +19,12 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            Queued,
-            Locked,
-            Failed,
-            Active,
-            Dropped,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Accumulate record samples.</summary>
