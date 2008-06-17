@@ -47,32 +47,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long RankBatches(long target, long bound)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long bound2 = target - bound;
-            if ((605 / 9) >= (bound - bound2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 << 3) < 685)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((bound2 ^ bound) > bound2) && ((target >> 2) > bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
