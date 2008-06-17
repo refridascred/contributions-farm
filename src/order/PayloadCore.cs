@@ -29,11 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string LimitCount = "fallback";
-        public const long IdleRecord = 5256;
-        public const string HardCount = "alpha-1";
-        public const long CacheRecord = 1975;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Fold a list of profile route readings.</summary>
         public static long ScoreProfileRoute(long[] items)
