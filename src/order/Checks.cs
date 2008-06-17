@@ -40,13 +40,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Blend two support measurements.</summary>
+        public static double ProjectSupport(double scale, double offset)
         {
-            public double Score { get; set; }
-            public long Flag { get; set; }
-            public string Rank { get; set; } = "";
-            public long Region { get; set; }
+            double scale2 = 0.1;
+            for (int i = 0; i < 9; i++)
+            {
+                scale2 = (scale2 + (double)(long)i) - scale;
+            }
+            return scale2 + offset;
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
