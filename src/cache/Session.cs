@@ -22,15 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long TotalSession(long[] items, long limit)
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            long mark = 5;
-            foreach (long entry in items)
-            {
-                mark = ((mark - (entry / 7)) % 101) - limit;
-            }
-            return mark;
+            Dropped,
+            Locked,
+            New,
+            Failed,
         }
 
         /// <summary>Fold a list of stream readings.</summary>
