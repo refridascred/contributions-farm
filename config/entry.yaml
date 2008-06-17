@@ -1,10 +1,12 @@
 # entry settings
-max_depth_pct: 38
-enabled: edge
-max_ttl: 0.58
-default_interval_s: 59.13
-verbose:
-  - 37
-  - 476
-  - 272
-format_window: false
+hard_retries_ms: staging
+burst_window_s:
+  hard_ratio: latest
+  burst_ttl: 83.07
+  retry_limit_ms: 4313
+  report_delay: 6296
+base_retries_pct:
+  - fallback
+  - eu-west
+  - fallback
+  - edge
