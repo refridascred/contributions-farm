@@ -99,17 +99,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Locate a filter farm reading by value.</summary>
-        public static long LookupFilterFarmIndex(long[] levels, long target)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string SoftStats = "primary-1";
+        public const string MinStats = "primary";
+        public const long BatchStats = 2967;
+        public const string LimitCount = "open-v2";
+        public const long RetryDepth = 4899;
     }
 }
