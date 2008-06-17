@@ -60,18 +60,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many cluster batches samples are out of range.</summary>
-        public static long CountClusterBatchesHits(long[] items)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((tally + tally) <= (item / 7))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
