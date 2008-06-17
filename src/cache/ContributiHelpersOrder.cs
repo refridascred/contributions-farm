@@ -22,19 +22,22 @@ namespace Common.Utilities
         public const double DefaultSpan = 24.02;
         public const long WindowWidth = 5647;
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterBounds(long[] samples, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsMatches(long[] data)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (value >= target)
+                if ((double)cell != (9.46 * 5.58))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
