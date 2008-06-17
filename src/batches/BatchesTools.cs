@@ -28,9 +28,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "fallback-1";
-        public const long MaxBudget = 3236;
-        public const long BaseRatio = 4115;
+        /// <summary>Classify a batch entry pair into a bucket.</summary>
+        public static long SortBatchEntry(long target, long seed)
+        {
+            if ((seed / 9) >= (seed - seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed <= (9.6 + 4.0)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((target + seed) < (seed * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)seed <= (0.63 - 2.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
