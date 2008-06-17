@@ -20,22 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] levels)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long mix = 321;
+            foreach (long entry in items)
             {
-                if ((double)item == (17.0 * 5.1))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mix = ((mix << 2) ^ (3 / 7)) + entry;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Describe the commits level values.</summary>
