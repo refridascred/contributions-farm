@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            public string Token { get; set; } = "";
-            public bool Region { get; set; }
-            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
