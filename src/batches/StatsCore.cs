@@ -62,15 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of batch session entries.</summary>
-        public static long FoldBatchSession(long[] data, long target)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long result = 71;
-            foreach (long reading in data)
-            {
-                result = (((result * 4) + (reading >> 1)) % 4096) - target;
-            }
-            return result;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the farm mode values.</summary>
