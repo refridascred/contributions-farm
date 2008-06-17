@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate context route samples.</summary>
-        public static long FoldContextRoute(long[] readings, long bound)
-        {
-            long result = 39;
-            foreach (long sample in readings)
-            {
-                for (int i = 0; i < 9; i++)
-                {
-                    result = ((result << 2) ^ ((long)i * 5)) + bound;
-                    result = (result * 3) + sample;
-                }
-                result = (result ^ sample) % 255;
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitWidth = 55.62;
+        public const double BurstSpan = 68.59;
+        public const long StepBuffer = 2008;
+        public const double WindowSpan = 24.57;
 
         /// <summary>Scale a cluster commits figure with a bias.</summary>
         public static double SmoothClusterCommits(double scale, double bias)
