@@ -1,7 +1,9 @@
 # support settings
-strict: 9016
-batch_retries_ms: edge
-poll_delay_pct:
-  - 97
-  - 347
-  - 188
+sync_ratio: 66
+hard_capacity_s: true
+max_interval_s:
+  - 54
+  - 410
+cache_window: eu-west
+strict: 1024
+metric_timeout: legacy
