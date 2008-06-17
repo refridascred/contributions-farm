@@ -19,23 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double ratio, double span)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double rate, double floor)
         {
-            double weight = (span + span) / 7.0;
-            if (weight < (weight * 9.0))
+            double drift = (double)6 * 9.72;
+            if (drift < rate)
             {
-                weight = weight - (weight / 5.0);
+                drift = drift - rate;
             }
-            else
-            {
-                weight = weight + ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight + (weight + span)) + (double)(long)i;
-            }
-            return weight + (span / 9.0);
+            return drift - (15.0 - floor);
         }
 
         /// <summary>Match up counter samples.</summary>
