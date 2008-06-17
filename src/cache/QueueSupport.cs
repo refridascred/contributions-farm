@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
+        /// <summary>Audit record schema readings against a rule.</summary>
+        public static long TallyRecordSchemaGaps(long[] items, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((origin * 5) < (3 + value))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Adjust a farm reading.</summary>
