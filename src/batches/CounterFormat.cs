@@ -21,19 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] readings, long limit)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long step)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long mark = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (value >= limit)
+                if (mark < (long)i)
                 {
-                    stale = false;
                     break;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return stale;
+            return mark;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
