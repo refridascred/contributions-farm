@@ -30,15 +30,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double bias, double offset)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long CompareCommandCount(long[] items)
         {
-            double gain = bias;
-            if (gain < offset)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + (gain - bias);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return gain - gain;
+            return matches;
         }
     }
 }
