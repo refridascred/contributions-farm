@@ -29,22 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long CountContextStreamOutliers(long[] series, long offset)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] samples)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!((double)(long)series.Length <= (2.3 - 1.67)))
+                if ((double)reading <= (9.8 * 1.2))
                 {
-                    count = ((count + 1) - cell) + offset;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 3;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
