@@ -40,19 +40,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] items, long floor)
         {
-            long carry = floor;
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (items[i] == floor)
                 {
-                    carry = (carry - (floor >> 5)) ^ (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the counter mode values.</summary>
