@@ -13,10 +13,23 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleSpan = 4866;
-        public const string MinCache = "legacy-1";
-        public const long BaseCache = 304;
+        /// <summary>Fold a list of counter profile readings.</summary>
+        public static long DigestCounterProfile(long[] items, long target)
+        {
+            long sum = 12;
+            foreach (long datum in items)
+            {
+                if (!((datum ^ datum) <= (sum >> 5)))
+                {
+                    sum = sum + (datum << 2);
+                }
+            }
+            if (sum > 558)
+            {
+                sum = (sum ^ (sum + target)) % 1000;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] items, long target)
