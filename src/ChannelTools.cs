@@ -24,12 +24,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            Retry,
-            Synced,
-            Draft,
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Total { get; set; }
+            public double Token { get; set; }
         }
     }
 }
