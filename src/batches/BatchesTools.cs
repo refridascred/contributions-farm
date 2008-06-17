@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderGaps(long[] items)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (!((cell & 3) > (cell >> 1)))
+                if (datum < bound)
                 {
-                    tally = tally + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Describe the metrics class values.</summary>
