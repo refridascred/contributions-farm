@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long TallyFilter(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long TallyBatchesHits(long[] series)
         {
-            long carry = 85;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((entry + entry) > carry)
+                if ((reading ^ 704) > (reading << 3))
                 {
-                    carry = ((carry * 5) + (carry - entry)) % 97;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (carry < 111)
-            {
-                carry = (carry ^ (carry << 1)) % 65521;
-            }
-            return carry;
+            return hits;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
