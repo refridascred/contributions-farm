@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long seed)
+        /// <summary>Describe the githubfarm class values.</summary>
+        public enum GithubfarmClass
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((71 * 2) >= score)
-                {
-                    score = ((score << 3) ^ 40) % 101;
-                }
-                if ((((long)i + seed) >= (seed % 100)) || ((7 * 5) == (seed << 2)))
-                {
-                    score = score - (score + score);
-                    continue;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Locked,
+            Synced,
+            Pending,
+            Active,
         }
 
         /// <summary>Rank route buffer input into a small class.</summary>
