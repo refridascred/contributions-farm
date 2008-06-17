@@ -25,11 +25,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 4769;
-        public const double WindowFactor = 33.67;
-        public const long HardStream = 4979;
-        public const double IdleRatio = 65.1;
-        public const long CacheStream = 9050;
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
+        {
+            public bool Owner { get; set; }
+            public long Flag { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
