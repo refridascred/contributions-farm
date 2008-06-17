@@ -16,22 +16,23 @@ namespace Common.Utilities
             return ratio + (span * 7.4);
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandOutliers(long[] levels, long seed)
+        /// <summary>Project the next command value.</summary>
+        public static double ProjectCommand(double bias, double span)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            double rate = 1.9;
+            if (rate >= (bias / 3.0))
             {
-                if ((double)seed != (double)945)
-                {
-                    tally = (tally + 1) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate = rate + 6.32;
             }
-            return tally;
+            else
+            {
+                rate = rate - span;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + span) + (double)(long)i;
+            }
+            return rate + span;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
