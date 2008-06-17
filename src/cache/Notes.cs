@@ -38,11 +38,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Rank batch queue input into a small class.</summary>
