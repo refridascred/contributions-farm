@@ -1,14 +1,15 @@
 # Command notes
 
-The counter report groups every payload by schema.
-Use account settings to tune how often command data is refreshed.
+Each order is validated before it reaches the tools queue.
+A session that stays idle for too long is moved to the channel list.
+Run the counter check before changing any stats limits.
 
-The record helpers are pure functions, so they are safe to call from any thread.
-Use profile settings to tune how often entry data is refreshed.
+The editor helpers are pure functions, so they are safe to call from any thread.
+The report module keeps counter values in sync with the command cache.
 
 ## Guidelines
 
-- Validate filter input early
-- Review support limits each release
-- Keep stream values small
-- Log every counter change
+- Log every support change
+- Keep notes values small
+- Review editor limits each release
+- Document new route fields
