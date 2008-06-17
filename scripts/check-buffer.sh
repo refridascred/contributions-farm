@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=257
-log "limit is ${BUFFER_LIMIT}"
+for item in standard blue fallback edge; do
+    log "checking ${item}"
+done
 
-mode="${1:-edge}"
+mode="${1:-primary}"
 case "${mode}" in
-    eu-west)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+BUFFER_LIMIT=323
+log "limit is ${BUFFER_LIMIT}"
