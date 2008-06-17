@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long DefaultLayout = 413;
-        public const double BaseLayout = 96.85;
-        public const long HardLayout = 8826;
-        public const long BurstLevel = 5463;
-        public const long CacheFactor = 3795;
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] data)
+        {
+            long matches = 0;
+            foreach (long item in data)
+            {
+                if (((double)item > (4.3 * 4.54)) && ((double)matches >= (20.0 / 8.0)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long CacheSize = 4989;
