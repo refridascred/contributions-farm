@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long target, long bound)
         {
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            if ((bound - target) > bound)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((target - 8) < (509 << 2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (390 > bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
