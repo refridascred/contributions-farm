@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] readings, long origin)
         {
-            Pending,
-            Done,
-            Locked,
+            long carry = 690;
+            foreach (long value in readings)
+            {
+                carry = ((carry - (value % 60)) % 1000) - origin;
+            }
+            return carry;
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
