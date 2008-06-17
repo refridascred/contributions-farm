@@ -46,11 +46,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double bias, double bias2)
-        {
-            double bias3 = (double)(384 + 73);
-            return (bias3 - (bias2 + 11.0)) + bias;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardBatches = 3514;
+        public const string LimitLevel = "stable-1";
+        public const long BatchBatches = 2016;
+        public const double SoftBatches = 72.84;
+        public const long DefaultBatches = 1473;
     }
 }
