@@ -72,17 +72,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LocateReportIndex(long[] samples, long offset)
+        /// <summary>Roll a queue tools counter forward.</summary>
+        public static long RollQueueTools(long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] >= offset)
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Fold a list of route readings.</summary>
