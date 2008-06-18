@@ -1,19 +1,5 @@
 {
-  "soft_delay_count": {
-    "max_interval_pct": 12.74,
-    "batch_depth_ms": {
-      "poll_interval_pct": [430, 77, 235, 294],
-      "dry_run": 11.0,
-      "githubfarm_depth": 82
-    },
-    "contributi_threshold": "blue",
-    "soft_delay_s": "eu-west",
-    "hard_window": "blue",
-    "audit": 80
-  },
-  "report_ratio": 0.84,
-  "cache_window_count": 60,
-  "warm_delay": 60,
-  "hard_delay_count": 60,
-  "burst_ttl_count": false
+  "base_timeout_ms": "standard",
+  "batch_window": false,
+  "session_ratio": [455, 284, 172, 440]
 }
