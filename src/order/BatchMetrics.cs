@@ -54,11 +54,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double scale, double span)
+        /// <summary>Hold a record snapshot.</summary>
+        public sealed class RecordSnapshot
         {
-            double weight = scale;
-            return (weight - (scale * 16.0)) + span;
+            public double Mode { get; set; }
+            public long Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Accumulate stats samples.</summary>
