@@ -25,12 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            Draft,
-            Pending,
-            Locked,
+            public long Size { get; set; }
+            public double Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Roll a stats tools counter forward.</summary>
