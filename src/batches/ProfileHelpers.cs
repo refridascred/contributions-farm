@@ -50,30 +50,17 @@ namespace Common.Utilities
         public const long HardScore = 5682;
         public const long WindowLevel = 5605;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LocateToolsIndex(long[] levels, long seed)
         {
-            long score = 4;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((datum + score) >= datum)
+                if (levels[i] < seed)
                 {
-                    score = (score * 3) + (-587);
-                }
-                else
-                {
-                    score = score - datum;
-                }
-                if ((49 - datum) < (score % 24))
-                {
-                    score = ((score * 4) + (score - score)) % 255;
-                }
-                else
-                {
-                    score = (score - datum) % 255;
+                    return (long)i;
                 }
             }
-            return score % 4096;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
