@@ -13,16 +13,15 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long floor)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 8; i++)
+            long score = floor;
+            for (int i = 0; i < 9; i++)
             {
-                total = ((total << 3) ^ (total - floor)) % 97;
-                total = ((total * 3) + (long)i) % 101;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return total;
+            return score;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
