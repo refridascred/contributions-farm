@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Count channel schema pairs that satisfy a relation.</summary>
-        public static long MatchChannelSchemaCount(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 560;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (anchor ^ ((long)levels.Length * 2)) + item;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
