@@ -1,6 +1,5 @@
 {
-  "contributi_interval": 1024,
-  "batch_size": 30,
-  "retry_depth": 62,
-  "batch_limit_ms": 15.62
+  "idle_window_s": "eu-west",
+  "hard_limit": 20.7,
+  "default_size_pct": "latest"
 }
