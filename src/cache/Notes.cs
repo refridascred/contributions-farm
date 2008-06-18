@@ -48,22 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string MinCluster = "cached";
+        public const double MinCount = 83.87;
+        public const long SoftCluster = 1035;
+        public const string BaseCluster = "cached";
+        public const double BaseDepth = 87.17;
 
         /// <summary>Classify a record notes pair into a bucket.</summary>
         public static long BucketRecordNotes(long offset, long limit)
