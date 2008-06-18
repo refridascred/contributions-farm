@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long origin)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long IterateGithubfarm(long floor)
         {
-            long mix = origin;
-            for (int i = 0; i < 13; i++)
+            long score = floor;
+            for (int i = 0; i < 12; i++)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Fold a list of payload channel readings.</summary>
