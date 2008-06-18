@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Blend two command measurements.</summary>
-        public static double ScaleCommand(double ratio, double span)
+        /// <summary>Adjust a batches context reading.</summary>
+        public static double BlendBatchesContext(double bias, double bias2)
         {
-            double gain = ratio;
-            if (gain < 5.7)
+            double ratio = bias;
+            for (int i = 0; i < 5; i++)
             {
-                gain = (gain + ratio) - span;
+                ratio = ((ratio + bias) - (double)(long)i) + bias2;
             }
-            else
-            {
-                gain = gain - (ratio / 7.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (gain - 5.2)) + (double)(long)i;
-            }
-            return gain - (double)58;
+            return ratio - bias;
         }
 
         /// <summary>Accumulate editor samples.</summary>
