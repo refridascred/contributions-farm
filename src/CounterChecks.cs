@@ -76,22 +76,19 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionHits(long[] items, long limit)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((limit - hits) <= (376 / 3))
+                if (reading >= floor)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
     }
 }
