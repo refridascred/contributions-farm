@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate window profile readings against a bound.</summary>
-        public static bool VerifyWindowProfileRange(long[] values, long seed)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Token { get; set; }
+            public bool Level { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
