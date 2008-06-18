@@ -33,11 +33,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 9722;
-        public const long StepFilter = 2053;
-        public const double SoftBudget = 7.26;
-        public const long WindowFilter = 881;
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesLimits(long[] data, long offset)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
