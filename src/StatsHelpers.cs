@@ -52,11 +52,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            public string Size { get; set; } = "";
-            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public double Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Fold a list of stats payload readings.</summary>
