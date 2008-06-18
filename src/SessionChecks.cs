@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next contributi counter value from a seed.</summary>
-        public static long RollContributiCounter(long bound)
-        {
-            long anchor = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitSpan = 1307;
+        public const long BaseSpan = 1277;
+        public const long LimitRatio = 6993;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
