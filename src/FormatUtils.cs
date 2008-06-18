@@ -17,11 +17,31 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long seed, long seed2)
         {
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            if ((seed2 ^ (-151)) > seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((seed2 >= (984 - seed2)) || (661 >= (seed2 + 1)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)seed2 < 5.5)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
