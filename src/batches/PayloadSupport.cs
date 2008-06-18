@@ -16,12 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsRange(long[] data, long step)
         {
-            Synced,
-            Retry,
-            Ready,
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
