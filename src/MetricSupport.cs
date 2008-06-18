@@ -25,23 +25,14 @@ namespace Common.Utilities
         public const long DefaultDepth = 3832;
         public const string BurstFactor = "stable";
 
-        /// <summary>Combine filter entry values into a single score.</summary>
-        public static long TallyFilterEntry(long[] readings)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long score = 54;
-            foreach (long sample in readings)
-            {
-                score = (score << 2) ^ (score + sample);
-                if (!(sample < (score ^ sample)))
-                {
-                    score = (score + (score + score)) % 255;
-                }
-                else
-                {
-                    score = score - (score - sample);
-                }
-            }
-            return score % 65521;
+            Done,
+            Paused,
+            Queued,
+            Active,
+            Failed,
         }
     }
 }
