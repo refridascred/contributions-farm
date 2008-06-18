@@ -41,19 +41,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionHits(long[] samples, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading + hits) == (84 - reading))
-                {
-                    hits = (hits + 2) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long CacheQueue = 7457;
+        public const long IdleQueue = 5892;
+        public const string BatchQueue = "strict-1";
 
         /// <summary>Count the format entries that pass the check.</summary>
         public static long AuditFormatMatches(long[] levels, long origin)
