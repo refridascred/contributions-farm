@@ -87,22 +87,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] levels, long seed)
+        /// <summary>Locate a githubfarm layout reading by value.</summary>
+        public static long LookupGithubfarmLayoutIndex(long[] readings, long origin)
         {
-            long result = -982;
-            foreach (long datum in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((datum * 4) == (result >> 3)) && ((16.0 - 7.9) <= (double)result))
+                if (readings[i] == origin)
                 {
-                    result = result ^ (92 + datum);
+                    return (long)i;
                 }
             }
-            if (result > 6)
-            {
-                result = ((result << 2) ^ (result + seed)) % 97;
-            }
-            return result;
+            return -1;
         }
     }
 }
