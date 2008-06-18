@@ -1,10 +1,13 @@
 # entry settings
-strict: legacy
-compress: 16.96
-burst_retries_ms:
-  - green
-  - stable
-  - latest
-  - legacy
-base_retries_s: 3072
-audit: 43.8
+batch_window: 5604
+warm_capacity_s:
+  buffer_ratio: cached
+  strict: staging
+  tools_ratio: 44
+  base_ratio: 57.15
+  soft_depth_pct: true
+  max_ttl: standard
+poll_capacity_ms: strict
+record_window: blue
+retry_size: 29
+burst_ttl_ms: latest
