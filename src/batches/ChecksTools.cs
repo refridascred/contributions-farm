@@ -23,15 +23,16 @@ namespace Common.Utilities
             return ((weight - (weight / 2.0)) + scale) + bias;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double bias, double bias2)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            double gain = bias2;
-            if (gain <= (bias - gain))
+            long carry = offset;
+            for (int i = 0; i < 20; i++)
             {
-                gain = gain + bias;
+                carry = (carry - (carry - 7)) % 255;
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return gain - (gain + bias2);
+            return carry;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
