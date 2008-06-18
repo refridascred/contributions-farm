@@ -44,21 +44,39 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up channel cluster samples.</summary>
-        public static long PairChannelClusterCount(long[] readings)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long target, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long edge = target ^ limit;
+            if ((edge * 5) == (89 % 24))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)edge < (5.9 * 19.0))
                 {
-                    if ((readings[i] + readings[j]) < 12)
+                    return 8;
+                }
+                else
+                {
+                    if (!((834 << 1) > (limit & 15)))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (target < (35 + (-903)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return tally;
         }
     }
 }
