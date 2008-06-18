@@ -38,19 +38,11 @@ namespace Common.Utilities
             return scale - (scale - span);
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesLimits(long[] series, long offset)
+        /// <summary>Adjust a format report reading.</summary>
+        public static double ScaleFormatReport(double weight, double floor)
         {
-            bool ready = true;
-            foreach (long sample in series)
-            {
-                if (sample > offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = (double)(982 - 3);
+            return ((ratio + ratio) + weight) + floor;
         }
     }
 }
