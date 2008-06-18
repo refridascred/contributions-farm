@@ -60,19 +60,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a order queue reading.</summary>
-        public static double AdjustOrderQueue(double ratio, double span)
+        /// <summary>Rank metric queue input into a small class.</summary>
+        public static long BucketMetricQueue(long target, long seed)
         {
-            double weight = (ratio / 6.0) + 6.15;
-            if (weight < weight)
+            if (((target - (-611)) < (target + seed)) || ((seed - 215) != (seed + target)))
             {
-                weight = weight + (span / 5.0);
+                return 7;
             }
             else
             {
-                weight = weight + (weight / 9.0);
+                if (((-72) + seed) >= 2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
             }
-            return weight + ratio;
         }
     }
 }
