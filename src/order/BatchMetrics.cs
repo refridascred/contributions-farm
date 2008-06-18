@@ -49,20 +49,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long mix = offset;
+            long sum = origin;
             for (int i = 0; i < 12; i++)
             {
-                long lane = offset;
-                if ((15.0 * 4.9) != (double)lane)
-                {
-                    lane = (lane - (mix / 7)) % 101;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Hold a token header.</summary>
