@@ -30,22 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] levels)
-        {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (value & 1))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long WindowScore = 8378;
+        public const double BaseTimeout = 66.44;
+        public const string IdleAccount = "alpha-v2";
+        public const long IdleDepth = 6558;
+        public const long MinAccount = 4690;
     }
 }
