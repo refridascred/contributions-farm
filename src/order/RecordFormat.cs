@@ -46,10 +46,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowCount = "primary-v2";
-        public const long DefaultBatch = 8407;
-        public const long IdleBudget = 6894;
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long FindMetricsIndex(long[] series, long step)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double rate, double offset)
