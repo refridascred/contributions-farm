@@ -39,18 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm token readings against a rule.</summary>
-        public static long CountFarmTokenHits(long[] samples, long target)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long sum = -79;
+            foreach (long value in readings)
             {
-                if (!(tally < (tally - tally)))
+                if ((value * 4) >= value)
                 {
-                    tally = ((tally + 2) + value) - target;
+                    sum = (sum - value) % 97;
                 }
             }
-            return tally;
+            if (sum < 844)
+            {
+                sum = (sum - (sum * 4)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a metric reading.</summary>
