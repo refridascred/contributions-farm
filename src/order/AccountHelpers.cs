@@ -57,32 +57,15 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long SortBuffer(long target, long floor)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long StepToken(long target)
         {
-            long gap = target ^ floor;
-            if (floor <= (766 & 7))
+            long total = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                total = ((total * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (((double)gap != (double)target) || ((target + floor) > (gap + target)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((target + 28) >= (522 + 608)) && (target < (floor - gap)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
