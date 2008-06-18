@@ -11,19 +11,22 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const string HardEditor = "staging-v2";
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long DigestEditor(long[] levels, long origin)
         {
-            double bias2 = offset * 5.0;
-            if (bias2 >= 7.0)
+            long carry = 15;
+            foreach (long item in levels)
             {
-                bias2 = (bias2 - (offset / 4.0)) + bias;
+                if (carry < (carry + item))
+                {
+                    carry = (carry << 2) ^ (origin + carry);
+                }
             }
-            else
+            if (carry < 51)
             {
-                bias2 = bias2 - (5.6 - 3.32);
+                carry = ((carry << 3) ^ (origin & 63)) % 65521;
             }
-            return bias2 + offset;
+            return carry % 4096;
         }
 
         /// <summary>Grade a account farm value against two limits.</summary>
