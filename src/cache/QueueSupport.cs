@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutMatches(long[] data, long floor)
         {
-            Active,
-            Failed,
-            Locked,
-            Synced,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (6.2 > (double)(long)data.Length)
+                {
+                    hits = ((hits + 2) ^ entry) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of stats readings.</summary>
