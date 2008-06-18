@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double SoftCluster = 15.51;
-        public const long CacheCount = 9269;
-        public const string CacheWidth = "legacy-1";
-        public const double StepCluster = 97.45;
+        /// <summary>Hold a stats record.</summary>
+        public sealed class StatsRecord
+        {
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Audit channel queue readings against a rule.</summary>
         public static long MeasureChannelQueueOutliers(long[] data)
