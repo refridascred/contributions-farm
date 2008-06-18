@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepRatio = 5452;
-        public const string StepCluster = "alpha-1";
-        public const long BurstCluster = 6142;
-        public const long RetryDepth = 9774;
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
+        {
+            public bool Size { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long DeriveRecord(long step)
