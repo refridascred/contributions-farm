@@ -46,21 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] readings)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 738;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = (mark << 2) ^ (value & 127);
             }
-            return seen;
+            return mark;
         }
     }
 }
