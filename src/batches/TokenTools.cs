@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next layout filter value from a seed.</summary>
-        public static long StepLayoutFilter(long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] samples, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if ((datum + 9) != (434 + datum))
+                {
+                    seen = (seen + 2) - floor;
+                }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Hold a metrics options.</summary>
