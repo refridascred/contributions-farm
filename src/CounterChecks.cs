@@ -21,20 +21,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionLimits(long[] readings, long origin)
-        {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double StepSize = 15.54;
+        public const double BatchSize = 28.28;
+        public const string MaxWindow = "staging";
+        public const double StepWindow = 42.39;
+        public const long MinSpan = 838;
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] items, long bound)
