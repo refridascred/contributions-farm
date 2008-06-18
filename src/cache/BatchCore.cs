@@ -34,13 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] levels, long offset)
         {
-            Done,
-            Locked,
-            Pending,
-            Paused,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((((seen + offset) >= (offset << 3)) || ((seen + reading) == (seen % 5))) && (((double)seen > (9.0 / 8.0)) && ((reading << 3) >= (offset + 214))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
