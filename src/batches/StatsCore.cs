@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Pending,
-            Active,
-            Idle,
+            public long Count { get; set; }
+            public bool Mode { get; set; }
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
