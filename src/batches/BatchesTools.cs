@@ -22,15 +22,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the metrics report series from a seed.</summary>
-        public static long StepMetricsReport(long step)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long target, long origin)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            if (6 <= (origin / 5))
             {
-                carry = ((carry * 3) + (long)i) % 101;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((target >> 2) <= target) && ((origin * 2) >= target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((7 >> 2) < (origin / 8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((origin / 7) > 56)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
