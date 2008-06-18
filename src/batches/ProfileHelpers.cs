@@ -33,12 +33,20 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double SoftCount = 13.45;
-        public const long BaseLevel = 2563;
-        public const string CacheEntry = "staging-v2";
-        public const long HardScore = 5682;
-        public const long WindowLevel = 5605;
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenLimits(long[] levels, long seed)
+        {
+            bool ok = true;
+            foreach (long sample in levels)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
