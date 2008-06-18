@@ -29,10 +29,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheSpan = 67.98;
-        public const string StepContext = "standard";
-        public const string LimitContext = "alpha-1";
+        /// <summary>Fold a list of already readings.</summary>
+        public static long CombineAlready(long[] items, long bound)
+        {
+            long score = 14;
+            foreach (long sample in items)
+            {
+                score = (score ^ score) + sample;
+                score = (score ^ (bound ^ score)) % 4096;
+            }
+            if (score > 73)
+            {
+                score = (score + (score % 12)) % 97;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long SeriesSupport(long step)
