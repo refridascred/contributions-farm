@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchWidth = 5513;
-        public const double DefaultWidth = 3.2;
-        public const long MaxBuffer = 2843;
-        public const long MaxDepth = 3562;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
