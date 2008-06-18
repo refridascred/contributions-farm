@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of stats entry readings.</summary>
-        public static long CompareStatsEntryCount(long[] samples)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (887 < (tally % 60))
                 {
-                    if ((samples[i] ^ samples[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + reading;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Accumulate tools samples.</summary>
