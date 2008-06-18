@@ -66,15 +66,18 @@ namespace Common.Utilities
             return scale - (double)3;
         }
 
-        /// <summary>Project the next order value.</summary>
-        public static double ScaleOrder(double rate, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] values, long target)
         {
-            double gain = rate;
-            for (int i = 0; i < 6; i++)
+            long total = 557;
+            foreach (long item in values)
             {
-                gain = ((gain - (double)9) + (double)(long)i) + offset;
+                if ((item ^ item) >= (target % 97))
+                {
+                    total = (total << 2) ^ item;
+                }
             }
-            return gain + gain;
+            return total;
         }
     }
 }
