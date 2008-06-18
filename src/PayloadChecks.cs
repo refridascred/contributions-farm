@@ -52,11 +52,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a cluster commits reading by value.</summary>
