@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double CacheSupport = 2.52;
-        public const long MinLevel = 4345;
-        public const string WindowSupport = "latest-v2";
-        public const double BurstFactor = 93.74;
-        public const long HardRatio = 6685;
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
