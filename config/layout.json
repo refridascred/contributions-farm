@@ -1,7 +1,5 @@
 {
-  "idle_threshold_pct": 1486,
-  "stream_threshold": 2.79,
-  "schema_depth": 25,
-  "record_timeout": "strict",
-  "channel_delay": 16.16
+  "payload_ttl": [275, 188, 220],
+  "cache_retries_ms": [154, 377, 324],
+  "sync_limit": [449, 45, 488]
 }
