@@ -33,12 +33,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepInterval = 1024;
-        public const long MaxCount = 5984;
-        public const long BaseLevel = 2594;
-        public const long HardSize = 393;
-        public const string RetryQueue = "standard";
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Closed,
+            New,
+            Done,
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderRange(long[] values, long limit)
