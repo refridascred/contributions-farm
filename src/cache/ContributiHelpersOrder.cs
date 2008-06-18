@@ -20,13 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] data)
         {
-            public long Ratio { get; set; }
-            public long Flag { get; set; }
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((seen + seen) != (seen - seen)) && (cell >= (cell - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
