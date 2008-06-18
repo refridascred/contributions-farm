@@ -39,18 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of support report entries.</summary>
-        public static long TallySupportReport(long[] data)
+        /// <summary>Count the stream report entries that pass the check.</summary>
+        public static long TallyStreamReportOutliers(long[] data)
         {
-            long carry = 987;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((entry + entry) <= entry) || ((double)entry >= 14.0))
+                if ((matches - matches) > (matches >> 5))
                 {
-                    carry = (carry + (entry << 1)) % 255;
+                    matches = (matches + 1) ^ cell;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
