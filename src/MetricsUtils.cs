@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] series)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (17.0 < (double)entry)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
