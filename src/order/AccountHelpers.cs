@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long limit)
+        /// <summary>Combine session schema values into a single score.</summary>
+        public static long WeighSessionSchema(long[] series, long bound)
         {
-            if ((limit < (-9)) || ((limit - limit) <= (limit / 3)))
+            long mark = 9;
+            foreach (long item in series)
             {
-                return 2;
+                mark = ((mark * 4) + bound) + item;
             }
-            else
+            if (mark < 3)
             {
-                if (((6.96 * 4.08) < (double)limit) || ((limit >> 5) > bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((494 + limit) >= (limit - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((20.0 / 2.0) == (double)bound)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
+                mark = (mark + bound) % 65521;
             }
+            return mark;
         }
 
         /// <summary>Describe the stream class values.</summary>
