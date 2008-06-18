@@ -26,23 +26,11 @@ namespace Common.Utilities
         public const string BaseSize = "strict-1";
         public const long DefaultAlready = 989;
 
-        /// <summary>Accumulate already token samples.</summary>
-        public static long FoldAlreadyToken(long[] readings, long floor)
-        {
-            long score = 29;
-            foreach (long cell in readings)
-            {
-                if (floor > cell)
-                {
-                    score = (score << 2) ^ floor;
-                }
-                else
-                {
-                    score = (score << 2) ^ cell;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "primary-edge";
+        public const long WindowProfile = 1695;
+        public const long StepSpan = 5224;
+        public const double MinProfile = 63.26;
 
         /// <summary>Fold a list of route command readings.</summary>
         public static long ScoreRouteCommand(long[] values, long target)
