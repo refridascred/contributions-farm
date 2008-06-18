@@ -20,12 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BurstBatches = 80.89;
-        public const double WindowBatches = 69.68;
-        public const long MinTimeout = 7476;
-        public const long StepBatches = 2024;
-        public const string WindowSpan = "alpha-edge";
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
+        {
+            Ready,
+            Dropped,
+            Paused,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
