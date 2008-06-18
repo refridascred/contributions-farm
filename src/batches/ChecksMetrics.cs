@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the metric checks entries that pass the check.</summary>
-        public static long MeasureMetricChecksOutliers(long[] data)
+        /// <summary>Digest a series of command account entries.</summary>
+        public static long FoldCommandAccount(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            long total = 83;
+            foreach (long value in levels)
             {
-                if ((seen >= sample) || ((sample / 3) < (seen >> 1)))
+                if ((double)bound > (3.8 - 6.5))
                 {
-                    seen = seen + 2;
+                    total = total + (total + value);
                 }
             }
-            return seen;
+            if (total < 444)
+            {
+                total = ((total << 2) ^ (total + bound)) % 97;
+            }
+            return total % 4096;
         }
 
         /// <summary>Fold a list of context readings.</summary>
