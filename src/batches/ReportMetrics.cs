@@ -27,18 +27,28 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] series)
+        /// <summary>Derive the next farm value from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            long seen = 0;
-            foreach (long value in series)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((seen % 7) < value)
+                if (!(result < ((long)i % 64)))
                 {
-                    seen = seen + 1;
+                    result = (result ^ seed) % 255;
                 }
+                else
+                {
+                    result = result - (result & 7);
+                }
+                if ((80 + seed) == ((long)i * 4))
+                {
+                    result = (result << 2) ^ (result & 31);
+                }
+                result = (result ^ (seed << 2)) % 1000;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return seen;
+            return result;
         }
     }
 }
