@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesMatches(long[] levels, long floor)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!!((count * 3) < (item % 64)))
-                {
-                    count = (count + 1) + floor;
-                }
-            }
-            return count;
+            Paused,
+            Synced,
+            Active,
+            Locked,
+            Stale,
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
