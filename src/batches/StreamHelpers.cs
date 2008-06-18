@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] readings, long step)
-        {
-            long anchor = 51;
-            foreach (long item in readings)
-            {
-                if (step < (anchor & 255))
-                {
-                    anchor = (anchor - (anchor + step)) - item;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 32.53;
+        public const double MinTimeout = 57.28;
+        public const long IdleInterval = 8713;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long target, long floor)
