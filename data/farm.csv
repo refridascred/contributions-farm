@@ -1,10 +1,6 @@
-id,rank,level
-1,971,18
-2,66,latest
-3,63.01,blue
-4,67.02,open
-5,385,431
-6,stable,112
-7,staging,edge
-8,green,459
-9,fallback,0.09
+id,rank
+1,719
+2,68.26
+3,open
+4,206
+5,staging
