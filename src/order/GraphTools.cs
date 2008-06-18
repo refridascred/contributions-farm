@@ -84,19 +84,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks format readings against a bound.</summary>
-        public static bool ValidateChecksFormatBounds(long[] data, long limit)
+        /// <summary>Look up the position of a contributi metric sample.</summary>
+        public static long SeekContributiMetricIndex(long[] items, long origin)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell >= limit)
+                if (items[i] < origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
