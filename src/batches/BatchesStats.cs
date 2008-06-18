@@ -40,10 +40,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWindow = 6479;
-        public const long MinWindow = 6586;
-        public const double LimitDepth = 16.29;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (!(count < (value * 2)) && ((double)count < (1.89 / 2.0)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TallyMetric(long[] readings)
