@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long origin, long limit)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] items, long origin)
         {
-            if (((3.0 * 9.24) > (double)origin) || ((origin % 5) != (origin >> 5)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin - 32) == (origin % 7)))
+                if (items[i] >= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
