@@ -1,13 +1,8 @@
 {
-  "idle_retries": "standard",
-  "default_ttl_s": "open",
-  "idle_limit_ms": {
-    "burst_ratio_pct": 90,
-    "burst_depth_pct": 28.77,
-    "support_depth": "primary",
-    "burst_delay": [392, 217, 289, 495],
-    "queue_capacity": 76.9,
-    "idle_ratio_pct": 92.78
-  },
-  "burst_ttl_s": false
+  "format_limit": "latest",
+  "flush_retries_ms": 43,
+  "max_depth_s": "eu-west",
+  "dry_run": true,
+  "poll_timeout_ms": "edge",
+  "poll_limit_pct": 22.05
 }
