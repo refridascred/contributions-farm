@@ -1,11 +1,11 @@
 # Command notes
 
-A token that stays idle for too long is moved to the stream list.
-Use entry settings to tune how often cache data is refreshed.
-Run the record check before changing any layout limits.
+The githubfarm report groups every batches by graph.
+Use session settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Log every stream change
-- Validate buffer input early
-- Prefer route defaults
+- Review metric limits each release
+- Validate batch input early
+- Log every layout change
+- Prefer account defaults
