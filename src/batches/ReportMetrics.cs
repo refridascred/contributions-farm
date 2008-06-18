@@ -23,11 +23,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 1411;
-        public const long MinBuffer = 3454;
-        public const double WindowBuffer = 89.3;
-        public const double WindowRatio = 94.1;
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultSpan = 9738;
+        public const string BatchRatio = "standard";
+        public const string StepSize = "alpha";
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
