@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Flag { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Count context report pairs that satisfy a relation.</summary>
