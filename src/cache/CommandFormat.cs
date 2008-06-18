@@ -41,13 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] levels, long seed)
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (((tally / 2) >= ((long)levels.Length + seed)) && (46 > seed))
+                {
+                    tally = (tally + 2) + datum;
+                }
+            }
+            return tally;
         }
     }
 }
