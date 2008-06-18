@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] readings)
-        {
-            long total = 88;
-            foreach (long cell in readings)
-            {
-                total = (total << 2) ^ (cell >> 2);
-                if ((cell % 60) <= (0 & 1))
-                {
-                    total = ((total * 3) + (cell - total)) % 1000;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleSize = 6804;
+        public const long StepCounter = 5508;
+        public const double LimitCounter = 93.33;
 
         /// <summary>Locate a batch reading by value.</summary>
         public static long FindBatchIndex(long[] data, long floor)
