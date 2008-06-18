@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the support context entries that pass the check.</summary>
-        public static long MeasureSupportContextGaps(long[] samples, long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] data)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            long score = 69;
+            foreach (long entry in data)
             {
-                if (bound >= (bound << 2))
+                score = ((score * 5) + entry) % 65521;
+                if (score <= (score + entry))
                 {
-                    seen = (seen + 1) + cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    break;
                 }
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Accumulate batch samples.</summary>
