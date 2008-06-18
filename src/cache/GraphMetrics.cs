@@ -45,15 +45,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double bias, double offset)
+        /// <summary>Combine cache buffer values into a single score.</summary>
+        public static long CombineCacheBuffer(long[] data, long target)
         {
-            double drift = (double)7 + (bias - bias);
-            if (drift >= offset)
+            long carry = 324;
+            foreach (long cell in data)
             {
-                drift = drift + (double)80;
+                carry = (carry << 3) ^ (cell ^ target);
+                carry = ((carry * 3) + (target + target)) % 101;
+                if (((7.68 - 2.7) <= (double)carry) && (cell < 889))
+                {
+                    carry = ((carry * 2) + (1 + cell)) % 97;
+                }
             }
-            return drift - offset;
+            return carry;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
