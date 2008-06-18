@@ -54,19 +54,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            long mix = step;
-            for (int i = 0; i < 21; i++)
-            {
-                if (!!(step >= (mix * 4)))
-                {
-                    mix = ((mix << 2) ^ (step - mix)) % 65521;
-                }
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
