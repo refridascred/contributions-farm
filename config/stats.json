@@ -1,10 +1,7 @@
 {
-  "stats_ttl": {
-    "profile_ratio": "strict",
-    "sync_interval_s": true,
-    "idle_retries_ms": "staging"
-  },
-  "report_threshold": false,
-  "sync_timeout_s": false,
-  "idle_interval": 81
+  "batches_limit": [342, 176, 240],
+  "enabled": "staging",
+  "soft_size_pct": 9035,
+  "readonly": ["strict", "legacy"],
+  "context_threshold": "legacy"
 }
