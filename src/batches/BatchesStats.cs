@@ -46,32 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long BucketSession(long bound, long origin)
-        {
-            if ((origin + origin) <= (origin + bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((572 + bound) > (bound - bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((bound / 4) < (1 + origin)) || ((origin << 3) >= (origin + 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseGraph = 8943;
+        public const long SoftGraph = 6181;
+        public const long HardGraph = 4777;
+        public const long BatchWidth = 5628;
+        public const double StepDepth = 15.82;
 
         /// <summary>Describe the session mode values.</summary>
         public enum SessionMode
