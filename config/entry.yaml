@@ -1,11 +1,8 @@
 # entry settings
-min_capacity:
-  queue_ttl:
-    cluster_timeout: true
-    account_ratio: eu-west
-    schema_interval: legacy
-  default_delay_pct: 1455
-  soft_threshold_count: 1024
-readonly: fallback
-idle_threshold_s: 500
-burst_window_s: 50.81
+compress: primary
+dry_run:
+  - cached
+  - fallback
+  - cached
+  - open
+min_capacity_s: green
