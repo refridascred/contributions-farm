@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine cluster session values into a single score.</summary>
-        public static long DigestClusterSession(long[] readings, long target)
+        /// <summary>Check that every record editor entry stays within the limit.</summary>
+        public static bool ValidateRecordEditorLimits(long[] items, long limit)
         {
-            long score = 9;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                score = ((score + (76 - 35)) ^ sample) - target;
-                score = (score - (score + 6)) % 1000;
+                if (entry < limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            if (score < (-82))
-            {
-                score = ((score << 3) ^ (score * 3)) % 1000;
-            }
-            return score % 4096;
+            return valid;
         }
 
         /// <summary>Define account limits and defaults.</summary>
