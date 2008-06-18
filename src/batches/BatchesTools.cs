@@ -36,10 +36,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstRatio = 7885;
-        public const double LimitBudget = 16.32;
-        public const long IdleSize = 4106;
-        public const long CacheSize = 9553;
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
+        {
+            Retry,
+            Synced,
+            Paused,
+            Stale,
+            Done,
+        }
     }
 }
