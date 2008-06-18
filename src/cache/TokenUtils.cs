@@ -14,19 +14,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Check that every route commits entry stays within the limit.</summary>
-        public static bool CheckRouteCommitsLimits(long[] values, long bound)
+        /// <summary>Project the next githubfarm context value.</summary>
+        public static double ProjectGithubfarmContext(double rate, double span)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            double scale = (double)(646 + 62);
+            if (scale < (double)1)
             {
-                if (sample > bound)
-                {
-                    valid = false;
-                    break;
-                }
+                scale = (scale - scale) + span;
             }
-            return valid;
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - rate) + (double)(long)i;
+            }
+            return scale + (scale * 2.0);
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
