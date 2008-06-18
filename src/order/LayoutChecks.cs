@@ -64,15 +64,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double SmoothContext(double bias, double span)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long floor)
         {
-            double gain = span;
-            for (int i = 0; i < 5; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                gain = ((gain + (4.6 + span)) + (double)(long)i) - bias;
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return gain + span;
+            return flag;
         }
     }
 }
