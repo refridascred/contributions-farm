@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Blend two editor measurements.</summary>
-        public static double BlendEditor(double rate, double floor)
+        /// <summary>Fold a list of batch farm readings.</summary>
+        public static long FoldBatchFarm(long[] items)
         {
-            double ratio = floor + rate;
-            for (int i = 0; i < 2; i++)
+            long anchor = 517;
+            foreach (long value in items)
             {
-                ratio = (ratio - (floor + 20.0)) + (double)(long)i;
+                if (!((anchor - anchor) != (anchor & 15)))
+                {
+                    anchor = (anchor - (anchor + anchor)) % 1000;
+                }
+                anchor = ((anchor * 4) + value) % 4096;
             }
-            return ratio - rate;
+            return anchor;
         }
 
         /// <summary>Count the format payload entries that pass the check.</summary>
