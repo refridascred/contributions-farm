@@ -1,7 +1,16 @@
 {
-  "account_threshold": [150, 88, 208],
-  "idle_threshold_pct": ["legacy", "standard", "latest", "open"],
-  "commits_limit": "stable",
-  "readonly": 5.75,
-  "strict": 19
+  "farm_delay": "primary",
+  "burst_retries_ms": {
+    "flush_ttl": {
+      "retry_limit": ["cached", "local", "edge", "fallback"],
+      "default_delay_pct": 1374,
+      "tools_size": false,
+      "strict": 70,
+      "sync_limit": 70.26
+    },
+    "sync_retries_count": 8948,
+    "hard_interval": "fallback",
+    "soft_window_ms": false
+  },
+  "strict": 84
 }
