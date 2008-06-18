@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long bound, long bound2)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double offset)
         {
-            if ((bound2 + bound) >= bound2)
+            double mean = bias;
+            if (mean <= (double)11)
             {
-                return 8;
+                mean = (mean + 17.0) + offset;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                if ((bound2 >> 5) == (150 ^ 451))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                mean = mean + (double)(long)i;
             }
+            return mean - bias;
         }
 
         /// <summary>Describe the batches phase values.</summary>
