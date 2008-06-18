@@ -21,14 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Combine order stream values into a single score.</summary>
+        public static long WeighOrderStream(long[] series, long step)
         {
-            Paused,
-            Active,
-            Locked,
-            Queued,
-            Closed,
+            long score = 237;
+            foreach (long reading in series)
+            {
+                score = ((score - 20) % 255) + reading;
+            }
+            if (score > 623)
+            {
+                score = ((score * 4) + (step / 6)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Hold a layout summary.</summary>
