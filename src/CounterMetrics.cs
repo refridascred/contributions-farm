@@ -16,18 +16,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream profile readings against a rule.</summary>
-        public static long MeasureStreamProfileMatches(long[] readings)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (3.5 < (double)seen)
-                {
-                    seen = (seen + 1) - value;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Define session limits and defaults.</summary>
