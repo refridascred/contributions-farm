@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsRange(long[] series, long floor)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long TallyCommand(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long sum = 126;
+            foreach (long cell in series)
             {
-                if (reading != floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum ^ (cell + sum)) % 101;
             }
-            return ok;
+            if (sum < 6)
+            {
+                sum = sum + (sum << 1);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
