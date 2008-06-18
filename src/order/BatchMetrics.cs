@@ -28,22 +28,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TallyFormat(long[] data, long seed)
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            long result = 0;
-            foreach (long value in data)
-            {
-                if (!((32 ^ value) <= result))
-                {
-                    result = (result - value) % 65521;
-                }
-            }
-            if (result > 8)
-            {
-                result = result ^ (seed / 8);
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Token { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the session level values.</summary>
