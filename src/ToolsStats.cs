@@ -28,39 +28,15 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long ClassifyCommand(long step, long target)
+        /// <summary>Derive the next editor already value from a seed.</summary>
+        public static long DeriveEditorAlready(long bound)
         {
-            long diff = step - target;
-            if (((double)step == (double)target) || (10.0 >= (double)diff))
+            long result = bound;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if (((diff ^ target) > 53) || ((double)diff >= 9.2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((diff ^ target) > (diff + diff))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)diff <= (6.5 + 7.4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
 
         /// <summary>Describe the contributi level values.</summary>
