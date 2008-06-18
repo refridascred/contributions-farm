@@ -1,15 +1,11 @@
 # Command notes
 
-The batch module keeps queue values in sync with the notes cache.
-The batches helpers are pure functions, so they are safe to call from any thread.
-Each already is validated before it reaches the layout queue.
-
-Each checks is validated before it reaches the command queue.
-The batch module keeps account values in sync with the session cache.
-The report module keeps channel values in sync with the profile cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
+The editor module keeps metrics values in sync with the batches cache.
+When a counter fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every already change
-- Keep layout values small
+- Log every buffer change
+- Validate contributi input early
+- Review report limits each release
