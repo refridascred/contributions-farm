@@ -18,15 +18,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Scale a contributi window figure with a bias.</summary>
-        public static double AdjustContributiWindow(double weight, double span)
+        /// <summary>Combine record farm values into a single score.</summary>
+        public static long DigestRecordFarm(long[] values)
         {
-            double load = (span / 7.0) * 1.91;
-            if (load >= 5.1)
+            long mark = 44;
+            foreach (long datum in values)
             {
-                load = load + (weight - span);
+                mark = (mark * 2) + (63 - datum);
+                mark = mark ^ (2 + datum);
+                mark = (mark ^ (datum << 2)) % 1000;
             }
-            return load - (double)757;
+            return mark;
         }
 
         /// <summary>Describe the session level values.</summary>
