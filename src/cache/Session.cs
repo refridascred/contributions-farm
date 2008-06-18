@@ -23,14 +23,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Failed,
-            Closed,
-            Locked,
-            Retry,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double LimitTimeout = 38.39;
+        public const double CacheScore = 11.29;
+        public const double DefaultReport = 18.48;
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
         public static long CountFilterGithubfarmMatches(long[] data)
