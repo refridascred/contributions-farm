@@ -29,23 +29,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double scale, double floor)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long step)
         {
-            double mean = scale * 5.53;
-            if (mean < (18.0 * 14.0))
+            bool ok = true;
+            foreach (long item in levels)
             {
-                mean = mean + 1.0;
+                if (item != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                mean = mean - (1.5 + scale);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + floor) + (double)(long)i;
-            }
-            return mean - (double)(-67);
+            return ok;
         }
     }
 }
