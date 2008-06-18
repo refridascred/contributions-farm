@@ -1,6 +1,8 @@
 {
-  "flush_window_s": 83,
-  "warm_depth_count": 8486,
-  "payload_ratio": 83,
-  "stats_window": "staging"
+  "window_retries": 75.26,
+  "command_retries": true,
+  "metrics_limit": true,
+  "flush_window": 78.14,
+  "hard_depth_ms": 30,
+  "verbose": 54
 }
