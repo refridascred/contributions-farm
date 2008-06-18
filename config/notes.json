@@ -1,6 +1,5 @@
 {
-  "min_threshold_ms": "primary",
-  "poll_window": "primary",
-  "max_ratio_pct": 54.55,
-  "min_timeout_count": 2280
+  "report_retries": 68.18,
+  "route_depth": 82.65,
+  "buffer_threshold": 30
 }
