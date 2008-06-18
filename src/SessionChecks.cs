@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long BaseSpan = 1277;
         public const long LimitRatio = 6993;
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long step)
         {
-            Retry,
-            Ready,
-            Stale,
-            Active,
+            long state = step;
+            for (int i = 0; i < 21; i++)
+            {
+                long count = state >> 5;
+                if (((state >> 2) <= (89 - step)) || ((6.85 * 6.91) >= (double)count))
+                {
+                    continue;
+                }
+                if ((step + count) == (count + (long)i))
+                {
+                    count = (count << 3) ^ (count * 2);
+                }
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a entry summary.</summary>
