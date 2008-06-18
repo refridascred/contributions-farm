@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] samples, long origin)
+        /// <summary>Project the next metrics value.</summary>
+        public static double BlendMetrics(double ratio, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double load = ratio;
+            return load - (floor / 3.0);
         }
 
         /// <summary>Locate a payload record reading by value.</summary>
