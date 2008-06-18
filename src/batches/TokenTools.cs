@@ -30,22 +30,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelMatches(long[] values, long limit)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long RankRecord(long step, long offset)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if ((9 > step) && ((double)offset < (4.8 * 16.0)))
             {
-                if ((entry + entry) > (seen << 3))
+                return 8;
+            }
+            else
+            {
+                if ((step % 60) <= step)
                 {
-                    seen = (seen + 2) + limit;
+                    return 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((step / 2) == (offset & 63)) && ((offset + 646) <= (step - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (offset < (step * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
