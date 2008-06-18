@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] levels)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] levels, long offset)
         {
-            long anchor = 560;
-            foreach (long item in levels)
+            bool valid = true;
+            foreach (long sample in levels)
             {
-                anchor = (anchor ^ ((long)levels.Length * 2)) + item;
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return anchor;
+            return valid;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
