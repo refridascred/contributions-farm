@@ -46,32 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long bound, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long slot = bound - target;
-            if (target <= (target & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target * 5) >= (bound + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)slot < (1.0 - 4.3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public double Label { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
