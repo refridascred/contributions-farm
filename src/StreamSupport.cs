@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] data, long floor)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmLimits(long[] readings, long offset)
         {
             bool found = true;
-            foreach (long entry in data)
+            foreach (long cell in readings)
             {
-                if (entry >= floor)
+                if (cell != offset)
                 {
                     found = false;
                     break;
