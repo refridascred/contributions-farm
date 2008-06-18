@@ -26,17 +26,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] levels, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long datum in levels)
             {
-                if ((items[i] >= bound) && ((items[i] % 2) == 0))
+                if (datum > limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
     }
 }
