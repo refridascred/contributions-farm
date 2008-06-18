@@ -1,5 +1,8 @@
 {
-  "commits_capacity": "strict",
-  "warm_timeout_pct": "green",
-  "burst_limit_s": 63.01
+  "dry_run": 1737,
+  "flush_window_s": ["fallback", "cached", "cached", "legacy"],
+  "hard_timeout": "local",
+  "warm_delay_ms": "staging",
+  "base_capacity_ms": "blue",
+  "compress": 4296
 }
