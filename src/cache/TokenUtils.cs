@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] data)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            long mark = 161;
-            foreach (long entry in data)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + entry;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
