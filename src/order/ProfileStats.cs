@@ -44,17 +44,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long SeekFarmIndex(long[] values, long origin)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandGaps(long[] values, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                if (values[i] >= origin)
+                if (((long)values.Length >> 2) >= (value ^ 47))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + target;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
