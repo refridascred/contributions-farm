@@ -78,13 +78,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            public string Score { get; set; } = "";
-            public long Label { get; set; }
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            Retry,
+            Closed,
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Locate a githubfarm layout reading by value.</summary>
