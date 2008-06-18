@@ -42,18 +42,15 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Count the format channel entries that pass the check.</summary>
-        public static long TallyFormatChannelOutliers(long[] levels, long floor)
+        /// <summary>Derive the next format schema value from a seed.</summary>
+        public static long RollFormatSchema(long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long score = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((seen <= (floor ^ (long)levels.Length)) && ((seen + 849) <= (floor + item)))
-                {
-                    seen = seen + 2;
-                }
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
