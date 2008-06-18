@@ -71,18 +71,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count schema editor pairs that satisfy a relation.</summary>
-        public static long MatchSchemaEditorCount(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((tally + (-805)) <= 625)
                 {
-                    if ((series[i] + series[j]) != 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) + reading;
                 }
             }
             return tally;
