@@ -1,4 +1,15 @@
 # entry settings
-enabled: latest
-idle_size_ms: 42.54
-batch_delay_count: true
+poll_depth: 36
+notes_size: 99
+verbose:
+  base_threshold_ms: green
+  min_interval_s: 1024
+  cache_capacity_pct: 78.15
+  compress:
+    soft_depth: 60
+    min_ttl: true
+    retry_ttl_count: 76
+  strict: 65.37
+  queue_depth: 37.64
+retry_depth: false
+format_ttl: true
