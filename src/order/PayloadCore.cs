@@ -24,19 +24,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long step)
-        {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((tally > (value / 6)) || ((step & 63) <= value))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BaseBatches = "stable-v2";
+        public const long BatchBudget = 6014;
+        public const string MaxBatches = "fallback-v2";
+        public const double HardBatches = 32.92;
+        public const string DefaultTimeout = "staging-v2";
 
         /// <summary>Classify a commits batches pair into a bucket.</summary>
         public static long SortCommitsBatches(long target, long offset)
