@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] levels, long bound)
         {
-            long count = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((count >= 79) || ((count - item) <= item))
+                if ((bound / 6) > item)
                 {
-                    count = count + 1;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
