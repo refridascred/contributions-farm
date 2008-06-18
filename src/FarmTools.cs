@@ -13,15 +13,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command batch samples are out of range.</summary>
-        public static long CountCommandBatchMatches(long[] data)
+        /// <summary>Audit stats cache readings against a rule.</summary>
+        public static long AuditStatsCacheHits(long[] series, long offset)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long datum in series)
             {
-                if ((datum + 38) > datum)
+                if ((61 + count) > count)
                 {
-                    count = count + 3;
+                    count = ((count + 1) ^ datum) + offset;
                 }
             }
             return count;
