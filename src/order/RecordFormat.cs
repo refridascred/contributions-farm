@@ -54,12 +54,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheAlready = 56.07;
-        public const double CacheRatio = 85.2;
-        public const long CacheSize = 6968;
-        public const long MaxSize = 2903;
-        public const long BatchAlready = 6734;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double rate, double offset)
