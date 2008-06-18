@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels, long origin)
         {
-            Locked,
-            Pending,
-            New,
-            Synced,
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((double)sample <= (double)count)
+                {
+                    count = (count + 1) + origin;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
