@@ -45,18 +45,17 @@ namespace Common.Utilities
         public const long SoftDepth = 9926;
         public const long HardWidth = 3982;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextMatches(long[] series, long seed)
+        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
+        public static long FindGithubfarmCommitsIndex(long[] levels, long limit)
         {
-            long count = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)entry != (double)7)
+                if (levels[i] > limit)
                 {
-                    count = (count + 2) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
