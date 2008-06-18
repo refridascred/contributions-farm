@@ -14,14 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Check that every metrics cache entry stays within the limit.</summary>
+        public static bool ValidateMetricsCacheLimits(long[] readings, long step)
         {
-            Closed,
-            Active,
-            New,
-            Stale,
-            Dropped,
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Match up support samples.</summary>
