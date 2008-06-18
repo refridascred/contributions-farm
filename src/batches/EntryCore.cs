@@ -44,19 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every counter format entry stays within the limit.</summary>
-        public static bool VerifyCounterFormatLimits(long[] samples, long step)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long MatchEntryCount(long[] values)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
