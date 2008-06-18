@@ -25,13 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Accumulate report samples.</summary>
+        public static long WeighReport(long[] samples)
         {
-            Locked,
-            Draft,
-            Closed,
-            Pending,
+            long result = 93;
+            foreach (long datum in samples)
+            {
+                if (datum < (datum + result))
+                {
+                    result = (result * 4) + result;
+                }
+            }
+            return result;
         }
     }
 }
