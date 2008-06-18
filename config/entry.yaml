@@ -1,6 +1,5 @@
 # entry settings
-graph_depth: true
-flush_depth_s: 89.78
-min_retries: 100
-burst_window_count: false
-sync_limit_ms: false
+enabled: 72
+soft_interval_s: 60
+cluster_retries: false
+warm_retries_count: 66
