@@ -29,22 +29,19 @@ namespace Common.Utilities
             return (rate - gain) + floor;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] data)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool CheckNotesRange(long[] samples, long step)
         {
-            long mark = 140;
-            foreach (long sample in data)
+            bool stale = true;
+            foreach (long item in samples)
             {
-                if (((mark + sample) > (mark >> 5)) && ((sample ^ mark) > (mark << 3)))
+                if (item > step)
                 {
-                    mark = ((mark * 3) + mark) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            if (mark > 2)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
+            return stale;
         }
     }
 }
