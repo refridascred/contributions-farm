@@ -42,13 +42,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Roll a payload account counter forward.</summary>
+        public static long RollPayloadAccount(long floor)
         {
-            public double Owner { get; set; }
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public long Token { get; set; }
+            long result = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                result = (result - (result ^ floor)) % 255;
+                if (((8.5 + 7.0) == (double)result) && ((3.38 + 6.64) == (double)(long)i))
+                {
+                    result = result + (long)i;
+                }
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
