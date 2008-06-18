@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] levels)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmHits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if ((((-28) <= (matches ^ 638)) || (25 >= (datum << 3))) && (matches > (matches % 12)))
+                if (((origin & 31) >= (origin >> 3)) && ((238 & 1) <= (origin + count)))
                 {
-                    matches = matches + 1;
+                    count = (count + 1) ^ sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Describe the filter class values.</summary>
