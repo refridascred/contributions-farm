@@ -51,13 +51,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Iterate the report route series from a seed.</summary>
+        public static long RollReportRoute(long floor)
         {
-            public string Offset { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Count { get; set; }
-            public bool Region { get; set; }
+            long acc = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                acc = (acc + (floor - acc)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Blend two context measurements.</summary>
