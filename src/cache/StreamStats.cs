@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long RetryGithubfarm = 2645;
-        public const long MaxGithubfarm = 7580;
-        public const long HardGithubfarm = 6279;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4665;
+        public const long SoftCount = 5636;
+        public const long WindowCommand = 7679;
+        public const long MinCommand = 2096;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] readings)
