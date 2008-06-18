@@ -1,12 +1,14 @@
 # support settings
-token_timeout:
-  batch_limit: 100
-  retry_interval_s: 37.93
-  farm_window: 47.22
-  batch_interval_pct: eu-west
-  min_delay_count: true
-token_delay: 9
-verbose: 35
-flush_threshold_s: 71
-base_depth_ms: 6539
-payload_ratio: 1024
+readonly:
+  sync_ttl_ms: 86.2
+  payload_retries:
+    warm_delay: 53
+    command_depth: open
+    readonly: 85.41
+  profile_threshold:
+    - 100
+    - 360
+    - 215
+  idle_window_count: false
+idle_limit: 1024
+flush_retries_count: true
