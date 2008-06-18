@@ -20,32 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long floor, long bound)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long diff = floor + bound;
-            if (!((9.6 - 2.8) < (double)bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 7) < (diff - diff))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((20 - bound) < bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
