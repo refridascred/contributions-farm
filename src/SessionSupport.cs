@@ -39,17 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] samples, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
+                if ((double)target <= (4.1 + 10.0))
                 {
-                    return (long)i;
+                    tally = (tally + 3) + value;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
