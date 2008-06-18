@@ -46,22 +46,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsOutliers(long[] data)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (!((double)(long)data.Length < (15.0 * 14.0)))
-                {
-                    seen = (seen + 3) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
