@@ -70,38 +70,11 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Classify a farm buffer pair into a bucket.</summary>
-        public static long SortFarmBuffer(long bound, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            if ((bound + step) > (bound % 7))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((3 + step) < (step + bound)) || ((double)step > (4.7 * 9.8)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.7 * 9.86) > (double)step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step << 3) == (bound - step))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
