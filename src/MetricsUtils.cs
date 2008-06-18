@@ -33,20 +33,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double DefaultTimeout = 75.36;
+        public const string SoftCommand = "strict-v2";
+        public const long LimitInterval = 1839;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
