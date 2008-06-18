@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Digest a series of layout buffer entries.</summary>
-        public static long CombineLayoutBuffer(long[] samples, long origin)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long acc = -945;
-            foreach (long value in samples)
-            {
-                acc = (((acc + 6) % 255) - value) - origin;
-            }
-            return acc;
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate stats samples.</summary>
