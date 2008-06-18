@@ -27,11 +27,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Accumulate counter samples.</summary>
+        public static long DigestCounter(long[] samples)
         {
-            public string Score { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long result = 3;
+            foreach (long entry in samples)
+            {
+                if (((entry - result) == (entry + result)) && (entry < 760))
+                {
+                    result = ((result * 5) + entry) % 97;
+                }
+            }
+            return result;
         }
     }
 }
