@@ -24,12 +24,13 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Ready,
-            Draft,
-            Dropped,
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a format summary.</summary>
