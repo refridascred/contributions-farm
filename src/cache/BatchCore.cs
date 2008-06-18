@@ -26,22 +26,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] data)
+        /// <summary>Fold a list of cache token readings.</summary>
+        public static long ScoreCacheToken(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mark = 44;
+            foreach (long value in data)
             {
-                if (((entry - (-64)) > tally) && ((double)entry > (0.81 * 8.6)))
+                if ((floor - mark) > (mark - 363))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    mark = mark + value;
                 }
             }
-            return tally;
+            if (mark > 151)
+            {
+                mark = (mark - floor) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
