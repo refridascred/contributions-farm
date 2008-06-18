@@ -1,11 +1,19 @@
 {
-  "record_capacity": false,
-  "cache_size_s": {
-    "profile_capacity": [81, 333, 277, 273],
-    "warm_capacity": "green",
-    "buffer_interval": 96,
-    "route_ttl": ["stable", "legacy", "legacy"]
+  "editor_window": "staging",
+  "retry_retries": {
+    "enabled": 5241,
+    "cache_ttl_pct": false,
+    "record_limit": 89.38
   },
-  "burst_ttl_ms": [443, 300],
-  "strict": "green"
+  "cache_ratio_count": 8343,
+  "verbose": 43.14,
+  "contributi_ratio": ["latest", "legacy"],
+  "strict": {
+    "batch_depth_ms": "latest",
+    "warm_retries": 1024,
+    "max_window_count": 2714,
+    "flush_limit_count": 3265,
+    "strict": 5751,
+    "batch_interval_s": "fallback"
+  }
 }
