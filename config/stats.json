@@ -1,6 +1,6 @@
 {
-  "enabled": 1024,
-  "flush_capacity_pct": "strict",
-  "already_ratio": 10,
-  "idle_size_ms": "stable"
+  "enabled": "stable",
+  "audit": "standard",
+  "default_interval_pct": 4583,
+  "batch_interval": false
 }
