@@ -37,12 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 5882;
-        public const double IdleMetric = 86.61;
-        public const long BaseWidth = 2227;
-        public const string StepMetric = "fallback-v2";
-        public const string RetryWidth = "cached-v2";
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long MatchMetricsCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double ratio, double bias)
