@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Check that every filter order entry stays within the limit.</summary>
+        public static bool VerifyFilterOrderLimits(long[] series, long floor)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
