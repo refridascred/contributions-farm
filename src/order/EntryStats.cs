@@ -47,36 +47,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long offset, long step)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long step, long step2)
         {
-            if ((step - offset) > (step + offset))
+            long step3 = step - step2;
+            if ((step3 + step) >= (step / 5))
             {
-                return 4;
+                return 1;
             }
             else
             {
-                if ((step + offset) == (offset + step))
+                if ((double)step > (19.0 / 9.0))
                 {
-                    return 5;
+                    return 4;
                 }
                 else
                 {
-                    if ((double)step > (double)843)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset < (offset / 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
