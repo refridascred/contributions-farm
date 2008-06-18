@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long SortLayout(long target, long origin)
         {
-            Queued,
-            Locked,
-            Pending,
+            if ((5.0 / 2.0) != (double)origin)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((3.98 + 5.4) != (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of metric format entries.</summary>
