@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferLimits(long[] values, long step)
+        /// <summary>Measure how many notes editor samples are out of range.</summary>
+        public static long CountNotesEditorGaps(long[] data)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long item in data)
             {
-                if (entry <= step)
+                if (matches < (item + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Describe the channel status values.</summary>
