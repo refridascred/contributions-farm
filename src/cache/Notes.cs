@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Count the support context entries that pass the check.</summary>
+        public static long MeasureSupportContextGaps(long[] samples, long bound)
         {
-            New,
-            Idle,
-            Done,
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (bound >= (bound << 2))
+                {
+                    seen = (seen + 1) + cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate stats samples.</summary>
