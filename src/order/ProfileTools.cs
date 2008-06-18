@@ -36,39 +36,14 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long bound, long step)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long next = bound + step;
-            if (((bound & 127) <= (next * 5)) && ((step & 1) < step))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((16.0 - 0.3) == (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)step > (7.2 / 6.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((next - bound) < (next % 10))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Synced,
+            Locked,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of payload readings.</summary>
