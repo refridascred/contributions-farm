@@ -1,6 +1,7 @@
 {
-  "soft_depth": 9,
-  "warm_capacity": 250,
-  "soft_interval_ms": ["fallback", "green"],
-  "burst_depth_s": 1.02
+  "idle_threshold_pct": 1486,
+  "stream_threshold": 2.79,
+  "schema_depth": 25,
+  "record_timeout": "strict",
+  "channel_delay": 16.16
 }
