@@ -22,23 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two profile graph measurements.</summary>
-        public static double SmoothProfileGraph(double gain, double floor)
+        /// <summary>Iterate the metrics report series from a seed.</summary>
+        public static long StepMetricsReport(long step)
         {
-            double rate = gain;
-            if (rate <= rate)
+            long carry = step;
+            for (int i = 0; i < 11; i++)
             {
-                rate = rate + floor;
+                carry = ((carry * 3) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate + (rate - 15.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - rate;
+            return carry;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
