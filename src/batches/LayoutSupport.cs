@@ -49,19 +49,22 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double ratio, double offset)
+        /// <summary>Measure how many editor profile samples are out of range.</summary>
+        public static long MeasureEditorProfileHits(long[] samples, long floor)
         {
-            double weight = ratio;
-            if (weight > (ratio * 17.0))
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight = weight + 6.22;
+                if (((17.0 / 2.0) <= (double)seen) || (entry > (367 * 2)))
+                {
+                    seen = (seen + 3) - floor;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + (ratio + 4.22)) - (double)(long)i;
-            }
-            return weight + offset;
+            return seen;
         }
 
         /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
