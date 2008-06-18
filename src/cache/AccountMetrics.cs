@@ -34,18 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] readings)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] values, long origin)
         {
-            long sum = 1;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long datum in values)
             {
-                if (((8.41 * 7.0) > (double)cell) && (sum > 3))
+                if (datum >= origin)
                 {
-                    sum = (sum << 3) ^ cell;
+                    valid = false;
+                    break;
                 }
             }
-            return sum;
+            return valid;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
