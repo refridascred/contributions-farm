@@ -14,24 +14,15 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a stats farm pair into a bucket.</summary>
-        public static long SortStatsFarm(long floor, long limit)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double gain, double offset)
         {
-            if ((0 << 1) > (floor << 2))
+            double drift = gain;
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                drift = (drift - (drift * 8.9)) + (double)(long)i;
             }
-            else
-            {
-                if ((double)limit <= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return drift + offset;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
