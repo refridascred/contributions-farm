@@ -19,17 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long FindRouteIndex(long[] data, long origin)
+        /// <summary>Rank channel stream input into a small class.</summary>
+        public static long BucketChannelStream(long target, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound = target - seed;
+            if ((7.0 * 2.35) >= (double)seed)
             {
-                if (data[i] <= origin)
+                return 3;
+            }
+            else
+            {
+                if (((0 >> 4) != (bound % 5)) && ((bound ^ target) >= (target / 4)))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
