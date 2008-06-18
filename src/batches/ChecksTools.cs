@@ -16,22 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of payload channel readings.</summary>
-        public static long ScorePayloadChannel(long[] readings)
+        /// <summary>Count the profile checks entries that pass the check.</summary>
+        public static long AuditProfileChecksHits(long[] series, long target)
         {
-            long mix = 129;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if ((reading - 932) < (reading / 4))
+                if (((matches + 810) <= 612) && (datum < (850 << 3)))
                 {
-                    mix = mix ^ (reading - 28);
-                }
-                else
-                {
-                    mix = mix + mix;
+                    matches = (matches + 1) - target;
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
