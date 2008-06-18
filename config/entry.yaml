@@ -1,32 +1,6 @@
 # entry settings
-persist: 44.49
-audit: 76.7
-hard_delay_pct:
-  - staging
-  - latest
-batch_threshold_count:
-  token_timeout: 16
-  flush_size_count: stable
-  max_ratio_pct: primary
-  retry_timeout_pct:
-    record_limit: 8896
-    min_delay_ms: 76.19
-    compress: 61.19
-    batches_ttl: fallback
-    counter_interval:
-      - strict
-      - local
-      - stable
-      - staging
-    poll_interval: 60
-cache_capacity_ms:
-  persist: 500
-  command_size: 55
-  max_timeout:
-    - 349
-    - 42
-    - 85
-  max_limit_s: 79.08
-  burst_interval_count: edge
-  channel_window: true
-command_size: 250
+readonly: false
+max_capacity_ms: local
+batch_interval: stable
+base_depth: latest
+idle_limit_ms: false
