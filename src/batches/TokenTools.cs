@@ -22,17 +22,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a metrics commits reading by value.</summary>
-        public static long SeekMetricsCommitsIndex(long[] values, long step)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (values[i] >= step)
+                if (value <= (step % 7))
                 {
-                    return (long)i;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
