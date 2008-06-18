@@ -17,19 +17,12 @@ namespace Common.Utilities
         public const string BurstRoute = "latest-1";
         public const double IdleRoute = 44.79;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorLimits(long[] samples, long origin)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Combine order values into a single score.</summary>
