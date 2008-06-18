@@ -25,13 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Token { get; set; } = "";
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
