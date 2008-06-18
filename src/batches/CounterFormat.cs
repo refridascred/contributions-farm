@@ -12,13 +12,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Accumulate payload samples.</summary>
+        public static long ScorePayload(long[] items, long step)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            long acc = 93;
+            foreach (long reading in items)
+            {
+                acc = ((acc + (3 * 4)) - reading) - step;
+            }
+            if (acc > 194)
+            {
+                acc = ((acc * 4) + (acc + 132)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of session entries.</summary>
