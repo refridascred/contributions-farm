@@ -1,12 +1,6 @@
 {
-  "channel_depth": 100,
-  "idle_timeout_s": true,
-  "command_ratio": ["fallback", "stable", "open", "stable"],
-  "warm_delay_s": {
-    "metrics_capacity": "eu-west",
-    "persist": [223, 183],
-    "report_threshold": true,
-    "hard_size": "green"
-  },
-  "flush_interval": 48
+  "hard_delay_count": "open",
+  "soft_ttl_count": false,
+  "verbose": [358, 291, 231],
+  "default_threshold_count": 5494
 }
