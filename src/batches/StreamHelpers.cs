@@ -54,20 +54,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] items)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long DigestBatch(long[] items, long target)
         {
-            long mix = 2;
-            foreach (long sample in items)
+            long carry = 18;
+            foreach (long datum in items)
             {
-                mix = (mix + (1 + sample)) % 65521;
-                if (mix < (mix % 12))
+                carry = ((carry * 4) + (target % 16)) % 1000;
+                if ((target - target) >= (datum + datum))
                 {
-                    mix = ((mix << 2) ^ (long)items.Length) % 65521;
+                    break;
                 }
-                mix = ((mix * 2) + mix) % 97;
             }
-            return mix;
+            return carry % 1000;
         }
 
         /// <summary>Hold a cluster info.</summary>
