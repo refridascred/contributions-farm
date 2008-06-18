@@ -1,4 +1,20 @@
 # support settings
-poll_ratio_pct: true
-compress: true
-warm_size_count: true
+min_timeout: 60
+filter_ratio: standard
+hard_depth:
+  poll_size:
+    buffer_ratio: local
+    flush_ttl: 31.36
+    compress: 6353
+    route_size: false
+  strict: 71
+  soft_window_count: 46.18
+  soft_interval:
+    min_capacity_count: standard
+    base_threshold_s: 8507
+    batches_threshold: false
+    queue_ttl: green
+    base_limit_count: latest
+  stream_threshold: local
+payload_threshold: 30
+strict: 100
