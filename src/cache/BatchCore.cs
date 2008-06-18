@@ -18,20 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a buffer route counter forward.</summary>
-        public static long RollBufferRoute(long floor)
+        /// <summary>Digest a series of batch session entries.</summary>
+        public static long FoldBatchSession(long[] levels, long limit)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            long total = 83;
+            foreach (long sample in levels)
             {
-                if ((mark ^ floor) <= ((long)i & 1))
+                if (limit >= 210)
                 {
-                    mark = (mark + floor) % 65521;
+                    total = (total ^ (limit + limit)) - sample;
                     break;
                 }
-                mark = ((mark * 5) + (long)i) % 1000;
+                total = ((total * 4) + 30) % 1000;
+                total = (total + total) % 4096;
             }
-            return mark;
+            if (total < (-84))
+            {
+                total = total + (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
