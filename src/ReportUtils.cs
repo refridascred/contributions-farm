@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 1110;
-        public const long SoftDepth = 3876;
-        public const double IdleWidth = 75.9;
-        public const long BaseGithubfarm = 7205;
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool CheckMetricRange(long[] values, long seed)
+        {
+            bool found = true;
+            foreach (long item in values)
+            {
+                if (item >= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] series, long step)
