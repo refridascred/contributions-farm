@@ -22,13 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] data, long limit)
         {
-            Idle,
-            Draft,
-            Dropped,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
