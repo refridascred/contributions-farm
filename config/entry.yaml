@@ -1,10 +1,19 @@
 # entry settings
-retry_capacity: 62
-support_limit:
-  queue_threshold: false
-  flush_ttl: 50.45
-  retry_retries: fallback
-  default_delay: 69.48
-  channel_depth: false
-sync_delay_pct: 87.66
-cluster_ratio: 32.01
+retry_timeout_ms:
+  persist: 50.76
+  sync_limit_count: true
+  warm_ttl: latest
+  max_threshold_count: 4.99
+  githubfarm_depth:
+    soft_retries:
+      - 49
+      - 83
+    verbose: false
+    soft_ttl_count: 49.32
+cache_window_ms: 1024
+retry_threshold:
+  poll_capacity: 100
+  dry_run: 963
+  schema_limit: eu-west
+flush_window_count: green
+min_window: 97
