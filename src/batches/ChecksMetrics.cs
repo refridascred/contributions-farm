@@ -19,18 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheOutliers(long[] series, long origin)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)datum > (double)count))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
+            Pending,
+            Queued,
+            Failed,
+            Idle,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
