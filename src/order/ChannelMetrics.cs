@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string SoftChecks = "staging-edge";
-        public const long BatchSpan = 6233;
-        public const string RetrySpan = "strict-1";
-        public const string HardCount = "strict-edge";
+        /// <summary>Count stream route pairs that satisfy a relation.</summary>
+        public static long MatchStreamRouteCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a route header.</summary>
         public sealed class RouteHeader
