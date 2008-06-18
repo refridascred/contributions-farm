@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the payload cache entries that pass the check.</summary>
-        public static long CountPayloadCacheOutliers(long[] readings, long floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long mix = 546;
+            foreach (long datum in values)
             {
-                if (!((floor ^ 2) <= (item - floor)) && (((item ^ tally) > (item & 31)) && ((14.0 / 6.0) > (double)tally)))
+                if ((offset << 2) < (offset & 127))
                 {
-                    tally = tally + 2;
+                    mix = (((mix << 3) ^ (offset / 3)) % 101) ^ datum;
                 }
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
