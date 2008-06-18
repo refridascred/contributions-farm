@@ -1,5 +1,8 @@
 {
-  "hard_threshold_pct": [151, 186, 68, 236],
-  "sync_capacity_ms": "fallback",
-  "idle_size_ms": "blue"
+  "retry_ratio": "legacy",
+  "support_ratio": 60,
+  "entry_size": false,
+  "audit": 98.28,
+  "persist": true,
+  "verbose": 40
 }
