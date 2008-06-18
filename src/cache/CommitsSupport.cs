@@ -84,19 +84,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a profile reading.</summary>
-        public static double BlendProfile(double gain, double floor)
-        {
-            double weight = gain * 9.59;
-            if (weight < gain)
-            {
-                weight = weight + gain;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + floor) - (double)(long)i;
-            }
-            return weight + gain;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double MinNotes = 70.81;
+        public const long DefaultNotes = 549;
+        public const double DefaultWidth = 76.72;
     }
 }
