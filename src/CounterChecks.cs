@@ -73,12 +73,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionHits(long[] items, long limit)
         {
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((limit - hits) <= (376 / 3))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
