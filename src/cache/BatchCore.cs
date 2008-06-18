@@ -44,26 +44,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] samples)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long FindGraphIndex(long[] samples, long origin)
         {
-            long total = 9;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((40 ^ total) <= (reading * 2))
+                if (samples[i] == origin)
                 {
-                    total = total + reading;
-                }
-                else
-                {
-                    total = ((total << 2) ^ reading) % 65521;
+                    return (long)i;
                 }
             }
-            if (total < 9)
-            {
-                total = ((total * 5) + (total * 3)) % 255;
-            }
-            return total;
+            return -1;
         }
     }
 }
