@@ -53,38 +53,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long bound, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorGaps(long[] items)
         {
-            if (((5 + 19) >= (offset + 5)) && ((1.0 * 5.4) > (double)offset))
+            long count = 0;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound * 2) >= (bound >> 5))
+                if ((count + cell) < (654 + cell))
                 {
-                    return 0;
+                    count = count + 3;
                 }
                 else
                 {
-                    if (((bound + 177) <= ((-66) >> 4)) || ((bound % 7) <= offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound << 1) >= bound)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
