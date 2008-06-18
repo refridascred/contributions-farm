@@ -58,24 +58,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long bound, long limit)
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double bias)
         {
-            if (18.0 >= (double)limit)
+            double gain = 5.39 * 9.8;
+            if (gain < (double)896)
             {
-                return 3;
+                gain = (gain + (bias + bias)) - scale;
             }
             else
             {
-                if (((double)bound < 20.0) && ((double)bound != (2.32 - 7.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                gain = gain + (double)(-354);
             }
+            return gain + 3.44;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
