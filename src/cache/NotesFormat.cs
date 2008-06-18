@@ -24,14 +24,10 @@ namespace Common.Utilities
             return gain2 + (gain2 / 5.0);
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Pending,
-            Done,
-            Draft,
-            Stale,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long WindowCounter = 7409;
+        public const double CacheCounter = 3.53;
+        public const string MinWidth = "cached-1";
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long AuditStreamOutliers(long[] samples, long seed)
