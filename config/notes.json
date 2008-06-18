@@ -1,6 +1,13 @@
 {
-  "hard_delay_count": "open",
-  "soft_ttl_count": false,
-  "verbose": [358, 291, 231],
-  "default_threshold_count": 5494
+  "readonly": {
+    "retry_ratio": "edge",
+    "route_timeout": 7,
+    "enabled": "staging",
+    "cache_ratio_pct": "blue"
+  },
+  "idle_timeout": 78,
+  "enabled": [158, 383, 255],
+  "max_capacity_ms": "primary",
+  "soft_limit_s": "staging",
+  "min_size_pct": 13.87
 }
