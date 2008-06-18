@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many buffer session samples are out of range.</summary>
-        public static long MeasureBufferSessionMatches(long[] series, long offset)
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long TallyBatchesContextGaps(long[] samples, long step)
         {
             long hits = 0;
-            foreach (long item in series)
+            foreach (long value in samples)
             {
-                if ((hits + hits) != (hits + offset))
+                if (((value / 3) != (step + value)) || !((hits - hits) > 90))
                 {
-                    hits = (hits + 3) - item;
+                    hits = hits + 2;
                 }
             }
             return hits;
