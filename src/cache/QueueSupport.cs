@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long RollLayout(long limit)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long result = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(limit < (long)i))
-                {
-                    result = (result << 2) ^ (limit >> 2);
-                }
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
