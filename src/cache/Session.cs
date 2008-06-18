@@ -33,15 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandOutliers(long[] items, long target)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                sum = ((sum * 2) + (long)i) % 97;
+                if ((cell + matches) >= matches)
+                {
+                    matches = (matches + 1) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
