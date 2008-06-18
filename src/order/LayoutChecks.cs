@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double DefaultStream = 59.58;
+        public const long StepBudget = 1702;
+        public const long BaseStream = 383;
+        public const string BatchRatio = "strict";
+        public const long HardLevel = 4149;
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long MeasureEntryMatches(long[] readings)
