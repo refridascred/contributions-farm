@@ -56,25 +56,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long target, long offset)
-        {
-            long delta = target ^ offset;
-            if ((delta % 2) > target)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((delta & 63) != (delta ^ delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetryRecord = 30.72;
+        public const string BurstWidth = "staging-v2";
+        public const long CacheRecord = 7294;
     }
 }
