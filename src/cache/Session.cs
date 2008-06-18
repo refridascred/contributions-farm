@@ -23,10 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double LimitTimeout = 38.39;
-        public const double CacheScore = 11.29;
-        public const double DefaultReport = 18.48;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading % 97) != (count & 15))
+                {
+                    count = (count + 2) + limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
         public static long CountFilterGithubfarmMatches(long[] data)
