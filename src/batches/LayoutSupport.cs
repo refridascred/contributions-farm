@@ -23,12 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double SoftCommits = 85.91;
-        public const string BurstCount = "latest-v2";
-        public const long IdleRatio = 7093;
-        public const long BaseCommits = 1947;
-        public const long BatchScore = 1942;
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many payload layout samples are out of range.</summary>
         public static long MeasurePayloadLayoutHits(long[] samples)
