@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count stats layout pairs that satisfy a relation.</summary>
-        public static long CompareStatsLayoutCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MinFarm = 3254;
+        public const string SoftFarm = "stable";
+        public const double SoftSize = 6.57;
+        public const long LimitFarm = 4840;
+        public const string IdleFarm = "stable-1";
 
         /// <summary>Audit order readings against a rule.</summary>
         public static long CountOrderOutliers(long[] data, long limit)
