@@ -70,15 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] readings, long step)
         {
-            long anchor = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
