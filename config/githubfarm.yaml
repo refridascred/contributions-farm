@@ -1,26 +1,6 @@
 # githubfarm settings
-max_limit:
-  cache_ratio_ms: fallback
-  format_ttl: 6960
-  idle_interval: 34.3
-  cache_delay_s: blue
-  base_delay_ms: true
-  window_timeout: fallback
-report_capacity: cached
-base_timeout:
-  stats_interval:
-    hard_ratio:
-      - legacy
-      - green
-      - cached
-      - strict
-    audit: 66.27
-    idle_capacity_s: primary
-    min_threshold_s: standard
-    notes_size: false
-  enabled: 63.63
-  batch_ttl_s: primary
-enabled: true
-idle_retries:
-  - 164
-  - 307
+enabled: edge
+verbose: 60
+burst_window_count: 7049
+poll_threshold: true
+base_interval: fallback
