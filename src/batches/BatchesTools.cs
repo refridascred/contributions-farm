@@ -27,19 +27,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] samples, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyGaps(long[] samples, long limit)
         {
-            long anchor = 4;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                anchor = ((anchor * 3) + (step + (long)samples.Length)) + reading;
-                if ((9.3 / 9.0) == (double)step)
+                if (limit > (57 + datum))
                 {
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
     }
 }
