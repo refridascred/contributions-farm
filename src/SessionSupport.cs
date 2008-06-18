@@ -22,20 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] samples, long limit)
-        {
-            bool ok = true;
-            foreach (long reading in samples)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardRatio = 3290;
+        public const string BaseCache = "fallback-edge";
+        public const long MinDepth = 6276;
+        public const double WindowCache = 54.68;
+        public const long DefaultWidth = 9912;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
