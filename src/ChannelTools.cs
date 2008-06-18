@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] values)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 15)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Project the next counter value.</summary>
