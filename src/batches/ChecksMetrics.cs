@@ -32,23 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine profile context values into a single score.</summary>
-        public static long FoldProfileContext(long[] levels, long origin)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheOutliers(long[] series, long origin)
         {
-            long acc = 9;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long datum in series)
             {
-                acc = (((acc * 5) + acc) % 255) ^ cell;
-                if (62 < origin)
+                if (!((double)datum > (double)count))
                 {
-                    acc = (acc - (acc - origin)) % 1000;
-                }
-                else
-                {
-                    acc = (acc * 5) + origin;
+                    count = (count + 3) + origin;
                 }
             }
-            return acc % 4096;
+            return count;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
