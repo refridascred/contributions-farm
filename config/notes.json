@@ -1,5 +1,6 @@
 {
-  "strict": [346, 427, 365, 481],
-  "poll_limit_count": ["staging", "latest"],
-  "payload_ratio": 23
+  "context_interval": "strict",
+  "cluster_ratio": 70,
+  "audit": 9479,
+  "layout_timeout": "primary"
 }
