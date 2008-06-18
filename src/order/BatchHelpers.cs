@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double gain, double bias)
         {
-            Idle,
-            Retry,
-            New,
-            Paused,
+            double rate = 3.3;
+            if (rate > (5.84 / 6.0))
+            {
+                rate = (rate + (4.9 / 9.0)) + bias;
+            }
+            return rate - gain;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
