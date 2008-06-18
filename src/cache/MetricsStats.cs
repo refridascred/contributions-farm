@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the channel format entries that pass the check.</summary>
-        public static long TallyChannelFormatHits(long[] data, long bound)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value <= tally)
-                {
-                    tally = (tally + 3) - bound;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public bool Level { get; set; }
+            public double Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Validate account readings against a bound.</summary>
