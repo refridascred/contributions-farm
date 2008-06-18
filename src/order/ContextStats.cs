@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight2 - 5.19;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool CheckReportRange(long[] samples, long floor)
         {
-            New,
-            Closed,
-            Paused,
-            Queued,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
