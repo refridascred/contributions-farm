@@ -20,26 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] values, long floor)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] samples, long offset)
         {
-            long carry = 649;
-            foreach (long item in values)
+            long mix = 7;
+            foreach (long entry in samples)
             {
-                if (!((double)carry == (7.14 - 5.82)))
+                if (((entry - entry) != (offset >> 1)) && (mix <= (mix - entry)))
                 {
-                    carry = ((carry << 3) ^ carry) + item;
+                    mix = mix - (offset - offset);
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ (119 + (-5))) % 1000;
+                    mix = ((mix << 3) ^ entry) % 101;
                 }
             }
-            if (carry < (-374))
-            {
-                carry = carry + floor;
-            }
-            return carry % 65521;
+            return mix;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
