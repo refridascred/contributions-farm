@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Look up the position of a commits already sample.</summary>
-        public static long LocateCommitsAlreadyIndex(long[] values, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double SmoothRecord(double rate, double span)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate2 = (double)(0 + 75);
+            if (rate2 >= span)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - (rate * 0.6);
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 - (double)636) + (double)(long)i;
+            }
+            return rate2 + (rate2 * 17.0);
         }
 
         /// <summary>Locate a batch reading by value.</summary>
