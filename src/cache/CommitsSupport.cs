@@ -25,14 +25,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long origin, long offset)
         {
-            Failed,
-            Closed,
-            Idle,
-            Dropped,
-            Retry,
+            long diff = origin - offset;
+            if (!((diff * 2) <= offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)offset <= (9.0 / 7.0))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((diff / 4) == (9 / 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
