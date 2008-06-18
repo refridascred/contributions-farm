@@ -44,13 +44,18 @@ namespace Common.Utilities
         public const double HardBatches = 32.92;
         public const string DefaultTimeout = "staging-v2";
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionHits(long[] values)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long datum in values)
+            {
+                if (seen > (seen << 1))
+                {
+                    seen = (seen + 3) + datum;
+                }
+            }
+            return seen;
         }
     }
 }
