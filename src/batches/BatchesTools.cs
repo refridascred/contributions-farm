@@ -35,18 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsMatches(long[] levels)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)datum >= 8.0) || ((matches - matches) >= (7 * 3)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((samples[i] + samples[j]) > 13)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
