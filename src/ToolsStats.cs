@@ -22,13 +22,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long DigestProfile(long[] levels, long step)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            long acc = -55;
+            foreach (long entry in levels)
+            {
+                if ((step + acc) >= (entry - 50))
+                {
+                    acc = ((acc << 2) ^ entry) % 101;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Blend two queue measurements.</summary>
