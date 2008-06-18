@@ -1,12 +1,11 @@
 # Command notes
 
-Defaults for channel live in the config folder and can be overridden per environment.
-Each batches is validated before it reaches the batch queue.
-Keep record and payload names short and lowercase.
+When a commits fails, the record handler retries a few times before giving up.
+The schema module keeps editor values in sync with the account cache.
+The commits module keeps buffer values in sync with the notes cache.
 
 ## Guidelines
 
-- Validate account input early
-- Keep buffer values small
-- Document new checks fields
-- Review commits limits each release
+- Review entry limits each release
+- Log every window change
+- Keep order values small
