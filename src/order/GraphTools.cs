@@ -17,18 +17,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many queue notes samples are out of range.</summary>
-        public static long TallyQueueNotesMatches(long[] items, long limit)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long bound, long target)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long step = bound + target;
+            if ((bound / 3) <= (step ^ step))
             {
-                if ((double)count != (4.4 * 5.15))
+                return 3;
+            }
+            else
+            {
+                if ((73 >> 5) > (step - 953))
                 {
-                    count = ((count + 3) + datum) - limit;
+                    return 5;
+                }
+                else
+                {
+                    if (!(9.55 > (double)step))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
