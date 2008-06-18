@@ -48,26 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] values)
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long AuditMetricSessionHits(long[] items)
         {
-            long sum = 2;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (((long)values.Length * 4) < ((long)values.Length << 1))
+                if ((datum / 6) <= (datum + datum))
                 {
-                    sum = ((sum - 88) % 97) + sample;
-                }
-                else
-                {
-                    sum = sum ^ (sum ^ sum);
+                    count = count + 2;
                 }
             }
-            if (sum < 80)
-            {
-                sum = (sum + (sum - sum)) % 4096;
-            }
-            return sum;
+            return count;
         }
     }
 }
