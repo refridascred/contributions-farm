@@ -31,18 +31,16 @@ namespace Common.Utilities
             return mean + (mean * 5.1);
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] levels, long origin)
+        /// <summary>Roll a stats command counter forward.</summary>
+        public static long DeriveStatsCommand(long floor)
         {
-            long seen = 0;
-            foreach (long reading in levels)
+            long acc = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading >> 1) != ((long)levels.Length % 16))
-                {
-                    seen = (seen + 2) + origin;
-                }
+                acc = (acc << 2) ^ (acc % 60);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a entry summary.</summary>
