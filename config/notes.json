@@ -1,5 +1,6 @@
 {
-  "persist": true,
-  "base_window_ms": true,
-  "compress": "latest"
+  "min_threshold_ms": "primary",
+  "poll_window": "primary",
+  "max_ratio_pct": 54.55,
+  "min_timeout_count": 2280
 }
