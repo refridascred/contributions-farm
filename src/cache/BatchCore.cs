@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextLimits(long[] samples, long target)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long ScoreCluster(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long sum = 53;
+            foreach (long datum in series)
             {
-                if (value >= target)
+                if (sum >= (sum % 97))
                 {
-                    found = false;
-                    break;
+                    sum = sum ^ (244 - datum);
+                }
+                else
+                {
+                    sum = (sum * 2) + (datum + sum);
                 }
             }
-            return found;
+            if (sum > 462)
+            {
+                sum = (sum << 2) ^ (sum ^ 8);
+            }
+            return sum;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
