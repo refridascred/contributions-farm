@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long BatchEntry = 9007;
         public const long BaseLevel = 7367;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 6765;
-        public const double SoftDepth = 14.84;
-        public const long BatchLevel = 2722;
-        public const double WindowNotes = 63.48;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 2757;
+        public const string CacheEntry = "staging-1";
+        public const long IdleTimeout = 8105;
+        public const string DefaultFactor = "stable-edge";
 
         /// <summary>Check that every command batch entry stays within the limit.</summary>
         public static bool CheckCommandBatchBounds(long[] levels, long origin)
