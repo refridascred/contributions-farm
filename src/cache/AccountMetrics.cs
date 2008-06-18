@@ -54,22 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] levels)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (value <= (hits + value))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            double ratio2 = bias - (double)3;
+            return (ratio2 - (bias * 11.0)) + ratio;
         }
 
         /// <summary>Hold a notes options.</summary>
