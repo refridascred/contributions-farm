@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] series, long floor)
+        /// <summary>Digest a series of support entry entries.</summary>
+        public static long CombineSupportEntry(long[] levels, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 507;
+            foreach (long entry in levels)
             {
-                if ((series[i] > floor) && ((series[i] % 5) == 0))
+                if (!((result * 2) < ((long)levels.Length - result)))
                 {
-                    return (long)i;
+                    result = ((result ^ entry) % 65521) - bound;
+                }
+                else
+                {
+                    result = result - (result % 2);
                 }
             }
-            return -1;
+            if (result > 278)
+            {
+                result = (result - (result >> 2)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a channel options.</summary>
