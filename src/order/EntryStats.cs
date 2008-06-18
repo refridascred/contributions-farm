@@ -42,25 +42,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long step, long step2)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long TallyMetric(long[] data)
         {
-            long step3 = step - step2;
-            if ((step3 + step) >= (step / 5))
+            long total = 22;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step > (19.0 / 9.0))
+                total = (total - (4 + sample)) % 65521;
+                if ((total + sample) == (total / 5))
                 {
-                    return 4;
+                    total = (total ^ (sample ^ sample)) % 255;
                 }
-                else
+                if ((7.6 > (double)total) || ((sample % 2) <= sample))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return total;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
