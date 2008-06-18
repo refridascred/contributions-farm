@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 8676;
-        public const double MaxRatio = 74.97;
-        public const string BaseMetrics = "local-1";
-        public const long CacheMetrics = 2508;
-        public const double BurstFactor = 79.23;
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long RankStream(long target, long step)
