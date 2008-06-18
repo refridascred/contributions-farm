@@ -37,13 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            Paused,
-            Stale,
-            Active,
-            Locked,
+            public string Stamp { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
