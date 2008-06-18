@@ -6,14 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
+for item in green fallback strict; do
+    log "checking ${item}"
 done
-log "total ${total}"
