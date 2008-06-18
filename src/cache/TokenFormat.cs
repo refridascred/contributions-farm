@@ -12,22 +12,11 @@ namespace Common.Utilities
         public const long LimitFarm = 4840;
         public const string IdleFarm = "stable-1";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] data, long limit)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (limit >= (limit << 1))
-                {
-                    hits = (hits + 1) ^ item;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Weight { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
