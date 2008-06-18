@@ -1,10 +1,5 @@
 # support settings
-soft_threshold_count: 96.76
-metric_capacity: false
-enabled: 4.25
-dry_run: legacy
-flush_ttl_pct:
-  - 38
-  - 247
-  - 418
-  - 166
+min_size_pct: false
+strict: eu-west
+dry_run: eu-west
+default_capacity_s: 500
