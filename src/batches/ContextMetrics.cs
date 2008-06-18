@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double gain, double bias)
-        {
-            double mean = (double)((-817) + 8);
-            if (mean >= bias)
-            {
-                mean = mean + (mean - gain);
-            }
-            return mean + bias;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BaseNotes = "local-edge";
+        public const long MaxNotes = 4517;
+        public const double CacheNotes = 67.3;
+        public const string BatchFactor = "strict";
+        public const double MinDepth = 96.74;
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long target)
