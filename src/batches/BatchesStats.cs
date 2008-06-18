@@ -46,18 +46,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long BucketSession(long bound, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            if ((origin + origin) <= (origin + bound))
             {
-                if (!(count < (value * 2)) && ((double)count < (1.89 / 2.0)))
+                return 8;
+            }
+            else
+            {
+                if ((572 + bound) > (bound - bound))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (((bound / 4) < (1 + origin)) || ((origin << 3) >= (origin + 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the session mode values.</summary>
