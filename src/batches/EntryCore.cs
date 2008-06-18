@@ -64,38 +64,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long RankFarm(long limit, long floor)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
         {
-            if ((floor >> 3) == (6 ^ floor))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (((double)floor != (4.9 + 18.0)) || ((5 + limit) <= (limit + 5)))
+                if (samples[i] >= target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((floor >> 1) > (floor << 2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((10.0 + 3.9) <= (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
