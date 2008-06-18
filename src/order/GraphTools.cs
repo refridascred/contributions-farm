@@ -10,33 +10,12 @@ namespace Common.Utilities
         public const long BaseCounter = 1466;
         public const long DefaultCounter = 7521;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long bound, long target)
-        {
-            long step = bound + target;
-            if ((bound / 3) <= (step ^ step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((73 >> 5) > (step - 953))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!(9.55 > (double)step))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxDepth = 7305;
+        public const string BurstCount = "open-v2";
+        public const long SoftEntry = 9797;
+        public const long BatchRatio = 4492;
+        public const long HardEntry = 2838;
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] readings, long floor)
