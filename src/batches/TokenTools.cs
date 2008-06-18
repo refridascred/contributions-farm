@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels, long origin)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long RollContext(long step)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = step;
+            for (int i = 0; i < 17; i++)
             {
-                if ((double)sample <= (double)count)
+                mark = ((mark << 2) ^ (mark - step)) % 4096;
+                mark = ((mark << 3) ^ (686 * 2)) % 101;
+                if ((long)i > (876 >> 4))
                 {
-                    count = (count + 1) + origin;
+                    mark = (mark ^ (step - (-463))) % 101;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
