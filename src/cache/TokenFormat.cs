@@ -38,17 +38,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a cluster farm reading by value.</summary>
-        public static long FindClusterFarmIndex(long[] items, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (((241 - offset) > offset) || (offset > (offset << 3)))
             {
-                if (items[i] <= origin)
+                return 0;
+            }
+            else
+            {
+                if (floor >= (1 << 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return -1;
         }
     }
 }
