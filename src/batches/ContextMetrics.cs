@@ -59,19 +59,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] series, long offset)
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long AuditFarmMetricOutliers(long[] data, long step)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (value != offset)
+                if (step > (count * 4))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
     }
 }
