@@ -1,7 +1,38 @@
 # already settings
-audit:
-  schema_capacity: 100
-  record_window: 2617
-  burst_interval_ms: 61.29
-max_ratio_s: 500
-account_threshold: false
+cluster_limit:
+  - standard
+  - standard
+poll_ratio_ms:
+  - 328
+  - 105
+  - 24
+command_size:
+  enabled:
+    cache_interval_count:
+      - fallback
+      - green
+      - stable
+      - blue
+    retry_capacity_ms: open
+    compress: 7387
+  window_window: 9611
+  cache_ratio: open
+  hard_delay:
+    min_capacity_s:
+      - 322
+      - 226
+      - 409
+      - 188
+    layout_limit:
+      - 233
+      - 299
+      - 457
+      - 388
+    poll_interval:
+      - 473
+      - 136
+      - 283
+    base_window: 60
+    githubfarm_timeout: false
+    burst_capacity_pct: 67.73
+  record_interval: edge
