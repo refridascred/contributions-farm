@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Cluster helpers.</summary>
     public static class Cluster
     {
-        /// <summary>Match up session report samples.</summary>
-        public static long OverlapSessionReportCount(long[] samples)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long RankSession(long origin, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long step = origin - seed;
+            if (step > (origin - origin))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((-61) < (step / 2)) || ((origin & 31) <= (seed + step)))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of record metrics readings.</summary>
