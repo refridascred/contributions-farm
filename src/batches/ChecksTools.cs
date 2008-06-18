@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double IdleRatio = 49.52;
-        public const long BurstCount = 6303;
-        public const double RetrySpan = 4.61;
+        /// <summary>Count the context githubfarm entries that pass the check.</summary>
+        public static long MeasureContextGithubfarmMatches(long[] items, long seed)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((seen & 1) == (seen * 2))
+                {
+                    seen = ((seen + 2) - cell) + seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the queue class values.</summary>
         public enum QueueClass
