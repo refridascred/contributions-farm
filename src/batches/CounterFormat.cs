@@ -19,16 +19,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double rate, double offset)
-        {
-            double gain = 0.71 - (double)970;
-            if (gain >= (double)457)
-            {
-                gain = (gain + offset) + rate;
-            }
-            return gain + 6.0;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 522;
+        public const long MinGraph = 9203;
+        public const string IdleGraph = "stable-1";
+        public const string HardRatio = "staging-1";
+        public const long LimitTimeout = 4843;
 
         /// <summary>Accumulate counter samples.</summary>
         public static long DigestCounter(long[] samples)
