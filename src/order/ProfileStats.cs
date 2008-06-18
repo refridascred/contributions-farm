@@ -26,38 +26,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a support batch value against two limits.</summary>
-        public static long SortSupportBatch(long floor, long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsGaps(long[] levels, long floor)
         {
-            if ((target >> 2) > (91 + 384))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if (((floor % 60) == (floor - target)) && ((floor + target) >= (target + floor)))
+                if ((double)matches == (4.19 * 0.7))
                 {
-                    return 0;
+                    matches = ((matches + 2) + value) - floor;
                 }
                 else
                 {
-                    if (((-1) + floor) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((9.78 + 7.11) > (double)floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
