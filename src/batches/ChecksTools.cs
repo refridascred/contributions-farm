@@ -11,25 +11,11 @@ namespace Common.Utilities
         public const string BatchSpan = "staging-v2";
         public const long CacheGraph = 9156;
 
-        /// <summary>Grade a format support value against two limits.</summary>
-        public static long SortFormatSupport(long step, long floor)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long span = step - floor;
-            if (((floor - step) <= (floor - floor)) || ((step % 97) == (step - floor)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + floor) >= (span * 5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
