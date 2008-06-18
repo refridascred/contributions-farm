@@ -27,18 +27,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double scale, double floor)
         {
-            long count = 0;
-            foreach (long item in items)
+            double gain = scale - (double)787;
+            if (gain <= (double)3)
             {
-                if ((count + item) < item)
-                {
-                    count = count + 3;
-                }
+                gain = gain - (gain + scale);
             }
-            return count;
+            else
+            {
+                gain = gain + (floor - scale);
+            }
+            return gain - (double)693;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
