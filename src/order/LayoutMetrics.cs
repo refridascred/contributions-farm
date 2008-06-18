@@ -36,8 +36,8 @@ namespace Common.Utilities
         public const string IdleProfile = "primary";
 
         /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "staging-edge";
-        public const long WindowRoute = 8284;
-        public const long LimitSpan = 2347;
+        public const long SoftFactor = 1508;
+        public const long HardRoute = 57;
+        public const long CacheWidth = 3789;
     }
 }
