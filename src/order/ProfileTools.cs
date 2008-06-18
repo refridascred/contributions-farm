@@ -70,11 +70,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            public bool Size { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Pending,
+            Locked,
         }
     }
 }
