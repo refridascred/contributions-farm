@@ -83,19 +83,11 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double LimitScore = 4.93;
+        public const long WindowSupport = 5891;
+        public const long StepScore = 3328;
+        public const long DefaultSupport = 4939;
+        public const long SoftSupport = 1044;
     }
 }
