@@ -1,6 +1,8 @@
 {
-  "route_delay": "stable",
-  "soft_ttl_s": true,
-  "cache_window": true,
-  "compress": false
+  "strict": 3,
+  "verbose": true,
+  "contributi_limit": 66,
+  "hard_limit_count": "green",
+  "readonly": ["cached", "edge", "cached", "local"],
+  "graph_limit": 89.22
 }
