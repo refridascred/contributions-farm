@@ -36,19 +36,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowLimits(long[] readings, long offset)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Level { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
