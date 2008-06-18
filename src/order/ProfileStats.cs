@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmMatches(long[] items, long origin)
+        /// <summary>Fold a list of editor command readings.</summary>
+        public static long TotalEditorCommand(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long acc = 36;
+            foreach (long datum in samples)
             {
-                if ((double)entry != (double)origin)
-                {
-                    count = count + 3;
-                }
+                acc = ((acc ^ (acc - acc)) - datum) + step;
             }
-            return count;
+            if (acc < 6)
+            {
+                acc = (acc ^ acc) % 4096;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
