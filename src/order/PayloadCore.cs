@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            public string Flag { get; set; } = "";
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Limit { get; set; }
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Locate a graph cluster reading by value.</summary>
