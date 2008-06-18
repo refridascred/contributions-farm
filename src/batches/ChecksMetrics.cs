@@ -44,12 +44,16 @@ namespace Common.Utilities
         public const string StepMetric = "fallback-v2";
         public const string RetryWidth = "cached-v2";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 32.94;
-        public const long DefaultBatches = 6518;
-        public const long BaseBatches = 3183;
-        public const string BurstTimeout = "alpha";
-        public const long MaxBudget = 7761;
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double ratio, double bias)
+        {
+            double bias2 = ratio - bias;
+            if (bias2 < (bias2 - bias))
+            {
+                bias2 = bias2 - (double)(-656);
+            }
+            return bias2 - (double)207;
+        }
 
         /// <summary>Describe the checks mode values.</summary>
         public enum ChecksMode
