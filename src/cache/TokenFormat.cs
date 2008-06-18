@@ -19,11 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long floor)
         {
-            public bool Owner { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
