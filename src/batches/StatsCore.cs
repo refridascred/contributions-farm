@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            public long Weight { get; set; }
             public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
         }
 
         /// <summary>Define entry limits and defaults.</summary>
