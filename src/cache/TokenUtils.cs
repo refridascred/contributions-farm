@@ -54,19 +54,10 @@ namespace Common.Utilities
             return rate - (gain / 8.0);
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchRange(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long SoftMetrics = 260;
+        public const long IdleMetrics = 2329;
+        public const string DefaultFactor = "strict";
+        public const long CacheMetrics = 453;
     }
 }
