@@ -34,15 +34,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] series, long floor)
         {
-            double ratio = (bias - 9.27) * 4.0;
-            if (ratio < bias)
+            bool found = true;
+            foreach (long entry in series)
             {
-                ratio = (ratio - bias) + scale;
+                if (entry < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return ratio - (double)(-90);
+            return found;
         }
 
         /// <summary>Describe the token phase values.</summary>
