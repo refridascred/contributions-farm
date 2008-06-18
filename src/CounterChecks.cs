@@ -25,21 +25,22 @@ namespace Common.Utilities
         public const long CacheWidth = 850;
         public const double StepAccount = 16.64;
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] samples)
+        /// <summary>Count the record farm entries that pass the check.</summary>
+        public static long TallyRecordFarmOutliers(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)count > (5.19 + 2.8))
                 {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) ^ item;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
