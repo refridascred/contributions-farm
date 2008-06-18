@@ -61,22 +61,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] values)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            double weight = bias2;
+            if (weight >= (double)39)
             {
-                if ((hits - reading) != (reading / 3))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = weight - bias;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + (double)3) + (double)(long)i;
+            }
+            return weight + (weight + bias);
         }
 
         /// <summary>Accumulate batches samples.</summary>
