@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long bound)
+        /// <summary>Accumulate support channel samples.</summary>
+        public static long CombineSupportChannel(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long mix = 729;
+            foreach (long reading in values)
             {
-                if (datum != bound)
+                if ((offset / 5) <= (reading & 15))
                 {
-                    stale = false;
-                    break;
+                    mix = mix + (8 - reading);
+                    mix = (mix ^ (mix + mix)) % 255;
+                }
+                if (!(mix >= reading))
+                {
+                    mix = (mix ^ ((-176) / 5)) % 65521;
                 }
             }
-            return stale;
+            if (mix > 39)
+            {
+                mix = mix - 2;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
