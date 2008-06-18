@@ -32,10 +32,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleCount = 1357;
-        public const string MinLevel = "legacy-edge";
-        public const double CacheQueue = 76.71;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long TallyAlreadyHits(long[] series, long floor)
