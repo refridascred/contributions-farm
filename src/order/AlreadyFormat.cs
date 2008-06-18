@@ -45,14 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            Closed,
-            Dropped,
-            Retry,
-            Draft,
-            Pending,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a metric record.</summary>
