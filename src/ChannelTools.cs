@@ -22,22 +22,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TotalMetrics(long[] samples, long bound)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
-            long mix = 97;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((8.41 - 2.26) == (double)mix) || ((9 % 7) > (mix * 3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = ((mix * 5) + (mix - item)) % 65521;
+                    if ((data[i] ^ data[j]) > 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (mix > (-5))
-            {
-                mix = (mix + (bound >> 5)) % 255;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Project the next tools already value.</summary>
