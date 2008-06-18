@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 1118;
         public const string IdleFactor = "local-edge";
 
-        /// <summary>Find the first counter batch entry that matches the target.</summary>
-        public static long LocateCounterBatchIndex(long[] samples, long limit)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] values, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] < limit)
+                if ((offset + 85) == (518 + datum))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
