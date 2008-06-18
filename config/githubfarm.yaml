@@ -1,9 +1,8 @@
 # githubfarm settings
-dry_run: false
-soft_delay_s:
-  - 72
-  - 209
-  - 29
-poll_retries_ms: 250
-audit: 5813
-retry_capacity: 94.69
+farm_timeout: open
+idle_limit_ms:
+  - standard
+  - edge
+sync_window_count: 4424
+min_limit: 75
+persist: false
