@@ -39,14 +39,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Done,
-            Failed,
-            New,
-            Retry,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetryFactor = 4827;
+        public const long BatchSession = 2124;
+        public const string BurstLevel = "fallback-1";
+        public const double BurstSession = 57.53;
 
         /// <summary>Combine metrics checks values into a single score.</summary>
         public static long ScoreMetricsChecks(long[] values)
