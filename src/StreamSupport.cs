@@ -22,12 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
             Queued,
             Paused,
-            Failed,
+            Done,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
