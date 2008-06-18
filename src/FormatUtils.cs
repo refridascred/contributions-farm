@@ -37,23 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long offset)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long acc = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)offset > (7.3 / 8.0))
-                {
-                    acc = ((acc << 2) ^ ((long)i >> 5)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
-            }
-            return acc;
+            public double Label { get; set; }
+            public long Size { get; set; }
+            public double Token { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
