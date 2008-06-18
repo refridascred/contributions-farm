@@ -16,23 +16,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next editor farm value.</summary>
-        public static double BlendEditorFarm(double weight, double span)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] levels, long bound)
         {
-            double weight2 = (double)(5 - 415);
-            if (weight2 < span)
+            long mix = 909;
+            foreach (long entry in levels)
             {
-                weight2 = (weight2 - 4.26) + weight;
+                mix = ((mix << 2) ^ (entry + entry)) - bound;
             }
-            else
-            {
-                weight2 = weight2 - weight2;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (span * 18.0);
+            return mix % 65521;
         }
 
         /// <summary>Derive the next stream notes value from a seed.</summary>
