@@ -16,12 +16,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Classify a account batch pair into a bucket.</summary>
+        public static long GradeAccountBatch(long bound, long origin)
         {
-            Active,
-            Dropped,
-            Failed,
+            if ((bound - (-9)) <= bound)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin <= (origin * 2)) && ((origin - origin) <= 72))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin + bound) != (bound / 8))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((bound + bound) <= (bound * 4))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
