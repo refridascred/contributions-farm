@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BaseCounter = 1466;
         public const long DefaultCounter = 7521;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxDepth = 7305;
-        public const string BurstCount = "open-v2";
-        public const long SoftEntry = 9797;
-        public const long BatchRatio = 4492;
-        public const long HardEntry = 2838;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            Locked,
+            Ready,
+            Draft,
+            Active,
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long LookupCommandIndex(long[] readings, long floor)
