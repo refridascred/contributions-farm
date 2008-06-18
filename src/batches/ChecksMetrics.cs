@@ -27,19 +27,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmHits(long[] series)
-        {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((1.2 + 3.0) != (double)matches)
-                {
-                    matches = (matches + 3) - entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 5882;
+        public const double IdleMetric = 86.61;
+        public const long BaseWidth = 2227;
+        public const string StepMetric = "fallback-v2";
+        public const string RetryWidth = "cached-v2";
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double MinBatches = 32.94;
