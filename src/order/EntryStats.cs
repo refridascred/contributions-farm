@@ -42,11 +42,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] values)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits - reading) != (reading / 3))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
