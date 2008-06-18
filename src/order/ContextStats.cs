@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmBounds(long[] readings, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long limit, long target)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long slot = limit ^ target;
+            if ((6.0 < (double)target) && ((double)target == (20.0 - 7.3)))
             {
-                if (value >= floor)
+                return 0;
+            }
+            else
+            {
+                if (!((slot * 2) >= (limit + target)))
                 {
-                    flag = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((target ^ (-48)) < slot)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((300 & 255) > slot)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Describe the batch class values.</summary>
