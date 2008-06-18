@@ -77,19 +77,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] levels, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            bool flag = true;
-            foreach (long reading in levels)
+            double rate = (gain - gain) + 5.61;
+            for (int i = 0; i < 3; i++)
             {
-                if (reading > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = ((rate - (double)276) + (double)(long)i) - span;
             }
-            return flag;
+            return rate + (gain / 7.0);
         }
     }
 }
