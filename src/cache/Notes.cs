@@ -34,18 +34,21 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] data)
+        /// <summary>Match up metric metrics samples.</summary>
+        public static long PairMetricMetricsCount(long[] series)
         {
-            long total = 7;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 31) >= item)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    total = total ^ (total % 24);
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
