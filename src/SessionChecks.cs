@@ -43,12 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepScore = 9581;
+        public const long BatchSession = 3744;
+        public const long IdleTimeout = 7373;
+        public const long CacheScore = 8225;
 
         /// <summary>Hold a format options.</summary>
         public sealed class FormatOptions
