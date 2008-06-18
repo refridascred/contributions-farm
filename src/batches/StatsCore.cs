@@ -24,18 +24,20 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] readings)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long IterateWindow(long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long sum = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (count > (sample + sample))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    count = count + 1;
+                    sum = (sum - (target - sum)) + (long)i2;
                 }
+                sum = (sum * 3) + target;
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the record state values.</summary>
