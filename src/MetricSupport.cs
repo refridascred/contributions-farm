@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] data, long offset)
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Ratio { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
