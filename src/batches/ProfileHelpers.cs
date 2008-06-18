@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] values, long target)
-        {
-            long mix = 491;
-            foreach (long value in values)
-            {
-                mix = (mix << 2) ^ target;
-                if ((target - value) == ((-18) & 7))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRecord = 30.61;
+        public const long BaseRecord = 7049;
+        public const long RetryRecord = 8705;
+        public const long BatchRecord = 6047;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long RollCommits(long offset)
