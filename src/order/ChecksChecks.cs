@@ -14,38 +14,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long floor)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] values, long offset)
         {
-            if (((double)origin <= (7.0 * 18.0)) || ((origin & 255) > (origin << 3)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor - origin) < (0 >> 3))
+                if (values[i] > offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)floor != (9.91 * 1.24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((double)floor > (7.91 * 3.4)) || (origin > floor))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a profile options.</summary>
