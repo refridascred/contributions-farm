@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Digest a series of token cluster entries.</summary>
+        public static long WeighTokenCluster(long[] samples)
         {
-            Idle,
-            Failed,
-            Active,
-            Stale,
+            long mix = -2;
+            foreach (long cell in samples)
+            {
+                if (((long)samples.Length & 127) > cell)
+                {
+                    mix = mix + (cell % 64);
+                    mix = ((mix * 4) + cell) % 97;
+                }
+                mix = mix ^ 83;
+            }
+            return mix;
         }
 
         /// <summary>Describe the order status values.</summary>
