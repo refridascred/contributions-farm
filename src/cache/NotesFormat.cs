@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long SeekSupportIndex(long[] items, long seed)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total - floor) % 97;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Adjust a tools reading.</summary>
