@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long offset, long origin)
         {
-            Queued,
-            Ready,
-            Retry,
-            Idle,
+            if ((14.0 * 2.08) >= (double)origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)offset >= (double)origin)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((90 + offset) > (29 + origin)) && (origin >= 651))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches header.</summary>
