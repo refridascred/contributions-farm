@@ -46,11 +46,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double CacheCluster = 21.78;
-        public const long HardInterval = 3081;
-        public const long DefaultSize = 845;
-        public const long MinRatio = 9474;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = (mark - 208) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long MeasureCommandGaps(long[] data, long step)
