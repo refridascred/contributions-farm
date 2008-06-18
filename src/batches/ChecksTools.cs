@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftGraph = "cached-edge";
+        public const double DefaultGraph = 57.93;
+        public const string BatchSpan = "staging-v2";
+        public const long CacheGraph = 9156;
 
         /// <summary>Grade a format support value against two limits.</summary>
         public static long SortFormatSupport(long step, long floor)
