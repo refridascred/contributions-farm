@@ -72,19 +72,24 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool GuardToolsCommandLimits(long[] data, long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long state = 3;
+            foreach (long value in readings)
             {
-                if (datum < origin)
+                if ((state < 545) || (value <= (state - state)))
                 {
-                    ok = false;
+                    state = state ^ (33 + state);
                     break;
                 }
+                state = ((state << 2) ^ (state + state)) % 65521;
+                if ((state ^ state) < (state + state))
+                {
+                    state = state ^ (state >> 4);
+                }
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
