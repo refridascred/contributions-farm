@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long bound, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((bound - floor) == (907 + bound))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((18.0 + 19.0) > (double)bound)
                 {
-                    if ((values[i] - values[j]) != 14)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)0 != (double)bound)
                     {
-                        matches = matches + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor < (bound + bound))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
