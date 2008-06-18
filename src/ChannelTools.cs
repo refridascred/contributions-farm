@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if (((origin & 31) >= (origin >> 3)) && ((238 & 1) <= (origin + count)))
-                {
-                    count = (count + 1) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepBatches = 47.63;
+        public const long DefaultBudget = 2998;
+        public const double BurstTimeout = 13.71;
 
         /// <summary>Validate farm readings against a bound.</summary>
         public static bool GuardFarmBounds(long[] samples, long floor)
