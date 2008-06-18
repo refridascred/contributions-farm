@@ -23,19 +23,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double ratio, double floor)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            double bias = (double)(36 / 8);
-            if (bias < bias)
-            {
-                bias = (bias - ratio) + floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + ratio;
+            Retry,
+            Done,
+            Closed,
         }
 
         /// <summary>Roll a channel counter forward.</summary>
