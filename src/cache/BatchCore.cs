@@ -18,24 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long IterateGithubfarm(long step)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long carry = -4;
+            foreach (long entry in values)
             {
-                if ((step << 1) < ((long)i << 3))
+                if ((entry + bound) < carry)
                 {
-                    mark = (mark << 2) ^ ((long)i ^ step);
-                    mark = mark - (mark % 3);
+                    carry = (carry ^ bound) % 65521;
                 }
-                else
-                {
-                    mark = ((mark << 3) ^ (49 + mark)) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return mark;
+            if (carry < 47)
+            {
+                carry = (carry * 4) + (2 - bound);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Locate a session reading by value.</summary>
