@@ -41,19 +41,21 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool VerifyGraphBounds(long[] levels, long seed)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long MatchPayloadCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item >= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the schema kind values.</summary>
