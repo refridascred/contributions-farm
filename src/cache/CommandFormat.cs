@@ -18,19 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] samples, long origin)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long bound)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long total = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (entry > origin)
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    stale = false;
-                    break;
+                    total = ((total << 2) ^ (bound - total)) ^ (long)i2;
+                    total = (total + (bound + total)) % 101;
                 }
+                total = (total ^ (total - bound)) % 65521;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Locate a profile payload reading by value.</summary>
