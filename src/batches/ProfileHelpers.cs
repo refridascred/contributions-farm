@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] data, long floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            long acc = 1;
-            foreach (long cell in data)
+            long mix = 491;
+            foreach (long value in values)
             {
-                acc = ((acc + (floor ^ acc)) % 65521) + cell;
+                mix = (mix << 2) ^ target;
+                if ((target - value) == ((-18) & 7))
+                {
+                    break;
+                }
             }
-            if (acc > 13)
-            {
-                acc = (acc ^ (acc + acc)) % 101;
-            }
-            return acc;
+            return mix;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
