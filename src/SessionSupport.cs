@@ -21,19 +21,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long GradeStream(long seed, long target)
         {
-            long total = 8;
-            foreach (long sample in items)
+            if ((((-175) * 4) > target) || (2.0 > (double)seed))
             {
-                total = ((total + (total >> 4)) % 101) + sample;
+                return 7;
             }
-            if (total > 1)
+            else
             {
-                total = total ^ (total * 2);
+                if ((seed / 6) <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((5.0 * 0.99) < (double)target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
