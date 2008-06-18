@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long floor)
+        /// <summary>Roll a filter payload counter forward.</summary>
+        public static long IterateFilterPayload(long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 11; i++)
+            long acc = target;
+            for (int i = 0; i < 16; i++)
             {
-                long gap = ((long)i + 850) - (3 % 24);
-                if (mix <= (long)i)
+                acc = ((acc << 2) ^ acc) % 101;
+                if ((target < ((long)i + (long)i)) && ((target / 7) <= (acc * 2)))
                 {
-                    mix = mix ^ (mix << 1);
+                    acc = ((acc << 3) ^ ((long)i + target)) % 1000;
                 }
-                else
-                {
-                    long hits = gap * 4;
-                    mix = (mix ^ (hits + gap)) % 65521;
-                }
-                mix = ((mix * 2) + (long)i) % 97;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return mix;
+            return acc;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
