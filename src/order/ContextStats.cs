@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of cluster notes entries.</summary>
-        public static long TallyClusterNotes(long[] data)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmBounds(long[] readings, long floor)
         {
-            long total = 1;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if (((3.07 / 4.0) == (double)total) && ((total - cell) >= total))
+                if (value >= floor)
                 {
-                    total = ((total * 5) + (57 / 2)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Accumulate format commits samples.</summary>
