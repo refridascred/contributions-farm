@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long CombineStream(long[] series)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long sum = 832;
-            foreach (long reading in series)
-            {
-                sum = (((sum * 4) + 7) % 101) - reading;
-            }
-            if (sum < 983)
-            {
-                sum = sum ^ (sum ^ 1);
-            }
-            return sum;
+            Done,
+            Active,
+            Locked,
+            Closed,
         }
 
         /// <summary>Blend two order measurements.</summary>
