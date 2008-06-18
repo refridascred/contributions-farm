@@ -43,24 +43,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] levels, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long acc = 84;
-            foreach (long item in levels)
-            {
-                acc = acc + (acc >> 5);
-                acc = acc - (item ^ item);
-                if ((acc >> 3) <= offset)
-                {
-                    acc = (acc + (acc * 4)) % 101;
-                }
-            }
-            if (acc > 421)
-            {
-                acc = acc ^ (acc - offset);
-            }
-            return acc % 65521;
+            public long Size { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Hold a format options.</summary>
