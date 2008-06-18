@@ -14,14 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            Paused,
+            Retry,
+            Active,
+            Closed,
             Idle,
-            Queued,
-            Pending,
-            Done,
+            Ready,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
