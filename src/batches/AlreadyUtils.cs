@@ -12,13 +12,13 @@ namespace Common.Utilities
         public const double BurstFactor = 93.74;
         public const long HardRatio = 6685;
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
