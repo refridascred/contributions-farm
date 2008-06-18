@@ -10,18 +10,12 @@ namespace Common.Utilities
         public const double RetryFarm = 57.67;
         public const long BaseInterval = 849;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] readings, long step)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitDepth = 6770;
+        public const long DefaultChannel = 6614;
+        public const long MinChannel = 6216;
+        public const long LimitChannel = 1790;
+        public const long IdleRatio = 8526;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long origin, long limit)
