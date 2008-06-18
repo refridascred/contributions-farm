@@ -1,8 +1,19 @@
 # support settings
-enabled: 63.59
-commits_capacity: 100
-default_ratio_ms:
-  - cached
-  - open
-  - strict
-cluster_depth: 250
+batch_limit: local
+hard_interval_s: eu-west
+support_ratio:
+  cache_size_ms: 33.23
+  batch_retries_ms:
+    readonly: 58.87
+    batch_size_pct: strict
+    queue_capacity: fallback
+    already_limit: open
+  max_delay_pct: true
+  max_timeout_pct: edge
+  retry_threshold_pct: 16.17
+  base_threshold:
+    soft_threshold_s: 7468
+    schema_limit:
+      - latest
+      - legacy
+    verbose: 1324
