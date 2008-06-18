@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit record githubfarm readings against a rule.</summary>
-        public static long AuditRecordGithubfarmGaps(long[] data, long origin)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (((680 + cell) == (33 ^ cell)) && ((origin >= (cell + tally)) || ((307 >> 5) <= (origin + tally))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
