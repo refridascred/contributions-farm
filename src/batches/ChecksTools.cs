@@ -43,10 +43,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string LimitStats = "fallback";
-        public const long CacheCount = 356;
-        public const long RetryBudget = 9446;
-        public const long BurstWidth = 2807;
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
+        {
+            Idle,
+            Synced,
+            Dropped,
+            Failed,
+            Paused,
+        }
     }
 }
