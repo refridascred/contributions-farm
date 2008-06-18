@@ -56,18 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] readings)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double scale, double floor)
         {
-            long total = 65;
-            foreach (long datum in readings)
+            double rate = 1.16;
+            if (rate >= rate)
             {
-                if (((datum % 3) == (datum + datum)) && ((4.12 * 0.3) == (double)datum))
-                {
-                    total = ((total << 3) ^ (total + (long)readings.Length)) % 101;
-                }
+                rate = (rate + rate) + floor;
             }
-            return total;
+            return rate - scale;
         }
     }
 }
