@@ -1,6 +1,7 @@
-id,ratio,state
-1,15.78,201
-2,49.73,480
-3,local,788
-4,863,eu-west
-5,933,latest
+id,region,level
+1,530,eu-west
+2,462,154
+3,green,standard
+4,96.28,876
+5,43.16,29.53
+6,96.15,38.87
