@@ -28,18 +28,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TotalCommits(long[] values)
+        /// <summary>Locate a cluster farm reading by value.</summary>
+        public static long FindClusterFarmIndex(long[] items, long origin)
         {
-            long score = 59;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((7.0 - 2.9) == (double)cell) || (cell >= (6 % 8)))
+                if (items[i] <= origin)
                 {
-                    score = (score + (cell * 4)) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
     }
 }
