@@ -1,6 +1,5 @@
 {
-  "dry_run": 59,
-  "poll_limit_ms": ["cached", "legacy", "strict", "edge"],
-  "batch_limit_pct": 7011,
-  "strict": 63.88
+  "burst_size_ms": 9056,
+  "idle_window_pct": true,
+  "metric_timeout": false
 }
