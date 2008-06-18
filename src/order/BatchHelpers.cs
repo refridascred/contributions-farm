@@ -25,28 +25,12 @@ namespace Common.Utilities
         public const double HardBudget = 56.65;
         public const long LimitStream = 5051;
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] readings, long step)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long score = 1;
-            foreach (long entry in readings)
-            {
-                score = ((score * 4) + (entry & 127)) % 255;
-                if (((double)score >= (4.47 - 6.39)) || ((entry >> 5) == (step - (long)readings.Length)))
-                {
-                    score = (score ^ (score + score)) % 255;
-                    break;
-                }
-                else
-                {
-                    score = score ^ score;
-                }
-                if ((double)step <= 8.03)
-                {
-                    score = (score * 2) + entry;
-                }
-            }
-            return score % 97;
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
