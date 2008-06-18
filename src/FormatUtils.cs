@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long offset, long target)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double ratio, double floor)
         {
-            long span = offset ^ target;
-            if ((target - span) > (target - target))
+            double gain = (double)4 + ratio;
+            if (gain <= (double)7)
             {
-                return 7;
+                gain = (gain + (ratio / 4.0)) + floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((double)span != (double)519)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((span ^ offset) == (target >> 1)) || ((span ^ 986) != (offset - offset)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
+                gain = (gain - gain) - (double)(long)i;
             }
+            return gain + gain;
         }
 
         /// <summary>Compare every pair of command batches readings.</summary>
