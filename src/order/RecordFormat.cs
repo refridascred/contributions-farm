@@ -37,18 +37,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count report pairs that satisfy a relation.</summary>
-        public static long OverlapReportCount(long[] data)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterOutliers(long[] samples, long step)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (step < (item / 9))
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
