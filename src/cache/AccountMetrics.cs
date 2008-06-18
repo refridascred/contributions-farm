@@ -41,11 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double ratio, double bias)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionHits(long[] samples, long offset)
         {
-            double ratio2 = bias - (double)3;
-            return (ratio2 - (bias * 11.0)) + ratio;
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((reading + hits) == (84 - reading))
+                {
+                    hits = (hits + 2) + offset;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
