@@ -28,11 +28,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksBounds(long[] levels, long offset)
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a farm reading.</summary>
