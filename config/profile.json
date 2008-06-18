@@ -1,6 +1,5 @@
 {
-  "burst_capacity_pct": 8047,
-  "soft_interval": 1024,
-  "warm_window_ms": ["cached", "green", "edge"],
-  "warm_retries": "eu-west"
+  "max_retries": 84.27,
+  "burst_delay": false,
+  "base_threshold": 46
 }
