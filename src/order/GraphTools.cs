@@ -58,9 +58,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowSupport = 9587;
-        public const double LimitLevel = 14.31;
-        public const long IdleSupport = 427;
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long OverlapCounterCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
