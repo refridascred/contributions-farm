@@ -22,19 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double bias, double offset)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double rate = 9.22;
-            if (rate > offset)
-            {
-                rate = rate + 3.0;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias * 6.0)) + (double)(long)i;
-            }
-            return rate + offset;
+            Idle,
+            Draft,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the notes status values.</summary>
