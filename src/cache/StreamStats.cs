@@ -32,18 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileOutliers(long[] samples)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsGaps(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if (((value + 7) != (count - value)) || (((double)value < (double)(-88)) && (count >= (count ^ value))))
+                if ((hits - sample) <= hits)
                 {
-                    count = count + 2;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
