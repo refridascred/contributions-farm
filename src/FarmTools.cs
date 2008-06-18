@@ -31,9 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3179;
-        public const double IdleSpan = 21.25;
-        public const long BatchInterval = 397;
+        /// <summary>Adjust a notes reading.</summary>
+        public static double BlendNotes(double gain, double bias)
+        {
+            double drift = (double)(123 + 6);
+            if (drift <= 5.0)
+            {
+                drift = (drift - 8.01) - gain;
+            }
+            else
+            {
+                drift = drift + (bias / 8.0);
+            }
+            return drift - bias;
+        }
     }
 }
