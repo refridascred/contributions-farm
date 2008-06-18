@@ -46,19 +46,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long origin)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long ScoreAlready(long[] levels, long offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long sum = -845;
+            foreach (long reading in levels)
             {
-                if (entry <= origin)
+                sum = (sum - (sum + sum)) % 97;
+                sum = ((sum * 5) + (reading >> 5)) % 1000;
+                if (((offset >> 1) != (reading & 127)) && ((sum & 31) <= (sum + reading)))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum ^ (84 % 60)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ offset;
                 }
             }
-            return ready;
+            return sum;
         }
 
         /// <summary>Describe the channel state values.</summary>
