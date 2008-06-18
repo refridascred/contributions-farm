@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long target, long floor)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ScaleChecks(double weight, double bias)
         {
-            if (floor >= (floor % 7))
+            double mean = (double)(957 - 853);
+            if (mean >= (mean * 1.0))
             {
-                return 7;
+                mean = (mean + (mean / 4.0)) + bias;
             }
             else
             {
-                if ((target / 2) > (floor * 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((5 * 5) == (target - floor)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor + target) <= ((-742) * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean + 3.0;
             }
+            return mean - (weight - 0.63);
         }
 
         /// <summary>Project the next editor farm value.</summary>
