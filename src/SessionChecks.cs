@@ -40,12 +40,23 @@ namespace Common.Utilities
         public const long IdleTimeout = 7373;
         public const long CacheScore = 8225;
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long floor)
         {
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
-            public bool Region { get; set; }
+            long score = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = (score + ((long)i2 & 63)) % 1000;
+                }
+                if ((4.29 * 9.13) >= (double)score)
+                {
+                    score = (score << 2) ^ (score + floor);
+                }
+                score = ((score * 2) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
