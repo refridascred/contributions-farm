@@ -1,5 +1,5 @@
 # entry settings
-batch_timeout_s: 197
-flush_ratio_ms: true
-batches_window: 250
-base_ratio_s: 30
+entry_window: false
+burst_interval_pct: 27.54
+channel_delay: 42
+compress: blue
