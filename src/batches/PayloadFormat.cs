@@ -51,13 +51,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long origin, long offset)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            if (((offset * 3) < (origin - offset)) && ((offset / 9) < (offset - offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((offset / 4) < (origin >> 1)) || ((7.73 / 2.0) > (double)origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((47 - origin) <= (17 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((326 + offset) > (origin * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
