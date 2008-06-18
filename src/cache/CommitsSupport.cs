@@ -51,17 +51,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first account profile entry that matches the target.</summary>
-        public static long FindAccountProfileIndex(long[] levels, long target)
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool GuardToolsCommandLimits(long[] data, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if (levels[i] <= target)
+                if (datum < origin)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Adjust a profile reading.</summary>
