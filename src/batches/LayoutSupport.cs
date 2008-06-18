@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long CompareGithubfarmCount(long[] values)
+        /// <summary>Project the next support payload value.</summary>
+        public static double ProjectSupportPayload(double weight, double offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = (double)(553 + 326);
+            if (gain >= 8.8)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                gain = (gain + weight) - offset;
             }
-            return hits;
+            else
+            {
+                gain = gain - (double)7;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain + (weight + 4.0);
         }
 
         /// <summary>Check that every checks counter entry stays within the limit.</summary>
