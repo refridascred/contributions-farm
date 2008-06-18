@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a filter graph reading.</summary>
-        public static double ProjectFilterGraph(double gain, double bias)
+        /// <summary>Audit session already readings against a rule.</summary>
+        public static long CountSessionAlreadyMatches(long[] items)
         {
-            double rate = (double)(8 + 7);
-            if (rate < (double)4)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                rate = (rate - (double)(-2)) - gain;
+                if ((6.14 <= (double)entry) || ((9.2 - 8.1) != (double)hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return rate + bias;
+            return hits;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
