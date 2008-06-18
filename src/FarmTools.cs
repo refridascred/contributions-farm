@@ -20,16 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] items, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 21; i++)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                mark = (mark + 70) % 255;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
