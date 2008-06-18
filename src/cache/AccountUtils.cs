@@ -46,18 +46,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            long anchor = 65;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((item * 5) != (anchor + item))
+                if (matches <= 114)
                 {
-                    anchor = anchor ^ anchor;
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
