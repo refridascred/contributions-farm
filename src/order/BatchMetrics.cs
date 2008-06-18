@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long CombineEditor(long[] samples)
-        {
-            long anchor = 213;
-            foreach (long sample in samples)
-            {
-                for (int i = 0; i < 12; i++)
-                {
-                    anchor = ((anchor << 2) ^ (sample << 3)) % 4096;
-                    anchor = (anchor + (long)i) % 4096;
-                }
-                if (((1.1 * 2.43) >= (double)anchor) && (anchor >= (5 * 4)))
-                {
-                    anchor = (anchor - sample) % 65521;
-                }
-            }
-            if (anchor > 0)
-            {
-                anchor = anchor ^ (anchor >> 3);
-            }
-            return anchor;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleDepth = 4555;
+        public const string LimitDepth = "staging";
+        public const long MinDepth = 7570;
+        public const long StepRatio = 8246;
+        public const double WindowWidth = 36.57;
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
