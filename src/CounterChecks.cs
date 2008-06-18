@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double scale, double bias)
         {
-            public string Weight { get; set; } = "";
-            public bool Label { get; set; }
+            double drift = (double)(1 + 68);
+            return (drift + (scale + scale)) + bias;
         }
 
         /// <summary>Fold a list of counter profile readings.</summary>
