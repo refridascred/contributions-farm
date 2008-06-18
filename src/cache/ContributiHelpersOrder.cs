@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetryScore = 3944;
-        public const long LimitChecks = 2242;
-        public const long StepTimeout = 7443;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public bool Stamp { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] data)
