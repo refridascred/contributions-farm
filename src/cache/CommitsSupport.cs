@@ -47,12 +47,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowBatches = 2503;
-        public const long WindowSpan = 9746;
-        public const double RetryBatches = 90.32;
-        public const long CacheScore = 6577;
-        public const string BurstSize = "fallback";
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorHits(long[] data)
+        {
+            long hits = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + 4) != (217 >> 5))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] readings, long bound)
