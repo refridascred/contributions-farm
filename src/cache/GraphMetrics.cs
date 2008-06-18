@@ -25,32 +25,11 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long limit, long floor)
-        {
-            if ((floor >> 1) == (floor / 9))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((limit % 100) < (15 << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (986 < limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 2144;
+        public const long DefaultDepth = 9895;
+        public const string MaxProfile = "alpha-v2";
+        public const long BurstProfile = 6368;
 
         /// <summary>Check that every filter entry entry stays within the limit.</summary>
         public static bool GuardFilterEntryBounds(long[] readings, long origin)
