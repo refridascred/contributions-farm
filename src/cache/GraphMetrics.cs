@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of support entry entries.</summary>
-        public static long CombineSupportEntry(long[] levels, long bound)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long TotalProfile(long[] readings, long seed)
         {
-            long result = 507;
-            foreach (long entry in levels)
+            long mix = 0;
+            foreach (long value in readings)
             {
-                if (!((result * 2) < ((long)levels.Length - result)))
-                {
-                    result = ((result ^ entry) % 65521) - bound;
-                }
-                else
-                {
-                    result = result - (result % 2);
-                }
+                mix = ((mix - value) % 255) + seed;
             }
-            if (result > 278)
-            {
-                result = (result - (result >> 2)) % 101;
-            }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a channel options.</summary>
