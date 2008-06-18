@@ -28,18 +28,11 @@ namespace Common.Utilities
         public const long HardReport = 5530;
         public const string BatchReport = "alpha";
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextOutliers(long[] levels)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if (hits < (reading - 17))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
