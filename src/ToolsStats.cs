@@ -16,19 +16,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine order stream values into a single score.</summary>
-        public static long WeighOrderStream(long[] series, long step)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long score = 237;
-            foreach (long reading in series)
-            {
-                score = ((score - 20) % 255) + reading;
-            }
-            if (score > 623)
-            {
-                score = ((score * 4) + (step / 6)) % 101;
-            }
-            return score;
+            Done,
+            Closed,
+            Pending,
         }
 
         /// <summary>Hold a layout summary.</summary>
