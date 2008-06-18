@@ -6,19 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=180
-log "limit is ${COMMAND_LIMIT}"
-
-for item in standard cached; do
+for item in eu-west fallback blue staging; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+COMMAND_LIMIT=178
+log "limit is ${COMMAND_LIMIT}"
