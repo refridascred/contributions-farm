@@ -15,22 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long FoldPayload(long[] data, long bound)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 207;
-            foreach (long datum in data)
-            {
-                if ((acc * 5) != (bound - acc))
-                {
-                    acc = ((acc * 2) + (datum - bound)) % 101;
-                }
-            }
-            if (acc > 82)
-            {
-                acc = ((acc << 2) ^ acc) % 65521;
-            }
-            return acc;
+            Active,
+            Pending,
+            Queued,
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
