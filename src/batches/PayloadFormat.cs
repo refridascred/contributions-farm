@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double scale, double floor)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteLimits(long[] items, long step)
         {
-            double weight = scale;
-            if (weight <= weight)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                weight = weight + (double)(-42);
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - floor;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - scale) + (double)(long)i;
-            }
-            return weight + floor;
+            return valid;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
