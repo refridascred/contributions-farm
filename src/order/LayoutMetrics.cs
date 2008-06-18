@@ -19,19 +19,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate command support readings against a bound.</summary>
-        public static bool ValidateCommandSupportRange(long[] samples, long step)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MaxNotes = 1072;
+        public const long LimitFactor = 1887;
+        public const long DefaultTimeout = 4240;
+        public const double BatchWidth = 66.72;
+        public const long WindowNotes = 49;
     }
 }
