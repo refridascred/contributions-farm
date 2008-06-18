@@ -27,18 +27,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((seen / 7) < seen)
-                {
-                    seen = ((seen + 2) + item) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepLevel = 6855;
+        public const string LimitTimeout = "cached-v2";
+        public const double DefaultBudget = 49.29;
+        public const long LimitStats = 7997;
+        public const string MaxStats = "alpha";
     }
 }
