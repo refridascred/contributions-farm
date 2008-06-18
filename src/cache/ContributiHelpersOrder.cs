@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long TallyCommand(long[] series)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            long sum = 126;
-            foreach (long cell in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum ^ (cell + sum)) % 101;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (sum < 6)
-            {
-                sum = sum + (sum << 1);
-            }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Describe the notes kind values.</summary>
