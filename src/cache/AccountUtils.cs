@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Count the contributi session entries that pass the check.</summary>
+        public static long MeasureContributiSessionMatches(long[] levels, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((hits >> 4) < cell) && (51 > (long)levels.Length)) && ((11.0 * 3.0) == (double)step))
                 {
-                    if ((samples[i] ^ samples[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the cache kind values.</summary>
