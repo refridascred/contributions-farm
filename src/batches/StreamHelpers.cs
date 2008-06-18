@@ -39,23 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next cache layout value.</summary>
-        public static double ProjectCacheLayout(double scale, double span)
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
         {
-            double load = scale;
-            if (load >= (load * 5.82))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load + span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + scale) + (double)(long)i;
-            }
-            return load + (scale + span);
+            return matches;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
