@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Derive the next report schema value from a seed.</summary>
+        public static long SeriesReportSchema(long origin)
         {
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 2) ^ origin) % 1000;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
