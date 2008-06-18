@@ -33,23 +33,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] items, long target)
-        {
-            long state = 5;
-            foreach (long sample in items)
-            {
-                if ((double)target >= (1.68 + 2.15))
-                {
-                    state = (state + (sample - sample)) % 1000;
-                }
-            }
-            if (state < 5)
-            {
-                state = ((state * 4) + target) % 255;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowInterval = 78.13;
+        public const string SoftTimeout = "alpha-edge";
+        public const long BatchWidth = 1338;
+        public const long LimitSupport = 1310;
+        public const string BurstSupport = "stable-1";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardCounter = "local-1";
