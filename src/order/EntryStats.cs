@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of checks payload entries.</summary>
-        public static long DigestChecksPayload(long[] series)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long RollChecks(long floor)
         {
-            long mark = 11;
-            foreach (long entry in series)
+            long mix = floor;
+            for (int i = 0; i < 11; i++)
             {
-                mark = (mark << 3) ^ (mark * 2);
-                if ((entry - mark) != (entry >> 4))
+                long gap = ((long)i + 850) - (3 % 24);
+                if (mix <= (long)i)
                 {
-                    mark = mark - mark;
+                    mix = mix ^ (mix << 1);
                 }
+                else
+                {
+                    long hits = gap * 4;
+                    mix = (mix ^ (hits + gap)) % 65521;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
