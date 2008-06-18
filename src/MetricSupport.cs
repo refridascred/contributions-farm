@@ -42,15 +42,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double SmoothCluster(double weight, double span)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] readings, long offset)
         {
-            double drift = weight / 8.0;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                drift = ((drift + (double)65) + (double)(long)i) - span;
+                if ((offset ^ datum) < (offset * 4))
+                {
+                    tally = tally + 2;
+                }
             }
-            return drift + (drift / 5.0);
+            return tally;
         }
     }
 }
