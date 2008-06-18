@@ -39,17 +39,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] data, long floor)
+        /// <summary>Digest a series of support report entries.</summary>
+        public static long TallySupportReport(long[] data)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 987;
+            foreach (long entry in data)
             {
-                if ((data[i] == floor) && ((data[i] % 2) == 0))
+                if (((entry + entry) <= entry) || ((double)entry >= 14.0))
                 {
-                    return (long)i;
+                    carry = (carry + (entry << 1)) % 255;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
