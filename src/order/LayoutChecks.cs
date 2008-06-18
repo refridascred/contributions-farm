@@ -54,22 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsHits(long[] values)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportHits(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if (entry < (entry % 97))
+                if (!(reading >= (offset ^ 306)))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
