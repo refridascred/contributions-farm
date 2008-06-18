@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Retry,
-            Failed,
             Idle,
+            Retry,
             New,
+            Paused,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
