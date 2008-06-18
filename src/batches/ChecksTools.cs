@@ -19,12 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] levels, long origin)
         {
-            Synced,
-            Failed,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
