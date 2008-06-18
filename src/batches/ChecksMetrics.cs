@@ -66,18 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] items)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] levels)
         {
-            long count = 0;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((19.0 + 8.0) <= (double)count)
+                if ((double)seen >= (double)sample)
                 {
-                    count = (count + 3) + value;
+                    seen = seen + 2;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
