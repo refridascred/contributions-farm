@@ -15,15 +15,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
-        {
-            Ready,
-            Closed,
-            Pending,
-            Idle,
-            Draft,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long CacheRatio = 1253;
+        public const long CacheFactor = 334;
+        public const string BatchLevel = "open-v2";
+        public const long CacheInterval = 3213;
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
