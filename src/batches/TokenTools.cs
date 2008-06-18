@@ -34,19 +34,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long ScoreStats(long[] values)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            long mark = 74;
-            foreach (long entry in values)
-            {
-                mark = ((mark * 3) + entry) % 101;
-                if ((1.55 + 3.0) >= (double)(long)values.Length)
-                {
-                    mark = ((mark * 5) + entry) % 65521;
-                }
-            }
-            return mark % 4096;
+            public string Label { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
     }
 }
