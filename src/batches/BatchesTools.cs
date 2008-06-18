@@ -27,21 +27,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] samples)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long CombineCommand(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 4;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor * 3) + (step + (long)samples.Length)) + reading;
+                if ((9.3 / 9.0) == (double)step)
                 {
-                    if ((samples[i] + samples[j]) != 16)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
             }
-            return count;
+            return anchor;
         }
     }
 }
