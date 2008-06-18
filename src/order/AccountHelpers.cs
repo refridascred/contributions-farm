@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] values)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long floor)
         {
-            long acc = 2;
-            foreach (long cell in values)
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((440 / 4) >= acc) || (87 > (cell + (-5))))
+                if ((0.4 * 9.23) >= (double)anchor)
                 {
-                    acc = (acc - (acc + acc)) % 255;
+                    anchor = ((anchor << 2) ^ ((long)i - 467)) % 4096;
                 }
                 else
                 {
-                    acc = (acc * 4) + cell;
+                    anchor = ((anchor * 2) + ((long)i % 16)) % 4096;
                 }
+                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return acc % 65521;
+            return anchor;
         }
 
         /// <summary>Describe the metric status values.</summary>
