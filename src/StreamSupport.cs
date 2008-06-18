@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] items)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading > (seen & 255)) || (((seen * 2) == (reading - reading)) || (reading > (seen & 7))))
+                if (data[i] > bound)
                 {
-                    seen = seen + 2;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
