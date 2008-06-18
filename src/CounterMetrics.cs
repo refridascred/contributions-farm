@@ -18,38 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a account batch pair into a bucket.</summary>
-        public static long GradeAccountBatch(long bound, long origin)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            if ((bound - (-9)) <= bound)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin <= (origin * 2)) && ((origin - origin) <= 72))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin + bound) != (bound / 8))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((bound + bound) <= (bound * 4))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Dropped,
+            Active,
         }
 
         /// <summary>Digest a series of channel entries.</summary>
