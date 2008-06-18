@@ -38,17 +38,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LookupGraphIndex(long[] samples, long origin)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] data, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 66;
+            foreach (long entry in data)
             {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
+                mark = (mark - (entry * 4)) % 4096;
             }
-            return -1;
+            if (mark > 5)
+            {
+                mark = (mark - (origin ^ mark)) % 255;
+            }
+            return mark;
         }
     }
 }
