@@ -12,21 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Compare every pair of queue farm readings.</summary>
-        public static long CompareQueueFarmCount(long[] samples)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public bool Region { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
