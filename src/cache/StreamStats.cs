@@ -35,22 +35,17 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LocateMetricIndex(long[] readings, long seed)
         {
-            long total = 82;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (4.33 > (double)reading)
+                if (readings[i] >= seed)
                 {
-                    total = total + 97;
+                    return (long)i;
                 }
             }
-            if (total > 579)
-            {
-                total = ((total * 4) + (total ^ total)) % 4096;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Count metrics batches pairs that satisfy a relation.</summary>
