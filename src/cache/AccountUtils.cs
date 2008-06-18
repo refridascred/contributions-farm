@@ -38,19 +38,14 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long FoldCommand(long[] series)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long sum = 539;
-            foreach (long value in series)
-            {
-                sum = ((sum << 2) ^ (value ^ value)) % 97;
-            }
-            if (sum < 5)
-            {
-                sum = sum - 26;
-            }
-            return sum % 1000;
+            Pending,
+            Retry,
+            Locked,
+            Paused,
+            Ready,
         }
     }
 }
