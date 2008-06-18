@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Count the support route entries that pass the check.</summary>
+        public static long AuditSupportRouteMatches(long[] data, long bound)
         {
-            Ready,
-            Synced,
-            Queued,
-            Active,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((bound < (2 + reading)) || ((hits % 5) < 1)) && !((427 % 8) == (reading >> 4)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
