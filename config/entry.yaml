@@ -1,8 +1,23 @@
 # entry settings
-format_delay: 43.33
-githubfarm_limit: 80
-githubfarm_size:
-  - open
-  - stable
-  - stable
-audit: false
+soft_depth_s: true
+dry_run: eu-west
+warm_limit:
+  githubfarm_depth: local
+  flush_depth_ms: open
+  compress: legacy
+  sync_limit: 26
+default_timeout_pct:
+  context_retries: false
+  default_retries_pct:
+    base_timeout:
+      - 460
+      - 468
+      - 320
+      - 164
+    warm_timeout_count: 1012
+    soft_ratio: 47.32
+    report_retries: cached
+    max_depth_count: false
+    min_window_ms: standard
+  stream_delay: cached
+  cache_retries_count: primary
