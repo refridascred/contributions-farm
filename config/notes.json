@@ -1,5 +1,5 @@
 {
-  "order_ttl": 60,
-  "max_ratio_count": 30,
-  "poll_capacity_count": 62.85
+  "persist": true,
+  "base_window_ms": true,
+  "compress": "latest"
 }
