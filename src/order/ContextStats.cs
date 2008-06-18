@@ -16,11 +16,18 @@ namespace Common.Utilities
             return weight2 - 5.19;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 4585;
-        public const long MinDepth = 5720;
-        public const double BurstQueue = 9.46;
-        public const string RetryQueue = "staging-v2";
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long FindChannelIndex(long[] samples, long origin)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of batch entries.</summary>
         public static long FoldBatch(long[] samples, long origin)
