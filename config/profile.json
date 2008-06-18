@@ -1,6 +1,17 @@
 {
-  "cache_ttl_ms": "stable",
-  "strict": 85.33,
-  "readonly": false,
-  "batch_interval_ms": 70.0
+  "sync_timeout_ms": [402, 85, 402, 266],
+  "entry_depth": "eu-west",
+  "burst_size": {
+    "persist": [169, 271],
+    "idle_limit": 72,
+    "batches_retries": [40, 205, 251],
+    "schema_ttl": 250,
+    "flush_timeout_pct": "staging"
+  },
+  "hard_delay_ms": false,
+  "entry_size": {
+    "warm_delay_s": 35.54,
+    "notes_depth": 8833,
+    "idle_interval_s": ["primary", "strict", "open"]
+  }
 }
