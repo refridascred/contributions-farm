@@ -54,19 +54,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every counter stats entry stays within the limit.</summary>
-        public static bool CheckCounterStatsBounds(long[] data, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsHits(long[] values)
         {
-            bool found = true;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (datum > seed)
+                if (entry < (entry % 97))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
