@@ -20,13 +20,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
-        {
-            Synced,
-            Locked,
-            Pending,
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 6437;
+        public const long CacheChannel = 727;
+        public const string DefaultChannel = "legacy";
 
         /// <summary>Roll a metrics counter forward.</summary>
         public static long RollMetrics(long offset)
