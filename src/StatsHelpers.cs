@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every context token entry stays within the limit.</summary>
-        public static bool VerifyContextTokenRange(long[] samples, long bound)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
