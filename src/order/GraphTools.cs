@@ -77,13 +77,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Classify a channel entry pair into a bucket.</summary>
+        public static long ClassifyChannelEntry(long offset, long bound)
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Score { get; set; }
-            public string Flag { get; set; } = "";
+            if (((bound ^ bound) < offset) || ((offset % 12) < (68 * 4)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (bound >= offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound >> 2) >= (bound + offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
