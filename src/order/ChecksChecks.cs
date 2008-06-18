@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of token cluster entries.</summary>
-        public static long WeighTokenCluster(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamHits(long[] values)
         {
-            long mix = -2;
-            foreach (long cell in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (((long)samples.Length & 127) > cell)
+                if (!((datum - (long)values.Length) < (tally + datum)))
                 {
-                    mix = mix + (cell % 64);
-                    mix = ((mix * 4) + cell) % 97;
+                    tally = tally + 2;
                 }
-                mix = mix ^ 83;
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the order status values.</summary>
