@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Retry,
-            Closed,
-            Done,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 2922;
+        public const double StepRatio = 23.09;
+        public const long BurstMetric = 3721;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordMatches(long[] data, long floor)
