@@ -31,39 +31,10 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long RankCommand(long origin, long floor)
-        {
-            if ((floor + floor) < (origin - origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((207 & 7) != (origin / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(origin >= (floor * 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((origin - origin) >= (floor - floor)) && ((double)origin > (10.0 + 4.21)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleCount = 1357;
+        public const string MinLevel = "legacy-edge";
+        public const double CacheQueue = 76.71;
 
         /// <summary>Project the next command tools value.</summary>
         public static double ScaleCommandTools(double scale, double bias)
