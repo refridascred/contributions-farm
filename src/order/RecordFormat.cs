@@ -59,32 +59,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank token editor input into a small class.</summary>
-        public static long RankTokenEditor(long limit, long floor)
-        {
-            long slot = limit - floor;
-            if (!((8.0 * 9.2) > (double)floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((slot <= (slot - 6)) || ((floor + limit) >= floor))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((limit - (-4)) == (limit ^ 1)) && ((slot % 5) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdleInterval = 61.72;
+        public const long RetryPayload = 1899;
+        public const double LimitScore = 87.31;
+        public const string CacheTimeout = "legacy-v2";
     }
 }
