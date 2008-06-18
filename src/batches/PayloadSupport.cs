@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string IdleChecks = "alpha";
-        public const long DefaultChecks = 2863;
-        public const string HardInterval = "standard-edge";
-        public const long BatchInterval = 1378;
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 8676;
+        public const double MaxRatio = 74.97;
+        public const string BaseMetrics = "local-1";
+        public const long CacheMetrics = 2508;
+        public const double BurstFactor = 79.23;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] samples)
