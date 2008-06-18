@@ -48,12 +48,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9433;
-        public const long WindowEntry = 4514;
-        public const long HardEntry = 9835;
-        public const long BurstLevel = 9326;
-        public const string MinDepth = "alpha-edge";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items, long limit)
+        {
+            long anchor = 9;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor * 4) + anchor) + datum;
+            }
+            if (anchor < 7)
+            {
+                anchor = (anchor ^ (limit % 100)) % 4096;
+            }
+            return anchor % 65521;
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
