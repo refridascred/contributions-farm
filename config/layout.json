@@ -1,19 +1,6 @@
 {
-  "cache_delay": {
-    "enabled": 75,
-    "batch_retries": 6.73,
-    "flush_ratio_s": 1283,
-    "account_capacity": 60
-  },
-  "warm_timeout": "cached",
-  "poll_size_s": 4.15,
-  "warm_window": ["fallback", "stable"],
-  "checks_depth": {
-    "layout_timeout": 21,
-    "contributi_delay": 72.45,
-    "persist": "legacy",
-    "sync_size_ms": "stable",
-    "default_threshold_ms": 56
-  },
-  "compress": "open"
+  "flush_window_s": 83,
+  "warm_depth_count": 8486,
+  "payload_ratio": 83,
+  "stats_window": "staging"
 }
