@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool CheckEditorRange(long[] items, long origin)
+        /// <summary>Accumulate metric commits samples.</summary>
+        public static long DigestMetricCommits(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            long carry = 484;
+            foreach (long cell in readings)
             {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = (carry - (carry + carry)) ^ cell;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
