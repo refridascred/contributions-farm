@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] series, long offset)
         {
-            Stale,
-            Idle,
-            Queued,
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (entry > (offset % 3))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the counter phase values.</summary>
