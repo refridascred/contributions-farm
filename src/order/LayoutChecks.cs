@@ -19,11 +19,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1769;
-        public const long SoftInterval = 6032;
-        public const string LimitLevel = "staging-1";
-        public const string LimitNotes = "latest";
+        /// <summary>Define token limits and defaults.</summary>
+        public const string DefaultToken = "local";
+        public const long SoftToken = 4954;
+        public const long LimitToken = 1427;
+        public const long MaxToken = 1703;
+        public const string MinToken = "legacy";
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
