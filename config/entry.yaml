@@ -1,7 +1,12 @@
 # entry settings
-account_capacity: cached
-format_depth: primary
-hard_timeout_count: cached
-hard_size:
-  - 292
-  - 221
+filter_ratio: legacy
+warm_window_pct: 87.4
+burst_ratio_ms:
+  - 140
+  - 288
+  - 378
+flush_ratio:
+  - 140
+  - 493
+  - 481
+  - 59
