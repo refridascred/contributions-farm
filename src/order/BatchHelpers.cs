@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double offset)
+        /// <summary>Audit record githubfarm readings against a rule.</summary>
+        public static long AuditRecordGithubfarmGaps(long[] data, long origin)
         {
-            double ratio = offset;
-            if (ratio > offset)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                ratio = (ratio - (offset - ratio)) + gain;
+                if (((680 + cell) == (33 ^ cell)) && ((origin >= (cell + tally)) || ((307 >> 5) <= (origin + tally))))
+                {
+                    tally = tally + 3;
+                }
             }
-            return ratio + 1.5;
+            return tally;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
