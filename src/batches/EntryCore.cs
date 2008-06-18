@@ -62,21 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next window entry value from a seed.</summary>
-        public static long RollWindowEntry(long offset)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                double weight = 9.1 / 9.0;
-                if (!(((weight - weight) < (weight * 18.0)) || ((double)(long)i >= (7.19 * 7.42))))
-                {
-                    state = state ^ (state - offset);
-                    state = state - (long)i;
-                }
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
