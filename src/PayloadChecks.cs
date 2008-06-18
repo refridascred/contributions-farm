@@ -20,18 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowMatches(long[] levels, long target)
+        /// <summary>Digest a series of route layout entries.</summary>
+        public static long CombineRouteLayout(long[] data)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long carry = 249;
+            foreach (long reading in data)
             {
-                if (((target / 9) > (target - matches)) && ((2 * 5) >= (value - matches)))
+                if ((carry & 3) >= reading)
                 {
-                    matches = matches + 1;
+                    carry = ((carry << 3) ^ (carry - (long)data.Length)) % 97;
+                }
+                else
+                {
+                    carry = (carry + (reading & 127)) % 97;
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
