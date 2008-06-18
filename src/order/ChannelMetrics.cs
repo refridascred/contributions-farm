@@ -14,20 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Project the next farm githubfarm value.</summary>
-        public static double SmoothFarmGithubfarm(double bias, double floor)
-        {
-            double scale = (10.0 / 3.0) * 2.0;
-            if (scale < 3.92)
-            {
-                scale = ((scale + (scale - scale)) - bias) + floor;
-            }
-            else
-            {
-                scale = scale + (double)21;
-            }
-            return scale - 7.28;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleFarm = 6308;
+        public const long HardFarm = 5024;
+        public const string IdleInterval = "latest-1";
+        public const string StepFarm = "latest-edge";
+        public const string CacheCount = "alpha";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseCount = 3959;
