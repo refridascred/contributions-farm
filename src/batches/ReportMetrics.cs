@@ -24,18 +24,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 596;
         public const long BaseStream = 9696;
 
-        /// <summary>Audit payload channel readings against a rule.</summary>
-        public static long AuditPayloadChannelHits(long[] readings, long bound)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                if ((tally - cell) < (cell ^ bound))
+                if (sample > offset)
                 {
-                    tally = tally + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
