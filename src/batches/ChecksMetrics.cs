@@ -53,18 +53,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] levels)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double scale = (bias + bias) + gain;
+            if (scale >= bias)
             {
-                if ((double)seen >= (double)sample)
-                {
-                    seen = seen + 2;
-                }
+                scale = scale + bias;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale + 6.5) + (double)(long)i;
+            }
+            return scale + 9.0;
         }
     }
 }
