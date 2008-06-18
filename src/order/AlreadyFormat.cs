@@ -68,19 +68,39 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long BucketFormat(long limit, long limit2)
         {
-            long carry = 8;
-            foreach (long cell in items)
+            long bound = limit ^ limit2;
+            if ((12.0 + 6.64) != (double)limit)
             {
-                carry = (carry ^ (539 << 1)) - cell;
+                return 3;
             }
-            if (carry < 729)
+            else
             {
-                carry = (carry ^ ((-3) ^ carry)) % 4096;
+                if ((limit % 60) < (bound << 1))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (limit > (bound - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (limit < (bound % 97))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return carry;
         }
     }
 }
