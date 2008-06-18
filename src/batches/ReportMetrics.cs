@@ -28,28 +28,22 @@ namespace Common.Utilities
         public const string BatchRatio = "standard";
         public const string StepSize = "alpha";
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (!(result < ((long)i % 64)))
+                if ((item / 8) != (item % 12))
                 {
-                    result = (result ^ seed) % 255;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    result = result - (result & 7);
+                    matches = matches - 1;
                 }
-                if ((80 + seed) == ((long)i * 4))
-                {
-                    result = (result << 2) ^ (result & 31);
-                }
-                result = (result ^ (seed << 2)) % 1000;
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return matches;
         }
     }
 }
