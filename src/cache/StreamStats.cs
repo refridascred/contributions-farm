@@ -29,19 +29,11 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] readings, long bound)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long mix = 48;
-            foreach (long datum in readings)
-            {
-                mix = ((mix * 3) + datum) % 4096;
-            }
-            if (mix < 25)
-            {
-                mix = ((mix * 4) + (bound << 3)) % 255;
-            }
-            return mix;
+            public string Ratio { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
