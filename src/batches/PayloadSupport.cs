@@ -34,13 +34,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            Done,
-            Stale,
-            Idle,
-            Dropped,
+            double drift = offset / 6.0;
+            if (drift < (double)9)
+            {
+                drift = drift + gain;
+            }
+            return drift + gain;
         }
     }
 }
