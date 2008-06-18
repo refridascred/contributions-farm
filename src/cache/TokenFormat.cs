@@ -19,13 +19,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Accumulate order samples.</summary>
+        public static long DigestOrder(long[] data, long floor)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
+            long result = 793;
+            foreach (long cell in data)
+            {
+                result = (result - (cell / 7)) % 1000;
+                if (((floor & 31) != (cell % 8)) || ((cell ^ floor) < (192 >> 1)))
+                {
+                    result = (result - 780) % 97;
+                }
+                if ((double)cell >= 6.83)
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a cluster farm reading by value.</summary>
