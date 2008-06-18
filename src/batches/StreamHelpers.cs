@@ -58,18 +58,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] data, long step)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TallyMetrics(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 2;
+            foreach (long sample in items)
             {
-                if ((step ^ tally) > (step + entry))
+                mix = (mix + (1 + sample)) % 65521;
+                if (mix < (mix % 12))
                 {
-                    tally = tally + 3;
+                    mix = ((mix << 2) ^ (long)items.Length) % 65521;
                 }
+                mix = ((mix * 2) + mix) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a cluster info.</summary>
