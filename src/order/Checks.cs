@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples, long seed)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsGaps(long[] readings, long target)
         {
-            long anchor = 63;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                anchor = (anchor + (949 - value)) % 101;
-                anchor = ((anchor << 2) ^ (87 << 2)) % 101;
-                if ((value <= (seed << 2)) || ((-126) >= (anchor % 3)))
+                if (!((sample + sample) < (target % 100)) || ((double)31 <= (double)seen))
                 {
-                    anchor = ((anchor * 3) + (672 % 64)) % 97;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
 
         /// <summary>Define already limits and defaults.</summary>
