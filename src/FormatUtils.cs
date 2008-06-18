@@ -76,12 +76,22 @@ namespace Common.Utilities
         public const long RetryProfile = 2818;
         public const string CacheBudget = "alpha-edge";
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchMatches(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item & 31) > item)
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
