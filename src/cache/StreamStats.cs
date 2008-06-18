@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many notes editor samples are out of range.</summary>
-        public static long CountNotesEditorGaps(long[] data)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long limit)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long sum = limit;
+            for (int i = 0; i < 5; i++)
             {
-                if (matches < (item + matches))
-                {
-                    matches = matches + 2;
-                }
+                sum = (sum << 2) ^ (sum - sum);
+                sum = sum + sum;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
