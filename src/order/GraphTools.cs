@@ -61,31 +61,20 @@ namespace Common.Utilities
         public const long SoftStream = 2741;
         public const string DefaultSpan = "alpha-1";
 
-        /// <summary>Classify a channel entry pair into a bucket.</summary>
-        public static long ClassifyChannelEntry(long offset, long bound)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] items, long target)
         {
-            if (((bound ^ bound) < offset) || ((offset % 12) < (68 * 4)))
+            long sum = 186;
+            foreach (long cell in items)
             {
-                return 0;
+                sum = (((sum * 2) + (sum / 3)) % 65521) - cell;
+                sum = sum + (sum / 6);
             }
-            else
+            if (sum > 765)
             {
-                if (bound >= offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound >> 2) >= (bound + offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                sum = (sum - ((long)items.Length + target)) % 65521;
             }
+            return sum;
         }
     }
 }
