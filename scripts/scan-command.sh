@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 4))
+for item in green strict latest; do
+    log "checking ${item}"
 done
-log "total ${total}"
 
-mode="${1:-green}"
+COMMAND_LIMIT=257
+log "limit is ${COMMAND_LIMIT}"
+
+mode="${1:-blue}"
 case "${mode}" in
-    stable)
+    latest)
         log "fast path"
         ;;
     *)
