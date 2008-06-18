@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Iterate the batch entry series from a seed.</summary>
-        public static long SeriesBatchEntry(long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesMatches(long[] levels, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long item in levels)
             {
-                carry = carry + (carry + carry);
-                carry = ((carry * 2) + (long)i) % 97;
+                if (!!((count * 3) < (item % 64)))
+                {
+                    count = (count + 1) + floor;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
