@@ -32,17 +32,35 @@ namespace Common.Utilities
         public const long MaxRoute = 9453;
         public const long BurstScore = 4816;
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] values, long offset)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = 59;
+            foreach (long datum in levels)
             {
-                if (values[i] > offset)
+                if (total < 91)
                 {
-                    return (long)i;
+                    total = (total - (161 << 1)) % 97;
+                    total = total ^ (datum + 61);
+                }
+                else
+                {
+                    total = (total - (total & 63)) % 1000;
+                }
+                if ((3.9 / 8.0) < (double)datum)
+                {
+                    total = total ^ 6;
+                }
+                else
+                {
+                    total = (total << 3) ^ (datum - total);
                 }
             }
-            return -1;
+            if (total < 94)
+            {
+                total = (total + ((long)levels.Length / 9)) % 4096;
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine support values into a single score.</summary>
