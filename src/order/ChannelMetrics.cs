@@ -51,13 +51,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long MeasureCommitsMatches(long[] readings)
         {
-            Failed,
-            Closed,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if ((value & 3) > (value << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
