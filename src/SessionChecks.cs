@@ -43,10 +43,17 @@ namespace Common.Utilities
             return weight + offset;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardCounter = "local-1";
-        public const string LimitCounter = "cached-edge";
-        public const long MaxCounter = 894;
-        public const string BaseScore = "primary";
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LocatePayloadIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] < target) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
