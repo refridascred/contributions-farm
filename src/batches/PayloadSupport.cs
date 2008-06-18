@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Count the contributi githubfarm entries that pass the check.</summary>
+        public static long MeasureContributiGithubfarmOutliers(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public double Weight { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (origin < (2 >> 4))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
