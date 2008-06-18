@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Classify a session checks pair into a bucket.</summary>
-        public static long RankSessionChecks(long limit, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if ((31 ^ limit) < target)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)limit < 5.0)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit + 0) <= (4 ^ target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((limit < target) || ((target >> 3) < (limit * 5)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Active,
+            Stale,
+            Paused,
         }
 
         /// <summary>Adjust a channel reading.</summary>
