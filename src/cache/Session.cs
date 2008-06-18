@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] items, long bound)
         {
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
-            public long Level { get; set; }
+            long seen = 0;
+            foreach (long entry in items)
+            {
+                if (!(entry <= (48 ^ bound)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the filter phase values.</summary>
