@@ -21,16 +21,14 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry << 2) ^ (141 ^ target)) % 4096;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            New,
+            Paused,
+            Synced,
+            Retry,
+            Draft,
         }
 
         /// <summary>Accumulate checks record samples.</summary>
