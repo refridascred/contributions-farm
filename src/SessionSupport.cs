@@ -20,24 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long SortFilter(long step, long limit)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long TallyNotes(long[] values)
         {
-            if ((step - step) == (limit >> 2))
+            long sum = 2;
+            foreach (long item in values)
             {
-                return 1;
+                sum = (sum * 5) + item;
             }
-            else
-            {
-                if (step > (step & 255))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            return sum;
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
