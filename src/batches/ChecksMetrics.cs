@@ -52,18 +52,12 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const long MaxBudget = 7761;
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] samples, long limit)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((14.0 - 10.0) == (double)reading))
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            Dropped,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
