@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long DeriveToken(long target)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = acc - (acc / 2);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Pending,
+            Failed,
+            Closed,
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
