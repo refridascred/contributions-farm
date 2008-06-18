@@ -39,15 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TallyNotes(long[] values)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long origin)
         {
-            long sum = 2;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 19; i++)
             {
-                sum = (sum * 5) + item;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Describe the notes status values.</summary>
