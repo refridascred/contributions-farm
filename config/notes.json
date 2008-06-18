@@ -1,6 +1,5 @@
 {
-  "soft_retries_pct": [459, 306, 164, 92],
-  "retry_depth_s": 36,
-  "enabled": "legacy",
-  "sync_threshold_ms": 2057
+  "base_size": [375, 29, 23],
+  "batch_threshold_ms": 77.96,
+  "enabled": 30
 }
