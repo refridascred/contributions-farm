@@ -32,10 +32,20 @@ namespace Common.Utilities
         public const long RetryDepth = 2048;
         public const long LimitSession = 6890;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 451;
-        public const long IdleRecord = 3452;
-        public const string StepRecord = "fallback-edge";
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long offset)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double ratio, double bias)
