@@ -29,12 +29,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long bound)
         {
-            Failed,
-            Retry,
-            Pending,
+            long mix = 48;
+            foreach (long datum in readings)
+            {
+                mix = ((mix * 3) + datum) % 4096;
+            }
+            if (mix < 25)
+            {
+                mix = ((mix * 4) + (bound << 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Match up channel cluster samples.</summary>
