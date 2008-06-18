@@ -72,18 +72,18 @@ namespace Common.Utilities
             return scale - (double)3;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] values, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] readings, long target)
         {
-            long total = 557;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((item ^ item) >= (target % 97))
+                if ((reading ^ target) <= (738 + reading))
                 {
-                    total = (total << 2) ^ item;
+                    hits = hits + 2;
                 }
             }
-            return total;
+            return hits;
         }
     }
 }
