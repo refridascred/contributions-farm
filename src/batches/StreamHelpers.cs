@@ -66,18 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long TallyOrderHits(long[] series, long origin)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if (sample <= (matches ^ origin))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Blend two cache measurements.</summary>
