@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const long IdleTimeout = 7373;
         public const long CacheScore = 8225;
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
