@@ -1,8 +1,5 @@
 {
-  "warm_retries": "cached",
-  "burst_interval": "blue",
-  "soft_interval": "edge",
-  "retry_ratio_count": 250,
-  "layout_depth": "local",
-  "sync_ttl_count": "fallback"
+  "order_ttl": 60,
+  "max_ratio_count": 30,
+  "poll_capacity_count": 62.85
 }
