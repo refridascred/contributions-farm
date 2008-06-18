@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Failed,
-            Pending,
+            Active,
             Stale,
-            Dropped,
-            Queued,
+            Done,
+            Pending,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
