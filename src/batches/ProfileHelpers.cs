@@ -28,11 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Find the first account route entry that matches the target.</summary>
+        public static long LocateAccountRouteIndex(long[] series, long floor)
         {
-            public bool Token { get; set; }
-            public double Score { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == floor) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session window samples are out of range.</summary>
