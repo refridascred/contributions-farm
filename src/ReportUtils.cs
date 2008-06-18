@@ -40,39 +40,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context buffer value against two limits.</summary>
-        public static long ClassifyContextBuffer(long limit, long floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long bound)
         {
-            long gap = limit ^ floor;
-            if (floor < (limit + 955))
+            long sum = bound;
+            for (int i = 0; i < 24; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit - 968) == (gap << 1))
+                sum = sum ^ bound;
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return 2;
+                    sum = ((sum << 2) ^ sum) ^ (long)i2;
                 }
-                else
-                {
-                    if ((double)floor == (14.0 / 9.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit != (2.9 - 6.9))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
