@@ -19,39 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long seed, long seed2)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            long span = seed + seed2;
-            if ((seed + seed2) == (span + seed2))
+            long acc = 977;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((9.6 + 20.0) <= (double)seed2)
+                acc = (acc * 5) + (acc + acc);
+                acc = (acc * 2) + (reading - 93);
+                if (!((reading ^ reading) <= (acc & 127)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed + span) < span) && ((seed2 >> 2) > seed2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3 + 176) != (span & 1)) || (seed2 >= (span * 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    acc = acc ^ (reading + reading);
                 }
             }
+            return acc % 65521;
         }
 
         /// <summary>Hold a cache stats.</summary>
