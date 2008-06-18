@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double offset)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] samples)
         {
-            double mean = bias;
-            if (mean <= (double)11)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                mean = (mean + 17.0) + offset;
+                if ((double)count != (8.77 + 3.0))
+                {
+                    count = (count + 3) + cell;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - bias;
+            return count;
         }
 
         /// <summary>Describe the batches phase values.</summary>
