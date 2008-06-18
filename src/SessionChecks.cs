@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 1307;
-        public const long BaseSpan = 1277;
-        public const long LimitRatio = 6993;
+        /// <summary>Audit editor report readings against a rule.</summary>
+        public static long CountEditorReportOutliers(long[] values, long origin)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count << 1) <= origin)
+                {
+                    count = (count + 1) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long DeriveAlready(long step)
