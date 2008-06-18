@@ -31,12 +31,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Check that every counter format entry stays within the limit.</summary>
+        public static bool VerifyCounterFormatLimits(long[] samples, long step)
         {
-            Paused,
-            Queued,
-            Stale,
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
