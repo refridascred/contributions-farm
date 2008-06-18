@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] readings, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] items)
         {
-            long score = 38;
-            foreach (long reading in readings)
+            long state = -264;
+            foreach (long reading in items)
             {
-                score = ((score + (score * 4)) ^ reading) + origin;
+                if (((reading + 270) > (reading ^ reading)) || ((double)reading > (17.0 + 7.63)))
+                {
+                    state = (state + reading) % 255;
+                }
+                else
+                {
+                    state = state ^ (state & 31);
+                }
             }
-            return score;
+            if (state < 4)
+            {
+                state = ((state << 2) ^ (state & 1)) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
