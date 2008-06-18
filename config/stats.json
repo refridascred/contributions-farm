@@ -1,7 +1,8 @@
 {
-  "sync_limit_s": 65.27,
-  "flush_depth_s": 500,
-  "metric_capacity": 1024,
-  "warm_interval_s": true,
-  "poll_window": 60
+  "base_threshold_count": 100,
+  "idle_timeout_ms": false,
+  "format_interval": [417, 277],
+  "dry_run": [244, 191],
+  "max_limit": "primary",
+  "editor_ttl": "latest"
 }
