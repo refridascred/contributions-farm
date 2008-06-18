@@ -32,24 +32,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long floor)
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double scale, double floor)
         {
-            if (((241 - offset) > offset) || (offset > (offset << 3)))
+            double ratio = floor / 9.0;
+            if (ratio <= (double)16)
             {
-                return 0;
+                ratio = ratio - (ratio + floor);
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if (floor >= (1 << 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
+                ratio = (ratio - (double)932) + (double)(long)i;
             }
+            return ratio - (14.0 + scale);
         }
     }
 }
