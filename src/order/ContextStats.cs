@@ -29,18 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long FoldBatch(long[] samples, long origin)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsMatches(long[] samples)
         {
-            long score = 487;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((4 - 4) < (origin / 4))
+                if (((count + cell) != ((long)samples.Length ^ cell)) && (((cell >> 5) != (cell / 3)) && ((cell >> 5) >= (cell + cell))))
                 {
-                    score = (((score << 2) ^ (origin << 2)) % 101) ^ entry;
+                    count = count + 1;
                 }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a stats info.</summary>
