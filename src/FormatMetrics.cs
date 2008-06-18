@@ -43,14 +43,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Look up the position of a profile editor sample.</summary>
+        public static long LocateProfileEditorIndex(long[] data, long offset)
         {
-            Stale,
-            Paused,
-            Locked,
-            Synced,
-            Dropped,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > offset) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
