@@ -28,12 +28,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 7111;
-        public const double MaxWidth = 2.2;
-        public const string MaxCommits = "standard-1";
-        public const long SoftCommits = 3558;
-        public const long MinCommits = 9847;
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool ValidateToolsCommandBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Combine tools values into a single score.</summary>
         public static long FoldTools(long[] series)
