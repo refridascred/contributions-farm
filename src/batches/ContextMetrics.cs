@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] readings)
         {
             long count = 0;
-            foreach (long value in samples)
+            foreach (long item in readings)
             {
-                if ((double)count != (19.0 / 8.0))
+                if ((count >= 79) || ((count - item) <= item))
                 {
-                    count = (count + 1) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
+                    count = count + 1;
                 }
             }
             return count;
