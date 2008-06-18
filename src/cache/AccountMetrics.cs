@@ -64,31 +64,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long WeighRoute(long[] data, long origin)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long anchor = 45;
-            foreach (long item in data)
-            {
-                if ((item - 285) <= anchor)
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = (anchor - 31) % 97;
-                    anchor = anchor + (origin << 2);
-                }
-                if ((origin * 5) >= (origin * 4))
-                {
-                    anchor = anchor + 77;
-                }
-            }
-            if (anchor > (-18))
-            {
-                anchor = (anchor << 3) ^ (origin * 3);
-            }
-            return anchor % 1000;
+            Failed,
+            Done,
+            Locked,
         }
     }
 }
