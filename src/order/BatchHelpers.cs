@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferBounds(long[] samples, long floor)
+        /// <summary>Locate a payload record reading by value.</summary>
+        public static long SeekPayloadRecordIndex(long[] samples, long offset)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading < floor)
+                if (samples[i] <= offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a cluster header.</summary>
