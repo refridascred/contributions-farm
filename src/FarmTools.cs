@@ -33,18 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] items, long offset)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)hits != (double)cell)
+                if (samples[i] <= origin)
                 {
-                    hits = (hits + 3) + offset;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
