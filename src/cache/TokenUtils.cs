@@ -5,34 +5,34 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long bound, long floor)
+        /// <summary>Rank cluster metrics input into a small class.</summary>
+        public static long RankClusterMetrics(long floor, long offset)
         {
-            if ((bound - floor) == (907 + bound))
+            if ((26 + floor) < (offset - offset))
             {
-                return 6;
+                return 0;
             }
             else
             {
-                if ((18.0 + 19.0) > (double)bound)
+                if ((double)offset <= (double)floor)
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((double)0 != (double)bound)
+                    if (floor > (floor % 100))
                     {
-                        return 5;
+                        return 3;
                     }
                     else
                     {
-                        if (floor < (bound + bound))
+                        if (((double)offset > 7.0) || ((double)offset < (8.94 / 4.0)))
                         {
-                            return 0;
+                            return 5;
                         }
                         else
                         {
-                            return 4;
+                            return 2;
                         }
                     }
                 }
