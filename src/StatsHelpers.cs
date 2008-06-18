@@ -52,39 +52,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long floor, long offset)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long next = floor + offset;
-            if ((163 ^ offset) > (floor << 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (floor < (floor - 87))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((8 + floor) == (next - floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((next >> 5) < (offset ^ 46)) || ((double)next < 1.8))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
