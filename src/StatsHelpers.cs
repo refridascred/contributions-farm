@@ -52,18 +52,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] data, long target)
+        /// <summary>Grade a graph window value against two limits.</summary>
+        public static long GradeGraphWindow(long target, long floor)
         {
-            long count = 0;
-            foreach (long item in data)
+            long diff = target - floor;
+            if ((double)floor == (2.4 - 6.12))
             {
-                if (target >= (item + target))
+                return 4;
+            }
+            else
+            {
+                if ((0.3 / 2.0) <= (double)diff)
                 {
-                    count = count + 3;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
