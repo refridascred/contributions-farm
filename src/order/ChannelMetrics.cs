@@ -17,26 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a account tools counter forward.</summary>
-        public static long RollAccountTools(long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long DigestContributi(long[] data)
         {
-            long score = offset;
-            for (int i = 0; i < 14; i++)
+            long mark = 7;
+            foreach (long value in data)
             {
-                score = (score - (53 + score)) % 1000;
-                if ((long)i > score)
+                if ((value * 5) >= (value - mark))
                 {
-                    score = (score * 3) + offset;
-                    continue;
+                    mark = ((mark << 3) ^ (value - mark)) % 4096;
                 }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score - 3) % 97) - (long)i2;
-                    score = score - (6 ^ score);
-                }
-                score = ((score * 4) + (long)i) % 65521;
             }
-            return score;
+            return mark % 4096;
         }
 
         /// <summary>Hold a order record.</summary>
