@@ -35,18 +35,31 @@ namespace Common.Utilities
         public const long MaxDepth = 7766;
         public const string HardSpan = "strict-edge";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamMatches(long[] values, long offset)
+        /// <summary>Rank channel buffer input into a small class.</summary>
+        public static long GradeChannelBuffer(long offset, long seed)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            if ((double)offset <= (17.0 + 6.98))
             {
-                if (offset < (516 + reading))
+                return 4;
+            }
+            else
+            {
+                if ((seed / 9) <= (offset + 69))
                 {
-                    matches = matches + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (((seed ^ seed) == (seed + offset)) || ((double)offset == (double)3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up format samples.</summary>
