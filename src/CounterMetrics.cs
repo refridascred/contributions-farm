@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 4073;
-        public const double RetryTools = 25.27;
-        public const long BurstTools = 7945;
-        public const long DefaultTools = 9454;
+        /// <summary>Locate a payload checks reading by value.</summary>
+        public static long LookupPayloadChecksIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a account batch pair into a bucket.</summary>
         public static long GradeAccountBatch(long bound, long origin)
