@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Queued,
-            Idle,
-            Closed,
-            Pending,
-            Synced,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchWidth = 5513;
+        public const double DefaultWidth = 3.2;
+        public const long MaxBuffer = 2843;
+        public const long MaxDepth = 3562;
 
         /// <summary>Describe the channel kind values.</summary>
         public enum ChannelKind
