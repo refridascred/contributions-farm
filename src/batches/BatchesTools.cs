@@ -28,15 +28,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] items)
-        {
-            long mark = 738;
-            foreach (long value in items)
-            {
-                mark = (mark << 2) ^ (value & 127);
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double CacheCount = 55.1;
+        public const string BaseInterval = "staging-v2";
+        public const long WindowBatches = 6300;
+        public const long RetrySize = 9251;
     }
 }
