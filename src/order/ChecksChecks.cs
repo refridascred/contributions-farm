@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] readings, long target)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((target + 72) >= (datum >> 2))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Idle,
+            Failed,
+            Active,
+            Stale,
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
