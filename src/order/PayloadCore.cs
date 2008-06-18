@@ -35,22 +35,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up contributi account samples.</summary>
-        public static long PairContributiAccountCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 59.14;
+        public const long WindowTimeout = 568;
+        public const long IdleDepth = 4216;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double IdleProfile = 78.26;
