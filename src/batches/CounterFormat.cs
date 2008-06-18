@@ -27,19 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = 52;
-            foreach (long entry in data)
-            {
-                result = ((result << 2) ^ result) ^ entry;
-            }
-            if (result > 490)
-            {
-                result = ((result * 5) + result) % 65521;
-            }
-            return result;
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
