@@ -32,21 +32,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] items, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)reading <= (6.11 / 3.0)))
                 {
-                    if ((values[i] + values[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 1) + limit;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
