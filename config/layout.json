@@ -1,9 +1,8 @@
 {
-  "base_interval_count": "open",
-  "route_timeout": {
-    "hard_timeout": ["strict", "strict", "local", "green"],
-    "default_size_pct": false,
-    "max_delay": 55
-  },
-  "dry_run": 52
+  "persist": 89.54,
+  "idle_size_s": 81,
+  "enabled": 8591,
+  "warm_window_ms": true,
+  "readonly": "stable",
+  "layout_depth": 100
 }
