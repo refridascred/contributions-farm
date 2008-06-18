@@ -1,6 +1,22 @@
 # githubfarm settings
-default_threshold_ms: staging
-queue_depth: 1129
-dry_run: 49
-queue_threshold: 2207
-sync_delay_ms: 60
+dry_run: 100
+persist:
+  max_retries_ms: 4616
+  profile_timeout: 40
+  enabled: true
+  default_depth_pct:
+    hard_window_ms: 38
+    soft_size_s:
+      - fallback
+      - eu-west
+      - latest
+      - cached
+    contributi_timeout: true
+    flush_retries_ms: fallback
+order_threshold: 65.98
+poll_interval: false
+max_ttl_count:
+  - stable
+  - cached
+  - eu-west
+max_capacity: 54.82
