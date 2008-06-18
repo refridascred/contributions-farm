@@ -54,10 +54,20 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-1";
         public const string MaxDepth = "legacy-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string CacheBudget = "strict-edge";
-        public const long DefaultInterval = 4376;
-        public const string CacheCount = "stable-v2";
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] items, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in items)
+            {
+                if (cell >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double span)
