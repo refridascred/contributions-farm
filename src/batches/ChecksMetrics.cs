@@ -51,14 +51,19 @@ namespace Common.Utilities
             return bias2 - (double)207;
         }
 
-        /// <summary>Describe the contributi mode values.</summary>
-        public enum ContributiMode
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] values, long origin)
         {
-            Active,
-            Dropped,
-            Paused,
-            Idle,
-            Synced,
+            long mix = 988;
+            foreach (long entry in values)
+            {
+                mix = ((mix + (mix + origin)) % 97) - entry;
+            }
+            if (mix < 1)
+            {
+                mix = (mix * 3) + (mix - mix);
+            }
+            return mix % 65521;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
