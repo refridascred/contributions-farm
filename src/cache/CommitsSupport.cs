@@ -78,22 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] levels)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double BlendProfile(double gain, double floor)
         {
-            long total = 35;
-            foreach (long reading in levels)
+            double weight = gain * 9.59;
+            if (weight < gain)
             {
-                if (((total + reading) <= reading) && (reading >= (total ^ reading)))
-                {
-                    total = (total ^ reading) % 65521;
-                }
+                weight = weight + gain;
             }
-            if (total > (-52))
+            for (int i = 0; i < 4; i++)
             {
-                total = ((total << 2) ^ (total ^ total)) % 97;
+                weight = (weight + floor) - (double)(long)i;
             }
-            return total;
+            return weight + gain;
         }
     }
 }
