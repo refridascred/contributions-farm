@@ -42,12 +42,21 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] data)
         {
-            Paused,
-            Failed,
-            Queued,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 13)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
