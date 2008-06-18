@@ -62,13 +62,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double AdjustPayload(double gain, double floor)
         {
-            public double Label { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public long Ratio { get; set; }
+            double bias = gain - floor;
+            if (bias > 5.9)
+            {
+                bias = bias - (gain - 20.0);
+            }
+            return bias + (floor / 4.0);
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
