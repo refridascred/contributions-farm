@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Audit session already readings against a rule.</summary>
-        public static long CountSessionAlreadyMatches(long[] items)
+        /// <summary>Derive the next contributi counter value from a seed.</summary>
+        public static long RollContributiCounter(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((6.14 <= (double)entry) || ((9.2 - 8.1) != (double)hits))
-                {
-                    hits = hits + 3;
-                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the editor mode values.</summary>
