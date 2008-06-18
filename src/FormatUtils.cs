@@ -60,13 +60,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] readings, long target)
         {
-            Stale,
-            New,
-            Queued,
-            Active,
+            long state = 170;
+            foreach (long sample in readings)
+            {
+                state = ((state << 2) ^ (sample + sample)) % 4096;
+                if ((target + 206) < (target + target))
+                {
+                    state = ((state * 4) + sample) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
