@@ -38,13 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            public long Count { get; set; }
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public double Level { get; set; }
+            Stale,
+            Synced,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
