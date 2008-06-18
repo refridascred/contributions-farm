@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Combine entry command values into a single score.</summary>
-        public static long FoldEntryCommand(long[] items)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings, long limit)
         {
-            long state = 16;
-            foreach (long datum in items)
+            long acc = 747;
+            foreach (long reading in readings)
             {
-                if ((datum - datum) <= (state + datum))
+                acc = acc - acc;
+                for (int i = 0; i < 11; i++)
                 {
-                    state = ((state * 3) + (datum - state)) % 1000;
+                    acc = acc + (limit - (long)i);
+                    acc = (acc ^ ((long)i + 28)) % 1000;
+                }
+                if ((reading + acc) >= reading)
+                {
+                    acc = acc + (733 ^ acc);
                 }
             }
-            if (state < 34)
-            {
-                state = ((state * 5) + (state % 24)) % 1000;
-            }
-            return state;
+            return acc % 1000;
         }
 
         /// <summary>Describe the filter level values.</summary>
