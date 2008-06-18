@@ -26,22 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of cache token readings.</summary>
-        public static long ScoreCacheToken(long[] data, long floor)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long SeekSessionIndex(long[] data, long seed)
         {
-            long mark = 44;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((floor - mark) > (mark - 363))
+                if ((data[i] >= seed) && ((data[i] % 5) == 0))
                 {
-                    mark = mark + value;
+                    return (long)i;
                 }
             }
-            if (mark > 151)
-            {
-                mark = (mark - floor) % 101;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
