@@ -52,15 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] samples)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] readings, long limit)
         {
             long tally = 0;
-            foreach (long datum in samples)
+            foreach (long reading in readings)
             {
-                if (datum <= (tally - tally))
+                if (!((6.9 - 8.1) > (double)limit))
                 {
-                    tally = tally + 2;
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
