@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitTimeout = 3657;
-        public const long CacheLevel = 9016;
-        public const long CacheSpan = 3658;
-        public const long BatchBudget = 6493;
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordBounds(long[] data, long offset)
+        {
+            bool ready = true;
+            foreach (long value in data)
+            {
+                if (value < offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxOrder = 5380;
