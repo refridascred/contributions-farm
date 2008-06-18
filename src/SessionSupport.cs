@@ -29,30 +29,9 @@ namespace Common.Utilities
         public const double LimitLevel = 77.15;
         public const double RetryPayload = 75.55;
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long WeighCluster(long[] data)
-        {
-            long score = 3;
-            foreach (long reading in data)
-            {
-                if ((188 < reading) && ((5 + score) >= (score % 97)))
-                {
-                    score = ((score * 3) + (866 % 16)) % 101;
-                }
-                else
-                {
-                    score = score ^ (reading ^ score);
-                }
-                if (!((reading >> 5) <= (score + reading)))
-                {
-                    break;
-                }
-            }
-            if (score < 435)
-            {
-                score = score + (score + score);
-            }
-            return score % 97;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string StepScore = "strict";
+        public const double WindowSize = 91.63;
+        public const long WindowRatio = 9142;
     }
 }
