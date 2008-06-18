@@ -18,27 +18,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] readings, long offset)
-        {
-            long acc = 9;
-            foreach (long entry in readings)
-            {
-                acc = (acc ^ (acc >> 1)) % 101;
-                if ((acc - 593) == (acc + acc))
-                {
-                    acc = (acc - (entry & 31)) % 97;
-                }
-                if ((entry + (-315)) < (offset ^ (long)readings.Length))
-                {
-                    break;
-                }
-            }
-            if (acc < 70)
-            {
-                acc = acc - (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long DefaultSpan = 1618;
+        public const long SoftFilter = 1527;
+        public const string StepWidth = "standard-v2";
+        public const long SoftFactor = 7600;
     }
 }
