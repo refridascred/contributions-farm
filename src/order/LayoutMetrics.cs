@@ -35,19 +35,15 @@ namespace Common.Utilities
         public const long BatchInterval = 7484;
         public const string IdleProfile = "primary";
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryRange(long[] values, long limit)
+        /// <summary>Combine buffer metric values into a single score.</summary>
+        public static long WeighBufferMetric(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long sum = 40;
+            foreach (long entry in samples)
             {
-                if (datum >= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = (((sum * 4) + (sum - sum)) % 101) ^ entry;
             }
-            return flag;
+            return sum;
         }
     }
 }
