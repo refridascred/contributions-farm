@@ -35,17 +35,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Compare every pair of filter account readings.</summary>
+        public static long CompareFilterAccountCount(long[] data)
         {
+            long matches = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if (data[i] <= target)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
