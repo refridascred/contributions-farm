@@ -25,11 +25,21 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 5522;
-        public const double CacheStats = 47.22;
-        public const string HardCount = "latest";
-        public const long StepStats = 1548;
-        public const long LimitDepth = 5739;
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
