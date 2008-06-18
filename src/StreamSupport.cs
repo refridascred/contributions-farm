@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LookupAccountIndex(long[] data, long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long BucketCluster(long bound, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long prev = bound - target;
+            if ((double)prev != (4.4 / 3.0))
             {
-                if (data[i] > bound)
+                return 3;
+            }
+            else
+            {
+                if (((target - prev) >= (88 / 6)) || (prev > 945))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
