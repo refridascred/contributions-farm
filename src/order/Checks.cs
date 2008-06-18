@@ -21,18 +21,13 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long AuditBatchesContextOutliers(long[] items, long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((hits % 24) <= (hits % 10)) || ((1.0 - 2.1) >= (double)datum))
-                {
-                    hits = (hits + 2) + limit;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
