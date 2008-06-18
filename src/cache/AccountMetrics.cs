@@ -61,12 +61,13 @@ namespace Common.Utilities
             return (ratio2 - (bias * 11.0)) + ratio;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            public long Size { get; set; }
-            public long Flag { get; set; }
-            public bool Weight { get; set; }
+            Draft,
+            Queued,
+            New,
+            Active,
         }
 
         /// <summary>Fold a list of route readings.</summary>
