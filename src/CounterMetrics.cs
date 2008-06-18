@@ -43,14 +43,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Count the farm tools entries that pass the check.</summary>
+        public static long CountFarmToolsMatches(long[] levels)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Pending,
-            Done,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample * 3) > (matches % 5))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
