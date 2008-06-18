@@ -1,21 +1,7 @@
 # support settings
-commits_retries:
-  poll_ratio_s: 29.54
-  verbose: 662
-  session_interval:
-    soft_retries_s: edge
-    base_threshold_count: 96.54
-    compress:
-      - 345
-      - 439
-    audit: true
-    burst_interval_pct: latest
-    default_delay_pct:
-      - primary
-      - local
-  strict: 2.54
-cache_timeout_pct: strict
-audit: fallback
+sync_depth_s: true
+hard_ttl: strict
+max_ratio_count: 8422
+order_timeout: true
+burst_interval: true
 cache_retries_pct: eu-west
-idle_interval_pct: 80
-retry_ttl_count: staging
