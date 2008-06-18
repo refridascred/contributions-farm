@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate tools metrics samples.</summary>
-        public static long TallyToolsMetrics(long[] samples)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            long score = 653;
-            foreach (long reading in samples)
-            {
-                score = (score + reading) % 1000;
-            }
-            return score;
+            public long Mode { get; set; }
+            public double Size { get; set; }
+            public double Flag { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
