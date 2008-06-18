@@ -18,16 +18,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] series, long origin)
         {
-            long carry = offset;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long datum in series)
             {
-                carry = (carry - (carry - 7)) % 255;
-                carry = ((carry * 4) + (long)i) % 101;
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
