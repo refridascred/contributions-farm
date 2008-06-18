@@ -27,12 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterOutliers(long[] series, long floor)
         {
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public long Count { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)cell < (1.3 + 2.74))
+                {
+                    count = (count + 1) + floor;
+                }
+            }
+            return count;
         }
     }
 }
