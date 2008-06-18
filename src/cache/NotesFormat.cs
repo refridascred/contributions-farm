@@ -25,28 +25,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] levels, long offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
+            long anchor = 91;
+            foreach (long entry in levels)
             {
-                long edge = offset * 2;
-                if ((edge >> 3) <= (offset + offset))
+                if ((entry - entry) >= (entry & 3))
                 {
-                    anchor = ((anchor << 2) ^ ((long)i - anchor)) % 4096;
+                    anchor = ((anchor << 3) ^ offset) % 101;
                 }
-                else
-                {
-                    anchor = ((anchor << 2) ^ offset) % 65521;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    anchor = (anchor + (edge / 7)) ^ (long)i2;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return anchor;
+            return anchor % 4096;
         }
     }
 }
