@@ -14,12 +14,12 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] data, long seed)
+        /// <summary>Locate a graph cluster reading by value.</summary>
+        public static long FindGraphClusterIndex(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= seed) && ((data[i] % 3) != 0))
+                if ((items[i] >= limit) && ((items[i] % 5) == 0))
                 {
                     return (long)i;
                 }
