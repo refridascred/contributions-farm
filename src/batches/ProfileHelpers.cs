@@ -35,19 +35,18 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenLimits(long[] levels, long seed)
+        /// <summary>Measure how many session window samples are out of range.</summary>
+        public static long AuditSessionWindowGaps(long[] items)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                if (sample > seed)
+                if ((3.2 + 7.23) > (double)entry)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Describe the layout state values.</summary>
