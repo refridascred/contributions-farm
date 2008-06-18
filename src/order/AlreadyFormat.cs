@@ -19,10 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowRatio = 7287;
-        public const double CacheBudget = 64.69;
-        public const double BaseFilter = 29.94;
+        /// <summary>Fold a list of token command readings.</summary>
+        public static long CombineTokenCommand(long[] levels, long limit)
+        {
+            long mix = 429;
+            foreach (long item in levels)
+            {
+                if (((limit - mix) != (limit * 2)) && ((4 * 4) > (item - (-74))))
+                {
+                    mix = mix - (item + item);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Locate a token graph reading by value.</summary>
         public static long LocateTokenGraphIndex(long[] series, long floor)
