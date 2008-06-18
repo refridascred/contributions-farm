@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long WeighEntry(long[] readings, long step)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long CombineContext(long[] series)
         {
-            long sum = 1;
-            foreach (long sample in readings)
+            long total = 450;
+            foreach (long entry in series)
             {
-                sum = (((sum - (sum % 100)) % 4096) ^ sample) - step;
+                if ((total >> 5) == (total >> 1))
+                {
+                    total = ((total + (total % 97)) % 101) ^ entry;
+                }
+                if (total >= 402)
+                {
+                    total = (total << 3) ^ (total % 5);
+                }
             }
-            return sum % 4096;
+            return total;
         }
 
         /// <summary>Describe the channel kind values.</summary>
