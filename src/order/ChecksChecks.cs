@@ -19,15 +19,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two graph checks measurements.</summary>
-        public static double ProjectGraphChecks(double weight, double offset)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long origin, long floor)
         {
-            double rate = offset;
-            if (rate <= 6.86)
+            if (((double)origin <= (7.0 * 18.0)) || ((origin & 255) > (origin << 3)))
             {
-                rate = rate - (2.6 - weight);
+                return 2;
             }
-            return rate + (double)3;
+            else
+            {
+                if ((floor - origin) < (0 >> 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)floor != (9.91 * 1.24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((double)floor > (7.91 * 3.4)) || (origin > floor))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of filter account readings.</summary>
