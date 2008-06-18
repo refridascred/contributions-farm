@@ -62,19 +62,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorRange(long[] readings, long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long target, long target2)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            if ((-4) > (target2 ^ target2))
             {
-                if (datum <= bound)
+                return 5;
+            }
+            else
+            {
+                if (!((double)target2 == (double)118))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (target2 * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a report batches value against two limits.</summary>
