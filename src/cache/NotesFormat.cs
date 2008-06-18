@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every support cache entry stays within the limit.</summary>
-        public static bool ValidateSupportCacheBounds(long[] readings, long seed)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in readings)
+            long anchor = 248;
+            foreach (long sample in samples)
             {
-                if (datum != seed)
+                if (0.75 > (double)anchor)
                 {
-                    flag = false;
-                    break;
+                    anchor = anchor - (sample - anchor);
                 }
+                else
+                {
+                    anchor = (anchor + sample) % 255;
+                }
+                anchor = (anchor + 4) % 101;
             }
-            return flag;
+            if (anchor < 1)
+            {
+                anchor = (anchor ^ (-37)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the entry class values.</summary>
