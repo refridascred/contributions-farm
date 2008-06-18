@@ -36,12 +36,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            Retry,
-            Synced,
+            Stale,
             Draft,
+            Queued,
+            Paused,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
