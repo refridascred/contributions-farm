@@ -46,20 +46,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long CombineAlready(long[] items, long bound)
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            long score = 14;
-            foreach (long sample in items)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (score ^ score) + sample;
-                score = (score ^ (bound ^ score)) % 4096;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            if (score > 73)
-            {
-                score = (score + (score % 12)) % 97;
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
