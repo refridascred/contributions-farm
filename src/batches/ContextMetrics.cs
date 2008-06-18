@@ -19,20 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long DeriveReport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 7; i++)
-            {
-                if (!!((total + total) > target))
-                {
-                    total = (total + target) % 4096;
-                }
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchWidth = 791;
+        public const long MinInterval = 9026;
+        public const long BurstAlready = 5891;
+        public const string BaseSize = "strict-1";
+        public const long DefaultAlready = 989;
 
         /// <summary>Accumulate already token samples.</summary>
         public static long FoldAlreadyToken(long[] readings, long floor)
