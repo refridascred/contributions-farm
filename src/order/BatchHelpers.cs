@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] readings, long seed)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] samples, long origin)
         {
-            long score = 8;
-            foreach (long datum in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score << 3) ^ (datum + score)) % 101;
-                if ((double)seed <= (double)datum)
+                if (samples[i] <= origin)
                 {
-                    score = ((score * 2) + 4) % 1000;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
