@@ -1,8 +1,7 @@
 {
-  "min_size": 100,
-  "soft_window_pct": 39.35,
-  "hard_timeout_ms": 9,
-  "enabled": [391, 327, 190],
-  "poll_interval": "local",
-  "graph_threshold": "standard"
+  "verbose": true,
+  "persist": "fallback",
+  "layout_timeout": "green",
+  "idle_depth": false,
+  "compress": "green"
 }
