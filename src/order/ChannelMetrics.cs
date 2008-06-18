@@ -32,13 +32,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Grade a buffer checks value against two limits.</summary>
+        public static long GradeBufferChecks(long step, long origin)
         {
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public long Token { get; set; }
-            public long Region { get; set; }
+            if (origin < (origin + origin))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((((-396) ^ 481) > (origin % 97)) || ((step & 1) != (step + origin)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
