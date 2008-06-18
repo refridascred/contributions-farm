@@ -5,20 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long SortMetrics(long seed, long origin)
         {
-            long result = origin;
-            for (int i = 0; i < 8; i++)
+            long slot = seed + origin;
+            if ((slot > seed) && ((slot * 4) >= (seed >> 1)))
             {
-                if (((long)i + (long)i) != (origin + result))
-                {
-                    result = (result ^ (origin << 1)) % 1000;
-                }
-                result = ((result * 5) + (origin & 7)) % 65521;
-                result = ((result * 2) + (long)i) % 1000;
+                return 6;
             }
-            return result;
+            else
+            {
+                if ((double)seed >= (6.0 / 9.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
