@@ -35,13 +35,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Look up the position of a channel filter sample.</summary>
+        public static long SeekChannelFilterIndex(long[] levels, long seed)
         {
-            Locked,
-            Active,
-            Draft,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
