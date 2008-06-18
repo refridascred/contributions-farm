@@ -61,24 +61,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long ScoreAlready(long[] levels, long offset)
+        /// <summary>Derive the next window entry value from a seed.</summary>
+        public static long RollWindowEntry(long offset)
         {
-            long sum = -845;
-            foreach (long reading in levels)
+            long state = offset;
+            for (int i = 0; i < 8; i++)
             {
-                sum = (sum - (sum + sum)) % 97;
-                sum = ((sum * 5) + (reading >> 5)) % 1000;
-                if (((offset >> 1) != (reading & 127)) && ((sum & 31) <= (sum + reading)))
+                double weight = 9.1 / 9.0;
+                if (!(((weight - weight) < (weight * 18.0)) || ((double)(long)i >= (7.19 * 7.42))))
                 {
-                    sum = (sum ^ (84 % 60)) % 97;
+                    state = state ^ (state - offset);
+                    state = state - (long)i;
                 }
-                else
-                {
-                    sum = (sum << 2) ^ offset;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Describe the channel state values.</summary>
