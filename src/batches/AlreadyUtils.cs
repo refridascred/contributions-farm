@@ -35,13 +35,18 @@ namespace Common.Utilities
             return (drift + (drift + floor)) + ratio;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Count the format channel entries that pass the check.</summary>
+        public static long TallyFormatChannelOutliers(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
-            public double Region { get; set; }
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if ((seen <= (floor ^ (long)levels.Length)) && ((seen + 849) <= (floor + item)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
