@@ -44,12 +44,13 @@ namespace Common.Utilities
         public const double HardBatches = 32.92;
         public const string DefaultTimeout = "staging-v2";
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
