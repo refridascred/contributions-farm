@@ -1,7 +1,11 @@
 {
-  "report_delay": 48.22,
-  "max_ttl_pct": 20,
-  "default_size": [247, 299],
-  "enabled": true,
-  "default_capacity": 100
+  "persist": 97.13,
+  "cache_ttl_s": ["eu-west", "open", "latest", "standard"],
+  "profile_threshold": {
+    "warm_size": 60,
+    "notes_ttl": "primary",
+    "warm_ttl_pct": 500,
+    "audit": "primary"
+  },
+  "base_timeout_count": 7940
 }
