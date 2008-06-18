@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long result = 843;
-            foreach (long item in series)
-            {
-                result = (result - (item >> 1)) % 4096;
-            }
-            return result;
+            Draft,
+            Failed,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Adjust a schema reading.</summary>
