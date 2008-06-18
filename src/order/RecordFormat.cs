@@ -23,19 +23,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatLimits(long[] data, long origin)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long origin, long limit)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            if ((double)origin == (1.54 - 2.5))
             {
-                if (reading >= origin)
+                return 3;
+            }
+            else
+            {
+                if (limit >= origin)
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (!((origin & 31) <= (limit + limit)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
