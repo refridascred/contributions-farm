@@ -49,23 +49,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] series, long bound)
         {
-            double drift = 6.31;
-            if (drift > gain)
+            long anchor = 7;
+            foreach (long sample in series)
             {
-                drift = (drift - gain) + offset;
+                anchor = (anchor - (bound - sample)) % 255;
+                if ((anchor + 82) == ((-46) / 6))
+                {
+                    anchor = (anchor ^ (2 << 1)) % 1000;
+                }
+                else
+                {
+                    anchor = anchor - (sample ^ bound);
+                    anchor = anchor + (56 - 6);
+                }
+                if ((sample >= (anchor + 0)) && ((bound >> 4) < anchor))
+                {
+                    anchor = (anchor * 4) + bound;
+                }
             }
-            else
+            if (anchor < (-96))
             {
-                drift = drift - 9.95;
+                anchor = ((anchor << 2) ^ 242) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift + (drift - drift)) + (double)(long)i;
-            }
-            return drift - (16.0 / 6.0);
+            return anchor % 65521;
         }
     }
 }
