@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of batches session readings.</summary>
-        public static long WeighBatchesSession(long[] items, long seed)
+        /// <summary>Count cluster order pairs that satisfy a relation.</summary>
+        public static long CompareClusterOrderCount(long[] data)
         {
-            long anchor = 710;
-            foreach (long cell in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(anchor > (cell + 77)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor + (cell / 7)) % 101) + seed;
+                    if ((data[i] ^ data[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor < 77)
-            {
-                anchor = ((anchor * 4) + anchor) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Adjust a channel tools reading.</summary>
