@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextRange(long[] levels, long origin)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Flag { get; set; }
+            bool flag = true;
+            foreach (long item in levels)
+            {
+                if (item != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
