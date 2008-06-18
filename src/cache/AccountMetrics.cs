@@ -71,18 +71,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] samples)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if (!(seen > sample))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            New,
+            Locked,
+            Draft,
         }
 
         /// <summary>Fold a list of context readings.</summary>
