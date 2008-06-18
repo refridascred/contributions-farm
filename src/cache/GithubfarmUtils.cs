@@ -14,21 +14,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] readings)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Closed,
+            Stale,
+            New,
         }
 
         /// <summary>Define route limits and defaults.</summary>
