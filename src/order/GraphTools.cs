@@ -38,21 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric format readings.</summary>
-        public static long CompareMetricFormatCount(long[] values)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (readings[i] > floor)
                 {
-                    if ((values[i] - values[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine account values into a single score.</summary>
