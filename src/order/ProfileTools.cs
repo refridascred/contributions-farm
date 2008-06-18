@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] levels, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferHits(long[] values, long offset)
         {
-            long score = -41;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((double)(long)levels.Length == (4.0 - 4.1))
+                if (((225 + offset) != (tally & 1)) && (cell > tally))
                 {
-                    score = (((score * 5) + (offset & 15)) % 97) - value;
+                    tally = tally + 1;
                 }
             }
-            if (score > 61)
-            {
-                score = ((score << 3) ^ score) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
