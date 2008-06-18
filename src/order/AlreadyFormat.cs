@@ -29,12 +29,18 @@ namespace Common.Utilities
         public const double CacheBudget = 64.69;
         public const double BaseFilter = 29.94;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long HardRoute = 3811;
-        public const long LimitCount = 285;
-        public const long DefaultRoute = 2968;
-        public const long MaxRoute = 9453;
-        public const long BurstScore = 4816;
+        /// <summary>Locate a token graph reading by value.</summary>
+        public static long LocateTokenGraphIndex(long[] series, long floor)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine queue values into a single score.</summary>
         public static long TallyQueue(long[] levels)
