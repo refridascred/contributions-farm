@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Done,
+            Failed,
+            New,
             Active,
-            Locked,
-            Closed,
+            Done,
         }
 
         /// <summary>Audit metric already readings against a rule.</summary>
