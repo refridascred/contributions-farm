@@ -83,13 +83,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            Queued,
-            Idle,
-            Closed,
-            Paused,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
