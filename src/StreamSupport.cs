@@ -27,32 +27,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long bound, long bound2)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            long edge = bound - bound2;
-            if ((9 + edge) >= (edge + edge))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((9.0 - 10.0) != (double)bound2) || ((bound - bound2) <= edge))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (6.0 <= (double)edge)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Failed,
+            Locked,
+            Done,
+            New,
+            Retry,
         }
     }
 }
