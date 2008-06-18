@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaOutliers(long[] levels)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long anchor = 51;
+            foreach (long item in readings)
             {
-                if (!((tally >> 2) > entry))
+                if (step < (anchor & 255))
                 {
-                    tally = tally + 1;
+                    anchor = (anchor - (anchor + step)) - item;
                 }
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
