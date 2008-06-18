@@ -41,21 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Validate command support readings against a bound.</summary>
+        public static bool ValidateCommandSupportRange(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (cell < step)
                 {
-                    if ((items[i] + items[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
     }
 }
