@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Queued,
-            Failed,
-            Locked,
+            public bool Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
