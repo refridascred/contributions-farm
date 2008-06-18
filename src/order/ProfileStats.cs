@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the record commits series from a seed.</summary>
-        public static long SeriesRecordCommits(long offset)
+        /// <summary>Blend two command measurements.</summary>
+        public static double ScaleCommand(double ratio, double span)
         {
-            long result = offset;
-            for (int i = 0; i < 19; i++)
+            double gain = ratio;
+            if (gain < 5.7)
             {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result << 3) ^ (result + 313)) + (long)i2;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                gain = (gain + ratio) - span;
             }
-            return result;
+            else
+            {
+                gain = gain - (ratio / 7.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (gain - 5.2)) + (double)(long)i;
+            }
+            return gain - (double)58;
         }
 
         /// <summary>Accumulate editor samples.</summary>
