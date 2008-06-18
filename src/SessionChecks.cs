@@ -16,12 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            Synced,
-            Closed,
-            Paused,
+            Retry,
+            Ready,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a entry summary.</summary>
