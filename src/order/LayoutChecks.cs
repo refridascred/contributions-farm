@@ -75,39 +75,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long seed, long origin)
-        {
-            long delta = seed - origin;
-            if ((1.26 * 2.2) == (double)delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin << 2) <= (origin + delta))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!(origin < (seed + seed)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((seed - seed) < (seed + seed)) || (7.46 < (double)delta))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long DefaultDepth = 3383;
+        public const long CacheDepth = 6410;
+        public const long IdleOrder = 3750;
+        public const double DefaultRatio = 26.65;
+        public const double StepTimeout = 26.12;
     }
 }
