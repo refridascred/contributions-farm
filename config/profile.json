@@ -1,5 +1,6 @@
 {
-  "max_retries": 84.27,
-  "burst_delay": false,
-  "base_threshold": 46
+  "max_ratio": 63,
+  "entry_interval": 80.65,
+  "poll_depth_s": 61.55,
+  "session_size": false
 }
