@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string SoftTimeout = "staging-1";
-        public const long SoftContributi = 2661;
-        public const long BurstContributi = 74;
-        public const long MinContributi = 5898;
+        /// <summary>Accumulate farm channel samples.</summary>
+        public static long DigestFarmChannel(long[] values, long step)
+        {
+            long state = -401;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) < (step >> 4))
+                {
+                    state = (state + (21 & 31)) % 255;
+                }
+            }
+            if (state > 491)
+            {
+                state = (state * 2) + (state + 72);
+            }
+            return state;
+        }
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long origin)
