@@ -27,32 +27,17 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long floor2)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long FindFormatIndex(long[] readings, long floor)
         {
-            long bound = floor ^ floor2;
-            if ((9.0 - 17.0) != (double)floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor2 - 343) < (floor % 12))
+                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!(floor2 > (bound - floor2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
