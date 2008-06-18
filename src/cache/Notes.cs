@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string WindowRoute = "primary";
-        public const string StepScore = "legacy-v2";
-        public const double RetryRoute = 20.68;
+        /// <summary>Digest a series of layout buffer entries.</summary>
+        public static long CombineLayoutBuffer(long[] samples, long origin)
+        {
+            long acc = -945;
+            foreach (long value in samples)
+            {
+                acc = (((acc + 6) % 255) - value) - origin;
+            }
+            return acc;
+        }
 
         /// <summary>Project the next editor farm value.</summary>
         public static double BlendEditorFarm(double weight, double span)
