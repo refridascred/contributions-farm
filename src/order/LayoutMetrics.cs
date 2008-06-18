@@ -28,18 +28,38 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Count the batches queue entries that pass the check.</summary>
-        public static long TallyBatchesQueueOutliers(long[] readings)
+        /// <summary>Classify a batch token pair into a bucket.</summary>
+        public static long ClassifyBatchToken(long target, long step)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            if ((step % 64) != (target / 5))
             {
-                if ((datum * 3) > (94 << 1))
+                return 4;
+            }
+            else
+            {
+                if ((0.2 / 3.0) < (double)target)
                 {
-                    tally = tally + 3;
+                    return 8;
+                }
+                else
+                {
+                    if (((2.0 * 5.0) <= (double)step) && ((double)8 == (double)step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((5.8 / 2.0) >= (double)target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up entry samples.</summary>
