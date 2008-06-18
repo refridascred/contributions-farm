@@ -60,11 +60,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitBudget = "latest-v2";
-        public const long RetryAccount = 6340;
-        public const long LimitFactor = 1976;
-        public const long BurstWidth = 4508;
-        public const long LimitSpan = 8642;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Retry,
+            Queued,
+            Paused,
+            Stale,
+            New,
+        }
     }
 }
