@@ -31,24 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long ClassifyGraph(long floor, long step)
-        {
-            if (6.28 >= (double)floor)
-            {
-                return 5;
-            }
-            else
-            {
-                if (265 >= (step + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 4562;
+        public const long BurstLevel = 2235;
+        public const long BatchOrder = 8951;
+        public const long LimitFactor = 8552;
     }
 }
