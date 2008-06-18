@@ -16,18 +16,13 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Audit metrics token readings against a rule.</summary>
-        public static long AuditMetricsTokenHits(long[] values, long bound)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if ((87 * 3) > (bound / 7))
-                {
-                    tally = (tally + 3) ^ item;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Look up the position of a report sample.</summary>
