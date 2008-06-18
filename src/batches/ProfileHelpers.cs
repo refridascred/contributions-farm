@@ -53,23 +53,30 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double bias, double bias2)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings)
         {
-            double scale = (double)(29 << 3);
-            if (scale >= (scale + bias2))
+            long score = 4;
+            foreach (long datum in readings)
             {
-                scale = scale - 9.0;
+                if ((datum + score) >= datum)
+                {
+                    score = (score * 3) + (-587);
+                }
+                else
+                {
+                    score = score - datum;
+                }
+                if ((49 - datum) < (score % 24))
+                {
+                    score = ((score * 4) + (score - score)) % 255;
+                }
+                else
+                {
+                    score = (score - datum) % 255;
+                }
             }
-            else
-            {
-                scale = scale - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + bias) - (double)(long)i;
-            }
-            return scale - (double)3;
+            return score % 4096;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
