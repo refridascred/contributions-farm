@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] readings)
+        /// <summary>Compare every pair of cache profile readings.</summary>
+        public static long MatchCacheProfileCount(long[] samples)
         {
-            long score = 5;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)reading > (double)431) || ((reading ^ 96) >= (score + score)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = score - (reading ^ (-728));
+                    if ((samples[i] - samples[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
