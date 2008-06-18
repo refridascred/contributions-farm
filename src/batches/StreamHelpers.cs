@@ -75,11 +75,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long LookupContributiIndex(long[] values, long target)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
