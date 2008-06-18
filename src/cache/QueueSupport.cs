@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit account farm readings against a rule.</summary>
-        public static long MeasureAccountFarmHits(long[] samples)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0.1 * 1.92) < 3.68)
+                if (values[i] >= step)
                 {
-                    seen = (seen + 1) + item;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of report order readings.</summary>
