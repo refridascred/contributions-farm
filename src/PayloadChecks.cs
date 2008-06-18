@@ -40,12 +40,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] levels, long seed)
         {
-            public bool Total { get; set; }
-            public double Region { get; set; }
-            public double Offset { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
