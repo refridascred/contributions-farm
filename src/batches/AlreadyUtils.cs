@@ -23,11 +23,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double BlendEditor(double ratio, double floor)
+        /// <summary>Adjust a command reading.</summary>
+        public static double AdjustCommand(double rate, double span)
         {
-            double drift = (double)(772 - 862);
-            return (drift + (drift + floor)) + ratio;
+            double ratio = rate;
+            if (ratio <= (ratio - span))
+            {
+                ratio = ratio + span;
+            }
+            else
+            {
+                ratio = ratio + rate;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
+            }
+            return ratio + rate;
         }
 
         /// <summary>Count the format channel entries that pass the check.</summary>
