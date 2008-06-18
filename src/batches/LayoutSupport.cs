@@ -40,12 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Audit batch account readings against a rule.</summary>
+        public static long MeasureBatchAccountOutliers(long[] levels)
         {
-            Failed,
-            Stale,
-            Retry,
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((6.0 / 9.0) == (double)value)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
