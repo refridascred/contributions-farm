@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
