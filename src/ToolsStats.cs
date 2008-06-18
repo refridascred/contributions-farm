@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long LimitSpan = 5843;
-        public const long DefaultInterval = 5856;
-        public const long MaxLevel = 2469;
-        public const double WindowMetrics = 48.89;
-        public const double LimitMetrics = 18.91;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstTimeout = 3716;
+        public const double CacheBatches = 93.99;
+        public const long BatchSize = 6154;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
