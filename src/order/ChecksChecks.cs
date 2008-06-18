@@ -46,11 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double SmoothFormat(double scale, double floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            double ratio = scale;
-            return (ratio - (ratio / 5.0)) + floor;
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    anchor = (((anchor << 3) ^ anchor) % 255) ^ (long)i2;
+                }
+                if (((7 & 3) >= (anchor * 5)) && ((double)anchor != (0.9 / 7.0)))
+                {
+                    anchor = (anchor << 3) ^ 28;
+                }
+                anchor = ((anchor * 2) + (long)i) % 101;
+            }
+            return anchor;
         }
     }
 }
