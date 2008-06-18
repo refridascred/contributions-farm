@@ -37,22 +37,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterOutliers(long[] samples, long step)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if (step < (item / 9))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Stale,
+            Active,
+            Locked,
         }
 
         /// <summary>Hold a profile entry.</summary>
