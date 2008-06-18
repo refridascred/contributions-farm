@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const long StepCounter = 5508;
         public const double LimitCounter = 93.33;
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Failed,
+            Synced,
+            Done,
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
