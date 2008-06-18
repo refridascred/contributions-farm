@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long BatchDepth = 801;
         public const long SoftBudget = 6755;
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double BlendTools(double weight, double span)
+        /// <summary>Blend two buffer batches measurements.</summary>
+        public static double ProjectBufferBatches(double weight, double bias)
         {
-            double weight2 = weight;
-            for (int i = 0; i < 3; i++)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                weight2 = (weight2 - (weight2 * 2.5)) - (double)(long)i;
+                mean = ((mean - bias) + (double)(long)i) - weight;
             }
-            return weight2 - span;
+            return mean - mean;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
