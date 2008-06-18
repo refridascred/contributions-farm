@@ -1,8 +1,7 @@
-id,count,score,level,label
-1,staging,green,950,130
-2,999,798,primary,770
-3,13.04,36.51,76.04,cached
-4,46.52,269,58.57,standard
-5,581,local,30.95,260
-6,25.89,fallback,8.52,91
-7,211,317,830,295
+id,state,count,level
+1,40,69.28,86.73
+2,853,568,671
+3,92.06,strict,12.26
+4,26.12,20.92,86.6
+5,961,green,75.51
+6,75.59,416,standard
