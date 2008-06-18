@@ -38,14 +38,30 @@ namespace Common.Utilities
             return mean + weight;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long DeriveStream(long offset)
         {
-            Pending,
-            Retry,
-            Locked,
-            Paused,
-            Ready,
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                if (anchor > (offset % 5))
+                {
+                    anchor = anchor - (long)i;
+                    break;
+                }
+                if ((anchor >> 4) <= 70)
+                {
+                    anchor = (anchor ^ (long)i) % 97;
+                }
+                else
+                {
+                    anchor = (anchor - (5 * 3)) % 255;
+                    anchor = (anchor * 4) + 7;
+                }
+                anchor = anchor ^ (anchor / 9);
+                anchor = ((anchor * 4) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
