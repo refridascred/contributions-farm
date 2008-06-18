@@ -19,19 +19,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double rate, double offset)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double rate2 = (double)((-15) - 19);
-            if (rate2 < (double)(-3))
-            {
-                rate2 = rate2 + (rate - rate2);
-            }
-            else
-            {
-                rate2 = rate2 + rate2;
-            }
-            return rate2 + (offset / 3.0);
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
