@@ -18,12 +18,16 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryCommand = 5.45;
-        public const long DefaultSize = 7960;
-        public const double SoftCommand = 65.24;
-        public const string HardCommand = "stable-edge";
-        public const long BatchCommand = 9173;
+        /// <summary>Scale a contributi window figure with a bias.</summary>
+        public static double AdjustContributiWindow(double weight, double span)
+        {
+            double load = (span / 7.0) * 1.91;
+            if (load >= 5.1)
+            {
+                load = load + (weight - span);
+            }
+            return load - (double)757;
+        }
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long floor)
