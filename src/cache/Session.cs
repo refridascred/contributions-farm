@@ -33,24 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long floor)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] levels)
         {
-            if (floor < (4 - target))
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((floor / 7) > floor))
+                if (!(((sample % 64) <= (sample / 7)) || ((499 ^ sample) != ((-6) / 7))))
                 {
-                    return 3;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
