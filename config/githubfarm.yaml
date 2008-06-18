@@ -1,32 +1,17 @@
 # githubfarm settings
-warm_limit:
-  base_window_pct: 98
-  enabled: false
-  poll_depth_ms: stable
-  tools_interval: 97.5
-  flush_threshold: latest
-  batch_ttl_ms:
-    entry_delay: false
-    burst_depth:
-      - 449
-      - 293
-    hard_timeout: edge
-warm_limit_ms: true
-order_interval:
-  burst_size_pct: 93.14
-  batch_capacity_pct:
-    dry_run: 2
-    burst_interval_ms: edge
-    record_timeout: false
-    min_retries: 500
-    metric_ratio: true
-    account_depth: 1024
-  soft_window:
-    - eu-west
-    - open
-  base_interval_ms: true
-  hard_delay_pct: 29.12
-soft_retries_ms:
+default_timeout: latest
+soft_limit_count:
+  poll_retries: strict
+  warm_threshold: local
+  graph_timeout: 76.8
+  hard_window: 100
+  flush_limit_pct: local
+  payload_ttl: 91
+retry_limit:
+  - local
+  - latest
   - stable
-  - stable
-  - cached
+  - fallback
+channel_retries:
+  - edge
+  - eu-west
