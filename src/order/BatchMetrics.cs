@@ -33,11 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BurstCluster = 4506;
-        public const long BatchTimeout = 4190;
-        public const long MinCluster = 2948;
-        public const long RetryCluster = 1979;
+        /// <summary>Roll a editor support counter forward.</summary>
+        public static long DeriveEditorSupport(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = (anchor << 3) ^ floor;
+                anchor = (anchor - (anchor - floor)) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
