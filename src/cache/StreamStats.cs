@@ -24,25 +24,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    acc = acc - (long)i2;
-                }
-                double drift = (double)(long)i + 4.0;
-                if ((double)96 <= drift)
-                {
-                    drift = drift + (4.08 / 5.0);
-                    acc = (acc + (acc >> 4)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Failed,
+            Retry,
+            Pending,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
