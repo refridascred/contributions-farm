@@ -63,19 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long step)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
         {
-            long result = step;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (count <= (count % 24))
                 {
-                    result = (result << 2) ^ ((long)i2 + (-1));
+                    count = (count + 2) ^ value;
                 }
-                result = ((result * 3) + (long)i) % 1000;
             }
-            return result;
+            return count;
         }
     }
 }
