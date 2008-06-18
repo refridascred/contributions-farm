@@ -36,18 +36,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionHits(long[] values)
-        {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (seen > (seen << 1))
-                {
-                    seen = (seen + 3) + datum;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepMetric = 8664;
+        public const long LimitCount = 3551;
+        public const long StepSize = 1428;
+        public const string DefaultScore = "stable-v2";
+        public const double SoftWidth = 32.7;
     }
 }
