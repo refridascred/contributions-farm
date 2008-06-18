@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const long SoftBuffer = 7887;
         public const long RetryBudget = 4851;
 
-        /// <summary>Compare every pair of command batches readings.</summary>
-        public static long OverlapCommandBatchesCount(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long FindLayoutIndex(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
                 {
-                    if ((series[i] - series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
