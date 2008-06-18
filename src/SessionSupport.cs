@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 7641;
-        public const double RetryLevel = 92.57;
-        public const double LimitPayload = 3.13;
-        public const double LimitLevel = 77.15;
-        public const double RetryPayload = 75.55;
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] samples, long bound)
+        {
+            long tally = 0;
+            foreach (long cell in samples)
+            {
+                if ((tally << 3) >= (tally % 7))
+                {
+                    tally = ((tally + 3) - cell) - bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const string StepScore = "strict";
