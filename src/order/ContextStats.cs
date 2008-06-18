@@ -43,15 +43,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamOutliers(long[] samples)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileMatches(long[] values, long bound)
         {
             long seen = 0;
-            foreach (long sample in samples)
+            foreach (long item in values)
             {
-                if (!(((sample % 24) > seen) && ((sample % 24) != (sample - seen))))
+                if ((double)bound < 0.06)
                 {
-                    seen = seen + 2;
+                    seen = (seen + 3) + item;
                 }
             }
             return seen;
