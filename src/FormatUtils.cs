@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string StepBudget = "staging-v2";
-        public const long SoftBuffer = 7887;
-        public const long RetryBudget = 4851;
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
+        {
+            public long Level { get; set; }
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Project the next commits format value.</summary>
         public static double BlendCommitsFormat(double ratio, double bias)
