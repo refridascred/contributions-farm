@@ -52,22 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricMatches(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if (matches <= (234 / 5))
-                {
-                    matches = ((matches + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitBudget = "alpha-1";
+        public const long BurstDepth = 6399;
+        public const double RetryDepth = 23.01;
     }
 }
