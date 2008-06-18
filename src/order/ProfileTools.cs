@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long target, long limit)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            if ((69 + target) <= (target ^ limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((0 - limit) < ((-185) >> 5)) && ((target << 1) != (2 / 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit == (1.1 * 2.18))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
