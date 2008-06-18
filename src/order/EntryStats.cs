@@ -42,23 +42,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long TallyMetric(long[] data)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long total = 22;
-            foreach (long sample in data)
-            {
-                total = (total - (4 + sample)) % 65521;
-                if ((total + sample) == (total / 5))
-                {
-                    total = (total ^ (sample ^ sample)) % 255;
-                }
-                if ((7.6 > (double)total) || ((sample % 2) <= sample))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Total { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
