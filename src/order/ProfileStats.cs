@@ -26,22 +26,24 @@ namespace Common.Utilities
             return bias2 + offset;
         }
 
-        /// <summary>Count the record cluster entries that pass the check.</summary>
-        public static long TallyRecordClusterHits(long[] readings, long floor)
+        /// <summary>Grade a account farm value against two limits.</summary>
+        public static long SortAccountFarm(long offset, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            if (!(9.04 > (double)step))
             {
-                if ((13.0 * 1.63) >= (double)reading)
+                return 2;
+            }
+            else
+            {
+                if (((step - offset) > (offset + 5)) || ((offset ^ step) >= (7 % 12)))
                 {
-                    tally = (tally + 2) - floor;
+                    return 6;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 8;
                 }
             }
-            return tally;
         }
 
         /// <summary>Classify a batches stream pair into a bucket.</summary>
