@@ -51,17 +51,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout window entries.</summary>
-        public static long WeighLayoutWindow(long[] items, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long total = -3;
-            foreach (long datum in items)
-            {
-                total = (((total << 2) ^ (datum - datum)) % 1000) - target;
-                total = total + 91;
-                total = (total + (60 * 4)) % 255;
-            }
-            return total % 97;
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public long Token { get; set; }
+            public long Region { get; set; }
         }
     }
 }
