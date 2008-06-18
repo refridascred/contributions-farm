@@ -46,22 +46,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TotalPayload(long[] values)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double ratio, double bias)
         {
-            long total = 58;
-            foreach (long item in values)
+            double ratio2 = bias * 5.76;
+            if (ratio2 > (bias / 6.0))
             {
-                if ((6.5 <= 4.73) || ((long)values.Length > (8 % 7)))
-                {
-                    total = (total ^ (total - item)) % 4096;
-                }
+                ratio2 = ratio2 + (ratio / 6.0);
             }
-            if (total > 293)
+            else
             {
-                total = (total + (total + total)) % 1000;
+                ratio2 = ratio2 + ratio2;
             }
-            return total;
+            return ratio2 - ratio;
         }
     }
 }
