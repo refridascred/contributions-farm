@@ -1,9 +1,12 @@
 # support settings
-dry_run: 46
-compress: 18.09
-soft_delay_ms: true
-strict:
-  - local
-  - staging
-  - fallback
-  - strict
+token_timeout:
+  batch_limit: 100
+  retry_interval_s: 37.93
+  farm_window: 47.22
+  batch_interval_pct: eu-west
+  min_delay_count: true
+token_delay: 9
+verbose: 35
+flush_threshold_s: 71
+base_depth_ms: 6539
+payload_ratio: 1024
