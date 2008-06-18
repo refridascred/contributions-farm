@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long AuditToolsGaps(long[] readings, long target)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (!((sample + sample) < (target % 100)) || ((double)31 <= (double)seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Limit { get; set; }
+            public double Offset { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
