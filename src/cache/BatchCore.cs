@@ -34,17 +34,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] data, long seed)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] data, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if ((data[i] >= seed) && ((data[i] % 5) == 0))
+                if (item != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
