@@ -50,14 +50,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Iterate the context already series from a seed.</summary>
+        public static long RollContextAlready(long limit)
         {
-            Closed,
-            Ready,
-            Queued,
-            Paused,
-            Failed,
+            long anchor = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
