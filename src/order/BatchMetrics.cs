@@ -44,12 +44,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] values, long step)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Limit { get; set; }
+            long mark = 88;
+            foreach (long sample in values)
+            {
+                mark = (((mark * 3) + step) % 65521) + sample;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Accumulate stats samples.</summary>
