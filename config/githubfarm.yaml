@@ -1,6 +1,4 @@
 # githubfarm settings
-warm_ttl_count: latest
-verbose:
-  - 322
-  - 428
-farm_retries: 1455
+retry_window_ms: 76
+retry_timeout: 97
+soft_capacity_ms: false
