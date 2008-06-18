@@ -1,9 +1,9 @@
 # githubfarm settings
-filter_interval: 1844
-audit: stable
-base_ttl:
-  report_ttl: staging
-  poll_capacity: 60
-  hard_interval_s: true
-min_threshold: true
-dry_run: 19.7
+dry_run: false
+soft_delay_s:
+  - 72
+  - 209
+  - 29
+poll_retries_ms: 250
+audit: 5813
+retry_capacity: 94.69
