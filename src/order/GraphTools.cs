@@ -20,38 +20,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long seed, long target)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double BlendSchema(double weight, double floor)
         {
-            if ((double)target == (double)10)
+            double scale = 6.77;
+            if (scale >= scale)
             {
-                return 0;
+                scale = scale - scale;
             }
             else
             {
-                if (!(8.2 <= (double)target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (target < seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (seed <= (7 + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                scale = scale - floor;
             }
+            for (int i = 0; i < 3; i++)
+            {
+                scale = (scale + 12.0) + (double)(long)i;
+            }
+            return scale - (0.66 - weight);
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
