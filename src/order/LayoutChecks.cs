@@ -43,25 +43,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the cache entry series from a seed.</summary>
-        public static long IterateCacheEntry(long limit)
+        /// <summary>Match up layout counter samples.</summary>
+        public static long OverlapLayoutCounterCount(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long count = score;
-                if ((count + score) <= (limit ^ count))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score ^ (limit - limit);
+                    if ((levels[i] + levels[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    score = (score - (limit - score)) % 1000;
-                    score = (score - (limit << 1)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
