@@ -37,11 +37,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2155;
-        public const long WindowLevel = 7140;
-        public const string StepInterval = "open";
-        public const string BurstStats = "strict-v2";
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long OverlapReportCount(long[] data)
+        {
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheAlready = 56.07;
