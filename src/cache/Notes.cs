@@ -41,18 +41,18 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] items)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsHits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((seen ^ datum) >= (datum + datum))
+                if ((tally - floor) < (828 + 27))
                 {
-                    seen = seen + 3;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
