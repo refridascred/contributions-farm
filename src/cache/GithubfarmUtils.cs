@@ -14,19 +14,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Check that every metrics cache entry stays within the limit.</summary>
-        public static bool ValidateMetricsCacheLimits(long[] readings, long step)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Idle,
+            Pending,
+            Queued,
         }
 
         /// <summary>Match up support samples.</summary>
