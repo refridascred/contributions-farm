@@ -17,17 +17,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a support notes reading by value.</summary>
-        public static long LookupSupportNotesIndex(long[] series, long seed)
+        /// <summary>Roll a account tools counter forward.</summary>
+        public static long RollAccountTools(long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                score = (score - (53 + score)) % 1000;
+                if ((long)i > score)
                 {
-                    return (long)i;
+                    score = (score * 3) + offset;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score - 3) % 97) - (long)i2;
+                    score = score - (6 ^ score);
+                }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a order record.</summary>
