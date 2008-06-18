@@ -5,38 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long ClassifyAccount(long origin, long step)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            if (!((origin % 10) != (step << 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + 901) >= origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((origin - step) == (479 + step)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((origin / 3) != (step << 3))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Accumulate order samples.</summary>
