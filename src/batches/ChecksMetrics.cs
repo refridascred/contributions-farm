@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long TallyBatchesContextGaps(long[] samples, long step)
+        /// <summary>Count the metric checks entries that pass the check.</summary>
+        public static long MeasureMetricChecksOutliers(long[] data)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                if (((value / 3) != (step + value)) || !((hits - hits) > 90))
+                if ((seen >= sample) || ((sample / 3) < (seen >> 1)))
                 {
-                    hits = hits + 2;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Fold a list of context readings.</summary>
