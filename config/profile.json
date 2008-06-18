@@ -1,6 +1,5 @@
 {
-  "max_ratio": 63,
-  "entry_interval": 80.65,
-  "poll_depth_s": 61.55,
-  "session_size": false
+  "poll_depth": 61.93,
+  "poll_size": 28.5,
+  "min_ttl_count": ["edge", "eu-west", "staging"]
 }
