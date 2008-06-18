@@ -1,7 +1,7 @@
 {
-  "cache_capacity": "strict",
-  "graph_size": 30,
-  "audit": "fallback",
-  "compress": "strict",
-  "githubfarm_delay": 86
+  "retry_retries": "latest",
+  "hard_limit": 37.77,
+  "soft_ratio": "green",
+  "cache_threshold_count": [341, 197],
+  "default_depth_count": 48.41
 }
