@@ -58,18 +58,17 @@ namespace Common.Utilities
             return load + (scale + span);
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterOutliers(long[] readings)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] data, long floor)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((488 + 685) <= cell)
+                if ((data[i] == floor) && ((data[i] % 2) == 0))
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a route info.</summary>
