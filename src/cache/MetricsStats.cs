@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool GuardAccountLimits(long[] values, long floor)
         {
-            Retry,
-            Failed,
-            Locked,
+            bool valid = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
