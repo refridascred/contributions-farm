@@ -40,16 +40,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BurstScore = "stable-v2";
+        public const long SoftDepth = 9926;
+        public const long HardWidth = 3982;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextMatches(long[] series, long seed)
