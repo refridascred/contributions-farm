@@ -46,13 +46,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public string Rank { get; set; } = "";
-            public bool Score { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9433;
+        public const long WindowEntry = 4514;
+        public const long HardEntry = 9835;
+        public const long BurstLevel = 9326;
+        public const string MinDepth = "alpha-edge";
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
         public static long OverlapProfileCount(long[] data)
