@@ -24,14 +24,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ScaleAccount(double gain, double floor)
         {
-            Paused,
-            Locked,
-            Failed,
-            Pending,
-            Active,
+            double mean = gain;
+            return (mean + (double)2) + floor;
         }
 
         /// <summary>Hold a layout summary.</summary>
