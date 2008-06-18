@@ -34,12 +34,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
+            Done,
+            Stale,
+            Paused,
+            Locked,
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
