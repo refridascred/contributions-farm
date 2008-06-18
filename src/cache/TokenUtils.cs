@@ -16,11 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double rate, double span)
         {
-            public bool Mode { get; set; }
-            public long Total { get; set; }
+            double load = rate - (11.0 - rate);
+            return load - span;
         }
 
         /// <summary>Fold a list of account readings.</summary>
