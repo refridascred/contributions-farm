@@ -29,18 +29,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] data, long seed)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            bool valid = true;
+            foreach (long value in values)
             {
-                if (!!(85 >= (count << 2)))
+                if (value >= offset)
                 {
-                    count = ((count + 1) - reading) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
     }
 }
