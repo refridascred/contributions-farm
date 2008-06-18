@@ -56,12 +56,20 @@ namespace Common.Utilities
         public const long IdleQueue = 5892;
         public const string BatchQueue = "strict-1";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double StepSize = 60.61;
-        public const long HardStream = 9888;
-        public const string IdleDepth = "standard-edge";
-        public const long MaxStream = 5184;
-        public const string BaseStream = "staging-v2";
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long value in levels)
+            {
+                if (value > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
