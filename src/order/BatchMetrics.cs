@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 1617;
-        public const string MinCache = "staging-edge";
-        public const string HardScore = "strict";
-        public const long IdleCache = 2112;
-        public const double LimitCache = 85.63;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string BaseStats = "alpha-v2";
+        public const long BurstRatio = 3688;
+        public const long BurstStats = 3764;
+        public const string HardStats = "primary";
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
