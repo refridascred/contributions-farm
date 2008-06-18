@@ -51,18 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] samples)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmLimits(long[] data, long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (cell <= hits)
+                if (item <= bound)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
