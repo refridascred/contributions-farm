@@ -1,7 +1,7 @@
 {
-  "retry_retries": "latest",
-  "hard_limit": 37.77,
-  "soft_ratio": "green",
-  "cache_threshold_count": [341, 197],
-  "default_depth_count": 48.41
+  "buffer_ratio": 35,
+  "strict": 50.52,
+  "record_delay": ["primary", "standard", "open"],
+  "filter_size": 500,
+  "max_interval_ms": 1024
 }
