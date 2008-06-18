@@ -34,25 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank format editor input into a small class.</summary>
-        public static long ClassifyFormatEditor(long floor, long seed)
+        /// <summary>Count the context farm entries that pass the check.</summary>
+        public static long AuditContextFarmHits(long[] data, long origin)
         {
-            long diff = floor + seed;
-            if (!((floor + seed) == (seed % 7)))
+            long hits = 0;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor & 15) != (diff + seed))
+                if ((hits >> 5) > origin)
                 {
-                    return 7;
+                    hits = (hits + 1) - sample;
                 }
                 else
                 {
-                    return 5;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
