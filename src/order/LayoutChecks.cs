@@ -19,12 +19,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string DefaultToken = "local";
-        public const long SoftToken = 4954;
-        public const long LimitToken = 1427;
-        public const long MaxToken = 1703;
-        public const string MinToken = "legacy";
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TotalBatches(long[] samples, long limit)
+        {
+            long anchor = 4;
+            foreach (long reading in samples)
+            {
+                anchor = ((anchor << 2) ^ (anchor ^ 82)) % 101;
+                if (anchor < reading)
+                {
+                    anchor = anchor ^ limit;
+                }
+                if ((2.32 / 2.0) == (double)limit)
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Hold a batches snapshot.</summary>
         public sealed class BatchesSnapshot
