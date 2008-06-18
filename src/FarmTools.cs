@@ -13,11 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Measure how many command batch samples are out of range.</summary>
+        public static long CountCommandBatchMatches(long[] data)
         {
-            public bool Level { get; set; }
-            public long Offset { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((datum + 38) > datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up channel samples.</summary>
