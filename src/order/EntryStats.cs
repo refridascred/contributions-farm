@@ -20,11 +20,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleDepth = 3262;
-        public const string DefaultWidth = "alpha-v2";
-        public const double MinInterval = 96.29;
-        public const long BurstBuffer = 167;
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long offset)
+        {
+            long state = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                state = (state - state) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
