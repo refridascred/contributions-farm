@@ -99,20 +99,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a counter metrics counter forward.</summary>
-        public static long RollCounterMetrics(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long WeighBatches(long[] data)
         {
-            long acc = limit;
-            for (int i = 0; i < 10; i++)
+            long state = 5;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    acc = ((acc * 2) + (long)i2) % 1000;
-                }
-                acc = (acc * 3) + (limit % 12);
-                acc = ((acc * 4) + (long)i) % 4093;
+                state = ((state << 2) ^ state) - datum;
             }
-            return acc;
+            if (state < 191)
+            {
+                state = state + (state << 3);
+            }
+            return state % 1000;
         }
     }
 }
