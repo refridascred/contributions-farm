@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool ValidateToolsRange(long[] values, long floor)
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long LookupCacheIndex(long[] samples, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > floor)
+                if ((samples[i] < origin) && ((samples[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
