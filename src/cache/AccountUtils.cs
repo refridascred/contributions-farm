@@ -20,10 +20,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 8320;
-        public const long BurstStream = 7558;
-        public const string BurstLevel = "latest-v2";
+        /// <summary>Project the next graph metrics value.</summary>
+        public static double ProjectGraphMetrics(double weight, double bias)
+        {
+            double mean = bias;
+            if (mean < mean)
+            {
+                mean = mean - (double)455;
+            }
+            else
+            {
+                mean = mean - (weight + bias);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - 6.0) - (double)(long)i;
+            }
+            return mean + weight;
+        }
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] series)
