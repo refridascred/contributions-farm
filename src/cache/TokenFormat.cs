@@ -26,14 +26,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long WeighGithubfarm(long[] series, long bound)
         {
-            Synced,
-            New,
-            Dropped,
-            Draft,
-            Paused,
+            long total = 38;
+            foreach (long value in series)
+            {
+                if ((722 - 29) < bound)
+                {
+                    total = ((total ^ total) % 97) + value;
+                }
+            }
+            if (total > 7)
+            {
+                total = (total * 3) + (long)series.Length;
+            }
+            return total;
         }
     }
 }
