@@ -76,17 +76,9 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Locate a githubfarm layout reading by value.</summary>
-        public static long LookupGithubfarmLayoutIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long HardSize = 5159;
+        public const double BatchBuffer = 51.83;
+        public const string MinBuffer = "latest-edge";
     }
 }
