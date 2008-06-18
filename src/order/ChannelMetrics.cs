@@ -17,18 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] data)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterBounds(long[] data, long bound)
         {
-            long mark = 7;
-            foreach (long value in data)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((value * 5) >= (value - mark))
+                if (entry > bound)
                 {
-                    mark = ((mark << 3) ^ (value - mark)) % 4096;
+                    found = false;
+                    break;
                 }
             }
-            return mark % 4096;
+            return found;
         }
 
         /// <summary>Hold a order record.</summary>
