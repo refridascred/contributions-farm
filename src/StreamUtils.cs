@@ -48,11 +48,38 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long offset, long target)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
+            if ((offset > target) || (((-711) % 5) == (target + offset)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.43 + 0.9) == (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (target <= (target & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target ^ 47) != (target + 655))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of account readings.</summary>
