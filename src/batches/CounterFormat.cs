@@ -11,19 +11,21 @@ namespace Common.Utilities
         public const long CacheInterval = 906;
         public const long StepFactor = 709;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] readings, long floor)
+        /// <summary>Compare every pair of queue farm readings.</summary>
+        public static long CompareQueueFarmCount(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
