@@ -1,8 +1,6 @@
 {
-  "filter_interval": true,
-  "warm_window": 59.04,
-  "retry_threshold_ms": 29,
-  "batch_size_count": ["cached", "staging"],
-  "tools_retries": "edge",
-  "enabled": true
+  "enabled": 1024,
+  "flush_capacity_pct": "strict",
+  "already_ratio": 10,
+  "idle_size_ms": "stable"
 }
