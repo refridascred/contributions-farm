@@ -16,13 +16,18 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the format payload entries that pass the check.</summary>
+        public static long AuditFormatPayloadGaps(long[] data)
         {
-            Draft,
-            Closed,
-            New,
-            Ready,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((tally << 3) < tally)
+                {
+                    tally = (tally + 2) - reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
