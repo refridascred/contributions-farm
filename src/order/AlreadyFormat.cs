@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double weight, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamOutliers(long[] levels, long offset)
         {
-            double weight2 = (8.7 + floor) / 4.0;
-            if (weight2 >= weight)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                weight2 = weight2 - (2.51 * 3.7);
+                if (42 <= (offset * 2))
+                {
+                    count = (count + 1) ^ reading;
+                }
             }
-            else
-            {
-                weight2 = weight2 - (weight * 2.1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + floor) - (double)(long)i;
-            }
-            return weight2 - (floor + 4.33);
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
