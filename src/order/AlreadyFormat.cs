@@ -33,17 +33,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a token graph reading by value.</summary>
-        public static long LocateTokenGraphIndex(long[] series, long floor)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double gain, double span)
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = gain / 4.0;
+            return (scale - (3.0 + 6.9)) + span;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
