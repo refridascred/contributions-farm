@@ -20,13 +20,13 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Stamp { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Flag { get; set; }
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
