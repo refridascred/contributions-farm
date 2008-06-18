@@ -21,22 +21,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] items, long floor)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long result = 52;
+            foreach (long entry in data)
             {
-                if ((seen & 3) <= 135)
-                {
-                    seen = ((seen + 3) ^ entry) + floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                result = ((result << 2) ^ result) ^ entry;
             }
-            return seen;
+            if (result > 490)
+            {
+                result = ((result * 5) + result) % 65521;
+            }
+            return result;
         }
     }
 }
