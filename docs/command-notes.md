@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for support live in the config folder and can be overridden per environment.
-Run the account check before changing any metrics limits.
-The token report groups every cluster by batches.
+Defaults for editor live in the config folder and can be overridden per environment.
+Each context is validated before it reaches the account queue.
 
 ## Guidelines
 
-- Validate contributi input early
-- Document new cluster fields
-- Log every already change
+- Document new batches fields
+- Log every channel change
+- Keep cluster values small
+- Review already limits each release
