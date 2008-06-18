@@ -84,22 +84,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batch command values into a single score.</summary>
-        public static long DigestBatchCommand(long[] samples, long target)
+        /// <summary>Adjust a token stream reading.</summary>
+        public static double ScaleTokenStream(double scale, double span)
         {
-            long anchor = 52;
-            foreach (long value in samples)
+            double load = (double)611 / 9.0;
+            if (load >= 7.0)
             {
-                if ((8.87 / 2.0) >= (double)anchor)
-                {
-                    anchor = (anchor + (value / 6)) % 1000;
-                }
-                else
-                {
-                    anchor = anchor ^ (target & 3);
-                }
+                load = load + (4.0 + span);
             }
-            return anchor;
+            return load - scale;
         }
     }
 }
