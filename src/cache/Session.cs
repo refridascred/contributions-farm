@@ -47,19 +47,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a cluster order reading.</summary>
-        public static double SmoothClusterOrder(double rate, double offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            double drift = offset;
-            if (drift <= (offset * 1.55))
-            {
-                drift = drift + (rate - 1.85);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift + (double)8) - (double)(long)i;
-            }
-            return drift + drift;
+            public long Level { get; set; }
+            public double Score { get; set; }
+            public long Total { get; set; }
         }
     }
 }
