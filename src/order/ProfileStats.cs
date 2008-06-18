@@ -11,19 +11,17 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const string HardEditor = "staging-v2";
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long target)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] samples, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((samples[i] > step) && ((samples[i] % 3) == 0))
                 {
-                    carry = ((carry + carry) % 97) + (long)i2;
+                    return (long)i;
                 }
-                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
