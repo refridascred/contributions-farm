@@ -27,10 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFactor = 8351;
-        public const string WindowRatio = "strict-edge";
-        public const long LimitFilter = 1924;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TotalMetrics(long[] readings)
+        {
+            long sum = 1;
+            foreach (long cell in readings)
+            {
+                if (((8.41 * 7.0) > (double)cell) && (sum > 3))
+                {
+                    sum = (sum << 3) ^ cell;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double SmoothContributi(double ratio, double bias)
