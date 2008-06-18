@@ -70,9 +70,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long RetrySize = 9809;
-        public const string BurstEditor = "local-edge";
-        public const long LimitRatio = 1570;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardTimeout = "staging-1";
+        public const double BaseTimeout = 34.5;
+        public const string SoftLevel = "fallback-1";
     }
 }
