@@ -57,21 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long StepChannel(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((8.2 <= (double)floor) && ((result + result) == (result << 1)))
                 {
-                    if ((series[i] - series[j]) != 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    result = (result ^ ((long)i * 3)) % 4096;
                 }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return hits;
+            return result;
         }
     }
 }
