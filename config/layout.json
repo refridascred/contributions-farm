@@ -1,16 +1,5 @@
 {
-  "farm_delay": "primary",
-  "burst_retries_ms": {
-    "flush_ttl": {
-      "retry_limit": ["cached", "local", "edge", "fallback"],
-      "default_delay_pct": 1374,
-      "tools_size": false,
-      "strict": 70,
-      "sync_limit": 70.26
-    },
-    "sync_retries_count": 8948,
-    "hard_interval": "fallback",
-    "soft_window_ms": false
-  },
-  "strict": 84
+  "burst_interval_pct": "fallback",
+  "dry_run": true,
+  "soft_threshold_count": "open"
 }
