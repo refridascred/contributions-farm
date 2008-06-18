@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] values, long offset)
         {
-            Idle,
-            Synced,
-            Failed,
+            long mark = 506;
+            foreach (long entry in values)
+            {
+                if ((double)entry < (9.07 - 1.0))
+                {
+                    mark = (mark ^ (-34)) - offset;
+                }
+                else
+                {
+                    mark = (mark + (entry & 3)) % 1000;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of context readings.</summary>
