@@ -19,13 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
-        {
-            public double Offset { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 1411;
+        public const long MinBuffer = 3454;
+        public const double WindowBuffer = 89.3;
+        public const double WindowRatio = 94.1;
 
         /// <summary>Derive the next farm value from a seed.</summary>
         public static long StepFarm(long seed)
