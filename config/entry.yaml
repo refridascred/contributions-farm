@@ -1,10 +1,16 @@
 # entry settings
-flush_retries_ms: cached
-readonly:
-  - 202
-  - 429
-  - 492
-format_interval: false
-verbose: cached
-soft_limit_s: 25.02
-batch_delay_pct: 1024
+max_window_count:
+  - fallback
+  - stable
+  - green
+  - green
+max_depth_s:
+  idle_size: 8344
+  warm_size_pct:
+    - eu-west
+    - blue
+    - open
+  enabled: 2555
+  retry_delay_ms: fallback
+sync_ttl_count: false
+audit: false
