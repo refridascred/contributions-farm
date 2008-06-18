@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Done,
-            Synced,
-            Paused,
-            Locked,
+            public double Offset { get; set; }
+            public double Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
