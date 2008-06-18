@@ -1,34 +1,26 @@
 # githubfarm settings
-default_ratio_count: false
-contributi_ratio:
-  - 218
-  - 204
-  - 428
-  - 189
-flush_size_count:
-  soft_delay_count: 93.53
-  flush_limit_count: 4050
-  githubfarm_limit: edge
-  account_threshold: fallback
-  cache_ratio: 10
-cache_depth:
-  default_depth_count:
-    - 204
-    - 208
-    - 407
-    - 2
-  warm_timeout: 10
-  enabled: local
-  audit: latest
-  burst_interval_count: 100
-  retry_size:
-    cluster_interval: local
-    base_interval: 500
-    graph_capacity: 250
-    route_size: 984
-    hard_timeout_s:
-      - edge
-      - fallback
+max_limit:
+  cache_ratio_ms: fallback
+  format_ttl: 6960
+  idle_interval: 34.3
+  cache_delay_s: blue
+  base_delay_ms: true
+  window_timeout: fallback
+report_capacity: cached
+base_timeout:
+  stats_interval:
+    hard_ratio:
       - legacy
-      - blue
-    burst_threshold: 90.69
+      - green
+      - cached
+      - strict
+    audit: 66.27
+    idle_capacity_s: primary
+    min_threshold_s: standard
+    notes_size: false
+  enabled: 63.63
+  batch_ttl_s: primary
+enabled: true
+idle_retries:
+  - 164
+  - 307
