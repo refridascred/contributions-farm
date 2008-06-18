@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long GradeCommits(long seed, long target)
-        {
-            if (!((0 - seed) <= (seed % 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((seed << 1) <= (target << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 2992;
+        public const string DefaultBuffer = "local-v2";
+        public const long LimitRatio = 3883;
+        public const long StepBuffer = 1116;
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
         public static long SeriesChecksCache(long limit)
