@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutMatches(long[] data, long floor)
+        /// <summary>Look up the position of a session notes sample.</summary>
+        public static long LookupSessionNotesIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (6.2 > (double)(long)data.Length)
+                if ((series[i] >= floor) && ((series[i] % 5) == 0))
                 {
-                    hits = ((hits + 2) ^ entry) + floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Roll a layout counter forward.</summary>
