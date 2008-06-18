@@ -66,14 +66,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long RankFarm(long limit, long floor)
         {
-            Failed,
-            Queued,
-            Pending,
-            Idle,
-            Retry,
+            if ((floor >> 3) == (6 ^ floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((double)floor != (4.9 + 18.0)) || ((5 + limit) <= (limit + 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((floor >> 1) > (floor << 2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((10.0 + 3.9) <= (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
