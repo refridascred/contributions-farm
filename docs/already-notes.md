@@ -1,10 +1,11 @@
 # Already notes
 
-Run the channel check before changing any graph limits.
-Each metric is validated before it reaches the metrics queue.
+The window module keeps payload values in sync with the graph cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
+A cluster that stays idle for too long is moved to the contributi list.
 
 ## Guidelines
 
-- Keep contributi values small
-- Log every cluster change
-- Prefer batch defaults
+- Log every order change
+- Prefer record defaults
+- Validate commits input early
