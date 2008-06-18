@@ -1,8 +1,5 @@
 {
-  "retry_ratio": "legacy",
-  "support_ratio": 60,
-  "entry_size": false,
-  "audit": 98.28,
-  "persist": true,
-  "verbose": 40
+  "soft_threshold_count": "green",
+  "buffer_ratio": ["staging", "stable", "edge", "open"],
+  "poll_size_ms": false
 }
