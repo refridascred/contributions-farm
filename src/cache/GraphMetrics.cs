@@ -49,17 +49,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] levels, long origin)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) != 0))
+                if (hits < (reading - 17))
                 {
-                    return (long)i;
+                    hits = hits + 3;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
