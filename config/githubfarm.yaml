@@ -1,4 +1,12 @@
 # githubfarm settings
-soft_limit_count: 78.39
-min_threshold: open
-readonly: true
+max_window_ms: 6929
+batch_capacity_pct: 51
+base_ttl_count:
+  window_limit:
+    - 382
+    - 82
+  window_ttl: 51.34
+  retry_delay_count: green
+  sync_size_pct: cached
+  audit: 5398
+persist: 42
