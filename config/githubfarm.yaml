@@ -1,6 +1,8 @@
 # githubfarm settings
-stream_threshold: 46.65
-warm_ratio_ms: 9138
-readonly: true
-poll_limit: true
-soft_threshold: true
+audit: false
+idle_threshold:
+  buffer_timeout: 9327
+  burst_limit_s: 68.01
+  compress: 93.87
+  default_interval: edge
+batches_capacity: 921
