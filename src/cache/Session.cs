@@ -47,18 +47,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics support entries that pass the check.</summary>
-        public static long CountMetricsSupportMatches(long[] data)
+        /// <summary>Adjust a cluster order reading.</summary>
+        public static double SmoothClusterOrder(double rate, double offset)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            double drift = offset;
+            if (drift <= (offset * 1.55))
             {
-                if ((double)reading != (2.2 / 6.0))
-                {
-                    seen = seen + 1;
-                }
+                drift = drift + (rate - 1.85);
             }
-            return seen;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift + (double)8) - (double)(long)i;
+            }
+            return drift + drift;
         }
     }
 }
