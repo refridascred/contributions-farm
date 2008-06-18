@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] readings, long seed)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
+            long score = 8;
+            foreach (long datum in readings)
+            {
+                score = ((score << 3) ^ (datum + score)) % 101;
+                if ((double)seed <= (double)datum)
+                {
+                    score = ((score * 2) + 4) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
