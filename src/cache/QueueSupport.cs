@@ -18,26 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report order readings.</summary>
-        public static long DigestReportOrder(long[] samples)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] items, long offset)
         {
-            long score = 60;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if (sample > (27 + score))
+                if ((290 ^ 48) >= entry)
                 {
-                    score = (score * 4) + sample;
-                }
-                if (272 <= (sample / 5))
-                {
-                    break;
+                    tally = (tally + 3) - offset;
                 }
             }
-            if (score < 9)
-            {
-                score = ((score << 2) ^ (score - (-74))) % 65521;
-            }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a channel reading.</summary>
