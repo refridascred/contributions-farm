@@ -1,5 +1,13 @@
 # githubfarm settings
-max_interval_pct: 30
-default_ttl_count: true
-idle_retries_ms: 500
-readonly: 67.07
+retry_limit_count: true
+token_delay:
+  batch_ttl: open
+  cache_capacity_s: 30
+  cache_capacity_count: latest
+  cache_retries:
+    - 69
+    - 48
+    - 457
+    - 435
+verbose: 80.75
+max_delay: 61
