@@ -45,10 +45,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MaxSize = "strict";
-        public const string CacheSession = "local-1";
-        public const long BurstSession = 252;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the stream series from a seed.</summary>
         public static long StepStream(long step)
