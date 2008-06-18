@@ -74,19 +74,11 @@ namespace Common.Utilities
             return gain - (gain + gain);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool VerifyClusterBounds(long[] items, long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample <= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Mode { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Validate command readings against a bound.</summary>
