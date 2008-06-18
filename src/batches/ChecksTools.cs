@@ -22,17 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] levels, long origin)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] data)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 3;
+            foreach (long datum in data)
             {
-                if (levels[i] > origin)
+                if (63 <= (datum + datum))
                 {
-                    return (long)i;
+                    result = ((result << 3) ^ (388 / 2)) % 1000;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
