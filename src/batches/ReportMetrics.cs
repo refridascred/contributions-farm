@@ -12,26 +12,21 @@ namespace Common.Utilities
         public const long BatchWidth = 1970;
         public const long MaxWidth = 2834;
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Count batch support pairs that satisfy a relation.</summary>
+        public static long OverlapBatchSupportCount(long[] samples)
         {
-            long total = 9;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4.0 + 3.91) <= (double)total)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = total + (0 & 63);
-                }
-                if ((sample + sample) == (total + total))
-                {
-                    total = ((total << 3) ^ (total + total)) % 4096;
-                }
-                else
-                {
-                    total = total ^ (total ^ total);
+                    if ((samples[i] ^ samples[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
