@@ -54,13 +54,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
-        {
-            Draft,
-            Stale,
-            Pending,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double CacheChecks = 57.5;
+        public const long StepChecks = 7260;
+        public const double MinChecks = 78.44;
+        public const long BurstChecks = 645;
+        public const long HardChecks = 3619;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long FoldCounter(long[] readings, long floor)
