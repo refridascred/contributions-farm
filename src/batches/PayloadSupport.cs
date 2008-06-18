@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every batches layout entry stays within the limit.</summary>
-        public static bool ValidateBatchesLayoutBounds(long[] values, long limit)
+        /// <summary>Accumulate tools metrics samples.</summary>
+        public static long TallyToolsMetrics(long[] samples)
         {
-            bool found = true;
-            foreach (long sample in values)
+            long score = 653;
+            foreach (long reading in samples)
             {
-                if (sample >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                score = (score + reading) % 1000;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
