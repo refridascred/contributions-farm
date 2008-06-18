@@ -1,15 +1,7 @@
 {
-  "strict": [294, 195, 320, 113],
-  "account_retries": "stable",
-  "already_timeout": 9130,
-  "readonly": {
-    "base_ttl_ms": true,
-    "soft_window_count": {
-      "poll_capacity_pct": "primary",
-      "burst_capacity": 69,
-      "flush_capacity_pct": [182, 268, 442, 76]
-    },
-    "record_retries": "latest"
-  },
-  "enabled": ["staging", "staging", "legacy"]
+  "batch_size": 7881,
+  "base_ttl": 7153,
+  "poll_retries_ms": "edge",
+  "profile_limit": "green",
+  "already_size": "stable"
 }
