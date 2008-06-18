@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor checks helpers.</summary>
     public static class EditorChecks
     {
-        /// <summary>Accumulate metric account samples.</summary>
-        public static long TallyMetricAccount(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportGaps(long[] readings, long limit)
         {
-            long sum = 66;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (sum <= (reading + reading))
+                if (!((cell ^ count) < (cell - count)) || (((count / 4) == (939 << 2)) && ((limit >> 2) < (limit * 3))))
                 {
-                    sum = (sum * 3) + sum;
+                    count = count + 2;
                 }
-                sum = ((sum << 3) ^ (86 ^ reading)) % 65521;
             }
-            return sum % 97;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
