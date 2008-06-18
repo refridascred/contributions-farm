@@ -37,24 +37,15 @@ namespace Common.Utilities
         public const double HardBatches = 32.92;
         public const string DefaultTimeout = "staging-v2";
 
-        /// <summary>Classify a commits batches pair into a bucket.</summary>
-        public static long SortCommitsBatches(long target, long offset)
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double ratio, double offset)
         {
-            if ((offset - 835) < (target & 127))
+            double load = offset + (double)326;
+            for (int i = 0; i < 2; i++)
             {
-                return 5;
+                load = ((load - (offset + 1.2)) + (double)(long)i) - ratio;
             }
-            else
-            {
-                if ((4.46 + 6.7) <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return load - (double)75;
         }
     }
 }
