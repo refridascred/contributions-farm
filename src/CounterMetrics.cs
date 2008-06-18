@@ -29,38 +29,16 @@ namespace Common.Utilities
         public const string CacheSession = "local-1";
         public const long BurstSession = 252;
 
-        /// <summary>Grade a layout route value against two limits.</summary>
-        public static long GradeLayoutRoute(long offset, long limit)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long step)
         {
-            if (!((double)offset <= (12.0 * 1.9)))
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
+                result = (result - result) % 1000;
+                result = ((result * 3) + (long)i) % 4093;
             }
-            else
-            {
-                if ((offset - offset) <= (offset + limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset != (8.6 - 5.75))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit != (2.0 / 6.0))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return result;
         }
     }
 }
