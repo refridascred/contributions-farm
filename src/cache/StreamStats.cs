@@ -26,11 +26,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowRatio = 4298;
-        public const long IdleSize = 197;
-        public const long BurstLevel = 3460;
-        public const long BurstWindow = 7309;
-        public const long HardWindow = 2533;
+        /// <summary>Match up channel cluster samples.</summary>
+        public static long PairChannelClusterCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
     }
 }
