@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] series, long bound)
+        /// <summary>Scale a payload cluster figure with a bias.</summary>
+        public static double BlendPayloadCluster(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            double weight = offset;
+            if (weight <= 5.8)
             {
-                if ((matches << 3) < bound)
-                {
-                    matches = (matches + 3) ^ reading;
-                }
+                weight = (weight - 11.0) + ratio;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - (3.2 - 20.0)) - (double)(long)i;
+            }
+            return weight - (offset / 8.0);
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
