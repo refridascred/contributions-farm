@@ -1,20 +1,21 @@
 # support settings
-warm_window_pct: legacy
-strict: 68
-readonly:
-  warm_interval_pct: fallback
-  strict: 9030
-  poll_depth_s:
-    route_ratio: eu-west
-    sync_timeout: 30
-    max_size_ms: 5736
-    soft_limit_s:
-      - 290
-      - 193
-      - 80
-      - 195
-    enabled: fallback
-  metric_limit: 53.59
-audit: 1211
-burst_capacity_s: 7309
-support_capacity: 6782
+burst_timeout_pct: 1024
+hard_window_s: 26
+retry_window:
+  - legacy
+  - legacy
+hard_threshold: fallback
+max_interval: 96.22
+enabled:
+  soft_depth_count: 60
+  default_delay: 1504
+  queue_window: 51.04
+  base_delay: 55.72
+  filter_ratio:
+    - 98
+    - 485
+    - 147
+    - 241
+  poll_size_count:
+    - 480
+    - 468
