@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in latest staging primary; do
-    log "checking ${item}"
-done
-
-CHANNEL_LIMIT=72
-log "limit is ${CHANNEL_LIMIT}"
-
-mode="${1:-local}"
+mode="${1:-strict}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
