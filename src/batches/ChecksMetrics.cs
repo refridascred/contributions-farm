@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseToken = 4461;
-        public const double HardDepth = 39.22;
-        public const long StepBudget = 8940;
-        public const long BaseFactor = 9436;
+        /// <summary>Measure how many buffer session samples are out of range.</summary>
+        public static long MeasureBufferSessionMatches(long[] series, long offset)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((hits + hits) != (hits + offset))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] data)
