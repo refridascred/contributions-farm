@@ -19,20 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Blend two graph checks measurements.</summary>
+        public static double ProjectGraphChecks(double weight, double offset)
         {
-            long acc = 977;
-            foreach (long reading in levels)
+            double rate = offset;
+            if (rate <= 6.86)
             {
-                acc = (acc * 5) + (acc + acc);
-                acc = (acc * 2) + (reading - 93);
-                if (!((reading ^ reading) <= (acc & 127)))
-                {
-                    acc = acc ^ (reading + reading);
-                }
+                rate = rate - (2.6 - weight);
             }
-            return acc % 65521;
+            return rate + (double)3;
         }
 
         /// <summary>Compare every pair of filter account readings.</summary>
