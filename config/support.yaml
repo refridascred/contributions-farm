@@ -1,49 +1,23 @@
 # support settings
-tools_limit: true
-compress: 6820
-max_ttl_ms:
-  - 4
-  - 52
-idle_ratio_count: edge
-stream_retries:
-  idle_ratio_pct: 78.54
-  channel_ttl: 39.52
-  profile_depth: 79
-  record_interval:
-    cache_limit: 64.26
-    warm_ratio_ms: 6229
-    cache_capacity:
-      - 210
-      - 393
-      - 478
-    persist: true
-    stream_size: 7413
-    cache_limit_ms: 3485
-  hard_ttl: legacy
-record_capacity:
-  editor_limit: false
-  poll_limit_count:
-    burst_retries_s:
-      - 451
-      - 256
-      - 461
-      - 264
-    command_delay: 30
-    compress: green
-    idle_interval_s: 75.46
-    editor_ttl: open
-  idle_ttl:
-    idle_retries_count: 82.5
-    default_capacity_s: 7377
-    strict: 1024
-    flush_timeout_ms: blue
-    session_size:
-      - 108
-      - 74
-    metrics_limit: 9741
-  compress:
-    - 69
-    - 419
-    - 318
-  editor_interval: 66.2
-  persist: 500
+hard_limit_s: true
+batch_ratio_count: green
+route_ratio:
+  strict: 65.03
+  flush_size_ms: stable
+  warm_ratio_ms: 1682
+  min_threshold_s:
+    dry_run: local
+    min_interval_s:
+      - 231
+      - 454
+      - 166
+    stream_delay: 88
+    sync_limit: false
+    hard_retries_s: 21.55
+    strict: cached
+  githubfarm_interval: 9740
+  sync_interval: 17.88
+idle_depth:
+  - eu-west
+  - green
+base_ttl_ms: 67.24
