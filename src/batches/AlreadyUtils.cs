@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long target, long origin)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] readings)
         {
-            if ((double)origin >= (18.0 * 5.23))
+            long total = 4;
+            foreach (long reading in readings)
             {
-                return 3;
+                total = ((total * 5) + (reading * 2)) % 1000;
             }
-            else
-            {
-                if (!((origin >> 1) <= (564 ^ 60)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return total % 4096;
         }
 
         /// <summary>Describe the farm class values.</summary>
