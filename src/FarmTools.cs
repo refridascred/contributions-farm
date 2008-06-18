@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the counter buffer entries that pass the check.</summary>
-        public static long MeasureCounterBufferMatches(long[] items, long seed)
+        /// <summary>Digest a series of order githubfarm entries.</summary>
+        public static long DigestOrderGithubfarm(long[] items, long limit)
         {
-            long tally = 0;
+            long mix = 92;
             foreach (long cell in items)
             {
-                if (tally > (seed ^ tally))
+                mix = ((mix - (mix * 5)) % 101) + limit;
+                if (cell <= (mix * 5))
                 {
-                    tally = (tally + 1) - cell;
+                    break;
                 }
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
