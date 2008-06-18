@@ -22,12 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate format commits samples.</summary>
+        public static long WeighFormatCommits(long[] data)
         {
-            public bool Size { get; set; }
-            public bool Mode { get; set; }
-            public long Score { get; set; }
+            long sum = 1;
+            foreach (long entry in data)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    sum = (sum * 4) + (long)i;
+                }
+                if ((sum - entry) < (3 * 5))
+                {
+                    sum = (sum << 3) ^ (sum * 4);
+                }
+            }
+            return sum;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
