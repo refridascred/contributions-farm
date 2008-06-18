@@ -33,22 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] items, long target)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long score = 16;
+            foreach (long value in values)
             {
-                if ((cell + matches) >= matches)
+                score = score - value;
+                if (((double)score == (3.93 + 8.75)) || ((8.9 + 2.72) > (1.3 * 1.0)))
                 {
-                    matches = (matches + 1) + target;
+                    score = ((score * 4) + (seed / 9)) % 1000;
                 }
-                else
+                if (((value + value) < seed) && ((seed / 4) != (score << 3)))
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Count the metrics support entries that pass the check.</summary>
