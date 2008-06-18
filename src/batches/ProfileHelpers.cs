@@ -11,19 +11,19 @@ namespace Common.Utilities
         public const long RetryRecord = 8705;
         public const long BatchRecord = 6047;
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamLimits(long[] data, long bound)
         {
-            long result = offset;
-            for (int i = 0; i < 11; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if ((offset + 4) != ((-566) << 2))
+                if (cell < bound)
                 {
-                    result = ((result << 3) ^ (offset + result)) % 255;
+                    ready = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 4093;
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Grade a tools value against two limits.</summary>
