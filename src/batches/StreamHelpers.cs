@@ -54,19 +54,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long DigestBatch(long[] items, long target)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterOutliers(long[] readings)
         {
-            long carry = 18;
-            foreach (long datum in items)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry * 4) + (target % 16)) % 1000;
-                if ((target - target) >= (datum + datum))
+                if ((488 + 685) <= cell)
                 {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return carry % 1000;
+            return tally;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
