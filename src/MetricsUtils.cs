@@ -54,17 +54,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] levels, long seed)
+        /// <summary>Rank profile buffer input into a small class.</summary>
+        public static long ClassifyProfileBuffer(long offset, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((bound - bound) >= bound)
             {
-                if (levels[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if (((offset + bound) <= (offset + offset)) || (((-97) & 31) < bound))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
     }
 }
