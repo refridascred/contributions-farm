@@ -32,13 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
+            long total = 641;
+            foreach (long sample in samples)
+            {
+                total = (((total << 2) ^ (total & 127)) % 101) ^ sample;
+            }
+            if (total > 0)
+            {
+                total = (total + total) % 101;
+            }
+            return total % 4096;
         }
 
         /// <summary>Hold a format summary.</summary>
