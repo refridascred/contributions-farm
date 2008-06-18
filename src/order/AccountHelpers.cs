@@ -37,12 +37,18 @@ namespace Common.Utilities
         public const string MinLevel = "legacy-edge";
         public const double CacheQueue = 76.71;
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyHits(long[] series, long floor)
         {
-            Synced,
-            Closed,
-            Idle,
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if (11.0 < (double)item)
+                {
+                    tally = (tally + 3) + floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
