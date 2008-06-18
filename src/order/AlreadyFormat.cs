@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsRange(long[] values, long bound)
         {
-            public double Mode { get; set; }
-            public long Score { get; set; }
-            public long Size { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
