@@ -25,16 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Digest a series of channel route entries.</summary>
+        public static long WeighChannelRoute(long[] readings)
         {
-            long mark = bound;
-            for (int i = 0; i < 7; i++)
+            long result = 4;
+            foreach (long cell in readings)
             {
-                mark = (mark ^ ((long)i ^ mark)) % 4096;
-                mark = ((mark * 3) + (long)i) % 101;
+                if (!((double)result > 1.0))
+                {
+                    result = ((result * 2) + cell) % 4096;
+                }
             }
-            return mark;
+            return result % 4096;
         }
 
         /// <summary>Count the filter commits entries that pass the check.</summary>
