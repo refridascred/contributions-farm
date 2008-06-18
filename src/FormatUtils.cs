@@ -14,11 +14,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Project the next commits format value.</summary>
-        public static double BlendCommitsFormat(double ratio, double bias)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double weight = bias * 0.4;
-            return (weight - (weight / 6.0)) + ratio;
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every queue farm entry stays within the limit.</summary>
