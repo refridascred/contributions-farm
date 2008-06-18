@@ -52,21 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long TallyChannel(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 86;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (8.59 > (double)mix)
                 {
-                    if ((readings[i] + readings[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    mix = ((mix << 3) ^ (limit ^ mix)) ^ cell;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
