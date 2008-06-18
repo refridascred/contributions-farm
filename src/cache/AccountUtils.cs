@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] levels, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsMatches(long[] readings)
         {
-            long carry = 4;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                carry = ((carry ^ (carry / 4)) % 101) - limit;
-                if (!((entry >> 1) > (entry >> 3)))
+                if (!((double)seen < (6.3 + 6.5)))
                 {
-                    carry = (carry ^ ((-7) - (long)levels.Length)) % 97;
+                    seen = (seen + 1) + cell;
                 }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Project the next graph metrics value.</summary>
