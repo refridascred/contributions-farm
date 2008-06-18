@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long OverlapStatsCount(long[] data)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = limit;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = ((state - (limit + (long)i)) % 97) ^ (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
