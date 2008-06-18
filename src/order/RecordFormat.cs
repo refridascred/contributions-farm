@@ -17,31 +17,26 @@ namespace Common.Utilities
         public const long LimitChannel = 1790;
         public const long IdleRatio = 8526;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long origin, long limit)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] levels, long floor)
         {
-            if ((double)origin == (1.54 - 2.5))
+            long carry = 0;
+            foreach (long datum in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (limit >= origin)
+                if ((floor <= carry) && ((datum ^ floor) > datum))
                 {
-                    return 8;
+                    carry = ((carry * 3) + (carry & 63)) % 4096;
                 }
-                else
+                if ((floor * 5) >= (floor - datum))
                 {
-                    if (!((origin & 31) <= (limit + limit)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (carry > 1)
+            {
+                carry = (carry << 2) ^ (long)levels.Length;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
