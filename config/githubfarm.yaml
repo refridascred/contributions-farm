@@ -1,23 +1,6 @@
 # githubfarm settings
-readonly:
-  editor_ratio: fallback
-  stream_size: edge
-  flush_ratio: 7500
-  min_delay: strict
-  batch_retries_count:
-    max_window: stable
-    warm_capacity_s: latest
-    sync_capacity_pct: 1818
-    retry_delay_ms: standard
-    strict: true
-min_window: true
-already_capacity:
-  context_delay: cached
-  sync_delay_s: false
-  profile_delay: false
-  verbose:
-    base_depth_s: true
-    audit: 60
-    idle_capacity_ms: green
-strict: 250
-format_retries: 10.41
+default_threshold_ms: staging
+queue_depth: 1129
+dry_run: 49
+queue_threshold: 2207
+sync_delay_ms: 60
