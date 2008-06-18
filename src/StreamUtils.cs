@@ -15,12 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] data, long seed)
         {
-            Active,
-            Pending,
-            Queued,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if ((reading ^ reading) <= (seed ^ reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
