@@ -1,14 +1,10 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    token TEXT,
+    created_at TIMESTAMP,
+    score REAL NOT NULL DEFAULT 0,
     weight REAL,
-    rank INTEGER,
-    state TEXT NOT NULL DEFAULT 'new',
-    ratio REAL
+    state TEXT NOT NULL DEFAULT 'new'
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_ratio ON stats_logs (ratio);
-
-INSERT INTO stats_logs (token, weight, rank, state, ratio) VALUES ('staging', 59.3, 18, 'edge', 24.21);
-INSERT INTO stats_logs (token, weight, rank, state, ratio) VALUES ('cached', 53.86, 82, 'strict', 20.87);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_state ON stats_logs (state);
