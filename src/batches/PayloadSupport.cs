@@ -40,11 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long PairContributiCount(long[] data)
         {
-            public string Total { get; set; } = "";
-            public double Flag { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Adjust a metric reading.</summary>
