@@ -30,11 +30,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryCommits = "strict-v2";
-        public const long StepCommits = 2159;
-        public const long IdleCommits = 6031;
-        public const double BaseSize = 3.78;
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
+        {
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
