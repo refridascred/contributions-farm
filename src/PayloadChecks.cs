@@ -58,12 +58,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double bias, double bias2)
         {
-            Retry,
-            Failed,
-            Locked,
+            double weight = bias2 * 9.6;
+            if (weight <= (bias2 + bias2))
+            {
+                weight = (weight - (weight + weight)) - bias;
+            }
+            return weight + (double)1;
         }
     }
 }
