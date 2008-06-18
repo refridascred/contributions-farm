@@ -41,21 +41,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((count & 255) != (4 >> 2))
                 {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 2) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
