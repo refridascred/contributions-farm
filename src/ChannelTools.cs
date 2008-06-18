@@ -22,18 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordMatches(long[] data, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long state = -4;
+            foreach (long cell in levels)
             {
-                if ((15.0 / 2.0) >= (double)cell)
-                {
-                    count = (count + 2) - floor;
-                }
+                state = ((((state << 2) ^ ((long)levels.Length * 2)) % 255) - cell) - step;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Adjust a counter reading.</summary>
