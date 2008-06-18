@@ -32,25 +32,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a record cache value against two limits.</summary>
-        public static long SortRecordCache(long target, long target2)
+        /// <summary>Count the queue tools entries that pass the check.</summary>
+        public static long CountQueueToolsGaps(long[] series)
         {
-            long edge = target - target2;
-            if (!((8.55 * 9.27) == (double)target))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 5;
-            }
-            else
-            {
-                if (2.4 > (double)edge)
+                if ((item & 3) >= (item + item))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    count = count + 1;
                 }
             }
+            return count;
         }
     }
 }
