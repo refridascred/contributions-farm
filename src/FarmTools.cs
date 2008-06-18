@@ -13,21 +13,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up report queue samples.</summary>
-        public static long OverlapReportQueueCount(long[] series)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Match up channel samples.</summary>
