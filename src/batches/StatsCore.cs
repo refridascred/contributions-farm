@@ -14,27 +14,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] data)
-        {
-            long score = 415;
-            foreach (long item in data)
-            {
-                if ((double)item >= (double)score)
-                {
-                    score = ((score * 5) + (score + item)) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (item * 3)) % 255;
-                }
-            }
-            if (score > 303)
-            {
-                score = ((score << 2) ^ score) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinEntry = 83.32;
+        public const long CacheInterval = 2146;
+        public const string WindowEntry = "primary";
 
         /// <summary>Match up window context samples.</summary>
         public static long MatchWindowContextCount(long[] levels)
