@@ -28,18 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a cache cluster reading by value.</summary>
-        public static long LookupCacheClusterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double LimitProfile = 98.36;
+        public const long BaseProfile = 4267;
+        public const string IdleCount = "standard-edge";
+        public const long BatchInterval = 7484;
+        public const string IdleProfile = "primary";
 
         /// <summary>Define route limits and defaults.</summary>
         public const string BatchRoute = "staging-edge";
