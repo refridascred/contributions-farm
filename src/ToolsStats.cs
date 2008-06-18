@@ -22,12 +22,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Limit { get; set; }
+            public double Label { get; set; }
             public long Count { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
