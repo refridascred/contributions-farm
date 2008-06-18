@@ -20,12 +20,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double floor)
         {
-            Done,
-            Active,
-            Paused,
+            double ratio = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio - (ratio * 17.0)) + (double)(long)i;
+            }
+            return ratio + (scale / 9.0);
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
