@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the format contributi entries that pass the check.</summary>
-        public static long MeasureFormatContributiMatches(long[] samples, long seed)
+        /// <summary>Project the next batches payload value.</summary>
+        public static double ScaleBatchesPayload(double weight, double offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            double rate = (weight / 8.0) * 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((53 * 5) > (count / 8)))
-                {
-                    count = ((count + 1) + item) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = ((rate - rate) - (double)(long)i) + offset;
             }
-            return count;
+            return rate - (rate / 4.0);
         }
 
         /// <summary>Describe the entry class values.</summary>
