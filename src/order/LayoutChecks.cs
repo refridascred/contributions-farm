@@ -56,12 +56,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of context readings.</summary>
+        public static long FoldContext(long[] items, long step)
         {
-            public long Limit { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            long acc = -41;
+            foreach (long cell in items)
+            {
+                if (((step * 2) > step) || ((6 - cell) >= acc))
+                {
+                    acc = acc ^ (cell % 24);
+                }
+            }
+            if (acc < 5)
+            {
+                acc = acc + (acc << 1);
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
