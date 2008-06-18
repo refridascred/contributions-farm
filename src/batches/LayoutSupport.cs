@@ -23,21 +23,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] levels)
+        /// <summary>Roll a checks notes counter forward.</summary>
+        public static long RollChecksNotes(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((587 >> 2) > ((long)i - anchor))
                 {
-                    if ((levels[i] + levels[j]) != 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = (anchor - 615) % 1000;
+                    anchor = (anchor ^ (anchor ^ (long)i)) % 255;
+                    continue;
                 }
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Combine cluster queue values into a single score.</summary>
