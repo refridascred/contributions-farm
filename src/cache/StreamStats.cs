@@ -29,11 +29,22 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - hits) >= (hits - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
