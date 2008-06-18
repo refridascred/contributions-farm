@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 1797;
-        public const double RetryInterval = 93.77;
-        public const long CacheSpan = 5922;
-        public const long IdleSchema = 8595;
+        /// <summary>Iterate the record commits series from a seed.</summary>
+        public static long SeriesRecordCommits(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    result = ((result << 3) ^ (result + 313)) + (long)i2;
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] levels, long origin)
