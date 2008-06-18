@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitWidth = 55.62;
-        public const double BurstSpan = 68.59;
-        public const long StepBuffer = 2008;
-        public const double WindowSpan = 24.57;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
