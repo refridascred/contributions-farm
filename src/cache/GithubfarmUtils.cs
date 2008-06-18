@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
-        {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string SoftTimeout = "staging-1";
+        public const long SoftContributi = 2661;
+        public const long BurstContributi = 74;
+        public const long MinContributi = 5898;
 
         /// <summary>Locate a counter reading by value.</summary>
         public static long SeekCounterIndex(long[] levels, long origin)
