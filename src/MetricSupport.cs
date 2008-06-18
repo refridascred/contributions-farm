@@ -36,10 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinEntry = 2551;
-        public const double MaxRatio = 48.37;
-        public const long StepEntry = 8154;
-        public const long BaseDepth = 638;
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
+        {
+            public long Limit { get; set; }
+            public double Label { get; set; }
+        }
     }
 }
