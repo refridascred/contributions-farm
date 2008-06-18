@@ -44,19 +44,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool GuardWindowRange(long[] values, long step)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Count { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
