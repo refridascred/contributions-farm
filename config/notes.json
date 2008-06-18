@@ -1,6 +1,8 @@
 {
-  "layout_window": 22,
-  "already_capacity": 8560,
-  "audit": ["green", "standard", "eu-west", "fallback"],
-  "payload_timeout": 14
+  "warm_retries": "cached",
+  "burst_interval": "blue",
+  "soft_interval": "edge",
+  "retry_ratio_count": 250,
+  "layout_depth": "local",
+  "sync_ttl_count": "fallback"
 }
