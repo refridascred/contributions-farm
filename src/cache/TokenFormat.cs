@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
+            Paused,
             Ready,
-            Pending,
-            Active,
+            Idle,
+            Failed,
+            Stale,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
