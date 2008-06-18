@@ -21,20 +21,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long SeriesChannel(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((offset + offset) > score)
-                {
-                    score = (score ^ (score ^ score)) % 97;
-                }
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string RetrySize = "open-edge";
+        public const long MaxPayload = 6956;
+        public const long IdleBudget = 6016;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double ratio, double bias)
