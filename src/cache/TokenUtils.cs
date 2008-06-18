@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank cluster metrics input into a small class.</summary>
-        public static long RankClusterMetrics(long floor, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long floor)
         {
-            if ((26 + floor) < (offset - offset))
+            long step = origin ^ floor;
+            if (((double)origin <= (2.5 * 8.64)) && ((step - floor) != (floor ^ origin)))
             {
-                return 0;
+                return 1;
             }
             else
             {
-                if ((double)offset <= (double)floor)
+                if (5.98 <= (double)floor)
                 {
-                    return 7;
+                    return 4;
                 }
                 else
                 {
-                    if (floor > (floor % 100))
+                    if ((double)step != (5.0 + 11.0))
                     {
                         return 3;
                     }
                     else
                     {
-                        if (((double)offset > 7.0) || ((double)offset < (8.94 / 4.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 0;
                     }
                 }
             }
