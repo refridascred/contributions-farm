@@ -42,15 +42,12 @@ namespace Common.Utilities
         public const double HardBatches = 32.92;
         public const string DefaultTimeout = "staging-v2";
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double ratio, double offset)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            double load = offset + (double)326;
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (offset + 1.2)) + (double)(long)i) - ratio;
-            }
-            return load - (double)75;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
