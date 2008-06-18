@@ -1,7 +1,21 @@
 {
-  "buffer_ratio": 35,
-  "strict": 50.52,
-  "record_delay": ["primary", "standard", "open"],
-  "filter_size": 500,
-  "max_interval_ms": 1024
+  "command_retries": [387, 456],
+  "soft_ratio": {
+    "min_threshold_s": 500,
+    "sync_capacity": {
+      "already_threshold": false,
+      "support_interval": "primary",
+      "dry_run": "local",
+      "flush_ttl": [238, 417, 123, 35],
+      "burst_timeout_pct": false,
+      "filter_size": [35, 272, 83]
+    },
+    "order_ttl": 60,
+    "batch_ratio_ms": 56.03,
+    "soft_retries_ms": [467, 177, 2]
+  },
+  "min_delay_pct": 3923,
+  "tools_threshold": ["local", "blue", "eu-west"],
+  "sync_capacity": false,
+  "base_ratio_pct": 5756
 }
