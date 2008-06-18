@@ -1,13 +1,10 @@
 # Command notes
 
-A route that stays idle for too long is moved to the counter list.
-The channel report groups every channel by command.
-
-Run the graph check before changing any session limits.
-Each report is validated before it reaches the tools queue.
+A order that stays idle for too long is moved to the window list.
+The metrics module keeps context values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer report defaults
-- Document new queue fields
-- Validate stats input early
+- Review counter limits each release
+- Prefer filter defaults
+- Keep cluster values small
