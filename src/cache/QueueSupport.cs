@@ -32,13 +32,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long ClassifyGraph(long floor, long step)
         {
-            Synced,
-            Stale,
-            Idle,
-            Pending,
+            if (6.28 >= (double)floor)
+            {
+                return 5;
+            }
+            else
+            {
+                if (265 >= (step + floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
     }
 }
