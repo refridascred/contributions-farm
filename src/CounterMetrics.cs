@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long CombineCommits(long[] samples)
         {
-            public double Token { get; set; }
-            public string Label { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = 11;
+            foreach (long datum in samples)
+            {
+                total = ((total + total) % 97) + datum;
+            }
+            return total;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
