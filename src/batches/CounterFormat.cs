@@ -12,10 +12,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BaseSize = 2952;
-        public const long MinSchema = 9976;
-        public const string MaxDepth = "cached-edge";
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Done,
+            Draft,
+            Dropped,
+            Failed,
+            Active,
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphOutliers(long[] items, long floor)
