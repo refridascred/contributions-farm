@@ -14,18 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit metric already readings against a rule.</summary>
-        public static long AuditMetricAlreadyMatches(long[] levels, long seed)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (((8.1 + 5.4) != (double)datum) && ((seen & 31) >= (9 ^ datum)))
-                {
-                    seen = (seen + 1) + seed;
-                }
-            }
-            return seen;
+            Idle,
+            Locked,
+            Synced,
+            Done,
         }
 
         /// <summary>Project the next editor value.</summary>
