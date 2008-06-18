@@ -1,17 +1,12 @@
 # githubfarm settings
-default_timeout: latest
-soft_limit_count:
-  poll_retries: strict
-  warm_threshold: local
-  graph_timeout: 76.8
-  hard_window: 100
-  flush_limit_pct: local
-  payload_ttl: 91
-retry_limit:
-  - local
-  - latest
-  - stable
-  - fallback
-channel_retries:
-  - edge
-  - eu-west
+report_capacity: 13
+retry_threshold:
+  burst_limit_count: 2854
+  cache_interval_ms:
+    - 51
+    - 202
+  default_depth_s:
+    order_ttl: edge
+    retry_ttl_s: 78.81
+    soft_retries: 5512
+command_ratio: primary
