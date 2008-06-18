@@ -22,21 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterGaps(long[] values, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if ((tally <= (tally + seed)) || ((seed >> 1) > (tally - seed)))
                 {
-                    total = ((total << 2) ^ (bound - total)) ^ (long)i2;
-                    total = (total + (bound + total)) % 101;
+                    tally = (tally + 1) ^ item;
                 }
-                total = (total ^ (total - bound)) % 65521;
-                total = ((total * 4) + (long)i) % 4093;
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Locate a profile payload reading by value.</summary>
