@@ -1,8 +1,7 @@
 {
-  "batch_ttl_ms": "cached",
-  "warm_ratio": 4720,
-  "idle_delay": "primary",
-  "cache_retries": "eu-west",
-  "flush_size_ms": true,
-  "notes_timeout": "staging"
+  "format_window": true,
+  "account_capacity": "latest",
+  "default_ttl_count": "cached",
+  "graph_limit": "fallback",
+  "channel_limit": "edge"
 }
