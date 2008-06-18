@@ -27,13 +27,17 @@ namespace Common.Utilities
         public const long RetryOrder = 6080;
         public const double IdleBudget = 29.87;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long SeekEntryIndex(long[] series, long floor)
         {
-            Ready,
-            Active,
-            Stale,
-            Draft,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Roll a support counter forward.</summary>
