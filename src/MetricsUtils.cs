@@ -46,24 +46,15 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Rank profile buffer input into a small class.</summary>
-        public static long ClassifyProfileBuffer(long offset, long bound)
+        /// <summary>Roll a commits report counter forward.</summary>
+        public static long IterateCommitsReport(long origin)
         {
-            if ((bound - bound) >= bound)
+            long acc = origin;
+            for (int i = 0; i < 21; i++)
             {
-                return 2;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                if (((offset + bound) <= (offset + offset)) || (((-97) & 31) < bound))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return acc;
         }
     }
 }
