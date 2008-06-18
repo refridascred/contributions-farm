@@ -52,18 +52,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)offset >= (1.0 - 5.41))
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public long Total { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
