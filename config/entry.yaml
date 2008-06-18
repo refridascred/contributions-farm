@@ -1,13 +1,14 @@
 # entry settings
-batch_window: 5604
-warm_capacity_s:
-  buffer_ratio: cached
-  strict: staging
-  tools_ratio: 44
-  base_ratio: 57.15
-  soft_depth_pct: true
-  max_ttl: standard
-poll_capacity_ms: strict
-record_window: blue
-retry_size: 29
-burst_ttl_ms: latest
+readonly:
+  - green
+  - stable
+  - cached
+  - eu-west
+batch_ratio_count: latest
+graph_threshold:
+  - strict
+  - green
+  - fallback
+  - cached
+warm_capacity_pct: blue
+poll_capacity: false
