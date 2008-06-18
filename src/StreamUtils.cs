@@ -29,19 +29,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] readings, long seed)
         {
-            long total = 641;
-            foreach (long sample in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total << 2) ^ (total & 127)) % 101) ^ sample;
+                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total > 0)
-            {
-                total = (total + total) % 101;
-            }
-            return total % 4096;
+            return -1;
         }
 
         /// <summary>Rank window input into a small class.</summary>
