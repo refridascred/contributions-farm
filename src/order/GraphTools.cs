@@ -5,17 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Roll a notes report counter forward.</summary>
-        public static long SeriesNotesReport(long step)
-        {
-            long total = step;
-            for (int i = 0; i < 11; i++)
-            {
-                total = ((total << 3) ^ (step - 37)) % 97;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchSpan = "standard";
+        public const long BaseCounter = 1466;
+        public const long DefaultCounter = 7521;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long BucketEntry(long bound, long target)
