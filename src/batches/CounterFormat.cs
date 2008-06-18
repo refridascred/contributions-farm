@@ -26,18 +26,17 @@ namespace Common.Utilities
         public const string HardRatio = "staging-1";
         public const long LimitTimeout = 4843;
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long DigestCounter(long[] samples)
+        /// <summary>Look up the position of a githubfarm farm sample.</summary>
+        public static long FindGithubfarmFarmIndex(long[] values, long origin)
         {
-            long result = 3;
-            foreach (long entry in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((entry - result) == (entry + result)) && (entry < 760))
+                if (values[i] <= origin)
                 {
-                    result = ((result * 5) + entry) % 97;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
