@@ -17,22 +17,21 @@ namespace Common.Utilities
         public const string BatchRatio = "standard";
         public const string StepSize = "alpha";
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] series)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long CompareRecordCount(long[] values)
         {
-            long matches = 0;
-            foreach (long item in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item / 8) != (item % 12))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((values[i] - values[j]) > 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
