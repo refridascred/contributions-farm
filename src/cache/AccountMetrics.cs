@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples)
+        /// <summary>Derive the next metrics buffer value from a seed.</summary>
+        public static long StepMetricsBuffer(long seed)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long mark = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if ((437 % 7) > (reading >> 1))
+                if (((mark - mark) <= (seed + seed)) || ((seed - seed) >= (seed + (long)i)))
                 {
-                    tally = tally + 3;
+                    break;
                 }
+                mark = mark ^ ((long)i ^ (long)i);
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Describe the stream class values.</summary>
