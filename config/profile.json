@@ -1,6 +1,5 @@
 {
-  "idle_size_s": 30,
-  "enabled": "latest",
-  "metrics_threshold": 33.22,
-  "warm_delay": 77
+  "hard_threshold_pct": [151, 186, 68, 236],
+  "sync_capacity_ms": "fallback",
+  "idle_size_ms": "blue"
 }
