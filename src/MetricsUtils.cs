@@ -28,26 +28,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long GradeSession(long floor, long seed)
-        {
-            long slot = floor - seed;
-            if ((double)slot != (double)floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed >= (floor + slot))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 9722;
+        public const long StepFilter = 2053;
+        public const double SoftBudget = 7.26;
+        public const long WindowFilter = 881;
 
         /// <summary>Hold a stats entry.</summary>
         public sealed class StatsEntry
