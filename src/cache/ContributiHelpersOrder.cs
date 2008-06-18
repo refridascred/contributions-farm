@@ -20,11 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 70.79;
-        public const long WindowSize = 9634;
-        public const long SoftSchema = 9807;
-        public const long RetryRatio = 6221;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetryScore = 3944;
+        public const long LimitChecks = 2242;
+        public const long StepTimeout = 7443;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] data)
