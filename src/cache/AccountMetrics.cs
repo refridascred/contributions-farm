@@ -72,15 +72,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a queue tools counter forward.</summary>
-        public static long RollQueueTools(long floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Flag { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Fold a list of route readings.</summary>
