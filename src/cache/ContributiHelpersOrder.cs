@@ -20,15 +20,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] data)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long MatchSupportCount(long[] items)
         {
             long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((seen + seen) != (seen - seen)) && (cell >= (cell - seen)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((items[i] ^ items[j]) != 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
