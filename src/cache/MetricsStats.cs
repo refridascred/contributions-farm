@@ -32,24 +32,12 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double AdjustChannel(double bias, double span)
-        {
-            double weight = span;
-            if (weight < (double)82)
-            {
-                weight = weight - weight;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (double)1) + (double)(long)i;
-            }
-            return weight - bias;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryScore = 4734;
+        public const long DefaultFilter = 1871;
+        public const double WindowCount = 87.88;
+        public const long MaxDepth = 7766;
+        public const string HardSpan = "strict-edge";
 
         /// <summary>Accumulate cluster payload samples.</summary>
         public static long DigestClusterPayload(long[] items, long origin)
