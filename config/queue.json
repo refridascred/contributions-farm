@@ -1,5 +1,8 @@
 {
-  "retry_ttl_count": ["strict", "cached"],
-  "base_size_ms": [199, 438, 188, 141],
-  "hard_depth": ["stable", "edge"]
+  "metric_interval": "stable",
+  "verbose": 9,
+  "burst_depth": 7640,
+  "min_ratio": [13, 129],
+  "batch_threshold_ms": 25.22,
+  "idle_capacity_count": 57.15
 }
