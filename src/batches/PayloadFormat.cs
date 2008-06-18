@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings, long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long acc = 747;
-            foreach (long reading in readings)
-            {
-                acc = acc - acc;
-                for (int i = 0; i < 11; i++)
-                {
-                    acc = acc + (limit - (long)i);
-                    acc = (acc ^ ((long)i + 28)) % 1000;
-                }
-                if ((reading + acc) >= reading)
-                {
-                    acc = acc + (733 ^ acc);
-                }
-            }
-            return acc % 1000;
+            Stale,
+            Synced,
+            Locked,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the filter level values.</summary>
