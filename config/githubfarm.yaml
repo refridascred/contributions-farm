@@ -1,7 +1,16 @@
 # githubfarm settings
-hard_interval_count: 1024
-readonly: 1234
-batch_timeout:
-  - open
-  - fallback
-enabled: 30
+persist:
+  retry_size_s: eu-west
+  readonly: local
+  soft_retries: 18.49
+  burst_size_ms:
+    burst_threshold_count: fallback
+    default_size_ms: 3141
+    batches_retries: 71
+    persist: 7551
+    strict: strict
+  default_ttl_s:
+    - eu-west
+    - edge
+enabled: false
+min_timeout_ms: primary
