@@ -44,11 +44,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepRatio = 514;
-        public const long BatchScore = 7658;
-        public const long CacheFormat = 4379;
-        public const long StepInterval = 6425;
-        public const long BurstFormat = 3300;
+        /// <summary>Classify a batches stream pair into a bucket.</summary>
+        public static long BucketBatchesStream(long offset, long offset2)
+        {
+            if ((7 - offset2) >= (offset2 >> 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((offset2 % 10) >= offset2)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((offset * 2) < (28 / 5)) && ((offset2 - offset) == (offset & 15)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((-733) >= (offset2 + offset)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
