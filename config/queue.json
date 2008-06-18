@@ -1,5 +1,7 @@
 {
-  "base_timeout_ms": "standard",
-  "batch_window": false,
-  "session_ratio": [455, 284, 172, 440]
+  "burst_ttl_s": [323, 290],
+  "route_delay": false,
+  "base_timeout": 2.25,
+  "cache_threshold_ms": "primary",
+  "default_interval": ["staging", "open", "strict"]
 }
