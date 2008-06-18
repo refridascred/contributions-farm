@@ -59,19 +59,19 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Check that every already stream entry stays within the limit.</summary>
-        public static bool ValidateAlreadyStreamRange(long[] samples, long target)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double weight, double bias)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            double gain = weight * 15.0;
+            if (gain > (gain / 8.0))
             {
-                if (reading >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = (gain - (weight / 6.0)) - bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (5.44 + gain)) + (double)(long)i;
+            }
+            return gain - (gain + gain);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
