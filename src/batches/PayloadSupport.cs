@@ -19,11 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepInterval = 6915;
-        public const long WindowQueue = 8358;
-        public const double LimitCount = 78.2;
-        public const string SoftSpan = "open-edge";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 4245;
+        public const long BurstSpan = 3210;
+        public const string CacheCommand = "primary";
+        public const long HardInterval = 4430;
+        public const long SoftBudget = 998;
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] samples, long limit)
