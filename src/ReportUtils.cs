@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const double IdleWidth = 75.9;
         public const long BaseGithubfarm = 7205;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 19; i++)
-            {
-                mark = (mark + (bound + mark)) % 1000;
-                mark = (mark << 3) ^ (bound * 3);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string RetrySpan = "staging-v2";
+        public const double DefaultScore = 14.7;
+        public const long CacheFarm = 7646;
+        public const string BurstBudget = "local-edge";
+        public const long LimitFactor = 9454;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
