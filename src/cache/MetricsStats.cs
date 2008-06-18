@@ -45,12 +45,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Blend two layout window measurements.</summary>
+        public static double SmoothLayoutWindow(double bias, double span)
         {
-            Dropped,
-            New,
-            Active,
+            double scale = span - (bias * 6.0);
+            if (scale >= (span * 12.0))
+            {
+                scale = scale + 7.59;
+            }
+            return scale - span;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
