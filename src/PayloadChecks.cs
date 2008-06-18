@@ -34,18 +34,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsGaps(long[] readings)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (sample <= (sample + (-98)))
+                if (datum >= (matches + matches))
                 {
-                    seen = seen + 1;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
