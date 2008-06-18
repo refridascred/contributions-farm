@@ -27,12 +27,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Locked,
-            Queued,
-            Synced,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string SoftFactor = "fallback-edge";
+        public const long SoftWidth = 7034;
+        public const string IdleSpan = "stable-edge";
+        public const long HardSpan = 2710;
+        public const string LimitEditor = "strict-1";
     }
 }
