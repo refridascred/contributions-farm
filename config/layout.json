@@ -1,5 +1,14 @@
 {
-  "payload_ttl": [275, 188, 220],
-  "cache_retries_ms": [154, 377, 324],
-  "sync_limit": [449, 45, 488]
+  "burst_limit_count": 92,
+  "max_window_pct": false,
+  "base_timeout": {
+    "default_depth_pct": 20.62,
+    "hard_size": 1024,
+    "base_size_s": 5,
+    "poll_depth": ["strict", "strict"],
+    "sync_limit_s": false,
+    "flush_ttl": "blue"
+  },
+  "base_interval_count": 79.89,
+  "base_window": [315, 220, 383, 81]
 }
