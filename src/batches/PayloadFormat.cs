@@ -41,18 +41,19 @@ namespace Common.Utilities
             return weight - (weight + weight);
         }
 
-        /// <summary>Count the counter record entries that pass the check.</summary>
-        public static long TallyCounterRecordGaps(long[] items, long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] items)
         {
-            long seen = 0;
+            long result = 53;
             foreach (long cell in items)
             {
-                if (3.0 >= (double)target)
+                result = ((result << 3) ^ cell) % 255;
+                if (!((result * 5) <= (result - 9)))
                 {
-                    seen = (seen + 2) - cell;
+                    break;
                 }
             }
-            return seen;
+            return result % 1000;
         }
     }
 }
