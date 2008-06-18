@@ -78,18 +78,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] levels, long origin)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long anchor = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((origin < (origin - matches)) || ((8.0 - 5.1) != (double)origin))
-                {
-                    matches = (matches + 3) + entry;
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return matches;
+            return anchor;
         }
     }
 }
