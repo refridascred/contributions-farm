@@ -1,8 +1,9 @@
-id,region,level
-1,843,48.61
-2,378,1.31
-3,14.48,299
-4,907,39.67
-5,85,101
-6,633,300
-7,blue,strict
+id,active,rank,count,score
+1,872,66.04,671,532
+2,973,23.98,latest,283
+3,9.05,open,440,staging
+4,strict,green,85.42,0.21
+5,staging,80.01,59.2,500
+6,722,staging,77.14,57.65
+7,open,blue,969,47.81
+8,72,15.11,71.87,edge
