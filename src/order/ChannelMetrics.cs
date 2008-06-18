@@ -40,26 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] samples, long floor)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long mark = 816;
-            foreach (long entry in samples)
-            {
-                if ((double)mark > (3.62 - 17.0))
-                {
-                    mark = (((mark << 3) ^ (entry + entry)) % 255) - floor;
-                }
-                else
-                {
-                    mark = ((mark * 5) + (entry ^ mark)) % 1000;
-                }
-            }
-            if (mark > 67)
-            {
-                mark = mark ^ (mark >> 4);
-            }
-            return mark % 97;
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
