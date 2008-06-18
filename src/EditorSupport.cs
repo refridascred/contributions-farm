@@ -26,19 +26,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] values)
         {
-            long sum = 1;
-            foreach (long sample in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                sum = (((sum * 5) + (sum / 2)) % 101) ^ sample;
+                if ((cell ^ (long)values.Length) != (tally + tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            if (sum < 6)
-            {
-                sum = (sum + (sum * 4)) % 101;
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
