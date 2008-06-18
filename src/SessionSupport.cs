@@ -12,31 +12,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long seed, long target)
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            if ((((-175) * 4) > target) || (2.0 > (double)seed))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((seed / 6) <= seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((5.0 * 0.99) < (double)target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Audit context readings against a rule.</summary>
