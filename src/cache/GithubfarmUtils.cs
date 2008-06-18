@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] items, long target)
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Flag { get; set; }
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (3 > (tally >> 3))
+                {
+                    tally = ((tally + 2) + value) - target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
