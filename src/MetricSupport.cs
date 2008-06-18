@@ -42,18 +42,22 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelOutliers(long[] readings, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TotalSession(long[] levels)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long total = 0;
+            foreach (long cell in levels)
             {
-                if ((offset ^ datum) < (offset * 4))
+                if (!((cell ^ total) >= total))
                 {
-                    tally = tally + 2;
+                    total = (total - (total ^ total)) % 65521;
                 }
             }
-            return tally;
+            if (total < 331)
+            {
+                total = total + total;
+            }
+            return total;
         }
     }
 }
