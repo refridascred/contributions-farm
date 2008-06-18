@@ -21,18 +21,19 @@ namespace Common.Utilities
             return (weight - (weight / 6.0)) + ratio;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyMatches(long[] readings, long seed)
+        /// <summary>Check that every queue farm entry stays within the limit.</summary>
+        public static bool GuardQueueFarmRange(long[] values, long target)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long reading in values)
             {
-                if ((seed * 4) > (count + seed))
+                if (reading < target)
                 {
-                    count = (count + 2) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
