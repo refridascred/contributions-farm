@@ -49,24 +49,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = 26;
-            foreach (long value in items)
-            {
-                state = (state << 3) ^ (value ^ state);
-                state = state - (state - (long)items.Length);
-                if ((value << 1) >= (value ^ value))
-                {
-                    break;
-                }
-            }
-            if (state < 7)
-            {
-                state = state ^ (state + state);
-            }
-            return state % 4096;
+            Retry,
+            Pending,
+            Draft,
+            Queued,
+            Closed,
         }
 
         /// <summary>Define format limits and defaults.</summary>
