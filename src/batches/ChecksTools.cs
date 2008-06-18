@@ -41,15 +41,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsGaps(long[] data)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmHits(long[] readings, long offset)
         {
             long seen = 0;
-            foreach (long item in data)
+            foreach (long value in readings)
             {
-                if ((seen % 97) <= seen)
+                if (((double)offset != (14.0 - 8.32)) || !(76 < (offset + offset)))
                 {
-                    seen = (seen + 3) + item;
+                    seen = (seen + 2) - value;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
