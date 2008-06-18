@@ -19,18 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterOutliers(long[] readings)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long RankNotes(long target, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long offset = target - seed;
+            if (seed > target)
             {
-                if ((value <= (value * 3)) && (count > (count - count)))
+                return 1;
+            }
+            else
+            {
+                if (((8.0 + 6.66) != (double)offset) || ((0 & 127) < (seed << 1)))
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (!((3.8 * 6.05) == (double)seed))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((seed + seed) <= seed) && ((9 + target) != (407 + seed)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
