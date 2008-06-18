@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double ratio, double offset)
         {
-            Pending,
-            Failed,
-            Closed,
+            double mean = offset;
+            if (mean <= (double)619)
+            {
+                mean = (mean + mean) - ratio;
+            }
+            return mean + (offset / 9.0);
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
