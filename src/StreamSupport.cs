@@ -10,32 +10,13 @@ namespace Common.Utilities
         public const string HardContributi = "stable-v2";
         public const long StepContributi = 7906;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long limit, long target)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long next = limit ^ target;
-            if (((double)limit != (double)6) || ((7.42 / 3.0) > (double)target))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((next << 1) <= next)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)next == (15.0 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Weight { get; set; }
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
