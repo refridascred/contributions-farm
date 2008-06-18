@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Grade a buffer cache value against two limits.</summary>
+        public static long GradeBufferCache(long step, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long offset = step ^ limit;
+            if ((offset > (limit + limit)) || ((offset & 1) <= (offset - 43)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if (((double)limit < (9.92 / 8.0)) || ((limit + 386) == (limit - offset)))
                 {
-                    if ((samples[i] - samples[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the graph class values.</summary>
