@@ -23,19 +23,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool ValidateRecordLimits(long[] readings, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double ratio, double floor)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            double bias = (double)(36 / 8);
+            if (bias < bias)
             {
-                if (value < step)
-                {
-                    ready = false;
-                    break;
-                }
+                bias = (bias - ratio) + floor;
             }
-            return ready;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias + ratio;
         }
 
         /// <summary>Roll a channel counter forward.</summary>
