@@ -1,8 +1,17 @@
 # githubfarm settings
-audit: false
-idle_threshold:
-  buffer_timeout: 9327
-  burst_limit_s: 68.01
-  compress: 93.87
-  default_interval: edge
-batches_capacity: 921
+idle_threshold: primary
+queue_size:
+  - 298
+  - 291
+tools_retries:
+  - 130
+  - 27
+  - 36
+  - 321
+warm_interval: strict
+batch_interval: 250
+persist:
+  - stable
+  - eu-west
+  - legacy
+  - edge
