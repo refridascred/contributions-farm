@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] samples)
+        /// <summary>Count the payload queue entries that pass the check.</summary>
+        public static long TallyPayloadQueueGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((double)count != (8.77 + 3.0))
+                if (!!((matches / 4) <= reading))
                 {
-                    count = (count + 3) + cell;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Describe the batches phase values.</summary>
