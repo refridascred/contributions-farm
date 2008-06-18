@@ -61,22 +61,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit farm metric readings against a rule.</summary>
-        public static long AuditFarmMetricOutliers(long[] data, long step)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long WeighStream(long[] data)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long result = 6;
+            foreach (long reading in data)
             {
-                if (step > (count * 4))
+                result = (result + (480 * 5)) + reading;
+                if ((double)result < (1.2 * 18.0))
                 {
-                    count = (count + 2) ^ sample;
+                    result = ((result * 5) + 454) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    result = (result + result) % 65521;
                 }
             }
-            return count;
+            return result % 97;
         }
     }
 }
