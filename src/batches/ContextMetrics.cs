@@ -57,19 +57,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] series, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if ((8.2 <= (double)floor) && ((result + result) == (result << 1)))
+                if (value != offset)
                 {
-                    result = (result ^ ((long)i * 3)) % 4096;
+                    stale = false;
+                    break;
                 }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return stale;
         }
     }
 }
