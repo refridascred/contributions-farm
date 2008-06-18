@@ -20,11 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] items)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if ((hits + hits) < (datum & 7))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
