@@ -43,18 +43,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the farm tools entries that pass the check.</summary>
-        public static long CountFarmToolsMatches(long[] levels)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TotalPayload(long[] values)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long total = 58;
+            foreach (long item in values)
             {
-                if ((sample * 3) > (matches % 5))
+                if ((6.5 <= 4.73) || ((long)values.Length > (8 % 7)))
                 {
-                    matches = matches + 2;
+                    total = (total ^ (total - item)) % 4096;
                 }
             }
-            return matches;
+            if (total > 293)
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total;
         }
     }
 }
