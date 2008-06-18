@@ -38,12 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Locate a checks stream reading by value.</summary>
+        public static long FindChecksStreamIndex(long[] readings, long offset)
         {
-            Pending,
-            Paused,
-            New,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > offset) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a command sample.</summary>
