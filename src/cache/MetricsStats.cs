@@ -45,15 +45,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two layout window measurements.</summary>
-        public static double SmoothLayoutWindow(double bias, double span)
+        /// <summary>Accumulate cluster payload samples.</summary>
+        public static long DigestClusterPayload(long[] items, long origin)
         {
-            double scale = span - (bias * 6.0);
-            if (scale >= (span * 12.0))
+            long result = 1;
+            foreach (long cell in items)
             {
-                scale = scale + 7.59;
+                if ((22 > (origin / 7)) || ((origin + result) >= 683))
+                {
+                    result = ((result << 2) ^ ((long)items.Length >> 4)) % 1000;
+                    result = result ^ (cell - origin);
+                }
+                result = result ^ (result - origin);
             }
-            return scale - span;
+            if (result > 48)
+            {
+                result = ((result * 2) + ((-7) + result)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
