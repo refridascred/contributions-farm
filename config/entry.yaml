@@ -1,35 +1,7 @@
 # entry settings
-filter_window:
-  audit:
-    default_ratio: 1986
-    soft_capacity_count: eu-west
-    soft_threshold_count:
-      - 334
-      - 438
-      - 196
-    metrics_window: 34
-  max_size_s: 79.0
-  hard_size_s: false
-  dry_run: 65.58
-  enabled:
-    flush_ttl_pct: true
-    readonly:
-      - 57
-      - 38
-    soft_capacity_pct: 5887
-    sync_ratio: primary
-  batch_timeout: true
-base_window: 48.29
-burst_retries_pct: green
-retry_limit_s:
-  command_ttl: 33.23
-  min_limit: true
-  poll_delay_count: true
-  default_limit_ms: 91
-  cache_size_pct:
-    compress: true
-    sync_size_count: 43.36
-    warm_limit_s: green
-    session_timeout:
-      - 166
-      - 252
+format_capacity: 250
+order_interval: true
+dry_run: false
+batches_ratio: green
+editor_ratio: true
+base_interval_ms: 68
