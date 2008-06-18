@@ -24,12 +24,18 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Audit batch channel readings against a rule.</summary>
+        public static long MeasureBatchChannelOutliers(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if ((offset / 3) < (tally + 4))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
