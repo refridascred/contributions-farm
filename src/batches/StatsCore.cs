@@ -24,21 +24,11 @@ namespace Common.Utilities
             return (load + load) + bias;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long IterateWindow(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    sum = (sum - (target - sum)) + (long)i2;
-                }
-                sum = (sum * 3) + target;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryCommits = "strict-v2";
+        public const long StepCommits = 2159;
+        public const long IdleCommits = 6031;
+        public const double BaseSize = 3.78;
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
