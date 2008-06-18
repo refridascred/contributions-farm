@@ -26,18 +26,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] values)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ (long)values.Length) != (tally + tally))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
