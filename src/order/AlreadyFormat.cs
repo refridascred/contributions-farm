@@ -67,19 +67,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] values, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long acc = 55;
-            foreach (long item in values)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                acc = ((acc - (495 - acc)) ^ item) + floor;
+                carry = (carry ^ (539 << 1)) - cell;
             }
-            if (acc > 982)
+            if (carry < 729)
             {
-                acc = acc ^ (82 + acc);
+                carry = (carry ^ ((-3) ^ carry)) % 4096;
             }
-            return acc % 65521;
+            return carry;
         }
     }
 }
