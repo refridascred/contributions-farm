@@ -22,11 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long MeasureEntryMatches(long[] readings)
         {
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((8.0 + 6.3) <= (double)hits)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
