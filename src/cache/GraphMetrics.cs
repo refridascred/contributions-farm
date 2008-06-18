@@ -27,18 +27,32 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] data)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long floor2)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long bound = floor ^ floor2;
+            if ((9.0 - 17.0) != (double)floor)
             {
-                if ((4 << 1) > matches)
+                return 4;
+            }
+            else
+            {
+                if ((floor2 - 343) < (floor % 12))
                 {
-                    matches = (matches + 1) - datum;
+                    return 7;
+                }
+                else
+                {
+                    if (!(floor2 > (bound - floor2)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
