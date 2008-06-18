@@ -61,11 +61,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double LimitScore = 4.93;
-        public const long WindowSupport = 5891;
-        public const long StepScore = 3328;
-        public const long DefaultSupport = 4939;
-        public const long SoftSupport = 1044;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] readings, long seed)
+        {
+            long mix = 6;
+            foreach (long entry in readings)
+            {
+                if ((seed < (mix % 12)) || ((entry * 5) == (249 * 5)))
+                {
+                    mix = (mix ^ (seed + 21)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (seed - entry)) % 1000;
+                }
+            }
+            return mix % 1000;
+        }
     }
 }
