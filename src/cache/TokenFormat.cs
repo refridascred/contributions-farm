@@ -19,17 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] items, long floor)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
