@@ -27,18 +27,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] values, long limit)
+        /// <summary>Iterate the window payload series from a seed.</summary>
+        public static long DeriveWindowPayload(long step)
         {
-            long mix = 86;
-            foreach (long cell in values)
+            long result = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (8.59 > (double)mix)
+                if (((long)i - step) <= result)
                 {
-                    mix = ((mix << 3) ^ (limit ^ mix)) ^ cell;
+                    long cur = (long)i;
+                    result = (result ^ (cur + step)) % 4096;
                 }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
