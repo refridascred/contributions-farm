@@ -5,38 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Grade a channel stream value against two limits.</summary>
-        public static long BucketChannelStream(long step, long step2)
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double ProjectEditor(double bias, double bias2)
         {
-            if ((step % 64) < 8)
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((step * 2) >= step2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (step2 > step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((3.42 + 3.0) < (double)step2)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            double scale = (double)2 - bias2;
+            return scale - bias;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
