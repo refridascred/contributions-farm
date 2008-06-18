@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] series, long target)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 63) == (2 / 7))
-                {
-                    hits = (hits + 2) + target;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long LimitSpan = 5843;
+        public const long DefaultInterval = 5856;
+        public const long MaxLevel = 2469;
+        public const double WindowMetrics = 48.89;
+        public const double LimitMetrics = 18.91;
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
