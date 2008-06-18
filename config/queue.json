@@ -1,5 +1,8 @@
 {
-  "batch_capacity_s": [56, 138, 323],
-  "hard_capacity_count": 250,
-  "route_interval": true
+  "batch_ttl_ms": "cached",
+  "warm_ratio": 4720,
+  "idle_delay": "primary",
+  "cache_retries": "eu-west",
+  "flush_size_ms": true,
+  "notes_timeout": "staging"
 }
