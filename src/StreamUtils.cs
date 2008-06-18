@@ -15,26 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] items, long limit)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            long result = 637;
-            foreach (long reading in items)
-            {
-                if (!((reading + limit) >= result))
-                {
-                    result = (result + (13 + 664)) % 97;
-                }
-                if ((result + 8) < result)
-                {
-                    break;
-                }
-            }
-            if (result < 383)
-            {
-                result = (result - (result + limit)) % 65521;
-            }
-            return result;
+            public long Mode { get; set; }
+            public long Total { get; set; }
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Scale a report commits figure with a bias.</summary>
