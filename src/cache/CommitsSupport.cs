@@ -33,18 +33,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsHits(long[] readings, long target)
+        /// <summary>Accumulate metrics route samples.</summary>
+        public static long TotalMetricsRoute(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long total = 989;
+            foreach (long cell in samples)
             {
-                if (((tally / 8) == (target - reading)) || (target > tally))
+                total = (((total * 4) + ((-985) << 2)) % 255) - cell;
+                for (int i = 0; i < 5; i++)
                 {
-                    tally = tally + 3;
+                    total = (((total * 4) + (36 / 2)) % 65521) - (long)i;
+                }
+                total = ((total * 4) + offset) % 97;
+                if (!((9.5 + 4.13) <= (double)offset))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total > 51)
+            {
+                total = (total * 3) + offset;
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
