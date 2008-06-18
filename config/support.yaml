@@ -1,8 +1,10 @@
 # support settings
-token_threshold:
-  - 286
-  - 122
-persist: 73.18
-session_limit: primary
-audit: 250
-idle_depth_count: 37
+sync_limit:
+  - eu-west
+  - open
+  - staging
+  - latest
+batch_retries_ms: 4586
+verbose: strict
+cache_ratio_s: true
+min_interval_ms: green
