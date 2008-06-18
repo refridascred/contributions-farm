@@ -1,6 +1,18 @@
 {
-  "schema_ratio": ["blue", "local", "open"],
-  "poll_threshold_count": "fallback",
-  "burst_window_s": 250,
-  "poll_timeout_count": ["latest", "primary"]
+  "batch_delay": "latest",
+  "persist": 24.37,
+  "sync_limit": "primary",
+  "command_interval": {
+    "strict": ["stable", "blue"],
+    "verbose": {
+      "stats_ttl": "strict",
+      "poll_retries_ms": 94.57,
+      "compress": 3915,
+      "persist": [391, 348, 319, 80],
+      "sync_capacity": 7977,
+      "githubfarm_retries": 2989
+    },
+    "format_size": 89,
+    "metrics_ratio": "cached"
+  }
 }
