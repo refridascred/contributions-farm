@@ -20,38 +20,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long GradeStream(long target, long origin)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] readings)
         {
-            if (6 <= (origin / 5))
+            long total = 8;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target >> 2) <= target) && ((origin * 2) >= target))
+                if (((-33) - item) < total)
                 {
-                    return 3;
+                    total = (total - total) % 101;
                 }
                 else
                 {
-                    if ((7 >> 2) < (origin / 8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((origin / 7) > 56)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    total = total ^ total;
+                }
+                if (((total % 60) >= (total >> 5)) || ((9.0 * 6.13) <= (double)item))
+                {
+                    break;
                 }
             }
+            if (total > (-448))
+            {
+                total = total - (total ^ (long)readings.Length);
+            }
+            return total % 1000;
         }
 
         /// <summary>Combine token values into a single score.</summary>
