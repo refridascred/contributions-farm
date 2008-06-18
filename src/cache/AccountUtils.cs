@@ -20,12 +20,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string IdleLevel = "fallback";
-        public const string CacheInterval = "fallback-edge";
-        public const long MaxWidth = 2452;
-        public const long IdleCommand = 4269;
-        public const long CacheBudget = 2610;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 8320;
+        public const long BurstStream = 7558;
+        public const string BurstLevel = "latest-v2";
 
         /// <summary>Fold a list of command readings.</summary>
         public static long FoldCommand(long[] series)
