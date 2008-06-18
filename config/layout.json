@@ -1,13 +1,5 @@
 {
-  "idle_threshold": 7909,
-  "batch_ttl": 5590,
-  "payload_capacity": {
-    "default_retries_s": 7.96,
-    "poll_threshold_s": "green",
-    "readonly": [238, 122, 462, 64],
-    "strict": ["standard", "standard", "fallback"],
-    "max_ttl_s": "legacy"
-  },
-  "hard_ratio": false,
-  "flush_retries": "green"
+  "warm_limit": false,
+  "farm_retries": [340, 419],
+  "enabled": "standard"
 }
