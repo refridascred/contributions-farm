@@ -22,12 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardRatio = 3290;
-        public const string BaseCache = "fallback-edge";
-        public const long MinDepth = 6276;
-        public const double WindowCache = 54.68;
-        public const long DefaultWidth = 9912;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 7641;
+        public const double RetryLevel = 92.57;
+        public const double LimitPayload = 3.13;
+        public const double LimitLevel = 77.15;
+        public const double RetryPayload = 75.55;
 
         /// <summary>Describe the notes status values.</summary>
         public enum NotesStatus
