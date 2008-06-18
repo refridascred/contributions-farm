@@ -25,10 +25,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchQueue = "alpha-1";
-        public const long DefaultQueue = 7253;
-        public const long RetryQueue = 3913;
-        public const long DefaultBudget = 4461;
+        /// <summary>Audit channel layout readings against a rule.</summary>
+        public static long MeasureChannelLayoutGaps(long[] data)
+        {
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((datum % 60) <= (datum >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
