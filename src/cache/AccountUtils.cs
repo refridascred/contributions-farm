@@ -27,17 +27,11 @@ namespace Common.Utilities
         public const long IdleCommand = 4269;
         public const long CacheBudget = 2610;
 
-        /// <summary>Look up the position of a channel filter sample.</summary>
-        public static long SeekChannelFilterIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWidth = 6550;
+        public const long StepLevel = 7292;
+        public const long StepWindow = 2131;
+        public const string WindowRatio = "stable";
+        public const string BurstWindow = "fallback-1";
     }
 }
