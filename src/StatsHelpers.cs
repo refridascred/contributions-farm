@@ -53,19 +53,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] data, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double SmoothBatch(double ratio, double span)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            double weight = 7.7 * 7.4;
+            if (weight >= (weight / 2.0))
             {
-                if (cell < floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = weight - 5.0;
             }
-            return ok;
+            else
+            {
+                weight = weight - ratio;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + (weight / 7.0)) + (double)(long)i;
+            }
+            return weight + (weight + span);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
