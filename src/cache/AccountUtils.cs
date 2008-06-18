@@ -20,18 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long AuditProfileCacheMatches(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > (1.79 - 1.61))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Active,
+            Synced,
+            Stale,
+            Done,
         }
 
         /// <summary>Describe the channel class values.</summary>
