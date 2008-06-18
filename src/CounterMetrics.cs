@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of format batches readings.</summary>
-        public static long TotalFormatBatches(long[] readings)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long carry = 8;
-            foreach (long cell in readings)
-            {
-                if ((carry - carry) >= (carry + carry))
-                {
-                    carry = (carry + (cell % 60)) % 65521;
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry - (carry << 2)) % 1000;
-            }
-            return carry;
+            Locked,
+            Idle,
+            Closed,
         }
 
         /// <summary>Describe the graph class values.</summary>
