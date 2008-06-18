@@ -21,17 +21,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a stats buffer reading by value.</summary>
-        public static long LookupStatsBufferIndex(long[] readings, long seed)
+        /// <summary>Adjust a channel tools reading.</summary>
+        public static double ProjectChannelTools(double bias, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double gain = span / 6.0;
+            if (gain < (double)2)
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                gain = gain + bias;
             }
-            return -1;
+            else
+            {
+                gain = gain + bias;
+            }
+            return gain - gain;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
