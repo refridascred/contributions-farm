@@ -15,13 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            public long Mode { get; set; }
-            public long Total { get; set; }
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metric record.</summary>
