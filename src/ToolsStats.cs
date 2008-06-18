@@ -46,22 +46,21 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit record payload readings against a rule.</summary>
-        public static long TallyRecordPayloadGaps(long[] readings, long offset)
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] data)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((25 * 4) != (seen % 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = ((seen + 2) - sample) - offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] + data[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
