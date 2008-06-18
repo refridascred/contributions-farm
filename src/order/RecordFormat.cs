@@ -27,19 +27,13 @@ namespace Common.Utilities
         public const long RetryOrder = 6080;
         public const double IdleBudget = 29.87;
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double gain, double offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double scale = (offset - 0.62) + offset;
-            if (scale > scale)
-            {
-                scale = scale - gain;
-            }
-            else
-            {
-                scale = scale - (double)386;
-            }
-            return scale + (scale * 2.0);
+            Ready,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Roll a support counter forward.</summary>
