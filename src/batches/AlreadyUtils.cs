@@ -28,12 +28,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] data)
         {
-            public long Size { get; set; }
-            public bool Stamp { get; set; }
-            public long Score { get; set; }
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (104 >= (cell * 4))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of already readings.</summary>
