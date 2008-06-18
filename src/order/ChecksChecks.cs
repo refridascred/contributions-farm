@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public double Region { get; set; }
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
+            Idle,
+            Paused,
+            Retry,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank schema input into a small class.</summary>
