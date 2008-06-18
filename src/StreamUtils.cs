@@ -15,21 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long FoldPayload(long[] data, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 207;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((acc * 5) != (bound - acc))
                 {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc * 2) + (datum - bound)) % 101;
                 }
             }
-            return hits;
+            if (acc > 82)
+            {
+                acc = ((acc << 2) ^ acc) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
