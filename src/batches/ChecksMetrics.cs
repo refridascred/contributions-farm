@@ -39,17 +39,14 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const long MaxBudget = 7761;
 
-        /// <summary>Look up the position of a githubfarm stream sample.</summary>
-        public static long FindGithubfarmStreamIndex(long[] items, long bound)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] == bound) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Synced,
+            Idle,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
