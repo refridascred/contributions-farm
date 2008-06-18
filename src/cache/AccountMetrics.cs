@@ -46,22 +46,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] levels, long limit)
+        /// <summary>Roll a contributi report counter forward.</summary>
+        public static long StepContributiReport(long origin)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if (((long)levels.Length - seen) < (value + 509))
-                {
-                    seen = (seen + 2) + limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                anchor = (anchor + anchor) % 101;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the notes phase values.</summary>
