@@ -13,13 +13,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
+        public static long MatchBufferSessionCount(long[] series)
         {
-            Queued,
-            Closed,
-            Done,
-            Ready,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stats options.</summary>
