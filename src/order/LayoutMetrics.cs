@@ -25,11 +25,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MaxNotes = 1072;
-        public const long LimitFactor = 1887;
-        public const long DefaultTimeout = 4240;
-        public const double BatchWidth = 66.72;
-        public const long WindowNotes = 49;
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
+        {
+            Locked,
+            Draft,
+            Closed,
+            Pending,
+        }
     }
 }
