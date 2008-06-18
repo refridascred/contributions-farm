@@ -70,10 +70,34 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MaxInterval = 98.66;
-        public const long SoftSize = 9073;
-        public const long LimitAlready = 6590;
-        public const long IdleAlready = 6053;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items, long floor)
+        {
+            long sum = -259;
+            foreach (long reading in items)
+            {
+                if ((reading / 5) <= (long)items.Length)
+                {
+                    sum = (sum - floor) % 1000;
+                }
+                else
+                {
+                    sum = (sum ^ (reading + (-7))) % 65521;
+                }
+                if ((reading << 3) < reading)
+                {
+                    sum = (sum - (29 ^ floor)) % 1000;
+                }
+                if (floor < (4 & 31))
+                {
+                    break;
+                }
+            }
+            if (sum < 695)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 97;
+        }
     }
 }
