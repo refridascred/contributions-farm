@@ -41,18 +41,23 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsMatches(long[] series)
+        /// <summary>Derive the next stream notes value from a seed.</summary>
+        public static long RollStreamNotes(long target)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                if (((-38) ^ item) > seen)
+                if (total >= (target * 4))
                 {
-                    seen = seen + 2;
+                    total = ((total << 2) ^ target) % 97;
                 }
+                if ((total << 3) >= (target - target))
+                {
+                    total = ((total << 3) ^ target) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Combine format values into a single score.</summary>
