@@ -33,18 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((matches > (4 - reading)) && (matches < (reading << 1)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleCount = 6628;
+        public const string BurstLevel = "alpha-edge";
+        public const long StepSize = 5576;
     }
 }
