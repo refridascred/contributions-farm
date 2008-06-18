@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long ClassifyBatch(long floor, long bound)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] items)
         {
-            if ((651 % 60) >= floor)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound > (19.0 - 14.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (15.0 > (double)bound)
+                    if ((items[i] + items[j]) == 12)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + floor) >= floor)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
