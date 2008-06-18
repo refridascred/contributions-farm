@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool VerifyContextLimits(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
-            public double Limit { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
