@@ -27,25 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long step, long offset)
-        {
-            if (((-7) & 31) > (offset >> 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if (step >= (offset ^ step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double RetryCommand = 5.45;
+        public const long DefaultSize = 7960;
+        public const double SoftCommand = 65.24;
+        public const string HardCommand = "stable-edge";
+        public const long BatchCommand = 9173;
 
         /// <summary>Roll a cluster counter forward.</summary>
         public static long RollCluster(long floor)
