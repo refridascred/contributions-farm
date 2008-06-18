@@ -29,15 +29,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate queue commits samples.</summary>
-        public static long DigestQueueCommits(long[] data, long floor)
-        {
-            long mark = -4;
-            foreach (long sample in data)
-            {
-                mark = (((mark ^ (mark % 97)) % 1000) - sample) + floor;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long MinScore = 4109;
+        public const long HardGraph = 161;
+        public const long IdleGraph = 6052;
     }
 }
