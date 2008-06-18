@@ -47,15 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window order readings.</summary>
-        public static long WeighWindowOrder(long[] series)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long anchor = 0;
-            foreach (long reading in series)
-            {
-                anchor = ((anchor * 2) + (anchor - reading)) % 255;
-            }
-            return anchor % 4096;
+            New,
+            Ready,
+            Queued,
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
