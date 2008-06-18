@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheRatio = "stable-v2";
+        public const long LimitInterval = 6374;
+        public const double CacheTools = 59.86;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] samples, long offset)
