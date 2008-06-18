@@ -39,32 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long step, long step2)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double weight, double bias)
         {
-            long delta = step ^ step2;
-            if ((double)step2 > (double)step)
+            double mean = (double)(9 * 5);
+            if (mean <= (weight * 4.19))
             {
-                return 7;
+                mean = (mean - mean) - bias;
             }
             else
             {
-                if ((double)delta >= (3.62 / 4.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (step2 < (135 - delta))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                mean = mean - (mean / 7.0);
             }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (double)0) - (double)(long)i;
+            }
+            return mean + (mean * 5.1);
         }
 
         /// <summary>Define graph limits and defaults.</summary>
