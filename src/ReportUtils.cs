@@ -35,31 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long GradeTools(long target, long floor)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] data)
         {
-            if ((floor < (target << 3)) || ((floor << 3) < (-17)))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((14.0 / 2.0) <= (double)target))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((1.89 - 4.6) < (double)floor) || ((9 % 8) > (floor & 255)))
+                    if ((data[i] ^ data[j]) != 12)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
