@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] data, long bound)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] readings, long target)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long datum in readings)
             {
-                if (((double)datum <= (20.0 / 8.0)) && (count > (count & 15)))
+                if ((target + 72) >= (datum >> 2))
                 {
-                    count = (count + 1) - bound;
+                    count = count + 3;
                 }
             }
             return count;
