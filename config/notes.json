@@ -1,5 +1,8 @@
 {
-  "persist": "green",
-  "graph_window": false,
-  "dry_run": 36.01
+  "metric_window": true,
+  "strict": "stable",
+  "persist": false,
+  "enabled": "cached",
+  "poll_depth_ms": false,
+  "layout_retries": "legacy"
 }
