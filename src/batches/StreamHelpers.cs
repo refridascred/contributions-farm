@@ -46,16 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long offset)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark - 208) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public long Label { get; set; }
+            public bool Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
