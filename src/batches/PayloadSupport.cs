@@ -5,35 +5,34 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long step, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long SortStream(long seed, long offset)
         {
-            long slot = step ^ target;
-            if (((target + slot) > (step >> 4)) || (step <= (step + step)))
+            if ((4 & 15) < seed)
             {
-                return 6;
+                return 7;
             }
             else
             {
-                if ((step + slot) >= (3 % 2))
+                if (((offset / 7) != ((-61) & 255)) && ((seed >> 2) > (seed - 4)))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (target < (slot - step))
+                    if ((20.0 + 18.0) < (double)offset)
                     {
-                        return 2;
+                        return 8;
                     }
                     else
                     {
-                        if (slot > 41)
+                        if ((double)seed > 9.6)
                         {
-                            return 7;
+                            return 2;
                         }
                         else
                         {
-                            return 5;
+                            return 0;
                         }
                     }
                 }
