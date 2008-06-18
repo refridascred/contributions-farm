@@ -14,17 +14,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Locate a graph cluster reading by value.</summary>
-        public static long FindGraphClusterIndex(long[] items, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Idle,
+            Queued,
+            Pending,
+            Done,
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
