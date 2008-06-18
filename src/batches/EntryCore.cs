@@ -39,14 +39,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            Draft,
-            Dropped,
-            Queued,
-            Locked,
-            Ready,
+            Pending,
+            Paused,
+            New,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
