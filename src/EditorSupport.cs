@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] levels, long bound)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long target, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long next = target - bound;
+            if (!((double)bound == (7.0 + 5.67)))
             {
-                if (levels[i] <= bound)
+                return 5;
+            }
+            else
+            {
+                if ((target * 3) != (target / 9))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((bound + next) <= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (0.9 / 9.0)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
