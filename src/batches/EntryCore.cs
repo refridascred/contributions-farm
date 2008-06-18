@@ -64,17 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long FindCommandIndex(long[] values, long bound)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphGaps(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] == bound) && ((values[i] % 5) != 0))
+                if ((445 & 255) > tally)
                 {
-                    return (long)i;
+                    tally = ((tally + 1) + entry) - floor;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
