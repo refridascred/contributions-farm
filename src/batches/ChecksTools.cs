@@ -16,18 +16,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferGaps(long[] readings)
+        /// <summary>Fold a list of payload channel readings.</summary>
+        public static long ScorePayloadChannel(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = 129;
+            foreach (long reading in readings)
             {
-                if ((double)entry < (9.0 - 7.8))
+                if ((reading - 932) < (reading / 4))
                 {
-                    matches = matches + 3;
+                    mix = mix ^ (reading - 28);
+                }
+                else
+                {
+                    mix = mix + mix;
                 }
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
