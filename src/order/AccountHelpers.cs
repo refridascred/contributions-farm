@@ -24,19 +24,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] values, long target)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Synced,
+            Ready,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
