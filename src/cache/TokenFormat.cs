@@ -26,18 +26,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] readings)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((787 + datum) >= (hits ^ hits))
+                if (items[i] <= bound)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
