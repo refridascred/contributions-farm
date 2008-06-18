@@ -12,10 +12,11 @@ namespace Common.Utilities
         public const long BatchEntry = 9007;
         public const long BaseLevel = 7367;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseFactor = 1182;
-        public const long HardMetrics = 1925;
-        public const double RetryScore = 88.4;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 6765;
+        public const double SoftDepth = 14.84;
+        public const long BatchLevel = 2722;
+        public const double WindowNotes = 63.48;
 
         /// <summary>Check that every command batch entry stays within the limit.</summary>
         public static bool CheckCommandBatchBounds(long[] levels, long origin)
