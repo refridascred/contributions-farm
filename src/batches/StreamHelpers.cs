@@ -53,10 +53,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string IdleCount = "fallback";
-        public const long SoftLevel = 423;
-        public const long BatchCluster = 4205;
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long StepEditor(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 10; i++)
+            {
+                if (((6.65 / 4.0) != (double)total) && ((double)(long)i == (20.0 / 7.0)))
+                {
+                    total = ((total << 3) ^ 83) % 1000;
+                }
+                total = (total - total) % 4096;
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Describe the stream phase values.</summary>
         public enum StreamPhase
