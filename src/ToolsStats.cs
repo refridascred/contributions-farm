@@ -72,14 +72,17 @@ namespace Common.Utilities
         public const long HardOrder = 3546;
         public const string BurstOrder = "standard-edge";
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] samples, long origin)
         {
-            Draft,
-            Queued,
-            Done,
-            Retry,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
