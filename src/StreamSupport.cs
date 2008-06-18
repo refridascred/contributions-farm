@@ -19,19 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long FindWindowIndex(long[] values, long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
+                if ((values[i] == origin) && ((values[i] % 2) != 0))
                 {
-                    mark = (mark - ((long)i2 - (long)i)) % 97;
+                    return (long)i;
                 }
-                mark = ((mark * 2) + (long)i) % 101;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the layout level values.</summary>
