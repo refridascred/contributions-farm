@@ -45,16 +45,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long seed)
+        /// <summary>Validate report order readings against a bound.</summary>
+        public static bool CheckReportOrderRange(long[] series, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                carry = (carry + (carry << 3)) % 65521;
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (item > target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
     }
 }
