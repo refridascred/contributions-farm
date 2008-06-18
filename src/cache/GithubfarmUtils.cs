@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] series)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] data, long bound)
         {
-            long total = 450;
-            foreach (long entry in series)
+            bool valid = true;
+            foreach (long sample in data)
             {
-                if ((total >> 5) == (total >> 1))
+                if (sample != bound)
                 {
-                    total = ((total + (total % 97)) % 101) ^ entry;
-                }
-                if (total >= 402)
-                {
-                    total = (total << 3) ^ (total % 5);
+                    valid = false;
+                    break;
                 }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Describe the channel kind values.</summary>
