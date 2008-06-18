@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long RankStatsWindow(long offset, long bound)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterBounds(long[] values, long seed)
         {
-            if ((offset & 7) > bound)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (6.9 / 4.0))
+                if (reading < seed)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) < (bound - (-39)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
