@@ -1,6 +1,21 @@
 {
-  "min_ratio_pct": "primary",
-  "max_window_s": 4311,
-  "schema_threshold": 66.42,
-  "default_size_pct": 30
+  "persist": "fallback",
+  "flush_ratio_s": {
+    "record_ratio": [433, 64, 38, 470],
+    "batch_capacity": "blue",
+    "min_timeout_s": {
+      "base_ratio": 70.62,
+      "command_ratio": false,
+      "audit": 6644,
+      "readonly": 1024,
+      "burst_size": "strict"
+    },
+    "strict": "latest",
+    "max_retries_ms": 4,
+    "default_retries_s": 80.77
+  },
+  "default_limit_s": 82.08,
+  "default_interval": "cached",
+  "burst_size_pct": 18,
+  "warm_window_pct": "eu-west"
 }
