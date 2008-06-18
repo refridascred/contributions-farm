@@ -44,17 +44,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] levels, long limit)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Look up the position of a command sample.</summary>
