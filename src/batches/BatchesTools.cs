@@ -20,30 +20,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] readings)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long total = 8;
-            foreach (long item in readings)
-            {
-                if (((-33) - item) < total)
-                {
-                    total = (total - total) % 101;
-                }
-                else
-                {
-                    total = total ^ total;
-                }
-                if (((total % 60) >= (total >> 5)) || ((9.0 * 6.13) <= (double)item))
-                {
-                    break;
-                }
-            }
-            if (total > (-448))
-            {
-                total = total - (total ^ (long)readings.Length);
-            }
-            return total % 1000;
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Combine token values into a single score.</summary>
