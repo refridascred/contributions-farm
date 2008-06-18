@@ -39,17 +39,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a metrics sample.</summary>
-        public static long FindMetricsIndex(long[] series, long step)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] data, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if (series[i] <= step)
+                if (datum < seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Look up the position of a metric sample.</summary>
