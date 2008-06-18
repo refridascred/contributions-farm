@@ -72,24 +72,17 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] readings)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] values, long offset)
         {
-            long state = 3;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((state < 545) || (value <= (state - state)))
+                if (values[i] < offset)
                 {
-                    state = state ^ (33 + state);
-                    break;
-                }
-                state = ((state << 2) ^ (state + state)) % 65521;
-                if ((state ^ state) < (state + state))
-                {
-                    state = state ^ (state >> 4);
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Accumulate command samples.</summary>
