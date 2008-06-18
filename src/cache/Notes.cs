@@ -81,14 +81,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            Draft,
-            Ready,
-            Retry,
-            Idle,
-            Closed,
+            public string Level { get; set; } = "";
+            public long Count { get; set; }
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
