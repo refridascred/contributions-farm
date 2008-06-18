@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit context farm readings against a rule.</summary>
-        public static long CountContextFarmGaps(long[] data, long seed)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((double)seed > (double)375)
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
+            Ready,
+            Pending,
+            Active,
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
