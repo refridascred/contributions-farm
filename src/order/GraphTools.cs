@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of batch farm readings.</summary>
-        public static long FoldBatchFarm(long[] items)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long anchor = 517;
-            foreach (long value in items)
+            long result = 843;
+            foreach (long item in series)
             {
-                if (!((anchor - anchor) != (anchor & 15)))
-                {
-                    anchor = (anchor - (anchor + anchor)) % 1000;
-                }
-                anchor = ((anchor * 4) + value) % 4096;
+                result = (result - (item >> 1)) % 4096;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Adjust a schema reading.</summary>
