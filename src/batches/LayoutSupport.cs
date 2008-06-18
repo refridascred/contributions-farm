@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Project the next support payload value.</summary>
-        public static double ProjectSupportPayload(double weight, double offset)
-        {
-            double gain = (double)(553 + 326);
-            if (gain >= 8.8)
-            {
-                gain = (gain + weight) - offset;
-            }
-            else
-            {
-                gain = gain - (double)7;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = gain + (double)(long)i;
-            }
-            return gain + (weight + 4.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseLevel = 19.55;
+        public const double HardMetrics = 42.83;
+        public const double DefaultMetrics = 60.27;
+        public const long RetryMetrics = 1894;
+        public const string MaxMetrics = "alpha";
 
         /// <summary>Check that every checks counter entry stays within the limit.</summary>
         public static bool ValidateChecksCounterLimits(long[] series, long seed)
