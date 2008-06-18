@@ -37,18 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportMatches(long[] samples)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if (!((count & 1) > count))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
