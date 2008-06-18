@@ -23,10 +23,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleRatio = 75.01;
-        public const double DefaultSupport = 96.43;
-        public const long MinSupport = 2450;
-        public const long BurstBudget = 6587;
+        /// <summary>Check that every githubfarm graph entry stays within the limit.</summary>
+        public static bool CheckGithubfarmGraphRange(long[] samples, long offset)
+        {
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
