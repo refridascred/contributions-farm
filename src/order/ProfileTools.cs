@@ -79,10 +79,18 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 21.8;
-        public const string LimitSession = "standard";
-        public const string BatchSpan = "strict-1";
-        public const string RetryTimeout = "legacy-edge";
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsGaps(long[] series)
+        {
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (70 > (hits % 16))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
