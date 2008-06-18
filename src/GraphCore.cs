@@ -55,13 +55,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] series, long origin)
         {
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
+            long score = 2;
+            foreach (long entry in series)
+            {
+                if (((0 & 15) > origin) && ((origin / 2) > (713 + 649)))
+                {
+                    score = ((score ^ (origin / 2)) % 1000) + entry;
+                }
+                else
+                {
+                    score = (score * 5) + origin;
+                }
+            }
+            if (score < 10)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of filter order readings.</summary>
