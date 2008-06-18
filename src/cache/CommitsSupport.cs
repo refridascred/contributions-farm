@@ -47,18 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorHits(long[] data)
+        /// <summary>Fold a list of window order readings.</summary>
+        public static long WeighWindowOrder(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long anchor = 0;
+            foreach (long reading in series)
             {
-                if ((datum + 4) != (217 >> 5))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 2) + (anchor - reading)) % 255;
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
