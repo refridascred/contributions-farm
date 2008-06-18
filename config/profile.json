@@ -1,8 +1,5 @@
 {
-  "githubfarm_retries": [249, 296, 481],
-  "burst_threshold_ms": [441, 207],
-  "batch_ttl_ms": 2389,
-  "idle_retries_ms": 45,
-  "batch_size_count": [459, 181, 408],
-  "readonly": 500
+  "account_depth": 63.82,
+  "audit": 1689,
+  "payload_timeout": 60
 }
