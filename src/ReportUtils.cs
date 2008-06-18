@@ -11,10 +11,18 @@ namespace Common.Utilities
         public const double IdleWidth = 75.9;
         public const long BaseGithubfarm = 7205;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheScore = 2983;
-        public const long BatchBudget = 2421;
-        public const long BurstTools = 7966;
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long IterateContext(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = (mark + (bound + mark)) % 1000;
+                mark = (mark << 3) ^ (bound * 3);
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
