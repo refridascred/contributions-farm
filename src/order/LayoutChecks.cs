@@ -58,16 +58,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Iterate the report route series from a seed.</summary>
-        public static long RollReportRoute(long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels, long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 24; i++)
+            long sum = 85;
+            foreach (long sample in levels)
             {
-                acc = (acc + (floor - acc)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((sum % 97) <= (sum & 7))
+                {
+                    sum = (((sum * 2) + ((long)levels.Length - (long)levels.Length)) - sample) - limit;
+                }
             }
-            return acc;
+            return sum;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
