@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long acc = 42;
-            foreach (long reading in readings)
-            {
-                if ((acc >> 1) < acc)
-                {
-                    acc = ((acc << 2) ^ (acc + acc)) % 65521;
-                }
-                else
-                {
-                    acc = acc + (acc - reading);
-                }
-            }
-            if (acc < 194)
-            {
-                acc = acc ^ (acc << 1);
-            }
-            return acc;
+            Ready,
+            Synced,
+            Queued,
+            Active,
         }
 
         /// <summary>Define counter limits and defaults.</summary>
