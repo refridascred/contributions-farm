@@ -5,31 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a queue channel pair into a bucket.</summary>
-        public static long GradeQueueChannel(long origin, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double scale, double floor)
         {
-            if ((floor - floor) > (origin - origin))
+            double weight = scale;
+            if (weight <= weight)
             {
-                return 1;
+                weight = weight + (double)(-42);
             }
             else
             {
-                if (((origin - floor) > (origin + (-670))) || (78 < (origin % 10)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.85 - 6.38) >= (double)floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                weight = weight - floor;
             }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - scale) + (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
