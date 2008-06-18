@@ -19,19 +19,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (17.0 < (double)entry)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "primary-edge";
+        public const long DefaultContributi = 7750;
+        public const long MaxContributi = 5457;
+        public const string SoftContributi = "open-v2";
+        public const long RetryBudget = 3813;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultTimeout = 75.36;
