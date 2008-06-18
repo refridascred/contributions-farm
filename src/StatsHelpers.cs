@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] data, long seed)
+        /// <summary>Check that every context token entry stays within the limit.</summary>
+        public static bool VerifyContextTokenRange(long[] samples, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (value != seed)
+                if (entry != bound)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
