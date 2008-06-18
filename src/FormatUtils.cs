@@ -53,19 +53,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long MeasureChecksGaps(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)7 == (double)(long)readings.Length)
-                {
-                    count = ((count + 2) ^ datum) - limit;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryDepth = 9036;
+        public const double BurstProfile = 22.77;
+        public const long SoftSize = 7466;
+        public const long RetryProfile = 2818;
+        public const string CacheBudget = "alpha-edge";
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
