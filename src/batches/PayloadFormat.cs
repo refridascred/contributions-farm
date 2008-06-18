@@ -21,26 +21,16 @@ namespace Common.Utilities
         public const string BatchLevel = "open-v2";
         public const long CacheInterval = 3213;
 
-        /// <summary>Fold a list of token report readings.</summary>
-        public static long WeighTokenReport(long[] data, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long mix = 77;
-            foreach (long sample in data)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (!(sample >= 0))
-                {
-                    mix = (mix - (55 * 5)) - origin;
-                }
-                else
-                {
-                    mix = (mix + (382 << 3)) % 255;
-                }
+                carry = ((carry << 2) ^ (141 ^ target)) % 4096;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            if (mix < 37)
-            {
-                mix = (mix + (mix + mix)) % 97;
-            }
-            return mix % 65521;
+            return carry;
         }
 
         /// <summary>Accumulate checks record samples.</summary>
