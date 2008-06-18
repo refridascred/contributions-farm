@@ -1,12 +1,14 @@
 # Command notes
 
-Keep cache and stats names short and lowercase.
-A schema that stays idle for too long is moved to the entry list.
-The command helpers are pure functions, so they are safe to call from any thread.
+When a stream fails, the commits handler retries a few times before giving up.
+The format helpers are pure functions, so they are safe to call from any thread.
+When a metric fails, the editor handler retries a few times before giving up.
+
+Each account is validated before it reaches the farm queue.
+The profile helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new tools fields
-- Keep cluster values small
-- Log every stats change
-- Review order limits each release
+- Prefer stream defaults
+- Log every session change
+- Validate route input early
