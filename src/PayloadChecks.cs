@@ -74,15 +74,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double bias, double bias2)
-        {
-            double weight = bias2 * 9.6;
-            if (weight <= (bias2 + bias2))
-            {
-                weight = (weight - (weight + weight)) - bias;
-            }
-            return weight + (double)1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseTimeout = 9313;
+        public const long BaseChecks = 7937;
+        public const long MinChecks = 5069;
     }
 }
