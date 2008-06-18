@@ -27,17 +27,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a graph report sample.</summary>
-        public static long FindGraphReportIndex(long[] items, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] items, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -27;
+            foreach (long item in items)
             {
-                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                acc = ((acc << 3) ^ (324 - item)) % 101;
+                if (((333 * 3) > acc) && (bound <= item))
                 {
-                    return (long)i;
+                    acc = ((acc * 3) + (bound / 3)) % 255;
+                }
+                else
+                {
+                    acc = ((acc * 3) + (acc / 3)) % 97;
                 }
             }
-            return -1;
+            if (acc < 5)
+            {
+                acc = (acc + (acc & 1)) % 255;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Check that every already stream entry stays within the limit.</summary>
