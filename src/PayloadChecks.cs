@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] items, long bound)
-        {
-            bool ready = true;
-            foreach (long sample in items)
-            {
-                if (sample >= bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BaseAlready = 937;
+        public const string BurstFactor = "open-edge";
+        public const long LimitLevel = 1566;
+        public const double StepTimeout = 63.83;
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] data, long origin)
