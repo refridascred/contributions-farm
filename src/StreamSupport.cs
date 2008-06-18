@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long FindWindowIndex(long[] values, long origin)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long value in levels)
             {
-                if ((values[i] == origin) && ((values[i] % 2) != 0))
+                if (value < seed)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the layout level values.</summary>
