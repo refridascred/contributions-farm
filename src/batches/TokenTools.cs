@@ -27,21 +27,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long CompareSessionCount(long[] series)
+        /// <summary>Locate a metrics commits reading by value.</summary>
+        public static long SeekMetricsCommitsIndex(long[] values, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (values[i] >= step)
                 {
-                    if ((series[i] + series[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
