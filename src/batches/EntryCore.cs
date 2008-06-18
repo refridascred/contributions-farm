@@ -25,19 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long DeriveRecord(long step)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long floor)
         {
-            long sum = step;
-            for (int i = 0; i < 16; i++)
+            long total = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (((step / 2) == (sum % 64)) && ((long)i >= (step - (long)i)))
-                {
-                    sum = (sum + ((long)i + sum)) % 97;
-                }
-                sum = ((sum * 2) + (long)i) % 4093;
+                total = ((total << 3) ^ (total - floor)) % 97;
+                total = ((total * 3) + (long)i) % 101;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
