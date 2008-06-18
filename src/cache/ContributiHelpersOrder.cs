@@ -17,19 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Measure how many token filter samples are out of range.</summary>
+        public static long TallyTokenFilterMatches(long[] levels)
         {
-            long result = limit;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (limit >= (long)i)
+                if ((cell << 2) <= (matches % 16))
                 {
-                    result = (result ^ 3) % 4096;
+                    matches = matches + 1;
                 }
-                result = ((result * 4) + (long)i) % 65521;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
