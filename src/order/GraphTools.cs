@@ -33,10 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "local-1";
-        public const long CacheBatches = 2820;
-        public const long MaxCount = 4092;
+        /// <summary>Audit metrics token readings against a rule.</summary>
+        public static long AuditMetricsTokenHits(long[] values, long bound)
+        {
+            long tally = 0;
+            foreach (long item in values)
+            {
+                if ((87 * 3) > (bound / 7))
+                {
+                    tally = (tally + 3) ^ item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] items, long offset)
