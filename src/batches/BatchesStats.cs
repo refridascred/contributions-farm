@@ -60,15 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double scale, double floor)
-        {
-            double rate = 1.16;
-            if (rate >= rate)
-            {
-                rate = (rate + rate) + floor;
-            }
-            return rate - scale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 4606;
+        public const long BaseRatio = 2645;
+        public const double DefaultWidth = 59.35;
+        public const long StepSize = 2900;
+        public const long LimitFactor = 6981;
     }
 }
