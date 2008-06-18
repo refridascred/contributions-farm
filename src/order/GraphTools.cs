@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Roll a notes report counter forward.</summary>
+        public static long SeriesNotesReport(long step)
         {
-            Draft,
-            Failed,
-            Idle,
-            Dropped,
-            Pending,
+            long total = step;
+            for (int i = 0; i < 11; i++)
+            {
+                total = ((total << 3) ^ (step - 37)) % 97;
+                total = ((total * 5) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Adjust a schema reading.</summary>
