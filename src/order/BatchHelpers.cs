@@ -34,19 +34,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] samples, long floor)
-        {
-            long mark = 40;
-            foreach (long entry in samples)
-            {
-                mark = ((mark ^ floor) % 4096) - entry;
-            }
-            if (mark > 8)
-            {
-                mark = mark + (floor / 6);
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 5522;
+        public const double CacheStats = 47.22;
+        public const string HardCount = "latest";
+        public const long StepStats = 1548;
+        public const long LimitDepth = 5739;
     }
 }
