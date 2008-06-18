@@ -34,11 +34,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            public double Flag { get; set; }
-            public bool Count { get; set; }
+            public long Score { get; set; }
             public double Size { get; set; }
         }
 
