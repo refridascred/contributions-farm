@@ -22,15 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long origin)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double bias, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 19; i++)
+            double rate = 9.22;
+            if (rate > offset)
             {
-                total = ((total * 5) + (long)i) % 101;
+                rate = rate + 3.0;
             }
-            return total;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias * 6.0)) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Describe the notes status values.</summary>
