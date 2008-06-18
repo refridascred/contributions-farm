@@ -14,30 +14,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long TallyCounter(long[] data)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long offset)
         {
-            long carry = 4;
-            foreach (long datum in data)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (((5.7 / 6.0) > (double)carry) || ((double)datum < (0.8 / 3.0)))
+                long hits = total;
+                if (!(((total >> 3) >= hits) && (895 >= ((long)i + (long)i))))
                 {
-                    carry = (carry ^ (datum * 2)) % 97;
+                    total = total ^ ((long)i + hits);
                 }
-                else
-                {
-                    carry = (carry << 2) ^ 7;
-                }
-                if ((carry + 15) > (datum + carry))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (carry < 70)
-            {
-                carry = ((carry * 3) + (carry + (long)data.Length)) % 97;
-            }
-            return carry;
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
