@@ -28,17 +28,25 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] readings, long offset)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long GradeSession(long floor, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long slot = floor - seed;
+            if ((double)slot != (double)floor)
             {
-                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
+                return 2;
+            }
+            else
+            {
+                if (seed >= (floor + slot))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
