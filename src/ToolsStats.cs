@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] data)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long carry = 392;
-            foreach (long cell in data)
-            {
-                carry = carry + (cell & 7);
-            }
-            return carry;
+            Retry,
+            Draft,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the account level values.</summary>
