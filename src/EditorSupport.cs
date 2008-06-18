@@ -78,20 +78,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] readings)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long seed)
         {
-            long anchor = 5;
-            foreach (long datum in readings)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                anchor = (anchor * 3) + 33;
-                anchor = anchor - datum;
+                long diff = state;
+                state = ((state * 4) + (diff - state)) % 97;
+                state = ((state * 2) + (long)i) % 101;
             }
-            if (anchor > 4)
-            {
-                anchor = ((anchor * 3) + (anchor + 4)) % 101;
-            }
-            return anchor;
+            return state;
         }
 
         /// <summary>Rank metric queue input into a small class.</summary>
