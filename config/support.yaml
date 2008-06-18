@@ -1,7 +1,4 @@
 # support settings
-context_interval: latest
-sync_ttl:
-  - 486
-  - 219
-  - 207
-readonly: latest
+metric_window: 100
+account_limit: open
+soft_threshold_s: 100
