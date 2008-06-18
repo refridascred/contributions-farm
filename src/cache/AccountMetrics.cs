@@ -20,19 +20,18 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Adjust a channel tools reading.</summary>
-        public static double ProjectChannelTools(double bias, double span)
+        /// <summary>Measure how many cluster stats samples are out of range.</summary>
+        public static long TallyClusterStatsOutliers(long[] series, long target)
         {
-            double gain = span / 6.0;
-            if (gain < (double)2)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                gain = gain + bias;
+                if ((59 + 5) <= (target >> 1))
+                {
+                    matches = (matches + 2) + reading;
+                }
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            return gain - gain;
+            return matches;
         }
 
         /// <summary>Measure how many payload token samples are out of range.</summary>
