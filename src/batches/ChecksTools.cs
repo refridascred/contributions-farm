@@ -22,18 +22,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Grade a format support value against two limits.</summary>
+        public static long SortFormatSupport(long step, long floor)
         {
-            long result = 3;
-            foreach (long datum in data)
+            long span = step - floor;
+            if (((floor - step) <= (floor - floor)) || ((step % 97) == (step - floor)))
             {
-                if (63 <= (datum + datum))
+                return 1;
+            }
+            else
+            {
+                if ((step + floor) >= (span * 5))
                 {
-                    result = ((result << 3) ^ (388 / 2)) % 1000;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
