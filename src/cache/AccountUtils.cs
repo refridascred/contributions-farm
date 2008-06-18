@@ -45,20 +45,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] items)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long score = 7;
-            foreach (long sample in items)
-            {
-                score = score - (sample & 31);
-                score = (score ^ (sample % 2)) % 4096;
-            }
-            if (score < 213)
-            {
-                score = score ^ (23 + score);
-            }
-            return score % 1000;
+            public long Count { get; set; }
+            public long Level { get; set; }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
     }
 }
