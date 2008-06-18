@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public string Mode { get; set; } = "";
-            public string Score { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseBudget = 2388;
+        public const double BatchChannel = 85.68;
+        public const long MinBudget = 2405;
+        public const long BurstChannel = 3819;
+        public const long RetryInterval = 5279;
 
         /// <summary>Count the commits entries that pass the check.</summary>
         public static long AuditCommitsHits(long[] samples, long target)
