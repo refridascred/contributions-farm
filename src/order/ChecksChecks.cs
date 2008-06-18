@@ -53,21 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter account readings.</summary>
-        public static long CompareFilterAccountCount(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
