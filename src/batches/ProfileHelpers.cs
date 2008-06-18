@@ -20,10 +20,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 6437;
-        public const long CacheChannel = 727;
-        public const string DefaultChannel = "legacy";
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long offset)
+        {
+            long result = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((offset + 4) != ((-566) << 2))
+                {
+                    result = ((result << 3) ^ (offset + result)) % 255;
+                }
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long SortTools(long seed, long step)
