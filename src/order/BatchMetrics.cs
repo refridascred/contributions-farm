@@ -34,16 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long total = bound;
-            for (int i = 0; i < 13; i++)
-            {
-                total = ((total * 2) + (total << 3)) % 97;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public double Size { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
