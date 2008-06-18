@@ -43,19 +43,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] levels, long offset)
         {
-            long mix = floor;
-            for (int i = 0; i < 10; i++)
+            long acc = 84;
+            foreach (long item in levels)
             {
-                if (972 < mix)
+                acc = acc + (acc >> 5);
+                acc = acc - (item ^ item);
+                if ((acc >> 3) <= offset)
                 {
-                    mix = (mix - ((long)i / 4)) % 255;
+                    acc = (acc + (acc * 4)) % 101;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            if (acc > 421)
+            {
+                acc = acc ^ (acc - offset);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Hold a format options.</summary>
