@@ -85,12 +85,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] values)
         {
-            Failed,
-            Done,
-            Locked,
+            long state = 13;
+            foreach (long cell in values)
+            {
+                state = (state - (cell - cell)) % 1000;
+            }
+            if (state < 902)
+            {
+                state = (state ^ (state - state)) % 97;
+            }
+            return state;
         }
     }
 }
