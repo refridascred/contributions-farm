@@ -24,13 +24,12 @@ namespace Common.Utilities
         public const long BatchBudget = 2421;
         public const long BurstTools = 7966;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            public long Size { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
             public bool Owner { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a context buffer value against two limits.</summary>
