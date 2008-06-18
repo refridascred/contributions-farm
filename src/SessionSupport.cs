@@ -39,9 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string StepScore = "strict";
-        public const double WindowSize = 91.63;
-        public const long WindowRatio = 9142;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool ValidateToolsRange(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
