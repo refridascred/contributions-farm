@@ -20,17 +20,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LocateFarmIndex(long[] levels, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark + 70) % 255;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
