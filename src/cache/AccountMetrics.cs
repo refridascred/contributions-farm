@@ -65,19 +65,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterLimits(long[] levels, long origin)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if (value > origin)
+                if (!(seen > sample))
                 {
-                    ok = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Describe the cluster state values.</summary>
