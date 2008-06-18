@@ -24,15 +24,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Accumulate metric commits samples.</summary>
-        public static long DigestMetricCommits(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long carry = 484;
-            foreach (long cell in readings)
-            {
-                carry = (carry - (carry + carry)) ^ cell;
-            }
-            return carry;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
