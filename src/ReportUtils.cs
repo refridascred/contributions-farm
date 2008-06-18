@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Compare every pair of cache profile readings.</summary>
-        public static long MatchCacheProfileCount(long[] samples)
-        {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 1110;
+        public const long SoftDepth = 3876;
+        public const double IdleWidth = 75.9;
+        public const long BaseGithubfarm = 7205;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheScore = 2983;
