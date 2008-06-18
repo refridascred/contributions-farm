@@ -31,22 +31,18 @@ namespace Common.Utilities
         public const string MaxProfile = "alpha-v2";
         public const long BurstProfile = 6368;
 
-        /// <summary>Accumulate cache counter samples.</summary>
-        public static long CombineCacheCounter(long[] items, long limit)
+        /// <summary>Measure how many already command samples are out of range.</summary>
+        public static long AuditAlreadyCommandGaps(long[] samples)
         {
-            long anchor = 77;
-            foreach (long entry in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (!(limit >= (entry - entry)))
+                if ((reading * 4) < (reading / 6))
                 {
-                    anchor = (anchor + 24) % 65521;
+                    tally = tally + 1;
                 }
             }
-            if (anchor < (-6))
-            {
-                anchor = anchor ^ anchor;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
