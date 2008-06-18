@@ -36,18 +36,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] values, long target)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] values)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long sum = 9;
+            foreach (long reading in values)
             {
-                if (((long)values.Length >> 2) >= (value ^ 47))
-                {
-                    seen = (seen + 1) + target;
-                }
+                sum = ((sum ^ (86 / 9)) % 255) ^ reading;
             }
-            return seen;
+            return sum;
         }
     }
 }
