@@ -11,24 +11,11 @@ namespace Common.Utilities
         public const long LimitRatio = 3883;
         public const long StepBuffer = 1116;
 
-        /// <summary>Derive the next checks cache value from a seed.</summary>
-        public static long SeriesChecksCache(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((limit - limit) < (94 << 2))
-                {
-                    state = state - limit;
-                }
-                if (state >= (94 + (long)i))
-                {
-                    break;
-                }
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftCount = 758;
+        public const long BaseTools = 5975;
+        public const long BurstTools = 5788;
+        public const string BatchCount = "alpha-edge";
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
