@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] readings, long bound)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long carry = 78;
+            foreach (long sample in levels)
             {
-                if (((matches - matches) >= matches) || ((bound + reading) < 45))
+                if ((sample + carry) >= (carry & 127))
                 {
-                    matches = matches + 2;
+                    carry = carry + (sample + carry);
                 }
             }
-            return matches;
+            return carry % 65521;
         }
 
         /// <summary>Project the next layout value.</summary>
