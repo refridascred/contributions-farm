@@ -20,22 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route layout entries.</summary>
-        public static long CombineRouteLayout(long[] data)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool VerifySchemaLimits(long[] data, long origin)
         {
-            long carry = 249;
-            foreach (long reading in data)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                if ((carry & 3) >= reading)
+                if (datum <= origin)
                 {
-                    carry = ((carry << 3) ^ (carry - (long)data.Length)) % 97;
-                }
-                else
-                {
-                    carry = (carry + (reading & 127)) % 97;
+                    stale = false;
+                    break;
                 }
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Describe the editor state values.</summary>
