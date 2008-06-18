@@ -65,27 +65,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] series)
-        {
-            long state = -5;
-            foreach (long item in series)
-            {
-                if ((9 + item) <= (-497))
-                {
-                    state = (state ^ (state & 3)) % 4096;
-                }
-                else
-                {
-                    state = (state ^ (state - state)) % 1000;
-                }
-            }
-            if (state < 928)
-            {
-                state = (state ^ (437 + state)) % 97;
-            }
-            return state % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long CacheLevel = 9823;
+        public const long CacheCluster = 4082;
+        public const long SoftCluster = 6194;
+        public const double MinCluster = 91.62;
+        public const double CacheInterval = 56.86;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double MaxInterval = 98.66;
