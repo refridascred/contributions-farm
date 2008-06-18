@@ -1,10 +1,30 @@
 # githubfarm settings
-persist: 821
-strict: open
-report_size: false
-batch_retries: stable
-readonly:
-  base_limit_count: 12.4
-  base_capacity: 78
-  enabled: 500
-  burst_retries_s: 80.37
+default_delay: true
+flush_ratio: false
+batches_capacity: 250
+poll_ratio_ms: strict
+metric_retries: 5
+persist:
+  audit: 2494
+  filter_depth: 59.65
+  soft_interval_ms: legacy
+  persist:
+    sync_threshold: 5588
+    poll_ttl: 48.95
+    layout_size: legacy
+    batch_depth: 33
+    hard_delay:
+      - 7
+      - 491
+      - 378
+      - 380
+    warm_interval_pct: 81.63
+  poll_timeout_ms: 3364
+  base_ttl_ms:
+    sync_capacity_pct: fallback
+    route_threshold: 50.91
+    idle_timeout_count:
+      - 332
+      - 263
+    poll_threshold: 7105
+    readonly: 5305
