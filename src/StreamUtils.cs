@@ -39,14 +39,11 @@ namespace Common.Utilities
             return drift + (ratio + drift);
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Ready,
-            Done,
-            Locked,
-            New,
-            Retry,
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
