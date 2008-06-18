@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchReport = 4632;
         public const double MaxReport = 30.29;
 
-        /// <summary>Find the first buffer context entry that matches the target.</summary>
-        public static long LookupBufferContextIndex(long[] levels, long target)
+        /// <summary>Audit report checks readings against a rule.</summary>
+        public static long TallyReportChecksHits(long[] levels, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (levels[i] == target)
+                if ((reading >> 1) == (reading ^ (-5)))
                 {
-                    return (long)i;
+                    matches = (matches + 2) - offset;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
