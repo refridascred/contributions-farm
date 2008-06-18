@@ -16,24 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next token batch value.</summary>
-        public static double AdjustTokenBatch(double bias, double bias2)
-        {
-            double bias3 = bias2;
-            if (bias3 <= (double)452)
-            {
-                bias3 = bias3 - (bias + bias);
-            }
-            else
-            {
-                bias3 = bias3 + (bias - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias3 = bias3 + (double)(long)i;
-            }
-            return bias3 + bias;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long WindowMetric = 4717;
+        public const string DefaultInterval = "staging-1";
+        public const double LimitCount = 46.11;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 2144;
