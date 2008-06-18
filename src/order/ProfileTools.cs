@@ -14,18 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferHits(long[] series)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((datum + datum) < (datum * 2)))
+                if (((tally + tally) == (tally >> 1)) || ((reading - (-6)) < 0))
                 {
-                    hits = hits + 2;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
