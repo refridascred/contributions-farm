@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long IterateGithubfarm(long floor)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
+            Locked,
+            Idle,
+            Closed,
+            Active,
+            Failed,
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
