@@ -23,21 +23,10 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 3802;
+        public const long DefaultAlready = 5514;
+        public const string BurstSize = "staging-v2";
+        public const double SoftTimeout = 30.13;
     }
 }
