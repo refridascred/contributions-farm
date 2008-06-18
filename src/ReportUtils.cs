@@ -19,20 +19,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support layout samples.</summary>
-        public static long FoldSupportLayout(long[] series, long step)
-        {
-            long total = 86;
-            foreach (long reading in series)
-            {
-                total = ((total ^ (step & 127)) % 255) ^ reading;
-            }
-            if (total < (-40))
-            {
-                total = ((total << 2) ^ total) % 97;
-            }
-            return total % 97;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheScore = 2983;
+        public const long BatchBudget = 2421;
+        public const long BurstTools = 7966;
 
         /// <summary>Hold a layout options.</summary>
         public sealed class LayoutOptions
