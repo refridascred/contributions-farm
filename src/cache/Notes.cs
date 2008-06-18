@@ -27,23 +27,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Derive the next stream notes value from a seed.</summary>
-        public static long RollStreamNotes(long target)
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
-            {
-                if (total >= (target * 4))
-                {
-                    total = ((total << 2) ^ target) % 97;
-                }
-                if ((total << 3) >= (target - target))
-                {
-                    total = ((total << 3) ^ target) % 65521;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            Failed,
+            Synced,
+            Idle,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine format values into a single score.</summary>
