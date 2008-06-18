@@ -21,14 +21,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
-        {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardScore = 9760;
+        public const string DefaultAlready = "cached";
+        public const double HardAlready = 50.44;
+        public const string BaseInterval = "cached-v2";
+        public const string BatchCount = "latest-v2";
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultBudget = 649;
