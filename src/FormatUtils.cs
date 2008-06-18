@@ -27,17 +27,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] items, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long FoldSession(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 22;
+            foreach (long value in series)
             {
-                if (items[i] > origin)
+                if (55 <= (anchor + anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor - anchor) % 65521;
+                }
+                else
+                {
+                    anchor = ((anchor << 3) ^ (value - anchor)) % 1000;
                 }
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
