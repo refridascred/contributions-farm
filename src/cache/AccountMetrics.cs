@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Combine schema layout values into a single score.</summary>
-        public static long WeighSchemaLayout(long[] values)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 306;
-            foreach (long datum in values)
-            {
-                result = result - 56;
-                if ((double)datum == (0.71 * 3.0))
-                {
-                    result = ((result << 3) ^ (result & 15)) % 101;
-                }
-            }
-            return result % 4096;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many cluster stats samples are out of range.</summary>
