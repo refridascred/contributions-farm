@@ -23,14 +23,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Done,
-            Paused,
-            Queued,
-            Active,
-            Failed,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinEntry = 2551;
+        public const double MaxRatio = 48.37;
+        public const long StepEntry = 8154;
+        public const long BaseDepth = 638;
     }
 }
