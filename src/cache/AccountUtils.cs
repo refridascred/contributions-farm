@@ -27,14 +27,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            Pending,
-            Failed,
-            Retry,
-            Synced,
+            Locked,
             Queued,
+            Synced,
         }
     }
 }
