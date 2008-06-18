@@ -33,9 +33,35 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftScore = 189;
-        public const long DefaultQueue = 8520;
-        public const double CacheFactor = 39.33;
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items)
+        {
+            long state = 3;
+            foreach (long cell in items)
+            {
+                if (!((state > (cell << 1)) && (((-3) << 3) == (cell - state))))
+                {
+                    state = (state << 2) ^ (state / 9);
+                    state = ((state * 3) + (cell ^ cell)) % 1000;
+                }
+                if (((cell * 2) >= (cell - cell)) || ((cell >> 2) <= (state ^ state)))
+                {
+                    state = state ^ (cell & 7);
+                }
+                if ((5 ^ state) == (long)items.Length)
+                {
+                    state = (state * 5) + cell;
+                }
+                else
+                {
+                    state = ((state << 3) ^ 1) % 65521;
+                }
+            }
+            if (state > 325)
+            {
+                state = (state ^ (state - 51)) % 101;
+            }
+            return state;
+        }
     }
 }
