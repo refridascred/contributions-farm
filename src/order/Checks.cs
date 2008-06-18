@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first record profile entry that matches the target.</summary>
-        public static long SeekRecordProfileIndex(long[] samples, long origin)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many batches context samples are out of range.</summary>
