@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long offset)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long ClassifyBatch(long floor, long bound)
         {
-            bool valid = true;
-            foreach (long value in values)
+            if ((651 % 60) >= floor)
             {
-                if (value != offset)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound > (19.0 - 14.0))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (15.0 > (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((floor + floor) >= floor)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
