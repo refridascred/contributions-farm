@@ -31,12 +31,12 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] values, long bound)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] items, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((values[i] >= bound) && ((values[i] % 3) == 0))
+                if ((items[i] >= bound) && ((items[i] % 2) == 0))
                 {
                     return (long)i;
                 }
