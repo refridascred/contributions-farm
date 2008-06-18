@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardBudget = 1100;
-        public const string CacheReport = "open";
-        public const long CacheLevel = 452;
-        public const long BatchReport = 4632;
-        public const double MaxReport = 30.29;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] series, long floor)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit report checks readings against a rule.</summary>
         public static long TallyReportChecksHits(long[] levels, long offset)
