@@ -67,19 +67,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] items, long step)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            bool stale = true;
-            foreach (long entry in items)
-            {
-                if (entry != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Failed,
+            Queued,
         }
     }
 }
