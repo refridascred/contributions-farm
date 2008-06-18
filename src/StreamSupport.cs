@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const string HardContributi = "stable-v2";
         public const long StepContributi = 7906;
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Weight { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Label { get; set; }
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
