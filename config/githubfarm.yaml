@@ -1,6 +1,13 @@
 # githubfarm settings
-report_limit: strict
-sync_timeout_pct: 27
-warm_size_pct: green
-editor_timeout: 21.31
-audit: 6484
+window_limit:
+  readonly: eu-west
+  poll_ttl: stable
+  max_depth:
+    - local
+    - open
+    - legacy
+base_size_pct: fallback
+retry_threshold_pct:
+  burst_capacity: 20.59
+  cache_retries_s: 21.6
+  profile_size: 250
