@@ -1,16 +1,8 @@
 # entry settings
-max_window_count:
-  - fallback
+format_delay: 43.33
+githubfarm_limit: 80
+githubfarm_size:
+  - open
   - stable
-  - green
-  - green
-max_depth_s:
-  idle_size: 8344
-  warm_size_pct:
-    - eu-west
-    - blue
-    - open
-  enabled: 2555
-  retry_delay_ms: fallback
-sync_ttl_count: false
+  - stable
 audit: false
