@@ -11,15 +11,13 @@ namespace Common.Utilities
         public const long BatchDepth = 801;
         public const long SoftBudget = 6755;
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long offset)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long total = offset;
-            for (int i = 0; i < 17; i++)
-            {
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Closed,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
