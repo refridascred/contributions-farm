@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public double Region { get; set; }
-            public string Size { get; set; } = "";
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinInterval = 16.73;
+        public const long WindowCache = 8470;
+        public const long SoftWidth = 2871;
+        public const long RetryCache = 8756;
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long floor)
