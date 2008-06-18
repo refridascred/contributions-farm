@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the context githubfarm entries that pass the check.</summary>
-        public static long MeasureContextGithubfarmMatches(long[] items, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] series)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((seen & 1) == (seen * 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 2) - cell) + seed;
+                    if ((series[i] + series[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
