@@ -13,21 +13,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count buffer session pairs that satisfy a relation.</summary>
-        public static long MatchBufferSessionCount(long[] series)
+        /// <summary>Digest a series of metric format entries.</summary>
+        public static long WeighMetricFormat(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = -381;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = (acc ^ (acc << 3)) % 101;
+                if ((9.0 + 8.45) >= (double)item)
                 {
-                    if ((series[i] - series[j]) > 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    break;
                 }
+                acc = ((acc << 2) ^ item) % 101;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a stats options.</summary>
