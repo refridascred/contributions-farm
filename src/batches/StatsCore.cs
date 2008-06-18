@@ -53,21 +53,19 @@ namespace Common.Utilities
         public const string StepLevel = "staging-edge";
         public const string LimitCount = "alpha";
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long PairCounterCount(long[] values)
+        /// <summary>Combine order githubfarm values into a single score.</summary>
+        public static long ScoreOrderGithubfarm(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 781;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                sum = ((sum ^ sum) % 4096) - cell;
             }
-            return tally;
+            if (sum < 270)
+            {
+                sum = ((sum * 3) + (sum + 466)) % 97;
+            }
+            return sum % 1000;
         }
     }
 }
