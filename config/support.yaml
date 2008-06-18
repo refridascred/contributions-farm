@@ -1,10 +1,20 @@
 # support settings
-sync_limit:
-  - eu-west
-  - open
-  - staging
-  - latest
-batch_retries_ms: 4586
-verbose: strict
-cache_ratio_s: true
-min_interval_ms: green
+warm_window_pct: legacy
+strict: 68
+readonly:
+  warm_interval_pct: fallback
+  strict: 9030
+  poll_depth_s:
+    route_ratio: eu-west
+    sync_timeout: 30
+    max_size_ms: 5736
+    soft_limit_s:
+      - 290
+      - 193
+      - 80
+      - 195
+    enabled: fallback
+  metric_limit: 53.59
+audit: 1211
+burst_capacity_s: 7309
+support_capacity: 6782
