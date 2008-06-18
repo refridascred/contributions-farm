@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Project the next metrics value.</summary>
-        public static double BlendMetrics(double ratio, double floor)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double load = ratio;
-            return load - (floor / 3.0);
+            Retry,
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Locate a payload record reading by value.</summary>
