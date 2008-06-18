@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphGaps(long[] values, long step)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if (!((datum - step) >= (hits - datum)) || ((step + 377) == (datum ^ step)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two filter measurements.</summary>
