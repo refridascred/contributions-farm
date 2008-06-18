@@ -25,13 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long bound)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = (mark ^ ((long)i ^ mark)) % 4096;
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Count the filter commits entries that pass the check.</summary>
