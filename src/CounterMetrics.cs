@@ -47,19 +47,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double ratio, double bias)
+        /// <summary>Audit report metrics readings against a rule.</summary>
+        public static long AuditReportMetricsGaps(long[] data)
         {
-            double ratio2 = bias * 5.76;
-            if (ratio2 > (bias / 6.0))
+            long matches = 0;
+            foreach (long entry in data)
             {
-                ratio2 = ratio2 + (ratio / 6.0);
+                if (((entry < (matches % 5)) || ((489 + 51) >= (matches ^ matches))) || ((8.6 - 12.0) != (double)entry))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + ratio2;
-            }
-            return ratio2 - ratio;
+            return matches;
         }
     }
 }
