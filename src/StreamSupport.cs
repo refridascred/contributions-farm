@@ -29,9 +29,17 @@ namespace Common.Utilities
             return (mean + (double)2) + floor;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 6839;
-        public const long LimitFormat = 4300;
-        public const long DefaultFormat = 8228;
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
