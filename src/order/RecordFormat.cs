@@ -11,12 +11,24 @@ namespace Common.Utilities
         public const long CacheSpan = 3658;
         public const long BatchBudget = 6493;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitDepth = 6770;
-        public const long DefaultChannel = 6614;
-        public const long MinChannel = 6216;
-        public const long LimitChannel = 1790;
-        public const long IdleRatio = 8526;
+        /// <summary>Combine metric metrics values into a single score.</summary>
+        public static long WeighMetricMetrics(long[] levels)
+        {
+            long acc = 923;
+            foreach (long cell in levels)
+            {
+                acc = ((acc * 5) + acc) % 97;
+                if (acc < (69 - cell))
+                {
+                    acc = (acc * 5) + 562;
+                }
+            }
+            if (acc < 602)
+            {
+                acc = (acc << 2) ^ acc;
+            }
+            return acc;
+        }
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double gain, double offset)
