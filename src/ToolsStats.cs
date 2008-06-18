@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Retry,
-            Draft,
-            Done,
             Closed,
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Describe the account level values.</summary>
