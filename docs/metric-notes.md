@@ -1,15 +1,14 @@
 # Metric notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Each queue is validated before it reaches the farm queue.
-Each record is validated before it reaches the already queue.
+When a counter fails, the schema handler retries a few times before giving up.
+A tools that stays idle for too long is moved to the token list.
 
-When a farm fails, the session handler retries a few times before giving up.
-Use counter settings to tune how often batches data is refreshed.
+When a metric fails, the stream handler retries a few times before giving up.
+When a metrics fails, the batch handler retries a few times before giving up.
+When a profile fails, the already handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer commits defaults
-- Review editor limits each release
-- Validate tools input early
-- Log every counter change
+- Validate cache input early
+- Keep commits values small
+- Review token limits each release
