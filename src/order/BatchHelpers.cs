@@ -23,10 +23,10 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long SoftAlready = 3802;
-        public const long DefaultAlready = 5514;
-        public const string BurstSize = "staging-v2";
-        public const double SoftTimeout = 30.13;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstSpan = 1078;
+        public const long CacheScore = 9183;
+        public const long BurstEntry = 192;
+        public const double MaxWidth = 36.67;
     }
 }
