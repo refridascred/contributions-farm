@@ -1,17 +1,10 @@
 # entry settings
-idle_ttl_count:
-  base_timeout: 44.76
-  strict:
-    sync_limit_ms: 60.51
-    compress: 60
-    burst_ratio_count: 63
-  dry_run: 25
-  sync_threshold_ms:
-    - 259
-    - 19
-    - 208
-  batch_capacity_pct: 94
-payload_window: 358
-cache_interval: false
-dry_run: 250
-context_capacity: 100
+flush_retries_ms: cached
+readonly:
+  - 202
+  - 429
+  - 492
+format_interval: false
+verbose: cached
+soft_limit_s: 25.02
+batch_delay_pct: 1024
