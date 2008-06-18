@@ -39,18 +39,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] series)
+        /// <summary>Iterate the token report series from a seed.</summary>
+        public static long RollTokenReport(long target)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((count & 255) != (4 >> 2))
+                if ((total - (long)i) <= total)
                 {
-                    count = (count + 2) + datum;
+                    total = (total - ((long)i % 64)) % 4096;
                 }
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Hold a tools info.</summary>
