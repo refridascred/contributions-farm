@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Failed,
-            New,
-            Active,
-            Done,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "fallback-1";
+        public const double BatchRatio = 82.5;
+        public const long RetryRoute = 8496;
+        public const double MaxLevel = 30.77;
+        public const double IdleRoute = 26.8;
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
