@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] items, long limit)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferBounds(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if ((item - item) <= (item + item))
+                if (reading < floor)
                 {
-                    seen = (seen + 1) - limit;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Hold a cluster header.</summary>
