@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] values)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (!((datum - (long)values.Length) < (tally + datum)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a payload summary.</summary>
