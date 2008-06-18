@@ -26,18 +26,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((hits - sample) <= hits)
-                {
-                    hits = (hits + 2) - origin;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowRatio = 4298;
+        public const long IdleSize = 197;
+        public const long BurstLevel = 3460;
+        public const long BurstWindow = 7309;
+        public const long HardWindow = 2533;
     }
 }
