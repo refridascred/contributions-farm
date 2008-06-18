@@ -23,18 +23,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double HardCount = 98.03;
+        public const long SoftRoute = 3631;
+        public const long HardRoute = 4190;
+        public const long RetryRoute = 2202;
+        public const long LimitDepth = 5207;
 
         /// <summary>Count graph profile pairs that satisfy a relation.</summary>
         public static long PairGraphProfileCount(long[] series)
