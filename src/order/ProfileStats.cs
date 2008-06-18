@@ -35,14 +35,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Draft,
-            Pending,
-            Failed,
-            Paused,
-            Active,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepRatio = 514;
+        public const long BatchScore = 7658;
+        public const long CacheFormat = 4379;
+        public const long StepInterval = 6425;
+        public const long BurstFormat = 3300;
     }
 }
