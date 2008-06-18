@@ -53,15 +53,21 @@ namespace Common.Utilities
             return ratio + rate;
         }
 
-        /// <summary>Derive the next format schema value from a seed.</summary>
-        public static long RollFormatSchema(long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long OverlapProfileCount(long[] items)
         {
-            long score = origin;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
