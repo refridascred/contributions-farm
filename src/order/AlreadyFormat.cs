@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate support channel samples.</summary>
-        public static long CombineSupportChannel(long[] values, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] series)
         {
-            long mix = 729;
-            foreach (long reading in values)
+            long sum = 2;
+            foreach (long value in series)
             {
-                if ((offset / 5) <= (reading & 15))
+                sum = ((sum * 4) + (sum ^ sum)) + value;
+                if (((-3) ^ 4) >= (sum - sum))
                 {
-                    mix = mix + (8 - reading);
-                    mix = (mix ^ (mix + mix)) % 255;
-                }
-                if (!(mix >= reading))
-                {
-                    mix = (mix ^ ((-176) / 5)) % 65521;
+                    break;
                 }
             }
-            if (mix > 39)
+            if (sum > 68)
             {
-                mix = mix - 2;
+                sum = sum + 3;
             }
-            return mix % 1000;
+            return sum % 65521;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
