@@ -78,19 +78,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            double gain = offset;
-            if (gain > (double)87)
-            {
-                gain = gain - (ratio - gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - offset) + (double)(long)i;
-            }
-            return gain - (offset - gain);
+            Queued,
+            Idle,
+            Closed,
+            Paused,
         }
     }
 }
