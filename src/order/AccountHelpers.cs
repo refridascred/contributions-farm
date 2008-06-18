@@ -62,19 +62,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long WeighGithubfarm(long[] items, long step)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] values, long offset)
         {
-            long mix = -719;
-            foreach (long item in items)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                mix = mix - (step + step);
-                if (mix > (item + step))
+                if (cell != offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return mix;
+            return flag;
         }
     }
 }
