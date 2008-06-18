@@ -1,7 +1,5 @@
 # githubfarm settings
-hard_depth_s: 60
-max_ratio: blue
-base_limit: true
-batch_threshold: legacy
-batch_window_pct: false
-contributi_retries: 93.01
+max_interval_pct: 30
+default_ttl_count: true
+idle_retries_ms: 500
+readonly: 67.07
