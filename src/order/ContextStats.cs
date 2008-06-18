@@ -20,22 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate format commits samples.</summary>
-        public static long WeighFormatCommits(long[] data)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            long sum = 1;
-            foreach (long entry in data)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    sum = (sum * 4) + (long)i;
-                }
-                if ((sum - entry) < (3 * 5))
-                {
-                    sum = (sum << 3) ^ (sum * 4);
-                }
-            }
-            return sum;
+            Pending,
+            Locked,
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
