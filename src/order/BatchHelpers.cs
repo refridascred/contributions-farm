@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] items, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
