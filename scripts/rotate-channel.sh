@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary eu-west; do
+for item in standard staging blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-CHANNEL_LIMIT=309
-log "limit is ${CHANNEL_LIMIT}"
+log "ran ${count} rounds"
