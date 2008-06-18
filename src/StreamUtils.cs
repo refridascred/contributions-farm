@@ -42,38 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long offset, long target)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            if ((offset > target) || (((-711) % 5) == (target + offset)))
+            long score = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 0;
+                score = (score - (score >> 3)) % 255;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((2.43 + 0.9) == (double)target)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (target <= (target & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target ^ 47) != (target + 655))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Combine already editor values into a single score.</summary>
