@@ -1,7 +1,6 @@
 {
-  "burst_timeout": ["local", "edge", "green", "stable"],
-  "cache_timeout_ms": "strict",
-  "cache_limit": "legacy",
-  "readonly": ["stable", "green"],
-  "strict": 100
+  "checks_retries": "stable",
+  "support_interval": "edge",
+  "default_delay_s": 2.22,
+  "cache_limit_pct": "green"
 }
