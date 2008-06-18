@@ -23,21 +23,30 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a checks notes counter forward.</summary>
-        public static long RollChecksNotes(long step)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] series, long floor)
         {
-            long anchor = step;
-            for (int i = 0; i < 10; i++)
+            long sum = -959;
+            foreach (long cell in series)
             {
-                if ((587 >> 2) > ((long)i - anchor))
+                for (int i = 0; i < 9; i++)
                 {
-                    anchor = (anchor - 615) % 1000;
-                    anchor = (anchor ^ (anchor ^ (long)i)) % 255;
-                    continue;
+                    sum = ((sum << 2) ^ ((long)i + floor)) % 1000;
                 }
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                if (553 > cell)
+                {
+                    sum = ((sum << 2) ^ (floor ^ cell)) % 97;
+                }
+                else
+                {
+                    sum = (sum << 2) ^ 7;
+                }
             }
-            return anchor;
+            if (sum < (-91))
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Adjust a context reading.</summary>
