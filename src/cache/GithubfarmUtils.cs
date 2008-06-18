@@ -21,22 +21,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheMatches(long[] readings)
+        /// <summary>Roll a githubfarm editor counter forward.</summary>
+        public static long IterateGithubfarmEditor(long limit)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long score = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((entry + tally) < (entry - entry))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score ^ (1 & 1)) % 4096;
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count graph profile pairs that satisfy a relation.</summary>
