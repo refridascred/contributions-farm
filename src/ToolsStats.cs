@@ -36,19 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double rate, double bias)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] series)
         {
-            double drift = bias;
-            if (drift < bias)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (bias * 9.2);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                drift = drift - rate;
-            }
-            return drift - drift;
+            return hits;
         }
 
         /// <summary>Iterate the token report series from a seed.</summary>
