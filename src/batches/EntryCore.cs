@@ -54,15 +54,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next metric value from a seed.</summary>
-        public static long DeriveMetric(long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long result = step;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Failed,
+            Queued,
+            Pending,
+            Idle,
+            Retry,
         }
     }
 }
