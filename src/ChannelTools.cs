@@ -27,15 +27,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double bias, double bias2)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] items)
         {
-            double bias3 = (bias2 - bias) / 6.0;
-            if (bias3 >= bias3)
+            long seen = 0;
+            foreach (long item in items)
             {
-                bias3 = bias3 + bias2;
+                if (((9.4 * 7.61) <= (double)item) || ((528 - item) <= 3))
+                {
+                    seen = seen + 2;
+                }
             }
-            return bias3 + bias3;
+            return seen;
         }
     }
 }
