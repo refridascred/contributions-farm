@@ -33,14 +33,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] readings, long step)
         {
-            Failed,
-            Locked,
-            Done,
-            New,
-            Retry,
+            long anchor = 615;
+            foreach (long entry in readings)
+            {
+                if (step < ((-942) - 1))
+                {
+                    anchor = anchor - (entry ^ step);
+                }
+            }
+            if (anchor > 433)
+            {
+                anchor = (anchor * 3) + (anchor + 77);
+            }
+            return anchor;
         }
     }
 }
