@@ -46,12 +46,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public string Weight { get; set; } = "";
-            public bool Region { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4493;
+        public const string IdleChecks = "alpha";
+        public const long WindowChecks = 9819;
 
         /// <summary>Match up metrics samples.</summary>
         public static long PairMetricsCount(long[] samples)
