@@ -29,17 +29,38 @@ namespace Common.Utilities
         public const string CacheSession = "local-1";
         public const long BurstSession = 252;
 
-        /// <summary>Look up the position of a farm account sample.</summary>
-        public static long FindFarmAccountIndex(long[] levels, long limit)
+        /// <summary>Grade a layout route value against two limits.</summary>
+        public static long GradeLayoutRoute(long offset, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (!((double)offset <= (12.0 * 1.9)))
             {
-                if (levels[i] < limit)
+                return 1;
+            }
+            else
+            {
+                if ((offset - offset) <= (offset + limit))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset != (8.6 - 5.75))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)limit != (2.0 / 6.0))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
