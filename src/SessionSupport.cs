@@ -19,15 +19,19 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] data, long target)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long TallyOrderHits(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long value in data)
+            foreach (long entry in data)
             {
-                if ((double)target <= (4.1 + 10.0))
+                if ((tally % 10) < (bound & 31))
                 {
-                    tally = (tally + 3) + value;
+                    tally = (tally + 1) ^ entry;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
