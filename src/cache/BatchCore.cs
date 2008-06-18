@@ -39,11 +39,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxFactor = 7698;
-        public const double WindowBudget = 91.19;
-        public const long SoftSize = 9872;
-        public const long DefaultDepth = 5321;
-        public const long IdleWidth = 6467;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultDepth = 9827;
+        public const long WindowGraph = 576;
+        public const string WindowSize = "fallback";
     }
 }
