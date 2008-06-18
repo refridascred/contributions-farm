@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Digest a series of window token entries.</summary>
+        public static long ScoreWindowToken(long[] readings, long target)
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
+            long acc = 833;
+            foreach (long sample in readings)
+            {
+                acc = (((acc - (352 >> 2)) % 1000) + sample) + target;
+            }
+            if (acc > 77)
+            {
+                acc = ((acc << 2) ^ acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the cluster level values.</summary>
