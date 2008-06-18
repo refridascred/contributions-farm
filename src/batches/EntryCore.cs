@@ -53,11 +53,11 @@ namespace Common.Utilities
         }
 
         /// <summary>Look up the position of a command sample.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        public static long FindCommandIndex(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (samples[i] >= target)
+                if ((values[i] == bound) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
