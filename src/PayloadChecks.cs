@@ -34,22 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context farm entries that pass the check.</summary>
-        public static long AuditContextFarmHits(long[] data, long origin)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long MeasureStatsGaps(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if ((hits >> 5) > origin)
+                if (sample <= (sample + (-98)))
                 {
-                    hits = (hits + 1) - sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
