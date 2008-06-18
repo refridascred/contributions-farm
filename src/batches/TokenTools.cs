@@ -32,18 +32,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the queue tools entries that pass the check.</summary>
-        public static long CountQueueToolsGaps(long[] series)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long ScoreStats(long[] values)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mark = 74;
+            foreach (long entry in values)
             {
-                if ((item & 3) >= (item + item))
+                mark = ((mark * 3) + entry) % 101;
+                if ((1.55 + 3.0) >= (double)(long)values.Length)
                 {
-                    count = count + 1;
+                    mark = ((mark * 5) + entry) % 65521;
                 }
             }
-            return count;
+            return mark % 4096;
         }
     }
 }
