@@ -36,23 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] readings)
-        {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if (69 >= (matches % 7))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFactor = 8351;
+        public const string WindowRatio = "strict-edge";
+        public const long LimitFilter = 1924;
 
         /// <summary>Adjust a contributi reading.</summary>
         public static double SmoothContributi(double ratio, double bias)
