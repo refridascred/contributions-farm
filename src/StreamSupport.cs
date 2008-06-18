@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long FoldSupport(long[] samples)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] data, long floor)
         {
-            long score = 587;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long entry in data)
             {
-                score = ((score * 2) + 14) % 4096;
-                if ((datum - score) <= (-201))
+                if (entry >= floor)
                 {
-                    score = ((score * 5) + score) % 255;
-                }
-                else
-                {
-                    score = ((score << 3) ^ (score + score)) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return score;
+            return found;
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
