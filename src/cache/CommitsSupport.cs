@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue payload entries that pass the check.</summary>
-        public static long MeasureQueuePayloadOutliers(long[] items, long bound)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            long seen = 0;
-            foreach (long datum in items)
+            double gain = (double)286 - 17.0;
+            if (gain <= (gain / 3.0))
             {
-                if (((double)datum >= (0.1 / 9.0)) && ((double)seen >= (double)bound))
-                {
-                    seen = seen + 1;
-                }
+                gain = gain - ratio;
             }
-            return seen;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + floor) + (double)(long)i;
+            }
+            return gain + 7.0;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
