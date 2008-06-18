@@ -20,18 +20,11 @@ namespace Common.Utilities
             return mean - (offset - 7.5);
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] levels)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((24 ^ item) > count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Adjust a metric reading.</summary>
