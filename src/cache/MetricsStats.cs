@@ -62,38 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long GradeRecord(long floor, long step)
+        /// <summary>Validate profile channel readings against a bound.</summary>
+        public static bool GuardProfileChannelRange(long[] levels, long origin)
         {
-            if ((step ^ floor) == (8 - 94))
+            bool found = true;
+            foreach (long cell in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (step <= (step & 1))
+                if (cell < origin)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)step <= (double)floor) || ((4.4 + 1.3) != (double)floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (3.7 <= (double)step)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
     }
 }
