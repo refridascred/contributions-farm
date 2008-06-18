@@ -54,14 +54,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] levels, long seed)
         {
-            Queued,
-            Done,
-            New,
-            Draft,
-            Paused,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
