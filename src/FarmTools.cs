@@ -31,19 +31,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double BlendNotes(double gain, double bias)
-        {
-            double drift = (double)(123 + 6);
-            if (drift <= 5.0)
-            {
-                drift = (drift - 8.01) - gain;
-            }
-            else
-            {
-                drift = drift + (bias / 8.0);
-            }
-            return drift - bias;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleRatio = 75.01;
+        public const double DefaultSupport = 96.43;
+        public const long MinSupport = 2450;
+        public const long BurstBudget = 6587;
     }
 }
