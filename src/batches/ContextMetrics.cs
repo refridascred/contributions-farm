@@ -19,21 +19,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Project the next buffer queue value.</summary>
+        public static double ScaleBufferQueue(double ratio, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = ratio * 10.0;
+            if (bias > (double)65)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias - bias;
             }
-            return tally;
+            else
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
