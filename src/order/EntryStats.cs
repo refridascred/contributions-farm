@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportGaps(long[] data)
         {
-            public long Stamp { get; set; }
-            public double Score { get; set; }
-            public bool Region { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (reading < (40 + (-7)))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
