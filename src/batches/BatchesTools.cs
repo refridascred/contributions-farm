@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long WeighTools(long[] readings, long target)
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long offset)
         {
-            long score = 5;
-            foreach (long value in readings)
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score & 1) >= (target % 7))
-                {
-                    score = ((score << 2) ^ (value + target)) % 1000;
-                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            if (score < 70)
-            {
-                score = ((score << 3) ^ (score + target)) % 1000;
-            }
-            return score;
+            return state;
         }
 
         /// <summary>Iterate the metrics report series from a seed.</summary>
