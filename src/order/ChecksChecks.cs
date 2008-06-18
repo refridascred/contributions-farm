@@ -48,23 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Fold a list of queue editor readings.</summary>
+        public static long CombineQueueEditor(long[] data, long floor)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long result = 787;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (((floor % 2) != (result + result)) && (floor < (floor - result)))
                 {
-                    anchor = (((anchor << 3) ^ anchor) % 255) ^ (long)i2;
+                    result = ((result + result) % 1000) - entry;
                 }
-                if (((7 & 3) >= (anchor * 5)) && ((double)anchor != (0.9 / 7.0)))
-                {
-                    anchor = (anchor << 3) ^ 28;
-                }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return result % 4096;
         }
     }
 }
