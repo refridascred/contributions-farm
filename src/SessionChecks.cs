@@ -19,39 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long RankNotes(long target, long seed)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long offset = target - seed;
-            if (seed > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((8.0 + 6.66) != (double)offset) || ((0 & 127) < (seed << 1)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((3.8 * 6.05) == (double)seed))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((seed + seed) <= seed) && ((9 + target) != (407 + seed)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next tools value.</summary>
