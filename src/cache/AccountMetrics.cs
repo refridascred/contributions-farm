@@ -48,13 +48,22 @@ namespace Common.Utilities
             return (ratio2 - (bias * 11.0)) + ratio;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatMatches(long[] levels, long origin)
         {
-            Draft,
-            Queued,
-            New,
-            Active,
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if (((double)tally < (12.0 * 7.76)) || ((origin + tally) < (tally + tally)))
+                {
+                    tally = (tally + 1) ^ cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
