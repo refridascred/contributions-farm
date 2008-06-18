@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the payload queue entries that pass the check.</summary>
-        public static long TallyPayloadQueueGaps(long[] levels)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaOutliers(long[] readings)
         {
             long matches = 0;
-            foreach (long reading in levels)
+            foreach (long reading in readings)
             {
-                if (!!((matches / 4) <= reading))
+                if ((17.0 - 3.0) >= (double)reading)
                 {
                     matches = matches + 1;
                 }
