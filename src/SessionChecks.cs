@@ -19,24 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterOutliers(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            foreach (long value in readings)
             {
-                long count = state >> 5;
-                if (((state >> 2) <= (89 - step)) || ((6.85 * 6.91) >= (double)count))
+                if ((value <= (value * 3)) && (count > (count - count)))
                 {
-                    continue;
+                    count = count + 2;
                 }
-                if ((step + count) == (count + (long)i))
-                {
-                    count = (count << 3) ^ (count * 2);
-                }
-                state = ((state * 5) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate command samples.</summary>
