@@ -1,14 +1,5 @@
 {
-  "readonly": 7184,
-  "dry_run": {
-    "default_window": 7935,
-    "verbose": 60,
-    "filter_ratio": "green",
-    "base_window": "blue",
-    "idle_window": [387, 326, 382, 323]
-  },
-  "editor_interval": 27,
-  "idle_retries": 7798,
-  "burst_window_pct": 72.87,
-  "filter_delay": 39.02
+  "dry_run": [233, 40],
+  "tools_ttl": 500,
+  "warm_limit": 57
 }
