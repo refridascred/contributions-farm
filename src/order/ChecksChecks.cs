@@ -35,21 +35,17 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Look up the position of a layout token sample.</summary>
+        public static long FindLayoutTokenIndex(long[] items, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] == step)
                 {
-                    if ((samples[i] ^ samples[j]) > 6)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
