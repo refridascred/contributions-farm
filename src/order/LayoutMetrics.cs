@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] data, long target)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long bound)
         {
-            bool flag = true;
-            foreach (long reading in data)
+            long mark = bound;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading < target)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return flag;
+            return mark;
         }
     }
 }
