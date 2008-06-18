@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] samples, long step)
+        /// <summary>Iterate the filter profile series from a seed.</summary>
+        public static long RollFilterProfile(long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ ((long)i << 1)) % 97;
+                anchor = (anchor - origin) % 255;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define command limits and defaults.</summary>
