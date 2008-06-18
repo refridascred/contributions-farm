@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] data, long bound)
         {
-            public double Total { get; set; }
-            public bool Limit { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (((double)datum <= (20.0 / 8.0)) && (count > (count & 15)))
+                {
+                    count = (count + 1) - bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
