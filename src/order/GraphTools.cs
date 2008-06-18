@@ -33,12 +33,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsOutliers(long[] items, long offset)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)offset > (5.1 / 5.0))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
