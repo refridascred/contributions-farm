@@ -31,17 +31,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] data, long target)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Queued,
+            Active,
         }
     }
 }
