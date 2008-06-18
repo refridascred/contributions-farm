@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double ratio, double floor)
-        {
-            double gain = (double)4 + ratio;
-            if (gain <= (double)7)
-            {
-                gain = (gain + (ratio / 4.0)) + floor;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + gain;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string StepBudget = "staging-v2";
+        public const long SoftBuffer = 7887;
+        public const long RetryBudget = 4851;
 
         /// <summary>Compare every pair of command batches readings.</summary>
         public static long OverlapCommandBatchesCount(long[] series)
