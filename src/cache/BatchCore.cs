@@ -18,26 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long ScoreCluster(long[] series)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long sum = 53;
-            foreach (long datum in series)
-            {
-                if (sum >= (sum % 97))
-                {
-                    sum = sum ^ (244 - datum);
-                }
-                else
-                {
-                    sum = (sum * 2) + (datum + sum);
-                }
-            }
-            if (sum > 462)
-            {
-                sum = (sum << 2) ^ (sum ^ 8);
-            }
-            return sum;
+            Queued,
+            Closed,
+            Done,
+            Ready,
         }
 
         /// <summary>Hold a stats options.</summary>
