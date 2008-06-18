@@ -23,18 +23,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterOutliers(long[] data)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long sum = 2;
+            foreach (long reading in series)
             {
-                if (count >= reading)
+                if (((reading / 6) != (reading + (-957))) && ((reading - reading) > (791 << 3)))
                 {
-                    count = count + 2;
+                    sum = sum + (offset % 3);
+                    sum = (sum ^ sum) % 255;
+                }
+                else
+                {
+                    sum = (sum - (offset + sum)) % 97;
+                }
+                sum = (sum ^ (sum * 5)) % 255;
+                if (!((double)reading >= 9.2))
+                {
+                    sum = (sum ^ (9 & 1)) % 65521;
+                }
+                else
+                {
+                    sum = (sum + reading) % 97;
                 }
             }
-            return count;
+            if (sum < 79)
+            {
+                sum = ((sum * 4) + (189 >> 2)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Roll a already counter forward.</summary>
