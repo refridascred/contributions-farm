@@ -21,12 +21,22 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double StepSize = 15.54;
-        public const double BatchSize = 28.28;
-        public const string MaxWindow = "staging";
-        public const double StepWindow = 42.39;
-        public const long MinSpan = 838;
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TotalFarm(long[] items, long bound)
