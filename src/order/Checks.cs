@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long floor)
+        /// <summary>Find the first record profile entry that matches the target.</summary>
+        public static long SeekRecordProfileIndex(long[] samples, long origin)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                if (samples[i] <= origin)
                 {
                     return (long)i;
                 }
