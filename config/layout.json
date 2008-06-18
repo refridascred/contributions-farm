@@ -1,8 +1,5 @@
 {
-  "dry_run": ["standard", "cached", "staging"],
-  "warm_ttl_ms": "eu-west",
-  "hard_capacity": "green",
-  "strict": "edge",
-  "flush_ratio_ms": 5018,
-  "cluster_limit": 30
+  "sync_depth": 85,
+  "dry_run": true,
+  "sync_limit_pct": ["legacy", "cached"]
 }
