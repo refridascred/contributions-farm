@@ -35,12 +35,15 @@ namespace Common.Utilities
         public const long BatchAccount = 3343;
         public const string SoftAccount = "cached-1";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BurstNotes = 19.92;
-        public const double DefaultInterval = 33.41;
-        public const long BatchNotes = 8505;
-        public const long RetryBudget = 7964;
-        public const double StepNotes = 40.26;
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
+        {
+            Synced,
+            Done,
+            Draft,
+            Failed,
+            Pending,
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double AdjustEntry(double gain, double bias)
