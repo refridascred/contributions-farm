@@ -40,18 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] samples)
+        /// <summary>Check that every already stream entry stays within the limit.</summary>
+        public static bool ValidateAlreadyStreamRange(long[] samples, long target)
         {
-            long count = 0;
+            bool flag = true;
             foreach (long reading in samples)
             {
-                if ((count + 548) == (reading - count))
+                if (reading >= target)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of format readings.</summary>
