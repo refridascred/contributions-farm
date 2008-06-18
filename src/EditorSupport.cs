@@ -26,14 +26,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricGaps(long[] samples)
         {
-            Pending,
-            Ready,
-            Stale,
-            Retry,
-            Closed,
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if ((4.47 * 3.1) >= (double)matches)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Project the next cache value.</summary>
