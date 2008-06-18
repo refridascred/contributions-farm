@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the format window entries that pass the check.</summary>
-        public static long CountFormatWindowOutliers(long[] levels, long seed)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long bound, long bound2)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            if ((bound2 + bound) >= bound2)
             {
-                if ((double)seed <= 8.9)
+                return 8;
+            }
+            else
+            {
+                if ((bound2 >> 5) == (150 ^ 451))
                 {
-                    hits = (hits + 3) ^ item;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the route status values.</summary>
