@@ -13,23 +13,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit report account readings against a rule.</summary>
-        public static long MeasureReportAccountOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((((-6) + (long)samples.Length) <= tally) || ((double)value < (8.5 + 9.1)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string RetryFilter = "standard-v2";
+        public const long BatchFactor = 5791;
+        public const long BatchScore = 4903;
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmHits(long[] series)
