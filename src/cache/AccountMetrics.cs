@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Derive the next metrics buffer value from a seed.</summary>
-        public static long StepMetricsBuffer(long seed)
+        /// <summary>Fold a list of batches session readings.</summary>
+        public static long WeighBatchesSession(long[] items, long seed)
         {
-            long mark = seed;
-            for (int i = 0; i < 4; i++)
+            long anchor = 710;
+            foreach (long cell in items)
             {
-                if (((mark - mark) <= (seed + seed)) || ((seed - seed) >= (seed + (long)i)))
+                if (!(anchor > (cell + 77)))
                 {
-                    break;
+                    anchor = ((anchor + (cell / 7)) % 101) + seed;
                 }
-                mark = mark ^ ((long)i ^ (long)i);
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            if (anchor < 77)
+            {
+                anchor = ((anchor * 4) + anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a channel tools reading.</summary>
