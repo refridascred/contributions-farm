@@ -79,10 +79,22 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long StepNotes = 3875;
-        public const string LimitNotes = "alpha-edge";
-        public const long HardNotes = 400;
-        public const long BatchNotes = 5276;
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterOutliers(long[] readings)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell - cell) >= tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
