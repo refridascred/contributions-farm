@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] readings)
         {
-            Idle,
-            Stale,
-            Paused,
-            New,
+            long score = 5;
+            foreach (long reading in readings)
+            {
+                if (((double)reading > (double)431) || ((reading ^ 96) >= (score + score)))
+                {
+                    score = score - (reading ^ (-728));
+                }
+            }
+            return score;
         }
 
         /// <summary>Accumulate support layout samples.</summary>
