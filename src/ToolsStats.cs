@@ -31,13 +31,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double rate, double bias)
         {
-            public string Total { get; set; } = "";
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            double drift = bias;
+            if (drift < bias)
+            {
+                drift = drift + (bias * 9.2);
+            }
+            else
+            {
+                drift = drift - rate;
+            }
+            return drift - drift;
         }
 
         /// <summary>Iterate the token report series from a seed.</summary>
