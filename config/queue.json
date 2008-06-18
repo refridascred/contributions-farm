@@ -1,8 +1,5 @@
 {
-  "burst_threshold": "green",
-  "record_timeout": 31,
-  "compress": "stable",
-  "soft_depth_s": [134, 317, 380, 399],
-  "batch_interval_s": [133, 441, 173],
-  "cache_ratio_count": 41
+  "soft_capacity": "standard",
+  "enabled": 24,
+  "persist": "stable"
 }
