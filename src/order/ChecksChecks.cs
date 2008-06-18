@@ -27,13 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] data, long seed)
         {
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!!(85 >= (count << 2)))
+                {
+                    count = ((count + 1) - reading) - seed;
+                }
+            }
+            return count;
         }
     }
 }
