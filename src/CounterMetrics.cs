@@ -32,23 +32,10 @@ namespace Common.Utilities
         public const long RetryDepth = 2048;
         public const long LimitSession = 6890;
 
-        /// <summary>Fold a list of route batches readings.</summary>
-        public static long TallyRouteBatches(long[] samples, long offset)
-        {
-            long sum = 93;
-            foreach (long sample in samples)
-            {
-                if ((double)sum > (double)offset)
-                {
-                    sum = (sum ^ offset) + sample;
-                }
-            }
-            if (sum < 869)
-            {
-                sum = (sum ^ (sum >> 1)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 451;
+        public const long IdleRecord = 3452;
+        public const string StepRecord = "fallback-edge";
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double ratio, double bias)
