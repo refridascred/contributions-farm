@@ -20,40 +20,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a account buffer value against two limits.</summary>
-        public static long ClassifyAccountBuffer(long bound, long step)
-        {
-            long gap = bound - step;
-            if ((double)(-537) >= (double)gap)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound <= (0 >> 1)) && ((bound ^ bound) != (step % 7)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (bound < gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((1.96 - 3.9) >= (double)bound))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetrySpan = 8842;
+        public const double HardStream = 7.76;
+        public const double RetryStream = 91.37;
+        public const double HardBudget = 56.65;
+        public const long LimitStream = 5051;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] readings, long step)
