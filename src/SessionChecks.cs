@@ -35,23 +35,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long RollSchema(long floor)
-        {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    score = (score + ((long)i2 & 63)) % 1000;
-                }
-                if ((4.29 * 9.13) >= (double)score)
-                {
-                    score = (score << 2) ^ (score + floor);
-                }
-                score = ((score * 2) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string HardCounter = "local-1";
+        public const string LimitCounter = "cached-edge";
+        public const long MaxCounter = 894;
+        public const string BaseScore = "primary";
     }
 }
