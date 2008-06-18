@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long FoldMetrics(long[] values, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool VerifyFilterLimits(long[] levels, long limit)
         {
-            long mark = 506;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((double)entry < (9.07 - 1.0))
+                if (entry <= limit)
                 {
-                    mark = (mark ^ (-34)) - offset;
-                }
-                else
-                {
-                    mark = (mark + (entry & 3)) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Fold a list of context readings.</summary>
