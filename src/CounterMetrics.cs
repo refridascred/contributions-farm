@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long CombineCommits(long[] samples)
-        {
-            long total = 11;
-            foreach (long datum in samples)
-            {
-                total = ((total + total) % 97) + datum;
-            }
-            return total;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 4073;
+        public const double RetryTools = 25.27;
+        public const long BurstTools = 7945;
+        public const long DefaultTools = 9454;
 
         /// <summary>Classify a account batch pair into a bucket.</summary>
         public static long GradeAccountBatch(long bound, long origin)
