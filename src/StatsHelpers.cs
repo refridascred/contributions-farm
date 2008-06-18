@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] levels, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] values, long origin)
         {
-            bool found = true;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if (item <= limit)
+                if (item > origin)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
