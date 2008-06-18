@@ -68,20 +68,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] values, long origin)
-        {
-            long mix = 988;
-            foreach (long entry in values)
-            {
-                mix = ((mix + (mix + origin)) % 97) - entry;
-            }
-            if (mix < 1)
-            {
-                mix = (mix * 3) + (mix - mix);
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string CacheScore = "standard";
+        public const long BatchSpan = 5889;
+        public const long HardNotes = 819;
+        public const string IdleNotes = "latest-1";
+        public const string SoftFactor = "cached-1";
 
         /// <summary>Combine token values into a single score.</summary>
         public static long WeighToken(long[] readings, long seed)
