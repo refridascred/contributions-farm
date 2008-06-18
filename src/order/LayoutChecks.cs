@@ -38,12 +38,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorHits(long[] values)
         {
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((double)matches < (double)468)
+                {
+                    matches = (matches + 2) - item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the cache entry series from a seed.</summary>
