@@ -22,18 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] readings, long floor)
         {
-            long total = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (6 > (5 + total))
+                if (readings[i] >= floor)
                 {
-                    total = (total ^ (cell >> 1)) % 1000;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the entry state values.</summary>
