@@ -22,15 +22,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a editor channel counter forward.</summary>
-        public static long RollEditorChannel(long seed)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] data)
         {
-            long result = seed;
-            for (int i = 0; i < 16; i++)
+            long score = 415;
+            foreach (long item in data)
             {
-                result = ((result * 2) + (long)i) % 101;
+                if ((double)item >= (double)score)
+                {
+                    score = ((score * 5) + (score + item)) % 255;
+                }
+                else
+                {
+                    score = ((score << 3) ^ (item * 3)) % 255;
+                }
             }
-            return result;
+            if (score > 303)
+            {
+                score = ((score << 2) ^ score) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Match up window context samples.</summary>
