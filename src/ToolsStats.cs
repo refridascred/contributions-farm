@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Iterate the command report series from a seed.</summary>
+        public static long StepCommandReport(long target)
         {
-            Closed,
-            Locked,
-            Paused,
-            Dropped,
+            long carry = target;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry ^ ((-4) << 3)) % 1000;
+                if ((target - carry) <= ((long)i % 64))
+                {
+                    break;
+                }
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the account level values.</summary>
