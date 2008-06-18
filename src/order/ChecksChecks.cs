@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            Idle,
-            Paused,
-            Retry,
-            Draft,
-            Active,
+            public double Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank schema input into a small class.</summary>
