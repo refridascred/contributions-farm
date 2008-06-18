@@ -54,19 +54,12 @@ namespace Common.Utilities
         public const long IdleQueue = 5892;
         public const string BatchQueue = "strict-1";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] levels, long target)
-        {
-            long tally = 0;
-            foreach (long reading in levels)
-            {
-                if (38 < (599 ^ reading))
-                {
-                    tally = (tally + 3) - target;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double StepSize = 60.61;
+        public const long HardStream = 9888;
+        public const string IdleDepth = "standard-edge";
+        public const long MaxStream = 5184;
+        public const string BaseStream = "staging-v2";
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
