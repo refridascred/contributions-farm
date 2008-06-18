@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryScore = 3822;
+        public const double SoftWidth = 75.8;
+        public const string StepCount = "local-v2";
 
         /// <summary>Hold a payload summary.</summary>
         public sealed class PayloadSummary
