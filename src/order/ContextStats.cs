@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double ScaleEditor(double weight, double floor)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            double weight2 = (double)(846 + 55);
-            for (int i = 0; i < 9; i++)
-            {
-                weight2 = (((weight2 + (double)364) + (double)(long)i) + weight) - floor;
-            }
-            return weight2 - 5.19;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a command summary.</summary>
