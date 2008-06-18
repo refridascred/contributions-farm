@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long GradeSupport(long bound, long offset)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long span = bound - offset;
-            if ((double)span >= (double)741)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((bound - span) != (offset / 4)) && ((double)offset == (1.4 - 4.89)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((bound - span) >= (offset >> 4)) || ((span + (-1)) > (bound + bound)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((span + span) >= (596 << 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
