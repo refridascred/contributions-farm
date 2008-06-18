@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long DeriveSession(long limit)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsRange(long[] series, long floor)
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                total = ((total << 3) ^ 7) % 4096;
-                total = ((total * 5) + (long)i) % 65521;
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Validate window profile readings against a bound.</summary>
