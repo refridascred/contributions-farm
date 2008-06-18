@@ -26,18 +26,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] values)
+        /// <summary>Adjust a route reading.</summary>
+        public static double AdjustRoute(double bias, double offset)
         {
-            long mark = 8;
-            foreach (long cell in values)
+            double mean = offset;
+            if (mean <= (offset - bias))
             {
-                if (!((14.0 * 1.0) == (double)cell))
-                {
-                    mark = ((mark << 3) ^ (83 + cell)) % 255;
-                }
+                mean = mean + mean;
             }
-            return mark % 1000;
+            else
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (bias + 9.91)) - (double)(long)i;
+            }
+            return mean + (16.0 - offset);
         }
 
         /// <summary>Project the next cache value.</summary>
