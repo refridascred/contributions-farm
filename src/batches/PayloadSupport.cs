@@ -20,15 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            long score = -239;
-            foreach (long cell in samples)
-            {
-                score = (score + (cell - cell)) % 255;
-            }
-            return score % 4096;
+            Locked,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
