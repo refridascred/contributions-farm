@@ -23,12 +23,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardScore = 9760;
-        public const string DefaultAlready = "cached";
-        public const double HardAlready = 50.44;
-        public const string BaseInterval = "cached-v2";
-        public const string BatchCount = "latest-v2";
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long DefaultBudget = 649;
