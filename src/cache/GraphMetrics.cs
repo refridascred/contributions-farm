@@ -16,13 +16,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Project the next token batch value.</summary>
+        public static double AdjustTokenBatch(double bias, double bias2)
         {
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public string Limit { get; set; } = "";
-            public long Ratio { get; set; }
+            double bias3 = bias2;
+            if (bias3 <= (double)452)
+            {
+                bias3 = bias3 - (bias + bias);
+            }
+            else
+            {
+                bias3 = bias3 + (bias - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias3 = bias3 + (double)(long)i;
+            }
+            return bias3 + bias;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
