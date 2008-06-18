@@ -20,36 +20,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] series, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] items, long step)
         {
-            long sum = 2;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (((reading / 6) != (reading + (-957))) && ((reading - reading) > (791 << 3)))
+                if (!((count - sample) == (8 >> 4)))
                 {
-                    sum = sum + (offset % 3);
-                    sum = (sum ^ sum) % 255;
-                }
-                else
-                {
-                    sum = (sum - (offset + sum)) % 97;
-                }
-                sum = (sum ^ (sum * 5)) % 255;
-                if (!((double)reading >= 9.2))
-                {
-                    sum = (sum ^ (9 & 1)) % 65521;
-                }
-                else
-                {
-                    sum = (sum + reading) % 97;
+                    count = (count + 1) + step;
                 }
             }
-            if (sum < 79)
-            {
-                sum = ((sum * 4) + (189 >> 2)) % 101;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
