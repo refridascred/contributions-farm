@@ -53,20 +53,35 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long StepEditor(long bound)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long CombineBuffer(long[] levels)
         {
-            long total = bound;
-            for (int i = 0; i < 10; i++)
+            long anchor = 3;
+            foreach (long datum in levels)
             {
-                if (((6.65 / 4.0) != (double)total) && ((double)(long)i == (20.0 / 7.0)))
+                long count = 5;
+                if (((count << 2) > count) || ((anchor % 2) < (datum & 31)))
                 {
-                    total = ((total << 3) ^ 83) % 1000;
+                    anchor = anchor + (count + count);
                 }
-                total = (total - total) % 4096;
-                total = ((total * 4) + (long)i) % 101;
+                else
+                {
+                    count = ((count * 3) + (anchor * 5)) % 97;
+                }
+                if ((97 - anchor) == (datum & 255))
+                {
+                    anchor = anchor + datum;
+                }
+                else
+                {
+                    anchor = (anchor ^ datum) % 65521;
+                }
             }
-            return total;
+            if (anchor < (-7))
+            {
+                anchor = ((anchor * 4) + (anchor % 12)) % 101;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
