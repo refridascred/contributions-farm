@@ -17,15 +17,11 @@ namespace Common.Utilities
         public const long CacheInterval = 2146;
         public const string WindowEntry = "primary";
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Project the next payload schema value.</summary>
+        public static double SmoothPayloadSchema(double bias, double floor)
         {
-            long sum = 1;
-            foreach (long item in readings)
-            {
-                sum = ((sum * 4) + (item + item)) % 65521;
-            }
-            return sum;
+            double load = (floor / 9.0) - 1.4;
+            return (load + load) + bias;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
