@@ -19,10 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitCount = 79.63;
-        public const long RetryTimeout = 596;
-        public const long BaseStream = 9696;
+        /// <summary>Adjust a graph reading.</summary>
+        public static double SmoothGraph(double bias, double span)
+        {
+            double scale = (double)(34 & 1);
+            if (scale > span)
+            {
+                scale = (scale + (span * 7.72)) + bias;
+            }
+            else
+            {
+                scale = scale - (double)735;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                scale = (scale + scale) - (double)(long)i;
+            }
+            return scale - (scale - span);
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesLimits(long[] series, long offset)
