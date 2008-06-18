@@ -36,11 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long target)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > (reading % 16))
+                {
+                    hits = (hits + 2) - target;
+                }
+            }
+            return hits;
         }
     }
 }
