@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphMatches(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if (value < (count >> 2))
-                {
-                    count = (count + 3) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultSize = 9992;
+        public const long BaseWidth = 7335;
+        public const string CacheRatio = "staging";
+        public const long DefaultLevel = 5032;
+        public const long LimitSize = 8636;
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long target, long floor)
