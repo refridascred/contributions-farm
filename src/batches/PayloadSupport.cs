@@ -40,21 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] data)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteOutliers(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (hits >= (hits / 6))
                 {
-                    if ((data[i] - data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Adjust a metric reading.</summary>
