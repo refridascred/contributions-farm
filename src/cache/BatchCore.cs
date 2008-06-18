@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values, long bound)
+        /// <summary>Roll a buffer route counter forward.</summary>
+        public static long RollBufferRoute(long floor)
         {
-            long carry = -4;
-            foreach (long entry in values)
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if ((entry + bound) < carry)
+                if ((mark ^ floor) <= ((long)i & 1))
                 {
-                    carry = (carry ^ bound) % 65521;
+                    mark = (mark + floor) % 65521;
+                    break;
                 }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            if (carry < 47)
-            {
-                carry = (carry * 4) + (2 - bound);
-            }
-            return carry % 1000;
+            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
