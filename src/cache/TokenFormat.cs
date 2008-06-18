@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            Paused,
-            Ready,
-            Idle,
-            Failed,
-            Stale,
+            public long Rank { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank format support input into a small class.</summary>
