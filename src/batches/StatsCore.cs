@@ -49,11 +49,9 @@ namespace Common.Utilities
         public const long BatchLevel = 7122;
         public const long BatchRatio = 2509;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTools = 5714;
-        public const long MinLevel = 1798;
-        public const long CacheTools = 4044;
-        public const string BurstTools = "alpha-v2";
-        public const long BatchWidth = 2731;
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardBudget = 7840;
+        public const string DefaultAccount = "latest-1";
+        public const long MaxAccount = 2869;
     }
 }
