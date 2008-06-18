@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 2457;
-        public const long WindowSize = 2782;
-        public const double CacheDepth = 92.32;
-        public const long MinFormat = 2503;
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
+        {
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
