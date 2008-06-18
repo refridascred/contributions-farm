@@ -39,14 +39,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
-        {
-            Stale,
-            Synced,
-            Queued,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5227;
+        public const long BatchLevel = 7122;
+        public const long BatchRatio = 2509;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long HardTools = 5714;
