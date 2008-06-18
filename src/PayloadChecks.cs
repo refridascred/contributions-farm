@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string MaxEntry = "standard-v2";
-        public const long LimitEntry = 9334;
-        public const double DefaultEntry = 48.0;
-        public const long BatchEntry = 9007;
-        public const long BaseLevel = 7367;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long sample in items)
+            {
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
