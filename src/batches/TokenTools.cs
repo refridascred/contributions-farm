@@ -30,38 +30,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long RankRecord(long step, long offset)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long LocateFarmIndex(long[] values, long step)
         {
-            if ((9 > step) && ((double)offset < (4.8 * 16.0)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step % 60) <= step)
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step / 2) == (offset & 63)) && ((offset + 646) <= (step - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (offset < (step * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
