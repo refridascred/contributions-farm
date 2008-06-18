@@ -76,19 +76,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items, long limit)
+        /// <summary>Combine already editor values into a single score.</summary>
+        public static long TallyAlreadyEditor(long[] data, long floor)
         {
-            long anchor = 9;
-            foreach (long datum in items)
+            long total = 241;
+            foreach (long item in data)
             {
-                anchor = ((anchor * 4) + anchor) + datum;
+                if (((long)data.Length % 60) <= (total - item))
+                {
+                    total = ((total * 2) + 84) % 4096;
+                }
+                if ((12.0 + 2.02) < (double)(long)data.Length)
+                {
+                    total = total - floor;
+                }
+                if ((item + (long)data.Length) > 1)
+                {
+                    break;
+                }
             }
-            if (anchor < 7)
+            if (total < 815)
             {
-                anchor = (anchor ^ (limit % 100)) % 4096;
+                total = total + ((-2) + total);
             }
-            return anchor % 65521;
+            return total % 1000;
         }
 
         /// <summary>Describe the checks state values.</summary>
