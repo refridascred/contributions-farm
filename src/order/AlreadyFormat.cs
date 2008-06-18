@@ -45,19 +45,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmEntryBounds(long[] samples, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double ratio, double span)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            double load = (double)(987 - 153);
+            if (load < (ratio * 19.0))
             {
-                if (sample <= seed)
-                {
-                    found = false;
-                    break;
-                }
+                load = load - span;
             }
-            return found;
+            else
+            {
+                load = load - (5.0 + 0.6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load + span;
         }
 
         /// <summary>Hold a metric record.</summary>
