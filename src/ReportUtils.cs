@@ -35,20 +35,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long bound)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long target, long floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            if ((floor < (target << 3)) || ((floor << 3) < (-17)))
             {
-                sum = sum ^ bound;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum << 2) ^ sum) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if (!((14.0 / 2.0) <= (double)target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((1.89 - 4.6) < (double)floor) || ((9 % 8) > (floor & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
