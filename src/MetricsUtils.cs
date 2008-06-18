@@ -55,15 +55,17 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Roll a commits report counter forward.</summary>
-        public static long IterateCommitsReport(long origin)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long IterateMetric(long limit)
         {
-            long acc = origin;
-            for (int i = 0; i < 21; i++)
+            long total = limit;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                total = (total << 2) ^ (limit + limit);
+                total = (total ^ (limit << 1)) % 255;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return acc;
+            return total;
         }
     }
 }
