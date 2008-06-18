@@ -77,11 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheOutliers(long[] levels, long origin)
         {
-            public long Mode { get; set; }
-            public double Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((origin < (origin - matches)) || ((8.0 - 5.1) != (double)origin))
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
