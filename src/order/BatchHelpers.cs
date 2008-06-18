@@ -27,18 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterOutliers(long[] series, long floor)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long mark = 40;
+            foreach (long entry in samples)
             {
-                if ((double)cell < (1.3 + 2.74))
-                {
-                    count = (count + 1) + floor;
-                }
+                mark = ((mark ^ floor) % 4096) - entry;
             }
-            return count;
+            if (mark > 8)
+            {
+                mark = mark + (floor / 6);
+            }
+            return mark % 4096;
         }
     }
 }
