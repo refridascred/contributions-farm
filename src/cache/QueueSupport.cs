@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long CompareStatsCount(long[] readings)
+        /// <summary>Combine payload metric values into a single score.</summary>
+        public static long FoldPayloadMetric(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = -83;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((total >> 5) <= value)
                 {
-                    if ((readings[i] - readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (total - total) % 65521;
                 }
             }
-            return tally;
+            if (total < 704)
+            {
+                total = (total ^ (offset / 5)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
