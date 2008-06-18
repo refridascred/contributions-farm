@@ -13,15 +13,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double gain, double offset)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            double gain2 = (double)9 / 7.0;
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = ((gain2 - offset) - (double)(long)i) + gain;
-            }
-            return gain2 - offset;
+            Failed,
+            Closed,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
