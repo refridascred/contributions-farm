@@ -5,39 +5,26 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long limit2)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long WeighNotes(long[] samples, long seed)
         {
-            long edge = limit ^ limit2;
-            if ((limit2 & 31) == (limit - 729))
+            long anchor = 54;
+            foreach (long item in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (((edge * 4) == (78 - (-263))) || ((limit + limit2) > (edge - limit2)))
+                if ((seed % 64) > 0)
                 {
-                    return 5;
+                    anchor = (anchor << 2) ^ (item + anchor);
                 }
-                else
+                if ((seed * 2) <= (736 + item))
                 {
-                    if (!(9.52 < (double)limit2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((6.3 - 16.0) == (double)limit)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 2) ^ ((long)samples.Length - anchor)) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
