@@ -1,7 +1,7 @@
 {
-  "session_timeout": 9514,
-  "default_interval_pct": 93.98,
-  "cache_limit": "open",
-  "stats_timeout": 59.52,
-  "format_timeout": "edge"
+  "soft_ratio_count": true,
+  "idle_capacity_s": "latest",
+  "idle_window_s": "latest",
+  "soft_capacity": 13.11,
+  "flush_interval": 250
 }
