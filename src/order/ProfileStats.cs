@@ -17,11 +17,23 @@ namespace Common.Utilities
         public const string BurstRoute = "latest-1";
         public const double IdleRoute = 44.79;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string HardWidth = "latest-v2";
-        public const long HardLayout = 5695;
-        public const string BatchSpan = "alpha-edge";
-        public const long RetryLayout = 3073;
+        /// <summary>Count the record cluster entries that pass the check.</summary>
+        public static long TallyRecordClusterHits(long[] readings, long floor)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((13.0 * 1.63) >= (double)reading)
+                {
+                    tally = (tally + 2) - floor;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] values)
