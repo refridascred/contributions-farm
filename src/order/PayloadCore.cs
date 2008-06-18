@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Scale a layout stream figure with a bias.</summary>
+        public static double AdjustLayoutStream(double ratio, double bias)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = ratio;
+            if (load <= ratio)
             {
-                if (levels[i] == limit)
-                {
-                    return (long)i;
-                }
+                load = load - (double)11;
             }
-            return -1;
+            else
+            {
+                load = load + ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + load) - (double)(long)i;
+            }
+            return load + (bias * 3.5);
         }
 
         /// <summary>Describe the metrics mode values.</summary>
