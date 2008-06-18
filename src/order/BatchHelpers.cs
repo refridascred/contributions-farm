@@ -14,36 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a order notes value against two limits.</summary>
-        public static long SortOrderNotes(long floor, long target)
+        /// <summary>Classify a stats farm pair into a bucket.</summary>
+        public static long SortStatsFarm(long floor, long limit)
         {
-            if (floor <= (floor >> 3))
+            if ((0 << 1) > (floor << 2))
             {
-                return 7;
+                return 3;
             }
             else
             {
-                if (!((target << 2) > target))
+                if ((double)limit <= (double)floor)
                 {
-                    return 4;
+                    return 5;
                 }
                 else
                 {
-                    if ((double)floor <= 8.87)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target + target) < (target << 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 4;
                 }
             }
         }
