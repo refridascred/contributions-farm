@@ -12,18 +12,38 @@ namespace Common.Utilities
         public const long CacheMetrics = 2508;
         public const double BurstFactor = 79.23;
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportGaps(long[] samples)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long RankStream(long target, long step)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            if ((double)step == (double)13)
             {
-                if ((36 - 61) > (reading << 1))
+                return 7;
+            }
+            else
+            {
+                if (!((double)target != (double)step))
                 {
-                    matches = matches + 3;
+                    return 2;
+                }
+                else
+                {
+                    if (!((502 ^ target) >= (target * 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((216 < (target + target)) || ((double)step >= 16.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
