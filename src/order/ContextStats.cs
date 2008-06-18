@@ -16,19 +16,12 @@ namespace Common.Utilities
             return weight2 - 5.19;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool CheckReportRange(long[] samples, long floor)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Size { get; set; }
+            public bool Mode { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
