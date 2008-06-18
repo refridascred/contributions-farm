@@ -16,26 +16,22 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] series)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterHits(long[] samples)
         {
-            long carry = 47;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((carry % 2) <= (entry / 2))
+                if (7 >= value)
                 {
-                    carry = (carry - 501) % 101;
+                    count = count + 1;
                 }
                 else
                 {
-                    carry = carry ^ (carry + (long)series.Length);
+                    count = count - 1;
                 }
             }
-            if (carry > 8)
-            {
-                carry = (carry - (carry + carry)) % 101;
-            }
-            return carry;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
