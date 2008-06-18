@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long SortContext(long floor, long step)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long MatchTokenCount(long[] samples)
         {
-            long edge = floor + step;
-            if (((floor + step) < 9) && ((step - 8) >= (44 << 3)))
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (edge <= ((-343) ^ floor))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((1 >> 3) != (4 + step))
+                    if ((samples[i] + samples[j]) < 10)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Adjust a farm reading.</summary>
