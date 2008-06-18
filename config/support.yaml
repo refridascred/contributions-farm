@@ -1,6 +1,10 @@
 # support settings
-retry_window_pct: latest
-dry_run: standard
-hard_ttl_s: 82.52
-default_depth: latest
-default_size_ms: edge
+max_capacity: legacy
+persist: 30
+enabled: 60
+batch_retries_count: 3652
+record_timeout:
+  - 47
+  - 347
+  - 422
+  - 488
