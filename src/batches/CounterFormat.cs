@@ -28,17 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] samples, long step)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
+                if ((seen & 3) <= 135)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) ^ entry) + floor;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
