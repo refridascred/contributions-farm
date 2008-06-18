@@ -36,11 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string DefaultProfile = "primary-edge";
-        public const long WindowProfile = 1695;
-        public const long StepSpan = 5224;
-        public const double MinProfile = 63.26;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Locked,
+            Stale,
+            Ready,
+        }
 
         /// <summary>Fold a list of route command readings.</summary>
         public static long ScoreRouteCommand(long[] values, long target)
