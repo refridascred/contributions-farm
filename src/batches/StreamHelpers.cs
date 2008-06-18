@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultSize = 9992;
-        public const long BaseWidth = 7335;
-        public const string CacheRatio = "staging";
-        public const long DefaultLevel = 5032;
-        public const long LimitSize = 8636;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaOutliers(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((tally >> 2) > entry))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long target, long floor)
