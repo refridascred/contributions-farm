@@ -57,12 +57,12 @@ namespace Common.Utilities
         public const long SoftLevel = 423;
         public const long BatchCluster = 4205;
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Pending,
-            Done,
-            Queued,
+            New,
+            Ready,
+            Synced,
         }
     }
 }
