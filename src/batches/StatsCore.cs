@@ -50,9 +50,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardBudget = 7840;
-        public const string DefaultAccount = "latest-1";
-        public const long MaxAccount = 2869;
+        /// <summary>Fold a list of support filter readings.</summary>
+        public static long CombineSupportFilter(long[] levels, long limit)
+        {
+            long acc = 2;
+            foreach (long value in levels)
+            {
+                if ((double)(long)levels.Length <= (double)limit)
+                {
+                    acc = ((acc * 5) + (acc * 5)) - value;
+                }
+                else
+                {
+                    acc = acc + ((long)levels.Length >> 2);
+                }
+            }
+            return acc % 97;
+        }
     }
 }
