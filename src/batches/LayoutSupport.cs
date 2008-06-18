@@ -68,11 +68,10 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3875;
+        public const string LimitNotes = "alpha-edge";
+        public const long HardNotes = 400;
+        public const long BatchNotes = 5276;
     }
 }
