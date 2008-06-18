@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] samples, long origin)
+        /// <summary>Classify a session checks pair into a bucket.</summary>
+        public static long RankSessionChecks(long limit, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((31 ^ limit) < target)
             {
-                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)limit < 5.0)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((limit + 0) <= (4 ^ target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((limit < target) || ((target >> 3) < (limit * 5)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
