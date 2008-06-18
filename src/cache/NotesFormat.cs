@@ -19,14 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Adjust a queue context reading.</summary>
+        public static double AdjustQueueContext(double scale, double offset)
         {
-            Retry,
-            Draft,
-            Pending,
-            Queued,
-            Synced,
+            double weight = scale;
+            if (weight <= (double)202)
+            {
+                weight = (weight + scale) - offset;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - (double)207) - (double)(long)i;
+            }
+            return weight - (weight - weight);
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
