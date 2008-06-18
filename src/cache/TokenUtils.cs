@@ -18,10 +18,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long DefaultSpan = 1618;
-        public const long SoftFilter = 1527;
-        public const string StepWidth = "standard-v2";
-        public const long SoftFactor = 7600;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((seen / 7) < seen)
+                {
+                    seen = ((seen + 2) + item) - offset;
+                }
+            }
+            return seen;
+        }
     }
 }
