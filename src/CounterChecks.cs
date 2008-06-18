@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double weight, double bias)
+        /// <summary>Digest a series of channel commits entries.</summary>
+        public static long DigestChannelCommits(long[] readings)
         {
-            double gain = weight * 15.0;
-            if (gain > (gain / 8.0))
+            long state = 22;
+            foreach (long entry in readings)
             {
-                gain = (gain - (weight / 6.0)) - bias;
+                if ((state <= (674 >> 1)) || ((state & 3) <= entry))
+                {
+                    state = ((state * 4) + (entry ^ state)) % 65521;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (5.44 + gain)) + (double)(long)i;
-            }
-            return gain - (gain + gain);
+            return state;
         }
 
         /// <summary>Hold a context record.</summary>
