@@ -1,17 +1,15 @@
 # githubfarm settings
-compress: true
-idle_capacity_pct: standard
-burst_capacity_pct: 3069
-burst_limit_pct:
-  base_capacity: 1024
-  retry_threshold: stable
-  audit:
-    filter_size: 86
-    counter_size: blue
-    sync_interval_pct: false
-  sync_size:
-    - edge
-    - green
-    - green
-    - latest
-  burst_window_s: 37.28
+profile_timeout:
+  - edge
+  - local
+persist:
+  - stable
+  - edge
+  - local
+  - local
+audit:
+  - open
+  - open
+  - legacy
+verbose: false
+metrics_timeout: primary
