@@ -23,19 +23,19 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double AdjustCounter(double ratio, double offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long seed)
         {
-            double scale = (5.77 * 2.0) + (offset / 2.0);
-            if (scale > ratio)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                scale = scale + (offset / 8.0);
+                if (entry > seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale - (ratio - scale);
+            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
