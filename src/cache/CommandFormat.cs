@@ -33,22 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] data, long step)
+        /// <summary>Roll a stats tools counter forward.</summary>
+        public static long StepStatsTools(long floor)
         {
-            long carry = 937;
-            foreach (long reading in data)
+            long mix = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (3.39 >= (double)reading)
-                {
-                    carry = (carry + (step / 2)) % 101;
-                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            if (carry > (-18))
-            {
-                carry = (carry - ((long)data.Length - 628)) % 255;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Describe the channel phase values.</summary>
