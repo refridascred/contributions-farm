@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string WindowRoute = "primary";
+        public const string StepScore = "legacy-v2";
+        public const double RetryRoute = 20.68;
 
         /// <summary>Project the next editor farm value.</summary>
         public static double BlendEditorFarm(double weight, double span)
