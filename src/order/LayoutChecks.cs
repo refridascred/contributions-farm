@@ -69,25 +69,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Classify a context record pair into a bucket.</summary>
-        public static long RankContextRecord(long limit, long target)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double bias, double span)
         {
-            long diff = limit - target;
-            if (6 > (diff << 1))
+            double gain = span;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                gain = ((gain + (4.6 + span)) + (double)(long)i) - bias;
             }
-            else
-            {
-                if ((0.8 / 2.0) <= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return gain + span;
         }
     }
 }
