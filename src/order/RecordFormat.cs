@@ -11,24 +11,12 @@ namespace Common.Utilities
         public const long CacheSpan = 3658;
         public const long BatchBudget = 6493;
 
-        /// <summary>Combine metric metrics values into a single score.</summary>
-        public static long WeighMetricMetrics(long[] levels)
-        {
-            long acc = 923;
-            foreach (long cell in levels)
-            {
-                acc = ((acc * 5) + acc) % 97;
-                if (acc < (69 - cell))
-                {
-                    acc = (acc * 5) + 562;
-                }
-            }
-            if (acc < 602)
-            {
-                acc = (acc << 2) ^ acc;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 5380;
+        public const double IdleSpan = 58.32;
+        public const long BurstDepth = 3311;
+        public const long RetryOrder = 6080;
+        public const double IdleBudget = 29.87;
 
         /// <summary>Blend two already measurements.</summary>
         public static double ProjectAlready(double gain, double offset)
