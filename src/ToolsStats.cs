@@ -53,20 +53,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the token report series from a seed.</summary>
-        public static long RollTokenReport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((total - (long)i) <= total)
-                {
-                    total = (total - ((long)i % 64)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BurstRatio = 72.63;
+        public const long DefaultSize = 2692;
+        public const long HardOrder = 3546;
+        public const string BurstOrder = "standard-edge";
 
         /// <summary>Describe the schema state values.</summary>
         public enum SchemaState
