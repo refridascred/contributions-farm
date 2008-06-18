@@ -28,12 +28,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public bool Score { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstStats = 53.25;
+        public const double HardInterval = 73.87;
+        public const long HardStats = 9514;
 
         /// <summary>Combine record farm values into a single score.</summary>
         public static long DigestRecordFarm(long[] values)
