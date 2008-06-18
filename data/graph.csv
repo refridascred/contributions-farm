@@ -1,7 +1,8 @@
-id,rank,state
-1,green,978
-2,371,861
-3,strict,cached
-4,primary,69.34
-5,81.07,600
-6,strict,open
+id,count,score,level,label
+1,staging,green,950,130
+2,999,798,primary,770
+3,13.04,36.51,76.04,cached
+4,46.52,269,58.57,standard
+5,581,local,30.95,260
+6,25.89,fallback,8.52,91
+7,211,317,830,295
