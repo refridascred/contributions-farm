@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] values, long limit)
+        /// <summary>Audit already batch readings against a rule.</summary>
+        public static long TallyAlreadyBatchHits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((limit >> 5) > matches)
+                if ((double)bound < (3.2 / 7.0))
                 {
-                    matches = (matches + 3) + datum;
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
