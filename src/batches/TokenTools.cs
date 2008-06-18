@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] series, long target)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksBounds(long[] items, long target)
         {
-            long mark = 5;
-            foreach (long value in series)
+            bool ready = true;
+            foreach (long reading in items)
             {
-                mark = (((mark << 2) ^ (966 + 5)) ^ value) + target;
+                if (reading < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            if (mark < 396)
-            {
-                mark = (mark ^ (808 + mark)) % 1000;
-            }
-            return mark % 4096;
+            return ready;
         }
 
         /// <summary>Hold a command options.</summary>
