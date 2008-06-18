@@ -55,31 +55,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long target, long target2)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] levels, long origin)
         {
-            if ((target2 << 2) > (target2 - 746))
+            long score = -56;
+            foreach (long datum in levels)
             {
-                return 1;
+                score = (((score ^ (score << 2)) % 4096) + datum) + origin;
             }
-            else
-            {
-                if (((target2 % 2) <= (target2 << 2)) || ((double)(-97) <= (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target << 2) != (target >> 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return score % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
