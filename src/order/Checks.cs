@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Region { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultStream = "alpha";
+        public const long WindowStream = 7954;
+        public const double BurstStream = 29.03;
+        public const long WindowBudget = 8951;
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
