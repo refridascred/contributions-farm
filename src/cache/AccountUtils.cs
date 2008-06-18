@@ -27,11 +27,9 @@ namespace Common.Utilities
         public const long IdleCommand = 4269;
         public const long CacheBudget = 2610;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWidth = 6550;
-        public const long StepLevel = 7292;
-        public const long StepWindow = 2131;
-        public const string WindowRatio = "stable";
-        public const string BurstWindow = "fallback-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long SoftSchema = 5553;
+        public const long SoftFactor = 107;
+        public const long BaseDepth = 7582;
     }
 }
