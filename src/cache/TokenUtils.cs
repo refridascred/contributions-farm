@@ -25,11 +25,24 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleLevel = "primary";
-        public const long WindowCommits = 1537;
-        public const double RetryFactor = 84.85;
-        public const double StepDepth = 33.5;
-        public const long RetrySpan = 9219;
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long GradeFilter(long step, long limit)
+        {
+            if ((limit % 8) == (2 + step))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((19.0 - 3.99) < (double)step))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
