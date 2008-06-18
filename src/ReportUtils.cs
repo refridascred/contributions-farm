@@ -27,12 +27,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] values, long bound)
         {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((6 - bound) < (cell + cell))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Grade a context buffer value against two limits.</summary>
