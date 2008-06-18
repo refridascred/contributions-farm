@@ -17,11 +17,17 @@ namespace Common.Utilities
         public const long CacheInterval = 2146;
         public const string WindowEntry = "primary";
 
-        /// <summary>Project the next payload schema value.</summary>
-        public static double SmoothPayloadSchema(double bias, double floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] values, long offset)
         {
-            double load = (floor / 9.0) - 1.4;
-            return (load + load) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
