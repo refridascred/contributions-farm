@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            public double Offset { get; set; }
-            public double Token { get; set; }
-            public long Size { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
