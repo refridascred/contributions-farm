@@ -37,18 +37,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferMatches(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueMatches(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)datum == (9.4 + 13.0))
+                if ((offset - offset) != (reading + hits))
                 {
-                    matches = matches + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine already editor values into a single score.</summary>
