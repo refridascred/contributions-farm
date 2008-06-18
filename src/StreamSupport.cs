@@ -27,15 +27,9 @@ namespace Common.Utilities
             return (mean + (double)2) + floor;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6839;
+        public const long LimitFormat = 4300;
+        public const long DefaultFormat = 8228;
     }
 }
