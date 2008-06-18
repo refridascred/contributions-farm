@@ -41,14 +41,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] series, long floor)
         {
-            Failed,
-            Pending,
-            Queued,
-            Retry,
-            Dropped,
+            bool flag = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
