@@ -79,15 +79,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TotalCommand(long[] readings, long floor)
-        {
-            long acc = 651;
-            foreach (long value in readings)
-            {
-                acc = (((acc << 2) ^ floor) % 1000) ^ value;
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSession = 21.8;
+        public const string LimitSession = "standard";
+        public const string BatchSpan = "strict-1";
+        public const string RetryTimeout = "legacy-edge";
     }
 }
