@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Locate a tools already reading by value.</summary>
+        public static long LookupToolsAlreadyIndex(long[] items, long floor)
         {
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
