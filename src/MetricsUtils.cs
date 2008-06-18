@@ -28,18 +28,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] levels)
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(matches > entry))
+                if ((readings[i] >= offset) && ((readings[i] % 3) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a stats entry.</summary>
