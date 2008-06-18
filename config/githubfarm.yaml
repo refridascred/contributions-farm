@@ -1,15 +1,7 @@
 # githubfarm settings
-profile_timeout:
-  - edge
-  - local
-persist:
-  - stable
-  - edge
-  - local
-  - local
-audit:
-  - open
-  - open
-  - legacy
-verbose: false
-metrics_timeout: primary
+hard_depth_s: 60
+max_ratio: blue
+base_limit: true
+batch_threshold: legacy
+batch_window_pct: false
+contributi_retries: 93.01
