@@ -18,19 +18,20 @@ namespace Common.Utilities
         public const long IdleTimeout = 8105;
         public const string DefaultFactor = "stable-edge";
 
-        /// <summary>Check that every command batch entry stays within the limit.</summary>
-        public static bool CheckCommandBatchBounds(long[] levels, long origin)
+        /// <summary>Derive the next buffer order value from a seed.</summary>
+        public static long DeriveBufferOrder(long origin)
         {
-            bool found = true;
-            foreach (long value in levels)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                if (value < origin)
+                sum = (sum - (origin / 9)) % 65521;
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    found = false;
-                    break;
+                    sum = (sum + ((long)i / 9)) ^ (long)i2;
                 }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Hold a batch summary.</summary>
