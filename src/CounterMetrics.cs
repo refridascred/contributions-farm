@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelHits(long[] values)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (tally < (tally ^ entry))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Token { get; set; }
+            public string Label { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
