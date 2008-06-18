@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Iterate the batch entry series from a seed.</summary>
+        public static long SeriesBatchEntry(long offset)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long carry = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                carry = carry + (carry + carry);
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a session entry.</summary>
