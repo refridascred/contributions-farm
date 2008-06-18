@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Active,
-            Synced,
-            Stale,
-            Done,
+            Closed,
+            New,
+            Idle,
         }
 
         /// <summary>Describe the stream level values.</summary>
