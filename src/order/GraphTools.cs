@@ -17,23 +17,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double BlendSchema(double weight, double floor)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long bound, long step)
         {
-            double scale = 6.77;
-            if (scale >= scale)
+            long offset = bound + step;
+            if ((double)step < (double)5)
             {
-                scale = scale - scale;
+                return 0;
             }
             else
             {
-                scale = scale - floor;
+                if ((double)bound >= 15.0)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 1) >= 1)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((bound + 38) <= (6 - step)) && ((bound * 2) > 59))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                scale = (scale + 12.0) + (double)(long)i;
-            }
-            return scale - (0.66 - weight);
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
