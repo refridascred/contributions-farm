@@ -72,19 +72,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] values, long offset)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Done,
+            Ready,
+            Retry,
+            Stale,
         }
     }
 }
