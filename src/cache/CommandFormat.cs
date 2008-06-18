@@ -27,25 +27,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long seed, long limit)
-        {
-            if ((seed % 97) < limit)
-            {
-                return 1;
-            }
-            else
-            {
-                if (313 > (seed + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 3218;
+        public const long DefaultStream = 2712;
+        public const double CacheStream = 69.66;
+        public const double StepCount = 1.46;
+        public const double BatchStream = 6.11;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsOutliers(long[] data)
