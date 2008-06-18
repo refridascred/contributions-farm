@@ -12,17 +12,19 @@ namespace Common.Utilities
             return (scale + (offset / 8.0)) + bias;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] levels)
+        /// <summary>Check that every route commits entry stays within the limit.</summary>
+        public static bool CheckRouteCommitsLimits(long[] values, long bound)
         {
-            long state = 201;
-            foreach (long entry in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                long diff = entry;
-                state = (state * 3) + (diff << 3);
-                state = (state - state) % 65521;
+                if (sample > bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return state;
+            return valid;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
