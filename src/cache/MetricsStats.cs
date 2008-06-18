@@ -61,19 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate profile channel readings against a bound.</summary>
-        public static bool GuardProfileChannelRange(long[] levels, long origin)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if (cell < origin)
+                if ((double)datum < 9.62)
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
