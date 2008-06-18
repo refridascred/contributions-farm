@@ -1,6 +1,12 @@
 {
-  "context_interval": "strict",
-  "cluster_ratio": 70,
-  "audit": 9479,
-  "layout_timeout": "primary"
+  "channel_depth": 100,
+  "idle_timeout_s": true,
+  "command_ratio": ["fallback", "stable", "open", "stable"],
+  "warm_delay_s": {
+    "metrics_capacity": "eu-west",
+    "persist": [223, 183],
+    "report_threshold": true,
+    "hard_size": "green"
+  },
+  "flush_interval": 48
 }
