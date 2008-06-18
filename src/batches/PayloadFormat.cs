@@ -30,38 +30,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long origin, long offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double rate, double span)
         {
-            if (((offset * 3) < (origin - offset)) && ((offset / 9) < (offset - offset)))
+            double weight = (rate - 3.9) / 5.0;
+            if (weight < (2.0 - span))
             {
-                return 5;
+                weight = weight + span;
             }
-            else
-            {
-                if (((offset / 4) < (origin >> 1)) || ((7.73 / 2.0) > (double)origin))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((47 - origin) <= (17 + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((326 + offset) > (origin * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return weight - (weight + weight);
         }
 
         /// <summary>Count the counter record entries that pass the check.</summary>
