@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long ClassifyGithubfarm(long offset, long floor)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutHits(long[] values)
         {
-            if ((double)floor != (3.91 + 3.1))
+            long hits = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset + offset) == ((-860) + floor))
+                if ((double)131 != (double)hits)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor + floor) < (floor & 127))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = (hits + 1) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
