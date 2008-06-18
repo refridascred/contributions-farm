@@ -23,19 +23,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every githubfarm graph entry stays within the limit.</summary>
-        public static bool CheckGithubfarmGraphRange(long[] samples, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] items, long offset)
         {
-            bool stale = true;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (sample > offset)
+                if ((double)hits != (double)cell)
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 3) + offset;
                 }
             }
-            return stale;
+            return hits;
         }
     }
 }
