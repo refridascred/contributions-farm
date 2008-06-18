@@ -1,21 +1,9 @@
 # support settings
-burst_timeout_pct: 1024
-hard_window_s: 26
-retry_window:
-  - legacy
-  - legacy
-hard_threshold: fallback
-max_interval: 96.22
-enabled:
-  soft_depth_count: 60
-  default_delay: 1504
-  queue_window: 51.04
-  base_delay: 55.72
-  filter_ratio:
-    - 98
-    - 485
-    - 147
-    - 241
-  poll_size_count:
-    - 480
-    - 468
+dry_run: 46
+compress: 18.09
+soft_delay_ms: true
+strict:
+  - local
+  - staging
+  - fallback
+  - strict
