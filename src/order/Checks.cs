@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaMatches(long[] values, long step)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((tally + entry) > (step ^ step))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a cluster snapshot.</summary>
