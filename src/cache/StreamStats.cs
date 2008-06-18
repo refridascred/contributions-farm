@@ -11,19 +11,12 @@ namespace Common.Utilities
         public const long WindowCommand = 7679;
         public const long MinCommand = 2096;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmHits(long[] readings)
-        {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading > (5.9 / 5.0))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BurstBatches = 80.89;
+        public const double WindowBatches = 69.68;
+        public const long MinTimeout = 7476;
+        public const long StepBatches = 2024;
+        public const string WindowSpan = "alpha-edge";
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
