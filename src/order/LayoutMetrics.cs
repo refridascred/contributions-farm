@@ -28,23 +28,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long bound)
         {
-            double bias2 = (double)(721 + 918);
-            if (bias2 < (bias / 3.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = bias2 - (bias / 4.0);
+                if (readings[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 - (bias2 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias2 = (bias2 - bias) - (double)(long)i;
-            }
-            return bias2 + (offset * 5.13);
+            return -1;
         }
 
         /// <summary>Match up entry samples.</summary>
