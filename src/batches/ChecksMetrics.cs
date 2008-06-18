@@ -40,15 +40,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double ratio, double bias)
+        /// <summary>Match up metrics samples.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            double bias2 = ratio - bias;
-            if (bias2 < (bias2 - bias))
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias2 = bias2 - (double)(-656);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return bias2 - (double)207;
+            return tally;
         }
 
         /// <summary>Accumulate queue samples.</summary>
