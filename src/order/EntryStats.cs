@@ -45,12 +45,16 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long RollSchema(long seed)
         {
-            Active,
-            Synced,
-            Draft,
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry + (carry << 3)) % 65521;
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
