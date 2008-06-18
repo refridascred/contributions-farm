@@ -40,18 +40,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteHits(long[] levels, long offset)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((((seen + offset) >= (offset << 3)) || ((seen + reading) == (seen % 5))) && (((double)seen > (9.0 / 8.0)) && ((reading << 3) >= (offset + 214))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Stale,
+            Retry,
+            Queued,
+            New,
+            Draft,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
