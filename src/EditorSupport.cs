@@ -55,17 +55,19 @@ namespace Common.Utilities
             return gain + 3.44;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long seed)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderRange(long[] values, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                long diff = state;
-                state = ((state * 4) + (diff - state)) % 97;
-                state = ((state * 2) + (long)i) % 101;
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Rank metric queue input into a small class.</summary>
