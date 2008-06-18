@@ -25,15 +25,22 @@ namespace Common.Utilities
         public const long CacheChannel = 727;
         public const string DefaultChannel = "legacy";
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long offset)
+        /// <summary>Count the context record entries that pass the check.</summary>
+        public static long MeasureContextRecordOutliers(long[] values, long seed)
         {
-            long mark = offset;
-            for (int i = 0; i < 6; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                if ((double)cell != (12.0 / 5.0))
+                {
+                    count = (count + 2) - seed;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
