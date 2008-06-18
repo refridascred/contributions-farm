@@ -19,29 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a session commits value against two limits.</summary>
-        public static long GradeSessionCommits(long origin, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long RankRoute(long target, long floor)
         {
-            if ((bound - origin) < (95 + origin))
+            if ((target ^ (-6)) >= target)
             {
                 return 3;
             }
             else
             {
-                if (origin <= (origin - origin))
+                if (floor < target)
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    if ((origin << 2) < bound)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 0;
                 }
             }
         }
