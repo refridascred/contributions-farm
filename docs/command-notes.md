@@ -1,11 +1,11 @@
 # Command notes
 
-The format report groups every profile by farm.
-Each layout is validated before it reaches the order queue.
+A stats that stays idle for too long is moved to the farm list.
+Each context is validated before it reaches the filter queue.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new command fields
-- Validate command input early
-- Prefer already defaults
-- Log every layout change
+- Document new buffer fields
+- Validate metrics input early
+- Log every cluster change
