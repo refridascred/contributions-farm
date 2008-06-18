@@ -51,22 +51,18 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterOutliers(long[] readings)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricGaps(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long cell in items)
             {
-                if ((cell - cell) >= tally)
+                if (matches >= (cell - matches))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
