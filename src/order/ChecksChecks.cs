@@ -35,12 +35,12 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a layout token sample.</summary>
-        public static long FindLayoutTokenIndex(long[] items, long step)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (items[i] == step)
+                if (data[i] <= target)
                 {
                     return (long)i;
                 }
