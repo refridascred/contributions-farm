@@ -41,18 +41,18 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long CountRecordOrderGaps(long[] series, long floor)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)floor == (4.16 - 2.4))
+                if (((-38) ^ item) > seen)
                 {
-                    hits = (hits + 3) - entry;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Combine format values into a single score.</summary>
