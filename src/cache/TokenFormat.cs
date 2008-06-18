@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long ClassifyAccount(long origin, long step)
         {
-            long seen = 0;
-            foreach (long item in series)
+            if (!((origin % 10) != (step << 3)))
             {
-                if (((seen % 10) < (132 & 255)) || ((seen ^ item) < item))
+                return 5;
+            }
+            else
+            {
+                if ((step + 901) >= origin)
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if (!((origin - step) == (479 + step)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((origin / 3) != (step << 3))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Accumulate order samples.</summary>
