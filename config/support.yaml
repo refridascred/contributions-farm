@@ -1,5 +1,15 @@
 # support settings
-idle_timeout_s: primary
-persist: 60
-burst_delay_count: false
-readonly: primary
+contributi_window: eu-west
+readonly: 5743
+githubfarm_capacity: 45.78
+retry_timeout_s:
+  - 234
+  - 434
+  - 28
+default_limit:
+  soft_ratio_ms: 65
+  default_threshold_count: stable
+  max_retries_pct:
+    burst_ttl_count: 32
+    hard_depth_s: 90.85
+    strict: true
