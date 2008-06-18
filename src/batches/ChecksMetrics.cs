@@ -32,11 +32,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 1690;
-        public const string SoftSize = "stable-v2";
-        public const string LimitStats = "fallback-1";
-        public const long BurstStats = 6813;
+        /// <summary>Combine profile context values into a single score.</summary>
+        public static long FoldProfileContext(long[] levels, long origin)
+        {
+            long acc = 9;
+            foreach (long cell in levels)
+            {
+                acc = (((acc * 5) + acc) % 255) ^ cell;
+                if (62 < origin)
+                {
+                    acc = (acc - (acc - origin)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + origin;
+                }
+            }
+            return acc % 4096;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 4493;
