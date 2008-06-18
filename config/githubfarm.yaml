@@ -1,13 +1,9 @@
 # githubfarm settings
-readonly: blue
-cache_timeout_ms: 100
-profile_capacity:
-  - 461
-  - 76
-  - 339
-base_retries_s: fallback
-batch_size_pct: false
-warm_window_pct:
-  - open
-  - strict
-  - primary
+filter_interval: 1844
+audit: stable
+base_ttl:
+  report_ttl: staging
+  poll_capacity: 60
+  hard_interval_s: true
+min_threshold: true
+dry_run: 19.7
