@@ -1,11 +1,11 @@
 # Command notes
 
-When a queue fails, the token handler retries a few times before giving up.
-When a counter fails, the editor handler retries a few times before giving up.
+The route helpers are pure functions, so they are safe to call from any thread.
+Defaults for command live in the config folder and can be overridden per environment.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Keep stream values small
-- Validate metric input early
-- Document new window fields
+- Document new report fields
+- Review notes limits each release
+- Validate record input early
