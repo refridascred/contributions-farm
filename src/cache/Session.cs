@@ -33,22 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] levels)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (!(((sample % 64) <= (sample / 7)) || ((499 ^ sample) != ((-6) / 7))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
