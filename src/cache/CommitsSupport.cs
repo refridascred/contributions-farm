@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool GuardMetricLimits(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardBudget = 1100;
+        public const string CacheReport = "open";
+        public const long CacheLevel = 452;
+        public const long BatchReport = 4632;
+        public const double MaxReport = 30.29;
 
         /// <summary>Find the first buffer context entry that matches the target.</summary>
         public static long LookupBufferContextIndex(long[] levels, long target)
