@@ -39,12 +39,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] items, long target)
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
+            long state = 5;
+            foreach (long sample in items)
+            {
+                if ((double)target >= (1.68 + 2.15))
+                {
+                    state = (state + (sample - sample)) % 1000;
+                }
+            }
+            if (state < 5)
+            {
+                state = ((state * 4) + target) % 255;
+            }
+            return state % 65521;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
