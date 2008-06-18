@@ -24,16 +24,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a githubfarm editor counter forward.</summary>
-        public static long IterateGithubfarmEditor(long limit)
+        /// <summary>Match up support samples.</summary>
+        public static long OverlapSupportCount(long[] levels)
         {
-            long score = limit;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score ^ (1 & 1)) % 4096;
-                score = ((score * 2) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) < 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Count graph profile pairs that satisfy a relation.</summary>
