@@ -22,25 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank format support input into a small class.</summary>
-        public static long GradeFormatSupport(long step, long floor)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] data, long limit)
         {
-            long offset = step - floor;
-            if ((floor / 7) < step)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor - offset) > (floor % 7))
+                if (limit >= (limit << 1))
                 {
-                    return 5;
+                    hits = (hits + 1) ^ item;
                 }
                 else
                 {
-                    return 8;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
