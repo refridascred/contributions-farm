@@ -32,19 +32,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double scale, double floor)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextHits(long[] values, long seed)
         {
-            double ratio = floor / 9.0;
-            if (ratio <= (double)16)
+            long count = 0;
+            foreach (long value in values)
             {
-                ratio = ratio - (ratio + floor);
+                if ((seed - seed) == (seed & 31))
+                {
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio - (double)932) + (double)(long)i;
-            }
-            return ratio - (14.0 + scale);
+            return count;
         }
     }
 }
