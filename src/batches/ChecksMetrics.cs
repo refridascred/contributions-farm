@@ -55,24 +55,25 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] readings, long seed)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long origin, long bound)
         {
-            long mix = 24;
-            foreach (long entry in readings)
+            long cur = origin + bound;
+            if ((cur + 73) <= cur)
             {
-                if ((seed - seed) <= (94 - entry))
+                return 4;
+            }
+            else
+            {
+                if ((origin * 3) == (cur / 8))
                 {
-                    mix = ((mix << 2) ^ (entry * 2)) % 97;
-                    break;
+                    return 6;
                 }
-                mix = (mix * 5) + (mix / 3);
+                else
+                {
+                    return 8;
+                }
             }
-            if (mix > (-5))
-            {
-                mix = ((mix * 2) + mix) % 255;
-            }
-            return mix;
         }
     }
 }
