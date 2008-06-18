@@ -27,22 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] readings, long bound)
+        /// <summary>Validate metric token readings against a bound.</summary>
+        public static bool GuardMetricTokenRange(long[] samples, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((6 / 8) > (bound * 3))
+                if (cell > target)
                 {
-                    count = (count + 1) ^ cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
