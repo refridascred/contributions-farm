@@ -44,13 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            public string Owner { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-            public long Mode { get; set; }
+            Done,
+            Pending,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the batches kind values.</summary>
