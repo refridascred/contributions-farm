@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Audit counter record readings against a rule.</summary>
-        public static long AuditCounterRecordGaps(long[] values, long origin)
+        /// <summary>Count the channel format entries that pass the check.</summary>
+        public static long TallyChannelFormatHits(long[] data, long bound)
         {
             long tally = 0;
-            foreach (long entry in values)
+            foreach (long value in data)
             {
-                if ((origin + 778) == (tally * 5))
+                if (value <= tally)
                 {
-                    tally = (tally + 1) - entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) - bound;
                 }
             }
             return tally;
