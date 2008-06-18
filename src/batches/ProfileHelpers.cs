@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRecord = 30.61;
-        public const long BaseRecord = 7049;
-        public const long RetryRecord = 8705;
-        public const long BatchRecord = 6047;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Queued,
+            Active,
+            Stale,
+            Idle,
+            Failed,
+        }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
         public static long PairQueueCount(long[] samples)
