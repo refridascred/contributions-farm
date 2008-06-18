@@ -1,5 +1,6 @@
 {
-  "default_ttl_pct": false,
-  "retry_threshold_pct": 92,
-  "sync_size": false
+  "min_ratio_pct": "primary",
+  "max_window_s": 4311,
+  "schema_threshold": 66.42,
+  "default_size_pct": 30
 }
