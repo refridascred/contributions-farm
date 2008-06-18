@@ -35,18 +35,11 @@ namespace Common.Utilities
         public const double CacheFactor = 47.1;
         public const double LimitBatches = 31.88;
 
-        /// <summary>Audit stats notes readings against a rule.</summary>
-        public static long MeasureStatsNotesHits(long[] series)
-        {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if (7 < hits)
-                {
-                    hits = (hits + 1) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowInterval = 1067;
+        public const long MinContext = 1991;
+        public const long MaxSpan = 904;
+        public const double HardContext = 63.25;
+        public const long BaseContext = 7152;
     }
 }
