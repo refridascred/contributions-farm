@@ -20,13 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the queue payload entries that pass the check.</summary>
+        public static long MeasureQueuePayloadOutliers(long[] items, long bound)
         {
-            Queued,
-            Idle,
-            Paused,
-            Active,
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (((double)datum >= (0.1 / 9.0)) && ((double)seen >= (double)bound))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
