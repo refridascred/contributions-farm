@@ -36,18 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorHits(long[] values)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long matches = 0;
-            foreach (long item in values)
-            {
-                if ((double)matches < (double)468)
-                {
-                    matches = (matches + 2) - item;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Match up layout counter samples.</summary>
