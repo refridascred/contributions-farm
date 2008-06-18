@@ -17,13 +17,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate window profile readings against a bound.</summary>
+        public static bool VerifyWindowProfileRange(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
-            public bool Total { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
