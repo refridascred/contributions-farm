@@ -55,22 +55,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] samples)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] data)
         {
-            long carry = 677;
-            foreach (long reading in samples)
+            long total = 7;
+            foreach (long item in data)
             {
-                if ((double)carry != (9.0 * 9.32))
+                if ((item & 31) >= item)
                 {
-                    carry = ((carry ^ (819 + 522)) % 65521) ^ reading;
-                }
-                else
-                {
-                    carry = carry + (carry + 16);
+                    total = total ^ (total % 24);
                 }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
