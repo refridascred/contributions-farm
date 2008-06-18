@@ -1,18 +1,6 @@
 # githubfarm settings
-flush_ttl_count:
-  max_window_count:
-    retry_ratio_s: 52.19
-    token_ttl:
-      - local
-      - staging
-      - open
-    poll_window_s: stable
-    batch_ttl_ms: true
-  poll_ratio_pct: false
-  soft_ratio_pct: true
-  enabled: 3703
-  farm_threshold: primary
-tools_window: 11.14
-enabled:
-  - 391
-  - 374
+report_limit: strict
+sync_timeout_pct: 27
+warm_size_pct: green
+editor_timeout: 21.31
+audit: 6484
