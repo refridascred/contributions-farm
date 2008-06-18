@@ -1,7 +1,8 @@
 {
-  "soft_ratio_count": true,
-  "idle_capacity_s": "latest",
-  "idle_window_s": "latest",
-  "soft_capacity": 13.11,
-  "flush_interval": 250
+  "filter_interval": true,
+  "warm_window": 59.04,
+  "retry_threshold_ms": 29,
+  "batch_size_count": ["cached", "staging"],
+  "tools_retries": "edge",
+  "enabled": true
 }
