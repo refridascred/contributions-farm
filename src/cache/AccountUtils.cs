@@ -46,13 +46,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Count checks report pairs that satisfy a relation.</summary>
+        public static long OverlapChecksReportCount(long[] items)
         {
-            public long Count { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
