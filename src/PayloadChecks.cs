@@ -12,11 +12,14 @@ namespace Common.Utilities
         public const long BatchEntry = 9007;
         public const long BaseLevel = 7367;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 2757;
-        public const string CacheEntry = "staging-1";
-        public const long IdleTimeout = 8105;
-        public const string DefaultFactor = "stable-edge";
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
+        {
+            Done,
+            Paused,
+            Synced,
+            Ready,
+        }
 
         /// <summary>Derive the next buffer order value from a seed.</summary>
         public static long DeriveBufferOrder(long origin)
