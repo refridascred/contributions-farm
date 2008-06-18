@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BurstGithubfarm = 62.93;
-        public const long BaseGithubfarm = 4807;
-        public const long CacheInterval = 906;
-        public const long StepFactor = 709;
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
+        {
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Compare every pair of queue farm readings.</summary>
         public static long CompareQueueFarmCount(long[] samples)
