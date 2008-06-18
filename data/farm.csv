@@ -1,11 +1,6 @@
-id,label,score
-1,62.18,stable
-2,74.34,176
-3,336,881
-4,stable,405
-5,legacy,cached
-6,primary,823
-7,latest,standard
-8,770,25.56
-9,66.35,53.79
-10,blue,611
+id,active,rank
+1,478,825
+2,193,standard
+3,220,145
+4,833,latest
+5,624,95
