@@ -52,12 +52,22 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const long MaxBudget = 7761;
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] data, long floor)
         {
-            Active,
-            Done,
-            Dropped,
+            long mix = 110;
+            foreach (long reading in data)
+            {
+                if (((floor - floor) <= floor) && ((reading % 2) > reading))
+                {
+                    mix = (mix + (mix * 3)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ floor;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
