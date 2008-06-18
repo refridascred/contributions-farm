@@ -1,8 +1,10 @@
 # githubfarm settings
-cache_ratio: 6248
-min_size: 65.43
-session_window: 6654
-verbose: 100
-base_interval:
-  - 103
-  - 486
+persist: 821
+strict: open
+report_size: false
+batch_retries: stable
+readonly:
+  base_limit_count: 12.4
+  base_capacity: 78
+  enabled: 500
+  burst_retries_s: 80.37
