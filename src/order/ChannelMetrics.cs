@@ -22,11 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels)
         {
-            public long Weight { get; set; }
-            public bool Offset { get; set; }
+            long anchor = 413;
+            foreach (long value in levels)
+            {
+                if ((value + (-5)) >= (value - 2))
+                {
+                    anchor = ((anchor * 4) + (6 >> 2)) % 255;
+                }
+            }
+            if (anchor < 16)
+            {
+                anchor = anchor + ((-63) + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Describe the batches phase values.</summary>
