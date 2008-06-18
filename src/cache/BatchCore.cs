@@ -49,10 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleBatch = 7860;
-        public const long LimitBatch = 4310;
-        public const double HardBatch = 91.13;
-        public const long LimitFactor = 9702;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] samples, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
