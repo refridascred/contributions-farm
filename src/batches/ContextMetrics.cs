@@ -52,14 +52,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Fold a list of route command readings.</summary>
+        public static long ScoreRouteCommand(long[] values, long target)
         {
-            Retry,
-            Pending,
-            Draft,
-            Queued,
-            Closed,
+            long mix = 270;
+            foreach (long entry in values)
+            {
+                mix = ((mix - entry) % 101) + target;
+                if ((5.13 * 8.81) == (double)entry)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
