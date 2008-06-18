@@ -19,10 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long WindowCounter = 7409;
-        public const double CacheCounter = 3.53;
-        public const string MinWidth = "cached-1";
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Retry,
+            Draft,
+            Pending,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long OverlapRouteCount(long[] data)
