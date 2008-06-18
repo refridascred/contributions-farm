@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            Locked,
-            Idle,
-            Closed,
-            Active,
-            Failed,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double IdleRatio = 49.52;
+        public const long BurstCount = 6303;
+        public const double RetrySpan = 4.61;
 
         /// <summary>Iterate the layout series from a seed.</summary>
         public static long SeriesLayout(long origin)
