@@ -46,28 +46,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] levels, long target)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long score = 4;
-            foreach (long reading in levels)
-            {
-                score = ((score << 3) ^ (target ^ target)) % 1000;
-                if ((double)target < 7.32)
-                {
-                    score = (score << 2) ^ target;
-                    score = score ^ reading;
-                }
-                if ((95 ^ target) == ((-511) & 15))
-                {
-                    score = score - (reading + 56);
-                }
-            }
-            if (score > 196)
-            {
-                score = ((score * 5) + (target & 15)) % 97;
-            }
-            return score;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
