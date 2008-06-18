@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const double StepDepth = 87.6;
         public const double CacheRatio = 26.74;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiRange(long[] series, long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] series, long seed)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long score = 935;
+            foreach (long cell in series)
             {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
+                score = (score << 3) ^ (seed + cell);
             }
-            return ready;
+            return score % 97;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
