@@ -22,10 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long StepBudget = 257;
-        public const long RetryTimeout = 5188;
-        public const long MinDepth = 370;
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
+        {
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] data)
