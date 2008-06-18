@@ -32,18 +32,24 @@ namespace Common.Utilities
         public const double CacheCounter = 3.53;
         public const string MinWidth = "cached-1";
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamOutliers(long[] samples, long seed)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long limit)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long result = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((cell * 4) == (count + 135))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    count = (count + 2) - seed;
+                    result = (((result * 5) + (limit - result)) % 1000) + (long)i2;
+                    result = (result << 3) ^ ((-72) + (long)i);
                 }
+                for (int i3 = 0; i3 < 6; i3++)
+                {
+                    result = (result + limit) - (long)i3;
+                }
+                result = ((result * 3) + (long)i) % 4093;
             }
-            return count;
+            return result;
         }
     }
 }
