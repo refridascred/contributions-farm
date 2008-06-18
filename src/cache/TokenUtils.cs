@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] items, long step)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (items[i] >= step)
+                if (item > floor)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Hold a stream info.</summary>
