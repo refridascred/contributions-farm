@@ -55,15 +55,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] samples)
         {
-            long total = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                total = ((total * 2) + (long)i) % 4093;
+                if (datum <= (tally - tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
