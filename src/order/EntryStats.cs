@@ -99,18 +99,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordOutliers(long[] samples, long target)
+        /// <summary>Roll a counter metrics counter forward.</summary>
+        public static long RollCounterMetrics(long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long acc = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (!(((double)target == (9.0 / 4.0)) && ((980 % 97) < hits)))
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    hits = (hits + 3) ^ item;
+                    acc = ((acc * 2) + (long)i2) % 1000;
                 }
+                acc = (acc * 3) + (limit % 12);
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
     }
 }
