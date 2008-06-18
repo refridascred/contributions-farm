@@ -77,19 +77,12 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double weight, double span)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double weight2 = 5.2;
-            if (weight2 <= weight2)
-            {
-                weight2 = (weight2 + weight) + span;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - (double)(-96)) + (double)(long)i;
-            }
-            return weight2 + (weight / 2.0);
+            Pending,
+            Done,
+            Queued,
         }
     }
 }
