@@ -37,11 +37,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepScore = 9581;
-        public const long BatchSession = 3744;
-        public const long IdleTimeout = 7373;
-        public const long CacheScore = 8225;
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
+        {
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Roll a schema counter forward.</summary>
         public static long RollSchema(long floor)
