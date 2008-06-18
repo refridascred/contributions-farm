@@ -66,18 +66,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksGaps(long[] series)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long seen = 0;
-            foreach (long item in series)
-            {
-                if (13.0 >= (double)seen)
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            public double Count { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Blend two queue measurements.</summary>
