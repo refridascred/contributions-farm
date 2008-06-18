@@ -21,15 +21,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long bound)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] levels)
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                state = ((state * 2) + (long)i) % 65521;
+                if (!(matches > entry))
+                {
+                    matches = matches + 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
