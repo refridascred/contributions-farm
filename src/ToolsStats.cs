@@ -36,21 +36,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] series)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) < 9)
+                    if ((levels[i] + levels[j]) > 5)
                     {
-                        hits = hits + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Iterate the token report series from a seed.</summary>
