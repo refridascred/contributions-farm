@@ -20,21 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long MatchStreamCount(long[] data)
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadCount(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) < 1)
+                    if ((items[i] - items[j]) > 15)
                     {
-                        tally = tally + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
