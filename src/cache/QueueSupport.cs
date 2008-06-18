@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a session notes sample.</summary>
-        public static long LookupSessionNotesIndex(long[] series, long floor)
+        /// <summary>Look up the position of a record profile sample.</summary>
+        public static long SeekRecordProfileIndex(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 5) == 0))
+                if ((values[i] < offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
