@@ -36,21 +36,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Accumulate route report samples.</summary>
+        public static long FoldRouteReport(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 572;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (item > ((long)series.Length % 60))
                 {
-                    if ((levels[i] - levels[j]) > 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = (carry ^ (carry / 8)) % 255;
                 }
             }
-            return tally;
+            if (carry < (-6))
+            {
+                carry = carry ^ (carry / 9);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Fold a list of route command readings.</summary>
