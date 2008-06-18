@@ -44,12 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSession = 40.8;
-        public const long BurstSession = 3708;
-        public const double MaxSession = 78.14;
-        public const string BatchSpan = "stable";
-        public const double RetrySession = 84.01;
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatHits(long[] items, long offset)
+        {
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if (!!((entry + 7) <= (matches + entry)))
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
