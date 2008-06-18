@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((seen % 64) == (seen - datum)) && (datum > (seen % 5)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public double Region { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Classify a commits support pair into a bucket.</summary>
