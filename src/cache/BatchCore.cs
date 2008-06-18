@@ -39,17 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long FindGraphIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxFactor = 7698;
+        public const double WindowBudget = 91.19;
+        public const long SoftSize = 9872;
+        public const long DefaultDepth = 5321;
+        public const long IdleWidth = 6467;
     }
 }
