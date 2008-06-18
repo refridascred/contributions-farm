@@ -38,18 +38,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] data, long step)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long bound, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long next = bound + limit;
+            if (((next - next) >= 16) || (bound > next))
             {
-                if ((seen << 2) <= (step + cell))
+                return 5;
+            }
+            else
+            {
+                if ((next % 2) != (limit & 1))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((6 - bound) != (next << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
