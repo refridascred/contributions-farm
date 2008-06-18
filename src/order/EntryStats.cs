@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Digest a series of checks payload entries.</summary>
+        public static long DigestChecksPayload(long[] series)
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
-            public bool Region { get; set; }
+            long mark = 11;
+            foreach (long entry in series)
+            {
+                mark = (mark << 3) ^ (mark * 2);
+                if ((entry - mark) != (entry >> 4))
+                {
+                    mark = mark - mark;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
