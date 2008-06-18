@@ -37,21 +37,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long MatchMetricsCount(long[] series)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public string Weight { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Adjust a command reading.</summary>
