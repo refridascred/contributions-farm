@@ -1,5 +1,7 @@
 {
-  "poll_depth": 61.93,
-  "poll_size": 28.5,
-  "min_ttl_count": ["edge", "eu-west", "staging"]
+  "cache_limit_ms": true,
+  "graph_ratio": ["fallback", "eu-west", "green"],
+  "strict": false,
+  "format_ttl": false,
+  "soft_retries_pct": "fallback"
 }
