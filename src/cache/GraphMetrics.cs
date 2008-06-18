@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] samples, long limit)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double weight, double span)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double rate = 8.52;
+            return ((rate + rate) + weight) + span;
         }
 
         /// <summary>Hold a channel options.</summary>
