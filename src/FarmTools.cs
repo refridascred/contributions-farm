@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] data)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long TallyFilter(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 37;
+            foreach (long value in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((mix % 16) != (mix & 127))
                 {
-                    if ((data[i] + data[j]) != 11)
-                    {
-                        count = count + 1;
-                    }
+                    break;
                 }
+                mix = ((mix ^ (mix + mix)) % 4096) + value;
             }
-            return count;
+            if (mix > 45)
+            {
+                mix = mix - (mix * 5);
+            }
+            return mix % 4096;
         }
 
         /// <summary>Accumulate metric commits samples.</summary>
