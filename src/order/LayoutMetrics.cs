@@ -12,17 +12,11 @@ namespace Common.Utilities
         public const long HardEntry = 5919;
         public const string MaxCount = "cached-1";
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long bound)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate command support readings against a bound.</summary>
