@@ -34,16 +34,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Roll a stats tools counter forward.</summary>
-        public static long StepStatsTools(long floor)
-        {
-            long mix = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 4) + (long)i) % 1000;
-            }
-            return mix;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 7111;
+        public const double MaxWidth = 2.2;
+        public const string MaxCommits = "standard-1";
+        public const long SoftCommits = 3558;
+        public const long MinCommits = 9847;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
