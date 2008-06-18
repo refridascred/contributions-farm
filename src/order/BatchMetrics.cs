@@ -19,18 +19,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryGaps(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatOutliers(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (tally < (tally / 3))
+                if ((bound + reading) <= (reading + reading))
                 {
-                    tally = (tally + 1) + cell;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
