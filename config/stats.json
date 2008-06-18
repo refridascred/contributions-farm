@@ -1,8 +1,7 @@
 {
-  "base_threshold_count": 100,
-  "idle_timeout_ms": false,
-  "format_interval": [417, 277],
-  "dry_run": [244, 191],
-  "max_limit": "primary",
-  "editor_ttl": "latest"
+  "verbose": true,
+  "retry_ttl_pct": ["legacy", "staging", "blue"],
+  "max_capacity_pct": 6416,
+  "context_window": 96.1,
+  "githubfarm_ttl": 500
 }
