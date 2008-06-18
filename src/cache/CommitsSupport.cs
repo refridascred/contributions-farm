@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool GuardAccountLimits(long[] items, long origin)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            bool valid = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Idle,
+            Paused,
+            Active,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
