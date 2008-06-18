@@ -40,18 +40,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload layout samples are out of range.</summary>
-        public static long MeasurePayloadLayoutHits(long[] samples)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches - sample) == ((long)samples.Length - sample))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Failed,
+            Stale,
+            Retry,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
