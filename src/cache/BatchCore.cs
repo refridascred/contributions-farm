@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a tools already reading by value.</summary>
-        public static long LookupToolsAlreadyIndex(long[] items, long floor)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the route phase values.</summary>
