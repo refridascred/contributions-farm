@@ -61,22 +61,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] values, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] data, long floor)
         {
-            long anchor = 648;
-            foreach (long entry in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < anchor)
+                if (data[i] == floor)
                 {
-                    anchor = anchor + (limit + limit);
-                }
-                if ((anchor + entry) == (967 + 28))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
