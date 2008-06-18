@@ -44,16 +44,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] values, long step)
-        {
-            long mark = 88;
-            foreach (long sample in values)
-            {
-                mark = (((mark * 3) + step) % 65521) + sample;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "cached-1";
+        public const long CacheGithubfarm = 9780;
+        public const long DefaultGithubfarm = 4503;
+        public const long DefaultCount = 6753;
+        public const long MaxGithubfarm = 4184;
 
         /// <summary>Accumulate stats samples.</summary>
         public static long CombineStats(long[] series)
