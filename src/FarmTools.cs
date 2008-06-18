@@ -30,18 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if ((hits + value) >= seed)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 2560;
+        public const long StepContributi = 7218;
+        public const string CacheContributi = "legacy";
     }
 }
