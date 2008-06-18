@@ -45,23 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double ratio, double span)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            double load = (double)(987 - 153);
-            if (load < (ratio * 19.0))
-            {
-                load = load - span;
-            }
-            else
-            {
-                load = load - (5.0 + 0.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load + span;
+            Closed,
+            Dropped,
+            Retry,
+            Draft,
+            Pending,
         }
 
         /// <summary>Hold a metric record.</summary>
