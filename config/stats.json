@@ -1,8 +1,8 @@
 {
-  "base_size_s": "standard",
-  "base_capacity_pct": "legacy",
-  "min_ratio_s": 18.52,
-  "batches_ratio": [53, 197],
-  "strict": "local",
-  "cache_size": false
+  "dry_run": 84,
+  "base_timeout": true,
+  "strict": 67.47,
+  "default_interval_count": "legacy",
+  "persist": [420, 229, 32],
+  "hard_timeout_pct": 500
 }
