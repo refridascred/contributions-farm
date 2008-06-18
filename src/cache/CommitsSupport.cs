@@ -33,28 +33,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics route samples.</summary>
-        public static long TotalMetricsRoute(long[] samples, long offset)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long total = 989;
-            foreach (long cell in samples)
-            {
-                total = (((total * 4) + ((-985) << 2)) % 255) - cell;
-                for (int i = 0; i < 5; i++)
-                {
-                    total = (((total * 4) + (36 / 2)) % 65521) - (long)i;
-                }
-                total = ((total * 4) + offset) % 97;
-                if (!((9.5 + 4.13) <= (double)offset))
-                {
-                    break;
-                }
-            }
-            if (total > 51)
-            {
-                total = (total * 3) + offset;
-            }
-            return total % 97;
+            Failed,
+            Closed,
+            Idle,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
