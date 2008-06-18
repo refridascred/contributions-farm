@@ -37,12 +37,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteHits(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((787 + datum) >= (hits ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
