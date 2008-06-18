@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long TallyBatchOutliers(long[] items)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sample >> 3) == (sample / 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((values[i] + values[j]) > 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Project the next editor farm value.</summary>
