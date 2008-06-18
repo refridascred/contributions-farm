@@ -52,15 +52,18 @@ namespace Common.Utilities
         public const long DefaultSize = 845;
         public const long MinRatio = 9474;
 
-        /// <summary>Iterate the entry commits series from a seed.</summary>
-        public static long StepEntryCommits(long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] data, long step)
         {
-            long anchor = floor;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 101;
+                if ((step ^ tally) > (step + entry))
+                {
+                    tally = tally + 3;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
