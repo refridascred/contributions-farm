@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] samples)
+        /// <summary>Digest a series of cluster notes entries.</summary>
+        public static long TallyClusterNotes(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 1;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((3.07 / 4.0) == (double)total) && ((total - cell) >= total))
                 {
-                    if ((samples[i] + samples[j]) < 3)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 5) + (57 / 2)) % 101;
                 }
             }
-            return count;
+            return total;
         }
 
         /// <summary>Accumulate format commits samples.</summary>
