@@ -6,22 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+COMMAND_LIMIT=171
+log "limit is ${COMMAND_LIMIT}"
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+count=0
+while [ "${count}" -lt 6 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-for item in primary staging edge; do
-    log "checking ${item}"
-done
+log "ran ${count} rounds"
