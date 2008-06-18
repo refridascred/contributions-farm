@@ -19,16 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] levels, long step)
-        {
-            long state = -4;
-            foreach (long cell in levels)
-            {
-                state = ((((state << 2) ^ ((long)levels.Length * 2)) % 255) - cell) - step;
-            }
-            return state % 1000;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string MinRatio = "alpha";
+        public const long WindowDepth = 2142;
+        public const long BatchAccount = 1732;
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double bias, double bias2)
