@@ -14,15 +14,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double floor)
+        /// <summary>Audit metric already readings against a rule.</summary>
+        public static long AuditMetricAlreadyMatches(long[] levels, long seed)
         {
-            double ratio = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                ratio = (ratio - (ratio * 17.0)) + (double)(long)i;
+                if (((8.1 + 5.4) != (double)datum) && ((seen & 31) >= (9 ^ datum)))
+                {
+                    seen = (seen + 1) + seed;
+                }
             }
-            return ratio + (scale / 9.0);
+            return seen;
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
