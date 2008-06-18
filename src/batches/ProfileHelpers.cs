@@ -11,24 +11,21 @@ namespace Common.Utilities
         public const long RetryRecord = 8705;
         public const long BatchRecord = 6047;
 
-        /// <summary>Roll a cache counter counter forward.</summary>
-        public static long DeriveCacheCounter(long floor)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long PairQueueCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((5.56 * 12.0) > (6.15 + 4.4))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = ((score << 2) ^ floor) % 255;
+                    if ((samples[i] + samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    score = (score - (long)i) % 4096;
-                }
-                score = (score + (score >> 5)) % 65521;
-                score = ((score * 3) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Hold a payload summary.</summary>
