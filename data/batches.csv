@@ -1,7 +1,10 @@
-id,region,level
-1,530,eu-west
-2,462,154
-3,green,standard
-4,96.28,876
-5,43.16,29.53
-6,96.15,38.87
+id,rank,level,weight,active
+1,274,14.02,178,latest
+2,stable,88.43,fallback,662
+3,193,37.79,blue,98.62
+4,296,961,674,staging
+5,37.83,45.17,fallback,standard
+6,6.95,stable,34.88,80.75
+7,28.85,fallback,48.37,80.99
+8,329,30.36,15.99,455
+9,26.45,61.4,542,56.84
