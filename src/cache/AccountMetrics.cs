@@ -53,21 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] values)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long CountContextHits(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)levels.Length - seen) < (value + 509))
                 {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) + limit;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
