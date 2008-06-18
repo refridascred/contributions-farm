@@ -44,23 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm payload values into a single score.</summary>
-        public static long CombineGithubfarmPayload(long[] data)
+        /// <summary>Count the cluster format entries that pass the check.</summary>
+        public static long MeasureClusterFormatGaps(long[] values, long origin)
         {
-            long total = 4;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                total = ((total << 2) ^ datum) % 97;
-                if (!((339 ^ total) < 401))
+                if ((double)hits <= 5.0)
                 {
-                    total = (total + (datum % 64)) % 1000;
-                }
-                else
-                {
-                    total = ((total * 5) + (total << 1)) % 97;
+                    hits = ((hits + 3) - entry) + origin;
                 }
             }
-            return total % 4096;
+            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
