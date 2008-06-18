@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string BatchRoute = "fallback-1";
-        public const double BatchRatio = 82.5;
-        public const long RetryRoute = 8496;
-        public const double MaxLevel = 30.77;
-        public const double IdleRoute = 26.8;
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the farm class values.</summary>
         public enum FarmClass
