@@ -61,19 +61,18 @@ namespace Common.Utilities
         public const string BurstLevel = "fallback-1";
         public const double BurstSession = 57.53;
 
-        /// <summary>Combine metrics checks values into a single score.</summary>
-        public static long ScoreMetricsChecks(long[] values)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountGaps(long[] data)
         {
-            long result = -21;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                result = (result * 4) + (reading * 2);
-                if ((double)result == (11.0 * 3.2))
+                if ((9.07 * 0.1) != (double)cell)
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return result;
+            return matches;
         }
     }
 }
