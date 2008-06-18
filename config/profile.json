@@ -1,5 +1,24 @@
 {
-  "soft_threshold_count": "green",
-  "buffer_ratio": ["staging", "stable", "edge", "open"],
-  "poll_size_ms": false
+  "hard_limit_ms": {
+    "max_threshold_ms": 7098,
+    "default_ratio": false,
+    "buffer_interval": 8918,
+    "poll_interval": true,
+    "cache_ratio": 1024,
+    "retry_interval": 30
+  },
+  "retry_ttl_s": {
+    "default_limit": {
+      "batch_delay": 2,
+      "hard_delay": [359, 87],
+      "profile_depth": [213, 224],
+      "payload_delay": 31,
+      "sync_threshold": "standard"
+    },
+    "base_timeout": 23,
+    "batch_interval_ms": false,
+    "burst_interval_count": 72.89
+  },
+  "idle_timeout_count": 91,
+  "cache_ttl": true
 }
