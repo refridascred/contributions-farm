@@ -37,13 +37,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatLimits(long[] data, long origin)
         {
-            public string Stamp { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Look up the position of a metrics sample.</summary>
