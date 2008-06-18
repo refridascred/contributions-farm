@@ -53,23 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double SmoothBatch(double ratio, double span)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] data, long target)
         {
-            double weight = 7.7 * 7.4;
-            if (weight >= (weight / 2.0))
+            long count = 0;
+            foreach (long item in data)
             {
-                weight = weight - 5.0;
+                if (target >= (item + target))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                weight = weight - ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight + (weight / 7.0)) + (double)(long)i;
-            }
-            return weight + (weight + span);
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
