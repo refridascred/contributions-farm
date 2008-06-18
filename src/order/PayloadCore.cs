@@ -37,12 +37,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BaseBatches = "stable-v2";
-        public const long BatchBudget = 6014;
-        public const string MaxBatches = "fallback-v2";
-        public const double HardBatches = 32.92;
-        public const string DefaultTimeout = "staging-v2";
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long ScoreBuffer(long[] values, long step)
+        {
+            long carry = -733;
+            foreach (long value in values)
+            {
+                carry = carry + (value - step);
+            }
+            if (carry < (-333))
+            {
+                carry = ((carry * 3) + carry) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Measure how many session samples are out of range.</summary>
         public static long MeasureSessionHits(long[] values)
