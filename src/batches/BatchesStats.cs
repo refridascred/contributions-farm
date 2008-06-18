@@ -60,11 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 4606;
-        public const long BaseRatio = 2645;
-        public const double DefaultWidth = 59.35;
-        public const long StepSize = 2900;
-        public const long LimitFactor = 6981;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitBudget = "latest-v2";
+        public const long RetryAccount = 6340;
+        public const long LimitFactor = 1976;
+        public const long BurstWidth = 4508;
+        public const long LimitSpan = 8642;
     }
 }
