@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BatchEditor = 4785;
-        public const string MaxEditor = "cached";
-        public const string HardCount = "primary-1";
-        public const string HardEditor = "staging-v2";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 1797;
+        public const double RetryInterval = 93.77;
+        public const long CacheSpan = 5922;
+        public const long IdleSchema = 8595;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long DigestEditor(long[] levels, long origin)
