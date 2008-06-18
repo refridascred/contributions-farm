@@ -27,22 +27,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long mark = -12;
-            foreach (long cell in values)
-            {
-                if ((21 > cell) && (mark <= (4 % 8)))
-                {
-                    mark = (mark - (mark & 63)) % 1000;
-                }
-                else
-                {
-                    mark = mark - (long)values.Length;
-                }
-            }
-            return mark;
+            Retry,
+            Active,
+            Pending,
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
