@@ -43,16 +43,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long step)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
-            {
-                result = (result - result) % 1000;
-                result = ((result * 3) + (long)i) % 4093;
-            }
-            return result;
+            Dropped,
+            Draft,
+            Ready,
+            Pending,
+            Done,
         }
     }
 }
