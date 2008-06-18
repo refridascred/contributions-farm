@@ -78,17 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] readings, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool CheckTokenLimits(long[] values, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (readings[i] < step)
+                if (cell != step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
