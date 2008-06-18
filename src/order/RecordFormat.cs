@@ -18,26 +18,19 @@ namespace Common.Utilities
         public const long LimitChannel = 1790;
         public const long IdleRatio = 8526;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] levels, long floor)
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double gain, double offset)
         {
-            long carry = 0;
-            foreach (long datum in levels)
+            double scale = (offset - 0.62) + offset;
+            if (scale > scale)
             {
-                if ((floor <= carry) && ((datum ^ floor) > datum))
-                {
-                    carry = ((carry * 3) + (carry & 63)) % 4096;
-                }
-                if ((floor * 5) >= (floor - datum))
-                {
-                    break;
-                }
+                scale = scale - gain;
             }
-            if (carry > 1)
+            else
             {
-                carry = (carry << 2) ^ (long)levels.Length;
+                scale = scale - (double)386;
             }
-            return carry;
+            return scale + (scale * 2.0);
         }
 
         /// <summary>Roll a support counter forward.</summary>
