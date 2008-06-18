@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long carry = 78;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sample + carry) >= (carry & 127))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    carry = carry + (sample + carry);
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return carry % 65521;
+            return matches;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
