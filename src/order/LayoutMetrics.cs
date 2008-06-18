@@ -28,38 +28,23 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Classify a batch token pair into a bucket.</summary>
-        public static long ClassifyBatchToken(long target, long step)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double bias, double offset)
         {
-            if ((step % 64) != (target / 5))
+            double bias2 = (double)(721 + 918);
+            if (bias2 < (bias / 3.0))
             {
-                return 4;
+                bias2 = bias2 - (bias / 4.0);
             }
             else
             {
-                if ((0.2 / 3.0) < (double)target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((2.0 * 5.0) <= (double)step) && ((double)8 == (double)step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((5.8 / 2.0) >= (double)target))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                bias2 = bias2 - (bias2 / 6.0);
             }
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = (bias2 - bias) - (double)(long)i;
+            }
+            return bias2 + (offset * 5.13);
         }
 
         /// <summary>Match up entry samples.</summary>
