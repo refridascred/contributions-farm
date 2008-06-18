@@ -30,15 +30,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double rate, double span)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long MatchContributiCount(long[] levels)
         {
-            double weight = (rate - 3.9) / 5.0;
-            if (weight < (2.0 - span))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - (weight + weight);
+            return matches;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
