@@ -28,13 +28,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double rate, double offset)
         {
-            Queued,
-            Draft,
-            Failed,
-            Stale,
+            double ratio = offset;
+            return ratio - rate;
         }
     }
 }
