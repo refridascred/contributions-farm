@@ -71,39 +71,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long BucketFormat(long limit, long limit2)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long bound = limit ^ limit2;
-            if ((12.0 + 6.64) != (double)limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit % 60) < (bound << 1))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit > (bound - bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (limit < (bound % 97))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            New,
+            Idle,
+            Queued,
+            Closed,
         }
     }
 }
