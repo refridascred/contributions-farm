@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count cluster order pairs that satisfy a relation.</summary>
-        public static long CompareClusterOrderCount(long[] data)
+        /// <summary>Combine schema layout values into a single score.</summary>
+        public static long WeighSchemaLayout(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 306;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                result = result - 56;
+                if ((double)datum == (0.71 * 3.0))
                 {
-                    if ((data[i] ^ data[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = ((result << 3) ^ (result & 15)) % 101;
                 }
             }
-            return seen;
+            return result % 4096;
         }
 
         /// <summary>Adjust a channel tools reading.</summary>
