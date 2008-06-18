@@ -25,13 +25,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Retry,
-            New,
-            Done,
-            Synced,
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
