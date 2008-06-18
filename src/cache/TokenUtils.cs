@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long origin, long floor)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double BlendFilter(double bias, double offset)
         {
-            long step = origin ^ floor;
-            if (((double)origin <= (2.5 * 8.64)) && ((step - floor) != (floor ^ origin)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (5.98 <= (double)floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)step != (5.0 + 11.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double scale = offset / 9.0;
+            return (scale + (offset / 8.0)) + bias;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
