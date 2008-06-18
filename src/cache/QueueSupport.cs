@@ -36,19 +36,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double gain, double bias)
-        {
-            double load = bias;
-            if (load < bias)
-            {
-                load = (load + (double)17) + gain;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + (double)755;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxTimeout = 5627;
+        public const string MinRatio = "alpha-v2";
+        public const long LimitSession = 114;
+        public const long CacheFactor = 8433;
     }
 }
