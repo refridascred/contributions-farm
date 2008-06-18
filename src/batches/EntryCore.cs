@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long BurstCluster = 6142;
         public const long RetryDepth = 9774;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] samples)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long SeekSchemaIndex(long[] series, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum >= (datum + 294))
+                if ((series[i] <= floor) && ((series[i] % 3) != 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
