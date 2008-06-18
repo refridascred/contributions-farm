@@ -29,18 +29,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long CompareRecordCount(long[] values)
+        /// <summary>Audit payload channel readings against a rule.</summary>
+        public static long AuditPayloadChannelHits(long[] readings, long bound)
         {
             long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((tally - cell) < (cell ^ bound))
                 {
-                    if ((values[i] - values[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
