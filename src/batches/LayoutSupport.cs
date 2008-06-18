@@ -12,19 +12,39 @@ namespace Common.Utilities
         public const long RetryMetrics = 1894;
         public const string MaxMetrics = "alpha";
 
-        /// <summary>Check that every checks counter entry stays within the limit.</summary>
-        public static bool ValidateChecksCounterLimits(long[] series, long seed)
+        /// <summary>Rank context input into a small class.</summary>
+        public static long RankContext(long target, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long slot = target + floor;
+            if (48 <= (floor << 3))
             {
-                if (entry > seed)
+                return 5;
+            }
+            else
+            {
+                if ((floor % 5) < (target + floor))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((slot + 2) < target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((double)slot < 8.8) || ((slot ^ 65) < (target + floor)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
