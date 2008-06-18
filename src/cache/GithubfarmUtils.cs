@@ -34,21 +34,18 @@ namespace Common.Utilities
         public const long RetryRoute = 2202;
         public const long LimitDepth = 5207;
 
-        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
-        public static long PairGraphProfileCount(long[] series)
+        /// <summary>Audit context batch readings against a rule.</summary>
+        public static long MeasureContextBatchGaps(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((seen << 2) >= item)
                 {
-                    if ((series[i] + series[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
