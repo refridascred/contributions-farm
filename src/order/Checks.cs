@@ -36,19 +36,17 @@ namespace Common.Utilities
         public const long BatchAccount = 3343;
         public const string SoftAccount = "cached-1";
 
-        /// <summary>Derive the next tools notes value from a seed.</summary>
-        public static long StepToolsNotes(long origin)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LocateFilterIndex(long[] series, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)351 == (double)origin)
+                if (series[i] == target)
                 {
-                    carry = carry ^ (carry / 4);
+                    return (long)i;
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
