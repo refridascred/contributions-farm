@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long SoftBuffer = 7887;
         public const long RetryBudget = 4851;
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long FindLayoutIndex(long[] samples, long floor)
+        /// <summary>Project the next commits format value.</summary>
+        public static double BlendCommitsFormat(double ratio, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > floor) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = bias * 0.4;
+            return (weight - (weight / 6.0)) + ratio;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
