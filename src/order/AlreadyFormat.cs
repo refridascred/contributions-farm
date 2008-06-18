@@ -68,13 +68,20 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long step)
         {
-            New,
-            Idle,
-            Queued,
-            Closed,
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((7 - (long)i) >= (step - (long)i))
+                {
+                    acc = (acc ^ (acc << 2)) % 1000;
+                    acc = (acc - (step * 2)) % 255;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
     }
 }
