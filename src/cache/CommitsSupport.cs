@@ -92,18 +92,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long CountProfileHits(long[] series)
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            long total = 766;
+            foreach (long cell in levels)
             {
-                if ((double)hits != (19.0 * 1.0))
+                if (((-359) - cell) <= (775 << 3))
                 {
-                    hits = (hits + 2) + entry;
+                    total = total ^ (target & 15);
                 }
             }
-            return hits;
+            if (total < 867)
+            {
+                total = (total ^ total) % 65521;
+            }
+            return total;
         }
     }
 }
