@@ -51,9 +51,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultDepth = 9827;
-        public const long WindowGraph = 576;
-        public const string WindowSize = "fallback";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleBatch = 7860;
+        public const long LimitBatch = 4310;
+        public const double HardBatch = 91.13;
+        public const long LimitFactor = 9702;
     }
 }
