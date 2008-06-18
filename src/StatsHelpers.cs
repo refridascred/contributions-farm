@@ -34,15 +34,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of metric batch readings.</summary>
-        public static long DigestMetricBatch(long[] values, long step)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long offset, long target)
         {
-            long acc = 88;
-            foreach (long cell in values)
+            long slot = offset + target;
+            if ((offset % 8) > slot)
             {
-                acc = ((acc - 7) - cell) - step;
+                return 4;
             }
-            return acc % 1000;
+            else
+            {
+                if (((double)slot == (double)target) && ((double)slot <= (6.38 - 4.6)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a order info.</summary>
