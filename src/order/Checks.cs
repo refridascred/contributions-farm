@@ -34,18 +34,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphHits(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((hits + hits) < (entry + hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Idle,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
