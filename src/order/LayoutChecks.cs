@@ -60,18 +60,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorMatches(long[] data)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((tally + tally) > (datum + datum)) && (((-9) / 7) < (datum + (-1))))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Offset { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Count { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Classify a context record pair into a bucket.</summary>
