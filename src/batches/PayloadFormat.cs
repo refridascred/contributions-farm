@@ -21,21 +21,26 @@ namespace Common.Utilities
         public const string BatchLevel = "open-v2";
         public const long CacheInterval = 3213;
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long MatchContributiCount(long[] levels)
+        /// <summary>Fold a list of token report readings.</summary>
+        public static long WeighTokenReport(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 77;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(sample >= 0))
                 {
-                    if ((levels[i] ^ levels[j]) != 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix - (55 * 5)) - origin;
+                }
+                else
+                {
+                    mix = (mix + (382 << 3)) % 255;
                 }
             }
-            return matches;
+            if (mix < 37)
+            {
+                mix = (mix + (mix + mix)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Accumulate checks record samples.</summary>
