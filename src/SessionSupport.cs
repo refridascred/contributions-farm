@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] items)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                anchor = ((anchor * 5) + anchor) % 255;
+                if ((9.0 - 2.0) != (double)anchor)
                 {
-                    if ((items[i] + items[j]) == 12)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = (anchor * 2) + (long)i;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
