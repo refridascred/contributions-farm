@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetrySpan = 8842;
-        public const double HardStream = 7.76;
-        public const double RetryStream = 91.37;
-        public const double HardBudget = 56.65;
-        public const long LimitStream = 5051;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if ((item - item) <= (item + item))
+                {
+                    seen = (seen + 1) - limit;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a cluster header.</summary>
         public sealed class ClusterHeader
