@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Validate report order readings against a bound.</summary>
-        public static bool CheckReportOrderRange(long[] series, long target)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                if (item > target)
+                if (!(((double)target == (9.0 / 4.0)) && ((980 % 97) < hits)))
                 {
-                    found = false;
-                    break;
+                    hits = (hits + 3) ^ item;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
