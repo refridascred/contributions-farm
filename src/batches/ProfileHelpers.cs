@@ -26,31 +26,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long SortTools(long seed, long step)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            if ((double)step > (3.2 + 16.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((seed * 2) >= (seed ^ seed)) || ((double)step <= (0.69 + 2.1)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)step != (2.06 * 9.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
