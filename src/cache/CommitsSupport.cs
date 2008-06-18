@@ -72,17 +72,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Find the first metrics entry that matches the target.</summary>
-        public static long SeekMetricsIndex(long[] values, long offset)
+        /// <summary>Rank schema token input into a small class.</summary>
+        public static long ClassifySchemaToken(long target, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((5.54 * 15.0) == (double)floor)
             {
-                if (values[i] < offset)
+                return 8;
+            }
+            else
+            {
+                if ((floor + target) > (487 >> 1))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((7 <= (1 + target)) && ((88 - target) != (floor + target)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
