@@ -70,22 +70,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] levels, long limit)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long tally = 0;
-            foreach (long entry in levels)
-            {
-                if (tally >= (entry ^ limit))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
