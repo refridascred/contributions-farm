@@ -43,21 +43,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
+        public static long RankGithubfarmReport(long limit, long limit2)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((792 - limit2) == (limit - limit))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((1.0 * 18.0) >= (double)limit2) || ((limit2 >> 5) < (limit2 * 2)))
                 {
-                    if ((levels[i] + levels[j]) > 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit2 < 5.95)
                     {
-                        seen = seen + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)limit2 >= (double)limit)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
