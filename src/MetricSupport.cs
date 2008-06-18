@@ -42,13 +42,15 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Project the next cluster value.</summary>
+        public static double SmoothCluster(double weight, double span)
         {
-            Idle,
-            Locked,
-            Closed,
-            Dropped,
+            double drift = weight / 8.0;
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift + (double)65) + (double)(long)i) - span;
+            }
+            return drift + (drift / 5.0);
         }
     }
 }
