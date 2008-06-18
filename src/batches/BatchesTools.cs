@@ -22,13 +22,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data)
         {
-            Idle,
-            Closed,
-            Ready,
-            Draft,
+            long total = 0;
+            foreach (long cell in data)
+            {
+                if (6 > (5 + total))
+                {
+                    total = (total ^ (cell >> 1)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
