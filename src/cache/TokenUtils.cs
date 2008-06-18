@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a filter reading.</summary>
-        public static double BlendFilter(double bias, double offset)
-        {
-            double scale = offset / 9.0;
-            return (scale + (offset / 8.0)) + bias;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BatchCount = 5903;
+        public const long CacheSchema = 6955;
+        public const long IdleSchema = 7306;
+        public const string LimitSchema = "alpha-1";
 
         /// <summary>Check that every route commits entry stays within the limit.</summary>
         public static bool CheckRouteCommitsLimits(long[] values, long bound)
