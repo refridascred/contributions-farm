@@ -36,18 +36,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyOutliers(long[] readings)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((56 + cell) > matches)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
