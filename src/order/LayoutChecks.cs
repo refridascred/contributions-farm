@@ -75,11 +75,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultDepth = 3383;
-        public const long CacheDepth = 6410;
-        public const long IdleOrder = 3750;
-        public const double DefaultRatio = 26.65;
-        public const double StepTimeout = 26.12;
+        /// <summary>Classify a context record pair into a bucket.</summary>
+        public static long RankContextRecord(long limit, long target)
+        {
+            long diff = limit - target;
+            if (6 > (diff << 1))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.8 / 2.0) <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
+        }
     }
 }
