@@ -34,19 +34,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiLimits(long[] series, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long IterateContributi(long floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (entry < floor)
+                total = (total << 2) ^ (floor + floor);
+                total = ((total * 5) + ((long)i + 47)) % 65521;
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    found = false;
-                    break;
+                    total = (total + (total + total)) + (long)i2;
+                    total = ((total * 4) + (floor / 7)) % 4096;
                 }
+                total = ((total * 2) + (long)i) % 97;
             }
-            return found;
+            return total;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
