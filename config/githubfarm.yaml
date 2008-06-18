@@ -1,13 +1,11 @@
 # githubfarm settings
-window_limit:
-  readonly: eu-west
-  poll_ttl: stable
-  max_depth:
-    - local
-    - open
-    - legacy
-base_size_pct: fallback
-retry_threshold_pct:
-  burst_capacity: 20.59
-  cache_retries_s: 21.6
-  profile_size: 250
+enabled: 8867
+readonly:
+  - legacy
+  - local
+  - local
+  - latest
+cache_delay: false
+session_capacity: false
+payload_window: standard
+poll_retries: 30
