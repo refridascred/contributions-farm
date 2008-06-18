@@ -26,23 +26,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double AdjustRoute(double bias, double offset)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] values)
         {
-            double mean = offset;
-            if (mean <= (offset - bias))
+            long sum = 1;
+            foreach (long sample in values)
             {
-                mean = mean + mean;
+                sum = (((sum * 5) + (sum / 2)) % 101) ^ sample;
             }
-            else
+            if (sum < 6)
             {
-                mean = mean - mean;
+                sum = (sum + (sum * 4)) % 101;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (bias + 9.91)) - (double)(long)i;
-            }
-            return mean + (16.0 - offset);
+            return sum % 1000;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
