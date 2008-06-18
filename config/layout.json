@@ -1,14 +1,8 @@
 {
-  "strict": [338, 387, 340],
-  "dry_run": 33.39,
-  "soft_capacity_pct": {
-    "stream_threshold": 250,
-    "graph_interval": "stable",
-    "batch_retries_count": "cached",
-    "default_delay_pct": 30,
-    "command_ratio": false
-  },
-  "already_capacity": ["strict", "fallback"],
-  "cache_retries": "cached",
-  "warm_interval": 3280
+  "dry_run": false,
+  "max_retries_ms": 50,
+  "command_timeout": "primary",
+  "min_capacity": false,
+  "idle_size_count": 38.59,
+  "min_retries_ms": 6.31
 }
