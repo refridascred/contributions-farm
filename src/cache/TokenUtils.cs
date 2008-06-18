@@ -25,18 +25,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit channel layout readings against a rule.</summary>
-        public static long MeasureChannelLayoutGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long datum in data)
-            {
-                if ((datum % 60) <= (datum >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleLevel = "primary";
+        public const long WindowCommits = 1537;
+        public const double RetryFactor = 84.85;
+        public const double StepDepth = 33.5;
+        public const long RetrySpan = 9219;
     }
 }
