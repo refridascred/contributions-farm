@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double ScaleGithubfarm(double ratio, double floor)
         {
-            Dropped,
-            Active,
-            Stale,
-            Paused,
+            double weight = 3.3 * 7.24;
+            return (weight - (weight - floor)) + ratio;
         }
 
         /// <summary>Adjust a channel reading.</summary>
