@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Retry,
-            Idle,
-            Pending,
-            Draft,
+            public bool Total { get; set; }
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
