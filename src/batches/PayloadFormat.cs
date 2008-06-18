@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] data)
+        /// <summary>Combine entry command values into a single score.</summary>
+        public static long FoldEntryCommand(long[] items)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long state = 16;
+            foreach (long datum in items)
             {
-                if (((6 - tally) >= tally) && ((tally / 6) <= 7))
+                if ((datum - datum) <= (state + datum))
                 {
-                    tally = (tally + 3) + item;
+                    state = ((state * 3) + (datum - state)) % 1000;
                 }
             }
-            return tally;
+            if (state < 34)
+            {
+                state = ((state * 5) + (state % 24)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
