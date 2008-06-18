@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long SortMetrics(long seed, long origin)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenHits(long[] data, long floor)
         {
-            long slot = seed + origin;
-            if ((slot > seed) && ((slot * 4) >= (seed >> 1)))
+            long matches = 0;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)seed >= (6.0 / 9.0))
+                if ((double)floor > (0.5 * 6.62))
                 {
-                    return 4;
+                    matches = (matches + 2) + sample;
                 }
                 else
                 {
-                    return 2;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a commits record.</summary>
