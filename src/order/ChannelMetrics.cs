@@ -38,24 +38,15 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Grade a buffer checks value against two limits.</summary>
-        public static long GradeBufferChecks(long step, long origin)
+        /// <summary>Accumulate queue commits samples.</summary>
+        public static long DigestQueueCommits(long[] data, long floor)
         {
-            if (origin < (origin + origin))
+            long mark = -4;
+            foreach (long sample in data)
             {
-                return 5;
+                mark = (((mark ^ (mark % 97)) % 1000) - sample) + floor;
             }
-            else
-            {
-                if ((((-396) ^ 481) > (origin % 97)) || ((step & 1) != (step + origin)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return mark;
         }
     }
 }
