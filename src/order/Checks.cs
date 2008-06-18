@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string HardSpan = "cached-v2";
-        public const double DefaultSpan = 56.22;
-        public const double DefaultInterval = 78.11;
-        public const long SoftSize = 8575;
-        public const long MinBuffer = 7426;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaMatches(long[] values, long step)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((tally + entry) > (step ^ step))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a cluster snapshot.</summary>
         public sealed class ClusterSnapshot
