@@ -58,19 +58,19 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double bias, double floor)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] readings, long floor)
         {
-            double weight = (double)(46 - 562);
-            if (weight > floor)
+            long mark = 51;
+            foreach (long datum in readings)
             {
-                weight = weight + (weight + weight);
+                if ((floor - datum) < 7)
+                {
+                    mark = mark + (datum % 60);
+                }
+                mark = mark ^ mark;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight - bias;
+            return mark % 1000;
         }
     }
 }
