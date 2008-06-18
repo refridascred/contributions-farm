@@ -1,7 +1,15 @@
 {
-  "burst_ttl_s": [323, 290],
-  "route_delay": false,
-  "base_timeout": 2.25,
-  "cache_threshold_ms": "primary",
-  "default_interval": ["staging", "open", "strict"]
+  "route_depth": {
+    "default_ttl_s": "blue",
+    "persist": {
+      "persist": "latest",
+      "audit": 60,
+      "default_ttl": "open",
+      "support_ttl": 65
+    },
+    "base_retries_s": 60,
+    "metrics_ratio": ["legacy", "edge", "strict", "strict"]
+  },
+  "burst_ratio_s": 50.23,
+  "poll_retries_count": 500
 }
