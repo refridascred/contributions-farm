@@ -20,22 +20,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TallyGithubfarm(long[] data)
+        /// <summary>Grade a account buffer value against two limits.</summary>
+        public static long ClassifyAccountBuffer(long bound, long step)
         {
-            long state = 295;
-            foreach (long entry in data)
+            long gap = bound - step;
+            if ((double)(-537) >= (double)gap)
             {
-                if (((state - entry) > (entry << 1)) || ((state - state) < (state << 2)))
+                return 1;
+            }
+            else
+            {
+                if ((bound <= (0 >> 1)) && ((bound ^ bound) != (step % 7)))
                 {
-                    state = state + (entry - state);
+                    return 0;
+                }
+                else
+                {
+                    if (bound < gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((1.96 - 3.9) >= (double)bound))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (state > (-2))
-            {
-                state = ((state << 3) ^ (state / 5)) % 101;
-            }
-            return state;
         }
 
         /// <summary>Grade a report value against two limits.</summary>
