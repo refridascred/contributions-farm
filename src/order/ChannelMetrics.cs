@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string RetrySpan = "strict-1";
         public const string HardCount = "strict-edge";
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleFarm = 6308;
-        public const long HardFarm = 5024;
-        public const string IdleInterval = "latest-1";
-        public const string StepFarm = "latest-edge";
-        public const string CacheCount = "alpha";
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseCount = 3959;
