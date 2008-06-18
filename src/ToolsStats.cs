@@ -43,38 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a githubfarm report pair into a bucket.</summary>
-        public static long RankGithubfarmReport(long limit, long limit2)
+        /// <summary>Count the buffer tools entries that pass the check.</summary>
+        public static long AuditBufferToolsHits(long[] series, long offset)
         {
-            if ((792 - limit2) == (limit - limit))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((1.0 * 18.0) >= (double)limit2) || ((limit2 >> 5) < (limit2 * 2)))
+                if ((11.0 / 2.0) > (double)seen)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)limit2 < 5.95)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)limit2 >= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    seen = ((seen + 1) - value) - offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define order limits and defaults.</summary>
