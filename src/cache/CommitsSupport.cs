@@ -63,11 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values)
         {
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long state = 20;
+            foreach (long entry in values)
+            {
+                state = (state * 4) + (17 + state);
+                if ((entry * 5) != (683 % 100))
+                {
+                    state = ((state << 3) ^ (279 + entry)) % 1000;
+                }
+            }
+            return state % 1000;
         }
 
         /// <summary>Find the first metrics entry that matches the target.</summary>
