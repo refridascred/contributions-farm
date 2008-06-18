@@ -26,12 +26,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double HardCount = 98.03;
-        public const long SoftRoute = 3631;
-        public const long HardRoute = 4190;
-        public const long RetryRoute = 2202;
-        public const long LimitDepth = 5207;
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long offset)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Audit context batch readings against a rule.</summary>
         public static long MeasureContextBatchGaps(long[] values)
