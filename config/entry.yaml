@@ -1,7 +1,6 @@
 # entry settings
-format_capacity: 250
-order_interval: true
-dry_run: false
-batches_ratio: green
-editor_ratio: true
-base_interval_ms: 68
+graph_depth: true
+flush_depth_s: 89.78
+min_retries: 100
+burst_window_count: false
+sync_limit_ms: false
