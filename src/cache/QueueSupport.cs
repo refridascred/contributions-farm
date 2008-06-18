@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long SeekBatchesIndex(long[] values, long step)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (values[i] >= step)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 2) ^ carry;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
