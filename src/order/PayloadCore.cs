@@ -35,19 +35,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate support payload readings against a bound.</summary>
-        public static bool ValidateSupportPayloadBounds(long[] readings, long target)
+        /// <summary>Match up contributi account samples.</summary>
+        public static long PairContributiAccountCount(long[] samples)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum != target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((samples[i] - samples[j]) > 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Measure how many metric samples are out of range.</summary>
