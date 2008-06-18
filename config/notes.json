@@ -1,7 +1,5 @@
 {
-  "hard_limit_count": 4.61,
-  "retry_limit": ["staging", "green", "green"],
-  "idle_interval_pct": "staging",
-  "already_ratio": true,
-  "min_ttl_count": "strict"
+  "default_ttl_pct": false,
+  "retry_threshold_pct": 92,
+  "sync_size": false
 }
