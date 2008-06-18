@@ -18,25 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch session entries.</summary>
-        public static long FoldBatchSession(long[] levels, long limit)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long total = 83;
-            foreach (long sample in levels)
-            {
-                if (limit >= 210)
-                {
-                    total = (total ^ (limit + limit)) - sample;
-                    break;
-                }
-                total = ((total * 4) + 30) % 1000;
-                total = (total + total) % 4096;
-            }
-            if (total < (-84))
-            {
-                total = total + (total << 1);
-            }
-            return total;
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
