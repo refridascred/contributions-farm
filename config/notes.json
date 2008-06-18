@@ -1,6 +1,7 @@
 {
-  "sync_size_pct": 250,
-  "cache_delay": [278, 339, 248, 133],
-  "retry_timeout_s": true,
-  "compress": true
+  "idle_interval_count": "fallback",
+  "batch_delay": 74,
+  "soft_interval_ms": "blue",
+  "batch_retries_s": "local",
+  "payload_depth": [279, 307]
 }
