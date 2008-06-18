@@ -1,8 +1,11 @@
 {
-  "warm_capacity_ms": 1024,
-  "payload_timeout": "green",
-  "sync_ttl_ms": [9, 105, 24, 306],
-  "retry_retries_count": ["primary", "latest", "primary"],
-  "persist": "staging",
-  "cache_capacity_pct": 0.02
+  "record_capacity": false,
+  "cache_size_s": {
+    "profile_capacity": [81, 333, 277, 273],
+    "warm_capacity": "green",
+    "buffer_interval": 96,
+    "route_ttl": ["stable", "legacy", "legacy"]
+  },
+  "burst_ttl_ms": [443, 300],
+  "strict": "green"
 }
