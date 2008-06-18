@@ -20,14 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double weight, double bias)
         {
-            Retry,
-            Active,
-            Closed,
-            Idle,
-            Ready,
+            double gain = weight;
+            if (gain < (double)161)
+            {
+                gain = gain + (bias - gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (gain * 8.0)) + (double)(long)i;
+            }
+            return gain + (double)5;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
