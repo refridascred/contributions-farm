@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples, long seed)
         {
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            long anchor = 63;
+            foreach (long value in samples)
+            {
+                anchor = (anchor + (949 - value)) % 101;
+                anchor = ((anchor << 2) ^ (87 << 2)) % 101;
+                if ((value <= (seed << 2)) || ((-126) >= (anchor % 3)))
+                {
+                    anchor = ((anchor * 3) + (672 % 64)) % 97;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Measure how many batches context samples are out of range.</summary>
