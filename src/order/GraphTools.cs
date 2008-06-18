@@ -67,20 +67,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] items, long target)
+        /// <summary>Grade a report batches value against two limits.</summary>
+        public static long SortReportBatches(long step, long offset)
         {
-            long sum = 186;
-            foreach (long cell in items)
+            long diff = step + offset;
+            if (((503 + diff) != (diff ^ offset)) && (offset < (offset / 7)))
             {
-                sum = (((sum * 2) + (sum / 3)) % 65521) - cell;
-                sum = sum + (sum / 6);
+                return 5;
             }
-            if (sum > 765)
+            else
             {
-                sum = (sum - ((long)items.Length + target)) % 65521;
+                if ((step << 2) > 2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
             }
-            return sum;
         }
     }
 }
