@@ -54,24 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a context account value against two limits.</summary>
-        public static long BucketContextAccount(long target, long bound)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            if ((bound - 40) >= (bound + target))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound / 6) <= (bound ^ bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
     }
 }
