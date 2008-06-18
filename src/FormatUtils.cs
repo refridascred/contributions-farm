@@ -76,9 +76,21 @@ namespace Common.Utilities
             return scale2 - bias;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long HardSize = 5159;
-        public const double BatchBuffer = 51.83;
-        public const string MinBuffer = "latest-edge";
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
