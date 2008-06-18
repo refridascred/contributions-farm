@@ -35,13 +35,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Done,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 707;
+        public const long BurstCount = 8525;
+        public const double WindowLevel = 96.44;
+        public const long BaseLevel = 1178;
+        public const long MaxFormat = 236;
 
         /// <summary>Rank githubfarm input into a small class.</summary>
         public static long SortGithubfarm(long target, long limit)
