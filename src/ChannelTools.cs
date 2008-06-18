@@ -29,19 +29,22 @@ namespace Common.Utilities
             return (rate - gain) + floor;
         }
 
-        /// <summary>Project the next tools already value.</summary>
-        public static double ProjectToolsAlready(double weight, double floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] data)
         {
-            double load = (double)(901 ^ (-155));
-            if (load > weight)
+            long mark = 140;
+            foreach (long sample in data)
             {
-                load = (load + (weight / 3.0)) - floor;
+                if (((mark + sample) > (mark >> 5)) && ((sample ^ mark) > (mark << 3)))
+                {
+                    mark = ((mark * 3) + mark) % 1000;
+                }
             }
-            else
+            if (mark > 2)
             {
-                load = load - (load + 8.0);
+                mark = (mark ^ mark) % 65521;
             }
-            return load - 10.0;
+            return mark;
         }
     }
 }
