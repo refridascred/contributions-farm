@@ -1,4 +1,20 @@
 # support settings
-metric_window: 100
-account_limit: open
-soft_threshold_s: 100
+compress:
+  - 363
+  - 158
+  - 116
+cache_size_ms:
+  - 252
+  - 357
+  - 208
+strict:
+  soft_capacity_count: 32
+  batch_ttl: green
+  commits_interval:
+    context_threshold: 96
+    idle_window_pct: 2
+    strict: false
+    cache_ttl_ms: primary
+    token_delay: green
+  schema_delay: 500
+readonly: 13.16
