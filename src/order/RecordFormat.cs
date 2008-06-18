@@ -40,19 +40,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] data, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long floor)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum < seed)
+                result = (result - (floor - floor)) % 255;
+                if ((double)(long)i >= (3.0 * 0.05))
                 {
-                    flag = false;
-                    break;
+                    result = (result + (floor + 87)) % 65521;
+                    result = result - (result << 1);
                 }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Measure how many format graph samples are out of range.</summary>
