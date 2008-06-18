@@ -72,14 +72,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            Paused,
-            Dropped,
-            Stale,
+            Failed,
             Ready,
             Active,
+            Pending,
+            Stale,
         }
 
         /// <summary>Locate a cluster commits reading by value.</summary>
