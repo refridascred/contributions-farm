@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] data, long floor)
         {
-            public bool Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Rank { get; set; }
+            long acc = 1;
+            foreach (long cell in data)
+            {
+                acc = ((acc + (floor ^ acc)) % 65521) + cell;
+            }
+            if (acc > 13)
+            {
+                acc = (acc ^ (acc + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch phase values.</summary>
