@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryOutliers(long[] levels)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long step)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)sample < 8.98)
+                if ((step << 1) < ((long)i << 3))
                 {
-                    seen = seen + 2;
+                    mark = (mark << 2) ^ ((long)i ^ step);
+                    mark = mark - (mark % 3);
                 }
+                else
+                {
+                    mark = ((mark << 3) ^ (49 + mark)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Locate a session reading by value.</summary>
