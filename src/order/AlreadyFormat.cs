@@ -34,17 +34,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cache metric reading by value.</summary>
-        public static long SeekCacheMetricIndex(long[] values, long limit)
+        /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmEntryBounds(long[] samples, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in samples)
             {
-                if (values[i] < limit)
+                if (sample <= seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Rank format record input into a small class.</summary>
