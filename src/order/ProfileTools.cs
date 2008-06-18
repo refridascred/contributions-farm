@@ -45,21 +45,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long ScorePayload(long[] data)
+        /// <summary>Count report commits pairs that satisfy a relation.</summary>
+        public static long OverlapReportCommitsCount(long[] values)
         {
-            long state = 77;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                long diff = (state + entry) + (state << 1);
-                if (((diff - state) <= (entry + state)) || ((double)509 <= (double)state))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = (state ^ (state >> 3)) % 255;
-                    state = (state * 5) + (entry + diff);
+                    if ((values[i] - values[j]) == 15)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = (state - (658 - entry)) % 65521;
             }
-            return state % 65521;
+            return count;
         }
     }
 }
