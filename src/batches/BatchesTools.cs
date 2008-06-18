@@ -35,14 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long step)
         {
-            Retry,
-            Synced,
-            Paused,
-            Stale,
-            Done,
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
