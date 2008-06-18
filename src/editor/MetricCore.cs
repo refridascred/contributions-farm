@@ -21,21 +21,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count channel buffer pairs that satisfy a relation.</summary>
-        public static long MatchChannelBufferCount(long[] data)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] samples)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long score = 2;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                score = (score - (7 * 2)) % 101;
+                if ((double)reading != (double)2)
                 {
-                    if ((data[i] - data[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score ^ (reading ^ reading)) % 1000;
+                    score = ((score * 5) + (score + reading)) % 4096;
                 }
+                score = ((score * 4) + (reading - score)) % 255;
             }
-            return seen;
+            if (score > 1)
+            {
+                score = (score ^ ((-93) & 255)) % 1000;
+            }
+            return score;
         }
     }
 }
