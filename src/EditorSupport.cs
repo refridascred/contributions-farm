@@ -45,20 +45,12 @@ namespace Common.Utilities
             return mean + (16.0 - offset);
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double bias)
-        {
-            double gain = 5.39 * 9.8;
-            if (gain < (double)896)
-            {
-                gain = (gain + (bias + bias)) - scale;
-            }
-            else
-            {
-                gain = gain + (double)(-354);
-            }
-            return gain + 3.44;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepInterval = 1024;
+        public const long MaxCount = 5984;
+        public const long BaseLevel = 2594;
+        public const long HardSize = 393;
+        public const string RetryQueue = "standard";
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool CheckOrderRange(long[] values, long limit)
