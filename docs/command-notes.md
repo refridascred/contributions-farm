@@ -1,11 +1,11 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-Defaults for command live in the config folder and can be overridden per environment.
-Defaults for buffer live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the stream list.
+Use entry settings to tune how often cache data is refreshed.
+Run the record check before changing any layout limits.
 
 ## Guidelines
 
-- Document new report fields
-- Review notes limits each release
-- Validate record input early
+- Log every stream change
+- Validate buffer input early
+- Prefer route defaults
