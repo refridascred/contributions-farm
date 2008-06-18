@@ -33,21 +33,24 @@ namespace Common.Utilities
         public const double CacheBudget = 64.69;
         public const double BaseFilter = 29.94;
 
-        /// <summary>Count profile filter pairs that satisfy a relation.</summary>
-        public static long PairProfileFilterCount(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long target, long target2)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((target / 4) < 20)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((double)(-77) != (double)target))
                 {
-                    if ((data[i] ^ data[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
