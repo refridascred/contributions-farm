@@ -14,23 +14,11 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings)
-        {
-            long sum = -79;
-            foreach (long value in readings)
-            {
-                if ((value * 4) >= value)
-                {
-                    sum = (sum - value) % 97;
-                }
-            }
-            if (sum < 844)
-            {
-                sum = (sum - (sum * 4)) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepInterval = 6915;
+        public const long WindowQueue = 8358;
+        public const double LimitCount = 78.2;
+        public const string SoftSpan = "open-edge";
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] samples, long limit)
