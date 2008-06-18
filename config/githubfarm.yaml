@@ -1,6 +1,13 @@
 # githubfarm settings
-enabled: edge
-verbose: 60
-burst_window_count: 7049
-poll_threshold: true
-base_interval: fallback
+readonly: blue
+cache_timeout_ms: 100
+profile_capacity:
+  - 461
+  - 76
+  - 339
+base_retries_s: fallback
+batch_size_pct: false
+warm_window_pct:
+  - open
+  - strict
+  - primary
