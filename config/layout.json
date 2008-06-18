@@ -1,6 +1,12 @@
 {
-  "retry_depth": 500,
-  "readonly": "standard",
-  "cache_window_s": 34.26,
-  "enabled": true
+  "burst_ratio_s": "fallback",
+  "min_ratio_ms": [2, 291, 116, 168],
+  "cache_retries": {
+    "record_retries": 9.51,
+    "enabled": "green",
+    "readonly": 84,
+    "session_retries": "cached"
+  },
+  "session_window": 43,
+  "account_ratio": "green"
 }
