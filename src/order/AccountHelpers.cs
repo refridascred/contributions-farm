@@ -65,23 +65,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long RankSchema(long seed, long limit)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long BucketAccount(long bound, long limit)
         {
-            long next = seed + limit;
-            if (!((next ^ 5) > (next / 7)))
+            if ((8.86 - 15.0) < (double)bound)
             {
                 return 2;
             }
             else
             {
-                if ((double)next == (4.0 - 7.0))
+                if ((double)limit == (16.0 * 5.88))
                 {
-                    return 6;
+                    return 0;
                 }
                 else
                 {
-                    return 1;
+                    return 3;
                 }
             }
         }
