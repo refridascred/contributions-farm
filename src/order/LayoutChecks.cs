@@ -60,18 +60,21 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels, long limit)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long MatchCommandCount(long[] data)
         {
-            long sum = 85;
-            foreach (long sample in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sum % 97) <= (sum & 7))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    sum = (((sum * 2) + ((long)levels.Length - (long)levels.Length)) - sample) - limit;
+                    if ((data[i] ^ data[j]) > 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
