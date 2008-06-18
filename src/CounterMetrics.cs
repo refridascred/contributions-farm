@@ -38,20 +38,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the window payload series from a seed.</summary>
-        public static long DeriveWindowPayload(long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long SeriesChannel(long offset)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long score = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if (((long)i - step) <= result)
+                if ((offset + offset) > score)
                 {
-                    long cur = (long)i;
-                    result = (result ^ (cur + step)) % 4096;
+                    score = (score ^ (score ^ score)) % 97;
                 }
-                result = ((result * 2) + (long)i) % 65521;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
