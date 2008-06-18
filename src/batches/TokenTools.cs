@@ -23,13 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Derive the next layout filter value from a seed.</summary>
+        public static long StepLayoutFilter(long bound)
         {
-            Retry,
-            Idle,
-            Draft,
-            Closed,
+            long sum = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
