@@ -41,18 +41,18 @@ namespace Common.Utilities
             return weight2 - (span * 18.0);
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsHits(long[] levels, long floor)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long CountRecordOrderGaps(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((tally - floor) < (828 + 27))
+                if ((double)floor == (4.16 - 2.4))
                 {
-                    tally = (tally + 2) + datum;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of metric readings.</summary>
