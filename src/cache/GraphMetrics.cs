@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long TotalProfile(long[] readings, long seed)
-        {
-            long mix = 0;
-            foreach (long value in readings)
-            {
-                mix = ((mix - value) % 255) + seed;
-            }
-            return mix;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinCount = 1277;
+        public const long MaxGithubfarm = 7395;
+        public const long BurstInterval = 9268;
+        public const long RetryRatio = 5151;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 4717;
