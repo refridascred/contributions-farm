@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
-        {
-            Retry,
-            Done,
-            Closed,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepSession = "strict-edge";
+        public const long IdleScore = 7261;
+        public const long RetryDepth = 2048;
+        public const long LimitSession = 6890;
 
         /// <summary>Fold a list of route batches readings.</summary>
         public static long TallyRouteBatches(long[] samples, long offset)
