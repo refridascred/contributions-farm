@@ -23,12 +23,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamOutliers(long[] data)
         {
-            public string Offset { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if (2.0 > (double)reading)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a metric summary.</summary>
