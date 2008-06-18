@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftGraph = "cached-edge";
-        public const double DefaultGraph = 57.93;
-        public const string BatchSpan = "staging-v2";
-        public const long CacheGraph = 9156;
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series, long bound)
+        {
+            long acc = 2;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = ((acc << 2) ^ (acc + bound)) + (long)i;
+                }
+                acc = (acc - (datum - datum)) % 4096;
+                if ((datum + bound) < (bound - 79))
+                {
+                    acc = (acc << 3) ^ acc;
+                }
+            }
+            if (acc < (-891))
+            {
+                acc = acc + (5 - bound);
+            }
+            return acc;
+        }
 
         /// <summary>Hold a report info.</summary>
         public sealed class ReportInfo
