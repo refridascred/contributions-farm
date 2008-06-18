@@ -33,22 +33,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] samples, long limit)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long LookupMetricIndex(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (limit > (57 + datum))
+                if ((items[i] > floor) && ((items[i] % 3) == 0))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
