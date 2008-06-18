@@ -1,4 +1,4 @@
 # entry settings
-max_delay: 18
-hard_threshold: 6
-sync_limit: cached
+enabled: latest
+idle_size_ms: 42.54
+batch_delay_count: true
