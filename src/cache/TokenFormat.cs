@@ -15,18 +15,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] data)
+        /// <summary>Rank format support input into a small class.</summary>
+        public static long GradeFormatSupport(long step, long floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long offset = step - floor;
+            if ((floor / 7) < step)
             {
-                if (cell > (count >> 5))
+                return 7;
+            }
+            else
+            {
+                if ((floor - offset) > (floor % 7))
                 {
-                    count = count + 2;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
