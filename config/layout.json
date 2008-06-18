@@ -1,5 +1,7 @@
 {
-  "sync_depth": 85,
-  "dry_run": true,
-  "sync_limit_pct": ["legacy", "cached"]
+  "account_threshold": [150, 88, 208],
+  "idle_threshold_pct": ["legacy", "standard", "latest", "open"],
+  "commits_limit": "stable",
+  "readonly": 5.75,
+  "strict": 19
 }
