@@ -35,24 +35,18 @@ namespace Common.Utilities
         public const long MaxDepth = 7766;
         public const string HardSpan = "strict-edge";
 
-        /// <summary>Accumulate cluster payload samples.</summary>
-        public static long DigestClusterPayload(long[] items, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] values, long offset)
         {
-            long result = 1;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((22 > (origin / 7)) || ((origin + result) >= 683))
+                if (offset < (516 + reading))
                 {
-                    result = ((result << 2) ^ ((long)items.Length >> 4)) % 1000;
-                    result = result ^ (cell - origin);
+                    matches = matches + 2;
                 }
-                result = result ^ (result - origin);
             }
-            if (result > 48)
-            {
-                result = ((result * 2) + ((-7) + result)) % 255;
-            }
-            return result;
+            return matches;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
