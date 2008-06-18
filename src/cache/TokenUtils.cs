@@ -27,17 +27,10 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long SeekAlreadyIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxTools = 62.52;
+        public const long HardTools = 184;
+        public const long CacheTimeout = 8684;
+        public const string IdleTools = "stable-edge";
     }
 }
