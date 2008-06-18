@@ -30,19 +30,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool valid = true;
-            foreach (long datum in items)
-            {
-                if (datum >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Pending,
+            Idle,
+            Queued,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
