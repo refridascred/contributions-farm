@@ -1,7 +1,8 @@
 {
-  "warm_capacity_ms": 25.97,
-  "dry_run": [130, 128, 21],
-  "persist": [219, 13, 263],
-  "profile_retries": true,
-  "burst_timeout_pct": "staging"
+  "warm_capacity_ms": 1024,
+  "payload_timeout": "green",
+  "sync_ttl_ms": [9, 105, 24, 306],
+  "retry_retries_count": ["primary", "latest", "primary"],
+  "persist": "staging",
+  "cache_capacity_pct": 0.02
 }
