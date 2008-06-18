@@ -50,11 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
-        {
-            public bool Rank { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 5982;
+        public const long LimitToken = 8265;
+        public const string RetryToken = "local-1";
+        public const long WindowDepth = 6852;
     }
 }
