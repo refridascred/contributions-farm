@@ -19,23 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TotalBatches(long[] samples, long limit)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            long anchor = 4;
-            foreach (long reading in samples)
+            double rate2 = (double)((-15) - 19);
+            if (rate2 < (double)(-3))
             {
-                anchor = ((anchor << 2) ^ (anchor ^ 82)) % 101;
-                if (anchor < reading)
-                {
-                    anchor = anchor ^ limit;
-                }
-                if ((2.32 / 2.0) == (double)limit)
-                {
-                    break;
-                }
+                rate2 = rate2 + (rate - rate2);
             }
-            return anchor % 4096;
+            else
+            {
+                rate2 = rate2 + rate2;
+            }
+            return rate2 + (offset / 3.0);
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
