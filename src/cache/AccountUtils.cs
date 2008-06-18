@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Scale a payload cluster figure with a bias.</summary>
-        public static double BlendPayloadCluster(double ratio, double offset)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] samples, long step)
         {
-            double weight = offset;
-            if (weight <= 5.8)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = (weight - 11.0) + ratio;
+                if ((samples[i] <= step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - (3.2 - 20.0)) - (double)(long)i;
-            }
-            return weight - (offset / 8.0);
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
