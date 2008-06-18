@@ -14,20 +14,32 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long step, long step2)
         {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
+            long delta = step ^ step2;
+            if ((double)step2 > (double)step)
             {
-                long hits = total;
-                if (!(((total >> 3) >= hits) && (895 >= ((long)i + (long)i))))
-                {
-                    total = total ^ ((long)i + hits);
-                }
-                total = ((total * 4) + (long)i) % 97;
+                return 7;
             }
-            return total;
+            else
+            {
+                if ((double)delta >= (3.62 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (step2 < (135 - delta))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
