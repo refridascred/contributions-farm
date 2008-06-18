@@ -56,18 +56,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of channel commits entries.</summary>
-        public static long DigestChannelCommits(long[] readings)
+        /// <summary>Scale a support commits figure with a bias.</summary>
+        public static double ScaleSupportCommits(double rate, double offset)
         {
-            long state = 22;
-            foreach (long entry in readings)
+            double rate2 = (double)(4 & 7);
+            if (rate2 >= rate)
             {
-                if ((state <= (674 >> 1)) || ((state & 3) <= entry))
-                {
-                    state = ((state * 4) + (entry ^ state)) % 65521;
-                }
+                rate2 = (rate2 + rate2) - offset;
             }
-            return state;
+            return rate2 - 4.0;
         }
 
         /// <summary>Hold a profile options.</summary>
