@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Ready,
-            Dropped,
-            Paused,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long RetryGithubfarm = 2645;
+        public const long MaxGithubfarm = 7580;
+        public const long HardGithubfarm = 6279;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmHits(long[] readings)
