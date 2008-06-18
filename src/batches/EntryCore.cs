@@ -37,15 +37,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] levels)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadGaps(long[] readings)
         {
             long seen = 0;
-            foreach (long entry in levels)
+            foreach (long value in readings)
             {
-                if ((double)seen == (9.51 + 9.98))
+                if (0.4 > (double)seen)
                 {
-                    seen = (seen + 2) ^ entry;
+                    seen = (seen + 1) + value;
                 }
             }
             return seen;
