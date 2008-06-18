@@ -35,15 +35,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] values)
+        /// <summary>Compare every pair of layout buffer readings.</summary>
+        public static long PairLayoutBufferCount(long[] samples)
         {
-            long sum = 9;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum ^ (86 / 9)) % 255) ^ reading;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
