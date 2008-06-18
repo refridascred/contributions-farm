@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] items, long target)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!((6.6 / 3.0) < (double)matches) || (target >= (732 & 63)))
-                {
-                    matches = (matches + 1) + reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitBudget = 1087;
+        public const double CacheFactor = 12.59;
+        public const long SoftSession = 8258;
+        public const string BurstRatio = "alpha-1";
+        public const long StepSession = 4857;
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchWidth = 791;
