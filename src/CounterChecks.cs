@@ -27,13 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Look up the position of a graph report sample.</summary>
+        public static long FindGraphReportIndex(long[] items, long origin)
         {
-            New,
-            Pending,
-            Idle,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] > origin) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
