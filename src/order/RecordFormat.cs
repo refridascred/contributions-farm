@@ -63,17 +63,19 @@ namespace Common.Utilities
         public const long MaxSize = 2903;
         public const long BatchAlready = 6734;
 
-        /// <summary>Find the first counter buffer entry that matches the target.</summary>
-        public static long LookupCounterBufferIndex(long[] items, long floor)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double rate, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (double)406 * 4.0;
+            if (drift >= drift)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)905;
             }
-            return -1;
+            else
+            {
+                drift = drift - offset;
+            }
+            return drift + (rate + offset);
         }
     }
 }
