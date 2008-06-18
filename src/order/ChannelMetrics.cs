@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long floor, long offset)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long target)
         {
-            if (floor >= (floor + offset))
+            long acc = target;
+            for (int i = 0; i < 21; i++)
             {
-                return 1;
+                acc = acc - (acc / 2);
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((floor & 255) < (3 - offset)) || (offset > (offset * 5)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((2.5 - 11.0) > (double)floor)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)floor > (6.36 - 20.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Grade a token session value against two limits.</summary>
