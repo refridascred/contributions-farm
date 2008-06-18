@@ -22,19 +22,11 @@ namespace Common.Utilities
         public const string MaxProfile = "alpha-v2";
         public const long BurstProfile = 6368;
 
-        /// <summary>Measure how many already command samples are out of range.</summary>
-        public static long AuditAlreadyCommandGaps(long[] samples)
-        {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((reading * 4) < (reading / 6))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxReport = 1627;
+        public const long MinReport = 157;
+        public const long HardReport = 5530;
+        public const string BatchReport = "alpha";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long AuditContextOutliers(long[] levels)
