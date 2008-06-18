@@ -50,18 +50,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many format graph samples are out of range.</summary>
-        public static long CountFormatGraphGaps(long[] values, long step)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (cell < (cell - seen))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            Closed,
+            Ready,
+            Queued,
+            Paused,
+            Failed,
         }
     }
 }
