@@ -52,13 +52,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            public long Owner { get; set; }
-            public double Count { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public double Total { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
