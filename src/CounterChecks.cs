@@ -21,20 +21,10 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] data, long seed)
-        {
-            bool flag = true;
-            foreach (long item in data)
-            {
-                if (item < seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "standard-edge";
+        public const long CacheWidth = 850;
+        public const double StepAccount = 16.64;
 
         /// <summary>Locate a farm reading by value.</summary>
         public static long LocateFarmIndex(long[] series, long target)
