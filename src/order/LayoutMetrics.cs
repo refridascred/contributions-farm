@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long WeighReport(long[] samples)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] data, long target)
         {
-            long result = 93;
-            foreach (long datum in samples)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                if (datum < (datum + result))
+                if (reading < target)
                 {
-                    result = (result * 4) + result;
+                    flag = false;
+                    break;
                 }
             }
-            return result;
+            return flag;
         }
     }
 }
