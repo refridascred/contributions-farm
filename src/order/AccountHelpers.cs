@@ -24,12 +24,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] values, long target)
         {
-            Retry,
-            Synced,
-            Draft,
+            bool ready = true;
+            foreach (long cell in values)
+            {
+                if (cell <= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
