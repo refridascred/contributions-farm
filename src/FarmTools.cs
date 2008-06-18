@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountOutliers(long[] data)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] data)
         {
             long count = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample / 7) > 6)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
