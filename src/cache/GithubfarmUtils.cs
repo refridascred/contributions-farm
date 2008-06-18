@@ -43,11 +43,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowInterval = 1067;
-        public const long MinContext = 1991;
-        public const long MaxSpan = 904;
-        public const double HardContext = 63.25;
-        public const long BaseContext = 7152;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Failed,
+            Paused,
+            Done,
+        }
     }
 }
