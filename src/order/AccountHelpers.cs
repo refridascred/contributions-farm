@@ -37,23 +37,12 @@ namespace Common.Utilities
         public const string MinLevel = "legacy-edge";
         public const double CacheQueue = 76.71;
 
-        /// <summary>Project the next command tools value.</summary>
-        public static double ScaleCommandTools(double scale, double bias)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            double gain = bias;
-            if (gain < (double)50)
-            {
-                gain = (gain + gain) - scale;
-            }
-            else
-            {
-                gain = gain + (double)36;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                gain = (gain - (gain / 6.0)) - (double)(long)i;
-            }
-            return gain + bias;
+            Synced,
+            Closed,
+            Idle,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
