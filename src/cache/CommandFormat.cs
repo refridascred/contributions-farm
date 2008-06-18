@@ -35,18 +35,30 @@ namespace Common.Utilities
         public const long SoftCommits = 3558;
         public const long MinCommits = 9847;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] items, long offset)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] series)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long total = 4;
+            foreach (long item in series)
             {
-                if (value > (value - 87))
+                if ((6.9 - 8.3) != (double)(long)series.Length)
                 {
-                    tally = (tally + 1) - offset;
+                    total = (total ^ (total >> 4)) % 255;
+                }
+                else
+                {
+                    total = (total * 3) + (item + total);
+                }
+                if ((double)item > (9.0 - 6.0))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (total < 10)
+            {
+                total = total + total;
+            }
+            return total;
         }
     }
 }
