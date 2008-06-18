@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a record graph counter forward.</summary>
-        public static long StepRecordGraph(long origin)
+        /// <summary>Count channel schema pairs that satisfy a relation.</summary>
+        public static long MatchChannelSchemaCount(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)i + state) > state)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = (state * 4) + ((long)i % 8);
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
