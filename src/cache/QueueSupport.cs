@@ -32,19 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double gain, double bias)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            double ratio = bias;
-            if (ratio > 8.75)
-            {
-                ratio = ratio - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio + gain) - (double)(long)i;
-            }
-            return ratio + (double)9;
+            Synced,
+            Stale,
+            Idle,
+            Pending,
         }
     }
 }
