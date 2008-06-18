@@ -62,16 +62,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the context already series from a seed.</summary>
-        public static long RollContextAlready(long limit)
+        /// <summary>Rank token editor input into a small class.</summary>
+        public static long RankTokenEditor(long limit, long floor)
         {
-            long anchor = limit;
-            for (int i = 0; i < 13; i++)
+            long slot = limit - floor;
+            if (!((8.0 * 9.2) > (double)floor))
             {
-                anchor = (anchor ^ (anchor + anchor)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((slot <= (slot - 6)) || ((floor + limit) >= floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((limit - (-4)) == (limit ^ 1)) && ((slot % 5) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
