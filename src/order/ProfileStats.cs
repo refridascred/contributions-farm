@@ -34,12 +34,39 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double HardSpan = 1.1;
-        public const long DefaultTools = 1036;
-        public const long StepTools = 3638;
-        public const string MaxInterval = "local-edge";
-        public const string HardFactor = "standard-v2";
+        /// <summary>Grade a support batch value against two limits.</summary>
+        public static long SortSupportBatch(long floor, long target)
+        {
+            if ((target >> 2) > (91 + 384))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor % 60) == (floor - target)) && ((floor + target) >= (target + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((-1) + floor) > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((9.78 + 7.11) > (double)floor)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] values, long target)
