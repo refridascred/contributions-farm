@@ -34,22 +34,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long IterateContributi(long floor)
+        /// <summary>Fold a list of metric batch readings.</summary>
+        public static long DigestMetricBatch(long[] values, long step)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            long acc = 88;
+            foreach (long cell in values)
             {
-                total = (total << 2) ^ (floor + floor);
-                total = ((total * 5) + ((long)i + 47)) % 65521;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    total = (total + (total + total)) + (long)i2;
-                    total = ((total * 4) + (floor / 7)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 97;
+                acc = ((acc - 7) - cell) - step;
             }
-            return total;
+            return acc % 1000;
         }
 
         /// <summary>Hold a order info.</summary>
