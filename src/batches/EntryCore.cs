@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] items)
-        {
-            long state = -264;
-            foreach (long reading in items)
-            {
-                if (((reading + 270) > (reading ^ reading)) || ((double)reading > (17.0 + 7.63)))
-                {
-                    state = (state + reading) % 255;
-                }
-                else
-                {
-                    state = state ^ (state & 31);
-                }
-            }
-            if (state < 4)
-            {
-                state = ((state << 2) ^ (state & 1)) % 255;
-            }
-            return state % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepRatio = 5452;
+        public const string StepCluster = "alpha-1";
+        public const long BurstCluster = 6142;
+        public const long RetryDepth = 9774;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferMatches(long[] samples)
