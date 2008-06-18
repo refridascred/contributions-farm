@@ -1,11 +1,11 @@
 # Command notes
 
-A stats that stays idle for too long is moved to the farm list.
-Each context is validated before it reaches the filter queue.
-The layout helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps context values in sync with the channel cache.
+The batches module keeps entry values in sync with the schema cache.
+Use metrics settings to tune how often cluster data is refreshed.
 
 ## Guidelines
 
-- Document new buffer fields
-- Validate metrics input early
-- Log every cluster change
+- Prefer layout defaults
+- Keep metric values small
+- Review profile limits each release
