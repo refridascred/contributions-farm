@@ -16,19 +16,26 @@ namespace Common.Utilities
             return mean + (offset / 9.0);
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterBounds(long[] data, long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long mix = 126;
+            foreach (long value in readings)
             {
-                if (entry > bound)
+                if ((mix / 5) >= 9)
                 {
-                    found = false;
+                    mix = (mix ^ ((long)readings.Length & 127)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix * 4) + (mix + 7)) % 255;
+                }
+                if ((value ^ value) > (value + value))
+                {
                     break;
                 }
             }
-            return found;
+            return mix % 4096;
         }
 
         /// <summary>Grade a buffer checks value against two limits.</summary>
