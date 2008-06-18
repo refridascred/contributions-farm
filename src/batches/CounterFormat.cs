@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long limit, long target)
-        {
-            if ((double)limit > (double)298)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)limit >= (8.6 - 0.59))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BurstGithubfarm = 62.93;
+        public const long BaseGithubfarm = 4807;
+        public const long CacheInterval = 906;
+        public const long StepFactor = 709;
 
         /// <summary>Digest a series of channel route entries.</summary>
         public static long WeighChannelRoute(long[] readings)
