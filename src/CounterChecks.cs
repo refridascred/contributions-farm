@@ -63,14 +63,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
-        {
-            Draft,
-            Ready,
-            Idle,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 5418;
+        public const string CacheEntry = "latest";
+        public const string StepBudget = "open-1";
+        public const double CacheRatio = 1.92;
 
         /// <summary>Define support limits and defaults.</summary>
         public const double LimitScore = 4.93;
