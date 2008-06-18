@@ -22,17 +22,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long SeekWindowIndex(long[] data, long limit)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long seed, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((floor + floor) < (floor % 97)) || ((double)floor > (12.0 * 20.0)))
             {
-                if (data[i] == limit)
+                return 5;
+            }
+            else
+            {
+                if ((floor * 2) <= (floor << 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the notes status values.</summary>
