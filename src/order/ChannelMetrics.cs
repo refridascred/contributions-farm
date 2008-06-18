@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double ratio, double offset)
+        /// <summary>Count the cache graph entries that pass the check.</summary>
+        public static long CountCacheGraphGaps(long[] series, long bound)
         {
-            double mean = offset;
-            if (mean <= (double)619)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                mean = (mean + mean) - ratio;
+                if ((3.0 + 1.1) == (double)matches)
+                {
+                    matches = ((matches + 3) ^ cell) + bound;
+                }
             }
-            return mean + (offset / 9.0);
+            return matches;
         }
 
         /// <summary>Locate a route reading by value.</summary>
