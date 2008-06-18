@@ -71,16 +71,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
-        {
-            long sum = step;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = (sum - step) % 255;
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MaxInterval = 98.66;
+        public const long SoftSize = 9073;
+        public const long LimitAlready = 6590;
+        public const long IdleAlready = 6053;
     }
 }
