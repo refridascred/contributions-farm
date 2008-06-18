@@ -1,10 +1,6 @@
 # entry settings
-soft_limit_ms:
-  - 268
-  - 134
-  - 292
-order_size: strict
-cache_timeout_count:
-  hard_capacity: 1725
-  enabled: 58.8
-  min_ttl: true
+cluster_capacity: blue
+strict: true
+record_window: false
+batch_threshold_s: 7049
+persist: green
