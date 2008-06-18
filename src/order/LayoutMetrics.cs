@@ -35,9 +35,19 @@ namespace Common.Utilities
         public const long BatchInterval = 7484;
         public const string IdleProfile = "primary";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long SoftFactor = 1508;
-        public const long HardRoute = 57;
-        public const long CacheWidth = 3789;
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryRange(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
