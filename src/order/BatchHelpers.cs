@@ -14,17 +14,38 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a payload record reading by value.</summary>
-        public static long SeekPayloadRecordIndex(long[] samples, long offset)
+        /// <summary>Grade a order notes value against two limits.</summary>
+        public static long SortOrderNotes(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (floor <= (floor >> 3))
             {
-                if (samples[i] <= offset)
+                return 7;
+            }
+            else
+            {
+                if (!((target << 2) > target))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)floor <= 8.87)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target + target) < (target << 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate token samples.</summary>
