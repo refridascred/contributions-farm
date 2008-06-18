@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Total { get; set; }
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string SoftChecks = "staging-edge";
+        public const long BatchSpan = 6233;
+        public const string RetrySpan = "strict-1";
+        public const string HardCount = "strict-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long IdleFarm = 6308;
