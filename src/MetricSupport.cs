@@ -10,12 +10,18 @@ namespace Common.Utilities
         public const long RetryTimeout = 1118;
         public const string IdleFactor = "local-edge";
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long IdleToken = 271;
-        public const long MaxScore = 5398;
-        public const double DefaultWidth = 81.22;
-        public const long DefaultDepth = 3832;
-        public const string BurstFactor = "stable";
+        /// <summary>Find the first counter batch entry that matches the target.</summary>
+        public static long LocateCounterBatchIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
