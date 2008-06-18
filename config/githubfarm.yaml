@@ -1,13 +1,16 @@
 # githubfarm settings
-retry_limit_count: true
-token_delay:
-  batch_ttl: open
-  cache_capacity_s: 30
-  cache_capacity_count: latest
-  cache_retries:
-    - 69
-    - 48
-    - 457
-    - 435
-verbose: 80.75
-max_delay: 61
+default_retries_count: 7.54
+warm_size: local
+session_timeout: true
+soft_interval:
+  burst_timeout: 1024
+  hard_threshold: true
+  retry_delay_pct: false
+  strict: open
+  sync_interval_ms: 31.95
+  dry_run:
+    - green
+    - strict
+    - fallback
+editor_timeout: false
+profile_threshold: false
