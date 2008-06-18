@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleDepth = 4555;
-        public const string LimitDepth = "staging";
-        public const long MinDepth = 7570;
-        public const long StepRatio = 8246;
-        public const double WindowWidth = 36.57;
+        /// <summary>Accumulate githubfarm queue samples.</summary>
+        public static long CombineGithubfarmQueue(long[] items)
+        {
+            long mix = 935;
+            foreach (long datum in items)
+            {
+                mix = mix + (4 - datum);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
