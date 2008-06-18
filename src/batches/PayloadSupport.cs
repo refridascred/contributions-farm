@@ -16,15 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long offset)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long state = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Synced,
+            Retry,
+            Ready,
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
