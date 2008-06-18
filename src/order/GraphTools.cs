@@ -52,10 +52,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string MaxStream = "fallback";
-        public const long SoftStream = 2741;
-        public const string DefaultSpan = "alpha-1";
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorRange(long[] readings, long bound)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Combine report values into a single score.</summary>
         public static long ScoreReport(long[] items, long target)
