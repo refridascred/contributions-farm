@@ -50,22 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches tools values into a single score.</summary>
-        public static long FoldBatchesTools(long[] samples)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long total = 6;
-            foreach (long datum in samples)
-            {
-                if ((97 + 898) <= total)
-                {
-                    total = ((total - ((long)samples.Length >> 4)) % 1000) ^ datum;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total + total);
-                }
-            }
-            return total;
+            public bool Count { get; set; }
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
