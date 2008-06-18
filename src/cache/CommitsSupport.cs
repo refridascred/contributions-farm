@@ -87,9 +87,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double MinNotes = 70.81;
-        public const long DefaultNotes = 549;
-        public const double DefaultWidth = 76.72;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long CountProfileHits(long[] series)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((double)hits != (19.0 * 1.0))
+                {
+                    hits = (hits + 2) + entry;
+                }
+            }
+            return hits;
+        }
     }
 }
