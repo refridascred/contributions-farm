@@ -61,19 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] values, long step)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            bool found = true;
-            foreach (long datum in values)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Label { get; set; }
+            public double Total { get; set; }
         }
     }
 }
