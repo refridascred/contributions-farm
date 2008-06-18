@@ -70,10 +70,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftQueue = 26.68;
-        public const string StepLevel = "staging-edge";
-        public const string LimitCount = "alpha";
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long LookupBufferIndex(long[] values, long target)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= target) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine order githubfarm values into a single score.</summary>
         public static long ScoreOrderGithubfarm(long[] readings)
