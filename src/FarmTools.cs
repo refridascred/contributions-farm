@@ -20,12 +20,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] levels, long bound)
         {
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Label { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
