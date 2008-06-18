@@ -48,12 +48,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            Pending,
             Paused,
-            Done,
+            Dropped,
+            Stale,
         }
     }
 }
