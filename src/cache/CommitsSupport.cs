@@ -43,12 +43,26 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values, long limit)
         {
-            New,
-            Ready,
-            Queued,
+            long mix = 44;
+            foreach (long datum in values)
+            {
+                if ((mix >> 4) < 373)
+                {
+                    mix = mix - datum;
+                }
+                else
+                {
+                    mix = mix - (datum >> 5);
+                }
+                if ((datum >= (437 + 41)) && ((8.3 / 7.0) != (double)limit))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every tools command entry stays within the limit.</summary>
