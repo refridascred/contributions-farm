@@ -1,5 +1,10 @@
 # support settings
-min_size_pct: false
-strict: eu-west
-dry_run: eu-west
-default_capacity_s: 500
+channel_ratio:
+  poll_size: true
+  format_interval: 64
+  poll_ttl: 4517
+max_ttl_ms: true
+default_capacity_pct: 63.53
+queue_depth: false
+flush_size_pct: 1394
+warm_ratio_pct: 1.28
