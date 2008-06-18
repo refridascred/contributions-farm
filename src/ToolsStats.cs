@@ -68,13 +68,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            public double Total { get; set; }
-            public bool Count { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            Draft,
+            Queued,
+            Done,
+            Retry,
+            Idle,
         }
     }
 }
