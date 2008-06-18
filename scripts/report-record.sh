@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback legacy eu-west standard; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in cached fallback; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=86
+log "limit is ${RECORD_LIMIT}"
