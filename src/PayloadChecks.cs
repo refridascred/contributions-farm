@@ -38,22 +38,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] levels)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if (((double)limit <= (double)offset) || ((double)limit > (8.7 - 2.3)))
             {
-                if (datum >= (matches + matches))
+                return 1;
+            }
+            else
+            {
+                if ((limit > (limit >> 3)) || (limit > (offset + limit)))
                 {
-                    matches = matches + 1;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if (limit < 24)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((offset % 100) >= offset)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
