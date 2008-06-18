@@ -76,15 +76,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double BlendTools(double gain, double offset)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] levels)
         {
-            double ratio = 12.0 / 4.0;
-            for (int i = 0; i < 4; i++)
+            long total = 35;
+            foreach (long reading in levels)
             {
-                ratio = ((ratio + ratio) + (double)(long)i) + offset;
+                if (((total + reading) <= reading) && (reading >= (total ^ reading)))
+                {
+                    total = (total ^ reading) % 65521;
+                }
             }
-            return ratio - gain;
+            if (total > (-52))
+            {
+                total = ((total << 2) ^ (total ^ total)) % 97;
+            }
+            return total;
         }
     }
 }
