@@ -62,31 +62,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long target, long target2)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] samples)
         {
-            if ((-4) > (target2 ^ target2))
+            long anchor = 6;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)target2 == (double)118))
+                if ((6 * 4) > (anchor + reading))
                 {
-                    return 1;
+                    anchor = (anchor - anchor) % 97;
                 }
-                else
+                for (int i = 0; i < 8; i++)
                 {
-                    if (target <= (target2 * 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    anchor = ((anchor * 4) + (long)i) % 255;
+                }
+                if (((reading / 2) <= (reading * 2)) || ((double)anchor >= (8.63 - 5.9)))
+                {
+                    anchor = ((anchor << 2) ^ (anchor % 60)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Grade a report batches value against two limits.</summary>
