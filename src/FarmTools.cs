@@ -20,13 +20,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Locked,
-            Queued,
-            Closed,
-            Stale,
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
