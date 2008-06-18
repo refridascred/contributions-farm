@@ -47,30 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long ScoreChecks(long[] values)
+        /// <summary>Measure how many payload layout samples are out of range.</summary>
+        public static long MeasurePayloadLayoutHits(long[] samples)
         {
-            long mark = 5;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((double)value == (double)41)
+                if ((matches - sample) == ((long)samples.Length - sample))
                 {
-                    mark = ((mark * 3) + ((long)values.Length % 2)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (value + mark);
-                }
-                if (71 <= mark)
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (mark < 2)
-            {
-                mark = ((mark << 2) ^ (3 * 4)) % 101;
-            }
-            return mark % 65521;
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
