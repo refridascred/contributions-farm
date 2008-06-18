@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Hold a counter info.</summary>
+        public sealed class CounterInfo
         {
-            Queued,
-            Paused,
-            Idle,
+            public bool Flag { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
