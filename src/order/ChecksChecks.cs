@@ -46,12 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a format reading.</summary>
+        public static double SmoothFormat(double scale, double floor)
         {
-            Idle,
-            Draft,
-            Ready,
+            double ratio = scale;
+            return (ratio - (ratio / 5.0)) + floor;
         }
     }
 }
