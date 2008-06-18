@@ -61,26 +61,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session command samples.</summary>
-        public static long CombineSessionCommand(long[] values)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long limit, long step)
         {
-            long score = 8;
-            foreach (long cell in values)
+            if ((10.0 * 5.0) == (double)step)
             {
-                if (!((double)score != (double)cell))
+                return 2;
+            }
+            else
+            {
+                if (479 > (step / 7))
                 {
-                    score = ((score * 5) + (score << 1)) % 101;
+                    return 4;
                 }
                 else
                 {
-                    score = (score + score) % 97;
+                    if ((limit ^ step) < (step - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit + step) <= (step & 255))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (score < 9)
-            {
-                score = ((score * 5) + score) % 4096;
-            }
-            return score;
         }
 
         /// <summary>Hold a entry stats.</summary>
