@@ -1,7 +1,8 @@
 # entry settings
-editor_retries: false
-account_window:
-  commits_threshold: 49.23
-  flush_retries: false
-  sync_limit_pct: 8.02
-strict: 6259
+profile_delay:
+  - 355
+  - 240
+  - 183
+burst_interval_pct: 30
+context_ratio: false
+max_size: green
