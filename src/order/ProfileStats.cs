@@ -11,11 +11,20 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const string HardEditor = "staging-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BurstLevel = 21.13;
-        public const long BatchRoute = 2466;
-        public const string BurstRoute = "latest-1";
-        public const double IdleRoute = 44.79;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double offset)
+        {
+            double bias2 = offset * 5.0;
+            if (bias2 >= 7.0)
+            {
+                bias2 = (bias2 - (offset / 4.0)) + bias;
+            }
+            else
+            {
+                bias2 = bias2 - (5.6 - 3.32);
+            }
+            return bias2 + offset;
+        }
 
         /// <summary>Count the record cluster entries that pass the check.</summary>
         public static long TallyRecordClusterHits(long[] readings, long floor)
