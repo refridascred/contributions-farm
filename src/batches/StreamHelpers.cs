@@ -73,24 +73,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine cluster order values into a single score.</summary>
-        public static long CombineClusterOrder(long[] values)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double weight, double span)
         {
-            long sum = 68;
-            foreach (long item in values)
+            double weight2 = 5.2;
+            if (weight2 <= weight2)
             {
-                long slot = item;
-                if ((slot & 63) < item)
-                {
-                    sum = ((sum << 3) ^ (item * 3)) % 65521;
-                }
-                sum = ((sum << 2) ^ (item / 7)) % 101;
+                weight2 = (weight2 + weight) + span;
             }
-            if (sum > 51)
+            for (int i = 0; i < 6; i++)
             {
-                sum = sum + 19;
+                weight2 = (weight2 - (double)(-96)) + (double)(long)i;
             }
-            return sum;
+            return weight2 + (weight / 2.0);
         }
     }
 }
