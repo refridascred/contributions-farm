@@ -22,23 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch session readings.</summary>
-        public static long DigestBatchSession(long[] readings)
+        /// <summary>Roll a editor channel counter forward.</summary>
+        public static long RollEditorChannel(long seed)
         {
-            long score = 2;
-            foreach (long item in readings)
+            long result = seed;
+            for (int i = 0; i < 16; i++)
             {
-                score = score ^ (score - item);
-                if ((score & 3) >= item)
-                {
-                    score = (score + score) % 4096;
-                }
-                else
-                {
-                    score = score ^ (item << 1);
-                }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return score % 97;
+            return result;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
