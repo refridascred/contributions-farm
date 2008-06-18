@@ -30,15 +30,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of commits githubfarm entries.</summary>
-        public static long CombineCommitsGithubfarm(long[] readings, long offset)
+        /// <summary>Fold a list of route batches readings.</summary>
+        public static long TallyRouteBatches(long[] samples, long offset)
         {
-            long result = 64;
-            foreach (long datum in readings)
+            long sum = 93;
+            foreach (long sample in samples)
             {
-                result = ((result ^ offset) % 255) + datum;
+                if ((double)sum > (double)offset)
+                {
+                    sum = (sum ^ offset) + sample;
+                }
             }
-            return result % 65521;
+            if (sum < 869)
+            {
+                sum = (sum ^ (sum >> 1)) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Adjust a farm reading.</summary>
