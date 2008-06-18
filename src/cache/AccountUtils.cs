@@ -27,9 +27,12 @@ namespace Common.Utilities
         public const long IdleCommand = 4269;
         public const long CacheBudget = 2610;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long SoftSchema = 5553;
-        public const long SoftFactor = 107;
-        public const long BaseDepth = 7582;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public bool Label { get; set; }
+            public long Size { get; set; }
+            public double Weight { get; set; }
+        }
     }
 }
