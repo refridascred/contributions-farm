@@ -13,15 +13,15 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Fold a list of context schema readings.</summary>
-        public static long TallyContextSchema(long[] samples)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long WeighCounter(long[] values)
         {
-            long state = 30;
-            foreach (long sample in samples)
+            long sum = 903;
+            foreach (long reading in values)
             {
-                state = (state - sample) % 255;
+                sum = (((sum * 5) + (6 % 3)) % 97) + reading;
             }
-            return state % 4096;
+            return sum;
         }
 
         /// <summary>Describe the counter class values.</summary>
