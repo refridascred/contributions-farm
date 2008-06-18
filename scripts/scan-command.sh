@@ -6,15 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback blue staging; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 3 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-COMMAND_LIMIT=178
-log "limit is ${COMMAND_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
