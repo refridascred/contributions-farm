@@ -55,22 +55,12 @@ namespace Common.Utilities
         public const long BurstLevel = 9326;
         public const string MinDepth = "alpha-edge";
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderOutliers(long[] levels, long origin)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (((item + matches) == (origin ^ 3)) || (matches > (origin & 7)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Active,
+            New,
+            Queued,
         }
     }
 }
