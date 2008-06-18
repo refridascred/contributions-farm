@@ -26,18 +26,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricGaps(long[] samples)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] values)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long mark = 8;
+            foreach (long cell in values)
             {
-                if ((4.47 * 3.1) >= (double)matches)
+                if (!((14.0 * 1.0) == (double)cell))
                 {
-                    matches = (matches + 2) ^ datum;
+                    mark = ((mark << 3) ^ (83 + cell)) % 255;
                 }
             }
-            return matches;
+            return mark % 1000;
         }
 
         /// <summary>Project the next cache value.</summary>
