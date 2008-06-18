@@ -1,6 +1,10 @@
 # entry settings
-cluster_capacity: blue
-strict: true
-record_window: false
-batch_threshold_s: 7049
-persist: green
+strict: legacy
+compress: 16.96
+burst_retries_ms:
+  - green
+  - stable
+  - latest
+  - legacy
+base_retries_s: 3072
+audit: 43.8
