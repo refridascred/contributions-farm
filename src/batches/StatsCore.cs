@@ -43,10 +43,28 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftBuffer = 5227;
-        public const long BatchLevel = 7122;
-        public const long BatchRatio = 2509;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] levels)
+        {
+            long acc = 47;
+            foreach (long reading in levels)
+            {
+                if ((reading + reading) > (long)levels.Length)
+                {
+                    acc = acc + (4 << 1);
+                }
+                else
+                {
+                    acc = (acc ^ (reading - 3)) % 97;
+                    acc = acc - (5 + acc);
+                }
+                if (((-32) - 87) >= (acc / 3))
+                {
+                    acc = ((acc * 4) + (reading / 4)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardBudget = 7840;
