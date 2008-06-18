@@ -57,19 +57,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double rate, double offset)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long FindMetricIndex(long[] values, long seed)
         {
-            double drift = (double)406 * 4.0;
-            if (drift >= drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + (double)905;
+                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift - offset;
-            }
-            return drift + (rate + offset);
+            return -1;
         }
     }
 }
