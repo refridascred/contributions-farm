@@ -1,6 +1,6 @@
 {
-  "readonly": ["open", "open", "stable", "primary"],
-  "flush_timeout": 80,
-  "soft_size_s": ["local", "latest", "eu-west", "open"],
-  "sync_window_pct": "legacy"
+  "dry_run": 59,
+  "poll_limit_ms": ["cached", "legacy", "strict", "edge"],
+  "batch_limit_pct": 7011,
+  "strict": 63.88
 }
