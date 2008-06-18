@@ -1,12 +1,14 @@
 # Command notes
 
-The cache module keeps graph values in sync with the support cache.
-Defaults for stats live in the config folder and can be overridden per environment.
-Keep checks and account names short and lowercase.
+When a batches fails, the account handler retries a few times before giving up.
+Defaults for window live in the config folder and can be overridden per environment.
+
+Run the queue check before changing any metrics limits.
+Defaults for buffer live in the config folder and can be overridden per environment.
+The payload report groups every report by batches.
 
 ## Guidelines
 
-- Keep cluster values small
-- Log every command change
-- Document new tools fields
-- Prefer order defaults
+- Prefer layout defaults
+- Log every farm change
+- Keep entry values small
