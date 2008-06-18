@@ -31,11 +31,15 @@ namespace Common.Utilities
             return (mean + (double)2) + floor;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            long sum = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
