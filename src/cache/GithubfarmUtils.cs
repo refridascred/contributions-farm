@@ -39,19 +39,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double weight, double floor)
+        /// <summary>Count graph profile pairs that satisfy a relation.</summary>
+        public static long PairGraphProfileCount(long[] series)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 - 9.6;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 + floor) - (double)(long)i;
-            }
-            return weight2 + weight2;
+            return tally;
         }
     }
 }
