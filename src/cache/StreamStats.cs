@@ -35,12 +35,23 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 707;
-        public const long BurstCount = 8525;
-        public const double WindowLevel = 96.44;
-        public const long BaseLevel = 1178;
-        public const long MaxFormat = 236;
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items)
+        {
+            long total = 82;
+            foreach (long reading in items)
+            {
+                if (4.33 > (double)reading)
+                {
+                    total = total + 97;
+                }
+            }
+            if (total > 579)
+            {
+                total = ((total * 4) + (total ^ total)) % 4096;
+            }
+            return total % 97;
+        }
 
         /// <summary>Count metrics batches pairs that satisfy a relation.</summary>
         public static long OverlapMetricsBatchesCount(long[] levels)
