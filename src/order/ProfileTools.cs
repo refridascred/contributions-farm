@@ -42,11 +42,23 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Combine githubfarm payload values into a single score.</summary>
+        public static long CombineGithubfarmPayload(long[] data)
         {
-            public bool Label { get; set; }
-            public long Rank { get; set; }
+            long total = 4;
+            foreach (long datum in data)
+            {
+                total = ((total << 2) ^ datum) % 97;
+                if (!((339 ^ total) < 401))
+                {
+                    total = (total + (datum % 64)) % 1000;
+                }
+                else
+                {
+                    total = ((total * 5) + (total << 1)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
