@@ -79,9 +79,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string HardTimeout = "staging-1";
-        public const double BaseTimeout = 34.5;
-        public const string SoftLevel = "fallback-1";
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] readings, long floor)
+        {
+            long acc = 651;
+            foreach (long value in readings)
+            {
+                acc = (((acc << 2) ^ floor) % 1000) ^ value;
+            }
+            return acc;
+        }
     }
 }
