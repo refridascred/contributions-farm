@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksBounds(long[] items, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Idle,
+            Queued,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
