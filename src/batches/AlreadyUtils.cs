@@ -19,13 +19,12 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
