@@ -1,12 +1,4 @@
 # githubfarm settings
-report_capacity: 13
-retry_threshold:
-  burst_limit_count: 2854
-  cache_interval_ms:
-    - 51
-    - 202
-  default_depth_s:
-    order_ttl: edge
-    retry_ttl_s: 78.81
-    soft_retries: 5512
-command_ratio: primary
+soft_limit_count: 78.39
+min_threshold: open
+readonly: true
