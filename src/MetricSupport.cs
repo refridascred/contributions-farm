@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] levels, long target)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                if (sample != target)
+                if (datum <= limit)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
