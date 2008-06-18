@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const string IdleChecks = "alpha";
         public const long WindowChecks = 9819;
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphLimits(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum != step)
                 {
-                    if ((samples[i] ^ samples[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
