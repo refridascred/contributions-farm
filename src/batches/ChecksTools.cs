@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const double HardInterval = 73.87;
         public const long HardStats = 9514;
 
-        /// <summary>Combine record farm values into a single score.</summary>
-        public static long DigestRecordFarm(long[] values)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long mark = 44;
-            foreach (long datum in values)
-            {
-                mark = (mark * 2) + (63 - datum);
-                mark = mark ^ (2 + datum);
-                mark = (mark ^ (datum << 2)) % 1000;
-            }
-            return mark;
+            public double Owner { get; set; }
+            public double Region { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit metrics readings against a rule.</summary>
