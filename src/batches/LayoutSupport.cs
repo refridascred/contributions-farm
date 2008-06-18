@@ -40,22 +40,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine cluster queue values into a single score.</summary>
-        public static long TallyClusterQueue(long[] samples, long offset)
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double ratio, double offset)
         {
-            long sum = 456;
-            foreach (long value in samples)
+            double weight = ratio;
+            if (weight > (ratio * 17.0))
             {
-                if (value > (sum + sum))
-                {
-                    sum = (sum + value) - offset;
-                }
-                else
-                {
-                    sum = sum + ((long)samples.Length >> 3);
-                }
+                weight = weight + 6.22;
             }
-            return sum;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + (ratio + 4.22)) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
