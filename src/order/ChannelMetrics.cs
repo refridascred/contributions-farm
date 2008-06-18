@@ -51,18 +51,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long MeasureCommitsMatches(long[] readings)
+        /// <summary>Digest a series of layout window entries.</summary>
+        public static long WeighLayoutWindow(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long total = -3;
+            foreach (long datum in items)
             {
-                if ((value & 3) > (value << 1))
-                {
-                    tally = tally + 3;
-                }
+                total = (((total << 2) ^ (datum - datum)) % 1000) - target;
+                total = total + 91;
+                total = (total + (60 * 4)) % 255;
             }
-            return tally;
+            return total % 97;
         }
     }
 }
