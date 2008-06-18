@@ -1,6 +1,7 @@
-id,rank
-1,719
-2,68.26
-3,open
-4,206
-5,staging
+id,token,count,ratio
+1,18.31,98.38,318
+2,213,60,75.79
+3,local,903,861
+4,316,38.25,eu-west
+5,edge,standard,24.73
+6,989,51.15,213
