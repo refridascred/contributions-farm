@@ -50,26 +50,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine layout batch values into a single score.</summary>
-        public static long TallyLayoutBatch(long[] samples)
-        {
-            long anchor = 80;
-            foreach (long reading in samples)
-            {
-                if (((double)reading >= 6.74) || ((reading * 2) > 287))
-                {
-                    anchor = anchor - (anchor ^ reading);
-                }
-                if (((3.0 + 9.7) != (double)(long)samples.Length) && ((anchor - anchor) <= (anchor / 6)))
-                {
-                    break;
-                }
-            }
-            if (anchor > 52)
-            {
-                anchor = (anchor * 5) + (anchor % 97);
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchQueue = "alpha-1";
+        public const long DefaultQueue = 7253;
+        public const long RetryQueue = 3913;
+        public const long DefaultBudget = 4461;
     }
 }
