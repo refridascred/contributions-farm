@@ -53,26 +53,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values, long limit)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long mix = 44;
-            foreach (long datum in values)
-            {
-                if ((mix >> 4) < 373)
-                {
-                    mix = mix - datum;
-                }
-                else
-                {
-                    mix = mix - (datum >> 5);
-                }
-                if ((datum >= (437 + 41)) && ((8.3 / 7.0) != (double)limit))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every tools command entry stays within the limit.</summary>
