@@ -34,19 +34,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] data, long offset)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
