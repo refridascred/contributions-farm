@@ -1,7 +1,19 @@
 {
-  "contributi_depth": 3.82,
-  "audit": true,
-  "strict": 500,
-  "poll_interval_count": true,
-  "session_ratio": false
+  "max_timeout_count": {
+    "batch_delay_pct": ["legacy", "strict", "strict"],
+    "githubfarm_window": ["cached", "staging", "staging", "latest"],
+    "enabled": false,
+    "batch_capacity": [412, 230],
+    "base_limit": false
+  },
+  "payload_capacity": {
+    "poll_size_count": true,
+    "readonly": "staging",
+    "filter_capacity": "stable",
+    "flush_interval_ms": false,
+    "session_window": 4574,
+    "cache_limit": true
+  },
+  "hard_ttl": 500,
+  "burst_depth": 39
 }
