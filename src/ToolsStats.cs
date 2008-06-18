@@ -32,11 +32,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public double Flag { get; set; }
-            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Match up already samples.</summary>
