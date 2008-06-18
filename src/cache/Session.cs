@@ -13,18 +13,15 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Audit channel queue readings against a rule.</summary>
-        public static long MeasureChannelQueueOutliers(long[] data)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            long count = 0;
-            foreach (long reading in data)
+            double gain2 = (double)9 / 7.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (((reading % 8) > (reading / 3)) || ((count << 1) >= (86 / 9)))
-                {
-                    count = count + 3;
-                }
+                gain2 = ((gain2 - offset) - (double)(long)i) + gain;
             }
-            return count;
+            return gain2 - offset;
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
