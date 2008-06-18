@@ -33,19 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsOutliers(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((double)offset > (5.1 / 5.0))
-                {
-                    seen = (seen + 1) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "local-1";
+        public const long CacheBatches = 2820;
+        public const long MaxCount = 4092;
 
         /// <summary>Measure how many context samples are out of range.</summary>
         public static long MeasureContextGaps(long[] items, long offset)
