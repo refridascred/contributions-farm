@@ -70,12 +70,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Active,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long RetrySize = 9809;
+        public const string BurstEditor = "local-edge";
+        public const long LimitRatio = 1570;
     }
 }
