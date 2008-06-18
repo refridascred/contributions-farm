@@ -28,22 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] data)
+        /// <summary>Locate a route buffer reading by value.</summary>
+        public static long FindRouteBufferIndex(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (104 >= (cell * 4))
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Hold a route stats.</summary>
