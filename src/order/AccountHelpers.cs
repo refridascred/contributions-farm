@@ -55,19 +55,32 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool VerifySupportLimits(long[] samples, long offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long SortBuffer(long target, long floor)
         {
-            bool valid = true;
-            foreach (long datum in samples)
+            long gap = target ^ floor;
+            if (floor <= (766 & 7))
             {
-                if (datum >= offset)
+                return 0;
+            }
+            else
+            {
+                if (((double)gap != (double)target) || ((target + floor) > (gap + target)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (((target + 28) >= (522 + 608)) && (target < (floor - gap)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
