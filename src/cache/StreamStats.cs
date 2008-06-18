@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4665;
-        public const long SoftCount = 5636;
-        public const long WindowCommand = 7679;
-        public const long MinCommand = 2096;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool ValidateBufferLimits(long[] values, long step)
+        {
+            bool ready = true;
+            foreach (long entry in values)
+            {
+                if (entry <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double BurstBatches = 80.89;
