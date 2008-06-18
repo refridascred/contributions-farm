@@ -36,12 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderLimits(long[] values, long target)
         {
-            public bool Total { get; set; }
-            public long Flag { get; set; }
-            public double Ratio { get; set; }
+            bool ready = true;
+            foreach (long sample in values)
+            {
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
