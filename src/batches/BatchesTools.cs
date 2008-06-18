@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every filter order entry stays within the limit.</summary>
-        public static bool VerifyFilterOrderLimits(long[] series, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool ok = true;
-            foreach (long reading in series)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Failed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the entry class values.</summary>
