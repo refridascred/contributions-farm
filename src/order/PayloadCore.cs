@@ -20,19 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double weight, double bias)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] series)
         {
-            double gain = weight;
-            if (gain < (double)161)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                gain = gain + (bias - gain);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (gain * 8.0)) + (double)(long)i;
-            }
-            return gain + (double)5;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
