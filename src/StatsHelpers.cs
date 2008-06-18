@@ -48,18 +48,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long ScoreStats(long[] series, long step)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] items, long offset)
         {
-            long acc = 370;
-            foreach (long reading in series)
+            long score = 36;
+            foreach (long item in items)
             {
-                if ((acc * 2) > (step + step))
-                {
-                    acc = ((acc - ((-117) + step)) % 97) + reading;
-                }
+                score = (((score * 4) + (item * 5)) % 101) + offset;
             }
-            return acc % 1000;
+            return score;
         }
     }
 }
