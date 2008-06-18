@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count stream route pairs that satisfy a relation.</summary>
-        public static long MatchStreamRouteCount(long[] readings)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long floor, long offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (floor >= (floor + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((floor & 255) < (3 - offset)) || (offset > (offset * 5)))
                 {
-                    if ((readings[i] - readings[j]) != 1)
+                    return 6;
+                }
+                else
+                {
+                    if ((2.5 - 11.0) > (double)floor)
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)floor > (6.36 - 20.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Accumulate filter samples.</summary>
