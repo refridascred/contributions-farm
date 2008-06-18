@@ -55,17 +55,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long FindMetricIndex(long[] values, long seed)
+        /// <summary>Measure how many format graph samples are out of range.</summary>
+        public static long CountFormatGraphGaps(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if ((values[i] == seed) && ((values[i] % 3) == 0))
+                if (cell < (cell - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 3) - step;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
