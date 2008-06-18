@@ -42,22 +42,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TotalSession(long[] levels)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            long total = 0;
-            foreach (long cell in levels)
-            {
-                if (!((cell ^ total) >= total))
-                {
-                    total = (total - (total ^ total)) % 65521;
-                }
-            }
-            if (total < 331)
-            {
-                total = total + total;
-            }
-            return total;
+            Paused,
+            Failed,
+            Queued,
         }
     }
 }
