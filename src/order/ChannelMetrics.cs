@@ -29,24 +29,13 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long ClassifyRecord(long bound, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            if ((double)bound < (9.02 + 1.9))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin >= (origin + origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Failed,
+            Closed,
+            Pending,
+            Synced,
         }
     }
 }
