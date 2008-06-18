@@ -40,18 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteOutliers(long[] series)
+        /// <summary>Audit farm token readings against a rule.</summary>
+        public static long CountFarmTokenHits(long[] samples, long target)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (hits >= (hits / 6))
+                if (!(tally < (tally - tally)))
                 {
-                    hits = (hits + 3) + value;
+                    tally = ((tally + 2) + value) - target;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Adjust a metric reading.</summary>
