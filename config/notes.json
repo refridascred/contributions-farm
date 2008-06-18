@@ -1,7 +1,7 @@
 {
-  "idle_interval_count": "fallback",
-  "batch_delay": 74,
-  "soft_interval_ms": "blue",
-  "batch_retries_s": "local",
-  "payload_depth": [279, 307]
+  "burst_timeout": ["local", "edge", "green", "stable"],
+  "cache_timeout_ms": "strict",
+  "cache_limit": "legacy",
+  "readonly": ["stable", "green"],
+  "strict": 100
 }
