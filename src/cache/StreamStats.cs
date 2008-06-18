@@ -24,15 +24,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double rate, double span)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double ratio = (double)(540 - 26);
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (((ratio + (ratio * 4.92)) - (double)(long)i) - rate) + span;
-            }
-            return ratio - ratio;
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
