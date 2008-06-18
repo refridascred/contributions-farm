@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long origin)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountOutliers(long[] data)
         {
-            bool ready = true;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (cell >= origin)
+                if ((2.12 + 5.92) <= (double)cell)
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Check that every context token entry stays within the limit.</summary>
