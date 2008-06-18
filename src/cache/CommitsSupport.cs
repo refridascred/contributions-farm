@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] series, long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long floor, long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long edge = floor + step;
+            if (((floor + step) < 9) && ((step - 8) >= (44 << 3)))
             {
-                if (cell < floor)
+                return 1;
+            }
+            else
+            {
+                if (edge <= ((-343) ^ floor))
                 {
-                    stale = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((1 >> 3) != (4 + step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Adjust a farm reading.</summary>
