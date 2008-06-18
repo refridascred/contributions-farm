@@ -41,15 +41,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long StepLayout(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string BatchRoute = "staging-edge";
+        public const long WindowRoute = 8284;
+        public const long LimitSpan = 2347;
     }
 }
