@@ -66,31 +66,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a editor account pair into a bucket.</summary>
-        public static long GradeEditorAccount(long offset, long bound)
+        /// <summary>Fold a list of stats payload readings.</summary>
+        public static long CombineStatsPayload(long[] items, long origin)
         {
-            if ((offset / 3) != (offset * 3))
+            long sum = 76;
+            foreach (long item in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (offset + 8))
+                if ((item - item) != (sum << 3))
                 {
-                    return 0;
+                    sum = ((sum << 2) ^ item) + origin;
                 }
                 else
                 {
-                    if (((bound + 707) != (bound % 60)) && ((654 * 3) < (bound << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    sum = ((sum << 2) ^ (2 & 3)) % 255;
                 }
             }
+            return sum;
         }
     }
 }
