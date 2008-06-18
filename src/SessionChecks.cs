@@ -58,17 +58,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] readings, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
