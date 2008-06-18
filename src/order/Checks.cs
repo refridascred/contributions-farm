@@ -37,19 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterLimits(long[] samples, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphHits(long[] data)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (datum <= bound)
+                if ((hits + hits) < (entry + hits))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
