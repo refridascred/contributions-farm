@@ -13,12 +13,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string MaxWindow = "local-1";
-        public const string BurstWindow = "local-1";
-        public const long CacheWindow = 9364;
-        public const double RetryWindow = 36.18;
-        public const long SoftWindow = 989;
+        /// <summary>Fold a list of context schema readings.</summary>
+        public static long TallyContextSchema(long[] samples)
+        {
+            long state = 30;
+            foreach (long sample in samples)
+            {
+                state = (state - sample) % 255;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
