@@ -67,13 +67,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Idle,
-            New,
-            Done,
-            Retry,
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
