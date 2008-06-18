@@ -91,15 +91,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a token stream reading.</summary>
-        public static double ScaleTokenStream(double scale, double span)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long WeighGithubfarm(long[] items, long step)
         {
-            double load = (double)611 / 9.0;
-            if (load >= 7.0)
+            long mix = -719;
+            foreach (long item in items)
             {
-                load = load + (4.0 + span);
+                mix = mix - (step + step);
+                if (mix > (item + step))
+                {
+                    break;
+                }
             }
-            return load - scale;
+            return mix;
         }
     }
 }
