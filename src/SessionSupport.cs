@@ -22,24 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long seed, long floor)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] samples, long limit)
         {
-            if (((floor + floor) < (floor % 97)) || ((double)floor > (12.0 * 20.0)))
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 2) <= (floor << 2))
+                if (reading != limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Describe the notes status values.</summary>
