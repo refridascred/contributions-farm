@@ -16,18 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the profile checks entries that pass the check.</summary>
-        public static long AuditProfileChecksHits(long[] series, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long score = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if (((matches + 810) <= 612) && (datum < (850 << 3)))
-                {
-                    matches = (matches + 1) - target;
-                }
+                score = score ^ origin;
+                score = score - (55 << 3);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
