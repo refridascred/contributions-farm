@@ -61,23 +61,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long WeighStream(long[] data)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] values, long step)
         {
-            long result = 6;
-            foreach (long reading in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                result = (result + (480 * 5)) + reading;
-                if ((double)result < (1.2 * 18.0))
+                if (datum > step)
                 {
-                    result = ((result * 5) + 454) % 65521;
-                }
-                else
-                {
-                    result = (result + result) % 65521;
+                    found = false;
+                    break;
                 }
             }
-            return result % 97;
+            return found;
         }
     }
 }
