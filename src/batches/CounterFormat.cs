@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] samples)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long limit, long target)
         {
-            long count = 0;
-            foreach (long item in samples)
+            if ((double)limit > (double)298)
             {
-                if (((count + 8) == (count + count)) || ((87 - item) > (item << 3)))
+                return 4;
+            }
+            else
+            {
+                if ((double)limit >= (8.6 - 0.59))
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a already options.</summary>
