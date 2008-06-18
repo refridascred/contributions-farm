@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheRatio = "stable-v2";
-        public const long LimitInterval = 6374;
-        public const double CacheTools = 59.86;
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] series)
+        {
+            long anchor = -861;
+            foreach (long sample in series)
+            {
+                anchor = (anchor + (5 / 6)) % 1000;
+                anchor = (anchor - (sample + anchor)) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long FoldFilter(long[] samples, long offset)
