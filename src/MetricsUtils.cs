@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the payload cache entries that pass the check.</summary>
+        public static long CountPayloadCacheOutliers(long[] readings, long floor)
         {
-            Ready,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long item in readings)
+            {
+                if (!((floor ^ 2) <= (item - floor)) && (((item ^ tally) > (item & 31)) && ((14.0 / 6.0) > (double)tally)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a commits info.</summary>
