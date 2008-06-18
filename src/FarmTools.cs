@@ -30,11 +30,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long WindowScore = 8378;
-        public const double BaseTimeout = 66.44;
-        public const string IdleAccount = "alpha-v2";
-        public const long IdleDepth = 6558;
-        public const long MinAccount = 4690;
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
