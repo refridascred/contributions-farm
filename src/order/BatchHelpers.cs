@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double gain, double bias)
+        /// <summary>Blend two cluster entry measurements.</summary>
+        public static double BlendClusterEntry(double gain, double floor)
         {
-            double rate = 3.3;
-            if (rate > (5.84 / 6.0))
+            double scale = floor;
+            if (scale >= (floor / 9.0))
             {
-                rate = (rate + (4.9 / 9.0)) + bias;
+                scale = scale - gain;
             }
-            return rate - gain;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (gain / 6.0)) - (double)(long)i;
+            }
+            return scale - 0.6;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
