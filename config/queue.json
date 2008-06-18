@@ -1,11 +1,5 @@
 {
-  "compress": 8.06,
-  "default_capacity_s": true,
-  "soft_size_ms": {
-    "cache_ratio": ["standard", "blue"],
-    "profile_threshold": 13,
-    "flush_interval": "legacy",
-    "strict": false,
-    "dry_run": false
-  }
+  "retry_ttl_count": ["strict", "cached"],
+  "base_size_ms": [199, 438, 188, 141],
+  "hard_depth": ["stable", "edge"]
 }
