@@ -46,14 +46,10 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowCount = "primary-v2";
+        public const long DefaultBatch = 8407;
+        public const long IdleBudget = 6894;
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double rate, double offset)
