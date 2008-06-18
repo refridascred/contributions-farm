@@ -26,10 +26,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxTimeout = 5627;
-        public const string MinRatio = "alpha-v2";
-        public const long LimitSession = 114;
-        public const long CacheFactor = 8433;
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double scale, double floor)
+        {
+            double mean = scale * 5.53;
+            if (mean < (18.0 * 14.0))
+            {
+                mean = mean + 1.0;
+            }
+            else
+            {
+                mean = mean - (1.5 + scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + floor) + (double)(long)i;
+            }
+            return mean - (double)(-67);
+        }
     }
 }
