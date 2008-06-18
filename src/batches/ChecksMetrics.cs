@@ -43,14 +43,18 @@ namespace Common.Utilities
             return bias2 - (double)207;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] data)
         {
-            New,
-            Synced,
-            Idle,
-            Closed,
-            Paused,
+            long mix = -34;
+            foreach (long entry in data)
+            {
+                if (!((double)entry != (8.1 + 7.0)))
+                {
+                    mix = mix + ((-49) & 1);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Blend two token measurements.</summary>
