@@ -27,10 +27,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 59.14;
-        public const long WindowTimeout = 568;
-        public const long IdleDepth = 4216;
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long step)
+        {
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((tally > (value / 6)) || ((step & 63) <= value))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a commits batches pair into a bucket.</summary>
         public static long SortCommitsBatches(long target, long offset)
