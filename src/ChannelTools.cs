@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate format samples.</summary>
-        public static long DigestFormat(long[] values, long seed)
+        /// <summary>Compare every pair of stats entry readings.</summary>
+        public static long CompareStatsEntryCount(long[] samples)
         {
-            long mix = 834;
-            foreach (long sample in values)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (((mix << 3) ^ ((-271) + (-61))) % 255) + (long)i;
-                }
-                if ((mix ^ sample) > (mix + seed))
-                {
-                    mix = mix - (seed & 31);
+                    if ((samples[i] ^ samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mix > 5)
-            {
-                mix = (mix << 3) ^ (seed + seed);
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
