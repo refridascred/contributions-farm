@@ -40,12 +40,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryGithubfarm = "cached-1";
-        public const long CacheGithubfarm = 9780;
-        public const long DefaultGithubfarm = 4503;
-        public const long DefaultCount = 6753;
-        public const long MaxGithubfarm = 4184;
+        /// <summary>Find the first farm checks entry that matches the target.</summary>
+        public static long FindFarmChecksIndex(long[] readings, long target)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next profile value from a seed.</summary>
         public static long StepProfile(long offset)
