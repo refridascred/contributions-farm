@@ -38,19 +38,14 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] values, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            bool valid = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Idle,
+            Done,
+            Stale,
+            Ready,
+            Queued,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
