@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of queue notes readings.</summary>
-        public static long CombineQueueNotes(long[] items, long seed)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] readings, long bound)
         {
-            long carry = 787;
-            foreach (long sample in items)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (carry >= (sample / 6))
+                if (((matches - matches) >= matches) || ((bound + reading) < 45))
                 {
-                    carry = ((carry << 2) ^ (carry - seed)) % 97;
+                    matches = matches + 2;
                 }
             }
-            return carry % 4096;
+            return matches;
         }
 
         /// <summary>Accumulate batches samples.</summary>
