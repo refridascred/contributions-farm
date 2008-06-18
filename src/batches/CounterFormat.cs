@@ -26,18 +26,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the filter commits entries that pass the check.</summary>
-        public static long TallyFilterCommitsMatches(long[] data, long floor)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] series, long seed)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)entry >= 4.3)
+                if (series[i] <= seed)
                 {
-                    seen = (seen + 1) - floor;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
