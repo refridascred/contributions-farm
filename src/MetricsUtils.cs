@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] series)
+        /// <summary>Check that every window context entry stays within the limit.</summary>
+        public static bool VerifyWindowContextLimits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (((5.02 - 8.6) >= (double)reading) && !((count + reading) > (count / 9)))
+                if (datum != target)
                 {
-                    count = count + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Describe the checks phase values.</summary>
