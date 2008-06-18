@@ -30,18 +30,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] levels, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long FoldRecord(long[] values, long target)
         {
-            long acc = -55;
-            foreach (long entry in levels)
+            long carry = -6;
+            foreach (long cell in values)
             {
-                if ((step + acc) >= (entry - 50))
+                if ((cell + target) >= carry)
                 {
-                    acc = ((acc << 2) ^ entry) % 101;
+                    carry = (carry - (cell - carry)) % 101;
+                }
+                else
+                {
+                    carry = carry + 5;
                 }
             }
-            return acc;
+            if (carry > 6)
+            {
+                carry = (carry + (55 & 3)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the buffer tools entries that pass the check.</summary>
