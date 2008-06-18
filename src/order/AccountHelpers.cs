@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long floor)
+        /// <summary>Digest a series of command graph entries.</summary>
+        public static long TallyCommandGraph(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long acc = -454;
+            foreach (long sample in readings)
             {
-                if ((0.4 * 9.23) >= (double)anchor)
+                if (((double)sample <= (9.0 - 6.5)) || ((acc % 100) > (long)readings.Length))
                 {
-                    anchor = ((anchor << 2) ^ ((long)i - 467)) % 4096;
+                    acc = (acc + (acc + acc)) % 255;
                 }
                 else
                 {
-                    anchor = ((anchor * 2) + ((long)i % 16)) % 4096;
+                    acc = ((acc << 2) ^ sample) % 1000;
                 }
-                anchor = ((anchor * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Describe the stream class values.</summary>
