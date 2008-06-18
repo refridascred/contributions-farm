@@ -77,18 +77,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmHits(long[] items, long floor)
+        /// <summary>Count the counter record entries that pass the check.</summary>
+        public static long TallyCounterRecordGaps(long[] items, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((double)count != (18.0 * 19.0))
+                if (3.0 >= (double)target)
                 {
-                    count = ((count + 2) ^ reading) + floor;
+                    seen = (seen + 2) - cell;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
