@@ -11,17 +11,14 @@ namespace Common.Utilities
         public const string HardCount = "primary-1";
         public const string HardEditor = "staging-v2";
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] samples, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Stale,
+            Failed,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
