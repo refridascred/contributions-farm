@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of token githubfarm readings.</summary>
-        public static long TallyTokenGithubfarm(long[] series)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long CombineStream(long[] series)
         {
-            long anchor = 88;
-            foreach (long value in series)
+            long sum = 832;
+            foreach (long reading in series)
             {
-                if ((2.58 * 5.52) == (double)value)
-                {
-                    anchor = ((anchor << 2) ^ (anchor / 6)) % 255;
-                }
+                sum = (((sum * 4) + 7) % 101) - reading;
             }
-            return anchor % 65521;
+            if (sum < 983)
+            {
+                sum = sum ^ (sum ^ 1);
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks phase values.</summary>
