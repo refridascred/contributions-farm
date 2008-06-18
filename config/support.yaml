@@ -1,8 +1,8 @@
 # support settings
-sync_limit_pct: 30
-cache_interval_s:
-  - primary
-  - open
-cache_threshold_ms: 78
-profile_capacity: 78.22
-soft_capacity: true
+token_threshold:
+  - 286
+  - 122
+persist: 73.18
+session_limit: primary
+audit: 250
+idle_depth_count: 37
