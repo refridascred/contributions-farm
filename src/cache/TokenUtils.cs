@@ -16,11 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ProjectGraph(double rate, double span)
+        /// <summary>Look up the position of a metric window sample.</summary>
+        public static long LookupMetricWindowIndex(long[] readings, long step)
         {
-            double load = rate - (11.0 - rate);
-            return load - span;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
