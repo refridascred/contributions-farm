@@ -43,30 +43,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] series)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsOutliers(long[] data)
         {
-            long total = 4;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if ((6.9 - 8.3) != (double)(long)series.Length)
+                if (!((double)(long)data.Length < (15.0 * 14.0)))
                 {
-                    total = (total ^ (total >> 4)) % 255;
+                    seen = (seen + 3) + entry;
                 }
                 else
                 {
-                    total = (total * 3) + (item + total);
-                }
-                if ((double)item > (9.0 - 6.0))
-                {
-                    break;
+                    seen = seen - 1;
                 }
             }
-            if (total < 10)
-            {
-                total = total + total;
-            }
-            return total;
+            return seen;
         }
     }
 }
