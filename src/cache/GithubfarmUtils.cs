@@ -43,12 +43,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double weight, double floor)
         {
-            Failed,
-            Paused,
-            Done,
+            double weight2 = weight;
+            if (weight2 >= weight)
+            {
+                weight2 = weight2 - 9.6;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 + floor) - (double)(long)i;
+            }
+            return weight2 + weight2;
         }
     }
 }
