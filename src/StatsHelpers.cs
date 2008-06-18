@@ -68,15 +68,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] items, long offset)
-        {
-            long score = 36;
-            foreach (long item in items)
-            {
-                score = (((score * 4) + (item * 5)) % 101) + offset;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double StepSpan = 42.96;
+        public const string LimitCluster = "stable-v2";
+        public const long WindowLevel = 2609;
+        public const string BaseSize = "strict-v2";
     }
 }
