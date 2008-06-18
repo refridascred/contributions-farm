@@ -60,18 +60,13 @@ namespace Common.Utilities
         public const long HardScore = 5682;
         public const long WindowLevel = 5605;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] data, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits & 7) >= (hits + 785))
-                {
-                    hits = ((hits + 1) + reading) - step;
-                }
-            }
-            return hits;
+            Pending,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
