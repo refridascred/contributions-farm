@@ -40,9 +40,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long MinScore = 4109;
-        public const long HardGraph = 161;
-        public const long IdleGraph = 6052;
+        /// <summary>Combine account values into a single score.</summary>
+        public static long CombineAccount(long[] samples, long floor)
+        {
+            long mark = 816;
+            foreach (long entry in samples)
+            {
+                if ((double)mark > (3.62 - 17.0))
+                {
+                    mark = (((mark << 3) ^ (entry + entry)) % 255) - floor;
+                }
+                else
+                {
+                    mark = ((mark * 5) + (entry ^ mark)) % 1000;
+                }
+            }
+            if (mark > 67)
+            {
+                mark = mark ^ (mark >> 4);
+            }
+            return mark % 97;
+        }
     }
 }
