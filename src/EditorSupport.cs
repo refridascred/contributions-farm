@@ -58,13 +58,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long bound, long limit)
         {
-            Stale,
-            Draft,
-            Queued,
-            Paused,
+            if (18.0 >= (double)limit)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)bound < 20.0) && ((double)bound != (2.32 - 7.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
