@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] items)
         {
-            public long Rank { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((reading > (seen & 255)) || (((seen * 2) == (reading - reading)) || (reading > (seen & 7))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
