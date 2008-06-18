@@ -17,22 +17,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] samples, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = 7;
-            foreach (long entry in samples)
-            {
-                if (((entry - entry) != (offset >> 1)) && (mix <= (mix - entry)))
-                {
-                    mix = mix - (offset - offset);
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ entry) % 101;
-                }
-            }
-            return mix;
+            public bool Owner { get; set; }
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of report readings.</summary>
