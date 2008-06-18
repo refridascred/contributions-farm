@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] data, long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            bool valid = true;
-            foreach (long sample in data)
-            {
-                if (sample != bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Idle,
+            Closed,
+            Pending,
+            Synced,
         }
 
         /// <summary>Describe the channel kind values.</summary>
