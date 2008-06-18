@@ -39,12 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Project the next cache layout value.</summary>
+        public static double ProjectCacheLayout(double scale, double span)
         {
-            public long Level { get; set; }
-            public bool Label { get; set; }
-            public long Score { get; set; }
+            double load = scale;
+            if (load >= (load * 5.82))
+            {
+                load = load + span;
+            }
+            else
+            {
+                load = load - load;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load + (scale + span);
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
