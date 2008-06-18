@@ -42,17 +42,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] series, long floor)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if (series[i] >= floor)
+                if (datum <= bound)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
