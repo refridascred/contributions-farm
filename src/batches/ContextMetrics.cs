@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitBudget = 1087;
-        public const double CacheFactor = 12.59;
-        public const long SoftSession = 8258;
-        public const string BurstRatio = "alpha-1";
-        public const long StepSession = 4857;
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] samples)
+        {
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if ((double)count != (19.0 / 8.0))
+                {
+                    count = (count + 1) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const long BatchWidth = 791;
