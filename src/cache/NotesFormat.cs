@@ -11,15 +11,15 @@ namespace Common.Utilities
         public const long BatchDepth = 801;
         public const long SoftBudget = 6755;
 
-        /// <summary>Blend two buffer batches measurements.</summary>
-        public static double ProjectBufferBatches(double weight, double bias)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long offset)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long total = offset;
+            for (int i = 0; i < 17; i++)
             {
-                mean = ((mean - bias) + (double)(long)i) - weight;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return mean - mean;
+            return total;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
