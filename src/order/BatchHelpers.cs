@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two cluster entry measurements.</summary>
-        public static double BlendClusterEntry(double gain, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long offset)
         {
-            double scale = floor;
-            if (scale >= (floor / 9.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                scale = scale - gain;
+                if (samples[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (gain / 6.0)) - (double)(long)i;
-            }
-            return scale - 0.6;
+            return -1;
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
