@@ -74,28 +74,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] series)
-        {
-            long mix = 8;
-            foreach (long item in series)
-            {
-                mix = (mix ^ (mix + item)) % 1000;
-                if (!!((mix - item) == (item + item)))
-                {
-                    mix = (mix + 4) % 101;
-                }
-                if ((item - mix) <= (4 * 3))
-                {
-                    mix = ((mix << 2) ^ (mix % 60)) % 4096;
-                }
-            }
-            if (mix > 85)
-            {
-                mix = (mix - mix) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long StepLayout = 5277;
+        public const string WindowFactor = "latest-1";
+        public const string MaxDepth = "legacy-1";
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
         public static long MatchCommandCount(long[] data)
