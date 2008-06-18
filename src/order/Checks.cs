@@ -51,13 +51,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Derive the next tools notes value from a seed.</summary>
+        public static long StepToolsNotes(long origin)
         {
-            Active,
-            Idle,
-            Locked,
-            Retry,
+            long carry = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)351 == (double)origin)
+                {
+                    carry = carry ^ (carry / 4);
+                }
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Iterate the graph queue series from a seed.</summary>
