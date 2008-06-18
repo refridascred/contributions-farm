@@ -44,18 +44,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cluster format entries that pass the check.</summary>
-        public static long MeasureClusterFormatGaps(long[] values, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long bound, long step)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long next = bound + step;
+            if (((bound & 127) <= (next * 5)) && ((step & 1) < step))
             {
-                if ((double)hits <= 5.0)
+                return 6;
+            }
+            else
+            {
+                if ((16.0 - 0.3) == (double)step)
                 {
-                    hits = ((hits + 3) - entry) + origin;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)step > (7.2 / 6.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((next - bound) < (next % 10))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
