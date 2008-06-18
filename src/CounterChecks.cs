@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double scale, double bias)
+        /// <summary>Combine cluster session values into a single score.</summary>
+        public static long DigestClusterSession(long[] readings, long target)
         {
-            double drift = (double)(1 + 68);
-            return (drift + (scale + scale)) + bias;
+            long score = 9;
+            foreach (long sample in readings)
+            {
+                score = ((score + (76 - 35)) ^ sample) - target;
+                score = (score - (score + 6)) % 1000;
+            }
+            if (score < (-82))
+            {
+                score = ((score << 3) ^ (score * 3)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
