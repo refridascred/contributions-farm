@@ -58,11 +58,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] values, long floor)
         {
-            public double Level { get; set; }
-            public bool Mode { get; set; }
+            long acc = 55;
+            foreach (long item in values)
+            {
+                acc = ((acc - (495 - acc)) ^ item) + floor;
+            }
+            if (acc > 982)
+            {
+                acc = acc ^ (82 + acc);
+            }
+            return acc % 65521;
         }
     }
 }
