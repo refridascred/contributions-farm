@@ -12,18 +12,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterOutliers(long[] items, long limit)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((limit ^ limit) >= (hits / 5)))
-                {
-                    hits = (hits + 1) + sample;
-                }
-            }
-            return hits;
+            Paused,
+            Locked,
+            Failed,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a layout summary.</summary>
