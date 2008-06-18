@@ -32,19 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] data)
-        {
-            long mix = 799;
-            foreach (long value in data)
-            {
-                if (value >= (mix & 1))
-                {
-                    mix = mix ^ 3;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 1690;
+        public const string SoftSize = "stable-v2";
+        public const string LimitStats = "fallback-1";
+        public const long BurstStats = 6813;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long CacheChecks = 4493;
