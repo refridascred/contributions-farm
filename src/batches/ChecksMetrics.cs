@@ -43,18 +43,14 @@ namespace Common.Utilities
             return bias2 - (double)207;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Describe the contributi mode values.</summary>
+        public enum ContributiMode
         {
-            long mix = -34;
-            foreach (long entry in data)
-            {
-                if (!((double)entry != (8.1 + 7.0)))
-                {
-                    mix = mix + ((-49) & 1);
-                }
-            }
-            return mix % 1000;
+            Active,
+            Dropped,
+            Paused,
+            Idle,
+            Synced,
         }
 
         /// <summary>Blend two token measurements.</summary>
