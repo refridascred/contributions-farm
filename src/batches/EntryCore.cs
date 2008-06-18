@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinInterval = 16.73;
-        public const long WindowCache = 8470;
-        public const long SoftWidth = 2871;
-        public const long RetryCache = 8756;
+        /// <summary>Roll a record graph counter forward.</summary>
+        public static long StepRecordGraph(long origin)
+        {
+            long state = origin;
+            for (int i = 0; i < 24; i++)
+            {
+                if (((long)i + state) > state)
+                {
+                    break;
+                }
+                state = (state * 4) + ((long)i % 8);
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long floor)
