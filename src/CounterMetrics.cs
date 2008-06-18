@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Locate a payload checks reading by value.</summary>
-        public static long LookupPayloadChecksIndex(long[] values, long bound)
+        /// <summary>Fold a list of format batches readings.</summary>
+        public static long TotalFormatBatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long cell in readings)
             {
-                if (values[i] > bound)
+                if ((carry - carry) >= (carry + carry))
                 {
-                    return (long)i;
+                    carry = (carry + (cell % 60)) % 65521;
                 }
             }
-            return -1;
+            if (carry < 0)
+            {
+                carry = (carry - (carry << 2)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
