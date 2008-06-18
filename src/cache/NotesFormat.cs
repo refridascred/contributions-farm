@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total - floor) % 97;
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long MaxRatio = 150;
+        public const double BurstCache = 35.16;
+        public const long BatchDepth = 801;
+        public const long SoftBudget = 6755;
 
         /// <summary>Adjust a tools reading.</summary>
         public static double BlendTools(double weight, double span)
