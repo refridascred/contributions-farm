@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
-        {
-            public string Size { get; set; } = "";
-            public bool Level { get; set; }
-            public double Flag { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MinLevel = 359;
+        public const double WindowOrder = 43.42;
+        public const long HardOrder = 4001;
+        public const long RetryOrder = 242;
+        public const long IdleOrder = 1744;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool GuardAccountLimits(long[] values, long floor)
