@@ -32,27 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] samples)
-        {
-            long anchor = 6;
-            foreach (long reading in samples)
-            {
-                if ((6 * 4) > (anchor + reading))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    anchor = ((anchor * 4) + (long)i) % 255;
-                }
-                if (((reading / 2) <= (reading * 2)) || ((double)anchor >= (8.63 - 5.9)))
-                {
-                    anchor = ((anchor << 2) ^ (anchor % 60)) % 1000;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string LimitMetric = "strict-1";
+        public const string MaxWidth = "primary";
+        public const long MaxSize = 3330;
+        public const long DefaultFactor = 599;
+        public const long CacheMetric = 2965;
 
         /// <summary>Look up the position of a contributi metric sample.</summary>
         public static long SeekContributiMetricIndex(long[] items, long origin)
