@@ -46,21 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count checks report pairs that satisfy a relation.</summary>
-        public static long OverlapChecksReportCount(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] samples)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 65;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((item * 5) != (anchor + item))
                 {
-                    if ((items[i] - items[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor ^ anchor;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
