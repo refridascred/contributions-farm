@@ -5,26 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long SeriesGithubfarm(long limit)
         {
-            long carry = 215;
-            foreach (long value in items)
+            long result = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if ((carry ^ value) > (carry + carry))
-                {
-                    carry = ((carry << 2) ^ (value - value)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ (carry << 2)) % 101;
-                }
+                result = (result << 3) ^ (result % 10);
+                result = ((result * 5) + (long)i) % 101;
             }
-            if (carry > 228)
-            {
-                carry = (carry - (carry / 3)) % 255;
-            }
-            return carry;
+            return result;
         }
 
         /// <summary>Describe the notes kind values.</summary>
