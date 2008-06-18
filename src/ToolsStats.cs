@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the command report series from a seed.</summary>
-        public static long StepCommandReport(long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry ^ ((-4) << 3)) % 1000;
-                if ((target - carry) <= ((long)i % 64))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] - levels[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the account level values.</summary>
