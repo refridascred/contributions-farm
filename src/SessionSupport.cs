@@ -19,22 +19,22 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long TallyOrderHits(long[] data, long bound)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long CombineSchema(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long carry = 82;
+            foreach (long datum in samples)
             {
-                if ((tally % 10) < (bound & 31))
+                if ((57 << 2) != (datum % 7))
                 {
-                    tally = (tally + 1) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    carry = (carry - carry) % 97;
                 }
             }
-            return tally;
+            if (carry > 55)
+            {
+                carry = ((carry << 2) ^ (carry - carry)) % 97;
+            }
+            return carry;
         }
     }
 }
