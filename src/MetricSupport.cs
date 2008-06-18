@@ -22,18 +22,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] values, long offset)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long GradeSupport(long bound, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long span = bound - offset;
+            if ((double)span >= (double)741)
             {
-                if ((offset + 85) == (518 + datum))
+                return 5;
+            }
+            else
+            {
+                if (((bound - span) != (offset / 4)) && ((double)offset == (1.4 - 4.89)))
                 {
-                    matches = matches + 2;
+                    return 6;
+                }
+                else
+                {
+                    if (((bound - span) >= (offset >> 4)) || ((span + (-1)) > (bound + bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((span + span) >= (596 << 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
