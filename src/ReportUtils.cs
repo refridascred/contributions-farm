@@ -56,19 +56,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool CheckTokenLimits(long[] values, long step)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels, long offset)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if (cell != step)
+                if ((double)offset >= (1.0 - 5.41))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) + cell;
                 }
             }
-            return stale;
+            return matches;
         }
     }
 }
