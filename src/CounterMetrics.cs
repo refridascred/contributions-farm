@@ -28,19 +28,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksBounds(long[] levels, long offset)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in levels)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Adjust a farm reading.</summary>
