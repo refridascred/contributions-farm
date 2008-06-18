@@ -71,25 +71,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long limit, long target)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            long bound = limit ^ target;
-            if (((limit + limit) != (limit + bound)) || (target <= (target + bound)))
+            long sum = step;
+            for (int i = 0; i < 18; i++)
             {
-                return 4;
+                sum = (sum - step) % 255;
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((target >> 3) >= (bound + limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return sum;
         }
     }
 }
