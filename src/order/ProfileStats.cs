@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of editor command readings.</summary>
-        public static long TotalEditorCommand(long[] samples, long step)
-        {
-            long acc = 36;
-            foreach (long datum in samples)
-            {
-                acc = ((acc ^ (acc - acc)) - datum) + step;
-            }
-            if (acc < 6)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BatchEditor = 4785;
+        public const string MaxEditor = "cached";
+        public const string HardCount = "primary-1";
+        public const string HardEditor = "staging-v2";
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
         public static long SeriesGithubfarm(long target)
