@@ -20,18 +20,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format payload entries that pass the check.</summary>
-        public static long AuditFormatPayloadGaps(long[] data)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long target, long seed)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((0.6 / 4.0) >= (double)target)
             {
-                if ((tally << 3) < tally)
+                return 3;
+            }
+            else
+            {
+                if (!((211 - seed) <= (875 & 1)))
                 {
-                    tally = (tally + 2) - reading;
+                    return 7;
+                }
+                else
+                {
+                    if ((822 >> 1) >= seed)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
