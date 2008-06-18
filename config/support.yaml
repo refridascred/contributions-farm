@@ -1,7 +1,23 @@
 # support settings
-sync_depth_s: true
-hard_ttl: strict
-max_ratio_count: 8422
-order_timeout: true
-burst_interval: true
-cache_retries_pct: eu-west
+queue_ttl: standard
+persist:
+  notes_retries:
+    checks_delay: 99
+    enabled: stable
+    batch_capacity_pct: edge
+    default_threshold_s: primary
+    burst_capacity:
+      - primary
+      - standard
+  enabled:
+    record_size:
+      - blue
+      - green
+    command_ratio: fallback
+    soft_threshold_ms: staging
+  counter_size: 84
+  sync_window_pct: open
+warm_threshold_pct: 27
+batch_window: 4
+soft_ratio_ms: strict
+enabled: edge
