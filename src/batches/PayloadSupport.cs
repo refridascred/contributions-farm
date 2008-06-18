@@ -31,19 +31,17 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long CombineQueue(long[] samples, long limit)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long FindAccountIndex(long[] values, long bound)
         {
-            long acc = 3;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((8.63 + 7.5) != (double)reading)
+                if ((values[i] >= bound) && ((values[i] % 3) == 0))
                 {
-                    acc = (((acc << 3) ^ (acc % 2)) % 101) - limit;
+                    return (long)i;
                 }
-                acc = (acc ^ acc) % 97;
             }
-            return acc;
+            return -1;
         }
     }
 }
