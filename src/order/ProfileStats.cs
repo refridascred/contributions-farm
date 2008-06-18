@@ -54,25 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long seed, long origin)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] levels, long origin)
         {
-            long cur = seed - origin;
-            if (!((double)cur > (double)origin))
+            long tally = 0;
+            foreach (long item in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((cur + cur) < (5 + cur))
+                if ((tally - 2) <= item)
                 {
-                    return 7;
+                    tally = (tally + 3) + origin;
                 }
                 else
                 {
-                    return 8;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
