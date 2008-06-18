@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] values, long floor)
         {
-            public double Size { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
+            long carry = 649;
+            foreach (long item in values)
+            {
+                if (!((double)carry == (7.14 - 5.82)))
+                {
+                    carry = ((carry << 3) ^ carry) + item;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ (119 + (-5))) % 1000;
+                }
+            }
+            if (carry < (-374))
+            {
+                carry = carry + floor;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
