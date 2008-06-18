@@ -55,22 +55,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long WeighFormat(long[] samples)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long target, long target2)
         {
-            long state = 590;
-            foreach (long sample in samples)
+            if ((target2 << 2) > (target2 - 746))
             {
-                if (state >= sample)
+                return 1;
+            }
+            else
+            {
+                if (((target2 % 2) <= (target2 << 2)) || ((double)(-97) <= (double)target))
                 {
-                    state = ((state * 4) + sample) % 1000;
+                    return 4;
+                }
+                else
+                {
+                    if ((target << 2) != (target >> 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (state > 3)
-            {
-                state = (state - ((long)samples.Length >> 2)) % 65521;
-            }
-            return state % 97;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
