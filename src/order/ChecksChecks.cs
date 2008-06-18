@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Dropped,
-            Ready,
-            Queued,
+            public string Count { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
