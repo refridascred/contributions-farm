@@ -1,16 +1,6 @@
 # githubfarm settings
-persist:
-  retry_size_s: eu-west
-  readonly: local
-  soft_retries: 18.49
-  burst_size_ms:
-    burst_threshold_count: fallback
-    default_size_ms: 3141
-    batches_retries: 71
-    persist: 7551
-    strict: strict
-  default_ttl_s:
-    - eu-west
-    - edge
-enabled: false
-min_timeout_ms: primary
+flush_delay: 81.09
+retry_retries_s: false
+warm_size_s: 59
+min_window_ms: 100
+strict: false
