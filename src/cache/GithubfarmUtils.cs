@@ -30,10 +30,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 7092;
-        public const double CacheFactor = 47.1;
-        public const double LimitBatches = 31.88;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] items, long offset)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= offset) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long WindowInterval = 1067;
