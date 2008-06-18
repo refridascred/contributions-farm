@@ -84,11 +84,19 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool VerifySupportLimits(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine batch command values into a single score.</summary>
