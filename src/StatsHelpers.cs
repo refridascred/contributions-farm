@@ -34,23 +34,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsGaps(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)matches > (6.0 * 2.1))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 9319;
+        public const long StepSupport = 4482;
+        public const long DefaultBudget = 2835;
+        public const long CacheSupport = 3416;
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
