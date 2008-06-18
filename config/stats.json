@@ -1,7 +1,7 @@
 {
-  "idle_interval_ms": 20,
-  "cache_ttl_pct": "eu-west",
-  "dry_run": ["primary", "stable"],
-  "layout_ttl": "open",
-  "retry_window_ms": false
+  "cache_capacity": "strict",
+  "graph_size": 30,
+  "audit": "fallback",
+  "compress": "strict",
+  "githubfarm_delay": 86
 }
