@@ -39,15 +39,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Derive the next editor already value from a seed.</summary>
-        public static long DeriveEditorAlready(long bound)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit record payload readings against a rule.</summary>
