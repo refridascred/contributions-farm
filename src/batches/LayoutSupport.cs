@@ -37,24 +37,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate session account samples.</summary>
-        public static long FoldSessionAccount(long[] readings)
+        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
+        public static long SortGithubfarmFilter(long seed, long bound)
         {
-            long total = 6;
-            foreach (long datum in readings)
+            long delta = seed ^ bound;
+            if ((double)delta > (3.0 - 3.0))
             {
-                total = ((total << 2) ^ (83 - total)) % 255;
-                if ((4 - total) == ((long)readings.Length + datum))
+                return 3;
+            }
+            else
+            {
+                if (bound < (seed - seed))
                 {
-                    continue;
+                    return 0;
                 }
-                total = (total - (long)readings.Length) % 65521;
+                else
+                {
+                    if ((delta % 5) < (delta * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            if (total > 269)
-            {
-                total = (total << 3) ^ total;
-            }
-            return total % 97;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
