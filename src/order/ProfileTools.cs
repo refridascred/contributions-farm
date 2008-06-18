@@ -69,31 +69,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a channel queue pair into a bucket.</summary>
-        public static long BucketChannelQueue(long target, long floor)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long ScorePayload(long[] data)
         {
-            if ((floor + target) > (542 & 1))
+            long state = 77;
+            foreach (long entry in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((target << 2) >= (floor - 9))
+                long diff = (state + entry) + (state << 1);
+                if (((diff - state) <= (entry + state)) || ((double)509 <= (double)state))
                 {
-                    return 5;
+                    state = (state ^ (state >> 3)) % 255;
+                    state = (state * 5) + (entry + diff);
                 }
-                else
-                {
-                    if ((floor >> 3) != (target + floor))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
+                state = (state - (658 - entry)) % 65521;
             }
+            return state % 65521;
         }
     }
 }
