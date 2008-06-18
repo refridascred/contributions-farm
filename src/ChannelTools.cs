@@ -25,19 +25,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsBounds(long[] values, long step)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Retry,
+            New,
+            Done,
+            Synced,
         }
     }
 }
