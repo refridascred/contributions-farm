@@ -20,28 +20,35 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long BucketBatch(long target, long seed)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long seed, long target)
         {
-            if ((0.6 / 4.0) >= (double)target)
+            if ((double)target == (double)10)
             {
-                return 3;
+                return 0;
             }
             else
             {
-                if (!((211 - seed) <= (875 & 1)))
+                if (!(8.2 <= (double)target))
                 {
-                    return 7;
+                    return 3;
                 }
                 else
                 {
-                    if ((822 >> 1) >= seed)
+                    if (target < seed)
                     {
-                        return 2;
+                        return 1;
                     }
                     else
                     {
-                        return 6;
+                        if (seed <= (7 + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
