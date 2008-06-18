@@ -20,15 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double ratio, double offset)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] series, long seed)
         {
-            double scale = offset;
-            if (scale >= 18.0)
+            long anchor = 40;
+            foreach (long datum in series)
             {
-                scale = scale - (scale - ratio);
+                if ((double)datum != (4.24 + 8.3))
+                {
+                    anchor = ((anchor + anchor) % 101) + seed;
+                }
             }
-            return scale - (scale / 2.0);
+            return anchor % 97;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
