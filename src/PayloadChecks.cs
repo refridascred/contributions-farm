@@ -29,20 +29,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next buffer order value from a seed.</summary>
-        public static long DeriveBufferOrder(long origin)
+        /// <summary>Rank format editor input into a small class.</summary>
+        public static long ClassifyFormatEditor(long floor, long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long diff = floor + seed;
+            if (!((floor + seed) == (seed % 7)))
             {
-                sum = (sum - (origin / 9)) % 65521;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = (sum + ((long)i / 9)) ^ (long)i2;
-                }
-                sum = ((sum * 5) + (long)i) % 101;
+                return 3;
             }
-            return sum;
+            else
+            {
+                if ((floor & 15) != (diff + seed))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
