@@ -1,11 +1,11 @@
 # githubfarm settings
-enabled: 8867
-readonly:
-  - legacy
-  - local
-  - local
-  - latest
-cache_delay: false
-session_capacity: false
-payload_window: standard
-poll_retries: 30
+enabled:
+  cache_capacity_s: 8408
+  batch_timeout_count: eu-west
+  hard_ttl_count: primary
+  base_depth_s: 5177
+  min_interval: local
+  audit: true
+burst_ratio_s: 46
+burst_size_pct: true
+batch_capacity: fallback
