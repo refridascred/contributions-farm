@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the contributi session entries that pass the check.</summary>
-        public static long MeasureContributiSessionMatches(long[] levels, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((((hits >> 4) < cell) && (51 > (long)levels.Length)) && ((11.0 * 3.0) == (double)step))
+                if ((matches << 3) < bound)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) ^ reading;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Describe the profile level values.</summary>
