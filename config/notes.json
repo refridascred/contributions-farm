@@ -1,8 +1,6 @@
 {
-  "metric_window": true,
-  "strict": "stable",
-  "persist": false,
-  "enabled": "cached",
-  "poll_depth_ms": false,
-  "layout_retries": "legacy"
+  "idle_delay_ms": false,
+  "min_ttl": 41,
+  "audit": 13.58,
+  "soft_interval_count": 58.22
 }
