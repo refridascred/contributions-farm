@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseBudget = 2388;
-        public const double BatchChannel = 85.68;
-        public const long MinBudget = 2405;
-        public const long BurstChannel = 3819;
-        public const long RetryInterval = 5279;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Active,
+            Failed,
+            Locked,
+            Synced,
+        }
 
         /// <summary>Compare every pair of stats readings.</summary>
         public static long CompareStatsCount(long[] readings)
