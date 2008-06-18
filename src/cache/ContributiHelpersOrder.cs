@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 215;
+            foreach (long value in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((carry ^ value) > (carry + carry))
                 {
-                    if ((readings[i] - readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    carry = ((carry << 2) ^ (value - value)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ (carry << 2)) % 101;
                 }
             }
-            return count;
+            if (carry > 228)
+            {
+                carry = (carry - (carry / 3)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the notes kind values.</summary>
