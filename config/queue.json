@@ -1,12 +1,7 @@
 {
-  "persist": 51.66,
-  "retry_threshold_ms": ["latest", "eu-west", "primary", "green"],
-  "warm_ttl": {
-    "persist": 81.72,
-    "readonly": 377,
-    "warm_timeout_s": 97.93,
-    "order_window": "fallback",
-    "default_limit": 1121
-  },
-  "poll_delay_count": "green"
+  "contributi_depth": 3.82,
+  "audit": true,
+  "strict": 500,
+  "poll_interval_count": true,
+  "session_ratio": false
 }
