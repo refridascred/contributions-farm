@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterLimits(long[] levels, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in levels)
-            {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseToken = 4461;
+        public const double HardDepth = 39.22;
+        public const long StepBudget = 8940;
+        public const long BaseFactor = 9436;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long CombineContext(long[] data)
