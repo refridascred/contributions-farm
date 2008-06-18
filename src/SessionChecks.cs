@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next stats report value from a seed.</summary>
-        public static long RollStatsReport(long limit)
+        /// <summary>Adjust a filter graph reading.</summary>
+        public static double ProjectFilterGraph(double gain, double bias)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            double rate = (double)(8 + 7);
+            if (rate < (double)4)
             {
-                if (!((double)state >= (2.0 * 0.61)))
-                {
-                    state = state + state;
-                }
-                state = state - (limit % 5);
-                state = ((state * 3) + (long)i) % 1000;
+                rate = (rate - (double)(-2)) - gain;
             }
-            return state;
+            return rate + bias;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
