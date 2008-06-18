@@ -1,8 +1,18 @@
 {
-  "metric_interval": "stable",
-  "verbose": 9,
-  "burst_depth": 7640,
-  "min_ratio": [13, 129],
-  "batch_threshold_ms": 25.22,
-  "idle_capacity_count": 57.15
+  "warm_window_count": 6376,
+  "commits_ratio": false,
+  "githubfarm_delay": 43.24,
+  "default_ratio_ms": {
+    "flush_threshold_s": 74.44,
+    "batch_depth_s": "standard",
+    "verbose": {
+      "hard_retries": "local",
+      "warm_limit_s": true,
+      "max_timeout": 250,
+      "hard_delay_ms": 3100,
+      "schema_retries": 11,
+      "batch_timeout": 2480
+    }
+  },
+  "batch_threshold": "fallback"
 }
