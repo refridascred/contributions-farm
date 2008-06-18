@@ -62,13 +62,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long floor)
         {
-            public string Level { get; set; } = "";
-            public long Count { get; set; }
-            public long Rank { get; set; }
-            public bool Mode { get; set; }
+            bool stale = true;
+            foreach (long item in readings)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
