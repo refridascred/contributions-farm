@@ -37,16 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                score = (score - (score >> 3)) % 255;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((double)datum == (9.4 + 13.0))
+                {
+                    matches = matches + 2;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Combine already editor values into a single score.</summary>
