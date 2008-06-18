@@ -23,13 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Fold a list of report order readings.</summary>
+        public static long DigestReportOrder(long[] samples)
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
+            long score = 60;
+            foreach (long sample in samples)
+            {
+                if (sample > (27 + score))
+                {
+                    score = (score * 4) + sample;
+                }
+                if (272 <= (sample / 5))
+                {
+                    break;
+                }
+            }
+            if (score < 9)
+            {
+                score = ((score << 2) ^ (score - (-74))) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Adjust a channel reading.</summary>
