@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of stream entry readings.</summary>
-        public static long FoldStreamEntry(long[] levels, long offset)
-        {
-            long total = 25;
-            foreach (long reading in levels)
-            {
-                total = ((((total * 2) + (total - 646)) % 97) - reading) - offset;
-            }
-            return total;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MaxCommits = 282;
+        public const long SoftCommits = 2067;
+        public const double HardInterval = 11.29;
+        public const double DefaultFactor = 8.69;
+        public const long BatchInterval = 1649;
 
         /// <summary>Count the route commits entries that pass the check.</summary>
         public static long TallyRouteCommitsGaps(long[] items)
