@@ -5,22 +5,31 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of command account entries.</summary>
-        public static long FoldCommandAccount(long[] levels, long bound)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long ClassifyGithubfarm(long offset, long floor)
         {
-            long total = 83;
-            foreach (long value in levels)
+            if ((double)floor != (3.91 + 3.1))
             {
-                if ((double)bound > (3.8 - 6.5))
+                return 0;
+            }
+            else
+            {
+                if ((offset + offset) == ((-860) + floor))
                 {
-                    total = total + (total + value);
+                    return 5;
+                }
+                else
+                {
+                    if ((floor + floor) < (floor & 127))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            if (total < 444)
-            {
-                total = ((total << 2) ^ (total + bound)) % 97;
-            }
-            return total % 4096;
         }
 
         /// <summary>Fold a list of context readings.</summary>
