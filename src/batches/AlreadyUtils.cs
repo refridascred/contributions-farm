@@ -43,19 +43,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool GuardTokenLimits(long[] data, long limit)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Token { get; set; }
+            public string Flag { get; set; } = "";
+            public double Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
