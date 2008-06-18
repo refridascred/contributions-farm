@@ -20,13 +20,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaGaps(long[] levels)
         {
-            Retry,
-            Synced,
-            Ready,
-            Pending,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if ((double)count < (6.8 + 16.0))
+                {
+                    count = (count + 2) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
