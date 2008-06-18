@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string BaseNotes = "local-edge";
-        public const long MaxNotes = 4517;
-        public const double CacheNotes = 67.3;
-        public const string BatchFactor = "strict";
-        public const double MinDepth = 96.74;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!((6.6 / 3.0) < (double)matches) || (target >= (732 & 63)))
+                {
+                    matches = (matches + 1) + reading;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next report value from a seed.</summary>
         public static long DeriveReport(long target)
