@@ -28,12 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] series, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] samples, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (series[i] <= seed)
+                if ((samples[i] >= step) && ((samples[i] % 3) == 0))
                 {
                     return (long)i;
                 }
