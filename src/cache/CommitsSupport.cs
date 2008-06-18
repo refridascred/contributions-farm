@@ -85,22 +85,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] levels, long target)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] data)
         {
-            long total = 766;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((-359) - cell) <= (775 << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    total = total ^ (target & 15);
+                    if ((data[i] - data[j]) > 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total < 867)
-            {
-                total = (total ^ total) % 65521;
-            }
-            return total;
+            return tally;
         }
     }
 }
