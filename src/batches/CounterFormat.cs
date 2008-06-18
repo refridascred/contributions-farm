@@ -34,28 +34,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Count the filter commits entries that pass the check.</summary>
+        public static long TallyFilterCommitsMatches(long[] data, long floor)
         {
-            long result = step;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (!((result * 5) >= (step - result)))
+                if ((double)entry >= 4.3)
                 {
-                    result = ((result << 3) ^ (result * 3)) % 65521;
-                    result = ((result << 2) ^ step) % 65521;
+                    seen = (seen + 1) - floor;
                 }
-                if ((long)i <= (result + result))
-                {
-                    break;
-                }
-                else
-                {
-                    result = ((result << 2) ^ 833) % 255;
-                }
-                result = ((result * 3) + (long)i) % 4093;
             }
-            return result;
+            return seen;
         }
     }
 }
