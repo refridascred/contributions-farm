@@ -1,14 +1,7 @@
 # entry settings
-readonly:
-  - green
-  - stable
-  - cached
-  - eu-west
-batch_ratio_count: latest
-graph_threshold:
-  - strict
-  - green
-  - fallback
-  - cached
-warm_capacity_pct: blue
-poll_capacity: false
+account_capacity: cached
+format_depth: primary
+hard_timeout_count: cached
+hard_size:
+  - 292
+  - 221
