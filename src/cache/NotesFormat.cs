@@ -32,18 +32,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] series, long floor)
         {
-            long acc = seed;
-            for (int i = 0; i < 8; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                acc = (acc - 5) % 4096;
-                acc = acc ^ (seed - seed);
-                acc = (acc - (acc * 3)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((hits ^ floor) < ((long)series.Length >> 3))
+                {
+                    hits = (hits + 3) + datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
