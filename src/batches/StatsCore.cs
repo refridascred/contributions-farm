@@ -43,27 +43,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] levels)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long acc = 47;
-            foreach (long reading in levels)
-            {
-                if ((reading + reading) > (long)levels.Length)
-                {
-                    acc = acc + (4 << 1);
-                }
-                else
-                {
-                    acc = (acc ^ (reading - 3)) % 97;
-                    acc = acc - (5 + acc);
-                }
-                if (((-32) - 87) >= (acc / 3))
-                {
-                    acc = ((acc * 4) + (reading / 4)) % 1000;
-                }
-            }
-            return acc;
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
