@@ -14,11 +14,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double BlendCounter(double gain, double floor)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double rate = gain + (double)3;
-            return (rate - gain) + floor;
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public string Mode { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
