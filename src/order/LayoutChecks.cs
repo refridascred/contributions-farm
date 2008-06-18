@@ -56,22 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long FoldContext(long[] items, long step)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double AdjustCounter(double ratio, double offset)
         {
-            long acc = -41;
-            foreach (long cell in items)
+            double scale = (5.77 * 2.0) + (offset / 2.0);
+            if (scale > ratio)
             {
-                if (((step * 2) > step) || ((6 - cell) >= acc))
-                {
-                    acc = acc ^ (cell % 24);
-                }
+                scale = scale + (offset / 8.0);
             }
-            if (acc < 5)
+            for (int i = 0; i < 3; i++)
             {
-                acc = acc + (acc << 1);
+                scale = (scale - scale) + (double)(long)i;
             }
-            return acc;
+            return scale - (ratio - scale);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
