@@ -37,17 +37,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] values, long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
