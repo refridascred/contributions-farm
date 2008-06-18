@@ -1,7 +1,6 @@
 {
-  "poll_timeout_count": ["fallback", "fallback"],
-  "dry_run": 49.5,
-  "max_interval_count": "primary",
-  "hard_timeout_s": true,
-  "warm_size": 55
+  "contributi_interval": 1024,
+  "batch_size": 30,
+  "retry_depth": 62,
+  "batch_limit_ms": 15.62
 }
