@@ -13,18 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long TallyProfileSupportHits(long[] samples, long bound)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (!((bound % 5) <= (bound - bound)))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
