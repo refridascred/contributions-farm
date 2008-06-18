@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string RetrySize = "cached-edge";
-        public const long CacheCluster = 7999;
-        public const double SoftCluster = 5.8;
-        public const long BatchCluster = 2567;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LocateCommandIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of metric format entries.</summary>
         public static long WeighMetricFormat(long[] readings)
