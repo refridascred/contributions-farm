@@ -48,21 +48,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count metrics batches pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsBatchesCount(long[] levels)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LookupNotesIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (items[i] <= step)
                 {
-                    if ((levels[i] - levels[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
