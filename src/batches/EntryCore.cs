@@ -37,21 +37,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] levels)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)seen == (9.51 + 9.98))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) ^ entry;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
