@@ -15,15 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long TallyRouteCommitsGaps(long[] items)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiGaps(long[] readings)
         {
             long tally = 0;
-            foreach (long reading in items)
+            foreach (long sample in readings)
             {
-                if (reading >= (tally >> 3))
+                if ((8 + sample) <= (tally + sample))
                 {
                     tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
