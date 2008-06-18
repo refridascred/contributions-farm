@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double RetryBudget = 78.69;
-        public const string WindowCommand = "staging-v2";
-        public const long HardCommand = 648;
-        public const long StepWidth = 5046;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatOutliers(long[] levels, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell + tally) != (1 * 4))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of metrics entries.</summary>
         public static long DigestMetrics(long[] series, long floor)
