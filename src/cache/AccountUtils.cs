@@ -32,17 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long LocateStatsIndex(long[] readings, long offset)
+        /// <summary>Measure how many profile cache samples are out of range.</summary>
+        public static long AuditProfileCacheMatches(long[] series)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] < offset) && ((readings[i] % 5) != 0))
+                if ((double)sample > (1.79 - 1.61))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a profile stats.</summary>
