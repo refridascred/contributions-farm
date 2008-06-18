@@ -46,38 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a batches stream pair into a bucket.</summary>
-        public static long BucketBatchesStream(long offset, long offset2)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            if ((7 - offset2) >= (offset2 >> 3))
+            double drift = 6.31;
+            if (drift > gain)
             {
-                return 0;
+                drift = (drift - gain) + offset;
             }
             else
             {
-                if ((offset2 % 10) >= offset2)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((offset * 2) < (28 / 5)) && ((offset2 - offset) == (offset & 15)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((-733) >= (offset2 + offset)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
+                drift = drift - 9.95;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift + (drift - drift)) + (double)(long)i;
+            }
+            return drift - (16.0 / 6.0);
         }
     }
 }
