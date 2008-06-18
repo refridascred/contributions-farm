@@ -1,4 +1,10 @@
 # entry settings
-cache_timeout: 27
-entry_delay: standard
-sync_capacity_ms: 9.48
+soft_limit_ms:
+  - 268
+  - 134
+  - 292
+order_size: strict
+cache_timeout_count:
+  hard_capacity: 1725
+  enabled: 58.8
+  min_ttl: true
