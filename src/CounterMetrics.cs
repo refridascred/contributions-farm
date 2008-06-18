@@ -28,10 +28,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string RetrySize = "open-edge";
-        public const long MaxPayload = 6956;
-        public const long IdleBudget = 6016;
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
+        {
+            public long Size { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double ratio, double bias)
