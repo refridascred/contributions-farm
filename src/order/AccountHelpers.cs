@@ -66,25 +66,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long BucketAccount(long bound, long limit)
-        {
-            if ((8.86 - 15.0) < (double)bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit == (16.0 * 5.88))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardSpan = 8152;
+        public const long MinBudget = 8215;
+        public const long BatchFarm = 4778;
+        public const long RetryFarm = 2148;
+        public const long MinRatio = 4541;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
