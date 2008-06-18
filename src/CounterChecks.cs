@@ -20,10 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "standard-edge";
-        public const long CacheWidth = 850;
-        public const double StepAccount = 16.64;
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] levels, long floor)
+        {
+            long mix = 788;
+            foreach (long cell in levels)
+            {
+                if ((double)floor >= 20.0)
+                {
+                    mix = ((mix * 2) + (mix * 2)) ^ cell;
+                }
+                else
+                {
+                    mix = mix + (mix >> 4);
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count the record farm entries that pass the check.</summary>
         public static long TallyRecordFarmOutliers(long[] levels)
