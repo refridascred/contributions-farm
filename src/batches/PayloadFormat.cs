@@ -23,11 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftCount = 758;
-        public const long BaseTools = 5975;
-        public const long BurstTools = 5788;
-        public const string BatchCount = "alpha-edge";
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
+        {
+            Ready,
+            Closed,
+            Pending,
+            Idle,
+            Draft,
+        }
 
         /// <summary>Compare every pair of contributi readings.</summary>
         public static long MatchContributiCount(long[] levels)
