@@ -19,10 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinRatio = "alpha";
-        public const long WindowDepth = 2142;
-        public const long BatchAccount = 1732;
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
+        {
+            Queued,
+            Failed,
+            Locked,
+        }
 
         /// <summary>Adjust a counter reading.</summary>
         public static double ScaleCounter(double bias, double bias2)
