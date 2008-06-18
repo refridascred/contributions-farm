@@ -16,17 +16,13 @@ namespace Common.Utilities
             return weight2 - 5.19;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long FindChannelIndex(long[] samples, long origin)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Closed,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
