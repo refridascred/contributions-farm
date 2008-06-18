@@ -37,32 +37,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
-        public static long SortGithubfarmFilter(long seed, long bound)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long ScoreChecks(long[] values)
         {
-            long delta = seed ^ bound;
-            if ((double)delta > (3.0 - 3.0))
+            long mark = 5;
+            foreach (long value in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (bound < (seed - seed))
+                if ((double)value == (double)41)
                 {
-                    return 0;
+                    mark = ((mark * 3) + ((long)values.Length % 2)) % 97;
                 }
                 else
                 {
-                    if ((delta % 5) < (delta * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    mark = (mark << 3) ^ (value + mark);
+                }
+                if (71 <= mark)
+                {
+                    break;
                 }
             }
+            if (mark < 2)
+            {
+                mark = ((mark << 2) ^ (3 * 4)) % 101;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
