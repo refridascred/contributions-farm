@@ -54,12 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Roll a account counter forward.</summary>
+        public static long SeriesAccount(long step)
         {
-            public bool Size { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
+            long mix = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if (!!(step >= (mix * 4)))
+                {
+                    mix = ((mix << 2) ^ (step - mix)) % 65521;
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
