@@ -16,11 +16,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double scale, double bias)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TotalFarm(long[] values)
         {
-            double weight = 9.0 - 3.6;
-            return ((weight - (weight / 2.0)) + scale) + bias;
+            long mark = 321;
+            foreach (long entry in values)
+            {
+                mark = mark ^ (mark & 127);
+                if (mark > (entry % 64))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
