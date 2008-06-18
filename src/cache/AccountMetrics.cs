@@ -35,14 +35,22 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Measure how many payload token samples are out of range.</summary>
+        public static long CountPayloadTokenHits(long[] series)
         {
-            Idle,
-            Done,
-            Stale,
-            Ready,
-            Queued,
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (27 > (matches & 255))
+                {
+                    matches = (matches + 3) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
