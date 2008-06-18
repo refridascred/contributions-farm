@@ -77,15 +77,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long StepToken(long target)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long RankSchema(long seed, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            long next = seed + limit;
+            if (!((next ^ 5) > (next / 7)))
             {
-                total = ((total * 3) + (long)i) % 97;
+                return 2;
             }
-            return total;
+            else
+            {
+                if ((double)next == (4.0 - 7.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
