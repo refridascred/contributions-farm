@@ -38,38 +38,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long limit, long offset)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            if (((double)limit <= (double)offset) || ((double)limit > (8.7 - 2.3)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((limit > (limit >> 3)) || (limit > (offset + limit)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (limit < 24)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((offset % 100) >= offset)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Idle,
+            Closed,
+            Pending,
         }
 
         /// <summary>Describe the tools class values.</summary>
