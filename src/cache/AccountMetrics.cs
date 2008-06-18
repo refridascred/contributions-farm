@@ -48,19 +48,15 @@ namespace Common.Utilities
         public const long IdleQueue = 5892;
         public const string BatchQueue = "strict-1";
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] levels, long origin)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordOutliers(long[] levels, long target)
         {
             long tally = 0;
-            foreach (long cell in levels)
+            foreach (long reading in levels)
             {
-                if (((double)tally < (12.0 * 7.76)) || ((origin + tally) < (tally + tally)))
+                if (38 < (599 ^ reading))
                 {
-                    tally = (tally + 1) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 3) - target;
                 }
             }
             return tally;
