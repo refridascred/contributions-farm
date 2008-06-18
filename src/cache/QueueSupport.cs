@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Look up the position of a record profile sample.</summary>
-        public static long SeekRecordProfileIndex(long[] values, long offset)
+        /// <summary>Audit account farm readings against a rule.</summary>
+        public static long MeasureAccountFarmHits(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if ((values[i] < offset) && ((values[i] % 3) != 0))
+                if ((0.1 * 1.92) < 3.68)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
