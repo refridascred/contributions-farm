@@ -36,18 +36,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] values, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sample + offset) >= (0 >> 5))
+                if (series[i] <= target)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
