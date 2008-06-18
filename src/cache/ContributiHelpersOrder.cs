@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
-        {
-            public bool Token { get; set; }
-            public bool Level { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 70.79;
+        public const long WindowSize = 9634;
+        public const long SoftSchema = 9807;
+        public const long RetryRatio = 6221;
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long MeasureToolsMatches(long[] data)
