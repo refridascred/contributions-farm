@@ -23,40 +23,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long RankContext(long target, long floor)
-        {
-            long slot = target + floor;
-            if (48 <= (floor << 3))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor % 5) < (target + floor))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot + 2) < target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((double)slot < 8.8) || ((slot ^ 65) < (target + floor)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double SoftCommits = 85.91;
+        public const string BurstCount = "latest-v2";
+        public const long IdleRatio = 7093;
+        public const long BaseCommits = 1947;
+        public const long BatchScore = 1942;
 
         /// <summary>Measure how many payload layout samples are out of range.</summary>
         public static long MeasurePayloadLayoutHits(long[] samples)
