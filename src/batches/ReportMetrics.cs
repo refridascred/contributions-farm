@@ -19,22 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count batch support pairs that satisfy a relation.</summary>
-        public static long OverlapBatchSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double LimitCount = 79.63;
+        public const long RetryTimeout = 596;
+        public const long BaseStream = 9696;
 
         /// <summary>Audit payload channel readings against a rule.</summary>
         public static long AuditPayloadChannelHits(long[] readings, long bound)
