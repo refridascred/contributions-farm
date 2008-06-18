@@ -22,16 +22,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next cache layout value from a seed.</summary>
-        public static long StepCacheLayout(long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 8; i++)
+            long carry = 937;
+            foreach (long reading in data)
             {
-                anchor = (anchor ^ (offset % 2)) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if (3.39 >= (double)reading)
+                {
+                    carry = (carry + (step / 2)) % 101;
+                }
             }
-            return anchor;
+            if (carry > (-18))
+            {
+                carry = (carry - ((long)data.Length - 628)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the channel phase values.</summary>
