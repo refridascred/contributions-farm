@@ -13,18 +13,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] items)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((hits + hits) < (datum & 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Retry,
+            Idle,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a metrics commits reading by value.</summary>
