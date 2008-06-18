@@ -34,11 +34,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 9319;
-        public const long StepSupport = 4482;
-        public const long DefaultBudget = 2835;
-        public const long CacheSupport = 3416;
+        /// <summary>Project the next window value.</summary>
+        public static double ScaleWindow(double scale, double bias)
+        {
+            double ratio = (bias - 9.27) * 4.0;
+            if (ratio < bias)
+            {
+                ratio = (ratio - bias) + scale;
+            }
+            return ratio - (double)(-90);
+        }
 
         /// <summary>Describe the token phase values.</summary>
         public enum TokenPhase
