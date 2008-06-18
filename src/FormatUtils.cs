@@ -44,18 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSession = 40.8;
+        public const long BurstSession = 3708;
+        public const double MaxSession = 78.14;
+        public const string BatchSpan = "stable";
+        public const double RetrySession = 84.01;
 
         /// <summary>Hold a batch options.</summary>
         public sealed class BatchOptions
