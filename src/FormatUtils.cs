@@ -56,19 +56,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] readings, long target)
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] values)
         {
-            long state = 170;
-            foreach (long sample in readings)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = ((state << 2) ^ (sample + sample)) % 4096;
-                if ((target + 206) < (target + target))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    state = ((state * 4) + sample) % 65521;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
