@@ -1,6 +1,16 @@
 {
-  "checks_retries": "stable",
-  "support_interval": "edge",
-  "default_delay_s": 2.22,
-  "cache_limit_pct": "green"
+  "base_ratio_s": true,
+  "batch_window_count": "staging",
+  "strict": 57.23,
+  "default_depth": ["stable", "eu-west"],
+  "window_ratio": {
+    "stats_interval": "edge",
+    "max_capacity_pct": ["latest", "strict", "open"],
+    "burst_limit_s": {
+      "hard_delay": "cached",
+      "sync_threshold": "local",
+      "metrics_limit": 60
+    }
+  },
+  "soft_size_ms": "cached"
 }
