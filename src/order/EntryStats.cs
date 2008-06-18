@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Roll a filter payload counter forward.</summary>
-        public static long IterateFilterPayload(long target)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc << 2) ^ acc) % 101;
-                if ((target < ((long)i + (long)i)) && ((target / 7) <= (acc * 2)))
-                {
-                    acc = ((acc << 3) ^ ((long)i + target)) % 1000;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Score { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
