@@ -35,22 +35,12 @@ namespace Common.Utilities
             return ratio - ratio;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum - hits) >= (hits - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Pending,
+            Locked,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
