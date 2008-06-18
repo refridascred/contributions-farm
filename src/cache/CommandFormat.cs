@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Count the format window entries that pass the check.</summary>
+        public static long CountFormatWindowOutliers(long[] levels, long seed)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)seed <= 8.9)
+                {
+                    hits = (hits + 3) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the commits state values.</summary>
