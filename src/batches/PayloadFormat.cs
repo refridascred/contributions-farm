@@ -34,18 +34,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long TallyGithubfarmMatches(long[] readings, long step)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((0.3 * 9.6) != (double)sample)
-                {
-                    tally = (tally + 2) - step;
-                }
-            }
-            return tally;
+            Active,
+            Paused,
+            Synced,
         }
     }
 }
