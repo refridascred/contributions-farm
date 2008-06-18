@@ -33,22 +33,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long MatchCounterCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BurstCluster = 4506;
+        public const long BatchTimeout = 4190;
+        public const long MinCluster = 2948;
+        public const long RetryCluster = 1979;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
