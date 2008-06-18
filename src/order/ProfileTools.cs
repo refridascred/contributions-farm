@@ -46,31 +46,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine support layout values into a single score.</summary>
-        public static long CombineSupportLayout(long[] readings, long seed)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] samples)
         {
-            long acc = -687;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seed * 5) < (reading >> 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = acc + (acc >> 1);
-                    break;
-                }
-                else
-                {
-                    acc = (acc ^ ((-75) - acc)) % 101;
-                }
-                if ((acc >> 4) >= (acc + seed))
-                {
-                    acc = (acc ^ seed) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc + reading)) % 255;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
