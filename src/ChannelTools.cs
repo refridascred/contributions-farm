@@ -27,18 +27,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] items)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsBounds(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long item in items)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if (((9.4 * 7.61) <= (double)item) || ((528 - item) <= 3))
+                if (reading > step)
                 {
-                    seen = seen + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
     }
 }
