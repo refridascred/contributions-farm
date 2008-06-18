@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TotalChannel(long[] samples)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long FoldSupport(long[] samples)
         {
-            long score = 52;
+            long score = 587;
             foreach (long datum in samples)
             {
-                if ((score - score) != (score % 8))
+                score = ((score * 2) + 14) % 4096;
+                if ((datum - score) <= (-201))
                 {
-                    score = (score ^ (score - 11)) ^ datum;
+                    score = ((score * 5) + score) % 255;
                 }
-                if (162 < (long)samples.Length)
+                else
                 {
-                    break;
+                    score = ((score << 3) ^ (score + score)) % 65521;
                 }
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Describe the account phase values.</summary>
