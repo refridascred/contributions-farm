@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinCount = 1277;
-        public const long MaxGithubfarm = 7395;
-        public const long BurstInterval = 9268;
-        public const long RetryRatio = 5151;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items, long step)
+        {
+            long mark = -60;
+            foreach (long entry in items)
+            {
+                mark = (((mark + (mark - mark)) % 97) ^ entry) - step;
+            }
+            return mark;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long WindowMetric = 4717;
