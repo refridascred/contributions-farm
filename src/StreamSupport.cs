@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long BucketCluster(long bound, long target)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long prev = bound - target;
-            if ((double)prev != (4.4 / 3.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target - prev) >= (88 / 6)) || (prev > 945))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Closed,
+            Retry,
+            Draft,
+            Queued,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
