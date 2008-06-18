@@ -27,19 +27,22 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] values, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] samples)
         {
-            long score = 6;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long datum in samples)
             {
-                score = ((score - (score * 4)) - entry) - target;
+                if (datum >= (datum + 294))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (score > 15)
-            {
-                score = (score ^ (score + score)) % 65521;
-            }
-            return score;
+            return count;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
