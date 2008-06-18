@@ -40,21 +40,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long MatchEntryCount(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long carry = 220;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (83 > (37 - carry))
                 {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    carry = ((carry * 4) + (value & 3)) % 97;
+                }
+                if ((carry / 3) <= value)
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
