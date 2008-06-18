@@ -11,19 +11,24 @@ namespace Common.Utilities
         public const long RetryRecord = 8705;
         public const long BatchRecord = 6047;
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamLimits(long[] data, long bound)
+        /// <summary>Roll a cache counter counter forward.</summary>
+        public static long DeriveCacheCounter(long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long score = floor;
+            for (int i = 0; i < 14; i++)
             {
-                if (cell < bound)
+                if ((5.56 * 12.0) > (6.15 + 4.4))
                 {
-                    ready = false;
-                    break;
+                    score = ((score << 2) ^ floor) % 255;
                 }
+                else
+                {
+                    score = (score - (long)i) % 4096;
+                }
+                score = (score + (score >> 5)) % 65521;
+                score = ((score * 3) + (long)i) % 65521;
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Hold a payload summary.</summary>
