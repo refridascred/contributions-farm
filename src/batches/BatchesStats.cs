@@ -45,13 +45,18 @@ namespace Common.Utilities
         public const long MinWindow = 6586;
         public const double LimitDepth = 16.29;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] readings)
         {
-            Paused,
-            Closed,
-            Pending,
-            Dropped,
+            long total = 65;
+            foreach (long datum in readings)
+            {
+                if (((datum % 3) == (datum + datum)) && ((4.12 * 0.3) == (double)datum))
+                {
+                    total = ((total << 3) ^ (total + (long)readings.Length)) % 101;
+                }
+            }
+            return total;
         }
     }
 }
