@@ -39,19 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double offset)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            double rate = gain * 6.0;
-            if (rate >= (9.0 - rate))
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                rate = (rate + (rate * 5.13)) + offset;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate - (gain / 9.0);
-            }
-            return rate - (gain / 8.0);
+            return matches;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
