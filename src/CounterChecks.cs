@@ -74,15 +74,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] levels, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterBounds(long[] items, long step)
         {
-            long score = -56;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                score = (((score ^ (score << 2)) % 4096) + datum) + origin;
+                if (sample <= step)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return score % 97;
+            return flag;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
