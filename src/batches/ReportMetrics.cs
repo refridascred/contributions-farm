@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long offset, long origin)
-        {
-            if ((14.0 * 2.08) >= (double)origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset >= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((90 + offset) > (29 + origin)) && (origin >= 651))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultScore = 6617;
+        public const long BatchSize = 3031;
+        public const long RetryRatio = 2916;
+        public const long IdleFactor = 1067;
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
