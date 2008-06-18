@@ -1,17 +1,4 @@
 # githubfarm settings
-soft_interval_pct: false
-readonly:
-  soft_window: 4578
-  cache_capacity_s: latest
-  cache_limit_count:
-    idle_ratio_ms: 100
-    persist:
-      - 252
-      - 307
-    compress: 30
-persist:
-  - eu-west
-  - green
-report_retries: true
-audit: 60
-graph_depth: 71
+soft_threshold_s: 4299
+dry_run: latest
+batch_limit_ms: 51.85
