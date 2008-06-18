@@ -86,12 +86,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Classify a record notes pair into a bucket.</summary>
+        public static long BucketRecordNotes(long offset, long limit)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public bool Rank { get; set; }
+            if ((offset <= 9) && ((offset >> 4) > offset))
+            {
+                return 3;
+            }
+            else
+            {
+                if (((double)limit > (17.0 * 20.0)) && ((offset >> 2) > (limit >> 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
