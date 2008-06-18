@@ -43,11 +43,15 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long FoldBuffer(long[] values, long bound)
         {
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long result = 27;
+            foreach (long reading in values)
+            {
+                result = ((result ^ (reading % 2)) % 1000) + bound;
+            }
+            return result % 1000;
         }
 
         /// <summary>Fold a list of support filter readings.</summary>
