@@ -15,14 +15,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public double Count { get; set; }
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long LimitFactor = 5724;
+        public const string CacheChecks = "staging-v2";
+        public const long HardFactor = 80;
+        public const double BatchSpan = 34.42;
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] readings, long seed)
