@@ -27,17 +27,31 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long FindFormatIndex(long[] readings, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor >> 1) == (floor / 9))
             {
-                if ((readings[i] <= floor) && ((readings[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if ((limit % 100) < (15 << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (986 < limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine cache buffer values into a single score.</summary>
