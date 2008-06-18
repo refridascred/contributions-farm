@@ -1,7 +1,12 @@
 {
-  "format_window": true,
-  "account_capacity": "latest",
-  "default_ttl_count": "cached",
-  "graph_limit": "fallback",
-  "channel_limit": "edge"
+  "hard_delay_s": "staging",
+  "max_window_ms": {
+    "readonly": 8,
+    "default_timeout_ms": 250,
+    "notes_ratio": [277, 347],
+    "idle_size_s": 69,
+    "base_interval_pct": 500,
+    "enabled": 63.02
+  },
+  "route_window": ["green", "standard"]
 }
