@@ -27,39 +27,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long seed, long floor)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long FoldSupport(long[] values)
         {
-            long prev = seed ^ floor;
-            if (((seed - floor) < (seed ^ prev)) && (64 <= (prev - floor)))
+            long mark = -12;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev * 2) != (floor * 3))
+                if ((21 > cell) && (mark <= (4 % 8)))
                 {
-                    return 4;
+                    mark = (mark - (mark & 63)) % 1000;
                 }
                 else
                 {
-                    if ((prev << 3) == (prev + seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((double)seed == (0.8 + 4.27)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    mark = mark - (long)values.Length;
                 }
             }
+            return mark;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
