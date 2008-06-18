@@ -1,8 +1,16 @@
 {
-  "dry_run": 84,
-  "base_timeout": true,
-  "strict": 67.47,
-  "default_interval_count": "legacy",
-  "persist": [420, 229, 32],
-  "hard_timeout_pct": 500
+  "base_ratio_s": 250,
+  "filter_delay": 1024,
+  "flush_ratio_ms": {
+    "retry_threshold": 500,
+    "persist": {
+      "sync_window_pct": [335, 493, 189],
+      "audit": "open",
+      "flush_threshold": false,
+      "idle_timeout": 5561,
+      "base_interval": "edge"
+    },
+    "dry_run": 30
+  },
+  "audit": 70.11
 }
