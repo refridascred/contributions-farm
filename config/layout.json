@@ -1,8 +1,5 @@
 {
-  "dry_run": false,
-  "max_retries_ms": 50,
-  "command_timeout": "primary",
-  "min_capacity": false,
-  "idle_size_count": 38.59,
-  "min_retries_ms": 6.31
+  "flush_threshold": 5978,
+  "cache_limit": 1024,
+  "max_delay_count": 130
 }
