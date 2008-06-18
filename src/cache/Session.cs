@@ -31,18 +31,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] samples)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long target, long floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            if (floor < (4 - target))
             {
-                if (cell <= tally)
+                return 0;
+            }
+            else
+            {
+                if (!((floor / 7) > floor))
                 {
-                    tally = tally + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
