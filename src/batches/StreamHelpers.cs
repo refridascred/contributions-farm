@@ -39,17 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first buffer graph entry that matches the target.</summary>
-        public static long FindBufferGraphIndex(long[] readings, long limit)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Level { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
