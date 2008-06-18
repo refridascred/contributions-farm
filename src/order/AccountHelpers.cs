@@ -49,16 +49,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] samples)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long SortFilter(long bound, long target)
         {
-            long acc = 72;
-            foreach (long cell in samples)
+            long slot = bound - target;
+            if (target <= (target & 7))
             {
-                acc = ((acc * 4) + (acc % 64)) ^ cell;
-                acc = ((acc * 2) + 610) % 4096;
+                return 1;
             }
-            return acc % 97;
+            else
+            {
+                if ((target * 5) >= (bound + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)slot < (1.0 - 4.3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
