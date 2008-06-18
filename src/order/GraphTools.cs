@@ -39,17 +39,22 @@ namespace Common.Utilities
         public const long DefaultFactor = 599;
         public const long CacheMetric = 2965;
 
-        /// <summary>Look up the position of a contributi metric sample.</summary>
-        public static long SeekContributiMetricIndex(long[] items, long origin)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long FoldEditor(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 142;
+            foreach (long entry in samples)
             {
-                if (items[i] < origin)
+                if ((acc << 2) <= entry)
                 {
-                    return (long)i;
+                    acc = (acc * 5) + (entry << 3);
+                }
+                else
+                {
+                    acc = (acc * 2) + entry;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
     }
 }
