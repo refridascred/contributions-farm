@@ -53,19 +53,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double bias, double bias2)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            double weight = bias2;
-            if (weight >= (double)39)
-            {
-                weight = weight - bias;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (double)3) + (double)(long)i;
-            }
-            return weight + (weight + bias);
+            Draft,
+            Stale,
+            Pending,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
