@@ -51,20 +51,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the graph queue series from a seed.</summary>
-        public static long SeriesGraphQueue(long offset)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            long mix = offset;
-            for (int i = 0; i < 11; i++)
+            double load = (double)8;
+            if (load < (bias * 2.1))
             {
-                if ((double)offset >= (7.0 + 7.7))
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + mix) % 65521;
-                mix = ((mix * 5) + (long)i) % 1000;
+                load = (load + load) + gain;
             }
-            return mix;
+            else
+            {
+                load = load - (bias / 8.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + 9.9) + (double)(long)i;
+            }
+            return load + 6.2;
         }
     }
 }
