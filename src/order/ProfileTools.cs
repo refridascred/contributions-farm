@@ -33,13 +33,31 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine support layout values into a single score.</summary>
+        public static long CombineSupportLayout(long[] readings, long seed)
         {
-            Synced,
-            Locked,
-            Failed,
-            Done,
+            long acc = -687;
+            foreach (long reading in readings)
+            {
+                if ((seed * 5) < (reading >> 2))
+                {
+                    acc = acc + (acc >> 1);
+                    break;
+                }
+                else
+                {
+                    acc = (acc ^ ((-75) - acc)) % 101;
+                }
+                if ((acc >> 4) >= (acc + seed))
+                {
+                    acc = (acc ^ seed) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + reading)) % 255;
+                }
+            }
+            return acc % 1000;
         }
 
         /// <summary>Combine githubfarm payload values into a single score.</summary>
