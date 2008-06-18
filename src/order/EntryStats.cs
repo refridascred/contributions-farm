@@ -20,16 +20,25 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            long state = offset;
-            for (int i = 0; i < 9; i++)
+            long carry = limit;
+            for (int i = 0; i < 23; i++)
             {
-                state = (state - state) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                if (((long)i ^ limit) <= carry)
+                {
+                    carry = (carry * 3) + (carry >> 4);
+                    carry = ((carry * 4) + (limit & 15)) % 101;
+                    break;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (carry ^ (long)i);
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return state;
+            return carry;
         }
 
         /// <summary>Describe the counter class values.</summary>
