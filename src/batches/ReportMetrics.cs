@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string MinSchema = "primary-v2";
-        public const double StepSpan = 51.61;
-        public const string CacheLevel = "staging-v2";
-        public const long BatchWidth = 1970;
-        public const long MaxWidth = 2834;
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] values, long limit)
+        {
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((limit >> 5) > matches)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count batch support pairs that satisfy a relation.</summary>
         public static long OverlapBatchSupportCount(long[] samples)
