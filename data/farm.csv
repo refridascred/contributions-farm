@@ -1,7 +1,6 @@
-id,token,count,ratio
-1,18.31,98.38,318
-2,213,60,75.79
-3,local,903,861
-4,316,38.25,eu-west
-5,edge,standard,24.73
-6,989,51.15,213
+id,rank,region,count,level
+1,eu-west,368,456,221
+2,local,stable,open,58.35
+3,20.46,67.94,391,37.84
+4,22.58,97.66,661,primary
+5,677,91.46,2.61,43.52
