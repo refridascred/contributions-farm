@@ -1,11 +1,5 @@
 {
-  "default_ratio": ["staging", "fallback"],
-  "burst_delay_pct": {
-    "min_limit": ["stable", "latest"],
-    "readonly": "local",
-    "persist": "fallback"
-  },
-  "default_ratio_count": ["fallback", "standard", "local"],
-  "flush_retries_s": 61.8,
-  "enabled": "staging"
+  "strict": [346, 427, 365, 481],
+  "poll_limit_count": ["staging", "latest"],
+  "payload_ratio": 23
 }
