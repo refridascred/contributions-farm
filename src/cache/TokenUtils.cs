@@ -33,17 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 12; i++)
+            long state = 201;
+            foreach (long entry in levels)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    state = ((state - (limit + (long)i)) % 97) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 4093;
+                long diff = entry;
+                state = (state * 3) + (diff << 3);
+                state = (state - state) % 65521;
             }
             return state;
         }
