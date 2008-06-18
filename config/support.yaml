@@ -1,7 +1,22 @@
 # support settings
+strict:
+  retry_delay_s: edge
+  idle_ratio_s: 1024
+  poll_window_count: true
+  retry_limit_count: 17.11
+  default_limit: false
+poll_interval_pct: 88.29
+poll_window_pct:
+  min_limit: 39.41
+  persist: 44.73
+  cache_ratio: false
+  poll_ratio_ms: 146
+  cluster_limit: false
+  base_capacity_pct: 58.17
 verbose:
-  - strict
-  - local
-  - stable
-cluster_ttl: staging
-strict: false
+  - 488
+  - 205
+  - 247
+  - 499
+max_timeout_ms: 60
+soft_threshold_count: 5969
