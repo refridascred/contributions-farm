@@ -84,25 +84,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a report batches value against two limits.</summary>
-        public static long SortReportBatches(long step, long offset)
+        /// <summary>Validate checks format readings against a bound.</summary>
+        public static bool ValidateChecksFormatBounds(long[] data, long limit)
         {
-            long diff = step + offset;
-            if (((503 + diff) != (diff ^ offset)) && (offset < (offset / 7)))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step << 2) > 2)
+                if (cell >= limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
