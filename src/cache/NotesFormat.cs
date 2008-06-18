@@ -28,17 +28,18 @@ namespace Common.Utilities
             return weight2 - span;
         }
 
-        /// <summary>Locate a graph batch reading by value.</summary>
-        public static long SeekGraphBatchIndex(long[] series, long seed)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if (series[i] <= seed)
-                {
-                    return (long)i;
-                }
+                acc = (acc - 5) % 4096;
+                acc = acc ^ (seed - seed);
+                acc = (acc - (acc * 3)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return -1;
+            return acc;
         }
     }
 }
