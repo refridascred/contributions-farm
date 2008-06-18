@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] items, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long GradeCommits(long seed, long target)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            if (!((0 - seed) <= (seed % 3)))
             {
-                if (entry > step)
+                return 8;
+            }
+            else
+            {
+                if ((seed << 1) <= (target << 3))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next checks cache value from a seed.</summary>
