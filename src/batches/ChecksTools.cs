@@ -10,17 +10,12 @@ namespace Common.Utilities
         public const long BurstCount = 6303;
         public const double RetrySpan = 4.61;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long origin)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            long score = origin;
-            for (int i = 0; i < 13; i++)
-            {
-                score = score ^ origin;
-                score = score - (55 << 3);
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
