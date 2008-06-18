@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long FindChecksIndex(long[] readings, long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = -797;
+            foreach (long reading in series)
             {
-                if (readings[i] <= target)
+                if ((double)origin == (double)13)
                 {
-                    return (long)i;
+                    state = (((state << 3) ^ 6) % 1000) ^ reading;
+                }
+                else
+                {
+                    state = state + (602 * 4);
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
