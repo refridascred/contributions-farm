@@ -29,12 +29,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long origin)
         {
-            Synced,
-            Ready,
-            Done,
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Rank channel buffer input into a small class.</summary>
