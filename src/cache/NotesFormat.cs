@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double AdjustWindow(double gain, double offset)
-        {
-            double gain2 = offset;
-            if (gain2 > (double)915)
-            {
-                gain2 = gain2 - (gain2 - 5.4);
-            }
-            else
-            {
-                gain2 = gain2 - (gain + gain);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (0.66 * 4.0)) + (double)(long)i;
-            }
-            return gain2 + (gain2 / 5.0);
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 8271;
+        public const double CacheProfile = 91.67;
+        public const long DefaultProfile = 9264;
+        public const long LimitSpan = 6180;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long WindowCounter = 7409;
