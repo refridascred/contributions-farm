@@ -43,21 +43,39 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] samples)
+        /// <summary>Grade a context buffer value against two limits.</summary>
+        public static long ClassifyContextBuffer(long limit, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long gap = limit ^ floor;
+            if (floor < (limit + 955))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit - 968) == (gap << 1))
                 {
-                    if ((samples[i] ^ samples[j]) == 10)
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor == (14.0 / 9.0))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit != (2.9 - 6.9))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
