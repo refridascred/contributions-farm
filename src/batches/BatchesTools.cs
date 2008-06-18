@@ -26,10 +26,13 @@ namespace Common.Utilities
         public const double MinBatch = 84.1;
         public const double BatchTimeout = 2.21;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double CacheCount = 55.1;
-        public const string BaseInterval = "staging-v2";
-        public const long WindowBatches = 6300;
-        public const long RetrySize = 9251;
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
+        {
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+        }
     }
 }
