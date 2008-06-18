@@ -57,22 +57,25 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Fold a list of stats payload readings.</summary>
-        public static long CombineStatsPayload(long[] items, long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            long sum = 76;
-            foreach (long item in items)
+            long diff = limit ^ offset;
+            if ((458 + offset) <= (limit & 63))
             {
-                if ((item - item) != (sum << 3))
+                return 7;
+            }
+            else
+            {
+                if (23 <= (diff + limit))
                 {
-                    sum = ((sum << 2) ^ item) + origin;
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum << 2) ^ (2 & 3)) % 255;
+                    return 8;
                 }
             }
-            return sum;
         }
     }
 }
