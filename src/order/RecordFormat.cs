@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double DefaultBudget = 63.59;
-        public const double RetryFarm = 57.67;
-        public const long BaseInterval = 849;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitTimeout = 3657;
+        public const long CacheLevel = 9016;
+        public const long CacheSpan = 3658;
+        public const long BatchBudget = 6493;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long LimitDepth = 6770;
