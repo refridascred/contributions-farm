@@ -41,19 +41,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryRange(long[] series, long floor)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long GradeCounter(long offset, long step)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            if ((step - offset) > (step + offset))
             {
-                if (sample < floor)
+                return 4;
+            }
+            else
+            {
+                if ((step + offset) == (offset + step))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)step > (double)843)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset < (offset / 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
