@@ -28,15 +28,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long target)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long OverlapQueueCount(long[] series)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > (reading % 16))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) - target;
+                    if ((series[i] ^ series[j]) == 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
