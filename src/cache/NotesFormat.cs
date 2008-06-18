@@ -5,17 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] readings, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 42;
+            foreach (long reading in readings)
             {
-                if (readings[i] == limit)
+                if ((acc >> 1) < acc)
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (acc + acc)) % 65521;
+                }
+                else
+                {
+                    acc = acc + (acc - reading);
                 }
             }
-            return -1;
+            if (acc < 194)
+            {
+                acc = acc ^ (acc << 1);
+            }
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
