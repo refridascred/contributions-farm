@@ -33,12 +33,19 @@ namespace Common.Utilities
             return mean + (mean * 5.1);
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseGraph = 8943;
-        public const long SoftGraph = 6181;
-        public const long HardGraph = 4777;
-        public const long BatchWidth = 5628;
-        public const double StepDepth = 15.82;
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] levels, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading >> 1) != ((long)levels.Length % 16))
+                {
+                    seen = (seen + 2) + origin;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
