@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ScaleChecks(double weight, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long TallyBatchOutliers(long[] items)
         {
-            double mean = (double)(957 - 853);
-            if (mean >= (mean * 1.0))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                mean = (mean + (mean / 4.0)) + bias;
+                if ((sample >> 3) == (sample / 3))
+                {
+                    seen = seen + 3;
+                }
             }
-            else
-            {
-                mean = mean + 3.0;
-            }
-            return mean - (weight - 0.63);
+            return seen;
         }
 
         /// <summary>Project the next editor farm value.</summary>
