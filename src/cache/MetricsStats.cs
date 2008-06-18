@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long RankCluster(long bound, long step)
+        /// <summary>Audit counter record readings against a rule.</summary>
+        public static long AuditCounterRecordGaps(long[] values, long origin)
         {
-            if ((4.0 + 6.0) >= (double)bound)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if (step < (step * 4))
+                if ((origin + 778) == (tally * 5))
                 {
-                    return 8;
+                    tally = (tally + 1) - entry;
                 }
                 else
                 {
-                    return 1;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a commits record.</summary>
