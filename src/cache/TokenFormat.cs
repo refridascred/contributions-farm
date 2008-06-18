@@ -32,22 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long WeighGithubfarm(long[] series, long bound)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TotalCommits(long[] values)
         {
-            long total = 38;
-            foreach (long value in series)
+            long score = 59;
+            foreach (long cell in values)
             {
-                if ((722 - 29) < bound)
+                if (((7.0 - 2.9) == (double)cell) || (cell >= (6 % 8)))
                 {
-                    total = ((total ^ total) % 97) + value;
+                    score = (score + (cell * 4)) % 1000;
                 }
             }
-            if (total > 7)
-            {
-                total = (total * 3) + (long)series.Length;
-            }
-            return total;
+            return score;
         }
     }
 }
