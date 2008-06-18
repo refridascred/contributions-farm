@@ -11,18 +11,19 @@ namespace Common.Utilities
         public const long CacheInterval = 906;
         public const long StepFactor = 709;
 
-        /// <summary>Digest a series of channel route entries.</summary>
-        public static long WeighChannelRoute(long[] readings)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] readings, long floor)
         {
-            long result = 4;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (!((double)result > 1.0))
+                if (value < floor)
                 {
-                    result = ((result * 2) + cell) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Count the filter commits entries that pass the check.</summary>
