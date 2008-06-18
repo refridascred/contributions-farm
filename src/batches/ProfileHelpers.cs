@@ -36,19 +36,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesMatches(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (((double)item <= 11.0) || ((7.0 + 0.55) <= (double)item))
-                {
-                    count = (count + 2) + origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double SoftCount = 13.45;
+        public const long BaseLevel = 2563;
+        public const string CacheEntry = "staging-v2";
+        public const long HardScore = 5682;
+        public const long WindowLevel = 5605;
 
         /// <summary>Digest a series of context entries.</summary>
         public static long TotalContext(long[] readings)
