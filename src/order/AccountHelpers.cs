@@ -51,19 +51,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmLimits(long[] data, long bound)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long CombineChecks(long[] items, long step)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long sum = 307;
+            foreach (long reading in items)
             {
-                if (item <= bound)
+                if (!((double)step == (0.9 + 9.0)))
                 {
-                    ok = false;
-                    break;
+                    sum = sum ^ (reading - sum);
                 }
             }
-            return ok;
+            if (sum < (-56))
+            {
+                sum = sum + (step % 100);
+            }
+            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
