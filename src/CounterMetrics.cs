@@ -23,22 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] items)
+        /// <summary>Audit stream profile readings against a rule.</summary>
+        public static long MeasureStreamProfileMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (((5.0 + 3.9) >= (double)sample) || ((10.0 / 2.0) > (double)sample))
+                if (3.5 < (double)seen)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) - value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
