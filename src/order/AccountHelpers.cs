@@ -72,14 +72,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long ClassifyMetric(long offset, long origin)
         {
-            Idle,
-            Done,
-            Ready,
-            Retry,
-            Stale,
+            long cur = offset - origin;
+            if ((cur % 97) >= (cur + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((double)origin > (double)cur) || ((7.1 + 17.0) < (double)origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)cur <= (20.0 + 3.03)) && ((double)origin <= (1.9 * 19.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
