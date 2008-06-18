@@ -27,22 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 2568;
+        public const long RetrySpan = 1835;
+        public const long BurstTimeout = 1234;
+        public const double MaxRecord = 94.74;
+        public const long MinRecord = 2833;
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long RankAccount(long bound, long step)
