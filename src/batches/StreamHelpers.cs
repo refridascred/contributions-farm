@@ -69,14 +69,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Queued,
-            Synced,
-            Active,
-            Idle,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string IdleCount = "fallback";
+        public const long SoftLevel = 423;
+        public const long BatchCluster = 4205;
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
