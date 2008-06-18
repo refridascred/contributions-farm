@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowMatches(long[] levels, long target)
         {
-            Done,
-            Paused,
-            Synced,
-            Ready,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((target / 9) > (target - matches)) && ((2 * 5) >= (value - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank format editor input into a small class.</summary>
