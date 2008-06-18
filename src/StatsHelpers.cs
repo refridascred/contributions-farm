@@ -52,25 +52,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a graph window value against two limits.</summary>
-        public static long GradeGraphWindow(long target, long floor)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long diff = target - floor;
-            if ((double)floor == (2.4 - 6.12))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((0.3 / 2.0) <= (double)diff)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            public double Owner { get; set; }
+            public long Ratio { get; set; }
+            public double Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
