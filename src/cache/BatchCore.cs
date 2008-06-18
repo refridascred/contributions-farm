@@ -49,19 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] samples, long bound)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] items, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (reading != bound)
+                if (sample != target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
