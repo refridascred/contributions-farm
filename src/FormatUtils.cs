@@ -50,11 +50,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double scale, double bias)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long MeasureChecksGaps(long[] readings, long limit)
         {
-            double scale2 = scale;
-            return scale2 - bias;
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)7 == (double)(long)readings.Length)
+                {
+                    count = ((count + 2) ^ datum) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the format level values.</summary>
