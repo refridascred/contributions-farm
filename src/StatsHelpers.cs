@@ -52,13 +52,39 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long floor, long offset)
         {
-            public double Owner { get; set; }
-            public long Ratio { get; set; }
-            public double Label { get; set; }
-            public double Weight { get; set; }
+            long next = floor + offset;
+            if ((163 ^ offset) > (floor << 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (floor < (floor - 87))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((8 + floor) == (next - floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((next >> 5) < (offset ^ 46)) || ((double)next < 1.8))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
