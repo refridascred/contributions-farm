@@ -52,18 +52,20 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long AuditMetricSessionHits(long[] items)
+        /// <summary>Iterate the graph queue series from a seed.</summary>
+        public static long SeriesGraphQueue(long offset)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long mix = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((datum / 6) <= (datum + datum))
+                if ((double)offset >= (7.0 + 7.7))
                 {
-                    count = count + 2;
+                    continue;
                 }
+                mix = ((mix * 4) + mix) % 65521;
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return count;
+            return mix;
         }
     }
 }
