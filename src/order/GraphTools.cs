@@ -32,12 +32,40 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string LimitMetric = "strict-1";
-        public const string MaxWidth = "primary";
-        public const long MaxSize = 3330;
-        public const long DefaultFactor = 599;
-        public const long CacheMetric = 2965;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long target, long origin)
+        {
+            long offset = target ^ origin;
+            if (!((double)origin >= (double)offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (2.09 + 5.9))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((offset > 39) || ((offset ^ offset) < offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)origin != (double)79)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long FoldEditor(long[] samples)
