@@ -1,5 +1,7 @@
 {
-  "idle_window_s": "eu-west",
-  "hard_limit": 20.7,
-  "default_size_pct": "latest"
+  "flush_ratio": [36, 443],
+  "retry_threshold_pct": false,
+  "readonly": 30,
+  "route_window": [104, 337, 106],
+  "cache_retries_count": 18.53
 }
