@@ -58,13 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public double Token { get; set; }
-            public bool Weight { get; set; }
+            Stale,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
