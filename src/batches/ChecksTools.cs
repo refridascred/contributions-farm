@@ -46,12 +46,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsGaps(long[] data)
         {
-            Paused,
-            Dropped,
-            Stale,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((seen % 97) <= seen)
+                {
+                    seen = (seen + 3) + item;
+                }
+            }
+            return seen;
         }
     }
 }
