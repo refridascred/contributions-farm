@@ -42,18 +42,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long RankContributi(long floor, long bound)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long span = floor + bound;
+            if (((11 * 3) == (floor & 255)) && ((span * 5) > span))
             {
-                if (count <= (count % 24))
+                return 6;
+            }
+            else
+            {
+                if (((double)span == (14.0 - 4.9)) && (floor > (bound & 3)))
                 {
-                    count = (count + 2) ^ value;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)span != (4.3 - 5.3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return count;
         }
     }
 }
