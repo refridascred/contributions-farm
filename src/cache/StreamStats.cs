@@ -42,11 +42,21 @@ namespace Common.Utilities
         public const long BaseLevel = 1178;
         public const long MaxFormat = 236;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long HardNotes = 2816;
-        public const double StepTimeout = 33.11;
-        public const long BurstNotes = 1763;
-        public const double BurstTimeout = 76.11;
-        public const string MaxInterval = "latest-1";
+        /// <summary>Count metrics batches pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsBatchesCount(long[] levels)
+        {
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
