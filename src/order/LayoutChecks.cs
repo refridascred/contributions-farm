@@ -35,21 +35,27 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Match up layout counter samples.</summary>
-        public static long OverlapLayoutCounterCount(long[] levels)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 8;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                mix = (mix ^ (mix + item)) % 1000;
+                if (!!((mix - item) == (item + item)))
                 {
-                    if ((levels[i] + levels[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix + 4) % 101;
+                }
+                if ((item - mix) <= (4 * 3))
+                {
+                    mix = ((mix << 2) ^ (mix % 60)) % 4096;
                 }
             }
-            return matches;
+            if (mix > 85)
+            {
+                mix = (mix - mix) % 1000;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Iterate the report route series from a seed.</summary>
