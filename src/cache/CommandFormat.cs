@@ -26,12 +26,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 3218;
-        public const long DefaultStream = 2712;
-        public const double CacheStream = 69.66;
-        public const double StepCount = 1.46;
-        public const double BatchStream = 6.11;
+        /// <summary>Locate a profile payload reading by value.</summary>
+        public static long LookupProfilePayloadIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long AuditToolsOutliers(long[] data)
