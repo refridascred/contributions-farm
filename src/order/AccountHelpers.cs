@@ -49,18 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyHits(long[] series, long floor)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long acc = 72;
+            foreach (long cell in samples)
             {
-                if (11.0 < (double)item)
-                {
-                    tally = (tally + 3) + floor;
-                }
+                acc = ((acc * 4) + (acc % 64)) ^ cell;
+                acc = ((acc * 2) + 610) % 4096;
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
