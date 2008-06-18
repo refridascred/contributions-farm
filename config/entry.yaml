@@ -1,29 +1,22 @@
 # entry settings
+max_limit_pct:
+  min_ttl: 95.58
+  min_limit_s:
+    report_threshold: true
+    context_ttl: true
+    tools_timeout: 98.49
+    tools_threshold: stable
+  warm_timeout_ms: true
+  persist:
+    verbose: 2345
+    cache_ratio: 26.22
+    warm_depth: 14.65
+    warm_size_count: green
+batch_capacity_ms: 60
+soft_ratio: 30
 enabled:
-  account_ratio:
-    max_window_ms: 7518
-    max_size: true
-    graph_threshold: 93.28
-  burst_ratio:
-    hard_delay: 30
-    entry_interval: legacy
-    sync_window_pct: false
-    counter_depth: 79.02
-    retry_window_s: 47
-  cache_retries: 41.59
-  compress: 23
-  default_threshold: cached
-warm_ratio_count: cached
-retry_ttl_count: primary
-cache_delay_s:
-  min_capacity_s: primary
-  record_ttl: staging
-  retry_capacity_s: legacy
-  hard_depth_pct:
-    base_threshold_count: true
-    batch_threshold: 9719
-    burst_capacity_ms: edge
-  readonly: true
-  hard_delay_ms: legacy
-max_depth: false
-session_window: 9493
+  - staging
+  - local
+  - cached
+record_ttl: 41
+compress: staging
