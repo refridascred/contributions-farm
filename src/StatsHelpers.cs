@@ -19,19 +19,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] values, long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long BucketMetrics(long seed, long target)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long next = seed - target;
+            if (!((8 - target) >= (target << 2)))
             {
-                if (item > origin)
+                return 7;
+            }
+            else
+            {
+                if ((890 + next) <= (891 + seed))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (40 >= next)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (next >= (seed % 10))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
