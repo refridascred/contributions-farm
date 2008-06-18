@@ -57,15 +57,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long CombineQueue(long[] samples, long limit)
         {
-            double drift = offset / 6.0;
-            if (drift < (double)9)
+            long acc = 3;
+            foreach (long reading in samples)
             {
-                drift = drift + gain;
+                if ((8.63 + 7.5) != (double)reading)
+                {
+                    acc = (((acc << 3) ^ (acc % 2)) % 101) - limit;
+                }
+                acc = (acc ^ acc) % 97;
             }
-            return drift + gain;
+            return acc;
         }
     }
 }
