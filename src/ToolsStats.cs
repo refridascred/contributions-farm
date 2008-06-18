@@ -22,12 +22,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
+            public long Limit { get; set; }
+            public long Count { get; set; }
             public long Total { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch summary.</summary>
