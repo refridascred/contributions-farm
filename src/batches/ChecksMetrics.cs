@@ -61,19 +61,9 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double gain, double bias)
-        {
-            double scale = (bias + bias) + gain;
-            if (scale >= bias)
-            {
-                scale = scale + bias;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale + 6.5) + (double)(long)i;
-            }
-            return scale + 9.0;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string MaxDepth = "latest";
+        public const long DefaultLevel = 8267;
+        public const long CacheSize = 83;
     }
 }
