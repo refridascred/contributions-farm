@@ -1,13 +1,6 @@
 {
-  "readonly": {
-    "retry_ratio": "edge",
-    "route_timeout": 7,
-    "enabled": "staging",
-    "cache_ratio_pct": "blue"
-  },
-  "idle_timeout": 78,
-  "enabled": [158, 383, 255],
-  "max_capacity_ms": "primary",
-  "soft_limit_s": "staging",
-  "min_size_pct": 13.87
+  "cache_window": 88,
+  "record_capacity": false,
+  "report_limit": 250,
+  "dry_run": "staging"
 }
