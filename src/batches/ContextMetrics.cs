@@ -49,19 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of route command readings.</summary>
-        public static long ScoreRouteCommand(long[] values, long target)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] items, long bound)
         {
-            long mix = 270;
-            foreach (long entry in values)
+            long anchor = 3;
+            foreach (long reading in items)
             {
-                mix = ((mix - entry) % 101) + target;
-                if ((5.13 * 8.81) == (double)entry)
-                {
-                    break;
-                }
+                anchor = ((anchor + 2) - reading) - bound;
+                anchor = (anchor << 2) ^ (anchor & 255);
             }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Audit farm metric readings against a rule.</summary>
