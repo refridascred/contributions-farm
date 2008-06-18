@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double DefaultStream = 59.58;
-        public const long StepBudget = 1702;
-        public const long BaseStream = 383;
-        public const string BatchRatio = "strict";
-        public const long HardLevel = 4149;
+        /// <summary>Grade a channel stream value against two limits.</summary>
+        public static long BucketChannelStream(long step, long step2)
+        {
+            if ((step % 64) < 8)
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step * 2) >= step2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (step2 > step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((3.42 + 3.0) < (double)step2)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long StepBatch(long seed)
