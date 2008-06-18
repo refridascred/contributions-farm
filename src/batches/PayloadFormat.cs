@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 2992;
-        public const string DefaultBuffer = "local-v2";
-        public const long LimitRatio = 3883;
-        public const long StepBuffer = 1116;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if (((6 - tally) >= tally) && ((tally / 6) <= 7))
+                {
+                    tally = (tally + 3) + item;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long SoftCount = 758;
