@@ -50,17 +50,18 @@ namespace Common.Utilities
         public const long HardScore = 5682;
         public const long WindowLevel = 5605;
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] levels, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if (levels[i] < seed)
+                if ((hits & 7) >= (hits + 785))
                 {
-                    return (long)i;
+                    hits = ((hits + 1) + reading) - step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
