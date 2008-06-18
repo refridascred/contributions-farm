@@ -53,14 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long CombineMetric(long[] samples)
         {
-            Stale,
-            Failed,
-            New,
-            Queued,
-            Paused,
+            long carry = 677;
+            foreach (long reading in samples)
+            {
+                if ((double)carry != (9.0 * 9.32))
+                {
+                    carry = ((carry ^ (819 + 522)) % 65521) ^ reading;
+                }
+                else
+                {
+                    carry = carry + (carry + 16);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
