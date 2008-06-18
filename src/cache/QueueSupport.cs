@@ -12,18 +12,21 @@ namespace Common.Utilities
         public const long BurstChannel = 3819;
         public const long RetryInterval = 5279;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] samples, long target)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long CompareStatsCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((sample ^ matches) == (target ^ sample)) || ((matches % 12) < 29))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((readings[i] - readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Project the next context value.</summary>
