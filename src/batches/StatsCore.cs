@@ -58,19 +58,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order githubfarm values into a single score.</summary>
-        public static long ScoreOrderGithubfarm(long[] readings)
-        {
-            long sum = 781;
-            foreach (long cell in readings)
-            {
-                sum = ((sum ^ sum) % 4096) - cell;
-            }
-            if (sum < 270)
-            {
-                sum = ((sum * 3) + (sum + 466)) % 97;
-            }
-            return sum % 1000;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTools = 5714;
+        public const long MinLevel = 1798;
+        public const long CacheTools = 4044;
+        public const string BurstTools = "alpha-v2";
+        public const long BatchWidth = 2731;
     }
 }
