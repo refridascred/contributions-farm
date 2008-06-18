@@ -19,32 +19,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a editor tools pair into a bucket.</summary>
-        public static long SortEditorTools(long target, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] levels, long limit)
         {
-            long slot = target - offset;
-            if (((double)target != (19.0 + 9.7)) || ((double)slot > (7.0 - 6.6)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (target < (target << 3))
+                if (levels[i] > limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)slot > 1.1)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
