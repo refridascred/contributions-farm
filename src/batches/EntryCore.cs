@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long BurstCluster = 6142;
         public const long RetryDepth = 9774;
 
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long SeekSchemaIndex(long[] series, long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long DeriveRecord(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] <= floor) && ((series[i] % 3) != 0))
+                if (((step / 2) == (sum % 64)) && ((long)i >= (step - (long)i)))
                 {
-                    return (long)i;
+                    sum = (sum + ((long)i + sum)) % 97;
                 }
+                sum = ((sum * 2) + (long)i) % 4093;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
