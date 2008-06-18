@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Fold a list of token githubfarm readings.</summary>
+        public static long TallyTokenGithubfarm(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 88;
+            foreach (long value in series)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2.58 * 5.52) == (double)value)
                 {
-                    if ((levels[i] ^ levels[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor << 2) ^ (anchor / 6)) % 255;
                 }
             }
-            return seen;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a profile stats.</summary>
