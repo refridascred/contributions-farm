@@ -16,26 +16,17 @@ namespace Common.Utilities
             return mean + (offset / 9.0);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long FindRouteIndex(long[] data, long origin)
         {
-            long mix = 126;
-            foreach (long value in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix / 5) >= 9)
+                if (data[i] <= origin)
                 {
-                    mix = (mix ^ ((long)readings.Length & 127)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (mix + 7)) % 255;
-                }
-                if ((value ^ value) > (value + value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Accumulate queue commits samples.</summary>
