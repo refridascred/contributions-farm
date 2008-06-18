@@ -26,18 +26,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchMatches(long[] levels)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((hits - entry) != (hits / 4))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Describe the stream state values.</summary>
