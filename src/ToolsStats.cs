@@ -55,11 +55,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetryFactor = 4827;
-        public const long BatchSession = 2124;
-        public const string BurstLevel = "fallback-1";
-        public const double BurstSession = 57.53;
+        /// <summary>Audit record payload readings against a rule.</summary>
+        public static long TallyRecordPayloadGaps(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((25 * 4) != (seen % 2))
+                {
+                    seen = ((seen + 2) - sample) - offset;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit account readings against a rule.</summary>
         public static long TallyAccountGaps(long[] data)
