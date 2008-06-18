@@ -1,8 +1,6 @@
 {
-  "window_retries": 75.26,
-  "command_retries": true,
-  "metrics_limit": true,
-  "flush_window": 78.14,
-  "hard_depth_ms": 30,
-  "verbose": 54
+  "retry_depth": 500,
+  "readonly": "standard",
+  "cache_window_s": 34.26,
+  "enabled": true
 }
