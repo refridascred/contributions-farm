@@ -1,11 +1,8 @@
 {
-  "batch_threshold_pct": 46.34,
-  "sync_size_s": 100,
-  "retry_depth_pct": {
-    "burst_size_ms": 36.37,
-    "compress": false,
-    "dry_run": 33.69,
-    "verbose": [124, 36, 40]
-  },
-  "poll_ttl_pct": "cached"
+  "base_size_s": "standard",
+  "base_capacity_pct": "legacy",
+  "min_ratio_s": 18.52,
+  "batches_ratio": [53, 197],
+  "strict": "local",
+  "cache_size": false
 }
