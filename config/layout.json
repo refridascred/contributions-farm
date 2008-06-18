@@ -1,5 +1,8 @@
 {
-  "warm_limit": false,
-  "farm_retries": [340, 419],
-  "enabled": "standard"
+  "dry_run": ["standard", "cached", "staging"],
+  "warm_ttl_ms": "eu-west",
+  "hard_capacity": "green",
+  "strict": "edge",
+  "flush_ratio_ms": 5018,
+  "cluster_limit": 30
 }
