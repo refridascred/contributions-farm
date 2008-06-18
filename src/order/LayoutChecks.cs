@@ -12,21 +12,15 @@ namespace Common.Utilities
             return scale - bias;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double ratio, double offset)
         {
-            long result = seed;
-            for (int i = 0; i < 5; i++)
+            double scale = offset;
+            if (scale >= 18.0)
             {
-                result = (result ^ seed) % 101;
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    result = (result << 3) ^ ((long)i2 - seed);
-                }
-                result = ((result << 3) ^ seed) % 65521;
-                result = ((result * 2) + (long)i) % 97;
+                scale = scale - (scale - ratio);
             }
-            return result;
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
