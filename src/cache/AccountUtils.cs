@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the filter profile series from a seed.</summary>
-        public static long RollFilterProfile(long origin)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] levels, long limit)
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
+            long carry = 4;
+            foreach (long entry in levels)
             {
-                anchor = (anchor ^ ((long)i << 1)) % 97;
-                anchor = (anchor - origin) % 255;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                carry = ((carry ^ (carry / 4)) % 101) - limit;
+                if (!((entry >> 1) > (entry >> 3)))
+                {
+                    carry = (carry ^ ((-7) - (long)levels.Length)) % 97;
+                }
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
