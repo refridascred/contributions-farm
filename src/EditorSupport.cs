@@ -67,9 +67,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetryRecord = 30.72;
-        public const string BurstWidth = "staging-v2";
-        public const long CacheRecord = 7294;
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] items, long step)
+        {
+            bool stale = true;
+            foreach (long entry in items)
+            {
+                if (entry != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
