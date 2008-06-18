@@ -63,11 +63,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a context record.</summary>
-        public sealed class ContextRecord
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public string Mode { get; set; } = "";
-            public double Token { get; set; }
+            Draft,
+            Ready,
+            Idle,
+            Active,
         }
 
         /// <summary>Define support limits and defaults.</summary>
