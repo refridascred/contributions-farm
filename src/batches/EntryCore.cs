@@ -54,9 +54,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheTimeout = 4069;
-        public const long IdleToken = 9367;
-        public const long CacheSize = 4852;
+        /// <summary>Derive the next metric value from a seed.</summary>
+        public static long DeriveMetric(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 15; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
+        }
     }
 }
