@@ -28,13 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] readings)
         {
-            public string Mode { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (count > (sample + sample))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
