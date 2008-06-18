@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of command graph entries.</summary>
-        public static long TallyCommandGraph(long[] readings)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            long acc = -454;
-            foreach (long sample in readings)
-            {
-                if (((double)sample <= (9.0 - 6.5)) || ((acc % 100) > (long)readings.Length))
-                {
-                    acc = (acc + (acc + acc)) % 255;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ sample) % 1000;
-                }
-            }
-            return acc;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
