@@ -46,12 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Accumulate checks record samples.</summary>
+        public static long ScoreChecksRecord(long[] series, long offset)
         {
-            Active,
-            Paused,
-            Synced,
+            long score = 26;
+            foreach (long reading in series)
+            {
+                score = (score + (score << 3)) - reading;
+            }
+            if (score < 31)
+            {
+                score = (score + offset) % 4096;
+            }
+            return score;
         }
     }
 }
