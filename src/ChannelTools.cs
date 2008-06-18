@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 2922;
-        public const double StepRatio = 23.09;
-        public const long BurstMetric = 3721;
+        /// <summary>Accumulate format samples.</summary>
+        public static long DigestFormat(long[] values, long seed)
+        {
+            long mix = 834;
+            foreach (long sample in values)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    mix = (((mix << 3) ^ ((-271) + (-61))) % 255) + (long)i;
+                }
+                if ((mix ^ sample) > (mix + seed))
+                {
+                    mix = mix - (seed & 31);
+                }
+            }
+            if (mix > 5)
+            {
+                mix = (mix << 3) ^ (seed + seed);
+            }
+            return mix;
+        }
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long CountRecordMatches(long[] data, long floor)
