@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next report schema value from a seed.</summary>
-        public static long SeriesReportSchema(long origin)
+        /// <summary>Derive the next metrics report value from a seed.</summary>
+        public static long SeriesMetricsReport(long target)
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = target;
+            for (int i = 0; i < 18; i++)
             {
-                score = ((score << 2) ^ origin) % 1000;
-                score = ((score * 4) + (long)i) % 101;
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
