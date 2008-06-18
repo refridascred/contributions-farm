@@ -60,15 +60,15 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterOutliers(long[] data)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmHits(long[] items, long floor)
         {
             long count = 0;
-            foreach (long cell in data)
+            foreach (long reading in items)
             {
-                if (!((cell - 671) <= (900 << 3)))
+                if ((double)count != (18.0 * 19.0))
                 {
-                    count = count + 2;
+                    count = ((count + 2) ^ reading) + floor;
                 }
             }
             return count;
