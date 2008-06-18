@@ -1,15 +1,10 @@
 # support settings
-contributi_window: eu-west
-readonly: 5743
-githubfarm_capacity: 45.78
-retry_timeout_s:
-  - 234
-  - 434
-  - 28
-default_limit:
-  soft_ratio_ms: 65
-  default_threshold_count: stable
-  max_retries_pct:
-    burst_ttl_count: 32
-    hard_depth_s: 90.85
-    strict: true
+soft_threshold_count: 96.76
+metric_capacity: false
+enabled: 4.25
+dry_run: legacy
+flush_ttl_pct:
+  - 38
+  - 247
+  - 418
+  - 166
