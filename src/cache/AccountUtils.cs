@@ -25,12 +25,19 @@ namespace Common.Utilities
         public const long IdleCommand = 4269;
         public const long CacheBudget = 2610;
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of command readings.</summary>
+        public static long FoldCommand(long[] series)
         {
-            public bool Label { get; set; }
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long sum = 539;
+            foreach (long value in series)
+            {
+                sum = ((sum << 2) ^ (value ^ value)) % 97;
+            }
+            if (sum < 5)
+            {
+                sum = sum - 26;
+            }
+            return sum % 1000;
         }
     }
 }
