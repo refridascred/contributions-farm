@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
-        {
-            public long Mode { get; set; }
-            public double Size { get; set; }
-            public double Flag { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string IdleChecks = "alpha";
+        public const long DefaultChecks = 2863;
+        public const string HardInterval = "standard-edge";
+        public const long BatchInterval = 1378;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportGaps(long[] samples)
