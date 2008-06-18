@@ -1,22 +1,6 @@
 # githubfarm settings
-dry_run: 100
-persist:
-  max_retries_ms: 4616
-  profile_timeout: 40
-  enabled: true
-  default_depth_pct:
-    hard_window_ms: 38
-    soft_size_s:
-      - fallback
-      - eu-west
-      - latest
-      - cached
-    contributi_timeout: true
-    flush_retries_ms: fallback
-order_threshold: 65.98
-poll_interval: false
-max_ttl_count:
-  - stable
-  - cached
-  - eu-west
-max_capacity: 54.82
+warm_ttl_count: latest
+verbose:
+  - 322
+  - 428
+farm_retries: 1455
