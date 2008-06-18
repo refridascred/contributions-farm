@@ -51,15 +51,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double gain, double floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] samples)
         {
-            double bias = gain - floor;
-            if (bias > 5.9)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                bias = bias - (gain - 20.0);
+                if (cell <= hits)
+                {
+                    hits = hits + 2;
+                }
             }
-            return bias + (floor / 4.0);
+            return hits;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
