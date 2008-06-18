@@ -1,19 +1,10 @@
 {
-  "editor_window": "staging",
-  "retry_retries": {
-    "enabled": 5241,
-    "cache_ttl_pct": false,
-    "record_limit": 89.38
+  "stats_ttl": {
+    "profile_ratio": "strict",
+    "sync_interval_s": true,
+    "idle_retries_ms": "staging"
   },
-  "cache_ratio_count": 8343,
-  "verbose": 43.14,
-  "contributi_ratio": ["latest", "legacy"],
-  "strict": {
-    "batch_depth_ms": "latest",
-    "warm_retries": 1024,
-    "max_window_count": 2714,
-    "flush_limit_count": 3265,
-    "strict": 5751,
-    "batch_interval_s": "fallback"
-  }
+  "report_threshold": false,
+  "sync_timeout_s": false,
+  "idle_interval": 81
 }
