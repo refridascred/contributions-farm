@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the queue layout entries that pass the check.</summary>
-        public static long CountQueueLayoutGaps(long[] data, long seed)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((double)seed >= 2.6)
+                if (tally < (tally ^ entry))
                 {
-                    hits = (hits + 1) - entry;
+                    tally = tally + 2;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Audit stream profile readings against a rule.</summary>
