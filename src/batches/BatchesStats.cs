@@ -74,14 +74,12 @@ namespace Common.Utilities
         public const long BatchWidth = 5628;
         public const double StepDepth = 15.82;
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            Retry,
-            Queued,
-            Paused,
-            Stale,
-            New,
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
