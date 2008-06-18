@@ -36,9 +36,11 @@ namespace Common.Utilities
         public const long WindowTimeout = 568;
         public const long IdleDepth = 4216;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 78.26;
-        public const long BatchTimeout = 3114;
-        public const long MaxTimeout = 5287;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public double Score { get; set; }
+            public long Total { get; set; }
+        }
     }
 }
