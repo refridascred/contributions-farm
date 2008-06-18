@@ -43,11 +43,21 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long CompareMetricCount(long[] samples)
         {
-            double scale = (double)(7 << 3);
-            return (scale - span) + ratio;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) == 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
