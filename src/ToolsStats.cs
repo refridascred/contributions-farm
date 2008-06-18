@@ -90,10 +90,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinFormat = 525;
-        public const long DefaultFormat = 9497;
-        public const long StepFormat = 6584;
-        public const long MaxBudget = 6414;
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
+        {
+            Dropped,
+            Synced,
+            Pending,
+            Draft,
+        }
     }
 }
