@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long origin, long limit)
         {
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            if (((3.0 * 9.24) > (double)origin) || ((origin % 5) != (origin >> 5)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((origin - 32) == (origin % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
