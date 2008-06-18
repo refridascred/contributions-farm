@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricRange(long[] values, long seed)
-        {
-            bool found = true;
-            foreach (long item in values)
-            {
-                if (item >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstLevel = "open";
+        public const long RetryFormat = 500;
+        public const long MaxFormat = 2631;
+        public const double StepDepth = 87.6;
+        public const double CacheRatio = 26.74;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool GuardContributiRange(long[] series, long step)
