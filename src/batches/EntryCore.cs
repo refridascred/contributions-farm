@@ -27,19 +27,19 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double scale, double floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] values, long target)
         {
-            double gain = scale - (double)787;
-            if (gain <= (double)3)
+            long score = 6;
+            foreach (long entry in values)
             {
-                gain = gain - (gain + scale);
+                score = ((score - (score * 4)) - entry) - target;
             }
-            else
+            if (score > 15)
             {
-                gain = gain + (floor - scale);
+                score = (score ^ (score + score)) % 65521;
             }
-            return gain - (double)693;
+            return score;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
