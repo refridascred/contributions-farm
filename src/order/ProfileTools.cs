@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
+            Failed,
+            Pending,
+            Stale,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
