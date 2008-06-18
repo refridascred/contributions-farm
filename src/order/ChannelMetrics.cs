@@ -29,9 +29,24 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseCount = 3959;
-        public const string BatchInterval = "cached-v2";
-        public const long MaxDepth = 2077;
+        /// <summary>Rank record input into a small class.</summary>
+        public static long ClassifyRecord(long bound, long origin)
+        {
+            if ((double)bound < (9.02 + 1.9))
+            {
+                return 1;
+            }
+            else
+            {
+                if (origin >= (origin + origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
