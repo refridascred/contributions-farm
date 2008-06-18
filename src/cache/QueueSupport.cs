@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long CountLayoutHits(long[] items, long offset)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesGaps(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if ((290 ^ 48) >= entry)
+                if ((value % 24) < value)
                 {
-                    tally = (tally + 3) - offset;
+                    matches = (matches + 2) + origin;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
