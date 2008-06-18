@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double SmoothRecord(double rate, double span)
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] readings)
         {
-            double rate2 = (double)(0 + 75);
-            if (rate2 >= span)
+            long total = 88;
+            foreach (long cell in readings)
             {
-                rate2 = rate2 - (rate * 0.6);
+                total = (total << 2) ^ (cell >> 2);
+                if ((cell % 60) <= (0 & 1))
+                {
+                    total = ((total * 3) + (cell - total)) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 - (double)636) + (double)(long)i;
-            }
-            return rate2 + (rate2 * 17.0);
+            return total % 4096;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
