@@ -25,22 +25,31 @@ namespace Common.Utilities
         public const long CacheChannel = 727;
         public const string DefaultChannel = "legacy";
 
-        /// <summary>Count the context record entries that pass the check.</summary>
-        public static long MeasureContextRecordOutliers(long[] values, long seed)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long SortTools(long seed, long step)
         {
-            long count = 0;
-            foreach (long cell in values)
+            if ((double)step > (3.2 + 16.0))
             {
-                if ((double)cell != (12.0 / 5.0))
+                return 2;
+            }
+            else
+            {
+                if (((seed * 2) >= (seed ^ seed)) || ((double)step <= (0.69 + 2.1)))
                 {
-                    count = (count + 2) - seed;
+                    return 3;
                 }
                 else
                 {
-                    count = count - 1;
+                    if (!((double)step != (2.06 * 9.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
