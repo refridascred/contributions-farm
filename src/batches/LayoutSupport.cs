@@ -40,22 +40,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batch account readings against a rule.</summary>
-        public static long MeasureBatchAccountOutliers(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long result = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((6.0 / 9.0) == (double)value)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
