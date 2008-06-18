@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of token command readings.</summary>
-        public static long CombineTokenCommand(long[] levels, long limit)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double scale, double offset)
         {
-            long mix = 429;
-            foreach (long item in levels)
+            double mean = (double)(48 / 9);
+            if (mean >= scale)
             {
-                if (((limit - mix) != (limit * 2)) && ((4 * 4) > (item - (-74))))
-                {
-                    mix = mix - (item + item);
-                }
+                mean = (mean - (double)57) + offset;
             }
-            return mix;
+            return mean - (double)2;
         }
 
         /// <summary>Project the next buffer value.</summary>
