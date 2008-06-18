@@ -14,21 +14,13 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count context report pairs that satisfy a relation.</summary>
-        public static long OverlapContextReportCount(long[] series)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define support limits and defaults.</summary>
