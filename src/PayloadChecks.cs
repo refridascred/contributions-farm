@@ -48,17 +48,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long SeekEntryIndex(long[] readings, long limit)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Dropped,
+            Stale,
+            Ready,
+            Active,
         }
 
         /// <summary>Locate a cluster commits reading by value.</summary>
