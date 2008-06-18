@@ -44,12 +44,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long CacheLevel = 9823;
-        public const long CacheCluster = 4082;
-        public const long SoftCluster = 6194;
-        public const double MinCluster = 91.62;
-        public const double CacheInterval = 56.86;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextMatches(long[] series, long seed)
+        {
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((double)entry != (double)7)
+                {
+                    count = (count + 2) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items)
