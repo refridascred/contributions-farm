@@ -1,7 +1,8 @@
-id,state,region,score,ratio
-1,324,65.67,94.61,508
-2,87,fallback,27.59,fallback
-3,local,edge,647,94.33
-4,326,252,33.14,20.13
-5,eu-west,711,921,463
-6,staging,427,652,eu-west
+id,owner,score,ratio
+1,66.32,21.02,954
+2,61.88,71.99,84.89
+3,615,55.8,113
+4,local,20.95,green
+5,225,583,primary
+6,45.43,92.0,primary
+7,359,82,90.46
