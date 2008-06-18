@@ -79,10 +79,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepRatio = "latest-edge";
-        public const long BurstSession = 187;
-        public const long LimitSession = 3690;
-        public const string DefaultSpan = "stable";
+        /// <summary>Classify a channel queue pair into a bucket.</summary>
+        public static long BucketChannelQueue(long target, long floor)
+        {
+            if ((floor + target) > (542 & 1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((target << 2) >= (floor - 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor >> 3) != (target + floor))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
