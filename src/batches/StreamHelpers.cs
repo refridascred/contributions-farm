@@ -69,21 +69,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksGaps(long[] series)
         {
-            long total = target;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in series)
             {
-                long span = target;
-                span = span - span;
-                if (16 > (span & 15))
+                if (13.0 >= (double)seen)
                 {
-                    span = (span ^ total) % 4096;
+                    seen = (seen + 3) ^ item;
                 }
-                total = ((total * 4) + (long)i) % 97;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Describe the channel state values.</summary>
