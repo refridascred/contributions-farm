@@ -60,31 +60,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank format record input into a small class.</summary>
-        public static long RankFormatRecord(long floor, long limit)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            if (((708 << 1) < floor) && ((double)limit != (9.0 - 3.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit - limit) > floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((limit >> 3) <= limit)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Level { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
