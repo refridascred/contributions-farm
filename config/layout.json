@@ -1,20 +1,14 @@
 {
-  "retry_ratio_ms": {
-    "dry_run": {
-      "hard_interval_s": "local",
-      "min_delay_s": false,
-      "format_capacity": "local",
-      "compress": 16.75,
-      "cache_size": 742
-    },
-    "audit": 1024,
-    "payload_window": true,
-    "base_ratio": 30,
-    "retry_threshold_s": 1085,
-    "notes_limit": 33.49
+  "strict": [338, 387, 340],
+  "dry_run": 33.39,
+  "soft_capacity_pct": {
+    "stream_threshold": 250,
+    "graph_interval": "stable",
+    "batch_retries_count": "cached",
+    "default_delay_pct": 30,
+    "command_ratio": false
   },
-  "burst_ttl_count": 1330,
-  "base_interval": 100,
-  "stats_window": "edge",
-  "entry_retries": ["open", "strict", "standard", "standard"]
+  "already_capacity": ["strict", "fallback"],
+  "cache_retries": "cached",
+  "warm_interval": 3280
 }
