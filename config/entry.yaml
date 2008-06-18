@@ -1,22 +1,4 @@
 # entry settings
-max_limit_pct:
-  min_ttl: 95.58
-  min_limit_s:
-    report_threshold: true
-    context_ttl: true
-    tools_timeout: 98.49
-    tools_threshold: stable
-  warm_timeout_ms: true
-  persist:
-    verbose: 2345
-    cache_ratio: 26.22
-    warm_depth: 14.65
-    warm_size_count: green
-batch_capacity_ms: 60
-soft_ratio: 30
-enabled:
-  - staging
-  - local
-  - cached
-record_ttl: 41
-compress: staging
+cache_timeout: 27
+entry_delay: standard
+sync_capacity_ms: 9.48
