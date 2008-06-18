@@ -49,11 +49,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double weight, double floor)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileOutliers(long[] samples)
         {
-            double mean = floor;
-            return (mean + (2.0 / 5.0)) + weight;
+            long count = 0;
+            foreach (long value in samples)
+            {
+                if (((value + 7) != (count - value)) || (((double)value < (double)(-88)) && (count >= (count ^ value))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
     }
 }
