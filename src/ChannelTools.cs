@@ -19,11 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] samples, long floor)
         {
-            public bool Rank { get; set; }
-            public long Count { get; set; }
+            bool ready = true;
+            foreach (long reading in samples)
+            {
+                if (reading >= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
