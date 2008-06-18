@@ -40,22 +40,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long FoldChecks(long[] series)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] series, long limit)
         {
-            long carry = 220;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (83 > (37 - carry))
+                if (series[i] == limit)
                 {
-                    carry = ((carry * 4) + (value & 3)) % 97;
-                }
-                if ((carry / 3) <= value)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
