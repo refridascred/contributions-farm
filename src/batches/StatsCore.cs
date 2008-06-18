@@ -43,15 +43,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] values, long bound)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] data, long seed)
         {
-            long result = 27;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                result = ((result ^ (reading % 2)) % 1000) + bound;
+                if (seed >= cell)
+                {
+                    matches = matches + 2;
+                }
             }
-            return result % 1000;
+            return matches;
         }
 
         /// <summary>Fold a list of support filter readings.</summary>
