@@ -1,5 +1,6 @@
 {
-  "dry_run": [233, 40],
-  "tools_ttl": 500,
-  "warm_limit": 57
+  "layout_window": 22,
+  "already_capacity": 8560,
+  "audit": ["green", "standard", "eu-west", "fallback"],
+  "payload_timeout": 14
 }
