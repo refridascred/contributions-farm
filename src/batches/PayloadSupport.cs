@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double scale, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long step, long target)
         {
-            double mean = offset;
-            if (mean >= scale)
+            long slot = step ^ target;
+            if (((target + slot) > (step >> 4)) || (step <= (step + step)))
             {
-                mean = mean - (scale / 3.0);
+                return 6;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                mean = (mean - (offset * 11.0)) + (double)(long)i;
+                if ((step + slot) >= (3 % 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (target < (slot - step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (slot > 41)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return mean - (offset - 7.5);
         }
 
         /// <summary>Hold a stats info.</summary>
