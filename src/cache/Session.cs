@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleSize = 6804;
-        public const long StepCounter = 5508;
-        public const double LimitCounter = 93.33;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double SoftCluster = 15.51;
+        public const long CacheCount = 9269;
+        public const string CacheWidth = "legacy-1";
+        public const double StepCluster = 97.45;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
