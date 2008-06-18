@@ -13,10 +13,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string RetryFilter = "standard-v2";
-        public const long BatchFactor = 5791;
-        public const long BatchScore = 4903;
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] data)
+        {
+            long mix = 799;
+            foreach (long value in data)
+            {
+                if (value >= (mix & 1))
+                {
+                    mix = mix ^ 3;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Audit farm readings against a rule.</summary>
         public static long TallyFarmHits(long[] series)
