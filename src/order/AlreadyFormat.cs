@@ -25,25 +25,12 @@ namespace Common.Utilities
         public const double CacheBudget = 64.69;
         public const double BaseFilter = 29.94;
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long target, long target2)
-        {
-            if ((target / 4) < 20)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((double)(-77) != (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long HardRoute = 3811;
+        public const long LimitCount = 285;
+        public const long DefaultRoute = 2968;
+        public const long MaxRoute = 9453;
+        public const long BurstScore = 4816;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] values, long offset)
