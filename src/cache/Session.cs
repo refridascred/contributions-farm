@@ -51,19 +51,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long target)
+        /// <summary>Count the metrics support entries that pass the check.</summary>
+        public static long CountMetricsSupportMatches(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if (reading != target)
+                if ((double)reading != (2.2 / 6.0))
                 {
-                    valid = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return valid;
+            return seen;
         }
     }
 }
