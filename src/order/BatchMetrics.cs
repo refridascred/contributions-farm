@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate githubfarm queue samples.</summary>
-        public static long CombineGithubfarmQueue(long[] items)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long LookupTokenIndex(long[] levels, long limit)
         {
-            long mix = 935;
-            foreach (long datum in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = mix + (4 - datum);
+                if ((levels[i] == limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Hold a commits header.</summary>
