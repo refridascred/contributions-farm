@@ -44,13 +44,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long SeekFarmIndex(long[] values, long origin)
         {
-            public bool Count { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
