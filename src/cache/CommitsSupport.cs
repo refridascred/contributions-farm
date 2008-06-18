@@ -65,18 +65,17 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsHits(long[] readings, long bound)
+        /// <summary>Find the first account profile entry that matches the target.</summary>
+        public static long FindAccountProfileIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count >> 3) != (count >> 4))
+                if (levels[i] <= target)
                 {
-                    count = ((count + 2) + sample) + bound;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Fold a list of format readings.</summary>
