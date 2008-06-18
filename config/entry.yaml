@@ -1,5 +1,6 @@
 # entry settings
-profile_ttl: 35
-enabled: 1024
-max_timeout_count: 7890
-route_retries: 0.11
+base_delay: true
+farm_size: 60
+account_capacity: true
+soft_window_s: 72
+poll_ratio_pct: green
