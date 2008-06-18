@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long target)
         {
-            public string Ratio { get; set; } = "";
-            public bool Rank { get; set; }
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    total = (total + (long)i) ^ (long)i2;
+                }
+                total = ((total * 2) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks entry.</summary>
