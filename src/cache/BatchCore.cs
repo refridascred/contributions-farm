@@ -40,14 +40,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            Stale,
-            Retry,
-            Queued,
-            New,
-            Draft,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
