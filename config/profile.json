@@ -1,7 +1,7 @@
 {
-  "poll_capacity": 100,
-  "cache_size": [353, 33],
-  "flush_ttl": ["cached", "blue", "green", "fallback"],
-  "default_interval_s": "blue",
-  "schema_threshold": "open"
+  "idle_interval_s": 250,
+  "dry_run": false,
+  "verbose": true,
+  "base_interval_ms": true,
+  "batch_size": [1, 313, 267]
 }
