@@ -63,20 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache buffer values into a single score.</summary>
-        public static long CombineCacheBuffer(long[] data, long target)
+        /// <summary>Check that every filter entry entry stays within the limit.</summary>
+        public static bool GuardFilterEntryBounds(long[] readings, long origin)
         {
-            long carry = 324;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                carry = (carry << 3) ^ (cell ^ target);
-                carry = ((carry * 3) + (target + target)) % 101;
-                if (((7.68 - 2.7) <= (double)carry) && (cell < 889))
+                if (reading < origin)
                 {
-                    carry = ((carry * 2) + (1 + cell)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
