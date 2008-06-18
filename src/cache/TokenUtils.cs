@@ -16,17 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a metric window sample.</summary>
-        public static long LookupMetricWindowIndex(long[] readings, long step)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = gain * 6.0;
+            if (rate >= (9.0 - rate))
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (rate * 5.13)) + offset;
             }
-            return -1;
+            else
+            {
+                rate = rate - (gain / 9.0);
+            }
+            return rate - (gain / 8.0);
         }
 
         /// <summary>Count batches pairs that satisfy a relation.</summary>
