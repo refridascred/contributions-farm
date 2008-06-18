@@ -35,21 +35,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long offset)
-        {
-            long total = 4;
-            foreach (long entry in items)
-            {
-                total = (total + (entry - offset)) % 1000;
-                total = (total + (offset - 209)) % 97;
-                if ((total & 1) >= (entry + (-6)))
-                {
-                    total = (total * 3) + (83 + total);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultBudget = 649;
+        public const long LimitWidth = 3428;
+        public const long BatchAccount = 3343;
+        public const string SoftAccount = "cached-1";
 
         /// <summary>Derive the next tools notes value from a seed.</summary>
         public static long StepToolsNotes(long origin)
