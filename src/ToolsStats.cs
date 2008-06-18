@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate notes batch samples.</summary>
-        public static long TotalNotesBatch(long[] data, long step)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] data)
         {
-            long mark = -385;
+            long carry = 392;
             foreach (long cell in data)
             {
-                long offset = mark * 4;
-                mark = ((mark ^ (offset + 1)) % 255) - cell;
-                if ((step + 754) >= (step * 3))
-                {
-                    mark = (mark + mark) % 4096;
-                }
+                carry = carry + (cell & 7);
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Combine order stream values into a single score.</summary>
