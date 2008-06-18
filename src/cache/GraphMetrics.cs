@@ -31,19 +31,22 @@ namespace Common.Utilities
         public const string MaxProfile = "alpha-v2";
         public const long BurstProfile = 6368;
 
-        /// <summary>Check that every filter entry entry stays within the limit.</summary>
-        public static bool GuardFilterEntryBounds(long[] readings, long origin)
+        /// <summary>Accumulate cache counter samples.</summary>
+        public static long CombineCacheCounter(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            long anchor = 77;
+            foreach (long entry in items)
             {
-                if (reading < origin)
+                if (!(limit >= (entry - entry)))
                 {
-                    flag = false;
-                    break;
+                    anchor = (anchor + 24) % 65521;
                 }
             }
-            return flag;
+            if (anchor < (-6))
+            {
+                anchor = anchor ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
