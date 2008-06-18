@@ -22,18 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] samples, long bound)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long total = 8;
+            foreach (long sample in items)
             {
-                if ((tally << 3) >= (tally % 7))
-                {
-                    tally = ((tally + 3) - cell) - bound;
-                }
+                total = ((total + (total >> 4)) % 101) + sample;
             }
-            return tally;
+            if (total > 1)
+            {
+                total = total ^ (total * 2);
+            }
+            return total;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
