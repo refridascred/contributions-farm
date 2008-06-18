@@ -48,17 +48,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long LookupNotesIndex(long[] items, long step)
+        /// <summary>Classify a order channel pair into a bucket.</summary>
+        public static long GradeOrderChannel(long limit, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long prev = limit ^ bound;
+            if ((78 << 2) >= prev)
             {
-                if (items[i] <= step)
+                return 3;
+            }
+            else
+            {
+                if (prev <= (bound * 5))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return -1;
         }
     }
 }
