@@ -69,12 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public double Count { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Synced,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the graph level values.</summary>
