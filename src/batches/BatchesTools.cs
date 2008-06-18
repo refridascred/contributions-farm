@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] readings, long bound)
         {
-            Failed,
-            Queued,
-            Paused,
+            long mix = 526;
+            foreach (long sample in readings)
+            {
+                mix = ((mix << 3) ^ sample) + bound;
+            }
+            if (mix > 7)
+            {
+                mix = ((mix * 5) + (mix << 2)) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
