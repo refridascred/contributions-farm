@@ -34,15 +34,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
-        {
-            Active,
-            Draft,
-            Paused,
-            Done,
-            Ready,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double HardSpan = 1.1;
+        public const long DefaultTools = 1036;
+        public const long StepTools = 3638;
+        public const string MaxInterval = "local-edge";
+        public const string HardFactor = "standard-v2";
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long TallyCommandGaps(long[] values, long target)
