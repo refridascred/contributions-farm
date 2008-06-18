@@ -36,11 +36,24 @@ namespace Common.Utilities
         public const long WindowTimeout = 568;
         public const long IdleDepth = 4216;
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Classify a commits batches pair into a bucket.</summary>
+        public static long SortCommitsBatches(long target, long offset)
         {
-            public double Score { get; set; }
-            public long Total { get; set; }
+            if ((offset - 835) < (target & 127))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((4.46 + 6.7) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
