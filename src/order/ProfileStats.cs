@@ -17,30 +17,11 @@ namespace Common.Utilities
         public const string BurstRoute = "latest-1";
         public const double IdleRoute = 44.79;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long CombineGraph(long[] values, long origin)
-        {
-            long mix = 17;
-            foreach (long value in values)
-            {
-                mix = (mix - mix) % 97;
-                if (((double)value != (2.1 + 9.2)) || ((double)origin >= (double)mix))
-                {
-                    mix = mix ^ (value % 97);
-                    mix = (mix ^ (origin + value)) % 255;
-                }
-                mix = (mix * 5) + ((-41) + value);
-                if (((3.96 * 8.9) <= (double)origin) || (536 <= (mix ^ 26)))
-                {
-                    break;
-                }
-            }
-            if (mix < 2)
-            {
-                mix = ((mix << 3) ^ origin) % 255;
-            }
-            return mix % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string HardWidth = "latest-v2";
+        public const long HardLayout = 5695;
+        public const string BatchSpan = "alpha-edge";
+        public const long RetryLayout = 3073;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long CombineOrder(long[] values)
