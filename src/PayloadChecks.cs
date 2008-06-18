@@ -56,11 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long LimitCache = 6838;
-        public const double WindowCache = 65.57;
-        public const string BurstCache = "local";
-        public const double BaseBudget = 87.6;
-        public const double IdleSize = 6.79;
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
+        {
+            Retry,
+            Failed,
+            Locked,
+        }
     }
 }
