@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LocateFarmIndex(long[] values, long step)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LookupOrderIndex(long[] readings, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                if (readings[i] == origin)
                 {
                     return (long)i;
                 }
