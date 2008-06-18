@@ -33,17 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] levels, long seed)
+        /// <summary>Compare every pair of command batches readings.</summary>
+        public static long OverlapCommandBatchesCount(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 5) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first account entry that matches the target.</summary>
