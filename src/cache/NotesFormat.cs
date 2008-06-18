@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double BlendFilter(double bias, double floor)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double BlendTools(double weight, double span)
         {
-            double gain = 13.0 * 5.84;
-            if (gain < (bias * 4.3))
+            double weight2 = weight;
+            for (int i = 0; i < 3; i++)
             {
-                gain = gain - (floor + gain);
+                weight2 = (weight2 - (weight2 * 2.5)) - (double)(long)i;
             }
-            else
-            {
-                gain = gain - floor;
-            }
-            return gain + gain;
+            return weight2 - span;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
