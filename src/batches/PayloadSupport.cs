@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Count the contributi githubfarm entries that pass the check.</summary>
-        public static long MeasureContributiGithubfarmOutliers(long[] readings, long origin)
+        /// <summary>Check that every batches layout entry stays within the limit.</summary>
+        public static bool ValidateBatchesLayoutBounds(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            bool found = true;
+            foreach (long sample in values)
             {
-                if (origin < (2 >> 4))
+                if (sample >= limit)
                 {
-                    seen = (seen + 3) + reading;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
