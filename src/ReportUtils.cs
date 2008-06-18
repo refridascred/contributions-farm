@@ -34,31 +34,13 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long limit, long seed)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            if (limit > seed)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed <= (7.8 - 1.0))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((6.4 - 9.97) >= (double)limit)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
