@@ -1,8 +1,7 @@
 {
-  "strict": 3,
-  "verbose": true,
-  "contributi_limit": 66,
-  "hard_limit_count": "green",
-  "readonly": ["cached", "edge", "cached", "local"],
-  "graph_limit": 89.22
+  "poll_timeout_count": ["fallback", "fallback"],
+  "dry_run": 49.5,
+  "max_interval_count": "primary",
+  "hard_timeout_s": true,
+  "warm_size": 55
 }
