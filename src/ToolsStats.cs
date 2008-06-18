@@ -53,18 +53,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountGaps(long[] data)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((9.07 * 0.1) != (double)cell)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Total { get; set; }
+            public bool Count { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
