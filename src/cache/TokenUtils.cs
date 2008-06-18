@@ -56,10 +56,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long SoftMetrics = 260;
-        public const long IdleMetrics = 2329;
-        public const string DefaultFactor = "strict";
-        public const long CacheMetrics = 453;
+        /// <summary>Combine layout batch values into a single score.</summary>
+        public static long TallyLayoutBatch(long[] samples)
+        {
+            long anchor = 80;
+            foreach (long reading in samples)
+            {
+                if (((double)reading >= 6.74) || ((reading * 2) > 287))
+                {
+                    anchor = anchor - (anchor ^ reading);
+                }
+                if (((3.0 + 9.7) != (double)(long)samples.Length) && ((anchor - anchor) <= (anchor / 6)))
+                {
+                    break;
+                }
+            }
+            if (anchor > 52)
+            {
+                anchor = (anchor * 5) + (anchor % 97);
+            }
+            return anchor % 65521;
+        }
     }
 }
