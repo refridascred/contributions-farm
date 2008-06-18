@@ -18,19 +18,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] series, long origin)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long ClassifyStream(long step, long offset)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            if (((-7) & 31) > (offset >> 5))
             {
-                if (datum < origin)
+                return 1;
+            }
+            else
+            {
+                if (step >= (offset ^ step))
                 {
-                    stale = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return stale;
         }
 
         /// <summary>Roll a cluster counter forward.</summary>
