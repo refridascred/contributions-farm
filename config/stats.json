@@ -1,5 +1,8 @@
 {
-  "base_size": 100,
-  "min_timeout_pct": 1024,
-  "sync_timeout_count": [452, 241]
+  "default_limit_s": 75,
+  "base_ttl_pct": 93,
+  "checks_delay": "standard",
+  "enabled": 500,
+  "warm_depth_ms": ["fallback", "green"],
+  "max_size": 60
 }
