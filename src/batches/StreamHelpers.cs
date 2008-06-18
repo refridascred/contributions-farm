@@ -69,12 +69,21 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long target)
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long total = target;
+            for (int i = 0; i < 8; i++)
+            {
+                long span = target;
+                span = span - span;
+                if (16 > (span & 15))
+                {
+                    span = (span ^ total) % 4096;
+                }
+                total = ((total * 4) + (long)i) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the channel state values.</summary>
