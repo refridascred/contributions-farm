@@ -19,39 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long BucketMetrics(long seed, long target)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long next = seed - target;
-            if (!((8 - target) >= (target << 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((890 + next) <= (891 + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (40 >= next)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (next >= (seed % 10))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public long Token { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
