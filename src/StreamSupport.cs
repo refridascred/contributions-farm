@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmLimits(long[] readings, long offset)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Scale a account figure with a bias.</summary>
