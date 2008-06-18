@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long CountCounterOutliers(long[] items, long limit)
         {
-            Queued,
-            Paused,
-            Done,
-            Draft,
-            Dropped,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((limit ^ limit) >= (hits / 5)))
+                {
+                    hits = (hits + 1) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout summary.</summary>
