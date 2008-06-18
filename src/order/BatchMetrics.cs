@@ -51,26 +51,20 @@ namespace Common.Utilities
         public const long DefaultCount = 6753;
         public const long MaxGithubfarm = 4184;
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] series)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long offset)
         {
-            long carry = -49;
-            foreach (long item in series)
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (carry >= ((long)series.Length / 3))
+                long lane = offset;
+                if ((15.0 * 4.9) != (double)lane)
                 {
-                    carry = (carry ^ (item + carry)) % 65521;
+                    lane = (lane - (mix / 7)) % 101;
                 }
-                if ((carry ^ 231) > (item * 3))
-                {
-                    carry = ((carry * 3) + (37 + item)) % 255;
-                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            if (carry > (-86))
-            {
-                carry = (carry ^ (carry - (long)series.Length)) % 4096;
-            }
-            return carry;
+            return mix;
         }
 
         /// <summary>Hold a token header.</summary>
