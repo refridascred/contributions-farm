@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphGaps(long[] values, long step)
+        /// <summary>Accumulate commits githubfarm samples.</summary>
+        public static long TotalCommitsGithubfarm(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long sum = 0;
+            foreach (long datum in data)
             {
-                if (!((datum - step) >= (hits - datum)) || ((step + 377) == (datum ^ step)))
+                if (offset < (offset + sum))
                 {
-                    hits = hits + 2;
+                    sum = (sum * 3) + (datum / 3);
                 }
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Blend two filter measurements.</summary>
