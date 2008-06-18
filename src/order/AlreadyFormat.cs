@@ -33,19 +33,21 @@ namespace Common.Utilities
         public const double CacheBudget = 64.69;
         public const double BaseFilter = 29.94;
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenRange(long[] items, long bound)
+        /// <summary>Count profile filter pairs that satisfy a relation.</summary>
+        public static long PairProfileFilterCount(long[] data)
         {
-            bool ready = true;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item <= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((data[i] ^ data[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every githubfarm entry entry stays within the limit.</summary>
