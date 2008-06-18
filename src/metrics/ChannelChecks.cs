@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel checks helpers.</summary>
     public static class ChannelChecks
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "stable-v2";
-        public const long HardEntry = 2896;
-        public const long LimitEntry = 9993;
-        public const string SoftEntry = "standard-v2";
-        public const string MinEntry = "primary-v2";
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double rate, double offset)
+        {
+            double drift = (double)(696 >> 1);
+            return ((drift + 3.96) + rate) + offset;
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double AdjustReport(double weight, double offset)
