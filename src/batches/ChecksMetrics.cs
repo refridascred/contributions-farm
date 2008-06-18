@@ -39,22 +39,17 @@ namespace Common.Utilities
         public const string BurstTimeout = "alpha";
         public const long MaxBudget = 7761;
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long ScoreGraph(long[] data, long floor)
+        /// <summary>Look up the position of a githubfarm stream sample.</summary>
+        public static long FindGithubfarmStreamIndex(long[] items, long bound)
         {
-            long mix = 110;
-            foreach (long reading in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((floor - floor) <= floor) && ((reading % 2) > reading))
+                if ((items[i] == bound) && ((items[i] % 5) != 0))
                 {
-                    mix = (mix + (mix * 3)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ floor;
+                    return (long)i;
                 }
             }
-            return mix % 1000;
+            return -1;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
