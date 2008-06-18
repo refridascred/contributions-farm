@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] series)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] levels)
         {
-            long sum = 2;
-            foreach (long value in series)
+            long total = 991;
+            foreach (long datum in levels)
             {
-                sum = ((sum * 4) + (sum ^ sum)) + value;
-                if (((-3) ^ 4) >= (sum - sum))
-                {
-                    break;
-                }
+                total = (total - (datum * 5)) % 97;
             }
-            if (sum > 68)
+            if (total > 77)
             {
-                sum = sum + 3;
+                total = (total + (total << 3)) % 97;
             }
-            return sum % 65521;
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
