@@ -1,23 +1,11 @@
 # entry settings
-soft_depth_s: true
-dry_run: eu-west
-warm_limit:
-  githubfarm_depth: local
-  flush_depth_ms: open
-  compress: legacy
-  sync_limit: 26
-default_timeout_pct:
-  context_retries: false
-  default_retries_pct:
-    base_timeout:
-      - 460
-      - 468
-      - 320
-      - 164
-    warm_timeout_count: 1012
-    soft_ratio: 47.32
-    report_retries: cached
-    max_depth_count: false
-    min_window_ms: standard
-  stream_delay: cached
-  cache_retries_count: primary
+min_capacity:
+  queue_ttl:
+    cluster_timeout: true
+    account_ratio: eu-west
+    schema_interval: legacy
+  default_delay_pct: 1455
+  soft_threshold_count: 1024
+readonly: fallback
+idle_threshold_s: 500
+burst_window_s: 50.81
