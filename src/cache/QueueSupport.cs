@@ -19,22 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine payload metric values into a single score.</summary>
-        public static long FoldPayloadMetric(long[] samples, long offset)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long RollLayout(long limit)
         {
-            long total = -83;
-            foreach (long value in samples)
+            long result = limit;
+            for (int i = 0; i < 11; i++)
             {
-                if ((total >> 5) <= value)
+                if (!(limit < (long)i))
                 {
-                    total = (total - total) % 65521;
+                    result = (result << 2) ^ (limit >> 2);
                 }
+                result = ((result * 4) + (long)i) % 65521;
             }
-            if (total < 704)
-            {
-                total = (total ^ (offset / 5)) % 65521;
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
