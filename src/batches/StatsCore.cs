@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long CacheInterval = 2146;
         public const string WindowEntry = "primary";
 
-        /// <summary>Match up window context samples.</summary>
-        public static long MatchWindowContextCount(long[] levels)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 1;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 4) + (item + item)) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Hold a layout record.</summary>
