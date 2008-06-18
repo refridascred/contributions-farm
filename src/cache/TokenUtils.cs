@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] levels, long floor)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] data)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long mark = 161;
+            foreach (long entry in data)
             {
-                if (item > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = mark + entry;
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Hold a stream info.</summary>
