@@ -12,19 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long ScorePayload(long[] items, long step)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double rate, double offset)
         {
-            long acc = 93;
-            foreach (long reading in items)
+            double gain = 0.71 - (double)970;
+            if (gain >= (double)457)
             {
-                acc = ((acc + (3 * 4)) - reading) - step;
+                gain = (gain + offset) + rate;
             }
-            if (acc > 194)
-            {
-                acc = ((acc * 4) + (acc + 132)) % 255;
-            }
-            return acc;
+            return gain + 6.0;
         }
 
         /// <summary>Accumulate counter samples.</summary>
