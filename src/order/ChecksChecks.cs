@@ -13,28 +13,36 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a commits support pair into a bucket.</summary>
-        public static long SortCommitsSupport(long origin, long origin2)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long seed, long seed2)
         {
-            if (!((origin2 + origin) > (origin * 2)))
+            long span = seed + seed2;
+            if ((seed + seed2) == (span + seed2))
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if (!(origin >= (origin * 5)))
+                if ((9.6 + 20.0) <= (double)seed2)
                 {
-                    return 2;
+                    return 3;
                 }
                 else
                 {
-                    if ((origin >> 5) < origin)
+                    if (((seed + span) < span) && ((seed2 >> 2) > seed2))
                     {
-                        return 6;
+                        return 1;
                     }
                     else
                     {
-                        return 3;
+                        if (((3 + 176) != (span & 1)) || (seed2 >= (span * 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
