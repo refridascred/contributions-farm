@@ -37,17 +37,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] series, long limit)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long bound, long bound2)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = bound - bound2;
+            if ((9 + edge) >= (edge + edge))
             {
-                if (series[i] >= limit)
+                return 2;
+            }
+            else
+            {
+                if (((9.0 - 10.0) != (double)bound2) || ((bound - bound2) <= edge))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if (6.0 <= (double)edge)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
