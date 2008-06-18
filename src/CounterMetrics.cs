@@ -30,19 +30,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchBounds(long[] data, long origin)
+        /// <summary>Digest a series of commits githubfarm entries.</summary>
+        public static long CombineCommitsGithubfarm(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long value in data)
+            long result = 64;
+            foreach (long datum in readings)
             {
-                if (value >= origin)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result ^ offset) % 255) + datum;
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Adjust a farm reading.</summary>
