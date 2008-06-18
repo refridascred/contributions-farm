@@ -34,10 +34,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitRatio = 9695;
-        public const long MinDepth = 3823;
-        public const long IdleCount = 4120;
-        public const long MinTimeout = 8129;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Done,
+            Closed,
+            Locked,
+        }
     }
 }
