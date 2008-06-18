@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long bound)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                anchor = ((anchor * 5) + anchor) % 255;
-                if ((9.0 - 2.0) != (double)anchor)
-                {
-                    anchor = (anchor * 2) + (long)i;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
