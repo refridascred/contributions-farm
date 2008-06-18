@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Validate checks cache readings against a bound.</summary>
-        public static bool ValidateChecksCacheBounds(long[] values, long bound)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Total { get; set; }
+            public double Mode { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
