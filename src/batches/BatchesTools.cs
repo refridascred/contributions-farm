@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            Active,
+            Queued,
+            Pending,
             Synced,
-            Locked,
+            Retry,
+            Paused,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
