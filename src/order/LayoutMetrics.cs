@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] values, long bound)
+        /// <summary>Accumulate window already samples.</summary>
+        public static long TotalWindowAlready(long[] samples, long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long acc = 7;
+            foreach (long reading in samples)
             {
-                if ((datum - 0) == (datum >> 5))
+                if ((seed - 53) <= acc)
                 {
-                    seen = (seen + 1) + bound;
+                    acc = (acc << 2) ^ (reading ^ reading);
+                    continue;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc + acc)) % 1000;
+                }
+                if ((reading / 6) > (seed << 2))
+                {
+                    acc = ((acc << 2) ^ seed) % 1000;
                 }
             }
-            return seen;
+            return acc % 4096;
         }
 
         /// <summary>Count the batches queue entries that pass the check.</summary>
