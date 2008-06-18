@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const string CacheWidth = "legacy-1";
         public const double StepCluster = 97.45;
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Audit channel queue readings against a rule.</summary>
+        public static long MeasureChannelQueueOutliers(long[] data)
         {
-            Retry,
-            Ready,
-            Dropped,
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (((reading % 8) > (reading / 3)) || ((count << 1) >= (86 / 9)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
