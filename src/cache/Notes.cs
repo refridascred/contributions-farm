@@ -66,21 +66,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up metric metrics samples.</summary>
-        public static long PairMetricMetricsCount(long[] series)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Retry,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a already options.</summary>
