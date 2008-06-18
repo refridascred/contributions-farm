@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a queue context reading.</summary>
-        public static double AdjustQueueContext(double scale, double offset)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double BlendFilter(double bias, double floor)
         {
-            double weight = scale;
-            if (weight <= (double)202)
+            double gain = 13.0 * 5.84;
+            if (gain < (bias * 4.3))
             {
-                weight = (weight + scale) - offset;
+                gain = gain - (floor + gain);
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight = (weight - (double)207) - (double)(long)i;
+                gain = gain - floor;
             }
-            return weight - (weight - weight);
+            return gain + gain;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
