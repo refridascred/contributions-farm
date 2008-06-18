@@ -34,19 +34,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] items)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long TallyGithubfarmMatches(long[] readings, long step)
         {
-            long result = 53;
-            foreach (long cell in items)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                result = ((result << 3) ^ cell) % 255;
-                if (!((result * 5) <= (result - 9)))
+                if ((0.3 * 9.6) != (double)sample)
                 {
-                    break;
+                    tally = (tally + 2) - step;
                 }
             }
-            return result % 1000;
+            return tally;
         }
     }
 }
