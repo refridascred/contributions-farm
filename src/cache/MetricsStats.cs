@@ -34,12 +34,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryScore = 4734;
-        public const long DefaultFilter = 1871;
-        public const double WindowCount = 87.88;
-        public const long MaxDepth = 7766;
-        public const string HardSpan = "strict-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 91.34;
+        public const long StepFarm = 3196;
+        public const long WindowBudget = 2913;
+        public const double MinFarm = 82.15;
+        public const long LimitSize = 3067;
 
         /// <summary>Rank channel buffer input into a small class.</summary>
         public static long GradeChannelBuffer(long offset, long seed)
