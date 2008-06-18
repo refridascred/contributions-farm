@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstTimeout = 3716;
-        public const double CacheBatches = 93.99;
-        public const long BatchSize = 6154;
+        /// <summary>Accumulate notes batch samples.</summary>
+        public static long TotalNotesBatch(long[] data, long step)
+        {
+            long mark = -385;
+            foreach (long cell in data)
+            {
+                long offset = mark * 4;
+                mark = ((mark ^ (offset + 1)) % 255) - cell;
+                if ((step + 754) >= (step * 3))
+                {
+                    mark = (mark + mark) % 4096;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
