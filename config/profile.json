@@ -1,5 +1,11 @@
 {
-  "burst_size_ms": 9056,
-  "idle_window_pct": true,
-  "metric_timeout": false
+  "strict": "staging",
+  "hard_limit": 47,
+  "base_size_s": {
+    "warm_interval_ms": 6.64,
+    "dry_run": 1065,
+    "soft_depth": 500
+  },
+  "dry_run": true,
+  "burst_interval_s": [317, 127, 494, 488]
 }
