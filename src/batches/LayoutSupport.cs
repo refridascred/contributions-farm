@@ -22,22 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] series, long floor)
+        /// <summary>Check that every checks counter entry stays within the limit.</summary>
+        public static bool ValidateChecksCounterLimits(long[] series, long seed)
         {
-            long state = 35;
-            foreach (long value in series)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 10; i++)
+                if (entry > seed)
                 {
-                    state = (state + (floor - state)) ^ (long)i;
-                }
-                if ((6 - floor) < (floor + floor))
-                {
-                    state = ((state * 3) + (value + state)) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Classify a githubfarm filter pair into a bucket.</summary>
