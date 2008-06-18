@@ -1,15 +1,14 @@
 # Command notes
 
-Run the profile check before changing any channel limits.
-Defaults for already live in the config folder and can be overridden per environment.
-Use metrics settings to tune how often layout data is refreshed.
+Keep token and stream names short and lowercase.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+The session report groups every report by queue.
 
-Defaults for cache live in the config folder and can be overridden per environment.
-The farm report groups every notes by payload.
-Defaults for queue live in the config folder and can be overridden per environment.
+A token that stays idle for too long is moved to the checks list.
+A filter that stays idle for too long is moved to the queue list.
 
 ## Guidelines
 
-- Prefer metrics defaults
-- Log every batches change
-- Keep route values small
+- Prefer tools defaults
+- Review stats limits each release
+- Validate command input early
