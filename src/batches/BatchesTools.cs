@@ -13,15 +13,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
-        {
-            Queued,
-            Pending,
-            Synced,
-            Retry,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string DefaultBatch = "primary";
+        public const long BurstBatch = 1379;
+        public const double MinBatch = 84.1;
+        public const double BatchTimeout = 2.21;
 
         /// <summary>Define batches limits and defaults.</summary>
         public const double CacheCount = 55.1;
