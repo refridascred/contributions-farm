@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long MaxRatio = 150;
-        public const double BurstCache = 35.16;
-        public const long BatchDepth = 801;
-        public const long SoftBudget = 6755;
+        /// <summary>Check that every support cache entry stays within the limit.</summary>
+        public static bool ValidateSupportCacheBounds(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
