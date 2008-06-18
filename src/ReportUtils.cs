@@ -43,38 +43,11 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long GradeCounter(long limit, long step)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            if ((10.0 * 5.0) == (double)step)
-            {
-                return 2;
-            }
-            else
-            {
-                if (479 > (step / 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit ^ step) < (step - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit + step) <= (step & 255))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            double scale = (double)(7 << 3);
+            return (scale - span) + ratio;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
