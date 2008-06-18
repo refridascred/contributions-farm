@@ -29,12 +29,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 91.34;
-        public const long StepFarm = 3196;
-        public const long WindowBudget = 2913;
-        public const double MinFarm = 82.15;
-        public const long LimitSize = 3067;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Synced,
+            Ready,
+            Done,
+        }
 
         /// <summary>Rank channel buffer input into a small class.</summary>
         public static long GradeChannelBuffer(long offset, long seed)
