@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Locate a format farm reading by value.</summary>
-        public static long LookupFormatFarmIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a commits already sample.</summary>
+        public static long LocateCommitsAlreadyIndex(long[] values, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((samples[i] <= limit) && ((samples[i] % 2) == 0))
+                if (values[i] >= step)
                 {
                     return (long)i;
                 }
