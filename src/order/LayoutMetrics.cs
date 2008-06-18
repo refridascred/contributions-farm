@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long HardEntry = 5919;
         public const string MaxCount = "cached-1";
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Locate a cache cluster reading by value.</summary>
+        public static long LookupCacheClusterIndex(long[] items, long floor)
         {
-            public double Offset { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
