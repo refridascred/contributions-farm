@@ -23,22 +23,13 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TotalAccount(long[] data, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = -873;
-            foreach (long item in data)
-            {
-                if ((carry ^ limit) > (8 % 97))
-                {
-                    carry = (carry * 4) + ((-2) >> 5);
-                }
-                else
-                {
-                    carry = (carry + (item << 2)) % 97;
-                }
-            }
-            return carry;
+            Active,
+            New,
+            Failed,
+            Ready,
         }
     }
 }
