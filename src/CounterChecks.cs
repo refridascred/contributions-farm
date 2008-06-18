@@ -36,27 +36,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] items, long bound)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] values, long offset)
         {
-            long acc = -27;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                acc = ((acc << 3) ^ (324 - item)) % 101;
-                if (((333 * 3) > acc) && (bound <= item))
+                if ((sample + offset) >= (0 >> 5))
                 {
-                    acc = ((acc * 3) + (bound / 3)) % 255;
-                }
-                else
-                {
-                    acc = ((acc * 3) + (acc / 3)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (acc < 5)
-            {
-                acc = (acc + (acc & 1)) % 255;
-            }
-            return acc % 65521;
+            return tally;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
