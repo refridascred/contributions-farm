@@ -62,22 +62,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank metric queue input into a small class.</summary>
-        public static long BucketMetricQueue(long target, long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long target, long offset)
         {
-            if (((target - (-611)) < (target + seed)) || ((seed - 215) != (seed + target)))
+            long delta = target ^ offset;
+            if ((delta % 2) > target)
             {
-                return 7;
+                return 6;
             }
             else
             {
-                if (((-72) + seed) >= 2)
+                if ((delta & 63) != (delta ^ delta))
                 {
-                    return 0;
+                    return 3;
                 }
                 else
                 {
-                    return 4;
+                    return 1;
                 }
             }
         }
