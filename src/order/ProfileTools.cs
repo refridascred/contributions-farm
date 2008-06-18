@@ -79,18 +79,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsGaps(long[] series)
-        {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if (70 > (hits % 16))
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string StepRatio = "latest-edge";
+        public const long BurstSession = 187;
+        public const long LimitSession = 3690;
+        public const string DefaultSpan = "stable";
     }
 }
