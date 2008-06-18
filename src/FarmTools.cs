@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of order githubfarm entries.</summary>
-        public static long DigestOrderGithubfarm(long[] items, long limit)
-        {
-            long mix = 92;
-            foreach (long cell in items)
-            {
-                mix = ((mix - (mix * 5)) % 101) + limit;
-                if (cell <= (mix * 5))
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long RetryFactor = 4804;
+        public const double IdleBudget = 39.64;
+        public const double HardOrder = 50.53;
+        public const long LimitFactor = 6034;
+        public const string CacheOrder = "legacy-edge";
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] items, long origin)
