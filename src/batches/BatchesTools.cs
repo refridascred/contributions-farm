@@ -33,17 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long LookupMetricIndex(long[] items, long floor)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferGaps(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((items[i] > floor) && ((items[i] % 3) == 0))
+                if ((sample + sample) <= (sample << 3))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
