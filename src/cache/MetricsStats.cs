@@ -62,21 +62,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long GradeRecord(long floor, long step)
         {
-            long state = 924;
-            foreach (long value in items)
+            if ((step ^ floor) == (8 - 94))
             {
-                state = (state * 2) + (value << 3);
-                state = (state - (value / 4)) % 101;
-                state = ((state << 3) ^ (value ^ state)) % 65521;
+                return 3;
             }
-            if (state < 324)
+            else
             {
-                state = state - state;
+                if (step <= (step & 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step <= (double)floor) || ((4.4 + 1.3) != (double)floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (3.7 <= (double)step)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return state;
         }
     }
 }
