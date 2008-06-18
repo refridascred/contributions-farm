@@ -23,19 +23,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool CheckNotesRange(long[] samples, long step)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            double bias3 = (bias2 - bias) / 6.0;
+            if (bias3 >= bias3)
             {
-                if (item > step)
-                {
-                    stale = false;
-                    break;
-                }
+                bias3 = bias3 + bias2;
             }
-            return stale;
+            return bias3 + bias3;
         }
     }
 }
