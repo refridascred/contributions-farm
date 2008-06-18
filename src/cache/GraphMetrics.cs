@@ -52,19 +52,17 @@ namespace Common.Utilities
             return drift - offset;
         }
 
-        /// <summary>Scale a order commits figure with a bias.</summary>
-        public static double AdjustOrderCommits(double gain, double offset)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long FindContextIndex(long[] values, long floor)
         {
-            double rate = (double)(-82) * 6.81;
-            if (rate > gain)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = (rate - (double)(-79)) - offset;
+                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate = rate - rate;
-            }
-            return rate - rate;
+            return -1;
         }
     }
 }
