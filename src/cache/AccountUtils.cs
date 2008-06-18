@@ -46,22 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (matches <= 114)
-                {
-                    matches = (matches + 1) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Retry,
+            Synced,
+            Queued,
         }
     }
 }
