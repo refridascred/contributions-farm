@@ -39,22 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Grade a token session value against two limits.</summary>
+        public static long GradeTokenSession(long floor, long bound)
         {
-            long anchor = 413;
-            foreach (long value in levels)
+            if (((double)bound <= (double)floor) || ((floor + floor) <= (bound >> 4)))
             {
-                if ((value + (-5)) >= (value - 2))
+                return 5;
+            }
+            else
+            {
+                if (!((double)floor < (5.7 - 1.39)))
                 {
-                    anchor = ((anchor * 4) + (6 >> 2)) % 255;
+                    return 7;
+                }
+                else
+                {
+                    if (4.02 > (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((4.67 > (double)bound) && ((bound ^ bound) <= (bound - 63)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor < 16)
-            {
-                anchor = anchor + ((-63) + anchor);
-            }
-            return anchor;
         }
 
         /// <summary>Describe the batches phase values.</summary>
