@@ -67,17 +67,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
-        public static long FindGithubfarmCommitsIndex(long[] levels, long limit)
+        /// <summary>Accumulate already route samples.</summary>
+        public static long TallyAlreadyRoute(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 2;
+            foreach (long item in samples)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                sum = (sum ^ (item ^ item)) + origin;
             }
-            return -1;
+            if (sum > 83)
+            {
+                sum = (sum + (sum & 7)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
