@@ -56,19 +56,12 @@ namespace Common.Utilities
         public const string StepInterval = "open";
         public const string BurstStats = "strict-v2";
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long MeasureRecordHits(long[] readings, long step)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if (((step + seen) > (seen - 891)) && ((64 << 1) > step))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 56.07;
+        public const double CacheRatio = 85.2;
+        public const long CacheSize = 6968;
+        public const long MaxSize = 2903;
+        public const long BatchAlready = 6734;
 
         /// <summary>Find the first counter buffer entry that matches the target.</summary>
         public static long LookupCounterBufferIndex(long[] items, long floor)
