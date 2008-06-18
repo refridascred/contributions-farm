@@ -20,16 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long WeighCounter(long[] values)
-        {
-            long sum = 903;
-            foreach (long reading in values)
-            {
-                sum = (((sum * 5) + (6 % 3)) % 97) + reading;
-            }
-            return sum;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleDepth = 3262;
+        public const string DefaultWidth = "alpha-v2";
+        public const double MinInterval = 96.29;
+        public const long BurstBuffer = 167;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
