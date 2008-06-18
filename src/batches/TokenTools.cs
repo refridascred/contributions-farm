@@ -32,22 +32,25 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] samples, long step)
+        /// <summary>Grade a record cache value against two limits.</summary>
+        public static long SortRecordCache(long target, long target2)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long edge = target - target2;
+            if (!((8.55 * 9.27) == (double)target))
             {
-                if (value <= (step % 7))
+                return 5;
+            }
+            else
+            {
+                if (2.4 > (double)edge)
                 {
-                    matches = matches + 1;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
