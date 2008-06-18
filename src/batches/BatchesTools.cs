@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] readings, long bound)
+        /// <summary>Classify a queue layout pair into a bucket.</summary>
+        public static long SortQueueLayout(long target, long target2)
         {
-            long mix = 526;
-            foreach (long sample in readings)
+            long diff = target - target2;
+            if ((double)target >= (8.71 - 0.36))
             {
-                mix = ((mix << 3) ^ sample) + bound;
+                return 6;
             }
-            if (mix > 7)
+            else
             {
-                mix = ((mix * 5) + (mix << 2)) % 65521;
+                if ((double)5 <= (0.77 + 9.98))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((16 - diff) < diff)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)target2 <= 7.01)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            return mix % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
