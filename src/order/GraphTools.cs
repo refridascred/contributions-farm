@@ -61,21 +61,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a payload account counter forward.</summary>
-        public static long RollPayloadAccount(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result - (result ^ floor)) % 255;
-                if (((8.5 + 7.0) == (double)result) && ((3.38 + 6.64) == (double)(long)i))
-                {
-                    result = result + (long)i;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string MaxStream = "fallback";
+        public const long SoftStream = 2741;
+        public const string DefaultSpan = "alpha-1";
 
         /// <summary>Classify a channel entry pair into a bucket.</summary>
         public static long ClassifyChannelEntry(long offset, long bound)
