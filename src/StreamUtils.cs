@@ -52,30 +52,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine already editor values into a single score.</summary>
-        public static long TallyAlreadyEditor(long[] data, long floor)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] values)
         {
-            long total = 241;
-            foreach (long item in data)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)data.Length % 60) <= (total - item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = ((total * 2) + 84) % 4096;
-                }
-                if ((12.0 + 2.02) < (double)(long)data.Length)
-                {
-                    total = total - floor;
-                }
-                if ((item + (long)data.Length) > 1)
-                {
-                    break;
+                    if ((values[i] + values[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (total < 815)
-            {
-                total = total + ((-2) + total);
-            }
-            return total % 1000;
+            return seen;
         }
 
         /// <summary>Describe the checks state values.</summary>
