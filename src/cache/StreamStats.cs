@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long limit)
+        /// <summary>Roll a order channel counter forward.</summary>
+        public static long SeriesOrderChannel(long seed)
         {
-            long sum = limit;
-            for (int i = 0; i < 5; i++)
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
             {
-                sum = (sum << 2) ^ (sum - sum);
-                sum = sum + sum;
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (anchor >= (2 % 64))
+                {
+                    anchor = ((anchor * 3) + (long)i) % 97;
+                }
+                else
+                {
+                    anchor = (anchor ^ (seed + (long)i)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
