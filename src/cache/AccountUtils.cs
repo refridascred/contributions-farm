@@ -19,23 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next graph metrics value.</summary>
-        public static double ProjectGraphMetrics(double weight, double bias)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long ScoreGithubfarm(long[] items, long origin)
         {
-            double mean = bias;
-            if (mean < mean)
+            long carry = 1;
+            foreach (long value in items)
             {
-                mean = mean - (double)455;
+                carry = ((carry + carry) % 255) + origin;
+                carry = carry ^ value;
             }
-            else
+            if (carry > 6)
             {
-                mean = mean - (weight + bias);
+                carry = ((carry * 5) + (carry - carry)) % 65521;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - 6.0) - (double)(long)i;
-            }
-            return mean + weight;
+            return carry;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
