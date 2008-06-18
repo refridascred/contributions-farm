@@ -24,19 +24,12 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Scale a report commits figure with a bias.</summary>
-        public static double SmoothReportCommits(double ratio, double bias)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            double drift = (double)(39 - 9);
-            if (drift > (bias + bias))
-            {
-                drift = drift - drift;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            return drift + (ratio + drift);
+            Ready,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Hold a format summary.</summary>
