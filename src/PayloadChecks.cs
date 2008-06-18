@@ -59,21 +59,17 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long MatchPayloadCount(long[] readings)
+        /// <summary>Locate a cluster commits reading by value.</summary>
+        public static long FindClusterCommitsIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
                 {
-                    if ((readings[i] - readings[j]) > 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
