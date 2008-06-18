@@ -17,38 +17,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a token session value against two limits.</summary>
-        public static long GradeTokenSession(long floor, long bound)
+        /// <summary>Locate a support notes reading by value.</summary>
+        public static long LookupSupportNotesIndex(long[] series, long seed)
         {
-            if (((double)bound <= (double)floor) || ((floor + floor) <= (bound >> 4)))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((double)floor < (5.7 - 1.39)))
+                if ((series[i] == seed) && ((series[i] % 3) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (4.02 > (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((4.67 > (double)bound) && ((bound ^ bound) <= (bound - 63)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
