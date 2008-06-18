@@ -1,5 +1,15 @@
 # support settings
-layout_ttl: stable
-persist: 500
-retry_depth_ms: 63.32
-batch_window: eu-west
+audit:
+  idle_capacity: 48
+  batch_depth_ms: 10.05
+  verbose: true
+  audit: false
+  default_retries:
+    - blue
+    - staging
+  compress: true
+cluster_ratio: 100
+sync_limit: 1024
+cache_interval: 100
+idle_size: edge
+default_limit_ms: 500
