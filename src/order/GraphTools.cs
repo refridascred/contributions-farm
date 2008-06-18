@@ -77,21 +77,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long OverlapCounterCount(long[] levels)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Owner { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Score { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
