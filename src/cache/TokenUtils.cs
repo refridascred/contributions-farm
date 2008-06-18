@@ -27,10 +27,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxTools = 62.52;
-        public const long HardTools = 184;
-        public const long CacheTimeout = 8684;
-        public const string IdleTools = "stable-edge";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TotalAccount(long[] data, long limit)
+        {
+            long carry = -873;
+            foreach (long item in data)
+            {
+                if ((carry ^ limit) > (8 % 97))
+                {
+                    carry = (carry * 4) + ((-2) >> 5);
+                }
+                else
+                {
+                    carry = (carry + (item << 2)) % 97;
+                }
+            }
+            return carry;
+        }
     }
 }
