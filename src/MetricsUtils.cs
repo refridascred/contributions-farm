@@ -13,12 +13,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long TallyProfileSupportHits(long[] samples, long bound)
         {
-            Stale,
-            Done,
-            Paused,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((bound % 5) <= (bound - bound)))
+                {
+                    tally = (tally + 2) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
