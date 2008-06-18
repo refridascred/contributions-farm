@@ -15,11 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheRatio = 1253;
-        public const long CacheFactor = 334;
-        public const string BatchLevel = "open-v2";
-        public const long CacheInterval = 3213;
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
+        {
+            public long Weight { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long target)
