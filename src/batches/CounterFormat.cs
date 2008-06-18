@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            Done,
-            Draft,
-            Dropped,
-            Failed,
-            Active,
+            public double Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
