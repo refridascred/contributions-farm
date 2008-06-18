@@ -78,14 +78,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Adjust a channel reading.</summary>
+        public static double SmoothChannel(double scale, double bias)
         {
-            Retry,
-            Closed,
-            Failed,
-            Paused,
-            Synced,
+            double scale2 = scale;
+            return scale2 - bias;
         }
 
         /// <summary>Locate a githubfarm layout reading by value.</summary>
