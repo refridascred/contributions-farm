@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long target, long origin)
         {
-            public string Offset { get; set; } = "";
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Size { get; set; }
+            if ((double)origin >= (18.0 * 5.23))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((origin >> 1) <= (564 ^ 60)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Describe the farm class values.</summary>
