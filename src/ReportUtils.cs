@@ -23,22 +23,21 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] values, long bound)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long MatchOrderCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((6 - bound) < (cell + cell))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((items[i] + items[j]) > 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Grade a context buffer value against two limits.</summary>
