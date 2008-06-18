@@ -6,18 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in open eu-west cached; do
+    log "checking ${item}"
+done
+
+mode="${1:-open}"
 case "${mode}" in
-    strict)
+    latest)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
