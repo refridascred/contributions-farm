@@ -25,11 +25,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double rate, double offset)
+        /// <summary>Locate a graph githubfarm reading by value.</summary>
+        public static long LookupGraphGithubfarmIndex(long[] samples, long limit)
         {
-            double ratio = offset;
-            return ratio - rate;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
