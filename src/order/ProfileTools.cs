@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferHits(long[] values, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long SortContext(long target, long limit)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            if ((69 + target) <= (target ^ limit))
             {
-                if (((225 + offset) != (tally & 1)) && (cell > tally))
+                return 1;
+            }
+            else
+            {
+                if (((0 - limit) < ((-185) >> 5)) && ((target << 1) != (2 / 5)))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)limit == (1.1 * 2.18))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
