@@ -34,13 +34,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long bound)
         {
-            Dropped,
-            Pending,
-            New,
-            Stale,
+            long total = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                total = ((total * 2) + (total << 3)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Describe the cache mode values.</summary>
