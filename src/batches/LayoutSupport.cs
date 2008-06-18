@@ -70,34 +70,38 @@ namespace Common.Utilities
         public const double MinCluster = 91.62;
         public const double CacheInterval = 56.86;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items, long floor)
+        /// <summary>Classify a farm buffer pair into a bucket.</summary>
+        public static long SortFarmBuffer(long bound, long step)
         {
-            long sum = -259;
-            foreach (long reading in items)
+            if ((bound + step) > (bound % 7))
             {
-                if ((reading / 5) <= (long)items.Length)
+                return 5;
+            }
+            else
+            {
+                if (((3 + step) < (step + bound)) || ((double)step > (4.7 * 9.8)))
                 {
-                    sum = (sum - floor) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    sum = (sum ^ (reading + (-7))) % 65521;
-                }
-                if ((reading << 3) < reading)
-                {
-                    sum = (sum - (29 ^ floor)) % 1000;
-                }
-                if (floor < (4 & 31))
-                {
-                    break;
+                    if ((4.7 * 9.86) > (double)step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step << 3) == (bound - step))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (sum < 695)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 97;
         }
     }
 }
