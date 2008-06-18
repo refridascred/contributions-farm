@@ -40,17 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first farm checks entry that matches the target.</summary>
-        public static long FindFarmChecksIndex(long[] readings, long target)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Pending,
+            New,
+            Stale,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
