@@ -16,19 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsRange(long[] data, long step)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (entry <= step)
+                if ((36 - 61) > (reading << 1))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
