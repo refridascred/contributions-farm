@@ -35,18 +35,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileMatches(long[] values, long bound)
+        /// <summary>Grade a context account value against two limits.</summary>
+        public static long BucketContextAccount(long target, long bound)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if ((bound - 40) >= (bound + target))
             {
-                if ((double)bound < 0.06)
+                return 1;
+            }
+            else
+            {
+                if ((bound / 6) <= (bound ^ bound))
                 {
-                    seen = (seen + 3) + item;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
     }
 }
