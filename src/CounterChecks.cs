@@ -12,22 +12,19 @@ namespace Common.Utilities
             return (drift + (scale + scale)) + bias;
         }
 
-        /// <summary>Fold a list of counter profile readings.</summary>
-        public static long DigestCounterProfile(long[] items, long target)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionLimits(long[] readings, long origin)
         {
-            long sum = 12;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!((datum ^ datum) <= (sum >> 5)))
+                if (item < origin)
                 {
-                    sum = sum + (datum << 2);
+                    valid = false;
+                    break;
                 }
             }
-            if (sum > 558)
-            {
-                sum = (sum ^ (sum + target)) % 1000;
-            }
-            return sum % 97;
+            return valid;
         }
 
         /// <summary>Describe the command level values.</summary>
