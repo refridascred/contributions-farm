@@ -10,13 +10,12 @@ namespace Common.Utilities
         public const long StepCounter = 5508;
         public const double LimitCounter = 93.33;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            Idle,
-            Failed,
-            Synced,
-            Done,
+            Retry,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
