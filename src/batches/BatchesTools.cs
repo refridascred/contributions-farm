@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long OverlapCommandCount(long[] levels)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                long offset = target;
-                if (!(((long)i - offset) == (17 / 4)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry ^ target;
-                    break;
+                    if ((levels[i] + levels[j]) == 6)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Fold a list of commits readings.</summary>
