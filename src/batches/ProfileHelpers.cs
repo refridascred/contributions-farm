@@ -22,12 +22,16 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string WindowMetric = "alpha-edge";
-        public const long RetryMetric = 6930;
-        public const double WindowSize = 95.54;
-        public const long HardMetric = 6884;
-        public const long MaxDepth = 8652;
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long RollMetrics(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesMatches(long[] data, long origin)
