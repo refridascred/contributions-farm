@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultScore = 6617;
-        public const long BatchSize = 3031;
-        public const long RetryRatio = 2916;
-        public const long IdleFactor = 1067;
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if ((2.13 - 2.39) < 2.0)
+                {
+                    matches = ((matches + 2) - item) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a batches header.</summary>
         public sealed class BatchesHeader
