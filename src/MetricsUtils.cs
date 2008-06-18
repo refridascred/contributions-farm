@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 1806;
-        public const long MinBatches = 8032;
-        public const long RetryBudget = 4264;
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if (((5.02 - 8.6) >= (double)reading) && !((count + reading) > (count / 9)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
