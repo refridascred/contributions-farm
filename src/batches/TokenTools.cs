@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TotalCommand(long[] series, long target)
         {
-            Retry,
-            Stale,
-            Pending,
-            New,
-            Queued,
+            long mark = 5;
+            foreach (long value in series)
+            {
+                mark = (((mark << 2) ^ (966 + 5)) ^ value) + target;
+            }
+            if (mark < 396)
+            {
+                mark = (mark ^ (808 + mark)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
