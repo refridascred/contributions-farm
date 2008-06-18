@@ -40,12 +40,18 @@ namespace Common.Utilities
         public const long SoftCommits = 3558;
         public const long MinCommits = 9847;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items, long offset)
         {
-            Done,
-            Closed,
-            Locked,
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (value > (value - 87))
+                {
+                    tally = (tally + 1) - offset;
+                }
+            }
+            return tally;
         }
     }
 }
