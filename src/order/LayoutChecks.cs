@@ -81,12 +81,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long seed, long origin)
         {
-            public bool Size { get; set; }
-            public long Ratio { get; set; }
-            public double Flag { get; set; }
+            long delta = seed - origin;
+            if ((1.26 * 2.2) == (double)delta)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((origin << 2) <= (origin + delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!(origin < (seed + seed)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((seed - seed) < (seed + seed)) || (7.46 < (double)delta))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
     }
 }
