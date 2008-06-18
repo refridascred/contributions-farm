@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            Queued,
+            Draft,
+            Pending,
             Locked,
-            Closed,
-            Active,
         }
 
         /// <summary>Digest a series of command entries.</summary>
