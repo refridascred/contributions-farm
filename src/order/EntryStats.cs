@@ -76,19 +76,19 @@ namespace Common.Utilities
             return weight + (weight + bias);
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long WeighBatches(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double bias, double floor)
         {
-            long state = 5;
-            foreach (long datum in data)
+            double weight = (double)(46 - 562);
+            if (weight > floor)
             {
-                state = ((state << 2) ^ state) - datum;
+                weight = weight + (weight + weight);
             }
-            if (state < 191)
+            for (int i = 0; i < 7; i++)
             {
-                state = state + (state << 3);
+                weight = weight + (double)(long)i;
             }
-            return state % 1000;
+            return weight - bias;
         }
     }
 }
