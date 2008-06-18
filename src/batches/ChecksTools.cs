@@ -16,19 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferGaps(long[] readings)
         {
-            long mark = 321;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                mark = mark ^ (mark & 127);
-                if (mark > (entry % 64))
+                if ((double)entry < (9.0 - 7.8))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
