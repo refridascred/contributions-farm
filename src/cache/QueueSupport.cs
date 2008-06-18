@@ -27,19 +27,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyLimits(long[] values, long target)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            double ratio = bias;
+            if (ratio > 8.75)
             {
-                if (entry >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                ratio = ratio - bias;
             }
-            return flag;
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = (ratio + gain) - (double)(long)i;
+            }
+            return ratio + (double)9;
         }
     }
 }
