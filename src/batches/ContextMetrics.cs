@@ -36,22 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate route report samples.</summary>
-        public static long FoldRouteReport(long[] series)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long carry = 572;
-            foreach (long item in series)
-            {
-                if (item > ((long)series.Length % 60))
-                {
-                    carry = (carry ^ (carry / 8)) % 255;
-                }
-            }
-            if (carry < (-6))
-            {
-                carry = carry ^ (carry / 9);
-            }
-            return carry % 1000;
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Fold a list of route command readings.</summary>
