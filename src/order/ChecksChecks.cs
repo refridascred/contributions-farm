@@ -50,18 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue editor readings.</summary>
-        public static long CombineQueueEditor(long[] data, long floor)
+        /// <summary>Combine batches tools values into a single score.</summary>
+        public static long FoldBatchesTools(long[] samples)
         {
-            long result = 787;
-            foreach (long entry in data)
+            long total = 6;
+            foreach (long datum in samples)
             {
-                if (((floor % 2) != (result + result)) && (floor < (floor - result)))
+                if ((97 + 898) <= total)
                 {
-                    result = ((result + result) % 1000) - entry;
+                    total = ((total - ((long)samples.Length >> 4)) % 1000) ^ datum;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total + total);
                 }
             }
-            return result % 4096;
+            return total;
         }
     }
 }
