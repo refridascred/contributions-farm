@@ -20,13 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
-            public string Size { get; set; } = "";
-            public bool Limit { get; set; }
+            public double Owner { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
