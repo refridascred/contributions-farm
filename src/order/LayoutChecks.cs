@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double bias2)
+        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
+        public static bool GuardSchemaContributiLimits(long[] levels, long floor)
         {
-            double scale = (double)2 - bias2;
-            return scale - bias;
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Project the next payload value.</summary>
