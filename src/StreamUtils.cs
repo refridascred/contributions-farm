@@ -15,18 +15,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] data, long seed)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((reading ^ reading) <= (seed ^ reading))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public double Count { get; set; }
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
