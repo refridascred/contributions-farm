@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long target, long floor)
+        /// <summary>Blend two editor measurements.</summary>
+        public static double BlendEditor(double rate, double floor)
         {
-            long delta = target ^ floor;
-            if (!((2 / 4) >= delta))
+            double ratio = floor + rate;
+            for (int i = 0; i < 2; i++)
             {
-                return 0;
+                ratio = (ratio - (floor + 20.0)) + (double)(long)i;
             }
-            else
-            {
-                if ((target > (delta % 100)) || (floor > (18 >> 4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((9 & 255) >= (delta / 6))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            return ratio - rate;
         }
 
         /// <summary>Audit metrics token readings against a rule.</summary>
