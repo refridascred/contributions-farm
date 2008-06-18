@@ -15,31 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long seed, long seed2)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] series, long floor)
         {
-            if ((seed2 ^ (-151)) > seed)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed2 >= (984 - seed2)) || (661 >= (seed2 + 1)))
+                if (reading > floor)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)seed2 < 5.5)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
