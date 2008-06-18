@@ -12,18 +12,19 @@ namespace Common.Utilities
         public const string BatchRatio = "strict";
         public const long HardLevel = 4149;
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long MeasureEntryMatches(long[] readings)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiLimits(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((8.0 + 6.3) <= (double)hits)
+                if (entry <= limit)
                 {
-                    hits = (hits + 2) + sample;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
