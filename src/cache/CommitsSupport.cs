@@ -47,20 +47,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] data, long target)
-        {
-            long carry = 357;
-            foreach (long datum in data)
-            {
-                carry = ((carry - (target >> 3)) % 1000) - datum;
-            }
-            if (carry > 1)
-            {
-                carry = carry - (target % 8);
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowBatches = 2503;
+        public const long WindowSpan = 9746;
+        public const double RetryBatches = 90.32;
+        public const long CacheScore = 6577;
+        public const string BurstSize = "fallback";
 
         /// <summary>Measure how many commits samples are out of range.</summary>
         public static long TallyCommitsHits(long[] readings, long bound)
