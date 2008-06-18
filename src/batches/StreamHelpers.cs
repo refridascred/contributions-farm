@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Paused,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Locate a checks reading by value.</summary>
