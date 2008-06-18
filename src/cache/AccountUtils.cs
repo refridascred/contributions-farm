@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit graph cache readings against a rule.</summary>
-        public static long AuditGraphCacheHits(long[] levels)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((value / 9) > tally)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((samples[i] ^ samples[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the cache kind values.</summary>
