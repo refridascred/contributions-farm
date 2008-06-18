@@ -27,12 +27,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long bound)
         {
-            Pending,
-            Paused,
-            Retry,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
