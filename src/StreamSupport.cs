@@ -32,18 +32,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaHits(long[] samples)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (seen < (6 & 7))
-                {
-                    seen = (seen + 2) ^ value;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
