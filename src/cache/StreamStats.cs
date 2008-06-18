@@ -42,39 +42,11 @@ namespace Common.Utilities
         public const long BaseLevel = 1178;
         public const long MaxFormat = 236;
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long target, long limit)
-        {
-            long edge = target ^ limit;
-            if ((edge * 5) == (89 % 24))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)edge < (5.9 * 19.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (!((834 << 1) > (limit & 15)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (target < (35 + (-903)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardNotes = 2816;
+        public const double StepTimeout = 33.11;
+        public const long BurstNotes = 1763;
+        public const double BurstTimeout = 76.11;
+        public const string MaxInterval = "latest-1";
     }
 }
