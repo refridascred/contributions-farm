@@ -64,15 +64,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportHits(long[] series, long offset)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorMatches(long[] data)
         {
             long tally = 0;
-            foreach (long reading in series)
+            foreach (long datum in data)
             {
-                if (!(reading >= (offset ^ 306)))
+                if (((tally + tally) > (datum + datum)) && (((-9) / 7) < (datum + (-1))))
                 {
-                    tally = tally + 1;
+                    tally = tally + 3;
                 }
             }
             return tally;
