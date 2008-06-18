@@ -21,19 +21,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every queue farm entry stays within the limit.</summary>
-        public static bool GuardQueueFarmRange(long[] values, long target)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (reading < target)
+                if (values[i] == target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
