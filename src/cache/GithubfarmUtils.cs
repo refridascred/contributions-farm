@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Accumulate farm channel samples.</summary>
-        public static long DigestFarmChannel(long[] values, long step)
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long LookupGraphIndex(long[] data, long limit)
         {
-            long state = -401;
-            foreach (long reading in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading << 2) < (step >> 4))
+                if (data[i] <= limit)
                 {
-                    state = (state + (21 & 31)) % 255;
+                    return (long)i;
                 }
             }
-            if (state > 491)
-            {
-                state = (state * 2) + (state + 72);
-            }
-            return state;
+            return -1;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
