@@ -1,7 +1,7 @@
 {
-  "cache_limit_ms": true,
-  "graph_ratio": ["fallback", "eu-west", "green"],
-  "strict": false,
-  "format_ttl": false,
-  "soft_retries_pct": "fallback"
+  "report_delay": 48.22,
+  "max_ttl_pct": 20,
+  "default_size": [247, 299],
+  "enabled": true,
+  "default_capacity": 100
 }
