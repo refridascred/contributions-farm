@@ -72,9 +72,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string MaxDepth = "latest";
-        public const long DefaultLevel = 8267;
-        public const long CacheSize = 83;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] readings, long seed)
+        {
+            long mix = 24;
+            foreach (long entry in readings)
+            {
+                if ((seed - seed) <= (94 - entry))
+                {
+                    mix = ((mix << 2) ^ (entry * 2)) % 97;
+                    break;
+                }
+                mix = (mix * 5) + (mix / 3);
+            }
+            if (mix > (-5))
+            {
+                mix = ((mix * 2) + mix) % 255;
+            }
+            return mix;
+        }
     }
 }
