@@ -34,19 +34,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] items, long target)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Total { get; set; }
+            public double Owner { get; set; }
+            public string Score { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
