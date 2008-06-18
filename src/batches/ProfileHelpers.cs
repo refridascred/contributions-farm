@@ -14,14 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Retry,
-            Queued,
-            Done,
-            Ready,
+            Synced,
             Locked,
+            Pending,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
