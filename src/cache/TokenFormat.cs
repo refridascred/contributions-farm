@@ -27,19 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric token readings against a bound.</summary>
-        public static bool GuardMetricTokenRange(long[] samples, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool CheckRecordRange(long[] readings, long origin)
         {
-            bool ready = true;
-            foreach (long cell in samples)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if (cell > target)
+                if (datum <= origin)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
