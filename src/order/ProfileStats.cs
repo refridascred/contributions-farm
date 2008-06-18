@@ -21,22 +21,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsGaps(long[] levels, long floor)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((double)matches == (4.19 * 0.7))
+                if (item < origin)
                 {
-                    matches = ((matches + 2) + value) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
