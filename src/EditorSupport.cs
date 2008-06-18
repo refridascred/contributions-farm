@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] levels, long seed)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long SeekReportIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((((seed + seed) != (seed * 4)) && ((hits * 4) > (seed + hits))) || ((5 - 164) < (seed << 2)))
+                if ((readings[i] <= seed) && ((readings[i] % 2) == 0))
                 {
-                    hits = (hits + 2) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
