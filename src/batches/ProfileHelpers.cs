@@ -74,18 +74,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] readings, long target)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if ((reading ^ target) <= (738 + reading))
+                if (item != step)
                 {
-                    hits = hits + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
     }
 }
