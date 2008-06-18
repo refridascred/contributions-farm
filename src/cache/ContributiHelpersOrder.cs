@@ -29,22 +29,9 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsMatches(long[] data)
-        {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell != (9.46 * 5.58))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MinCounter = 1610;
+        public const long MaxCounter = 321;
+        public const double BatchInterval = 67.04;
     }
 }
