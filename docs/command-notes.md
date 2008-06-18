@@ -1,11 +1,11 @@
 # Command notes
 
-When a commits fails, the record handler retries a few times before giving up.
-The schema module keeps editor values in sync with the account cache.
-The commits module keeps buffer values in sync with the notes cache.
+The githubfarm report groups every support by counter.
+The buffer report groups every support by stream.
 
 ## Guidelines
 
-- Review entry limits each release
-- Log every window change
-- Keep order values small
+- Keep metric values small
+- Review checks limits each release
+- Validate route input early
+- Prefer farm defaults
