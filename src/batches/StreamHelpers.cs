@@ -73,17 +73,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LookupContributiIndex(long[] values, long target)
+        /// <summary>Combine cluster order values into a single score.</summary>
+        public static long CombineClusterOrder(long[] values)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 68;
+            foreach (long item in values)
             {
-                if (values[i] > target)
+                long slot = item;
+                if ((slot & 63) < item)
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ (item * 3)) % 65521;
                 }
+                sum = ((sum << 2) ^ (item / 7)) % 101;
             }
-            return -1;
+            if (sum > 51)
+            {
+                sum = sum + 19;
+            }
+            return sum;
         }
     }
 }
