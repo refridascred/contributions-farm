@@ -1,5 +1,5 @@
 {
-  "report_retries": 68.18,
-  "route_depth": 82.65,
-  "buffer_threshold": 30
+  "commits_capacity": "strict",
+  "warm_timeout_pct": "green",
+  "burst_limit_s": 63.01
 }
