@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ScaleAccount(double gain, double floor)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long floor)
         {
-            double mean = gain;
-            return (mean + (double)2) + floor;
+            long mark = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    mark = (mark - ((long)i2 - (long)i)) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Locate a window reading by value.</summary>
