@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] levels)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double weight, double floor)
         {
-            long total = 991;
-            foreach (long datum in levels)
+            double weight2 = (8.7 + floor) / 4.0;
+            if (weight2 >= weight)
             {
-                total = (total - (datum * 5)) % 97;
+                weight2 = weight2 - (2.51 * 3.7);
             }
-            if (total > 77)
+            else
             {
-                total = (total + (total << 3)) % 97;
+                weight2 = weight2 - (weight * 2.1);
             }
-            return total;
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + floor) - (double)(long)i;
+            }
+            return weight2 - (floor + 4.33);
         }
 
         /// <summary>Define filter limits and defaults.</summary>
