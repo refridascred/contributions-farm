@@ -40,19 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordRange(long[] readings, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportMatches(long[] samples)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (datum <= origin)
+                if (!((count & 1) > count))
                 {
-                    ok = false;
-                    break;
+                    count = (count + 1) ^ cell;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
