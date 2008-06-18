@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long OverlapCommandCount(long[] levels)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long WeighTools(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = 5;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((score & 1) >= (target % 7))
                 {
-                    if ((levels[i] + levels[j]) == 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = ((score << 2) ^ (value + target)) % 1000;
                 }
             }
-            return seen;
+            if (score < 70)
+            {
+                score = ((score << 3) ^ (score + target)) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Iterate the metrics report series from a seed.</summary>
