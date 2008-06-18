@@ -1,11 +1,12 @@
 # Command notes
 
-Defaults for editor live in the config folder and can be overridden per environment.
-Each context is validated before it reaches the account queue.
+Keep cache and stats names short and lowercase.
+A schema that stays idle for too long is moved to the entry list.
+The command helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Document new batches fields
-- Log every channel change
+- Document new tools fields
 - Keep cluster values small
-- Review already limits each release
+- Log every stats change
+- Review order limits each release
