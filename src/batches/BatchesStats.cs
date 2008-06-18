@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long SeekMetricsIndex(long[] samples, long origin)
         {
-            Ready,
-            New,
-            Closed,
-            Queued,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank editor input into a small class.</summary>
