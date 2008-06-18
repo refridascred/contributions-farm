@@ -40,10 +40,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BurstScore = "stable-v2";
-        public const long SoftDepth = 9926;
-        public const long HardWidth = 3982;
+        /// <summary>Combine cluster queue values into a single score.</summary>
+        public static long TallyClusterQueue(long[] samples, long offset)
+        {
+            long sum = 456;
+            foreach (long value in samples)
+            {
+                if (value > (sum + sum))
+                {
+                    sum = (sum + value) - offset;
+                }
+                else
+                {
+                    sum = sum + ((long)samples.Length >> 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Find the first githubfarm commits entry that matches the target.</summary>
         public static long FindGithubfarmCommitsIndex(long[] levels, long limit)
