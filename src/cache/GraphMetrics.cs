@@ -61,17 +61,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long FindContextIndex(long[] values, long floor)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferMatches(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                if ((count - 328) > (entry % 12))
                 {
-                    return (long)i;
+                    count = count + 3;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
