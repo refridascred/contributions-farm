@@ -30,9 +30,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 2560;
-        public const long StepContributi = 7218;
-        public const string CacheContributi = "legacy";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long StepNotes = 3179;
+        public const double IdleSpan = 21.25;
+        public const long BatchInterval = 397;
     }
 }
