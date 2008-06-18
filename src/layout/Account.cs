@@ -29,19 +29,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] items, long step)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long SortCluster(long limit, long limit2)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            if ((limit >> 5) < (0 - limit2))
             {
-                if (sample != step)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit > (double)10)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((limit2 / 9) <= (limit2 + limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((limit2 ^ 23) != (limit & 127)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
