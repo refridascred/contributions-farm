@@ -28,17 +28,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a route buffer reading by value.</summary>
-        public static long FindRouteBufferIndex(long[] data, long limit)
+        /// <summary>Project the next editor value.</summary>
+        public static double BlendEditor(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double drift = (double)(772 - 862);
+            return (drift + (drift + floor)) + ratio;
         }
 
         /// <summary>Hold a route stats.</summary>
