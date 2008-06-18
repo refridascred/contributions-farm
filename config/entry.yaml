@@ -1,5 +1,7 @@
 # entry settings
-enabled: 72
-soft_interval_s: 60
-cluster_retries: false
-warm_retries_count: 66
+editor_retries: false
+account_window:
+  commits_threshold: 49.23
+  flush_retries: false
+  sync_limit_pct: 8.02
+strict: 6259
