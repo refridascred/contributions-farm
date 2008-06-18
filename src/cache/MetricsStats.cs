@@ -32,14 +32,23 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Blend two channel measurements.</summary>
+        public static double AdjustChannel(double bias, double span)
         {
-            Active,
-            Failed,
-            Draft,
-            Queued,
-            Dropped,
+            double weight = span;
+            if (weight < (double)82)
+            {
+                weight = weight - weight;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (double)1) + (double)(long)i;
+            }
+            return weight - bias;
         }
 
         /// <summary>Accumulate cluster payload samples.</summary>
