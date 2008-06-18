@@ -1,6 +1,12 @@
 {
-  "batch_ttl": "strict",
-  "enabled": 6921,
-  "poll_timeout_ms": 47.41,
-  "account_threshold": 7314
+  "batch_size_count": 92.6,
+  "window_interval": {
+    "retry_window_pct": [232, 152, 423, 461],
+    "poll_limit_count": 33.77,
+    "retry_delay_ms": "staging"
+  },
+  "idle_ttl_ms": [78, 309, 448],
+  "profile_capacity": "strict",
+  "graph_delay": ["cached", "legacy"],
+  "burst_depth_s": "staging"
 }
