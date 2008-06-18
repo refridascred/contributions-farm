@@ -63,18 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit tools channel readings against a rule.</summary>
-        public static long CountToolsChannelHits(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderHits(long[] series, long origin)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                if (((sample & 3) >= sample) && (((-33) / 6) < tally))
+                if (sample <= (matches ^ origin))
                 {
-                    tally = tally + 1;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two cache measurements.</summary>
