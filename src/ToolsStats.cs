@@ -48,13 +48,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Combine metrics checks values into a single score.</summary>
+        public static long ScoreMetricsChecks(long[] values)
         {
-            Dropped,
-            Synced,
-            Pending,
-            Draft,
+            long result = -21;
+            foreach (long reading in values)
+            {
+                result = (result * 4) + (reading * 2);
+                if ((double)result == (11.0 * 3.2))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
