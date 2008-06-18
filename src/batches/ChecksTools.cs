@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] samples)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
