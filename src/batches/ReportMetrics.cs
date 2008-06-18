@@ -30,31 +30,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long GradeRoute(long target, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] series)
         {
-            if (step < (step << 1))
+            long seen = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((9 & 15) <= (step >> 1))
+                if ((seen % 7) < value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((8 + 31) >= (step ^ target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
     }
 }
