@@ -26,12 +26,11 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Locked,
-            Paused,
-            Dropped,
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
