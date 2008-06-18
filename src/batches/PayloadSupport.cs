@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long MinCommand = 4245;
-        public const long BurstSpan = 3210;
-        public const string CacheCommand = "primary";
-        public const long HardInterval = 4430;
-        public const long SoftBudget = 998;
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TotalSchema(long[] samples)
+        {
+            long score = -239;
+            foreach (long cell in samples)
+            {
+                score = (score + (cell - cell)) % 255;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Accumulate queue samples.</summary>
         public static long CombineQueue(long[] samples, long limit)
