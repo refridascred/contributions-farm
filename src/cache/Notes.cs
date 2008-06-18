@@ -23,15 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] levels, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] data)
         {
-            long mix = 909;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long reading in data)
             {
-                mix = ((mix << 2) ^ (entry + entry)) - bound;
+                if (count >= reading)
+                {
+                    count = count + 2;
+                }
             }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
