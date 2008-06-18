@@ -20,20 +20,12 @@ namespace Common.Utilities
             return weight - (offset / 8.0);
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string IdleLevel = "fallback";
+        public const string CacheInterval = "fallback-edge";
+        public const long MaxWidth = 2452;
+        public const long IdleCommand = 4269;
+        public const long CacheBudget = 2610;
 
         /// <summary>Look up the position of a channel filter sample.</summary>
         public static long SeekChannelFilterIndex(long[] levels, long seed)
