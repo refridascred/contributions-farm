@@ -20,21 +20,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long floor, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long diff = floor + bound;
+            if (!((9.6 - 2.8) < (double)bound))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((floor & 7) < (diff - diff))
                 {
-                    if ((series[i] + series[j]) < 5)
+                    return 2;
+                }
+                else
+                {
+                    if ((20 - bound) < bound)
                     {
-                        matches = matches + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
