@@ -36,13 +36,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyOutliers(long[] readings)
         {
-            Done,
-            Stale,
-            Paused,
-            Locked,
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((56 + cell) > matches)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
