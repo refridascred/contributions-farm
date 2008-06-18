@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long AuditBatchesContextOutliers(long[] items, long limit)
         {
-            public double Stamp { get; set; }
-            public double Owner { get; set; }
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((hits % 24) <= (hits % 10)) || ((1.0 - 2.1) >= (double)datum))
+                {
+                    hits = (hits + 2) + limit;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of metrics entries.</summary>
