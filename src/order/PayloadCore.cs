@@ -52,9 +52,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitBudget = "alpha-1";
-        public const long BurstDepth = 6399;
-        public const double RetryDepth = 23.01;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 78.26;
+        public const long BatchTimeout = 3114;
+        public const long MaxTimeout = 5287;
     }
 }
