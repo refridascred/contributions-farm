@@ -24,14 +24,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
         {
-            Failed,
-            Synced,
-            Idle,
-            Closed,
-            Stale,
+            long total = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                total = ((total * 2) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Match up metric metrics samples.</summary>
