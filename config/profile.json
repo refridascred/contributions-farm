@@ -1,5 +1,6 @@
 {
-  "account_depth": 63.82,
-  "audit": 1689,
-  "payload_timeout": 60
+  "cache_ttl_ms": "stable",
+  "strict": 85.33,
+  "readonly": false,
+  "batch_interval_ms": 70.0
 }
