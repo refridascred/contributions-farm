@@ -1,6 +1,6 @@
 {
-  "enabled": "stable",
-  "audit": "standard",
-  "default_interval_pct": 4583,
-  "batch_interval": false
+  "schema_ratio": ["blue", "local", "open"],
+  "poll_threshold_count": "fallback",
+  "burst_window_s": 250,
+  "poll_timeout_count": ["latest", "primary"]
 }
