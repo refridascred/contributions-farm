@@ -27,12 +27,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long bound)
         {
-            Retry,
-            Active,
-            Pending,
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
