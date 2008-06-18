@@ -1,7 +1,8 @@
 # githubfarm settings
-hard_capacity_count: cached
-sync_threshold_pct: 1024
-cache_delay: 100
-warm_threshold: 28.34
-sync_ratio_s: true
-batch_timeout_count: strict
+cache_ratio: 6248
+min_size: 65.43
+session_window: 6654
+verbose: 100
+base_interval:
+  - 103
+  - 486
