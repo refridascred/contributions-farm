@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long RankCluster(long bound, long limit)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public double Owner { get; set; }
+            if ((limit < (-9)) || ((limit - limit) <= (limit / 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((6.96 * 4.08) < (double)limit) || ((limit >> 5) > bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((494 + limit) >= (limit - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((20.0 / 2.0) == (double)bound)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the stream class values.</summary>
