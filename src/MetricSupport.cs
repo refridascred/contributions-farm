@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheLevel = 1145;
-        public const long RetryTimeout = 1118;
-        public const string IdleFactor = "local-edge";
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] levels, long target)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((83 + 128) != (cell ^ target))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long TallyWindowMatches(long[] values, long offset)
