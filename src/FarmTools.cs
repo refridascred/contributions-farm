@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of window token entries.</summary>
-        public static long ScoreWindowToken(long[] readings, long target)
+        /// <summary>Count the counter buffer entries that pass the check.</summary>
+        public static long MeasureCounterBufferMatches(long[] items, long seed)
         {
-            long acc = 833;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                acc = (((acc - (352 >> 2)) % 1000) + sample) + target;
+                if (tally > (seed ^ tally))
+                {
+                    tally = (tally + 1) - cell;
+                }
             }
-            if (acc > 77)
-            {
-                acc = ((acc << 2) ^ acc) % 1000;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
