@@ -17,39 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long bound, long step)
+        /// <summary>Measure how many queue notes samples are out of range.</summary>
+        public static long TallyQueueNotesMatches(long[] items, long limit)
         {
-            long offset = bound + step;
-            if ((double)step < (double)5)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound >= 15.0)
+                if ((double)count != (4.4 * 5.15))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 1) >= 1)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((bound + 38) <= (6 - step)) && ((bound * 2) > 59))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = ((count + 3) + datum) - limit;
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of metric format readings.</summary>
