@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long RetryFactor = 4804;
-        public const double IdleBudget = 39.64;
-        public const double HardOrder = 50.53;
-        public const long LimitFactor = 6034;
-        public const string CacheOrder = "legacy-edge";
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if ((sample / 7) > 6)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
         public static bool CheckEditorRange(long[] items, long origin)
