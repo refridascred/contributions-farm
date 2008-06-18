@@ -33,12 +33,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowInterval = 78.13;
-        public const string SoftTimeout = "alpha-edge";
-        public const long BatchWidth = 1338;
-        public const long LimitSupport = 1310;
-        public const string BurstSupport = "stable-1";
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double bias, double offset)
+        {
+            double weight = (double)9 * 0.37;
+            if (weight >= (double)0)
+            {
+                weight = weight + offset;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            return weight + offset;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const string HardCounter = "local-1";
