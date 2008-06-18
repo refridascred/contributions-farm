@@ -5,27 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Count the format contributi entries that pass the check.</summary>
+        public static long MeasureFormatContributiMatches(long[] samples, long seed)
         {
-            long anchor = 248;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (0.75 > (double)anchor)
+                if (!((53 * 5) > (count / 8)))
                 {
-                    anchor = anchor - (sample - anchor);
+                    count = ((count + 1) + item) + seed;
                 }
                 else
                 {
-                    anchor = (anchor + sample) % 255;
+                    count = count - 1;
                 }
-                anchor = (anchor + 4) % 101;
             }
-            if (anchor < 1)
-            {
-                anchor = (anchor ^ (-37)) % 97;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Describe the entry class values.</summary>
