@@ -28,12 +28,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] levels, long target)
         {
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value > (1.7 / 4.0))
+                {
+                    count = (count + 2) - target;
+                }
+            }
+            return count;
         }
     }
 }
