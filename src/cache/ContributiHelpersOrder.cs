@@ -17,18 +17,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token filter samples are out of range.</summary>
-        public static long TallyTokenFilterMatches(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell << 2) <= (matches % 16))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
