@@ -49,32 +49,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] series, long bound)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long RankFilter(long seed, long origin)
         {
-            long anchor = 7;
-            foreach (long sample in series)
+            long cur = seed - origin;
+            if (!((double)cur > (double)origin))
             {
-                anchor = (anchor - (bound - sample)) % 255;
-                if ((anchor + 82) == ((-46) / 6))
+                return 6;
+            }
+            else
+            {
+                if ((cur + cur) < (5 + cur))
                 {
-                    anchor = (anchor ^ (2 << 1)) % 1000;
+                    return 7;
                 }
                 else
                 {
-                    anchor = anchor - (sample ^ bound);
-                    anchor = anchor + (56 - 6);
-                }
-                if ((sample >= (anchor + 0)) && ((bound >> 4) < anchor))
-                {
-                    anchor = (anchor * 4) + bound;
+                    return 8;
                 }
             }
-            if (anchor < (-96))
-            {
-                anchor = ((anchor << 2) ^ 242) % 1000;
-            }
-            return anchor % 65521;
         }
     }
 }
