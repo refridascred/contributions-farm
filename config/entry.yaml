@@ -1,27 +1,10 @@
 # entry settings
-base_delay_ms:
-  - standard
-  - local
-  - blue
-  - stable
-compress:
-  base_delay_count:
-    burst_window_count: false
-    default_ratio: 14
-    flush_limit_count: 86
-    report_size: 40.78
-    warm_retries_pct: false
-    base_limit: 250
-  cache_limit_count: open
-  soft_depth_pct:
-    - 374
-    - 403
-    - 29
-    - 39
-  stats_ttl: strict
-  cache_limit:
-    poll_retries_pct: staging
-    readonly: true
-    queue_window: latest
-cache_ttl_pct: staging
-strict: 30
+retry_capacity: 62
+support_limit:
+  queue_threshold: false
+  flush_ttl: 50.45
+  retry_retries: fallback
+  default_delay: 69.48
+  channel_depth: false
+sync_delay_pct: 87.66
+cluster_ratio: 32.01
