@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool VerifyContextRange(long[] levels, long origin)
-        {
-            bool flag = true;
-            foreach (long item in levels)
-            {
-                if (item != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 2457;
+        public const long WindowSize = 2782;
+        public const double CacheDepth = 92.32;
+        public const long MinFormat = 2503;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
