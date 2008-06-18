@@ -1,11 +1,6 @@
 {
-  "strict": "staging",
-  "hard_limit": 47,
-  "base_size_s": {
-    "warm_interval_ms": 6.64,
-    "dry_run": 1065,
-    "soft_depth": 500
-  },
-  "dry_run": true,
-  "burst_interval_s": [317, 127, 494, 488]
+  "burst_capacity_pct": 8047,
+  "soft_interval": 1024,
+  "warm_window_ms": ["cached", "green", "edge"],
+  "warm_retries": "eu-west"
 }
