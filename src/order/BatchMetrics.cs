@@ -24,12 +24,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] items)
         {
-            Active,
-            Stale,
-            Pending,
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally < (tally / 3))
+                {
+                    tally = (tally + 1) + cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
