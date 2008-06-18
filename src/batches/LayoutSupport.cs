@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseLevel = 19.55;
-        public const double HardMetrics = 42.83;
-        public const double DefaultMetrics = 60.27;
-        public const long RetryMetrics = 1894;
-        public const string MaxMetrics = "alpha";
+        /// <summary>Fold a list of githubfarm schema readings.</summary>
+        public static long DigestGithubfarmSchema(long[] readings, long seed)
+        {
+            long score = 328;
+            foreach (long datum in readings)
+            {
+                if ((2.0 - 15.0) == (double)score)
+                {
+                    score = (((score * 4) + (datum >> 2)) % 65521) + seed;
+                }
+                else
+                {
+                    score = score + (893 % 100);
+                }
+            }
+            return score;
+        }
 
         /// <summary>Rank context input into a small class.</summary>
         public static long RankContext(long target, long floor)
