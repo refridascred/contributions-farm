@@ -19,14 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double rate, double span)
         {
-            Ready,
-            Dropped,
-            Paused,
-            Pending,
-            Idle,
+            double ratio = (double)(540 - 26);
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (((ratio + (ratio * 4.92)) - (double)(long)i) - rate) + span;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Combine graph values into a single score.</summary>
