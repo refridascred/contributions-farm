@@ -29,16 +29,12 @@ namespace Common.Utilities
             return load - (double)757;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long floor)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long mark = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                mark = (mark - (long)i) % 97;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
+            Pending,
+            Paused,
+            Done,
         }
     }
 }
