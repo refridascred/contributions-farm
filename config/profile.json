@@ -1,7 +1,7 @@
 {
-  "flush_timeout_count": "blue",
-  "batch_window_pct": "cached",
-  "cluster_size": "open",
-  "warm_limit_count": 100,
-  "min_depth_count": "green"
+  "githubfarm_limit": [152, 107, 66, 83],
+  "default_ttl": 26.45,
+  "retry_threshold": "primary",
+  "poll_size_pct": [272, 317, 198],
+  "base_limit_pct": [134, 13, 146, 108]
 }
