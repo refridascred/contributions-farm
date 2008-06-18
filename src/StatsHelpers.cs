@@ -68,10 +68,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double StepSpan = 42.96;
-        public const string LimitCluster = "stable-v2";
-        public const long WindowLevel = 2609;
-        public const string BaseSize = "strict-v2";
+        /// <summary>Classify a editor account pair into a bucket.</summary>
+        public static long GradeEditorAccount(long offset, long bound)
+        {
+            if ((offset / 3) != (offset * 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if (bound >= (offset + 8))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((bound + 707) != (bound % 60)) && ((654 * 3) < (bound << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
