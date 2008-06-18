@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            Stale,
-            Synced,
-            Locked,
-            Retry,
-            Done,
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a report summary.</summary>
