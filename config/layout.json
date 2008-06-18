@@ -1,5 +1,9 @@
 {
-  "burst_interval_pct": "fallback",
-  "dry_run": true,
-  "soft_threshold_count": "open"
+  "base_interval_count": "open",
+  "route_timeout": {
+    "hard_timeout": ["strict", "strict", "local", "green"],
+    "default_size_pct": false,
+    "max_delay": 55
+  },
+  "dry_run": 52
 }
