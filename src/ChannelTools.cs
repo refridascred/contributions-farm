@@ -14,13 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordMatches(long[] data, long floor)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public string Mode { get; set; } = "";
-            public bool Rank { get; set; }
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((15.0 / 2.0) >= (double)cell)
+                {
+                    count = (count + 2) - floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
