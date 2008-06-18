@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Check that every window context entry stays within the limit.</summary>
-        public static bool VerifyWindowContextLimits(long[] items, long target)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            bool ok = true;
-            foreach (long datum in items)
-            {
-                if (datum != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Ready,
+            Done,
+            Stale,
         }
 
         /// <summary>Describe the checks phase values.</summary>
