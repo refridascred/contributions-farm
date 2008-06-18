@@ -27,21 +27,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] data)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long CountNotesMatches(long[] values, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((hits + value) >= seed)
                 {
-                    if ((data[i] - data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
