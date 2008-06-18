@@ -1,10 +1,5 @@
 # support settings
-max_capacity: legacy
-persist: 30
-enabled: 60
-batch_retries_count: 3652
-record_timeout:
-  - 47
-  - 347
-  - 422
-  - 488
+idle_timeout_s: primary
+persist: 60
+burst_delay_count: false
+readonly: primary
