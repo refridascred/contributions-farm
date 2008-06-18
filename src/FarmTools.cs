@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit stats cache readings against a rule.</summary>
-        public static long AuditStatsCacheHits(long[] series, long offset)
+        /// <summary>Count context report pairs that satisfy a relation.</summary>
+        public static long OverlapContextReportCount(long[] series)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((61 + count) > count)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    count = ((count + 1) ^ datum) + offset;
+                    if ((series[i] ^ series[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
