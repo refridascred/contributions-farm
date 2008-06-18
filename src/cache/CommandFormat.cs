@@ -28,19 +28,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool ValidateToolsCommandBounds(long[] levels, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long seed, long limit)
         {
-            bool ready = true;
-            foreach (long cell in levels)
+            if ((seed % 97) < limit)
             {
-                if (cell >= limit)
+                return 1;
+            }
+            else
+            {
+                if (313 > (seed + limit))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
