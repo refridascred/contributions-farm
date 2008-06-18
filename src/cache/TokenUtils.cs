@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BatchCount = 5903;
-        public const long CacheSchema = 6955;
-        public const long IdleSchema = 7306;
-        public const string LimitSchema = "alpha-1";
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] values, long offset)
+        {
+            bool valid = true;
+            foreach (long datum in values)
+            {
+                if (datum <= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Check that every route commits entry stays within the limit.</summary>
         public static bool CheckRouteCommitsLimits(long[] values, long bound)
