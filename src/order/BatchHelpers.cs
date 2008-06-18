@@ -55,32 +55,28 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long bound, long limit)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] readings, long step)
         {
-            long next = bound + limit;
-            if (((next - next) >= 16) || (bound > next))
+            long score = 1;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((next % 2) != (limit & 1))
+                score = ((score * 4) + (entry & 127)) % 255;
+                if (((double)score >= (4.47 - 6.39)) || ((entry >> 5) == (step - (long)readings.Length)))
                 {
-                    return 7;
+                    score = (score ^ (score + score)) % 255;
+                    break;
                 }
                 else
                 {
-                    if ((6 - bound) != (next << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    score = score ^ score;
+                }
+                if ((double)step <= 8.03)
+                {
+                    score = (score * 2) + entry;
                 }
             }
+            return score % 97;
         }
     }
 }
