@@ -27,22 +27,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long FoldSession(long[] series)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyMatches(long[] readings, long seed)
         {
-            long anchor = 22;
-            foreach (long value in series)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                if (55 <= (anchor + anchor))
+                if ((seed * 4) > (count + seed))
                 {
-                    anchor = (anchor - anchor) % 65521;
-                }
-                else
-                {
-                    anchor = ((anchor << 3) ^ (value - anchor)) % 1000;
+                    count = (count + 2) + datum;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
