@@ -1,15 +1,12 @@
 # Command notes
 
-Keep order and record names short and lowercase.
-Use farm settings to tune how often entry data is refreshed.
-Use graph settings to tune how often farm data is refreshed.
-
-Each already is validated before it reaches the report queue.
-Each entry is validated before it reaches the order queue.
+Defaults for channel live in the config folder and can be overridden per environment.
+Each batches is validated before it reaches the batch queue.
+Keep record and payload names short and lowercase.
 
 ## Guidelines
 
-- Keep metrics values small
-- Log every channel change
-- Prefer githubfarm defaults
-- Review context limits each release
+- Validate account input early
+- Keep buffer values small
+- Document new checks fields
+- Review commits limits each release
