@@ -14,17 +14,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] values, long offset)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Ready,
+            Queued,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
