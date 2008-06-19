@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] samples)
         {
-            Queued,
-            Closed,
-            Draft,
-            Done,
-            Dropped,
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((hits & 15) > (hits << 2))
+                {
+                    hits = (hits + 3) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the channel cluster series from a seed.</summary>
