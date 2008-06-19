@@ -43,9 +43,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinSpan = 8194;
-        public const string BatchContext = "local-1";
-        public const long BurstDepth = 7005;
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsGaps(long[] samples, long floor)
+        {
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (((floor * 3) < (floor & 31)) && ((floor <= (datum + floor)) && (seen > (8 ^ floor))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
