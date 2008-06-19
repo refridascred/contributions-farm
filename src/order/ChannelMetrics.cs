@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] samples, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowLimits(long[] samples, long bound)
         {
-            long score = -349;
-            foreach (long reading in samples)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if ((reading & 63) < (183 * 5))
+                if (cell < bound)
                 {
-                    score = score - (262 ^ bound);
+                    valid = false;
+                    break;
                 }
             }
-            return score % 97;
+            return valid;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
