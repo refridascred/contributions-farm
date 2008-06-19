@@ -53,22 +53,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit farm metric readings against a rule.</summary>
-        public static long AuditFarmMetricHits(long[] data, long offset)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long WeighNotes(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long mix = 40;
+            foreach (long item in items)
             {
-                if ((4.8 / 6.0) < (double)item)
+                long prev = mix;
+                if ((mix + prev) == (mix - step))
                 {
-                    tally = (tally + 3) - offset;
+                    prev = ((prev << 2) ^ (step << 2)) % 101;
                 }
-                else
+                if (((item + step) == (item >> 2)) || ((6.0 * 9.24) < (double)mix))
                 {
-                    tally = tally - 1;
+                    mix = (mix + (mix * 3)) % 4096;
                 }
             }
-            return tally;
+            return mix % 65521;
         }
     }
 }
