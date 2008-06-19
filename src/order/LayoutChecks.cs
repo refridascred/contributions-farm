@@ -53,12 +53,19 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-1";
         public const string MaxDepth = "legacy-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string IdleFormat = "local-edge";
-        public const string StepFormat = "standard-edge";
-        public const long LimitCount = 5417;
-        public const double MaxFormat = 79.29;
-        public const long WindowFormat = 3542;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] readings, long offset)
+        {
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((tally << 1) < 5)
+                {
+                    tally = ((tally + 1) + cell) - offset;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double span)
