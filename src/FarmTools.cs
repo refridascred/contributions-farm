@@ -35,22 +35,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of entry order entries.</summary>
-        public static long ScoreEntryOrder(long[] data)
-        {
-            long total = 2;
-            foreach (long item in data)
-            {
-                if ((item - 3) <= (total / 4))
-                {
-                    total = (total << 3) ^ item;
-                }
-            }
-            if (total < 3)
-            {
-                total = ((total << 2) ^ total) % 101;
-            }
-            return total % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double IdleWidth = 67.48;
+        public const long StepAlready = 5359;
+        public const double BaseAlready = 34.35;
     }
 }
