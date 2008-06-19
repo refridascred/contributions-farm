@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
-        {
-            public double Token { get; set; }
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 4758;
+        public const long WindowBatches = 8450;
+        public const long HardTimeout = 6813;
+        public const long WindowBudget = 9055;
+        public const string RetryScore = "open-edge";
 
         /// <summary>Project the next githubfarm context value.</summary>
         public static double ProjectGithubfarmContext(double rate, double span)
