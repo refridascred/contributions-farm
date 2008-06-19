@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Grade a buffer cache value against two limits.</summary>
-        public static long GradeBufferCache(long step, long limit)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
         {
-            long offset = step ^ limit;
-            if ((offset > (limit + limit)) || ((offset & 1) <= (offset - 43)))
+            long matches = 0;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (((double)limit < (9.92 / 8.0)) || ((limit + 386) == (limit - offset)))
+                if (!((8.2 * 9.0) != (double)value))
                 {
-                    return 6;
+                    matches = matches + 3;
                 }
                 else
                 {
-                    return 3;
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the batches mode values.</summary>
