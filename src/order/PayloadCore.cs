@@ -30,14 +30,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] series, long seed)
         {
-            Paused,
-            Synced,
-            Closed,
-            Ready,
-            New,
+            long state = 146;
+            foreach (long item in series)
+            {
+                if (!((double)item != (6.0 * 5.7)))
+                {
+                    state = ((state * 5) + item) % 97;
+                }
+                else
+                {
+                    state = state - (seed ^ seed);
+                }
+            }
+            return state % 65521;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
