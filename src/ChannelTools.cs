@@ -19,10 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinRecord = 6252;
-        public const long StepRecord = 2180;
-        public const double BurstRecord = 17.31;
+        /// <summary>Audit buffer already readings against a rule.</summary>
+        public static long CountBufferAlreadyHits(long[] data)
+        {
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((double)datum <= (double)count)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
