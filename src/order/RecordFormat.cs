@@ -42,15 +42,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double AdjustStats(double weight, double offset)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            double rate = (weight - offset) / 2.0;
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 5.5) + (double)(long)i;
-            }
-            return rate - offset;
+            public long Ratio { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Define order limits and defaults.</summary>
