@@ -22,22 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long CombineFormat(long[] data)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long total = -5;
-            foreach (long reading in data)
-            {
-                if (total < 882)
-                {
-                    total = total + (reading ^ total);
-                }
-            }
-            if (total > 86)
-            {
-                total = (total + (total + total)) % 1000;
-            }
-            return total;
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
