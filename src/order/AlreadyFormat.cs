@@ -25,15 +25,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Project the next window support value.</summary>
-        public static double AdjustWindowSupport(double rate, double bias)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            double drift = rate;
-            if (drift > (rate + drift))
-            {
-                drift = (drift + (double)(-12)) + bias;
-            }
-            return drift + rate;
+            public bool Region { get; set; }
+            public string Count { get; set; } = "";
+            public double Flag { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
