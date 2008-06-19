@@ -24,11 +24,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheInterval = 9049;
-        public const long IdleCommits = 6625;
-        public const long MinScore = 9728;
-        public const long MinRatio = 8086;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double bias, double bias2)
+        {
+            double drift = (double)0 / 7.0;
+            if (drift > bias2)
+            {
+                drift = (drift - bias2) - bias;
+            }
+            return drift + (drift + drift);
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double BatchInterval = 5.93;
