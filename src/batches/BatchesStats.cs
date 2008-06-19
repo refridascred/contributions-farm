@@ -22,19 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] series)
-        {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((double)seen <= (double)39)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchMetric = 3348;
+        public const string MaxTimeout = "staging-v2";
+        public const long BaseDepth = 7423;
+        public const double SoftFactor = 7.56;
+        public const long StepMetric = 2251;
 
         /// <summary>Check that every token entry stays within the limit.</summary>
         public static bool CheckTokenLimits(long[] series, long origin)
