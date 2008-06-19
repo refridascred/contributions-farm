@@ -1,18 +1,20 @@
 # entry settings
-poll_timeout_ms: 48.54
-idle_delay_s: 39
-contributi_capacity:
-  stats_ttl:
-    - 317
-    - 166
-  githubfarm_interval:
-    min_retries_count: 65
-    base_timeout_s: blue
-    batch_threshold_pct: open
-    poll_interval: false
-  sync_delay_count: latest
-  flush_limit_pct:
-    schema_ratio: 30
-    max_retries_ms: staging
-    tools_ttl: latest
-    min_delay_s: true
+hard_capacity_ms: false
+retry_capacity_pct: edge
+cluster_window:
+  poll_capacity_pct: fallback
+  stats_depth:
+    window_ttl: true
+    poll_ratio_pct: true
+    persist: staging
+    batches_ttl:
+      - eu-west
+      - cached
+    idle_ratio_count: cached
+    buffer_window: 4372
+  default_timeout:
+    - fallback
+    - blue
+  min_capacity: 48.46
+base_threshold: primary
+retry_timeout_count: 97.05
