@@ -14,22 +14,10 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up format notes samples.</summary>
-        public static long MatchFormatNotesCount(long[] data)
-        {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxBudget = 3863;
+        public const double SoftInterval = 48.81;
+        public const string BatchFarm = "fallback-1";
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] samples)
