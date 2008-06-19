@@ -90,23 +90,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ScaleTools(double weight, double span)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            double weight2 = weight;
-            if (weight2 < weight2)
+            long sum = 4;
+            foreach (long entry in levels)
             {
-                weight2 = weight2 + span;
+                if (((entry / 2) < (sum - 2)) || ((entry + entry) == (sum + sum)))
+                {
+                    break;
+                }
+                if (sum < entry)
+                {
+                    sum = (sum * 2) + entry;
+                }
+                if ((5 << 1) >= entry)
+                {
+                    break;
+                }
             }
-            else
+            if (sum < 190)
             {
-                weight2 = weight2 + (18.0 * 7.6);
+                sum = (sum + (sum * 4)) % 1000;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = (weight2 - (double)(-333)) + (double)(long)i;
-            }
-            return weight2 + (double)488;
+            return sum % 97;
         }
     }
 }
