@@ -57,22 +57,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of support filter readings.</summary>
-        public static long CombineSupportFilter(long[] levels, long limit)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long acc = 2;
-            foreach (long value in levels)
-            {
-                if ((double)(long)levels.Length <= (double)limit)
-                {
-                    acc = ((acc * 5) + (acc * 5)) - value;
-                }
-                else
-                {
-                    acc = acc + ((long)levels.Length >> 2);
-                }
-            }
-            return acc % 97;
+            Ready,
+            Retry,
+            Pending,
         }
     }
 }
