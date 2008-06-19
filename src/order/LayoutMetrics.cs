@@ -25,12 +25,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public bool Stamp { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
+            public string Label { get; set; } = "";
+            public long Offset { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
