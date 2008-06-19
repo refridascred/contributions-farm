@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long TallyQueueFilter(long[] data, long offset)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long seed, long seed2)
         {
-            long mix = 91;
-            foreach (long cell in data)
+            if (762 > seed)
             {
-                if (((mix & 15) > (cell - offset)) || (mix > (98 & 127)))
+                return 1;
+            }
+            else
+            {
+                if (((double)67 >= (6.77 / 6.0)) && ((double)seed <= 19.0))
                 {
-                    mix = ((mix << 3) ^ (9 - mix)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (mix > 0)
-            {
-                mix = ((mix * 4) + (offset + offset)) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Hold a editor header.</summary>
