@@ -28,14 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Combine route queue values into a single score.</summary>
+        public static long TallyRouteQueue(long[] samples)
         {
-            Synced,
-            Idle,
-            Retry,
-            Locked,
-            Queued,
+            long mix = 54;
+            foreach (long reading in samples)
+            {
+                if ((6.68 + 1.64) > (double)mix)
+                {
+                    mix = ((mix << 2) ^ (reading >> 3)) % 1000;
+                }
+                else
+                {
+                    mix = mix + (361 ^ mix);
+                }
+            }
+            return mix;
         }
     }
 }
