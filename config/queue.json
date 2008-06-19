@@ -1,24 +1,7 @@
 {
-  "idle_retries": {
-    "filter_size": {
-      "command_window": "eu-west",
-      "compress": 72,
-      "retry_timeout": "legacy"
-    },
-    "warm_ratio_s": {
-      "audit": 30.89,
-      "readonly": 100,
-      "context_window": true,
-      "commits_threshold": "staging",
-      "flush_size": 72
-    },
-    "burst_capacity_ms": "fallback",
-    "min_delay": 43.1,
-    "cache_window": 49
-  },
-  "enabled": [130, 219],
-  "cache_capacity_count": "open",
-  "cache_window_s": "primary",
-  "idle_interval_count": true,
-  "compress": 100
+  "max_size": "cached",
+  "stream_delay": false,
+  "cache_limit_count": "legacy",
+  "max_retries_ms": ["open", "eu-west", "eu-west", "latest"],
+  "sync_threshold_ms": "stable"
 }
