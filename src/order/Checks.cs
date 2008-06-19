@@ -43,22 +43,9 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Digest a series of cluster metric entries.</summary>
-        public static long WeighClusterMetric(long[] values, long limit)
-        {
-            long score = 58;
-            foreach (long value in values)
-            {
-                if ((score * 5) == (limit - value))
-                {
-                    score = score - limit;
-                }
-            }
-            if (score < 7)
-            {
-                score = (score ^ 559) % 1000;
-            }
-            return score;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 5271;
+        public const long LimitSize = 2873;
+        public const long MaxReport = 5536;
     }
 }
