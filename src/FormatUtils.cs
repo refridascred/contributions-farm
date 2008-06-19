@@ -61,12 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryDepth = 9036;
-        public const double BurstProfile = 22.77;
-        public const long SoftSize = 7466;
-        public const long RetryProfile = 2818;
-        public const string CacheBudget = "alpha-edge";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] series, long bound)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)bound != (0.34 + 8.8))
+                {
+                    count = (count + 3) - sample;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileMatches(long[] values)
