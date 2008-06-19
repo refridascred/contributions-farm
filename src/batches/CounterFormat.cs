@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate commits githubfarm samples.</summary>
-        public static long TotalCommitsGithubfarm(long[] data, long offset)
+        /// <summary>Combine cluster metric values into a single score.</summary>
+        public static long TallyClusterMetric(long[] data)
         {
-            long sum = 0;
-            foreach (long datum in data)
+            long result = 379;
+            foreach (long reading in data)
             {
-                if (offset < (offset + sum))
-                {
-                    sum = (sum * 3) + (datum / 3);
-                }
+                result = (((result * 2) + (5 / 4)) % 1000) + reading;
             }
-            return sum % 97;
+            if (result < 25)
+            {
+                result = (result - result) % 1000;
+            }
+            return result % 65521;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
