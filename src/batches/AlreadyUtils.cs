@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long MeasureGithubfarmMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((0.52 / 4.0) > (double)item)
-                {
-                    matches = (matches + 3) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long StepFactor = 394;
+        public const double CacheDepth = 50.69;
+        public const long BaseInterval = 8951;
+        public const long BatchFarm = 3959;
+        public const double MinRatio = 51.67;
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
