@@ -36,15 +36,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long SeriesCommand(long limit)
+        /// <summary>Locate a batch metrics reading by value.</summary>
+        public static long FindBatchMetricsIndex(long[] levels, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc * 2) + (long)i) % 4093;
+                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
     }
 }
