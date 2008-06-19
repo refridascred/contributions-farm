@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] levels, long step)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] readings, long seed)
         {
-            long score = 3;
-            foreach (long value in levels)
+            long anchor = 68;
+            foreach (long item in readings)
             {
-                if ((20.0 - 3.0) == (double)step)
+                if ((item + (long)readings.Length) < seed)
                 {
-                    score = (score + (score ^ score)) ^ value;
+                    anchor = anchor ^ ((long)readings.Length + 678);
                 }
             }
-            if (score < 2)
-            {
-                score = (score - 633) % 97;
-            }
-            return score % 65521;
+            return anchor;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
