@@ -85,12 +85,13 @@ namespace Common.Utilities
         public const string BaseDepth = "cached-v2";
         public const long IdleSize = 3017;
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Synced,
             Closed,
-            Stale,
+            Retry,
+            Draft,
+            Paused,
         }
     }
 }
