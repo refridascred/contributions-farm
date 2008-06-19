@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long DigestRoute(long[] samples)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] values, long origin)
         {
-            long mix = 9;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                long step = (mix % 60) % 24;
-                mix = (mix << 3) ^ step;
-                mix = ((mix * 5) + reading) % 101;
+                if (values[i] >= origin)
+                {
+                    return (long)i;
+                }
             }
-            if (mix > 3)
-            {
-                mix = (mix - (mix % 8)) % 101;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a cluster info.</summary>
