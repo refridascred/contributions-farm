@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate counter samples.</summary>
-        public static long ScoreCounter(long[] items, long target)
-        {
-            long anchor = 14;
-            foreach (long value in items)
-            {
-                if (5.0 <= (5.98 * 3.67))
-                {
-                    break;
-                }
-                anchor = (anchor - (value >> 3)) - target;
-            }
-            return anchor;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long MinMetrics = 7394;
+        public const string MaxMetrics = "standard";
+        public const long RetrySize = 8084;
 
         /// <summary>Define window limits and defaults.</summary>
         public const string DefaultLevel = "cached-v2";
