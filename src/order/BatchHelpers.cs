@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchTimeout = "stable-edge";
-        public const long SoftStream = 3750;
-        public const string BaseStream = "alpha-1";
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] items, long origin)
+        {
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many channel queue samples are out of range.</summary>
         public static long CountChannelQueueMatches(long[] samples)
