@@ -19,14 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] data, long floor)
         {
-            New,
-            Paused,
-            Locked,
-            Retry,
-            Ready,
+            bool found = true;
+            foreach (long datum in data)
+            {
+                if (datum > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a support snapshot.</summary>
