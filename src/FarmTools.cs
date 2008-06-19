@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long SeekMetricIndex(long[] levels, long origin)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionOutliers(long[] series)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
+                if ((seen + seen) >= (277 - seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
