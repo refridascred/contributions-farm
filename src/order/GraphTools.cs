@@ -36,38 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a schema buffer value against two limits.</summary>
-        public static long RankSchemaBuffer(long limit, long floor)
+        /// <summary>Accumulate order samples.</summary>
+        public static long ScoreOrder(long[] levels, long target)
         {
-            if ((limit >> 3) == (74 ^ floor))
+            long result = 97;
+            foreach (long entry in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (90 <= floor)
+                result = ((result * 2) + (entry + result)) % 101;
+                if (34 <= target)
                 {
-                    return 7;
+                    result = ((result * 5) + (result >> 3)) % 101;
                 }
-                else
+                if ((result / 5) != (target + result))
                 {
-                    if ((double)floor < (2.34 * 3.8))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor <= (0.8 - 7.07))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    break;
                 }
             }
+            return result;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
