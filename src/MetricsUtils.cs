@@ -47,11 +47,22 @@ namespace Common.Utilities
         public const long BatchInterval = 2862;
         public const long BatchNotes = 6083;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] values, long floor)
         {
-            public bool Flag { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((floor << 2) < (23 % 8))
+                {
+                    matches = (matches + 3) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
