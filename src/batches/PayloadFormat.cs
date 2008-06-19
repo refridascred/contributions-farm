@@ -39,12 +39,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long HardInterval = 4357;
-        public const double LimitCluster = 92.62;
-        public const double IdleCluster = 93.94;
-        public const double MinTimeout = 40.89;
-        public const string BurstBudget = "alpha-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BurstContext = 7247;
+        public const string SoftContext = "stable";
+        public const string RetryTimeout = "alpha-1";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
