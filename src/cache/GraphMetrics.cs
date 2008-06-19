@@ -45,16 +45,19 @@ namespace Common.Utilities
         public const long MaxSize = 9524;
         public const double RetryBudget = 19.03;
 
-        /// <summary>Roll a record counter counter forward.</summary>
-        public static long StepRecordCounter(long target)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            long mix = target;
-            for (int i = 0; i < 11; i++)
+            double ratio = (3.6 - offset) + (double)773;
+            if (ratio >= (double)2)
             {
-                mix = (mix + ((long)i - target)) % 65521;
-                mix = ((mix * 4) + (long)i) % 1000;
+                ratio = ratio - 8.0;
             }
-            return mix;
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + (scale / 8.0)) + (double)(long)i;
+            }
+            return ratio + (double)736;
         }
     }
 }
