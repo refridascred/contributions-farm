@@ -25,17 +25,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a graph githubfarm reading by value.</summary>
-        public static long LookupGraphGithubfarmIndex(long[] samples, long limit)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleSpan = 8163;
+        public const long BurstProfile = 618;
+        public const long StepProfile = 4691;
+        public const long DefaultInterval = 5365;
     }
 }
