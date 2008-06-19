@@ -1,6 +1,7 @@
 {
-  "tools_ratio": 10,
-  "flush_retries_count": [48, 192, 79],
-  "retry_capacity_s": 100,
-  "batch_limit": 23
+  "hard_delay_ms": 22.14,
+  "queue_size": "green",
+  "token_limit": false,
+  "default_depth_count": false,
+  "readonly": 29.7
 }
