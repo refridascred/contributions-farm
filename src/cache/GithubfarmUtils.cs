@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double ScaleBatch(double gain, double offset)
-        {
-            double mean = 3.1 * 7.33;
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (((mean + 10.0) + (double)(long)i) + gain) + offset;
-            }
-            return mean + (mean / 4.0);
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double StepTimeout = 38.42;
+        public const long RetryWidth = 5035;
+        public const long RetryDepth = 6966;
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
