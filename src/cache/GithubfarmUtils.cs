@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MinLevel = 8927;
+        public const string BaseBudget = "local-edge";
+        public const double StepSpan = 98.04;
+        public const long SoftSession = 1106;
+        public const long WindowWidth = 4142;
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] values, long bound)
