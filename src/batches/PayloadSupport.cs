@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionLimits(long[] levels, long seed)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long ScoreCounter(long[] items, long target)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long anchor = 14;
+            foreach (long value in items)
             {
-                if (value != seed)
+                if (5.0 <= (5.98 * 3.67))
                 {
-                    flag = false;
                     break;
                 }
+                anchor = (anchor - (value >> 3)) - target;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Roll a entry counter forward.</summary>
