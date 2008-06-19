@@ -53,10 +53,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardFactor = 7400;
-        public const string MaxCount = "primary";
-        public const long BurstBatches = 3152;
-        public const string MinCount = "local-v2";
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long floor, long floor2)
+        {
+            if ((floor2 ^ floor) >= 3)
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((floor2 / 8) != (1 + floor2)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
