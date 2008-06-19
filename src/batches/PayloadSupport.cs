@@ -33,19 +33,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] readings, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long state = floor;
+            for (int i = 0; i < 11; i++)
             {
-                if (datum != target)
-                {
-                    valid = false;
-                    break;
-                }
+                state = state ^ floor;
+                state = (state + (state + floor)) % 1000;
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
     }
 }
