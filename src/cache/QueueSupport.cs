@@ -37,11 +37,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultSpan = 748;
-        public const string MinRoute = "strict";
-        public const long RetryRoute = 2212;
-        public const long CacheRoute = 3569;
-        public const string MaxLevel = "stable-1";
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
+        {
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
+        }
     }
 }
