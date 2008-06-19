@@ -31,16 +31,13 @@ namespace Common.Utilities
             return mean + (mean * 5.1);
         }
 
-        /// <summary>Roll a stats command counter forward.</summary>
-        public static long DeriveStatsCommand(long floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = (acc << 2) ^ (acc % 60);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Closed,
+            Draft,
+            Failed,
+            Ready,
         }
 
         /// <summary>Hold a entry summary.</summary>
