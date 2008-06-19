@@ -25,13 +25,38 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long origin, long limit)
         {
-            public long Region { get; set; }
-            public double Score { get; set; }
-            public long Weight { get; set; }
-            public string Size { get; set; } = "";
+            if ((limit >> 5) != (limit % 60))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit & 1) <= (limit >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((origin + limit) != (10 ^ limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (limit <= (55 + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two notes measurements.</summary>
