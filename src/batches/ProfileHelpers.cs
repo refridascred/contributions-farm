@@ -14,21 +14,16 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] samples)
+        /// <summary>Accumulate contributi batches samples.</summary>
+        public static long FoldContributiBatches(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 44;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score + score) + cell;
+                score = (score + (score % 8)) % 65521;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
