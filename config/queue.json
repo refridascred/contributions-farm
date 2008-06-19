@@ -1,10 +1,11 @@
 {
-  "compress": {
-    "max_ttl_s": 71.69,
-    "burst_ratio": "staging",
-    "compress": 30,
-    "format_window": 25.51
-  },
-  "min_window_pct": 30,
-  "hard_interval_count": ["staging", "green", "cached"]
+  "farm_interval": 30,
+  "warm_window_pct": ["staging", "legacy"],
+  "cache_ratio_ms": true,
+  "burst_threshold": {
+    "stats_retries": "edge",
+    "audit": 250,
+    "poll_timeout": ["eu-west", "stable"],
+    "soft_delay": ["local", "latest", "stable", "strict"]
+  }
 }
