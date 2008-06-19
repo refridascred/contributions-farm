@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double AdjustGraph(double weight, double floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels, long seed)
         {
-            double scale = floor / 6.0;
-            return (scale + (double)541) + weight;
+            long sum = 2;
+            foreach (long reading in levels)
+            {
+                if (seed > (sum + 50))
+                {
+                    sum = ((sum << 2) ^ (reading & 1)) % 1000;
+                }
+            }
+            if (sum > 397)
+            {
+                sum = sum + (sum / 5);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Accumulate cluster channel samples.</summary>
