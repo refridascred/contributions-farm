@@ -14,18 +14,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long CountBatchesMatches(long[] items, long step)
+        /// <summary>Count the checks stats entries that pass the check.</summary>
+        public static long TallyChecksStatsMatches(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if (!((count - sample) == (8 >> 4)))
+                if (bound > ((-530) / 2))
                 {
-                    count = (count + 1) + step;
+                    seen = (seen + 3) - reading;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the profile state values.</summary>
