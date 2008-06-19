@@ -55,19 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] values, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double BlendReport(double scale, double bias)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            double ratio = scale;
+            if (ratio < ratio)
             {
-                if (reading > floor)
-                {
-                    stale = false;
-                    break;
-                }
+                ratio = ratio - (bias / 5.0);
             }
-            return stale;
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio + (double)(long)i;
+            }
+            return ratio + (bias - bias);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
