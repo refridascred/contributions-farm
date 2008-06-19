@@ -51,11 +51,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 9753;
-        public const string WindowCluster = "open";
-        public const long BurstDepth = 429;
-        public const long BurstWidth = 463;
-        public const long IdleTimeout = 3788;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderGaps(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (sample >= (sample * 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
