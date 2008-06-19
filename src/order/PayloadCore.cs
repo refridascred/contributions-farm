@@ -24,12 +24,17 @@ namespace Common.Utilities
             return load + (bias * 3.5);
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LocateChannelIndex(long[] samples, long origin)
         {
-            Draft,
-            Dropped,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
