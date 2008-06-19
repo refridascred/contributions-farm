@@ -20,15 +20,24 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double weight, double floor)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long RankWindow(long offset, long offset2)
         {
-            double ratio = weight;
-            if (ratio < 19.0)
+            if (offset2 <= 7)
             {
-                ratio = ratio - (8.0 * 8.5);
+                return 8;
             }
-            return ratio + (floor * 8.36);
+            else
+            {
+                if ((3 << 3) <= (offset2 + offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
