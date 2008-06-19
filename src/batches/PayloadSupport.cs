@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((offset - 21) > hits)
-                {
-                    hits = (hits + 2) + datum;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string CacheBudget = "legacy";
+        public const double WindowInterval = 42.3;
+        public const long DefaultBudget = 2700;
+        public const long IdleStream = 8480;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksLimits(long[] levels, long limit)
