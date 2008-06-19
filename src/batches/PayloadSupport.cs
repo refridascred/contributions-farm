@@ -23,11 +23,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string CacheBudget = "legacy";
-        public const double WindowInterval = 42.3;
-        public const long DefaultBudget = 2700;
-        public const long IdleStream = 8480;
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
+        {
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public long Score { get; set; }
+        }
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
