@@ -51,19 +51,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double scale, double span)
-        {
-            double bias = (span - span) / 8.0;
-            if (bias > scale)
-            {
-                bias = bias + bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias + 1.45) + (double)(long)i;
-            }
-            return bias + 9.45;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 9753;
+        public const string WindowCluster = "open";
+        public const long BurstDepth = 429;
+        public const long BurstWidth = 463;
+        public const long IdleTimeout = 3788;
     }
 }
