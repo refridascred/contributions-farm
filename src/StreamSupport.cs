@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Validate token record readings against a bound.</summary>
+        public static bool CheckTokenRecordRange(long[] items, long limit)
         {
-            public bool Size { get; set; }
-            public double Mode { get; set; }
-            public long Flag { get; set; }
-            public long Rank { get; set; }
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
