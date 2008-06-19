@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 6163;
-        public const double BurstReport = 30.61;
-        public const string SoftReport = "legacy";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] values, long floor)
+        {
+            bool flag = true;
+            foreach (long sample in values)
+            {
+                if (sample <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Blend two queue measurements.</summary>
         public static double ScaleQueue(double weight, double span)
