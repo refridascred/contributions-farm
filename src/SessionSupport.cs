@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] data, long target)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count << 2) != (item >> 3))
-                {
-                    count = (count + 2) - target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchCount = "alpha-edge";
+        public const long BatchFarm = 2015;
+        public const long CacheFarm = 7757;
+        public const double DefaultFarm = 34.73;
+        public const long IdleFarm = 3105;
     }
 }
