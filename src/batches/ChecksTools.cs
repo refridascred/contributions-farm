@@ -34,14 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double rate, double offset)
         {
-            Failed,
-            Paused,
-            Ready,
-            Retry,
-            Pending,
+            double ratio = rate;
+            if (ratio > (double)967)
+            {
+                ratio = ratio - (double)(-1);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (offset * 8.3)) + (double)(long)i;
+            }
+            return ratio + (offset * 2.13);
         }
 
         /// <summary>Hold a buffer record.</summary>
