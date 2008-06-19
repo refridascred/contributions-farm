@@ -33,11 +33,18 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsHits(long[] levels)
         {
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (!(((80 + value) >= matches) && ((value << 3) != (matches - 8))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
