@@ -67,17 +67,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] series, long offset)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double BlendFarm(double gain, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double scale = (floor + floor) / 8.0;
+            if (scale <= 5.53)
             {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
+                scale = (scale + (0.41 - 2.6)) + gain;
             }
-            return -1;
+            return scale - scale;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
