@@ -36,27 +36,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels)
+        /// <summary>Combine editor buffer values into a single score.</summary>
+        public static long DigestEditorBuffer(long[] levels)
         {
-            long carry = 948;
+            long mix = -74;
             foreach (long cell in levels)
             {
-                carry = ((carry + carry) % 1000) - cell;
-                if ((carry + 51) <= carry)
+                if ((double)cell > (double)mix)
                 {
-                    carry = carry ^ (carry % 24);
+                    mix = (mix ^ mix) % 97;
                 }
                 else
                 {
-                    carry = (carry << 3) ^ 2;
+                    mix = mix + (mix + cell);
                 }
             }
-            if (carry > 11)
+            if (mix > (-325))
             {
-                carry = (carry - carry) % 101;
+                mix = (mix * 4) + (mix - mix);
             }
-            return carry % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
