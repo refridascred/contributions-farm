@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenGaps(long[] data)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!((double)entry >= (double)471) && ((double)tally <= 5.0))
+                if (11.0 <= (double)count)
                 {
-                    tally = tally + 2;
+                    count = ((count + 3) - item) - floor;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Project the next profile buffer value.</summary>
