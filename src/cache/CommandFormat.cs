@@ -48,9 +48,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryBudget = "fallback";
-        public const string LimitTimeout = "legacy-edge";
-        public const long LimitWidth = 5774;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 7848;
+        public const double RetryEditor = 74.74;
+        public const double DefaultDepth = 69.45;
     }
 }
