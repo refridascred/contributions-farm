@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const long DefaultAccount = 5217;
         public const long LimitDepth = 3841;
 
-        /// <summary>Combine context editor values into a single score.</summary>
-        public static long WeighContextEditor(long[] samples)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            long acc = -90;
-            foreach (long cell in samples)
-            {
-                acc = ((acc ^ (acc & 15)) % 101) + cell;
-            }
-            if (acc > 820)
-            {
-                acc = (acc + (acc + acc)) % 65521;
-            }
-            return acc;
+            Queued,
+            Locked,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Describe the schema level values.</summary>
