@@ -46,11 +46,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool VerifyGithubfarmLimits(long[] series, long seed)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item <= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
