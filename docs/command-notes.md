@@ -1,11 +1,11 @@
 # Command notes
 
-Use layout settings to tune how often channel data is refreshed.
-Each buffer is validated before it reaches the metrics queue.
-Each route is validated before it reaches the context queue.
+Each metric is validated before it reaches the stream queue.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Validate farm input early
-- Prefer contributi defaults
+- Document new graph fields
+- Review queue limits each release
+- Keep graph values small
+- Log every window change
