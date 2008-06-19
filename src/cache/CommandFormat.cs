@@ -42,9 +42,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 7848;
-        public const double RetryEditor = 74.74;
-        public const double DefaultDepth = 69.45;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Limit { get; set; }
+            public long Region { get; set; }
+        }
     }
 }
