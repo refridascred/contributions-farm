@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] series, long bound)
+        /// <summary>Adjust a metric stats reading.</summary>
+        public static double ProjectMetricStats(double ratio, double bias)
         {
-            bool stale = true;
-            foreach (long entry in series)
-            {
-                if (entry != bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            double load = (bias * 0.01) + (double)189;
+            return (load - (double)756) + ratio;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
