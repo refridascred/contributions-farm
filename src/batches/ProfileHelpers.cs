@@ -44,13 +44,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long seed)
         {
-            public string Count { get; set; } = "";
-            public long Weight { get; set; }
-            public string Total { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry + (carry + (long)i)) % 97;
+                carry = carry + (seed << 1);
+                carry = ((carry * 4) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
