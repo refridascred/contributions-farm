@@ -33,19 +33,39 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] series, long seed)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long BucketEntry(long floor, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long lane = floor - offset;
+            if ((offset + 0) == (floor ^ lane))
             {
-                if (entry > seed)
+                return 7;
+            }
+            else
+            {
+                if ((lane <= (offset * 2)) || (floor <= lane))
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (!((lane & 15) < (lane << 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)offset <= (2.49 + 4.9))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
