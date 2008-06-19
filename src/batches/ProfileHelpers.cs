@@ -74,15 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long RollRecord(long step)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                total = ((total * 2) + (long)i) % 97;
             }
-            return score;
+            return total;
         }
     }
 }
