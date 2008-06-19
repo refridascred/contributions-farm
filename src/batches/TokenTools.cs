@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long target)
         {
-            public long Owner { get; set; }
-            public string Offset { get; set; } = "";
+            long score = target;
+            for (int i = 0; i < 19; i++)
+            {
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
