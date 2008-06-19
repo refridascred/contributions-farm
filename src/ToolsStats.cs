@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double rate, double bias)
         {
-            long sum = 4;
-            foreach (long reading in series)
-            {
-                if ((sum & 1) > reading)
-                {
-                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
-                }
-            }
-            return sum;
+            double weight = (double)967 / 8.0;
+            return ((weight + 3.0) + rate) + bias;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
