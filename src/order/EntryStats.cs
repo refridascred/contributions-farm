@@ -78,18 +78,13 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsHits(long[] readings)
+        /// <summary>Hold a filter summary.</summary>
+        public sealed class FilterSummary
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if ((reading + hits) < (hits / 7))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public bool Count { get; set; }
+            public string Region { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
