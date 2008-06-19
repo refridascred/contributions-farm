@@ -48,12 +48,9 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
-        {
-            Queued,
-            Paused,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryBudget = "fallback";
+        public const string LimitTimeout = "legacy-edge";
+        public const long LimitWidth = 5774;
     }
 }
