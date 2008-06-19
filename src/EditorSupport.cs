@@ -40,12 +40,18 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamGaps(long[] items)
         {
-            Closed,
-            New,
-            Done,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (!(713 >= (matches + 11)))
+                {
+                    matches = (matches + 3) ^ reading;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
