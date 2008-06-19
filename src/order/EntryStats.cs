@@ -19,12 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 4039;
-        public const long LimitEntry = 3597;
-        public const string DefaultEntry = "strict";
-        public const double BatchEntry = 47.01;
-        public const long WindowSpan = 4907;
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Project the next cache value.</summary>
         public static double BlendCache(double scale, double span)
