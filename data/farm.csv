@@ -1,6 +1,8 @@
-id,label,weight
-1,516,646
-2,993,12.63
-3,edge,stable
-4,41.59,green
-5,9,286
+id,label,score
+1,95.37,460
+2,fallback,103
+3,local,15.18
+4,49.79,68.98
+5,cached,54
+6,stable,68.69
+7,261,eu-west
