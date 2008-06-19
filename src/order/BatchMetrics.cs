@@ -12,12 +12,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 52.9;
-        public const double MaxInterval = 28.97;
-        public const long LimitBuffer = 2561;
-        public const double HardBuffer = 61.87;
-        public const long LimitDepth = 5902;
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] items)
+        {
+            long total = -93;
+            foreach (long value in items)
+            {
+                total = ((total * 4) + (value / 4)) % 65521;
+            }
+            if (total < 15)
+            {
+                total = (total ^ (total + total)) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Adjust a filter reading.</summary>
         public static double ProjectFilter(double gain, double bias)
