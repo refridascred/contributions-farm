@@ -1,14 +1,7 @@
 # entry settings
-retry_interval: 1024
-warm_delay_pct:
-  batch_limit: stable
-  dry_run: 30
-  counter_timeout: 1024
-  soft_limit: 1922
-enabled: 100
-payload_delay:
-  max_capacity_pct: true
-  stats_window: false
-  retry_ttl_count: 4.62
-  retry_threshold: 60
-compress: blue
+soft_threshold: blue
+retry_window: edge
+base_ratio_count: 73.3
+retry_capacity_count: 85
+flush_interval_s: 4.05
+enabled: 250
