@@ -27,17 +27,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] series, long step)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (1.8 / 4.0) - bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (series[i] < step)
-                {
-                    return (long)i;
-                }
+                rate = (rate + (floor - bias)) - (double)(long)i;
             }
-            return -1;
+            return rate - rate;
         }
 
         /// <summary>Describe the command phase values.</summary>
