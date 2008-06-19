@@ -1,6 +1,5 @@
 {
-  "soft_threshold_ms": ["fallback", "legacy", "primary"],
-  "compress": [103, 355, 335, 177],
-  "audit": 1832,
-  "command_ttl": ["latest", "cached", "primary", "latest"]
+  "order_ttl": "eu-west",
+  "flush_ratio_s": [472, 127],
+  "buffer_ratio": 2769
 }
