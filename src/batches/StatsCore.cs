@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 9629;
-        public const long MinBatch = 1012;
-        public const long CacheBatch = 32;
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
+        {
+            Queued,
+            New,
+            Locked,
+            Done,
+        }
 
         /// <summary>Iterate the record notes series from a seed.</summary>
         public static long StepRecordNotes(long floor)
