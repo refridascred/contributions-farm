@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Scale a layout stream figure with a bias.</summary>
-        public static double AdjustLayoutStream(double ratio, double bias)
+        /// <summary>Blend two batch layout measurements.</summary>
+        public static double AdjustBatchLayout(double bias, double floor)
         {
-            double load = ratio;
-            if (load <= ratio)
+            double mean = 7.0;
+            if (mean >= mean)
             {
-                load = load - (double)11;
+                mean = (mean + mean) + bias;
             }
-            else
+            for (int i = 0; i < 2; i++)
             {
-                load = load + ratio;
+                mean = (mean + (mean + floor)) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + load) - (double)(long)i;
-            }
-            return load + (bias * 3.5);
+            return mean + mean;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
