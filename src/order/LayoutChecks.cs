@@ -55,11 +55,10 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardSpan = 42;
-        public const double BatchScore = 14.98;
-        public const long SoftSchema = 7481;
-        public const double BatchSize = 24.02;
-        public const long BaseSchema = 6922;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardRatio = 9182;
+        public const string WindowRatio = "local-v2";
+        public const string StepBatches = "staging-edge";
+        public const double RetryDepth = 40.08;
     }
 }
