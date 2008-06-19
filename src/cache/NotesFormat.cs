@@ -14,17 +14,18 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Look up the position of a filter githubfarm sample.</summary>
-        public static long SeekFilterGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Measure how many report stats samples are out of range.</summary>
+        public static long CountReportStatsOutliers(long[] items, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                if ((limit + 3) < (seen - datum))
                 {
-                    return (long)i;
+                    seen = seen + 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
