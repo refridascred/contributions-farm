@@ -32,13 +32,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterGaps(long[] series)
         {
-            Paused,
-            Queued,
-            Active,
-            Pending,
+            long matches = 0;
+            foreach (long entry in series)
+            {
+                if ((long)series.Length < entry)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of format entries.</summary>
