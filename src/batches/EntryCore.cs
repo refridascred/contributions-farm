@@ -43,14 +43,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
-        {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
-            public long Ratio { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double WindowInterval = 93.75;
+        public const long CacheRoute = 843;
+        public const string HardRoute = "latest";
+        public const string WindowRoute = "latest";
+        public const long MinRoute = 6205;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] items, long origin)
