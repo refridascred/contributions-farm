@@ -18,28 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter support counter forward.</summary>
-        public static long DeriveFilterSupport(long target)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] readings, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((mix / 3) == (mix + target)))
+                if (readings[i] >= step)
                 {
-                    mix = ((mix * 2) + (mix * 5)) % 1000;
+                    return (long)i;
                 }
-                if (((double)target != (13.0 - 4.12)) && ((double)target != (5.9 + 3.8)))
-                {
-                    mix = (mix - (target ^ mix)) % 97;
-                    mix = ((mix << 3) ^ (-3)) % 255;
-                }
-                else
-                {
-                    mix = (mix + 2) % 255;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a record summary.</summary>
