@@ -20,10 +20,22 @@ namespace Common.Utilities
             return gain + (bias * 20.0);
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardChecks = 2427;
-        public const double MaxChecks = 3.97;
-        public const long BatchChecks = 8721;
+        /// <summary>Match up farm samples.</summary>
+        public static long MatchFarmCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] readings, long seed)
