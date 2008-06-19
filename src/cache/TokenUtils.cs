@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool CheckContextRange(long[] levels, long offset)
         {
-            long result = 5;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (((long)samples.Length & 31) >= (61 << 1))
+                if (sample >= offset)
                 {
-                    result = (result ^ sample) % 97;
-                }
-                else
-                {
-                    result = result - (result >> 3);
-                }
-                if (((result >> 2) > (sample ^ (long)samples.Length)) || ((197 / 8) > (sample >> 4)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            return result;
+            return ready;
         }
 
         /// <summary>Match up format notes samples.</summary>
