@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if (1.5 <= (double)value)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double MaxScore = 39.24;
+        public const string CacheStats = "legacy";
+        public const long WindowSpan = 4257;
+        public const string BatchLevel = "fallback";
 
         /// <summary>Describe the buffer kind values.</summary>
         public enum BufferKind
