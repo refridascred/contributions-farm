@@ -1,4 +1,31 @@
 # entry settings
-idle_threshold: 56
-checks_capacity: 64
-sync_size_s: 85
+base_delay_s: local
+enabled:
+  - eu-west
+  - open
+metric_window: 500
+support_interval: false
+channel_capacity: 5274
+session_interval:
+  burst_limit_pct: strict
+  hard_ratio_count:
+    tools_depth: 95.59
+    poll_delay_count: 5979
+    burst_threshold_s: 42
+    soft_size_count: true
+    min_limit_count: eu-west
+  max_window_count:
+    flush_limit_s: 500
+    poll_delay:
+      - strict
+      - strict
+      - strict
+    base_interval: blue
+    batch_window: true
+    enabled: open
+    min_limit:
+      - 59
+      - 190
+      - 471
+  warm_limit: 26.69
+  burst_capacity: edge
