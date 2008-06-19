@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool CheckContextRange(long[] levels, long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            bool ready = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public long Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up format notes samples.</summary>
