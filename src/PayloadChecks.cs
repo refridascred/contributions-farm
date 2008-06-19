@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] values)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((0.6 - 14.0) < (double)cell) || ((double)count <= (12.0 - 4.0)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((values[i] + values[j]) == 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate commits readings against a bound.</summary>
