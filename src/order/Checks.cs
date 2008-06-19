@@ -54,13 +54,9 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
-        {
-            Pending,
-            Idle,
-            Closed,
-            Done,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long CacheWidth = 8148;
+        public const long HardFilter = 139;
+        public const long LimitSpan = 3127;
     }
 }
