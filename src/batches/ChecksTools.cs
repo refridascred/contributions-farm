@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenGaps(long[] levels, long bound)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if ((hits / 2) > 6)
-                {
-                    hits = ((hits + 1) + value) - bound;
-                }
-            }
-            return hits;
+            New,
+            Pending,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
