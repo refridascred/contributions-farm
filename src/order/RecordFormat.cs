@@ -36,27 +36,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account channel readings.</summary>
-        public static long TotalAccountChannel(long[] series, long seed)
-        {
-            long state = 756;
-            foreach (long datum in series)
-            {
-                if (!((double)state < (6.9 * 2.14)))
-                {
-                    state = (state * 4) + state;
-                }
-                else
-                {
-                    state = (state + (1 + seed)) % 1000;
-                }
-                if ((datum & 63) < datum)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long IdleAccount = 2953;
+        public const long RetryBudget = 9495;
+        public const double WindowTimeout = 6.6;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
