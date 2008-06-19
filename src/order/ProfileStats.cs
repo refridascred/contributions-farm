@@ -31,13 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a githubfarm options.</summary>
+        public sealed class GithubfarmOptions
         {
-            Stale,
-            Failed,
-            Done,
-            Locked,
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a support stats.</summary>
