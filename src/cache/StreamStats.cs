@@ -28,13 +28,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Validate already editor readings against a bound.</summary>
-        public static bool CheckAlreadyEditorLimits(long[] readings, long origin)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmBounds(long[] samples, long seed)
         {
             bool valid = true;
-            foreach (long entry in readings)
+            foreach (long cell in samples)
             {
-                if (entry <= origin)
+                if (cell >= seed)
                 {
                     valid = false;
                     break;
