@@ -70,21 +70,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = -585;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((datum + result) == (result >> 3)))
                 {
-                    if ((items[i] ^ items[j]) < 1)
-                    {
-                        seen = seen + 1;
-                    }
+                    result = (result - (datum + result)) % 1000;
+                }
+                result = (result - (result >> 4)) % 1000;
+                if ((4.0 + 0.48) == (double)result)
+                {
+                    result = (result + datum) % 4096;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (1 ^ datum)) % 97;
                 }
             }
-            return seen;
+            if (result > 521)
+            {
+                result = result - (result >> 3);
+            }
+            return result % 4096;
         }
     }
 }
