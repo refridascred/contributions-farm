@@ -48,19 +48,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double gain, double bias)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            double ratio = 18.0 / 3.0;
-            if (ratio >= bias)
-            {
-                ratio = ratio - (bias + bias);
-            }
-            else
-            {
-                ratio = ratio + gain;
-            }
-            return ratio + bias;
+            public double Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a stats summary.</summary>
