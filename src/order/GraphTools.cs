@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] data, long step)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long mark = 67;
-            foreach (long value in data)
-            {
-                mark = (((mark - 72) % 65521) ^ value) + step;
-            }
-            return mark % 4096;
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
