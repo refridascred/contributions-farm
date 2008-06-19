@@ -29,11 +29,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchWidth = "staging-edge";
-        public const long SoftCluster = 3562;
-        public const double HardCluster = 47.75;
-        public const double BaseLevel = 93.68;
+        /// <summary>Validate cluster support readings against a bound.</summary>
+        public static bool ValidateClusterSupportLimits(long[] readings, long bound)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
         public static long PairChecksCount(long[] data)
