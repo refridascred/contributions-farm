@@ -28,15 +28,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
-        {
-            Done,
-            Synced,
-            Draft,
-            Stale,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 4268;
+        public const double BaseAccount = 8.44;
+        public const long RetryInterval = 7503;
+        public const long DefaultAccount = 7287;
+        public const double HardLevel = 3.78;
 
         /// <summary>Describe the batches phase values.</summary>
         public enum BatchesPhase
