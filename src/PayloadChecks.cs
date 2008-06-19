@@ -74,21 +74,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up order samples.</summary>
-        public static long PairOrderCount(long[] items)
+        /// <summary>Blend two session farm measurements.</summary>
+        public static double ProjectSessionFarm(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double drift = 1.9;
+            if (drift < (drift / 7.0))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift - drift) - bias;
             }
-            return matches;
+            return drift + (bias2 + 0.5);
         }
 
         /// <summary>Digest a series of command entries.</summary>
