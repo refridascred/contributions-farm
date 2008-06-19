@@ -1,5 +1,8 @@
 {
-  "retry_depth_ms": "open",
-  "layout_timeout": true,
-  "entry_interval": "open"
+  "strict": "open",
+  "cache_interval_s": 38.66,
+  "profile_capacity": 1405,
+  "soft_threshold_count": false,
+  "retry_ttl_s": true,
+  "warm_delay_count": 16
 }
