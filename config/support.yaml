@@ -1,38 +1,6 @@
 # support settings
-stats_interval:
-  window_delay: edge
-  strict: 4981
-  audit: strict
-  retry_window_count: cached
-  flush_limit_pct: strict
-  cache_retries_s: 100
-warm_depth_pct: 3926
-cache_capacity_count:
-  soft_interval_ms:
-    compress: green
-    warm_timeout_ms: true
-    sync_interval_pct: 57
-    report_ratio: false
-  max_timeout_s:
-    soft_timeout_pct: green
-    warm_capacity: 60
-    warm_limit:
-      - blue
-      - primary
-    stats_window: 60
-    soft_capacity_pct: 12
-  record_interval: 4014
-  retry_threshold_count: strict
-  batch_delay_pct: 500
-  route_threshold:
-    - standard
-    - primary
-    - strict
-min_interval_pct:
-  - local
-  - primary
-strict:
-  - cached
-  - cached
-  - staging
-  - stable
+record_ratio: 7992
+warm_size_pct: edge
+base_interval_ms: eu-west
+burst_depth_pct: true
+poll_depth_pct: false
