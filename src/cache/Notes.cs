@@ -37,13 +37,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] items)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Ratio { get; set; }
+            long mix = 401;
+            foreach (long sample in items)
+            {
+                if (!(mix > sample))
+                {
+                    mix = mix + (mix + mix);
+                }
+            }
+            if (mix < 64)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the report filter entries that pass the check.</summary>
