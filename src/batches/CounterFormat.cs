@@ -16,13 +16,14 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
+            Queued,
+            Stale,
+            Done,
+            Draft,
+            Synced,
         }
 
         /// <summary>Look up the position of a githubfarm farm sample.</summary>
