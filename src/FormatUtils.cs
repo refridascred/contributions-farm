@@ -31,23 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!(reading <= (reading + reading)) && ((reading % 7) != (reading % 12)))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitTimeout = 4266;
+        public const string SoftScore = "stable-v2";
+        public const string HardSession = "open-edge";
+        public const long WindowSession = 3102;
+        public const string BurstSession = "strict";
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long offset)
