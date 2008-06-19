@@ -69,12 +69,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            Active,
-            New,
-            Queued,
+            public double Level { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
