@@ -89,19 +89,15 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] readings, long limit)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double weight, double floor)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            double drift = (floor - floor) + (1.49 / 2.0);
+            for (int i = 0; i < 4; i++)
             {
-                if (cell != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift - drift) + (double)(long)i) + weight;
             }
-            return stale;
+            return drift - (double)(-8);
         }
     }
 }
