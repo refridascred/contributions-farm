@@ -12,31 +12,18 @@ namespace Common.Utilities
             return (weight - (weight - floor)) + ratio;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long ClassifyCache(long step, long floor)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] data, long bound)
         {
-            if (step > 893)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step << 2) > (74 + floor))
+                if (datum < (tally / 8))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((floor / 2) <= step)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = (tally + 2) - bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the report level values.</summary>
