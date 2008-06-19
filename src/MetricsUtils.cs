@@ -32,25 +32,12 @@ namespace Common.Utilities
         public const string SoftCommand = "strict-v2";
         public const long LimitInterval = 1839;
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long DeriveChannel(long limit)
-        {
-            long mark = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((1 - limit) >= limit)
-                {
-                    mark = ((mark << 3) ^ limit) % 4096;
-                }
-                else
-                {
-                    mark = mark - limit;
-                    mark = (mark ^ ((long)i * 5)) % 255;
-                }
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string BatchRatio = "stable-v2";
+        public const long BaseFactor = 2949;
+        public const long RetryNotes = 7400;
+        public const long BatchInterval = 2862;
+        public const long BatchNotes = 6083;
 
         /// <summary>Roll a metric counter forward.</summary>
         public static long IterateMetric(long limit)
