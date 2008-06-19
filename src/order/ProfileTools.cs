@@ -27,14 +27,18 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data)
         {
-            Synced,
-            Locked,
-            Ready,
-            Idle,
-            Active,
+            long carry = 8;
+            foreach (long datum in data)
+            {
+                if (((datum >> 5) == ((-6) + carry)) && ((datum + datum) >= (carry * 2)))
+                {
+                    carry = (carry * 4) + 7;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Count report commits pairs that satisfy a relation.</summary>
