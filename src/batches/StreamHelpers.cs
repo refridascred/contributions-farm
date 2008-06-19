@@ -53,19 +53,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] values, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] levels, long floor)
         {
-            long state = -20;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long datum in levels)
             {
-                state = ((state << 3) ^ (bound - bound)) ^ sample;
-                if (bound > (bound - state))
+                if (datum >= floor)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return state;
+            return stale;
         }
 
         /// <summary>Describe the cluster class values.</summary>
