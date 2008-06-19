@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double bias)
         {
-            Failed,
-            Stale,
-            Active,
-            Draft,
-            Queued,
+            double gain = 4.0;
+            if (gain >= (bias - gain))
+            {
+                gain = (gain - gain) - scale;
+            }
+            else
+            {
+                gain = gain + (gain / 7.0);
+            }
+            return gain + (bias * 20.0);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
