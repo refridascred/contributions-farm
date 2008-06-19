@@ -23,26 +23,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate tools buffer samples.</summary>
-        public static long ScoreToolsBuffer(long[] data)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            long sum = 63;
-            foreach (long entry in data)
-            {
-                if (4.5 > (double)(long)data.Length)
-                {
-                    sum = ((sum << 3) ^ (entry - sum)) % 97;
-                }
-                if (!((entry % 2) > entry))
-                {
-                    sum = ((sum << 2) ^ sum) % 255;
-                }
-                if ((entry & 127) <= (entry - entry))
-                {
-                    sum = (sum - sum) % 101;
-                }
-            }
-            return sum;
+            public long Token { get; set; }
+            public long Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Hold a record summary.</summary>
