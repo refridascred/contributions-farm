@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every checks profile entry stays within the limit.</summary>
+        public static bool ValidateChecksProfileBounds(long[] values, long target)
         {
-            public double Score { get; set; }
-            public long Level { get; set; }
-            public double Token { get; set; }
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample >= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a already reading by value.</summary>
