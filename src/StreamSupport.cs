@@ -36,17 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a batch metrics reading by value.</summary>
-        public static long FindBatchMetricsIndex(long[] levels, long origin)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Pending,
+            Ready,
         }
     }
 }
