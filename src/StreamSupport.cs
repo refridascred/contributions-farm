@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Idle,
-            Closed,
-            Retry,
-            Draft,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 72.45;
+        public const long BatchRecord = 9760;
+        public const string DefaultRecord = "staging-edge";
 
         /// <summary>Check that every account entry stays within the limit.</summary>
         public static bool ValidateAccountBounds(long[] levels, long seed)
