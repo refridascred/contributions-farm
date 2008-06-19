@@ -48,20 +48,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long mark = step;
-            for (int i = 0; i < 4; i++)
-            {
-                if (((long)i & 3) >= (step / 3))
-                {
-                    mark = mark + (76 ^ 571);
-                }
-                mark = mark ^ (step % 8);
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            public bool Flag { get; set; }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
