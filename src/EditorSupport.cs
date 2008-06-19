@@ -60,20 +60,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] values, long offset)
-        {
-            bool flag = true;
-            foreach (long datum in values)
-            {
-                if (datum != offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstNotes = 2060;
+        public const long BaseNotes = 9756;
+        public const double MaxFactor = 35.88;
+        public const long StepNotes = 2514;
+        public const long MaxSpan = 4406;
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
         public static long LocateGithubfarmIndex(long[] series, long origin)
