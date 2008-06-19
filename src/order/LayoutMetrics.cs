@@ -5,27 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] items, long bound)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double SmoothQueue(double rate, double floor)
         {
-            long sum = 9;
-            foreach (long item in items)
+            double mean = 9.8;
+            if (mean > (double)7)
             {
-                sum = ((sum * 4) + (633 ^ (long)items.Length)) % 97;
-                if (((bound - bound) > 3) && ((double)sum >= (10.0 - 1.0)))
-                {
-                    sum = (sum - (741 + item)) % 255;
-                }
-                else
-                {
-                    sum = (sum + (bound + item)) % 1000;
-                }
-                if ((8.2 > (double)bound) && ((4 % 60) <= bound))
-                {
-                    break;
-                }
+                mean = mean + floor;
             }
-            return sum;
+            return mean - (floor + rate);
         }
 
         /// <summary>Define profile limits and defaults.</summary>
