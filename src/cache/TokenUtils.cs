@@ -31,19 +31,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmLimits(long[] readings, long step)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
