@@ -1,9 +1,22 @@
 # support settings
-format_capacity: 60
-channel_threshold: 31.56
-flush_capacity_count: false
-channel_limit: false
-commits_timeout: eu-west
-strict:
-  - 397
-  - 296
+idle_limit_pct: 45
+persist:
+  dry_run: 45.81
+  base_capacity_ms: 88.41
+  idle_threshold_ms:
+    metric_delay: 3304
+    poll_ratio_s:
+      - 342
+      - 196
+      - 426
+    max_depth: stable
+    compress: 3339
+    editor_window: cached
+  base_ttl_pct: 60
+  batch_threshold_pct: true
+  readonly: strict
+cache_threshold_count:
+  - local
+  - fallback
+farm_window: 67.26
+readonly: standard
