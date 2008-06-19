@@ -64,22 +64,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of farm already readings.</summary>
-        public static long CompareFarmAlreadyCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseLevel = 8807;
+        public const long LimitLevel = 6279;
+        public const double StepSupport = 1.52;
+        public const long BaseFactor = 4538;
 
         /// <summary>Compare every pair of format readings.</summary>
         public static long CompareFormatCount(long[] data)
