@@ -20,12 +20,12 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            Done,
-            Active,
-            Synced,
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
