@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long PairFarmCount(long[] data)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterOutliers(long[] readings, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((tally + tally) < (offset % 8))
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
