@@ -28,22 +28,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many payload token samples are out of range.</summary>
-        public static long CountPayloadTokenHits(long[] series)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (27 > (matches & 255))
+                if (series[i] < step)
                 {
-                    matches = (matches + 3) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
