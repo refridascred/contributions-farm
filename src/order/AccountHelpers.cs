@@ -43,39 +43,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long floor, long target)
+        /// <summary>Blend two route measurements.</summary>
+        public static double AdjustRoute(double gain, double floor)
         {
-            long slot = floor ^ target;
-            if (!((double)target == (9.9 * 9.0)))
+            double bias = floor;
+            if (bias < (double)(-939))
             {
-                return 0;
+                bias = bias + (13.0 * 8.6);
             }
-            else
-            {
-                if ((double)slot <= (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)target <= (3.3 - 7.3)) || ((target / 5) == (slot - slot)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((floor << 3) <= (floor >> 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return bias - gain;
         }
 
         /// <summary>Define token limits and defaults.</summary>
