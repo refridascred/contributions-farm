@@ -1,6 +1,5 @@
 # githubfarm settings
-batch_size: 2542
-max_interval_count: false
-session_interval: 1
-stream_ttl: 50.86
-channel_window: true
+dry_run: 26.81
+min_timeout_pct: false
+idle_ttl: local
+stream_threshold: green
