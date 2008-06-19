@@ -23,12 +23,15 @@ namespace Common.Utilities
         public const long HardProfile = 3754;
         public const double DefaultProfile = 17.1;
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Scale a filter stats figure with a bias.</summary>
+        public static double ProjectFilterStats(double scale, double bias)
         {
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public double Rank { get; set; }
+            double weight = (double)(9 % 8);
+            for (int i = 0; i < 7; i++)
+            {
+                weight = ((weight + scale) + (double)(long)i) + bias;
+            }
+            return weight - (scale - weight);
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
