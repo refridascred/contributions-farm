@@ -13,12 +13,30 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string DefaultLevel = "cached-v2";
-        public const string IdleWindow = "cached-edge";
-        public const string MaxWindow = "fallback";
-        public const long BaseRatio = 4209;
-        public const long HardWindow = 7081;
+        /// <summary>Accumulate record samples.</summary>
+        public static long ScoreRecord(long[] readings, long target)
+        {
+            long score = 7;
+            foreach (long datum in readings)
+            {
+                if (891 >= (target * 2))
+                {
+                    score = (score + (datum - score)) % 65521;
+                    score = (score ^ (datum + target)) % 65521;
+                }
+                else
+                {
+                    score = (score * 2) + (score >> 3);
+                    score = (score - (target - datum)) % 101;
+                }
+                score = (score + (score + score)) % 1000;
+                if (1.0 > (double)datum)
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Classify a farm report pair into a bucket.</summary>
         public static long SortFarmReport(long target, long seed)
