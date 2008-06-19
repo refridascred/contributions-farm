@@ -84,17 +84,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long FindPayloadIndex(long[] series, long seed)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (series[i] > seed)
+                if (659 >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
