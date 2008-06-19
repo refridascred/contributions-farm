@@ -13,38 +13,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long bound, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long bound)
         {
-            if ((limit + limit) < (limit - bound))
+            long anchor = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit > (71 * 3)) || ((bound + limit) > (limit + limit)))
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    return 6;
+                    anchor = (anchor - (bound & 7)) ^ (long)i2;
                 }
-                else
-                {
-                    if (((double)limit >= (double)bound) || (limit >= (limit & 127)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 16) < (bound + bound))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
