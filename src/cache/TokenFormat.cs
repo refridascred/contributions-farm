@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long CacheBuffer = 7330;
+        public const double WindowRatio = 16.28;
+        public const long SoftBuffer = 6490;
+        public const long SoftTimeout = 4549;
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 698;
