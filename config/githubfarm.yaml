@@ -1,21 +1,18 @@
 # githubfarm settings
-poll_threshold_s: strict
-soft_capacity_count: 66.6
-persist: 78.31
-burst_window_pct:
-  entry_interval: 72.37
-  flush_limit_ms:
-    strict: 79.39
-    compress:
-      - edge
-      - fallback
-    stats_ttl: primary
-    batch_ratio:
-      - edge
-      - fallback
-  default_ratio_pct: cached
-  cache_depth_count: green
-  commits_window: 74
-  context_limit: 1024
-flush_timeout_pct: staging
-soft_limit: 100
+min_interval_ms: 8942
+soft_timeout: green
+max_timeout_count: blue
+graph_interval: 95.92
+hard_depth_s:
+  max_size:
+    - 339
+    - 274
+    - 292
+  audit:
+    strict: 97
+    notes_timeout: 1024
+    flush_limit: primary
+    burst_threshold_pct: 7442
+    sync_ttl: 14
+    cache_limit_ms: 3097
+  verbose: false
