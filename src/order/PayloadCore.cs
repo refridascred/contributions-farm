@@ -41,26 +41,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor buffer values into a single score.</summary>
-        public static long DigestEditorBuffer(long[] levels)
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long PairReportCount(long[] readings)
         {
-            long mix = -74;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)cell > (double)mix)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    mix = (mix ^ mix) % 97;
-                }
-                else
-                {
-                    mix = mix + (mix + cell);
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix > (-325))
-            {
-                mix = (mix * 4) + (mix - mix);
-            }
-            return mix % 4096;
+            return count;
         }
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
