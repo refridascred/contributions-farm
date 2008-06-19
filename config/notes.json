@@ -1,6 +1,13 @@
 {
-  "hard_ttl_count": [105, 142, 435, 193],
-  "max_ratio_ms": [114, 179, 75, 147],
-  "report_interval": true,
-  "sync_depth_s": true
+  "poll_ratio_s": 60,
+  "cache_timeout_ms": false,
+  "soft_limit_s": {
+    "batch_delay_count": "primary",
+    "base_ratio_count": 43.92,
+    "base_limit": 22.04,
+    "min_size": "eu-west",
+    "max_timeout_s": true
+  },
+  "warm_interval_s": [395, 39, 246],
+  "metrics_depth": 250
 }
