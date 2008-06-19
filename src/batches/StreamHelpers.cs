@@ -68,19 +68,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool VerifyWindowRange(long[] series, long floor)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long StepChecks(long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long mix = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if (reading > floor)
+                if (((limit ^ mix) <= mix) || ((63 - (long)i) > limit))
                 {
-                    found = false;
-                    break;
+                    mix = (mix + (limit + limit)) % 97;
+                    mix = (mix + (limit + limit)) % 255;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
