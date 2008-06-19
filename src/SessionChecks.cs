@@ -17,15 +17,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long SeriesContributi(long limit)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long anchor = limit;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Locate a route reading by value.</summary>
