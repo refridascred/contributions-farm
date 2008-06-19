@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long seed, long seed2)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long floor, long step)
         {
-            if (762 > seed)
+            if (((floor ^ 944) > (step ^ step)) && ((floor % 100) == (step % 64)))
             {
-                return 1;
+                return 3;
             }
             else
             {
-                if (((double)67 >= (6.77 / 6.0)) && ((double)seed <= 19.0))
+                if (((9.4 / 4.0) != (double)floor) && ((2.76 - 2.16) >= (double)floor))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
