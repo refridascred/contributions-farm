@@ -49,18 +49,9 @@ namespace Common.Utilities
             return bias2 + (double)395;
         }
 
-        /// <summary>Digest a series of graph stream entries.</summary>
-        public static long DigestGraphStream(long[] readings, long limit)
-        {
-            long score = 66;
-            foreach (long cell in readings)
-            {
-                if ((double)score > 1.0)
-                {
-                    score = ((score << 3) ^ limit) + cell;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 6709;
+        public const string RetryRatio = "standard";
+        public const long CacheSpan = 7314;
     }
 }
