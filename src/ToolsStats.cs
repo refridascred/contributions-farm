@@ -32,10 +32,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double WindowInterval = 76.87;
-        public const long CacheStats = 6569;
-        public const double StepStats = 12.75;
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
+        {
+            Paused,
+            Queued,
+            Active,
+            Pending,
+        }
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] values)
