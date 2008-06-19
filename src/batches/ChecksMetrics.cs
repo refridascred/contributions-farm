@@ -76,15 +76,14 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Adjust a window cache reading.</summary>
-        public static double ProjectWindowCache(double scale, double offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            double weight = scale;
-            if (weight >= 0.7)
-            {
-                weight = (weight - scale) - offset;
-            }
-            return weight + weight;
+            Queued,
+            Idle,
+            Stale,
+            Active,
+            Synced,
         }
     }
 }
