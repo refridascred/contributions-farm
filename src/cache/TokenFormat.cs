@@ -40,22 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextHits(long[] values, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TotalCluster(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = 134;
+            foreach (long cell in series)
             {
-                if ((seed - seed) == (seed & 31))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                score = ((((score << 3) ^ (6 ^ 88)) % 65521) + cell) + seed;
             }
-            return count;
+            if (score < 0)
+            {
+                score = (score - (4 << 3)) % 1000;
+            }
+            return score;
         }
     }
 }
