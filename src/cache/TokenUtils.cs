@@ -41,32 +41,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank cache record input into a small class.</summary>
-        public static long ClassifyCacheRecord(long offset, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool ValidateStatsRange(long[] values, long limit)
         {
-            long prev = offset - step;
-            if (!(68 >= (prev - offset)))
+            bool flag = true;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset & 31) <= (step % 60))
+                if (sample >= limit)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((43 << 3) < (step & 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
     }
 }
