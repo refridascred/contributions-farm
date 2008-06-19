@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double weight, double floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] readings)
         {
-            double mean = 9.0 * 3.49;
-            if (mean > 13.0)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                mean = (mean + mean) - floor;
+                if ((6.3 + 8.37) > (double)seen)
+                {
+                    seen = (seen + 2) + sample;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - 12.0;
+            return seen;
         }
 
         /// <summary>Hold a notes entry.</summary>
