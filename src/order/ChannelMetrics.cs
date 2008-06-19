@@ -11,22 +11,15 @@ namespace Common.Utilities
         public const long RetryProfile = 1496;
         public const long MaxTimeout = 3571;
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] values)
+        /// <summary>Adjust a order reading.</summary>
+        public static double AdjustOrder(double rate, double bias)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            double rate2 = rate;
+            if (rate2 > (bias / 5.0))
             {
-                if (!((sample + tally) != (3 / 7)))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                rate2 = rate2 + (double)748;
             }
-            return tally;
+            return rate2 + (rate2 + rate);
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
