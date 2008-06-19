@@ -1,8 +1,5 @@
 {
-  "default_delay_ms": 21.4,
-  "cache_capacity_s": [294, 387],
-  "enabled": 52,
-  "cache_depth": false,
-  "persist": 63,
-  "farm_interval": ["stable", "green"]
+  "context_interval": false,
+  "stats_ratio": ["staging", "green"],
+  "report_timeout": 49.04
 }
