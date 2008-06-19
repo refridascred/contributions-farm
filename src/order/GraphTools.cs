@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchSpan = "standard";
-        public const long BaseCounter = 1466;
-        public const long DefaultCounter = 7521;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double bias, double floor)
+        {
+            double weight = (double)(84 * 2);
+            return ((weight - (weight * 5.0)) + bias) + floor;
+        }
 
         /// <summary>Digest a series of token entries.</summary>
         public static long CombineToken(long[] samples, long floor)
