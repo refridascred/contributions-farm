@@ -44,40 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long target, long offset)
-        {
-            long gap = target + offset;
-            if (((2 % 7) < (offset * 2)) && ((offset * 3) <= ((-57) + 48)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((954 & 255) < target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (14 < gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)(-42) == (double)target)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "primary-1";
+        public const string SoftSupport = "cached-v2";
+        public const double MaxSupport = 12.52;
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long offset, long offset2)
