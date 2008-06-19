@@ -13,12 +13,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Measure how many account filter samples are out of range.</summary>
+        public static long MeasureAccountFilterOutliers(long[] values)
         {
-            Paused,
-            Done,
-            Locked,
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (19.0 > (double)matches)
+                {
+                    matches = (matches + 2) - entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
