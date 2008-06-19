@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long tally = 0;
-            foreach (long cell in samples)
-            {
-                if ((cell ^ 49) >= cell)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
