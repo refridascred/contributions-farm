@@ -12,22 +12,23 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Audit graph metrics readings against a rule.</summary>
-        public static long AuditGraphMetricsHits(long[] levels, long target)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double gain, double span)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            double bias = (span / 4.0) * 6.6;
+            if (bias > (19.0 + gain))
             {
-                if (!(((676 + 2) <= (count >> 5)) || ((count / 2) >= (target ^ entry))))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias = bias - (double)(-249);
             }
-            return count;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + span) + (double)(long)i;
+            }
+            return bias + 4.5;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
