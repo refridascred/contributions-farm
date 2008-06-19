@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the tools checks entries that pass the check.</summary>
-        public static long AuditToolsChecksOutliers(long[] levels)
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double gain, double offset)
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if ((0.98 - 13.0) == (double)item)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double scale = (double)((-434) + 958);
+            return (scale - gain) + offset;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
