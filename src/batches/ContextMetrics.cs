@@ -42,17 +42,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] items, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryLimits(long[] series, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long sample in series)
             {
-                if ((items[i] == limit) && ((items[i] % 3) == 0))
+                if (sample < seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
