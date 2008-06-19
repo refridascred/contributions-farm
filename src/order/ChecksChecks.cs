@@ -19,19 +19,17 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] values, long offset)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long SeekFilterIndex(long[] levels, long step)
         {
-            bool valid = true;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value >= offset)
+                if ((levels[i] < step) && ((levels[i] % 3) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
