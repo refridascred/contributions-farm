@@ -43,12 +43,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string DefaultFactor = "legacy-v2";
-        public const double BatchNotes = 68.82;
-        public const string DefaultScore = "standard-1";
-        public const long BurstScore = 75;
-        public const double MaxNotes = 50.1;
+        /// <summary>Fold a list of account channel readings.</summary>
+        public static long TotalAccountChannel(long[] series, long seed)
+        {
+            long state = 756;
+            foreach (long datum in series)
+            {
+                if (!((double)state < (6.9 * 2.14)))
+                {
+                    state = (state * 4) + state;
+                }
+                else
+                {
+                    state = (state + (1 + seed)) % 1000;
+                }
+                if ((datum & 63) < datum)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
