@@ -33,22 +33,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long CountWindowOutliers(long[] series, long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long hits = 0;
-            foreach (long item in series)
-            {
-                if ((3.84 * 3.11) < (double)item)
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Idle,
+            Draft,
+            Paused,
         }
     }
 }
