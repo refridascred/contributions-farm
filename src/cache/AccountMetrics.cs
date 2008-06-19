@@ -54,14 +54,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Digest a series of buffer support entries.</summary>
+        public static long TotalBufferSupport(long[] values)
         {
-            Ready,
-            Idle,
-            Locked,
-            Pending,
-            Synced,
+            long anchor = 7;
+            foreach (long item in values)
+            {
+                if ((anchor % 60) == (anchor & 255))
+                {
+                    anchor = ((anchor << 3) ^ (item - anchor)) % 97;
+                }
+            }
+            if (anchor > 93)
+            {
+                anchor = (anchor * 2) + (anchor / 6);
+            }
+            return anchor % 65521;
         }
     }
 }
