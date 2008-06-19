@@ -19,12 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long target)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Score { get; set; } = "";
+            long carry = target;
+            for (int i = 0; i < 17; i++)
+            {
+                if (((target << 2) > carry) || (target <= carry))
+                {
+                    carry = ((carry * 3) + (carry - 7)) % 1000;
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define command limits and defaults.</summary>
