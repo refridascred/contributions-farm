@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long RankMetric(long floor, long target)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public bool Score { get; set; }
+            if ((337 % 12) >= (405 - target))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((8.1 * 7.87) > (double)floor)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((26 ^ (-1)) > (floor / 9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
