@@ -36,22 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long WeighChecks(long[] readings, long step)
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] samples)
         {
-            long result = 250;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((18.0 + 6.4) > (double)item)
+                if ((double)matches > (7.05 / 9.0))
                 {
-                    result = ((result - (result + 488)) % 4096) + step;
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            if (result > 151)
-            {
-                result = result + (9 >> 5);
-            }
-            return result;
+            return matches;
         }
     }
 }
