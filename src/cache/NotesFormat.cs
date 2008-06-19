@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Digest a series of command support entries.</summary>
+        public static long WeighCommandSupport(long[] series)
         {
-            public bool Stamp { get; set; }
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long anchor = 6;
+            foreach (long datum in series)
+            {
+                anchor = anchor ^ 1;
+                if ((datum - datum) == (6 % 5))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Count schema counter pairs that satisfy a relation.</summary>
