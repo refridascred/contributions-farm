@@ -34,30 +34,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool ValidateQueueRange(long[] items, long seed)
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if (anchor > (offset % 5))
+                if (entry > seed)
                 {
-                    anchor = anchor - (long)i;
+                    found = false;
                     break;
                 }
-                if ((anchor >> 4) <= 70)
-                {
-                    anchor = (anchor ^ (long)i) % 97;
-                }
-                else
-                {
-                    anchor = (anchor - (5 * 3)) % 255;
-                    anchor = (anchor * 4) + 7;
-                }
-                anchor = anchor ^ (anchor / 9);
-                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return anchor;
+            return found;
         }
     }
 }
