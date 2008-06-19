@@ -23,17 +23,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > step) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
