@@ -36,11 +36,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheCount = 8580;
-        public const double WindowSpan = 15.59;
-        public const long MinWidth = 3580;
-        public const long BurstContext = 980;
+        /// <summary>Adjust a report reading.</summary>
+        public static double AdjustReport(double bias, double offset)
+        {
+            double weight = bias;
+            if (weight < (double)882)
+            {
+                weight = weight + weight;
+            }
+            else
+            {
+                weight = weight - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (0.6 * 0.14)) + (double)(long)i;
+            }
+            return weight - 3.5;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] items)
