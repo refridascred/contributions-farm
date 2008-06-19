@@ -56,19 +56,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two commits window measurements.</summary>
-        public static double BlendCommitsWindow(double rate, double bias)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double scale = rate;
-            if (scale >= (rate - scale))
-            {
-                scale = (scale + rate) - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale - (double)318;
+            public double Limit { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
