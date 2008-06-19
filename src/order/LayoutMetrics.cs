@@ -25,11 +25,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Fold a list of context readings.</summary>
+        public static long TotalContext(long[] readings, long limit)
         {
-            public bool Total { get; set; }
-            public long Ratio { get; set; }
+            long total = 3;
+            foreach (long sample in readings)
+            {
+                if (!(limit > (limit + 6)))
+                {
+                    total = ((total + (total + total)) % 4096) + sample;
+                }
+                if (0.2 > (double)limit)
+                {
+                    break;
+                }
+            }
+            return total;
         }
     }
 }
