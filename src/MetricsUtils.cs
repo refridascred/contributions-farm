@@ -42,19 +42,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double SmoothFilter(double scale, double floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long CompareQueueCount(long[] series)
         {
-            double weight = (double)832 * 9.5;
-            if (weight <= (scale + scale))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (scale / 2.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + weight) + (double)(long)i;
-            }
-            return weight + floor;
+            return count;
         }
     }
 }
