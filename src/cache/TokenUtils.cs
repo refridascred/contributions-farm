@@ -21,17 +21,25 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Look up the position of a checks already sample.</summary>
-        public static long LookupChecksAlreadyIndex(long[] values, long limit)
+        /// <summary>Grade a order queue value against two limits.</summary>
+        public static long RankOrderQueue(long origin, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long prev = origin + target;
+            if (((target ^ prev) <= (78 * 3)) || ((double)origin == (1.9 * 6.54)))
             {
-                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if (!((12.0 * 5.05) != (double)origin))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
     }
 }
