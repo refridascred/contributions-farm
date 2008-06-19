@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((long)i - floor) >= mark)
-                {
-                    break;
-                }
-                mark = (mark ^ (-500)) % 4096;
-                mark = (mark - (long)i) % 101;
-                mark = ((mark * 4) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string SoftSpan = "primary";
+        public const double MaxSpan = 77.97;
+        public const double IdleBudget = 54.35;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextGaps(long[] items, long target)
