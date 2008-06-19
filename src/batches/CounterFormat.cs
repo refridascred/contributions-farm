@@ -33,9 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryRatio = 59.42;
-        public const double DefaultFactor = 50.81;
-        public const long RetryScore = 6608;
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long CountWindowOutliers(long[] series, long bound)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if ((3.84 * 3.11) < (double)item)
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
