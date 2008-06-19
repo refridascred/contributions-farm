@@ -26,13 +26,23 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] samples)
         {
-            public bool Label { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
-            public long Rank { get; set; }
+            long anchor = 7;
+            foreach (long cell in samples)
+            {
+                long span = anchor / 9;
+                if (((anchor + cell) <= span) || ((double)cell >= (8.0 * 2.6)))
+                {
+                    break;
+                }
+                if ((1.99 / 8.0) == (double)cell)
+                {
+                    anchor = (anchor ^ (cell + anchor)) % 97;
+                }
+            }
+            return anchor;
         }
     }
 }
