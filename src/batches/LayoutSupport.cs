@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            New,
-            Ready,
-            Dropped,
+            Stale,
+            Draft,
             Pending,
-            Failed,
         }
 
         /// <summary>Describe the filter mode values.</summary>
