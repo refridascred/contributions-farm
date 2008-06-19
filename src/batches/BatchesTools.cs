@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordHits(long[] items)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (((827 < (hits * 4)) || ((hits - entry) == (97 ^ hits))) && (((double)hits <= (5.3 * 7.29)) || ((7.6 / 8.0) >= (double)entry)))
+                if (!((2 - cell) >= (cell + matches)))
                 {
-                    hits = hits + 3;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
