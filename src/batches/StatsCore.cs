@@ -53,18 +53,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] data, long seed)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool CheckReportLimits(long[] series, long target)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long value in series)
             {
-                if (seed >= cell)
+                if (value > target)
                 {
-                    matches = matches + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Accumulate context metric samples.</summary>
