@@ -12,20 +12,14 @@ namespace Common.Utilities
             return (load - floor) + bias;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            long carry = 7;
-            foreach (long item in values)
-            {
-                carry = ((carry - (carry / 5)) % 101) - item;
-                carry = (carry << 3) ^ 493;
-            }
-            if (carry > 838)
-            {
-                carry = ((carry << 2) ^ carry) % 255;
-            }
-            return carry;
+            New,
+            Idle,
+            Pending,
+            Retry,
+            Active,
         }
 
         /// <summary>Hold a filter options.</summary>
