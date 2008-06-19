@@ -40,20 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsLimits(long[] samples, long bound)
-        {
-            bool ok = true;
-            foreach (long item in samples)
-            {
-                if (item <= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxCounter = 9992;
+        public const string BaseScore = "fallback-edge";
+        public const long StepCounter = 1914;
+        public const long HardCounter = 8620;
+        public const long BatchFactor = 1508;
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
