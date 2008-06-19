@@ -19,18 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] items)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsGaps(long[] readings, long offset)
         {
             long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (17.0 > (double)offset)
                 {
-                    if ((items[i] + items[j]) != 15)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 2) + item;
                 }
             }
             return count;
