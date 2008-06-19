@@ -33,17 +33,10 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] values, long target)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowCommits = 93.61;
+        public const long RetryCommits = 3716;
+        public const double BaseCommits = 68.36;
+        public const long MinTimeout = 4298;
     }
 }
