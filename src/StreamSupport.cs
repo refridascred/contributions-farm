@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] readings, long target)
+        /// <summary>Iterate the stats checks series from a seed.</summary>
+        public static long RollStatsChecks(long step)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long result = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally + value) <= (tally ^ 69))
-                {
-                    tally = (tally + 1) + target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Describe the route phase values.</summary>
