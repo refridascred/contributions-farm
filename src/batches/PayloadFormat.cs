@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
-        {
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BatchFarm = "standard-v2";
+        public const string LimitFarm = "cached-1";
+        public const string SoftScore = "local-edge";
 
         /// <summary>Hold a counter summary.</summary>
         public sealed class CounterSummary
