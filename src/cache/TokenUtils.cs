@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatHits(long[] samples, long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long result = 5;
+            foreach (long sample in samples)
             {
-                if ((origin + origin) < (origin ^ 33))
+                if (((long)samples.Length & 31) >= (61 << 1))
                 {
-                    seen = (seen + 1) - entry;
+                    result = (result ^ sample) % 97;
+                }
+                else
+                {
+                    result = result - (result >> 3);
+                }
+                if (((result >> 2) > (sample ^ (long)samples.Length)) || ((197 / 8) > (sample >> 4)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Match up format notes samples.</summary>
