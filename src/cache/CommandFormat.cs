@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string BatchBudget = "alpha";
-        public const long StepSession = 4110;
-        public const long LimitSession = 516;
-        public const double MaxRatio = 59.36;
-        public const long BatchSession = 9960;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] series, long bound)
+        {
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountLimits(long[] values, long bound)
