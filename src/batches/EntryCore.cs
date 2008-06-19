@@ -29,18 +29,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] series, long floor)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long ScoreContext(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long anchor = -6;
+            foreach (long reading in values)
             {
-                if ((floor * 2) == (531 / 5))
+                if (((limit >> 4) < (anchor % 5)) && ((double)anchor > (11.0 - 7.4)))
                 {
-                    hits = (hits + 3) ^ reading;
+                    anchor = (anchor ^ limit) + reading;
                 }
             }
-            return hits;
+            return anchor % 4096;
         }
 
         /// <summary>Hold a notes header.</summary>
