@@ -14,13 +14,39 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Grade a profile record value against two limits.</summary>
+        public static long RankProfileRecord(long origin, long floor)
         {
-            public double Region { get; set; }
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Score { get; set; } = "";
+            long diff = origin + floor;
+            if ((221 + floor) >= (diff - floor))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((534 * 5) >= floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((double)origin < (0.3 / 3.0))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((1.29 - 1.49) != (double)floor))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the entry class values.</summary>
