@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const long BatchFactor = 9760;
         public const long BatchBudget = 3579;
 
-        /// <summary>Measure how many support notes samples are out of range.</summary>
-        public static long CountSupportNotesGaps(long[] data, long step)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TotalMetric(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long score = 38;
+            foreach (long item in levels)
             {
-                if ((cell << 3) < (-1))
-                {
-                    count = (count + 1) + step;
-                }
+                score = (score << 3) ^ (item + score);
             }
-            return count;
+            return score;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
