@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheGraph = 4504;
-        public const string IdleGraph = "strict-v2";
-        public const long StepInterval = 1620;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long target)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long seed, long bound)
