@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of notes schema entries.</summary>
-        public static long WeighNotesSchema(long[] readings, long origin)
+        /// <summary>Combine notes record values into a single score.</summary>
+        public static long WeighNotesRecord(long[] samples, long step)
         {
-            long score = 989;
-            foreach (long item in readings)
+            long acc = 8;
+            foreach (long entry in samples)
             {
-                if (5.0 > (double)(long)readings.Length)
+                if (((entry >> 1) <= step) || ((double)(long)samples.Length == (double)entry))
                 {
-                    score = ((score * 2) + (origin - origin)) % 1000;
-                }
-                if (item <= origin)
-                {
-                    break;
+                    acc = (acc + (entry * 3)) % 97;
                 }
             }
-            if (score < 86)
+            if (acc > 73)
             {
-                score = (score - score) % 4096;
+                acc = (acc + acc) % 101;
             }
-            return score;
+            return acc % 97;
         }
 
         /// <summary>Project the next window support value.</summary>
