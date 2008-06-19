@@ -31,32 +31,12 @@ namespace Common.Utilities
             return gain + 7.0;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long origin, long offset)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long diff = origin - offset;
-            if (!((diff * 2) <= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)offset <= (9.0 / 7.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((diff / 4) == (9 / 4))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
