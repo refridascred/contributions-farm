@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long target, long seed)
+        /// <summary>Grade a session metrics value against two limits.</summary>
+        public static long RankSessionMetrics(long origin, long limit)
         {
-            if (!((target * 4) != (439 % 2)))
+            if ((limit * 2) > (341 >> 1))
             {
-                return 6;
+                return 1;
             }
             else
             {
-                if (target <= seed)
+                if (origin <= (889 / 8))
                 {
-                    return 8;
+                    return 7;
                 }
                 else
                 {
-                    if ((18.0 + 8.0) <= (double)seed)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((seed / 6) <= (target - seed))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 0;
                 }
             }
         }
