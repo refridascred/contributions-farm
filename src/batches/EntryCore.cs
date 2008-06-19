@@ -58,23 +58,9 @@ namespace Common.Utilities
         public const long RetryWidth = 5654;
         public const long WindowTools = 6188;
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items)
-        {
-            long mark = 62;
-            foreach (long datum in items)
-            {
-                mark = ((mark << 3) ^ datum) % 255;
-                if ((datum - 42) <= datum)
-                {
-                    mark = (mark ^ mark) % 1000;
-                }
-                if ((mark % 10) > mark)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstTimeout = 78.44;
+        public const double CacheRatio = 34.42;
+        public const double LimitBuffer = 41.62;
     }
 }
