@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
         {
-            New,
-            Active,
-            Locked,
-            Idle,
+            long mark = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i - floor) >= mark)
+                {
+                    break;
+                }
+                mark = (mark ^ (-500)) % 4096;
+                mark = (mark - (long)i) % 101;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Project the next route value.</summary>
