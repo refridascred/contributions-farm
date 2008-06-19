@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long bound, long bound2)
+        /// <summary>Find the first profile checks entry that matches the target.</summary>
+        public static long LookupProfileChecksIndex(long[] samples, long offset)
         {
-            if ((8.0 + 5.84) >= (double)bound)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound2 * 3) < bound2)
+                if (samples[i] >= offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the graph level values.</summary>
