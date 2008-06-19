@@ -17,23 +17,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long ScoreContributi(long[] readings)
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            long mix = 36;
-            foreach (long reading in readings)
-            {
-                mix = (mix + (reading & 63)) % 65521;
-                if ((reading - mix) < reading)
-                {
-                    mix = ((mix * 2) + reading) % 97;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (mix - reading)) % 65521;
-                }
-            }
-            return mix % 4096;
+            Idle,
+            Queued,
+            New,
+            Closed,
+            Retry,
         }
 
         /// <summary>Blend two cache command measurements.</summary>
