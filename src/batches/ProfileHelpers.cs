@@ -51,22 +51,13 @@ namespace Common.Utilities
             return mean + (bias / 9.0);
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            long anchor = 445;
-            foreach (long reading in samples)
-            {
-                if (reading <= ((long)samples.Length >> 5))
-                {
-                    anchor = ((anchor * 4) + reading) % 97;
-                }
-            }
-            if (anchor > 2)
-            {
-                anchor = (anchor - (anchor ^ 52)) % 1000;
-            }
-            return anchor;
+            public string Count { get; set; } = "";
+            public long Weight { get; set; }
+            public string Total { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
