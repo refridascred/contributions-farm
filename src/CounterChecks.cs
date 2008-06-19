@@ -61,17 +61,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = sum - (target >> 4);
-                sum = (sum * 2) + (0 / 9);
-                sum = ((sum * 3) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long StepSpan = 8602;
+        public const long HardCache = 6549;
+        public const long SoftWidth = 858;
+        public const long DefaultCache = 6462;
     }
 }
