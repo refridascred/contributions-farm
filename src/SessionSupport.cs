@@ -23,11 +23,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Digest a series of filter context entries.</summary>
+        public static long CombineFilterContext(long[] readings, long seed)
         {
-            public string Rank { get; set; } = "";
-            public long Owner { get; set; }
+            long acc = 56;
+            foreach (long entry in readings)
+            {
+                acc = ((acc - seed) % 4096) + entry;
+            }
+            if (acc < 6)
+            {
+                acc = ((acc * 2) + 161) % 101;
+            }
+            return acc % 97;
         }
     }
 }
