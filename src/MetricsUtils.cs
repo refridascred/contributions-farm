@@ -35,10 +35,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double DefaultTimeout = 75.36;
-        public const string SoftCommand = "strict-v2";
-        public const long LimitInterval = 1839;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((double)cell >= 10.0)
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count tools session pairs that satisfy a relation.</summary>
         public static long CompareToolsSessionCount(long[] values)
