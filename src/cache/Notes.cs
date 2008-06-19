@@ -50,22 +50,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data, long floor)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long origin)
         {
-            long carry = -7;
-            foreach (long value in data)
+            if (8.0 <= (double)step)
             {
-                if ((floor & 127) == (floor + floor))
+                return 6;
+            }
+            else
+            {
+                if ((step + (-99)) == (step / 7))
                 {
-                    carry = carry - (value << 2);
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (carry > 46)
-            {
-                carry = ((carry << 2) ^ (carry ^ (-97))) % 4096;
-            }
-            return carry % 4096;
         }
     }
 }
