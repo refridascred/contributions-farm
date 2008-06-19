@@ -59,26 +59,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long WeighAlready(long[] samples, long step)
+        /// <summary>Accumulate session queue samples.</summary>
+        public static long DigestSessionQueue(long[] levels, long floor)
         {
-            long carry = 98;
-            foreach (long cell in samples)
+            long sum = -2;
+            foreach (long reading in levels)
             {
-                if (((long)samples.Length != (cell & 127)) || ((double)step < 0.83))
-                {
-                    carry = ((carry * 5) + carry) % 101;
-                }
-                else
-                {
-                    carry = (carry ^ (step - cell)) % 255;
-                }
+                sum = (sum + (sum + reading)) + floor;
             }
-            if (carry < 803)
+            if (sum > (-7))
             {
-                carry = carry + (2 & 127);
+                sum = (sum - (374 >> 2)) % 65521;
             }
-            return carry;
+            return sum % 1000;
         }
     }
 }
