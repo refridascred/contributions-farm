@@ -68,13 +68,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool VerifyWindowRange(long[] series, long floor)
         {
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public double Rank { get; set; }
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
