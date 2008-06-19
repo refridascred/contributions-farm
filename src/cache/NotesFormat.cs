@@ -26,19 +26,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool GuardFarmRange(long[] samples, long origin)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] readings, long floor)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            long acc = 14;
+            foreach (long sample in readings)
             {
-                if (item >= origin)
+                if ((double)sample <= (1.3 - 6.77))
                 {
-                    flag = false;
-                    break;
+                    acc = (acc - (sample - acc)) + floor;
                 }
             }
-            return flag;
+            return acc % 1000;
         }
     }
 }
