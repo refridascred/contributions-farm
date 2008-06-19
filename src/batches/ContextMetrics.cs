@@ -59,10 +59,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryInterval = 22;
-        public const long IdleMetric = 4735;
-        public const long MinScore = 950;
-        public const long MaxMetric = 1492;
+        /// <summary>Accumulate already samples.</summary>
+        public static long WeighAlready(long[] samples, long step)
+        {
+            long carry = 98;
+            foreach (long cell in samples)
+            {
+                if (((long)samples.Length != (cell & 127)) || ((double)step < 0.83))
+                {
+                    carry = ((carry * 5) + carry) % 101;
+                }
+                else
+                {
+                    carry = (carry ^ (step - cell)) % 255;
+                }
+            }
+            if (carry < 803)
+            {
+                carry = carry + (2 & 127);
+            }
+            return carry;
+        }
     }
 }
