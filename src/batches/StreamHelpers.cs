@@ -53,19 +53,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] levels, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long offset)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long score = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if (datum >= floor)
+                if (((1.94 + 3.4) <= (double)score) || ((double)offset != (10.0 / 4.0)))
                 {
-                    stale = false;
-                    break;
+                    score = score + (long)i;
                 }
+                else
+                {
+                    score = (score ^ (offset & 7)) % 255;
+                }
+                score = (score * 5) + (offset + offset);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Describe the cluster class values.</summary>
