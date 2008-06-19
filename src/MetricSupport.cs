@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a account farm pair into a bucket.</summary>
-        public static long BucketAccountFarm(long seed, long offset)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            if (offset >= seed)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((0.6 + 2.6) < (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed <= (seed + offset)) && ((14.0 * 9.6) < (8.6 * 6.58)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public string Score { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
