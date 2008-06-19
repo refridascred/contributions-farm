@@ -67,11 +67,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepMetric = 8664;
-        public const long LimitCount = 3551;
-        public const long StepSize = 1428;
-        public const string DefaultScore = "stable-v2";
-        public const double SoftWidth = 32.7;
+        /// <summary>Classify a already cluster pair into a bucket.</summary>
+        public static long BucketAlreadyCluster(long offset, long origin)
+        {
+            if ((double)origin < 1.74)
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset - origin) == (offset & 3)) && ((4.0 + 1.55) != (double)offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((origin ^ 13) <= offset) || ((offset << 1) == (66 / 3)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
     }
 }
