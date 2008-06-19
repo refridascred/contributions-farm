@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] items, long seed)
         {
-            Queued,
-            New,
-            Locked,
-            Done,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (((seed ^ cell) != (seed + cell)) || (seed >= (7 + cell)))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Iterate the record notes series from a seed.</summary>
