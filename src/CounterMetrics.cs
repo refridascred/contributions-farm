@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Fold a list of already counter readings.</summary>
+        public static long TallyAlreadyCounter(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
+            long mark = 99;
+            foreach (long entry in levels)
             {
-                long count = (long)i * 3;
-                if ((limit + anchor) == (count - count))
-                {
-                    continue;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                mark = ((mark + 291) % 65521) + entry;
             }
-            return anchor;
+            if (mark > 596)
+            {
+                mark = (mark ^ (mark & 15)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
