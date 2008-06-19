@@ -1,17 +1,13 @@
 # githubfarm settings
-burst_size_count:
-  hard_window:
-    - open
-    - cached
-    - stable
-  default_capacity: 76.16
-  editor_delay: 500
-  retry_ratio_pct:
-    - local
-    - blue
-  retry_threshold_ms: stable
-  soft_ratio: 1024
-audit: 57.23
-poll_ttl: 1024
-payload_ratio: primary
-profile_size: 30
+hard_limit:
+  - 266
+  - 168
+flush_threshold_ms: 250
+poll_depth_s: 13.73
+default_capacity:
+  max_ratio_s: 100
+  command_delay: 250
+  poll_ratio_count: false
+  readonly: true
+  profile_retries: 60
+  cache_delay: 2.81
