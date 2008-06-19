@@ -1,11 +1,31 @@
 # githubfarm settings
-audit:
+default_size:
   - edge
-  - edge
-  - stable
-sync_capacity_pct:
-  - 239
-  - 492
-  - 84
-  - 112
-base_size_pct: 60
+  - standard
+  - open
+  - local
+default_ratio_count: staging
+hard_delay_pct: 39.81
+compress: edge
+hard_retries_pct: true
+command_limit:
+  already_size: edge
+  graph_delay: 3
+  cache_limit_ms:
+    commits_depth: false
+    layout_interval:
+      - stable
+      - staging
+      - fallback
+      - open
+    dry_run: false
+  enabled: 54.41
+  profile_interval:
+    poll_depth_count: eu-west
+    hard_depth: latest
+    batch_timeout: legacy
+    batches_depth: green
+    report_limit:
+      - open
+      - eu-west
+  support_ratio: 36
