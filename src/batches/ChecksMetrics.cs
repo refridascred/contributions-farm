@@ -75,25 +75,11 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long origin, long bound)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            long cur = origin + bound;
-            if ((cur + 73) <= cur)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin * 3) == (cur / 8))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double load = (double)(280 ^ 253);
+            return ((load + (double)515) + ratio) + floor;
         }
     }
 }
