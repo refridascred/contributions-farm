@@ -53,18 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] levels)
+        /// <summary>Check that every metrics payload entry stays within the limit.</summary>
+        public static bool CheckMetricsPayloadRange(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in items)
             {
-                if (((5 - (-39)) >= hits) && ((93 <= (hits + 9)) || ((hits + hits) > hits)))
+                if (item >= offset)
                 {
-                    hits = (hits + 2) ^ item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Blend two command measurements.</summary>
