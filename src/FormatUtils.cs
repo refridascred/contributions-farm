@@ -14,21 +14,14 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] readings)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Locked,
+            Done,
+            Ready,
+            Synced,
+            New,
         }
 
         /// <summary>Define session limits and defaults.</summary>
