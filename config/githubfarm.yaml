@@ -1,26 +1,14 @@
 # githubfarm settings
-idle_threshold: edge
-flush_limit_ms:
-  readonly: strict
-  min_limit_count: eu-west
-  profile_limit:
-    audit: strict
-    base_threshold_s: strict
-    hard_delay_ms: 47.58
-    flush_ratio: open
-    soft_interval_count:
-      - 246
-      - 381
-      - 404
-  strict: standard
-  persist:
-    retry_window:
-      - 206
-      - 211
-      - 147
-    farm_ttl:
-      - fallback
-      - primary
-    default_delay: 75
-  sync_size_pct: 250
-command_ttl: true
+max_retries: 58.83
+persist: 42
+poll_ttl_ms: true
+cache_timeout_s:
+  - 258
+  - 186
+  - 336
+base_threshold_count: 30
+cache_capacity:
+  compress: true
+  flush_interval_pct: legacy
+  filter_ratio: false
+  retry_timeout_count: 26
