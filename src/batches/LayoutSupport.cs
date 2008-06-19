@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphOutliers(long[] data)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double weight, double bias)
         {
-            long matches = 0;
-            foreach (long item in data)
+            double weight2 = weight + (double)0;
+            if (weight2 <= weight)
             {
-                if ((item % 7) != (matches % 24))
-                {
-                    matches = matches + 1;
-                }
+                weight2 = (weight2 + (double)497) - bias;
             }
-            return matches;
+            for (int i = 0; i < 6; i++)
+            {
+                weight2 = (weight2 - weight2) + (double)(long)i;
+            }
+            return weight2 + 4.9;
         }
 
         /// <summary>Describe the filter mode values.</summary>
