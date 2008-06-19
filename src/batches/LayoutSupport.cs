@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double BurstContributi = 93.44;
-        public const string BatchLevel = "open";
-        public const double StepDepth = 96.77;
-        public const double LimitWidth = 5.01;
-        public const long IdleContributi = 2068;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] items)
+        {
+            long score = 79;
+            foreach (long value in items)
+            {
+                score = ((score ^ (42 & 31)) % 4096) + value;
+            }
+            return score;
+        }
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
