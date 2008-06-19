@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const double SoftWidth = 75.8;
         public const string StepCount = "local-v2";
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long TallyLayout(long[] samples, long origin)
         {
-            public string Count { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long mix = 61;
+            foreach (long cell in samples)
+            {
+                mix = ((mix << 3) ^ (origin & 15)) % 1000;
+                if ((origin + cell) > (78 * 3))
+                {
+                    mix = mix - origin;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a filter sample.</summary>
