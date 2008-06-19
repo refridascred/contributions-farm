@@ -101,18 +101,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportMatches(long[] values, long seed)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsBounds(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((double)count <= (4.0 - 2.55))
+                if (cell <= offset)
                 {
-                    count = ((count + 2) + item) + seed;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
