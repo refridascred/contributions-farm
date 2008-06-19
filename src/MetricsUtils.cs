@@ -35,22 +35,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] data)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((double)cell >= 10.0)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Locked,
+            Dropped,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count tools session pairs that satisfy a relation.</summary>
