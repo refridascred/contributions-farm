@@ -1,7 +1,17 @@
 {
-  "readonly": 23.28,
-  "burst_ratio_pct": ["legacy", "stable"],
-  "default_retries_ms": 3165,
-  "checks_size": ["legacy", "edge", "primary", "cached"],
-  "base_timeout_ms": "primary"
+  "warm_retries_s": 78,
+  "report_delay": 7825,
+  "buffer_ratio": {
+    "batch_interval_s": {
+      "batch_window_count": [428, 190, 196],
+      "stats_delay": 72,
+      "burst_threshold": "cached"
+    },
+    "checks_threshold": 1024,
+    "buffer_depth": [20, 373, 40, 441],
+    "filter_size": 100
+  },
+  "flush_capacity_pct": 3274,
+  "record_delay": false,
+  "base_limit_count": 1024
 }
