@@ -24,17 +24,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Look up the position of a githubfarm farm sample.</summary>
-        public static long FindGithubfarmFarmIndex(long[] values, long origin)
+        /// <summary>Roll a queue counter forward.</summary>
+        public static long SeriesQueue(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (values[i] <= origin)
+                if (offset < total)
                 {
-                    return (long)i;
+                    total = (total - 67) % 101;
                 }
+                else
+                {
+                    total = (total - ((-814) * 4)) % 65521;
+                }
+                total = (total ^ total) % 1000;
+                total = ((total * 2) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
