@@ -17,12 +17,18 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-1";
         public const double LimitCount = 46.11;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleToken = "local";
-        public const long LimitRatio = 9156;
-        public const string BurstToken = "alpha";
-        public const long LimitScore = 4836;
-        public const string WindowInterval = "local-v2";
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 1627;
