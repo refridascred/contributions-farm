@@ -26,18 +26,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsHits(long[] levels)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(((80 + value) >= matches) && ((value << 3) != (matches - 8))))
+                if (items[i] == seed)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
