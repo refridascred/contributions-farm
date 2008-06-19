@@ -69,13 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            Queued,
-            Locked,
-            Active,
-            Stale,
+            long score = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
     }
 }
