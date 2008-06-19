@@ -78,12 +78,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long FindFormatIndex(long[] items, long step)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] series, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] <= step)
+                if ((series[i] <= origin) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
