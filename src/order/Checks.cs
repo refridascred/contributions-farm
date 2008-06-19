@@ -40,20 +40,18 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long bound)
+        /// <summary>Audit stream farm readings against a rule.</summary>
+        public static long CountStreamFarmHits(long[] values, long floor)
         {
-            long result = bound;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((double)cell >= (7.0 - 8.0)))
                 {
-                    result = (((result * 2) + (-872)) % 4096) - (long)i2;
+                    matches = (matches + 3) - floor;
                 }
-                result = (result + result) % 4096;
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return matches;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
