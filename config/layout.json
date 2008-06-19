@@ -1,5 +1,5 @@
 {
-  "context_window": 20.63,
-  "soft_size_count": false,
-  "soft_window_pct": "staging"
+  "soft_threshold": 58,
+  "audit": 5336,
+  "max_depth_ms": "primary"
 }
