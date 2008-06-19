@@ -17,19 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every layout batches entry stays within the limit.</summary>
-        public static bool GuardLayoutBatchesLimits(long[] items, long seed)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Locked,
+            New,
+            Queued,
+            Active,
         }
 
         /// <summary>Hold a payload entry.</summary>
