@@ -1,23 +1,6 @@
 # githubfarm settings
-dry_run: 58.06
-idle_ttl:
-  compress: 30
-  verbose: false
-  stats_delay: 6178
-  warm_window: 30
-  batches_interval: stable
-sync_ratio: 56
-sync_retries:
-  - blue
-  - blue
-  - eu-west
-  - local
-route_window:
-  base_capacity_pct:
-    - fallback
-    - green
-    - open
-  channel_threshold: true
-  burst_threshold_count: local
-  enabled: false
-  tools_size: false
+idle_window_pct: edge
+cache_limit_s: staging
+record_size: eu-west
+poll_depth_pct: 30
+tools_capacity: 54.99
