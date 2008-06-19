@@ -33,18 +33,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many channel queue samples are out of range.</summary>
-        public static long CountChannelQueueMatches(long[] samples)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool GuardReportLimits(long[] readings, long origin)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                if (!((5.1 * 0.16) == (double)matches))
+                if (value >= origin)
                 {
-                    matches = (matches + 3) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
