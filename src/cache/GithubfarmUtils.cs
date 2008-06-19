@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] items, long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long score = 98;
+            foreach (long cell in values)
             {
-                if (3 > (tally >> 3))
-                {
-                    tally = ((tally + 2) + value) - target;
-                }
+                score = (score + (bound + score)) + cell;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
