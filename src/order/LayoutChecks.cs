@@ -26,20 +26,18 @@ namespace Common.Utilities
             return (bias + (double)75) + ratio;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long RollPayload(long origin)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorOutliers(long[] readings, long target)
         {
-            long state = origin;
-            for (int i = 0; i < 16; i++)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                long seen = (origin >> 3) - (origin + state);
-                if (!((((long)i >> 5) == (seen >> 5)) && ((state % 3) != (state << 3))))
+                if (!((double)entry != (double)target))
                 {
-                    state = state - (origin * 3);
+                    seen = seen + 3;
                 }
-                state = ((state * 5) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
