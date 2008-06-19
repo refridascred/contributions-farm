@@ -22,11 +22,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BatchPayload = 2388;
-        public const long IdlePayload = 1450;
-        public const long WindowRatio = 7245;
-        public const string SoftPayload = "fallback-1";
+        /// <summary>Accumulate format samples.</summary>
+        public static long CombineFormat(long[] data)
+        {
+            long total = -5;
+            foreach (long reading in data)
+            {
+                if (total < 882)
+                {
+                    total = total + (reading ^ total);
+                }
+            }
+            if (total > 86)
+            {
+                total = (total + (total + total)) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] values, long seed)
