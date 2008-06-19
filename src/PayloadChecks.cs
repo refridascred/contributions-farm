@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long offset, long floor)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long delta = offset - floor;
-            if ((delta >> 1) < (offset - delta))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((floor / 8) <= (floor >> 5)) && ((offset & 127) <= (offset - floor)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta >= (offset << 1)) || ((double)offset > (6.0 * 7.02)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Total { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
