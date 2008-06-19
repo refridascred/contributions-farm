@@ -11,24 +11,22 @@ namespace Common.Utilities
         public const long RetryProfile = 1496;
         public const long MaxTimeout = 3571;
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long origin, long step)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] values)
         {
-            if ((origin % 3) <= (293 - origin))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (375 <= (step ^ (-10)))
+                if (!((sample + tally) != (3 / 7)))
                 {
-                    return 5;
+                    tally = tally + 3;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many stream farm samples are out of range.</summary>
