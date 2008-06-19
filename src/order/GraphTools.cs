@@ -71,16 +71,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor - ((long)i - (-1))) % 1000;
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
+            Done,
+            Locked,
+            Closed,
         }
     }
 }
