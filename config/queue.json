@@ -1,8 +1,7 @@
 {
-  "soft_ttl_s": false,
-  "retry_delay_count": "open",
-  "queue_ratio": 1024,
-  "audit": "open",
-  "batch_depth_ms": "local",
-  "persist": 38.11
+  "notes_capacity": "local",
+  "base_delay_count": 1024,
+  "checks_interval": 30.2,
+  "min_delay_s": "primary",
+  "base_timeout_pct": 34
 }
