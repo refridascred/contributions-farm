@@ -24,24 +24,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Classify a route session pair into a bucket.</summary>
-        public static long RankRouteSession(long seed, long step)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            if (((step & 63) != (seed * 4)) || ((step % 24) >= (step & 31)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((step % 100) < (seed / 7)) && (step > (seed + step)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Total { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
