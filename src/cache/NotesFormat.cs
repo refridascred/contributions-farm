@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelGaps(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchGaps(long[] readings, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((tally + tally) != (tally + 316)) || ((double)entry > (double)tally))
+                if ((-596) <= seed)
                 {
-                    tally = tally + 2;
+                    seen = (seen + 1) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a already record.</summary>
