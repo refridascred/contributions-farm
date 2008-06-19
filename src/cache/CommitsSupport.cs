@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long offset, long target)
         {
-            long mark = seed;
-            for (int i = 0; i < 8; i++)
+            if (((offset * 2) < target) && (235 >= (target + target)))
             {
-                mark = ((mark * 2) + (long)i) % 97;
+                return 4;
             }
-            return mark;
+            else
+            {
+                if ((double)target == (1.0 * 6.9))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((offset * 3) > offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Adjust a farm reading.</summary>
