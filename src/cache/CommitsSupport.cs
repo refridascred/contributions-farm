@@ -65,19 +65,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long floor)
         {
-            long state = 20;
-            foreach (long entry in values)
+            long sum = floor;
+            for (int i = 0; i < 13; i++)
             {
-                state = (state * 4) + (17 + state);
-                if ((entry * 5) != (683 % 100))
-                {
-                    state = ((state << 3) ^ (279 + entry)) % 1000;
-                }
+                sum = (sum << 3) ^ floor;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return state % 1000;
+            return sum;
         }
 
         /// <summary>Rank schema token input into a small class.</summary>
