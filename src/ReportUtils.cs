@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstLevel = "open";
-        public const long RetryFormat = 500;
-        public const long MaxFormat = 2631;
-        public const double StepDepth = 87.6;
-        public const double CacheRatio = 26.74;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] series, long floor)
+        {
+            long score = 585;
+            foreach (long datum in series)
+            {
+                if ((0 + floor) < (5 + datum))
+                {
+                    score = (score + (score ^ floor)) % 255;
+                }
+            }
+            if (score > 24)
+            {
+                score = score - floor;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a payload record.</summary>
         public sealed class PayloadRecord
