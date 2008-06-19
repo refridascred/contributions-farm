@@ -57,19 +57,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] data)
         {
-            long anchor = -122;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long sample in data)
             {
-                anchor = anchor - (datum - anchor);
+                if (((double)sample > (12.0 / 7.0)) || (sample <= (sample - sample)))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor + (anchor >> 3)) % 101;
-            }
-            return anchor;
+            return seen;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
