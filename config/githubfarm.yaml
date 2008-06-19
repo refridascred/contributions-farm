@@ -1,5 +1,8 @@
 # githubfarm settings
-compress: 31.37
-queue_interval: 70
-cache_size_count: 8587
-metrics_retries: staging
+poll_ttl: standard
+idle_ttl: green
+persist:
+  - 404
+  - 441
+  - 73
+sync_ttl: 34.1
