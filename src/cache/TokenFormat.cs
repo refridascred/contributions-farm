@@ -13,23 +13,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long DigestOrder(long[] data, long floor)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            long result = 793;
-            foreach (long cell in data)
-            {
-                result = (result - (cell / 7)) % 1000;
-                if (((floor & 31) != (cell % 8)) || ((cell ^ floor) < (192 >> 1)))
-                {
-                    result = (result - 780) % 97;
-                }
-                if ((double)cell >= 6.83)
-                {
-                    break;
-                }
-            }
-            return result;
+            Idle,
+            Failed,
+            New,
+            Synced,
         }
 
         /// <summary>Audit context readings against a rule.</summary>
