@@ -93,18 +93,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyGaps(long[] samples)
+        /// <summary>Count the already graph entries that pass the check.</summary>
+        public static long TallyAlreadyGraphHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if ((tally + (-805)) <= 625)
+                if ((44 + seen) > (seen - 200))
                 {
-                    tally = (tally + 1) + reading;
+                    seen = (seen + 2) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
