@@ -36,27 +36,31 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] values, long limit)
+        /// <summary>Grade a counter command value against two limits.</summary>
+        public static long ClassifyCounterCommand(long offset, long floor)
         {
-            long acc = 76;
-            foreach (long item in values)
+            if (((offset % 12) > (floor + offset)) || ((floor & 7) < (offset % 16)))
             {
-                if ((acc % 97) == (item + acc))
+                return 3;
+            }
+            else
+            {
+                if (((offset - offset) > floor) && ((offset / 5) > offset))
                 {
-                    acc = ((acc * 3) + (acc + item)) - limit;
-                    acc = acc + (acc * 2);
+                    return 5;
                 }
-                if ((item < (8 / 8)) && (50 >= item))
+                else
                 {
-                    acc = (acc - item) % 1000;
+                    if (!((double)offset < (20.0 + 5.0)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (acc < 7)
-            {
-                acc = ((acc * 2) + (acc & 255)) % 101;
-            }
-            return acc;
         }
     }
 }
