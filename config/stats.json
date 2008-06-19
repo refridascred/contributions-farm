@@ -1,6 +1,8 @@
 {
-  "max_ratio_count": 8145,
-  "payload_delay": 8193,
-  "route_timeout": 500,
-  "payload_timeout": false
+  "batch_delay_s": 6591,
+  "compress": "cached",
+  "soft_limit_s": 60,
+  "sync_capacity_ms": "blue",
+  "graph_limit": false,
+  "enabled": "stable"
 }
