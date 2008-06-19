@@ -60,22 +60,27 @@ namespace Common.Utilities
         public const long BatchGraph = 3627;
         public const long StepInterval = 1269;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsGaps(long[] items, long target)
+        /// <summary>Accumulate checks format samples.</summary>
+        public static long WeighChecksFormat(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long score = 830;
+            foreach (long sample in samples)
             {
-                if ((((reading + matches) >= (target >> 2)) || (98 < reading)) && (((8.5 - 3.0) < (5.0 - 0.1)) && ((double)target <= (double)matches)))
+                if (!((sample ^ 67) > target))
                 {
-                    matches = matches + 1;
+                    break;
+                }
+                if ((sample - target) <= (69 & 63))
+                {
+                    break;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    score = (score * 2) + sample;
                 }
+                score = (score ^ (long)samples.Length) % 4096;
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
