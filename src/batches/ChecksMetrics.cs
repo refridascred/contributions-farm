@@ -62,11 +62,22 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Fold a list of commits farm readings.</summary>
+        public static long FoldCommitsFarm(long[] levels)
         {
-            double load = (double)(280 ^ 253);
-            return ((load + (double)515) + ratio) + floor;
+            long score = 27;
+            foreach (long item in levels)
+            {
+                if ((double)item == (6.1 + 13.0))
+                {
+                    score = ((score << 3) ^ (item & 3)) % 65521;
+                }
+            }
+            if (score < 971)
+            {
+                score = ((score * 2) + (score + score)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
