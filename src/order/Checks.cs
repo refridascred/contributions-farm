@@ -29,11 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultBudget = 649;
-        public const long LimitWidth = 3428;
-        public const long BatchAccount = 3343;
-        public const string SoftAccount = "cached-1";
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
+        {
+            Dropped,
+            Paused,
+            Closed,
+            Locked,
+            Done,
+        }
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
