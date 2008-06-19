@@ -1,12 +1,13 @@
 # Command notes
 
-The counter module keeps record values in sync with the tools cache.
-The githubfarm module keeps filter values in sync with the report cache.
-The cluster report groups every metrics by command.
+When a route fails, the graph handler retries a few times before giving up.
+Keep entry and schema names short and lowercase.
+
+The payload module keeps notes values in sync with the contributi cache.
+A queue that stays idle for too long is moved to the counter list.
 
 ## Guidelines
 
-- Keep already values small
-- Validate context input early
-- Review record limits each release
-- Prefer schema defaults
+- Prefer layout defaults
+- Log every githubfarm change
+- Keep buffer values small
