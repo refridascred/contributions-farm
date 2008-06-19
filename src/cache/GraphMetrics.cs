@@ -17,14 +17,12 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-1";
         public const double LimitCount = 46.11;
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public long Mode { get; set; }
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "local";
+        public const long LimitRatio = 9156;
+        public const string BurstToken = "alpha";
+        public const long LimitScore = 4836;
+        public const string WindowInterval = "local-v2";
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 1627;
