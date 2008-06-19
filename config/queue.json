@@ -1,10 +1,13 @@
 {
-  "sync_delay_pct": {
-    "notes_limit": "open",
-    "strict": 75.76,
-    "report_capacity": "open"
+  "min_depth_s": "blue",
+  "burst_ratio_pct": {
+    "editor_ratio": [5, 220, 137, 152],
+    "cache_size_s": 7792,
+    "persist": [491, 248, 44],
+    "burst_retries_s": true,
+    "retry_retries_count": 12,
+    "max_size_ms": 1024
   },
-  "burst_threshold_s": [158, 76, 183, 199],
-  "idle_window_s": true,
-  "persist": true
+  "batch_timeout_s": 30,
+  "support_ttl": false
 }
