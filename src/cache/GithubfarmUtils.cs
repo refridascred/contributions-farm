@@ -25,13 +25,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
-        {
-            Dropped,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double BatchTimeout = 3.89;
+        public const double WindowCommits = 97.63;
+        public const double CacheCommits = 39.34;
+        public const double RetryCommits = 45.47;
+        public const string BurstCommits = "staging-1";
 
         /// <summary>Hold a layout snapshot.</summary>
         public sealed class LayoutSnapshot
