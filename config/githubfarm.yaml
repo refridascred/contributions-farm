@@ -1,5 +1,17 @@
 # githubfarm settings
-compress: eu-west
-readonly: 2.04
-persist: 3854
-burst_size: cached
+order_capacity: edge
+sync_threshold_ms: green
+default_depth_s: 50
+default_ratio_ms:
+  - latest
+  - latest
+cache_ratio:
+  soft_window_s:
+    dry_run: 6451
+    compress: 9098
+    warm_timeout_s:
+      - 50
+      - 159
+      - 178
+  enabled: eu-west
+  readonly: 57.33
