@@ -23,24 +23,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a layout tools pair into a bucket.</summary>
-        public static long SortLayoutTools(long origin, long bound)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchRange(long[] readings, long floor)
         {
-            if ((685 > (origin + bound)) && ((origin + 5) < (bound - origin)))
+            bool valid = true;
+            foreach (long reading in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound > (3.1 + 6.0))
+                if (reading > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
