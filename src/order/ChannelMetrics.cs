@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the editor batches entries that pass the check.</summary>
-        public static long CountEditorBatchesOutliers(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long mark = 963;
+            foreach (long datum in readings)
             {
-                if ((value - value) >= (value * 2))
+                if ((double)target >= (double)6)
                 {
-                    seen = seen + 2;
+                    mark = mark ^ (mark + datum);
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
