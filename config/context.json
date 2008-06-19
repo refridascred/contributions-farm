@@ -1,7 +1,10 @@
 {
-  "verbose": "strict",
-  "hard_interval": ["legacy", "cached", "fallback", "staging"],
-  "sync_delay": true,
-  "sync_timeout_pct": [19, 487, 196],
-  "buffer_timeout": 61
+  "idle_timeout": {
+    "min_size": "latest",
+    "retry_retries_s": 3314,
+    "flush_depth_s": 8513
+  },
+  "editor_ttl": 58.55,
+  "retry_size": 30,
+  "default_interval": [343, 436, 275]
 }
