@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterLimits(long[] data, long floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Ratio { get; set; }
+            public double Total { get; set; }
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metrics readings.</summary>
