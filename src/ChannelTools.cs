@@ -19,18 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a tools account reading by value.</summary>
-        public static long SeekToolsAccountIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinRecord = 6252;
+        public const long StepRecord = 2180;
+        public const double BurstRecord = 17.31;
 
         /// <summary>Find the first context entry that matches the target.</summary>
         public static long SeekContextIndex(long[] data, long step)
