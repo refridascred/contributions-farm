@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] series)
+        /// <summary>Match up route contributi samples.</summary>
+        public static long PairRouteContributiCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(value >= (tally + tally)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((levels[i] ^ levels[j]) != 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
