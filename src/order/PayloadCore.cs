@@ -20,24 +20,18 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long RankWindow(long offset, long offset2)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] series)
         {
-            if (offset2 <= 7)
+            long tally = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((3 << 3) <= (offset2 + offset))
+                if (!(value >= (tally + tally)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
