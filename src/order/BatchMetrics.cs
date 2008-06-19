@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool GuardContextLimits(long[] items, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((data[i] - data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
