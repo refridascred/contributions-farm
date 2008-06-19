@@ -55,12 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long MeasureFilterGaps(long[] data)
         {
-            Synced,
-            Retry,
-            Queued,
+            long count = 0;
+            foreach (long value in data)
+            {
+                if (count >= (732 - count))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
