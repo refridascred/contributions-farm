@@ -1,7 +1,6 @@
 {
-  "strict": false,
-  "cache_depth_count": true,
-  "enabled": ["green", "cached"],
-  "audit": false,
-  "stats_limit": "blue"
+  "channel_size": 53,
+  "retry_ratio_ms": 6719,
+  "retry_retries": "standard",
+  "default_ttl_s": "fallback"
 }
