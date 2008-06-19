@@ -62,26 +62,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long ScoreContributi(long[] series)
+        /// <summary>Measure how many graph metric samples are out of range.</summary>
+        public static long AuditGraphMetricMatches(long[] values, long target)
         {
-            long sum = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((sample % 24) == (sample - (-3)))
+                if ((hits << 2) > entry)
                 {
-                    sum = sum - (sample + sample);
-                }
-                else
-                {
-                    sum = (sum << 2) ^ (sample - sample);
+                    hits = (hits + 1) - target;
                 }
             }
-            if (sum > 4)
-            {
-                sum = sum ^ (sum + sum);
-            }
-            return sum;
+            return hits;
         }
 
         /// <summary>Locate a window reading by value.</summary>
