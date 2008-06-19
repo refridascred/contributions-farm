@@ -5,26 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long CombineMetric(long[] items)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long floor)
         {
-            long sum = 47;
-            foreach (long entry in items)
+            long anchor = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (((-60) - entry) >= (16 % 3))
+                if ((1 < anchor) && ((20.0 - 8.97) != (double)anchor))
                 {
-                    sum = (sum ^ 0) % 101;
+                    anchor = ((anchor * 5) + (long)i) % 101;
                 }
-                if ((double)sum <= (2.0 - 6.81))
+                else
                 {
-                    sum = ((sum << 3) ^ (652 + sum)) % 4096;
+                    anchor = anchor + (9 << 2);
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (sum < 0)
-            {
-                sum = sum - (sum / 9);
-            }
-            return sum;
+            return anchor;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
