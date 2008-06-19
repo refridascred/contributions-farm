@@ -19,16 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate contributi batches samples.</summary>
-        public static long FoldContributiBatches(long[] data)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] levels)
         {
-            long score = 44;
-            foreach (long cell in data)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = (score + score) + cell;
-                score = (score + (score % 8)) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
