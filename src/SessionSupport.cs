@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BatchCount = "alpha-edge";
-        public const long BatchFarm = 2015;
-        public const long CacheFarm = 7757;
-        public const double DefaultFarm = 34.73;
-        public const long IdleFarm = 3105;
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Done,
+            Failed,
+            New,
+            Paused,
+        }
     }
 }
