@@ -32,17 +32,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first account route entry that matches the target.</summary>
-        public static long LocateAccountRouteIndex(long[] series, long floor)
+        /// <summary>Project the next format value.</summary>
+        public static double SmoothFormat(double bias, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double mean = bias;
+            if (mean >= mean)
             {
-                if ((series[i] == floor) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                mean = mean - floor;
             }
-            return -1;
+            else
+            {
+                mean = mean - (mean / 2.0);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - bias) + (double)(long)i;
+            }
+            return mean + (bias / 9.0);
         }
 
         /// <summary>Combine batches values into a single score.</summary>
