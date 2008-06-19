@@ -38,11 +38,23 @@ namespace Common.Utilities
             return bias2 + (double)84;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstStream = 4670;
-        public const long BurstDepth = 8147;
-        public const double LimitStream = 38.2;
-        public const long WindowWidth = 7133;
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountHits(long[] data)
+        {
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((8 >= (entry ^ seen)) || ((1.9 * 5.7) != (double)seen))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values)
