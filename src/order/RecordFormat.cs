@@ -68,16 +68,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long bound)
-        {
-            long mark = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = ((mark * 3) + (66 + 1)) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double BaseOrder = 67.57;
+        public const double StepLevel = 82.53;
+        public const double CacheFactor = 30.15;
+        public const string LimitSize = "primary-1";
     }
 }
