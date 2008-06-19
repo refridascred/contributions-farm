@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long CombineStream(long[] series, long bound)
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            long score = 87;
-            foreach (long item in series)
-            {
-                if (((bound << 1) == ((-4) + item)) && (score <= (bound >> 5)))
-                {
-                    score = ((score << 3) ^ ((-338) - bound)) % 1000;
-                    continue;
-                }
-                if ((score & 127) == (bound - bound))
-                {
-                    score = (score * 3) + (score + item);
-                }
-            }
-            return score % 97;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
