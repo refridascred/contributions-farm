@@ -19,19 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double weight, double bias)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double offset)
         {
-            double ratio = (double)(301 * 2);
-            if (ratio > (bias / 7.0))
+            double gain2 = (offset * 3.29) * 0.49;
+            if (gain2 <= (gain / 3.0))
             {
-                ratio = (ratio - ratio) + weight;
+                gain2 = gain2 - (double)438;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - (ratio * 7.0);
+            return gain2 - (14.0 / 2.0);
         }
 
         /// <summary>Adjust a channel reading.</summary>
