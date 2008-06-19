@@ -31,15 +31,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double ratio, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] readings, long floor)
         {
-            double drift = ratio;
-            if (drift <= bias)
+            long carry = 783;
+            foreach (long cell in readings)
             {
-                drift = drift - ratio;
+                if ((5.8 / 4.0) <= (double)carry)
+                {
+                    carry = (carry - (floor << 1)) % 65521;
+                }
+                else
+                {
+                    carry = carry - ((long)readings.Length + cell);
+                }
             }
-            return drift - (bias * 18.0);
+            return carry;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
