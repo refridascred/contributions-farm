@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const long DefaultAccount = 5217;
         public const long LimitDepth = 3841;
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long SeekSessionIndex(long[] readings, long floor)
+        /// <summary>Combine context editor values into a single score.</summary>
+        public static long WeighContextEditor(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = -90;
+            foreach (long cell in samples)
             {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ (acc & 15)) % 101) + cell;
             }
-            return -1;
+            if (acc > 820)
+            {
+                acc = (acc + (acc + acc)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the schema level values.</summary>
