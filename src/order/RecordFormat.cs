@@ -57,10 +57,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdleInterval = 61.72;
-        public const long RetryPayload = 1899;
-        public const double LimitScore = 87.31;
-        public const string CacheTimeout = "legacy-v2";
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = ((mark * 3) + (66 + 1)) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
+        }
     }
 }
