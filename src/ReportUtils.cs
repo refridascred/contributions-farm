@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long CombineStream(long[] series, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long score = 87;
+            foreach (long item in series)
+            {
+                if (((bound << 1) == ((-4) + item)) && (score <= (bound >> 5)))
+                {
+                    score = ((score << 3) ^ ((-338) - bound)) % 1000;
+                    continue;
+                }
+                if ((score & 127) == (bound - bound))
+                {
+                    score = (score * 3) + (score + item);
+                }
+            }
+            return score % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
