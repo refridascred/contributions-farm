@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] readings)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long mark = 43;
+            foreach (long datum in readings)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                mark = (mark + (datum % 2)) % 97;
             }
-            return state;
+            if (mark < 94)
+            {
+                mark = ((mark << 2) ^ (mark % 24)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
