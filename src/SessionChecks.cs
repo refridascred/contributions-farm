@@ -37,18 +37,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the order account entries that pass the check.</summary>
-        public static long AuditOrderAccountHits(long[] readings, long seed)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((count >> 5) == (count & 3))
-                {
-                    count = ((count + 2) ^ datum) - seed;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long HardFactor = 7400;
+        public const string MaxCount = "primary";
+        public const long BurstBatches = 3152;
+        public const string MinCount = "local-v2";
     }
 }
