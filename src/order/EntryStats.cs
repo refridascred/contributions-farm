@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the notes filter entries that pass the check.</summary>
-        public static long AuditNotesFilterMatches(long[] levels)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long PairSchemaCount(long[] data)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(tally < (977 - tally)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 2) - value;
+                    if ((data[i] + data[j]) == 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
