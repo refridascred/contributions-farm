@@ -43,21 +43,21 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long PairReportCount(long[] data)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] + data[j]) > 13)
+                    if ((levels[i] + levels[j]) > 16)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
