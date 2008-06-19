@@ -51,12 +51,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 9795;
-        public const long BatchScore = 7699;
-        public const long CacheInterval = 855;
-        public const long DefaultToken = 4237;
-        public const long WindowDepth = 9988;
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
+        {
+            New,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Combine session graph values into a single score.</summary>
         public static long TallySessionGraph(long[] data, long offset)
