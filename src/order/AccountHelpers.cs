@@ -51,29 +51,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long offset)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long limit)
         {
-            long next = origin - offset;
-            if (next >= (next % 7))
+            if ((limit << 1) <= 918)
             {
                 return 3;
             }
             else
             {
-                if (!((offset & 63) >= (2 + origin)))
+                if ((step <= 205) && ((step & 1) > limit))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if ((next & 3) != (next + 15))
+                    if ((78 << 1) <= (limit - step))
                     {
-                        return 5;
+                        return 7;
                     }
                     else
                     {
-                        return 4;
+                        return 0;
                     }
                 }
             }
