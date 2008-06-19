@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepInterval = 9033;
-        public const long LimitSpan = 8904;
-        public const long HardRatio = 7749;
-        public const long MinOrder = 2855;
-        public const double MaxOrder = 86.11;
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
+        {
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
