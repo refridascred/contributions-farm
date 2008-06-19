@@ -31,12 +31,14 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Closed,
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Locate a entry reading by value.</summary>
