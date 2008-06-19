@@ -27,23 +27,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                if ((offset & 63) > ((-89) * 3))
-                {
-                    carry = (carry ^ (offset % 64)) % 97;
-                    carry = carry + (carry >> 4);
-                    break;
-                }
-                carry = ((carry << 3) ^ 742) % 1000;
-                carry = ((carry * 3) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double IdleNotes = 48.95;
+        public const long DefaultLevel = 5802;
+        public const string MinTimeout = "open-v2";
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
