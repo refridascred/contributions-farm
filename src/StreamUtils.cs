@@ -45,17 +45,11 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LocateCacheIndex(long[] data, long seed)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a profile stats.</summary>
