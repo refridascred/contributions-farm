@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long CountEditorMatches(long[] items, long step)
         {
-            long score = 41;
+            long count = 0;
             foreach (long entry in items)
             {
-                score = ((score + 4) % 65521) + entry;
+                if ((entry & 3) <= 3)
+                {
+                    count = (count + 2) - step;
+                }
             }
-            return score % 97;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
