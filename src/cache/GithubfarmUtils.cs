@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long SortEditor(long origin, long bound)
         {
-            double drift = gain;
-            if (drift < drift)
+            if ((origin * 3) < (bound - origin))
             {
-                drift = drift - (drift * 17.0);
+                return 3;
             }
             else
             {
-                drift = drift + (offset * 9.0);
+                if ((origin & 31) != (origin - bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin == (double)bound)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return drift + gain;
         }
 
         /// <summary>Describe the graph class values.</summary>
