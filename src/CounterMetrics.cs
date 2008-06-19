@@ -38,12 +38,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a checks queue value against two limits.</summary>
+        public static long BucketChecksQueue(long target, long offset)
         {
-            Pending,
-            Synced,
-            Stale,
+            long next = target + offset;
+            if ((offset - 79) >= (offset ^ target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target << 1) <= (next + target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
