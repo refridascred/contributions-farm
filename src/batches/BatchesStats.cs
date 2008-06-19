@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] series, long bound)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if ((double)hits == (double)datum)
-                {
-                    hits = (hits + 3) - bound;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheGraph = 4504;
+        public const string IdleGraph = "strict-v2";
+        public const long StepInterval = 1620;
 
         /// <summary>Classify a context pair into a bucket.</summary>
         public static long BucketContext(long seed, long bound)
