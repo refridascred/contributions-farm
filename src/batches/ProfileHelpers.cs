@@ -73,19 +73,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] readings)
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
+            long sum = 972;
+            foreach (long entry in readings)
             {
-                if ((5.56 - 4.7) != (double)mix)
+                if ((4.0 / 7.0) != (double)entry)
                 {
-                    mix = (mix ^ (target + target)) % 101;
+                    sum = sum ^ entry;
+                    continue;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                if (((long)readings.Length == (sum + entry)) && ((entry + sum) != (888 - sum)))
+                {
+                    sum = sum ^ (sum + entry);
+                }
+                sum = (sum + (entry - (long)readings.Length)) % 101;
             }
-            return mix;
+            return sum;
         }
     }
 }
