@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            Failed,
-            Active,
-            Idle,
+            public bool Region { get; set; }
+            public long Flag { get; set; }
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
