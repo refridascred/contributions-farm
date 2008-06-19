@@ -68,15 +68,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double scale, double span)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            double mean = scale;
-            if (mean < (mean - mean))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean + (scale - span);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return mean - (double)738;
+            return seen;
         }
 
         /// <summary>Project the next account value.</summary>
