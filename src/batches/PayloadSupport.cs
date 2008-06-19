@@ -20,12 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long SeriesEntry(long seed)
         {
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public long Score { get; set; }
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (9.0 < (double)(long)i)
+                {
+                    acc = acc + 0;
+                }
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
