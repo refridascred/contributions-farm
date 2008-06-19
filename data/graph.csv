@@ -1,10 +1,6 @@
-id,owner,ratio,state,region
-1,866,772,primary,eu-west
-2,legacy,24.03,58,403
-3,503,blue,38.75,295
-4,758,314,edge,staging
-5,446,46.49,legacy,34.72
-6,2.9,935,41.84,standard
-7,open,68.32,strict,427
-8,684,cached,eu-west,166
-9,299,15.31,42.58,strict
+id,state,weight
+1,49.33,682
+2,909,open
+3,green,green
+4,fallback,70.69
+5,85,549
