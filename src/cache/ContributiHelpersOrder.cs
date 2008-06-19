@@ -27,10 +27,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleSpan = 8163;
-        public const long BurstProfile = 618;
-        public const long StepProfile = 4691;
-        public const long DefaultInterval = 5365;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] readings, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in readings)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
