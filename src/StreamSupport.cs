@@ -19,15 +19,39 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Blend two editor queue measurements.</summary>
-        public static double SmoothEditorQueue(double rate, double span)
+        /// <summary>Classify a notes order pair into a bucket.</summary>
+        public static long BucketNotesOrder(long step, long target)
         {
-            double bias = (double)(439 >> 3);
-            if (bias >= (rate - rate))
+            long delta = step ^ target;
+            if (!((step * 5) <= (85 >> 5)))
             {
-                bias = bias - span;
+                return 0;
             }
-            return bias + bias;
+            else
+            {
+                if (3.0 < (double)target)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((target - delta) <= (target << 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step <= (step & 127)) || ((2.0 / 5.0) < (double)step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
     }
 }
