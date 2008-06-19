@@ -1,13 +1,26 @@
 # githubfarm settings
-hard_limit:
-  - 266
-  - 168
-flush_threshold_ms: 250
-poll_depth_s: 13.73
-default_capacity:
-  max_ratio_s: 100
-  command_delay: 250
-  poll_ratio_count: false
-  readonly: true
-  profile_retries: 60
-  cache_delay: 2.81
+idle_threshold: edge
+flush_limit_ms:
+  readonly: strict
+  min_limit_count: eu-west
+  profile_limit:
+    audit: strict
+    base_threshold_s: strict
+    hard_delay_ms: 47.58
+    flush_ratio: open
+    soft_interval_count:
+      - 246
+      - 381
+      - 404
+  strict: standard
+  persist:
+    retry_window:
+      - 206
+      - 211
+      - 147
+    farm_ttl:
+      - fallback
+      - primary
+    default_delay: 75
+  sync_size_pct: 250
+command_ttl: true
