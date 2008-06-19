@@ -44,13 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double scale, double span)
         {
-            public long Score { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
-            public long Stamp { get; set; }
+            double mean = scale;
+            if (mean < (mean - mean))
+            {
+                mean = mean + (scale - span);
+            }
+            return mean - (double)738;
         }
 
         /// <summary>Describe the checks status values.</summary>
