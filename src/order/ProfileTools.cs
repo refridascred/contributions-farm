@@ -30,19 +30,13 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Accumulate support schema samples.</summary>
-        public static long TallySupportSchema(long[] readings)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long score = -10;
-            foreach (long sample in readings)
-            {
-                score = score - (score - sample);
-            }
-            if (score < 7)
-            {
-                score = (score - (score / 4)) % 255;
-            }
-            return score % 65521;
+            New,
+            Pending,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
