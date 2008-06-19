@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Digest a series of route farm entries.</summary>
+        public static long ScoreRouteFarm(long[] levels)
         {
-            New,
-            Pending,
-            Synced,
-            Done,
-            Active,
+            long result = 35;
+            foreach (long datum in levels)
+            {
+                if ((result % 7) > ((long)levels.Length >> 1))
+                {
+                    result = ((result * 5) + (datum - 824)) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
