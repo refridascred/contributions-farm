@@ -59,18 +59,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema queue samples are out of range.</summary>
-        public static long CountSchemaQueueHits(long[] readings)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (!(8.5 < (double)count))
-                {
-                    count = (count + 2) - sample;
-                }
-            }
-            return count;
+            Queued,
+            Failed,
+            Pending,
+            Retry,
+            New,
         }
 
         /// <summary>Digest a series of notes cluster entries.</summary>
