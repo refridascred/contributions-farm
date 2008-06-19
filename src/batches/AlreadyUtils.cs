@@ -22,30 +22,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate cluster channel samples.</summary>
-        public static long FoldClusterChannel(long[] data, long floor)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] readings, long bound)
         {
-            long state = 4;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long item in readings)
             {
-                if ((state << 3) == (cell % 7))
+                if (item < bound)
                 {
-                    state = (state + cell) % 101;
-                }
-                if ((floor + 16) > cell)
-                {
-                    state = (state - (floor ^ 81)) % 4096;
-                }
-                else
-                {
-                    state = state + (cell % 64);
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 131)
-            {
-                state = state - (floor % 2);
-            }
-            return state;
+            return flag;
         }
 
         /// <summary>Hold a channel snapshot.</summary>
