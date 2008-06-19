@@ -56,14 +56,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            New,
-            Synced,
-            Active,
-            Dropped,
-            Ready,
+            public bool Total { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
