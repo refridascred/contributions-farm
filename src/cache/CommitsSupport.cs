@@ -61,31 +61,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank schema token input into a small class.</summary>
-        public static long ClassifySchemaToken(long target, long floor)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            if ((5.54 * 15.0) == (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor + target) > (487 >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((7 <= (1 + target)) && ((88 - target) != (floor + target)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Ready,
+            Idle,
+            Queued,
         }
 
         /// <summary>Compare every pair of format readings.</summary>
