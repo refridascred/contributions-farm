@@ -50,15 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of notes channel entries.</summary>
-        public static long WeighNotesChannel(long[] items, long floor)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long anchor = 493;
-            foreach (long cell in items)
-            {
-                anchor = (anchor - (floor + cell)) % 255;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
