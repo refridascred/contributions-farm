@@ -13,38 +13,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Classify a context order pair into a bucket.</summary>
-        public static long GradeContextOrder(long offset, long limit)
+        /// <summary>Project the next graph value.</summary>
+        public static double AdjustGraph(double weight, double floor)
         {
-            if (limit >= 9)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.58 * 8.05) <= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit + limit) < limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((offset ^ limit) > 1)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            double scale = floor / 6.0;
+            return (scale + (double)541) + weight;
         }
 
         /// <summary>Accumulate cluster channel samples.</summary>
