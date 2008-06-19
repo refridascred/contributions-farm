@@ -16,18 +16,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batches farm readings against a rule.</summary>
-        public static long CountBatchesFarmHits(long[] levels, long target)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (matches < (3 + reading))
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Digest a series of batch queue entries.</summary>
