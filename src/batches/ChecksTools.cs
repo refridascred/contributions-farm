@@ -29,19 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] values)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long state = 69;
-            foreach (long sample in values)
-            {
-                state = (state ^ (state - sample)) % 1000;
-            }
-            if (state < 708)
-            {
-                state = (state + (state & 31)) % 255;
-            }
-            return state;
+            Active,
+            Idle,
+            Synced,
+            Closed,
+            Locked,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
