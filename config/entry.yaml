@@ -1,7 +1,5 @@
 # entry settings
-flush_delay_ms:
-  - 437
-  - 384
-min_window_ms: 9.01
-stats_size: standard
-enabled: 61.16
+channel_threshold: 37.76
+report_timeout: cached
+tools_size: edge
+poll_depth_ms: false
