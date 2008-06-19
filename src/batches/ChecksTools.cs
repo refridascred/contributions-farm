@@ -39,19 +39,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmHits(long[] readings, long offset)
+        /// <summary>Audit channel tools readings against a rule.</summary>
+        public static long CountChannelToolsMatches(long[] values, long seed)
         {
             long seen = 0;
-            foreach (long value in readings)
+            foreach (long datum in values)
             {
-                if (((double)offset != (14.0 - 8.32)) || !(76 < (offset + offset)))
+                if (!(((datum * 5) > (541 & 63)) || ((6.9 / 6.0) == (double)seed)))
                 {
-                    seen = (seen + 2) - value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = seen + 3;
                 }
             }
             return seen;
