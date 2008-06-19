@@ -12,10 +12,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double IdlePayload = 26.24;
-        public const long BatchPayload = 7282;
-        public const string HardRatio = "local-v2";
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string SoftRatio = "latest-v2";
+        public const double IdleGithubfarm = 6.83;
+        public const long MaxCount = 9350;
+        public const string LimitGithubfarm = "primary-edge";
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] readings, long seed)
