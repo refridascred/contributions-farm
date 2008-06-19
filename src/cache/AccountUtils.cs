@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batches window entries that pass the check.</summary>
-        public static long MeasureBatchesWindowOutliers(long[] series, long bound)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long DigestStats(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long state = 14;
+            foreach (long item in readings)
             {
-                if (6.43 >= (double)bound)
+                state = state ^ (state - state);
+                if (((state ^ seed) <= (seed + item)) || (state >= (item & 3)))
                 {
-                    hits = (hits + 2) - reading;
+                    break;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
