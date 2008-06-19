@@ -44,14 +44,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
-        {
-            public double Token { get; set; }
-            public long Size { get; set; }
-            public double Owner { get; set; }
-            public bool Score { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowSpan = 1570;
+        public const long StepCluster = 7407;
+        public const string MinLevel = "alpha";
+        public const long HardScore = 2545;
+        public const long IdleInterval = 6950;
 
         /// <summary>Roll a editor schema counter forward.</summary>
         public static long SeriesEditorSchema(long offset)
