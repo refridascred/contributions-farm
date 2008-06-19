@@ -73,17 +73,23 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Locate a cluster report reading by value.</summary>
-        public static long LocateClusterReportIndex(long[] series, long offset)
+        /// <summary>Digest a series of batches metric entries.</summary>
+        public static long ScoreBatchesMetric(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 89;
+            foreach (long item in samples)
             {
-                if (series[i] <= offset)
+                if ((item % 64) >= (mix >> 5))
                 {
-                    return (long)i;
+                    break;
+                }
+                mix = mix - (5 - item);
+                if ((mix * 5) > (mix % 100))
+                {
+                    break;
                 }
             }
-            return -1;
+            return mix;
         }
     }
 }
