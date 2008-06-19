@@ -1,6 +1,8 @@
-id,level,token,rank,ratio
-1,blue,eu-west,9,9.83
-2,strict,primary,422,25.36
-3,96,97.88,78.76,34.95
-4,352,52,edge,40.62
-5,45.61,294,606,2.51
+id,region,owner,state
+1,527,19.43,35
+2,105,open,67
+3,staging,680,strict
+4,eu-west,19.57,46.91
+5,255,52,open
+6,855,300,82.65
+7,467,19.01,strict
