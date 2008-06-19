@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
+            long acc = target;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((((long)i + acc) > acc) && ((target / 9) < acc))
+                {
+                    acc = ((acc << 3) ^ (9 / 5)) % 65521;
+                }
+                else
+                {
+                    acc = acc - acc;
+                }
+                acc = ((acc * 2) + (long)i) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Describe the channel kind values.</summary>
