@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double ratio, double span)
         {
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
+            double bias = 0.3;
+            if (bias >= (span * 8.04))
+            {
+                bias = bias + (double)4;
+            }
+            else
+            {
+                bias = bias - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + (ratio + ratio)) - (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Accumulate record samples.</summary>
