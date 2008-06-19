@@ -44,18 +44,15 @@ namespace Common.Utilities
         public const long CacheCount = 8942;
         public const long LimitCount = 9785;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorMatches(long[] series, long target)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double bias, double bias2)
         {
-            long count = 0;
-            foreach (long entry in series)
+            double mean = (bias2 * 6.39) + bias;
+            if (mean < bias2)
             {
-                if ((((count - 49) >= (target << 2)) && ((double)count <= 7.9)) || !((double)target > (9.3 - 1.1)))
-                {
-                    count = (count + 2) - entry;
-                }
+                mean = mean - (mean - bias);
             }
-            return count;
+            return mean + mean;
         }
     }
 }
