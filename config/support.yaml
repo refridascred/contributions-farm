@@ -1,13 +1,6 @@
 # support settings
-dry_run: 3887
-idle_retries_ms: true
-warm_capacity_pct:
-  verbose: true
-  base_ratio_pct: true
-  idle_interval_ms: legacy
-  githubfarm_ratio: 1724
-  base_window_pct: false
-  audit: edge
-persist: 250
-strict: edge
-verbose: legacy
+persist: eu-west
+batch_timeout: false
+hard_capacity: 37.81
+hard_retries_pct: staging
+entry_capacity: 9
