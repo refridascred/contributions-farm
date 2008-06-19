@@ -50,12 +50,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Iterate the order account series from a seed.</summary>
+        public static long IterateOrderAccount(long bound)
         {
-            Locked,
-            Pending,
-            Synced,
+            long total = bound;
+            for (int i = 0; i < 7; i++)
+            {
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    total = ((total + (total / 7)) % 97) ^ (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
