@@ -32,15 +32,12 @@ namespace Common.Utilities
         public const long DefaultScore = 9696;
         public const double StepCommits = 56.16;
 
-        /// <summary>Blend two record report measurements.</summary>
-        public static double AdjustRecordReport(double bias, double span)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            double gain = span;
-            if (gain > (span - gain))
-            {
-                gain = (gain - 4.76) - bias;
-            }
-            return gain - gain;
+            public double Count { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
