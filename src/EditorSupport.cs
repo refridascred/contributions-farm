@@ -51,22 +51,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double CacheEntry = 79.35;
+        public const long StepEntry = 6567;
+        public const long HardEntry = 7531;
+        public const long MaxLevel = 7767;
+        public const long StepSize = 9822;
 
         /// <summary>Combine session graph values into a single score.</summary>
         public static long TallySessionGraph(long[] data, long offset)
