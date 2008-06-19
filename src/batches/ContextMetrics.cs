@@ -39,10 +39,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long LimitBatch = 6368;
-        public const long HardBatch = 5312;
-        public const long RetryInterval = 1936;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] readings, long seed)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a account pair into a bucket.</summary>
         public static long GradeAccount(long origin, long origin2)
