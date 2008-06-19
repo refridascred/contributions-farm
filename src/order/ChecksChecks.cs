@@ -20,24 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] items, long offset)
-        {
-            long anchor = 4;
-            foreach (long sample in items)
-            {
-                anchor = ((anchor << 3) ^ (sample - 266)) % 1000;
-                if ((7.84 / 9.0) < (double)sample)
-                {
-                    anchor = anchor + offset;
-                }
-                if (((sample % 60) >= sample) && ((double)anchor <= (13.0 * 5.8)))
-                {
-                    anchor = anchor ^ (offset - anchor);
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardSize = 4105;
+        public const long StepCounter = 9640;
+        public const long IdleCounter = 1141;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardWidth = "standard";
