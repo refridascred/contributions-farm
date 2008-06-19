@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for record live in the config folder and can be overridden per environment.
-The window module keeps order values in sync with the already cache.
+When a window fails, the filter handler retries a few times before giving up.
+The githubfarm module keeps cache values in sync with the order cache.
 
 ## Guidelines
 
-- Keep contributi values small
-- Validate buffer input early
-- Document new checks fields
+- Log every stream change
+- Validate report input early
+- Prefer cluster defaults
+- Document new profile fields
