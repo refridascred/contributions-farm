@@ -47,25 +47,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a order channel pair into a bucket.</summary>
-        public static long GradeOrderChannel(long limit, long bound)
+        /// <summary>Count the already stats entries that pass the check.</summary>
+        public static long MeasureAlreadyStatsMatches(long[] items, long offset)
         {
-            long prev = limit ^ bound;
-            if ((78 << 2) >= prev)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (prev <= (bound * 5))
+                if (((20.0 - 3.0) != (double)offset) || ((sample + offset) > (offset & 255)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
