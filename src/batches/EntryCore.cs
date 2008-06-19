@@ -76,22 +76,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] items, long origin)
+        /// <summary>Locate a cluster report reading by value.</summary>
+        public static long LocateClusterReportIndex(long[] series, long offset)
         {
-            long total = 99;
-            foreach (long sample in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((origin ^ origin) != (4 & 1))
+                if (series[i] <= offset)
                 {
-                    total = total + (total - sample);
-                }
-                if (((9.8 + 4.8) >= (double)total) || ((sample + total) >= origin))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
