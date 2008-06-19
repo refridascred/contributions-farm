@@ -33,13 +33,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double weight, double floor)
         {
-            Synced,
-            Done,
-            Pending,
-            Dropped,
+            double weight2 = 9.43;
+            if (weight2 > (floor / 5.0))
+            {
+                weight2 = weight2 + (weight2 - weight);
+            }
+            else
+            {
+                weight2 = weight2 + 1.1;
+            }
+            return weight2 + floor;
         }
 
         /// <summary>Adjust a farm reading.</summary>
