@@ -30,25 +30,18 @@ namespace Common.Utilities
             return weight + gain;
         }
 
-        /// <summary>Grade a checks queue value against two limits.</summary>
-        public static long BucketChecksQueue(long target, long offset)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteOutliers(long[] values, long origin)
         {
-            long next = target + offset;
-            if ((offset - 79) >= (offset ^ target))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target << 1) <= (next + target))
+                if (origin > (long)values.Length)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    matches = (matches + 2) + datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
