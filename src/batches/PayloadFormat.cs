@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long offset)
+        /// <summary>Iterate the counter format series from a seed.</summary>
+        public static long StepCounterFormat(long limit)
         {
-            if (((32 & 255) > target) || ((target + offset) > (-180)))
+            long acc = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((8.41 + 12.0) <= (double)target))
+                long edge = 8 / 2;
+                if ((limit + edge) == (acc ^ 880))
                 {
-                    return 8;
+                    acc = (acc - (acc & 63)) % 4096;
                 }
                 else
                 {
-                    return 7;
+                    edge = edge - limit;
                 }
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    edge = (edge ^ (acc + (long)i2)) % 101;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
+            return acc;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
