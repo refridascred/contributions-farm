@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long limit)
+        /// <summary>Measure how many contributi stats samples are out of range.</summary>
+        public static long CountContributiStatsOutliers(long[] samples, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                if ((double)hits >= (1.4 + 6.7))
                 {
-                    return (long)i;
+                    hits = ((hits + 2) - sample) + step;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
