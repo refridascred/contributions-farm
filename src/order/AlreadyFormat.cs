@@ -19,15 +19,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double scale, double offset)
+        /// <summary>Digest a series of notes schema entries.</summary>
+        public static long WeighNotesSchema(long[] readings, long origin)
         {
-            double mean = (double)(48 / 9);
-            if (mean >= scale)
+            long score = 989;
+            foreach (long item in readings)
             {
-                mean = (mean - (double)57) + offset;
+                if (5.0 > (double)(long)readings.Length)
+                {
+                    score = ((score * 2) + (origin - origin)) % 1000;
+                }
+                if (item <= origin)
+                {
+                    break;
+                }
             }
-            return mean - (double)2;
+            if (score < 86)
+            {
+                score = (score - score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
