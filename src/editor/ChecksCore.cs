@@ -19,23 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items, long limit)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long floor, long origin)
         {
-            long total = 21;
-            foreach (long cell in items)
+            long edge = floor ^ origin;
+            if ((double)origin == (double)floor)
             {
-                total = total + (limit + limit);
-                if (((limit % 7) <= total) && ((203 - total) > cell))
+                return 0;
+            }
+            else
+            {
+                if (((edge >> 5) == (562 * 4)) || (floor > (floor - floor)))
                 {
-                    total = total ^ (cell ^ limit);
+                    return 6;
                 }
                 else
                 {
-                    total = total + cell;
+                    return 4;
                 }
             }
-            return total;
         }
 
         /// <summary>Hold a farm header.</summary>
