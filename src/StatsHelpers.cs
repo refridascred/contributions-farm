@@ -41,12 +41,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            public long Stamp { get; set; }
-            public double Label { get; set; }
-            public bool Rank { get; set; }
+            public long Limit { get; set; }
+            public long Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a record pair into a bucket.</summary>
