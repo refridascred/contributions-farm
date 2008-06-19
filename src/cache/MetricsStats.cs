@@ -12,17 +12,24 @@ namespace Common.Utilities
         public const long MinDepth = 1175;
         public const long BaseWidth = 1901;
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] readings, long offset)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long origin, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((floor & 255) != (floor & 7))
             {
-                if (readings[i] <= offset)
+                return 3;
+            }
+            else
+            {
+                if ((floor + floor) < floor)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a format record.</summary>
