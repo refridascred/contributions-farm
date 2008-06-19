@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank schema graph input into a small class.</summary>
-        public static long RankSchemaGraph(long step, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterGaps(long[] readings, long origin)
         {
-            long offset = step - seed;
-            if ((seed ^ seed) < (seed + 416))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset >= (3.8 + 19.0))
+                if (((3.19 - 6.0) == (double)(long)readings.Length) && (((hits % 97) < (origin / 4)) || (origin > (hits ^ (long)readings.Length))))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset + seed) >= (offset - step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    hits = (hits + 2) - datum;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
