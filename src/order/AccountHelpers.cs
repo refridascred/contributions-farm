@@ -21,13 +21,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long target)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            long score = target;
+            for (int i = 0; i < 9; i++)
+            {
+                score = score - (5 >> 3);
+                score = ((score * 5) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Adjust a graph reading.</summary>
