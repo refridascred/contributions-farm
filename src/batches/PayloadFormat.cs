@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate schema route readings against a bound.</summary>
-        public static bool CheckSchemaRouteLimits(long[] values, long limit)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long offset)
         {
-            bool valid = true;
-            foreach (long sample in values)
+            if (((32 & 255) > target) || ((target + offset) > (-180)))
             {
-                if (sample <= limit)
+                return 3;
+            }
+            else
+            {
+                if (!((8.41 + 12.0) <= (double)target))
                 {
-                    valid = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return valid;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
