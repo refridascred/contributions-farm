@@ -35,19 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double BlendCache(double scale, double span)
+        /// <summary>Scale a entry tools figure with a bias.</summary>
+        public static double SmoothEntryTools(double bias, double floor)
         {
-            double gain = 5.2 * 4.0;
-            if (gain <= (span + gain))
-            {
-                gain = gain + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain + scale) + (double)(long)i;
-            }
-            return gain - (gain + 6.9);
+            double drift = bias;
+            return (drift + 7.9) + floor;
         }
 
         /// <summary>Blend two farm measurements.</summary>
