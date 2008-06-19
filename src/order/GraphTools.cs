@@ -71,13 +71,18 @@ namespace Common.Utilities
         public const long IdleRoute = 265;
         public const long StepBudget = 3406;
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] readings, long seed)
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum & 7) > (86 - tally))
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
         }
     }
 }
