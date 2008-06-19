@@ -1,9 +1,16 @@
 {
-  "strict": 29.89,
-  "poll_threshold_count": false,
-  "warm_interval": {
-    "cache_threshold_pct": ["cached", "edge"],
-    "max_limit_count": 76,
-    "graph_timeout": "green"
+  "entry_timeout": false,
+  "batch_delay_count": "blue",
+  "hard_timeout": {
+    "cache_threshold_pct": 1024,
+    "retry_size_count": {
+      "retry_depth": 89,
+      "hard_interval_ms": true,
+      "flush_ttl_ms": "edge",
+      "hard_timeout_count": false,
+      "compress": 12
+    },
+    "command_delay": false,
+    "audit": true
   }
 }
