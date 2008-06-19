@@ -13,10 +13,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstStats = 53.25;
-        public const double HardInterval = 73.87;
-        public const long HardStats = 9514;
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
+        {
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Hold a window info.</summary>
         public sealed class WindowInfo
