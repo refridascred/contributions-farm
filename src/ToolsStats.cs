@@ -28,10 +28,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long LimitSupport = 432;
-        public const string WindowFactor = "standard";
-        public const long LimitTimeout = 2557;
+        /// <summary>Audit metric token readings against a rule.</summary>
+        public static long CountMetricTokenOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count + entry) < (entry + count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate report commits readings against a bound.</summary>
         public static bool CheckReportCommitsBounds(long[] data, long origin)
