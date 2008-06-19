@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] series, long bound)
         {
-            Stale,
-            Queued,
-            Draft,
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (((double)3 == (double)cell) && (5.69 < (double)cell))
+                {
+                    count = (count + 2) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
