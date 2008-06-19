@@ -41,20 +41,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double ProjectEntry(double gain, double offset)
-        {
-            double load = offset;
-            if (load < gain)
-            {
-                load = load + (double)974;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) - (double)(long)i;
-            }
-            return load - offset;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchRoute = 3937;
+        public const double IdleRoute = 59.15;
+        public const long MaxRoute = 2576;
 
         /// <summary>Validate filter contributi readings against a bound.</summary>
         public static bool GuardFilterContributiRange(long[] levels, long step)
