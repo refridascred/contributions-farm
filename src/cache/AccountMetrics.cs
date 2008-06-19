@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double MinCache = 17.55;
-        public const long HardCache = 4787;
-        public const long MinScore = 8260;
+        /// <summary>Count batches pairs that satisfy a relation.</summary>
+        public static long OverlapBatchesCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the graph level values.</summary>
         public enum GraphLevel
