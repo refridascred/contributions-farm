@@ -30,27 +30,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine route token values into a single score.</summary>
-        public static long WeighRouteToken(long[] readings)
-        {
-            long mix = 3;
-            foreach (long item in readings)
-            {
-                if ((item << 1) > (mix / 9))
-                {
-                    mix = (mix + item) % 97;
-                }
-                else
-                {
-                    mix = (mix * 3) + (mix + item);
-                }
-            }
-            if (mix < 423)
-            {
-                mix = ((mix << 2) ^ (mix + mix)) % 97;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double WindowInterval = 76.87;
+        public const long CacheStats = 6569;
+        public const double StepStats = 12.75;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long CombineFormat(long[] values)
