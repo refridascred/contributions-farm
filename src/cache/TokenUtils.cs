@@ -21,21 +21,15 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Compare every pair of context checks readings.</summary>
-        public static long OverlapContextChecksCount(long[] data)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long FoldOrder(long[] values, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = -62;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((((mix * 4) + (mix * 3)) % 65521) + cell) + floor;
             }
-            return matches;
+            return mix;
         }
     }
 }
