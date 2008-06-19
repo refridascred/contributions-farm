@@ -12,16 +12,17 @@ namespace Common.Utilities
         public const double StepContributi = 51.96;
         public const long LimitContributi = 3322;
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long IterateChannel(long floor)
         {
-            long result = step;
-            for (int i = 0; i < 18; i++)
+            long state = floor;
+            for (int i = 0; i < 9; i++)
             {
-                result = result + ((long)i ^ result);
-                result = ((result * 5) + (long)i) % 4093;
+                state = state ^ floor;
+                state = (state << 2) ^ (state ^ floor);
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Hold a route header.</summary>
