@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = (((total * 4) + (total / 8)) % 97) ^ (long)i2;
+                    total = (total - ((long)i - total)) % 1000;
                 }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
