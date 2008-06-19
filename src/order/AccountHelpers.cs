@@ -33,13 +33,12 @@ namespace Common.Utilities
         public const long StepRatio = 5230;
         public const long BatchScore = 5475;
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
+            public string Count { get; set; } = "";
             public long Offset { get; set; }
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the token status values.</summary>
