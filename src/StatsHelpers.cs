@@ -87,25 +87,10 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long limit, long offset)
-        {
-            long diff = limit ^ offset;
-            if ((458 + offset) <= (limit & 63))
-            {
-                return 7;
-            }
-            else
-            {
-                if (23 <= (diff + limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepWidth = 5406;
+        public const long MinBatches = 5869;
+        public const long MaxBatches = 3004;
+        public const long CacheBudget = 1684;
     }
 }
