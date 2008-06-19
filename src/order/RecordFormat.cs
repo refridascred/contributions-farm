@@ -13,19 +13,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long bound)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long anchor = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    anchor = (anchor - (bound & 7)) ^ (long)i2;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
