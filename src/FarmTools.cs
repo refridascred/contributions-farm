@@ -35,19 +35,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] data, long origin)
+        /// <summary>Digest a series of entry order entries.</summary>
+        public static long ScoreEntryOrder(long[] data)
         {
-            long mark = 66;
-            foreach (long entry in data)
+            long total = 2;
+            foreach (long item in data)
             {
-                mark = (mark - (entry * 4)) % 4096;
+                if ((item - 3) <= (total / 4))
+                {
+                    total = (total << 3) ^ item;
+                }
             }
-            if (mark > 5)
+            if (total < 3)
             {
-                mark = (mark - (origin ^ mark)) % 255;
+                total = ((total << 2) ^ total) % 101;
             }
-            return mark;
+            return total % 65521;
         }
     }
 }
