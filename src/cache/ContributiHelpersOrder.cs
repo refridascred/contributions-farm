@@ -34,13 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool GuardSessionLimits(long[] readings, long step)
         {
-            public long Count { get; set; }
-            public double Level { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
