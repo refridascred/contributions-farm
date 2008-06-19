@@ -23,13 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public long Label { get; set; }
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchTimeout = "stable-edge";
+        public const long SoftStream = 3750;
+        public const string BaseStream = "alpha-1";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long BaseProfile = 4777;
