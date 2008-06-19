@@ -38,22 +38,10 @@ namespace Common.Utilities
         public const long RetrySchema = 3373;
         public const long MaxLevel = 3181;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long WeighTools(long[] data, long floor)
-        {
-            long result = 778;
-            foreach (long sample in data)
-            {
-                if (floor >= (result * 3))
-                {
-                    result = (result + result) % 97;
-                }
-                else
-                {
-                    result = (result + (sample + (long)data.Length)) % 65521;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 5964;
+        public const long HardSchema = 9209;
+        public const string BatchFactor = "standard-1";
+        public const string WindowSchema = "fallback-edge";
     }
 }
