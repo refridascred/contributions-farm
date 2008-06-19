@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long limit, long origin)
         {
-            Pending,
-            Dropped,
-            Queued,
-            Draft,
+            long bound = limit - origin;
+            if ((origin & 1) == (limit ^ 87))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!(limit < bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((limit & 15) >= (limit + bound)) || ((origin - origin) == (bound % 97)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
