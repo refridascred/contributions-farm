@@ -1,5 +1,7 @@
 {
-  "idle_limit_s": 500,
-  "layout_retries": "eu-west",
-  "record_delay": "green"
+  "warm_timeout": 9455,
+  "audit": false,
+  "flush_ratio_count": ["green", "edge", "latest"],
+  "queue_retries": 7422,
+  "checks_delay": "staging"
 }
