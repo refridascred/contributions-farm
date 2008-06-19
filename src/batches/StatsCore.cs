@@ -25,15 +25,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two metrics order measurements.</summary>
-        public static double SmoothMetricsOrder(double rate, double offset)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            double ratio = offset;
-            if (ratio <= (double)37)
-            {
-                ratio = (ratio - ratio) - rate;
-            }
-            return ratio - (2.46 - offset);
+            public long Region { get; set; }
+            public double Score { get; set; }
+            public long Weight { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Blend two notes measurements.</summary>
