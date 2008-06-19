@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string BaseStats = "alpha-v2";
-        public const long BurstRatio = 3688;
-        public const long BurstStats = 3764;
-        public const string HardStats = "primary";
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool GuardContextLimits(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a commits header.</summary>
         public sealed class CommitsHeader
