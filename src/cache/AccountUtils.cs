@@ -14,18 +14,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the commits layout entries that pass the check.</summary>
-        public static long AuditCommitsLayoutHits(long[] samples)
+        /// <summary>Validate cache support readings against a bound.</summary>
+        public static bool CheckCacheSupportRange(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if (((5.14 / 2.0) < (double)datum) && ((double)datum != (5.85 + 6.8)))
+                if (reading > origin)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Describe the cache mode values.</summary>
