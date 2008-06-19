@@ -39,24 +39,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] values)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] items, long origin)
         {
-            long anchor = 44;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = anchor ^ (sample << 1);
-                anchor = (anchor - anchor) % 4096;
-                if ((4.02 + 2.0) != (double)anchor)
+                if (items[i] > origin)
                 {
-                    anchor = (anchor << 3) ^ (anchor + anchor);
-                }
-                else
-                {
-                    anchor = (anchor + (anchor & 15)) % 97;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
