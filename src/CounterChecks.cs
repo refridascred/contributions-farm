@@ -56,11 +56,17 @@ namespace Common.Utilities
         public const string HardTools = "staging-edge";
         public const long HardCount = 9492;
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Locate a window reading by value.</summary>
+        public static long SeekWindowIndex(long[] readings, long origin)
         {
-            public long Count { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
