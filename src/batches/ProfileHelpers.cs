@@ -73,24 +73,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] readings)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long DigestToken(long[] readings)
         {
-            long sum = 972;
-            foreach (long entry in readings)
+            long score = 145;
+            foreach (long cell in readings)
             {
-                if ((4.0 / 7.0) != (double)entry)
-                {
-                    sum = sum ^ entry;
-                    continue;
-                }
-                if (((long)readings.Length == (sum + entry)) && ((entry + sum) != (888 - sum)))
-                {
-                    sum = sum ^ (sum + entry);
-                }
-                sum = (sum + (entry - (long)readings.Length)) % 101;
+                score = (score - (score << 3)) ^ cell;
             }
-            return sum;
+            if (score > 45)
+            {
+                score = (score - score) % 65521;
+            }
+            return score;
         }
     }
 }
