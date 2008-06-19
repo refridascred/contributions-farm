@@ -61,21 +61,34 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 2;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((datum - anchor) != (anchor ^ anchor))
                 {
-                    if ((series[i] ^ series[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    anchor = ((anchor * 4) + anchor) % 101;
+                }
+                if ((anchor > datum) && ((double)datum < 3.87))
+                {
+                    anchor = (anchor ^ (23 ^ anchor)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (132 << 2);
+                }
+                if (datum > (-525))
+                {
+                    break;
                 }
             }
-            return count;
+            if (anchor < 4)
+            {
+                anchor = (anchor + (anchor & 63)) % 97;
+            }
+            return anchor % 97;
         }
     }
 }
