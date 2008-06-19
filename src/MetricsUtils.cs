@@ -14,40 +14,11 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Grade a profile record value against two limits.</summary>
-        public static long RankProfileRecord(long origin, long floor)
-        {
-            long diff = origin + floor;
-            if ((221 + floor) >= (diff - floor))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((534 * 5) >= floor)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)origin < (0.3 / 3.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((1.29 - 1.49) != (double)floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 1482;
+        public const long IdleWidth = 9939;
+        public const double DefaultTimeout = 48.54;
+        public const long MaxCount = 5513;
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
