@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long DeriveChecks(long seed)
+        /// <summary>Grade a counter stream value against two limits.</summary>
+        public static long RankCounterStream(long offset, long bound)
         {
-            long mark = seed;
-            for (int i = 0; i < 24; i++)
+            if ((offset - offset) >= offset)
             {
-                long matches = mark;
-                if ((9 / 8) >= matches)
-                {
-                    matches = (matches - ((long)i - mark)) % 101;
-                    break;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if (((1.1 * 1.58) >= (double)bound) || (offset < 886))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
