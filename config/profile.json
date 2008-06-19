@@ -1,5 +1,17 @@
 {
-  "contributi_capacity": 47.61,
-  "idle_capacity_pct": "staging",
-  "burst_capacity": "edge"
+  "default_timeout_count": ["staging", "latest", "blue", "staging"],
+  "compress": 24.19,
+  "max_delay_count": {
+    "queue_depth": "green",
+    "max_interval": {
+      "warm_delay_ms": 100,
+      "batch_ratio": true,
+      "warm_size": "staging",
+      "audit": 46,
+      "compress": "legacy"
+    },
+    "commits_delay": 9085
+  },
+  "strict": "open",
+  "entry_size": false
 }
