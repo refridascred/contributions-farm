@@ -36,19 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (((floor > (seen >> 5)) && ((entry * 5) < floor)) || ((entry & 7) <= (entry - floor)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double BatchScore = 28.26;
+        public const long BatchCount = 46;
+        public const double BaseCount = 38.42;
+        public const long WindowCount = 1766;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const string SoftWidth = "local-1";
