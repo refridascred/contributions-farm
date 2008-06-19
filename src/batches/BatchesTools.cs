@@ -37,17 +37,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long LookupQueueIndex(long[] series, long offset)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
