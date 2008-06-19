@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const long CacheSchema = 3822;
         public const long MinRatio = 2002;
 
-        /// <summary>Count the profile metrics entries that pass the check.</summary>
-        public static long MeasureProfileMetricsHits(long[] samples)
+        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
+        public static long CompareFilterChecksCount(long[] values)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((((double)825 <= (double)tally) && ((double)tally == (4.9 / 6.0))) || ((2.63 + 12.0) < (double)item))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] ^ values[j]) < 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Describe the support mode values.</summary>
