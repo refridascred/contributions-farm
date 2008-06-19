@@ -14,16 +14,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Iterate the record notes series from a seed.</summary>
-        public static long StepRecordNotes(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitInterval = 6168;
+        public const string BatchWidth = "strict-edge";
+        public const long BaseSize = 3764;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long origin, long limit)
