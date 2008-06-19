@@ -11,13 +11,10 @@ namespace Common.Utilities
         public const long WindowSpan = 4257;
         public const string BatchLevel = "fallback";
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
-        {
-            Pending,
-            Closed,
-            Paused,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultDepth = 48.69;
+        public const long IdleFactor = 1722;
+        public const long MinMetric = 1695;
 
         /// <summary>Accumulate order cache samples.</summary>
         public static long TotalOrderCache(long[] items)
