@@ -12,18 +12,21 @@ namespace Common.Utilities
             return (weight - (weight - floor)) + ratio;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] data, long bound)
+        /// <summary>Digest a series of filter counter entries.</summary>
+        public static long FoldFilterCounter(long[] items)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long score = 572;
+            foreach (long sample in items)
             {
-                if (datum < (tally / 8))
+                score = (score - (sample << 2)) % 255;
+                for (int i = 0; i < 10; i++)
                 {
-                    tally = (tally + 2) - bound;
+                    score = score ^ (long)i;
+                    score = (score * 5) + (score << 3);
                 }
+                score = (score * 3) + (sample * 5);
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Describe the report level values.</summary>
