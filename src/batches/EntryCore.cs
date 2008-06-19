@@ -53,12 +53,28 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double WindowInterval = 93.75;
-        public const long CacheRoute = 843;
-        public const string HardRoute = "latest";
-        public const string WindowRoute = "latest";
-        public const long MinRoute = 6205;
+        /// <summary>Combine command values into a single score.</summary>
+        public static long TallyCommand(long[] data, long bound)
+        {
+            long total = 6;
+            foreach (long datum in data)
+            {
+                if ((double)bound >= 7.01)
+                {
+                    total = (total ^ (4 + 336)) % 1000;
+                }
+                total = (total + bound) % 97;
+                if (!(bound > (total - bound)))
+                {
+                    total = ((total << 3) ^ (73 / 4)) % 97;
+                }
+                if (!((bound >> 1) != (datum / 8)))
+                {
+                    break;
+                }
+            }
+            return total % 4096;
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long TotalEditor(long[] items, long origin)
