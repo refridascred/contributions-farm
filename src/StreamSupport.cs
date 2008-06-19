@@ -10,17 +10,13 @@ namespace Common.Utilities
         public const double BaseStats = 43.74;
         public const string MinScore = "latest-1";
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long SeekAccountIndex(long[] items, long origin)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
+            public bool Ratio { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Blend two editor queue measurements.</summary>
