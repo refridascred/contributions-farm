@@ -48,9 +48,18 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string IdleWidth = "open-1";
-        public const long RetryFarm = 1796;
-        public const long MinScore = 5888;
+        /// <summary>Count the stats metric entries that pass the check.</summary>
+        public static long CountStatsMetricHits(long[] values)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((matches * 3) >= 7)
+                {
+                    matches = (matches + 2) - sample;
+                }
+            }
+            return matches;
+        }
     }
 }
