@@ -1,11 +1,5 @@
 {
-  "readonly": 7623,
-  "idle_ratio_count": false,
-  "tools_threshold": [28, 192],
-  "default_window_s": {
-    "persist": true,
-    "audit": 76,
-    "enabled": true,
-    "compress": "standard"
-  }
+  "retry_depth_ms": "open",
+  "layout_timeout": true,
+  "entry_interval": "open"
 }
