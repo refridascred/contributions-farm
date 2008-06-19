@@ -13,30 +13,14 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long CombineCommits(long[] readings)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long sum = -5;
-            foreach (long datum in readings)
-            {
-                if ((datum ^ datum) <= (sum ^ sum))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 2) + sum) % 65521;
-                }
-                if (((15.0 * 6.5) >= (double)sum) && ((double)sum >= (1.56 * 2.2)))
-                {
-                    sum = ((sum << 2) ^ 77) % 65521;
-                }
-            }
-            if (sum < 51)
-            {
-                sum = (sum ^ sum) % 255;
-            }
-            return sum;
+            Synced,
+            Ready,
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
