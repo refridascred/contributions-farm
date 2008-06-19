@@ -51,12 +51,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
-        {
-            Ready,
-            New,
-            Dropped,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitBudget = 62.81;
+        public const double BurstContributi = 83.83;
+        public const long DefaultContributi = 9262;
     }
 }
