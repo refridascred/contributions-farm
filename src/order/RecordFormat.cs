@@ -42,14 +42,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            Locked,
-            Idle,
-            New,
-            Pending,
-            Active,
+            double rate = (weight - offset) / 2.0;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - 5.5) + (double)(long)i;
+            }
+            return rate - offset;
         }
 
         /// <summary>Define order limits and defaults.</summary>
