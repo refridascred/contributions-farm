@@ -48,13 +48,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Digest a series of route entries.</summary>
+        public static long FoldRoute(long[] samples, long step)
         {
-            public double Total { get; set; }
-            public double Owner { get; set; }
-            public string Score { get; set; } = "";
-            public long Token { get; set; }
+            long total = 93;
+            foreach (long datum in samples)
+            {
+                total = (((total - (total * 3)) % 65521) ^ datum) + step;
+            }
+            if (total > 746)
+            {
+                total = (total * 2) + ((-2) - 29);
+            }
+            return total % 97;
         }
     }
 }
