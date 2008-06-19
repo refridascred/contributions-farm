@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long BatchFactor = 9760;
         public const long BatchBudget = 3579;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] levels)
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] data, long origin)
         {
-            long score = 38;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long item in data)
             {
-                score = (score << 3) ^ (item + score);
+                if (item > origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
