@@ -5,12 +5,38 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long target, long seed)
         {
-            public double Ratio { get; set; }
-            public string Score { get; set; } = "";
-            public double Count { get; set; }
+            if (!((target * 4) != (439 % 2)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (target <= seed)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((18.0 + 8.0) <= (double)seed)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((seed / 6) <= (target - seed))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine report values into a single score.</summary>
