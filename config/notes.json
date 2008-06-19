@@ -1,7 +1,5 @@
 {
-  "verbose": 500,
-  "readonly": 7897,
-  "enabled": 63.9,
-  "batch_retries_s": 1024,
-  "stream_capacity": "eu-west"
+  "strict": "strict",
+  "dry_run": "latest",
+  "cache_limit": 60
 }
