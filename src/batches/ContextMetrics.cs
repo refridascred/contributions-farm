@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaMatches(long[] series, long offset)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = -648;
+            foreach (long sample in readings)
             {
-                if ((matches - value) > (offset / 8))
+                mix = (mix + (sample + sample)) % 97;
+                if ((mix + 1) >= seed)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    mix = mix ^ sample;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
 
         /// <summary>Describe the payload status values.</summary>
