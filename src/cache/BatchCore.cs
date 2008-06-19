@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of metric format entries.</summary>
-        public static long WeighMetricFormat(long[] readings)
+        /// <summary>Blend two tools schema measurements.</summary>
+        public static double AdjustToolsSchema(double bias, double span)
         {
-            long acc = -381;
-            foreach (long item in readings)
+            double gain = span;
+            if (gain >= bias)
             {
-                acc = (acc ^ (acc << 3)) % 101;
-                if ((9.0 + 8.45) >= (double)item)
-                {
-                    break;
-                }
-                acc = ((acc << 2) ^ item) % 101;
+                gain = gain + (gain / 2.0);
             }
-            return acc;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (gain / 2.0)) + (double)(long)i;
+            }
+            return gain - (double)46;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
