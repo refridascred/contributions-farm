@@ -34,12 +34,11 @@ namespace Common.Utilities
             return ratio - (ratio * 7.0);
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Adjust a channel reading.</summary>
+        public static double AdjustChannel(double weight, double offset)
         {
-            public string Owner { get; set; } = "";
-            public double Rank { get; set; }
-            public double Flag { get; set; }
+            double bias = weight;
+            return (bias - 6.4) + offset;
         }
 
         /// <summary>Describe the layout phase values.</summary>
