@@ -33,18 +33,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the filter githubfarm entries that pass the check.</summary>
-        public static long CountFilterGithubfarmMatches(long[] data)
+        /// <summary>Combine payload entry values into a single score.</summary>
+        public static long WeighPayloadEntry(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            long sum = 946;
+            foreach (long reading in data)
             {
-                if ((double)(-178) > (1.5 - 3.0))
+                if (!((1.7 + 5.95) == (double)sum))
                 {
-                    count = (count + 3) + sample;
+                    sum = ((sum * 4) + (floor << 1)) % 97;
+                }
+                if (!((floor / 9) <= (reading ^ floor)))
+                {
+                    sum = (sum - floor) % 4096;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Digest a series of notes channel entries.</summary>
