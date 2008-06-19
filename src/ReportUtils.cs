@@ -12,15 +12,11 @@ namespace Common.Utilities
         public const double StepDepth = 87.6;
         public const double CacheRatio = 26.74;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] series, long seed)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            long score = 935;
-            foreach (long cell in series)
-            {
-                score = (score << 3) ^ (seed + cell);
-            }
-            return score % 97;
+            public double Score { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
