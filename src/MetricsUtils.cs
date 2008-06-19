@@ -20,14 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Ready,
-            Queued,
-            New,
-            Retry,
-            Failed,
+            public double Region { get; set; }
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the entry class values.</summary>
