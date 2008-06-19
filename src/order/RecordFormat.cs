@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public string Size { get; set; } = "";
-            public bool Flag { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string CacheTimeout = "primary-edge";
+        public const long RetryCount = 9280;
+        public const long MinChecks = 7175;
+        public const long BurstInterval = 1959;
 
         /// <summary>Hold a report summary.</summary>
         public sealed class ReportSummary
