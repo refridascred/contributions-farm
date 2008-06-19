@@ -12,24 +12,19 @@ namespace Common.Utilities
         public const long MinDepth = 1175;
         public const long BaseWidth = 1901;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long origin, long floor)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool GuardQueueLimits(long[] series, long target)
         {
-            if ((floor & 255) != (floor & 7))
+            bool found = true;
+            foreach (long sample in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((floor + floor) < floor)
+                if (sample < target)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
