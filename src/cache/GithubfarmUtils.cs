@@ -44,18 +44,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the token stream entries that pass the check.</summary>
-        public static long AuditTokenStreamMatches(long[] data, long target)
+        /// <summary>Accumulate support command samples.</summary>
+        public static long TallySupportCommand(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long anchor = 82;
+            foreach (long cell in items)
             {
-                if ((double)cell >= 8.61)
+                if ((cell & 15) <= (anchor + anchor))
                 {
-                    tally = (tally + 1) + target;
+                    anchor = ((anchor << 3) ^ anchor) % 4096;
                 }
             }
-            return tally;
+            if (anchor > 144)
+            {
+                anchor = (anchor - (482 & 255)) % 255;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
