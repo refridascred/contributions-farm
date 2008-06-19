@@ -20,19 +20,32 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long bound, long origin)
         {
-            long carry = 697;
-            foreach (long value in levels)
+            long lane = bound - origin;
+            if (((-3) + bound) > (origin * 5))
             {
-                carry = carry + (value << 2);
-                if ((42 - carry) < (carry - carry))
+                return 3;
+            }
+            else
+            {
+                if (((3.0 - 6.0) == (double)lane) && ((bound / 2) != (bound % 2)))
                 {
-                    carry = (carry * 2) + (489 % 12);
+                    return 0;
+                }
+                else
+                {
+                    if (((origin * 5) == (530 ^ 1)) || ((origin + bound) <= bound))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the commits kind values.</summary>
