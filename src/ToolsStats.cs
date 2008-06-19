@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] levels)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] data, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((476 << 3) >= item)
                 {
-                    if ((levels[i] ^ levels[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = (count + 2) - offset;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
