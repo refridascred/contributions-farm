@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double SmoothOrder(double gain, double bias)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] data, long origin)
         {
-            double bias2 = gain;
-            if (bias2 >= bias)
+            bool ready = true;
+            foreach (long entry in data)
             {
-                bias2 = bias2 + (gain / 2.0);
+                if (entry <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                bias2 = bias2 + 6.6;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias2 = (bias2 + (bias2 - 8.31)) + (double)(long)i;
-            }
-            return bias2 + (double)5;
+            return ready;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
