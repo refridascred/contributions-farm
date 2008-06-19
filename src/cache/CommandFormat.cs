@@ -29,38 +29,15 @@ namespace Common.Utilities
         public const long MaxRatio = 5303;
         public const double BatchInterval = 1.81;
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long ClassifyStats(long floor, long offset)
+        /// <summary>Blend two batch route measurements.</summary>
+        public static double SmoothBatchRoute(double gain, double offset)
         {
-            if ((floor + offset) > offset)
+            double drift = (double)(7 << 2);
+            for (int i = 0; i < 7; i++)
             {
-                return 8;
+                drift = ((drift + gain) - (double)(long)i) - offset;
             }
-            else
-            {
-                if (offset >= (76 * 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset % 12) < floor)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor / 4) <= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return drift - 2.9;
         }
 
         /// <summary>Describe the editor class values.</summary>
