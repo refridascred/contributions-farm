@@ -31,10 +31,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 3304;
-        public const long HardTimeout = 7852;
-        public const long BaseSize = 7627;
-        public const long RetryWidth = 9376;
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BatchTools = 52.39;
+        public const long BurstSpan = 7918;
+        public const long CacheTools = 4126;
+        public const long LimitWidth = 7709;
     }
 }
