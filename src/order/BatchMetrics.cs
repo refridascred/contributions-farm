@@ -46,17 +46,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a editor support counter forward.</summary>
-        public static long DeriveEditorSupport(long floor)
+        /// <summary>Count window channel pairs that satisfy a relation.</summary>
+        public static long CompareWindowChannelCount(long[] readings)
         {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = (anchor << 3) ^ floor;
-                anchor = (anchor - (anchor - floor)) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
