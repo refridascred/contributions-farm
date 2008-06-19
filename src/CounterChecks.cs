@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string LimitOrder = "latest";
-        public const string RetryOrder = "alpha";
-        public const long MinOrder = 7988;
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
