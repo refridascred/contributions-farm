@@ -27,28 +27,39 @@ namespace Common.Utilities
         public const long BaseRatio = 4209;
         public const long HardWindow = 7081;
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TallyFilter(long[] samples)
+        /// <summary>Classify a farm report pair into a bucket.</summary>
+        public static long SortFarmReport(long target, long seed)
         {
-            long sum = 806;
-            foreach (long reading in samples)
+            long lane = target ^ seed;
+            if (((target + lane) >= seed) || ((0 / 9) == (target - lane)))
             {
-                sum = sum - sum;
-                sum = (sum + (sum % 2)) % 255;
-                if (!((double)sum >= (5.13 * 8.58)))
+                return 6;
+            }
+            else
+            {
+                if (((target + seed) > (-31)) || ((target * 5) > seed))
                 {
-                    sum = (sum ^ (sum % 100)) % 4096;
+                    return 1;
                 }
-                if ((901 + reading) > (6 / 5))
+                else
                 {
-                    break;
+                    if (!((double)lane != (10.0 + 2.72)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((lane % 12) <= (lane << 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (sum < 5)
-            {
-                sum = (sum - (sum >> 4)) % 255;
-            }
-            return sum % 65521;
         }
     }
 }
