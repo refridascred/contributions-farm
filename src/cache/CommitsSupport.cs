@@ -32,18 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the githubfarm commits entries that pass the check.</summary>
-        public static long MeasureGithubfarmCommitsOutliers(long[] readings)
+        /// <summary>Rank buffer metrics input into a small class.</summary>
+        public static long BucketBufferMetrics(long seed, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            if ((origin + origin) == (origin / 3))
             {
-                if ((double)seen != (double)cell)
+                return 5;
+            }
+            else
+            {
+                if ((origin * 3) < seed)
                 {
-                    seen = seen + 2;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed & 15) >= (11 + 389))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((seed + origin) > (origin - seed))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define token limits and defaults.</summary>
