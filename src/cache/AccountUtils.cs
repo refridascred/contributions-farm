@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            Dropped,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
