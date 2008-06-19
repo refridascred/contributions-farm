@@ -50,12 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public long Level { get; set; }
-            public long Ratio { get; set; }
-            public string Offset { get; set; } = "";
+            Locked,
+            Retry,
+            Idle,
+            Synced,
         }
     }
 }
