@@ -13,18 +13,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamOutliers(long[] data)
+        /// <summary>Digest a series of githubfarm channel entries.</summary>
+        public static long TotalGithubfarmChannel(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long score = 6;
+            foreach (long sample in values)
             {
-                if (2.0 > (double)reading)
+                if ((double)sample != (10.0 * 5.3))
                 {
-                    tally = tally + 3;
+                    score = (score + (score - score)) % 65521;
+                    break;
+                }
+                else
+                {
+                    score = ((score << 2) ^ sample) % 65521;
+                }
+                if ((score * 4) < (sample + score))
+                {
+                    score = score + (score >> 5);
+                }
+                if ((score + sample) >= (sample ^ 4))
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Accumulate schema samples.</summary>
