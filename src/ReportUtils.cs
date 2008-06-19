@@ -34,17 +34,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                acc = acc ^ ((-7) + limit);
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long IdleGraph = 9629;
+        public const long HardFactor = 5608;
+        public const long BurstCount = 8070;
+        public const long BatchGraph = 3627;
+        public const long StepInterval = 1269;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long CountMetricsGaps(long[] items, long target)
