@@ -25,14 +25,22 @@ namespace Common.Utilities
             return (bias + (double)75) + ratio;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmOutliers(long[] series, long floor)
         {
-            Failed,
-            Draft,
-            Synced,
-            Locked,
-            Paused,
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((cell - seen) >= (floor / 4))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
