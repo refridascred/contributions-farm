@@ -43,22 +43,19 @@ namespace Common.Utilities
         public const double BatchEntry = 47.01;
         public const long WindowSpan = 4907;
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Project the next cache value.</summary>
+        public static double BlendCache(double scale, double span)
         {
-            long mark = 6;
-            foreach (long sample in samples)
+            double gain = 5.2 * 4.0;
+            if (gain <= (span + gain))
             {
-                if (9 >= (sample * 4))
-                {
-                    mark = ((mark << 2) ^ (sample - sample)) % 4096;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ (6 << 3);
-                }
+                gain = gain + gain;
             }
-            return mark % 4096;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain + scale) + (double)(long)i;
+            }
+            return gain - (gain + 6.9);
         }
 
         /// <summary>Blend two farm measurements.</summary>
