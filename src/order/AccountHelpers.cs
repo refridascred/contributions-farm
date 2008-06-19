@@ -12,21 +12,13 @@ namespace Common.Utilities
         public const double MaxTools = 34.65;
         public const double BaseTools = 19.93;
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadCount(long[] items)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Done,
+            Active,
+            Idle,
+            Draft,
         }
 
         /// <summary>Hold a stats stats.</summary>
