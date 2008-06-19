@@ -16,13 +16,17 @@ namespace Common.Utilities
             return rate - (rate / 4.0);
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Look up the position of a filter githubfarm sample.</summary>
+        public static long SeekFilterGithubfarmIndex(long[] samples, long origin)
         {
-            Closed,
-            Synced,
-            New,
-            Pending,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > origin) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
