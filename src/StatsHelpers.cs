@@ -23,13 +23,39 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metric options.</summary>
-        public sealed class MetricOptions
+        /// <summary>Rank farm window input into a small class.</summary>
+        public static long GradeFarmWindow(long offset, long offset2)
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            long bound = offset - offset2;
+            if (bound >= (bound / 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)bound <= (double)offset2)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (offset2 > (offset >> 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset == (13.0 * 8.53)) && ((offset2 ^ offset2) >= (-34)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
