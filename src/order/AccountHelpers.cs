@@ -38,17 +38,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] data, long floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double drift = ratio * 2.6;
+            for (int i = 0; i < 5; i++)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                drift = (drift + (double)(long)i) - offset;
             }
-            return -1;
+            return drift + (double)2;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
