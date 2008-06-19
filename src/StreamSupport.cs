@@ -27,22 +27,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] levels, long floor)
         {
-            long anchor = 615;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (step < ((-942) - 1))
+                if (((double)(long)levels.Length < (0.1 * 2.0)) && ((sample * 4) > (count << 3)))
                 {
-                    anchor = anchor - (entry ^ step);
+                    count = (count + 1) + floor;
                 }
             }
-            if (anchor > 433)
-            {
-                anchor = (anchor * 3) + (anchor + 77);
-            }
-            return anchor;
+            return count;
         }
     }
 }
