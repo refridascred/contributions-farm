@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public long Size { get; set; }
-            public string Limit { get; set; } = "";
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
