@@ -1,7 +1,6 @@
-id,level,ratio,token,active
-1,127,641,48.91,73.87
-2,218,210,77,701
-3,17.15,14.99,stable,41.35
-4,298,147,blue,371
-5,23.14,49.36,eu-west,775
-6,blue,36.71,strict,21.38
+id,owner,label,state,count
+1,30.45,local,162,687
+2,805,75.1,96.62,edge
+3,50.54,17.4,908,eu-west
+4,69.51,493,377,337
+5,blue,602,13.27,eu-west
