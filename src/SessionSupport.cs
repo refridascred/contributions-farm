@@ -12,22 +12,15 @@ namespace Common.Utilities
         public const long MinInterval = 6575;
         public const long StepFormat = 3343;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long acc = 24;
+            foreach (long value in readings)
             {
-                if (((double)seen != (double)step) && (((step ^ step) == (step / 2)) && (4 < (seen ^ seen))))
-                {
-                    seen = (seen + 3) + sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc << 3) ^ (0 + acc)) + value;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
