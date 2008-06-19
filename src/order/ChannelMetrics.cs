@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long step)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long LocateChecksIndex(long[] items, long step)
         {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = (carry - (step - (long)i)) % 101;
-                carry = ((carry * 5) + (long)i) % 97;
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Adjust a order reading.</summary>
