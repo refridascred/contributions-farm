@@ -47,13 +47,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesLimits(long[] samples, long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricLimits(long[] samples, long seed)
         {
             bool found = true;
-            foreach (long cell in samples)
+            foreach (long value in samples)
             {
-                if (cell < target)
+                if (value > seed)
                 {
                     found = false;
                     break;
