@@ -86,18 +86,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long PairMetricsCount(long[] samples)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (2.0 < (double)cell)
                 {
-                    if ((samples[i] ^ samples[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
