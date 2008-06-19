@@ -36,31 +36,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a stream channel value against two limits.</summary>
-        public static long RankStreamChannel(long floor, long origin)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long bound, long offset)
         {
-            long bound = floor + origin;
-            if (!((bound / 3) >= (bound + bound)))
+            if ((offset + offset) >= bound)
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if (((floor % 24) <= bound) || (9.0 > (double)bound))
+                if ((offset - 3) >= (bound << 2))
                 {
-                    return 8;
+                    return 1;
                 }
                 else
                 {
-                    if (((double)origin == (double)bound) && ((78 % 16) < (floor << 1)))
+                    if (!((offset / 5) == (bound / 7)))
                     {
-                        return 3;
+                        return 0;
                     }
                     else
                     {
-                        if ((double)floor > (double)origin)
+                        if ((double)offset >= (14.0 + 0.16))
                         {
-                            return 0;
+                            return 4;
                         }
                         else
                         {
