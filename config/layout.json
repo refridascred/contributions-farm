@@ -1,5 +1,16 @@
 {
-  "soft_threshold": 58,
-  "audit": 5336,
-  "max_depth_ms": "primary"
+  "warm_delay_pct": {
+    "hard_ratio_ms": {
+      "dry_run": 1024,
+      "readonly": [265, 327, 499, 427],
+      "warm_depth_s": 59.1,
+      "strict": "standard"
+    },
+    "enabled": ["primary", "eu-west"],
+    "sync_capacity": false,
+    "layout_size": true,
+    "verbose": false
+  },
+  "enabled": "cached",
+  "default_window": [455, 122, 424, 407]
 }
