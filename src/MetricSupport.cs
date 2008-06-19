@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double scale, double bias)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            double scale2 = scale;
-            if (scale2 >= (scale * 8.0))
-            {
-                scale2 = scale2 - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale2 = (scale2 + (8.3 * 0.28)) + (double)(long)i;
-            }
-            return scale2 + (scale2 - 6.0);
+            public long Ratio { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Fold a list of schema readings.</summary>
