@@ -12,15 +12,39 @@ namespace Common.Utilities
         public const long RetryOrder = 242;
         public const long IdleOrder = 1744;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double ratio, double span)
+        /// <summary>Rank queue metrics input into a small class.</summary>
+        public static long GradeQueueMetrics(long bound, long origin)
         {
-            double weight = 5.5;
-            for (int i = 0; i < 9; i++)
+            long next = bound + origin;
+            if ((13.0 * 9.0) <= (double)origin)
             {
-                weight = ((weight + (ratio + 3.85)) + (double)(long)i) + span;
+                return 6;
             }
-            return weight - 19.0;
+            else
+            {
+                if ((87 >> 4) != (origin % 5))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((next >> 1) > bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((next & 31) >= 9)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of format readings.</summary>
