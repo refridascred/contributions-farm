@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            Draft,
             Queued,
-            Idle,
-            Paused,
+            Done,
+            Draft,
         }
 
         /// <summary>Hold a route record.</summary>
