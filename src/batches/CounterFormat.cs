@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long SortRoute(long bound, long bound2)
-        {
-            if (((3.0 + 3.32) >= (double)bound) && ((7.01 + 8.0) == (double)bound2))
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(9 <= bound2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound2 > (11.0 * 0.46))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 507;
+        public const long BaseDepth = 850;
+        public const long DefaultAccount = 5217;
+        public const long LimitDepth = 3841;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long SeekSessionIndex(long[] readings, long floor)
