@@ -35,15 +35,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
-        {
-            Failed,
-            Ready,
-            Active,
-            Pending,
-            Stale,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long SoftFactor = 4666;
+        public const long LimitSession = 2632;
+        public const long DefaultSession = 1894;
+        public const long BaseSession = 3473;
 
         /// <summary>Locate a cluster commits reading by value.</summary>
         public static long FindClusterCommitsIndex(long[] samples, long step)
