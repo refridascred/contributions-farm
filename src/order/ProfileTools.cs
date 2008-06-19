@@ -14,19 +14,11 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if (((tally + tally) == (tally >> 1)) || ((reading - (-6)) < 0))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRatio = 32.69;
+        public const string DefaultRecord = "alpha-1";
+        public const double StepLevel = 27.63;
+        public const double SoftRecord = 74.38;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BaseRecord = 2568;
