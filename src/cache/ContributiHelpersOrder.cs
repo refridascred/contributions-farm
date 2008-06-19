@@ -47,14 +47,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Classify a already record pair into a bucket.</summary>
+        public static long ClassifyAlreadyRecord(long step, long bound)
         {
-            Failed,
-            Draft,
-            Active,
-            Dropped,
-            New,
+            if ((step + step) < bound)
+            {
+                return 6;
+            }
+            else
+            {
+                if (step > bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
