@@ -17,39 +17,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank queue metrics input into a small class.</summary>
-        public static long GradeQueueMetrics(long bound, long origin)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] readings, long offset)
         {
-            long next = bound + origin;
-            if ((13.0 * 9.0) <= (double)origin)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((87 >> 4) != (origin % 5))
+                if (readings[i] <= offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((next >> 1) > bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((next & 31) >= 9)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a order record.</summary>
