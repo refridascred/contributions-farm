@@ -1,12 +1,6 @@
 {
-  "base_window": [411, 373, 54],
-  "persist": [452, 156, 325],
-  "metrics_delay": {
-    "warm_retries": true,
-    "dry_run": 75,
-    "poll_depth_s": "fallback"
-  },
-  "counter_depth": [373, 481],
-  "graph_ttl": 95,
-  "default_ttl_ms": 60
+  "context_ratio": "strict",
+  "poll_limit": false,
+  "soft_capacity_count": 30,
+  "hard_ratio": 1024
 }
