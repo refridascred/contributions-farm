@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor tools helpers.</summary>
     public static class EditorTools
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            Paused,
-            Draft,
-            Queued,
-            Pending,
+            public string Rank { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine layout values into a single score.</summary>
