@@ -1,9 +1,7 @@
 # support settings
-graph_size:
-  dry_run: eu-west
-  warm_limit: 81.95
-  idle_capacity_s: 1560
-  cache_capacity: stable
-persist: 88.42
-enabled: 2380
-hard_delay_s: latest
+sync_threshold: 53.87
+verbose: true
+enabled: standard
+format_ttl: true
+cache_threshold_count: open
+compress: cached
