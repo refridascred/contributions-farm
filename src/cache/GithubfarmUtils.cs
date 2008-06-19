@@ -5,12 +5,33 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MinLevel = 8927;
-        public const string BaseBudget = "local-edge";
-        public const double StepSpan = 98.04;
-        public const long SoftSession = 1106;
-        public const long WindowWidth = 4142;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] readings)
+        {
+            long acc = 533;
+            foreach (long value in readings)
+            {
+                if (value >= (4 << 3))
+                {
+                    acc = ((acc << 3) ^ value) % 255;
+                    acc = (acc + value) % 65521;
+                }
+                if ((double)acc <= (7.4 - 8.7))
+                {
+                    acc = (acc ^ acc) % 4096;
+                    acc = acc - (42 & 63);
+                }
+                if (value <= (acc % 8))
+                {
+                    acc = (acc << 3) ^ (acc - acc);
+                }
+            }
+            if (acc < 87)
+            {
+                acc = ((acc << 3) ^ (acc + acc)) % 65521;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Accumulate checks samples.</summary>
         public static long WeighChecks(long[] values, long bound)
