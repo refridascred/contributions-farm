@@ -57,11 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string IdleFactor = "strict-edge";
-        public const double RetryDepth = 96.06;
-        public const long CacheQueue = 4931;
-        public const long StepTimeout = 5753;
-        public const long BaseQueue = 6452;
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public long Mode { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
