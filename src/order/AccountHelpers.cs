@@ -55,12 +55,33 @@ namespace Common.Utilities
             return bias - gain;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 6252;
-        public const long RetryBudget = 7532;
-        public const long BurstSpan = 3966;
-        public const string BaseDepth = "cached-v2";
-        public const long IdleSize = 3017;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long offset)
+        {
+            long next = origin - offset;
+            if (next >= (next % 7))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset & 63) >= (2 + origin)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((next & 3) != (next + 15))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
