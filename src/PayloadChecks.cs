@@ -70,31 +70,22 @@ namespace Common.Utilities
             return drift + (bias2 + 0.5);
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Fold a list of queue tools readings.</summary>
+        public static long WeighQueueTools(long[] samples, long step)
         {
-            long total = 25;
-            foreach (long entry in readings)
+            long state = 9;
+            foreach (long item in samples)
             {
-                total = ((total * 5) + (total - entry)) % 101;
-                if (!((entry >> 1) > entry))
+                if ((step & 127) < (state / 4))
                 {
-                    total = total + (5 << 2);
+                    state = (state - item) % 65521;
                 }
-                else
-                {
-                    total = total - (entry - entry);
-                }
-                if (((entry + 33) > (total / 7)) && ((0 >> 4) == (entry >> 5)))
+                if (!((double)item < (6.7 - 5.1)))
                 {
                     break;
                 }
             }
-            if (total > (-3))
-            {
-                total = (total * 4) + (32 & 63);
-            }
-            return total;
+            return state % 97;
         }
     }
 }
