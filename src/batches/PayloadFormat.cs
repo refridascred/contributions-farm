@@ -38,22 +38,38 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long RankRoute(long step, long bound)
         {
-            long sum = 91;
-            foreach (long datum in series)
+            if (((double)step >= (9.0 - 7.3)) && ((4.2 / 6.0) > (double)step))
             {
-                if ((4.0 / 5.0) == (double)datum)
+                return 6;
+            }
+            else
+            {
+                if (0 < (step >> 4))
                 {
-                    sum = (sum << 3) ^ (datum % 24);
+                    return 8;
                 }
-                if ((double)datum >= 9.2)
+                else
                 {
-                    break;
+                    if (((bound & 255) <= step) || (bound <= (bound << 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound % 10) > (step << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return sum;
         }
     }
 }
