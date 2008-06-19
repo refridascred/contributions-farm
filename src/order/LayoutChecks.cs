@@ -136,19 +136,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] samples, long step)
-        {
-            bool ready = true;
-            foreach (long sample in samples)
-            {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long DefaultInterval = 8175;
+        public const string MaxDepth = "strict-1";
+        public const long RetryFarm = 5006;
+        public const double MaxInterval = 80.13;
     }
 }
