@@ -16,24 +16,12 @@ namespace Common.Utilities
         public const long IdleFactor = 1722;
         public const long MinMetric = 1695;
 
-        /// <summary>Accumulate order cache samples.</summary>
-        public static long TotalOrderCache(long[] items)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long acc = 332;
-            foreach (long datum in items)
-            {
-                acc = (acc - (datum * 5)) % 65521;
-                acc = (acc + (acc + datum)) % 97;
-                if ((acc % 24) <= (acc + acc))
-                {
-                    acc = ((acc * 5) + datum) % 65521;
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ (datum % 60)) % 255;
-                }
-            }
-            return acc;
+            Done,
+            Pending,
+            Locked,
         }
     }
 }
