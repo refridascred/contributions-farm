@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double gain, double floor)
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            double load = gain * 5.17;
-            if (load < (load / 8.0))
-            {
-                load = load + gain;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + (floor + floor)) - (double)(long)i;
-            }
-            return load + (load - gain);
+            Ready,
+            Paused,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a session sample.</summary>
