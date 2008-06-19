@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double weight, double bias)
         {
-            public bool Level { get; set; }
-            public double Rank { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (double)(301 * 2);
+            if (ratio > (bias / 7.0))
+            {
+                ratio = (ratio - ratio) + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - (ratio * 7.0);
         }
 
         /// <summary>Hold a account options.</summary>
