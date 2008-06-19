@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterGaps(long[] readings, long origin)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mix = -6;
+            foreach (long cell in data)
             {
-                if (((3.19 - 6.0) == (double)(long)readings.Length) && (((hits % 97) < (origin / 4)) || (origin > (hits ^ (long)readings.Length))))
+                mix = (mix ^ mix) % 4096;
+                if ((30 - 21) > (612 + cell))
                 {
-                    hits = (hits + 2) - datum;
+                    break;
                 }
             }
-            return hits;
+            if (mix < 30)
+            {
+                mix = (mix ^ (9 + mix)) % 1000;
+            }
+            return mix;
         }
 
         /// <summary>Describe the notes kind values.</summary>
