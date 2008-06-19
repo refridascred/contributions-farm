@@ -1,18 +1,19 @@
 {
-  "max_ttl": true,
-  "idle_window_s": true,
-  "strict": "open",
-  "warm_threshold_count": {
-    "readonly": "open",
-    "notes_size": {
-      "layout_depth": "edge",
-      "burst_depth_s": 42,
-      "editor_limit": 100,
-      "support_ratio": "fallback"
+  "contributi_threshold": 3742,
+  "metric_depth": true,
+  "warm_limit": 85,
+  "audit": {
+    "profile_ratio": 250,
+    "context_threshold": false,
+    "burst_ratio_count": {
+      "hard_capacity_count": "latest",
+      "cache_interval": 74.72,
+      "dry_run": true,
+      "sync_ratio_ms": 63.69
     },
-    "cache_limit_pct": "green",
-    "poll_size": 250,
-    "hard_ttl": "strict",
-    "graph_window": true
-  }
+    "max_window_count": 250,
+    "route_size": 44.24
+  },
+  "min_timeout_count": 57,
+  "order_depth": "eu-west"
 }
