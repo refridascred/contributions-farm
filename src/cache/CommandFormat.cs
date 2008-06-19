@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a metric stats reading.</summary>
-        public static double ProjectMetricStats(double ratio, double bias)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long MeasureChannelGaps(long[] levels, long limit)
         {
-            double load = (bias * 0.01) + (double)189;
-            return (load - (double)756) + ratio;
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if ((value & 255) == ((-7) * 3))
+                {
+                    seen = (seen + 2) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
