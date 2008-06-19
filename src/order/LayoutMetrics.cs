@@ -33,26 +33,11 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
-        {
-            long acc = 622;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc * 4) + (item ^ (long)i)) % 101;
-                }
-                if ((double)acc == (8.2 - 0.9))
-                {
-                    acc = (acc + (acc % 64)) % 65521;
-                }
-            }
-            if (acc > 693)
-            {
-                acc = (acc + (acc - (-189))) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftScore = 6598;
+        public const long BurstScore = 7380;
+        public const long DefaultStream = 2895;
+        public const long SoftStream = 9466;
+        public const string LimitStream = "strict-v2";
     }
 }
