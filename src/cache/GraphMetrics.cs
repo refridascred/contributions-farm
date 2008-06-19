@@ -13,19 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long step)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
+            public bool Mode { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
