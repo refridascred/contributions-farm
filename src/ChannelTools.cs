@@ -34,21 +34,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] data)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double gain, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            double weight = (double)2 - 4.61;
+            if (weight < (4.0 * 14.0))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                weight = weight - (bias - 0.72);
             }
-            return hits;
+            else
+            {
+                weight = weight - (gain - bias);
+            }
+            return weight + 9.3;
         }
     }
 }
