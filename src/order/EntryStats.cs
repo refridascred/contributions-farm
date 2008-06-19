@@ -57,21 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a editor schema counter forward.</summary>
-        public static long SeriesEditorSchema(long offset)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsHits(long[] readings)
         {
-            long state = offset;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                state = ((state << 3) ^ offset) % 4096;
-                state = (state ^ (state * 3)) % 101;
-                if (!(((long)i + state) != (offset + offset)))
+                if ((reading + hits) < (hits / 7))
                 {
-                    state = state - offset;
+                    hits = hits + 3;
                 }
-                state = ((state * 5) + (long)i) % 1000;
             }
-            return state;
+            return hits;
         }
     }
 }
