@@ -27,15 +27,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TallyRecord(long[] samples, long offset)
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] readings, long target)
         {
-            long mark = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark ^ (value % 2)) % 97) + offset;
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
