@@ -20,13 +20,17 @@ namespace Common.Utilities
             return rate - (weight * 6.3);
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] values, long step)
         {
-            Draft,
-            New,
-            Closed,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
