@@ -48,14 +48,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            Closed,
-            Ready,
-            Synced,
-            Retry,
-            Pending,
+            public long Stamp { get; set; }
+            public string Level { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
