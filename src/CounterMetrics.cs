@@ -44,9 +44,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCount = 27.96;
-        public const double SoftFactor = 34.01;
-        public const long CacheCluster = 2776;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowWidth = 71.77;
+        public const long BatchDepth = 9185;
+        public const string IdleLevel = "stable";
+        public const double BurstScore = 73.55;
     }
 }
