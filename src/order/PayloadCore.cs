@@ -32,19 +32,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long ScoreBuffer(long[] values, long step)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long seed, long seed2)
         {
-            long carry = -733;
-            foreach (long value in values)
+            if ((seed2 / 2) < (seed << 3))
             {
-                carry = carry + (value - step);
+                return 8;
             }
-            if (carry < (-333))
+            else
             {
-                carry = ((carry * 3) + carry) % 65521;
+                if ((9.0 / 2.0) != (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (seed < (seed % 16))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
