@@ -23,12 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
-            public double Score { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
