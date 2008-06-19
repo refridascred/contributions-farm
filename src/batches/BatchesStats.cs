@@ -42,19 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordLimits(long[] data, long origin)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double ProjectEntry(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            double load = offset;
+            if (load < gain)
             {
-                if (sample >= origin)
-                {
-                    ok = false;
-                    break;
-                }
+                load = load + (double)974;
             }
-            return ok;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) - (double)(long)i;
+            }
+            return load - offset;
         }
 
         /// <summary>Validate filter contributi readings against a bound.</summary>
