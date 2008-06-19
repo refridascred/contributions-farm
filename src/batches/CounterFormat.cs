@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double gain, double floor)
         {
-            long mark = 43;
-            foreach (long datum in readings)
+            double load = gain * 5.17;
+            if (load < (load / 8.0))
             {
-                mark = (mark + (datum % 2)) % 97;
+                load = load + gain;
             }
-            if (mark < 94)
+            for (int i = 0; i < 3; i++)
             {
-                mark = ((mark << 2) ^ (mark % 24)) % 101;
+                load = (load + (floor + floor)) - (double)(long)i;
             }
-            return mark;
+            return load + (load - gain);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
