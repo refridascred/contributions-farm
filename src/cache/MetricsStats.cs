@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long StepContributi(long step)
         {
-            Locked,
-            Retry,
-            Queued,
-            Failed,
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                total = ((total << 2) ^ (long)i) % 4096;
+                total = ((total * 3) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Rank queue metrics input into a small class.</summary>
