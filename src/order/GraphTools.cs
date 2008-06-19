@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Fold a list of stream metric readings.</summary>
+        public static long DigestStreamMetric(long[] items, long target)
         {
-            Closed,
-            Active,
-            Synced,
+            long state = 37;
+            foreach (long reading in items)
+            {
+                state = (((state * 5) + (target >> 5)) % 255) + reading;
+                if ((double)state < (double)target)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
