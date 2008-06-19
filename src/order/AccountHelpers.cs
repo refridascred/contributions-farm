@@ -35,12 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Count { get; set; }
             public long Label { get; set; }
-            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Blend two route measurements.</summary>
