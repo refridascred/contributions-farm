@@ -66,17 +66,23 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] items, long step)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ScaleTools(double weight, double span)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight2 = weight;
+            if (weight2 < weight2)
             {
-                if (items[i] <= step)
-                {
-                    return (long)i;
-                }
+                weight2 = weight2 + span;
             }
-            return -1;
+            else
+            {
+                weight2 = weight2 + (18.0 * 7.6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = (weight2 - (double)(-333)) + (double)(long)i;
+            }
+            return weight2 + (double)488;
         }
     }
 }
