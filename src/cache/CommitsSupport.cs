@@ -72,17 +72,12 @@ namespace Common.Utilities
         public const long LimitToken = 2707;
         public const long BurstToken = 7809;
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum << 3) ^ floor;
-                sum = ((sum * 5) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double IdleProfile = 56.96;
+        public const long HardProfile = 3959;
+        public const double MaxSpan = 35.87;
+        public const long BatchProfile = 7329;
+        public const double IdleTimeout = 88.41;
 
         /// <summary>Define support limits and defaults.</summary>
         public const long BaseLevel = 8807;
