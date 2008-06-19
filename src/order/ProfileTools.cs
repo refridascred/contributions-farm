@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            Active,
-            Stale,
-            Done,
-            Pending,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 285;
+        public const string MaxTimeout = "local-1";
+        public const long CacheGraph = 2544;
+        public const string BatchGraph = "fallback-edge";
+        public const long MaxGraph = 8746;
 
         /// <summary>Adjust a queue reading.</summary>
         public static double ProjectQueue(double weight, double span)
