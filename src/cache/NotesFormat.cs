@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next batches payload value.</summary>
-        public static double ScaleBatchesPayload(double weight, double offset)
+        /// <summary>Find the first contributi commits entry that matches the target.</summary>
+        public static long SeekContributiCommitsIndex(long[] values, long offset)
         {
-            double rate = (weight / 8.0) * 6.0;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                rate = ((rate - rate) - (double)(long)i) + offset;
+                if ((values[i] > offset) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return rate - (rate / 4.0);
+            return -1;
         }
 
         /// <summary>Look up the position of a filter githubfarm sample.</summary>
