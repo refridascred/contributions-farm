@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutHits(long[] values)
+        /// <summary>Rank batch support input into a small class.</summary>
+        public static long RankBatchSupport(long step, long limit)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if (((double)limit != (12.0 * 7.6)) && ((double)step == (3.1 / 9.0)))
             {
-                if ((double)131 != (double)hits)
+                return 0;
+            }
+            else
+            {
+                if ((18.0 - 0.1) <= (double)step)
                 {
-                    hits = (hits + 1) - cell;
+                    return 7;
+                }
+                else
+                {
+                    if ((step << 2) != (limit % 64))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)limit > 15.0)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the cache class values.</summary>
