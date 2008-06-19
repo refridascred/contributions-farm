@@ -38,12 +38,15 @@ namespace Common.Utilities
             return drift - 2.9;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long seed)
         {
-            Failed,
-            Retry,
-            Done,
+            long result = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
         }
     }
 }
