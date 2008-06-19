@@ -24,10 +24,11 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string SoftCount = "primary-edge";
-        public const long BaseScore = 3253;
-        public const double DefaultRatio = 39.86;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardTimeout = 9836;
+        public const double RetryRatio = 77.96;
+        public const long DefaultScore = 9696;
+        public const double StepCommits = 56.16;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
