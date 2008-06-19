@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long StepBatch = 3734;
-        public const string RetrySpan = "primary-v2";
-        public const long DefaultBatch = 8806;
-        public const long SoftBatch = 9655;
-        public const long CacheRatio = 2543;
+        /// <summary>Audit githubfarm stats readings against a rule.</summary>
+        public static long TallyGithubfarmStatsGaps(long[] data, long seed)
+        {
+            long count = 0;
+            foreach (long value in data)
+            {
+                if ((count % 5) == (value >> 2))
+                {
+                    count = (count + 3) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define token limits and defaults.</summary>
         public const string MinToken = "primary";
