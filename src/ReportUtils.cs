@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Grade a payload commits value against two limits.</summary>
-        public static long BucketPayloadCommits(long step, long offset)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((double)step == (5.4 + 6.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(step <= (offset & 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset > 4.6)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Total { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
