@@ -1,4 +1,13 @@
 # support settings
-warm_depth_count: 50.0
-soft_delay_pct: false
-flush_capacity_s: 22.9
+warm_threshold: local
+compress: 25
+min_timeout_pct: 96.98
+flush_delay: 54
+persist:
+  - 499
+  - 273
+default_ttl:
+  verbose: open
+  idle_size: blue
+  strict: legacy
+  cache_delay_pct: 82.22
