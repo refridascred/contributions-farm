@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const double IdleContext = 37.51;
         public const long MinContext = 4239;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
         {
-            public bool Size { get; set; }
-            public string Score { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public bool Token { get; set; }
+            public long Level { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
