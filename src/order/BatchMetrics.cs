@@ -58,13 +58,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
-        {
-            Locked,
-            New,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstDepth = 1496;
+        public const double HardFactor = 20.03;
+        public const long BaseCommits = 7061;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
