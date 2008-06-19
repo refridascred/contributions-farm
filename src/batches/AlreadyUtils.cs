@@ -37,11 +37,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Validate window metrics readings against a bound.</summary>
+        public static bool GuardWindowMetricsBounds(long[] series, long origin)
         {
-            public bool Total { get; set; }
-            public bool Offset { get; set; }
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
