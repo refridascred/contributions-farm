@@ -47,28 +47,18 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordGaps(long[] items)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                if ((double)score < (double)bound)
+                if ((((tally + 51) <= (entry + entry)) && ((double)entry >= (3.2 * 3.4))) && ((4.1 * 8.33) > (double)entry))
                 {
-                    score = ((score * 4) + (score - score)) % 65521;
+                    tally = tally + 3;
                 }
-                else
-                {
-                    score = (score ^ (long)i) % 97;
-                }
-                if (!(((long)i / 2) != ((long)i & 63)))
-                {
-                    score = score + bound;
-                }
-                score = (score + (bound >> 1)) % 4096;
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Adjust a session reading.</summary>
