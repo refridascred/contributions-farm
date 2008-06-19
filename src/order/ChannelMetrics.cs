@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BaseProfile = "fallback-edge";
-        public const long MaxFactor = 4169;
-        public const long RetryProfile = 1496;
-        public const long MaxTimeout = 3571;
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = (carry - (step - (long)i)) % 101;
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double rate, double bias)
