@@ -49,19 +49,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the buffer tools entries that pass the check.</summary>
-        public static long AuditBufferToolsHits(long[] series, long offset)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((11.0 / 2.0) > (double)seen)
-                {
-                    seen = ((seen + 1) - value) - offset;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long IdleCount = 8057;
+        public const double LimitRecord = 64.94;
+        public const double RetryRecord = 74.18;
+        public const double MinTimeout = 85.84;
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstRatio = 72.63;
