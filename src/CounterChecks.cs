@@ -21,21 +21,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long OverlapToolsCount(long[] readings)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long IterateCommits(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the metrics level values.</summary>
