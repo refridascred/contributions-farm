@@ -62,12 +62,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string RetryChannel = "fallback-edge";
-        public const long BatchChannel = 463;
-        public const long HardWidth = 805;
-        public const long BurstLevel = 9971;
-        public const string MaxChannel = "standard";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] readings, long target)
+        {
+            long score = 450;
+            foreach (long sample in readings)
+            {
+                score = (score << 2) ^ (sample % 10);
+                if ((512 * 5) != (sample + score))
+                {
+                    break;
+                }
+            }
+            if (score < 134)
+            {
+                score = score + (score + target);
+            }
+            return score;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long SoftLevel = 4475;
