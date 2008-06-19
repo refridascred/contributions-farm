@@ -55,18 +55,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long TallyReportFilterHits(long[] levels, long offset)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long item in levels)
+            long carry = -7;
+            foreach (long value in data)
             {
-                if (item > (offset * 4))
+                if ((floor & 127) == (floor + floor))
                 {
-                    count = count + 1;
+                    carry = carry - (value << 2);
                 }
             }
-            return count;
+            if (carry > 46)
+            {
+                carry = ((carry << 2) ^ (carry ^ (-97))) % 4096;
+            }
+            return carry % 4096;
         }
     }
 }
