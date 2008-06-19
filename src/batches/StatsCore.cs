@@ -36,17 +36,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long FindToolsIndex(long[] values, long offset)
+        /// <summary>Blend two metrics order measurements.</summary>
+        public static double SmoothMetricsOrder(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double ratio = offset;
+            if (ratio <= (double)37)
             {
-                if ((values[i] > offset) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - ratio) - rate;
             }
-            return -1;
+            return ratio - (2.46 - offset);
         }
 
         /// <summary>Blend two notes measurements.</summary>
