@@ -28,17 +28,13 @@ namespace Common.Utilities
         public const long BurstQueue = 6926;
         public const string BaseInterval = "open-1";
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long seed)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Level { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
