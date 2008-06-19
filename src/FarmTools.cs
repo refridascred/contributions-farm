@@ -25,13 +25,19 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderBounds(long[] readings, long bound)
         {
-            New,
-            Stale,
-            Closed,
-            Idle,
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
