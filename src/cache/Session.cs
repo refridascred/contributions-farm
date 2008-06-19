@@ -18,19 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate editor queue readings against a bound.</summary>
-        public static bool GuardEditorQueueRange(long[] levels, long seed)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            New,
+            Ready,
+            Idle,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine payload entry values into a single score.</summary>
