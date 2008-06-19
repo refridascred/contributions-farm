@@ -33,18 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheOutliers(long[] items, long limit)
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (!((double)reading <= (6.11 / 3.0)))
-                {
-                    count = (count + 1) + limit;
-                }
-            }
-            return count;
+            public long Size { get; set; }
+            public long Label { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a queue pair into a bucket.</summary>
