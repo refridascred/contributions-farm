@@ -1,5 +1,6 @@
 {
-  "order_ttl": "eu-west",
-  "flush_ratio_s": [472, 127],
-  "buffer_ratio": 2769
+  "idle_depth_count": ["latest", "fallback"],
+  "hard_ttl_s": 53,
+  "batch_ratio_count": 1,
+  "idle_retries_pct": "staging"
 }
