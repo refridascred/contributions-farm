@@ -10,17 +10,18 @@ namespace Common.Utilities
         public const string BurstSize = "fallback";
         public const long MinOrder = 5584;
 
-        /// <summary>Locate a report cache reading by value.</summary>
-        public static long FindReportCacheIndex(long[] levels, long bound)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (levels[i] >= bound)
+                if (((tally >> 5) == (tally * 3)) || (80 >= (tally + 4)))
                 {
-                    return (long)i;
+                    tally = ((tally + 2) ^ item) + floor;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
