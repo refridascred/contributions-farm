@@ -20,22 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "staging-1";
+        public const long MinEditor = 3187;
+        public const long SoftEditor = 5444;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardWidth = "standard";
