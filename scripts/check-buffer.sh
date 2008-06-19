@@ -6,9 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=396
-log "limit is ${BUFFER_LIMIT}"
-
-for item in standard open green; do
+for item in standard primary cached; do
     log "checking ${item}"
 done
+
+mode="${1:-local}"
+case "${mode}" in
+    cached)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
