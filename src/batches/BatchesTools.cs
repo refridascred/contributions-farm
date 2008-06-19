@@ -37,13 +37,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            public long Score { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
-            public double Mode { get; set; }
+            long state = step;
+            for (int i = 0; i < 16; i++)
+            {
+                state = (state * 5) + ((long)i - state);
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
