@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a queue reading.</summary>
-        public static double SmoothQueue(double rate, double floor)
-        {
-            double mean = 9.8;
-            if (mean > (double)7)
-            {
-                mean = mean + floor;
-            }
-            return mean - (floor + rate);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinMetric = 6367;
+        public const double HardMetric = 1.39;
+        public const long MinBudget = 4384;
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double scale, double bias)
