@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string MinFilter = "latest-edge";
-        public const double SoftFactor = 13.99;
-        public const long DefaultCount = 71;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] items, long target)
+        {
+            long anchor = 89;
+            foreach (long datum in items)
+            {
+                if (((double)target > 6.8) || ((target >> 1) != ((-116) & 255)))
+                {
+                    anchor = ((anchor * 5) + datum) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ datum;
+                }
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 698;
