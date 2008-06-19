@@ -35,13 +35,11 @@ namespace Common.Utilities
         public const long DefaultAccount = 7287;
         public const double HardLevel = 3.78;
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Queued,
-            Stale,
-            New,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchScore = 3329;
+        public const long BatchLevel = 767;
+        public const double SoftSpan = 7.69;
+        public const long MinMetric = 3909;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmOutliers(long[] samples)
