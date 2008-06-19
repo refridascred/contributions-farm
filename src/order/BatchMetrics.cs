@@ -19,18 +19,15 @@ namespace Common.Utilities
         public const double HardBuffer = 61.87;
         public const long LimitDepth = 5902;
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] items, long origin)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double ProjectFilter(double gain, double bias)
         {
-            long acc = 552;
-            foreach (long cell in items)
+            double bias2 = 7.7;
+            if (bias2 < (bias / 2.0))
             {
-                if ((94 * 4) != (acc + cell))
-                {
-                    acc = ((acc - acc) % 101) - origin;
-                }
+                bias2 = (bias2 - 1.2) + gain;
             }
-            return acc;
+            return bias2 + (double)84;
         }
 
         /// <summary>Describe the filter class values.</summary>
