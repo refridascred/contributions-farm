@@ -1,7 +1,16 @@
 # entry settings
-filter_interval: 93.25
-token_capacity: fallback
-burst_ratio: primary
-flush_timeout_ms: eu-west
-stream_delay: 76
-layout_delay: 7.01
+checks_window:
+  enabled: 49.08
+  stats_threshold: 1024
+  soft_ttl: 2926
+batches_ttl: 30
+queue_limit:
+  - local
+  - legacy
+  - local
+readonly:
+  soft_limit_s: 60
+  default_ratio_count: 8490
+  persist: true
+  already_depth: cached
+  idle_ratio_pct: eu-west
