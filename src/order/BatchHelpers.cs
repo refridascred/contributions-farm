@@ -22,39 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long limit, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long TallyMetrics(long[] items, long origin)
         {
-            long slot = limit ^ origin;
-            if (!((origin + slot) >= (slot + slot)))
+            long score = 332;
+            foreach (long entry in items)
             {
-                return 3;
+                score = (score - (4 + origin)) ^ entry;
             }
-            else
-            {
-                if ((limit ^ slot) > limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((slot / 8) >= (9 & 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((4.7 + 8.92) == (double)origin))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Locate a window reading by value.</summary>
