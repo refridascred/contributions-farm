@@ -69,30 +69,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] levels)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] items, long target)
         {
-            long sum = 4;
-            foreach (long entry in levels)
+            long carry = 93;
+            foreach (long item in items)
             {
-                if (((entry / 2) < (sum - 2)) || ((entry + entry) == (sum + sum)))
+                if (target < (target + target))
                 {
-                    break;
-                }
-                if (sum < entry)
-                {
-                    sum = (sum * 2) + entry;
-                }
-                if ((5 << 1) >= entry)
-                {
-                    break;
+                    carry = ((carry + (694 * 5)) % 4096) ^ item;
                 }
             }
-            if (sum < 190)
-            {
-                sum = (sum + (sum * 4)) % 1000;
-            }
-            return sum % 97;
+            return carry;
         }
     }
 }
