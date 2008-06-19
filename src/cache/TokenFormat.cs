@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] items, long target)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] samples)
         {
-            long anchor = 89;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)target > 6.8) || ((target >> 1) != ((-116) & 255)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor * 5) + datum) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ datum;
+                    if ((samples[i] + samples[j]) > 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Define report limits and defaults.</summary>
