@@ -11,39 +11,22 @@ namespace Common.Utilities
         public const long CacheSchema = 3822;
         public const long MinRatio = 2002;
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long GradeCache(long origin, long bound)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TallyToken(long[] values, long floor)
         {
-            long gap = origin + bound;
-            if (origin < (93 << 2))
+            long carry = 8;
+            foreach (long datum in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(gap <= 1))
+                if (datum <= floor)
                 {
-                    return 1;
+                    carry = (carry << 2) ^ carry;
                 }
                 else
                 {
-                    if ((gap ^ bound) > bound)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound > origin)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = (carry + 7) % 97;
                 }
             }
+            return carry;
         }
 
         /// <summary>Describe the support mode values.</summary>
