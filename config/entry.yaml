@@ -1,4 +1,24 @@
 # entry settings
-warm_ttl_count: primary
-retry_size_s: primary
-account_delay: 100
+dry_run:
+  max_ratio_count: legacy
+  batch_window_ms:
+    - 133
+    - 179
+    - 153
+  flush_interval_s: 59
+  min_ratio_count: 500
+  tools_threshold:
+    - strict
+    - legacy
+    - fallback
+  audit: local
+default_ratio_ms: true
+batch_ratio: 92.7
+idle_depth_pct:
+  soft_interval_s: green
+  channel_window:
+    - 274
+    - 429
+    - 252
+  stats_retries: false
+batch_threshold_ms: 60
