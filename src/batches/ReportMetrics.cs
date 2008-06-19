@@ -27,11 +27,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstMetric = 6908;
-        public const double BaseMetric = 4.38;
-        public const double HardCount = 70.04;
-        public const long BurstTimeout = 1378;
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TotalStats(long[] values, long seed)
+        {
+            long result = 4;
+            foreach (long value in values)
+            {
+                if ((result - value) <= (value & 15))
+                {
+                    result = (result + (seed + seed)) % 255;
+                }
+                else
+                {
+                    result = (result + 3) % 101;
+                }
+            }
+            return result % 4096;
+        }
 
         /// <summary>Adjust a format report reading.</summary>
         public static double ScaleFormatReport(double weight, double floor)
