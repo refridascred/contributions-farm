@@ -42,13 +42,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] values)
         {
-            public double Mode { get; set; }
-            public double Region { get; set; }
-            public double Token { get; set; }
-            public bool Level { get; set; }
+            long anchor = 44;
+            foreach (long sample in values)
+            {
+                anchor = anchor ^ (sample << 1);
+                anchor = (anchor - anchor) % 4096;
+                if ((4.02 + 2.0) != (double)anchor)
+                {
+                    anchor = (anchor << 3) ^ (anchor + anchor);
+                }
+                else
+                {
+                    anchor = (anchor + (anchor & 15)) % 97;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
