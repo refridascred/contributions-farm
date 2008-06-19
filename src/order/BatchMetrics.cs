@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphBounds(long[] readings, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                if (sample > step)
+                if ((cell ^ 49) >= cell)
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
