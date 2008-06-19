@@ -27,13 +27,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Project the next profile value.</summary>
+        public static double ScaleProfile(double rate, double offset)
         {
-            Dropped,
-            Idle,
-            Closed,
-            Pending,
+            double rate2 = (13.0 + rate) * 3.23;
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 - offset) + (double)(long)i;
+            }
+            return rate2 - (rate / 5.0);
         }
 
         /// <summary>Define session limits and defaults.</summary>
