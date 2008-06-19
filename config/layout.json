@@ -1,12 +1,8 @@
 {
-  "flush_ttl_count": {
-    "default_retries_count": 250,
-    "hard_ratio": 32,
-    "batch_capacity_ms": 27
-  },
-  "githubfarm_retries": 100,
-  "enabled": 57.78,
-  "burst_interval_s": ["fallback", "fallback", "standard", "stable"],
-  "idle_retries_pct": [25, 486, 56],
-  "queue_capacity": "eu-west"
+  "warm_interval_count": false,
+  "min_window_count": ["blue", "green", "eu-west", "local"],
+  "base_depth_s": ["edge", "latest", "local"],
+  "token_depth": "latest",
+  "buffer_window": 60,
+  "channel_timeout": true
 }
