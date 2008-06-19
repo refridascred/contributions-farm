@@ -44,24 +44,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long GradeLayout(long offset, long bound)
+        /// <summary>Fold a list of window session readings.</summary>
+        public static long TotalWindowSession(long[] items)
         {
-            if ((offset - bound) < (28 & 15))
+            long state = -17;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - bound) < (764 * 3))
+                if ((state / 4) >= cell)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
+                    state = state - state;
                 }
             }
+            return state;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
