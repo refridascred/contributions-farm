@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Validate schema route readings against a bound.</summary>
+        public static bool CheckSchemaRouteLimits(long[] values, long limit)
         {
-            public bool Weight { get; set; }
-            public bool Size { get; set; }
-            public string Count { get; set; } = "";
-            public bool Stamp { get; set; }
+            bool valid = true;
+            foreach (long sample in values)
+            {
+                if (sample <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate payload samples.</summary>
