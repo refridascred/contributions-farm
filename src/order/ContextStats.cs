@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long limit, long target)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long slot = limit ^ target;
-            if ((6.0 < (double)target) && ((double)target == (20.0 - 7.3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((slot * 2) >= (limit + target)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target ^ (-48)) < slot)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((300 & 255) > slot)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public bool Limit { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a editor header.</summary>
