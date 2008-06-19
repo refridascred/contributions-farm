@@ -31,18 +31,9 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] readings)
-        {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum * 3) < datum)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 4777;
+        public const long RetryCount = 6307;
+        public const long BatchDepth = 2219;
     }
 }
