@@ -70,9 +70,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftLevel = 4475;
-        public const double CacheAccount = 40.05;
-        public const long HardAccount = 3617;
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix - (514 + floor)) % 97;
+                mix = ((mix * 5) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
