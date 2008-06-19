@@ -44,18 +44,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportGaps(long[] items, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((844 % 8) < tally)
-                {
-                    tally = ((tally + 1) ^ sample) - limit;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Paused,
+            Locked,
+            Queued,
         }
 
         /// <summary>Define checks limits and defaults.</summary>
