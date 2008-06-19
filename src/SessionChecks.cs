@@ -28,11 +28,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            public string Level { get; set; } = "";
-            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
