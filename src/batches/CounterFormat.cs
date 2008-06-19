@@ -16,17 +16,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long IterateChannel(long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long SeekSessionIndex(long[] readings, long floor)
         {
-            long state = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = state ^ floor;
-                state = (state << 2) ^ (state ^ floor);
-                state = ((state * 4) + (long)i) % 65521;
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
