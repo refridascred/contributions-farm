@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public bool Offset { get; set; }
-            public string Rank { get; set; } = "";
+            Failed,
+            Closed,
+            New,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
