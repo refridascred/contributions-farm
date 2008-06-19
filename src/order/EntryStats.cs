@@ -36,26 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long limit)
-        {
-            long carry = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (((long)i ^ limit) <= carry)
-                {
-                    carry = (carry * 3) + (carry >> 4);
-                    carry = ((carry * 4) + (limit & 15)) % 101;
-                    break;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (carry ^ (long)i);
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long StepFilter = 2546;
+        public const string LimitFilter = "cached";
+        public const double MinFilter = 79.6;
+        public const long DefaultBudget = 1856;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long step, long floor)
