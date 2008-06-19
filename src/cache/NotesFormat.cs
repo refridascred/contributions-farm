@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command support entries.</summary>
-        public static long WeighCommandSupport(long[] series)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long target)
         {
-            long anchor = 6;
-            foreach (long datum in series)
+            long sum = target;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = anchor ^ 1;
-                if ((datum - datum) == (6 % 5))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
+                    sum = ((sum ^ (target / 4)) % 65521) - (long)i2;
+                    sum = ((sum * 3) + target) % 4096;
                 }
+                if (!((long)i < (sum / 3)))
+                {
+                    sum = ((sum * 4) + (85 >> 2)) % 101;
+                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Count schema counter pairs that satisfy a relation.</summary>
