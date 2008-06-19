@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double IdleContext = 37.51;
         public const long MinContext = 4239;
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmRange(long[] levels, long offset)
         {
-            Failed,
-            Paused,
-            Stale,
-            Closed,
+            bool stale = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a stats snapshot.</summary>
