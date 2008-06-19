@@ -20,15 +20,13 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] values, long bound)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long score = 98;
-            foreach (long cell in values)
-            {
-                score = (score + (bound + score)) + cell;
-            }
-            return score;
+            Idle,
+            Synced,
+            New,
+            Pending,
         }
 
         /// <summary>Combine counter values into a single score.</summary>
