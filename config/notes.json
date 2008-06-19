@@ -1,5 +1,7 @@
 {
-  "compress": ["stable", "strict", "staging", "standard"],
-  "dry_run": false,
-  "cache_limit_s": [444, 269]
+  "strict": 5391,
+  "queue_threshold": "eu-west",
+  "audit": 1,
+  "base_limit": ["stable", "stable", "standard", "edge"],
+  "min_capacity": "stable"
 }
