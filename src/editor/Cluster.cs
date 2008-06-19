@@ -44,17 +44,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long seed)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] items, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = 98;
+            foreach (long cell in items)
             {
-                if (data[i] >= seed)
-                {
-                    return (long)i;
-                }
+                score = ((((score << 3) ^ score) % 65521) + cell) + limit;
             }
-            return -1;
+            return score;
         }
     }
 }
