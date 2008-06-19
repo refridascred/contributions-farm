@@ -41,11 +41,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
-        {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryCluster = 1141;
+        public const long StepWidth = 5567;
+        public const long BurstScore = 2678;
+        public const long DefaultSize = 1272;
+        public const long BurstCluster = 4556;
     }
 }
