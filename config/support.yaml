@@ -1,7 +1,4 @@
 # support settings
-sync_threshold: 53.87
-verbose: true
-enabled: standard
-format_ttl: true
-cache_threshold_count: open
-compress: cached
+warm_depth_count: 50.0
+soft_delay_pct: false
+flush_capacity_s: 22.9
