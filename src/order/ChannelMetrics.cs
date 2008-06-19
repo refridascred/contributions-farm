@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Find the first checks report entry that matches the target.</summary>
-        public static long SeekChecksReportIndex(long[] data, long limit)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long IterateOrder(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = limit;
+            for (int i = 0; i < 9; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
