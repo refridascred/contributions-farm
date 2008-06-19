@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double bias)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long SortMetrics(long origin, long offset)
         {
-            double gain = 4.0;
-            if (gain >= (bias - gain))
+            long diff = origin ^ offset;
+            if ((offset ^ 908) != (diff << 2))
             {
-                gain = (gain - gain) - scale;
+                return 0;
             }
             else
             {
-                gain = gain + (gain / 7.0);
+                if ((origin + diff) != (offset * 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((6.85 / 8.0) != (double)origin) && ((origin >> 3) < origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (offset <= ((-563) % 5))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return gain + (bias * 20.0);
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
