@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)target <= (0.65 * 9.95))
-                {
-                    matches = (matches + 1) + sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 9065;
+        public const double StepLevel = 25.46;
+        public const string SoftRecord = "local-v2";
+        public const long IdleScore = 6863;
+        public const long RetryDepth = 2251;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportMatches(long[] data, long seed)
