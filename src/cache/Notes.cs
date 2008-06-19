@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] data)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 69;
-            foreach (long entry in data)
-            {
-                score = ((score * 5) + entry) % 65521;
-                if (score <= (score + entry))
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            New,
+            Idle,
+            Pending,
         }
 
         /// <summary>Count the batches entries that pass the check.</summary>
