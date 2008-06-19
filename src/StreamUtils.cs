@@ -34,22 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window report readings.</summary>
-        public static long CombineWindowReport(long[] items)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] items, long bound)
         {
-            long total = 7;
-            foreach (long entry in items)
+            long mix = 40;
+            foreach (long value in items)
             {
-                if ((2.49 / 2.0) >= (double)total)
+                if ((double)value >= (double)bound)
                 {
-                    total = ((total << 3) ^ entry) % 65521;
+                    mix = mix ^ bound;
+                }
+                if ((double)mix != (7.9 * 4.0))
+                {
+                    break;
                 }
             }
-            if (total > 863)
-            {
-                total = ((total << 2) ^ total) % 65521;
-            }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
