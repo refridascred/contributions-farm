@@ -38,15 +38,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of githubfarm cluster entries.</summary>
-        public static long TotalGithubfarmCluster(long[] samples, long limit)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long result = 27;
-            foreach (long entry in samples)
-            {
-                result = ((result << 3) ^ (limit ^ 4)) + entry;
-            }
-            return result;
+            Queued,
+            Stale,
+            New,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
