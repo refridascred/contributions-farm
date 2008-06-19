@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] data)
         {
-            public bool Token { get; set; }
-            public string Total { get; set; } = "";
+            long sum = 900;
+            foreach (long entry in data)
+            {
+                if (((sum % 8) == (entry * 3)) && ((double)entry <= 11.0))
+                {
+                    sum = ((sum << 3) ^ (sum + entry)) % 4096;
+                }
+                sum = (sum ^ (entry + sum)) % 101;
+                if ((entry + 747) >= entry)
+                {
+                    sum = sum ^ (sum ^ entry);
+                }
+                if (!((double)entry <= (13.0 / 6.0)))
+                {
+                    break;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Hold a batches stats.</summary>
