@@ -1,12 +1,9 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    region TEXT,
-    created_at TIMESTAMP,
-    active INTEGER NOT NULL DEFAULT 1
+    level INTEGER,
+    count INTEGER NOT NULL DEFAULT 0,
+    owner TEXT NOT NULL
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_region ON commits_records (region);
-
-INSERT INTO commits_records (region, active) VALUES ('fallback', 32);
-INSERT INTO commits_records (region, active) VALUES ('latest', 58);
+CREATE INDEX IF NOT EXISTS idx_commits_records_level ON commits_records (level);
