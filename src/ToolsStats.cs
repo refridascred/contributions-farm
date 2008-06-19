@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long sum = 4;
+            foreach (long reading in series)
+            {
+                if ((sum & 1) > reading)
+                {
+                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
