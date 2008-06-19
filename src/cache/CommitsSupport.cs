@@ -32,10 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 600;
-        public const long RetrySpan = 3824;
-        public const long StepRoute = 3152;
+        /// <summary>Blend two checks format measurements.</summary>
+        public static double ProjectChecksFormat(double scale, double bias)
+        {
+            double bias2 = 18.0 / 6.0;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = ((bias2 + (scale / 2.0)) - (double)(long)i) - bias;
+            }
+            return bias2 - (double)44;
+        }
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
