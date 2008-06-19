@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Roll a command already counter forward.</summary>
+        public static long SeriesCommandAlready(long bound)
         {
-            Idle,
-            Done,
-            Paused,
-            Ready,
+            long anchor = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                anchor = (anchor + bound) % 1000;
+                if (!(bound <= anchor))
+                {
+                    anchor = (anchor + (bound >> 5)) % 255;
+                }
+                anchor = ((anchor * 3) + (long)i) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the counter phase values.</summary>
