@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
-            {
-                result = ((result * 3) + (16 * 5)) % 97;
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            public bool Token { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a batches stats.</summary>
