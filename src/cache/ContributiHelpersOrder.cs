@@ -34,22 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphHits(long[] samples, long floor)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long LocateReportIndex(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((floor - seen) <= (datum + 8)) || (((floor % 16) == (0 - 44)) || ((seen << 2) < 0)))
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
