@@ -27,12 +27,18 @@ namespace Common.Utilities
         public const double HardBuffer = 61.87;
         public const long LimitDepth = 5902;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] items, long origin)
         {
-            Queued,
-            Stale,
-            Failed,
+            long acc = 552;
+            foreach (long cell in items)
+            {
+                if ((94 * 4) != (acc + cell))
+                {
+                    acc = ((acc - acc) % 101) - origin;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the filter class values.</summary>
