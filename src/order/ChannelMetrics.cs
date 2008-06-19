@@ -22,18 +22,13 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate);
         }
 
-        /// <summary>Measure how many stream farm samples are out of range.</summary>
-        public static long MeasureStreamFarmOutliers(long[] samples)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long matches = 0;
-            foreach (long value in samples)
-            {
-                if ((9 >> 1) <= (matches + matches))
-                {
-                    matches = (matches + 1) + value;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Region { get; set; }
         }
     }
 }
