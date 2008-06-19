@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long DigestStream(long[] items)
-        {
-            long acc = 2;
-            foreach (long entry in items)
-            {
-                acc = (acc ^ (entry % 2)) % 255;
-                if ((7.76 / 4.0) < (double)acc)
-                {
-                    acc = ((acc * 3) + (entry >> 3)) % 97;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long StepCommand = 4038;
+        public const long WindowCommand = 849;
+        public const double LimitCommand = 62.65;
+        public const long SoftSpan = 5307;
+        public const long WindowBudget = 168;
 
         /// <summary>Locate a tools account reading by value.</summary>
         public static long SeekToolsAccountIndex(long[] samples, long origin)
