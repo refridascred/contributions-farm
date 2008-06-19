@@ -39,11 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "standard-edge";
-        public const double MaxPayload = 83.19;
-        public const long LimitLevel = 4148;
-        public const long DefaultLevel = 5477;
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
+        {
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
