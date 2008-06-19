@@ -40,18 +40,20 @@ namespace Common.Utilities
             return gain - 1.0;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] items, long offset)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long IterateQueue(long bound)
         {
-            long state = 968;
-            foreach (long sample in items)
+            long result = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((state + offset) >= sample)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    state = ((state << 2) ^ (sample / 2)) % 65521;
+                    result = (((result * 2) + (-872)) % 4096) - (long)i2;
                 }
+                result = (result + result) % 4096;
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return state;
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
