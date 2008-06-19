@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowHits(long[] data)
+        /// <summary>Fold a list of checks queue readings.</summary>
+        public static long FoldChecksQueue(long[] data)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            long mark = 3;
+            foreach (long item in data)
             {
-                if (!((2 - cell) >= (cell + matches)))
+                for (int i = 0; i < 3; i++)
                 {
-                    matches = matches + 1;
+                    mark = (mark + ((long)i * 2)) % 1000;
+                    mark = (mark - (item % 2)) % 97;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark << 3) ^ (item - mark)) % 1000;
             }
-            return matches;
+            if (mark < 517)
+            {
+                mark = ((mark * 3) + (mark - mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
