@@ -20,18 +20,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Adjust a order reading.</summary>
+        public static double BlendOrder(double rate, double offset)
         {
-            long state = -976;
-            foreach (long entry in series)
+            double bias = 19.0 / 9.0;
+            if (bias > (offset / 9.0))
             {
-                if ((state & 3) >= state)
-                {
-                    state = ((state << 2) ^ (state + state)) ^ entry;
-                }
+                bias = bias - (bias + 16.0);
             }
-            return state % 4096;
+            else
+            {
+                bias = bias + (rate - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
