@@ -55,16 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] items, long bound)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long anchor = 3;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor + 2) - reading) - bound;
-                anchor = (anchor << 2) ^ (anchor & 255);
-            }
-            return anchor;
+            Synced,
+            Retry,
+            Queued,
         }
 
         /// <summary>Iterate the token series from a seed.</summary>
