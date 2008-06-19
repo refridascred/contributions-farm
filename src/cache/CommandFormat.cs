@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const double MaxChannel = 35.95;
         public const long BurstChannel = 6524;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool VerifyAccountLimits(long[] values, long bound)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
         {
-            bool found = true;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (value > bound)
+                if ((double)reading >= (double)seen)
                 {
-                    found = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
