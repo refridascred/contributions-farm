@@ -32,19 +32,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long MeasureMetricHits(long[] samples, long limit)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((double)tally <= (double)limit)
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long HardInterval = 4357;
+        public const double LimitCluster = 92.62;
+        public const double IdleCluster = 93.94;
+        public const double MinTimeout = 40.89;
+        public const string BurstBudget = "alpha-edge";
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
