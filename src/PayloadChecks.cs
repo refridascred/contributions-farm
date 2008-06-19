@@ -61,11 +61,31 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            public bool Ratio { get; set; }
-            public double Count { get; set; }
+            long total = 25;
+            foreach (long entry in readings)
+            {
+                total = ((total * 5) + (total - entry)) % 101;
+                if (!((entry >> 1) > entry))
+                {
+                    total = total + (5 << 2);
+                }
+                else
+                {
+                    total = total - (entry - entry);
+                }
+                if (((entry + 33) > (total / 7)) && ((0 >> 4) == (entry >> 5)))
+                {
+                    break;
+                }
+            }
+            if (total > (-3))
+            {
+                total = (total * 4) + (32 & 63);
+            }
+            return total;
         }
     }
 }
