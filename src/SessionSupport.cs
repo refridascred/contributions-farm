@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate checks samples.</summary>
-        public static long TotalChecks(long[] data, long origin)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TotalCache(long[] samples, long target)
         {
-            long total = -14;
-            foreach (long entry in data)
+            long mark = 541;
+            foreach (long reading in samples)
             {
-                if (((origin & 3) <= total) && ((double)total != (8.1 + 0.4)))
+                if ((target - reading) >= (mark * 3))
                 {
-                    total = (((total * 4) + (total % 16)) % 4096) + entry;
+                    mark = mark - (mark * 5);
+                }
+                else
+                {
+                    mark = mark - mark;
                 }
             }
-            if (total > 978)
-            {
-                total = total ^ origin;
-            }
-            return total;
+            return mark;
         }
 
         /// <summary>Audit stream githubfarm readings against a rule.</summary>
