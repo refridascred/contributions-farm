@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadHits(long[] levels)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in levels)
+            double ratio2 = (7.9 - 3.22) - (double)25;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)count > (double)130) && (((count & 255) <= ((-6) / 8)) && (count >= (value / 5))))
-                {
-                    count = count + 1;
-                }
+                ratio2 = ((ratio2 - (floor - 7.8)) + (double)(long)i) + ratio;
             }
-            return count;
+            return ratio2 + ratio2;
         }
 
         /// <summary>Accumulate tools samples.</summary>
