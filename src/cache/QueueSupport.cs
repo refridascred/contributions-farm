@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = (carry << 2) ^ carry;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Paused,
+            Stale,
+            Pending,
+            Ready,
         }
 
         /// <summary>Describe the queue status values.</summary>
