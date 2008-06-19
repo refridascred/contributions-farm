@@ -1,12 +1,7 @@
 {
-  "batch_threshold_s": {
-    "editor_threshold": 1691,
-    "record_limit": false,
-    "batch_ttl": 11.26,
-    "token_depth": [207, 155],
-    "max_timeout_pct": 0.53
-  },
-  "dry_run": 91.68,
-  "sync_interval_s": [170, 307],
-  "batch_ratio": 87.61
+  "buffer_delay": 8626,
+  "batch_depth": 8108,
+  "warm_ratio_s": 76,
+  "channel_depth": 96,
+  "hard_window_pct": true
 }
