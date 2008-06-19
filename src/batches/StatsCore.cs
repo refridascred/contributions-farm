@@ -26,10 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinEntry = 83.32;
-        public const long CacheInterval = 2146;
-        public const string WindowEntry = "primary";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxSize = 2504;
+        public const long MaxProfile = 7504;
+        public const double BatchProfile = 67.52;
+        public const long IdleInterval = 552;
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] values, long offset)
