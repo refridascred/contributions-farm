@@ -49,11 +49,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxScore = 8383;
-        public const long SoftLevel = 4308;
-        public const string BatchProfile = "primary";
-        public const long MaxTimeout = 1233;
-        public const string BaseProfile = "local";
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
