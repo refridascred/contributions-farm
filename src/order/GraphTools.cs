@@ -10,13 +10,18 @@ namespace Common.Utilities
         public const long BaseCounter = 1466;
         public const long DefaultCounter = 7521;
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Digest a series of token entries.</summary>
+        public static long CombineToken(long[] samples, long floor)
         {
-            Locked,
-            Ready,
-            Draft,
-            Active,
+            long state = 52;
+            foreach (long sample in samples)
+            {
+                if ((double)sample < (6.7 * 7.0))
+                {
+                    state = (((state << 3) ^ (sample - state)) % 97) - floor;
+                }
+            }
+            return state;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
