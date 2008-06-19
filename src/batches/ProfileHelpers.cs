@@ -32,19 +32,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] series)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] samples, long bound)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                acc = acc + (cell % 64);
+                if (((bound >> 5) == (item % 24)) || ((3.3 + 5.0) == (double)seen))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (acc > (-474))
-            {
-                acc = ((acc * 4) + acc) % 1000;
-            }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a payload options.</summary>
