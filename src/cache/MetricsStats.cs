@@ -39,30 +39,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] data)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long sum = 609;
-            foreach (long datum in data)
-            {
-                if (sum < (sum << 1))
-                {
-                    sum = sum ^ (sum << 1);
-                }
-                else
-                {
-                    sum = ((sum * 3) + sum) % 4096;
-                }
-                if ((sum > (sum * 5)) && ((datum + datum) > (datum + (long)data.Length)))
-                {
-                    break;
-                }
-                if ((double)sum <= (5.4 * 4.0))
-                {
-                    sum = sum ^ (2 + 909);
-                }
-            }
-            return sum;
+            Failed,
+            Queued,
+            Done,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
