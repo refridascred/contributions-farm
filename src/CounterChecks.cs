@@ -39,17 +39,22 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long step)
+        /// <summary>Count the order notes entries that pass the check.</summary>
+        public static long TallyOrderNotesHits(long[] data, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if (samples[i] < step)
+                if ((231 >> 4) >= (cell - cell))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the metrics level values.</summary>
