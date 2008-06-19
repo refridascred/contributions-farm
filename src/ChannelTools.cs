@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
-            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
