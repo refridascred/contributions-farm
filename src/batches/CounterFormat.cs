@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
+            public double Total { get; set; }
+            public long Flag { get; set; }
             public bool Token { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Roll a window counter forward.</summary>
