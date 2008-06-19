@@ -53,23 +53,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double AdjustContributi(double gain, double offset)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LookupCounterIndex(long[] levels, long seed)
         {
-            double weight = 2.72;
-            if (weight < offset)
+            for (int i = 0; i < levels.Length; i++)
             {
-                weight = weight + (gain + offset);
+                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight - gain;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + offset) + (double)(long)i;
-            }
-            return weight + gain;
+            return -1;
         }
     }
 }
