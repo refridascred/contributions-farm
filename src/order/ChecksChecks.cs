@@ -20,21 +20,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] series)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state ^ (bound & 63)) % 1000;
-                state = (state + (state >> 4)) % 255;
-                for (int i2 = 0; i2 < 11; i2++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = (((state << 3) ^ (bound - state)) % 255) ^ (long)i2;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                state = ((state * 4) + (long)i) % 1000;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Fold a list of route readings.</summary>
