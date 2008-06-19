@@ -23,13 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksMatches(long[] levels, long target)
         {
-            Draft,
-            Closed,
-            New,
-            Stale,
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)count != (4.0 * 4.7))
+                {
+                    count = ((count + 1) ^ cell) + target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches status values.</summary>
