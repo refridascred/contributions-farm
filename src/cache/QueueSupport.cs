@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long LocateNotesIndex(long[] values, long bound)
         {
-            Draft,
-            Idle,
-            New,
-            Closed,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit account readings against a rule.</summary>
