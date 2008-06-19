@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            Active,
-            Closed,
-            Stale,
+            Pending,
+            Queued,
+            New,
         }
 
         /// <summary>Describe the order state values.</summary>
