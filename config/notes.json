@@ -1,16 +1,14 @@
 {
-  "entry_timeout": false,
-  "batch_delay_count": "blue",
-  "hard_timeout": {
-    "cache_threshold_pct": 1024,
-    "retry_size_count": {
-      "retry_depth": 89,
-      "hard_interval_ms": true,
-      "flush_ttl_ms": "edge",
-      "hard_timeout_count": false,
-      "compress": 12
-    },
-    "command_delay": false,
-    "audit": true
-  }
+  "account_ttl": true,
+  "support_size": false,
+  "verbose": {
+    "hard_timeout_pct": 500,
+    "token_limit": ["stable", "cached", "cached", "blue"],
+    "batch_ttl_pct": [324, 156, 44],
+    "batches_ttl": "blue",
+    "cache_limit": "edge",
+    "enabled": 1024
+  },
+  "retry_ttl_count": 8037,
+  "notes_timeout": [302, 189, 244, 80]
 }
