@@ -1,12 +1,7 @@
 {
-  "token_ttl": true,
-  "poll_interval_count": {
-    "strict": 49,
-    "hard_depth_ms": "latest",
-    "hard_retries_count": ["blue", "green", "eu-west", "latest"],
-    "sync_window": 36.91,
-    "warm_ratio_pct": "green",
-    "hard_delay_ms": "latest"
-  },
-  "queue_depth": "fallback"
+  "min_retries": 250,
+  "max_delay_count": 100,
+  "commits_ttl": [367, 195],
+  "hard_timeout": "open",
+  "default_ttl": true
 }
