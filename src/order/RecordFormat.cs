@@ -13,27 +13,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Derive the next route cluster value from a seed.</summary>
-        public static long RollRouteCluster(long target)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long bound, long limit)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            if ((limit + limit) < (limit - bound))
             {
-                if ((double)target <= 9.0)
+                return 7;
+            }
+            else
+            {
+                if ((limit > (71 * 3)) || ((bound + limit) > (limit + limit)))
                 {
-                    total = (total - ((-4) - 9)) % 4096;
-                    total = (total << 2) ^ (target * 5);
+                    return 6;
                 }
                 else
                 {
-                    total = (total ^ (target * 5)) % 101;
-                    total = total ^ (long)i;
+                    if (((double)limit >= (double)bound) || (limit >= (limit & 127)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 16) < (bound + bound))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
-                total = (total ^ ((long)i ^ total)) % 101;
-                total = (total - (total + target)) % 97;
-                total = ((total * 4) + (long)i) % 65521;
             }
-            return total;
         }
 
         /// <summary>Describe the checks phase values.</summary>
