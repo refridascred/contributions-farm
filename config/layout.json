@@ -1,7 +1,5 @@
 {
-  "min_depth": 48,
-  "graph_threshold": "strict",
-  "enabled": "edge",
-  "context_timeout": "blue",
-  "window_capacity": "stable"
+  "filter_depth": "eu-west",
+  "cache_size": 1,
+  "sync_limit_pct": "edge"
 }
