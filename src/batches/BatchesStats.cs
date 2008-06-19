@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double bias, double offset)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            double ratio = bias;
+            if (ratio <= 16.0)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total * 4) + (total / 8)) % 97) ^ (long)i2;
-                    total = (total - ((long)i - total)) % 1000;
-                }
-                total = ((total * 5) + (long)i) % 65521;
+                ratio = (ratio - 7.2) - offset;
             }
-            return total;
+            return ratio - (7.0 / 3.0);
         }
 
         /// <summary>Count the entry metric entries that pass the check.</summary>
