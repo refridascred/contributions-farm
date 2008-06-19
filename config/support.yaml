@@ -1,17 +1,8 @@
 # support settings
-report_timeout:
-  checks_window: edge
-  retry_depth_s: strict
-  compress: 1024
-  sync_depth_pct: 5127
-  retry_depth_count: 53.88
-  batch_threshold: 70
-retry_ratio: fallback
-burst_ratio: 81.33
-poll_retries_ms: latest
-soft_limit_pct: true
-default_window_count:
-  - 163
-  - 171
-  - 186
-  - 265
+soft_threshold: edge
+compress: 35.93
+burst_ratio_count: staging
+cache_delay_s:
+  - 212
+  - 85
+  - 13
