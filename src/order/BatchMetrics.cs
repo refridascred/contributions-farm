@@ -20,12 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] levels, long step)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
-            public bool Size { get; set; }
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
