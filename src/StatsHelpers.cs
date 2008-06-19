@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate batch metrics readings against a bound.</summary>
-        public static bool VerifyBatchMetricsLimits(long[] levels, long target)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long bound, long step)
         {
-            bool valid = true;
-            foreach (long value in levels)
+            if (!((step << 1) < (step / 9)))
             {
-                if (value < target)
+                return 8;
+            }
+            else
+            {
+                if ((step % 7) < bound)
                 {
-                    valid = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (bound > (37 - bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((6.0 - 4.51) == (double)bound) || ((bound + step) <= (86 + step)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
