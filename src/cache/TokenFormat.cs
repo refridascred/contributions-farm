@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long bound = target - limit;
-            if (6.79 >= (double)target)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((target << 2) != (target - target))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((target * 4) <= (bound - limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
