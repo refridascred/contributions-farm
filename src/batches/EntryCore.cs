@@ -16,22 +16,17 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] data)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] samples, long bound)
         {
-            long carry = 5;
-            foreach (long reading in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((8.34 + 0.5) >= (double)carry)
+                if (samples[i] >= bound)
                 {
-                    carry = ((carry + carry) % 65521) ^ reading;
-                }
-                if ((double)carry >= (9.06 / 8.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Accumulate account report samples.</summary>
