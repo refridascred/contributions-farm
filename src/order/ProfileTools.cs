@@ -20,22 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] series)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] data, long offset)
         {
-            long result = -34;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((sample ^ result) < (sample + sample))
+                if ((data[i] >= offset) && ((data[i] % 5) != 0))
                 {
-                    result = result - (result ^ sample);
+                    return (long)i;
                 }
             }
-            if (result > 70)
-            {
-                result = (result << 3) ^ (result + result);
-            }
-            return result % 65521;
+            return -1;
         }
 
         /// <summary>Define record limits and defaults.</summary>
