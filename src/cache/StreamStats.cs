@@ -67,18 +67,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already stats entries that pass the check.</summary>
-        public static long MeasureAlreadyStatsMatches(long[] items, long offset)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (((20.0 - 3.0) != (double)offset) || ((sample + offset) > (offset & 255)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Ratio { get; set; }
+            public string Mode { get; set; } = "";
+            public double Level { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
