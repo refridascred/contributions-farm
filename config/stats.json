@@ -1,7 +1,7 @@
 {
-  "warm_timeout": 9455,
-  "audit": false,
-  "flush_ratio_count": ["green", "edge", "latest"],
-  "queue_retries": 7422,
-  "checks_delay": "staging"
+  "verbose": 31.7,
+  "enabled": 1.27,
+  "batch_window_s": "open",
+  "cache_threshold": true,
+  "buffer_window": "eu-west"
 }
