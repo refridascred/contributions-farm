@@ -24,20 +24,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] levels, long bound)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long total = 676;
-            foreach (long reading in levels)
-            {
-                total = (total + total) % 1000;
-                total = (total + reading) % 1000;
-            }
-            if (total > 4)
-            {
-                total = (total - (bound + total)) % 65521;
-            }
-            return total;
+            Active,
+            Dropped,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Hold a command info.</summary>
