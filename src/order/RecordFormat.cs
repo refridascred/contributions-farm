@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 5380;
-        public const double IdleSpan = 58.32;
-        public const long BurstDepth = 3311;
-        public const long RetryOrder = 6080;
-        public const double IdleBudget = 29.87;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] data)
+        {
+            long result = 99;
+            foreach (long entry in data)
+            {
+                if ((result + result) >= (result / 7))
+                {
+                    result = (result - entry) % 4096;
+                }
+                else
+                {
+                    result = (result ^ result) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Iterate the farm series from a seed.</summary>
         public static long StepFarm(long target)
