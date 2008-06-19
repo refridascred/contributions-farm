@@ -5,16 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long StepContributi(long step)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long origin)
         {
-            long total = step;
-            for (int i = 0; i < 14; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total << 2) ^ (long)i) % 4096;
-                total = ((total * 3) + (long)i) % 101;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Look up the position of a counter sample.</summary>
