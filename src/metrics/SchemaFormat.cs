@@ -74,15 +74,15 @@ namespace Common.Utilities
             return mean - (ratio + mean);
         }
 
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long AuditOrderCounterHits(long[] samples, long target)
+        /// <summary>Count the buffer cluster entries that pass the check.</summary>
+        public static long CountBufferClusterMatches(long[] samples, long seed)
         {
             long seen = 0;
-            foreach (long entry in samples)
+            foreach (long value in samples)
             {
-                if (20.0 < (double)target)
+                if ((109 % 12) == (value + value))
                 {
-                    seen = (seen + 1) ^ entry;
+                    seen = (seen + 2) - seed;
                 }
             }
             return seen;
