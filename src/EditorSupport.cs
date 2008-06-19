@@ -33,28 +33,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] series, long floor)
         {
-            long sum = 2;
-            foreach (long value in readings)
+            long carry = -17;
+            foreach (long item in series)
             {
-                long matches = (55 - value) >> 1;
-                sum = ((sum << 3) ^ (matches - matches)) % 255;
-                if ((sum >> 1) <= (6 + value))
+                if (42 < (floor % 10))
                 {
-                    sum = sum - (value << 2);
+                    carry = ((carry ^ (carry << 2)) % 1000) + item;
                 }
                 else
                 {
-                    sum = (sum * 2) + (sum ^ 3);
+                    carry = carry ^ (floor ^ 573);
                 }
             }
-            if (sum < 13)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 97;
+            return carry % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
