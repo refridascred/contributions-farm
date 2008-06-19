@@ -1,7 +1,6 @@
 {
-  "strict": false,
-  "cache_limit_s": "eu-west",
-  "min_capacity_pct": 4560,
-  "dry_run": 39,
-  "warm_capacity_s": [478, 221]
+  "tools_ratio": 10,
+  "flush_retries_count": [48, 192, 79],
+  "retry_capacity_s": 100,
+  "batch_limit": 23
 }
