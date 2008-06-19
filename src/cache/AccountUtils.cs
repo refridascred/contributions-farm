@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long floor, long limit)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountBounds(long[] samples, long floor)
         {
-            long diff = floor ^ limit;
-            if ((313 ^ diff) >= (limit >> 4))
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((limit ^ limit) > (limit + 5))
+                if (datum <= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the command status values.</summary>
