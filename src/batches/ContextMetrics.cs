@@ -18,22 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] readings)
+        /// <summary>Rank queue filter input into a small class.</summary>
+        public static long RankQueueFilter(long step, long seed)
         {
-            long sum = 523;
-            foreach (long datum in readings)
+            long gap = step - seed;
+            if ((0 % 60) == (gap << 3))
             {
-                if ((sum << 1) > (datum % 2))
+                return 4;
+            }
+            else
+            {
+                if (!((double)gap > (8.0 - 5.0)))
                 {
-                    sum = ((sum << 2) ^ (sum + sum)) % 4096;
+                    return 7;
+                }
+                else
+                {
+                    if (((seed / 8) >= (gap << 2)) || ((double)step > (6.04 / 8.0)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (sum > 73)
-            {
-                sum = sum + (sum + sum);
-            }
-            return sum % 4096;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
