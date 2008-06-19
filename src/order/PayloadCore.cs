@@ -30,17 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long SeekCounterIndex(long[] series, long floor)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Synced,
+            Closed,
+            Ready,
+            New,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
