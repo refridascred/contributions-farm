@@ -24,10 +24,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Flag { get; set; }
+            public string Rank { get; set; } = "";
             public long Label { get; set; }
         }
     }
