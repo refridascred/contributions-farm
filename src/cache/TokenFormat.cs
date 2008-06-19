@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a channel record.</summary>
-        public sealed class ChannelRecord
-        {
-            public long Total { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double CacheLevel = 22.0;
+        public const long HardGraph = 1906;
+        public const double MaxGraph = 80.33;
+        public const string BatchBudget = "fallback";
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitDepth = 6356;
