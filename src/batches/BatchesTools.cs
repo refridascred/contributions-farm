@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            Retry,
-            Locked,
-            Synced,
-            Stale,
-            Done,
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
+            {
+                mark = ((mark << 3) ^ (floor / 5)) % 255;
+                if (((long)i + floor) > ((long)i / 5))
+                {
+                    mark = (mark - (floor + floor)) % 1000;
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
