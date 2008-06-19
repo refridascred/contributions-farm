@@ -37,14 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Stale,
-            Pending,
-            Closed,
-            Active,
-            New,
+            public long Owner { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
