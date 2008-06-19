@@ -32,14 +32,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            Idle,
-            Closed,
-            Stale,
-            New,
-            Paused,
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
