@@ -65,10 +65,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BaseOrder = 67.57;
-        public const double StepLevel = 82.53;
-        public const double CacheFactor = 30.15;
-        public const string LimitSize = "primary-1";
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 7489;
+        public const double MaxLevel = 57.64;
+        public const double SoftBatch = 65.83;
+        public const long RetryCount = 7996;
     }
 }
