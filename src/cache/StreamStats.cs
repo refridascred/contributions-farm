@@ -26,18 +26,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardSpan = 8234;
+        public const double RetryScore = 12.11;
+        public const long DefaultBudget = 3174;
+        public const long IdleCount = 4517;
 
         /// <summary>Classify a order channel pair into a bucket.</summary>
         public static long GradeOrderChannel(long limit, long bound)
