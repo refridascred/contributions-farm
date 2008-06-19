@@ -20,18 +20,15 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] items, long floor)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double ratio = weight;
+            if (ratio < 19.0)
             {
-                if (((floor >= entry) || ((entry + entry) > (5 - entry))) && ((floor * 5) == (floor & 127)))
-                {
-                    seen = seen + 2;
-                }
+                ratio = ratio - (8.0 * 8.5);
             }
-            return seen;
+            return ratio + (floor * 8.36);
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
