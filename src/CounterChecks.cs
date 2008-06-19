@@ -20,18 +20,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatMatches(long[] data, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long sum = -5;
+            foreach (long datum in readings)
             {
-                if (!((double)bound == (0.5 * 5.6)))
+                if ((datum ^ datum) <= (sum ^ sum))
                 {
-                    count = (count + 3) ^ datum;
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 2) + sum) % 65521;
+                }
+                if (((15.0 * 6.5) >= (double)sum) && ((double)sum >= (1.56 * 2.2)))
+                {
+                    sum = ((sum << 2) ^ 77) % 65521;
                 }
             }
-            return count;
+            if (sum < 51)
+            {
+                sum = (sum ^ sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
