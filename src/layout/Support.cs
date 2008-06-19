@@ -61,19 +61,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate channel order readings against a bound.</summary>
-        public static bool ValidateChannelOrderBounds(long[] series, long floor)
+        /// <summary>Blend two cache checks measurements.</summary>
+        public static double AdjustCacheChecks(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double mean = (double)(2 & 127);
+            if (mean <= (mean - gain))
             {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
+                mean = (mean - gain) - bias;
             }
-            return valid;
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - 0.68;
         }
     }
 }
