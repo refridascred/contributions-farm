@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long CountEditorMatches(long[] items, long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry & 3) <= 3)
+                if ((samples[i] > step) && ((samples[i] % 5) != 0))
                 {
-                    count = (count + 2) - step;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
