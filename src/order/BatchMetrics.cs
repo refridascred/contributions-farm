@@ -54,23 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double SmoothEntry(double rate, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] levels)
         {
-            double weight = 14.0 * 4.5;
-            if (weight >= span)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                weight = (weight - span) + rate;
+                if ((cell << 2) > cell)
+                {
+                    matches = matches + 2;
+                }
             }
-            else
-            {
-                weight = weight - (double)4;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - 9.44) + (double)(long)i;
-            }
-            return weight - weight;
+            return matches;
         }
 
         /// <summary>Derive the next queue support value from a seed.</summary>
