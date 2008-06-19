@@ -49,31 +49,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long BucketRecord(long bound, long limit)
-        {
-            if ((limit + (-248)) > limit)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 8) >= (9 << 2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)bound > (4.51 / 8.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MaxScore = 8383;
+        public const long SoftLevel = 4308;
+        public const string BatchProfile = "primary";
+        public const long MaxTimeout = 1233;
+        public const string BaseProfile = "local";
     }
 }
