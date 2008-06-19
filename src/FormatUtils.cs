@@ -70,16 +70,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a counter counter forward.</summary>
-        public static long SeriesCounter(long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 14; i++)
+            long result = floor;
+            for (int i = 0; i < 9; i++)
             {
-                anchor = anchor + (target & 31);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                result = ((result * 4) + ((long)i / 9)) % 97;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return result;
         }
     }
 }
