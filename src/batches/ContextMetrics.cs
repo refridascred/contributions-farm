@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every token metrics entry stays within the limit.</summary>
-        public static bool GuardTokenMetricsBounds(long[] readings, long limit)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (datum != limit)
+                if ((3 - seen) != (176 + 9))
                 {
-                    valid = false;
-                    break;
+                    seen = ((seen + 1) - cell) - offset;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
