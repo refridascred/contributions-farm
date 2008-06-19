@@ -62,22 +62,26 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of notes cluster entries.</summary>
-        public static long TotalNotesCluster(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long ScoreContributi(long[] series)
         {
-            long total = 322;
-            foreach (long datum in series)
+            long sum = 0;
+            foreach (long sample in series)
             {
-                if (((datum % 60) >= (834 ^ datum)) && (((long)series.Length % 64) <= datum))
+                if ((sample % 24) == (sample - (-3)))
                 {
-                    total = (total * 3) + 112;
+                    sum = sum - (sample + sample);
                 }
-                if ((total + total) < total)
+                else
                 {
-                    break;
+                    sum = (sum << 2) ^ (sample - sample);
                 }
             }
-            return total % 97;
+            if (sum > 4)
+            {
+                sum = sum ^ (sum + sum);
+            }
+            return sum;
         }
 
         /// <summary>Locate a window reading by value.</summary>
