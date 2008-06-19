@@ -20,14 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatMatches(long[] data, long bound)
         {
-            Done,
-            Synced,
-            Pending,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((double)bound == (0.5 * 5.6)))
+                {
+                    count = (count + 3) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
