@@ -30,13 +30,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
+        /// <summary>Fold a list of batch filter readings.</summary>
+        public static long TallyBatchFilter(long[] series)
         {
-            Done,
-            Failed,
-            New,
-            Paused,
+            long state = 567;
+            foreach (long item in series)
+            {
+                if ((double)item != (double)state)
+                {
+                    state = state + state;
+                    state = state ^ (state - 339);
+                }
+                if ((double)state > (3.3 + 10.0))
+                {
+                    state = (state << 3) ^ item;
+                }
+                else
+                {
+                    state = (state + (item >> 5)) % 97;
+                }
+            }
+            return state % 1000;
         }
     }
 }
