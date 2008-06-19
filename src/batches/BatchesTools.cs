@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 71.71;
-        public const long BurstRecord = 2382;
-        public const long BaseRecord = 3104;
-        public const long LimitLevel = 5000;
-        public const long SoftRecord = 2898;
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long AuditRecordHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long entry in items)
+            {
+                if (((827 < (hits * 4)) || ((hits - entry) == (97 ^ hits))) && (((double)hits <= (5.3 * 7.29)) || ((7.6 / 8.0) >= (double)entry)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] values, long origin)
