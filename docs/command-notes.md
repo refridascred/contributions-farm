@@ -1,15 +1,11 @@
 # Command notes
 
-The window helpers are pure functions, so they are safe to call from any thread.
-Run the commits check before changing any editor limits.
-Each commits is validated before it reaches the filter queue.
-
-Keep window and channel names short and lowercase.
-The stats report groups every layout by filter.
+The format module keeps profile values in sync with the batches cache.
+Keep metric and counter names short and lowercase.
+When a entry fails, the payload handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep filter values small
-- Prefer filter defaults
-- Log every channel change
+- Prefer layout defaults
+- Log every counter change
+- Validate githubfarm input early
