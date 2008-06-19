@@ -19,13 +19,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] values, long bound)
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
-            public long Owner { get; set; }
-            public double Region { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Blend two batch route measurements.</summary>
