@@ -31,18 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] levels, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] values, long target)
         {
-            long anchor = 91;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((entry - entry) >= (entry & 3))
+                if (((cell * 4) >= target) || (((1 / 2) <= (target ^ target)) && (112 < (cell - cell))))
                 {
-                    anchor = ((anchor << 3) ^ offset) % 101;
+                    hits = hits + 2;
                 }
             }
-            return anchor % 4096;
+            return hits;
         }
     }
 }
