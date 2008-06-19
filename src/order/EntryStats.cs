@@ -53,19 +53,12 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] readings, long floor)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long mark = 51;
-            foreach (long datum in readings)
-            {
-                if ((floor - datum) < 7)
-                {
-                    mark = mark + (datum % 60);
-                }
-                mark = mark ^ mark;
-            }
-            return mark % 1000;
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
