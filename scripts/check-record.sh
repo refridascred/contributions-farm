@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in open cached; do
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+RECORD_LIMIT=92
+log "limit is ${RECORD_LIMIT}"
+
+for item in staging stable; do
     log "checking ${item}"
 done
-
-mode="${1:-latest}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
