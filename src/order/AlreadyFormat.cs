@@ -37,39 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Validate layout window readings against a bound.</summary>
+        public static bool ValidateLayoutWindowBounds(long[] levels, long bound)
         {
-            long lane = step + origin;
-            if ((lane & 63) <= origin)
+            bool found = true;
+            foreach (long entry in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (7 >= lane)
+                if (entry <= bound)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((lane <= (origin * 4)) && ((origin + lane) > (origin / 9)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((lane ^ lane) > (origin * 4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
