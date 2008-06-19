@@ -45,15 +45,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long IterateQueue(long seed)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long BucketCommits(long bound, long origin)
         {
-            long result = seed;
-            for (int i = 0; i < 18; i++)
+            if (!(origin < (bound << 2)))
             {
-                result = ((result * 3) + (long)i) % 65521;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((17.0 * 3.97) != (double)origin)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound + bound) > origin)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
