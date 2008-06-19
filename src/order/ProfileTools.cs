@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 285;
-        public const string MaxTimeout = "local-1";
-        public const long CacheGraph = 2544;
-        public const string BatchGraph = "fallback-edge";
-        public const long MaxGraph = 8746;
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((value + hits) < 5)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long ScoreAlready(long[] series)
