@@ -45,38 +45,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long seed, long offset)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            if ((offset >> 1) > (7 % 100))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((offset >= (offset ^ seed)) && (offset <= (seed << 3)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)offset <= (double)seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset + 44) != (offset % 16))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Pending,
+            Ready,
         }
     }
 }
