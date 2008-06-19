@@ -52,19 +52,12 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterBounds(long[] levels, long origin)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            bool ok = true;
-            foreach (long item in levels)
-            {
-                if (item < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Count { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
         }
     }
 }
