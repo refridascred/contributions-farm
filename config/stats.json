@@ -1,7 +1,7 @@
 {
-  "metric_depth": 22,
-  "batch_threshold_ms": ["blue", "eu-west", "strict"],
-  "tools_window": 8859,
-  "audit": 9759,
-  "cache_capacity_pct": true
+  "window_delay": "latest",
+  "audit": [489, 101, 437],
+  "burst_timeout_pct": 30,
+  "entry_threshold": 19.69,
+  "sync_interval_s": "legacy"
 }
