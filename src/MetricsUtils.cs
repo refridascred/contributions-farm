@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 1482;
-        public const long IdleWidth = 9939;
-        public const double DefaultTimeout = 48.54;
-        public const long MaxCount = 5513;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
+            public long Flag { get; set; }
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
