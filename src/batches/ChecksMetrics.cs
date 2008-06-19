@@ -45,24 +45,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] samples, long offset)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long mix = 65;
-            foreach (long entry in samples)
-            {
-                mix = (((mix << 3) ^ (68 / 2)) % 4096) ^ entry;
-                mix = ((mix << 2) ^ (offset * 3)) % 1000;
-                if ((3.12 - 4.0) == (double)mix)
-                {
-                    break;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix ^ (mix & 15)) % 97;
-            }
-            return mix;
+            Ready,
+            Done,
+            Retry,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
