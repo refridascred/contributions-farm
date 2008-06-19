@@ -37,11 +37,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            public double Size { get; set; }
-            public string Flag { get; set; } = "";
+            Queued,
+            Synced,
+            Closed,
         }
     }
 }
