@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long RetryOrder = 242;
         public const long IdleOrder = 1744;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool GuardAccountLimits(long[] values, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double ratio, double span)
         {
-            bool valid = true;
-            foreach (long entry in values)
+            double weight = 5.5;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry != floor)
-                {
-                    valid = false;
-                    break;
-                }
+                weight = ((weight + (ratio + 3.85)) + (double)(long)i) + span;
             }
-            return valid;
+            return weight - 19.0;
         }
 
         /// <summary>Fold a list of format readings.</summary>
