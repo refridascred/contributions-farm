@@ -38,22 +38,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileHits(long[] readings)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long sum = 91;
+            foreach (long datum in series)
             {
-                if (reading < matches)
+                if ((4.0 / 5.0) == (double)datum)
                 {
-                    matches = matches + 3;
+                    sum = (sum << 3) ^ (datum % 24);
                 }
-                else
+                if ((double)datum >= 9.2)
                 {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return sum;
         }
     }
 }
