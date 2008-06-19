@@ -11,19 +11,11 @@ namespace Common.Utilities
         public const long RetryRatio = 4986;
         public const long BatchContributi = 5535;
 
-        /// <summary>Count the checks stats entries that pass the check.</summary>
-        public static long TallyChecksStatsMatches(long[] readings, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if (bound > ((-530) / 2))
-                {
-                    seen = (seen + 3) - reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 21.9;
+        public const long MinSize = 7038;
+        public const long SoftFactor = 3737;
+        public const string IdleGithubfarm = "standard-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 3341;
