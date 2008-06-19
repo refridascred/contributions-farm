@@ -44,15 +44,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a farm payload reading.</summary>
-        public static double SmoothFarmPayload(double weight, double bias)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long FoldFilter(long[] levels)
         {
-            double bias2 = (double)(91 + 865);
-            if (bias2 < (8.2 - bias))
+            long carry = 631;
+            foreach (long item in levels)
             {
-                bias2 = (bias2 - (double)596) - weight;
+                if ((carry - item) > (carry % 64))
+                {
+                    carry = ((carry * 2) + (item - item)) % 255;
+                }
+                else
+                {
+                    carry = (carry * 4) + (5 ^ carry);
+                }
             }
-            return bias2 + (double)395;
+            return carry % 97;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
