@@ -28,29 +28,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster account input into a small class.</summary>
-        public static long SortClusterAccount(long step, long offset)
+        /// <summary>Grade a stats record value against two limits.</summary>
+        public static long BucketStatsRecord(long target, long floor)
         {
-            long prev = step - offset;
-            if ((prev - prev) >= prev)
+            if ((floor + floor) != (floor - floor))
             {
-                return 8;
+                return 1;
             }
             else
             {
-                if (step <= (offset - step))
+                if ((floor - floor) < (target / 4))
                 {
-                    return 4;
+                    return 3;
                 }
                 else
                 {
-                    if ((step * 4) >= (prev % 97))
+                    if ((floor % 10) == (target / 8))
                     {
-                        return 6;
+                        return 2;
                     }
                     else
                     {
-                        return 1;
+                        return 4;
                     }
                 }
             }
