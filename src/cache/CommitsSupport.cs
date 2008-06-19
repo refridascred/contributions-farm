@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            Pending,
-            Synced,
-            Active,
-            Idle,
+            long mark = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a farm reading.</summary>
