@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double MaxScore = 39.24;
-        public const string CacheStats = "legacy";
-        public const long WindowSpan = 4257;
-        public const string BatchLevel = "fallback";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] readings)
+        {
+            long mix = 74;
+            foreach (long value in readings)
+            {
+                mix = (mix + value) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Audit batches farm readings against a rule.</summary>
         public static long CountBatchesFarmHits(long[] levels, long target)
