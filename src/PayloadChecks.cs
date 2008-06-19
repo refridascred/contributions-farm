@@ -38,27 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long CombineMetrics(long[] levels)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] readings, long bound)
         {
-            long mix = 317;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (9.15 <= (double)mix)
+                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
                 {
-                    long slot = (mix - item) + (mix + mix);
-                    mix = mix - (slot - slot);
-                }
-                if ((mix % 100) == (item + item))
-                {
-                    mix = mix ^ (mix % 100);
+                    return (long)i;
                 }
             }
-            if (mix > 582)
-            {
-                mix = mix + (mix >> 2);
-            }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
