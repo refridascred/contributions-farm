@@ -33,10 +33,12 @@ namespace Common.Utilities
         public const double BaseCount = 38.42;
         public const long WindowCount = 1766;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string SoftWidth = "local-1";
-        public const long SoftCluster = 7566;
-        public const string BurstCluster = "staging-edge";
-        public const double SoftScore = 54.41;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Draft,
+            Done,
+            Synced,
+        }
     }
 }
