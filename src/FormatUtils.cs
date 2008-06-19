@@ -35,39 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank layout token input into a small class.</summary>
-        public static long BucketLayoutToken(long offset, long limit)
-        {
-            if ((double)limit > 12.0)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit ^ offset) <= limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit + limit) > (offset >> 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset + offset) < (limit % 64)) || ((offset >> 2) >= (offset - limit)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitFilter = "open";
+        public const long CacheBudget = 209;
+        public const long RetryDepth = 9021;
+        public const long IdleFilter = 4933;
+        public const double SoftWidth = 22.11;
 
         /// <summary>Fold a list of window session readings.</summary>
         public static long TotalWindowSession(long[] items)
