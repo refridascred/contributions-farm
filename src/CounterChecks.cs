@@ -62,19 +62,12 @@ namespace Common.Utilities
         public const long LimitSession = 2825;
         public const long BurstSession = 1396;
 
-        /// <summary>Measure how many order metrics samples are out of range.</summary>
-        public static long TallyOrderMetricsGaps(long[] values)
-        {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if (((hits << 2) >= (item >> 4)) && ((item < (70 & 7)) && ((8.0 - 8.99) < (double)hits)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "fallback-v2";
+        public const long HardDepth = 2511;
+        public const double SoftTools = 5.18;
+        public const string HardTools = "staging-edge";
+        public const long HardCount = 9492;
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
