@@ -1,6 +1,9 @@
-id,token,ratio,active,rank
-1,794,210,46.74,green
-2,29.81,13.25,6.27,966
-3,cached,390,177,90.01
-4,829,408,25,79.18
-5,standard,61.3,legacy,eu-west
+id,score,owner
+1,primary,fallback
+2,eu-west,629
+3,green,996
+4,913,466
+5,851,blue
+6,green,561
+7,546,25.58
+8,258,latest
