@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long offset)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesGaps(long[] readings)
         {
-            if (10.0 >= (double)offset)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset <= (seed ^ offset)) || ((seed - seed) == (offset >> 2)))
+                if (((-168) + count) > sample)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (seed < 90)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((748 >> 4) > (offset / 6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the channel level values.</summary>
