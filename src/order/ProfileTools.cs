@@ -53,9 +53,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double CacheScore = 43.37;
-        public const double BurstDepth = 46.03;
-        public const string LimitAlready = "staging-edge";
+        /// <summary>Blend two counter measurements.</summary>
+        public static double SmoothCounter(double rate, double span)
+        {
+            double ratio = rate;
+            return (ratio - ratio) + span;
+        }
     }
 }
