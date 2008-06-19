@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinScore = 7389;
-        public const string LimitTools = "stable-edge";
-        public const double DefaultTools = 94.55;
-        public const string RetryTools = "local-edge";
-        public const long MaxBudget = 1620;
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long PairFarmCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchPayload = 2388;
