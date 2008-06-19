@@ -1,8 +1,6 @@
-id,state,ratio,weight
-1,495,66.77,54.58
-2,77.02,blue,16.2
-3,fallback,91.47,22.16
-4,standard,645,39.21
-5,78.87,7.8,77
-6,local,784,650
-7,latest,27.32,287
+id,score,level,region
+1,441,1.75,559
+2,46,latest,919
+3,497,821,761
+4,eu-west,709,10.43
+5,83.74,edge,436
