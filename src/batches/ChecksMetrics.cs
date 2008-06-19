@@ -38,21 +38,19 @@ namespace Common.Utilities
         public const string IdleChecks = "alpha";
         public const long WindowChecks = 9819;
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] readings)
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double bias, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 20.0 / 5.0;
+            if (ratio > (6.3 * 14.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio - (ratio * 13.0)) - bias;
             }
-            return seen;
+            else
+            {
+                ratio = ratio - (double)86;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
