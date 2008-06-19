@@ -28,31 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a stats record value against two limits.</summary>
-        public static long BucketStatsRecord(long target, long floor)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            if ((floor + floor) != (floor - floor))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor - floor) < (target / 4))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 10) == (target / 8))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Stale,
+            Ready,
+            Paused,
         }
     }
 }
