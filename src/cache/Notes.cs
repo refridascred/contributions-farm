@@ -37,12 +37,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string MinCluster = "cached";
-        public const double MinCount = 83.87;
-        public const long SoftCluster = 1035;
-        public const string BaseCluster = "cached";
-        public const double BaseDepth = 87.17;
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
+        {
+            public double Level { get; set; }
+            public long Stamp { get; set; }
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Hold a order options.</summary>
         public sealed class OrderOptions
