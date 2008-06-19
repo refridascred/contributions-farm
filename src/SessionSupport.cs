@@ -18,17 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] readings, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] items)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] >= step)
+                if ((reading >= (27 + 0)) && (((seen & 15) < (seen + 29)) && (seen <= reading)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
