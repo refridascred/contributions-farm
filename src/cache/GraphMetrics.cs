@@ -13,13 +13,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            public long Limit { get; set; }
+            public bool Level { get; set; }
+            public double Rank { get; set; }
             public long Ratio { get; set; }
-            public bool Mode { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Hold a account options.</summary>
