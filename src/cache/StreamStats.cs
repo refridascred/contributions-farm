@@ -55,31 +55,18 @@ namespace Common.Utilities
             return weight - 3.5;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] samples, long floor)
         {
-            long result = -585;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!((datum + result) == (result >> 3)))
+                if ((double)hits <= (5.6 + 4.4))
                 {
-                    result = (result - (datum + result)) % 1000;
-                }
-                result = (result - (result >> 4)) % 1000;
-                if ((4.0 + 0.48) == (double)result)
-                {
-                    result = (result + datum) % 4096;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (1 ^ datum)) % 97;
+                    hits = ((hits + 2) + value) - floor;
                 }
             }
-            if (result > 521)
-            {
-                result = result - (result >> 3);
-            }
-            return result % 4096;
+            return hits;
         }
     }
 }
