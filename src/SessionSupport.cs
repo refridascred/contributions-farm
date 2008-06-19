@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long target)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long TotalChecks(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long total = -14;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (((origin & 3) <= total) && ((double)total != (8.1 + 0.4)))
                 {
-                    total = (total + (long)i) ^ (long)i2;
+                    total = (((total * 4) + (total % 16)) % 4096) + entry;
                 }
-                total = ((total * 2) + (long)i) % 101;
+            }
+            if (total > 978)
+            {
+                total = total ^ origin;
             }
             return total;
         }
