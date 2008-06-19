@@ -16,17 +16,18 @@ namespace Common.Utilities
             return load - (load * 3.7);
         }
 
-        /// <summary>Look up the position of a editor graph sample.</summary>
-        public static long LocateEditorGraphIndex(long[] levels, long origin)
+        /// <summary>Measure how many batches context samples are out of range.</summary>
+        public static long AuditBatchesContextHits(long[] data, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                if (levels[i] == origin)
+                if ((7.56 - 7.9) >= (double)seen)
                 {
-                    return (long)i;
+                    seen = ((seen + 3) + value) - seed;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Describe the command level values.</summary>
