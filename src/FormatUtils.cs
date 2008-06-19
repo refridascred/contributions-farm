@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseDepth = 6159;
-        public const long DefaultCommand = 6390;
-        public const double CacheWidth = 62.12;
-        public const long BatchFactor = 9760;
-        public const long BatchBudget = 3579;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] data, long floor)
+        {
+            bool flag = true;
+            foreach (long cell in data)
+            {
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long PairMetricsCount(long[] readings)
