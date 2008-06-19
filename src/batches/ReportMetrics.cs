@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool CheckLayoutLimits(long[] series, long limit)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            bool stale = true;
-            foreach (long item in series)
-            {
-                if (item >= limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Failed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Describe the report state values.</summary>
