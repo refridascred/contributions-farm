@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountGaps(long[] samples, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] values)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (!((79 ^ entry) >= (step + step)))
+                if (14.0 >= (double)hits)
                 {
-                    count = count + 3;
+                    hits = (hits + 1) + value;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
