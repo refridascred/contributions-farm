@@ -25,12 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Count the metric report entries that pass the check.</summary>
+        public static long TallyMetricReportOutliers(long[] values)
         {
-            Done,
-            Pending,
-            Locked,
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if (18 >= (cell + cell))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
