@@ -1,5 +1,24 @@
 # githubfarm settings
-hard_ratio: 12.46
-checks_ratio: strict
-already_capacity: 2570
-buffer_depth: 66
+burst_depth:
+  - strict
+  - blue
+flush_capacity_count: 1024
+hard_retries_ms: 500
+profile_depth: true
+persist: latest
+default_delay_count:
+  flush_size_ms: 5232
+  max_delay_pct: true
+  persist: 88.26
+  readonly: staging
+  batch_size_count:
+    flush_ratio: 60
+    cache_retries_s:
+      - 133
+      - 185
+      - 339
+    default_size: stable
+    retry_retries: true
+    max_depth: staging
+    strict: true
+  batch_interval_s: 71
