@@ -1,8 +1,5 @@
 {
-  "default_capacity": "cached",
-  "retry_limit_pct": ["strict", "fallback", "local", "latest"],
-  "stats_depth": 24.86,
-  "max_size_ms": 99,
-  "report_ttl": 7628,
-  "warm_capacity": 56
+  "context_window": 20.63,
+  "soft_size_count": false,
+  "soft_window_pct": "staging"
 }
