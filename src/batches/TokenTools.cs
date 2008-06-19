@@ -22,18 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] samples, long floor)
+        /// <summary>Measure how many notes cluster samples are out of range.</summary>
+        public static long MeasureNotesClusterMatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((datum + 9) != (434 + datum))
+                if ((17.0 * 5.68) < (double)count)
                 {
-                    seen = (seen + 2) - floor;
+                    count = (count + 1) + value;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Hold a metrics options.</summary>
