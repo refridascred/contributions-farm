@@ -39,10 +39,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BurstContext = 7247;
-        public const string SoftContext = "stable";
-        public const string RetryTimeout = "alpha-1";
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] items)
+        {
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((hits >> 3) >= sample) && !(679 > (hits << 1)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
