@@ -67,21 +67,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
-        public static long OverlapAccountMetricsCount(long[] values)
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long RollToken(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    if ((values[i] - values[j]) == 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = ((score << 2) ^ (318 - (long)i2)) % 101;
                 }
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return matches;
+            return score;
         }
     }
 }
