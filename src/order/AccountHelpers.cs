@@ -78,12 +78,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardSpan = 8152;
-        public const long MinBudget = 8215;
-        public const long BatchFarm = 4778;
-        public const long RetryFarm = 2148;
-        public const long MinRatio = 4541;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 6252;
+        public const long RetryBudget = 7532;
+        public const long BurstSpan = 3966;
+        public const string BaseDepth = "cached-v2";
+        public const long IdleSize = 3017;
 
         /// <summary>Describe the channel status values.</summary>
         public enum ChannelStatus
