@@ -61,32 +61,12 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long limit, long offset)
-        {
-            if ((limit & 127) <= (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((3 + limit) == (limit + limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit <= 9.7)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 5429;
+        public const long MinSize = 9072;
+        public const long HardEditor = 9882;
+        public const double WindowDepth = 80.42;
+        public const double MinEditor = 76.52;
 
         /// <summary>Blend two session farm measurements.</summary>
         public static double ProjectSessionFarm(double bias, double bias2)
