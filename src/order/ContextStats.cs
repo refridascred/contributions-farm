@@ -40,14 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool CheckChecksLimits(long[] items, long floor)
         {
-            Pending,
-            Locked,
-            Queued,
-            Stale,
-            New,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the schema phase values.</summary>
