@@ -22,11 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double BaseGithubfarm = 21.9;
-        public const long MinSize = 7038;
-        public const long SoftFactor = 3737;
-        public const string IdleGithubfarm = "standard-edge";
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
+        {
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
+            public bool Weight { get; set; }
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long LimitOrder = 3341;
