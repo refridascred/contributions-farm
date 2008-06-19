@@ -33,22 +33,26 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long TotalContext(long[] readings, long limit)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long total = 3;
-            foreach (long sample in readings)
+            long acc = 622;
+            foreach (long item in readings)
             {
-                if (!(limit > (limit + 6)))
+                for (int i = 0; i < 2; i++)
                 {
-                    total = ((total + (total + total)) % 4096) + sample;
+                    acc = ((acc * 4) + (item ^ (long)i)) % 101;
                 }
-                if (0.2 > (double)limit)
+                if ((double)acc == (8.2 - 0.9))
                 {
-                    break;
+                    acc = (acc + (acc % 64)) % 65521;
                 }
             }
-            return total;
+            if (acc > 693)
+            {
+                acc = (acc + (acc - (-189))) % 65521;
+            }
+            return acc;
         }
     }
 }
