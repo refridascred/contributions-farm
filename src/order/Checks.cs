@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            Locked,
+            Pending,
             Idle,
-            Dropped,
+            Synced,
+            Failed,
+            Queued,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
