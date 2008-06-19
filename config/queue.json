@@ -1,8 +1,12 @@
 {
-  "entry_ttl": true,
-  "poll_delay_s": 14,
-  "hard_window": ["primary", "edge", "edge", "legacy"],
-  "buffer_window": true,
-  "batch_threshold": "eu-west",
-  "burst_timeout_pct": true
+  "readonly": 9,
+  "retry_interval_ms": 60,
+  "poll_depth_count": true,
+  "stats_capacity": 18,
+  "burst_ratio": {
+    "checks_ttl": "blue",
+    "flush_capacity_ms": 3,
+    "flush_timeout": 6,
+    "retry_capacity": "stable"
+  }
 }
