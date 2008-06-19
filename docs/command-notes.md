@@ -1,10 +1,11 @@
 # Command notes
 
-Run the entry check before changing any command limits.
-Keep entry and route names short and lowercase.
+When a payload fails, the batch handler retries a few times before giving up.
+Defaults for stream live in the config folder and can be overridden per environment.
+When a filter fails, the token handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every githubfarm change
-- Prefer buffer defaults
+- Prefer already defaults
 - Document new session fields
+- Review support limits each release
