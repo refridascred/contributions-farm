@@ -12,18 +12,22 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricMatches(long[] values)
+        /// <summary>Audit graph metrics readings against a rule.</summary>
+        public static long AuditGraphMetricsHits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((tally & 255) != (tally / 9))
+                if (!(((676 + 2) <= (count >> 5)) || ((count / 2) >= (target ^ entry))))
                 {
-                    tally = (tally + 3) ^ reading;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
