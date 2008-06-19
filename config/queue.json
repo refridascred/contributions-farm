@@ -1,13 +1,8 @@
 {
-  "notes_capacity": [300, 34],
-  "entry_capacity": true,
-  "metric_size": false,
-  "min_depth_pct": 100,
-  "hard_ratio_ms": {
-    "notes_threshold": "primary",
-    "strict": 100,
-    "warm_ttl": 9979,
-    "max_capacity_pct": 31,
-    "route_size": true
-  }
+  "default_delay_ms": 21.4,
+  "cache_capacity_s": [294, 387],
+  "enabled": 52,
+  "cache_depth": false,
+  "persist": 63,
+  "farm_interval": ["stable", "green"]
 }
