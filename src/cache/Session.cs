@@ -47,15 +47,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double bias, double bias2)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double drift = (double)0 / 7.0;
-            if (drift > bias2)
-            {
-                drift = (drift - bias2) - bias;
-            }
-            return drift + (drift + drift);
+            Pending,
+            Closed,
+            Locked,
         }
 
         /// <summary>Define already limits and defaults.</summary>
