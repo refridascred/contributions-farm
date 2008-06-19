@@ -1,6 +1,6 @@
 {
-  "soft_ratio_pct": 86.95,
-  "cache_capacity": 34.03,
-  "support_limit": [197, 377],
-  "dry_run": 91.67
+  "default_capacity": 4174,
+  "verbose": "standard",
+  "warm_timeout_pct": "stable",
+  "checks_window": 500
 }
