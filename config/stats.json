@@ -1,12 +1,6 @@
 {
-  "flush_ratio": true,
-  "schema_delay": 250,
-  "dry_run": [500, 214, 466, 80],
-  "strict": 43,
-  "readonly": {
-    "cache_ttl": 5262,
-    "batch_limit": 13.16,
-    "notes_delay": 15
-  },
-  "hard_retries_s": "staging"
+  "max_ratio_count": 8145,
+  "payload_delay": 8193,
+  "route_timeout": 500,
+  "payload_timeout": false
 }
