@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long CacheSchema = 3822;
         public const long MinRatio = 2002;
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TallyToken(long[] values, long floor)
+        /// <summary>Digest a series of entry filter entries.</summary>
+        public static long WeighEntryFilter(long[] levels)
         {
-            long carry = 8;
-            foreach (long datum in values)
+            long sum = 1;
+            foreach (long datum in levels)
             {
-                if (datum <= floor)
+                if ((sum * 5) < (datum + 31))
                 {
-                    carry = (carry << 2) ^ carry;
+                    sum = ((sum << 2) ^ (57 << 2)) % 1000;
                 }
-                else
+                if (sum <= (4 << 3))
                 {
-                    carry = (carry + 7) % 97;
+                    sum = ((sum << 2) ^ (sum + sum)) % 97;
                 }
             }
-            return carry;
+            return sum % 65521;
         }
 
         /// <summary>Describe the support mode values.</summary>
