@@ -1,10 +1,15 @@
 # entry settings
-order_ttl: stable
-flush_timeout_count:
-  - 457
-  - 394
-  - 374
-soft_size: 33.14
-compress: edge
-retry_threshold: 85
-audit: 500
+batches_retries: false
+batch_ratio_ms: stable
+contributi_delay: 60.45
+dry_run: local
+default_capacity_s:
+  strict: strict
+  cache_size_s: 53
+  soft_interval_s: true
+  enabled: blue
+  checks_delay:
+    verbose: true
+    context_threshold: 55.4
+    warm_capacity_pct: 62.09
+  base_size: 60
