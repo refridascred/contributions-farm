@@ -1,17 +1,17 @@
 # githubfarm settings
-order_capacity: edge
-sync_threshold_ms: green
-default_depth_s: 50
-default_ratio_ms:
-  - latest
-  - latest
-cache_ratio:
-  soft_window_s:
-    dry_run: 6451
-    compress: 9098
-    warm_timeout_s:
-      - 50
-      - 159
-      - 178
-  enabled: eu-west
-  readonly: 57.33
+burst_size_count:
+  hard_window:
+    - open
+    - cached
+    - stable
+  default_capacity: 76.16
+  editor_delay: 500
+  retry_ratio_pct:
+    - local
+    - blue
+  retry_threshold_ms: stable
+  soft_ratio: 1024
+audit: 57.23
+poll_ttl: 1024
+payload_ratio: primary
+profile_size: 30
