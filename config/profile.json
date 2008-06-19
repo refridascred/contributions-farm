@@ -1,7 +1,6 @@
 {
-  "filter_ratio": "staging",
-  "min_depth": true,
-  "retry_capacity": false,
-  "idle_limit_pct": true,
-  "verbose": "local"
+  "soft_threshold_ms": ["fallback", "legacy", "primary"],
+  "compress": [103, 355, 335, 177],
+  "audit": 1832,
+  "command_ttl": ["latest", "cached", "primary", "latest"]
 }
