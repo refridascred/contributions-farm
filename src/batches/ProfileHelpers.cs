@@ -49,10 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "primary-1";
-        public const string SoftSupport = "cached-v2";
-        public const double MaxSupport = 12.52;
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double bias, double floor)
+        {
+            double bias2 = floor;
+            if (bias2 < (bias2 - bias2))
+            {
+                bias2 = (bias2 - (7.0 + 9.6)) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + (double)5;
+            }
+            return bias2 + bias2;
+        }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
         public static long SortCounter(long offset, long offset2)
