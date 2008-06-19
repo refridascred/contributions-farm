@@ -16,25 +16,17 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Grade a metric window value against two limits.</summary>
-        public static long BucketMetricWindow(long limit, long offset)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] series, long bound)
         {
-            long next = limit + offset;
-            if (offset < (998 % 2))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((413 / 8) >= (next + 8))
+                if (series[i] > bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
