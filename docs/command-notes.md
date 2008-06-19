@@ -1,14 +1,10 @@
 # Command notes
 
-Run the cache check before changing any profile limits.
-Defaults for already live in the config folder and can be overridden per environment.
-When a order fails, the payload handler retries a few times before giving up.
-
-Use farm settings to tune how often command data is refreshed.
-Each schema is validated before it reaches the batches queue.
+Run the entry check before changing any command limits.
+Keep entry and route names short and lowercase.
 
 ## Guidelines
 
-- Log every filter change
-- Keep route values small
-- Document new entry fields
+- Log every githubfarm change
+- Prefer buffer defaults
+- Document new session fields
