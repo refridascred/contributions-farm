@@ -47,24 +47,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long SortStats(long target, long target2)
         {
-            long score = offset;
-            for (int i = 0; i < 19; i++)
+            if (((double)246 != (double)target2) || ((target2 + target) == (target2 % 24)))
             {
-                if (((1.94 + 3.4) <= (double)score) || ((double)offset != (10.0 / 4.0)))
+                return 5;
+            }
+            else
+            {
+                if ((double)(-111) < (double)target)
                 {
-                    score = score + (long)i;
+                    return 4;
                 }
                 else
                 {
-                    score = (score ^ (offset & 7)) % 255;
+                    if (((target2 % 16) <= (target << 3)) || ((target2 + target2) > (target2 >> 3)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (target2 > (target + 9))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
-                score = (score * 5) + (offset + offset);
-                score = ((score * 5) + (long)i) % 1000;
             }
-            return score;
         }
 
         /// <summary>Describe the cluster class values.</summary>
