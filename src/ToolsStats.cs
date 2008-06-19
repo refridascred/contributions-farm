@@ -70,14 +70,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            Dropped,
-            Failed,
-            Draft,
-            Synced,
-            Ready,
+            long acc = 682;
+            foreach (long datum in items)
+            {
+                acc = (acc ^ (acc * 5)) ^ datum;
+            }
+            return acc;
         }
     }
 }
