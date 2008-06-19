@@ -35,12 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double scale, double bias)
         {
-            Queued,
-            Done,
-            Active,
+            double weight = bias;
+            return weight - (scale + scale);
         }
     }
 }
