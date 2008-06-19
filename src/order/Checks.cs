@@ -15,39 +15,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long seed, long bound)
-        {
-            if ((9.5 + 7.4) != (double)seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((543 + 0) > (seed * 5))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)bound <= (4.9 / 8.0)) && ((bound ^ seed) == (bound / 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed + (-8)) != (seed % 8))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long SoftRatio = 8486;
+        public const long StepDepth = 6397;
+        public const string LimitDepth = "strict-1";
+        public const string CacheSupport = "cached-edge";
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] readings, long origin)
