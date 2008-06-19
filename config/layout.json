@@ -1,5 +1,16 @@
 {
-  "soft_depth_ms": [498, 319],
-  "verbose": 44.73,
-  "dry_run": false
+  "compress": 54.79,
+  "soft_capacity_pct": {
+    "verbose": "stable",
+    "warm_ttl_count": 16.03,
+    "default_window": true,
+    "strict": true
+  },
+  "max_size_s": {
+    "idle_depth": "blue",
+    "max_delay_ms": 83.99,
+    "audit": true,
+    "filter_delay": "latest"
+  },
+  "default_threshold_count": "staging"
 }
