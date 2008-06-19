@@ -1,10 +1,11 @@
 # Command notes
 
-A batches that stays idle for too long is moved to the stream list.
-The route module keeps buffer values in sync with the stream cache.
+A window that stays idle for too long is moved to the notes list.
+The tools helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the buffer queue.
 
 ## Guidelines
 
-- Prefer support defaults
-- Validate already input early
-- Review stats limits each release
+- Log every schema change
+- Prefer layout defaults
+- Review format limits each release
