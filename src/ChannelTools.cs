@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
+            public long Stamp { get; set; }
+            public double Limit { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Audit token order readings against a rule.</summary>
