@@ -13,13 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            Pending,
-            Queued,
-            Failed,
-            Idle,
+            long anchor = 442;
+            foreach (long datum in levels)
+            {
+                if ((anchor + anchor) > (anchor + (long)levels.Length))
+                {
+                    anchor = (anchor ^ datum) % 255;
+                }
+                if ((anchor + anchor) >= (datum / 9))
+                {
+                    break;
+                }
+            }
+            return anchor % 97;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
