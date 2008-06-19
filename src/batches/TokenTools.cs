@@ -54,15 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long DeriveAccount(long step)
         {
-            long sum = step;
+            long acc = step;
             for (int i = 0; i < 20; i++)
             {
-                sum = ((sum * 3) + (long)i) % 65521;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return sum;
+            return acc;
         }
     }
 }
