@@ -25,13 +25,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Failed,
-            Closed,
-            Locked,
-            Pending,
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a record sample.</summary>
