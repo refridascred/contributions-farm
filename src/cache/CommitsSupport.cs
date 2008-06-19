@@ -64,14 +64,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Measure how many order stream samples are out of range.</summary>
+        public static long TallyOrderStreamOutliers(long[] values, long seed)
         {
-            Synced,
-            Paused,
-            Ready,
-            Idle,
-            Queued,
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((count - 22) > (count / 6))
+                {
+                    count = ((count + 3) - item) - seed;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
