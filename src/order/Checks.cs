@@ -43,9 +43,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 5271;
-        public const long LimitSize = 2873;
-        public const long MaxReport = 5536;
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long bound, long target)
+        {
+            if (bound >= (target * 5))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((1.34 * 4.34) < (double)target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((640 >> 1) >= (target + bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (9.2 < (double)target)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
