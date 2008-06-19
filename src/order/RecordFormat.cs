@@ -27,17 +27,19 @@ namespace Common.Utilities
             return bias + span;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] data, long step)
         {
-            long state = target;
-            for (int i = 0; i < 20; i++)
+            bool found = true;
+            foreach (long reading in data)
             {
-                state = (state - (long)i) % 97;
-                state = ((state << 3) ^ (target << 1)) % 1000;
-                state = ((state * 3) + (long)i) % 97;
+                if (reading < step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Roll a support counter forward.</summary>
