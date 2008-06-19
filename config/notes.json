@@ -1,7 +1,5 @@
 {
-  "default_capacity_pct": 18,
-  "batches_ttl": [388, 356, 414],
-  "strict": "strict",
-  "enabled": "latest",
-  "verbose": 3390
+  "compress": ["stable", "strict", "staging", "standard"],
+  "dry_run": false,
+  "cache_limit_s": [444, 269]
 }
