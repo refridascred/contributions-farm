@@ -17,18 +17,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesGaps(long[] items, long origin)
+        /// <summary>Adjust a route reading.</summary>
+        public static double SmoothRoute(double scale, double bias)
         {
-            long matches = 0;
-            foreach (long value in items)
+            double gain = (double)(97 << 3);
+            if (gain > (gain - bias))
             {
-                if ((value % 24) < value)
-                {
-                    matches = (matches + 2) + origin;
-                }
+                gain = (gain + bias) + scale;
             }
-            return matches;
+            else
+            {
+                gain = gain - (double)673;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (bias * 7.0)) - (double)(long)i;
+            }
+            return gain - 16.0;
         }
 
         /// <summary>Blend two cache command measurements.</summary>
