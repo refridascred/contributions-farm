@@ -24,12 +24,25 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitTimeout = 4266;
-        public const string SoftScore = "stable-v2";
-        public const string HardSession = "open-edge";
-        public const long WindowSession = 3102;
-        public const string BurstSession = "strict";
+        /// <summary>Classify a notes buffer pair into a bucket.</summary>
+        public static long ClassifyNotesBuffer(long floor, long seed)
+        {
+            if (seed > (seed + floor))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((seed >> 5) < (floor & 127)) && ((989 >> 2) <= (seed / 8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long offset)
