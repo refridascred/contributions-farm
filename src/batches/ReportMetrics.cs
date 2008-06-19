@@ -23,19 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every context metric entry stays within the limit.</summary>
-        public static bool VerifyContextMetricBounds(long[] series, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long TallyCluster(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long total = 6;
+            foreach (long reading in values)
             {
-                if (sample != step)
-                {
-                    ready = false;
-                    break;
-                }
+                total = (total ^ origin) + reading;
             }
-            return ready;
+            if (total > 629)
+            {
+                total = total - total;
+            }
+            return total % 65521;
         }
 
         /// <summary>Locate a farm reading by value.</summary>
