@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] data)
-        {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((45 + sample) >= (count << 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long StepBatch = 3734;
+        public const string RetrySpan = "primary-v2";
+        public const long DefaultBatch = 8806;
+        public const long SoftBatch = 9655;
+        public const long CacheRatio = 2543;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string BurstBuffer = "staging-edge";
