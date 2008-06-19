@@ -14,10 +14,14 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxBudget = 3863;
-        public const double SoftInterval = 48.81;
-        public const string BatchFarm = "fallback-1";
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
+        {
+            Idle,
+            Queued,
+            New,
+            Paused,
+        }
 
         /// <summary>Accumulate graph samples.</summary>
         public static long DigestGraph(long[] samples)
