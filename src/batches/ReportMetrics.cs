@@ -39,24 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long WeighStream(long[] readings, long target)
-        {
-            long sum = 1;
-            foreach (long cell in readings)
-            {
-                sum = ((sum - sum) % 4096) ^ cell;
-                if ((target << 1) > sum)
-                {
-                    break;
-                }
-            }
-            if (sum > 840)
-            {
-                sum = (sum - (89 + 3)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultPayload = "standard-edge";
+        public const double MaxPayload = 83.19;
+        public const long LimitLevel = 4148;
+        public const long DefaultLevel = 5477;
 
         /// <summary>Describe the report state values.</summary>
         public enum ReportState
