@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long DigestBatch(long[] items, long offset)
         {
-            New,
-            Idle,
-            Paused,
-            Failed,
-            Ready,
+            long result = 8;
+            foreach (long value in items)
+            {
+                result = (result - (result % 100)) - offset;
+                result = (result + value) % 97;
+                result = (result - value) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Describe the filter mode values.</summary>
