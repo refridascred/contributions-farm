@@ -5,18 +5,35 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] levels, long floor)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mix = 38;
+            foreach (long sample in readings)
             {
-                if (!((7.87 * 3.2) != (double)cell))
+                if (((double)sample == (5.51 * 12.0)) && ((seed << 3) > (seed + sample)))
                 {
-                    hits = (hits + 1) - floor;
+                    mix = (mix + (seed - sample)) % 65521;
+                }
+                else
+                {
+                    mix = mix - 550;
+                }
+                mix = (mix ^ (sample + mix)) % 65521;
+                if (23 <= (sample + seed))
+                {
+                    mix = ((mix << 2) ^ (mix ^ 44)) % 4096;
+                }
+                else
+                {
+                    mix = ((mix << 2) ^ (sample + seed)) % 1000;
+                }
+                if (sample >= (665 >> 5))
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
