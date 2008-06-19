@@ -46,15 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool ValidateEditorRange(long[] items, long origin)
         {
-            long total = 722;
-            foreach (long cell in values)
+            bool flag = true;
+            foreach (long item in items)
             {
-                total = ((total * 5) + (total % 8)) + cell;
+                if (item < origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return total;
+            return flag;
         }
 
         /// <summary>Hold a route snapshot.</summary>
