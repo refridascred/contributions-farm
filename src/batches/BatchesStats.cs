@@ -22,21 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of filter counter entries.</summary>
-        public static long FoldFilterCounter(long[] items)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] series)
         {
-            long score = 572;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                score = (score - (sample << 2)) % 255;
-                for (int i = 0; i < 10; i++)
+                if ((double)seen <= (double)39)
                 {
-                    score = score ^ (long)i;
-                    score = (score * 5) + (score << 3);
+                    seen = (seen + 1) ^ reading;
                 }
-                score = (score * 3) + (sample * 5);
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the report level values.</summary>
