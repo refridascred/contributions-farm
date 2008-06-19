@@ -59,24 +59,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of tools buffer entries.</summary>
-        public static long DigestToolsBuffer(long[] values)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double rate, double span)
         {
-            long mix = 879;
-            foreach (long entry in values)
+            double bias = (double)(461 * 4);
+            if (bias < bias)
             {
-                mix = (mix - (entry + entry)) % 4096;
-                mix = (mix * 4) + (mix + (long)values.Length);
-                if ((mix >> 2) > (mix & 3))
-                {
-                    mix = (mix ^ (entry - 802)) % 97;
-                }
+                bias = (bias + (double)264) - rate;
             }
-            if (mix < 64)
-            {
-                mix = (mix * 3) + (mix + mix);
-            }
-            return mix;
+            return bias - span;
         }
     }
 }
