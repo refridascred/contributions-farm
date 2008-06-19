@@ -26,19 +26,9 @@ namespace Common.Utilities
         public const long MinBudget = 5444;
         public const long WindowDepth = 1840;
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] samples, long limit)
-        {
-            long anchor = 31;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor << 2) ^ entry) % 255;
-            }
-            if (anchor < 650)
-            {
-                anchor = ((anchor << 3) ^ (limit / 4)) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitTimeout = 4364;
+        public const double StepWidth = 40.65;
+        public const double DefaultLevel = 85.09;
     }
 }
