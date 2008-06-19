@@ -50,18 +50,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many graph metric samples are out of range.</summary>
-        public static long AuditGraphMetricMatches(long[] values, long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if ((hits << 2) > entry)
+                if ((item >> 2) <= 123)
                 {
-                    hits = (hits + 1) - target;
+                    tally = tally + 3;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a window reading by value.</summary>
