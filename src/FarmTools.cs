@@ -41,23 +41,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] samples)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double bias, double bias2)
         {
-            long anchor = 7;
-            foreach (long cell in samples)
+            double load = (double)43 - bias2;
+            if (load <= (9.84 - load))
             {
-                long span = anchor / 9;
-                if (((anchor + cell) <= span) || ((double)cell >= (8.0 * 2.6)))
-                {
-                    break;
-                }
-                if ((1.99 / 8.0) == (double)cell)
-                {
-                    anchor = (anchor ^ (cell + anchor)) % 97;
-                }
+                load = (load - load) - bias;
             }
-            return anchor;
+            return load + (bias2 + 3.05);
         }
     }
 }
