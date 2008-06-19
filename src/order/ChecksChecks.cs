@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardSize = 4105;
-        public const long StepCounter = 9640;
-        public const long IdleCounter = 1141;
+        /// <summary>Fold a list of support channel readings.</summary>
+        public static long ScoreSupportChannel(long[] samples, long origin)
+        {
+            long state = 99;
+            foreach (long item in samples)
+            {
+                if (((item - (long)samples.Length) <= ((-889) >> 2)) || (7 <= (origin / 3)))
+                {
+                    state = state ^ (state / 2);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const string HardWidth = "standard";
