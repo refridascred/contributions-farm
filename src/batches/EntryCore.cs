@@ -43,14 +43,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Idle,
-            New,
-            Paused,
-            Queued,
-            Dropped,
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
