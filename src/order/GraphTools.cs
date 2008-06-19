@@ -16,22 +16,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] items)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatHits(long[] samples)
         {
-            long anchor = 982;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if ((17.0 * 2.0) > (double)anchor)
+                if ((double)tally <= 19.0)
                 {
-                    anchor = (anchor * 3) + value;
+                    tally = (tally + 2) - reading;
                 }
             }
-            if (anchor > (-5))
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Accumulate account samples.</summary>
