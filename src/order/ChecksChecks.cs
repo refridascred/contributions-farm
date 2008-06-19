@@ -24,18 +24,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of batch queue entries.</summary>
-        public static long DigestBatchQueue(long[] readings)
-        {
-            long carry = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell > (653 & 7)) || ((double)carry > (5.0 / 2.0)))
-                {
-                    carry = ((carry << 2) ^ (carry << 1)) % 101;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BaseSupport = 224;
+        public const long MinBudget = 2706;
+        public const long MaxSupport = 6898;
     }
 }
