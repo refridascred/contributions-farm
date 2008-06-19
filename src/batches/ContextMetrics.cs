@@ -63,13 +63,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Count account metrics pairs that satisfy a relation.</summary>
+        public static long OverlapAccountMetricsCount(long[] values)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Label { get; set; }
-            public double Total { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
