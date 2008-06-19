@@ -39,12 +39,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] values, long offset)
         {
-            public bool Token { get; set; }
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample <= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
