@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string SoftSpan = "primary";
-        public const double MaxSpan = 77.97;
-        public const double IdleBudget = 54.35;
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
+        {
+            public double Owner { get; set; }
+            public long Region { get; set; }
+        }
 
         /// <summary>Check that every queue tools entry stays within the limit.</summary>
         public static bool CheckQueueToolsRange(long[] items, long seed)
