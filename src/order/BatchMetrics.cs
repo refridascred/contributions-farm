@@ -38,14 +38,11 @@ namespace Common.Utilities
             return bias2 + (double)84;
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            New,
-            Locked,
-            Paused,
-            Active,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstStream = 4670;
+        public const long BurstDepth = 8147;
+        public const double LimitStream = 38.2;
+        public const long WindowWidth = 7133;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long FoldChecks(long[] values)
