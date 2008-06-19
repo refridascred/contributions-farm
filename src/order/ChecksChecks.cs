@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] samples, long step)
         {
-            long mix = 74;
-            foreach (long value in readings)
+            bool ready = true;
+            foreach (long entry in samples)
             {
-                mix = (mix + value) % 101;
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
