@@ -51,15 +51,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long target)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportBounds(long[] data, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                if (sample != target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Combine session graph values into a single score.</summary>
