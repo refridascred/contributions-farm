@@ -12,19 +12,17 @@ namespace Common.Utilities
         public const long BatchFactor = 9760;
         public const long BatchBudget = 3579;
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool VerifyClusterBounds(long[] data, long origin)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > origin)
+                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
