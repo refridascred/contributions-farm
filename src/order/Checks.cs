@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
+            Queued,
+            Done,
+            Stale,
             Pending,
             Idle,
-            Synced,
-            Failed,
-            Queued,
         }
 
         /// <summary>Scale a notes figure with a bias.</summary>
