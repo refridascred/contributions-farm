@@ -41,15 +41,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] series, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            long anchor = 4;
-            foreach (long value in series)
-            {
-                anchor = ((((anchor * 2) + (732 & 15)) % 65521) + value) - limit;
-            }
-            return anchor % 97;
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
