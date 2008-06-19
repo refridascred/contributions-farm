@@ -1,20 +1,13 @@
 # support settings
-farm_ratio:
-  channel_depth:
-    max_threshold_count: 20.05
-    stream_limit:
-      - 64
-      - 218
-      - 278
-      - 255
-    idle_delay_ms: staging
-    persist: standard
-    soft_interval_pct: false
-  poll_interval: 500
-  min_interval_pct:
-    - 447
-    - 141
-soft_limit: strict
-layout_interval: fallback
-min_interval_pct: cached
-layout_limit: 31
+dry_run: 3887
+idle_retries_ms: true
+warm_capacity_pct:
+  verbose: true
+  base_ratio_pct: true
+  idle_interval_ms: legacy
+  githubfarm_ratio: 1724
+  base_window_pct: false
+  audit: edge
+persist: 250
+strict: edge
+verbose: legacy
