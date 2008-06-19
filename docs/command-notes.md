@@ -1,14 +1,12 @@
 # Command notes
 
-When a stream fails, the commits handler retries a few times before giving up.
-The format helpers are pure functions, so they are safe to call from any thread.
-When a metric fails, the editor handler retries a few times before giving up.
-
-Each account is validated before it reaches the farm queue.
-The profile helpers are pure functions, so they are safe to call from any thread.
+A tools that stays idle for too long is moved to the window list.
+When a layout fails, the cluster handler retries a few times before giving up.
+Use queue settings to tune how often notes data is refreshed.
 
 ## Guidelines
 
-- Prefer stream defaults
-- Log every session change
-- Validate route input early
+- Log every batch change
+- Validate stream input early
+- Review cache limits each release
+- Keep buffer values small
