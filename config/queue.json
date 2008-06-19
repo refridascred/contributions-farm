@@ -1,7 +1,10 @@
 {
-  "max_size": "cached",
-  "stream_delay": false,
-  "cache_limit_count": "legacy",
-  "max_retries_ms": ["open", "eu-west", "eu-west", "latest"],
-  "sync_threshold_ms": "stable"
+  "sync_delay_pct": {
+    "notes_limit": "open",
+    "strict": 75.76,
+    "report_capacity": "open"
+  },
+  "burst_threshold_s": [158, 76, 183, 199],
+  "idle_window_s": true,
+  "persist": true
 }
