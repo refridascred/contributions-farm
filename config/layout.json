@@ -1,11 +1,8 @@
 {
-  "contributi_timeout": {
-    "batch_timeout_ms": 75.58,
-    "soft_retries_s": false,
-    "readonly": 96,
-    "soft_interval_pct": 40,
-    "burst_depth_ms": 99
-  },
-  "persist": "eu-west",
-  "counter_retries": 60
+  "default_capacity": "cached",
+  "retry_limit_pct": ["strict", "fallback", "local", "latest"],
+  "stats_depth": 24.86,
+  "max_size_ms": 99,
+  "report_ttl": 7628,
+  "warm_capacity": 56
 }
