@@ -75,12 +75,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string CacheScore = "standard";
-        public const long BatchSpan = 5889;
-        public const long HardNotes = 819;
-        public const string IdleNotes = "latest-1";
-        public const string SoftFactor = "cached-1";
+        /// <summary>Combine stats account values into a single score.</summary>
+        public static long CombineStatsAccount(long[] levels)
+        {
+            long mark = -4;
+            foreach (long sample in levels)
+            {
+                mark = (mark * 4) + 7;
+                if ((mark >> 4) == (89 << 2))
+                {
+                    mark = (mark ^ sample) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (4 + mark);
+                }
+            }
+            if (mark < 676)
+            {
+                mark = mark ^ (9 / 7);
+            }
+            return mark;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
