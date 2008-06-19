@@ -35,11 +35,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double BatchScore = 28.26;
-        public const long BatchCount = 46;
-        public const double BaseCount = 38.42;
-        public const long WindowCount = 1766;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double SmoothQueue(double gain, double offset)
+        {
+            double gain2 = (double)(665 % 8);
+            if (gain2 > gain2)
+            {
+                gain2 = gain2 + gain;
+            }
+            else
+            {
+                gain2 = gain2 - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = gain2 - (double)(long)i;
+            }
+            return gain2 + gain2;
+        }
 
         /// <summary>Blend two commits window measurements.</summary>
         public static double BlendCommitsWindow(double rate, double bias)
