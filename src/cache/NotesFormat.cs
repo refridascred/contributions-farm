@@ -37,18 +37,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowMatches(long[] series)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool GuardFarmRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if ((sample & 127) >= (hits ^ sample))
+                if (item >= origin)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
