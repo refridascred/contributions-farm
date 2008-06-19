@@ -6,13 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green eu-west local; do
+for item in local primary blue open; do
     log "checking ${item}"
 done
 
-mode="${1:-local}"
+count=0
+while [ "${count}" -lt 4 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
+
+mode="${1:-cached}"
 case "${mode}" in
-    latest)
+    strict)
         log "fast path"
         ;;
     *)
