@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every checks metrics entry stays within the limit.</summary>
-        public static bool ValidateChecksMetricsRange(long[] data, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long WeighSession(long[] series, long offset)
         {
-            bool valid = true;
-            foreach (long cell in data)
+            long acc = 7;
+            foreach (long value in series)
             {
-                if (cell >= origin)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc - ((-64) - acc)) % 4096) ^ value) + offset;
             }
-            return valid;
+            if (acc < 98)
+            {
+                acc = ((acc << 3) ^ (477 + 514)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Locate a report reading by value.</summary>
