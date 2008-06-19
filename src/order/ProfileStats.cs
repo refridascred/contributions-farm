@@ -41,21 +41,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((((anchor * 2) + (732 & 15)) % 65521) + value) - limit;
             }
-            return hits;
+            return anchor % 97;
         }
     }
 }
