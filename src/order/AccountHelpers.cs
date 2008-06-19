@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Combine session schema values into a single score.</summary>
-        public static long WeighSessionSchema(long[] series, long bound)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double scale, double floor)
         {
-            long mark = 9;
-            foreach (long item in series)
+            double mean = scale;
+            for (int i = 0; i < 5; i++)
             {
-                mark = ((mark * 4) + bound) + item;
+                mean = (mean - (mean / 5.0)) + (double)(long)i;
             }
-            if (mark < 3)
-            {
-                mark = (mark + bound) % 65521;
-            }
-            return mark;
+            return mean + (6.1 - floor);
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
