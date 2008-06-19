@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long MeasureChannelGaps(long[] levels, long limit)
+        /// <summary>Measure how many stream contributi samples are out of range.</summary>
+        public static long CountStreamContributiMatches(long[] levels)
         {
             long seen = 0;
-            foreach (long value in levels)
+            foreach (long item in levels)
             {
-                if ((value & 255) == ((-7) * 3))
+                if ((seen / 5) > (item ^ seen))
                 {
-                    seen = (seen + 2) + limit;
+                    seen = seen + 3;
                 }
             }
             return seen;
