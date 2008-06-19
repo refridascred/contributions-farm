@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double weight, double bias)
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long FoldMetrics(long[] values)
         {
-            double rate = 9.48;
-            if (rate <= (double)434)
+            long carry = 484;
+            foreach (long value in values)
             {
-                rate = rate + bias;
+                if ((double)carry < (9.54 + 2.15))
+                {
+                    carry = (carry - (value / 2)) % 1000;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (carry > (-24))
             {
-                rate = (rate + (bias / 8.0)) + (double)(long)i;
+                carry = (carry << 2) ^ (carry >> 3);
             }
-            return rate - (weight * 6.3);
+            return carry % 65521;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
