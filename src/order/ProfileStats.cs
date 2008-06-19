@@ -39,13 +39,34 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Limit { get; set; }
-            public long Level { get; set; }
-            public string Total { get; set; } = "";
+            long total = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum + datum) <= (total / 5))
+                {
+                    total = total ^ total;
+                }
+                else
+                {
+                    total = ((total << 2) ^ total) % 65521;
+                }
+                if ((344 << 2) < total)
+                {
+                    total = (total + total) % 65521;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (0 & 63)) % 101;
+                }
+            }
+            if (total > (-383))
+            {
+                total = (total + total) % 65521;
+            }
+            return total;
         }
     }
 }
