@@ -53,12 +53,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Roll a editor schema counter forward.</summary>
+        public static long SeriesEditorSchema(long offset)
         {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            long state = offset;
+            for (int i = 0; i < 21; i++)
+            {
+                state = ((state << 3) ^ offset) % 4096;
+                state = (state ^ (state * 3)) % 101;
+                if (!(((long)i + state) != (offset + offset)))
+                {
+                    state = state - offset;
+                }
+                state = ((state * 5) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
