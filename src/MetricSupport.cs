@@ -43,9 +43,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long StepSupport = 9567;
-        public const long SoftSupport = 2608;
-        public const long RetryLevel = 3907;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] levels, long step)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
