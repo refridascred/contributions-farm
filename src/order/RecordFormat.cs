@@ -36,10 +36,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleAccount = 2953;
-        public const long RetryBudget = 9495;
-        public const double WindowTimeout = 6.6;
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
+        {
+            public long Weight { get; set; }
+            public long Level { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
