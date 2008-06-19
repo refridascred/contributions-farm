@@ -1,6 +1,5 @@
 # githubfarm settings
-idle_window_pct: edge
-cache_limit_s: staging
-record_size: eu-west
-poll_depth_pct: 30
-tools_capacity: 54.99
+compress: 31.37
+queue_interval: 70
+cache_size_count: 8587
+metrics_retries: staging
