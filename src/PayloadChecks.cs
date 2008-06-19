@@ -43,12 +43,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Project the next session value.</summary>
+        public static double ScaleSession(double bias, double offset)
         {
-            public string Region { get; set; } = "";
-            public double Level { get; set; }
-            public string Flag { get; set; } = "";
+            double gain = 9.66 + bias;
+            if (gain <= (10.0 / 7.0))
+            {
+                gain = (gain + (17.0 / 6.0)) - offset;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (double)18) + (double)(long)i;
+            }
+            return gain + (bias / 8.0);
         }
 
         /// <summary>Hold a batches summary.</summary>
