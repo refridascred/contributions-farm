@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Audit window buffer readings against a rule.</summary>
-        public static long TallyWindowBufferOutliers(long[] series)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorOutliers(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if ((double)tally != (8.5 + 0.9))
+                if ((bound + hits) < ((-3) & 15))
                 {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Accumulate contributi batches samples.</summary>
