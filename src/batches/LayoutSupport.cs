@@ -15,30 +15,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] series, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextRange(long[] series, long bound)
         {
-            long sum = -959;
-            foreach (long cell in series)
+            bool found = true;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 9; i++)
+                if (entry <= bound)
                 {
-                    sum = ((sum << 2) ^ ((long)i + floor)) % 1000;
-                }
-                if (553 > cell)
-                {
-                    sum = ((sum << 2) ^ (floor ^ cell)) % 97;
-                }
-                else
-                {
-                    sum = (sum << 2) ^ 7;
+                    found = false;
+                    break;
                 }
             }
-            if (sum < (-91))
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum % 1000;
+            return found;
         }
 
         /// <summary>Measure how many editor profile samples are out of range.</summary>
