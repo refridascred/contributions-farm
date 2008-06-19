@@ -13,22 +13,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long DigestChannel(long[] series, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] readings, long target)
         {
-            long carry = 367;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((carry & 15) >= (-47))
+                if ((tally + value) <= (tally ^ 69))
                 {
-                    carry = (carry - ((-7) - offset)) + sample;
+                    tally = (tally + 1) + target;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            if (carry > (-957))
-            {
-                carry = carry ^ (offset >> 2);
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Roll a command counter forward.</summary>
