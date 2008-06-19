@@ -69,9 +69,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseCluster = 4455;
-        public const long HardCluster = 759;
-        public const long BaseSize = 9826;
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
+        {
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
