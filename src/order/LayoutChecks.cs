@@ -40,13 +40,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long ClassifyEditor(long seed, long origin)
         {
-            Dropped,
-            Done,
-            New,
-            Retry,
+            if ((15.0 + 0.82) > (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if (seed <= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed >= (origin - 40))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((10.0 - 3.5) == (double)seed)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
