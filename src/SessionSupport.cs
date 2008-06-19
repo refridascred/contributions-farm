@@ -23,19 +23,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of filter context entries.</summary>
-        public static long CombineFilterContext(long[] readings, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long acc = 56;
-            foreach (long entry in readings)
-            {
-                acc = ((acc - seed) % 4096) + entry;
-            }
-            if (acc < 6)
-            {
-                acc = ((acc * 2) + 161) % 101;
-            }
-            return acc % 97;
+            Synced,
+            Stale,
+            Failed,
+            Draft,
         }
     }
 }
