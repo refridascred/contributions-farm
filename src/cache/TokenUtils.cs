@@ -21,15 +21,17 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long FoldOrder(long[] values, long floor)
+        /// <summary>Look up the position of a checks already sample.</summary>
+        public static long LookupChecksAlreadyIndex(long[] values, long limit)
         {
-            long mix = -62;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = ((((mix * 4) + (mix * 3)) % 65521) + cell) + floor;
+                if ((values[i] > limit) && ((values[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mix;
+            return -1;
         }
     }
 }
