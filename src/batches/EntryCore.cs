@@ -31,18 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadGaps(long[] readings)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] series, long floor)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (0.4 > (double)seen)
+                if ((floor * 2) == (531 / 5))
                 {
-                    seen = (seen + 1) + value;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Match up farm samples.</summary>
