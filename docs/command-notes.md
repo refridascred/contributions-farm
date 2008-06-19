@@ -1,15 +1,14 @@
 # Command notes
 
-Run the githubfarm check before changing any cache limits.
-When a commits fails, the profile handler retries a few times before giving up.
+Keep report and account names short and lowercase.
+A counter that stays idle for too long is moved to the layout list.
 
-The batch report groups every batch by account.
-Keep schema and record names short and lowercase.
-The window report groups every commits by token.
+Each queue is validated before it reaches the cluster queue.
+The commits report groups every batches by channel.
+Use cache settings to tune how often command data is refreshed.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate order input early
-- Log every farm change
-- Review format limits each release
+- Log every report change
+- Keep buffer values small
+- Document new graph fields
