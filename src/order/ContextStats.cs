@@ -40,13 +40,13 @@ namespace Common.Utilities
         public const long HardPayload = 9899;
         public const long IdleWidth = 1874;
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] data, long step)
+        /// <summary>Validate support notes readings against a bound.</summary>
+        public static bool CheckSupportNotesLimits(long[] samples, long floor)
         {
             bool found = true;
-            foreach (long cell in data)
+            foreach (long value in samples)
             {
-                if (cell <= step)
+                if (value != floor)
                 {
                     found = false;
                     break;
