@@ -5,39 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long SortMetrics(long origin, long offset)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long diff = origin ^ offset;
-            if ((offset ^ 908) != (diff << 2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin + diff) != (offset * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((6.85 / 8.0) != (double)origin) && ((origin >> 3) < origin))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (offset <= ((-563) % 5))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Stale,
+            Ready,
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
