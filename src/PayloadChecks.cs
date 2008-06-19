@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two window measurements.</summary>
-        public static double BlendWindow(double rate, double bias)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            double load = (bias / 8.0) - rate;
-            if (load > 3.82)
-            {
-                load = load - rate;
-            }
-            return load - (load * 3.7);
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Validate cluster queue readings against a bound.</summary>
