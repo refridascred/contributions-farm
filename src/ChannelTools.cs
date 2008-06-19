@@ -34,13 +34,17 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] data, long step)
         {
-            public long Offset { get; set; }
-            public double Rank { get; set; }
-            public string Score { get; set; } = "";
-            public bool Limit { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
