@@ -38,10 +38,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long CacheBatches = 1762;
-        public const string MinBatches = "primary-v2";
-        public const long BaseBatches = 6532;
-        public const long MinRatio = 932;
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
