@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a profile context counter forward.</summary>
-        public static long RollProfileContext(long limit)
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long LookupCounterIndex(long[] data, long offset)
         {
-            long mix = limit;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = (mix << 3) ^ 443;
-                if (((449 + limit) < (mix << 1)) && ((limit - 41) >= mix))
+                if ((data[i] <= offset) && ((data[i] % 5) != 0))
                 {
-                    mix = ((mix * 2) + (mix - limit)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    mix = (mix + (limit % 12)) % 4096;
-                }
-                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Hold a graph entry.</summary>
