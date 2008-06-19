@@ -1,6 +1,7 @@
 {
-  "default_capacity": 4174,
-  "verbose": "standard",
-  "warm_timeout_pct": "stable",
-  "checks_window": 500
+  "strict": false,
+  "cache_depth_count": true,
+  "enabled": ["green", "cached"],
+  "audit": false,
+  "stats_limit": "blue"
 }
