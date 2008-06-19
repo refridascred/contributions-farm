@@ -29,17 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] samples, long target)
+        /// <summary>Scale a context metric figure with a bias.</summary>
+        public static double SmoothContextMetric(double ratio, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double bias = ratio - ratio;
+            if (bias >= (double)3)
             {
-                if (samples[i] <= target)
-                {
-                    return (long)i;
-                }
+                bias = (bias - 7.6) + offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias + (double)(-8);
         }
 
         /// <summary>Digest a series of profile entries.</summary>
