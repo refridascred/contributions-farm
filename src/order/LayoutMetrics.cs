@@ -27,13 +27,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
+        public static long CountPayloadGithubfarmMatches(long[] readings, long offset)
         {
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (offset > (count - datum))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
