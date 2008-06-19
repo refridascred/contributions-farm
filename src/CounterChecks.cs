@@ -47,11 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double LimitInterval = 14.66;
-        public const long DefaultTimeout = 5902;
-        public const long LimitSession = 2825;
-        public const long BurstSession = 1396;
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
+        {
+            public long Offset { get; set; }
+            public bool Weight { get; set; }
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const string CacheTools = "fallback-v2";
