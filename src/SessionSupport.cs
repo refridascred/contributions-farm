@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] items)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >= (27 + 0)) && (((seen & 15) < (seen + 29)) && (seen <= reading)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Active,
+            Locked,
+            Draft,
         }
 
         /// <summary>Combine batch values into a single score.</summary>
