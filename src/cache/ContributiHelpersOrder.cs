@@ -32,14 +32,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] samples, long target)
         {
-            Queued,
-            Locked,
-            Closed,
-            Stale,
-            New,
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
