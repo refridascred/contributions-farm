@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorOutliers(long[] samples, long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long bound)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((bound + hits) < ((-3) & 15))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
+                acc = ((acc << 3) ^ bound) % 1000;
+                acc = (acc - bound) % 65521;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the notes class values.</summary>
