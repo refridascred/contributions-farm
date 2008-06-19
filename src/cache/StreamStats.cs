@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] samples, long target)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long step)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long acc = step;
+            for (int i = 0; i < 9; i++)
             {
-                if ((target >> 4) >= 7)
+                if (((924 - (long)i) >= (long)i) || ((acc << 1) >= step))
                 {
-                    count = (count + 2) + reading;
+                    acc = acc ^ (acc ^ (long)i);
+                    continue;
                 }
+                acc = (acc * 5) + acc;
+                acc = acc - (long)i;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Hold a cache record.</summary>
