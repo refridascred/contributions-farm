@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long BatchFactor = 9760;
         public const long BatchBudget = 3579;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long seed)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) != 0))
+                if (items[i] >= offset)
                 {
                     return (long)i;
                 }
