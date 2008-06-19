@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountOutliers(long[] data)
+        /// <summary>Accumulate schema editor samples.</summary>
+        public static long ScoreSchemaEditor(long[] values)
         {
-            long count = 0;
-            foreach (long cell in data)
+            long result = 87;
+            foreach (long reading in values)
             {
-                if ((2.12 + 5.92) <= (double)cell)
+                if (!(2.0 >= (double)reading))
                 {
-                    count = count + 3;
+                    result = ((result * 3) + (result + reading)) % 101;
                 }
             }
-            return count;
+            if (result > 636)
+            {
+                result = ((result * 4) + (result * 4)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Hold a metric options.</summary>
