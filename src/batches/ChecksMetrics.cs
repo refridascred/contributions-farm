@@ -22,10 +22,32 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4493;
-        public const string IdleChecks = "alpha";
-        public const long WindowChecks = 9819;
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long ClassifyWindow(long offset, long bound)
+        {
+            if (((6.6 - 8.0) <= (double)bound) && (bound >= (bound ^ offset)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset ^ bound) != (bound & 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound * 4) == (59 + 4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] samples, long offset)
