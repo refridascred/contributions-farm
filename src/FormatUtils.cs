@@ -77,18 +77,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] values)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long SeriesCounter(long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long anchor = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((double)entry >= (0.69 - 7.4))
-                {
-                    matches = matches + 2;
-                }
+                anchor = anchor + (target & 31);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
