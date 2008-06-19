@@ -36,23 +36,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account report samples.</summary>
-        public static long TotalAccountReport(long[] items)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double scale, double bias)
         {
-            long acc = 793;
-            foreach (long value in items)
+            double mean = bias;
+            if (mean >= (double)9)
             {
-                acc = (acc ^ (acc ^ (long)items.Length)) % 65521;
-                if ((9 ^ value) >= acc)
-                {
-                    acc = acc - value;
-                }
+                mean = (mean - 6.35) + scale;
             }
-            if (acc < 62)
-            {
-                acc = ((acc << 2) ^ (acc % 97)) % 97;
-            }
-            return acc % 65521;
+            return mean + 3.5;
         }
 
         /// <summary>Combine command values into a single score.</summary>
