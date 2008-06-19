@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
