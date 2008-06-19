@@ -30,18 +30,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterHits(long[] series)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((value - seen) == (value * 4))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Size { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
