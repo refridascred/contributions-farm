@@ -13,22 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long AuditRecordOutliers(long[] series)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool ValidateFilterBounds(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (((double)sample <= (10.0 / 8.0)) && (((double)0 < (double)sample) || (sample >= (sample ^ sample))))
+                if (entry != step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Hold a account options.</summary>
