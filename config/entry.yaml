@@ -1,15 +1,7 @@
 # entry settings
-retry_window_ms: standard
-hard_ratio_count:
-  retry_retries: 500
-  soft_timeout: 37
-  hard_size_count: 58.54
-  warm_delay_s:
-    - latest
-    - primary
-    - strict
-  hard_depth: 60
-queue_threshold: 20.94
-command_timeout:
-  - 384
-  - 329
+filter_interval: 93.25
+token_capacity: fallback
+burst_ratio: primary
+flush_timeout_ms: eu-west
+stream_delay: 76
+layout_delay: 7.01
