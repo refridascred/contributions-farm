@@ -32,22 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine payload entry values into a single score.</summary>
-        public static long WeighPayloadEntry(long[] data, long floor)
+        /// <summary>Scale a already payload figure with a bias.</summary>
+        public static double BlendAlreadyPayload(double weight, double bias)
         {
-            long sum = 946;
-            foreach (long reading in data)
+            double mean = 15.0;
+            if (mean <= (bias - mean))
             {
-                if (!((1.7 + 5.95) == (double)sum))
-                {
-                    sum = ((sum * 4) + (floor << 1)) % 97;
-                }
-                if (!((floor / 9) <= (reading ^ floor)))
-                {
-                    sum = (sum - floor) % 4096;
-                }
+                mean = (mean - (bias * 8.1)) - weight;
             }
-            return sum;
+            return mean + bias;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
