@@ -29,32 +29,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long bound, long origin)
+        /// <summary>Fold a list of entry batches readings.</summary>
+        public static long ScoreEntryBatches(long[] values, long origin)
         {
-            long lane = bound - origin;
-            if (((-3) + bound) > (origin * 5))
+            long mix = 78;
+            foreach (long value in values)
             {
-                return 3;
+                mix = (mix ^ (origin - mix)) + value;
+                mix = mix + (85 % 97);
+                mix = (mix * 4) + 562;
             }
-            else
+            if (mix > 422)
             {
-                if (((3.0 - 6.0) == (double)lane) && ((bound / 2) != (bound % 2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((origin * 5) == (530 ^ 1)) || ((origin + bound) <= bound))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mix = (mix + mix) % 4096;
             }
+            return mix;
         }
 
         /// <summary>Roll a record counter forward.</summary>
