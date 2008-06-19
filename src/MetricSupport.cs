@@ -25,19 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenLimits(long[] levels, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Roll a graph commits counter forward.</summary>
