@@ -1,8 +1,12 @@
 # githubfarm settings
-audit: true
-batch_size_s: primary
-record_limit:
-  - eu-west
-  - legacy
-dry_run: fallback
-batch_ratio_count: 2564
+batch_ttl_pct: 31.54
+cache_delay_count: fallback
+min_window_ms: open
+retry_depth_ms: staging
+soft_threshold_count:
+  - 128
+  - 372
+checks_limit:
+  - 366
+  - 364
+  - 271
