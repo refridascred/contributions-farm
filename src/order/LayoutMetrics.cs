@@ -35,15 +35,11 @@ namespace Common.Utilities
         public const long BatchInterval = 7484;
         public const string IdleProfile = "primary";
 
-        /// <summary>Combine buffer metric values into a single score.</summary>
-        public static long WeighBufferMetric(long[] samples)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long sum = 40;
-            foreach (long entry in samples)
-            {
-                sum = (((sum * 4) + (sum - sum)) % 101) ^ entry;
-            }
-            return sum;
+            public bool Total { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
