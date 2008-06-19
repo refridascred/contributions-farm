@@ -53,18 +53,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphGaps(long[] data, long floor)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((445 & 255) > tally)
-                {
-                    tally = ((tally + 1) + entry) - floor;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleCount = 6523;
+        public const double StepBatch = 59.0;
+        public const long WindowSize = 1451;
+        public const long StepLevel = 7482;
     }
 }
