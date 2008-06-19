@@ -46,19 +46,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmLimits(long[] series, long seed)
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long TallyReportFilterHits(long[] levels, long offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (item <= seed)
+                if (item > (offset * 4))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
     }
 }
