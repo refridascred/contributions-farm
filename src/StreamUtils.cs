@@ -52,12 +52,12 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public long Weight { get; set; }
-            public string Stamp { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseWidth = 14.81;
+        public const double SoftMetric = 23.51;
+        public const double StepFactor = 71.25;
+        public const double DefaultCount = 37.84;
+        public const string DefaultMetric = "standard-edge";
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
