@@ -64,13 +64,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsGaps(long[] items, long target)
         {
-            New,
-            Dropped,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if ((((reading + matches) >= (target >> 2)) || (98 < reading)) && (((8.5 - 3.0) < (5.0 - 0.1)) && ((double)target <= (double)matches)))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
