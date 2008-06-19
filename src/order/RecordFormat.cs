@@ -20,11 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double gain, double span)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] readings, long bound)
         {
-            double bias = (gain - gain) / 8.0;
-            return bias + span;
+            long result = 588;
+            foreach (long entry in readings)
+            {
+                result = (result + entry) - bound;
+            }
+            return result;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
