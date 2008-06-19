@@ -1,25 +1,6 @@
 {
-  "base_limit_s": {
-    "filter_interval": 5542,
-    "batch_size_s": {
-      "buffer_threshold": 59.65,
-      "token_interval": 31.09,
-      "flush_size_pct": 9487,
-      "idle_interval_count": 54.0,
-      "entry_threshold": 69.41,
-      "checks_retries": "local"
-    },
-    "min_capacity_count": 47,
-    "token_retries": "edge",
-    "warm_delay": "local"
-  },
-  "buffer_ttl": {
-    "audit": 53,
-    "route_retries": 4715,
-    "graph_limit": "eu-west",
-    "warm_depth": 86,
-    "cluster_threshold": false
-  },
-  "filter_ttl": [123, 97, 73],
-  "warm_capacity_ms": 4156
+  "warm_delay_count": 20,
+  "format_threshold": "strict",
+  "flush_ttl_pct": "open",
+  "window_threshold": 60
 }
