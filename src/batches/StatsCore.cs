@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long bound2)
-        {
-            long edge = bound - bound2;
-            if ((bound2 << 1) >= (bound / 3))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((18.0 / 6.0) >= (double)edge)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 9629;
+        public const long MinBatch = 1012;
+        public const long CacheBatch = 32;
 
         /// <summary>Iterate the record notes series from a seed.</summary>
         public static long StepRecordNotes(long floor)
