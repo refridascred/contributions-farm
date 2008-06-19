@@ -42,11 +42,10 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 4682;
-        public const double BurstBudget = 82.09;
-        public const long LimitRatio = 5181;
-        public const long SoftChecks = 2101;
-        public const string DefaultChecks = "alpha-1";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string MaxMetric = "stable";
+        public const string DefaultScore = "staging";
+        public const long CacheMetric = 3670;
+        public const long HardScore = 2148;
     }
 }
