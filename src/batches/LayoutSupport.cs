@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double weight, double bias)
-        {
-            double weight2 = weight + (double)0;
-            if (weight2 <= weight)
-            {
-                weight2 = (weight2 + (double)497) - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight2 = (weight2 - weight2) + (double)(long)i;
-            }
-            return weight2 + 4.9;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double BurstContributi = 93.44;
+        public const string BatchLevel = "open";
+        public const double StepDepth = 96.77;
+        public const double LimitWidth = 5.01;
+        public const long IdleContributi = 2068;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
