@@ -23,11 +23,31 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long floor, long bound)
         {
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            if ((floor * 2) <= (bound - bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound > (bound << 1)) || ((double)floor != (9.13 - 9.4)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((double)floor == (8.8 * 6.1)) && ((double)bound < (6.0 - 3.31)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up metrics samples.</summary>
