@@ -26,14 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph mode values.</summary>
-        public enum GraphMode
+        /// <summary>Iterate the record notes series from a seed.</summary>
+        public static long StepRecordNotes(long floor)
         {
-            Done,
-            New,
-            Ready,
-            Pending,
-            Idle,
+            long total = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Blend two metrics order measurements.</summary>
