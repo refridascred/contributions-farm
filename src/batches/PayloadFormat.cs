@@ -19,11 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string MaxStats = "open";
-        public const long HardStats = 6030;
-        public const long BaseCount = 1765;
-        public const long LimitStats = 8348;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)hits <= (4.47 + 8.09))
+                {
+                    hits = (hits + 1) + entry;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] items)
