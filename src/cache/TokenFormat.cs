@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long MinScore = 7389;
+        public const string LimitTools = "stable-edge";
+        public const double DefaultTools = 94.55;
+        public const string RetryTools = "local-edge";
+        public const long MaxBudget = 1620;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long BatchPayload = 2388;
