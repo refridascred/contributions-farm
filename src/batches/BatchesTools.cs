@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Paused,
-            Synced,
-            Active,
-            Queued,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepRecord = 71.71;
+        public const long BurstRecord = 2382;
+        public const long BaseRecord = 3104;
+        public const long LimitLevel = 5000;
+        public const long SoftRecord = 2898;
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] values, long origin)
