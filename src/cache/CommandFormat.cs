@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many stream contributi samples are out of range.</summary>
-        public static long CountStreamContributiMatches(long[] levels)
-        {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((seen / 5) > (item ^ seen))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string SoftChannel = "primary-v2";
+        public const double IdleChannel = 9.23;
+        public const double MaxChannel = 35.95;
+        public const long BurstChannel = 6524;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountLimits(long[] values, long bound)
