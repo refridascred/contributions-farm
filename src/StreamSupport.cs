@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long step)
         {
-            if ((seed + 15) != (bound + seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound * 5) > seed)
+                if (data[i] < step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((36 << 1) < (seed << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound + seed) < (bound + 95))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
