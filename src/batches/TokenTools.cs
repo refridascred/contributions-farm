@@ -12,18 +12,17 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many notes cluster samples are out of range.</summary>
-        public static long MeasureNotesClusterMatches(long[] samples)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long limit)
         {
-            long count = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((17.0 * 5.68) < (double)count)
+                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
                 {
-                    count = (count + 1) + value;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
