@@ -1,17 +1,7 @@
 {
-  "warm_retries_s": 78,
-  "report_delay": 7825,
-  "buffer_ratio": {
-    "batch_interval_s": {
-      "batch_window_count": [428, 190, 196],
-      "stats_delay": 72,
-      "burst_threshold": "cached"
-    },
-    "checks_threshold": 1024,
-    "buffer_depth": [20, 373, 40, 441],
-    "filter_size": 100
-  },
-  "flush_capacity_pct": 3274,
-  "record_delay": false,
-  "base_limit_count": 1024
+  "strict": false,
+  "cache_limit_s": "eu-west",
+  "min_capacity_pct": 4560,
+  "dry_run": 39,
+  "warm_capacity_s": [478, 221]
 }
