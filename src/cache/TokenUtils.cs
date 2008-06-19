@@ -31,11 +31,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate already editor samples.</summary>
+        public static long DigestAlreadyEditor(long[] items, long target)
         {
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            long score = 998;
+            foreach (long value in items)
+            {
+                score = ((score << 3) ^ (score & 3)) ^ value;
+                if (!((double)score < (2.8 + 1.7)))
+                {
+                    score = (score * 4) + (target - 19);
+                }
+            }
+            if (score > 5)
+            {
+                score = ((score << 3) ^ (score % 60)) % 255;
+            }
+            return score;
         }
     }
 }
