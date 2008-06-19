@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool VerifyFilterRange(long[] data, long target)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long FindWindowIndex(long[] levels, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading >= target)
+                if ((levels[i] == seed) && ((levels[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
