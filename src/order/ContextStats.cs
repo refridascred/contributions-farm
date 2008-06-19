@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TallyContributi(long[] series, long floor)
         {
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            long score = 1;
+            foreach (long datum in series)
+            {
+                score = (((score << 3) ^ (datum >> 3)) % 255) - floor;
+            }
+            return score % 4096;
         }
 
         /// <summary>Hold a editor header.</summary>
