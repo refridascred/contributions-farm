@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many contributi stats samples are out of range.</summary>
-        public static long CountContributiStatsOutliers(long[] samples, long step)
-        {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)hits >= (1.4 + 6.7))
-                {
-                    hits = ((hits + 2) - sample) + step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double BaseBudget = 2.02;
+        public const long LimitInterval = 7542;
+        public const double MinSpan = 0.23;
+        public const double MaxTools = 34.65;
+        public const double BaseTools = 19.93;
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long OverlapPayloadCount(long[] items)
