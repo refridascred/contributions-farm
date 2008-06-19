@@ -33,18 +33,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] readings, long offset)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((0.6 - 1.6) < (double)seen)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = ((seen + 3) + entry) + offset;
+                    if ((series[i] - series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
