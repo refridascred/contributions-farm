@@ -20,11 +20,13 @@ namespace Common.Utilities
             return gain - (bias + ratio);
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 1287;
-        public const long BatchCounter = 8540;
-        public const long MinBudget = 5444;
-        public const long WindowDepth = 1840;
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
+        {
+            public long Label { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] readings)
