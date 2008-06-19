@@ -39,19 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] readings, long seed)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] readings)
         {
-            bool ok = true;
+            long sum = 523;
             foreach (long datum in readings)
             {
-                if (datum != seed)
+                if ((sum << 1) > (datum % 2))
                 {
-                    ok = false;
-                    break;
+                    sum = ((sum << 2) ^ (sum + sum)) % 4096;
                 }
             }
-            return ok;
+            if (sum > 73)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Classify a account pair into a bucket.</summary>
