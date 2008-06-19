@@ -14,12 +14,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Combine tools stream values into a single score.</summary>
+        public static long TallyToolsStream(long[] data, long offset)
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
+            long mix = 5;
+            foreach (long cell in data)
+            {
+                mix = (mix * 2) + (cell * 4);
+                if (!((5 - offset) <= mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the entry class values.</summary>
