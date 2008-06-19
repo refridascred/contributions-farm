@@ -51,22 +51,28 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] data)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long StepStats(long bound)
         {
-            long count = 0;
-            foreach (long value in data)
+            long score = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((4.2 - 7.69) <= (double)value)
+                if ((double)score < (double)bound)
                 {
-                    count = count + 3;
+                    score = ((score * 4) + (score - score)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score ^ (long)i) % 97;
                 }
+                if (!(((long)i / 2) != ((long)i & 63)))
+                {
+                    score = score + bound;
+                }
+                score = (score + (bound >> 1)) % 4096;
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return count;
+            return score;
         }
 
         /// <summary>Adjust a session reading.</summary>
