@@ -59,10 +59,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 5982;
-        public const long LimitToken = 8265;
-        public const string RetryToken = "local-1";
-        public const long WindowDepth = 6852;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double gain, double bias)
+        {
+            double mean = gain;
+            if (mean <= bias)
+            {
+                mean = mean - (6.51 + 8.45);
+            }
+            else
+            {
+                mean = mean + (double)62;
+            }
+            return mean + (double)7;
+        }
     }
 }
