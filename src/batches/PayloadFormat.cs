@@ -31,12 +31,22 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileHits(long[] readings)
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long reading in readings)
+            {
+                if (reading < matches)
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
