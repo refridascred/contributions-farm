@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] data, long limit)
+        /// <summary>Rank queue buffer input into a small class.</summary>
+        public static long RankQueueBuffer(long target, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            if ((double)step == (1.27 / 8.0))
             {
-                if (limit >= (limit - 46))
+                return 7;
+            }
+            else
+            {
+                if ((double)target < (5.55 - 8.0))
                 {
-                    tally = (tally + 2) + reading;
+                    return 5;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((target * 4) <= (target ^ step))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
