@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] items, long origin)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long bound)
         {
-            bool found = true;
-            foreach (long datum in items)
+            if ((seed + 15) != (bound + seed))
             {
-                if (datum >= origin)
+                return 6;
+            }
+            else
+            {
+                if ((bound * 5) > seed)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((36 << 1) < (seed << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((bound + seed) < (bound + 95))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
