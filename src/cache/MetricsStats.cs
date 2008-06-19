@@ -66,22 +66,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already graph entries that pass the check.</summary>
-        public static long TallyAlreadyGraphHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((44 + seen) > (seen - 200))
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string IdleFactor = "strict-edge";
+        public const double RetryDepth = 96.06;
+        public const long CacheQueue = 4931;
+        public const long StepTimeout = 5753;
+        public const long BaseQueue = 6452;
     }
 }
