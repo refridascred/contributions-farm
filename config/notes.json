@@ -1,6 +1,7 @@
 {
-  "warm_retries_ms": "primary",
-  "max_size_count": 250,
-  "base_ratio": 17,
-  "retry_retries_ms": 6590
+  "sync_interval_pct": ["edge", "staging", "stable", "standard"],
+  "enabled": 7425,
+  "min_ttl": [424, 384],
+  "max_limit": ["fallback", "fallback", "local", "local"],
+  "sync_size_ms": 17.25
 }
