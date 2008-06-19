@@ -50,16 +50,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] samples, long limit)
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long BucketFilter(long floor, long offset)
         {
-            long mix = 2;
-            foreach (long datum in samples)
+            if ((floor + 5) <= offset)
             {
-                mix = mix + (limit >> 4);
-                mix = (mix ^ (datum & 127)) % 97;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((floor >> 2) != (offset ^ 0)) || ((floor % 8) != (offset / 9)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((1.46 / 2.0) >= (double)offset) || ((9 >> 4) <= (offset & 127)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((floor << 3) < 6) || ((10.0 - 7.0) == (double)floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a tools options.</summary>
