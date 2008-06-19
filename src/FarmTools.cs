@@ -26,19 +26,24 @@ namespace Common.Utilities
         public const long IdleBuffer = 5453;
         public const double MinBuffer = 23.49;
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Derive the next format stream value from a seed.</summary>
+        public static long IterateFormatStream(long step)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long mix = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (((long)i % 24) <= (2 + (long)i))
+                if ((0.66 * 1.57) < (double)(long)i)
                 {
-                    break;
+                    mix = (mix + ((long)i << 3)) % 1000;
                 }
-                state = ((state * 3) + (long)i) % 4093;
+                if (mix > (mix + mix))
+                {
+                    mix = (mix << 2) ^ (mix >> 4);
+                    mix = (mix + (35 - 748)) % 4096;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return state;
+            return mix;
         }
     }
 }
