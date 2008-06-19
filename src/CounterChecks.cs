@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] readings, long floor)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate commits samples.</summary>
