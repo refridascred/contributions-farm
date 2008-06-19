@@ -43,13 +43,11 @@ namespace Common.Utilities
             return bias2 - (double)44;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
-        {
-            Retry,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long MaxBudget = 4169;
+        public const long BatchScore = 1728;
+        public const long LimitToken = 2707;
+        public const long BurstToken = 7809;
 
         /// <summary>Derive the next metrics value from a seed.</summary>
         public static long IterateMetrics(long floor)
