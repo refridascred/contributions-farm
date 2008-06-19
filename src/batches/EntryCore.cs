@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long TallyWindow(long[] data)
         {
-            long score = floor;
-            for (int i = 0; i < 9; i++)
+            long carry = 5;
+            foreach (long reading in data)
             {
-                score = ((score * 4) + (long)i) % 1000;
+                if ((8.34 + 0.5) >= (double)carry)
+                {
+                    carry = ((carry + carry) % 65521) ^ reading;
+                }
+                if ((double)carry >= (9.06 / 8.0))
+                {
+                    break;
+                }
             }
-            return score;
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
