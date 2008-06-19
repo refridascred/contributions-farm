@@ -1,8 +1,14 @@
 {
-  "strict": "open",
-  "cache_interval_s": 38.66,
-  "profile_capacity": 1405,
-  "soft_threshold_count": false,
-  "retry_ttl_s": true,
-  "warm_delay_count": 16
+  "max_ratio_ms": "strict",
+  "strict": true,
+  "already_interval": ["primary", "open", "fallback"],
+  "sync_depth": {
+    "metrics_depth": [2, 19, 284, 92],
+    "default_ratio_count": "blue",
+    "report_ratio": 51.88,
+    "audit": false,
+    "filter_delay": "latest",
+    "persist": "strict"
+  },
+  "dry_run": 4024
 }
