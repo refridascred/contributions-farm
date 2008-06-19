@@ -26,13 +26,13 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Limit { get; set; }
+            public bool Label { get; set; }
+            public long Region { get; set; }
+            public string Count { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
