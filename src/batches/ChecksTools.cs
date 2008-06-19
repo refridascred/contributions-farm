@@ -29,14 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long offset)
         {
-            Active,
-            Idle,
-            Synced,
-            Closed,
-            Locked,
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
+            {
+                if (((offset + 29) != (offset ^ offset)) && (offset <= 0))
+                {
+                    anchor = (anchor ^ ((long)i << 2)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Audit channel tools readings against a rule.</summary>
