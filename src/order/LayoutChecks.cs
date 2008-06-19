@@ -42,10 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long StepLayout = 5277;
-        public const string WindowFactor = "latest-1";
-        public const string MaxDepth = "legacy-1";
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportMatches(long[] values, long seed)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)count <= (4.0 - 2.55))
+                {
+                    count = ((count + 2) + item) + seed;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a editor entry.</summary>
         public sealed class EditorEntry
