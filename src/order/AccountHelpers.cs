@@ -12,13 +12,18 @@ namespace Common.Utilities
         public const double MaxTools = 34.65;
         public const double BaseTools = 19.93;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] data, long seed)
         {
-            Done,
-            Active,
-            Idle,
-            Draft,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (7 <= (seed + hits))
+                {
+                    hits = (hits + 3) - entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Roll a format counter forward.</summary>
