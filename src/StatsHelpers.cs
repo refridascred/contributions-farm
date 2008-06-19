@@ -70,24 +70,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long limit)
+        /// <summary>Check that every channel cache entry stays within the limit.</summary>
+        public static bool CheckChannelCacheLimits(long[] data, long offset)
         {
-            if (8 > (target + 61))
+            bool found = true;
+            foreach (long value in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < (0.9 / 4.0))
+                if (value < offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
