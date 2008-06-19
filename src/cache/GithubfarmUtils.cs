@@ -32,17 +32,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long offset)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Audit context batch readings against a rule.</summary>
