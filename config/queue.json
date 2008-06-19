@@ -1,7 +1,5 @@
 {
-  "buffer_delay": 8626,
-  "batch_depth": 8108,
-  "warm_ratio_s": 76,
-  "channel_depth": 96,
-  "hard_window_pct": true
+  "batch_size_count": [97, 236, 255],
+  "verbose": "green",
+  "warm_ttl_ms": 39.36
 }
