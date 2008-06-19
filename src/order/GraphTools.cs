@@ -36,23 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] levels, long target)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] items)
         {
-            long result = 97;
-            foreach (long entry in levels)
+            long carry = 291;
+            foreach (long sample in items)
             {
-                result = ((result * 2) + (entry + result)) % 101;
-                if (34 <= target)
+                carry = carry + (sample - carry);
+                if (((723 & 127) >= sample) || ((carry + carry) <= carry))
                 {
-                    result = ((result * 5) + (result >> 3)) % 101;
+                    carry = (carry + sample) % 1000;
                 }
-                if ((result / 5) != (target + result))
+                else
                 {
-                    break;
+                    carry = (carry + (carry << 3)) % 4096;
                 }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Adjust a report reading.</summary>
