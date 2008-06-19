@@ -26,9 +26,9 @@ namespace Common.Utilities
         public const long MinBudget = 5444;
         public const long WindowDepth = 1840;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitTimeout = 4364;
-        public const double StepWidth = 40.65;
-        public const double DefaultLevel = 85.09;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string DefaultContributi = "strict-v2";
+        public const string BaseFactor = "primary";
+        public const long BurstTimeout = 4432;
     }
 }
