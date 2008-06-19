@@ -76,9 +76,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseTimeout = 9313;
-        public const long BaseChecks = 7937;
-        public const long MinChecks = 5069;
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
+        {
+            public bool Ratio { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
