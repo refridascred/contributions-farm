@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double ratio, double bias)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] readings)
         {
-            double rate = (ratio / 4.0) - (ratio - bias);
-            if (rate >= (double)7)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = rate + bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)632;
-            }
-            return rate + (rate / 7.0);
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
