@@ -34,12 +34,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 2278;
-        public const long MaxToken = 3236;
-        public const long BatchToken = 6777;
-        public const double WindowToken = 31.64;
-        public const string SoftToken = "primary-1";
+        /// <summary>Accumulate account report samples.</summary>
+        public static long TotalAccountReport(long[] items)
+        {
+            long acc = 793;
+            foreach (long value in items)
+            {
+                acc = (acc ^ (acc ^ (long)items.Length)) % 65521;
+                if ((9 ^ value) >= acc)
+                {
+                    acc = acc - value;
+                }
+            }
+            if (acc < 62)
+            {
+                acc = ((acc << 2) ^ (acc % 97)) % 97;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowInterval = 93.75;
