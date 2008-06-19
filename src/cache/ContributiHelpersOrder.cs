@@ -39,12 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            New,
-            Pending,
-            Paused,
+            Ready,
+            Done,
+            Closed,
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
