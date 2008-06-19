@@ -35,20 +35,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of report order entries.</summary>
-        public static long WeighReportOrder(long[] data)
-        {
-            long anchor = 5;
-            foreach (long cell in data)
-            {
-                anchor = (anchor - (cell + cell)) % 65521;
-                if (!(anchor >= (2 - anchor)))
-                {
-                    anchor = (anchor * 3) + (9 + anchor);
-                }
-            }
-            return anchor % 65521;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string LimitGraph = "latest-edge";
+        public const long MinBudget = 94;
+        public const long WindowDepth = 8610;
 
         /// <summary>Validate filter contributi readings against a bound.</summary>
         public static bool GuardFilterContributiRange(long[] levels, long step)
