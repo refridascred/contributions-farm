@@ -27,19 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] values, long seed)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            bool valid = true;
-            foreach (long value in values)
-            {
-                if (value > seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Done,
+            Failed,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
