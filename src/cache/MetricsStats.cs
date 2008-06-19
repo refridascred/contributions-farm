@@ -43,11 +43,18 @@ namespace Common.Utilities
         public const long CacheCount = 8942;
         public const long LimitCount = 9785;
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorMatches(long[] series, long target)
         {
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            long count = 0;
+            foreach (long entry in series)
+            {
+                if ((((count - 49) >= (target << 2)) && ((double)count <= 7.9)) || !((double)target > (9.3 - 1.1)))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
     }
 }
