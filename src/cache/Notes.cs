@@ -25,13 +25,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long LimitOrder = 3341;
+        public const long DefaultLevel = 1379;
+        public const long CacheLevel = 7233;
 
         /// <summary>Match up token support samples.</summary>
         public static long MatchTokenSupportCount(long[] values)
