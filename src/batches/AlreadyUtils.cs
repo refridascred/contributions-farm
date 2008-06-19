@@ -47,23 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double AdjustCommand(double rate, double span)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long origin)
         {
-            double ratio = rate;
-            if (ratio <= (ratio - span))
+            bool stale = true;
+            foreach (long entry in series)
             {
-                ratio = ratio + span;
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + rate;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (ratio - ratio)) - (double)(long)i;
-            }
-            return ratio + rate;
+            return stale;
         }
 
         /// <summary>Describe the checks class values.</summary>
