@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ScaleProfile(double ratio, double bias)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double gain, double floor)
         {
-            double gain = (double)1;
-            if (gain > 3.01)
+            double scale = (gain - gain) + (double)5;
+            if (scale <= (double)687)
             {
-                gain = gain - 6.6;
+                scale = (scale - gain) - floor;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (double)219) + (double)(long)i;
-            }
-            return gain - (bias + ratio);
+            return scale + (scale - gain);
         }
 
         /// <summary>Hold a report snapshot.</summary>
