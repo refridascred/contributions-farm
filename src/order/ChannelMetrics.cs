@@ -30,13 +30,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] levels, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Count { get; set; }
-            public long Size { get; set; }
-            public bool Token { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
