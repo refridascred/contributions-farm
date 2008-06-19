@@ -14,11 +14,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] values)
         {
-            public long Weight { get; set; }
-            public double Offset { get; set; }
+            long anchor = 356;
+            foreach (long item in values)
+            {
+                if (((anchor % 12) == (anchor + item)) || ((18.0 / 4.0) > (double)item))
+                {
+                    anchor = anchor - (anchor & 127);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the commits kind values.</summary>
