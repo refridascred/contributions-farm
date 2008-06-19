@@ -76,16 +76,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Classify a token cache pair into a bucket.</summary>
+        public static long ClassifyTokenCache(long limit, long target)
         {
-            long mix = floor;
-            for (int i = 0; i < 13; i++)
+            long step = limit + target;
+            if ((-6) >= limit)
             {
-                mix = (mix - (514 + floor)) % 97;
-                mix = ((mix * 5) + (long)i) % 1000;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if ((double)step < 4.4)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((6.6 / 4.0) > (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((((-3) + target) >= target) || ((36 << 3) >= limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
