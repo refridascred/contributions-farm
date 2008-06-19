@@ -5,11 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Rank context input into a small class.</summary>
+        public static long GradeContext(long bound, long step)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            if ((step + bound) > (step % 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((double)step > (5.0 - 4.0)) || ((bound << 3) >= (bound / 8)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (bound > (bound & 1))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((double)bound == (0.69 - 3.96)) && ((bound - 909) != (394 / 9)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
