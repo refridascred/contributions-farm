@@ -1,5 +1,5 @@
 {
-  "audit": 2547,
-  "retry_ttl_pct": ["local", "green", "primary", "local"],
-  "dry_run": 74.98
+  "default_limit": 5903,
+  "entry_ttl": 3,
+  "compress": ["eu-west", "strict", "legacy", "primary"]
 }
