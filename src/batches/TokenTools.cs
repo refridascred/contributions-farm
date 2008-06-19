@@ -29,19 +29,10 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelRange(long[] samples, long origin)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 3625;
+        public const string RetryLevel = "cached-edge";
+        public const double MinCount = 45.29;
+        public const long MaxProfile = 7434;
     }
 }
