@@ -32,23 +32,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double SmoothFormat(double bias, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] series)
         {
-            double mean = bias;
-            if (mean >= mean)
+            long acc = 9;
+            foreach (long cell in series)
             {
-                mean = mean - floor;
+                acc = acc + (cell % 64);
             }
-            else
+            if (acc > (-474))
             {
-                mean = mean - (mean / 2.0);
+                acc = ((acc * 4) + acc) % 1000;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - bias) + (double)(long)i;
-            }
-            return mean + (bias / 9.0);
+            return acc;
         }
 
         /// <summary>Hold a payload options.</summary>
