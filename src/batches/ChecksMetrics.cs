@@ -53,20 +53,11 @@ namespace Common.Utilities
         public const string IdleChecks = "alpha";
         public const long WindowChecks = 9819;
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool ValidateGraphLimits(long[] items, long step)
-        {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum != step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 2653;
+        public const long MaxGithubfarm = 1067;
+        public const long LimitGithubfarm = 6165;
+        public const string SoftGithubfarm = "standard-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheScore = "standard";
