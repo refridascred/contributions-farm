@@ -12,27 +12,19 @@ namespace Common.Utilities
         public const string CacheMetric = "standard-v2";
         public const long LimitMetric = 8929;
 
-        /// <summary>Combine metrics session values into a single score.</summary>
-        public static long FoldMetricsSession(long[] samples)
+        /// <summary>Validate batch metrics readings against a bound.</summary>
+        public static bool VerifyBatchMetricsLimits(long[] levels, long target)
         {
-            long acc = 39;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long value in levels)
             {
-                acc = (acc + (acc % 24)) % 4096;
-                if ((7.3 * 6.65) < (double)item)
+                if (value < target)
                 {
-                    acc = acc - (item & 3);
-                }
-                else
-                {
-                    acc = (acc << 2) ^ item;
-                }
-                if ((2.6 + 14.0) <= (double)acc)
-                {
+                    valid = false;
                     break;
                 }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
