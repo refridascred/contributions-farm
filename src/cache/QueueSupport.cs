@@ -18,10 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftSize = "staging-v2";
-        public const long BurstWidth = 9936;
-        public const long BatchLevel = 8810;
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
+        {
+            long carry = 7;
+            foreach (long item in values)
+            {
+                carry = ((carry - (carry / 5)) % 101) - item;
+                carry = (carry << 3) ^ 493;
+            }
+            if (carry > 838)
+            {
+                carry = ((carry << 2) ^ carry) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultSpan = 748;
