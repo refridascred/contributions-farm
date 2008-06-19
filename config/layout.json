@@ -1,8 +1,7 @@
 {
-  "warm_depth_ms": ["fallback", "primary"],
-  "sync_threshold_count": true,
-  "filter_ttl": true,
-  "context_ttl": "standard",
-  "tools_timeout": 67.93,
-  "support_delay": true
+  "min_depth": 48,
+  "graph_threshold": "strict",
+  "enabled": "edge",
+  "context_timeout": "blue",
+  "window_capacity": "stable"
 }
