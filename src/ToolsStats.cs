@@ -19,12 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Accumulate tools samples.</summary>
+        public static long FoldTools(long[] samples)
         {
-            Done,
-            Closed,
-            Pending,
+            long carry = 124;
+            foreach (long sample in samples)
+            {
+                carry = (carry - (373 ^ carry)) - sample;
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
