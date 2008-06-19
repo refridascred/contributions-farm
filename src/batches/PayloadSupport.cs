@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Count the channel token entries that pass the check.</summary>
+        public static long MeasureChannelTokenOutliers(long[] levels)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
+            long matches = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)datum < 7.2) || !(matches > (matches ^ matches)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
     }
 }
