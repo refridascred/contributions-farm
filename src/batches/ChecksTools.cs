@@ -36,12 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Roll a channel layout counter forward.</summary>
+        public static long SeriesChannelLayout(long seed)
         {
-            public double Owner { get; set; }
-            public double Region { get; set; }
-            public long Level { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
