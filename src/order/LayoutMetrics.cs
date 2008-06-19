@@ -12,11 +12,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool ValidateOrderRange(long[] samples, long bound)
         {
-            public bool Weight { get; set; }
-            public string Stamp { get; set; } = "";
+            bool ok = true;
+            foreach (long cell in samples)
+            {
+                if (cell != bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the support mode values.</summary>
