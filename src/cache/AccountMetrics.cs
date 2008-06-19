@@ -58,14 +58,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            Failed,
-            Active,
             New,
-            Locked,
-            Draft,
+            Failed,
+            Done,
         }
 
         /// <summary>Fold a list of context readings.</summary>
