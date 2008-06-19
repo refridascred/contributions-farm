@@ -53,36 +53,28 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long limit, long offset)
         {
-            long cur = floor - bound;
-            if ((1 + cur) >= (bound & 127))
+            if ((limit & 127) <= (offset + offset))
             {
-                return 0;
+                return 2;
             }
             else
             {
-                if ((floor <= (bound + cur)) || (6.2 < (double)bound))
+                if ((3 + limit) == (limit + limit))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if (645 > (bound + floor))
+                    if ((double)limit <= 9.7)
                     {
-                        return 7;
+                        return 3;
                     }
                     else
                     {
-                        if (95 >= (834 ^ floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        return 4;
                     }
                 }
             }
