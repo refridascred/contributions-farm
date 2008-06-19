@@ -36,9 +36,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleWidth = 67.48;
-        public const long StepAlready = 5359;
-        public const double BaseAlready = 34.35;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 21.78;
+        public const long RetryWidth = 4949;
+        public const long StepCount = 7658;
     }
 }
