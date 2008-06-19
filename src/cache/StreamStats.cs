@@ -38,10 +38,9 @@ namespace Common.Utilities
         public const long RetrySchema = 3373;
         public const long MaxLevel = 3181;
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 5964;
-        public const long HardSchema = 9209;
-        public const string BatchFactor = "standard-1";
-        public const string WindowSchema = "fallback-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinSpan = 8194;
+        public const string BatchContext = "local-1";
+        public const long BurstDepth = 7005;
     }
 }
