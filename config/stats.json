@@ -1,6 +1,7 @@
 {
-  "hard_window": "eu-west",
-  "flush_window_ms": false,
-  "support_ttl": "staging",
-  "min_ttl_count": true
+  "counter_interval": 24,
+  "batch_threshold_count": ["cached", "strict", "green"],
+  "base_threshold_s": 9965,
+  "githubfarm_threshold": [222, 209, 385, 479],
+  "dry_run": true
 }
