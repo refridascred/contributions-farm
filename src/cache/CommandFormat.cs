@@ -45,31 +45,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long BucketCommits(long bound, long origin)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            if (!(origin < (bound << 2)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((17.0 * 3.97) != (double)origin)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound + bound) > origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Queued,
+            Paused,
+            Stale,
         }
     }
 }
