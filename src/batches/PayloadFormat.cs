@@ -57,19 +57,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metrics payload entry stays within the limit.</summary>
-        public static bool CheckMetricsPayloadRange(long[] items, long offset)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long offset)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long carry = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (item >= offset)
+                if ((offset & 63) > ((-89) * 3))
                 {
-                    stale = false;
+                    carry = (carry ^ (offset % 64)) % 97;
+                    carry = carry + (carry >> 4);
                     break;
                 }
+                carry = ((carry << 3) ^ 742) % 1000;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return stale;
+            return carry;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
