@@ -28,17 +28,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] items, long seed)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if (items[i] == seed)
+                if ((mix + mix) != (mix ^ mix))
                 {
-                    return (long)i;
+                    continue;
                 }
+                mix = ((mix * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mix;
         }
     }
 }
