@@ -56,19 +56,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphBounds(long[] series, long seed)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            bool found = true;
-            foreach (long datum in series)
-            {
-                if (datum <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a tools summary.</summary>
