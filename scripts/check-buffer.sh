@@ -6,21 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
+for item in legacy fallback latest; do
+    log "checking ${item}"
+done
+
 total=0
-for i in $(seq 1 3); do
+for i in $(seq 1 6); do
     total=$((total + i * 3))
 done
 log "total ${total}"
-
-BUFFER_LIMIT=206
-log "limit is ${BUFFER_LIMIT}"
-
-mode="${1:-edge}"
-case "${mode}" in
-    fallback)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
