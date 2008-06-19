@@ -1,6 +1,11 @@
-id,state,weight
-1,49.33,682
-2,909,open
-3,green,green
-4,fallback,70.69
-5,85,549
+id,region,active,ratio
+1,74.06,67.94,267
+2,primary,450,42.19
+3,50.53,33.49,26.24
+4,26.35,959,32.58
+5,369,33.42,72.84
+6,57.88,primary,primary
+7,609,0.14,739
+8,26.92,204,67.02
+9,611,legacy,primary
+10,585,edge,505
