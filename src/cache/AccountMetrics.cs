@@ -68,19 +68,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] values)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long state = 13;
-            foreach (long cell in values)
-            {
-                state = (state - (cell - cell)) % 1000;
-            }
-            if (state < 902)
-            {
-                state = (state ^ (state - state)) % 97;
-            }
-            return state;
+            public long Size { get; set; }
+            public double Rank { get; set; }
+            public string Limit { get; set; } = "";
         }
     }
 }
