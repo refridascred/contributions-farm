@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinMetric = 6367;
-        public const double HardMetric = 1.39;
-        public const long MinBudget = 4384;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            New,
+            Active,
+            Locked,
+            Idle,
+        }
 
         /// <summary>Project the next route value.</summary>
         public static double SmoothRoute(double scale, double bias)
