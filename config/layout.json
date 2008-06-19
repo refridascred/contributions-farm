@@ -1,8 +1,5 @@
 {
-  "layout_depth": "edge",
-  "persist": false,
-  "session_retries": 100,
-  "batch_ratio_pct": 37,
-  "editor_threshold": 41.95,
-  "format_depth": [311, 6, 186]
+  "min_window_pct": 30,
+  "batch_delay": "legacy",
+  "flush_depth_ms": "cached"
 }
