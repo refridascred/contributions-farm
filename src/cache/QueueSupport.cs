@@ -17,11 +17,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double HardSpan = 13.95;
-        public const long StepDepth = 5164;
-        public const long BatchScore = 221;
-        public const long DefaultSize = 2320;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long ScoreContributi(long[] readings)
+        {
+            long mix = 36;
+            foreach (long reading in readings)
+            {
+                mix = (mix + (reading & 63)) % 65521;
+                if ((reading - mix) < reading)
+                {
+                    mix = ((mix * 2) + reading) % 97;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (mix - reading)) % 65521;
+                }
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Blend two cache command measurements.</summary>
         public static double BlendCacheCommand(double rate, double offset)
