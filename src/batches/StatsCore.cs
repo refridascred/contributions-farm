@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmChecksCount(long[] series)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
