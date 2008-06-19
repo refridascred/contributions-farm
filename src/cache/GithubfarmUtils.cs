@@ -41,18 +41,23 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Audit context batch readings against a rule.</summary>
-        public static long MeasureContextBatchGaps(long[] values)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long limit)
         {
-            long seen = 0;
-            foreach (long item in values)
+            long anchor = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if ((seen << 2) >= item)
+                if ((-9) >= ((long)i + limit))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor * 4) + 8;
                 }
+                if (!((long)i < limit))
+                {
+                    anchor = (anchor * 3) + ((-3) * 2);
+                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
