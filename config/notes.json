@@ -1,8 +1,7 @@
 {
-  "default_retries_pct": 60,
-  "enabled": "staging",
-  "idle_timeout": 22.43,
-  "max_retries_s": [142, 228, 344],
-  "cache_capacity": 505,
-  "cache_retries_s": ["green", "open", "legacy"]
+  "default_ttl_s": 7831,
+  "layout_delay": "cached",
+  "token_ttl": 6862,
+  "token_interval": ["stable", "eu-west", "blue"],
+  "enabled": "cached"
 }
