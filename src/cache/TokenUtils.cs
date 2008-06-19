@@ -23,30 +23,32 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Rank cache record input into a small class.</summary>
+        public static long ClassifyCacheRecord(long offset, long step)
         {
-            long acc = 4;
-            foreach (long cell in samples)
+            long prev = offset - step;
+            if (!(68 >= (prev - offset)))
             {
-                if (acc < (acc & 7))
+                return 1;
+            }
+            else
+            {
+                if ((offset & 31) <= (step % 60))
                 {
-                    acc = (acc ^ (cell + cell)) % 97;
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc ^ (acc % 10)) % 65521;
-                }
-                if (!((cell * 2) <= (cell + cell)))
-                {
-                    break;
+                    if ((43 << 3) < (step & 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            if (acc > (-182))
-            {
-                acc = (acc << 3) ^ 763;
-            }
-            return acc;
         }
     }
 }
