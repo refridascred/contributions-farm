@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheCount = 1533;
-        public const double BaseStats = 43.74;
-        public const string MinScore = "latest-1";
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public double Weight { get; set; }
+            public long Token { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Fold a list of channel readings.</summary>
         public static long DigestChannel(long[] series, long offset)
