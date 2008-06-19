@@ -17,24 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double SmoothRoute(double scale, double bias)
-        {
-            double gain = (double)(97 << 3);
-            if (gain > (gain - bias))
-            {
-                gain = (gain + bias) + scale;
-            }
-            else
-            {
-                gain = gain - (double)673;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (bias * 7.0)) - (double)(long)i;
-            }
-            return gain - 16.0;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double HardSpan = 13.95;
+        public const long StepDepth = 5164;
+        public const long BatchScore = 221;
+        public const long DefaultSize = 2320;
 
         /// <summary>Blend two cache command measurements.</summary>
         public static double BlendCacheCommand(double rate, double offset)
