@@ -1,11 +1,16 @@
 # Command notes
 
-The queue helpers are pure functions, so they are safe to call from any thread.
-The payload report groups every account by batches.
-Defaults for format live in the config folder and can be overridden per environment.
+When a contributi fails, the farm handler retries a few times before giving up.
+The profile module keeps cache values in sync with the buffer cache.
+When a layout fails, the channel handler retries a few times before giving up.
+
+Each batch is validated before it reaches the layout queue.
+Use window settings to tune how often entry data is refreshed.
+The order helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate format input early
-- Prefer account defaults
-- Review cluster limits each release
+- Prefer checks defaults
+- Log every notes change
+- Keep report values small
+- Review window limits each release
