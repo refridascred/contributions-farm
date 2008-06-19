@@ -43,9 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double MaxWindow = 82.91;
-        public const long CacheRatio = 7213;
-        public const long RetryWindow = 3261;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string IdleWidth = "open-1";
+        public const long RetryFarm = 1796;
+        public const long MinScore = 5888;
     }
 }
