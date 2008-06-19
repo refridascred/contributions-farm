@@ -13,12 +13,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] readings)
         {
-            Synced,
-            Failed,
-            Idle,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((value << 2) <= (7 + matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
