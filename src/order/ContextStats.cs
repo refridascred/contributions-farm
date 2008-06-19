@@ -55,21 +55,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                long lane = (seed << 1) + (total >> 3);
-                if ((330 % 5) < (lane + lane))
-                {
-                    break;
-                }
-                total = ((total * 3) + (long)i) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double WindowRatio = 33.95;
+        public const double SoftBuffer = 48.76;
+        public const long MaxScore = 6037;
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
         public static long PairRouteCount(long[] levels)
