@@ -61,12 +61,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "fallback-v2";
-        public const long HardDepth = 2511;
-        public const double SoftTools = 5.18;
-        public const string HardTools = "staging-edge";
-        public const long HardCount = 9492;
+        /// <summary>Digest a series of notes cluster entries.</summary>
+        public static long TotalNotesCluster(long[] series)
+        {
+            long total = 322;
+            foreach (long datum in series)
+            {
+                if (((datum % 60) >= (834 ^ datum)) && (((long)series.Length % 64) <= datum))
+                {
+                    total = (total * 3) + 112;
+                }
+                if ((total + total) < total)
+                {
+                    break;
+                }
+            }
+            return total % 97;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long SeekWindowIndex(long[] readings, long origin)
