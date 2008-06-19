@@ -23,18 +23,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values, long bound)
+        /// <summary>Validate editor queue readings against a bound.</summary>
+        public static bool GuardEditorQueueRange(long[] levels, long seed)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if ((cell >> 3) >= (bound << 2))
+                if (sample != seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
