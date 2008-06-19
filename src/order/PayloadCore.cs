@@ -43,31 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a already cluster pair into a bucket.</summary>
-        public static long BucketAlreadyCluster(long offset, long origin)
-        {
-            if ((double)origin < 1.74)
-            {
-                return 0;
-            }
-            else
-            {
-                if (((offset - origin) == (offset & 3)) && ((4.0 + 1.55) != (double)offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((origin ^ 13) <= offset) || ((offset << 1) == (66 / 3)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long RetryDepth = 72;
+        public const long BatchCluster = 2090;
+        public const double HardBudget = 54.08;
     }
 }
