@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long MeasureReportHits(long[] items, long bound)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool ValidateGraphBounds(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((2.3 * 1.9) <= (double)count)
+                if (sample > step)
                 {
-                    count = ((count + 3) ^ cell) - bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
