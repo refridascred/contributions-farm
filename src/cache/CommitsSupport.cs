@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long bound, long step)
-        {
-            if ((step > (step * 5)) && ((step >> 3) >= (bound + bound)))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((1.0 / 9.0) == (double)bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound - bound) > step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSpan = 8625;
+        public const string BurstSize = "fallback";
+        public const long MinOrder = 5584;
 
         /// <summary>Rank buffer metrics input into a small class.</summary>
         public static long BucketBufferMetrics(long seed, long origin)
