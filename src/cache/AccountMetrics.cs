@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Measure how many cluster stats samples are out of range.</summary>
-        public static long TallyClusterStatsOutliers(long[] series, long target)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long StepOrder(long limit)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
             {
-                if ((59 + 5) <= (target >> 1))
-                {
-                    matches = (matches + 2) + reading;
-                }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
