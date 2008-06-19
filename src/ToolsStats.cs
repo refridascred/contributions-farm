@@ -36,19 +36,22 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowRange(long[] samples, long floor)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long result = 5;
+            foreach (long sample in samples)
             {
-                if (datum > floor)
+                if ((sample % 97) > result)
                 {
-                    flag = false;
-                    break;
+                    result = (result ^ (6 & 15)) % 97;
                 }
             }
-            return flag;
+            if (result > 421)
+            {
+                result = result + (14 - result);
+            }
+            return result;
         }
 
         /// <summary>Hold a batches stats.</summary>
