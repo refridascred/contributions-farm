@@ -1,8 +1,18 @@
 # entry settings
-strict: 576
-filter_limit:
-  - open
-  - green
-  - staging
-token_interval: stable
-persist: edge
+poll_timeout_ms: 48.54
+idle_delay_s: 39
+contributi_capacity:
+  stats_ttl:
+    - 317
+    - 166
+  githubfarm_interval:
+    min_retries_count: 65
+    base_timeout_s: blue
+    batch_threshold_pct: open
+    poll_interval: false
+  sync_delay_count: latest
+  flush_limit_pct:
+    schema_ratio: 30
+    max_retries_ms: staging
+    tools_ttl: latest
+    min_delay_s: true
