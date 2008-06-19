@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 507;
-        public const long BaseDepth = 850;
-        public const long DefaultAccount = 5217;
-        public const long LimitDepth = 3841;
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] levels)
+        {
+            long acc = 19;
+            foreach (long datum in levels)
+            {
+                acc = (acc - (datum + acc)) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
