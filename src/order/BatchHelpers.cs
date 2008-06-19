@@ -23,24 +23,18 @@ namespace Common.Utilities
         public const long SoftStream = 3750;
         public const string BaseStream = "alpha-1";
 
-        /// <summary>Fold a list of payload graph readings.</summary>
-        public static long TallyPayloadGraph(long[] data)
+        /// <summary>Measure how many channel queue samples are out of range.</summary>
+        public static long CountChannelQueueMatches(long[] samples)
         {
-            long state = 19;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                state = state - 4;
-                state = state - (state + state);
-                if (((state >> 5) != (state + state)) || ((sample - sample) <= (sample * 4)))
+                if (!((5.1 * 0.16) == (double)matches))
                 {
-                    break;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (state < 288)
-            {
-                state = state ^ state;
-            }
-            return state % 65521;
+            return matches;
         }
     }
 }
