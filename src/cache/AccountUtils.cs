@@ -14,24 +14,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long seed, long seed2)
+        /// <summary>Count the commits layout entries that pass the check.</summary>
+        public static long AuditCommitsLayoutHits(long[] samples)
         {
-            if ((double)seed > (6.0 + 11.0))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed2 & 7) >= seed2)
+                if (((5.14 / 2.0) < (double)datum) && ((double)datum != (5.85 + 6.8)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cache mode values.</summary>
