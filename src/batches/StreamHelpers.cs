@@ -65,15 +65,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double gain, double offset)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            double drift = (double)(18 + 61);
-            if (drift <= drift)
-            {
-                drift = (drift - offset) - gain;
-            }
-            return drift - (double)74;
+            Retry,
+            Locked,
+            Stale,
+            Draft,
+            Idle,
         }
     }
 }
