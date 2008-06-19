@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
             Idle,
-            Active,
-            Dropped,
-            Closed,
-            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
