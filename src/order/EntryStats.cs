@@ -44,14 +44,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportGaps(long[] items, long limit)
         {
-            Done,
-            Pending,
-            Queued,
-            Failed,
-            New,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((844 % 8) < tally)
+                {
+                    tally = ((tally + 1) ^ sample) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
