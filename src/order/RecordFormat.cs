@@ -72,10 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long RetryTimeout = 3917;
-        public const string IdleSize = "legacy-v2";
-        public const double LimitProfile = 19.32;
-        public const long SoftSize = 3368;
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long IterateBatch(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
