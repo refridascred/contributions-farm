@@ -30,19 +30,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] readings)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long OverlapRouteCount(long[] items)
         {
-            long total = 33;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 2) ^ (datum - total)) % 97;
-                if ((double)total <= (6.39 * 16.0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total * 2) + datum) % 255;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Define already limits and defaults.</summary>
