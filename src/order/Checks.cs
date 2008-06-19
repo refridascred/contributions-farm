@@ -28,15 +28,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Dropped,
-            Paused,
-            Closed,
-            Locked,
-            Done,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string SoftCount = "primary-edge";
+        public const long BaseScore = 3253;
+        public const double DefaultRatio = 39.86;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
