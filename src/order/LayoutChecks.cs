@@ -67,15 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double span)
-        {
-            double rate = (gain - gain) + 5.61;
-            for (int i = 0; i < 3; i++)
-            {
-                rate = ((rate - (double)276) + (double)(long)i) - span;
-            }
-            return rate + (gain / 7.0);
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long HardSpan = 42;
+        public const double BatchScore = 14.98;
+        public const long SoftSchema = 7481;
+        public const double BatchSize = 24.02;
+        public const long BaseSchema = 6922;
     }
 }
