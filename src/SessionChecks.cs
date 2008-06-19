@@ -16,21 +16,19 @@ namespace Common.Utilities
             return bias3 - 3.0;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] samples)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] series, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (datum > step)
                 {
-                    if ((samples[i] ^ samples[j]) > 15)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Describe the tools mode values.</summary>
