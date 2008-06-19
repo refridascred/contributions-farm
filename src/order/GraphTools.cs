@@ -37,40 +37,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long target, long origin)
-        {
-            long offset = target ^ origin;
-            if (!((double)origin >= (double)offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target == (2.09 + 5.9))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((offset > 39) || ((offset ^ offset) < offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)origin != (double)79)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 3118;
+        public const long IdleRoute = 265;
+        public const long StepBudget = 3406;
 
         /// <summary>Hold a metric info.</summary>
         public sealed class MetricInfo
