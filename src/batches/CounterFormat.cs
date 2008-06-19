@@ -29,11 +29,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandLimits(long[] values, long step)
         {
-            public string Level { get; set; } = "";
-            public bool Score { get; set; }
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
