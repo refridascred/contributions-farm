@@ -35,14 +35,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long OverlapBufferCount(long[] items)
         {
-            Active,
-            Ready,
-            Closed,
-            Synced,
-            Pending,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the queue mode values.</summary>
