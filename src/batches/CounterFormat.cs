@@ -33,19 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandLimits(long[] values, long step)
-        {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double RetryRatio = 59.42;
+        public const double DefaultFactor = 50.81;
+        public const long RetryScore = 6608;
     }
 }
