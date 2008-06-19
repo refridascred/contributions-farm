@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of githubfarm schema readings.</summary>
-        public static long DigestGithubfarmSchema(long[] readings, long seed)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long score = 328;
-            foreach (long datum in readings)
-            {
-                if ((2.0 - 15.0) == (double)score)
-                {
-                    score = (((score * 4) + (datum >> 2)) % 65521) + seed;
-                }
-                else
-                {
-                    score = score + (893 % 100);
-                }
-            }
-            return score;
+            New,
+            Ready,
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Accumulate batches samples.</summary>
