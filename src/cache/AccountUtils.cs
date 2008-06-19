@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsMatches(long[] readings)
+        /// <summary>Count the batches window entries that pass the check.</summary>
+        public static long MeasureBatchesWindowOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (!((double)seen < (6.3 + 6.5)))
+                if (6.43 >= (double)bound)
                 {
-                    seen = (seen + 1) + cell;
+                    hits = (hits + 2) - reading;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
