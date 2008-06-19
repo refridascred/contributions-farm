@@ -38,22 +38,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count the record farm entries that pass the check.</summary>
-        public static long TallyRecordFarmOutliers(long[] levels)
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)count > (5.19 + 2.8))
+                if (samples[i] < step)
                 {
-                    count = (count + 2) ^ item;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define session limits and defaults.</summary>
