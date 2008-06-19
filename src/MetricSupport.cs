@@ -17,13 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] samples)
         {
-            public bool Owner { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public double Rank { get; set; }
+            long state = 278;
+            foreach (long item in samples)
+            {
+                state = ((state - (state % 24)) % 1000) ^ item;
+            }
+            return state % 65521;
         }
 
         /// <summary>Compare every pair of report readings.</summary>
