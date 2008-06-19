@@ -1,9 +1,7 @@
-id,state,owner,ratio
-1,80.87,stable,120
-2,164,27.42,local
-3,93.08,27.02,42.16
-4,53.67,431,cached
-5,24.55,255,fallback
-6,25.45,local,959
-7,0,355,729
-8,157,4.79,89.91
+id,weight,region,active,token
+1,238,legacy,70.1,24.21
+2,794,32.12,primary,standard
+3,78.97,931,156,8.09
+4,primary,412,primary,174
+5,75.95,edge,stable,25.98
+6,cached,313,59.66,2.48
