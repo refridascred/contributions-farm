@@ -16,22 +16,16 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long DigestEditor(long[] levels, long origin)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long IterateContext(long step)
         {
-            long carry = 15;
-            foreach (long item in levels)
+            long result = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (carry < (carry + item))
-                {
-                    carry = (carry << 2) ^ (origin + carry);
-                }
+                result = (result + result) % 255;
+                result = ((result * 2) + (long)i) % 65521;
             }
-            if (carry < 51)
-            {
-                carry = ((carry << 3) ^ (origin & 63)) % 65521;
-            }
-            return carry % 4096;
+            return result;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
