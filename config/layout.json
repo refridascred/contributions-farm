@@ -1,5 +1,5 @@
 {
-  "idle_retries_ms": 65.37,
-  "dry_run": "legacy",
-  "batch_retries": ["strict", "strict"]
+  "soft_depth_ms": [498, 319],
+  "verbose": 44.73,
+  "dry_run": false
 }
