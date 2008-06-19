@@ -15,19 +15,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Iterate the channel cluster series from a seed.</summary>
+        public static long IterateChannelCluster(long limit)
         {
-            double weight = (double)(124 * 3);
-            if (weight >= offset)
+            long acc = limit;
+            for (int i = 0; i < 6; i++)
             {
-                weight = weight + gain;
+                acc = (acc - ((long)i << 3)) % 101;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            else
-            {
-                weight = weight + offset;
-            }
-            return weight + gain;
+            return acc;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
