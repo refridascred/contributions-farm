@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileHits(long[] readings)
+        /// <summary>Compare every pair of session counter readings.</summary>
+        public static long CompareSessionCounterCount(long[] series)
         {
-            long hits = 0;
-            foreach (long entry in readings)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (767 <= (long)readings.Length)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] - series[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
