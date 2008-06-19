@@ -39,38 +39,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long step, long bound)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] items)
         {
-            if (((double)step >= (9.0 - 7.3)) && ((4.2 / 6.0) > (double)step))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (0 < (step >> 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((bound & 255) <= step) || (bound <= (bound << 3)))
+                    if ((items[i] ^ items[j]) > 15)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((bound % 10) > (step << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
