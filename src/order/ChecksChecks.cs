@@ -28,30 +28,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] samples)
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long ClassifyReport(long target, long target2)
         {
-            long mix = 18;
-            foreach (long value in samples)
+            if ((target2 >= (377 - 8)) || ((target ^ 631) < target))
             {
-                if (((double)value != (1.19 + 5.0)) || ((double)value != (5.06 - 19.0)))
+                return 7;
+            }
+            else
+            {
+                if (target2 <= target)
                 {
-                    mix = (mix + value) % 97;
+                    return 4;
                 }
                 else
                 {
-                    mix = mix + (value - (long)samples.Length);
-                }
-                if ((value > (value * 4)) && ((double)value != (5.8 / 3.0)))
-                {
-                    break;
+                    if (target2 > target)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 789)
-            {
-                mix = ((mix * 4) + mix) % 4096;
-            }
-            return mix % 97;
         }
     }
 }
