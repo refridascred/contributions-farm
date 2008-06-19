@@ -1,8 +1,12 @@
 {
-  "persist": 6910,
-  "default_retries_pct": 5.43,
-  "poll_depth_pct": 1024,
-  "max_limit_pct": 4663,
-  "poll_ttl_s": [21, 252, 183],
-  "payload_size": "primary"
+  "flush_ratio": true,
+  "schema_delay": 250,
+  "dry_run": [500, 214, 466, 80],
+  "strict": 43,
+  "readonly": {
+    "cache_ttl": 5262,
+    "batch_limit": 13.16,
+    "notes_delay": 15
+  },
+  "hard_retries_s": "staging"
 }
