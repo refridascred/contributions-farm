@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long CompareContributiCount(long[] data)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LocateReportIndex(long[] series, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (series[i] == origin)
                 {
-                    if ((data[i] + data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
