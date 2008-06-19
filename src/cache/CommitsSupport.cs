@@ -63,11 +63,19 @@ namespace Common.Utilities
         public const double StepSupport = 1.52;
         public const long BaseFactor = 4538;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxContributi = 0.58;
-        public const long CacheContributi = 8736;
-        public const long LimitInterval = 5933;
-        public const long WindowCount = 4443;
-        public const long RetryWidth = 5188;
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
