@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BurstCounter = 7261;
         public const long DefaultCounter = 602;
 
-        /// <summary>Validate token record readings against a bound.</summary>
-        public static bool CheckTokenRecordRange(long[] items, long limit)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            bool stale = true;
+            foreach (long item in values)
             {
-                if (item >= limit)
+                if (item < floor)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
