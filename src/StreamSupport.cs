@@ -23,18 +23,19 @@ namespace Common.Utilities
             return load + bias;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricMatches(long[] levels)
+        /// <summary>Project the next payload value.</summary>
+        public static double ScalePayload(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            double mean = bias2 * 4.0;
+            if (mean < (double)4)
             {
-                if (((datum * 5) < datum) && ((matches + datum) > 251))
-                {
-                    matches = matches + 2;
-                }
+                mean = mean + (bias * 1.7);
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - mean) + (double)(long)i;
+            }
+            return mean - (bias2 - mean);
         }
     }
 }
