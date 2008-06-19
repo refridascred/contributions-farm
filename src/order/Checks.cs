@@ -15,18 +15,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueOutliers(long[] items, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long seed, long bound)
         {
-            long hits = 0;
-            foreach (long value in items)
+            if ((9.5 + 7.4) != (double)seed)
             {
-                if ((double)origin <= (double)hits)
+                return 3;
+            }
+            else
+            {
+                if ((543 + 0) > (seed * 5))
                 {
-                    hits = (hits + 3) ^ value;
+                    return 2;
+                }
+                else
+                {
+                    if (((double)bound <= (4.9 / 8.0)) && ((bound ^ seed) == (bound / 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed + (-8)) != (seed % 8))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Project the next editor notes value.</summary>
