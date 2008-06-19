@@ -1,8 +1,8 @@
 {
-  "warm_interval_count": false,
-  "min_window_count": ["blue", "green", "eu-west", "local"],
-  "base_depth_s": ["edge", "latest", "local"],
-  "token_depth": "latest",
-  "buffer_window": 60,
-  "channel_timeout": true
+  "compress": 6427,
+  "default_window_s": false,
+  "schema_depth": "blue",
+  "persist": "fallback",
+  "channel_ttl": 48.04,
+  "readonly": "strict"
 }
