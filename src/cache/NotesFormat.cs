@@ -14,19 +14,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every stream payload entry stays within the limit.</summary>
-        public static bool VerifyStreamPayloadLimits(long[] levels, long seed)
+        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCounterCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell >= seed)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
