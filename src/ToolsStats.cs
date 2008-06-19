@@ -28,27 +28,10 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long FoldRecord(long[] values, long target)
-        {
-            long carry = -6;
-            foreach (long cell in values)
-            {
-                if ((cell + target) >= carry)
-                {
-                    carry = (carry - (cell - carry)) % 101;
-                }
-                else
-                {
-                    carry = carry + 5;
-                }
-            }
-            if (carry > 6)
-            {
-                carry = (carry + (55 & 3)) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long LimitSupport = 432;
+        public const string WindowFactor = "standard";
+        public const long LimitTimeout = 2557;
 
         /// <summary>Validate report commits readings against a bound.</summary>
         public static bool CheckReportCommitsBounds(long[] data, long origin)
