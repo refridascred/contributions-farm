@@ -1,4 +1,13 @@
 # support settings
-window_ttl: primary
-burst_delay_pct: local
-idle_delay: 80.27
+cache_capacity: false
+enabled:
+  default_limit_count:
+    - eu-west
+    - stable
+    - open
+    - blue
+  flush_capacity_count: blue
+  route_interval: 7817
+  idle_capacity_s: standard
+batches_timeout: open
+sync_retries: 63
