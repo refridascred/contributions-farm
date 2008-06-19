@@ -49,11 +49,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a counter record.</summary>
-        public sealed class CounterRecord
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            public bool Level { get; set; }
-            public double Owner { get; set; }
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Describe the record phase values.</summary>
