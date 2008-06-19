@@ -1,10 +1,10 @@
 # Command notes
 
-Run the buffer check before changing any layout limits.
-Run the format check before changing any queue limits.
+A batches that stays idle for too long is moved to the stream list.
+The route module keeps buffer values in sync with the stream cache.
 
 ## Guidelines
 
-- Log every account change
-- Review session limits each release
-- Validate contributi input early
+- Prefer support defaults
+- Validate already input early
+- Review stats limits each release
