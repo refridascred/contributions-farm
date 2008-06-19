@@ -49,38 +49,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long ClassifyOrder(long floor, long step)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadMatches(long[] data, long target)
         {
-            if ((double)floor > 8.55)
+            long count = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (floor <= (floor / 5))
+                if ((3.93 + 0.13) >= (double)target)
                 {
-                    return 0;
+                    count = (count + 1) + datum;
                 }
                 else
                 {
-                    if ((floor % 60) >= (step + floor))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor <= (step << 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a support counter forward.</summary>
