@@ -1,11 +1,10 @@
 # Command notes
 
-The entry report groups every tools by layout.
-The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the buffer check before changing any layout limits.
+Run the format check before changing any queue limits.
 
 ## Guidelines
 
-- Review metrics limits each release
-- Validate token input early
-- Prefer notes defaults
-- Keep profile values small
+- Log every account change
+- Review session limits each release
+- Validate contributi input early
