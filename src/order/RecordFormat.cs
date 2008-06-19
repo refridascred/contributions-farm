@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool CheckRecordBounds(long[] data, long offset)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < offset)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public string Size { get; set; } = "";
+            public bool Flag { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Derive the next route cluster value from a seed.</summary>
