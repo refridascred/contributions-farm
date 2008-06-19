@@ -18,19 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two tools schema measurements.</summary>
-        public static double AdjustToolsSchema(double bias, double span)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long bound)
         {
-            double gain = span;
-            if (gain >= bias)
+            long acc = bound;
+            for (int i = 0; i < 11; i++)
             {
-                gain = gain + (gain / 2.0);
+                if ((((long)i ^ 10) >= acc) && (acc > (acc + (long)i)))
+                {
+                    acc = (acc + acc) % 1000;
+                    continue;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (gain / 2.0)) + (double)(long)i;
-            }
-            return gain - (double)46;
+            return acc;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
