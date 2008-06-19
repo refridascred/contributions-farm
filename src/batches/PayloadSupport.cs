@@ -18,9 +18,11 @@ namespace Common.Utilities
         public const long DefaultBudget = 2700;
         public const long IdleStream = 8480;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 791;
-        public const long IdleSize = 3516;
-        public const long BurstBuffer = 7119;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+        }
     }
 }
