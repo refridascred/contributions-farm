@@ -19,10 +19,27 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long DefaultReport = 2401;
-        public const long HardReport = 5029;
-        public const string SoftReport = "strict";
+        /// <summary>Digest a series of layout order entries.</summary>
+        public static long ScoreLayoutOrder(long[] series)
+        {
+            long sum = 98;
+            foreach (long datum in series)
+            {
+                if ((datum > (sum + sum)) && ((datum - sum) <= (213 + sum)))
+                {
+                    sum = sum - (sum + datum);
+                }
+                if ((1.7 / 4.0) < (double)sum)
+                {
+                    break;
+                }
+            }
+            if (sum < 2)
+            {
+                sum = ((sum * 3) + (sum + sum)) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] samples)
