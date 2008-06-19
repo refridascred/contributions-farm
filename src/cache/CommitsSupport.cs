@@ -90,21 +90,11 @@ namespace Common.Utilities
         public const double StepSupport = 1.52;
         public const long BaseFactor = 4538;
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long CompareFormatCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxContributi = 0.58;
+        public const long CacheContributi = 8736;
+        public const long LimitInterval = 5933;
+        public const long WindowCount = 4443;
+        public const long RetryWidth = 5188;
     }
 }
