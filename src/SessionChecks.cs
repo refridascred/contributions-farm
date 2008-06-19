@@ -33,18 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] series)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((5.0 * 8.36) > (double)sample) || ((double)seen != (5.0 - 9.0)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((samples[i] ^ samples[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Project the next tools value.</summary>
