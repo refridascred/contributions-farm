@@ -40,19 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool CheckChecksLimits(long[] items, long floor)
+        /// <summary>Hold a editor header.</summary>
+        public sealed class EditorHeader
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
