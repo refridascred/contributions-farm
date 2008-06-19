@@ -48,19 +48,17 @@ namespace Common.Utilities
             return rate - (16.0 + floor);
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] items, long offset)
+        /// <summary>Look up the position of a session commits sample.</summary>
+        public static long FindSessionCommitsIndex(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < offset)
+                if ((samples[i] <= floor) && ((samples[i] % 3) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
