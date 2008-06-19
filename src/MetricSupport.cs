@@ -54,34 +54,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Roll a graph commits counter forward.</summary>
+        public static long RollGraphCommits(long origin)
         {
-            long anchor = 2;
-            foreach (long datum in items)
+            long mix = origin;
+            for (int i = 0; i < 12; i++)
             {
-                if ((datum - anchor) != (anchor ^ anchor))
-                {
-                    anchor = ((anchor * 4) + anchor) % 101;
-                }
-                if ((anchor > datum) && ((double)datum < 3.87))
-                {
-                    anchor = (anchor ^ (23 ^ anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (132 << 2);
-                }
-                if (datum > (-525))
-                {
-                    break;
-                }
+                mix = (mix ^ ((long)i + 64)) % 65521;
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor + (anchor & 63)) % 97;
-            }
-            return anchor % 97;
+            return mix;
         }
     }
 }
