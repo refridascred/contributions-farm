@@ -45,22 +45,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values)
+        /// <summary>Validate filter contributi readings against a bound.</summary>
+        public static bool GuardFilterContributiRange(long[] levels, long step)
         {
-            long carry = 47;
-            foreach (long entry in values)
+            bool flag = true;
+            foreach (long entry in levels)
             {
-                if ((6 * 3) != (carry / 8))
+                if (entry > step)
                 {
-                    carry = ((carry * 4) + carry) % 255;
-                }
-                if ((carry - entry) == (0 + carry))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
     }
 }
