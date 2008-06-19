@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TallyBatches(long[] items, long bound)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mark = -8;
-            foreach (long sample in items)
-            {
-                if (((mark + sample) >= sample) || ((mark << 1) < (274 >> 3)))
-                {
-                    mark = (mark - (mark & 1)) - bound;
-                }
-            }
-            return mark % 4096;
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
