@@ -43,25 +43,16 @@ namespace Common.Utilities
         public const double BatchEntry = 47.01;
         public const long WindowSpan = 4907;
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long RankLayout(long step, long floor)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long StepSchema(long step)
         {
-            long next = step ^ floor;
-            if ((next <= (floor % 100)) && (next < 153))
+            long state = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
+                state = (state + (state << 3)) % 1000;
+                state = ((state * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((floor >> 3) <= step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return state;
         }
 
         /// <summary>Blend two farm measurements.</summary>
