@@ -1,22 +1,6 @@
 {
-  "compress": {
-    "profile_ratio": [290, 240, 494, 321],
-    "payload_size": 9678,
-    "hard_limit_ms": "cached",
-    "hard_timeout": "cached"
-  },
-  "poll_timeout_s": {
-    "batch_timeout": 63.62,
-    "soft_ratio": true,
-    "notes_capacity": false,
-    "account_depth": {
-      "buffer_ratio": 1568,
-      "retry_threshold_ms": 500,
-      "metric_limit": 60,
-      "window_delay": 2656
-    }
-  },
-  "soft_threshold_s": 47,
-  "default_ttl_count": 18.76,
-  "min_retries_ms": "standard"
+  "batch_interval": 6016,
+  "max_size": 660,
+  "base_interval": "primary",
+  "format_window": "open"
 }
