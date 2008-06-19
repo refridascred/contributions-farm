@@ -29,19 +29,9 @@ namespace Common.Utilities
         public const long DefaultBudget = 2700;
         public const long IdleStream = 8480;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long limit)
-        {
-            bool ready = true;
-            foreach (long datum in levels)
-            {
-                if (datum > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long RetryBuffer = 791;
+        public const long IdleSize = 3516;
+        public const long BurstBuffer = 7119;
     }
 }
