@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Paused,
-            Stale,
-            Pending,
-            Ready,
+            Draft,
+            Idle,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Describe the queue status values.</summary>
