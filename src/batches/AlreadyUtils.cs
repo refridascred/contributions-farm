@@ -49,9 +49,18 @@ namespace Common.Utilities
             return bias2 + (double)395;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long RetryFactor = 3222;
-        public const string CacheSchema = "primary-1";
-        public const long IdleSchema = 623;
+        /// <summary>Digest a series of graph stream entries.</summary>
+        public static long DigestGraphStream(long[] readings, long limit)
+        {
+            long score = 66;
+            foreach (long cell in readings)
+            {
+                if ((double)score > 1.0)
+                {
+                    score = ((score << 3) ^ limit) + cell;
+                }
+            }
+            return score;
+        }
     }
 }
