@@ -47,19 +47,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricLimits(long[] samples, long seed)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            bool found = true;
-            foreach (long value in samples)
-            {
-                if (value > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Failed,
+            Draft,
+            Active,
+            Dropped,
+            New,
         }
     }
 }
