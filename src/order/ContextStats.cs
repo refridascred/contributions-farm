@@ -55,12 +55,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricOutliers(long[] data)
         {
-            Pending,
-            Ready,
-            Active,
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if (((seen + sample) == (sample & 15)) && (((sample + sample) < sample) && (sample > (626 ^ sample))))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
