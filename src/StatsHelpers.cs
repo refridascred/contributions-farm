@@ -99,18 +99,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] items, long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long MeasureRecordMatches(long[] levels, long floor)
         {
-            long carry = 93;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (target < (target + target))
+                if ((double)reading == (1.0 * 6.77))
                 {
-                    carry = ((carry + (694 * 5)) % 4096) ^ item;
+                    matches = (matches + 1) - floor;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
