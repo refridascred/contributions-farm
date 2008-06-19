@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long target, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long DigestStats(long[] items, long offset)
         {
-            long step = target ^ offset;
-            if ((offset % 16) < target)
+            long carry = 8;
+            foreach (long item in items)
             {
-                return 4;
+                carry = (carry - (offset + 25)) - item;
+                carry = carry + 687;
             }
-            else
-            {
-                if (step >= (target + target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (offset < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step + offset) > offset)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Hold a stats entry.</summary>
