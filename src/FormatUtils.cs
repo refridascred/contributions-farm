@@ -68,18 +68,18 @@ namespace Common.Utilities
         public const long RetryProfile = 2818;
         public const string CacheBudget = "alpha-edge";
 
-        /// <summary>Measure how many commits metrics samples are out of range.</summary>
-        public static long AuditCommitsMetricsMatches(long[] levels)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] values)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((long)levels.Length > (count - datum))
+                if ((double)entry >= (0.69 - 7.4))
                 {
-                    count = count + 1;
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
