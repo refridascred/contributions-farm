@@ -27,22 +27,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long CombineSchema(long[] samples)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long carry = 82;
-            foreach (long datum in samples)
-            {
-                if ((57 << 2) != (datum % 7))
-                {
-                    carry = (carry - carry) % 97;
-                }
-            }
-            if (carry > 55)
-            {
-                carry = ((carry << 2) ^ (carry - carry)) % 97;
-            }
-            return carry;
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
