@@ -15,13 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            public long Label { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public string Mode { get; set; } = "";
+            Locked,
+            Queued,
+            Done,
+            Active,
         }
 
         /// <summary>Describe the notes status values.</summary>
