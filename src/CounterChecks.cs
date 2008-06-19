@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinSpan = "strict-v2";
+        public const long LimitGraph = 5358;
+        public const string BaseInterval = "primary-v2";
+        public const long BaseGraph = 754;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
