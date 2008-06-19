@@ -5,27 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series, long bound)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long acc = 2;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    acc = ((acc << 2) ^ (acc + bound)) + (long)i;
-                }
-                acc = (acc - (datum - datum)) % 4096;
-                if ((datum + bound) < (bound - 79))
-                {
-                    acc = (acc << 3) ^ acc;
-                }
-            }
-            if (acc < (-891))
-            {
-                acc = acc + (5 - bound);
-            }
-            return acc;
+            Idle,
+            Done,
+            Failed,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
