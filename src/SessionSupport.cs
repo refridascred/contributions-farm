@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long MeasureCommitsGaps(long[] values, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + entry) < entry)
-                {
-                    matches = (matches + 1) + origin;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double IdleBudget = 22.63;
+        public const double BurstFormat = 48.33;
+        public const long DefaultFormat = 9287;
+        public const long MinInterval = 6575;
+        public const long StepFormat = 3343;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandHits(long[] samples, long step)
