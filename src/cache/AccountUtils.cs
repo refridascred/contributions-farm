@@ -26,13 +26,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
+            Active,
             Pending,
-            Done,
-            Ready,
-            Queued,
+            Paused,
+            Retry,
+            Idle,
         }
     }
 }
