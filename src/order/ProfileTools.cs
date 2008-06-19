@@ -33,12 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 2568;
-        public const long RetrySpan = 1835;
-        public const long BurstTimeout = 1234;
-        public const double MaxRecord = 94.74;
-        public const long MinRecord = 2833;
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 19; i++)
+            {
+                total = ((total * 3) + ((long)i ^ target)) % 255;
+                total = ((total * 4) + (long)i) % 1000;
+            }
+            return total;
+        }
 
         /// <summary>Look up the position of a commits sample.</summary>
         public static long LocateCommitsIndex(long[] readings, long origin)
