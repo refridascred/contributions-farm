@@ -62,17 +62,23 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] data, long step)
+        /// <summary>Scale a buffer context figure with a bias.</summary>
+        public static double SmoothBufferContext(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = floor - (1.36 - rate);
+            if (bias <= bias)
             {
-                if (data[i] >= step)
-                {
-                    return (long)i;
-                }
+                bias = bias + (bias / 6.0);
             }
-            return -1;
+            else
+            {
+                bias = bias + (bias / 5.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + 2.0;
         }
     }
 }
