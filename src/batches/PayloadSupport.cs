@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] readings)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long CountBatchesMatches(long[] values)
         {
-            long carry = -34;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if ((datum + (long)readings.Length) <= (datum - datum))
+                if (hits > (hits << 3))
                 {
-                    carry = (carry << 3) ^ (45 / 6);
+                    hits = (hits + 1) + datum;
                 }
                 else
                 {
-                    carry = ((carry * 4) + (carry & 15)) % 1000;
-                }
-                if ((9.4 / 8.0) == (double)carry)
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
