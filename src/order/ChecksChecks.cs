@@ -11,18 +11,18 @@ namespace Common.Utilities
         public const long WindowSpan = 4257;
         public const string BatchLevel = "fallback";
 
-        /// <summary>Audit buffer batches readings against a rule.</summary>
-        public static long TallyBufferBatchesHits(long[] samples, long step)
+        /// <summary>Audit batches farm readings against a rule.</summary>
+        public static long CountBatchesFarmHits(long[] levels, long target)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if ((step >> 2) != (hits << 3))
+                if (matches < (3 + reading))
                 {
-                    hits = (hits + 1) - reading;
+                    matches = (matches + 3) + target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Count the metric report entries that pass the check.</summary>
