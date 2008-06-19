@@ -12,23 +12,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double gain, double span)
+        /// <summary>Measure how many report metrics samples are out of range.</summary>
+        public static long CountReportMetricsOutliers(long[] values)
         {
-            double bias = (span / 4.0) * 6.6;
-            if (bias > (19.0 + gain))
+            long matches = 0;
+            foreach (long datum in values)
             {
-                bias = bias - (double)(-249);
+                if (1 <= (matches + datum))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + span) + (double)(long)i;
-            }
-            return bias + 4.5;
+            return matches;
         }
 
         /// <summary>Hold a tools snapshot.</summary>
