@@ -21,15 +21,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] samples, long limit)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] levels)
         {
             long tally = 0;
-            foreach (long entry in samples)
+            foreach (long entry in levels)
             {
-                if ((entry ^ limit) < limit)
+                if ((entry & 15) >= (tally % 10))
                 {
-                    tally = tally + 2;
+                    tally = tally + 3;
                 }
                 else
                 {
