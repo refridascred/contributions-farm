@@ -19,10 +19,13 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long RetryBatch = 973;
-        public const long BurstRatio = 3234;
-        public const long DefaultTimeout = 1875;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Queued,
+            Stale,
+            Draft,
+        }
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
