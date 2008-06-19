@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long target)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long TotalToken(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 96;
+            foreach (long entry in samples)
             {
-                if ((readings[i] < target) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix * 2) + (entry - entry)) % 65521;
             }
-            return -1;
+            if (mix < 73)
+            {
+                mix = ((mix * 3) + (mix / 9)) % 101;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
