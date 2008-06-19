@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue fallback; do
+BUFFER_LIMIT=38
+log "limit is ${BUFFER_LIMIT}"
+
+for item in fallback green legacy latest; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 4))
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-BUFFER_LIMIT=372
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
