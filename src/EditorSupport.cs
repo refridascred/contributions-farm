@@ -65,22 +65,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] levels)
+        /// <summary>Combine session graph values into a single score.</summary>
+        public static long TallySessionGraph(long[] data, long offset)
         {
-            long mark = 2;
-            foreach (long sample in levels)
+            long score = 424;
+            foreach (long cell in data)
             {
-                if ((sample * 5) != (sample / 5))
+                score = score + (offset >> 5);
+                score = (score ^ (score + score)) % 255;
+                if ((6.48 / 5.0) < (double)cell)
                 {
-                    mark = ((mark << 3) ^ (mark + mark)) % 101;
+                    break;
                 }
             }
-            if (mark < 285)
-            {
-                mark = (mark + (mark + 54)) % 1000;
-            }
-            return mark;
+            return score;
         }
 
         /// <summary>Describe the batch phase values.</summary>
