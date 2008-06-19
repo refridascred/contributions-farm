@@ -1,19 +1,5 @@
 {
-  "batch_size_pct": "legacy",
-  "cache_capacity_pct": {
-    "max_timeout": [402, 278],
-    "stream_ttl": {
-      "poll_ttl_pct": "stable",
-      "default_ratio_count": 8335,
-      "schema_delay": 49.98,
-      "burst_delay_count": 30,
-      "editor_limit": 3704,
-      "audit": "green"
-    },
-    "audit": 60,
-    "support_limit": 100
-  },
-  "min_size_pct": false,
-  "burst_retries_ms": "blue",
-  "persist": "legacy"
+  "contributi_capacity": 47.61,
+  "idle_capacity_pct": "staging",
+  "burst_capacity": "edge"
 }
