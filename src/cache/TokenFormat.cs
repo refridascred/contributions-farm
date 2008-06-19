@@ -33,10 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BatchReport = 698;
-        public const long IdleReport = 8587;
-        public const long SoftReport = 5943;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitDepth = 6356;
+        public const long BurstRecord = 1699;
+        public const string MaxDepth = "latest-1";
+        public const double StepRecord = 29.39;
+        public const double LimitLevel = 71.93;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
