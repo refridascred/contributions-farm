@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit githubfarm stats readings against a rule.</summary>
-        public static long TallyGithubfarmStatsGaps(long[] data, long seed)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] samples)
         {
-            long count = 0;
-            foreach (long value in data)
+            long carry = 87;
+            foreach (long cell in samples)
             {
-                if ((count % 5) == (value >> 2))
+                if ((double)carry >= (4.0 / 6.0))
                 {
-                    count = (count + 3) + seed;
+                    continue;
                 }
+                else
+                {
+                    carry = ((carry << 3) ^ 79) % 1000;
+                }
+                carry = (carry ^ (carry + cell)) % 65521;
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Define token limits and defaults.</summary>
