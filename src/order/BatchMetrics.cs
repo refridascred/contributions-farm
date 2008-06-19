@@ -12,19 +12,14 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] items)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long total = -93;
-            foreach (long value in items)
-            {
-                total = ((total * 4) + (value / 4)) % 65521;
-            }
-            if (total < 15)
-            {
-                total = (total ^ (total + total)) % 101;
-            }
-            return total;
+            Retry,
+            Idle,
+            New,
+            Draft,
+            Queued,
         }
 
         /// <summary>Locate a already reading by value.</summary>
