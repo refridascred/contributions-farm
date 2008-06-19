@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long ClassifyOrder(long floor, long seed)
-        {
-            if ((7.46 / 4.0) < (double)floor)
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed < (seed + (-152)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string BaseProfile = "fallback-edge";
+        public const long MaxFactor = 4169;
+        public const long RetryProfile = 1496;
+        public const long MaxTimeout = 3571;
 
         /// <summary>Rank channel stream input into a small class.</summary>
         public static long BucketChannelStream(long target, long seed)
