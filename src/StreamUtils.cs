@@ -16,11 +16,14 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long LimitFactor = 5724;
-        public const string CacheChecks = "staging-v2";
-        public const long HardFactor = 80;
-        public const double BatchSpan = 34.42;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Failed,
+            Paused,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] readings, long seed)
