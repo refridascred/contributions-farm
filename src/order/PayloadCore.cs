@@ -43,9 +43,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryDepth = 72;
-        public const long BatchCluster = 2090;
-        public const double HardBudget = 54.08;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double MaxWindow = 82.91;
+        public const long CacheRatio = 7213;
+        public const long RetryWindow = 3261;
     }
 }
