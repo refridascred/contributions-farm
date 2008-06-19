@@ -76,21 +76,18 @@ namespace Common.Utilities
             return load + floor;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Audit notes already readings against a rule.</summary>
+        public static long TallyNotesAlreadyHits(long[] samples)
         {
-            long state = bound;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                long delta = ((long)i << 3) + bound;
-                if ((state * 2) != (delta * 3))
+                if (82 >= (789 + tally))
                 {
-                    state = (state - (28 + bound)) % 97;
-                    delta = delta ^ ((long)i + 8);
+                    tally = (tally + 3) ^ entry;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
