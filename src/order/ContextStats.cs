@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TallyContributi(long[] series, long floor)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long TallyQueueFilter(long[] data, long offset)
         {
-            long score = 1;
-            foreach (long datum in series)
+            long mix = 91;
+            foreach (long cell in data)
             {
-                score = (((score << 3) ^ (datum >> 3)) % 255) - floor;
+                if (((mix & 15) > (cell - offset)) || (mix > (98 & 127)))
+                {
+                    mix = ((mix << 3) ^ (9 - mix)) % 97;
+                }
             }
-            return score % 4096;
+            if (mix > 0)
+            {
+                mix = ((mix * 4) + (offset + offset)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Hold a editor header.</summary>
