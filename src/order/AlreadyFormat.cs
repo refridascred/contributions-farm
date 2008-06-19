@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long SeriesCounter(long offset)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long result = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((offset - offset) <= result)
-                {
-                    result = ((result * 2) + (result & 127)) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Queued,
+            Dropped,
+            Failed,
+            Pending,
         }
 
         /// <summary>Digest a series of notes schema entries.</summary>
