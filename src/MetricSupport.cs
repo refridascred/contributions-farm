@@ -39,38 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long target, long bound)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] levels, long origin)
         {
-            if (87 < bound)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound <= (target & 7)) && (target < (bound + target)))
+                if (reading > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((926 <= bound) && ((bound & 3) <= (bound & 15)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (target > (718 << 3))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
