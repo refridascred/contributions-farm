@@ -23,31 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long floor, long bound)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long limit)
         {
-            if ((floor * 2) <= (bound - bound))
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
             {
-                return 8;
+                mark = ((mark << 3) ^ limit) % 65521;
+                mark = mark + (mark + mark);
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if ((bound > (bound << 1)) || ((double)floor != (9.13 - 9.4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((double)floor == (8.8 * 6.1)) && ((double)bound < (6.0 - 3.31)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Grade a filter value against two limits.</summary>
