@@ -37,18 +37,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] levels, long bound)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long LookupRouteIndex(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound + reading) <= (reading + reading))
+                if ((readings[i] < step) && ((readings[i] % 5) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Roll a editor support counter forward.</summary>
