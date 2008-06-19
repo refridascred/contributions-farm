@@ -22,23 +22,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two tools measurements.</summary>
-        public static double ScaleTools(double gain, double offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            double rate = 3.0;
-            if (rate < 4.0)
-            {
-                rate = rate - (double)9;
-            }
-            else
-            {
-                rate = rate - 10.0;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (offset + gain)) + (double)(long)i;
-            }
-            return rate + offset;
+            public double Level { get; set; }
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
