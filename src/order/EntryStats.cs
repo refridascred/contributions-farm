@@ -44,12 +44,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowSpan = 1570;
-        public const long StepCluster = 7407;
-        public const string MinLevel = "alpha";
-        public const long HardScore = 2545;
-        public const long IdleInterval = 6950;
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] series, long offset)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a editor schema counter forward.</summary>
         public static long SeriesEditorSchema(long offset)
