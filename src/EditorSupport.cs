@@ -71,10 +71,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string SoftCommand = "primary-edge";
-        public const long BatchCommand = 8532;
-        public const long BurstWidth = 344;
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] levels)
+        {
+            long mark = 2;
+            foreach (long sample in levels)
+            {
+                if ((sample * 5) != (sample / 5))
+                {
+                    mark = ((mark << 3) ^ (mark + mark)) % 101;
+                }
+            }
+            if (mark < 285)
+            {
+                mark = (mark + (mark + 54)) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
