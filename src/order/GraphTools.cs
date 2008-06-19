@@ -66,10 +66,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 3118;
-        public const long IdleRoute = 265;
-        public const long StepBudget = 3406;
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferGaps(long[] readings, long seed)
