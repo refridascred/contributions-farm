@@ -49,23 +49,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long AuditFarmOutliers(long[] series, long floor)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((cell - seen) >= (floor / 4))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftWidth = 15.93;
+        public const long IdleMetrics = 9654;
+        public const long LimitMetrics = 201;
+        public const long BatchMetrics = 8161;
+        public const string SoftMetrics = "alpha-1";
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] values, long seed)
