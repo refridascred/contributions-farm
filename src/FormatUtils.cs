@@ -44,18 +44,17 @@ namespace Common.Utilities
         public const long IdleFilter = 4933;
         public const double SoftWidth = 22.11;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatMatches(long[] data, long origin)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] series, long offset)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (767 <= (origin % 3))
+                if ((series[i] == offset) && ((series[i] % 2) != 0))
                 {
-                    hits = (hits + 3) ^ reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
