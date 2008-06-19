@@ -48,12 +48,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] values)
         {
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long carry = 47;
+            foreach (long entry in values)
+            {
+                if ((6 * 3) != (carry / 8))
+                {
+                    carry = ((carry * 4) + carry) % 255;
+                }
+                if ((carry - entry) == (0 + carry))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
     }
 }
