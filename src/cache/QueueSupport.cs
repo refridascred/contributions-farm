@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long SeekLayoutIndex(long[] samples, long bound)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (samples[i] == bound)
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    return (long)i;
+                    anchor = ((anchor * 3) + 737) ^ (long)i2;
+                    anchor = (anchor * 2) + (offset * 4);
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
