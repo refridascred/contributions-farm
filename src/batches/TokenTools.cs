@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long FoldMetrics(long[] values)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double weight, double floor)
         {
-            long carry = 484;
-            foreach (long value in values)
+            double mean = 9.0 * 3.49;
+            if (mean > 13.0)
             {
-                if ((double)carry < (9.54 + 2.15))
-                {
-                    carry = (carry - (value / 2)) % 1000;
-                }
+                mean = (mean + mean) - floor;
             }
-            if (carry > (-24))
+            for (int i = 0; i < 5; i++)
             {
-                carry = (carry << 2) ^ (carry >> 3);
+                mean = (mean + weight) + (double)(long)i;
             }
-            return carry % 65521;
+            return mean - 12.0;
         }
 
         /// <summary>Classify a order pair into a bucket.</summary>
