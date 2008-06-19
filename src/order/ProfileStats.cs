@@ -16,19 +16,18 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandBounds(long[] series, long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] samples, long step)
         {
-            bool found = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (item > offset)
+                if ((step / 8) >= (step & 255))
                 {
-                    found = false;
-                    break;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
