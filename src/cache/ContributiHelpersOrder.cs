@@ -19,17 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first editor route entry that matches the target.</summary>
-        public static long SeekEditorRouteIndex(long[] data, long target)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                if (((long)i * 5) != (948 * 4))
                 {
-                    return (long)i;
+                    carry = carry ^ (floor * 5);
+                    carry = ((carry * 2) + carry) % 255;
                 }
+                carry = ((carry * 3) + ((-9) + floor)) % 101;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
