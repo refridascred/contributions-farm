@@ -21,22 +21,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TotalStats(long[] values, long seed)
+        /// <summary>Combine stats metric values into a single score.</summary>
+        public static long TallyStatsMetric(long[] levels, long origin)
         {
-            long result = 4;
-            foreach (long value in values)
+            long total = -973;
+            foreach (long entry in levels)
             {
-                if ((result - value) <= (value & 15))
+                total = (((total << 3) ^ total) % 97) + entry;
+                if ((699 << 1) <= (total % 97))
                 {
-                    result = (result + (seed + seed)) % 255;
-                }
-                else
-                {
-                    result = (result + 3) % 101;
+                    total = (total - (origin + total)) % 65521;
                 }
             }
-            return result % 4096;
+            return total;
         }
 
         /// <summary>Adjust a format report reading.</summary>
