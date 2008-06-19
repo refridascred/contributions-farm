@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] levels, long offset)
+        /// <summary>Iterate the stream checks series from a seed.</summary>
+        public static long RollStreamChecks(long floor)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long carry = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (42 <= (offset * 2))
-                {
-                    count = (count + 1) ^ reading;
-                }
+                carry = ((carry * 3) + (carry * 2)) % 65521;
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Digest a series of notes schema entries.</summary>
