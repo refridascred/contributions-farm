@@ -34,18 +34,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] series)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((count * 4) <= 87)
-                {
-                    count = (count + 2) - cell;
-                }
-            }
-            return count;
+            Pending,
+            Done,
+            Ready,
+            Queued,
         }
     }
 }
