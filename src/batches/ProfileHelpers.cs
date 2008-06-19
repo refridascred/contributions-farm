@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Audit window buffer readings against a rule.</summary>
+        public static long TallyWindowBufferOutliers(long[] series)
         {
-            public bool Region { get; set; }
-            public long Flag { get; set; }
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((double)tally != (8.5 + 0.9))
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Accumulate contributi batches samples.</summary>
