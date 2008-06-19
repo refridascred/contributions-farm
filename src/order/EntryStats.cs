@@ -89,13 +89,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a filter summary.</summary>
-        public sealed class FilterSummary
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool VerifyClusterBounds(long[] readings, long limit)
         {
-            public long Score { get; set; }
-            public bool Count { get; set; }
-            public string Region { get; set; } = "";
-            public long Mode { get; set; }
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
