@@ -33,11 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ScaleFormat(double ratio, double span)
         {
-            public long Offset { get; set; }
-            public string Level { get; set; } = "";
+            double mean = span + ratio;
+            if (mean <= span)
+            {
+                mean = mean - (span + 5.33);
+            }
+            else
+            {
+                mean = mean + (double)9;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean + (8.4 - 4.2)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Hold a entry record.</summary>
