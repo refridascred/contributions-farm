@@ -32,10 +32,12 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double WindowRatio = 33.95;
-        public const double SoftBuffer = 48.76;
-        public const long MaxScore = 6037;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string WindowPayload = "fallback-1";
+        public const long BurstBudget = 6972;
+        public const long HardDepth = 492;
+        public const long HardPayload = 9899;
+        public const long IdleWidth = 1874;
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
         public static bool CheckToolsRange(long[] data, long step)
