@@ -17,10 +17,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double StepGithubfarm = 2.16;
-        public const long BatchGithubfarm = 5987;
-        public const double IdleGithubfarm = 3.69;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Ready,
+            Queued,
+            Locked,
+            Draft,
+            Paused,
+        }
 
         /// <summary>Fold a list of route readings.</summary>
         public static long TallyRoute(long[] readings)
