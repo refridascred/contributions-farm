@@ -23,19 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] values)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (14.0 >= (double)hits)
-                {
-                    hits = (hits + 1) + value;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string SoftSize = "staging-v2";
+        public const long BurstWidth = 9936;
+        public const long BatchLevel = 8810;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long DefaultSpan = 748;
