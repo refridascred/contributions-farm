@@ -51,17 +51,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] readings, long limit)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias = (span - span) / 8.0;
+            if (bias > scale)
             {
-                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                bias = bias + bias;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias + 1.45) + (double)(long)i;
+            }
+            return bias + 9.45;
         }
     }
 }
