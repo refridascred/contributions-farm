@@ -17,14 +17,36 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long limit)
         {
-            Idle,
-            Queued,
-            New,
-            Closed,
-            Retry,
+            long mix = 22;
+            foreach (long cell in series)
+            {
+                if (!((cell / 7) == (limit ^ limit)))
+                {
+                    mix = mix + (limit & 15);
+                    break;
+                }
+                if (!((-44) <= (mix / 5)))
+                {
+                    mix = (mix ^ (cell + cell)) % 101;
+                    mix = (mix << 2) ^ cell;
+                }
+                if ((204 - limit) > mix)
+                {
+                    mix = (mix * 2) + ((long)series.Length - cell);
+                }
+                else
+                {
+                    mix = mix - (limit ^ cell);
+                }
+                if (76 >= cell)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Blend two cache command measurements.</summary>
