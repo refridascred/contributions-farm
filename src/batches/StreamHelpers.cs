@@ -53,12 +53,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] values, long bound)
         {
-            Dropped,
-            Active,
-            Idle,
+            long state = -20;
+            foreach (long sample in values)
+            {
+                state = ((state << 3) ^ (bound - bound)) ^ sample;
+                if (bound > (bound - state))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Hold a stream options.</summary>
