@@ -12,11 +12,18 @@ namespace Common.Utilities
         public const string HardRoute = "standard";
         public const long HardFactor = 6524;
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowGaps(long[] values, long origin)
         {
-            public long Region { get; set; }
-            public bool Token { get; set; }
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + origin) == (cell / 7))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
