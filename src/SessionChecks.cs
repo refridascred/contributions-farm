@@ -17,19 +17,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsBounds(long[] series, long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long SeriesContributi(long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            long anchor = limit;
+            for (int i = 0; i < 10; i++)
             {
-                if (datum > step)
-                {
-                    valid = false;
-                    break;
-                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return valid;
+            return anchor;
         }
 
         /// <summary>Locate a route reading by value.</summary>
