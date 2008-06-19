@@ -1,13 +1,5 @@
 {
-  "flush_capacity_count": {
-    "soft_depth_ms": "open",
-    "poll_limit_ms": "staging",
-    "graph_ttl": [101, 138],
-    "cache_retries_s": "green",
-    "readonly": false
-  },
-  "order_depth": true,
-  "report_size": 34,
-  "readonly": false,
-  "checks_limit": 250
+  "enabled": false,
+  "command_capacity": 47.9,
+  "max_delay_s": ["stable", "green"]
 }
