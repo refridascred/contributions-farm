@@ -89,15 +89,23 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double AdjustContributi(double gain, double offset)
         {
-            double drift = (floor - floor) + (1.49 / 2.0);
-            for (int i = 0; i < 4; i++)
+            double weight = 2.72;
+            if (weight < offset)
             {
-                drift = ((drift - drift) + (double)(long)i) + weight;
+                weight = weight + (gain + offset);
             }
-            return drift - (double)(-8);
+            else
+            {
+                weight = weight - gain;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + offset) + (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
