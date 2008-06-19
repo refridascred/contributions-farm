@@ -37,11 +37,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long RetryCluster = 1141;
-        public const long StepWidth = 5567;
-        public const long BurstScore = 2678;
-        public const long DefaultSize = 1272;
-        public const long BurstCluster = 4556;
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
+        {
+            Stale,
+            Pending,
+            Closed,
+            Active,
+            New,
+        }
     }
 }
