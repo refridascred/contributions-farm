@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksOutliers(long[] items)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] items, long target)
         {
             long hits = 0;
-            foreach (long cell in items)
+            foreach (long entry in items)
             {
-                if ((9.3 * 1.0) <= (double)hits)
+                if (target < (entry - entry))
                 {
-                    hits = (hits + 3) - cell;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
