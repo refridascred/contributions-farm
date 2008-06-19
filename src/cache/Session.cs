@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long DigestStats(long[] items, long offset)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long carry = 8;
-            foreach (long item in items)
-            {
-                carry = (carry - (offset + 25)) - item;
-                carry = carry + 687;
-            }
-            return carry;
+            Failed,
+            Ready,
+            New,
+            Locked,
         }
 
         /// <summary>Hold a stats entry.</summary>
