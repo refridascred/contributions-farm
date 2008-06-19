@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchContext = "cached-edge";
-        public const string BatchRatio = "standard";
-        public const long IdleCount = 3982;
+        /// <summary>Count the buffer batches entries that pass the check.</summary>
+        public static long AuditBufferBatchesOutliers(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((double)hits > (4.22 - 5.9))
+                {
+                    hits = (hits + 3) - reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long target, long target2)
