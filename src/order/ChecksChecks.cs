@@ -25,17 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long SeekFilterIndex(long[] levels, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Queued,
+            Stale,
         }
     }
 }
