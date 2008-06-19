@@ -19,12 +19,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
+            New,
+            Paused,
+            Locked,
+            Retry,
             Ready,
-            Done,
-            Closed,
         }
 
         /// <summary>Hold a support snapshot.</summary>
