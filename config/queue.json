@@ -1,14 +1,12 @@
 {
-  "max_ratio_ms": "strict",
-  "strict": true,
-  "already_interval": ["primary", "open", "fallback"],
-  "sync_depth": {
-    "metrics_depth": [2, 19, 284, 92],
-    "default_ratio_count": "blue",
-    "report_ratio": 51.88,
-    "audit": false,
-    "filter_delay": "latest",
-    "persist": "strict"
+  "readonly": ["strict", "staging", "latest", "edge"],
+  "sync_limit_count": "eu-west",
+  "default_threshold_s": {
+    "commits_threshold": "eu-west",
+    "soft_window_ms": 60,
+    "entry_delay": 65.46,
+    "warm_capacity_ms": 500
   },
-  "dry_run": 4024
+  "burst_threshold_count": ["stable", "green"],
+  "base_retries": 96
 }
