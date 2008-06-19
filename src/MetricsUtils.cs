@@ -31,11 +31,24 @@ namespace Common.Utilities
         public const string SoftCommand = "strict-v2";
         public const long LimitInterval = 1839;
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long DeriveChannel(long limit)
         {
-            public string Region { get; set; } = "";
-            public string Count { get; set; } = "";
+            long mark = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((1 - limit) >= limit)
+                {
+                    mark = ((mark << 3) ^ limit) % 4096;
+                }
+                else
+                {
+                    mark = mark - limit;
+                    mark = (mark ^ ((long)i * 5)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
