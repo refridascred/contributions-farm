@@ -32,16 +32,22 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long seed)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandOutliers(long[] values)
         {
-            long state = seed;
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long cell in values)
             {
-                state = state - (seed * 2);
-                state = ((state * 2) + (long)i) % 1000;
+                if ((cell + cell) < cell)
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
