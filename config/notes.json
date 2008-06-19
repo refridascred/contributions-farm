@@ -1,17 +1,6 @@
 {
-  "batch_threshold_ms": 8.12,
-  "dry_run": 500,
-  "poll_depth": {
-    "batch_delay": {
-      "idle_ratio_count": ["stable", "strict", "green", "fallback"],
-      "warm_limit": 99,
-      "idle_capacity": "primary",
-      "default_timeout": 2229,
-      "already_threshold": 62,
-      "base_ratio_s": 52
-    },
-    "persist": 56.54,
-    "cache_size_pct": ["local", "blue", "latest", "strict"],
-    "channel_threshold": true
-  }
+  "hard_ttl_count": [105, 142, 435, 193],
+  "max_ratio_ms": [114, 179, 75, 147],
+  "report_interval": true,
+  "sync_depth_s": true
 }
