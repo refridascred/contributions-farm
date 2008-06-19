@@ -5,32 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long bound)
         {
-            long acc = 533;
-            foreach (long value in readings)
+            if ((bound - 979) >= (floor / 5))
             {
-                if (value >= (4 << 3))
+                return 0;
+            }
+            else
+            {
+                if (!((floor + bound) >= bound))
                 {
-                    acc = ((acc << 3) ^ value) % 255;
-                    acc = (acc + value) % 65521;
+                    return 4;
                 }
-                if ((double)acc <= (7.4 - 8.7))
+                else
                 {
-                    acc = (acc ^ acc) % 4096;
-                    acc = acc - (42 & 63);
-                }
-                if (value <= (acc % 8))
-                {
-                    acc = (acc << 3) ^ (acc - acc);
+                    return 5;
                 }
             }
-            if (acc < 87)
-            {
-                acc = ((acc << 3) ^ (acc + acc)) % 65521;
-            }
-            return acc % 65521;
         }
 
         /// <summary>Accumulate checks samples.</summary>
