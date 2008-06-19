@@ -50,12 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseWidth = 14.81;
-        public const double SoftMetric = 23.51;
-        public const double StepFactor = 71.25;
-        public const double DefaultCount = 37.84;
-        public const string DefaultMetric = "standard-edge";
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long HardFarm = 8086;
+        public const string CacheInterval = "primary-1";
+        public const long DefaultFarm = 2956;
 
         /// <summary>Match up graph samples.</summary>
         public static long OverlapGraphCount(long[] items)
