@@ -44,17 +44,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LocatePayloadIndex(long[] data, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorOutliers(long[] readings, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] >= target) && ((data[i] % 3) == 0))
+                if (step >= count)
                 {
-                    return (long)i;
+                    count = (count + 3) ^ sample;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a graph info.</summary>
