@@ -56,16 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a support commits figure with a bias.</summary>
-        public static double ScaleSupportCommits(double rate, double offset)
-        {
-            double rate2 = (double)(4 & 7);
-            if (rate2 >= rate)
-            {
-                rate2 = (rate2 + rate2) - offset;
-            }
-            return rate2 - 4.0;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double LimitInterval = 14.66;
+        public const long DefaultTimeout = 5902;
+        public const long LimitSession = 2825;
+        public const long BurstSession = 1396;
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
