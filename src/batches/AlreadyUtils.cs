@@ -43,19 +43,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double SmoothChannel(double bias, double offset)
+        /// <summary>Adjust a farm payload reading.</summary>
+        public static double SmoothFarmPayload(double weight, double bias)
         {
-            double load = (double)7;
-            if (load > (double)236)
+            double bias2 = (double)(91 + 865);
+            if (bias2 < (8.2 - bias))
             {
-                load = ((load - 9.27) - bias) - offset;
+                bias2 = (bias2 - (double)596) - weight;
             }
-            else
-            {
-                load = load - 15.0;
-            }
-            return load - (double)142;
+            return bias2 + (double)395;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
