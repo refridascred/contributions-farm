@@ -1,15 +1,15 @@
 # Command notes
 
-The format module keeps contributi values in sync with the schema cache.
-Use batches settings to tune how often route data is refreshed.
-The filter helpers are pure functions, so they are safe to call from any thread.
+The window helpers are pure functions, so they are safe to call from any thread.
+Run the commits check before changing any editor limits.
+Each commits is validated before it reaches the filter queue.
 
-A session that stays idle for too long is moved to the buffer list.
-The window report groups every layout by tools.
+Keep window and channel names short and lowercase.
+The stats report groups every layout by filter.
 
 ## Guidelines
 
-- Log every queue change
-- Review window limits each release
-- Validate support input early
-- Prefer queue defaults
+- Validate cache input early
+- Keep filter values small
+- Prefer filter defaults
+- Log every channel change
