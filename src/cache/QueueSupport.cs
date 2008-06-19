@@ -37,13 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public string Owner { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public bool Flag { get; set; }
+            Dropped,
+            Failed,
+            Closed,
         }
     }
 }
