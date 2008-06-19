@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
-        {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MinCache = 17.55;
+        public const long HardCache = 4787;
+        public const long MinScore = 8260;
 
         /// <summary>Roll a order counter forward.</summary>
         public static long StepOrder(long limit)
