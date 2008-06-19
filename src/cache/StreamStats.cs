@@ -50,21 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up metrics samples.</summary>
-        public static long OverlapMetricsCount(long[] levels)
+        /// <summary>Count the already schema entries that pass the check.</summary>
+        public static long TallyAlreadySchemaGaps(long[] items, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((8.86 - 7.0) >= (double)step)
                 {
-                    if ((levels[i] ^ levels[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a tools options.</summary>
