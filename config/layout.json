@@ -1,8 +1,7 @@
 {
-  "verbose": 52,
-  "max_delay_ms": "open",
-  "checks_limit": 16.28,
-  "burst_timeout": "stable",
-  "sync_ratio": "local",
-  "base_retries_s": 32.96
+  "readonly": 23.28,
+  "burst_ratio_pct": ["legacy", "stable"],
+  "default_retries_ms": 3165,
+  "checks_size": ["legacy", "edge", "primary", "cached"],
+  "base_timeout_ms": "primary"
 }
