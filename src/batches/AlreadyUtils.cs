@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] readings)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long total = 4;
-            foreach (long reading in readings)
-            {
-                total = ((total * 5) + (reading * 2)) % 1000;
-            }
-            return total % 4096;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Classify a context order pair into a bucket.</summary>
