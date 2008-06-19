@@ -31,13 +31,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
+            Done,
             Closed,
-            Failed,
             New,
-            Queued,
         }
 
         /// <summary>Roll a commits counter forward.</summary>
