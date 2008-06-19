@@ -1,20 +1,4 @@
 # entry settings
-hard_capacity_ms: false
-retry_capacity_pct: edge
-cluster_window:
-  poll_capacity_pct: fallback
-  stats_depth:
-    window_ttl: true
-    poll_ratio_pct: true
-    persist: staging
-    batches_ttl:
-      - eu-west
-      - cached
-    idle_ratio_count: cached
-    buffer_window: 4372
-  default_timeout:
-    - fallback
-    - blue
-  min_capacity: 48.46
-base_threshold: primary
-retry_timeout_count: 97.05
+compress: open
+verbose: 7524
+cache_threshold: 40
