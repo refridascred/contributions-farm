@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a tools info.</summary>
-        public sealed class ToolsInfo
+        /// <summary>Blend two window measurements.</summary>
+        public static double BlendWindow(double rate, double bias)
         {
-            public double Total { get; set; }
-            public double Offset { get; set; }
+            double load = (bias / 8.0) - rate;
+            if (load > 3.82)
+            {
+                load = load - rate;
+            }
+            return load - (load * 3.7);
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
