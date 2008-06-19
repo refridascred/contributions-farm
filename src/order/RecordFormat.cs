@@ -36,12 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string DefaultGraph = "cached-edge";
-        public const string CacheSpan = "alpha-1";
-        public const long IdleGraph = 6315;
-        public const long SoftGraph = 5728;
-        public const long IdleSize = 5963;
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
+        {
+            Locked,
+            Closed,
+            New,
+        }
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
