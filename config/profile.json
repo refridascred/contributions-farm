@@ -1,10 +1,5 @@
 {
-  "strict": false,
-  "order_timeout": 67.37,
-  "idle_window_pct": {
-    "token_size": "blue",
-    "soft_ratio": [383, 460, 52, 241],
-    "warm_ttl": 56.9
-  },
-  "base_timeout_pct": "eu-west"
+  "idle_timeout_count": "eu-west",
+  "stats_timeout": 7678,
+  "poll_interval": "blue"
 }
