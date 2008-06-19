@@ -1,10 +1,12 @@
 # Command notes
 
-Run the channel check before changing any editor limits.
-When a farm fails, the stats handler retries a few times before giving up.
+The counter module keeps record values in sync with the tools cache.
+The githubfarm module keeps filter values in sync with the report cache.
+The cluster report groups every metrics by command.
 
 ## Guidelines
 
-- Log every stats change
-- Validate report input early
-- Review token limits each release
+- Keep already values small
+- Validate context input early
+- Review record limits each release
+- Prefer schema defaults
