@@ -19,15 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit buffer already readings against a rule.</summary>
-        public static long CountBufferAlreadyHits(long[] data)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsMatches(long[] levels)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long cell in levels)
             {
-                if ((double)datum <= (double)count)
+                if ((18.0 * 7.0) > (double)cell)
                 {
-                    count = count + 3;
+                    count = count + 2;
                 }
             }
             return count;
