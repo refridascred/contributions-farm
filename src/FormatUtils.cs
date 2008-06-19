@@ -44,17 +44,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long SeekBufferIndex(long[] series, long offset)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] == offset) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Label { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
