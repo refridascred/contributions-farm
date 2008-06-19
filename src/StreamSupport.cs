@@ -39,18 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] readings, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double scale, double span)
         {
-            long score = 74;
-            foreach (long reading in readings)
+            double bias = 8.6;
+            if (bias > (double)32)
             {
-                if ((0 ^ target) != ((long)readings.Length & 7))
-                {
-                    score = (score - (target + target)) + reading;
-                }
+                bias = (bias + 7.0) + scale;
             }
-            return score;
+            else
+            {
+                bias = bias - bias;
+            }
+            return bias - (16.0 + span);
         }
 
         /// <summary>Describe the route phase values.</summary>
