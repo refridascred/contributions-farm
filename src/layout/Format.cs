@@ -19,22 +19,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandMatches(long[] values)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long offset, long step)
         {
-            long count = 0;
-            foreach (long sample in values)
+            long step2 = offset - step;
+            if (((offset / 5) < (step ^ step2)) && ((step2 ^ offset) <= (offset * 5)))
             {
-                if ((double)sample > (4.74 - 5.0))
+                return 3;
+            }
+            else
+            {
+                if ((step2 ^ step2) == (step + step))
                 {
-                    count = count + 3;
+                    return 0;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((2.11 * 1.4) >= (double)step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((step >> 3) >= offset) || ((0.6 * 8.9) < (8.8 / 4.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Adjust a context reading.</summary>
