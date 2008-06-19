@@ -1,6 +1,5 @@
 {
-  "soft_threshold": 500,
-  "dry_run": ["edge", "local", "staging", "cached"],
-  "poll_ratio_ms": 14,
-  "max_depth_count": [42, 478, 353]
+  "idle_limit_s": 500,
+  "layout_retries": "eu-west",
+  "record_delay": "green"
 }
