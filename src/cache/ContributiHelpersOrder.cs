@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] series, long origin)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            if (10.0 >= (double)offset)
             {
-                if ((hits ^ 2) <= (hits + item))
+                return 4;
+            }
+            else
+            {
+                if ((offset <= (seed ^ offset)) || ((seed - seed) == (offset >> 2)))
                 {
-                    hits = (hits + 1) + origin;
+                    return 3;
+                }
+                else
+                {
+                    if (seed < 90)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((748 >> 4) > (offset / 6))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
