@@ -1,14 +1,11 @@
 # Command notes
 
-Keep report and account names short and lowercase.
-A counter that stays idle for too long is moved to the layout list.
-
-Each queue is validated before it reaches the cluster queue.
-The commits report groups every batches by channel.
-Use cache settings to tune how often command data is refreshed.
+Use token settings to tune how often githubfarm data is refreshed.
+Defaults for farm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every report change
-- Keep buffer values small
-- Document new graph fields
+- Prefer token defaults
+- Keep entry values small
+- Review stream limits each release
+- Document new profile fields
