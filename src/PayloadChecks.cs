@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 937;
-        public const string BurstFactor = "open-edge";
-        public const long LimitLevel = 1566;
-        public const double StepTimeout = 63.83;
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long offset, long floor)
+        {
+            long delta = offset - floor;
+            if ((delta >> 1) < (offset - delta))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((floor / 8) <= (floor >> 5)) && ((offset & 127) <= (offset - floor)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((delta >= (offset << 1)) || ((double)offset > (6.0 * 7.02)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
         public static bool VerifySchemaLimits(long[] data, long origin)
