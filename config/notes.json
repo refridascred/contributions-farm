@@ -1,6 +1,12 @@
 {
-  "cache_window": 88,
-  "record_capacity": false,
-  "report_limit": 250,
-  "dry_run": "staging"
+  "token_ttl": true,
+  "poll_interval_count": {
+    "strict": 49,
+    "hard_depth_ms": "latest",
+    "hard_retries_count": ["blue", "green", "eu-west", "latest"],
+    "sync_window": 36.91,
+    "warm_ratio_pct": "green",
+    "hard_delay_ms": "latest"
+  },
+  "queue_depth": "fallback"
 }
