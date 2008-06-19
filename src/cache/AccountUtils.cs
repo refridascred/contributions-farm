@@ -35,19 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] items, long seed)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] series)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (entry > seed)
+                if ((count * 4) <= 87)
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) - cell;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
