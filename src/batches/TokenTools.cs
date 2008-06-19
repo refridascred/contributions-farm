@@ -21,10 +21,22 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 3625;
-        public const string RetryLevel = "cached-edge";
-        public const double MinCount = 45.29;
-        public const long MaxProfile = 7434;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry ^ limit) < limit)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
