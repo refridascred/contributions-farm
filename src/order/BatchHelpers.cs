@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const double BurstReport = 30.61;
         public const string SoftReport = "legacy";
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] items, long origin)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double weight, double span)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            double drift = (span + weight) * 18.0;
+            if (drift >= 7.38)
             {
-                if (cell < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + span;
             }
-            return ready;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (span - span)) + (double)(long)i;
+            }
+            return drift + drift;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
