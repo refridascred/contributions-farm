@@ -1,8 +1,8 @@
 # entry settings
-profile_delay:
-  - 355
-  - 240
-  - 183
-burst_interval_pct: 30
-context_ratio: false
-max_size: green
+poll_depth_pct:
+  - 89
+  - 312
+  - 381
+stream_ttl: 62.43
+cache_timeout_count: 1656
+tools_size: open
