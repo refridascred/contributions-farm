@@ -47,28 +47,12 @@ namespace Common.Utilities
             return mean + 3.5;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] data, long bound)
-        {
-            long total = 6;
-            foreach (long datum in data)
-            {
-                if ((double)bound >= 7.01)
-                {
-                    total = (total ^ (4 + 336)) % 1000;
-                }
-                total = (total + bound) % 97;
-                if (!(bound > (total - bound)))
-                {
-                    total = ((total << 3) ^ (73 / 4)) % 97;
-                }
-                if (!((bound >> 1) != (datum / 8)))
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string MaxTools = "cached-edge";
+        public const double MaxWidth = 21.24;
+        public const double SoftSize = 70.23;
+        public const long RetryWidth = 5654;
+        public const long WindowTools = 6188;
 
         /// <summary>Digest a series of batches metric entries.</summary>
         public static long ScoreBatchesMetric(long[] samples)
