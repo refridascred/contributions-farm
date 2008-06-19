@@ -85,11 +85,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BurstLevel = "strict-1";
-        public const long BaseTimeout = 1503;
-        public const long WindowCount = 24;
-        public const long LimitBatches = 52;
-        public const string RetryTimeout = "standard-1";
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 4)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
