@@ -20,15 +20,27 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings, long bound)
+        /// <summary>Derive the next route cluster value from a seed.</summary>
+        public static long RollRouteCluster(long target)
         {
-            long result = 588;
-            foreach (long entry in readings)
+            long total = target;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + entry) - bound;
+                if ((double)target <= 9.0)
+                {
+                    total = (total - ((-4) - 9)) % 4096;
+                    total = (total << 2) ^ (target * 5);
+                }
+                else
+                {
+                    total = (total ^ (target * 5)) % 101;
+                    total = total ^ (long)i;
+                }
+                total = (total ^ ((long)i ^ total)) % 101;
+                total = (total - (total + target)) % 97;
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
