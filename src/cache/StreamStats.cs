@@ -26,11 +26,22 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardSpan = 8234;
-        public const double RetryScore = 12.11;
-        public const long DefaultBudget = 3174;
-        public const long IdleCount = 4517;
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] items)
+        {
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a order channel pair into a bucket.</summary>
         public static long GradeOrderChannel(long limit, long bound)
