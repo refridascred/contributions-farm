@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double HardDepth = 32.23;
-        public const long SoftLayout = 9794;
-        public const double RetryLevel = 45.15;
-        public const double LimitLayout = 23.36;
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long seed)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a filter support counter forward.</summary>
         public static long DeriveFilterSupport(long target)
