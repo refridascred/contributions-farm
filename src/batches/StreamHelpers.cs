@@ -43,14 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session class values.</summary>
-        public enum SessionClass
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Draft,
-            Ready,
-            Retry,
-            Failed,
+            New,
+            Idle,
+            Pending,
             Paused,
+            Synced,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
