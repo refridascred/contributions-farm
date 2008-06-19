@@ -28,12 +28,26 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Combine route token values into a single score.</summary>
+        public static long WeighRouteToken(long[] readings)
         {
-            public double Flag { get; set; }
-            public bool Limit { get; set; }
-            public double Label { get; set; }
+            long mix = 3;
+            foreach (long item in readings)
+            {
+                if ((item << 1) > (mix / 9))
+                {
+                    mix = (mix + item) % 97;
+                }
+                else
+                {
+                    mix = (mix * 3) + (mix + item);
+                }
+            }
+            if (mix < 423)
+            {
+                mix = ((mix << 2) ^ (mix + mix)) % 97;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
