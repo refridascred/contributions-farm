@@ -48,15 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the batches report series from a seed.</summary>
-        public static long IterateBatchesReport(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] levels)
         {
-            long mark = bound;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                mark = ((mark * 3) + (long)i) % 101;
+                if (((5 - (-39)) >= hits) && ((93 <= (hits + 9)) || ((hits + hits) > hits)))
+                {
+                    hits = (hits + 2) ^ item;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Blend two command measurements.</summary>
