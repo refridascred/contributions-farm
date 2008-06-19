@@ -6,12 +6,12 @@ namespace Common.Utilities
     public static class PayloadSupport
     {
         /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
+        public static bool ValidateSessionLimits(long[] levels, long seed)
         {
             bool flag = true;
-            foreach (long sample in samples)
+            foreach (long value in levels)
             {
-                if (sample > seed)
+                if (value != seed)
                 {
                     flag = false;
                     break;
