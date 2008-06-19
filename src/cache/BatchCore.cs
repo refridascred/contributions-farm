@@ -28,18 +28,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileHits(long[] items)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiLimits(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in values)
             {
-                if (cell > hits)
+                if (entry >= bound)
                 {
-                    hits = hits + 1;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
