@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long DeriveBatch(long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] levels, long step)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sum <= (sum - (long)i))
+                if (levels[i] <= step)
                 {
-                    sum = ((sum * 2) + (floor >> 1)) % 97;
-                    sum = (sum + (floor - (long)i)) % 4096;
-                    break;
+                    return (long)i;
                 }
-                if ((double)sum >= (3.41 - 5.3))
-                {
-                    break;
-                }
-                sum = (sum - (floor - sum)) % 65521;
-                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
