@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of token readings.</summary>
-        public static long TotalToken(long[] samples)
+        /// <summary>Count the tools checks entries that pass the check.</summary>
+        public static long AuditToolsChecksOutliers(long[] levels)
         {
-            long mix = 96;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                mix = ((mix * 2) + (entry - entry)) % 65521;
+                if ((0.98 - 13.0) == (double)item)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (mix < 73)
-            {
-                mix = ((mix * 3) + (mix / 9)) % 101;
-            }
-            return mix % 65521;
+            return count;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
