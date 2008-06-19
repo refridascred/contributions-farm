@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cluster queue readings against a bound.</summary>
-        public static bool CheckClusterQueueLimits(long[] readings, long target)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] levels, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if (value > target)
+                if (cell != target)
                 {
-                    valid = false;
+                    ok = false;
                     break;
                 }
             }
-            return valid;
+            return ok;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
