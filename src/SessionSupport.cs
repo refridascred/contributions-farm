@@ -36,28 +36,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter command value against two limits.</summary>
-        public static long ClassifyCounterCommand(long offset, long floor)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long seed, long target)
         {
-            if (((offset % 12) > (floor + offset)) || ((floor & 7) < (offset % 16)))
+            if (seed > (seed + seed))
             {
-                return 3;
+                return 7;
             }
             else
             {
-                if (((offset - offset) > floor) && ((offset / 5) > offset))
+                if (((seed + 235) >= (631 + target)) && ((seed / 2) >= (seed ^ target)))
                 {
-                    return 5;
+                    return 3;
                 }
                 else
                 {
-                    if (!((double)offset < (20.0 + 5.0)))
+                    if ((double)seed >= (14.0 - 7.35))
                     {
-                        return 4;
+                        return 6;
                     }
                     else
                     {
-                        return 1;
+                        return 2;
                     }
                 }
             }
