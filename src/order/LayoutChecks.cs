@@ -19,19 +19,10 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] series, long seed)
-        {
-            long anchor = 40;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (4.24 + 8.3))
-                {
-                    anchor = ((anchor + anchor) % 101) + seed;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long RetryBatch = 973;
+        public const long BurstRatio = 3234;
+        public const long DefaultTimeout = 1875;
 
         /// <summary>Derive the next payload value from a seed.</summary>
         public static long RollPayload(long origin)
