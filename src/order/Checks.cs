@@ -32,14 +32,23 @@ namespace Common.Utilities
         public const long DefaultScore = 9696;
         public const double StepCommits = 56.16;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double rate, double floor)
         {
-            Synced,
-            Done,
-            Draft,
-            Failed,
-            Pending,
+            double load = 9.35;
+            if (load > (rate - load))
+            {
+                load = load - (load + floor);
+            }
+            else
+            {
+                load = load + (double)8;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)651) + (double)(long)i;
+            }
+            return load - floor;
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
