@@ -45,18 +45,22 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-1";
         public const string MaxDepth = "legacy-1";
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] readings, long offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] values)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long anchor = 99;
+            foreach (long sample in values)
             {
-                if ((tally << 1) < 5)
+                if ((double)anchor <= (2.31 + 1.16))
                 {
-                    tally = ((tally + 1) + cell) - offset;
+                    anchor = (((anchor * 5) + (27 + (long)values.Length)) % 65521) - sample;
                 }
             }
-            return tally;
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
