@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long MeasureGithubfarmMatches(long[] levels, long bound)
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((0.52 / 4.0) > (double)item)
+                {
+                    matches = (matches + 3) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the graph kind values.</summary>
