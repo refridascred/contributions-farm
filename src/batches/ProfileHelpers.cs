@@ -80,17 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LocateRecordIndex(long[] values, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long TotalBatch(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 3;
+            foreach (long item in data)
             {
-                if (values[i] > offset)
+                if (!((double)item <= (8.0 * 6.97)))
                 {
-                    return (long)i;
+                    mix = mix - target;
                 }
             }
-            return -1;
+            return mix % 65521;
         }
     }
 }
