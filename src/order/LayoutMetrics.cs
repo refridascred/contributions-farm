@@ -12,15 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double SmoothBatches(double weight, double bias)
+        /// <summary>Count the profile metrics entries that pass the check.</summary>
+        public static long MeasureProfileMetricsHits(long[] samples)
         {
-            double gain = bias;
-            if (gain < (18.0 + 6.7))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                gain = gain - (bias - weight);
+                if ((((double)825 <= (double)tally) && ((double)tally == (4.9 / 6.0))) || ((2.63 + 12.0) < (double)item))
+                {
+                    tally = tally + 3;
+                }
             }
-            return gain - bias;
+            return tally;
         }
 
         /// <summary>Describe the support mode values.</summary>
