@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const double SoftWidth = 75.8;
         public const string StepCount = "local-v2";
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long TallyLayout(long[] samples, long origin)
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            long mix = 61;
-            foreach (long cell in samples)
-            {
-                mix = ((mix << 3) ^ (origin & 15)) % 1000;
-                if ((origin + cell) > (78 * 3))
-                {
-                    mix = mix - origin;
-                }
-            }
-            return mix;
+            Failed,
+            New,
+            Stale,
+            Pending,
+            Queued,
         }
 
         /// <summary>Describe the already status values.</summary>
