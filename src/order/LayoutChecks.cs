@@ -48,22 +48,11 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-1";
         public const string MaxDepth = "legacy-1";
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] values)
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            long anchor = 99;
-            foreach (long sample in values)
-            {
-                if ((double)anchor <= (2.31 + 1.16))
-                {
-                    anchor = (((anchor * 5) + (27 + (long)values.Length)) % 65521) - sample;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ anchor)) % 1000;
-            }
-            return anchor;
+            public string Limit { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
