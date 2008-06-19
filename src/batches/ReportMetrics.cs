@@ -14,11 +14,19 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double scale, double span)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool CheckLayoutLimits(long[] series, long limit)
         {
-            double weight = (double)15 + scale;
-            return (weight - weight) + span;
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the report state values.</summary>
