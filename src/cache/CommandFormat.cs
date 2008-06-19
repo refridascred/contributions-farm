@@ -14,18 +14,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long AuditPayloadGaps(long[] series)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = 25;
+            foreach (long entry in readings)
             {
-                if ((double)reading >= (double)seen)
-                {
-                    seen = seen + 1;
-                }
+                sum = (sum + entry) % 4096;
             }
-            return seen;
+            return sum % 4096;
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
