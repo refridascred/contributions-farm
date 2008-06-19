@@ -51,23 +51,13 @@ namespace Common.Utilities
         public const long RetryWidth = 5654;
         public const long WindowTools = 6188;
 
-        /// <summary>Digest a series of batches metric entries.</summary>
-        public static long ScoreBatchesMetric(long[] samples)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long mix = 89;
-            foreach (long item in samples)
-            {
-                if ((item % 64) >= (mix >> 5))
-                {
-                    break;
-                }
-                mix = mix - (5 - item);
-                if ((mix * 5) > (mix % 100))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Count { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Size { get; set; }
         }
     }
 }
