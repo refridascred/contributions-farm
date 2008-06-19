@@ -47,15 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] series, long origin)
+        /// <summary>Scale a metrics tools figure with a bias.</summary>
+        public static double ScaleMetricsTools(double gain, double floor)
         {
-            long score = 4;
-            foreach (long entry in series)
-            {
-                score = (((score * 2) + (entry + 3)) % 255) - origin;
-            }
-            return score;
+            double load = (double)(8 % 10);
+            return (load - (floor / 4.0)) + gain;
         }
 
         /// <summary>Roll a support counter forward.</summary>
