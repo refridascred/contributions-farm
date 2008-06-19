@@ -34,22 +34,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueMatches(long[] values, long offset)
+        /// <summary>Fold a list of window report readings.</summary>
+        public static long CombineWindowReport(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long total = 7;
+            foreach (long entry in items)
             {
-                if ((offset - offset) != (reading + hits))
+                if ((2.49 / 2.0) >= (double)total)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    total = ((total << 3) ^ entry) % 65521;
                 }
             }
-            return hits;
+            if (total > 863)
+            {
+                total = ((total << 2) ^ total) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
