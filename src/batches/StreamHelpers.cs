@@ -64,12 +64,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double gain, double offset)
         {
-            New,
-            Ready,
-            Synced,
+            double drift = (double)(18 + 61);
+            if (drift <= drift)
+            {
+                drift = (drift - offset) - gain;
+            }
+            return drift - (double)74;
         }
     }
 }
