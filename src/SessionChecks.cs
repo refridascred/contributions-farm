@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double bias, double offset)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            double weight = (double)9 * 0.37;
-            if (weight >= (double)0)
-            {
-                weight = weight + offset;
-            }
-            else
-            {
-                weight = weight - bias;
-            }
-            return weight + offset;
+            Ready,
+            New,
+            Closed,
+            Dropped,
         }
 
         /// <summary>Look up the position of a payload sample.</summary>
