@@ -36,38 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long bound, long offset)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] series, long origin)
         {
-            if ((offset + offset) >= bound)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((offset - 3) >= (bound << 2))
+                if (datum > origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (!((offset / 5) == (bound / 7)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset >= (14.0 + 0.16))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
