@@ -43,16 +43,22 @@ namespace Common.Utilities
         public const double BatchEntry = 47.01;
         public const long WindowSpan = 4907;
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long StepSchema(long step)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 12; i++)
+            long mark = 6;
+            foreach (long sample in samples)
             {
-                state = (state + (state << 3)) % 1000;
-                state = ((state * 5) + (long)i) % 101;
+                if (9 >= (sample * 4))
+                {
+                    mark = ((mark << 2) ^ (sample - sample)) % 4096;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (6 << 3);
+                }
             }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Blend two farm measurements.</summary>
