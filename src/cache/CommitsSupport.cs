@@ -5,28 +5,28 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long offset, long target)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long bound, long step)
         {
-            if (((offset * 2) < target) && (235 >= (target + target)))
+            if ((step > (step * 5)) && ((step >> 3) >= (bound + bound)))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if ((double)target == (1.0 * 6.9))
+                if ((1.0 / 9.0) == (double)bound)
                 {
                     return 2;
                 }
                 else
                 {
-                    if ((offset * 3) > offset)
+                    if ((bound - bound) > step)
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 1;
+                        return 8;
                     }
                 }
             }
