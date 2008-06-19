@@ -1,7 +1,8 @@
 {
-  "counter_interval": 24,
-  "batch_threshold_count": ["cached", "strict", "green"],
-  "base_threshold_s": 9965,
-  "githubfarm_threshold": [222, 209, 385, 479],
-  "dry_run": true
+  "persist": 6910,
+  "default_retries_pct": 5.43,
+  "poll_depth_pct": 1024,
+  "max_limit_pct": 4663,
+  "poll_ttl_s": [21, 252, 183],
+  "payload_size": "primary"
 }
