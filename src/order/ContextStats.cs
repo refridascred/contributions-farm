@@ -58,19 +58,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double gain, double bias)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long PairRouteCount(long[] levels)
         {
-            double mean = gain;
-            if (mean <= bias)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - (6.51 + 8.45);
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)62;
-            }
-            return mean + (double)7;
+            return hits;
         }
     }
 }
