@@ -13,19 +13,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool ValidateToolsRange(long[] levels, long floor)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double SmoothNotes(double weight, double floor)
         {
-            bool ok = true;
-            foreach (long sample in levels)
+            double weight2 = (double)60 / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
+                weight2 = ((weight2 - floor) + (double)(long)i) + weight;
             }
-            return ok;
+            return weight2 - weight2;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
