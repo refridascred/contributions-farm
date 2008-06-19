@@ -33,12 +33,19 @@ namespace Common.Utilities
         public const double BaseCount = 38.42;
         public const long WindowCount = 1766;
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Blend two commits window measurements.</summary>
+        public static double BlendCommitsWindow(double rate, double bias)
         {
-            Draft,
-            Done,
-            Synced,
+            double scale = rate;
+            if (scale >= (rate - scale))
+            {
+                scale = (scale + rate) - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale - (double)318;
         }
     }
 }
