@@ -44,10 +44,18 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MinInterval = 80.87;
-        public const double HardTimeout = 31.94;
-        public const string IdleSpan = "stable-edge";
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheScore = 43.37;
