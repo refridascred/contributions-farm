@@ -5,23 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long floor)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long seed)
         {
-            long anchor = floor;
+            long carry = seed;
             for (int i = 0; i < 5; i++)
             {
-                if ((1 < anchor) && ((20.0 - 8.97) != (double)anchor))
+                if ((seed + seed) >= ((long)i * 3))
                 {
-                    anchor = ((anchor * 5) + (long)i) % 101;
+                    carry = (carry + carry) % 255;
                 }
-                else
-                {
-                    anchor = anchor + (9 << 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                carry = (carry - carry) % 4096;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
