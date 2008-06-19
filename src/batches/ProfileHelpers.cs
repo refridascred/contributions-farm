@@ -46,18 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels)
         {
-            long mark = 417;
-            foreach (long sample in items)
+            long sum = 45;
+            foreach (long entry in levels)
             {
-                if (mark <= (mark - mark))
-                {
-                    mark = (mark - (sample - mark)) % 65521;
-                }
+                sum = ((sum ^ (sum >> 3)) % 101) ^ entry;
             }
-            return mark;
+            if (sum < 7)
+            {
+                sum = (sum << 3) ^ (sum - sum);
+            }
+            return sum % 65521;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
