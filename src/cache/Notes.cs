@@ -49,24 +49,11 @@ namespace Common.Utilities
         public const string BaseCluster = "cached";
         public const double BaseDepth = 87.17;
 
-        /// <summary>Classify a record notes pair into a bucket.</summary>
-        public static long BucketRecordNotes(long offset, long limit)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            if ((offset <= 9) && ((offset >> 4) > offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit > (17.0 * 20.0)) && ((offset >> 2) > (limit >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Region { get; set; }
+            public double Total { get; set; }
         }
     }
 }
