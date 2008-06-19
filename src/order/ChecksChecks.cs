@@ -37,22 +37,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long TallyRoute(long[] items, long step)
-        {
-            long mix = 0;
-            foreach (long entry in items)
-            {
-                if (((step + 235) == ((-5) ^ (long)items.Length)) || ((93 - step) <= (step & 31)))
-                {
-                    mix = ((mix + step) % 1000) + entry;
-                }
-            }
-            if (mix > 5)
-            {
-                mix = (mix - 9) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string HardWidth = "standard";
+        public const string DefaultSpan = "local-edge";
+        public const long MinInterval = 280;
+        public const double HardDepth = 9.56;
+        public const long BaseDepth = 8356;
     }
 }
