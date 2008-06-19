@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long LocateChecksIndex(long[] items, long step)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandLimits(long[] readings, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool flag = true;
+            foreach (long sample in readings)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if (sample < target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Adjust a order reading.</summary>
