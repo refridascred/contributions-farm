@@ -26,18 +26,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] samples, long bound)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferMatches(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if (((bound >> 5) == (item % 24)) || ((3.3 + 5.0) == (double)seen))
+                if ((double)origin != (1.7 - 16.0))
                 {
-                    seen = seen + 3;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
