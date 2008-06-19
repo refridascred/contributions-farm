@@ -44,11 +44,32 @@ namespace Common.Utilities
         public const long HardBatch = 5312;
         public const long RetryInterval = 1936;
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long GradeAccount(long origin, long origin2)
         {
-            public long Level { get; set; }
-            public long Flag { get; set; }
+            long span = origin - origin2;
+            if ((origin * 3) <= origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin / 9) <= (origin + span)) && (((-9) + origin2) > span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((origin * 2) == (9 + origin2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload record.</summary>
