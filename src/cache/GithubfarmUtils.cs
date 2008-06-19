@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Fold a list of order schema readings.</summary>
+        public static long TotalOrderSchema(long[] readings)
         {
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
-            public bool Flag { get; set; }
+            long mix = 75;
+            foreach (long reading in readings)
+            {
+                mix = mix - (mix + mix);
+                if ((8.86 * 8.77) >= (double)reading)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
     }
 }
