@@ -74,12 +74,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double SoftWidth = 15.93;
-        public const long IdleMetrics = 9654;
-        public const long LimitMetrics = 201;
-        public const long BatchMetrics = 8161;
-        public const string SoftMetrics = "alpha-1";
+        /// <summary>Classify a batches graph pair into a bucket.</summary>
+        public static long BucketBatchesGraph(long offset, long seed)
+        {
+            if ((818 - offset) <= 3)
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset <= (seed >> 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed >= (offset / 6))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long MeasureSupportMatches(long[] values, long seed)
