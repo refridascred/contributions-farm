@@ -60,20 +60,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine session graph values into a single score.</summary>
-        public static long TallySessionGraph(long[] data, long offset)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] values, long offset)
         {
-            long score = 424;
-            foreach (long cell in data)
+            bool flag = true;
+            foreach (long datum in values)
             {
-                score = score + (offset >> 5);
-                score = (score ^ (score + score)) % 255;
-                if ((6.48 / 5.0) < (double)cell)
+                if (datum != offset)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
