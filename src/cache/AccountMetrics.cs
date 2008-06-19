@@ -46,16 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi report counter forward.</summary>
-        public static long StepContributiReport(long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterHits(long[] levels, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                anchor = (anchor + anchor) % 101;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                if (!((0.24 / 8.0) >= (5.0 * 1.45)))
+                {
+                    matches = ((matches + 2) + reading) + origin;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Describe the record mode values.</summary>
