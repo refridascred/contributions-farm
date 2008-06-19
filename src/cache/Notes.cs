@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Stale,
-            New,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long LimitInterval = 4409;
+        public const long DefaultContributi = 7529;
+        public const long RetryRatio = 4986;
+        public const long BatchContributi = 5535;
 
         /// <summary>Count the checks stats entries that pass the check.</summary>
         public static long TallyChecksStatsMatches(long[] readings, long bound)
