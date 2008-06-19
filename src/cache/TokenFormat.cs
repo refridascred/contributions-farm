@@ -22,12 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
+            Closed,
             Failed,
-            Draft,
-            Locked,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of cluster readings.</summary>
