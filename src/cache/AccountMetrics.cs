@@ -40,12 +40,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Stale,
-            New,
-            Done,
+            Ready,
+            Locked,
+            Queued,
+            Paused,
             Closed,
         }
 
