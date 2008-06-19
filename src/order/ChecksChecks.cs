@@ -30,18 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the metric report entries that pass the check.</summary>
-        public static long TallyMetricReportOutliers(long[] values)
+        /// <summary>Digest a series of batch queue entries.</summary>
+        public static long DigestBatchQueue(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long carry = 0;
+            foreach (long cell in readings)
             {
-                if (18 >= (cell + cell))
+                if ((cell > (653 & 7)) || ((double)carry > (5.0 / 2.0)))
                 {
-                    matches = matches + 3;
+                    carry = ((carry << 2) ^ (carry << 1)) % 101;
                 }
             }
-            return matches;
+            return carry;
         }
     }
 }
