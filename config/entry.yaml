@@ -1,14 +1,16 @@
 # entry settings
-batch_window_pct:
-  - 40
-  - 70
-  - 217
-  - 480
-soft_depth_count: standard
-poll_retries_pct: strict
-stream_retries: 8217
-warm_depth_ms:
-  - 108
-  - 254
-  - 355
-  - 59
+strict: strict
+warm_timeout_count: true
+sync_limit: primary
+audit: edge
+editor_retries:
+  min_threshold_count: fallback
+  idle_retries_pct:
+    base_ratio_count: 55.83
+    command_delay: false
+    cache_timeout_s: latest
+    compress: 250
+  readonly: false
+  githubfarm_interval: false
+  audit: stable
+  warm_retries_s: false
