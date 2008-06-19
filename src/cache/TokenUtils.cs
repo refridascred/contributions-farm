@@ -19,13 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Match up format notes samples.</summary>
+        public static long MatchFormatNotesCount(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public bool Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 8)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
