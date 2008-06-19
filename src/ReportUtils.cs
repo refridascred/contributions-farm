@@ -78,20 +78,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long floor)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long mark = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                mark = mark ^ ((-780) + mark);
-                if ((mark / 8) != (floor << 3))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            New,
+            Dropped,
+            Stale,
+            Retry,
         }
     }
 }
