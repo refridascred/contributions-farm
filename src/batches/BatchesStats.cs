@@ -19,17 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a token contributi sample.</summary>
-        public static long LocateTokenContributiIndex(long[] series, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long seed, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((bound >> 2) > (bound + seed)))
             {
-                if (series[i] == seed)
+                return 2;
+            }
+            else
+            {
+                if ((seed % 7) > (seed + bound))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
