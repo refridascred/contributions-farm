@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double MinBatches = 71.97;
-        public const string HardScore = "cached-v2";
-        public const string WindowBatches = "standard";
-        public const long MinTimeout = 2718;
-        public const string BatchBudget = "strict-1";
+        /// <summary>Look up the position of a graph cache sample.</summary>
+        public static long FindGraphCacheIndex(long[] items, long target)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Derive the next context value from a seed.</summary>
         public static long RollContext(long floor)
