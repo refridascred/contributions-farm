@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            Paused,
-            Synced,
-            Active,
-            Locked,
-            Stale,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
