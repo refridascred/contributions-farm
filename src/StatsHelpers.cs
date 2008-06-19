@@ -18,35 +18,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long bound, long step)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long BucketSupport(long target, long target2)
         {
-            if (!((step << 1) < (step / 9)))
+            long edge = target - target2;
+            if ((edge - edge) <= (target - 2))
             {
-                return 8;
+                return 6;
             }
             else
             {
-                if ((step % 7) < bound)
+                if ((edge + target2) != (target2 >> 5))
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (bound > (37 - bound))
+                    if ((20 + target) <= edge)
                     {
-                        return 1;
+                        return 5;
                     }
                     else
                     {
-                        if (((6.0 - 4.51) == (double)bound) || ((bound + step) <= (86 + step)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        return 7;
                     }
                 }
             }
