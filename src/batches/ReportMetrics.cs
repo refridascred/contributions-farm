@@ -23,19 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TallyCluster(long[] values, long origin)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            long total = 6;
-            foreach (long reading in values)
-            {
-                total = (total ^ origin) + reading;
-            }
-            if (total > 629)
-            {
-                total = total - total;
-            }
-            return total % 65521;
+            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Rank cluster account input into a small class.</summary>
