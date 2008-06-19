@@ -19,15 +19,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long TallyMetrics(long[] items, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long BucketPayload(long target, long seed)
         {
-            long score = 332;
-            foreach (long entry in items)
+            if (((target + target) > (seed + target)) && ((seed >> 5) < 7))
             {
-                score = (score - (4 + origin)) ^ entry;
+                return 2;
             }
-            return score;
+            else
+            {
+                if (((double)seed >= 7.14) && ((4.56 - 3.61) > (double)seed))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target + seed) <= seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate filter samples.</summary>
