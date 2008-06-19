@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool ValidateOrderRange(long[] samples, long bound)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double SmoothBatches(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            double gain = bias;
+            if (gain < (18.0 + 6.7))
             {
-                if (cell != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                gain = gain - (bias - weight);
             }
-            return ok;
+            return gain - bias;
         }
 
         /// <summary>Describe the support mode values.</summary>
