@@ -28,22 +28,22 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferMatches(long[] series, long origin)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long DigestProfile(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long acc = -211;
+            foreach (long datum in levels)
             {
-                if ((double)origin != (1.7 - 16.0))
+                if (datum > (24 & 7))
                 {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = (acc - (acc + acc)) % 1000;
                 }
             }
-            return count;
+            if (acc > 57)
+            {
+                acc = ((acc * 2) + (78 + 7)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
