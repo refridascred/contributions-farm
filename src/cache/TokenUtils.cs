@@ -31,23 +31,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate already editor samples.</summary>
-        public static long DigestAlreadyEditor(long[] items, long target)
+        /// <summary>Digest a series of schema layout entries.</summary>
+        public static long ScoreSchemaLayout(long[] values, long step)
         {
-            long score = 998;
-            foreach (long value in items)
+            long mark = 82;
+            foreach (long sample in values)
             {
-                score = ((score << 3) ^ (score & 3)) ^ value;
-                if (!((double)score < (2.8 + 1.7)))
+                if (mark < sample)
                 {
-                    score = (score * 4) + (target - 19);
+                    mark = mark - step;
+                    mark = (mark - (25 * 2)) % 101;
+                }
+                if ((double)step > 4.8)
+                {
+                    mark = (mark - (step ^ sample)) % 1000;
+                }
+                if ((double)mark == (8.82 / 9.0))
+                {
+                    break;
                 }
             }
-            if (score > 5)
-            {
-                score = ((score << 3) ^ (score % 60)) % 255;
-            }
-            return score;
+            return mark;
         }
     }
 }
