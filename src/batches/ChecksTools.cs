@@ -33,19 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (((offset + 29) != (offset ^ offset)) && (offset <= 0))
-                {
-                    anchor = (anchor ^ ((long)i << 2)) % 97;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Audit channel tools readings against a rule.</summary>
