@@ -19,15 +19,12 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Hold a profile info.</summary>
+        public sealed class ProfileInfo
         {
-            long mark = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
+            public bool Region { get; set; }
+            public double Level { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
