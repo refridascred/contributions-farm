@@ -1,7 +1,6 @@
 {
-  "verbose": 31.7,
-  "enabled": 1.27,
-  "batch_window_s": "open",
-  "cache_threshold": true,
-  "buffer_window": "eu-west"
+  "hard_window": "eu-west",
+  "flush_window_ms": false,
+  "support_ttl": "staging",
+  "min_ttl_count": true
 }
