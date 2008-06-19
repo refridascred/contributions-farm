@@ -64,24 +64,23 @@ namespace Common.Utilities
             return bias2 + bias2;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long offset, long offset2)
+        /// <summary>Iterate the editor window series from a seed.</summary>
+        public static long IterateEditorWindow(long limit)
         {
-            if ((double)offset < (8.84 * 9.0))
+            long sum = limit;
+            for (int i = 0; i < 13; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (offset2 < ((-2) + 757))
+                if ((limit + 1) >= limit)
                 {
-                    return 6;
+                    sum = sum + sum;
                 }
                 else
                 {
-                    return 5;
+                    sum = (sum - (7 & 1)) % 101;
                 }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
+            return sum;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
