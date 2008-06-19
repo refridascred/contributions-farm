@@ -46,22 +46,37 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long RankEditor(long floor, long limit)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long GradeFormat(long bound, long seed)
         {
-            if ((0.46 - 3.6) <= (double)floor)
+            long edge = bound - seed;
+            if (((113 * 2) > seed) && ((45 * 3) < edge))
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((limit << 3) > floor)
+                if ((double)seed < (9.0 - 1.98))
                 {
-                    return 1;
+                    return 4;
                 }
                 else
                 {
-                    return 2;
+                    if ((15.0 > 8.4) || ((bound * 4) > seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((double)seed >= (2.6 * 1.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
         }
