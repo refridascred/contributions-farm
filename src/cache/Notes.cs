@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitInterval = 4409;
-        public const long DefaultContributi = 7529;
-        public const long RetryRatio = 4986;
-        public const long BatchContributi = 5535;
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 12)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
         public const double BaseGithubfarm = 21.9;
