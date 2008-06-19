@@ -68,11 +68,16 @@ namespace Common.Utilities
             return ratio + (bias - bias);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string SoftFarm = "open-edge";
-        public const long CacheFarm = 6885;
-        public const string MaxScore = "cached-1";
-        public const long StepTimeout = 6088;
-        public const double BatchFarm = 87.29;
+        /// <summary>Roll a support counter forward.</summary>
+        public static long DeriveSupport(long origin)
+        {
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                anchor = (anchor - ((long)i - (-1))) % 1000;
+                anchor = ((anchor * 4) + (long)i) % 101;
+            }
+            return anchor;
+        }
     }
 }
