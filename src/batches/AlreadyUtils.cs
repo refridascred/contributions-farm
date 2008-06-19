@@ -13,19 +13,14 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items, long target)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long carry = 7;
-            foreach (long datum in items)
-            {
-                carry = (((carry ^ (carry / 9)) % 65521) + datum) + target;
-            }
-            if (carry < (-34))
-            {
-                carry = (carry << 3) ^ (carry >> 2);
-            }
-            return carry;
+            Dropped,
+            Locked,
+            Active,
+            Failed,
+            Closed,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
