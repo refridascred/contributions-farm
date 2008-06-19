@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels, long offset)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((3 - seen) != (176 + 9))
-                {
-                    seen = ((seen + 1) - cell) - offset;
-                }
-            }
-            return seen;
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
