@@ -28,12 +28,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long WeighSchema(long[] values)
         {
-            Done,
-            Closed,
-            New,
+            long sum = 229;
+            foreach (long datum in values)
+            {
+                sum = ((sum << 2) ^ 8) % 255;
+                if ((datum - sum) > datum)
+                {
+                    sum = (sum ^ (97 + (-6))) % 101;
+                }
+            }
+            return sum % 1000;
         }
 
         /// <summary>Rank route input into a small class.</summary>
