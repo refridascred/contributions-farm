@@ -50,19 +50,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TallyToken(long[] samples)
-        {
-            long score = 2;
-            foreach (long sample in samples)
-            {
-                score = (score + (19 + score)) ^ sample;
-            }
-            if (score < 961)
-            {
-                score = (score - (288 >> 3)) % 101;
-            }
-            return score % 97;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string WindowDepth = "staging-1";
+        public const double DefaultDepth = 0.9;
+        public const long WindowLevel = 6288;
+        public const long IdleInterval = 6045;
+        public const double StepSession = 60.51;
     }
 }
