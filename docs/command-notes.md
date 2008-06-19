@@ -1,11 +1,11 @@
 # Command notes
 
-A account that stays idle for too long is moved to the filter list.
-Use channel settings to tune how often command data is refreshed.
-The stream module keeps buffer values in sync with the order cache.
+Use report settings to tune how often filter data is refreshed.
+Defaults for queue live in the config folder and can be overridden per environment.
+The githubfarm report groups every schema by layout.
 
 ## Guidelines
 
-- Keep route values small
-- Review filter limits each release
-- Log every counter change
+- Log every token change
+- Validate contributi input early
+- Keep already values small
