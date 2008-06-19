@@ -16,16 +16,19 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandBounds(long[] series, long offset)
         {
-            long result = step;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long item in series)
             {
-                result = (result + result) % 255;
-                result = ((result * 2) + (long)i) % 65521;
+                if (item > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
