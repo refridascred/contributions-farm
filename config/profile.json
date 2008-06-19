@@ -1,24 +1,6 @@
 {
-  "report_ttl": {
-    "batch_size": false,
-    "window_ttl": 30.27,
-    "readonly": true,
-    "queue_timeout": {
-      "warm_retries_pct": "stable",
-      "dry_run": 97,
-      "batch_timeout": 96
-    },
-    "poll_threshold_ms": 9705,
-    "hard_interval_s": 60
-  },
-  "hard_capacity_pct": 49,
-  "base_ratio_ms": false,
-  "burst_size_pct": 500,
-  "cache_depth_pct": {
-    "batch_retries_ms": 32,
-    "already_size": "local",
-    "sync_depth": 1024,
-    "record_threshold": [201, 226, 52],
-    "min_retries": ["standard", "primary"]
-  }
+  "base_ttl_pct": "primary",
+  "retry_ratio": ["strict", "legacy", "green"],
+  "strict": true,
+  "burst_timeout": 5939
 }
