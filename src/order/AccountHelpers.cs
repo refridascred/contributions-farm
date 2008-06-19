@@ -79,12 +79,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LocateFilterIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a buffer layout sample.</summary>
+        public static long FindBufferLayoutIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
