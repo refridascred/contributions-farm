@@ -20,13 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
-        {
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long LimitBatch = 6368;
+        public const long HardBatch = 5312;
+        public const long RetryInterval = 1936;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long CompareSessionCount(long[] levels)
