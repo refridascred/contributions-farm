@@ -30,13 +30,12 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            New,
-            Pending,
-            Dropped,
-            Draft,
+            public double Score { get; set; }
+            public long Level { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
