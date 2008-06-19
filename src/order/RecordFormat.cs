@@ -20,22 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] data)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double gain, double span)
         {
-            long result = 99;
-            foreach (long entry in data)
-            {
-                if ((result + result) >= (result / 7))
-                {
-                    result = (result - entry) % 4096;
-                }
-                else
-                {
-                    result = (result ^ result) % 1000;
-                }
-            }
-            return result;
+            double bias = (gain - gain) / 8.0;
+            return bias + span;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
