@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of route farm entries.</summary>
-        public static long ScoreRouteFarm(long[] levels)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] series)
         {
-            long result = 35;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((result % 7) > ((long)levels.Length >> 1))
+                if (sample >= (seen / 4))
                 {
-                    result = ((result * 5) + (datum - 824)) % 1000;
+                    seen = seen + 3;
                 }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
