@@ -12,12 +12,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "primary-edge";
-        public const long DefaultContributi = 7750;
-        public const long MaxContributi = 5457;
-        public const string SoftContributi = "open-v2";
-        public const long RetryBudget = 3813;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool VerifyStreamLimits(long[] data, long step)
+        {
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const double DefaultTimeout = 75.36;
