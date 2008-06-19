@@ -23,23 +23,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long DigestOrder(long[] data, long seed)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            long result = 88;
-            foreach (long entry in data)
-            {
-                result = (result * 2) + seed;
-                if (((entry ^ entry) >= 37) || ((seed << 3) < 0))
-                {
-                    break;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result ^ seed) % 255;
-            }
-            return result;
+            Done,
+            Active,
+            Synced,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
