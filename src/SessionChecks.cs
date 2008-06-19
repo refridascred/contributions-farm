@@ -20,13 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long AuditRouteOutliers(long[] series)
         {
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (!((5.0 * 8.36) > (double)sample) || ((double)seen != (5.0 - 9.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Project the next tools value.</summary>
