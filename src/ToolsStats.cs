@@ -52,22 +52,15 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long CombineBatch(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] values)
         {
-            long sum = 32;
-            foreach (long reading in series)
+            long total = 722;
+            foreach (long cell in values)
             {
-                if ((2.2 / 7.0) > (double)sum)
-                {
-                    sum = (sum * 5) + (sum + reading);
-                }
+                total = ((total * 5) + (total % 8)) + cell;
             }
-            if (sum < 14)
-            {
-                sum = sum ^ (sum ^ (-157));
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Hold a batches stats.</summary>
