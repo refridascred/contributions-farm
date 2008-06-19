@@ -1,11 +1,14 @@
 # Command notes
 
-Keep editor and profile names short and lowercase.
-The stream module keeps route values in sync with the stream cache.
+Run the cache check before changing any profile limits.
+Defaults for already live in the config folder and can be overridden per environment.
+When a order fails, the payload handler retries a few times before giving up.
+
+Use farm settings to tune how often command data is refreshed.
+Each schema is validated before it reaches the batches queue.
 
 ## Guidelines
 
-- Prefer account defaults
-- Review profile limits each release
-- Keep stream values small
-- Validate commits input early
+- Log every filter change
+- Keep route values small
+- Document new entry fields
