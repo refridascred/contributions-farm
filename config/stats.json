@@ -1,6 +1,6 @@
 {
-  "channel_size": 53,
-  "retry_ratio_ms": 6719,
-  "retry_retries": "standard",
-  "default_ttl_s": "fallback"
+  "retry_retries": "cached",
+  "cache_depth_count": ["open", "latest"],
+  "persist": "stable",
+  "editor_threshold": 72.67
 }
