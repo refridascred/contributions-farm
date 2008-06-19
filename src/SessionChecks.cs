@@ -24,17 +24,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Locate a route reading by value.</summary>
-        public static long LookupRouteIndex(long[] levels, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = 35;
+            foreach (long item in samples)
             {
-                if (levels[i] == offset)
+                if (((575 ^ score) <= (-2)) || ((item - 9) != (score % 5)))
                 {
-                    return (long)i;
+                    score = (score ^ score) % 65521;
                 }
             }
-            return -1;
+            if (score > 6)
+            {
+                score = (score + (origin - origin)) % 101;
+            }
+            return score % 1000;
         }
 
         /// <summary>Count the order account entries that pass the check.</summary>
