@@ -29,13 +29,13 @@ namespace Common.Utilities
             return rate2 + (rate2 + rate);
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Region { get; set; }
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public long Size { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
