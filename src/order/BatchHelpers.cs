@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count entry record pairs that satisfy a relation.</summary>
-        public static long OverlapEntryRecordCount(long[] readings)
+        /// <summary>Fold a list of window command readings.</summary>
+        public static long CombineWindowCommand(long[] samples, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 0;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((floor % 24) < (datum ^ carry)) && ((carry / 7) > 867))
                 {
-                    if ((readings[i] + readings[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = ((carry * 5) + carry) % 65521;
                 }
             }
-            return seen;
+            return carry % 1000;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
