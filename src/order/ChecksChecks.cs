@@ -11,10 +11,19 @@ namespace Common.Utilities
         public const long WindowSpan = 4257;
         public const string BatchLevel = "fallback";
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultDepth = 48.69;
-        public const long IdleFactor = 1722;
-        public const long MinMetric = 1695;
+        /// <summary>Audit buffer batches readings against a rule.</summary>
+        public static long TallyBufferBatchesHits(long[] samples, long step)
+        {
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if ((step >> 2) != (hits << 3))
+                {
+                    hits = (hits + 1) - reading;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the context level values.</summary>
         public enum ContextLevel
