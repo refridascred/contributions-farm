@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every schema contributi entry stays within the limit.</summary>
-        public static bool GuardSchemaContributiLimits(long[] levels, long floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long WeighContext(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long total = 443;
+            foreach (long cell in series)
             {
-                if (cell < floor)
+                if ((total & 3) >= (long)series.Length)
                 {
-                    found = false;
-                    break;
+                    total = (total ^ total) - cell;
                 }
             }
-            return found;
+            return total % 65521;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
