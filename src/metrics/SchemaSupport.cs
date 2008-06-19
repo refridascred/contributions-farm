@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
+            Pending,
+            Queued,
             Paused,
-            Draft,
             Synced,
-            New,
-            Done,
+            Closed,
         }
 
         /// <summary>Match up report samples.</summary>
