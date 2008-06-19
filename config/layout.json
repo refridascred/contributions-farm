@@ -1,5 +1,8 @@
 {
-  "route_delay": 66,
-  "poll_interval_pct": ["local", "stable"],
-  "warm_ratio": "local"
+  "verbose": 52,
+  "max_delay_ms": "open",
+  "checks_limit": 16.28,
+  "burst_timeout": "stable",
+  "sync_ratio": "local",
+  "base_retries_s": 32.96
 }
