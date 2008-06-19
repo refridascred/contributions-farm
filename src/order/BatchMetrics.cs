@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long BucketNotes(long bound, long target)
         {
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long gap = bound ^ target;
+            if ((gap & 255) >= (bound / 5))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((77 - target) > target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound <= (double)target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the farm mode values.</summary>
