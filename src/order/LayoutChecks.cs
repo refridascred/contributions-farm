@@ -33,39 +33,20 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long BucketEntry(long floor, long offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long RollPayload(long origin)
         {
-            long lane = floor - offset;
-            if ((offset + 0) == (floor ^ lane))
+            long state = origin;
+            for (int i = 0; i < 16; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((lane <= (offset * 2)) || (floor <= lane))
+                long seen = (origin >> 3) - (origin + state);
+                if (!((((long)i >> 5) == (seen >> 5)) && ((state % 3) != (state << 3))))
                 {
-                    return 6;
+                    state = state - (origin * 3);
                 }
-                else
-                {
-                    if (!((lane & 15) < (lane << 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)offset <= (2.49 + 4.9))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
