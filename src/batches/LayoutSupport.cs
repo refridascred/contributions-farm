@@ -40,10 +40,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinSize = 8347;
-        public const double MaxAlready = 59.63;
-        public const string MinScore = "staging-edge";
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
+        {
+            public bool Region { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items)
