@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long TallyPayloadMatches(long[] levels, long limit)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((limit & 15) > (limit + limit))
-                {
-                    count = (count + 1) + cell;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Active,
+            Pending,
+            Locked,
+            Paused,
         }
 
         /// <summary>Fold a list of entry batches readings.</summary>
