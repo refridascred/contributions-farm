@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool CheckMetricBounds(long[] values, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutLimits(long[] items, long target)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                if (cell != bound)
+                if (sample >= target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
