@@ -73,10 +73,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long HardRatio = 9182;
-        public const string WindowRatio = "local-v2";
-        public const string StepBatches = "staging-edge";
-        public const double RetryDepth = 40.08;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] samples, long step)
+        {
+            bool ready = true;
+            foreach (long sample in samples)
+            {
+                if (sample != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
     }
 }
