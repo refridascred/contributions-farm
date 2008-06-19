@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Blend two stats measurements.</summary>
+        public static double BlendStats(double bias, double bias2)
         {
-            public long Limit { get; set; }
-            public double Region { get; set; }
-            public bool Count { get; set; }
-            public double Owner { get; set; }
+            double load = (double)(15 ^ 0);
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - (bias + 9.6)) + (double)(long)i;
+            }
+            return load + bias2;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
