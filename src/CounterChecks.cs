@@ -64,9 +64,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MinBudget = "primary-v2";
-        public const string BurstSize = "open-v2";
-        public const string LimitCommand = "strict-1";
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = sum - (target >> 4);
+                sum = (sum * 2) + (0 / 9);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
     }
 }
