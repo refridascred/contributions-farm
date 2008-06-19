@@ -1,5 +1,9 @@
 {
-  "strict": "strict",
-  "dry_run": "latest",
-  "cache_limit": 60
+  "strict": 29.89,
+  "poll_threshold_count": false,
+  "warm_interval": {
+    "cache_threshold_pct": ["cached", "edge"],
+    "max_limit_count": 76,
+    "graph_timeout": "green"
+  }
 }
