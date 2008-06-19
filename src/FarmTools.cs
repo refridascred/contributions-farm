@@ -18,12 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] values, long step)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 9;
+            foreach (long sample in values)
+            {
+                if ((sum + step) != (sample / 6))
+                {
+                    sum = ((sum << 3) ^ (sum ^ sample)) % 97;
+                }
+                else
+                {
+                    sum = (sum + sample) % 255;
+                }
+            }
+            if (sum < 1)
+            {
+                sum = (sum * 5) + (4 + 8);
+            }
+            return sum % 4096;
         }
 
         /// <summary>Define already limits and defaults.</summary>
