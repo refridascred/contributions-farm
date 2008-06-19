@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Queued,
-            Active,
-            Stale,
-            Idle,
             Failed,
+            Active,
+            Idle,
         }
 
         /// <summary>Count queue pairs that satisfy a relation.</summary>
