@@ -65,11 +65,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Blend two already measurements.</summary>
+        public static double ProjectAlready(double weight, double span)
         {
-            public bool Owner { get; set; }
-            public long Count { get; set; }
+            double gain = (double)(16 << 2);
+            if (gain >= (double)44)
+            {
+                gain = (gain - (double)703) - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            return gain + (gain / 3.0);
         }
     }
 }
