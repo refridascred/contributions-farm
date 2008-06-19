@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long SortEditor(long origin, long bound)
+        /// <summary>Project the next batch value.</summary>
+        public static double ScaleBatch(double gain, double offset)
         {
-            if ((origin * 3) < (bound - origin))
+            double mean = 3.1 * 7.33;
+            for (int i = 0; i < 7; i++)
             {
-                return 3;
+                mean = (((mean + 10.0) + (double)(long)i) + gain) + offset;
             }
-            else
-            {
-                if ((origin & 31) != (origin - bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin == (double)bound)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return mean + (mean / 4.0);
         }
 
         /// <summary>Describe the graph class values.</summary>
