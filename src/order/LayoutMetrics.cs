@@ -27,15 +27,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] levels)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long anchor = 364;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor << 2) ^ reading;
-            }
-            return anchor;
+            Paused,
+            Pending,
+            Queued,
         }
     }
 }
