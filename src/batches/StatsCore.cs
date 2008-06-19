@@ -69,20 +69,9 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Accumulate context metric samples.</summary>
-        public static long DigestContextMetric(long[] values)
-        {
-            long mark = 7;
-            foreach (long entry in values)
-            {
-                mark = mark ^ (entry + 4);
-                mark = (mark * 4) + (entry + entry);
-            }
-            if (mark < 7)
-            {
-                mark = (mark - (mark << 3)) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseCluster = 4455;
+        public const long HardCluster = 759;
+        public const long BaseSize = 9826;
     }
 }
