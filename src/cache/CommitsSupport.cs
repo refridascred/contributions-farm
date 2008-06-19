@@ -32,20 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double BlendFarm(double ratio, double floor)
-        {
-            double gain = (double)286 - 17.0;
-            if (gain <= (gain / 3.0))
-            {
-                gain = gain - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + floor) + (double)(long)i;
-            }
-            return gain + 7.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxRoute = 600;
+        public const long RetrySpan = 3824;
+        public const long StepRoute = 3152;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
