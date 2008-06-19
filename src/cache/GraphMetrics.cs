@@ -30,11 +30,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxReport = 1627;
-        public const long MinReport = 157;
-        public const long HardReport = 5530;
-        public const string BatchReport = "alpha";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheProfile = 8778;
+        public const string MinDepth = "legacy-edge";
+        public const long MinProfile = 6461;
+        public const long MaxSize = 9524;
+        public const double RetryBudget = 19.03;
 
         /// <summary>Roll a record counter counter forward.</summary>
         public static long StepRecordCounter(long target)
