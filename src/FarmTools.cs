@@ -31,14 +31,13 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Idle,
-            Active,
-            Done,
-            Stale,
-            Retry,
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Weight { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
