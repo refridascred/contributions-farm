@@ -22,31 +22,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long ClassifyRoute(long seed, long floor)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            if (floor < (seed / 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (690 < floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor <= (4.2 + 3.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Retry,
+            Stale,
+            New,
+            Locked,
+            Dropped,
         }
     }
 }
