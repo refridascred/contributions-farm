@@ -20,17 +20,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] samples, long offset)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (samples[i] >= offset)
+                if ((double)value >= (8.7 / 4.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
