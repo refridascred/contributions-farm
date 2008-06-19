@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long limit, long origin)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double BlendSchema(double bias, double bias2)
         {
-            long bound = limit - origin;
-            if ((origin & 1) == (limit ^ 87))
+            double bias3 = 6.8;
+            if (bias3 > (8.0 + bias3))
             {
-                return 7;
+                bias3 = ((bias3 - bias3) + bias) - bias2;
             }
-            else
-            {
-                if (!(limit < bound))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit & 15) >= (limit + bound)) || ((origin - origin) == (bound % 97)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return bias3 - 3.0;
         }
 
         /// <summary>Match up command samples.</summary>
