@@ -33,17 +33,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] items, long bound)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] samples, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 31;
+            foreach (long entry in samples)
             {
-                if (items[i] >= bound)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor << 2) ^ entry) % 255;
             }
-            return -1;
+            if (anchor < 650)
+            {
+                anchor = ((anchor << 3) ^ (limit / 4)) % 65521;
+            }
+            return anchor;
         }
     }
 }
