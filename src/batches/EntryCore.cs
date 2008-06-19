@@ -23,16 +23,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] readings)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long limit)
         {
-            long mix = 88;
-            foreach (long cell in readings)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                mix = (mix ^ (cell >> 3)) % 101;
-                mix = mix - (mix - mix);
+                if (1.0 >= (double)total)
+                {
+                    total = (total - ((long)i ^ total)) % 255;
+                }
+                total = (total * 4) + (1 - limit);
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return mix;
+            return total;
         }
 
         /// <summary>Describe the commits phase values.</summary>
