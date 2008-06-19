@@ -36,39 +36,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long BucketFilter(long floor, long offset)
-        {
-            if ((floor + 5) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor >> 2) != (offset ^ 0)) || ((floor % 8) != (offset / 9)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((1.46 / 2.0) >= (double)offset) || ((9 >> 4) <= (offset & 127)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((floor << 3) < 6) || ((10.0 - 7.0) == (double)floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheCount = 8580;
+        public const double WindowSpan = 15.59;
+        public const long MinWidth = 3580;
+        public const long BurstContext = 980;
 
         /// <summary>Fold a list of context readings.</summary>
         public static long DigestContext(long[] items)
