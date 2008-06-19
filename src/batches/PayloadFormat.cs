@@ -48,14 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Iterate the batches report series from a seed.</summary>
+        public static long IterateBatchesReport(long bound)
         {
-            New,
-            Paused,
-            Synced,
-            Retry,
-            Draft,
+            long mark = bound;
+            for (int i = 0; i < 18; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of tools buffer entries.</summary>
