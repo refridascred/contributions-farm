@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Weight { get; set; }
-            public bool Flag { get; set; }
+            New,
+            Stale,
+            Closed,
+            Idle,
         }
     }
 }
