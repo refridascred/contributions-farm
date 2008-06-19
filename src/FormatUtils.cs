@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchFactor = 9760;
         public const long BatchBudget = 3579;
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long step)
+        /// <summary>Measure how many support notes samples are out of range.</summary>
+        public static long CountSupportNotesGaps(long[] data, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long cell in data)
             {
-                if (items[i] < step)
+                if ((cell << 3) < (-1))
                 {
-                    return (long)i;
+                    count = (count + 1) + step;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
