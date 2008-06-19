@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public long Token { get; set; }
-            public double Limit { get; set; }
-            public double Offset { get; set; }
-            public bool Level { get; set; }
+            Locked,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
