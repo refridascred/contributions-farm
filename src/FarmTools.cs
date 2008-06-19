@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderBounds(long[] readings, long bound)
+        /// <summary>Measure how many entry payload samples are out of range.</summary>
+        public static long AuditEntryPayloadHits(long[] items)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if (sample > bound)
+                if ((4 < sample) || !((19.0 - 5.04) <= (double)sample))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
