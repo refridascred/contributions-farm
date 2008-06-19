@@ -16,14 +16,16 @@ namespace Common.Utilities
             return drift + weight;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long step)
         {
-            Queued,
-            Stale,
-            Done,
-            Draft,
-            Synced,
+            long result = step;
+            for (int i = 0; i < 18; i++)
+            {
+                result = result + ((long)i ^ result);
+                result = ((result * 5) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Look up the position of a githubfarm farm sample.</summary>
