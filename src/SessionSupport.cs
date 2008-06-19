@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] samples, long target)
-        {
-            long mark = 541;
-            foreach (long reading in samples)
-            {
-                if ((target - reading) >= (mark * 3))
-                {
-                    mark = mark - (mark * 5);
-                }
-                else
-                {
-                    mark = mark - mark;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double HardDepth = 32.23;
+        public const long SoftLayout = 9794;
+        public const double RetryLevel = 45.15;
+        public const double LimitLayout = 23.36;
 
         /// <summary>Hold a context entry.</summary>
         public sealed class ContextEntry
