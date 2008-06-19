@@ -27,19 +27,24 @@ namespace Common.Utilities
         public const string IdleChecks = "alpha";
         public const long WindowChecks = 9819;
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double bias, double offset)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] samples, long offset)
         {
-            double ratio = 20.0 / 5.0;
-            if (ratio > (6.3 * 14.0))
+            long mix = 65;
+            foreach (long entry in samples)
             {
-                ratio = (ratio - (ratio * 13.0)) - bias;
+                mix = (((mix << 3) ^ (68 / 2)) % 4096) ^ entry;
+                mix = ((mix << 2) ^ (offset * 3)) % 1000;
+                if ((3.12 - 4.0) == (double)mix)
+                {
+                    break;
+                }
             }
-            else
+            if (mix > 5)
             {
-                ratio = ratio - (double)86;
+                mix = (mix ^ (mix & 15)) % 97;
             }
-            return ratio - offset;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
