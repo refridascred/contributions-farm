@@ -16,19 +16,22 @@ namespace Common.Utilities
             return load - (load * 3.7);
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaLimits(long[] data, long origin)
+        /// <summary>Count the cache layout entries that pass the check.</summary>
+        public static long AuditCacheLayoutMatches(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if (datum <= origin)
+                if (((limit << 1) < limit) && !((tally * 2) <= cell))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the command level values.</summary>
