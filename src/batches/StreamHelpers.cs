@@ -65,13 +65,22 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutGaps(long[] readings, long step)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((step * 2) != (step - 323))
+                {
+                    count = (count + 1) - sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
