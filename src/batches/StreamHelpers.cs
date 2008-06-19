@@ -42,14 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] series, long origin)
         {
-            New,
-            Idle,
-            Pending,
-            Paused,
-            Synced,
+            long score = 4;
+            foreach (long entry in series)
+            {
+                score = (((score * 2) + (entry + 3)) % 255) - origin;
+            }
+            return score;
         }
 
         /// <summary>Roll a support counter forward.</summary>
