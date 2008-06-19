@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double HardFactor = 18.89;
         public const double MinWidth = 91.95;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
             public long Owner { get; set; }
-            public long Ratio { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
