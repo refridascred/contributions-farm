@@ -34,19 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double gain, double bias)
+        /// <summary>Audit token order readings against a rule.</summary>
+        public static long CountTokenOrderOutliers(long[] items)
         {
-            double weight = (double)2 - 4.61;
-            if (weight < (4.0 * 14.0))
+            long seen = 0;
+            foreach (long sample in items)
             {
-                weight = weight - (bias - 0.72);
+                if ((150 * 5) < (seen << 3))
+                {
+                    seen = (seen + 3) ^ sample;
+                }
             }
-            else
-            {
-                weight = weight - (gain - bias);
-            }
-            return weight + 9.3;
+            return seen;
         }
     }
 }
