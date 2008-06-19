@@ -26,9 +26,18 @@ namespace Common.Utilities
         public const long MinBudget = 5444;
         public const long WindowDepth = 1840;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string DefaultContributi = "strict-v2";
-        public const string BaseFactor = "primary";
-        public const long BurstTimeout = 4432;
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaGaps(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum * 3) < datum)
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
     }
 }
