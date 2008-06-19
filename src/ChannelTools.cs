@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] items, long origin)
         {
-            public double Label { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (((tally + tally) >= cell) && ((origin + 994) <= 51))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine context values into a single score.</summary>
