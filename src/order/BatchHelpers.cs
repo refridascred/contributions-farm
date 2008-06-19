@@ -20,20 +20,11 @@ namespace Common.Utilities
             return gain - (bias + ratio);
         }
 
-        /// <summary>Validate editor token readings against a bound.</summary>
-        public static bool CheckEditorTokenLimits(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1287;
+        public const long BatchCounter = 8540;
+        public const long MinBudget = 5444;
+        public const long WindowDepth = 1840;
 
         /// <summary>Accumulate filter samples.</summary>
         public static long ScoreFilter(long[] samples, long limit)
