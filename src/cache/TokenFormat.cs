@@ -27,13 +27,23 @@ namespace Common.Utilities
         public const long IdleReport = 8587;
         public const long SoftReport = 5943;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Adjust a window token reading.</summary>
+        public static double SmoothWindowToken(double weight, double span)
         {
-            public double Total { get; set; }
-            public bool Score { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Stamp { get; set; }
+            double scale = span;
+            if (scale > weight)
+            {
+                scale = scale - (scale + scale);
+            }
+            else
+            {
+                scale = scale + span;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - (16.0 + weight)) + (double)(long)i;
+            }
+            return scale - weight;
         }
     }
 }
