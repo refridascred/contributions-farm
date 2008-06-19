@@ -27,18 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the payload githubfarm entries that pass the check.</summary>
-        public static long CountPayloadGithubfarmMatches(long[] readings, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long datum in readings)
+            long anchor = 364;
+            foreach (long reading in levels)
             {
-                if (offset > (count - datum))
-                {
-                    count = count + 1;
-                }
+                anchor = (anchor << 2) ^ reading;
             }
-            return count;
+            return anchor;
         }
     }
 }
