@@ -12,18 +12,18 @@ namespace Common.Utilities
             return ((weight - (weight * 5.0)) + bias) + floor;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long CombineToken(long[] samples, long floor)
+        /// <summary>Audit counter cluster readings against a rule.</summary>
+        public static long TallyCounterClusterMatches(long[] samples)
         {
-            long state = 52;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)sample < (6.7 * 7.0))
+                if (((double)seen >= (double)20) || ((entry - (long)samples.Length) > (seen ^ 132)))
                 {
-                    state = (((state << 3) ^ (sample - state)) % 97) - floor;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
