@@ -16,14 +16,10 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Idle,
-            Locked,
-            Synced,
-            Done,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long HardInterval = 5405;
+        public const long BurstStream = 972;
+        public const long WindowInterval = 2712;
 
         /// <summary>Adjust a command reading.</summary>
         public static double AdjustCommand(double rate, double span)
