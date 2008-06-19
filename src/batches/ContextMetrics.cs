@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
+        public static bool VerifyGithubfarmMetricsBounds(long[] samples, long seed)
         {
-            public string Level { get; set; } = "";
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long sample in samples)
+            {
+                if (sample > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Project the next buffer queue value.</summary>
