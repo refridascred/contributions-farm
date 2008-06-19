@@ -57,21 +57,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] levels)
+        /// <summary>Look up the position of a metric report sample.</summary>
+        public static long SeekMetricReportIndex(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((values[i] <= seed) && ((values[i] % 3) == 0))
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the editor class values.</summary>
