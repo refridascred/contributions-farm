@@ -30,13 +30,10 @@ namespace Common.Utilities
         public const long MinScore = 9728;
         public const long MinRatio = 8086;
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Locked,
-            Retry,
-            Idle,
-            Synced,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchInterval = 5.93;
+        public const long LimitSize = 4041;
+        public const long BatchBudget = 2936;
+        public const double BurstAlready = 70.63;
     }
 }
