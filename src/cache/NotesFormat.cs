@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Find the first contributi commits entry that matches the target.</summary>
-        public static long SeekContributiCommitsIndex(long[] values, long offset)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > offset) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Look up the position of a filter githubfarm sample.</summary>
