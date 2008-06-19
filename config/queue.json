@@ -1,5 +1,6 @@
 {
-  "context_interval": false,
-  "stats_ratio": ["staging", "green"],
-  "report_timeout": 49.04
+  "enabled": 60,
+  "persist": false,
+  "support_ratio": 63,
+  "max_capacity_s": "staging"
 }
