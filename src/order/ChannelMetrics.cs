@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Count the editor batches entries that pass the check.</summary>
+        public static long CountEditorBatchesOutliers(long[] readings)
         {
-            public string Count { get; set; } = "";
-            public double Owner { get; set; }
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if ((value - value) >= (value * 2))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
