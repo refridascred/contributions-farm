@@ -16,13 +16,19 @@ namespace Common.Utilities
             return load - (load * 3.7);
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Validate cluster queue readings against a bound.</summary>
+        public static bool CheckClusterQueueLimits(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the command level values.</summary>
