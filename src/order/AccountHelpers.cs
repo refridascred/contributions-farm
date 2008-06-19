@@ -38,15 +38,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Blend two route measurements.</summary>
-        public static double AdjustRoute(double gain, double floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] data, long floor)
         {
-            double bias = floor;
-            if (bias < (double)(-939))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + (13.0 * 8.6);
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
             }
-            return bias - gain;
+            return -1;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
