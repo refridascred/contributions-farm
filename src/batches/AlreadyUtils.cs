@@ -13,21 +13,13 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Match up token route samples.</summary>
-        public static long CompareTokenRouteCount(long[] levels)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Size { get; set; }
+            public long Token { get; set; }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Accumulate cluster channel samples.</summary>
