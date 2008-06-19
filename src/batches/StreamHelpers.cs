@@ -56,31 +56,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long SortRecord(long floor, long limit)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            if (limit > (limit + floor))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((floor + limit) != (limit + floor))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((double)floor >= (6.26 / 7.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Failed,
+            Draft,
+            Synced,
         }
 
         /// <summary>Describe the stream phase values.</summary>
