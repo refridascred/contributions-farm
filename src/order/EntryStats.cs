@@ -36,11 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long StepFilter = 2546;
-        public const string LimitFilter = "cached";
-        public const double MinFilter = 79.6;
-        public const long DefaultBudget = 1856;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 4039;
+        public const long LimitEntry = 3597;
+        public const string DefaultEntry = "strict";
+        public const double BatchEntry = 47.01;
+        public const long WindowSpan = 4907;
 
         /// <summary>Grade a layout value against two limits.</summary>
         public static long RankLayout(long step, long floor)
