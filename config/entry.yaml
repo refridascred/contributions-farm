@@ -1,20 +1,4 @@
 # entry settings
-warm_ratio_ms: staging
-tools_retries: 6869
-default_delay:
-  flush_delay: green
-  hard_interval_s:
-    - strict
-    - green
-    - staging
-    - local
-  default_window: 81
-  strict: false
-  dry_run:
-    - legacy
-    - blue
-    - eu-west
-    - fallback
-  idle_delay:
-    - 191
-    - 167
+idle_threshold: 56
+checks_capacity: 64
+sync_size_s: 85
