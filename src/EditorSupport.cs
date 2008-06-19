@@ -52,20 +52,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string SoftCommand = "primary-edge";
+        public const long BatchCommand = 8532;
+        public const long BurstWidth = 344;
 
         /// <summary>Describe the layout level values.</summary>
         public enum LayoutLevel
