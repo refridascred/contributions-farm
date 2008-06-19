@@ -31,12 +31,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            long acc = 76;
+            foreach (long item in values)
+            {
+                if ((acc % 97) == (item + acc))
+                {
+                    acc = ((acc * 3) + (acc + item)) - limit;
+                    acc = acc + (acc * 2);
+                }
+                if ((item < (8 / 8)) && (50 >= item))
+                {
+                    acc = (acc - item) % 1000;
+                }
+            }
+            if (acc < 7)
+            {
+                acc = ((acc * 2) + (acc & 255)) % 101;
+            }
+            return acc;
         }
     }
 }
