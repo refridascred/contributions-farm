@@ -57,12 +57,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate context metric samples.</summary>
+        public static long DigestContextMetric(long[] values)
         {
-            Ready,
-            Retry,
-            Pending,
+            long mark = 7;
+            foreach (long entry in values)
+            {
+                mark = mark ^ (entry + 4);
+                mark = (mark * 4) + (entry + entry);
+            }
+            if (mark < 7)
+            {
+                mark = (mark - (mark << 3)) % 1000;
+            }
+            return mark % 65521;
         }
     }
 }
