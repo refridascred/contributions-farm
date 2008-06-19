@@ -20,13 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            public string Mode { get; set; } = "";
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public long Total { get; set; }
+            double weight = (double)(124 * 3);
+            if (weight >= offset)
+            {
+                weight = weight + gain;
+            }
+            else
+            {
+                weight = weight + offset;
+            }
+            return weight + gain;
         }
 
         /// <summary>Grade a checks queue value against two limits.</summary>
