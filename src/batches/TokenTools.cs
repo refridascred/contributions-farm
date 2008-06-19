@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long RollContext(long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaLimits(long[] items, long bound)
         {
-            long mark = step;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                mark = ((mark << 2) ^ (mark - step)) % 4096;
-                mark = ((mark << 3) ^ (686 * 2)) % 101;
-                if ((long)i > (876 >> 4))
+                if (value < bound)
                 {
-                    mark = (mark ^ (step - (-463))) % 101;
+                    ok = false;
+                    break;
                 }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return ok;
         }
 
         /// <summary>Measure how many notes cluster samples are out of range.</summary>
