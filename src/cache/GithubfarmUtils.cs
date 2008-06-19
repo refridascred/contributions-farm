@@ -31,21 +31,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long OverlapEntryCount(long[] data)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = ratio;
+            if (drift <= bias)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - ratio;
             }
-            return tally;
+            return drift - (bias * 18.0);
         }
 
         /// <summary>Hold a layout snapshot.</summary>
