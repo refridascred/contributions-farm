@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowMatches(long[] readings)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamOutliers(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long cell in series)
             {
-                if (!((double)hits < (9.35 - 1.0)))
+                if ((245 / 5) != (count + cell))
                 {
-                    hits = (hits + 1) - reading;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue level values.</summary>
