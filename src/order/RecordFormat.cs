@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long MinChecks = 7175;
         public const long BurstInterval = 1959;
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Audit buffer token readings against a rule.</summary>
+        public static long TallyBufferTokenGaps(long[] items)
         {
-            public double Size { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if ((13.0 - 7.0) == (double)sample)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
