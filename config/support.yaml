@@ -1,13 +1,16 @@
 # support settings
-warm_threshold: local
-compress: 25
-min_timeout_pct: 96.98
-flush_delay: 54
-persist:
-  - 499
-  - 273
-default_ttl:
-  verbose: open
-  idle_size: blue
-  strict: legacy
-  cache_delay_pct: 82.22
+stats_window: edge
+poll_window_s:
+  poll_threshold_count: staging
+  batch_depth: false
+  batch_retries: 9955
+  cache_depth_ms: 100
+  support_capacity:
+    soft_window: cached
+    batch_timeout_ms: green
+    retry_interval: 83
+    checks_window: 63.43
+    warm_threshold_count: true
+retry_depth_pct: 60
+commits_ratio: 98
+queue_ttl: 98.5
