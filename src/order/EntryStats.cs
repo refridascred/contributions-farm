@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long offset)
         {
-            Retry,
-            Failed,
-            Dropped,
-            Closed,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
