@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double scale, double span)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] series, long origin)
         {
-            double bias = 8.6;
-            if (bias > (double)32)
+            long state = -50;
+            foreach (long cell in series)
             {
-                bias = (bias + 7.0) + scale;
+                state = (state ^ (cell * 3)) - origin;
             }
-            else
+            if (state < 391)
             {
-                bias = bias - bias;
+                state = state ^ (state ^ 2);
             }
-            return bias - (16.0 + span);
+            return state;
         }
 
         /// <summary>Match up cluster samples.</summary>
