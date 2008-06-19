@@ -39,13 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long WeighStream(long[] readings, long target)
         {
-            Done,
-            Failed,
-            Stale,
-            Ready,
+            long sum = 1;
+            foreach (long cell in readings)
+            {
+                sum = ((sum - sum) % 4096) ^ cell;
+                if ((target << 1) > sum)
+                {
+                    break;
+                }
+            }
+            if (sum > 840)
+            {
+                sum = (sum - (89 + 3)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Describe the report state values.</summary>
