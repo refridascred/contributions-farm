@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long LimitMetric = 8013;
-        public const long MaxLevel = 3580;
-        public const double BurstInterval = 74.44;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long TallyPayloadMatches(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((limit & 15) > (limit + limit))
+                {
+                    count = (count + 1) + cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of entry batches readings.</summary>
         public static long ScoreEntryBatches(long[] values, long origin)
