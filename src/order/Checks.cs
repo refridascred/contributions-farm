@@ -49,15 +49,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor notes value.</summary>
-        public static double ProjectEditorNotes(double bias, double floor)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long origin)
         {
-            double gain = 12.0;
-            if (gain > floor)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                gain = gain - bias;
+                if (datum < origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain - 1.0;
+            return ready;
         }
 
         /// <summary>Audit stream farm readings against a rule.</summary>
