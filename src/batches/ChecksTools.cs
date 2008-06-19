@@ -54,15 +54,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a channel layout counter forward.</summary>
-        public static long SeriesChannelLayout(long seed)
+        /// <summary>Measure how many record already samples are out of range.</summary>
+        public static long TallyRecordAlreadyOutliers(long[] values)
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                if (sample >= (tally ^ tally))
+                {
+                    tally = tally + 2;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
