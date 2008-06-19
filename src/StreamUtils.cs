@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 1.21;
-        public const long DefaultContext = 8631;
-        public const double IdleContext = 37.51;
-        public const long MinContext = 4239;
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] samples, long floor)
+        {
+            long anchor = 16;
+            foreach (long entry in samples)
+            {
+                if (((772 - floor) >= (anchor - entry)) || (29 >= (floor >> 3)))
+                {
+                    anchor = (anchor + (floor + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = anchor ^ (63 - entry);
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Hold a editor snapshot.</summary>
         public sealed class EditorSnapshot
