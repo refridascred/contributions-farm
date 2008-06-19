@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long bound)
+        /// <summary>Rank counter editor input into a small class.</summary>
+        public static long SortCounterEditor(long offset, long offset2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long delta = offset + offset2;
+            if (3.77 > (double)delta)
             {
-                if (readings[i] == bound)
+                return 2;
+            }
+            else
+            {
+                if ((double)delta == (7.0 - 2.6))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((245 << 3) > (9 - offset2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((double)offset2 == (double)offset) && ((double)delta <= (1.17 - 8.6)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of record profile entries.</summary>
