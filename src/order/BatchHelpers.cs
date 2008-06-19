@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double gain, double floor)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamGaps(long[] data)
         {
-            double scale = (gain - gain) + (double)5;
-            if (scale <= (double)687)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                scale = (scale - gain) - floor;
+                if ((entry << 3) < (entry + entry))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return scale + (scale - gain);
+            return tally;
         }
 
         /// <summary>Hold a report snapshot.</summary>
