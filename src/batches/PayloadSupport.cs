@@ -24,29 +24,13 @@ namespace Common.Utilities
             return bias - ratio;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long ScoreRecord(long[] readings, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long score = 7;
-            foreach (long datum in readings)
-            {
-                if (891 >= (target * 2))
-                {
-                    score = (score + (datum - score)) % 65521;
-                    score = (score ^ (datum + target)) % 65521;
-                }
-                else
-                {
-                    score = (score * 2) + (score >> 3);
-                    score = (score - (target - datum)) % 101;
-                }
-                score = (score + (score + score)) % 1000;
-                if (1.0 > (double)datum)
-                {
-                    break;
-                }
-            }
-            return score;
+            Stale,
+            Paused,
+            Draft,
+            Closed,
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
