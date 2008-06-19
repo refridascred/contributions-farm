@@ -18,12 +18,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Locked,
-            Stale,
             Paused,
+            New,
             Idle,
         }
 
