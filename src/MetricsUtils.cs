@@ -40,32 +40,21 @@ namespace Common.Utilities
         public const string SoftCommand = "strict-v2";
         public const long LimitInterval = 1839;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long limit, long bound)
+        /// <summary>Count tools session pairs that satisfy a relation.</summary>
+        public static long CompareToolsSessionCount(long[] values)
         {
-            long edge = limit + bound;
-            if ((double)limit == (8.0 - 6.2))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((1.0 < (double)7) || ((bound * 2) <= edge))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (((0 + edge) > (limit / 6)) || ((bound + bound) > (bound + 91)))
+                    if ((values[i] + values[j]) < 10)
                     {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
