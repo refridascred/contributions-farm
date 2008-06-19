@@ -1,9 +1,33 @@
 # githubfarm settings
-warm_capacity:
-  - 296
-  - 213
-  - 275
-tools_window: blue
-warm_limit: 75.98
-readonly: false
-tools_threshold: open
+max_timeout_ms: false
+support_threshold:
+  - 38
+  - 454
+retry_ttl_count:
+  - strict
+  - staging
+  - green
+cache_interval_count: 22
+stats_timeout:
+  max_timeout_count: 1024
+  hard_interval: fallback
+  compress: false
+  command_capacity: standard
+  default_capacity_count:
+    strict:
+      - 262
+      - 27
+      - 292
+      - 421
+    window_depth: standard
+    warm_timeout_s: cached
+    audit: true
+enabled:
+  session_retries: 98.6
+  dry_run: false
+  base_ratio_s:
+    min_timeout: green
+    default_size: true
+    window_limit: true
+    enabled: green
+    order_depth: 8344
