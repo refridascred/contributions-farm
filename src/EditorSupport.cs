@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] series, long origin)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TallyBatches(long[] items, long bound)
         {
-            long state = -797;
-            foreach (long reading in series)
+            long mark = -8;
+            foreach (long sample in items)
             {
-                if ((double)origin == (double)13)
+                if (((mark + sample) >= sample) || ((mark << 1) < (274 >> 3)))
                 {
-                    state = (((state << 3) ^ 6) % 1000) ^ reading;
-                }
-                else
-                {
-                    state = state + (602 * 4);
+                    mark = (mark - (mark & 1)) - bound;
                 }
             }
-            return state;
+            return mark % 4096;
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
