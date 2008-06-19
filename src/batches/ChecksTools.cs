@@ -34,13 +34,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Stamp { get; set; }
+            Failed,
+            Paused,
+            Ready,
+            Retry,
+            Pending,
         }
 
         /// <summary>Hold a buffer record.</summary>
