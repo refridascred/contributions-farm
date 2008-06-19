@@ -14,20 +14,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate cache support readings against a bound.</summary>
-        public static bool CheckCacheSupportRange(long[] series, long origin)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string WindowMetric = "standard-1";
+        public const double MinMetric = 81.62;
+        public const long RetryFactor = 6380;
+        public const long BaseSize = 6093;
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
