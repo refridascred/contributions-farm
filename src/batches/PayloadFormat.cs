@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count counter buffer pairs that satisfy a relation.</summary>
-        public static long MatchCounterBufferCount(long[] samples)
+        /// <summary>Count the entry queue entries that pass the check.</summary>
+        public static long AuditEntryQueueOutliers(long[] series, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((limit - value) == (seen % 100))
                 {
-                    if ((samples[i] ^ samples[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
