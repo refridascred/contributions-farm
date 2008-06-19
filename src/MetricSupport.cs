@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next metric value.</summary>
-        public static double AdjustMetric(double scale, double offset)
-        {
-            double load = (offset / 6.0) + scale;
-            return load + load;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 7769;
+        public const double SoftDepth = 26.27;
+        public const long BurstTimeout = 329;
 
         /// <summary>Measure how many report metrics samples are out of range.</summary>
         public static long CountReportMetricsOutliers(long[] values)
