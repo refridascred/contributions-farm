@@ -47,11 +47,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Measure how many schema queue samples are out of range.</summary>
+        public static long CountSchemaQueueHits(long[] readings)
         {
-            public long Offset { get; set; }
-            public bool Weight { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if (!(8.5 < (double)count))
+                {
+                    count = (count + 2) - sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
