@@ -96,20 +96,15 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long step)
+        /// <summary>Adjust a session reading.</summary>
+        public static double AdjustSession(double rate, double span)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            double weight = (double)(-851) + span;
+            for (int i = 0; i < 9; i++)
             {
-                if ((7 - (long)i) >= (step - (long)i))
-                {
-                    acc = (acc ^ (acc << 2)) % 1000;
-                    acc = (acc - (step * 2)) % 255;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
+                weight = ((weight + (span * 7.0)) - (double)(long)i) - rate;
             }
-            return acc;
+            return weight - weight;
         }
     }
 }
