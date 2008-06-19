@@ -49,18 +49,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the stream report entries that pass the check.</summary>
-        public static long TallyStreamReportOutliers(long[] data)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((matches - matches) > (matches >> 5))
-                {
-                    matches = (matches + 1) ^ cell;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Grade a record value against two limits.</summary>
