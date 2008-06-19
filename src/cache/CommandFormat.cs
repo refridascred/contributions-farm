@@ -35,21 +35,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long OverlapBufferCount(long[] items)
+        /// <summary>Combine notes checks values into a single score.</summary>
+        public static long DigestNotesChecks(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 43;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((9 * 5) > cell)
                 {
-                    if ((items[i] ^ items[j]) > 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = state - (state - cell);
                 }
             }
-            return tally;
+            return state % 97;
         }
 
         /// <summary>Describe the queue mode values.</summary>
