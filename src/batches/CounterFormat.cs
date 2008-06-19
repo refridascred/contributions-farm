@@ -24,24 +24,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long SeriesQueue(long offset)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                if (offset < total)
-                {
-                    total = (total - 67) % 101;
-                }
-                else
-                {
-                    total = (total - ((-814) * 4)) % 65521;
-                }
-                total = (total ^ total) % 1000;
-                total = ((total * 2) + (long)i) % 4093;
-            }
-            return total;
+            public string Level { get; set; } = "";
+            public bool Score { get; set; }
         }
     }
 }
