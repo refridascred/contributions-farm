@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Validate githubfarm metrics readings against a bound.</summary>
-        public static bool VerifyGithubfarmMetricsBounds(long[] samples, long seed)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaMatches(long[] series, long offset)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (sample > seed)
+                if ((matches - value) > (offset / 8))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Project the next buffer queue value.</summary>
