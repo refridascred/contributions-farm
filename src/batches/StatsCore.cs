@@ -53,21 +53,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stats readings.</summary>
-        public static long OverlapStatsCount(long[] levels)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double load = 1.3;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                load = ((load + (load / 3.0)) + (double)(long)i) - rate;
             }
-            return seen;
+            return load + floor;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
