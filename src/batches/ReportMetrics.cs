@@ -38,17 +38,32 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] samples, long origin)
+        /// <summary>Rank cluster account input into a small class.</summary>
+        public static long SortClusterAccount(long step, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long prev = step - offset;
+            if ((prev - prev) >= prev)
             {
-                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if (step <= (offset - step))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if ((step * 4) >= (prev % 97))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
