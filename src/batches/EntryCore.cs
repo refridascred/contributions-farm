@@ -36,15 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double scale, double bias)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            double mean = bias;
-            if (mean >= (double)9)
-            {
-                mean = (mean - 6.35) + scale;
-            }
-            return mean + 3.5;
+            Closed,
+            Synced,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
