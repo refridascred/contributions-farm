@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSpan = 8625;
-        public const string BurstSize = "fallback";
-        public const long MinOrder = 5584;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((matches - value) > (value + matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferOutliers(long[] data, long floor)
