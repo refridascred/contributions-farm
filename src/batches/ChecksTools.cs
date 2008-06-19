@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenGaps(long[] levels, long bound)
         {
-            Idle,
-            Done,
-            Failed,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits / 2) > 6)
+                {
+                    hits = ((hits + 1) + value) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a metrics entry.</summary>
