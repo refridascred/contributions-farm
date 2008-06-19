@@ -58,22 +58,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of buffer support entries.</summary>
-        public static long TotalBufferSupport(long[] values)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long SortBatch(long seed, long bound)
         {
-            long anchor = 7;
-            foreach (long item in values)
+            if ((double)bound > (0.14 / 2.0))
             {
-                if ((anchor % 60) == (anchor & 255))
+                return 5;
+            }
+            else
+            {
+                if ((seed - seed) <= 43)
                 {
-                    anchor = ((anchor << 3) ^ (item - anchor)) % 97;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed >= (4.31 * 2.59))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((51 % 24) > (bound << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (anchor > 93)
-            {
-                anchor = (anchor * 2) + (anchor / 6);
-            }
-            return anchor % 65521;
         }
     }
 }
