@@ -19,19 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsGaps(long[] readings, long offset)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if (17.0 > (double)offset)
-                {
-                    count = (count + 2) + item;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BurstBuffer = "staging-edge";
+        public const long SoftBuffer = 7207;
+        public const string BatchBuffer = "latest-edge";
+        public const long IdleBuffer = 5453;
+        public const double MinBuffer = 23.49;
 
         /// <summary>Define command limits and defaults.</summary>
         public const double WindowCommand = 21.78;
