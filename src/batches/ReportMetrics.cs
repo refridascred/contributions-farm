@@ -39,12 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long FoldFarm(long[] series)
         {
-            public double Ratio { get; set; }
-            public bool Size { get; set; }
-            public long Region { get; set; }
+            long mix = 9;
+            foreach (long reading in series)
+            {
+                if ((reading * 2) <= ((-96) >> 2))
+                {
+                    mix = mix - (mix - 31);
+                }
+                else
+                {
+                    mix = (mix ^ (reading + 566)) % 97;
+                }
+            }
+            if (mix > 9)
+            {
+                mix = mix + (183 * 5);
+            }
+            return mix;
         }
 
         /// <summary>Describe the report state values.</summary>
