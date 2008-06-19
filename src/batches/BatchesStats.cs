@@ -22,13 +22,13 @@ namespace Common.Utilities
         public const double SoftFactor = 7.56;
         public const long StepMetric = 2251;
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] series, long origin)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordLimits(long[] data, long origin)
         {
             bool ok = true;
-            foreach (long datum in series)
+            foreach (long sample in data)
             {
-                if (datum > origin)
+                if (sample >= origin)
                 {
                     ok = false;
                     break;
