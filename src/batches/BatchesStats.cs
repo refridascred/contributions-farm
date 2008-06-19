@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] data, long target)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            bool ok = true;
-            foreach (long item in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item >= target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
