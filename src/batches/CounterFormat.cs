@@ -32,21 +32,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account readings.</summary>
-        public static long PairAccountCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 6881;
+        public const string MaxWidth = "legacy-edge";
+        public const long CacheQueue = 8019;
+        public const long LimitQueue = 3388;
     }
 }
