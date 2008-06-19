@@ -30,11 +30,39 @@ namespace Common.Utilities
             return mean - (double)2;
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double gain, double span)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long step, long origin)
         {
-            double scale = gain / 4.0;
-            return (scale - (3.0 + 6.9)) + span;
+            long lane = step + origin;
+            if ((lane & 63) <= origin)
+            {
+                return 7;
+            }
+            else
+            {
+                if (7 >= lane)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((lane <= (origin * 4)) && ((origin + lane) > (origin / 9)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((lane ^ lane) > (origin * 4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Combine queue values into a single score.</summary>
