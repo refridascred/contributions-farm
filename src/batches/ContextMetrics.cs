@@ -64,11 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double SmoothBatch(double ratio, double bias)
         {
-            public bool Total { get; set; }
-            public long Rank { get; set; }
+            double drift = (double)970 * 13.0;
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (((drift - drift) + (double)(long)i) + ratio) - bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Describe the layout state values.</summary>
