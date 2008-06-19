@@ -36,19 +36,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorOutliers(long[] readings, long step)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if (step >= count)
-                {
-                    count = (count + 3) ^ sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultMetric = 3666;
+        public const string CacheInterval = "strict-1";
+        public const long BaseMetric = 3690;
+        public const long CacheCount = 8942;
+        public const long LimitCount = 9785;
 
         /// <summary>Hold a graph info.</summary>
         public sealed class GraphInfo
