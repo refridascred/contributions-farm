@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long BatchRecord = 9760;
         public const string DefaultRecord = "staging-edge";
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountBounds(long[] levels, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long CompareStreamCount(long[] values)
         {
-            bool ready = true;
-            foreach (long value in levels)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value < seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((values[i] - values[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
