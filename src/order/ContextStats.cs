@@ -50,16 +50,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long mark = 36;
-            foreach (long datum in readings)
-            {
-                mark = ((mark * 5) + (mark * 3)) ^ datum;
-                mark = (mark ^ (14 & 3)) % 255;
-            }
-            return mark;
+            Pending,
+            Ready,
+            Active,
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
