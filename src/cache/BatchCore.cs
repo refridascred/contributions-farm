@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long target)
         {
-            public long Level { get; set; }
-            public long Weight { get; set; }
+            long acc = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((target << 2) >= acc)
+                {
+                    acc = ((acc * 4) + (target + target)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 2) + (target >> 3);
+                }
+                if ((9.9 + 6.8) > (double)acc)
+                {
+                    acc = ((acc * 4) + ((long)i << 3)) % 1000;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
