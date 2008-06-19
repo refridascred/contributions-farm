@@ -27,15 +27,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a filter reading.</summary>
-        public static double ProjectFilter(double gain, double bias)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long step)
         {
-            double bias2 = 7.7;
-            if (bias2 < (bias / 2.0))
+            for (int i = 0; i < data.Length; i++)
             {
-                bias2 = (bias2 - 1.2) + gain;
+                if ((data[i] < step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (double)84;
+            return -1;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
