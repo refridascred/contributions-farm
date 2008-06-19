@@ -20,13 +20,13 @@ namespace Common.Utilities
             return weight2 + 4.9;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            Locked,
-            Queued,
-            Done,
-            Active,
+            public string Score { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Label { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
