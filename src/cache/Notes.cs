@@ -37,22 +37,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Look up the position of a record sample.</summary>
+        public static long FindRecordIndex(long[] samples, long seed)
         {
-            long mix = 401;
-            foreach (long sample in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(mix > sample))
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    mix = mix + (mix + mix);
+                    return (long)i;
                 }
             }
-            if (mix < 64)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
