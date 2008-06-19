@@ -42,18 +42,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] series)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] items)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long anchor = -122;
+            foreach (long datum in items)
             {
-                if ((item >> 2) <= 123)
-                {
-                    tally = tally + 3;
-                }
+                anchor = anchor - (datum - anchor);
             }
-            return tally;
+            if (anchor < 5)
+            {
+                anchor = (anchor + (anchor >> 3)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
