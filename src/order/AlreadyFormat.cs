@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long bound, long floor)
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            long cur = bound + floor;
-            if ((cur / 3) <= cur)
+            long state = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                state = state ^ state;
+                state = ((state * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)cur > (6.0 * 7.4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((floor / 2) <= (bound ^ floor)) && (bound < (floor >> 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (bound < (floor >> 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
