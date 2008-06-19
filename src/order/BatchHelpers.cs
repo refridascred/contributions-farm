@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamGaps(long[] data)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long score = 41;
+            foreach (long entry in items)
             {
-                if ((entry << 3) < (entry + entry))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = ((score + 4) % 65521) + entry;
             }
-            return tally;
+            return score % 97;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
