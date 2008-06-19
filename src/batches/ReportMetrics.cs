@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the format level values.</summary>
-        public enum FormatLevel
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] data)
         {
-            Failed,
-            Closed,
-            Stale,
+            long matches = 0;
+            foreach (long entry in data)
+            {
+                if ((matches + 1) == (entry - matches))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every context metric entry stays within the limit.</summary>
