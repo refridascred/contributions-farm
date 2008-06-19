@@ -75,18 +75,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long TotalBatch(long[] data, long target)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long mix = 3;
-            foreach (long item in data)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (!((double)item <= (8.0 * 6.97)))
+                if ((5.56 - 4.7) != (double)mix)
                 {
-                    mix = mix - target;
+                    mix = (mix ^ (target + target)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix % 65521;
+            return mix;
         }
     }
 }
