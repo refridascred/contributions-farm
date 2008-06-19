@@ -14,19 +14,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double weight, double offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double rate = 6.0 / 6.0;
-            if (rate < 6.0)
-            {
-                rate = ((rate - 4.0) + weight) - offset;
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            return rate - (double)576;
+            Pending,
+            Queued,
+            Active,
+            Done,
+            Retry,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
