@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit counter cluster readings against a rule.</summary>
-        public static long TallyCounterClusterMatches(long[] samples)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long FoldGraph(long[] items)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long anchor = 982;
+            foreach (long value in items)
             {
-                if (((double)seen >= (double)20) || ((entry - (long)samples.Length) > (seen ^ 132)))
+                if ((17.0 * 2.0) > (double)anchor)
                 {
-                    seen = seen + 2;
+                    anchor = (anchor * 3) + value;
                 }
             }
-            return seen;
+            if (anchor > (-5))
+            {
+                anchor = anchor - anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a schema buffer value against two limits.</summary>
