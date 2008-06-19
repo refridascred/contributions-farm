@@ -68,20 +68,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next checks value from a seed.</summary>
-        public static long StepChecks(long limit)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long mix = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                if (((limit ^ mix) <= mix) || ((63 - (long)i) > limit))
-                {
-                    mix = (mix + (limit + limit)) % 97;
-                    mix = (mix + (limit + limit)) % 255;
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            New,
+            Paused,
+            Pending,
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
