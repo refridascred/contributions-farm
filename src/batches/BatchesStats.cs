@@ -12,23 +12,31 @@ namespace Common.Utilities
             return (weight - (weight - floor)) + ratio;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double SmoothChannel(double weight, double bias)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long ClassifyCache(long step, long floor)
         {
-            double mean = (double)(9 * 5);
-            if (mean <= (weight * 4.19))
+            if (step > 893)
             {
-                mean = (mean - mean) - bias;
+                return 3;
             }
             else
             {
-                mean = mean - (mean / 7.0);
+                if ((step << 2) > (74 + floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((floor / 2) <= step)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (double)0) - (double)(long)i;
-            }
-            return mean + (mean * 5.1);
         }
 
         /// <summary>Describe the report level values.</summary>
