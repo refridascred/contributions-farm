@@ -47,11 +47,23 @@ namespace Common.Utilities
         public const long BatchProfile = 7329;
         public const double IdleTimeout = 88.41;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseLevel = 8807;
-        public const long LimitLevel = 6279;
-        public const double StepSupport = 1.52;
-        public const long BaseFactor = 4538;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long CountPayloadHits(long[] data, long seed)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (((-71) <= (seed / 7)) || ((double)reading > 8.8))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count tools context pairs that satisfy a relation.</summary>
         public static long OverlapToolsContextCount(long[] samples)
