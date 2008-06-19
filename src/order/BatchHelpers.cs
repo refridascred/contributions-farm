@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Fold a list of window command readings.</summary>
-        public static long CombineWindowCommand(long[] samples, long floor)
+        /// <summary>Count the report filter entries that pass the check.</summary>
+        public static long AuditReportFilterGaps(long[] series, long seed)
         {
-            long carry = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (((floor % 24) < (datum ^ carry)) && ((carry / 7) > 867))
+                if ((hits + value) <= (seed % 3))
                 {
-                    carry = ((carry * 5) + carry) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return carry % 1000;
+            return hits;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
