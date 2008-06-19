@@ -1,10 +1,11 @@
 # Command notes
 
-Use editor settings to tune how often checks data is refreshed.
-The stream report groups every batches by entry.
+The entry report groups every tools by layout.
+The buffer helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep batch values small
-- Validate graph input early
+- Review metrics limits each release
+- Validate token input early
+- Prefer notes defaults
+- Keep profile values small
