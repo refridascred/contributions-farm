@@ -1,7 +1,6 @@
 {
-  "min_retries": 250,
-  "max_delay_count": 100,
-  "commits_ttl": [367, 195],
-  "hard_timeout": "open",
-  "default_ttl": true
+  "verbose": true,
+  "cache_ratio_ms": "legacy",
+  "hard_timeout_count": 86,
+  "order_ttl": 96
 }
