@@ -20,20 +20,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long SeriesEntry(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                if (9.0 < (double)(long)i)
-                {
-                    acc = acc + 0;
-                }
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string DefaultLevel = "cached-v2";
+        public const string IdleWindow = "cached-edge";
+        public const string MaxWindow = "fallback";
+        public const long BaseRatio = 4209;
+        public const long HardWindow = 7081;
 
         /// <summary>Combine filter values into a single score.</summary>
         public static long TallyFilter(long[] samples)
