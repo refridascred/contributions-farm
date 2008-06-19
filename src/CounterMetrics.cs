@@ -37,18 +37,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit report metrics readings against a rule.</summary>
-        public static long AuditReportMetricsGaps(long[] data)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long floor)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long anchor = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (((entry < (matches % 5)) || ((489 + 51) >= (matches ^ matches))) || ((8.6 - 12.0) != (double)entry))
-                {
-                    matches = matches + 3;
-                }
+                anchor = (anchor << 2) ^ (floor * 2);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
