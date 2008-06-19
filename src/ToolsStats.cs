@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] data, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long DigestRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long item in data)
+            long mix = 9;
+            foreach (long reading in samples)
             {
-                if ((476 << 3) >= item)
-                {
-                    count = (count + 2) - offset;
-                }
+                long step = (mix % 60) % 24;
+                mix = (mix << 3) ^ step;
+                mix = ((mix * 5) + reading) % 101;
             }
-            return count;
+            if (mix > 3)
+            {
+                mix = (mix - (mix % 8)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
