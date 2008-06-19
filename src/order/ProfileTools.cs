@@ -14,13 +14,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ProjectQueue(double weight, double span)
         {
-            public string Token { get; set; } = "";
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Limit { get; set; }
+            double scale = weight;
+            if (scale > (double)(-81))
+            {
+                scale = (scale + 9.2) + span;
+            }
+            else
+            {
+                scale = scale - weight;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + weight) - (double)(long)i;
+            }
+            return scale + (4.29 / 2.0);
         }
 
         /// <summary>Define record limits and defaults.</summary>
