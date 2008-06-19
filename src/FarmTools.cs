@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Measure how many entry payload samples are out of range.</summary>
-        public static long AuditEntryPayloadHits(long[] items)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long carry = 29;
+            foreach (long entry in samples)
             {
-                if ((4 < sample) || !((19.0 - 5.04) <= (double)sample))
-                {
-                    tally = tally + 1;
-                }
+                carry = ((carry ^ (carry * 5)) % 4096) ^ entry;
             }
-            return tally;
+            if (carry < (-7))
+            {
+                carry = carry ^ (carry - carry);
+            }
+            return carry;
         }
     }
 }
