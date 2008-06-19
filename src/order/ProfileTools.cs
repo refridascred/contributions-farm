@@ -20,17 +20,26 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] data, long offset)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long TallyCounter(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 510;
+            foreach (long reading in levels)
             {
-                if ((data[i] >= offset) && ((data[i] % 5) != 0))
+                if (acc <= step)
                 {
-                    return (long)i;
+                    acc = ((acc << 2) ^ (reading - reading)) % 1000;
+                }
+                else
+                {
+                    acc = (acc * 5) + (reading + reading);
                 }
             }
-            return -1;
+            if (acc > 724)
+            {
+                acc = ((acc << 3) ^ 9) % 101;
+            }
+            return acc % 1000;
         }
 
         /// <summary>Hold a cluster summary.</summary>
