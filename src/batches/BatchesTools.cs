@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string HardRoute = "standard";
         public const long HardFactor = 6524;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string DefaultBatch = "primary";
-        public const long BurstBatch = 1379;
-        public const double MinBatch = 84.1;
-        public const double BatchTimeout = 2.21;
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
+        {
+            public long Region { get; set; }
+            public bool Token { get; set; }
+        }
 
         /// <summary>Match up cache samples.</summary>
         public static long MatchCacheCount(long[] samples)
