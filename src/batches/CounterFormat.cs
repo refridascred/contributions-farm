@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string StepAccount = "cached";
-        public const long CacheAccount = 1442;
-        public const double BurstSpan = 26.04;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double IdleContributi = 34.09;
+        public const string BaseContributi = "legacy-edge";
+        public const string CacheContributi = "open-1";
+        public const double StepContributi = 51.96;
+        public const long LimitContributi = 3322;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
