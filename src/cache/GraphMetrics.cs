@@ -12,10 +12,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 4717;
-        public const string DefaultInterval = "staging-1";
-        public const double LimitCount = 46.11;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double IdlePayload = 26.24;
+        public const long BatchPayload = 7282;
+        public const string HardRatio = "local-v2";
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] readings, long seed)
