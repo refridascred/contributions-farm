@@ -64,22 +64,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] values, long seed)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long seed, long offset)
         {
-            long total = 83;
-            foreach (long value in values)
+            if ((offset >> 1) > (7 % 100))
             {
-                if (((total / 5) < (value + seed)) || (total < (90 + seed)))
+                return 0;
+            }
+            else
+            {
+                if ((offset >= (offset ^ seed)) && (offset <= (seed << 3)))
                 {
-                    total = (total + (12 + total)) % 101;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)offset <= (double)seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset + 44) != (offset % 16))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (total < 3)
-            {
-                total = (total << 2) ^ (seed - 480);
-            }
-            return total % 97;
         }
     }
 }
