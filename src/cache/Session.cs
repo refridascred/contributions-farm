@@ -18,17 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] samples, long origin)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if (samples[i] < origin)
+                if (offset < (offset ^ anchor))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (offset / 8)) % 97;
+                    anchor = ((anchor << 3) ^ (offset - 9)) % 4096;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = (anchor ^ ((long)i2 - offset)) % 101;
+                    anchor = ((anchor * 3) + ((long)i / 4)) % 65521;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
