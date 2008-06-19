@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
-        {
-            Pending,
-            Queued,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long SoftWidth = 9176;
+        public const long BaseCache = 5618;
+        public const long LimitLevel = 3410;
+        public const string DefaultCache = "strict-1";
+        public const long HardBudget = 9168;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
