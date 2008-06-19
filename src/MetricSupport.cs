@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] series)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double scale, double bias)
         {
-            long anchor = -861;
-            foreach (long sample in series)
+            double scale2 = scale;
+            if (scale2 >= (scale * 8.0))
             {
-                anchor = (anchor + (5 / 6)) % 1000;
-                anchor = (anchor - (sample + anchor)) % 97;
+                scale2 = scale2 - bias;
             }
-            return anchor;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = (scale2 + (8.3 * 0.28)) + (double)(long)i;
+            }
+            return scale2 + (scale2 - 6.0);
         }
 
         /// <summary>Fold a list of schema readings.</summary>
