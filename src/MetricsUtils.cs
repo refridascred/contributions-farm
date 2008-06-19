@@ -70,19 +70,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool GuardCommitsBounds(long[] data, long origin)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] values, long step)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            bool found = true;
+            foreach (long datum in values)
             {
-                if (entry < origin)
+                if (datum < step)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
