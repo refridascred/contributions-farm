@@ -27,24 +27,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a already record pair into a bucket.</summary>
-        public static long ClassifyAlreadyRecord(long step, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if ((step + step) < bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if (step > bound)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Count { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
