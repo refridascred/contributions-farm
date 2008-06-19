@@ -31,13 +31,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] series, long seed)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long bound)
         {
             bool valid = true;
-            foreach (long sample in series)
+            foreach (long sample in levels)
             {
-                if (sample < seed)
+                if (sample > bound)
                 {
                     valid = false;
                     break;
