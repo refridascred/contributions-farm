@@ -1,16 +1,11 @@
 {
-  "compress": 54.79,
-  "soft_capacity_pct": {
-    "verbose": "stable",
-    "warm_ttl_count": 16.03,
-    "default_window": true,
-    "strict": true
+  "contributi_timeout": {
+    "batch_timeout_ms": 75.58,
+    "soft_retries_s": false,
+    "readonly": 96,
+    "soft_interval_pct": 40,
+    "burst_depth_ms": 99
   },
-  "max_size_s": {
-    "idle_depth": "blue",
-    "max_delay_ms": 83.99,
-    "audit": true,
-    "filter_delay": "latest"
-  },
-  "default_threshold_count": "staging"
+  "persist": "eu-west",
+  "counter_retries": 60
 }
