@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long SeriesEditor(long origin)
+        /// <summary>Blend two profile measurements.</summary>
+        public static double ScaleProfile(double ratio, double bias)
         {
-            long mix = origin;
-            for (int i = 0; i < 10; i++)
+            double gain = (double)1;
+            if (gain > 3.01)
             {
-                mix = (mix * 4) + (origin >> 1);
-                mix = ((mix * 5) + (long)i) % 1000;
+                gain = gain - 6.6;
             }
-            return mix;
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (double)219) + (double)(long)i;
+            }
+            return gain - (bias + ratio);
         }
 
         /// <summary>Validate editor token readings against a bound.</summary>
