@@ -31,19 +31,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long bound)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long CompareSessionCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long sample in levels)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (sample > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
