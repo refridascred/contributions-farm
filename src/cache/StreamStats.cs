@@ -32,11 +32,20 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MinSchema = 50.16;
-        public const long LimitFactor = 2107;
-        public const long RetrySchema = 3373;
-        public const long MaxLevel = 3181;
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] series, long step)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long MinSpan = 8194;
