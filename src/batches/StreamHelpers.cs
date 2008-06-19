@@ -65,14 +65,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Retry,
-            Locked,
-            Stale,
-            Draft,
-            Idle,
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
