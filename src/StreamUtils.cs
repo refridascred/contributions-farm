@@ -39,23 +39,21 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ScaleFormat(double ratio, double span)
+        /// <summary>Match up payload samples.</summary>
+        public static long ComparePayloadCount(long[] samples)
         {
-            double mean = span + ratio;
-            if (mean <= span)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (span + 5.33);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)9;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (8.4 - 4.2)) + (double)(long)i;
-            }
-            return mean + mean;
+            return count;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
