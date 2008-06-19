@@ -19,21 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] values)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long floor, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long edge = floor ^ target;
+            if (edge < (edge << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((edge - edge) >= target)
                 {
-                    if ((values[i] - values[j]) < 1)
+                    return 3;
+                }
+                else
+                {
+                    if (floor <= (floor << 2))
                     {
-                        hits = hits + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((1.2 + 4.5) < (double)edge) && ((target % 8) >= edge))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Roll a channel layout counter forward.</summary>
