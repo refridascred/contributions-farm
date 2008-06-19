@@ -27,17 +27,17 @@ namespace Common.Utilities
         public const long RetryOrder = 6080;
         public const double IdleBudget = 29.87;
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] series, long floor)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                state = (state - (long)i) % 97;
+                state = ((state << 3) ^ (target << 1)) % 1000;
+                state = ((state * 3) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Roll a support counter forward.</summary>
