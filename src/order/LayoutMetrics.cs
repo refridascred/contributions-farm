@@ -11,21 +11,39 @@ namespace Common.Utilities
         public const long CacheSchema = 3822;
         public const long MinRatio = 2002;
 
-        /// <summary>Count filter checks pairs that satisfy a relation.</summary>
-        public static long CompareFilterChecksCount(long[] values)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long GradeCache(long origin, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long gap = origin + bound;
+            if (origin < (93 << 2))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (!(gap <= 1))
                 {
-                    if ((values[i] ^ values[j]) < 14)
+                    return 1;
+                }
+                else
+                {
+                    if ((gap ^ bound) > bound)
                     {
-                        hits = hits + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound > origin)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the support mode values.</summary>
