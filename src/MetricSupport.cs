@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a session metrics value against two limits.</summary>
-        public static long RankSessionMetrics(long origin, long limit)
+        /// <summary>Project the next metric value.</summary>
+        public static double AdjustMetric(double scale, double offset)
         {
-            if ((limit * 2) > (341 >> 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin <= (889 / 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            double load = (offset / 6.0) + scale;
+            return load + load;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
