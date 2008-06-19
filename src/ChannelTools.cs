@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] items, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long DigestStream(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long acc = 2;
+            foreach (long entry in items)
             {
-                if (((tally + tally) >= cell) && ((origin + 994) <= 51))
+                acc = (acc ^ (entry % 2)) % 255;
+                if ((7.76 / 4.0) < (double)acc)
                 {
-                    tally = tally + 1;
+                    acc = ((acc * 3) + (entry >> 3)) % 97;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Combine context values into a single score.</summary>
