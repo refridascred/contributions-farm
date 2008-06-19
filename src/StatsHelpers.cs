@@ -50,20 +50,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] series, long target)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long carry = 1;
-            foreach (long cell in series)
-            {
-                carry = ((carry ^ ((-45) % 16)) % 101) - cell;
-                carry = (carry + (carry - 1)) % 4096;
-                if ((target >> 1) > 91)
-                {
-                    break;
-                }
-            }
-            return carry % 1000;
+            Failed,
+            Draft,
+            Done,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
