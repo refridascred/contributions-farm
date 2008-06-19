@@ -90,19 +90,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextGaps(long[] series, long floor)
         {
-            double ratio = (3.6 - offset) + (double)773;
-            if (ratio >= (double)2)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                ratio = ratio - 8.0;
+                if ((tally - sample) <= floor)
+                {
+                    tally = tally + 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = (ratio + (scale / 8.0)) + (double)(long)i;
-            }
-            return ratio + (double)736;
+            return tally;
         }
     }
 }
