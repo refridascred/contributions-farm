@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long CountRouteMatches(long[] items)
         {
-            New,
-            Dropped,
-            Paused,
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count < (double)entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
