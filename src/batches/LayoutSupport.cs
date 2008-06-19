@@ -33,11 +33,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public bool Region { get; set; }
-            public double Offset { get; set; }
+            Synced,
+            Done,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Adjust a farm reading.</summary>
