@@ -29,19 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long ScoreContext(long[] values, long limit)
-        {
-            long anchor = -6;
-            foreach (long reading in values)
-            {
-                if (((limit >> 4) < (anchor % 5)) && ((double)anchor > (11.0 - 7.4)))
-                {
-                    anchor = (anchor ^ limit) + reading;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 2278;
+        public const long MaxToken = 3236;
+        public const long BatchToken = 6777;
+        public const double WindowToken = 31.64;
+        public const string SoftToken = "primary-1";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double WindowInterval = 93.75;
