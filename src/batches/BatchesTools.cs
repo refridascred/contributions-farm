@@ -18,13 +18,21 @@ namespace Common.Utilities
         public const double MinBatch = 84.1;
         public const double BatchTimeout = 2.21;
 
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Match up cache samples.</summary>
+        public static long MatchCacheCount(long[] samples)
         {
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
