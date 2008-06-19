@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterOutliers(long[] readings, long offset)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double ratio, double bias)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double rate = (ratio / 4.0) - (ratio - bias);
+            if (rate >= (double)7)
             {
-                if ((tally + tally) < (offset % 8))
-                {
-                    tally = (tally + 1) ^ value;
-                }
+                rate = rate + bias;
             }
-            return tally;
+            else
+            {
+                rate = rate + (double)632;
+            }
+            return rate + (rate / 7.0);
         }
 
         /// <summary>Define report limits and defaults.</summary>
