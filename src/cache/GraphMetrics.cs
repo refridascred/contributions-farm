@@ -90,18 +90,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long MeasureContextGaps(long[] series, long floor)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((tally - sample) <= floor)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Ready,
+            New,
+            Dropped,
         }
     }
 }
