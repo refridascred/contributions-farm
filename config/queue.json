@@ -1,6 +1,16 @@
 {
-  "enabled": 60,
-  "persist": false,
-  "support_ratio": 63,
-  "max_capacity_s": "staging"
+  "warm_window_count": 68,
+  "soft_ttl_pct": 53.05,
+  "base_window_count": {
+    "min_delay_s": {
+      "verbose": "eu-west",
+      "cache_interval": "edge",
+      "hard_threshold": false,
+      "default_window_count": 4447
+    },
+    "order_window": true,
+    "hard_ratio_ms": 5539
+  },
+  "flush_depth": 52.3,
+  "base_size_pct": 40.15
 }
