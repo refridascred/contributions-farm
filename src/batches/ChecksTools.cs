@@ -43,18 +43,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit channel tools readings against a rule.</summary>
-        public static long CountChannelToolsMatches(long[] values, long seed)
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if (!(((datum * 5) > (541 & 63)) || ((6.9 / 6.0) == (double)seed)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
