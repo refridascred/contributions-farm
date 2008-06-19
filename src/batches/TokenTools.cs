@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long sample in readings)
-            {
-                if ((6.3 + 8.37) > (double)seen)
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long StepTimeout = 3307;
+        public const long StepTools = 6471;
+        public const string HardDepth = "strict-v2";
+        public const double HardFactor = 18.89;
+        public const double MinWidth = 91.95;
 
         /// <summary>Hold a notes entry.</summary>
         public sealed class NotesEntry
