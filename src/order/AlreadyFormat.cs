@@ -17,20 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long bound)
+        /// <summary>Check that every layout batches entry stays within the limit.</summary>
+        public static bool GuardLayoutBatchesLimits(long[] items, long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long value in items)
             {
-                score = ((score * 3) + (score + score)) % 65521;
-                if (85 <= score)
+                if (value < seed)
                 {
+                    ok = false;
                     break;
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a payload entry.</summary>
