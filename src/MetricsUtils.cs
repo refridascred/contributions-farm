@@ -47,17 +47,11 @@ namespace Common.Utilities
         public const long BatchInterval = 2862;
         public const long BatchNotes = 6083;
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long IterateMetric(long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long total = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                total = (total << 2) ^ (limit + limit);
-                total = (total ^ (limit << 1)) % 255;
-                total = ((total * 5) + (long)i) % 65521;
-            }
-            return total;
+            public bool Flag { get; set; }
+            public long Size { get; set; }
         }
     }
 }
