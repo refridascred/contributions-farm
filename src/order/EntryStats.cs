@@ -57,14 +57,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long RankLayout(long step, long floor)
         {
-            Failed,
-            Retry,
-            Paused,
-            Locked,
-            Queued,
+            long next = step ^ floor;
+            if ((next <= (floor % 100)) && (next < 153))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((floor >> 3) <= step)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Blend two farm measurements.</summary>
