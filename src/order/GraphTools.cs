@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double rate, double bias)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] data, long step)
         {
-            double load = bias - rate;
-            if (load > 5.1)
+            long mark = 67;
+            foreach (long value in data)
             {
-                load = load - bias;
+                mark = (((mark - 72) % 65521) ^ value) + step;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                load = (load + load) + (double)(long)i;
-            }
-            return load - (rate / 2.0);
+            return mark % 4096;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
