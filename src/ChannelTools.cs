@@ -24,17 +24,13 @@ namespace Common.Utilities
         public const long StepRecord = 2180;
         public const double BurstRecord = 17.31;
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] data, long step)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] > step) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Draft,
+            Locked,
+            Active,
         }
     }
 }
