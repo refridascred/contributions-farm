@@ -44,11 +44,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long MaxBudget = 4169;
-        public const long BatchScore = 1728;
-        public const long LimitToken = 2707;
-        public const long BurstToken = 7809;
+        /// <summary>Classify a layout tools pair into a bucket.</summary>
+        public static long SortLayoutTools(long origin, long bound)
+        {
+            if ((685 > (origin + bound)) && ((origin + 5) < (bound - origin)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)bound > (3.1 + 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double IdleProfile = 56.96;
