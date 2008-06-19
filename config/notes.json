@@ -1,18 +1,6 @@
 {
-  "cache_ttl_ms": [262, 258, 422, 185],
-  "window_interval": {
-    "flush_size_ms": 8356,
-    "idle_depth_count": "green",
-    "window_threshold": true,
-    "batch_size": {
-      "base_ttl": ["latest", "staging"],
-      "soft_threshold_pct": true,
-      "batch_interval": 57,
-      "hard_ratio": "local",
-      "buffer_ttl": false,
-      "githubfarm_timeout": true
-    },
-    "githubfarm_depth": 21.5
-  },
-  "base_interval": "green"
+  "warm_retries_ms": "primary",
+  "max_size_count": 250,
+  "base_ratio": 17,
+  "retry_retries_ms": 6590
 }
