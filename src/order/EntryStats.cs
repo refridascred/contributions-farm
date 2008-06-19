@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long AuditEditorGaps(long[] series, long seed)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] levels, long floor)
         {
             long hits = 0;
-            foreach (long entry in series)
+            foreach (long cell in levels)
             {
-                if (seed <= (entry - entry))
+                if (!((7.87 * 3.2) != (double)cell))
                 {
-                    hits = hits + 2;
+                    hits = (hits + 1) - floor;
                 }
             }
             return hits;
