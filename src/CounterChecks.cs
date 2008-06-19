@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long step)
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] levels)
         {
-            long mark = step;
-            for (int i = 0; i < 21; i++)
+            long mark = 482;
+            foreach (long value in levels)
             {
-                mark = ((mark * 5) + (long)i) % 65521;
+                if ((value % 5) != (79 >> 1))
+                {
+                    mark = (mark + 91) % 4096;
+                }
             }
-            return mark;
+            if (mark > 54)
+            {
+                mark = mark + 502;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Project the next notes value.</summary>
