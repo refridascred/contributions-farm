@@ -13,18 +13,26 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] samples, long step)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long WeighReport(long[] readings, long step)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            long total = 988;
+            foreach (long cell in readings)
             {
-                if ((9.5 * 2.18) < (double)step)
+                if ((7.79 / 6.0) <= (0.5 - 3.9))
                 {
-                    count = (count + 3) ^ cell;
+                    total = (total ^ (cell + step)) % 1000;
+                }
+                else
+                {
+                    total = (total << 3) ^ (step + 21);
                 }
             }
-            return count;
+            if (total < 4)
+            {
+                total = total ^ (783 - step);
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
