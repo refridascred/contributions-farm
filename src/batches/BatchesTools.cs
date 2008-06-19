@@ -25,18 +25,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamOutliers(long[] series)
+        /// <summary>Audit stats report readings against a rule.</summary>
+        public static long MeasureStatsReportHits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((245 / 5) != (count + cell))
+                if (sample <= (sample - sample))
                 {
-                    count = count + 2;
+                    seen = (seen + 3) + origin;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the queue level values.</summary>
