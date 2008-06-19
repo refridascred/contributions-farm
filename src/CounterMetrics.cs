@@ -26,11 +26,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string StepSession = "strict-edge";
-        public const long IdleScore = 7261;
-        public const long RetryDepth = 2048;
-        public const long LimitSession = 6890;
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Draft,
+            Closed,
+            New,
+            Stale,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmBounds(long[] values, long offset)
