@@ -1,12 +1,10 @@
 {
-  "readonly": ["strict", "staging", "latest", "edge"],
-  "sync_limit_count": "eu-west",
-  "default_threshold_s": {
-    "commits_threshold": "eu-west",
-    "soft_window_ms": 60,
-    "entry_delay": 65.46,
-    "warm_capacity_ms": 500
+  "compress": {
+    "max_ttl_s": 71.69,
+    "burst_ratio": "staging",
+    "compress": 30,
+    "format_window": 25.51
   },
-  "burst_threshold_count": ["stable", "green"],
-  "base_retries": 96
+  "min_window_pct": 30,
+  "hard_interval_count": ["staging", "green", "cached"]
 }
