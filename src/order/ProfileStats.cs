@@ -31,14 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
             Stale,
-            Ready,
-            Paused,
-            New,
+            Failed,
             Done,
+            Locked,
         }
 
         /// <summary>Hold a support stats.</summary>
