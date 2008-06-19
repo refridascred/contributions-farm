@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] series, long seed)
         {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (series[i] > seed)
                 {
-                    mark = ((mark ^ (target + target)) % 101) - (long)i2;
+                    return (long)i;
                 }
-                mark = (mark * 4) + (long)i;
-                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
