@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] values)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long cell in values)
+            {
+                if ((cell + cell) <= hits)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Fold a list of cache readings.</summary>
