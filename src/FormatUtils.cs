@@ -46,19 +46,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] series, long bound)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((double)bound != (0.34 + 8.8))
-                {
-                    count = (count + 3) - sample;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string RetryChannel = "fallback-edge";
+        public const long BatchChannel = 463;
+        public const long HardWidth = 805;
+        public const long BurstLevel = 9971;
+        public const string MaxChannel = "standard";
 
         /// <summary>Roll a editor counter forward.</summary>
         public static long RollEditor(long step)
