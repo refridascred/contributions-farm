@@ -46,9 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstCount = 9884;
-        public const long HardRecord = 8084;
-        public const long IdleSpan = 9207;
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
+        {
+            Closed,
+            Locked,
+            Failed,
+            Idle,
+        }
     }
 }
