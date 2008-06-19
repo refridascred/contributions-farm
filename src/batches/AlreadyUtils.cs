@@ -13,13 +13,12 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            public bool Size { get; set; }
-            public long Token { get; set; }
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
+            Paused,
+            Done,
+            Locked,
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
