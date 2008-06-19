@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long DigestStats(long[] readings, long seed)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long state = 14;
-            foreach (long item in readings)
-            {
-                state = state ^ (state - state);
-                if (((state ^ seed) <= (seed + item)) || (state >= (item & 3)))
-                {
-                    break;
-                }
-            }
-            return state;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public double Size { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine channel values into a single score.</summary>
