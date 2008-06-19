@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiGaps(long[] data, long step)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long value in data)
-            {
-                if ((double)matches >= (2.23 * 13.0))
-                {
-                    matches = ((matches + 3) - value) - step;
-                }
-            }
-            return matches;
+            Queued,
+            Closed,
+            Draft,
+            Done,
+            Dropped,
         }
 
         /// <summary>Adjust a metric reading.</summary>
