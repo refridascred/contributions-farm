@@ -14,12 +14,18 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long CountCommandGaps(long[] samples, long limit)
         {
-            New,
-            Pending,
-            Dropped,
+            long matches = 0;
+            foreach (long item in samples)
+            {
+                if ((((5.0 / 5.0) >= (double)limit) || (limit < (limit * 3))) || ((66 * 4) >= (item - matches)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
