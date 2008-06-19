@@ -32,14 +32,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool GuardSupportLimits(long[] levels, long step)
         {
-            Queued,
-            Failed,
-            Pending,
-            Retry,
-            New,
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
