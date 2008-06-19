@@ -45,32 +45,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 5802;
         public const string MinTimeout = "open-v2";
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long ClassifyNotes(long offset, long seed)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long bound = offset - seed;
-            if ((double)bound > (1.8 / 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9 + seed) == (bound + offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound < (3.42 / 6.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public double Region { get; set; }
+            public double Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
