@@ -34,24 +34,14 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Grade a account farm value against two limits.</summary>
-        public static long SortAccountFarm(long offset, long step)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            if (!(9.04 > (double)step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step - offset) > (offset + 5)) || ((offset ^ step) >= (7 % 12)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Failed,
+            New,
+            Retry,
+            Closed,
+            Queued,
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
