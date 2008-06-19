@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            public double Rank { get; set; }
-            public string Mode { get; set; } = "";
+            New,
+            Pending,
+            Paused,
         }
 
         /// <summary>Describe the checks class values.</summary>
