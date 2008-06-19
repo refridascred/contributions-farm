@@ -15,14 +15,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long bound)
         {
-            Dropped,
-            Paused,
-            Done,
-            Queued,
-            Pending,
+            long score = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                score = ((score * 3) + (score + score)) % 65521;
+                if (85 <= score)
+                {
+                    break;
+                }
+                score = ((score * 4) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Hold a payload entry.</summary>
