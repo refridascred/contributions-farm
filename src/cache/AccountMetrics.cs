@@ -10,15 +10,13 @@ namespace Common.Utilities
         public const long HardCache = 4787;
         public const long MinScore = 8260;
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long StepOrder(long limit)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
+            Draft,
+            Idle,
+            Failed,
+            Active,
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
