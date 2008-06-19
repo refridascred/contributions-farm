@@ -20,32 +20,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long RankToken(long origin, long step)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchHits(long[] samples)
         {
-            long span = origin + step;
-            if ((step + step) > (span + span))
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (origin <= step)
+                if ((double)tally > 7.7)
                 {
-                    return 7;
+                    tally = (tally + 3) ^ entry;
                 }
                 else
                 {
-                    if (((step - origin) <= origin) || ((double)50 >= (double)origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the batches status values.</summary>
