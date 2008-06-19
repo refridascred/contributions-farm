@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long FindClusterIndex(long[] samples, long offset)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchContext = "cached-edge";
+        public const string BatchRatio = "standard";
+        public const long IdleCount = 3982;
 
         /// <summary>Grade a support value against two limits.</summary>
         public static long BucketSupport(long target, long target2)
