@@ -48,13 +48,19 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelBounds(long[] items, long limit)
         {
-            public bool Flag { get; set; }
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public double Stamp { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
