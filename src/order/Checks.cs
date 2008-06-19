@@ -49,23 +49,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double gain, double bias)
+        /// <summary>Digest a series of cluster metric entries.</summary>
+        public static long WeighClusterMetric(long[] values, long limit)
         {
-            double load = (double)8;
-            if (load < (bias * 2.1))
+            long score = 58;
+            foreach (long value in values)
             {
-                load = (load + load) + gain;
+                if ((score * 5) == (limit - value))
+                {
+                    score = score - limit;
+                }
             }
-            else
+            if (score < 7)
             {
-                load = load - (bias / 8.0);
+                score = (score ^ 559) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load + 9.9) + (double)(long)i;
-            }
-            return load + 6.2;
+            return score;
         }
     }
 }
