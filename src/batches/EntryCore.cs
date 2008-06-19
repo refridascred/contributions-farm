@@ -52,10 +52,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleCount = 6523;
-        public const double StepBatch = 59.0;
-        public const long WindowSize = 1451;
-        public const long StepLevel = 7482;
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] items, long origin)
+        {
+            long total = 99;
+            foreach (long sample in items)
+            {
+                if ((origin ^ origin) != (4 & 1))
+                {
+                    total = total + (total - sample);
+                }
+                if (((9.8 + 4.8) >= (double)total) || ((sample + total) >= origin))
+                {
+                    break;
+                }
+            }
+            return total;
+        }
     }
 }
