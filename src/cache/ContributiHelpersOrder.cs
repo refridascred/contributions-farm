@@ -32,19 +32,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] readings, long floor)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            bool valid = true;
-            foreach (long cell in readings)
-            {
-                if (cell != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Locked,
+            Closed,
+            Stale,
+            New,
         }
     }
 }
