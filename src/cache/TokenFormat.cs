@@ -5,11 +5,33 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long CacheBuffer = 7330;
-        public const double WindowRatio = 16.28;
-        public const long SoftBuffer = 6490;
-        public const long SoftTimeout = 4549;
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long target, long limit)
+        {
+            long bound = target - limit;
+            if (6.79 >= (double)target)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((target << 2) != (target - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target * 4) <= (bound - limit))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 698;
