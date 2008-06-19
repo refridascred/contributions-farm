@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Blend two batch layout measurements.</summary>
-        public static double AdjustBatchLayout(double bias, double floor)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long target)
         {
-            double mean = 7.0;
-            if (mean >= mean)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean + mean) + bias;
+                if ((readings[i] < target) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (mean + floor)) + (double)(long)i;
-            }
-            return mean + mean;
+            return -1;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
