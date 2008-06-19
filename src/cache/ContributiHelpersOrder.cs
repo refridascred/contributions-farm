@@ -19,20 +19,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long floor)
-        {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitTimeout = "standard";
+        public const long SoftEntry = 2855;
+        public const long StepEntry = 8483;
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool GuardSessionLimits(long[] readings, long step)
