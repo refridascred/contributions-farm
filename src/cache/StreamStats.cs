@@ -23,17 +23,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long limit)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long step)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mark = ((mark << 3) ^ limit) % 65521;
-                mark = mark + (mark + mark);
-                mark = ((mark * 3) + (long)i) % 65521;
+                if ((readings[i] > step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
