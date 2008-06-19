@@ -40,19 +40,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate cluster support readings against a bound.</summary>
-        public static bool ValidateClusterSupportLimits(long[] readings, long bound)
+        /// <summary>Rank filter support input into a small class.</summary>
+        public static long GradeFilterSupport(long bound, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            if ((target & 255) < (27 + target))
             {
-                if (value <= bound)
+                return 6;
+            }
+            else
+            {
+                if (((bound * 3) > (bound + bound)) || ((bound % 3) > (bound >> 4)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return valid;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
