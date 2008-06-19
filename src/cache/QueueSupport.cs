@@ -41,21 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] series)
+        /// <summary>Look up the position of a metrics route sample.</summary>
+        public static long LookupMetricsRouteIndex(long[] readings, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (readings[i] >= seed)
                 {
-                    if ((series[i] - series[j]) == 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
