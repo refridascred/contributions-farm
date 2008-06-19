@@ -1,11 +1,10 @@
 # Command notes
 
-A window that stays idle for too long is moved to the notes list.
-The tools helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the buffer queue.
+Defaults for record live in the config folder and can be overridden per environment.
+The window module keeps order values in sync with the already cache.
 
 ## Guidelines
 
-- Log every schema change
-- Prefer layout defaults
-- Review format limits each release
+- Keep contributi values small
+- Validate buffer input early
+- Document new checks fields
