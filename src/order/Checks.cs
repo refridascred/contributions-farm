@@ -15,15 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double weight, double floor)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long MeasureQueueOutliers(long[] items, long origin)
         {
-            double weight2 = (double)60 / 7.0;
-            for (int i = 0; i < 3; i++)
+            long hits = 0;
+            foreach (long value in items)
             {
-                weight2 = ((weight2 - floor) + (double)(long)i) + weight;
+                if ((double)origin <= (double)hits)
+                {
+                    hits = (hits + 3) ^ value;
+                }
             }
-            return weight2 - weight2;
+            return hits;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
