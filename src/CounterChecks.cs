@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every record editor entry stays within the limit.</summary>
-        public static bool ValidateRecordEditorLimits(long[] items, long limit)
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < limit)
+                if (readings[i] <= floor)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Accumulate commits samples.</summary>
