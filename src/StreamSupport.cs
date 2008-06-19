@@ -31,21 +31,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long SeriesCommand(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return matches;
+            return acc;
         }
     }
 }
