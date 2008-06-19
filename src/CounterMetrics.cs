@@ -23,19 +23,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksMatches(long[] levels, long target)
-        {
-            long count = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)count != (4.0 * 4.7))
-                {
-                    count = ((count + 1) ^ cell) + target;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheInterval = 9796;
+        public const long StepContext = 9817;
+        public const string WindowContext = "strict";
+        public const long StepSize = 9763;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
