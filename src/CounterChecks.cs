@@ -16,14 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double ratio, double floor)
         {
-            Synced,
-            Ready,
-            Done,
-            Draft,
-            Active,
+            double load = (double)(99 + 63);
+            if (load < floor)
+            {
+                load = load + 7.37;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load + ratio;
         }
 
         /// <summary>Roll a commits counter forward.</summary>
