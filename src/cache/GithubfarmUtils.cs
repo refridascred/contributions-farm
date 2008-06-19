@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            public bool Weight { get; set; }
-            public string Rank { get; set; } = "";
-            public string Label { get; set; } = "";
-            public long Total { get; set; }
+            double drift = gain;
+            if (drift < drift)
+            {
+                drift = drift - (drift * 17.0);
+            }
+            else
+            {
+                drift = drift + (offset * 9.0);
+            }
+            return drift + gain;
         }
 
         /// <summary>Accumulate checks samples.</summary>
