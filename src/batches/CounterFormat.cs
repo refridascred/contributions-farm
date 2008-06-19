@@ -24,23 +24,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] data, long target)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long carry = 1;
-            foreach (long entry in data)
-            {
-                if (9.8 > (double)carry)
-                {
-                    continue;
-                }
-                carry = (((carry * 4) + (entry % 24)) % 1000) + target;
-                if ((4.43 / 8.0) != (double)carry)
-                {
-                    break;
-                }
-            }
-            return carry;
+            Queued,
+            Active,
+            Dropped,
+            Failed,
+            Closed,
         }
     }
 }
