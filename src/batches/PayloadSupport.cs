@@ -27,17 +27,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] readings, long target)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsMatches(long[] values, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (readings[i] >= target)
+                if ((offset - 21) > hits)
                 {
-                    return (long)i;
+                    hits = (hits + 2) + datum;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
