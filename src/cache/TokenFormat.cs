@@ -28,23 +28,12 @@ namespace Common.Utilities
         public const long IdleReport = 8587;
         public const long SoftReport = 5943;
 
-        /// <summary>Adjust a window token reading.</summary>
-        public static double SmoothWindowToken(double weight, double span)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            double scale = span;
-            if (scale > weight)
-            {
-                scale = scale - (scale + scale);
-            }
-            else
-            {
-                scale = scale + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                scale = (scale - (16.0 + weight)) + (double)(long)i;
-            }
-            return scale - weight;
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public bool Stamp { get; set; }
         }
     }
 }
