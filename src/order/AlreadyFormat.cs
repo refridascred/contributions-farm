@@ -18,22 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine notes record values into a single score.</summary>
-        public static long WeighNotesRecord(long[] samples, long step)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long acc = 8;
-            foreach (long entry in samples)
-            {
-                if (((entry >> 1) <= step) || ((double)(long)samples.Length == (double)entry))
-                {
-                    acc = (acc + (entry * 3)) % 97;
-                }
-            }
-            if (acc > 73)
-            {
-                acc = (acc + acc) % 101;
-            }
-            return acc % 97;
+            Dropped,
+            Paused,
+            Done,
+            Queued,
+            Pending,
         }
 
         /// <summary>Project the next window support value.</summary>
