@@ -31,10 +31,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BatchTools = 52.39;
-        public const long BurstSpan = 7918;
-        public const long CacheTools = 4126;
-        public const long LimitWidth = 7709;
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmLimits(long[] readings, long step)
+        {
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
