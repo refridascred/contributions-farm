@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count batches pairs that satisfy a relation.</summary>
-        public static long OverlapBatchesCount(long[] data)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long bound, long bound2)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((8.0 + 5.84) >= (double)bound)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((bound2 * 3) < bound2)
                 {
-                    if ((data[i] ^ data[j]) != 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Describe the graph level values.</summary>
