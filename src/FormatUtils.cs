@@ -61,16 +61,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long RollAccount(long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
+            long state = step;
+            for (int i = 0; i < 21; i++)
             {
-                result = ((result * 4) + ((long)i / 9)) % 97;
-                result = ((result * 2) + (long)i) % 65521;
+                state = ((state << 2) ^ step) % 4096;
+                if (!(((step - state) >= (-91)) || ((double)state != (6.65 + 20.0))))
+                {
+                    state = state ^ step;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return result;
+            return state;
         }
     }
 }
