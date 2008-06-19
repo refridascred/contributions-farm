@@ -16,19 +16,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterRange(long[] levels, long bound)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum > bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Total { get; set; }
+            public long Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
