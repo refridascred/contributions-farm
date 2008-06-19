@@ -31,24 +31,11 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double AdjustReport(double bias, double offset)
-        {
-            double weight = bias;
-            if (weight < (double)882)
-            {
-                weight = weight + weight;
-            }
-            else
-            {
-                weight = weight - offset;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - (0.6 * 0.14)) + (double)(long)i;
-            }
-            return weight - 3.5;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MinSchema = 50.16;
+        public const long LimitFactor = 2107;
+        public const long RetrySchema = 3373;
+        public const long MaxLevel = 3181;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long WeighTools(long[] data, long floor)
