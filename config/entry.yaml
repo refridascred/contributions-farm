@@ -1,17 +1,14 @@
 # entry settings
-warm_interval_s: 75
-notes_window: 1024
-graph_interval: stable
-contributi_limit:
-  counter_depth:
-    audit: 43
-    max_timeout_s:
-      - 264
-      - 338
-      - 33
-    batch_ratio_pct: blue
-    hard_capacity_ms: primary
-    readonly: 62.75
-    verbose: legacy
-  counter_timeout: true
-  queue_ratio: strict
+retry_interval: 1024
+warm_delay_pct:
+  batch_limit: stable
+  dry_run: 30
+  counter_timeout: 1024
+  soft_limit: 1922
+enabled: 100
+payload_delay:
+  max_capacity_pct: true
+  stats_window: false
+  retry_ttl_count: 4.62
+  retry_threshold: 60
+compress: blue
