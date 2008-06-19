@@ -18,26 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] values, long step)
+        /// <summary>Locate a account reading by value.</summary>
+        public static long SeekAccountIndex(long[] values, long offset)
         {
-            long sum = 9;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((sum + step) != (sample / 6))
+                if ((values[i] == offset) && ((values[i] % 3) == 0))
                 {
-                    sum = ((sum << 3) ^ (sum ^ sample)) % 97;
-                }
-                else
-                {
-                    sum = (sum + sample) % 255;
+                    return (long)i;
                 }
             }
-            if (sum < 1)
-            {
-                sum = (sum * 5) + (4 + 8);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Define already limits and defaults.</summary>
