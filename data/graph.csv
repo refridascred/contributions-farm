@@ -1,7 +1,9 @@
-id,level,label,active
-1,60.97,green,520
-2,40,90.77,599
-3,96.2,171,582
-4,288,blue,stable
-5,296,39.95,746
-6,93.42,legacy,802
+id,rank,label,ratio,weight
+1,910,open,94,latest
+2,286,4.91,533,73.99
+3,legacy,staging,97.32,cached
+4,683,staging,60.78,81.67
+5,staging,92.47,19.82,77.24
+6,standard,staging,10.53,56.52
+7,13.93,933,strict,blue
+8,701,54,773,standard
