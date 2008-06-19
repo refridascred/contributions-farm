@@ -1,8 +1,5 @@
 # githubfarm settings
-poll_ttl: standard
-idle_ttl: green
-persist:
-  - 404
-  - 441
-  - 73
-sync_ttl: 34.1
+hard_ratio: 12.46
+checks_ratio: strict
+already_capacity: 2570
+buffer_depth: 66
