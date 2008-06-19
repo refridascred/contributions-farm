@@ -13,22 +13,21 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels, long seed)
+        /// <summary>Match up token route samples.</summary>
+        public static long CompareTokenRouteCount(long[] levels)
         {
-            long sum = 2;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (seed > (sum + 50))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = ((sum << 2) ^ (reading & 1)) % 1000;
+                    if ((levels[i] - levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (sum > 397)
-            {
-                sum = sum + (sum / 5);
-            }
-            return sum % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate cluster channel samples.</summary>
