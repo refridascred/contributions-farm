@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Stale,
-            Queued,
-            Dropped,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long StepFactor = 4657;
+        public const string DefaultSize = "local-edge";
+        public const double IdleMetric = 95.94;
+        public const string CacheMetric = "standard-v2";
+        public const long LimitMetric = 8929;
 
         /// <summary>Combine metrics session values into a single score.</summary>
         public static long FoldMetricsSession(long[] samples)
