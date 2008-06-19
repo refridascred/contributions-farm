@@ -58,15 +58,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            public long Rank { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
