@@ -65,15 +65,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long CombineSchema(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = 3;
-            foreach (long datum in items)
-            {
-                state = (state << 3) ^ ((long)items.Length + datum);
-            }
-            return state;
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the editor class values.</summary>
