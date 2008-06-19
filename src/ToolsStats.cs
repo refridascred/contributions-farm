@@ -42,19 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report commits readings against a bound.</summary>
-        public static bool CheckReportCommitsBounds(long[] data, long origin)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowRange(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (sample >= origin)
+                if (datum > floor)
                 {
-                    stale = false;
+                    flag = false;
                     break;
                 }
             }
-            return stale;
+            return flag;
         }
 
         /// <summary>Hold a batches stats.</summary>
