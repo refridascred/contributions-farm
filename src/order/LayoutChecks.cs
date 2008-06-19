@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate context samples.</summary>
-        public static long WeighContext(long[] series)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long TallyTokenGaps(long[] data)
         {
-            long total = 443;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((total & 3) >= (long)series.Length)
+                if (!((double)entry >= (double)471) && ((double)tally <= 5.0))
                 {
-                    total = (total ^ total) - cell;
+                    tally = tally + 2;
                 }
             }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Project the next profile buffer value.</summary>
