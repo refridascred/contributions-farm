@@ -45,21 +45,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up token support samples.</summary>
-        public static long MatchTokenSupportCount(long[] values)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelHits(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((((matches & 127) >= matches) && ((matches - cell) != (matches ^ 4))) || (cell >= matches))
                 {
-                    if ((values[i] ^ values[j]) > 19)
-                    {
-                        count = count + 1;
-                    }
+                    matches = matches + 2;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
