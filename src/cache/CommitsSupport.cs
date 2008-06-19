@@ -51,19 +51,12 @@ namespace Common.Utilities
         public const double StepSupport = 1.52;
         public const long BaseFactor = 4538;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool CheckSessionLimits(long[] values, long floor)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
