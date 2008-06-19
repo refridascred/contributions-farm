@@ -45,17 +45,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] series, long target)
+        /// <summary>Project the next command farm value.</summary>
+        public static double ScaleCommandFarm(double scale, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias2 = scale - (scale / 2.0);
+            if (bias2 < (double)127)
             {
-                if ((series[i] < target) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                bias2 = bias2 + 5.81;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 - bias;
         }
     }
 }
