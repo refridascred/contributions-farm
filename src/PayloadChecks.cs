@@ -36,20 +36,39 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long SeriesCommits(long target)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 12; i++)
+            long cur = floor - bound;
+            if ((1 + cur) >= (bound & 127))
             {
-                anchor = (anchor + ((long)i + target)) % 4096;
-                if ((anchor / 2) >= (long)i)
-                {
-                    anchor = ((anchor * 2) + (54 / 8)) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                return 0;
             }
-            return anchor;
+            else
+            {
+                if ((floor <= (bound + cur)) || (6.2 < (double)bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (645 > (bound + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (95 >= (834 ^ floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up order samples.</summary>
