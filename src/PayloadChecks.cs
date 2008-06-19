@@ -38,19 +38,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long WeighSchema(long[] values)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long sum = 229;
-            foreach (long datum in values)
-            {
-                sum = ((sum << 2) ^ 8) % 255;
-                if ((datum - sum) > datum)
-                {
-                    sum = (sum ^ (97 + (-6))) % 101;
-                }
-            }
-            return sum % 1000;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public long Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Grade a route value against two limits.</summary>
