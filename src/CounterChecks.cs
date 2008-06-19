@@ -20,22 +20,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long TotalToken(long[] values, long origin)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long sum = -66;
-            foreach (long entry in values)
-            {
-                if ((double)origin > 4.58)
-                {
-                    sum = (((sum << 2) ^ (sum - origin)) % 65521) ^ entry;
-                }
-                else
-                {
-                    sum = ((sum * 3) + origin) % 4096;
-                }
-            }
-            return sum;
+            Done,
+            Synced,
+            Pending,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
