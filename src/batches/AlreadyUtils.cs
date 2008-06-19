@@ -22,19 +22,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] readings, long bound)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item < bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
