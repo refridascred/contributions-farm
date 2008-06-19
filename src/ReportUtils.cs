@@ -38,16 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long bound)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] values, long seed)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            bool valid = true;
+            foreach (long value in values)
             {
-                total = total ^ bound;
-                total = ((total * 5) + (long)i) % 1000;
+                if (value > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return total;
+            return valid;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
