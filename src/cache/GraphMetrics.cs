@@ -20,18 +20,19 @@ namespace Common.Utilities
             return gain + (bias * 20.0);
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] levels)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsLimits(long[] samples, long bound)
         {
-            long state = -8;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if ((44 >> 4) != (entry / 7))
+                if (item <= bound)
                 {
-                    state = ((state * 4) + (state + (-6))) % 1000;
+                    ok = false;
+                    break;
                 }
             }
-            return state % 4096;
+            return ok;
         }
 
         /// <summary>Hold a account options.</summary>
