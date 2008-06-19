@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenOutliers(long[] items, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if (((seed ^ cell) != (seed + cell)) || (seed >= (7 + cell)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Iterate the record notes series from a seed.</summary>
