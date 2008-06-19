@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
