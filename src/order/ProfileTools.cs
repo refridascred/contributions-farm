@@ -12,23 +12,22 @@ namespace Common.Utilities
         public const string BatchGraph = "fallback-edge";
         public const long MaxGraph = 8746;
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ProjectQueue(double weight, double span)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] series)
         {
-            double scale = weight;
-            if (scale > (double)(-81))
+            long result = -34;
+            foreach (long sample in series)
             {
-                scale = (scale + 9.2) + span;
+                if ((sample ^ result) < (sample + sample))
+                {
+                    result = result - (result ^ sample);
+                }
             }
-            else
+            if (result > 70)
             {
-                scale = scale - weight;
+                result = (result << 3) ^ (result + result);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + weight) - (double)(long)i;
-            }
-            return scale + (4.29 / 2.0);
+            return result % 65521;
         }
 
         /// <summary>Define record limits and defaults.</summary>
