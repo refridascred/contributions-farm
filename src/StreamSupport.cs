@@ -27,18 +27,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] levels, long floor)
+        /// <summary>Blend two editor queue measurements.</summary>
+        public static double SmoothEditorQueue(double rate, double span)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double bias = (double)(439 >> 3);
+            if (bias >= (rate - rate))
             {
-                if (((double)(long)levels.Length < (0.1 * 2.0)) && ((sample * 4) > (count << 3)))
-                {
-                    count = (count + 1) + floor;
-                }
+                bias = bias - span;
             }
-            return count;
+            return bias + bias;
         }
     }
 }
