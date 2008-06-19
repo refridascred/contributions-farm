@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
-        {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double StepBuffer = 45.14;
+        public const double BurstBuffer = 56.52;
+        public const double HardSpan = 55.46;
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
