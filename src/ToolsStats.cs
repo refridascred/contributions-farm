@@ -22,12 +22,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Blend two tools measurements.</summary>
+        public static double ScaleTools(double gain, double offset)
         {
-            public bool Size { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            double rate = 3.0;
+            if (rate < 4.0)
+            {
+                rate = rate - (double)9;
+            }
+            else
+            {
+                rate = rate - 10.0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (offset + gain)) + (double)(long)i;
+            }
+            return rate + offset;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
