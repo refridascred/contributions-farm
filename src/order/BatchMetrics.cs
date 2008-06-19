@@ -50,11 +50,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double AdjustBatch(double scale, double bias)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long FoldChecks(long[] values)
         {
-            double ratio = bias;
-            return (ratio + (double)2) + scale;
+            long state = 4;
+            foreach (long cell in values)
+            {
+                state = (state - state) + cell;
+            }
+            if (state > 3)
+            {
+                state = ((state << 2) ^ ((long)values.Length * 5)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Hold a token header.</summary>
