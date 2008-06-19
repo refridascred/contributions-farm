@@ -5,29 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the counter format series from a seed.</summary>
-        public static long StepCounterFormat(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                long edge = 8 / 2;
-                if ((limit + edge) == (acc ^ 880))
-                {
-                    acc = (acc - (acc & 63)) % 4096;
-                }
-                else
-                {
-                    edge = edge - limit;
-                }
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    edge = (edge ^ (acc + (long)i2)) % 101;
-                }
-                acc = ((acc * 2) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long LimitMetric = 8013;
+        public const long MaxLevel = 3580;
+        public const double BurstInterval = 74.44;
 
         /// <summary>Fold a list of entry batches readings.</summary>
         public static long ScoreEntryBatches(long[] values, long origin)
