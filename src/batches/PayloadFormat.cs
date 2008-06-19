@@ -40,10 +40,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double IdleNotes = 48.95;
-        public const long DefaultLevel = 5802;
-        public const string MinTimeout = "open-v2";
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricHits(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long value in samples)
+            {
+                if ((double)tally <= (double)limit)
+                {
+                    tally = (tally + 1) ^ value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a farm info.</summary>
         public sealed class FarmInfo
