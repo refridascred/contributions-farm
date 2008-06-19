@@ -12,15 +12,39 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double gain, double offset)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long limit, long origin)
         {
-            double drift = gain;
-            for (int i = 0; i < 2; i++)
+            long slot = limit ^ origin;
+            if (!((origin + slot) >= (slot + slot)))
             {
-                drift = (drift - (drift * 8.9)) + (double)(long)i;
+                return 3;
             }
-            return drift + offset;
+            else
+            {
+                if ((limit ^ slot) > limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((slot / 8) >= (9 & 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((4.7 + 8.92) == (double)origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a window reading by value.</summary>
