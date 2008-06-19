@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine cache metrics values into a single score.</summary>
-        public static long WeighCacheMetrics(long[] values, long floor)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long sum = 173;
-            foreach (long entry in values)
+            long mark = target;
+            for (int i = 0; i < 6; i++)
             {
-                sum = (sum - (floor ^ sum)) ^ entry;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (sum > 20)
-            {
-                sum = (sum + (sum >> 2)) % 1000;
-            }
-            return sum;
+            return mark;
         }
 
         /// <summary>Accumulate counter samples.</summary>
