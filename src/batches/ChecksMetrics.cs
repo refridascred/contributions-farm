@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double bias)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double gain = (double)(797 >> 5);
-            if (gain < rate)
-            {
-                gain = gain + (bias + 15.0);
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain - rate) - (double)(long)i;
-            }
-            return gain + (rate - bias);
+            New,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Describe the cache class values.</summary>
