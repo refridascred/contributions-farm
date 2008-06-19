@@ -42,18 +42,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long TallyRouteHits(long[] items)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long seen = 0;
-            foreach (long value in items)
-            {
-                if ((value * 3) > (value - value))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Look up the position of a buffer layout sample.</summary>
