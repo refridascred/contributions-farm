@@ -29,12 +29,13 @@ namespace Common.Utilities
         public const long BurstQueue = 6926;
         public const string BaseInterval = "open-1";
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public long Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            Stale,
+            New,
+            Queued,
+            Ready,
         }
     }
 }
