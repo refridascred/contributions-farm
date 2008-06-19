@@ -47,19 +47,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long origin)
+        /// <summary>Accumulate cluster channel samples.</summary>
+        public static long FoldClusterChannel(long[] data, long floor)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long state = 4;
+            foreach (long cell in data)
             {
-                if (entry >= origin)
+                if ((state << 3) == (cell % 7))
                 {
-                    stale = false;
-                    break;
+                    state = (state + cell) % 101;
+                }
+                if ((floor + 16) > cell)
+                {
+                    state = (state - (floor ^ 81)) % 4096;
+                }
+                else
+                {
+                    state = state + (cell % 64);
                 }
             }
-            return stale;
+            if (state < 131)
+            {
+                state = state - (floor % 2);
+            }
+            return state;
         }
 
         /// <summary>Describe the checks class values.</summary>
