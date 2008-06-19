@@ -28,19 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] series, long step)
+        /// <summary>Validate already editor readings against a bound.</summary>
+        public static bool CheckAlreadyEditorLimits(long[] readings, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (item > step)
+                if (entry <= origin)
                 {
-                    stale = false;
+                    valid = false;
                     break;
                 }
             }
-            return stale;
+            return valid;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
