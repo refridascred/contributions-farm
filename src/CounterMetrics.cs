@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long DerivePayload(long limit)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
             {
-                if (!((8.2 * 9.0) != (double)value))
+                long count = (long)i * 3;
+                if ((limit + anchor) == (count - count))
                 {
-                    matches = matches + 3;
+                    continue;
                 }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Rank token input into a small class.</summary>
