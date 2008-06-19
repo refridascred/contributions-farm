@@ -16,12 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long bound)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Offset { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                state = (state ^ (bound & 63)) % 1000;
+                state = (state + (state >> 4)) % 255;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    state = (((state << 3) ^ (bound - state)) % 255) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Fold a list of route readings.</summary>
