@@ -20,21 +20,18 @@ namespace Common.Utilities
             return gain + (bias * 20.0);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long MatchFarmCount(long[] levels)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = -8;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((44 >> 4) != (entry / 7))
                 {
-                    if ((levels[i] + levels[j]) < 8)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state * 4) + (state + (-6))) % 1000;
                 }
             }
-            return count;
+            return state % 4096;
         }
 
         /// <summary>Hold a account options.</summary>
