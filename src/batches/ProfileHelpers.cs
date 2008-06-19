@@ -77,19 +77,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long DigestToken(long[] readings)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long score = 145;
-            foreach (long cell in readings)
-            {
-                score = (score - (score << 3)) ^ cell;
-            }
-            if (score > 45)
-            {
-                score = (score - score) % 65521;
-            }
-            return score;
+            Queued,
+            Locked,
+            Active,
+            Stale,
         }
     }
 }
