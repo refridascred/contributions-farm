@@ -32,26 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats stream values into a single score.</summary>
-        public static long CombineStatsStream(long[] samples)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long state = 69;
-            foreach (long sample in samples)
-            {
-                if (!((double)sample > 19.0))
-                {
-                    state = (state << 3) ^ ((long)samples.Length * 2);
-                }
-                if (((sample * 4) > (state + 0)) || (state >= (state % 5)))
-                {
-                    break;
-                }
-            }
-            if (state > 61)
-            {
-                state = ((state * 4) + 888) % 1000;
-            }
-            return state;
+            New,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
