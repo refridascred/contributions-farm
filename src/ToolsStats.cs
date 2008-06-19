@@ -69,11 +69,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double BurstRatio = 72.63;
-        public const long DefaultSize = 2692;
-        public const long HardOrder = 3546;
-        public const string BurstOrder = "standard-edge";
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long CombineSchema(long[] items)
+        {
+            long state = 3;
+            foreach (long datum in items)
+            {
+                state = (state << 3) ^ ((long)items.Length + datum);
+            }
+            return state;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
