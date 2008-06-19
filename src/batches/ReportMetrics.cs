@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] data)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches + 1) == (entry - matches))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public double Region { get; set; }
+            public bool Count { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
