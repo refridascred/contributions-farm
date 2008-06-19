@@ -1,17 +1,7 @@
 {
-  "route_capacity": {
-    "base_retries_s": 51.22,
-    "sync_size_s": false,
-    "warm_window": {
-      "audit": 88.81,
-      "idle_delay_ms": 8384,
-      "warm_ratio_pct": false,
-      "queue_retries": [229, 274, 460, 434],
-      "flush_size": 65
-    },
-    "cache_delay": "stable"
-  },
-  "counter_size": "standard",
-  "queue_ratio": true,
-  "editor_threshold": ["eu-west", "edge"]
+  "tools_window": false,
+  "hard_limit": 53,
+  "enabled": "strict",
+  "metric_depth": 100,
+  "burst_ttl": ["eu-west", "green", "primary", "legacy"]
 }
