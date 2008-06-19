@@ -45,10 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double WindowWidth = 71.77;
-        public const long BatchDepth = 9185;
-        public const string IdleLevel = "stable";
-        public const double BurstScore = 73.55;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "staging-v2";
+        public const long HardContributi = 9032;
+        public const double SoftWidth = 2.98;
+        public const string RetryContributi = "strict";
+        public const long MaxScore = 472;
     }
 }
