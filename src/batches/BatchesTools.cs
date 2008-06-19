@@ -28,13 +28,12 @@ namespace Common.Utilities
         public const long BurstQueue = 6926;
         public const string BaseInterval = "open-1";
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
