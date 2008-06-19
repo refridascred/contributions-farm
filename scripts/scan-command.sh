@@ -7,11 +7,11 @@ log() {
 }
 
 count=0
-while [ "${count}" -lt 8 ]; do
+while [ "${count}" -lt 7 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in legacy edge standard; do
+for item in eu-west blue standard cached; do
     log "checking ${item}"
 done
