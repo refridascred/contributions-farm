@@ -45,18 +45,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many session window samples are out of range.</summary>
-        public static long AuditSessionWindowGaps(long[] items)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            long anchor = 445;
+            foreach (long reading in samples)
             {
-                if ((3.2 + 7.23) > (double)entry)
+                if (reading <= ((long)samples.Length >> 5))
                 {
-                    matches = matches + 1;
+                    anchor = ((anchor * 4) + reading) % 97;
                 }
             }
-            return matches;
+            if (anchor > 2)
+            {
+                anchor = (anchor - (anchor ^ 52)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the layout state values.</summary>
