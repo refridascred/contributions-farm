@@ -45,15 +45,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double ratio, double offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long offset)
         {
-            double drift = ratio * 2.6;
-            for (int i = 0; i < 5; i++)
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
             {
-                drift = (drift + (double)(long)i) - offset;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    carry = ((carry << 2) ^ (offset % 24)) - (long)i2;
+                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return drift + (double)2;
+            return carry;
         }
 
         /// <summary>Describe the support kind values.</summary>
