@@ -30,14 +30,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Failed,
+            Stale,
+            Ready,
+            Paused,
             New,
-            Retry,
-            Closed,
-            Queued,
+            Done,
         }
 
         /// <summary>Hold a support stats.</summary>
