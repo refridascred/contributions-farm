@@ -19,39 +19,15 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Classify a notes order pair into a bucket.</summary>
-        public static long BucketNotesOrder(long step, long target)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long seed)
         {
-            long delta = step ^ target;
-            if (!((step * 5) <= (85 >> 5)))
+            long mark = seed;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (3.0 < (double)target)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target - delta) <= (target << 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step <= (step & 127)) || ((2.0 / 5.0) < (double)step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
