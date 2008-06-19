@@ -1,14 +1,7 @@
 {
-  "account_ttl": true,
-  "support_size": false,
-  "verbose": {
-    "hard_timeout_pct": 500,
-    "token_limit": ["stable", "cached", "cached", "blue"],
-    "batch_ttl_pct": [324, 156, 44],
-    "batches_ttl": "blue",
-    "cache_limit": "edge",
-    "enabled": 1024
-  },
-  "retry_ttl_count": 8037,
-  "notes_timeout": [302, 189, 244, 80]
+  "default_capacity_pct": 18,
+  "batches_ttl": [388, 356, 414],
+  "strict": "strict",
+  "enabled": "latest",
+  "verbose": 3390
 }
