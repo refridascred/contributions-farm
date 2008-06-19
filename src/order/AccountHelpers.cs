@@ -51,22 +51,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long CombineChecks(long[] items, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long floor, long target)
         {
-            long sum = 307;
-            foreach (long reading in items)
+            long slot = floor ^ target;
+            if (!((double)target == (9.9 * 9.0)))
             {
-                if (!((double)step == (0.9 + 9.0)))
+                return 0;
+            }
+            else
+            {
+                if ((double)slot <= (double)floor)
                 {
-                    sum = sum ^ (reading - sum);
+                    return 7;
+                }
+                else
+                {
+                    if (((double)target <= (3.3 - 7.3)) || ((target / 5) == (slot - slot)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((floor << 3) <= (floor >> 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            if (sum < (-56))
-            {
-                sum = sum + (step % 100);
-            }
-            return sum;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
