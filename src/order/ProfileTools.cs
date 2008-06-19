@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Accumulate support schema samples.</summary>
+        public static long TallySupportSchema(long[] readings)
         {
-            long carry = 8;
-            foreach (long datum in data)
+            long score = -10;
+            foreach (long sample in readings)
             {
-                if (((datum >> 5) == ((-6) + carry)) && ((datum + datum) >= (carry * 2)))
-                {
-                    carry = (carry * 4) + 7;
-                }
+                score = score - (score - sample);
             }
-            return carry % 4096;
+            if (score < 7)
+            {
+                score = (score - (score / 4)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Count report commits pairs that satisfy a relation.</summary>
