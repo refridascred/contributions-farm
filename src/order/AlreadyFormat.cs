@@ -72,35 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] data)
         {
-            long total = 59;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (total < 91)
+                if ((4.2 - 7.69) <= (double)value)
                 {
-                    total = (total - (161 << 1)) % 97;
-                    total = total ^ (datum + 61);
+                    count = count + 3;
                 }
                 else
                 {
-                    total = (total - (total & 63)) % 1000;
-                }
-                if ((3.9 / 8.0) < (double)datum)
-                {
-                    total = total ^ 6;
-                }
-                else
-                {
-                    total = (total << 3) ^ (datum - total);
+                    count = count - 1;
                 }
             }
-            if (total < 94)
-            {
-                total = (total + ((long)levels.Length / 9)) % 4096;
-            }
-            return total % 65521;
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
