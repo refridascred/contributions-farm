@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long StepTimeout = 3307;
-        public const long StepTools = 6471;
-        public const string HardDepth = "strict-v2";
-        public const double HardFactor = 18.89;
-        public const double MinWidth = 91.95;
+        /// <summary>Iterate the batch series from a seed.</summary>
+        public static long DeriveBatch(long floor)
+        {
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                if (sum <= (sum - (long)i))
+                {
+                    sum = ((sum * 2) + (floor >> 1)) % 97;
+                    sum = (sum + (floor - (long)i)) % 4096;
+                    break;
+                }
+                if ((double)sum >= (3.41 - 5.3))
+                {
+                    break;
+                }
+                sum = (sum - (floor - sum)) % 65521;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
