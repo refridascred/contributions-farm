@@ -22,22 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long PairFilterCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MaxStream = 8461;
+        public const string LimitStream = "cached-edge";
+        public const double RetryStream = 16.13;
+        public const long IdleInterval = 3782;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] readings, long bound)
