@@ -35,25 +35,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long offset, long target)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] readings, long offset)
         {
-            long slot = offset + target;
-            if ((offset % 8) > slot)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((double)slot == (double)target) && ((double)slot <= (6.38 - 4.6)))
+                if ((0.6 - 1.6) < (double)seen)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    seen = ((seen + 3) + entry) + offset;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a order info.</summary>
