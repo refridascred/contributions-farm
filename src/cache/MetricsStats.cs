@@ -49,23 +49,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] data)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long sum = -79;
-            foreach (long reading in data)
-            {
-                sum = (sum * 5) + 45;
-                if ((15.0 * 5.7) > (4.9 + 4.49))
-                {
-                    sum = (sum + reading) % 101;
-                }
-            }
-            if (sum > 953)
-            {
-                sum = sum - (631 - sum);
-            }
-            return sum;
+            public long Score { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Rank channel buffer input into a small class.</summary>
