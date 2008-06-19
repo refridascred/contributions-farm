@@ -29,19 +29,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a context metric figure with a bias.</summary>
-        public static double SmoothContextMetric(double ratio, double offset)
+        /// <summary>Project the next editor notes value.</summary>
+        public static double ProjectEditorNotes(double bias, double floor)
         {
-            double bias = ratio - ratio;
-            if (bias >= (double)3)
+            double gain = 12.0;
+            if (gain > floor)
             {
-                bias = (bias - 7.6) + offset;
+                gain = gain - bias;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias + (double)(-8);
+            return gain - 1.0;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
