@@ -40,13 +40,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
+            public bool Token { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
