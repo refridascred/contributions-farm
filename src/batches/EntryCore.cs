@@ -23,20 +23,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long limit)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long offset, long offset2)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            if (offset2 < (offset2 ^ (-8)))
             {
-                if (1.0 >= (double)total)
-                {
-                    total = (total - ((long)i ^ total)) % 255;
-                }
-                total = (total * 4) + (1 - limit);
-                total = ((total * 2) + (long)i) % 65521;
+                return 1;
             }
-            return total;
+            else
+            {
+                if ((45 << 2) == (15 - offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the commits phase values.</summary>
