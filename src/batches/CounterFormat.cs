@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleContributi = 34.09;
-        public const string BaseContributi = "legacy-edge";
-        public const string CacheContributi = "open-1";
-        public const double StepContributi = 51.96;
-        public const long LimitContributi = 3322;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 12; i++)
+            {
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Roll a channel counter forward.</summary>
         public static long IterateChannel(long floor)
