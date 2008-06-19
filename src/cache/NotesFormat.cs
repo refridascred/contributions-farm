@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            public bool Size { get; set; }
-            public double Limit { get; set; }
-            public string Token { get; set; } = "";
-            public long Region { get; set; }
+            public bool Stamp { get; set; }
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a already record.</summary>
