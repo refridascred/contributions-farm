@@ -19,10 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitTimeout = "standard";
-        public const long SoftEntry = 2855;
-        public const long StepEntry = 8483;
+        /// <summary>Find the first editor route entry that matches the target.</summary>
+        public static long SeekEditorRouteIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long AuditGraphHits(long[] samples, long floor)
