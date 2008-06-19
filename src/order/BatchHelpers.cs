@@ -33,19 +33,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool GuardReportLimits(long[] readings, long origin)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] values, long target)
         {
-            bool valid = true;
-            foreach (long value in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= origin)
+                if (values[i] < target)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
