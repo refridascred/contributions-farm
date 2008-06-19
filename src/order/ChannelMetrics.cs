@@ -31,24 +31,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long ClassifyCommits(long bound, long offset)
+        /// <summary>Measure how many stream farm samples are out of range.</summary>
+        public static long MeasureStreamFarmOutliers(long[] samples)
         {
-            if ((bound + offset) >= offset)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if ((bound - offset) <= (bound & 7))
+                if ((9 >> 1) <= (matches + matches))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
+                    matches = (matches + 1) + value;
                 }
             }
+            return matches;
         }
     }
 }
