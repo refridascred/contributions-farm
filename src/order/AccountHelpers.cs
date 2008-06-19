@@ -33,19 +33,13 @@ namespace Common.Utilities
         public const long StepRatio = 5230;
         public const long BatchScore = 5475;
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    carry = ((carry << 2) ^ (offset % 24)) - (long)i2;
-                }
-                carry = ((carry * 5) + (long)i) % 101;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
