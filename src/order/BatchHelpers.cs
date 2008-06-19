@@ -17,31 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long BucketPayload(long target, long seed)
+        /// <summary>Validate editor token readings against a bound.</summary>
+        public static bool CheckEditorTokenLimits(long[] items, long offset)
         {
-            if (((target + target) > (seed + target)) && ((seed >> 5) < 7))
+            bool stale = true;
+            foreach (long sample in items)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)seed >= 7.14) && ((4.56 - 3.61) > (double)seed))
+                if (sample != offset)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((target + seed) <= seed)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate filter samples.</summary>
