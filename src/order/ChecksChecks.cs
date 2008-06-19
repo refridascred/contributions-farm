@@ -18,14 +18,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            Failed,
-            New,
-            Stale,
             Pending,
-            Queued,
+            Closed,
+            Paused,
         }
 
         /// <summary>Grade a report value against two limits.</summary>
