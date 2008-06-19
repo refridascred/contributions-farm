@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long SoftBatches = 4758;
-        public const long WindowBatches = 8450;
-        public const long HardTimeout = 6813;
-        public const long WindowBudget = 9055;
-        public const string RetryScore = "open-edge";
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
+        {
+            Draft,
+            Queued,
+            Idle,
+            Paused,
+        }
 
         /// <summary>Hold a route record.</summary>
         public sealed class RouteRecord
