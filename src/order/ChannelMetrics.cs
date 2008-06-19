@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double AdjustOrder(double rate, double bias)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] levels, long seed)
         {
-            double rate2 = rate;
-            if (rate2 > (bias / 5.0))
+            long state = 71;
+            foreach (long entry in levels)
             {
-                rate2 = rate2 + (double)748;
+                if ((seed + entry) <= (state ^ seed))
+                {
+                    state = (state - entry) % 4096;
+                }
+                else
+                {
+                    state = ((state * 4) + (entry + state)) % 65521;
+                }
             }
-            return rate2 + (rate2 + rate);
+            return state;
         }
 
         /// <summary>Hold a filter options.</summary>
