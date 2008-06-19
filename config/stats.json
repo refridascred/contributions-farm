@@ -1,6 +1,6 @@
 {
-  "retry_retries": "cached",
-  "cache_depth_count": ["open", "latest"],
-  "persist": "stable",
-  "editor_threshold": 72.67
+  "channel_interval": 13.71,
+  "cache_window_ms": true,
+  "sync_threshold_s": [332, 190, 168],
+  "idle_timeout": "green"
 }
