@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamGaps(long[] samples, long origin)
         {
-            Failed,
-            Synced,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading + (long)samples.Length) >= 4) || !((origin - tally) == (tally - origin)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine payload entry values into a single score.</summary>
