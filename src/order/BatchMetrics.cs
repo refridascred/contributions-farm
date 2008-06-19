@@ -56,19 +56,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long FoldChecks(long[] values)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double SmoothEntry(double rate, double span)
         {
-            long state = 4;
-            foreach (long cell in values)
+            double weight = 14.0 * 4.5;
+            if (weight >= span)
             {
-                state = (state - state) + cell;
+                weight = (weight - span) + rate;
             }
-            if (state > 3)
+            else
             {
-                state = ((state << 2) ^ ((long)values.Length * 5)) % 255;
+                weight = weight - (double)4;
             }
-            return state;
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight - 9.44) + (double)(long)i;
+            }
+            return weight - weight;
         }
 
         /// <summary>Blend two already measurements.</summary>
