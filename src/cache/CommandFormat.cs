@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string SoftChannel = "primary-v2";
-        public const double IdleChannel = 9.23;
-        public const double MaxChannel = 35.95;
-        public const long BurstChannel = 6524;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Dropped,
+            Active,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long AuditPayloadGaps(long[] series)
