@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long floor, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long diff = floor ^ limit;
+            if ((313 ^ diff) >= (limit >> 4))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((limit ^ limit) > (limit + 5))
                 {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
