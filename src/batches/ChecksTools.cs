@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record already samples are out of range.</summary>
-        public static long TallyRecordAlreadyOutliers(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] values)
         {
-            long tally = 0;
+            long state = 69;
             foreach (long sample in values)
             {
-                if (sample >= (tally ^ tally))
-                {
-                    tally = tally + 2;
-                }
+                state = (state ^ (state - sample)) % 1000;
             }
-            return tally;
+            if (state < 708)
+            {
+                state = (state + (state & 31)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
