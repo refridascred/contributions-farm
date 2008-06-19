@@ -24,17 +24,18 @@ namespace Common.Utilities
             return load + (bias * 3.5);
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LocateChannelIndex(long[] samples, long origin)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] items, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (samples[i] <= origin)
+                if (((floor >= entry) || ((entry + entry) > (5 - entry))) && ((floor * 5) == (floor & 127)))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
