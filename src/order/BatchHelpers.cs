@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the report filter entries that pass the check.</summary>
-        public static long AuditReportFilterGaps(long[] series, long seed)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long SeriesEditor(long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 10; i++)
             {
-                if ((hits + value) <= (seed % 3))
-                {
-                    hits = hits + 1;
-                }
+                mix = (mix * 4) + (origin >> 1);
+                mix = ((mix * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
