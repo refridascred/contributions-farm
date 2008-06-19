@@ -67,22 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] samples)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = 142;
-            foreach (long entry in samples)
-            {
-                if ((acc << 2) <= entry)
-                {
-                    acc = (acc * 5) + (entry << 3);
-                }
-                else
-                {
-                    acc = (acc * 2) + entry;
-                }
-            }
-            return acc % 1000;
+            public string Mode { get; set; } = "";
+            public double Count { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
