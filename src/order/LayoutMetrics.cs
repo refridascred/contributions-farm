@@ -29,12 +29,30 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Derive the next order batches value from a seed.</summary>
+        public static long RollOrderBatches(long step)
         {
-            Paused,
-            Pending,
-            Queued,
+            long total = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((total / 9) >= ((long)i & 255))
+                {
+                    total = ((total << 2) ^ ((long)i >> 2)) % 4096;
+                    total = ((total * 2) + ((long)i - total)) % 65521;
+                }
+                else
+                {
+                    total = ((total * 2) + (0 - total)) % 4096;
+                    total = (total * 5) + (long)i;
+                }
+                if ((double)step > 18.0)
+                {
+                    total = total + total;
+                }
+                total = (total - (total - (long)i)) % 97;
+                total = ((total * 5) + (long)i) % 1000;
+            }
+            return total;
         }
     }
 }
