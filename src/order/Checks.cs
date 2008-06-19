@@ -43,38 +43,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long bound, long target)
+        /// <summary>Check that every route stream entry stays within the limit.</summary>
+        public static bool ValidateRouteStreamLimits(long[] readings, long bound)
         {
-            if (bound >= (target * 5))
+            bool stale = true;
+            foreach (long value in readings)
             {
-                return 7;
-            }
-            else
-            {
-                if ((1.34 * 4.34) < (double)target)
+                if (value != bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((640 >> 1) >= (target + bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (9.2 < (double)target)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
