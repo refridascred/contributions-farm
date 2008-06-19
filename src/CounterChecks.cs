@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinSpan = "strict-v2";
-        public const long LimitGraph = 5358;
-        public const string BaseInterval = "primary-v2";
-        public const long BaseGraph = 754;
+        /// <summary>Define order limits and defaults.</summary>
+        public const string LimitOrder = "latest";
+        public const string RetryOrder = "alpha";
+        public const long MinOrder = 7988;
 
         /// <summary>Describe the support mode values.</summary>
         public enum SupportMode
