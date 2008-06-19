@@ -62,12 +62,18 @@ namespace Common.Utilities
         public const long LimitSession = 2825;
         public const long BurstSession = 1396;
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Measure how many order metrics samples are out of range.</summary>
+        public static long TallyOrderMetricsGaps(long[] values)
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if (((hits << 2) >= (item >> 4)) && ((item < (70 & 7)) && ((8.0 - 8.99) < (double)hits)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a notes record.</summary>
