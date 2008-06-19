@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings, long seed)
+        /// <summary>Check that every token metrics entry stays within the limit.</summary>
+        public static bool GuardTokenMetricsBounds(long[] readings, long limit)
         {
-            long mix = -648;
-            foreach (long sample in readings)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                mix = (mix + (sample + sample)) % 97;
-                if ((mix + 1) >= seed)
+                if (datum != limit)
                 {
-                    mix = mix ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return mix % 4096;
+            return valid;
         }
 
         /// <summary>Hold a editor options.</summary>
