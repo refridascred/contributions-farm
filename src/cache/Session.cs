@@ -18,14 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            New,
-            Ready,
-            Idle,
-            Active,
+            Failed,
             Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Combine payload entry values into a single score.</summary>
