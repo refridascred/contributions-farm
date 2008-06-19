@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double CacheLevel = 22.0;
-        public const long HardGraph = 1906;
-        public const double MaxGraph = 80.33;
-        public const string BatchBudget = "fallback";
+        /// <summary>Scale a queue schema figure with a bias.</summary>
+        public static double AdjustQueueSchema(double rate, double offset)
+        {
+            double weight = offset;
+            return (weight + (7.0 * 6.0)) + rate;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long LimitDepth = 6356;
