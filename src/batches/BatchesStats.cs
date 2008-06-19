@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] series, long bound)
         {
-            Active,
-            Dropped,
-            Pending,
-            Failed,
-            Retry,
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)hits == (double)datum)
+                {
+                    hits = (hits + 3) - bound;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Look up the position of a token contributi sample.</summary>
