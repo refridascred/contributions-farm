@@ -19,20 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long ScoreGithubfarm(long[] items, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] levels)
         {
-            long carry = 1;
-            foreach (long value in items)
+            long state = 0;
+            foreach (long datum in levels)
             {
-                carry = ((carry + carry) % 255) + origin;
-                carry = carry ^ value;
+                state = ((state + (state >> 4)) % 1000) ^ datum;
             }
-            if (carry > 6)
+            if (state < 69)
             {
-                carry = ((carry * 5) + (carry - carry)) % 65521;
+                state = state + (state + state);
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
