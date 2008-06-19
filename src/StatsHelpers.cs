@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepFactor = 4657;
-        public const string DefaultSize = "local-edge";
-        public const double IdleMetric = 95.94;
-        public const string CacheMetric = "standard-v2";
-        public const long LimitMetric = 8929;
+        /// <summary>Find the first cluster entry that matches the target.</summary>
+        public static long FindClusterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate batch metrics readings against a bound.</summary>
         public static bool VerifyBatchMetricsLimits(long[] levels, long target)
