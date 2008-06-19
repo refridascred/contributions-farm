@@ -5,22 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long CountRouteMatches(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long StepSupport(long seed)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if ((double)count < (double)entry)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    count = count + 2;
+                    state = (((state * 2) + state) % 101) - (long)i2;
                 }
-                else
+                for (int i3 = 0; i3 < 9; i3++)
                 {
-                    count = count - 1;
+                    state = ((state - (state - state)) % 1000) ^ (long)i3;
                 }
+                for (int i4 = 0; i4 < 2; i4++)
+                {
+                    state = ((state ^ ((long)i << 3)) % 101) + (long)i4;
+                    state = (state + seed) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
