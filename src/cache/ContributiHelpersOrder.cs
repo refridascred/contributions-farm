@@ -24,12 +24,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Pending,
-            Queued,
-            Ready,
+            public double Rank { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the checks class values.</summary>
