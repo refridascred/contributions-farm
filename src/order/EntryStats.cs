@@ -19,21 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((levels[i] == step) && ((levels[i] % 3) == 0))
                 {
-                    if ((values[i] ^ values[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
