@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Grade a counter stream value against two limits.</summary>
-        public static long RankCounterStream(long offset, long bound)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            if ((offset - offset) >= offset)
-            {
-                return 8;
-            }
-            else
-            {
-                if (((1.1 * 1.58) >= (double)bound) || (offset < 886))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
