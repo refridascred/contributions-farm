@@ -31,11 +31,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Classify a route session pair into a bucket.</summary>
+        public static long RankRouteSession(long seed, long step)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
+            if (((step & 63) != (seed * 4)) || ((step % 24) >= (step & 31)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((step % 100) < (seed / 7)) && (step > (seed + step)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
