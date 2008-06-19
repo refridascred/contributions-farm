@@ -47,12 +47,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long ScoreStream(long[] series)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public long Level { get; set; }
+            long total = 60;
+            foreach (long cell in series)
+            {
+                total = (total << 3) ^ (cell - 82);
+            }
+            if (total < 2)
+            {
+                total = (total ^ (total << 3)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
