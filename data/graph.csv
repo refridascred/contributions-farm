@@ -1,8 +1,6 @@
-id,token,rank
-1,75.91,356
-2,742,edge
-3,primary,6.93
-4,21.33,eu-west
-5,16.49,317
-6,18.52,62.52
-7,eu-west,staging
+id,score,level,weight
+1,strict,270,51.41
+2,legacy,40.04,865
+3,322,59.53,151
+4,446,56.53,10
+5,49.59,2.94,377
