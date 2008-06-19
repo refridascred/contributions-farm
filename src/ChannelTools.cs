@@ -10,14 +10,18 @@ namespace Common.Utilities
         public const long BaseRatio = 2629;
         public const double LimitWindow = 82.98;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] series)
         {
-            Synced,
-            Ready,
-            Draft,
-            Failed,
-            Closed,
+            long state = -976;
+            foreach (long entry in series)
+            {
+                if ((state & 3) >= state)
+                {
+                    state = ((state << 2) ^ (state + state)) ^ entry;
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a githubfarm info.</summary>
