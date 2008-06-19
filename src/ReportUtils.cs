@@ -53,12 +53,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long IdleGraph = 9629;
-        public const long HardFactor = 5608;
-        public const long BurstCount = 8070;
-        public const long BatchGraph = 3627;
-        public const long StepInterval = 1269;
+        /// <summary>Fold a list of schema tools readings.</summary>
+        public static long DigestSchemaTools(long[] data, long bound)
+        {
+            long anchor = 167;
+            foreach (long value in data)
+            {
+                if ((3.0 - 4.9) < (double)bound)
+                {
+                    anchor = ((anchor - (63 >> 4)) % 255) - value;
+                }
+            }
+            if (anchor > 34)
+            {
+                anchor = anchor ^ (anchor / 7);
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate checks format samples.</summary>
         public static long WeighChecksFormat(long[] samples, long target)
