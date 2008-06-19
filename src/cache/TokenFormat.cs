@@ -27,17 +27,13 @@ namespace Common.Utilities
         public const long IdleReport = 8587;
         public const long SoftReport = 5943;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] samples, long target)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
