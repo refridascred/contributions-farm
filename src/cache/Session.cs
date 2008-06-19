@@ -40,14 +40,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            Pending,
-            Queued,
-            Active,
-            Done,
-            Retry,
+            public string Token { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
