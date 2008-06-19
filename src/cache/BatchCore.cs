@@ -28,19 +28,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool CheckContributiLimits(long[] values, long bound)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            bool found = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Done,
+            Synced,
+            Draft,
+            Stale,
+            Active,
         }
 
         /// <summary>Digest a series of githubfarm cluster entries.</summary>
