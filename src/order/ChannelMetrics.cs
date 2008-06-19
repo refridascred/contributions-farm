@@ -11,23 +11,22 @@ namespace Common.Utilities
         public const long RetryProfile = 1496;
         public const long MaxTimeout = 3571;
 
-        /// <summary>Rank channel stream input into a small class.</summary>
-        public static long BucketChannelStream(long target, long seed)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long origin, long step)
         {
-            long bound = target - seed;
-            if ((7.0 * 2.35) >= (double)seed)
+            if ((origin % 3) <= (293 - origin))
             {
-                return 3;
+                return 4;
             }
             else
             {
-                if (((0 >> 4) != (bound % 5)) && ((bound ^ target) >= (target / 4)))
+                if (375 <= (step ^ (-10)))
                 {
-                    return 8;
+                    return 5;
                 }
                 else
                 {
-                    return 4;
+                    return 2;
                 }
             }
         }
