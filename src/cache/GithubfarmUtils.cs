@@ -40,14 +40,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] data, long step)
         {
-            Done,
-            Pending,
-            Ready,
-            Retry,
-            Queued,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
