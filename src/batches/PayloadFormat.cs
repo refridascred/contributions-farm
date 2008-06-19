@@ -45,21 +45,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] items)
+        /// <summary>Digest a series of tools buffer entries.</summary>
+        public static long DigestToolsBuffer(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mix = 879;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                mix = (mix - (entry + entry)) % 4096;
+                mix = (mix * 4) + (mix + (long)values.Length);
+                if ((mix >> 2) > (mix & 3))
                 {
-                    if ((items[i] ^ items[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix ^ (entry - 802)) % 97;
                 }
             }
-            return tally;
+            if (mix < 64)
+            {
+                mix = (mix * 3) + (mix + mix);
+            }
+            return mix;
         }
     }
 }
