@@ -38,13 +38,27 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long CombineMetrics(long[] levels)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public long Stamp { get; set; }
-            public bool Flag { get; set; }
+            long mix = 317;
+            foreach (long item in levels)
+            {
+                if (9.15 <= (double)mix)
+                {
+                    long slot = (mix - item) + (mix + mix);
+                    mix = mix - (slot - slot);
+                }
+                if ((mix % 100) == (item + item))
+                {
+                    mix = mix ^ (mix % 100);
+                }
+            }
+            if (mix > 582)
+            {
+                mix = mix + (mix >> 2);
+            }
+            return mix % 97;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
