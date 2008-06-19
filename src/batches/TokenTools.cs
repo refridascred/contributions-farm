@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelOutliers(long[] values)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowGaps(long[] samples)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((value / 2) > value)
+                if ((item / 5) != (item ^ 1))
                 {
-                    seen = seen + 3;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
