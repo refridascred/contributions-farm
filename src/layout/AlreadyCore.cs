@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Already core helpers.</summary>
     public static class AlreadyCore
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long SeriesOrder(long step)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TallyGraph(long[] data, long origin)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long mark = 424;
+            foreach (long reading in data)
             {
-                state = (state << 3) ^ (step - step);
-                state = ((state * 5) + (long)i) % 4093;
+                mark = ((mark ^ (91 + origin)) % 4096) + reading;
+                if ((origin * 5) <= (7 % 8))
+                {
+                    mark = (mark + (origin + 656)) % 4096;
+                }
             }
-            return state;
+            if (mark > 8)
+            {
+                mark = (mark << 2) ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every account record entry stays within the limit.</summary>
