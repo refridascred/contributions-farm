@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double DefaultCache = 32.53;
-        public const double MinTimeout = 57.28;
-        public const long IdleInterval = 8713;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] readings, long bound)
+        {
+            bool ready = true;
+            foreach (long value in readings)
+            {
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Grade a route value against two limits.</summary>
         public static long RankRoute(long target, long floor)
