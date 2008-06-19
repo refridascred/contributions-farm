@@ -16,13 +16,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Digest a series of batch order entries.</summary>
+        public static long ScoreBatchOrder(long[] levels, long floor)
         {
-            public string Score { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public long Token { get; set; }
+            long anchor = 794;
+            foreach (long cell in levels)
+            {
+                anchor = ((anchor * 4) + ((long)levels.Length - cell)) % 255;
+                anchor = ((anchor * 2) + (anchor & 31)) % 4096;
+                if ((floor << 3) == (cell * 2))
+                {
+                    anchor = (anchor ^ ((-28) << 1)) % 4096;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
