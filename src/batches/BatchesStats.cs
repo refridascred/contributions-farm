@@ -21,24 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long seed, long bound)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] items)
         {
-            if (!((bound >> 2) > (bound + seed)))
+            long hits = 0;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed % 7) > (seed + bound))
+                if ((double)reading == (double)hits)
                 {
-                    return 3;
+                    hits = hits + 3;
                 }
                 else
                 {
-                    return 4;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Define route limits and defaults.</summary>
