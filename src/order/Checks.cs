@@ -26,11 +26,18 @@ namespace Common.Utilities
             return weight2 - weight2;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardTimeout = 9836;
-        public const double RetryRatio = 77.96;
-        public const long DefaultScore = 9696;
-        public const double StepCommits = 56.16;
+        /// <summary>Find the first editor entry that matches the target.</summary>
+        public static long LocateEditorIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of profile entries.</summary>
         public static long TallyProfile(long[] items, long offset)
