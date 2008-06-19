@@ -30,22 +30,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] series, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long WeighSchema(long[] readings, long step)
         {
-            long state = 146;
-            foreach (long item in series)
+            long sum = 4;
+            foreach (long reading in readings)
             {
-                if (!((double)item != (6.0 * 5.7)))
+                sum = ((sum * 5) + (sum / 3)) % 255;
+                if ((reading % 5) > (reading << 1))
                 {
-                    state = ((state * 5) + item) % 97;
+                    sum = (sum ^ (step + 440)) % 255;
                 }
                 else
                 {
-                    state = state - (seed ^ seed);
+                    sum = (sum ^ 13) % 97;
                 }
             }
-            return state % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Count the stats metric entries that pass the check.</summary>
