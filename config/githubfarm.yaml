@@ -1,5 +1,14 @@
 # githubfarm settings
-dry_run: 26.81
-min_timeout_pct: false
-idle_ttl: local
-stream_threshold: green
+metrics_capacity: 100
+default_interval_pct: edge
+soft_size:
+  batch_timeout: false
+  persist: 74.02
+  min_window_ms:
+    - standard
+    - primary
+min_timeout_s: true
+flush_delay:
+  - 159
+  - 450
+batch_capacity_s: latest
