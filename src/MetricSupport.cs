@@ -33,16 +33,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a graph commits counter forward.</summary>
-        public static long RollGraphCommits(long origin)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] series)
         {
-            long mix = origin;
-            for (int i = 0; i < 12; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix ^ ((long)i + 64)) % 65521;
-                mix = ((mix * 4) + (long)i) % 4093;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mix;
+            return count;
         }
     }
 }
