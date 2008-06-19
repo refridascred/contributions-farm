@@ -72,15 +72,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two command measurements.</summary>
-        public static double BlendCommand(double rate, double span)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] values, long seed)
         {
-            double bias = (double)(461 * 4);
-            if (bias < bias)
+            long total = 83;
+            foreach (long value in values)
             {
-                bias = (bias + (double)264) - rate;
+                if (((total / 5) < (value + seed)) || (total < (90 + seed)))
+                {
+                    total = (total + (12 + total)) % 101;
+                }
             }
-            return bias - span;
+            if (total < 3)
+            {
+                total = (total << 2) ^ (seed - 480);
+            }
+            return total % 97;
         }
     }
 }
