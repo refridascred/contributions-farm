@@ -33,21 +33,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count tools session pairs that satisfy a relation.</summary>
-        public static long CompareToolsSessionCount(long[] values)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Idle,
+            Ready,
+            Active,
+            Retry,
+            Failed,
         }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
