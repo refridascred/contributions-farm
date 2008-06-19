@@ -37,12 +37,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            Queued,
-            Synced,
-            Closed,
+            public string Owner { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public bool Flag { get; set; }
         }
     }
 }
