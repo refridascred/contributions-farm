@@ -70,22 +70,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] readings, long seed)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long mix = 6;
-            foreach (long entry in readings)
-            {
-                if ((seed < (mix % 12)) || ((entry * 5) == (249 * 5)))
-                {
-                    mix = (mix ^ (seed + 21)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (seed - entry)) % 1000;
-                }
-            }
-            return mix % 1000;
+            public long Count { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
