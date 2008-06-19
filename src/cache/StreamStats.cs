@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] series, long limit)
         {
-            long acc = step;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            foreach (long value in series)
             {
-                if (((924 - (long)i) >= (long)i) || ((acc << 1) >= step))
+                if (!((value >> 1) > value))
                 {
-                    acc = acc ^ (acc ^ (long)i);
-                    continue;
+                    count = (count + 3) + limit;
                 }
-                acc = (acc * 5) + acc;
-                acc = acc - (long)i;
-                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
