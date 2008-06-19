@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] readings)
         {
-            Retry,
-            Paused,
-            Locked,
-            Closed,
-            Ready,
+            long carry = -34;
+            foreach (long datum in readings)
+            {
+                if ((datum + (long)readings.Length) <= (datum - datum))
+                {
+                    carry = (carry << 3) ^ (45 / 6);
+                }
+                else
+                {
+                    carry = ((carry * 4) + (carry & 15)) % 1000;
+                }
+                if ((9.4 / 8.0) == (double)carry)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Digest a series of record entries.</summary>
