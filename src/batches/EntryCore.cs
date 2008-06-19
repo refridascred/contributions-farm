@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TallyChecks(long[] data)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            long anchor = 908;
-            foreach (long item in data)
+            long mark = target;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor ^ anchor) % 101) + item;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    mark = ((mark ^ (target + target)) % 101) - (long)i2;
+                }
+                mark = (mark * 4) + (long)i;
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return anchor % 1000;
+            return mark;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
