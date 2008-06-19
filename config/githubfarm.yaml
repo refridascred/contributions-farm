@@ -1,12 +1,6 @@
 # githubfarm settings
-soft_timeout: 83.97
-sync_limit:
-  - cached
-  - eu-west
-  - eu-west
-verbose:
-  - primary
-  - standard
-metrics_capacity: 6393
-hard_window: green
-filter_delay: true
+batch_size: 2542
+max_interval_count: false
+session_interval: 1
+stream_ttl: 50.86
+channel_window: true
