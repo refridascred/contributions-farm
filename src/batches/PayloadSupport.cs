@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamOutliers(long[] values)
+        /// <summary>Validate window record readings against a bound.</summary>
+        public static bool VerifyWindowRecordRange(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((((1.0 - 9.9) < (double)item) && ((item % 60) <= (117 * 5))) && ((12.0 * 19.0) > (double)matches))
+                if (value <= offset)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Hold a contributi summary.</summary>
