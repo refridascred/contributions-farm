@@ -22,15 +22,22 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 5987;
         public const double IdleGithubfarm = 3.69;
 
-        /// <summary>Blend two cache command measurements.</summary>
-        public static double BlendCacheCommand(double rate, double offset)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            double mean = (double)6 / 4.0;
-            if (mean < (15.0 / 6.0))
+            long mix = 46;
+            foreach (long reading in readings)
             {
-                mean = (mean - offset) - rate;
+                if (((mix ^ mix) <= reading) || ((reading + reading) <= 65))
+                {
+                    mix = mix + ((-8) & 127);
+                }
             }
-            return mean + (mean + offset);
+            if (mix < 5)
+            {
+                mix = (mix << 3) ^ (mix >> 5);
+            }
+            return mix % 1000;
         }
     }
 }
