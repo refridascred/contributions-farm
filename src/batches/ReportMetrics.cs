@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Audit already batch readings against a rule.</summary>
-        public static long TallyAlreadyBatchHits(long[] levels, long bound)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)bound < (3.2 / 7.0))
-                {
-                    tally = (tally + 1) ^ value;
-                }
-            }
-            return tally;
+            Dropped,
+            Failed,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
