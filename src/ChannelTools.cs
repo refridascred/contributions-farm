@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long StepCommand = 4038;
-        public const long WindowCommand = 849;
-        public const double LimitCommand = 62.65;
-        public const long SoftSpan = 5307;
-        public const long WindowBudget = 168;
+        /// <summary>Measure how many editor already samples are out of range.</summary>
+        public static long CountEditorAlreadyGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((6.1 + 9.7) < (double)tally)
+                {
+                    tally = (tally + 3) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a tools account reading by value.</summary>
         public static long SeekToolsAccountIndex(long[] samples, long origin)
