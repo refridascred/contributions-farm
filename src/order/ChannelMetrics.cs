@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] readings, long target)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] samples, long bound)
         {
-            long mark = 963;
-            foreach (long datum in readings)
+            long score = -349;
+            foreach (long reading in samples)
             {
-                if ((double)target >= (double)6)
+                if ((reading & 63) < (183 * 5))
                 {
-                    mark = mark ^ (mark + datum);
+                    score = score - (262 ^ bound);
                 }
             }
-            return mark;
+            return score % 97;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
