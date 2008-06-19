@@ -20,23 +20,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)tally > 7.7)
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long WindowContributi = 794;
+        public const long IdleSpan = 8839;
+        public const double BatchContributi = 81.16;
 
         /// <summary>Grade a checks queue value against two limits.</summary>
         public static long BucketChecksQueue(long target, long offset)
