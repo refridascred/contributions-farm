@@ -15,14 +15,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountGaps(long[] samples, long step)
         {
-            Ready,
-            Queued,
-            Locked,
-            Draft,
-            Paused,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if (!((79 ^ entry) >= (step + step)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of route readings.</summary>
