@@ -34,11 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] series, long floor)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long entry in series)
+            {
+                if (((floor > (seen >> 5)) && ((entry * 5) < floor)) || ((entry & 7) <= (entry - floor)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a editor record.</summary>
