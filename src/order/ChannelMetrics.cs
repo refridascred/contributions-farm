@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterMatches(long[] data, long seed)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long ClassifyCommits(long bound, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((bound + offset) >= offset)
             {
-                if ((6.66 + 2.0) <= (double)hits)
+                return 6;
+            }
+            else
+            {
+                if ((bound - offset) <= (bound & 7))
                 {
-                    hits = ((hits + 3) + item) + seed;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 3;
                 }
             }
-            return hits;
         }
     }
 }
