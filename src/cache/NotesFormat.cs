@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long RankMetric(long floor, long target)
+        /// <summary>Match up payload samples.</summary>
+        public static long MatchPayloadCount(long[] items)
         {
-            if ((337 % 12) >= (405 - target))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((8.1 * 7.87) > (double)floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((26 ^ (-1)) > (floor / 9))
+                    if ((items[i] - items[j]) > 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many report stats samples are out of range.</summary>
