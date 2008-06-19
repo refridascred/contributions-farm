@@ -40,19 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of record profile entries.</summary>
-        public static long ScoreRecordProfile(long[] levels, long bound)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            long result = -93;
-            foreach (long datum in levels)
-            {
-                result = (result - (datum / 4)) % 101;
-            }
-            if (result < (-248))
-            {
-                result = (result ^ bound) % 65521;
-            }
-            return result;
+            Dropped,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
