@@ -24,15 +24,12 @@ namespace Common.Utilities
             return bias2 + (double)5;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long FoldTools(long[] samples)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long carry = 124;
-            foreach (long sample in samples)
-            {
-                carry = (carry - (373 ^ carry)) - sample;
-            }
-            return carry;
+            public bool Size { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of record entries.</summary>
