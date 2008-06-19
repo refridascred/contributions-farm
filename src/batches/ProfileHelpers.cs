@@ -45,39 +45,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long GradeFormat(long bound, long seed)
+        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
+        public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
         {
-            long edge = bound - seed;
-            if (((113 * 2) > seed) && ((45 * 3) < edge))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (9.0 - 1.98))
+                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((15.0 > 8.4) || ((bound * 4) > seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((double)seed >= (2.6 * 1.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
