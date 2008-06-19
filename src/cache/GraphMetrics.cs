@@ -63,12 +63,40 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheProfile = 8778;
-        public const string MinDepth = "legacy-edge";
-        public const long MinProfile = 6461;
-        public const long MaxSize = 9524;
-        public const double RetryBudget = 19.03;
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long limit, long offset)
+        {
+            long lane = limit - offset;
+            if (((offset ^ lane) < (lane & 1)) || ((11.0 * 4.85) > (double)offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset - 2) < (limit >> 4))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)offset > (7.0 - 2.0))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (offset <= (688 & 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Blend two record measurements.</summary>
         public static double AdjustRecord(double scale, double offset)
