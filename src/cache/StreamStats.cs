@@ -30,21 +30,21 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] items)
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) > 4)
+                    if ((levels[i] ^ levels[j]) > 15)
                     {
-                        seen = seen + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Classify a order channel pair into a bucket.</summary>
