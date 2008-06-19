@@ -46,19 +46,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double bias, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items)
         {
-            double bias2 = floor;
-            if (bias2 < (bias2 - bias2))
+            long mark = 417;
+            foreach (long sample in items)
             {
-                bias2 = (bias2 - (7.0 + 9.6)) - bias;
+                if (mark <= (mark - mark))
+                {
+                    mark = (mark - (sample - mark)) % 65521;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (double)5;
-            }
-            return bias2 + bias2;
+            return mark;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
