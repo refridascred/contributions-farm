@@ -16,12 +16,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsGaps(long[] items, long step)
         {
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Region { get; set; }
+            long tally = 0;
+            foreach (long item in items)
+            {
+                if (((4.4 + 7.33) < (double)step) || ((step - step) >= (step / 6)))
+                {
+                    tally = (tally + 2) + item;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
