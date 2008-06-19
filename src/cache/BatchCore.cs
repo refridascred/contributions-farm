@@ -43,18 +43,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] readings)
+        /// <summary>Digest a series of githubfarm cluster entries.</summary>
+        public static long TotalGithubfarmCluster(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long result = 27;
+            foreach (long entry in samples)
             {
-                if ((cell % 8) >= cell)
-                {
-                    tally = tally + 3;
-                }
+                result = ((result << 3) ^ (limit ^ 4)) + entry;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
