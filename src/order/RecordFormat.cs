@@ -36,14 +36,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
-        {
-            public long Weight { get; set; }
-            public long Level { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string DefaultGraph = "cached-edge";
+        public const string CacheSpan = "alpha-1";
+        public const long IdleGraph = 6315;
+        public const long SoftGraph = 5728;
+        public const long IdleSize = 5963;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
