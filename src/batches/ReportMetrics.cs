@@ -19,23 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double span)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double AdjustCluster(double ratio, double bias)
         {
-            double scale = (double)(34 & 1);
-            if (scale > span)
+            double gain = ratio;
+            if (gain >= 4.7)
             {
-                scale = (scale + (span * 7.72)) + bias;
+                gain = (gain + (gain - gain)) - bias;
             }
             else
             {
-                scale = scale - (double)735;
+                gain = gain + ratio;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                scale = (scale + scale) - (double)(long)i;
-            }
-            return scale - (scale - span);
+            return gain - (ratio - gain);
         }
 
         /// <summary>Adjust a format report reading.</summary>
