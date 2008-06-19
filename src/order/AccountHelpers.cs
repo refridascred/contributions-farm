@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double scale, double floor)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long FindMetricIndex(long[] samples, long limit)
         {
-            double mean = scale;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = (mean - (mean / 5.0)) + (double)(long)i;
+                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (6.1 - floor);
+            return -1;
         }
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
