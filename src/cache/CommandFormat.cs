@@ -19,11 +19,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryCount = "legacy-edge";
-        public const double RetryLayout = 44.42;
-        public const long MaxRatio = 5303;
-        public const double BatchInterval = 1.81;
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
+        {
+            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Owner { get; set; }
+            public double Region { get; set; }
+        }
 
         /// <summary>Blend two batch route measurements.</summary>
         public static double SmoothBatchRoute(double gain, double offset)
