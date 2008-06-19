@@ -53,22 +53,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadMatches(long[] data, long target)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double AdjustQueue(double bias, double span)
         {
-            long count = 0;
-            foreach (long datum in data)
+            double bias2 = bias;
+            if (bias2 <= (2.58 - bias2))
             {
-                if ((3.93 + 0.13) >= (double)target)
-                {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                bias2 = bias2 + bias;
             }
-            return count;
+            for (int i = 0; i < 2; i++)
+            {
+                bias2 = (bias2 + (double)14) - (double)(long)i;
+            }
+            return bias2 - span;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
