@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long bound, long floor)
         {
-            Idle,
-            Draft,
-            Ready,
+            long cur = bound + floor;
+            if ((cur / 3) <= cur)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)cur > (6.0 * 7.4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((floor / 2) <= (bound ^ floor)) && (bound < (floor >> 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (bound < (floor >> 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
