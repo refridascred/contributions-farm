@@ -69,13 +69,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long SortCounter(long offset, long offset2)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Stale,
+            if ((double)offset < (8.84 * 9.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if (offset2 < ((-2) + 757))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
