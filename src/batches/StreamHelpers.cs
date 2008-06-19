@@ -81,22 +81,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutGaps(long[] readings, long step)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long PairMetricsCount(long[] samples)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((step * 2) != (step - 323))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 1) - sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((samples[i] ^ samples[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
