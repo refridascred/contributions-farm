@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((bound / 6) > item)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string CacheContributi = "primary";
+        public const double BatchContributi = 60.91;
+        public const string MinContributi = "legacy";
+        public const long SoftContributi = 3568;
+        public const long HardContributi = 7457;
 
         /// <summary>Project the next buffer queue value.</summary>
         public static double ScaleBufferQueue(double ratio, double span)
