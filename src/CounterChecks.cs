@@ -75,10 +75,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long StepSpan = 8602;
-        public const long HardCache = 6549;
-        public const long SoftWidth = 858;
-        public const long DefaultCache = 6462;
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] readings, long seed)
+        {
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
