@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Roll a queue counter forward.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Roll a profile context counter forward.</summary>
+        public static long RollProfileContext(long limit)
         {
-            long acc = bound;
+            long mix = limit;
             for (int i = 0; i < 22; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                mix = (mix << 3) ^ 443;
+                if (((449 + limit) < (mix << 1)) && ((limit - 41) >= mix))
                 {
-                    acc = acc + ((long)i2 * 5);
+                    mix = ((mix * 2) + (mix - limit)) % 4096;
                 }
-                acc = acc ^ (acc / 9);
-                acc = ((acc * 5) + (long)i) % 1000;
+                else
+                {
+                    mix = (mix + (limit % 12)) % 4096;
+                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Audit batch channel readings against a rule.</summary>
