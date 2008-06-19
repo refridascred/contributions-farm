@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MinLevel = 359;
-        public const double WindowOrder = 43.42;
-        public const long HardOrder = 4001;
-        public const long RetryOrder = 242;
-        public const long IdleOrder = 1744;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Locked,
+            Retry,
+            Queued,
+            Failed,
+        }
 
         /// <summary>Rank queue metrics input into a small class.</summary>
         public static long GradeQueueMetrics(long bound, long origin)
