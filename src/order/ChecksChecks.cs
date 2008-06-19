@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            public double Ratio { get; set; }
-            public bool Flag { get; set; }
+            New,
+            Idle,
+            Paused,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the filter mode values.</summary>
