@@ -1,9 +1,7 @@
-id,weight,active
-1,legacy,723
-2,893,open
-3,staging,green
-4,legacy,273
-5,40.66,stable
-6,85.58,328
-7,52.31,71
-8,321,41.03
+id,ratio,count,token,active
+1,24.88,647,primary,edge
+2,eu-west,345,cached,607
+3,fallback,eu-west,277,legacy
+4,24,120,577,2.02
+5,primary,11.1,7.02,365
+6,stable,46.19,279,63.03
