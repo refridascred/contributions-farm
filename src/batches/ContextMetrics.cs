@@ -60,11 +60,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
-        {
-            public bool Ratio { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryInterval = 22;
+        public const long IdleMetric = 4735;
+        public const long MinScore = 950;
+        public const long MaxMetric = 1492;
     }
 }
