@@ -1,18 +1,8 @@
 # githubfarm settings
-min_interval_ms: 8942
-soft_timeout: green
-max_timeout_count: blue
-graph_interval: 95.92
-hard_depth_s:
-  max_size:
-    - 339
-    - 274
-    - 292
-  audit:
-    strict: 97
-    notes_timeout: 1024
-    flush_limit: primary
-    burst_threshold_pct: 7442
-    sync_ttl: 14
-    cache_limit_ms: 3097
-  verbose: false
+audit: true
+batch_size_s: primary
+record_limit:
+  - eu-west
+  - legacy
+dry_run: fallback
+batch_ratio_count: 2564
