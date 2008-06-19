@@ -52,22 +52,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] samples)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long CombineBatch(long[] series)
         {
-            long result = 5;
-            foreach (long sample in samples)
+            long sum = 32;
+            foreach (long reading in series)
             {
-                if ((sample % 97) > result)
+                if ((2.2 / 7.0) > (double)sum)
                 {
-                    result = (result ^ (6 & 15)) % 97;
+                    sum = (sum * 5) + (sum + reading);
                 }
             }
-            if (result > 421)
+            if (sum < 14)
             {
-                result = result + (14 - result);
+                sum = sum ^ (sum ^ (-157));
             }
-            return result;
+            return sum % 97;
         }
 
         /// <summary>Hold a batches stats.</summary>
