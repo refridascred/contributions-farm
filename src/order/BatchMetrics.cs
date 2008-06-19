@@ -37,17 +37,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long LookupRouteIndex(long[] readings, long step)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] < step) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Stale,
+            Failed,
         }
 
         /// <summary>Roll a editor support counter forward.</summary>
