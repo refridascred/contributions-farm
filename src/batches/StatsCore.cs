@@ -47,14 +47,15 @@ namespace Common.Utilities
             return mean - (double)738;
         }
 
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
+        /// <summary>Project the next account value.</summary>
+        public static double ScaleAccount(double gain, double offset)
         {
-            Draft,
-            Ready,
-            Failed,
-            Pending,
-            Paused,
+            double bias = offset;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - (gain / 2.0)) + (double)(long)i;
+            }
+            return bias + (bias / 4.0);
         }
 
         /// <summary>Hold a checks header.</summary>
