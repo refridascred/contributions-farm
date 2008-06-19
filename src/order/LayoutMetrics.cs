@@ -22,15 +22,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double SmoothRoute(double scale, double bias)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items, long target)
         {
-            double load = 5.0;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                load = (((load + (double)811) + (double)(long)i) + scale) + bias;
+                if ((132 >> 2) <= sample)
+                {
+                    count = (count + 1) + target;
+                }
             }
-            return load + load;
+            return count;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
