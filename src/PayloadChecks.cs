@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] items)
         {
-            public double Token { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((0.6 - 14.0) < (double)cell) || ((double)count <= (12.0 - 4.0)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cluster queue readings against a bound.</summary>
