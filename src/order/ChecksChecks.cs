@@ -22,12 +22,31 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Rank route input into a small class.</summary>
+        public static long ClassifyRoute(long seed, long floor)
         {
-            Pending,
-            Queued,
-            Stale,
+            if (floor < (seed / 9))
+            {
+                return 8;
+            }
+            else
+            {
+                if (690 < floor)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor <= (4.2 + 3.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
