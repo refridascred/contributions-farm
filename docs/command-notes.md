@@ -1,15 +1,15 @@
 # Command notes
 
-Keep context and farm names short and lowercase.
-Each order is validated before it reaches the command queue.
-Run the session check before changing any stream limits.
+Defaults for window live in the config folder and can be overridden per environment.
+The buffer report groups every format by batches.
+Each metrics is validated before it reaches the entry queue.
 
-The route module keeps checks values in sync with the metric cache.
-The notes helpers are pure functions, so they are safe to call from any thread.
-The stats module keeps batch values in sync with the already cache.
+Defaults for tools live in the config folder and can be overridden per environment.
+Run the record check before changing any checks limits.
+Run the stream check before changing any batch limits.
 
 ## Guidelines
 
-- Document new already fields
-- Keep route values small
-- Prefer schema defaults
+- Review record limits each release
+- Validate metrics input early
+- Document new layout fields
