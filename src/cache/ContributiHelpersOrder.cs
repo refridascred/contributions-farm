@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] series, long origin)
         {
-            long mix = -6;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long item in series)
             {
-                mix = (mix ^ mix) % 4096;
-                if ((30 - 21) > (612 + cell))
+                if ((hits ^ 2) <= (hits + item))
                 {
-                    break;
+                    hits = (hits + 1) + origin;
                 }
             }
-            if (mix < 30)
-            {
-                mix = (mix ^ (9 + mix)) % 1000;
-            }
-            return mix;
+            return hits;
         }
 
         /// <summary>Describe the stats class values.</summary>
