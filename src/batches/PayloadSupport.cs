@@ -38,39 +38,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a farm report pair into a bucket.</summary>
-        public static long SortFarmReport(long target, long seed)
-        {
-            long lane = target ^ seed;
-            if (((target + lane) >= seed) || ((0 / 9) == (target - lane)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((target + seed) > (-31)) || ((target * 5) > seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((double)lane != (10.0 + 2.72)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((lane % 12) <= (lane << 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheBatches = 1762;
+        public const string MinBatches = "primary-v2";
+        public const long BaseBatches = 6532;
+        public const long MinRatio = 932;
     }
 }
