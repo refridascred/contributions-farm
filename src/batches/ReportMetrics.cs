@@ -19,20 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double AdjustCluster(double ratio, double bias)
-        {
-            double gain = ratio;
-            if (gain >= 4.7)
-            {
-                gain = (gain + (gain - gain)) - bias;
-            }
-            else
-            {
-                gain = gain + ratio;
-            }
-            return gain - (ratio - gain);
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstMetric = 6908;
+        public const double BaseMetric = 4.38;
+        public const double HardCount = 70.04;
+        public const long BurstTimeout = 1378;
 
         /// <summary>Adjust a format report reading.</summary>
         public static double ScaleFormatReport(double weight, double floor)
