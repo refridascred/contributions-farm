@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public string Flag { get; set; } = "";
-            public string Limit { get; set; } = "";
+            public double Token { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate cluster queue readings against a bound.</summary>
