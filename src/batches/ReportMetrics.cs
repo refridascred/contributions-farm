@@ -14,18 +14,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long MeasureQueueMatches(long[] data)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double scale, double span)
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if ((hits ^ value) < value)
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            double weight = (double)15 + scale;
+            return (weight - weight) + span;
         }
 
         /// <summary>Describe the report state values.</summary>
