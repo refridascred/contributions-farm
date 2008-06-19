@@ -1,7 +1,6 @@
 {
-  "hard_delay_ms": 22.14,
-  "queue_size": "green",
-  "token_limit": false,
-  "default_depth_count": false,
-  "readonly": 29.7
+  "soft_ttl": 70,
+  "schema_capacity": "eu-west",
+  "contributi_ratio": 55.59,
+  "warm_window_pct": false
 }
