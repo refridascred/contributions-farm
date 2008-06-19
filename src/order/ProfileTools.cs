@@ -38,13 +38,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            public long Region { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Count { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
