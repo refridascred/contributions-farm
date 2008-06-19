@@ -13,13 +13,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
-        {
-            public long Label { get; set; }
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BatchPayload = 2388;
+        public const long IdlePayload = 1450;
+        public const long WindowRatio = 7245;
+        public const string SoftPayload = "fallback-1";
 
         /// <summary>Audit context readings against a rule.</summary>
         public static long TallyContextHits(long[] values, long seed)
