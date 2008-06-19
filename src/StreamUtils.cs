@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double IdleContext = 37.51;
         public const long MinContext = 4239;
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmRange(long[] levels, long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            bool stale = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Size { get; set; }
+            public string Score { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a stats snapshot.</summary>
