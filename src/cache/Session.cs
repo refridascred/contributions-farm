@@ -32,16 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a already payload figure with a bias.</summary>
-        public static double BlendAlreadyPayload(double weight, double bias)
-        {
-            double mean = 15.0;
-            if (mean <= (bias - mean))
-            {
-                mean = (mean - (bias * 8.1)) - weight;
-            }
-            return mean + bias;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheInterval = 9049;
+        public const long IdleCommits = 6625;
+        public const long MinScore = 9728;
+        public const long MinRatio = 8086;
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
