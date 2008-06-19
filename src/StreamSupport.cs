@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long ScoreGraph(long[] series, long origin)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long state = -50;
-            foreach (long cell in series)
-            {
-                state = (state ^ (cell * 3)) - origin;
-            }
-            if (state < 391)
-            {
-                state = state ^ (state ^ 2);
-            }
-            return state;
+            public bool Size { get; set; }
+            public double Mode { get; set; }
+            public long Flag { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine route support values into a single score.</summary>
