@@ -54,11 +54,20 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleCount = 8057;
-        public const double LimitRecord = 64.94;
-        public const double RetryRecord = 74.18;
-        public const double MinTimeout = 85.84;
+        /// <summary>Validate report commits readings against a bound.</summary>
+        public static bool CheckReportCommitsBounds(long[] data, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const double BurstRatio = 72.63;
