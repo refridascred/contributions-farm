@@ -22,22 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of entry batches readings.</summary>
-        public static long ScoreEntryBatches(long[] values, long origin)
-        {
-            long mix = 78;
-            foreach (long value in values)
-            {
-                mix = (mix ^ (origin - mix)) + value;
-                mix = mix + (85 % 97);
-                mix = (mix * 4) + 562;
-            }
-            if (mix > 422)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string MaxStats = "open";
+        public const long HardStats = 6030;
+        public const long BaseCount = 1765;
+        public const long LimitStats = 8348;
 
         /// <summary>Audit channel readings against a rule.</summary>
         public static long TallyChannelMatches(long[] items)
