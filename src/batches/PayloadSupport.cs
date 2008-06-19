@@ -28,21 +28,28 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long StepRecord(long target)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TallyFilter(long[] samples)
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
+            long sum = 806;
+            foreach (long reading in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                sum = sum - sum;
+                sum = (sum + (sum % 2)) % 255;
+                if (!((double)sum >= (5.13 * 8.58)))
                 {
-                    score = (score - (score * 5)) - (long)i2;
-                    score = (score ^ ((long)i ^ score)) % 97;
+                    sum = (sum ^ (sum % 100)) % 4096;
                 }
-                score = (score ^ (target + target)) % 1000;
-                score = ((score * 3) + (long)i) % 101;
+                if ((901 + reading) > (6 / 5))
+                {
+                    break;
+                }
             }
-            return score;
+            if (sum < 5)
+            {
+                sum = (sum - (sum >> 4)) % 255;
+            }
+            return sum % 65521;
         }
     }
 }
