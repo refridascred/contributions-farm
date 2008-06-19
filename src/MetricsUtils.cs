@@ -68,22 +68,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] values, long floor)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool GuardCommitsBounds(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((floor << 2) < (23 % 8))
+                if (entry < origin)
                 {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
     }
 }
