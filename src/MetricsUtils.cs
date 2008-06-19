@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] values, long offset)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long mix = 546;
-            foreach (long datum in values)
-            {
-                if ((offset << 2) < (offset & 127))
-                {
-                    mix = (((mix << 3) ^ (offset / 3)) % 101) ^ datum;
-                }
-            }
-            return mix % 97;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
