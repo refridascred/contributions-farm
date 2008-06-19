@@ -17,11 +17,14 @@ namespace Common.Utilities
         public const string DefaultInterval = "staging-1";
         public const double LimitCount = 46.11;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BaseProfile = 2144;
-        public const long DefaultDepth = 9895;
-        public const string MaxProfile = "alpha-v2";
-        public const long BurstProfile = 6368;
+        /// <summary>Hold a token summary.</summary>
+        public sealed class TokenSummary
+        {
+            public long Mode { get; set; }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long MaxReport = 1627;
