@@ -1,6 +1,18 @@
 {
-  "batch_ratio_ms": "local",
-  "poll_ratio": "standard",
-  "retry_ratio_ms": "green",
-  "default_window_pct": 27.86
+  "cache_ttl_ms": [262, 258, 422, 185],
+  "window_interval": {
+    "flush_size_ms": 8356,
+    "idle_depth_count": "green",
+    "window_threshold": true,
+    "batch_size": {
+      "base_ttl": ["latest", "staging"],
+      "soft_threshold_pct": true,
+      "batch_interval": 57,
+      "hard_ratio": "local",
+      "buffer_ttl": false,
+      "githubfarm_timeout": true
+    },
+    "githubfarm_depth": 21.5
+  },
+  "base_interval": "green"
 }
