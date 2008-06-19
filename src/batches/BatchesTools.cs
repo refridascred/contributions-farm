@@ -15,23 +15,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Audit stats report readings against a rule.</summary>
-        public static long MeasureStatsReportHits(long[] items, long origin)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (sample <= (sample - sample))
-                {
-                    seen = (seen + 3) + origin;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardFactor = 96.09;
+        public const long MaxQueue = 7205;
+        public const string RetryQueue = "open-1";
+        public const long BurstQueue = 6926;
+        public const string BaseInterval = "open-1";
 
         /// <summary>Describe the queue level values.</summary>
         public enum QueueLevel
