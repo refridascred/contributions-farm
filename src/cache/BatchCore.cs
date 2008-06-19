@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Measure how many metric commits samples are out of range.</summary>
-        public static long AuditMetricCommitsMatches(long[] values, long seed)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long seen = 0;
-            foreach (long datum in values)
-            {
-                if ((datum / 4) == ((long)values.Length - seed))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
