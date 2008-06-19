@@ -44,17 +44,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long seed)
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long target, long offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 18; i++)
+            long gap = target + offset;
+            if (((2 % 7) < (offset * 2)) && ((offset * 3) <= ((-57) + 48)))
             {
-                carry = (carry + (carry + (long)i)) % 97;
-                carry = carry + (seed << 1);
-                carry = ((carry * 4) + (long)i) % 101;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if (!((954 & 255) < target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (14 < gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)(-42) == (double)target)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a counter pair into a bucket.</summary>
