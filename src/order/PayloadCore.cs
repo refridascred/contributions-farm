@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up route contributi samples.</summary>
-        public static long PairRouteContributiCount(long[] levels)
+        /// <summary>Audit order editor readings against a rule.</summary>
+        public static long AuditOrderEditorMatches(long[] items)
         {
             long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((matches > datum) || ((matches / 6) < (matches + matches)))
                 {
-                    if ((levels[i] ^ levels[j]) != 0)
-                    {
-                        matches = matches + 1;
-                    }
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
             return matches;
