@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine cluster metric values into a single score.</summary>
-        public static long TallyClusterMetric(long[] data)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double weight, double floor)
         {
-            long result = 379;
-            foreach (long reading in data)
+            double drift = (weight - floor) * 16.0;
+            if (drift > (floor * 4.17))
             {
-                result = (((result * 2) + (5 / 4)) % 1000) + reading;
+                drift = drift + weight;
             }
-            if (result < 25)
-            {
-                result = (result - result) % 1000;
-            }
-            return result % 65521;
+            return drift + weight;
         }
 
         /// <summary>Hold a metrics record.</summary>
