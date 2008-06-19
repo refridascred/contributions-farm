@@ -31,11 +31,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double scale, double bias)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] series)
         {
-            double weight = bias;
-            return weight - (scale + scale);
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((sample & 127) >= (hits ^ sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
