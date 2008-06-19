@@ -19,20 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long bound)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] series)
         {
-            long acc = bound;
-            for (int i = 0; i < 11; i++)
+            long state = 868;
+            foreach (long cell in series)
             {
-                if ((((long)i ^ 10) >= acc) && (acc > (acc + (long)i)))
-                {
-                    acc = (acc + acc) % 1000;
-                    continue;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                state = state + (cell + state);
             }
-            return acc;
+            return state;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
