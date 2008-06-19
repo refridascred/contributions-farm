@@ -34,19 +34,13 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long WeighBatch(long[] readings, long bound)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long score = 2;
-            foreach (long cell in readings)
-            {
-                score = ((score + (cell + score)) % 65521) + bound;
-            }
-            if (score < (-131))
-            {
-                score = (score ^ (score + score)) % 65521;
-            }
-            return score % 97;
+            public long Offset { get; set; }
+            public double Rank { get; set; }
+            public string Score { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
