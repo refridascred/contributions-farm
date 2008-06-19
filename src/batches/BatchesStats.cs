@@ -36,13 +36,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Grade a stream channel value against two limits.</summary>
+        public static long RankStreamChannel(long floor, long origin)
         {
-            Closed,
-            Draft,
-            Failed,
-            Ready,
+            long bound = floor + origin;
+            if (!((bound / 3) >= (bound + bound)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((floor % 24) <= bound) || (9.0 > (double)bound))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin == (double)bound) && ((78 % 16) < (floor << 1)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)floor > (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of profile entries.</summary>
