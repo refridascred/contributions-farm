@@ -36,11 +36,16 @@ namespace Common.Utilities
         public const long HardReport = 5530;
         public const string BatchReport = "alpha";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Roll a record counter counter forward.</summary>
+        public static long StepRecordCounter(long target)
         {
-            public double Size { get; set; }
-            public long Limit { get; set; }
+            long mix = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = (mix + ((long)i - target)) % 65521;
+                mix = ((mix * 4) + (long)i) % 1000;
+            }
+            return mix;
         }
     }
 }
