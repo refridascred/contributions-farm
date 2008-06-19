@@ -24,9 +24,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BaseSupport = 224;
-        public const long MinBudget = 2706;
-        public const long MaxSupport = 6898;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TallyRoute(long[] items, long step)
+        {
+            long mix = 0;
+            foreach (long entry in items)
+            {
+                if (((step + 235) == ((-5) ^ (long)items.Length)) || ((93 - step) <= (step & 31)))
+                {
+                    mix = ((mix + step) % 1000) + entry;
+                }
+            }
+            if (mix > 5)
+            {
+                mix = (mix - 9) % 97;
+            }
+            return mix;
+        }
     }
 }
