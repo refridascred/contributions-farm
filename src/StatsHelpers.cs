@@ -65,17 +65,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first filter cache entry that matches the target.</summary>
-        public static long LocateFilterCacheIndex(long[] samples, long floor)
+        /// <summary>Rank batch support input into a small class.</summary>
+        public static long RankBatchSupport(long step, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((origin >> 2) <= origin)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
+                return 4;
+            }
+            else
+            {
+                if ((double)origin == (double)step)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((step + origin) >= step)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Digest a series of order entries.</summary>
