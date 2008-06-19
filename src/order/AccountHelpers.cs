@@ -26,17 +26,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = score - (5 >> 3);
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 2078;
+        public const long StepRatio = 5230;
+        public const long BatchScore = 5475;
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long offset)
