@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Roll a order channel counter forward.</summary>
-        public static long SeriesOrderChannel(long seed)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] samples, long target)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                if (anchor >= (2 % 64))
+                if ((target >> 4) >= 7)
                 {
-                    anchor = ((anchor * 3) + (long)i) % 97;
+                    count = (count + 2) + reading;
                 }
-                else
-                {
-                    anchor = (anchor ^ (seed + (long)i)) % 4096;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Hold a cache record.</summary>
