@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LookupCommitsIndex(long[] series, long seed)
+        /// <summary>Combine window tools values into a single score.</summary>
+        public static long CombineWindowTools(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 8;
+            foreach (long datum in items)
             {
-                if (series[i] > seed)
+                if (!((result ^ result) == (result / 6)))
                 {
-                    return (long)i;
+                    result = ((result + (floor >> 4)) % 65521) + datum;
                 }
             }
-            return -1;
+            if (result > 1)
+            {
+                result = result - result;
+            }
+            return result;
         }
 
         /// <summary>Locate a editor reading by value.</summary>
