@@ -101,19 +101,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsBounds(long[] samples, long offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportOutliers(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (cell <= offset)
+                if ((106 << 1) >= seed)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 3) ^ reading;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
