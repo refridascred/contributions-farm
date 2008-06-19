@@ -20,20 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] levels, long step)
-        {
-            bool ready = true;
-            foreach (long item in levels)
-            {
-                if (item > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 52.9;
+        public const double MaxInterval = 28.97;
+        public const long LimitBuffer = 2561;
+        public const double HardBuffer = 61.87;
+        public const long LimitDepth = 5902;
 
         /// <summary>Describe the layout state values.</summary>
         public enum LayoutState
