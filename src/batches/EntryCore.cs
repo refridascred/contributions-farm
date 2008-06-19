@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Look up the position of a graph cache sample.</summary>
-        public static long FindGraphCacheIndex(long[] items, long target)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TallyChecks(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 908;
+            foreach (long item in data)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                anchor = ((anchor ^ anchor) % 101) + item;
             }
-            return -1;
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of window readings.</summary>
