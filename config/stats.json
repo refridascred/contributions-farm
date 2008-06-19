@@ -1,6 +1,6 @@
 {
-  "channel_interval": 13.71,
-  "cache_window_ms": true,
-  "sync_threshold_s": [332, 190, 168],
-  "idle_timeout": "green"
+  "soft_threshold": 500,
+  "dry_run": ["edge", "local", "staging", "cached"],
+  "poll_ratio_ms": 14,
+  "max_depth_count": [42, 478, 353]
 }
