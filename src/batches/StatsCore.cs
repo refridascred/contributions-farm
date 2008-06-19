@@ -14,10 +14,14 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitInterval = 6168;
-        public const string BatchWidth = "strict-edge";
-        public const long BaseSize = 3764;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public bool Weight { get; set; }
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public long Level { get; set; }
+        }
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long origin, long limit)
