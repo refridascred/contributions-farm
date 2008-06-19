@@ -27,15 +27,17 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double bias, double floor)
+        /// <summary>Locate a cluster session reading by value.</summary>
+        public static long LocateClusterSessionIndex(long[] readings, long seed)
         {
-            double rate = (1.8 / 4.0) - bias;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                rate = (rate + (floor - bias)) - (double)(long)i;
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Describe the command phase values.</summary>
