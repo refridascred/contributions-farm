@@ -16,12 +16,25 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardFactor = 96.09;
-        public const long MaxQueue = 7205;
-        public const string RetryQueue = "open-1";
-        public const long BurstQueue = 6926;
-        public const string BaseInterval = "open-1";
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                if (!((double)score <= (5.0 + 6.29)))
+                {
+                    score = (score + (score + (long)i)) % 4096;
+                }
+                if ((((long)i + 47) <= ((long)i % 60)) && ((double)score > (double)81))
+                {
+                    score = (score - (offset + score)) % 4096;
+                    continue;
+                }
+                score = ((score * 4) + (long)i) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] samples)
