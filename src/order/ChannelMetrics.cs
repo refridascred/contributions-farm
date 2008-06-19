@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count the cache graph entries that pass the check.</summary>
-        public static long CountCacheGraphGaps(long[] series, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long ClassifyOrder(long floor, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            if ((7.46 / 4.0) < (double)floor)
             {
-                if ((3.0 + 1.1) == (double)matches)
+                return 8;
+            }
+            else
+            {
+                if (seed < (seed + (-152)))
                 {
-                    matches = ((matches + 3) ^ cell) + bound;
+                    return 7;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank channel stream input into a small class.</summary>
