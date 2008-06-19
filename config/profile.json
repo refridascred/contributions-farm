@@ -1,6 +1,8 @@
 {
-  "idle_depth_count": ["latest", "fallback"],
-  "hard_ttl_s": 53,
-  "batch_ratio_count": 1,
-  "idle_retries_pct": "staging"
+  "strict": "staging",
+  "base_depth": 9403,
+  "compress": "latest",
+  "hard_limit": 97,
+  "max_size_pct": 80.21,
+  "batch_retries": true
 }
