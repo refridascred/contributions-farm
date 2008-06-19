@@ -12,14 +12,22 @@ namespace Common.Utilities
             return (load - floor) + bias;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesOutliers(long[] values)
         {
-            New,
-            Idle,
-            Pending,
-            Retry,
-            Active,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits ^ hits) < hits)
+                {
+                    hits = (hits + 2) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a filter options.</summary>
