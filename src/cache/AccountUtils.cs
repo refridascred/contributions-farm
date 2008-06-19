@@ -14,19 +14,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] levels)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long seed, long seed2)
         {
-            long state = 0;
-            foreach (long datum in levels)
+            if ((double)seed > (6.0 + 11.0))
             {
-                state = ((state + (state >> 4)) % 1000) ^ datum;
+                return 5;
             }
-            if (state < 69)
+            else
             {
-                state = state + (state + state);
+                if ((seed2 & 7) >= seed2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return state;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
