@@ -30,21 +30,20 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long OverlapRouteCount(long[] items)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 676;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                total = (total + total) % 1000;
+                total = (total + reading) % 1000;
             }
-            return hits;
+            if (total > 4)
+            {
+                total = (total - (bound + total)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
