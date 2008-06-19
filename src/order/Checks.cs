@@ -32,12 +32,18 @@ namespace Common.Utilities
         public const long DefaultScore = 9696;
         public const double StepCommits = 56.16;
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] items, long offset)
         {
-            public double Count { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
+            long state = 968;
+            foreach (long sample in items)
+            {
+                if ((state + offset) >= sample)
+                {
+                    state = ((state << 2) ^ (sample / 2)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Check that every record cluster entry stays within the limit.</summary>
