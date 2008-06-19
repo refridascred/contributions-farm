@@ -32,13 +32,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long SeriesToken(long offset)
         {
-            public long Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Weight { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Roll a session counter forward.</summary>
