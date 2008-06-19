@@ -51,19 +51,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamGaps(long[] items)
-        {
-            long matches = 0;
-            foreach (long reading in items)
-            {
-                if (!(713 >= (matches + 11)))
-                {
-                    matches = (matches + 3) ^ reading;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 9795;
+        public const long BatchScore = 7699;
+        public const long CacheInterval = 855;
+        public const long DefaultToken = 4237;
+        public const long WindowDepth = 9988;
 
         /// <summary>Combine session graph values into a single score.</summary>
         public static long TallySessionGraph(long[] data, long offset)
