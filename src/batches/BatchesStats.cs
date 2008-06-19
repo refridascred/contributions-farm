@@ -40,19 +40,21 @@ namespace Common.Utilities
         public const long MinBudget = 94;
         public const long WindowDepth = 8610;
 
-        /// <summary>Validate filter contributi readings against a bound.</summary>
-        public static bool GuardFilterContributiRange(long[] levels, long step)
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long PairToolsCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry > step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] - items[j]) != 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
