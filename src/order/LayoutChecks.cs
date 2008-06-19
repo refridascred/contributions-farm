@@ -19,12 +19,11 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Project the next profile buffer value.</summary>
+        public static double ProjectProfileBuffer(double ratio, double floor)
         {
-            Queued,
-            Stale,
-            Draft,
+            double bias = floor;
+            return (bias + (double)75) + ratio;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
