@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BaseSize = "alpha";
+        public const long RetryCounter = 4765;
+        public const double WindowCounter = 73.59;
+        public const long BurstCounter = 7261;
+        public const long DefaultCounter = 602;
 
         /// <summary>Validate token record readings against a bound.</summary>
         public static bool CheckTokenRecordRange(long[] items, long limit)
