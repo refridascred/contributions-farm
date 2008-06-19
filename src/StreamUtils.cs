@@ -20,17 +20,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a record tools sample.</summary>
-        public static long FindRecordToolsIndex(long[] samples, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Offset { get; set; }
+            public bool Label { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
