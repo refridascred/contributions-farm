@@ -40,13 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            Paused,
+            Draft,
             Ready,
-            Closed,
-            Stale,
+            Retry,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the batch class values.</summary>
