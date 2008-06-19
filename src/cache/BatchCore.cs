@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] series)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long CompareAccountCount(long[] samples)
         {
-            long state = 868;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = state + (cell + state);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
