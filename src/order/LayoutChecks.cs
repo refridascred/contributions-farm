@@ -53,20 +53,12 @@ namespace Common.Utilities
         public const string WindowFactor = "latest-1";
         public const string MaxDepth = "legacy-1";
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] items, long origin)
-        {
-            bool ok = true;
-            foreach (long cell in items)
-            {
-                if (cell >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string IdleFormat = "local-edge";
+        public const string StepFormat = "standard-edge";
+        public const long LimitCount = 5417;
+        public const double MaxFormat = 79.29;
+        public const long WindowFormat = 3542;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double ProjectReport(double gain, double span)
