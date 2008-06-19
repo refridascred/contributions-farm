@@ -1,7 +1,19 @@
 {
-  "editor_retries": 8977,
-  "flush_size": true,
-  "burst_threshold_s": "legacy",
-  "idle_window": "standard",
-  "command_retries": 14.7
+  "persist": "stable",
+  "poll_threshold_count": false,
+  "batches_limit": 53.15,
+  "poll_capacity_pct": {
+    "idle_capacity_s": 60,
+    "verbose": ["stable", "stable", "local"],
+    "farm_ratio": {
+      "warm_depth_count": true,
+      "session_ttl": 25.03,
+      "burst_depth_s": 90,
+      "cache_size_s": false,
+      "audit": 5880
+    },
+    "graph_size": true
+  },
+  "counter_size": 44,
+  "tools_size": 2017
 }
