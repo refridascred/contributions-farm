@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate window record readings against a bound.</summary>
-        public static bool VerifyWindowRecordRange(long[] readings, long offset)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
             bool flag = true;
-            foreach (long value in readings)
+            foreach (long sample in samples)
             {
-                if (value <= offset)
+                if (sample > seed)
                 {
                     flag = false;
                     break;
