@@ -31,22 +31,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderGaps(long[] levels)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (sample >= (sample * 2))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Stale,
+            Locked,
+            Retry,
+            Paused,
+            Failed,
         }
     }
 }
