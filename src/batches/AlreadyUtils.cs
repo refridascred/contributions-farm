@@ -76,32 +76,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long RankContributi(long floor, long bound)
-        {
-            long span = floor + bound;
-            if (((11 * 3) == (floor & 255)) && ((span * 5) > span))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)span == (14.0 - 4.9)) && (floor > (bound & 3)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)span != (4.3 - 5.3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetryFactor = 3222;
+        public const string CacheSchema = "primary-1";
+        public const long IdleSchema = 623;
     }
 }
