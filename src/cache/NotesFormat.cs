@@ -35,13 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            Closed,
-            Locked,
-            Failed,
-            Idle,
+            Queued,
+            Done,
+            Active,
         }
     }
 }
