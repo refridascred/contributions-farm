@@ -47,13 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
-        {
-            Locked,
-            Closed,
-            New,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchWidth = "staging-edge";
+        public const long SoftCluster = 3562;
+        public const double HardCluster = 47.75;
+        public const double BaseLevel = 93.68;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
