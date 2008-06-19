@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long offset)
+        /// <summary>Describe the format level values.</summary>
+        public enum FormatLevel
         {
-            long total = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                total = ((total << 2) ^ (2 % 16)) % 101;
-                if (!((8.9 * 0.8) >= (double)offset))
-                {
-                    total = ((total << 2) ^ (offset + total)) % 97;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Failed,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine stats metric values into a single score.</summary>
