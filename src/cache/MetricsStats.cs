@@ -30,13 +30,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterHits(long[] series)
         {
-            New,
-            Locked,
-            Failed,
-            Queued,
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((value - seen) == (value * 4))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
