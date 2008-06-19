@@ -50,19 +50,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricRange(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long entry in values)
-            {
-                if (entry >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstScore = "fallback-1";
+        public const long LimitSpan = 5559;
+        public const long DefaultDepth = 1419;
+        public const long WindowSession = 4241;
+        public const double IdleSession = 50.79;
     }
 }
