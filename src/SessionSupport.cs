@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long seed)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long MeasureCommitsGaps(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] < seed) && ((items[i] % 2) == 0))
+                if ((entry + entry) < entry)
                 {
-                    return (long)i;
+                    matches = (matches + 1) + origin;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
