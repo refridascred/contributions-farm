@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Compare every pair of session counter readings.</summary>
-        public static long CompareSessionCounterCount(long[] series)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 0;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((acc < (value * 5)) || ((acc / 7) <= acc))
                 {
-                    if ((series[i] - series[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    acc = ((acc << 3) ^ (acc & 15)) % 101;
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ acc) % 101;
+                }
+                if ((value % 10) >= ((long)levels.Length / 2))
+                {
+                    acc = acc + (acc % 3);
                 }
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Grade a route value against two limits.</summary>
