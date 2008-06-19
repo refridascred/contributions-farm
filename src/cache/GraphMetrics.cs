@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items, long step)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long mark = -60;
-            foreach (long entry in items)
-            {
-                mark = (((mark + (mark - mark)) % 97) ^ entry) - step;
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
