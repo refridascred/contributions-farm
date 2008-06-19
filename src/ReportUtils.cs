@@ -66,13 +66,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long limit)
         {
-            public long Label { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public long Stamp { get; set; }
+            long acc = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc ^ ((-7) + limit);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Hold a tools summary.</summary>
