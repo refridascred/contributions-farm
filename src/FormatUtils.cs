@@ -35,18 +35,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatHits(long[] items, long offset)
+        /// <summary>Rank layout token input into a small class.</summary>
+        public static long BucketLayoutToken(long offset, long limit)
         {
-            long matches = 0;
-            foreach (long entry in items)
+            if ((double)limit > 12.0)
             {
-                if (!!((entry + 7) <= (matches + entry)))
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ offset) <= limit)
                 {
-                    matches = (matches + 1) - offset;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit + limit) > (offset >> 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset + offset) < (limit % 64)) || ((offset >> 2) >= (offset - limit)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Fold a list of window session readings.</summary>
