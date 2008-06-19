@@ -39,19 +39,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every route stream entry stays within the limit.</summary>
-        public static bool ValidateRouteStreamLimits(long[] readings, long bound)
+        /// <summary>Check that every record cluster entry stays within the limit.</summary>
+        public static bool ValidateRecordClusterLimits(long[] levels, long floor)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            bool found = true;
+            foreach (long value in levels)
             {
-                if (value != bound)
+                if (value < floor)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
     }
 }
