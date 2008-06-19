@@ -20,12 +20,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 522;
-        public const long MinGraph = 9203;
-        public const string IdleGraph = "stable-1";
-        public const string HardRatio = "staging-1";
-        public const long LimitTimeout = 4843;
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
+        {
+            Retry,
+            Closed,
+            Idle,
+            Synced,
+        }
 
         /// <summary>Look up the position of a githubfarm farm sample.</summary>
         public static long FindGithubfarmFarmIndex(long[] values, long origin)
