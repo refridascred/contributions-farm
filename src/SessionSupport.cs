@@ -18,12 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] samples, long step)
         {
-            Active,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if (((double)seen != (double)step) && (((step ^ step) == (step / 2)) && (4 < (seen ^ seen))))
+                {
+                    seen = (seen + 3) + sample;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine batch values into a single score.</summary>
