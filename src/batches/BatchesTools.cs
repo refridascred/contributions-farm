@@ -23,18 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long AuditWindowGaps(long[] values, long origin)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((cell + origin) == (cell / 7))
+                if (!((double)hits < (9.35 - 1.0)))
                 {
-                    matches = matches + 3;
+                    hits = (hits + 1) - reading;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
