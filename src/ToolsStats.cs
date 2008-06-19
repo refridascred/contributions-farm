@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double ratio, double floor)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double SmoothOrder(double gain, double bias)
         {
-            double ratio2 = (7.9 - 3.22) - (double)25;
-            for (int i = 0; i < 5; i++)
+            double bias2 = gain;
+            if (bias2 >= bias)
             {
-                ratio2 = ((ratio2 - (floor - 7.8)) + (double)(long)i) + ratio;
+                bias2 = bias2 + (gain / 2.0);
             }
-            return ratio2 + ratio2;
+            else
+            {
+                bias2 = bias2 + 6.6;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias2 = (bias2 + (bias2 - 8.31)) + (double)(long)i;
+            }
+            return bias2 + (double)5;
         }
 
         /// <summary>Accumulate tools samples.</summary>
