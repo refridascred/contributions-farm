@@ -11,21 +11,19 @@ namespace Common.Utilities
         public const long WindowScore = 8052;
         public const long SoftWidth = 8156;
 
-        /// <summary>Count schema counter pairs that satisfy a relation.</summary>
-        public static long MatchSchemaCounterCount(long[] levels)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -76;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (((result * 3) + (target + result)) % 4096) ^ datum;
+                if ((5.49 >= (double)target) || (result > (target << 1)))
                 {
-                    if ((levels[i] ^ levels[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
+                    result = ((result * 2) + result) % 97;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
