@@ -35,39 +35,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long offset, long origin)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long prev = offset ^ origin;
-            if ((prev << 2) > (804 + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)prev <= (15.0 + 12.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((prev + (-2)) >= (origin + 266))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + prev) >= (offset + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Ready,
+            Closed,
+            Synced,
+            Pending,
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
