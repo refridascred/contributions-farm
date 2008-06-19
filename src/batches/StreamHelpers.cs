@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long acc = 0;
-            foreach (long value in levels)
-            {
-                if ((acc < (value * 5)) || ((acc / 7) <= acc))
-                {
-                    acc = ((acc << 3) ^ (acc & 15)) % 101;
-                }
-                else
-                {
-                    acc = ((acc << 2) ^ acc) % 101;
-                }
-                if ((value % 10) >= ((long)levels.Length / 2))
-                {
-                    acc = acc + (acc % 3);
-                }
-            }
-            return acc;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Grade a route value against two limits.</summary>
