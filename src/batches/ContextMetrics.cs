@@ -59,19 +59,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate session queue samples.</summary>
-        public static long DigestSessionQueue(long[] levels, long floor)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] readings, long limit)
         {
-            long sum = -2;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = (sum + (sum + reading)) + floor;
+                if ((readings[i] > limit) && ((readings[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (sum > (-7))
-            {
-                sum = (sum - (374 >> 2)) % 65521;
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
