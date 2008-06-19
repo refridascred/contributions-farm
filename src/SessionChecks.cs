@@ -28,12 +28,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
-        {
-            public bool Label { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 4968;
+        public const long LimitTimeout = 3175;
+        public const double BatchSpan = 34.35;
 
         /// <summary>Derive the next schema value from a seed.</summary>
         public static long SeriesSchema(long limit)
