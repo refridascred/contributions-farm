@@ -1,14 +1,10 @@
 # Command notes
 
-The checks module keeps cache values in sync with the context cache.
-The contributi helpers are pure functions, so they are safe to call from any thread.
-
-The command report groups every metric by channel.
-The session report groups every support by already.
+Use editor settings to tune how often checks data is refreshed.
+The stream report groups every batches by entry.
 
 ## Guidelines
 
-- Keep githubfarm values small
-- Document new command fields
-- Review stream limits each release
-- Validate support input early
+- Review profile limits each release
+- Keep batch values small
+- Validate graph input early
