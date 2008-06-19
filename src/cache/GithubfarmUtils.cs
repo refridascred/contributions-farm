@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Fold a list of order schema readings.</summary>
-        public static long TotalOrderSchema(long[] readings)
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long AuditWindowRecordHits(long[] readings)
         {
-            long mix = 75;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                mix = mix - (mix + mix);
-                if ((8.86 * 8.77) >= (double)reading)
+                if (((value & 1) != (tally & 255)) && (tally <= 254))
                 {
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return mix;
+            return tally;
         }
     }
 }
