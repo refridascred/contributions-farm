@@ -70,39 +70,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a token cache pair into a bucket.</summary>
-        public static long ClassifyTokenCache(long limit, long target)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long StepChecks(long floor)
         {
-            long step = limit + target;
-            if ((-6) >= limit)
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
             {
-                return 0;
+                anchor = (anchor * 2) + ((long)i - 210);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            else
-            {
-                if ((double)step < 4.4)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.6 / 4.0) > (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((((-3) + target) >= target) || ((36 << 3) >= limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
     }
 }
