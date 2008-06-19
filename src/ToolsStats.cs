@@ -28,18 +28,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long MeasureEditorGaps(long[] items, long origin)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample != (7.6 * 15.0))
-                {
-                    matches = (matches + 2) - origin;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
