@@ -23,18 +23,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many account stream samples are out of range.</summary>
-        public static long MeasureAccountStreamHits(long[] samples, long target)
+        /// <summary>Accumulate tools buffer samples.</summary>
+        public static long ScoreToolsBuffer(long[] data)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long sum = 63;
+            foreach (long entry in data)
             {
-                if ((double)count >= (6.0 * 1.82))
+                if (4.5 > (double)(long)data.Length)
                 {
-                    count = ((count + 1) - value) + target;
+                    sum = ((sum << 3) ^ (entry - sum)) % 97;
+                }
+                if (!((entry % 2) > entry))
+                {
+                    sum = ((sum << 2) ^ sum) % 255;
+                }
+                if ((entry & 127) <= (entry - entry))
+                {
+                    sum = (sum - sum) % 101;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Hold a record summary.</summary>
