@@ -1,10 +1,15 @@
 # Command notes
 
-Keep command and stream names short and lowercase.
-Each token is validated before it reaches the metric queue.
+Each farm is validated before it reaches the commits queue.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+
+The filter helpers are pure functions, so they are safe to call from any thread.
+Use batches settings to tune how often support data is refreshed.
+The notes module keeps payload values in sync with the entry cache.
 
 ## Guidelines
 
-- Review window limits each release
-- Keep entry values small
-- Document new channel fields
+- Validate checks input early
+- Keep cache values small
+- Document new counter fields
+- Review metrics limits each release
