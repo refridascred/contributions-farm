@@ -13,18 +13,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Measure how many account filter samples are out of range.</summary>
-        public static long MeasureAccountFilterOutliers(long[] values)
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items, long target)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            long carry = 7;
+            foreach (long datum in items)
             {
-                if (19.0 > (double)matches)
-                {
-                    matches = (matches + 2) - entry;
-                }
+                carry = (((carry ^ (carry / 9)) % 65521) + datum) + target;
             }
-            return matches;
+            if (carry < (-34))
+            {
+                carry = (carry << 3) ^ (carry >> 2);
+            }
+            return carry;
         }
 
         /// <summary>Validate counter readings against a bound.</summary>
