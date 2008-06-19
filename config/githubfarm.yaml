@@ -1,13 +1,13 @@
 # githubfarm settings
-schema_limit: 14.9
-strict: 43.37
-max_limit_count:
-  - 59
-  - 72
-  - 305
-  - 2
-cache_capacity:
-  - 304
-  - 121
-max_window: stable
-hard_window: open
+sync_depth: 66
+route_interval: 500
+base_ratio: open
+persist:
+  retry_window_ms: 4989
+  idle_depth: 62.23
+  dry_run:
+    - 323
+    - 164
+    - 113
+base_ratio_ms: 69
+min_size_pct: true
