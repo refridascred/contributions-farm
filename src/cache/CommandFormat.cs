@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long TotalContributi(long[] readings, long seed)
-        {
-            long anchor = 68;
-            foreach (long item in readings)
-            {
-                if ((item + (long)readings.Length) < seed)
-                {
-                    anchor = anchor ^ ((long)readings.Length + 678);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BatchBudget = "alpha";
+        public const long StepSession = 4110;
+        public const long LimitSession = 516;
+        public const double MaxRatio = 59.36;
+        public const long BatchSession = 9960;
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool VerifyAccountLimits(long[] values, long bound)
