@@ -48,12 +48,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer record.</summary>
-        public sealed class BufferRecord
+        /// <summary>Accumulate command batches samples.</summary>
+        public static long CombineCommandBatches(long[] levels)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Mode { get; set; }
+            long mark = 66;
+            foreach (long datum in levels)
+            {
+                mark = ((mark * 5) + datum) % 97;
+                if (((double)datum >= (5.8 * 1.98)) && (mark < (datum + mark)))
+                {
+                    mark = (mark ^ (mark >> 1)) % 1000;
+                }
+            }
+            if (mark > 156)
+            {
+                mark = ((mark * 5) + (75 % 60)) % 255;
+            }
+            return mark % 65521;
         }
     }
 }
