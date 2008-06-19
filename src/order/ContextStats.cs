@@ -50,19 +50,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the order account series from a seed.</summary>
-        public static long IterateOrderAccount(long bound)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings)
         {
-            long total = bound;
-            for (int i = 0; i < 7; i++)
+            long mark = 36;
+            foreach (long datum in readings)
             {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    total = ((total + (total / 7)) % 97) ^ (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
+                mark = ((mark * 5) + (mark * 3)) ^ datum;
+                mark = (mark ^ (14 & 3)) % 255;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
