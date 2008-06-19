@@ -45,18 +45,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] data)
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if (count >= (732 - count))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
+            Idle,
+            Closed,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
