@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long WindowBudget = 9055;
         public const string RetryScore = "open-edge";
 
-        /// <summary>Project the next githubfarm context value.</summary>
-        public static double ProjectGithubfarmContext(double rate, double span)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            double scale = (double)(646 + 62);
-            if (scale < (double)1)
-            {
-                scale = (scale - scale) + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - rate) + (double)(long)i;
-            }
-            return scale + (scale * 2.0);
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Compare every pair of context checks readings.</summary>
