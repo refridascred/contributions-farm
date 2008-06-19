@@ -46,18 +46,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] values, long target)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if (((cell * 4) >= target) || (((1 / 2) <= (target ^ target)) && (112 < (cell - cell))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstCount = 9884;
+        public const long HardRecord = 8084;
+        public const long IdleSpan = 9207;
     }
 }
