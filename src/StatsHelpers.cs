@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Accumulate schema editor samples.</summary>
-        public static long ScoreSchemaEditor(long[] values)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long result = 87;
-            foreach (long reading in values)
-            {
-                if (!(2.0 >= (double)reading))
-                {
-                    result = ((result * 3) + (result + reading)) % 101;
-                }
-            }
-            if (result > 636)
-            {
-                result = ((result * 4) + (result * 4)) % 65521;
-            }
-            return result;
+            Stale,
+            Queued,
+            Dropped,
+            Closed,
+            Idle,
         }
 
         /// <summary>Rank farm window input into a small class.</summary>
