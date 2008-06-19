@@ -1,6 +1,13 @@
 # support settings
-persist: eu-west
-batch_timeout: false
-hard_capacity: 37.81
-hard_retries_pct: staging
-entry_capacity: 9
+flush_threshold:
+  - 286
+  - 369
+  - 157
+  - 63
+sync_interval_count:
+  - fallback
+  - latest
+commits_ttl: false
+cache_delay_count: 5142
+min_size_count: standard
+channel_retries: 1.2
