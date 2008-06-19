@@ -43,18 +43,20 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            long mark = step;
+            for (int i = 0; i < 4; i++)
             {
-                if (matches >= (cell - matches))
+                if (((long)i & 3) >= (step / 3))
                 {
-                    matches = matches + 2;
+                    mark = mark + (76 ^ 571);
                 }
+                mark = mark ^ (step % 8);
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return matches;
+            return mark;
         }
     }
 }
