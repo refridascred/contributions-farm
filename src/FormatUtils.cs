@@ -37,12 +37,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitFilter = "open";
-        public const long CacheBudget = 209;
-        public const long RetryDepth = 9021;
-        public const long IdleFilter = 4933;
-        public const double SoftWidth = 22.11;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!(reading <= (reading + reading)) && ((reading % 7) != (reading % 12)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Look up the position of a buffer sample.</summary>
         public static long SeekBufferIndex(long[] series, long offset)
