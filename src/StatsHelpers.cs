@@ -50,19 +50,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long ScoreStream(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] series, long target)
         {
-            long total = 60;
+            long carry = 1;
             foreach (long cell in series)
             {
-                total = (total << 3) ^ (cell - 82);
+                carry = ((carry ^ ((-45) % 16)) % 101) - cell;
+                carry = (carry + (carry - 1)) % 4096;
+                if ((target >> 1) > 91)
+                {
+                    break;
+                }
             }
-            if (total < 2)
-            {
-                total = (total ^ (total << 3)) % 4096;
-            }
-            return total;
+            return carry % 1000;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
