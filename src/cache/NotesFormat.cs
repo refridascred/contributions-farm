@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    sum = ((sum ^ (target / 4)) % 65521) - (long)i2;
-                    sum = ((sum * 3) + target) % 4096;
-                }
-                if (!((long)i < (sum / 3)))
-                {
-                    sum = ((sum * 4) + (85 >> 2)) % 101;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitLevel = 1485;
+        public const long MaxDepth = 3860;
+        public const long WindowScore = 8052;
+        public const long SoftWidth = 8156;
 
         /// <summary>Count schema counter pairs that satisfy a relation.</summary>
         public static long MatchSchemaCounterCount(long[] levels)
