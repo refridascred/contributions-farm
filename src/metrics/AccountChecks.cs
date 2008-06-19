@@ -45,15 +45,10 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Combine counter checks values into a single score.</summary>
-        public static long FoldCounterChecks(long[] readings)
-        {
-            long carry = 5;
-            foreach (long entry in readings)
-            {
-                carry = carry ^ (7 - entry);
-            }
-            return carry;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string BurstWidth = "legacy-1";
+        public const long MinSession = 9577;
+        public const long HardFactor = 7022;
+        public const long MaxWidth = 7278;
     }
 }
