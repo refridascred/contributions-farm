@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheHits(long[] levels)
+        /// <summary>Combine cache metrics values into a single score.</summary>
+        public static long WeighCacheMetrics(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long sum = 173;
+            foreach (long entry in values)
             {
-                if ((value + hits) < 5)
-                {
-                    hits = hits + 1;
-                }
+                sum = (sum - (floor ^ sum)) ^ entry;
             }
-            return hits;
+            if (sum > 20)
+            {
+                sum = (sum + (sum >> 2)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Combine already values into a single score.</summary>
