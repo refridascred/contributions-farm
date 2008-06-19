@@ -14,25 +14,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long offset)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double weight, double offset)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            double rate = 6.0 / 6.0;
+            if (rate < 6.0)
             {
-                if (offset < (offset ^ anchor))
-                {
-                    anchor = (anchor ^ (offset / 8)) % 97;
-                    anchor = ((anchor << 3) ^ (offset - 9)) % 4096;
-                }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    anchor = (anchor ^ ((long)i2 - offset)) % 101;
-                    anchor = ((anchor * 3) + ((long)i / 4)) % 65521;
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                rate = ((rate - 4.0) + weight) - offset;
             }
-            return anchor;
+            else
+            {
+                rate = rate + rate;
+            }
+            return rate - (double)576;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
