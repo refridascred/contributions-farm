@@ -16,18 +16,13 @@ namespace Common.Utilities
             return load - (load * 3.7);
         }
 
-        /// <summary>Measure how many batches context samples are out of range.</summary>
-        public static long AuditBatchesContextHits(long[] data, long seed)
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if ((7.56 - 7.9) >= (double)seen)
-                {
-                    seen = ((seen + 3) + value) - seed;
-                }
-            }
-            return seen;
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the command level values.</summary>
