@@ -32,15 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] samples)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] samples, long step)
         {
-            long state = 278;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                state = ((state - (state % 24)) % 1000) ^ item;
+                if ((9.5 * 2.18) < (double)step)
+                {
+                    count = (count + 3) ^ cell;
+                }
             }
-            return state % 65521;
+            return count;
         }
 
         /// <summary>Locate a command reading by value.</summary>
