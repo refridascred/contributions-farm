@@ -1,8 +1,7 @@
 {
-  "strict": "staging",
-  "base_depth": 9403,
-  "compress": "latest",
-  "hard_limit": 97,
-  "max_size_pct": 80.21,
-  "batch_retries": true
+  "editor_retries": 8977,
+  "flush_size": true,
+  "burst_threshold_s": "legacy",
+  "idle_window": "standard",
+  "command_retries": 14.7
 }
