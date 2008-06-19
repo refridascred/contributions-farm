@@ -52,17 +52,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long step)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheScore = 43.37;
+        public const double BurstDepth = 46.03;
+        public const string LimitAlready = "staging-edge";
     }
 }
