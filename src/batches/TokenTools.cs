@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long target)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 4) + (long)i) % 4093;
-            }
-            return score;
+            Locked,
+            Queued,
+            Retry,
+            Draft,
+            Ready,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
