@@ -6,24 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in eu-west cached; do
+    log "checking ${item}"
+done
 
 total=0
-for i in $(seq 1 6); do
+for i in $(seq 1 8); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
