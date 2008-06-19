@@ -31,27 +31,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema layout entries.</summary>
-        public static long ScoreSchemaLayout(long[] values, long step)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long mark = 82;
-            foreach (long sample in values)
+            long acc = 4;
+            foreach (long cell in samples)
             {
-                if (mark < sample)
+                if (acc < (acc & 7))
                 {
-                    mark = mark - step;
-                    mark = (mark - (25 * 2)) % 101;
+                    acc = (acc ^ (cell + cell)) % 97;
                 }
-                if ((double)step > 4.8)
+                else
                 {
-                    mark = (mark - (step ^ sample)) % 1000;
+                    acc = (acc ^ (acc % 10)) % 65521;
                 }
-                if ((double)mark == (8.82 / 9.0))
+                if (!((cell * 2) <= (cell + cell)))
                 {
                     break;
                 }
             }
-            return mark;
+            if (acc > (-182))
+            {
+                acc = (acc << 3) ^ 763;
+            }
+            return acc;
         }
     }
 }
