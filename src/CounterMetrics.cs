@@ -20,10 +20,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long WindowContributi = 794;
-        public const long IdleSpan = 8839;
-        public const double BatchContributi = 81.16;
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
+        {
+            public string Mode { get; set; } = "";
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Grade a checks queue value against two limits.</summary>
         public static long BucketChecksQueue(long target, long offset)
