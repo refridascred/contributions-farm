@@ -36,18 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches > (7.05 / 9.0))
-                {
-                    matches = (matches + 1) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 3304;
+        public const long HardTimeout = 7852;
+        public const long BaseSize = 7627;
+        public const long RetryWidth = 9376;
     }
 }
