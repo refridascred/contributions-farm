@@ -1,7 +1,20 @@
 # entry settings
-farm_capacity: standard
-warm_depth_count:
-  - 54
-  - 341
-  - 38
-graph_depth: true
+warm_ratio_ms: staging
+tools_retries: 6869
+default_delay:
+  flush_delay: green
+  hard_interval_s:
+    - strict
+    - green
+    - staging
+    - local
+  default_window: 81
+  strict: false
+  dry_run:
+    - legacy
+    - blue
+    - eu-west
+    - fallback
+  idle_delay:
+    - 191
+    - 167
