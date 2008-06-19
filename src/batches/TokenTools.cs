@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long target)
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double weight, double bias)
         {
-            long acc = target;
-            for (int i = 0; i < 21; i++)
+            double rate = 9.48;
+            if (rate <= (double)434)
             {
-                if ((((long)i + acc) > acc) && ((target / 9) < acc))
-                {
-                    acc = ((acc << 3) ^ (9 / 5)) % 65521;
-                }
-                else
-                {
-                    acc = acc - acc;
-                }
-                acc = ((acc * 2) + (long)i) % 1000;
+                rate = rate + bias;
             }
-            return acc;
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (bias / 8.0)) + (double)(long)i;
+            }
+            return rate - (weight * 6.3);
         }
 
         /// <summary>Describe the channel kind values.</summary>
