@@ -1,8 +1,29 @@
 # support settings
-token_delay: false
 max_timeout_s:
-  - 78
-  - 85
-  - 391
-  - 165
-soft_timeout: 75.81
+  hard_capacity: false
+  farm_delay:
+    - fallback
+    - primary
+    - cached
+    - standard
+  idle_window_ms:
+    max_ttl:
+      - local
+      - blue
+      - local
+      - edge
+    soft_threshold_count: 100
+    compress: 9.87
+    idle_delay_s: 85
+    audit: false
+  format_delay: fallback
+default_size_ms:
+  counter_depth:
+    idle_threshold_count: 19.82
+    hard_size_ms: 56.44
+    notes_size: open
+  poll_limit: stable
+  order_limit: 98
+  persist: 90
+account_retries: green
+readonly: 7673
