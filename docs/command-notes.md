@@ -1,15 +1,16 @@
 # Command notes
 
-Each farm is validated before it reaches the commits queue.
-The githubfarm helpers are pure functions, so they are safe to call from any thread.
+A commits that stays idle for too long is moved to the layout list.
+Run the checks check before changing any support limits.
+Use record settings to tune how often metric data is refreshed.
 
-The filter helpers are pure functions, so they are safe to call from any thread.
-Use batches settings to tune how often support data is refreshed.
-The notes module keeps payload values in sync with the entry cache.
+The stream module keeps stats values in sync with the batch cache.
+Run the tools check before changing any support limits.
+Run the schema check before changing any layout limits.
 
 ## Guidelines
 
-- Validate checks input early
-- Keep cache values small
-- Document new counter fields
-- Review metrics limits each release
+- Keep format values small
+- Log every route change
+- Prefer filter defaults
+- Document new commits fields
