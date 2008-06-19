@@ -12,11 +12,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string SoftRatio = "latest-v2";
-        public const double IdleGithubfarm = 6.83;
-        public const long MaxCount = 9350;
-        public const string LimitGithubfarm = "primary-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardChecks = 2427;
+        public const double MaxChecks = 3.97;
+        public const long BatchChecks = 8721;
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LookupQueueIndex(long[] readings, long seed)
