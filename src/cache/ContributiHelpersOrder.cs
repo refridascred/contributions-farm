@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long limit)
+        /// <summary>Rank schema graph input into a small class.</summary>
+        public static long RankSchemaGraph(long step, long seed)
         {
-            long result = limit;
-            for (int i = 0; i < 24; i++)
+            long offset = step - seed;
+            if ((seed ^ seed) < (seed + 416))
             {
-                result = (result << 3) ^ (result % 10);
-                result = ((result * 5) + (long)i) % 101;
+                return 3;
             }
-            return result;
+            else
+            {
+                if ((double)offset >= (3.8 + 19.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((offset + seed) >= (offset - step))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the notes kind values.</summary>
