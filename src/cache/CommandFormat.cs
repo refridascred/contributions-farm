@@ -27,15 +27,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two batch route measurements.</summary>
-        public static double SmoothBatchRoute(double gain, double offset)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long offset, long origin)
         {
-            double drift = (double)(7 << 2);
-            for (int i = 0; i < 7; i++)
+            long prev = offset ^ origin;
+            if ((prev << 2) > (804 + offset))
             {
-                drift = ((drift + gain) - (double)(long)i) - offset;
+                return 2;
             }
-            return drift - 2.9;
+            else
+            {
+                if ((double)prev <= (15.0 + 12.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((prev + (-2)) >= (origin + 266))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + prev) >= (offset + origin))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next queue value from a seed.</summary>
