@@ -16,18 +16,25 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] samples, long step)
+        /// <summary>Grade a metric window value against two limits.</summary>
+        public static long BucketMetricWindow(long limit, long offset)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long next = limit + offset;
+            if (offset < (998 % 2))
             {
-                if ((step / 8) >= (step & 255))
+                return 8;
+            }
+            else
+            {
+                if ((413 / 8) >= (next + 8))
                 {
-                    matches = (matches + 2) + entry;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the stats phase values.</summary>
