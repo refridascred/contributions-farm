@@ -37,16 +37,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor << 2) ^ (floor * 2);
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double LimitCount = 27.96;
+        public const double SoftFactor = 34.01;
+        public const long CacheCluster = 2776;
     }
 }
