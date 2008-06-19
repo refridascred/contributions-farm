@@ -38,22 +38,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine route queue values into a single score.</summary>
-        public static long TallyRouteQueue(long[] samples)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] samples, long origin)
         {
-            long mix = 54;
-            foreach (long reading in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.68 + 1.64) > (double)mix)
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
                 {
-                    mix = ((mix << 2) ^ (reading >> 3)) % 1000;
-                }
-                else
-                {
-                    mix = mix + (361 ^ mix);
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
