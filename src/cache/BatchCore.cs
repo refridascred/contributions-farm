@@ -56,11 +56,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] samples)
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (((sample > 0) && (405 > (hits ^ sample))) || ((sample ^ 67) != (112 << 3)))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
