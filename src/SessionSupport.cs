@@ -37,31 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long seed, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowMatches(long[] data, long target)
         {
-            if (seed > (seed + seed))
+            long count = 0;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed + 235) >= (631 + target)) && ((seed / 2) >= (seed ^ target)))
+                if ((count << 2) != (item >> 3))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)seed >= (14.0 - 7.35))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    count = (count + 2) - target;
                 }
             }
+            return count;
         }
     }
 }
