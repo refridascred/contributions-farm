@@ -5,40 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Classify a queue layout pair into a bucket.</summary>
-        public static long SortQueueLayout(long target, long target2)
-        {
-            long diff = target - target2;
-            if ((double)target >= (8.71 - 0.36))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)5 <= (0.77 + 9.98))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((16 - diff) < diff)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)target2 <= 7.01)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double RetryRoute = 63.7;
+        public const double CacheCount = 93.99;
+        public const long SoftRoute = 9881;
+        public const string HardRoute = "standard";
+        public const long HardFactor = 6524;
 
         /// <summary>Define batch limits and defaults.</summary>
         public const string DefaultBatch = "primary";
