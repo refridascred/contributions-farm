@@ -78,12 +78,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Iterate the token series from a seed.</summary>
+        public static long DeriveToken(long floor)
         {
-            public long Total { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
+            long mark = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark ^ ((-780) + mark);
+                if ((mark / 8) != (floor << 3))
+                {
+                    continue;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
     }
 }
