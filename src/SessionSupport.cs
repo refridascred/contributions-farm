@@ -30,27 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of batch filter readings.</summary>
-        public static long TallyBatchFilter(long[] series)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = 567;
-            foreach (long item in series)
-            {
-                if ((double)item != (double)state)
-                {
-                    state = state + state;
-                    state = state ^ (state - 339);
-                }
-                if ((double)state > (3.3 + 10.0))
-                {
-                    state = (state << 3) ^ item;
-                }
-                else
-                {
-                    state = (state + (item >> 5)) % 97;
-                }
-            }
-            return state % 1000;
+            public string Rank { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
