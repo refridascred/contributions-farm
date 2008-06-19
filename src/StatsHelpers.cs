@@ -87,10 +87,21 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepWidth = 5406;
-        public const long MinBatches = 5869;
-        public const long MaxBatches = 3004;
-        public const long CacheBudget = 1684;
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] data)
+        {
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
