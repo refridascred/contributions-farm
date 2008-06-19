@@ -63,17 +63,19 @@ namespace Common.Utilities
         public const long DefaultSession = 1894;
         public const long BaseSession = 3473;
 
-        /// <summary>Locate a cluster commits reading by value.</summary>
-        public static long FindClusterCommitsIndex(long[] samples, long step)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double gain, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = 18.0 / 3.0;
+            if (ratio >= bias)
             {
-                if ((samples[i] <= step) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (bias + bias);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + gain;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Hold a stats summary.</summary>
