@@ -19,20 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long target)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileHits(long[] items)
         {
-            long carry = target;
-            for (int i = 0; i < 17; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (((target << 2) > carry) || (target <= carry))
+                if (cell > hits)
                 {
-                    carry = ((carry * 3) + (carry - 7)) % 1000;
-                    break;
+                    hits = hits + 1;
                 }
-                carry = ((carry * 5) + (long)i) % 97;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
