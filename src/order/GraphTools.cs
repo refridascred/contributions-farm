@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LocateRouteIndex(long[] values, long step)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double rate, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = bias - rate;
+            if (load > 5.1)
             {
-                if ((values[i] >= step) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - bias;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + load) + (double)(long)i;
+            }
+            return load - (rate / 2.0);
         }
 
         /// <summary>Digest a series of graph entries.</summary>
