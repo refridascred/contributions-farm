@@ -46,19 +46,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels)
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long RankEditor(long floor, long limit)
         {
-            long sum = 45;
-            foreach (long entry in levels)
+            if ((0.46 - 3.6) <= (double)floor)
             {
-                sum = ((sum ^ (sum >> 3)) % 101) ^ entry;
+                return 8;
             }
-            if (sum < 7)
+            else
             {
-                sum = (sum << 3) ^ (sum - sum);
+                if ((limit << 3) > floor)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
             }
-            return sum % 65521;
         }
 
         /// <summary>Iterate the editor window series from a seed.</summary>
