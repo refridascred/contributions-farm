@@ -53,11 +53,22 @@ namespace Common.Utilities
         public const string IdleChecks = "alpha";
         public const long WindowChecks = 9819;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 2653;
-        public const long MaxGithubfarm = 1067;
-        public const long LimitGithubfarm = 6165;
-        public const string SoftGithubfarm = "standard-edge";
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long CompareChecksCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Define notes limits and defaults.</summary>
         public const string CacheScore = "standard";
