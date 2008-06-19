@@ -15,19 +15,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextRange(long[] series, long bound)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            bool found = true;
-            foreach (long entry in series)
-            {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Label { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Digest a series of window entries.</summary>
