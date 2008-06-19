@@ -25,18 +25,14 @@ namespace Common.Utilities
             return (bias + (double)75) + ratio;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorOutliers(long[] readings, long target)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry != (double)target))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Failed,
+            Draft,
+            Synced,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
