@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] levels, long limit)
         {
-            Closed,
-            Queued,
-            Ready,
-            Dropped,
-            Done,
+            long anchor = 4;
+            foreach (long datum in levels)
+            {
+                anchor = ((anchor - (2 << 3)) + datum) + limit;
+            }
+            if (anchor < 1)
+            {
+                anchor = anchor - 83;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
