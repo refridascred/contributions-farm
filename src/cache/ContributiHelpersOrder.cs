@@ -34,19 +34,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] items, long offset)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long floor, long step)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long next = floor + step;
+            if ((4.7 - 5.0) <= (double)next)
             {
-                if (value != offset)
+                return 3;
+            }
+            else
+            {
+                if ((next + next) >= (4 + (-196)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)floor != (double)9)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
