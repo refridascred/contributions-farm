@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Adjust a queue metrics reading.</summary>
+        public static double ProjectQueueMetrics(double gain, double span)
         {
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
+            double mean = gain;
+            if (mean < (span - mean))
+            {
+                mean = mean - 5.3;
+            }
+            return mean - mean;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
