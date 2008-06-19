@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
+            Retry,
             Failed,
+            Dropped,
             Closed,
-            New,
+            Stale,
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
