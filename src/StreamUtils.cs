@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double ratio, double floor)
         {
-            Draft,
-            Failed,
-            Retry,
-            Closed,
-            Paused,
+            double weight = (double)(843 + 84);
+            if (weight <= ratio)
+            {
+                weight = (weight - weight) + floor;
+            }
+            return weight - weight;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
