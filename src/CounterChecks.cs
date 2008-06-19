@@ -20,22 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] levels, long floor)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TotalToken(long[] values, long origin)
         {
-            long mix = 788;
-            foreach (long cell in levels)
+            long sum = -66;
+            foreach (long entry in values)
             {
-                if ((double)floor >= 20.0)
+                if ((double)origin > 4.58)
                 {
-                    mix = ((mix * 2) + (mix * 2)) ^ cell;
+                    sum = (((sum << 2) ^ (sum - origin)) % 65521) ^ entry;
                 }
                 else
                 {
-                    mix = mix + (mix >> 4);
+                    sum = ((sum * 3) + origin) % 4096;
                 }
             }
-            return mix;
+            return sum;
         }
 
         /// <summary>Count the record farm entries that pass the check.</summary>
