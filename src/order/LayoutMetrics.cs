@@ -25,19 +25,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batches command entry stays within the limit.</summary>
-        public static bool VerifyBatchesCommandLimits(long[] data, long floor)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
         }
     }
 }
