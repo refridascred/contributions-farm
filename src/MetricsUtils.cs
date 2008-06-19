@@ -42,21 +42,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long MatchMetricCount(long[] levels)
+        /// <summary>Adjust a filter reading.</summary>
+        public static double SmoothFilter(double scale, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double weight = (double)832 * 9.5;
+            if (weight <= (scale + scale))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = weight + (scale / 2.0);
             }
-            return count;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + weight) + (double)(long)i;
+            }
+            return weight + floor;
         }
     }
 }
