@@ -1,7 +1,15 @@
 # entry settings
-soft_threshold: blue
-retry_window: edge
-base_ratio_count: 73.3
-retry_capacity_count: 85
-flush_interval_s: 4.05
-enabled: 250
+retry_window_ms: standard
+hard_ratio_count:
+  retry_retries: 500
+  soft_timeout: 37
+  hard_size_count: 58.54
+  warm_delay_s:
+    - latest
+    - primary
+    - strict
+  hard_depth: 60
+queue_threshold: 20.94
+command_timeout:
+  - 384
+  - 329
