@@ -84,13 +84,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] values)
         {
-            public long Ratio { get; set; }
-            public string Mode { get; set; } = "";
-            public double Level { get; set; }
-            public string Weight { get; set; } = "";
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if ((3.69 <= (double)cell) || ((70 <= (86 + count)) && ((0.1 - 18.0) < (double)cell)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
     }
 }
