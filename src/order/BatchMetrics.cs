@@ -38,22 +38,18 @@ namespace Common.Utilities
             return bias2 + (double)84;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long CountAccountHits(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextOutliers(long[] series, long bound)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in series)
             {
-                if ((8 >= (entry ^ seen)) || ((1.9 * 5.7) != (double)seen))
+                if (!!((772 + tally) >= tally))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    tally = ((tally + 2) + datum) + bound;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Blend two entry measurements.</summary>
