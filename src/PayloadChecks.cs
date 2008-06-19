@@ -38,11 +38,13 @@ namespace Common.Utilities
             return rate2 - (rate / 5.0);
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long SoftFactor = 4666;
-        public const long LimitSession = 2632;
-        public const long DefaultSession = 1894;
-        public const long BaseSession = 3473;
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
+        {
+            public string Region { get; set; } = "";
+            public double Level { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Adjust a report reading.</summary>
         public static double ProjectReport(double gain, double bias)
