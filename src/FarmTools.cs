@@ -25,18 +25,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit batch channel readings against a rule.</summary>
-        public static long MeasureBatchChannelOutliers(long[] samples, long offset)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if ((offset / 3) < (tally + 4))
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
