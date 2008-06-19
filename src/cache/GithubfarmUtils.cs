@@ -41,22 +41,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] readings, long floor)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long carry = 783;
-            foreach (long cell in readings)
-            {
-                if ((5.8 / 4.0) <= (double)carry)
-                {
-                    carry = (carry - (floor << 1)) % 65521;
-                }
-                else
-                {
-                    carry = carry - ((long)readings.Length + cell);
-                }
-            }
-            return carry;
+            Dropped,
+            Failed,
+            Synced,
         }
 
         /// <summary>Hold a layout snapshot.</summary>
