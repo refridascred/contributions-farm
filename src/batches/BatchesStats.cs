@@ -21,19 +21,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] items)
+        /// <summary>Count the entry metric entries that pass the check.</summary>
+        public static long AuditEntryMetricHits(long[] levels, long target)
         {
             long hits = 0;
-            foreach (long reading in items)
+            foreach (long datum in levels)
             {
-                if ((double)reading == (double)hits)
+                if (((datum % 12) >= (hits - target)) && (hits <= (hits + hits)))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 2;
                 }
             }
             return hits;
