@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandLimits(long[] readings, long target)
-        {
-            bool flag = true;
-            foreach (long sample in readings)
-            {
-                if (sample < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string SoftLevel = "primary";
+        public const double StepTimeout = 59.2;
+        public const long IdleSize = 6669;
+        public const double DefaultTools = 89.52;
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double rate, double bias)
