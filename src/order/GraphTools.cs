@@ -24,17 +24,38 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long floor)
+        /// <summary>Grade a schema buffer value against two limits.</summary>
+        public static long RankSchemaBuffer(long limit, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((limit >> 3) == (74 ^ floor))
             {
-                if (readings[i] > floor)
+                return 3;
+            }
+            else
+            {
+                if (90 <= floor)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < (2.34 * 3.8))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor <= (0.8 - 7.07))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define route limits and defaults.</summary>
