@@ -43,20 +43,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] data, long step)
-        {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string DefaultFactor = "legacy-v2";
+        public const double BatchNotes = 68.82;
+        public const string DefaultScore = "standard-1";
+        public const long BurstScore = 75;
+        public const double MaxNotes = 50.1;
 
         /// <summary>Hold a queue info.</summary>
         public sealed class QueueInfo
