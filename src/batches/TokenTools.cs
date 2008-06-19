@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const double BurstBuffer = 56.52;
         public const double HardSpan = 55.46;
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            Locked,
-            Queued,
-            Retry,
-            Draft,
-            Ready,
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
