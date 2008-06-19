@@ -1,8 +1,16 @@
 {
-  "base_delay_count": ["cached", "strict", "fallback"],
-  "soft_threshold": false,
-  "persist": [498, 16],
-  "filter_depth": "legacy",
-  "poll_timeout": 57,
-  "window_limit": 40
+  "filter_retries": {
+    "stats_retries": "green",
+    "flush_threshold": "primary",
+    "readonly": ["edge", "strict"],
+    "retry_timeout_count": 30.59,
+    "compress": {
+      "route_threshold": "stable",
+      "session_threshold": true,
+      "record_retries": ["open", "fallback", "edge"]
+    },
+    "burst_window_count": ["edge", "standard", "primary", "blue"]
+  },
+  "githubfarm_depth": "stable",
+  "buffer_limit": 92
 }
