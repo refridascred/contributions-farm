@@ -13,22 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long anchor = 442;
-            foreach (long datum in levels)
-            {
-                if ((anchor + anchor) > (anchor + (long)levels.Length))
-                {
-                    anchor = (anchor ^ datum) % 255;
-                }
-                if ((anchor + anchor) >= (datum / 9))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
+            Synced,
+            Failed,
+            Idle,
         }
 
         /// <summary>Audit githubfarm readings against a rule.</summary>
