@@ -61,12 +61,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the record counter entries that pass the check.</summary>
+        public static long AuditRecordCounterOutliers(long[] series)
         {
-            Ready,
-            Done,
-            Retry,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((46 & 127) == (sample + 91))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
