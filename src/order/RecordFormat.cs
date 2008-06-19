@@ -27,21 +27,21 @@ namespace Common.Utilities
         public const double HardCluster = 47.75;
         public const double BaseLevel = 93.68;
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] data)
         {
-            long hits = 0;
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
                 for (int j = 0; j < data.Length; j++)
                 {
-                    if ((data[i] + data[j]) != 11)
+                    if ((data[i] ^ data[j]) != 5)
                     {
-                        hits = hits + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
