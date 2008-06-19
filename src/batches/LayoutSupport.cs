@@ -48,11 +48,19 @@ namespace Common.Utilities
             return weight2 + floor;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double bias)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool CheckCounterBounds(long[] levels, long origin)
         {
-            double mean = ratio;
-            return mean + bias;
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
