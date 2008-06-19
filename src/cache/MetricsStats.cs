@@ -39,31 +39,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Rank channel buffer input into a small class.</summary>
-        public static long GradeChannelBuffer(long offset, long seed)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] data)
         {
-            if ((double)offset <= (17.0 + 6.98))
+            long sum = 609;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed / 9) <= (offset + 69))
+                if (sum < (sum << 1))
                 {
-                    return 2;
+                    sum = sum ^ (sum << 1);
                 }
                 else
                 {
-                    if (((seed ^ seed) == (seed + offset)) || ((double)offset == (double)3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    sum = ((sum * 3) + sum) % 4096;
+                }
+                if ((sum > (sum * 5)) && ((datum + datum) > (datum + (long)data.Length)))
+                {
+                    break;
+                }
+                if ((double)sum <= (5.4 * 4.0))
+                {
+                    sum = sum ^ (2 + 909);
                 }
             }
+            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
