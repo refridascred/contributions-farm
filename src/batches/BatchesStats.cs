@@ -15,12 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchMetric = 3348;
-        public const string MaxTimeout = "staging-v2";
-        public const long BaseDepth = 7423;
-        public const double SoftFactor = 7.56;
-        public const long StepMetric = 2251;
+        /// <summary>Look up the position of a token contributi sample.</summary>
+        public static long LocateTokenContributiIndex(long[] series, long seed)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
         public static bool ValidateRecordLimits(long[] data, long origin)
