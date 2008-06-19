@@ -1,15 +1,7 @@
 {
-  "filter_capacity": 37,
-  "batch_limit_pct": [211, 261, 448],
-  "hard_size_s": "stable",
-  "audit": {
-    "default_ttl_s": 100,
-    "poll_retries_ms": {
-      "hard_ttl": "stable",
-      "base_timeout_count": 2248,
-      "hard_ratio": false,
-      "sync_size_ms": "stable"
-    },
-    "sync_threshold": "cached"
-  }
+  "filter_ratio": "staging",
+  "min_depth": true,
+  "retry_capacity": false,
+  "idle_limit_pct": true,
+  "verbose": "local"
 }
