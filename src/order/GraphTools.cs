@@ -81,14 +81,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
-        {
-            Failed,
-            Queued,
-            Dropped,
-            Locked,
-            Closed,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string SoftFarm = "open-edge";
+        public const long CacheFarm = 6885;
+        public const string MaxScore = "cached-1";
+        public const long StepTimeout = 6088;
+        public const double BatchFarm = 87.29;
     }
 }
