@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west stable open; do
+COMMAND_LIMIT=361
+log "limit is ${COMMAND_LIMIT}"
+
+for item in edge local fallback staging; do
     log "checking ${item}"
 done
-
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
