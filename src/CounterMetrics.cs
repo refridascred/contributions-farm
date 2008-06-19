@@ -23,11 +23,33 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheInterval = 9796;
-        public const long StepContext = 9817;
-        public const string WindowContext = "strict";
-        public const long StepSize = 9763;
+        /// <summary>Rank token input into a small class.</summary>
+        public static long RankToken(long origin, long step)
+        {
+            long span = origin + step;
+            if ((step + step) > (span + span))
+            {
+                return 5;
+            }
+            else
+            {
+                if (origin <= step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((step - origin) <= origin) || ((double)50 >= (double)origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
+        }
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
