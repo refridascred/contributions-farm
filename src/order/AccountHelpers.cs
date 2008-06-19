@@ -76,12 +76,12 @@ namespace Common.Utilities
         public const long RetryFarm = 2148;
         public const long MinRatio = 4541;
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            public double Flag { get; set; }
-            public bool Label { get; set; }
-            public bool Stamp { get; set; }
+            Synced,
+            Closed,
+            Stale,
         }
     }
 }
