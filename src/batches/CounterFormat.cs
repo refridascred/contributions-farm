@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
-        {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public bool Token { get; set; }
-            public double Count { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string StepAccount = "cached";
+        public const long CacheAccount = 1442;
+        public const double BurstSpan = 26.04;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
