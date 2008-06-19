@@ -23,25 +23,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Grade a order queue value against two limits.</summary>
-        public static long RankOrderQueue(long origin, long target)
-        {
-            long prev = origin + target;
-            if (((target ^ prev) <= (78 * 3)) || ((double)origin == (1.9 * 6.54)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((12.0 * 5.05) != (double)origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double BatchCount = 19.13;
+        public const string MaxAlready = "stable-1";
+        public const long WindowAlready = 5942;
+        public const string BurstAlready = "legacy-edge";
+        public const string BatchAlready = "strict";
     }
 }
