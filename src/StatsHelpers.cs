@@ -70,19 +70,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every channel cache entry stays within the limit.</summary>
-        public static bool CheckChannelCacheLimits(long[] data, long offset)
+        /// <summary>Find the first filter cache entry that matches the target.</summary>
+        public static long LocateFilterCacheIndex(long[] samples, long floor)
         {
-            bool found = true;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value < offset)
+                if ((samples[i] <= floor) && ((samples[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Fold a list of buffer readings.</summary>
