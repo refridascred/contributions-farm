@@ -50,18 +50,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already schema entries that pass the check.</summary>
-        public static long TallyAlreadySchemaGaps(long[] items, long step)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long mix = 2;
+            foreach (long datum in samples)
             {
-                if ((8.86 - 7.0) >= (double)step)
-                {
-                    seen = (seen + 3) - sample;
-                }
+                mix = mix + (limit >> 4);
+                mix = (mix ^ (datum & 127)) % 97;
             }
-            return seen;
+            return mix;
         }
 
         /// <summary>Hold a tools options.</summary>
