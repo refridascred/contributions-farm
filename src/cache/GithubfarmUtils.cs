@@ -48,23 +48,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a buffer context figure with a bias.</summary>
-        public static double SmoothBufferContext(double rate, double floor)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            double bias = floor - (1.36 - rate);
-            if (bias <= bias)
-            {
-                bias = bias + (bias / 6.0);
-            }
-            else
-            {
-                bias = bias + (bias / 5.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias + 2.0;
+            Closed,
+            Ready,
+            Synced,
+            Retry,
+            Pending,
         }
     }
 }
