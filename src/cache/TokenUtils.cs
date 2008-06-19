@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream state values.</summary>
-        public enum StreamState
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatHits(long[] samples, long origin)
         {
-            Queued,
-            Done,
-            Draft,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((origin + origin) < (origin ^ 33))
+                {
+                    seen = (seen + 1) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route record.</summary>
