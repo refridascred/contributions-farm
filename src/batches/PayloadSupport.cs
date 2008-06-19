@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinMetrics = 7394;
-        public const string MaxMetrics = "standard";
-        public const long RetrySize = 8084;
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
+        {
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const string DefaultLevel = "cached-v2";
