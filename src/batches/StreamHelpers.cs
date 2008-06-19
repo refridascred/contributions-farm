@@ -47,11 +47,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metrics tools figure with a bias.</summary>
-        public static double ScaleMetricsTools(double gain, double floor)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] items)
         {
-            double load = (double)(8 % 10);
-            return (load - (floor / 4.0)) + gain;
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a support counter forward.</summary>
