@@ -27,21 +27,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] values)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 11;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((value << 3) > (value % 5))
                 {
-                    if ((values[i] ^ values[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = ((anchor * 3) + anchor) % 1000;
                 }
             }
-            return tally;
+            return anchor;
         }
     }
 }
