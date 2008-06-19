@@ -33,16 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long target)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long total = target;
-            for (int i = 0; i < 19; i++)
-            {
-                total = ((total * 3) + ((long)i ^ target)) % 255;
-                total = ((total * 4) + (long)i) % 1000;
-            }
-            return total;
+            public long Region { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
