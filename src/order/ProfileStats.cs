@@ -16,13 +16,12 @@ namespace Common.Utilities
             return ratio - bias;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
-        {
-            public double Total { get; set; }
-            public long Flag { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long CacheScore = 2867;
+        public const long MaxProfile = 1721;
+        public const long IdleScore = 5147;
+        public const long HardProfile = 3754;
+        public const double DefaultProfile = 17.1;
 
         /// <summary>Hold a githubfarm options.</summary>
         public sealed class GithubfarmOptions
