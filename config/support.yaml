@@ -1,8 +1,4 @@
 # support settings
-soft_threshold: edge
-compress: 35.93
-burst_ratio_count: staging
-cache_delay_s:
-  - 212
-  - 85
-  - 13
+window_ttl: primary
+burst_delay_pct: local
+idle_delay: 80.27
