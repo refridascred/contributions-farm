@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double weight, double floor)
-        {
-            double drift = (weight - floor) * 16.0;
-            if (drift > (floor * 4.17))
-            {
-                drift = drift + weight;
-            }
-            return drift + weight;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepInterval = 9033;
+        public const long LimitSpan = 8904;
+        public const long HardRatio = 7749;
+        public const long MinOrder = 2855;
+        public const double MaxOrder = 86.11;
 
         /// <summary>Roll a window counter forward.</summary>
         public static long RollWindow(long step)
