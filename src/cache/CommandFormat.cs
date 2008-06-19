@@ -29,17 +29,38 @@ namespace Common.Utilities
         public const long MaxRatio = 5303;
         public const double BatchInterval = 1.81;
 
-        /// <summary>Locate a profile payload reading by value.</summary>
-        public static long LookupProfilePayloadIndex(long[] values, long floor)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long ClassifyStats(long floor, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((floor + offset) > offset)
             {
-                if ((values[i] > floor) && ((values[i] % 3) != 0))
+                return 8;
+            }
+            else
+            {
+                if (offset >= (76 * 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((offset % 12) < floor)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor / 4) <= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
