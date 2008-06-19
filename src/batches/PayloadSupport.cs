@@ -28,18 +28,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the channel token entries that pass the check.</summary>
-        public static long MeasureChannelTokenOutliers(long[] levels)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long StepRecord(long target)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((double)datum < 7.2) || !(matches > (matches ^ matches)))
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    matches = matches + 2;
+                    score = (score - (score * 5)) - (long)i2;
+                    score = (score ^ ((long)i ^ score)) % 97;
                 }
+                score = (score ^ (target + target)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return matches;
+            return score;
         }
     }
 }
