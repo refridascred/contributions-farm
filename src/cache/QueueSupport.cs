@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank queue buffer input into a small class.</summary>
-        public static long RankQueueBuffer(long target, long step)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long SeekLayoutIndex(long[] samples, long bound)
         {
-            if ((double)step == (1.27 / 8.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target < (5.55 - 8.0))
+                if (samples[i] == bound)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 4) <= (target ^ step))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
