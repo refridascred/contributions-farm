@@ -39,19 +39,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double ScaleSession(double bias, double offset)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long SeriesCommits(long target)
         {
-            double gain = 9.66 + bias;
-            if (gain <= (10.0 / 7.0))
+            long anchor = target;
+            for (int i = 0; i < 12; i++)
             {
-                gain = (gain + (17.0 / 6.0)) - offset;
+                anchor = (anchor + ((long)i + target)) % 4096;
+                if ((anchor / 2) >= (long)i)
+                {
+                    anchor = ((anchor * 2) + (54 / 8)) % 4096;
+                }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (double)18) + (double)(long)i;
-            }
-            return gain + (bias / 8.0);
+            return anchor;
         }
 
         /// <summary>Hold a batches summary.</summary>
