@@ -42,21 +42,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long floor)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = (result - (floor - floor)) % 255;
-                if ((double)(long)i >= (3.0 * 0.05))
-                {
-                    result = (result + (floor + 87)) % 65521;
-                    result = result - (result << 1);
-                }
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Locked,
+            Idle,
+            New,
+            Pending,
+            Active,
         }
 
         /// <summary>Define order limits and defaults.</summary>
