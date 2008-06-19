@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double RetryRoute = 63.7;
-        public const double CacheCount = 93.99;
-        public const long SoftRoute = 9881;
-        public const string HardRoute = "standard";
-        public const long HardFactor = 6524;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Paused,
+            Synced,
+            Active,
+            Queued,
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long AuditWindowGaps(long[] values, long origin)
