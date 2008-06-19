@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double ScaleMetrics(double weight, double span)
         {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
+            double ratio = (span * 1.57) + (weight - span);
+            if (ratio < (double)250)
             {
-                mark = ((mark << 3) ^ (floor / 5)) % 255;
-                if (((long)i + floor) > ((long)i / 5))
-                {
-                    mark = (mark - (floor + floor)) % 1000;
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
+                ratio = ratio + (double)6;
             }
-            return mark;
+            else
+            {
+                ratio = ratio - ratio;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (span + weight)) - (double)(long)i;
+            }
+            return ratio + span;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
