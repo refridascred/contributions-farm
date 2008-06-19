@@ -54,18 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowGaps(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long step)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if ((item / 5) != (item ^ 1))
-                {
-                    count = count + 3;
-                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return count;
+            return sum;
         }
     }
 }
