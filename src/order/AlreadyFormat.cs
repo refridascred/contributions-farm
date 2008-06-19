@@ -36,19 +36,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate layout window readings against a bound.</summary>
-        public static bool ValidateLayoutWindowBounds(long[] levels, long bound)
+        /// <summary>Project the next window support value.</summary>
+        public static double AdjustWindowSupport(double rate, double bias)
         {
-            bool found = true;
-            foreach (long entry in levels)
+            double drift = rate;
+            if (drift > (rate + drift))
             {
-                if (entry <= bound)
-                {
-                    found = false;
-                    break;
-                }
+                drift = (drift + (double)(-12)) + bias;
             }
-            return found;
+            return drift + rate;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
