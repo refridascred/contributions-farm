@@ -70,18 +70,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] values)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((3.69 <= (double)cell) || ((70 <= (86 + count)) && ((0.1 - 18.0) < (double)cell)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
