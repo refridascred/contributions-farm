@@ -61,15 +61,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double AdjustSession(double rate, double span)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long target)
         {
-            double weight = (double)(-851) + span;
-            for (int i = 0; i < 9; i++)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                weight = ((weight + (span * 7.0)) - (double)(long)i) - rate;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return weight - weight;
+            return result;
         }
     }
 }
