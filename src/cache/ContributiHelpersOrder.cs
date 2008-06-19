@@ -24,19 +24,22 @@ namespace Common.Utilities
         public const long SoftEntry = 2855;
         public const long StepEntry = 8483;
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool GuardSessionLimits(long[] readings, long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphHits(long[] samples, long floor)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (sample != step)
+                if (((floor - seen) <= (datum + 8)) || (((floor % 16) == (0 - 44)) || ((seen << 2) < 0)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return flag;
+            return seen;
         }
     }
 }
