@@ -37,17 +37,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] readings, long seed)
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Owner { get; set; } = "";
+            public double Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
