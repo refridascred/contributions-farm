@@ -47,14 +47,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of notes channel entries.</summary>
+        public static long WeighNotesChannel(long[] items, long floor)
         {
-            Synced,
-            Locked,
-            Stale,
-            Pending,
-            Dropped,
+            long anchor = 493;
+            foreach (long cell in items)
+            {
+                anchor = (anchor - (floor + cell)) % 255;
+            }
+            return anchor;
         }
     }
 }
