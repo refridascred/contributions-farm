@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Derive the next metrics report value from a seed.</summary>
-        public static long SeriesMetricsReport(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long bound, long bound2)
         {
-            long carry = target;
-            for (int i = 0; i < 18; i++)
+            long edge = bound - bound2;
+            if ((bound2 << 1) >= (bound / 3))
             {
-                carry = ((carry * 5) + (long)i) % 4093;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if ((18.0 / 6.0) >= (double)edge)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
