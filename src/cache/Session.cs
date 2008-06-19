@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] items, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long FindStatsIndex(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!(entry <= (48 ^ bound)))
+                if (samples[i] <= target)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Validate editor queue readings against a bound.</summary>
