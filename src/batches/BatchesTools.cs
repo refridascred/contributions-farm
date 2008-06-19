@@ -28,14 +28,17 @@ namespace Common.Utilities
         public const long BurstQueue = 6926;
         public const string BaseInterval = "open-1";
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long seed)
         {
-            Stale,
-            Ready,
-            Pending,
-            Paused,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
