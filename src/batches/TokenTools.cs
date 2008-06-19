@@ -29,15 +29,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long DeriveAccount(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelRange(long[] samples, long origin)
         {
-            long acc = step;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                acc = ((acc * 2) + (long)i) % 1000;
+                if (entry <= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return acc;
+            return ok;
         }
     }
 }
