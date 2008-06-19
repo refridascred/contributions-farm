@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=456
-log "limit is ${RECORD_LIMIT}"
+total=0
+for i in $(seq 1 5); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
 
-for item in cached local fallback staging; do
+for item in primary staging stable open; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=231
+log "limit is ${RECORD_LIMIT}"
