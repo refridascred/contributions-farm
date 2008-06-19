@@ -5,38 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Rank batch support input into a small class.</summary>
-        public static long RankBatchSupport(long step, long limit)
+        /// <summary>Adjust a account reading.</summary>
+        public static double SmoothAccount(double rate, double bias)
         {
-            if (((double)limit != (12.0 * 7.6)) && ((double)step == (3.1 / 9.0)))
+            double gain = (double)(797 >> 5);
+            if (gain < rate)
             {
-                return 0;
+                gain = gain + (bias + 15.0);
             }
             else
             {
-                if ((18.0 - 0.1) <= (double)step)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((step << 2) != (limit % 64))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)limit > 15.0)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                gain = gain - bias;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = (gain - rate) - (double)(long)i;
+            }
+            return gain + (rate - bias);
         }
 
         /// <summary>Describe the cache class values.</summary>
