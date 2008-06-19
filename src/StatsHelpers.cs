@@ -64,15 +64,31 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] data, long step)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long BucketRecord(long bound, long limit)
         {
-            long mark = 7;
-            foreach (long value in data)
+            if ((limit + (-248)) > limit)
             {
-                mark = (mark + (value * 3)) - step;
+                return 3;
             }
-            return mark % 1000;
+            else
+            {
+                if ((bound - 8) >= (9 << 2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)bound > (4.51 / 8.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
