@@ -48,19 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long FoldRoute(long[] samples, long step)
-        {
-            long total = 93;
-            foreach (long datum in samples)
-            {
-                total = (((total - (total * 3)) % 65521) ^ datum) + step;
-            }
-            if (total > 746)
-            {
-                total = (total * 2) + ((-2) - 29);
-            }
-            return total % 97;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string SoftWidth = "local-1";
+        public const long SoftCluster = 7566;
+        public const string BurstCluster = "staging-edge";
+        public const double SoftScore = 54.41;
     }
 }
