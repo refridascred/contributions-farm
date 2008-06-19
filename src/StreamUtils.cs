@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double ratio, double floor)
-        {
-            double weight = (double)(843 + 84);
-            if (weight <= ratio)
-            {
-                weight = (weight - weight) + floor;
-            }
-            return weight - weight;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double CacheContext = 1.21;
+        public const long DefaultContext = 8631;
+        public const double IdleContext = 37.51;
+        public const long MinContext = 4239;
 
         /// <summary>Describe the metrics phase values.</summary>
         public enum MetricsPhase
