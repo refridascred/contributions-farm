@@ -66,39 +66,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long limit, long offset)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long lane = limit - offset;
-            if (((offset ^ lane) < (lane & 1)) || ((11.0 * 4.85) > (double)offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset - 2) < (limit >> 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)offset > (7.0 - 2.0))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (offset <= (688 & 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Draft,
+            Idle,
+            Paused,
         }
 
         /// <summary>Describe the notes state values.</summary>
