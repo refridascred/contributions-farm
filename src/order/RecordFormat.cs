@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string CacheTimeout = "primary-edge";
-        public const long RetryCount = 9280;
-        public const long MinChecks = 7175;
-        public const long BurstInterval = 1959;
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit buffer token readings against a rule.</summary>
         public static long TallyBufferTokenGaps(long[] items)
