@@ -63,18 +63,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] levels, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (((tally / 2) >= ((long)levels.Length + seed)) && (46 > seed))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            Failed,
+            Retry,
+            Done,
         }
     }
 }
