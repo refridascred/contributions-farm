@@ -27,15 +27,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine route support values into a single score.</summary>
-        public static long TotalRouteSupport(long[] items)
+        /// <summary>Match up notes samples.</summary>
+        public static long CompareNotesCount(long[] values)
         {
-            long state = 59;
-            foreach (long item in items)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                state = (state - (state & 7)) ^ item;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return state;
+            return tally;
         }
     }
 }
