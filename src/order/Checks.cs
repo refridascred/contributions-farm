@@ -46,19 +46,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every record cluster entry stays within the limit.</summary>
-        public static bool ValidateRecordClusterLimits(long[] levels, long floor)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            bool found = true;
-            foreach (long value in levels)
-            {
-                if (value < floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Idle,
+            Closed,
+            Done,
         }
     }
 }
