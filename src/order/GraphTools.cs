@@ -49,19 +49,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double BlendReport(double scale, double bias)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long ClassifyOrder(long floor, long step)
         {
-            double ratio = scale;
-            if (ratio < ratio)
+            if ((double)floor > 8.55)
             {
-                ratio = ratio - (bias / 5.0);
+                return 4;
             }
-            for (int i = 0; i < 6; i++)
+            else
             {
-                ratio = ratio + (double)(long)i;
+                if (floor <= (floor / 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor % 60) >= (step + floor))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor <= (step << 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            return ratio + (bias - bias);
         }
 
         /// <summary>Roll a support counter forward.</summary>
