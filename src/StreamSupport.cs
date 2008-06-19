@@ -12,19 +12,15 @@ namespace Common.Utilities
         public const long BurstCounter = 7261;
         public const long DefaultCounter = 602;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] values, long floor)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double SmoothStream(double weight, double bias)
         {
-            bool stale = true;
-            foreach (long item in values)
+            double load = weight;
+            for (int i = 0; i < 8; i++)
             {
-                if (item < floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = (load - weight) + (double)(long)i;
             }
-            return stale;
+            return load + bias;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
