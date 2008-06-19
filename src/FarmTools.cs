@@ -26,19 +26,18 @@ namespace Common.Utilities
         public const long StepToken = 6929;
         public const long BaseCount = 4288;
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long WeighProfile(long[] samples)
+        /// <summary>Measure how many counter metrics samples are out of range.</summary>
+        public static long AuditCounterMetricsHits(long[] series)
         {
-            long carry = 29;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                carry = ((carry ^ (carry * 5)) % 4096) ^ entry;
+                if ((datum > (8 % 16)) || ((-5) > hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (carry < (-7))
-            {
-                carry = carry ^ (carry - carry);
-            }
-            return carry;
+            return hits;
         }
     }
 }
