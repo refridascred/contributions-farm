@@ -27,18 +27,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] samples)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long CountMetricMatches(long[] levels)
         {
-            long anchor = 11;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((value << 3) > (value % 5))
+                if (((datum * 5) < datum) && ((matches + datum) > 251))
                 {
-                    anchor = ((anchor * 3) + anchor) % 1000;
+                    matches = matches + 2;
                 }
             }
-            return anchor;
+            return matches;
         }
     }
 }
