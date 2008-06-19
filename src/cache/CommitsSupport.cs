@@ -61,12 +61,21 @@ namespace Common.Utilities
         public const double StepSupport = 1.52;
         public const long BaseFactor = 4538;
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Count tools context pairs that satisfy a relation.</summary>
+        public static long OverlapToolsContextCount(long[] samples)
         {
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
