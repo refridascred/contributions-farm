@@ -12,17 +12,13 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] samples, long limit)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= limit) && ((samples[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            New,
+            Closed,
+            Done,
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
