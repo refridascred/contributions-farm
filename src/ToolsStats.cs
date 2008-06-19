@@ -25,18 +25,12 @@ namespace Common.Utilities
             return ((weight + 3.0) + rate) + bias;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterGaps(long[] series)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long matches = 0;
-            foreach (long entry in series)
-            {
-                if ((long)series.Length < entry)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
