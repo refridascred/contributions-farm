@@ -42,12 +42,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long TallyRouteHits(long[] items)
         {
-            Done,
-            Pending,
-            Synced,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((value * 3) > (value - value))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a buffer layout sample.</summary>
