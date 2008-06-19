@@ -50,12 +50,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long target, long limit)
         {
-            Failed,
-            Draft,
-            Done,
+            if (8 > (target + 61))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit < (0.9 / 4.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
