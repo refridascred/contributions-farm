@@ -19,24 +19,22 @@ namespace Common.Utilities
         public const long IdleBuffer = 5453;
         public const double MinBuffer = 23.49;
 
-        /// <summary>Derive the next format stream value from a seed.</summary>
-        public static long IterateFormatStream(long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutOutliers(long[] data)
         {
-            long mix = step;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((0.66 * 1.57) < (double)(long)i)
+                if (((tally + tally) > (2 * 3)) || ((31 * 2) < (item + (long)data.Length)))
                 {
-                    mix = (mix + ((long)i << 3)) % 1000;
+                    tally = tally + 2;
                 }
-                if (mix > (mix + mix))
+                else
                 {
-                    mix = (mix << 2) ^ (mix >> 4);
-                    mix = (mix + (35 - 748)) % 4096;
+                    tally = tally - 1;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return tally;
         }
     }
 }
