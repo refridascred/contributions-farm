@@ -65,28 +65,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank batch support input into a small class.</summary>
-        public static long RankBatchSupport(long step, long origin)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long SortFilter(long origin, long floor)
         {
-            if ((origin >> 2) <= origin)
+            if ((double)origin > (1.06 + 8.49))
             {
-                return 4;
+                return 2;
             }
             else
             {
-                if ((double)origin == (double)step)
+                if ((8 % 12) != (origin << 1))
                 {
                     return 3;
                 }
                 else
                 {
-                    if ((step + origin) >= step)
+                    if (origin <= 7)
                     {
-                        return 6;
+                        return 7;
                     }
                     else
                     {
-                        return 2;
+                        if (((12.0 - 3.0) >= (double)origin) && ((floor << 3) >= (87 ^ floor)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
