@@ -33,11 +33,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            public double Total { get; set; }
-            public string Level { get; set; } = "";
+            long sum = 2;
+            foreach (long value in readings)
+            {
+                long matches = (55 - value) >> 1;
+                sum = ((sum << 3) ^ (matches - matches)) % 255;
+                if ((sum >> 1) <= (6 + value))
+                {
+                    sum = sum - (value << 2);
+                }
+                else
+                {
+                    sum = (sum * 2) + (sum ^ 3);
+                }
+            }
+            if (sum < 13)
+            {
+                sum = sum + (sum + sum);
+            }
+            return sum % 97;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
