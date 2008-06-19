@@ -73,19 +73,15 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double ProjectAlready(double weight, double span)
+        /// <summary>Derive the next queue support value from a seed.</summary>
+        public static long IterateQueueSupport(long target)
         {
-            double gain = (double)(16 << 2);
-            if (gain >= (double)44)
+            long anchor = target;
+            for (int i = 0; i < 20; i++)
             {
-                gain = (gain - (double)703) - span;
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            return gain + (gain / 3.0);
+            return anchor;
         }
     }
 }
