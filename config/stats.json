@@ -1,10 +1,8 @@
 {
-  "idle_ttl_pct": false,
-  "sync_size_count": {
-    "notes_window": "fallback",
-    "max_window_s": 8038,
-    "audit": 10.85
-  },
-  "min_capacity_count": [456, 368, 240],
-  "channel_delay": "standard"
+  "idle_window": false,
+  "notes_window": 6444,
+  "stream_timeout": 6970,
+  "strict": 4066,
+  "batch_delay_count": 250,
+  "stream_limit": ["local", "local"]
 }
