@@ -22,13 +22,29 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long origin)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
-            public bool Weight { get; set; }
-            public string Level { get; set; } = "";
+            long sum = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((origin & 1) >= ((long)i + sum))
+                {
+                    sum = sum - (origin / 8);
+                }
+                if (!((sum % 7) != ((long)i - origin)))
+                {
+                    sum = (sum << 3) ^ (sum / 8);
+                    sum = ((sum << 2) ^ (origin & 255)) % 1000;
+                    continue;
+                }
+                if ((sum * 5) >= (sum << 2))
+                {
+                    continue;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
