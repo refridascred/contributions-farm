@@ -19,26 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout order entries.</summary>
-        public static long ScoreLayoutOrder(long[] series)
+        /// <summary>Count the metrics stats entries that pass the check.</summary>
+        public static long AuditMetricsStatsHits(long[] readings, long origin)
         {
-            long sum = 98;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                if ((datum > (sum + sum)) && ((datum - sum) <= (213 + sum)))
+                if ((origin << 2) <= 0)
                 {
-                    sum = sum - (sum + datum);
-                }
-                if ((1.7 / 4.0) < (double)sum)
-                {
-                    break;
+                    seen = (seen + 1) ^ reading;
                 }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 3) + (sum + sum)) % 1000;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
