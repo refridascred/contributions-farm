@@ -10,38 +10,17 @@ namespace Common.Utilities
         public const string BurstSize = "fallback";
         public const long MinOrder = 5584;
 
-        /// <summary>Rank buffer metrics input into a small class.</summary>
-        public static long BucketBufferMetrics(long seed, long origin)
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long FindReportCacheIndex(long[] levels, long bound)
         {
-            if ((origin + origin) == (origin / 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin * 3) < seed)
+                if (levels[i] >= bound)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((seed & 15) >= (11 + 389))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((seed + origin) > (origin - seed))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Classify a layout tools pair into a bucket.</summary>
