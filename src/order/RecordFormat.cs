@@ -27,11 +27,21 @@ namespace Common.Utilities
         public const double HardCluster = 47.75;
         public const double BaseLevel = 93.68;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            public long Ratio { get; set; }
-            public bool Size { get; set; }
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define session limits and defaults.</summary>
