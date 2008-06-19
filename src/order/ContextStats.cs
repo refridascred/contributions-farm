@@ -50,13 +50,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Queued,
-            Idle,
-            Dropped,
-            Paused,
+            Locked,
+            Pending,
+            Synced,
         }
 
         /// <summary>Scale a tools figure with a bias.</summary>
