@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] series, long floor)
+        /// <summary>Match up layout samples.</summary>
+        public static long MatchLayoutCount(long[] values)
         {
-            long score = 585;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((0 + floor) < (5 + datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    score = (score + (score ^ floor)) % 255;
+                    if ((values[i] ^ values[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (score > 24)
-            {
-                score = score - floor;
-            }
-            return score % 4096;
+            return tally;
         }
 
         /// <summary>Hold a payload record.</summary>
