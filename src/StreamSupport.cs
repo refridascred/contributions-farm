@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepRecord = 72.45;
-        public const long BatchRecord = 9760;
-        public const string DefaultRecord = "staging-edge";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheCount = 1533;
+        public const double BaseStats = 43.74;
+        public const string MinScore = "latest-1";
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long CompareStreamCount(long[] values)
