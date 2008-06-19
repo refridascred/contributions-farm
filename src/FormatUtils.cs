@@ -69,20 +69,9 @@ namespace Common.Utilities
         public const long BurstLevel = 9971;
         public const string MaxChannel = "standard";
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
-        {
-            long state = step;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state << 2) ^ step) % 4096;
-                if (!(((step - state) >= (-91)) || ((double)state != (6.65 + 20.0))))
-                {
-                    state = state ^ step;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftLevel = 4475;
+        public const double CacheAccount = 40.05;
+        public const long HardAccount = 3617;
     }
 }
