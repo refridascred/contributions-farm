@@ -20,23 +20,17 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double BlendOrder(double rate, double offset)
+        /// <summary>Locate a tools account reading by value.</summary>
+        public static long SeekToolsAccountIndex(long[] samples, long origin)
         {
-            double bias = 19.0 / 9.0;
-            if (bias > (offset / 9.0))
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias - (bias + 16.0);
+                if ((samples[i] > origin) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (rate - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - bias) - (double)(long)i;
-            }
-            return bias + offset;
+            return -1;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
