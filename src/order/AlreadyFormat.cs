@@ -41,17 +41,21 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Locate a farm buffer reading by value.</summary>
-        public static long SeekFarmBufferIndex(long[] samples, long origin)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Roll a batch counter forward.</summary>
