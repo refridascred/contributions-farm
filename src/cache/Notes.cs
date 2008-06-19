@@ -28,18 +28,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] readings, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long tally = 0;
-            foreach (long reading in readings)
-            {
-                if (!((6.9 - 8.1) > (double)limit))
-                {
-                    tally = (tally + 2) + reading;
-                }
-            }
-            return tally;
+            Failed,
+            Closed,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
