@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const double BaseStats = 43.74;
         public const string MinScore = "latest-1";
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] values)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] items, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    if ((values[i] - values[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Blend two editor queue measurements.</summary>
