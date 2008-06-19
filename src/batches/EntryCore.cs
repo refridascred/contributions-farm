@@ -23,17 +23,16 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] samples, long bound)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 88;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
+                mix = (mix ^ (cell >> 3)) % 101;
+                mix = mix - (mix - mix);
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the commits phase values.</summary>
