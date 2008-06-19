@@ -59,12 +59,14 @@ namespace Common.Utilities
         public const long BatchCommand = 8532;
         public const long BurstWidth = 344;
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            Pending,
             Failed,
-            Queued,
+            New,
+            Active,
+            Closed,
+            Stale,
         }
     }
 }
