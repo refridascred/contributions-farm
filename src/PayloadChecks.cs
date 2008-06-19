@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
