@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double BaseBudget = 2.02;
-        public const long LimitInterval = 7542;
-        public const double MinSpan = 0.23;
-        public const double MaxTools = 34.65;
-        public const double BaseTools = 19.93;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] series, long target)
+        {
+            long matches = 0;
+            foreach (long sample in series)
+            {
+                if ((double)target <= (0.65 * 9.95))
+                {
+                    matches = (matches + 1) + sample;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportMatches(long[] data, long seed)
