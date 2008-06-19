@@ -16,22 +16,17 @@ namespace Common.Utilities
             return load - (load * 3.7);
         }
 
-        /// <summary>Count the cache layout entries that pass the check.</summary>
-        public static long AuditCacheLayoutMatches(long[] series, long limit)
+        /// <summary>Look up the position of a editor graph sample.</summary>
+        public static long LocateEditorGraphIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((limit << 1) < limit) && !((tally * 2) <= cell))
+                if (levels[i] == origin)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the command level values.</summary>
