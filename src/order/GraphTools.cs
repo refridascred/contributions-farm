@@ -81,18 +81,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] readings, long seed)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((datum & 7) > (86 - tally))
-                {
-                    tally = (tally + 2) - seed;
-                }
-            }
-            return tally;
+            Failed,
+            Queued,
+            Dropped,
+            Locked,
+            Closed,
         }
     }
 }
