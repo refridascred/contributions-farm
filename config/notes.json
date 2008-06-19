@@ -1,14 +1,7 @@
 {
-  "tools_size": "open",
-  "channel_threshold": {
-    "max_delay_count": ["stable", "legacy"],
-    "burst_capacity_count": 78.18,
-    "base_threshold_ms": {
-      "base_threshold_pct": "standard",
-      "default_size_s": "local",
-      "burst_delay_pct": "eu-west",
-      "entry_delay": 500
-    }
-  },
-  "cache_window_count": 14
+  "verbose": 500,
+  "readonly": 7897,
+  "enabled": 63.9,
+  "batch_retries_s": 1024,
+  "stream_capacity": "eu-west"
 }
