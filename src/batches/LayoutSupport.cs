@@ -30,22 +30,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many editor profile samples are out of range.</summary>
-        public static long MeasureEditorProfileHits(long[] samples, long floor)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long total = 33;
+            foreach (long datum in readings)
             {
-                if (((17.0 / 2.0) <= (double)seen) || (entry > (367 * 2)))
+                total = ((total << 2) ^ (datum - total)) % 97;
+                if ((double)total <= (6.39 * 16.0))
                 {
-                    seen = (seen + 3) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total * 2) + datum) % 255;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Define already limits and defaults.</summary>
