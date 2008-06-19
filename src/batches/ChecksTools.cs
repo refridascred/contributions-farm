@@ -19,39 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long SortCounter(long floor, long target)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long edge = floor ^ target;
-            if (edge < (edge << 2))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((edge - edge) >= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (floor <= (floor << 2))
+                    if ((levels[i] ^ levels[j]) != 8)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((1.2 + 4.5) < (double)edge) && ((target % 8) >= edge))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Digest a series of already entries.</summary>
