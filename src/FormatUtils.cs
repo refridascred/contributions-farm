@@ -44,21 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] values)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long GradeLayout(long offset, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((offset - bound) < (28 & 15))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((offset - bound) < (764 * 3))
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
