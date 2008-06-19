@@ -72,17 +72,14 @@ namespace Common.Utilities
         public const long HardOrder = 3546;
         public const string BurstOrder = "standard-edge";
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] samples, long origin)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Dropped,
+            Failed,
+            Draft,
+            Synced,
+            Ready,
         }
     }
 }
