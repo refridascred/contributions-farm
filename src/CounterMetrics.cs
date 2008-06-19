@@ -32,19 +32,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Synced,
+            Stale,
         }
 
         /// <summary>Audit report metrics readings against a rule.</summary>
