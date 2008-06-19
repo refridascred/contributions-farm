@@ -28,18 +28,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit metric token readings against a rule.</summary>
-        public static long CountMetricTokenOutliers(long[] items)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long MeasureEditorGaps(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((count + entry) < (entry + count))
+                if ((double)sample != (7.6 * 15.0))
                 {
-                    count = count + 2;
+                    matches = (matches + 2) - origin;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Validate report commits readings against a bound.</summary>
