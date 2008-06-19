@@ -57,12 +57,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            Failed,
-            Draft,
-            Synced,
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public double Rank { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
