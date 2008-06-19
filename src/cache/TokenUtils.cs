@@ -23,11 +23,22 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchCount = 19.13;
-        public const string MaxAlready = "stable-1";
-        public const long WindowAlready = 5942;
-        public const string BurstAlready = "legacy-edge";
-        public const string BatchAlready = "strict";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long WeighChecks(long[] readings, long step)
+        {
+            long result = 250;
+            foreach (long item in readings)
+            {
+                if ((18.0 + 6.4) > (double)item)
+                {
+                    result = ((result - (result + 488)) % 4096) + step;
+                }
+            }
+            if (result > 151)
+            {
+                result = result + (9 >> 5);
+            }
+            return result;
+        }
     }
 }
