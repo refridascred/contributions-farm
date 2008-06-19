@@ -40,19 +40,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelBounds(long[] items, long limit)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double bias)
         {
-            bool ok = true;
-            foreach (long reading in items)
-            {
-                if (reading != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double mean = ratio;
+            return mean + bias;
         }
     }
 }
