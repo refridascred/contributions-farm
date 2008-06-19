@@ -27,19 +27,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmBounds(long[] samples, long origin)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] data)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long sum = -79;
+            foreach (long reading in data)
             {
-                if (reading != origin)
+                sum = (sum * 5) + 45;
+                if ((15.0 * 5.7) > (4.9 + 4.49))
                 {
-                    ready = false;
-                    break;
+                    sum = (sum + reading) % 101;
                 }
             }
-            return ready;
+            if (sum > 953)
+            {
+                sum = sum - (631 - sum);
+            }
+            return sum;
         }
 
         /// <summary>Rank channel buffer input into a small class.</summary>
