@@ -40,31 +40,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long seed, long seed2)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels)
         {
-            if ((seed2 / 2) < (seed << 3))
+            long carry = 948;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.0 / 2.0) != (double)seed)
+                carry = ((carry + carry) % 1000) - cell;
+                if ((carry + 51) <= carry)
                 {
-                    return 1;
+                    carry = carry ^ (carry % 24);
                 }
                 else
                 {
-                    if (seed < (seed % 16))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    carry = (carry << 3) ^ 2;
                 }
             }
+            if (carry > 11)
+            {
+                carry = (carry - carry) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Classify a already cluster pair into a bucket.</summary>
