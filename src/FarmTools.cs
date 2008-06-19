@@ -19,12 +19,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string MinToken = "primary";
-        public const long StepFactor = 3717;
-        public const long LimitToken = 4265;
-        public const long StepToken = 6929;
-        public const long BaseCount = 4288;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long DefaultReport = 2401;
+        public const long HardReport = 5029;
+        public const string SoftReport = "strict";
 
         /// <summary>Fold a list of context readings.</summary>
         public static long ScoreContext(long[] samples)
