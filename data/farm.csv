@@ -1,9 +1,7 @@
-id,rank,ratio
-1,286,364
-2,69.45,fallback
-3,80,staging
-4,79.84,139
-5,447,fallback
-6,531,20.54
-7,25.26,open
-8,stable,134
+id,score,state
+1,271,547
+2,stable,19.46
+3,48,429
+4,stable,621
+5,790,801
+6,green,46.12
