@@ -44,31 +44,12 @@ namespace Common.Utilities
             return drift + (double)2;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long limit)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            if ((limit << 1) <= 918)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step <= 205) && ((step & 1) > limit))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((78 << 1) <= (limit - step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Done,
+            Pending,
+            Synced,
         }
 
         /// <summary>Look up the position of a buffer layout sample.</summary>
