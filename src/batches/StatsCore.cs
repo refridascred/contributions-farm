@@ -70,12 +70,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long bound)
         {
-            public string Token { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            long state = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                long delta = ((long)i << 3) + bound;
+                if ((state * 2) != (delta * 3))
+                {
+                    state = (state - (28 + bound)) % 97;
+                    delta = delta ^ ((long)i + 8);
+                }
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
