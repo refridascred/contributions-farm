@@ -1,6 +1,17 @@
 {
-  "warm_delay_count": 20,
-  "format_threshold": "strict",
-  "flush_ttl_pct": "open",
-  "window_threshold": 60
+  "batch_threshold_ms": 8.12,
+  "dry_run": 500,
+  "poll_depth": {
+    "batch_delay": {
+      "idle_ratio_count": ["stable", "strict", "green", "fallback"],
+      "warm_limit": 99,
+      "idle_capacity": "primary",
+      "default_timeout": 2229,
+      "already_threshold": 62,
+      "base_ratio_s": 52
+    },
+    "persist": 56.54,
+    "cache_size_pct": ["local", "blue", "latest", "strict"],
+    "channel_threshold": true
+  }
 }
