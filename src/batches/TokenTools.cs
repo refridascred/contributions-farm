@@ -23,17 +23,38 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] values, long step)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long limit, long limit2)
         {
-            for (int i = 0; i < values.Length; i++)
+            if ((limit / 2) > limit)
             {
-                if ((values[i] <= step) && ((values[i] % 3) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((16.0 + 9.5) <= (double)limit2) || ((limit + limit) <= (95 - 4)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((double)limit >= (0.6 + 2.7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((1.6 + 0.1) > (double)limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
