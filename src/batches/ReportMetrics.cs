@@ -28,11 +28,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Adjust a format report reading.</summary>
-        public static double ScaleFormatReport(double weight, double floor)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            double ratio = (double)(982 - 3);
-            return ((ratio + ratio) + weight) + floor;
+            Synced,
+            Idle,
+            Retry,
+            Locked,
+            Queued,
         }
     }
 }
