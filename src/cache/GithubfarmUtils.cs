@@ -25,22 +25,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate support command samples.</summary>
-        public static long TallySupportCommand(long[] items)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            long anchor = 82;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell & 15) <= (anchor + anchor))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ anchor) % 4096;
+                    if ((data[i] - data[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 144)
-            {
-                anchor = (anchor - (482 & 255)) % 255;
-            }
-            return anchor % 65521;
+            return tally;
         }
 
         /// <summary>Scale a buffer context figure with a bias.</summary>
