@@ -1,25 +1,7 @@
 # entry settings
-compress: standard
-soft_size_ms:
-  editor_interval:
-    poll_depth_s: false
-    sync_depth_s: 68.16
-    graph_delay: true
-    cache_ratio: true
-  filter_delay: 799
-  context_interval: 66
-  token_threshold: 4062
-  verbose: green
-  stats_ttl: 2432
-persist: 79
-hard_limit_pct:
-  channel_timeout: 250
-  flush_capacity: true
-  soft_limit:
-    hard_interval_s: true
-    poll_retries_count: primary
-    cache_depth_pct: strict
-    flush_size_s: false
-  enabled: 5.67
-  schema_limit: 67.96
-checks_limit: false
+cache_depth_pct: edge
+soft_ttl: 500
+poll_timeout_s: 6700
+readonly: false
+max_delay_ms: 540
+report_interval: 41
