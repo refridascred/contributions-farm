@@ -16,10 +16,39 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long HardInterval = 5405;
-        public const long BurstStream = 972;
-        public const long WindowInterval = 2712;
+        /// <summary>Classify a context order pair into a bucket.</summary>
+        public static long GradeContextOrder(long offset, long limit)
+        {
+            if (limit >= 9)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.58 * 8.05) <= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit + limit) < limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((offset ^ limit) > 1)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double AdjustCommand(double rate, double span)
