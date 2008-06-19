@@ -1,10 +1,10 @@
 # Commits notes
 
-Run the stats check before changing any token limits.
-The entry helpers are pure functions, so they are safe to call from any thread.
+Each cache is validated before it reaches the already queue.
+Use graph settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Validate batch input early
-- Keep window values small
-- Log every account change
+- Log every token change
+- Document new schema fields
+- Validate buffer input early
