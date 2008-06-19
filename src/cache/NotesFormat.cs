@@ -14,11 +14,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Check that every stream payload entry stays within the limit.</summary>
+        public static bool VerifyStreamPayloadLimits(long[] levels, long seed)
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two buffer measurements.</summary>
