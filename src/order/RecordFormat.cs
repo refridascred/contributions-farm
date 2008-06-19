@@ -57,10 +57,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 7489;
-        public const double MaxLevel = 57.64;
-        public const double SoftBatch = 65.83;
-        public const long RetryCount = 7996;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] values, long limit)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
