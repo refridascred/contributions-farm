@@ -37,16 +37,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            long state = step;
-            for (int i = 0; i < 16; i++)
-            {
-                state = (state * 5) + ((long)i - state);
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            Stale,
+            Ready,
+            Pending,
+            Paused,
+            Closed,
         }
     }
 }
