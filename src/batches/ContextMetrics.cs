@@ -60,19 +60,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long RollToken(long limit)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = ((score << 2) ^ (318 - (long)i2)) % 101;
-                }
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public bool Total { get; set; }
         }
     }
 }
