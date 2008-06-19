@@ -1,7 +1,12 @@
 {
-  "strict": 27.51,
-  "min_capacity_count": ["strict", "standard", "primary", "green"],
-  "min_threshold_ms": true,
-  "idle_ttl_ms": "strict",
-  "warm_delay": ["edge", "strict", "latest", "staging"]
+  "base_window": [411, 373, 54],
+  "persist": [452, 156, 325],
+  "metrics_delay": {
+    "warm_retries": true,
+    "dry_run": 75,
+    "poll_depth_s": "fallback"
+  },
+  "counter_depth": [373, 481],
+  "graph_ttl": 95,
+  "default_ttl_ms": 60
 }
