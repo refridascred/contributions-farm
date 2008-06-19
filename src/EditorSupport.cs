@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Audit batches window readings against a rule.</summary>
+        public static long TallyBatchesWindowMatches(long[] data, long target)
         {
-            public long Offset { get; set; }
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (target < (count - count))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm channel entries.</summary>
