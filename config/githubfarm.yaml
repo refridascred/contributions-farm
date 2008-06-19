@@ -1,14 +1,13 @@
 # githubfarm settings
-max_retries: 58.83
-persist: 42
-poll_ttl_ms: true
-cache_timeout_s:
-  - 258
-  - 186
-  - 336
-base_threshold_count: 30
+schema_limit: 14.9
+strict: 43.37
+max_limit_count:
+  - 59
+  - 72
+  - 305
+  - 2
 cache_capacity:
-  compress: true
-  flush_interval_pct: legacy
-  filter_ratio: false
-  retry_timeout_count: 26
+  - 304
+  - 121
+max_window: stable
+hard_window: open
