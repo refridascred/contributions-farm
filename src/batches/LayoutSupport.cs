@@ -48,20 +48,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate already route samples.</summary>
-        public static long TallyAlreadyRoute(long[] samples, long origin)
-        {
-            long sum = 2;
-            foreach (long item in samples)
-            {
-                sum = (sum ^ (item ^ item)) + origin;
-            }
-            if (sum > 83)
-            {
-                sum = (sum + (sum & 7)) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinSize = 8347;
+        public const double MaxAlready = 59.63;
+        public const string MinScore = "staging-edge";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long CountMetricGaps(long[] items)
