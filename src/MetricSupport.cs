@@ -12,12 +12,18 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricMatches(long[] values)
         {
-            Synced,
-            Failed,
-            Locked,
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((tally & 255) != (tally / 9))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
