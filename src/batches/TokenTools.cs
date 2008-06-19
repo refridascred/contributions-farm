@@ -36,11 +36,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long AuditChannelOutliers(long[] values)
         {
-            public string Label { get; set; } = "";
-            public string Offset { get; set; } = "";
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if ((value / 2) > value)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
