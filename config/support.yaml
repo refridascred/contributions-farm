@@ -1,13 +1,9 @@
 # support settings
-cache_capacity: false
-enabled:
-  default_limit_count:
-    - eu-west
-    - stable
-    - open
-    - blue
-  flush_capacity_count: blue
-  route_interval: 7817
-  idle_capacity_s: standard
-batches_timeout: open
-sync_retries: 63
+graph_size:
+  dry_run: eu-west
+  warm_limit: 81.95
+  idle_capacity_s: 1560
+  cache_capacity: stable
+persist: 88.42
+enabled: 2380
+hard_delay_s: latest
