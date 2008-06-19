@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string SoftLevel = "primary";
-        public const double StepTimeout = 59.2;
-        public const long IdleSize = 6669;
-        public const double DefaultTools = 89.52;
+        /// <summary>Find the first checks report entry that matches the target.</summary>
+        public static long SeekChecksReportIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == limit) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double AdjustOrder(double rate, double bias)
