@@ -31,10 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 4562;
-        public const long BurstLevel = 2235;
-        public const long BatchOrder = 8951;
-        public const long LimitFactor = 8552;
+        /// <summary>Blend two cache command measurements.</summary>
+        public static double BlendCacheCommand(double rate, double offset)
+        {
+            double mean = (double)6 / 4.0;
+            if (mean < (15.0 / 6.0))
+            {
+                mean = (mean - offset) - rate;
+            }
+            return mean + (mean + offset);
+        }
     }
 }
