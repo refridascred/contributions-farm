@@ -1,12 +1,11 @@
 {
-  "readonly": 9,
-  "retry_interval_ms": 60,
-  "poll_depth_count": true,
-  "stats_capacity": 18,
-  "burst_ratio": {
-    "checks_ttl": "blue",
-    "flush_capacity_ms": 3,
-    "flush_timeout": 6,
-    "retry_capacity": "stable"
+  "readonly": 7623,
+  "idle_ratio_count": false,
+  "tools_threshold": [28, 192],
+  "default_window_s": {
+    "persist": true,
+    "audit": 76,
+    "enabled": true,
+    "compress": "standard"
   }
 }
