@@ -1,8 +1,5 @@
 {
-  "hard_retries": 32.31,
-  "max_ttl": true,
-  "metric_size": 98,
-  "cache_capacity_s": [18, 299, 263, 396],
-  "githubfarm_interval": [221, 465],
-  "base_interval": 62.51
+  "idle_retries_ms": 65.37,
+  "dry_run": "legacy",
+  "batch_retries": ["strict", "strict"]
 }
