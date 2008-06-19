@@ -1,12 +1,11 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the window list.
-When a layout fails, the cluster handler retries a few times before giving up.
-Use queue settings to tune how often notes data is refreshed.
+The queue helpers are pure functions, so they are safe to call from any thread.
+The payload report groups every account by batches.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every batch change
-- Validate stream input early
-- Review cache limits each release
-- Keep buffer values small
+- Validate format input early
+- Prefer account defaults
+- Review cluster limits each release
