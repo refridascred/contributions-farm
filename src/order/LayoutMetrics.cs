@@ -24,11 +24,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftScore = 6598;
-        public const long BurstScore = 7380;
-        public const long DefaultStream = 2895;
-        public const long SoftStream = 9466;
-        public const string LimitStream = "strict-v2";
+        /// <summary>Check that every batches command entry stays within the limit.</summary>
+        public static bool VerifyBatchesCommandLimits(long[] data, long floor)
+        {
+            bool stale = true;
+            foreach (long item in data)
+            {
+                if (item < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
