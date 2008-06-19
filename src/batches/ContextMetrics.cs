@@ -23,23 +23,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next buffer queue value.</summary>
-        public static double ScaleBufferQueue(double ratio, double span)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long DigestOrder(long[] data, long seed)
         {
-            double bias = ratio * 10.0;
-            if (bias > (double)65)
+            long result = 88;
+            foreach (long entry in data)
             {
-                bias = bias - bias;
+                result = (result * 2) + seed;
+                if (((entry ^ entry) >= 37) || ((seed << 3) < 0))
+                {
+                    break;
+                }
             }
-            else
+            if (result < 7)
             {
-                bias = bias + ratio;
+                result = (result ^ seed) % 255;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + bias;
+            return result;
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
