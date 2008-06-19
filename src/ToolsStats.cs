@@ -48,17 +48,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a metric report sample.</summary>
-        public static long SeekMetricReportIndex(long[] values, long seed)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= seed) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Digest a series of commits entries.</summary>
