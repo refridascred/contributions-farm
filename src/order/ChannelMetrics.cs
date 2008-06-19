@@ -40,13 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterMatches(long[] data, long seed)
         {
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((6.66 + 2.0) <= (double)hits)
+                {
+                    hits = ((hits + 3) + item) + seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
