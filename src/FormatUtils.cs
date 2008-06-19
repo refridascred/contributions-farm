@@ -42,18 +42,18 @@ namespace Common.Utilities
         public const long IdleFilter = 4933;
         public const double SoftWidth = 22.11;
 
-        /// <summary>Fold a list of window session readings.</summary>
-        public static long TotalWindowSession(long[] items)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatMatches(long[] data, long origin)
         {
-            long state = -17;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((state / 4) >= cell)
+                if (767 <= (origin % 3))
                 {
-                    state = state - state;
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
