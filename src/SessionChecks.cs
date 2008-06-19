@@ -53,24 +53,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long floor, long floor2)
+        /// <summary>Audit farm metric readings against a rule.</summary>
+        public static long AuditFarmMetricHits(long[] data, long offset)
         {
-            if ((floor2 ^ floor) >= 3)
+            long tally = 0;
+            foreach (long item in data)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((floor2 / 8) != (1 + floor2)))
+                if ((4.8 / 6.0) < (double)item)
                 {
-                    return 4;
+                    tally = (tally + 3) - offset;
                 }
                 else
                 {
-                    return 2;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
