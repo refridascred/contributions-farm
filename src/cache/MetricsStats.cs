@@ -30,13 +30,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public long Score { get; set; }
-            public double Owner { get; set; }
-            public bool Token { get; set; }
-            public long Mode { get; set; }
+            New,
+            Locked,
+            Failed,
+            Queued,
         }
 
         /// <summary>Rank channel buffer input into a small class.</summary>
