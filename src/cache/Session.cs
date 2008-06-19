@@ -5,20 +5,39 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Roll a command already counter forward.</summary>
-        public static long SeriesCommandAlready(long bound)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long target, long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 8; i++)
+            long step = target ^ offset;
+            if ((offset % 16) < target)
             {
-                anchor = (anchor + bound) % 1000;
-                if (!(bound <= anchor))
-                {
-                    anchor = (anchor + (bound >> 5)) % 255;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                return 4;
             }
-            return anchor;
+            else
+            {
+                if (step >= (target + target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (offset < step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step + offset) > offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the counter phase values.</summary>
