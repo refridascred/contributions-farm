@@ -33,13 +33,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long MatchRouteCount(long[] data)
         {
-            Dropped,
-            Draft,
-            Locked,
-            Active,
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
     }
 }
