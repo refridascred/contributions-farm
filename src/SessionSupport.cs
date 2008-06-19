@@ -23,22 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit stream githubfarm readings against a rule.</summary>
-        public static long CountStreamGithubfarmOutliers(long[] items)
+        /// <summary>Measure how many account stream samples are out of range.</summary>
+        public static long MeasureAccountStreamHits(long[] samples, long target)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (((12.0 * 2.42) == (double)tally) && ((2.0 * 9.2) != (double)tally))
+                if ((double)count >= (6.0 * 1.82))
                 {
-                    tally = (tally + 3) ^ cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    count = ((count + 1) - value) + target;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
