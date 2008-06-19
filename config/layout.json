@@ -1,16 +1,5 @@
 {
-  "order_ttl": true,
-  "strict": "legacy",
-  "max_limit_count": {
-    "audit": 20,
-    "soft_limit": {
-      "burst_delay_pct": false,
-      "idle_size_ms": [234, 68, 175, 333],
-      "layout_limit": false,
-      "idle_delay_count": 80
-    },
-    "max_threshold_ms": 58.08,
-    "contributi_limit": ["open", "eu-west"],
-    "hard_threshold_ms": "primary"
-  }
+  "route_delay": 66,
+  "poll_interval_pct": ["local", "stable"],
+  "warm_ratio": "local"
 }
