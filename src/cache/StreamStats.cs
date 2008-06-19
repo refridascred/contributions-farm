@@ -55,18 +55,16 @@ namespace Common.Utilities
             return weight - 3.5;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] samples, long floor)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long step)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)hits <= (5.6 + 4.4))
-                {
-                    hits = ((hits + 2) + value) - floor;
-                }
+                carry = (carry + (carry ^ step)) % 101;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return hits;
+            return carry;
         }
     }
 }
