@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double ScaleMetrics(double weight, double span)
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long DeriveChecks(long seed)
         {
-            double ratio = (span * 1.57) + (weight - span);
-            if (ratio < (double)250)
+            long mark = seed;
+            for (int i = 0; i < 24; i++)
             {
-                ratio = ratio + (double)6;
+                long matches = mark;
+                if ((9 / 8) >= matches)
+                {
+                    matches = (matches - ((long)i - mark)) % 101;
+                    break;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - ratio;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (span + weight)) - (double)(long)i;
-            }
-            return ratio + span;
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
