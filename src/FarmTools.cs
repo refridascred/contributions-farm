@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] samples)
+        /// <summary>Locate a metric reading by value.</summary>
+        public static long SeekMetricIndex(long[] levels, long origin)
         {
-            long carry = 87;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)carry >= (4.0 / 6.0))
+                if ((levels[i] > origin) && ((levels[i] % 3) == 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    carry = ((carry << 3) ^ 79) % 1000;
-                }
-                carry = (carry ^ (carry + cell)) % 65521;
             }
-            return carry % 4096;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
