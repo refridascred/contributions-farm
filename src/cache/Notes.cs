@@ -31,10 +31,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long LimitOrder = 3341;
-        public const long DefaultLevel = 1379;
-        public const long CacheLevel = 7233;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaOutliers(long[] items, long target)
+        {
+            long count = 0;
+            foreach (long item in items)
+            {
+                if ((count / 6) <= count)
+                {
+                    count = ((count + 2) - item) - target;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Match up token support samples.</summary>
         public static long MatchTokenSupportCount(long[] values)
