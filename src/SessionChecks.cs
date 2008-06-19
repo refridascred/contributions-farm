@@ -19,22 +19,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] samples, long origin)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long limit)
         {
-            long score = 35;
-            foreach (long item in samples)
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if (((575 ^ score) <= (-2)) || ((item - 9) != (score % 5)))
+                if ((carry & 7) > (limit + carry))
                 {
-                    score = (score ^ score) % 65521;
+                    carry = (carry + (87 + (long)i)) % 255;
+                    carry = (carry - 1) % 97;
+                    break;
                 }
+                carry = (carry << 3) ^ carry;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            if (score > 6)
-            {
-                score = (score + (origin - origin)) % 101;
-            }
-            return score % 1000;
+            return carry;
         }
 
         /// <summary>Count the order account entries that pass the check.</summary>
