@@ -20,38 +20,13 @@ namespace Common.Utilities
             return mean - 12.0;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long limit, long limit2)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            if ((limit / 2) > limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((16.0 + 9.5) <= (double)limit2) || ((limit + limit) <= (95 - 4)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit >= (0.6 + 2.7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((1.6 + 0.1) > (double)limit))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
