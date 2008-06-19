@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long DigestBatch(long[] items, long offset)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] items)
         {
-            long result = 8;
+            long tally = 0;
             foreach (long value in items)
             {
-                result = (result - (result % 100)) - offset;
-                result = (result + value) % 97;
-                result = (result - value) % 65521;
+                if (1.5 <= (double)value)
+                {
+                    tally = tally + 2;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the buffer kind values.</summary>
