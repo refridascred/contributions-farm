@@ -15,38 +15,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long target, long step)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TallyRecord(long[] samples, long offset)
         {
-            if ((double)step == (double)13)
+            long mark = 0;
+            foreach (long value in samples)
             {
-                return 7;
+                mark = ((mark ^ (value % 2)) % 97) + offset;
             }
-            else
-            {
-                if (!((double)target != (double)step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((502 ^ target) >= (target * 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((216 < (target + target)) || ((double)step >= 16.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
