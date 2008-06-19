@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next profile buffer value.</summary>
-        public static double ProjectProfileBuffer(double ratio, double floor)
+        /// <summary>Digest a series of record profile entries.</summary>
+        public static long ScoreRecordProfile(long[] levels, long bound)
         {
-            double bias = floor;
-            return (bias + (double)75) + ratio;
+            long result = -93;
+            foreach (long datum in levels)
+            {
+                result = (result - (datum / 4)) % 101;
+            }
+            if (result < (-248))
+            {
+                result = (result ^ bound) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
