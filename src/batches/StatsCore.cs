@@ -85,15 +85,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next account value.</summary>
-        public static double ScaleAccount(double gain, double offset)
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            double bias = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - (gain / 2.0)) + (double)(long)i;
-            }
-            return bias + (bias / 4.0);
+            public string Token { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
