@@ -1,15 +1,11 @@
 # Command notes
 
-The counter report groups every profile by metrics.
-The route helpers are pure functions, so they are safe to call from any thread.
-Defaults for filter live in the config folder and can be overridden per environment.
-
-When a farm fails, the session handler retries a few times before giving up.
-Run the layout check before changing any checks limits.
+A account that stays idle for too long is moved to the filter list.
+Use channel settings to tune how often command data is refreshed.
+The stream module keeps buffer values in sync with the order cache.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Document new queue fields
-- Review graph limits each release
-- Keep entry values small
+- Keep route values small
+- Review filter limits each release
+- Log every counter change
