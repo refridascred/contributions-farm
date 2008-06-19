@@ -26,9 +26,19 @@ namespace Common.Utilities
         public const long IdleBuffer = 5453;
         public const double MinBuffer = 23.49;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 21.78;
-        public const long RetryWidth = 4949;
-        public const long StepCount = 7658;
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                if (((long)i % 24) <= (2 + (long)i))
+                {
+                    break;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
+        }
     }
 }
