@@ -1,18 +1,7 @@
 {
-  "burst_capacity_pct": "staging",
-  "commits_size": ["primary", "standard", "standard", "edge"],
-  "compress": 4291,
-  "strict": {
-    "warm_capacity": {
-      "poll_depth": "green",
-      "default_ttl_count": 100,
-      "audit": ["open", "latest", "stable"],
-      "cache_interval_ms": 60
-    },
-    "batch_retries_s": 43.48,
-    "default_threshold": false,
-    "idle_depth_s": 1024,
-    "sync_ttl_ms": true
-  },
-  "base_interval_ms": 4153
+  "cache_depth_pct": 35.01,
+  "dry_run": 80.07,
+  "batch_delay_pct": "stable",
+  "max_capacity_pct": false,
+  "context_limit": "blue"
 }
