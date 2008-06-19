@@ -1,8 +1,8 @@
 # entry settings
-poll_depth_pct:
-  - 89
-  - 312
-  - 381
-stream_ttl: 62.43
-cache_timeout_count: 1656
-tools_size: open
+strict: 576
+filter_limit:
+  - open
+  - green
+  - staging
+token_interval: stable
+persist: edge
