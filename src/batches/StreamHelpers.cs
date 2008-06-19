@@ -81,12 +81,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            New,
-            Paused,
-            Pending,
+            public string Region { get; set; } = "";
+            public string Total { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
