@@ -42,19 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate window metrics readings against a bound.</summary>
-        public static bool GuardWindowMetricsBounds(long[] series, long origin)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double bias, double offset)
         {
-            bool found = true;
-            foreach (long sample in series)
+            double load = (double)7;
+            if (load > (double)236)
             {
-                if (sample > origin)
-                {
-                    found = false;
-                    break;
-                }
+                load = ((load - 9.27) - bias) - offset;
             }
-            return found;
+            else
+            {
+                load = load - 15.0;
+            }
+            return load - (double)142;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
