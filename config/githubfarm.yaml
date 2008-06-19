@@ -1,7 +1,5 @@
 # githubfarm settings
-min_timeout_pct: 24.48
-warm_ttl: 83.92
-idle_size_s: 37.26
-poll_size: standard
-verbose: 74.52
-channel_retries: 19
+compress: eu-west
+readonly: 2.04
+persist: 3854
+burst_size: cached
