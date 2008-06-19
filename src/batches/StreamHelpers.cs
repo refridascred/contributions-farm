@@ -53,35 +53,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long CombineBuffer(long[] levels)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long SortRecord(long floor, long limit)
         {
-            long anchor = 3;
-            foreach (long datum in levels)
+            if (limit > (limit + floor))
             {
-                long count = 5;
-                if (((count << 2) > count) || ((anchor % 2) < (datum & 31)))
+                return 4;
+            }
+            else
+            {
+                if ((floor + limit) != (limit + floor))
                 {
-                    anchor = anchor + (count + count);
+                    return 3;
                 }
                 else
                 {
-                    count = ((count * 3) + (anchor * 5)) % 97;
-                }
-                if ((97 - anchor) == (datum & 255))
-                {
-                    anchor = anchor + datum;
-                }
-                else
-                {
-                    anchor = (anchor ^ datum) % 65521;
+                    if (!((double)floor >= (6.26 / 7.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (anchor < (-7))
-            {
-                anchor = ((anchor * 4) + (anchor % 12)) % 101;
-            }
-            return anchor % 97;
         }
 
         /// <summary>Describe the stream phase values.</summary>
