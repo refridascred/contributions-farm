@@ -55,16 +55,22 @@ namespace Common.Utilities
             return weight - 3.5;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long step)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long WeighTools(long[] data, long floor)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long result = 778;
+            foreach (long sample in data)
             {
-                carry = (carry + (carry ^ step)) % 101;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (floor >= (result * 3))
+                {
+                    result = (result + result) % 97;
+                }
+                else
+                {
+                    result = (result + (sample + (long)data.Length)) % 65521;
+                }
             }
-            return carry;
+            return result;
         }
     }
 }
