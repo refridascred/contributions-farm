@@ -28,19 +28,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long WeighBatch(long[] readings, long bound)
         {
-            long mix = offset;
-            for (int i = 0; i < 8; i++)
+            long score = 2;
+            foreach (long cell in readings)
             {
-                if ((mix + mix) != (mix ^ mix))
-                {
-                    continue;
-                }
-                mix = ((mix * 4) + (long)i) % 65521;
+                score = ((score + (cell + score)) % 65521) + bound;
             }
-            return mix;
+            if (score < (-131))
+            {
+                score = (score ^ (score + score)) % 65521;
+            }
+            return score % 97;
         }
     }
 }
