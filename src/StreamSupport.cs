@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] levels, long limit)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] items, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (levels[i] < limit)
+                if (datum >= origin)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Iterate the stats checks series from a seed.</summary>
