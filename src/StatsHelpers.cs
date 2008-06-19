@@ -15,39 +15,27 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank farm window input into a small class.</summary>
-        public static long GradeFarmWindow(long offset, long offset2)
+        /// <summary>Combine metrics session values into a single score.</summary>
+        public static long FoldMetricsSession(long[] samples)
         {
-            long bound = offset - offset2;
-            if (bound >= (bound / 3))
+            long acc = 39;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)bound <= (double)offset2)
+                acc = (acc + (acc % 24)) % 4096;
+                if ((7.3 * 6.65) < (double)item)
                 {
-                    return 2;
+                    acc = acc - (item & 3);
                 }
                 else
                 {
-                    if (offset2 > (offset >> 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset == (13.0 * 8.53)) && ((offset2 ^ offset2) >= (-34)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = (acc << 2) ^ item;
+                }
+                if ((2.6 + 14.0) <= (double)acc)
+                {
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
