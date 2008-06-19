@@ -66,15 +66,21 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long MatchSessionCount(long[] data)
         {
-            long acc = 682;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = (acc ^ (acc * 5)) ^ datum;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 3)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
