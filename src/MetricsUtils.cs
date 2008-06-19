@@ -20,19 +20,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool VerifyStreamLimits(long[] data, long step)
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Queued,
+            New,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the entry class values.</summary>
