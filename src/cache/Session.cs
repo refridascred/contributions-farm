@@ -23,18 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextHits(long[] values, long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long cell in values)
             {
-                if ((reading % 97) != (count & 15))
+                if ((cell >> 3) >= (bound << 2))
                 {
-                    count = (count + 2) + limit;
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the filter githubfarm entries that pass the check.</summary>
