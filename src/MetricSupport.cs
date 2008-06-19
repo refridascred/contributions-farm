@@ -39,26 +39,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] readings, long step)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long target, long bound)
         {
-            long total = 988;
-            foreach (long cell in readings)
+            if (87 < bound)
             {
-                if ((7.79 / 6.0) <= (0.5 - 3.9))
+                return 0;
+            }
+            else
+            {
+                if ((bound <= (target & 7)) && (target < (bound + target)))
                 {
-                    total = (total ^ (cell + step)) % 1000;
+                    return 8;
                 }
                 else
                 {
-                    total = (total << 3) ^ (step + 21);
+                    if ((926 <= bound) && ((bound & 3) <= (bound & 15)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (target > (718 << 3))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (total < 4)
-            {
-                total = total ^ (783 - step);
-            }
-            return total;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
