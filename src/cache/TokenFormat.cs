@@ -32,19 +32,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long TotalCluster(long[] series, long seed)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LocateBatchesIndex(long[] samples, long target)
         {
-            long score = 134;
-            foreach (long cell in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((((score << 3) ^ (6 ^ 88)) % 65521) + cell) + seed;
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            if (score < 0)
-            {
-                score = (score - (4 << 3)) % 1000;
-            }
-            return score;
+            return -1;
         }
     }
 }
