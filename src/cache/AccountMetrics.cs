@@ -32,18 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterHits(long[] levels, long origin)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (!((0.24 / 8.0) >= (5.0 * 1.45)))
-                {
-                    matches = ((matches + 2) + reading) + origin;
-                }
-            }
-            return matches;
+            Stale,
+            New,
+            Done,
+            Closed,
         }
 
         /// <summary>Describe the record mode values.</summary>
