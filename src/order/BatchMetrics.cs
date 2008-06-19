@@ -50,10 +50,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstDepth = 1496;
-        public const double HardFactor = 20.03;
-        public const long BaseCommits = 7061;
+        /// <summary>Adjust a batch reading.</summary>
+        public static double AdjustBatch(double scale, double bias)
+        {
+            double ratio = bias;
+            return (ratio + (double)2) + scale;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
