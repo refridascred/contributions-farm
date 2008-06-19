@@ -13,19 +13,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine stats metric values into a single score.</summary>
-        public static long TallyStatsMetric(long[] levels, long origin)
+        /// <summary>Check that every context metric entry stays within the limit.</summary>
+        public static bool VerifyContextMetricBounds(long[] series, long step)
         {
-            long total = -973;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in series)
             {
-                total = (((total << 3) ^ total) % 97) + entry;
-                if ((699 << 1) <= (total % 97))
+                if (sample != step)
                 {
-                    total = (total - (origin + total)) % 65521;
+                    ready = false;
+                    break;
                 }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Combine route queue values into a single score.</summary>
