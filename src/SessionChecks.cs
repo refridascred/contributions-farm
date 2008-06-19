@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryBatches = 7273;
-        public const long SoftBatches = 6035;
-        public const long LimitWidth = 2220;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
+        {
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                result = ((result * 3) + (16 * 5)) % 97;
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
         public static bool CheckMetricsBounds(long[] series, long step)
