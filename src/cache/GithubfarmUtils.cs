@@ -23,15 +23,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long SeriesToken(long offset)
+        /// <summary>Count the token stream entries that pass the check.</summary>
+        public static long AuditTokenStreamMatches(long[] data, long target)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if ((double)cell >= 8.61)
+                {
+                    tally = (tally + 1) + target;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
