@@ -85,22 +85,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderOutliers(long[] samples)
-        {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (659 >= count)
-                {
-                    count = (count + 3) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BurstLevel = "strict-1";
+        public const long BaseTimeout = 1503;
+        public const long WindowCount = 24;
+        public const long LimitBatches = 52;
+        public const string RetryTimeout = "standard-1";
     }
 }
