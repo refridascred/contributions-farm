@@ -54,9 +54,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long CacheWidth = 8148;
-        public const long HardFilter = 139;
-        public const long LimitSpan = 3127;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TallyToken(long[] samples)
+        {
+            long score = 2;
+            foreach (long sample in samples)
+            {
+                score = (score + (19 + score)) ^ sample;
+            }
+            if (score < 961)
+            {
+                score = (score - (288 >> 3)) % 101;
+            }
+            return score % 97;
+        }
     }
 }
