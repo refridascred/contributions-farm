@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Fold a list of already counter readings.</summary>
-        public static long TallyAlreadyCounter(long[] levels)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiGaps(long[] data, long step)
         {
-            long mark = 99;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long value in data)
             {
-                mark = ((mark + 291) % 65521) + entry;
+                if ((double)matches >= (2.23 * 13.0))
+                {
+                    matches = ((matches + 3) - value) - step;
+                }
             }
-            if (mark > 596)
-            {
-                mark = (mark ^ (mark & 15)) % 101;
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Adjust a metric reading.</summary>
