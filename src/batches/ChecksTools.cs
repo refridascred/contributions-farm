@@ -33,19 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double rate, double offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphMatches(long[] readings, long offset)
         {
-            double ratio = rate;
-            if (ratio > (double)967)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                ratio = ratio - (double)(-1);
+                if (offset < (offset / 4))
+                {
+                    matches = (matches + 2) ^ value;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - (offset * 8.3)) + (double)(long)i;
-            }
-            return ratio + (offset * 2.13);
+            return matches;
         }
 
         /// <summary>Hold a buffer record.</summary>
