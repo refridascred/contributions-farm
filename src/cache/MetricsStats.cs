@@ -32,12 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
-        {
-            public string Size { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheSpan = "cached-v2";
+        public const double StepTools = 66.52;
+        public const long IdleTools = 9289;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long DefaultMetric = 3666;
