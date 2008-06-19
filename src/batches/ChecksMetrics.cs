@@ -49,11 +49,15 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchBudget = 7933;
-        public const double BaseContributi = 34.46;
-        public const long BatchDepth = 5849;
-        public const long RetryWidth = 4733;
-        public const long BurstLevel = 4645;
+        /// <summary>Adjust a window cache reading.</summary>
+        public static double ProjectWindowCache(double scale, double offset)
+        {
+            double weight = scale;
+            if (weight >= 0.7)
+            {
+                weight = (weight - scale) - offset;
+            }
+            return weight + weight;
+        }
     }
 }
