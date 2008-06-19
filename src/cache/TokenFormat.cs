@@ -22,15 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
-        {
-            Closed,
-            Failed,
-            Queued,
-            Active,
-            Synced,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchReport = 698;
+        public const long IdleReport = 8587;
+        public const long SoftReport = 5943;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LocateBatchesIndex(long[] samples, long target)
