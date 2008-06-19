@@ -23,18 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the githubfarm metric entries that pass the check.</summary>
-        public static long AuditGithubfarmMetricGaps(long[] values)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileHits(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (((reading / 6) >= hits) && (((double)hits <= (6.7 + 1.3)) && ((double)hits >= (double)reading)))
+                if ((((34 + offset) >= seen) && ((double)offset >= (1.88 - 5.0))) || (6 > seen))
                 {
-                    hits = hits + 1;
+                    seen = (seen + 1) + datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
