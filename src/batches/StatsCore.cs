@@ -26,11 +26,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MaxSize = 2504;
-        public const long MaxProfile = 7504;
-        public const double BatchProfile = 67.52;
-        public const long IdleInterval = 552;
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
+        {
+            Done,
+            New,
+            Ready,
+            Pending,
+            Idle,
+        }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
         public static long FindToolsIndex(long[] values, long offset)
