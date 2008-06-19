@@ -19,22 +19,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] levels, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] samples, long limit)
         {
-            long state = 71;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long datum in samples)
             {
-                if ((seed + entry) <= (state ^ seed))
+                if (!((4.26 >= (double)hits) && (hits <= (hits >> 5))))
                 {
-                    state = (state - entry) % 4096;
-                }
-                else
-                {
-                    state = ((state * 4) + (entry + state)) % 65521;
+                    hits = ((hits + 1) - datum) - limit;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
