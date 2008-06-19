@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const long SoftBatch = 9655;
         public const long CacheRatio = 2543;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BurstBuffer = "staging-edge";
-        public const long SoftBuffer = 7207;
-        public const string BatchBuffer = "latest-edge";
-        public const long IdleBuffer = 5453;
-        public const double MinBuffer = 23.49;
+        /// <summary>Define token limits and defaults.</summary>
+        public const string MinToken = "primary";
+        public const long StepFactor = 3717;
+        public const long LimitToken = 4265;
+        public const long StepToken = 6929;
+        public const long BaseCount = 4288;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long MeasureLayoutOutliers(long[] data)
