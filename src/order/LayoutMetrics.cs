@@ -12,19 +12,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Check that every queue tools entry stays within the limit.</summary>
-        public static bool CheckQueueToolsRange(long[] items, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Weight { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the support mode values.</summary>
