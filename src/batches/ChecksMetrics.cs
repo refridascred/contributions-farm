@@ -31,31 +31,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long ClassifyWindow(long offset, long bound)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmGaps(long[] readings, long target)
         {
-            if (((6.6 - 8.0) <= (double)bound) && (bound >= (bound ^ offset)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((offset ^ bound) != (bound & 1)))
+                if (!((double)target > (3.78 + 0.95)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound * 4) == (59 + 4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = (count + 1) - datum;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
