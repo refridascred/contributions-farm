@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long PairGraphCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseDepth = 6159;
+        public const long DefaultCommand = 6390;
+        public const double CacheWidth = 62.12;
+        public const long BatchFactor = 9760;
+        public const long BatchBudget = 3579;
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
         public static long FindGithubfarmIndex(long[] items, long step)
