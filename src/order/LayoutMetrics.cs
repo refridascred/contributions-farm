@@ -10,18 +10,19 @@ namespace Common.Utilities
         public const double MaxSpan = 77.97;
         public const double IdleBudget = 54.35;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items, long target)
+        /// <summary>Check that every queue tools entry stays within the limit.</summary>
+        public static bool CheckQueueToolsRange(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long sample in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((132 >> 2) <= sample)
+                if (item > seed)
                 {
-                    count = (count + 1) + target;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every batches command entry stays within the limit.</summary>
