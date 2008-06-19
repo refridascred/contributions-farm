@@ -57,13 +57,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public bool Count { get; set; }
             public double Limit { get; set; }
+            public bool Level { get; set; }
+            public long Owner { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
