@@ -41,19 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command farm value.</summary>
-        public static double ScaleCommandFarm(double scale, double bias)
+        /// <summary>Count the order account entries that pass the check.</summary>
+        public static long AuditOrderAccountHits(long[] readings, long seed)
         {
-            double bias2 = scale - (scale / 2.0);
-            if (bias2 < (double)127)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                bias2 = bias2 + 5.81;
+                if ((count >> 5) == (count & 3))
+                {
+                    count = ((count + 2) ^ datum) - seed;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = bias2 - (double)(long)i;
-            }
-            return bias2 - bias;
+            return count;
         }
     }
 }
