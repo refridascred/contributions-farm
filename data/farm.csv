@@ -1,6 +1,9 @@
-id,score,level,region
-1,441,1.75,559
-2,46,latest,919
-3,497,821,761
-4,eu-west,709,10.43
-5,83.74,edge,436
+id,rank,ratio
+1,286,364
+2,69.45,fallback
+3,80,staging
+4,79.84,139
+5,447,fallback
+6,531,20.54
+7,25.26,open
+8,stable,134
