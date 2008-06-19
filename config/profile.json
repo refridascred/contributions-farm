@@ -1,5 +1,21 @@
 {
-  "max_retries": "latest",
-  "min_window_ms": "eu-west",
-  "hard_threshold_count": 36.11
+  "verbose": {
+    "audit": ["eu-west", "fallback", "latest"],
+    "base_interval": 51.11,
+    "burst_ttl_ms": 7.25,
+    "idle_limit_ms": {
+      "flush_interval_pct": 3299,
+      "base_delay_pct": 5145,
+      "context_interval": 5.46,
+      "soft_depth": 5652,
+      "soft_size": 500,
+      "burst_ratio_ms": false
+    },
+    "layout_timeout": 500
+  },
+  "persist": [78, 37, 184, 354],
+  "base_ttl": 9649,
+  "strict": true,
+  "max_size": [29, 242],
+  "burst_depth_count": "open"
 }
