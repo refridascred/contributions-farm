@@ -44,20 +44,10 @@ namespace Common.Utilities
         public const double MaxRecord = 94.74;
         public const long MinRecord = 2833;
 
-        /// <summary>Check that every checks profile entry stays within the limit.</summary>
-        public static bool ValidateChecksProfileBounds(long[] values, long target)
-        {
-            bool stale = true;
-            foreach (long sample in values)
-            {
-                if (sample >= target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double MinInterval = 80.87;
+        public const double HardTimeout = 31.94;
+        public const string IdleSpan = "stable-edge";
 
         /// <summary>Define already limits and defaults.</summary>
         public const double CacheScore = 43.37;
