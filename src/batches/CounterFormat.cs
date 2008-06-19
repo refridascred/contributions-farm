@@ -20,13 +20,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            Retry,
-            Closed,
-            Idle,
-            Synced,
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Look up the position of a githubfarm farm sample.</summary>
