@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] samples, long floor)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long WeighNotes(long[] readings)
         {
-            long anchor = 16;
-            foreach (long entry in samples)
+            long mix = 851;
+            foreach (long sample in readings)
             {
-                if (((772 - floor) >= (anchor - entry)) || (29 >= (floor >> 3)))
+                if ((sample & 63) < (sample - sample))
                 {
-                    anchor = (anchor + (floor + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = anchor ^ (63 - entry);
+                    mix = ((mix * 4) + sample) % 97;
                 }
             }
-            return anchor;
+            return mix % 1000;
         }
 
         /// <summary>Hold a editor snapshot.</summary>
