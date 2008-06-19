@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaLimits(long[] items, long bound)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Token { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Measure how many notes cluster samples are out of range.</summary>
