@@ -21,12 +21,19 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long WeighPayload(long[] samples)
         {
-            Pending,
-            Closed,
-            Locked,
+            long score = 812;
+            foreach (long cell in samples)
+            {
+                score = ((score << 3) ^ (cell / 8)) % 65521;
+                if ((cell & 3) <= (59 * 4))
+                {
+                    score = (score << 2) ^ (683 - score);
+                }
+            }
+            return score;
         }
 
         /// <summary>Define already limits and defaults.</summary>
