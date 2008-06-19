@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long seed)
+        /// <summary>Measure how many metric commits samples are out of range.</summary>
+        public static long AuditMetricCommitsMatches(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((items[i] >= seed) && ((items[i] % 3) != 0))
+                if ((datum / 4) == ((long)values.Length - seed))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
