@@ -16,12 +16,16 @@ namespace Common.Utilities
             return mean - (floor + rate);
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double LimitProfile = 98.36;
-        public const long BaseProfile = 4267;
-        public const string IdleCount = "standard-edge";
-        public const long BatchInterval = 7484;
-        public const string IdleProfile = "primary";
+        /// <summary>Project the next route value.</summary>
+        public static double SmoothRoute(double scale, double bias)
+        {
+            double load = 5.0;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (((load + (double)811) + (double)(long)i) + scale) + bias;
+            }
+            return load + load;
+        }
 
         /// <summary>Hold a schema options.</summary>
         public sealed class SchemaOptions
