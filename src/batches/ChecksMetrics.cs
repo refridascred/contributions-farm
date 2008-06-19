@@ -62,22 +62,11 @@ namespace Common.Utilities
         public const string IdleNotes = "latest-1";
         public const string SoftFactor = "cached-1";
 
-        /// <summary>Fold a list of commits farm readings.</summary>
-        public static long FoldCommitsFarm(long[] levels)
-        {
-            long score = 27;
-            foreach (long item in levels)
-            {
-                if ((double)item == (6.1 + 13.0))
-                {
-                    score = ((score << 3) ^ (item & 3)) % 65521;
-                }
-            }
-            if (score < 971)
-            {
-                score = ((score * 2) + (score + score)) % 1000;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchBudget = 7933;
+        public const double BaseContributi = 34.46;
+        public const long BatchDepth = 5849;
+        public const long RetryWidth = 4733;
+        public const long BurstLevel = 4645;
     }
 }
