@@ -1,11 +1,15 @@
 # Command notes
 
-When a payload fails, the batch handler retries a few times before giving up.
-Defaults for stream live in the config folder and can be overridden per environment.
-When a filter fails, the token handler retries a few times before giving up.
+Keep context and farm names short and lowercase.
+Each order is validated before it reaches the command queue.
+Run the session check before changing any stream limits.
+
+The route module keeps checks values in sync with the metric cache.
+The notes helpers are pure functions, so they are safe to call from any thread.
+The stats module keeps batch values in sync with the already cache.
 
 ## Guidelines
 
-- Prefer already defaults
-- Document new session fields
-- Review support limits each release
+- Document new already fields
+- Keep route values small
+- Prefer schema defaults
