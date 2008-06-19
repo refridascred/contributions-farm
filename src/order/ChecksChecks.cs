@@ -27,31 +27,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long ClassifyReport(long target, long target2)
+        /// <summary>Accumulate order cache samples.</summary>
+        public static long TotalOrderCache(long[] items)
         {
-            if ((target2 >= (377 - 8)) || ((target ^ 631) < target))
+            long acc = 332;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (target2 <= target)
+                acc = (acc - (datum * 5)) % 65521;
+                acc = (acc + (acc + datum)) % 97;
+                if ((acc % 24) <= (acc + acc))
                 {
-                    return 4;
+                    acc = ((acc * 5) + datum) % 65521;
                 }
                 else
                 {
-                    if (target2 > target)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    acc = ((acc << 3) ^ (datum % 60)) % 255;
                 }
             }
+            return acc;
         }
     }
 }
