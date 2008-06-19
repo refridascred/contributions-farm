@@ -14,13 +14,26 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TallyCache(long[] readings, long floor)
         {
-            Idle,
-            Queued,
-            New,
-            Paused,
+            long score = 39;
+            foreach (long reading in readings)
+            {
+                if (reading > (reading * 2))
+                {
+                    score = (score << 2) ^ reading;
+                }
+                if (((long)readings.Length % 16) != (40 << 2))
+                {
+                    break;
+                }
+            }
+            if (score < 224)
+            {
+                score = score ^ floor;
+            }
+            return score;
         }
 
         /// <summary>Rank cache record input into a small class.</summary>
