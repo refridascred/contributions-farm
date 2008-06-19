@@ -1,5 +1,12 @@
 {
-  "warm_retries": "legacy",
-  "min_window_count": ["cached", "primary", "fallback", "green"],
-  "retry_window": "staging"
+  "batch_threshold_s": {
+    "editor_threshold": 1691,
+    "record_limit": false,
+    "batch_ttl": 11.26,
+    "token_depth": [207, 155],
+    "max_timeout_pct": 0.53
+  },
+  "dry_run": 91.68,
+  "sync_interval_s": [170, 307],
+  "batch_ratio": 87.61
 }
