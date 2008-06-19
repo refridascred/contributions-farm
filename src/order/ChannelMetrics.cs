@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long IterateOrder(long limit)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long mark = limit;
-            for (int i = 0; i < 9; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
+            public string Count { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Digest a series of graph entries.</summary>
