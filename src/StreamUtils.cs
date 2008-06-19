@@ -34,22 +34,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] items, long bound)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long mix = 40;
-            foreach (long value in items)
-            {
-                if ((double)value >= (double)bound)
-                {
-                    mix = mix ^ bound;
-                }
-                if ((double)mix != (7.9 * 4.0))
-                {
-                    break;
-                }
-            }
-            return mix % 1000;
+            public long Offset { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
