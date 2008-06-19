@@ -33,21 +33,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] items)
+        /// <summary>Combine route support values into a single score.</summary>
+        public static long TotalRouteSupport(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = 59;
+            foreach (long item in items)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) != 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - (state & 7)) ^ item;
             }
-            return seen;
+            return state;
         }
     }
 }
