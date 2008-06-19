@@ -5,35 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long FoldGraph(long[] readings, long seed)
+        /// <summary>Count the notes filter entries that pass the check.</summary>
+        public static long AuditNotesFilterMatches(long[] levels)
         {
-            long mix = 38;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (((double)sample == (5.51 * 12.0)) && ((seed << 3) > (seed + sample)))
+                if (!(tally < (977 - tally)))
                 {
-                    mix = (mix + (seed - sample)) % 65521;
-                }
-                else
-                {
-                    mix = mix - 550;
-                }
-                mix = (mix ^ (sample + mix)) % 65521;
-                if (23 <= (sample + seed))
-                {
-                    mix = ((mix << 2) ^ (mix ^ 44)) % 4096;
-                }
-                else
-                {
-                    mix = ((mix << 2) ^ (sample + seed)) % 1000;
-                }
-                if (sample >= (665 >> 5))
-                {
-                    break;
+                    tally = (tally + 2) - value;
                 }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
