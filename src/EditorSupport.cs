@@ -51,12 +51,16 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double CacheEntry = 79.35;
-        public const long StepEntry = 6567;
-        public const long HardEntry = 7531;
-        public const long MaxLevel = 7767;
-        public const long StepSize = 9822;
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Combine session graph values into a single score.</summary>
         public static long TallySessionGraph(long[] data, long offset)
