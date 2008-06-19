@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] data)
         {
-            Dropped,
-            Stale,
-            Ready,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((long)data.Length < (entry - entry)) || !(count >= (count * 2)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a filter record.</summary>
