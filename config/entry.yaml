@@ -1,26 +1,27 @@
 # entry settings
-default_window_count: primary
-flush_timeout_pct:
-  batch_ratio:
-    - 272
-    - 215
-  cache_ttl_count:
-    - local
-    - fallback
-  strict: primary
-  retry_depth:
-    - open
-    - primary
-    - green
-    - local
-strict: open
-schema_limit:
-  - 380
-  - 407
-  - 188
-session_depth:
-  - 479
-  - 319
-  - 310
-  - 88
-idle_delay_s: 6746
+hard_limit_count: strict
+flush_delay_ms: fallback
+filter_limit: eu-west
+idle_size:
+  idle_capacity_pct: 76
+  cache_threshold_ms: 9.22
+  sync_ttl_count: stable
+  flush_delay_pct:
+    command_ttl: eu-west
+    soft_size_pct: 7591
+    entry_threshold: 2913
+    strict:
+      - 437
+      - 399
+      - 276
+  burst_window: true
+  entry_size:
+    - 280
+    - 64
+payload_limit:
+  payload_interval: 100
+  warm_threshold_ms: blue
+  metrics_size:
+    - 287
+    - 360
+  profile_limit: 1024
