@@ -5,15 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double BlendStats(double bias, double bias2)
+        /// <summary>Rank batches profile input into a small class.</summary>
+        public static long ClassifyBatchesProfile(long origin, long step)
         {
-            double load = (double)(15 ^ 0);
-            for (int i = 0; i < 3; i++)
+            if ((double)origin <= (5.0 + 4.9))
             {
-                load = (load - (bias + 9.6)) + (double)(long)i;
+                return 3;
             }
-            return load + bias2;
+            else
+            {
+                if ((origin + step) > step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((3 + step) <= (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin >> 1) >= step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
