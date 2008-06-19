@@ -1,15 +1,13 @@
 {
-  "route_depth": {
-    "default_ttl_s": "blue",
-    "persist": {
-      "persist": "latest",
-      "audit": 60,
-      "default_ttl": "open",
-      "support_ttl": 65
-    },
-    "base_retries_s": 60,
-    "metrics_ratio": ["legacy", "edge", "strict", "strict"]
-  },
-  "burst_ratio_s": 50.23,
-  "poll_retries_count": 500
+  "notes_capacity": [300, 34],
+  "entry_capacity": true,
+  "metric_size": false,
+  "min_depth_pct": 100,
+  "hard_ratio_ms": {
+    "notes_threshold": "primary",
+    "strict": 100,
+    "warm_ttl": 9979,
+    "max_capacity_pct": 31,
+    "route_size": true
+  }
 }
