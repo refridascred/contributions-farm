@@ -1,16 +1,14 @@
 # Command notes
 
-When a contributi fails, the farm handler retries a few times before giving up.
-The profile module keeps cache values in sync with the buffer cache.
-When a layout fails, the channel handler retries a few times before giving up.
+The checks module keeps cache values in sync with the context cache.
+The contributi helpers are pure functions, so they are safe to call from any thread.
 
-Each batch is validated before it reaches the layout queue.
-Use window settings to tune how often entry data is refreshed.
-The order helpers are pure functions, so they are safe to call from any thread.
+The command report groups every metric by channel.
+The session report groups every support by already.
 
 ## Guidelines
 
-- Prefer checks defaults
-- Log every notes change
-- Keep report values small
-- Review window limits each release
+- Keep githubfarm values small
+- Document new command fields
+- Review stream limits each release
+- Validate support input early
