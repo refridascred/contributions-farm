@@ -1,6 +1,9 @@
 # support settings
-record_ratio: 7992
-warm_size_pct: edge
-base_interval_ms: eu-west
-burst_depth_pct: true
-poll_depth_pct: false
+format_capacity: 60
+channel_threshold: 31.56
+flush_capacity_count: false
+channel_limit: false
+commits_timeout: eu-west
+strict:
+  - 397
+  - 296
