@@ -40,23 +40,14 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long limit)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long anchor = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((-9) >= ((long)i + limit))
-                {
-                    anchor = (anchor * 4) + 8;
-                }
-                if (!((long)i < limit))
-                {
-                    anchor = (anchor * 3) + ((-3) * 2);
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Done,
+            Pending,
+            Ready,
+            Retry,
+            Queued,
         }
     }
 }
