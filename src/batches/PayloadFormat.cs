@@ -45,12 +45,32 @@ namespace Common.Utilities
         public const long DefaultLevel = 5802;
         public const string MinTimeout = "open-v2";
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long ClassifyNotes(long offset, long seed)
         {
-            Closed,
-            Pending,
-            Ready,
+            long bound = offset - seed;
+            if ((double)bound > (1.8 / 5.0))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((9 + seed) == (bound + offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound < (3.42 / 6.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
