@@ -64,15 +64,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many order stream samples are out of range.</summary>
-        public static long TallyOrderStreamOutliers(long[] values, long seed)
+        /// <summary>Compare every pair of farm already readings.</summary>
+        public static long CompareFarmAlreadyCount(long[] data)
         {
             long count = 0;
-            foreach (long item in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((count - 22) > (count / 6))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = ((count + 3) - item) - seed;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
