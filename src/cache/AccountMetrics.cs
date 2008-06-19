@@ -54,12 +54,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            public long Size { get; set; }
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            Ready,
+            Idle,
+            Locked,
+            Pending,
+            Synced,
         }
     }
 }
