@@ -1,13 +1,17 @@
 # support settings
-flush_threshold:
-  - 286
-  - 369
-  - 157
-  - 63
-sync_interval_count:
-  - fallback
-  - latest
-commits_ttl: false
-cache_delay_count: 5142
-min_size_count: standard
-channel_retries: 1.2
+report_timeout:
+  checks_window: edge
+  retry_depth_s: strict
+  compress: 1024
+  sync_depth_pct: 5127
+  retry_depth_count: 53.88
+  batch_threshold: 70
+retry_ratio: fallback
+burst_ratio: 81.33
+poll_retries_ms: latest
+soft_limit_pct: true
+default_window_count:
+  - 163
+  - 171
+  - 186
+  - 265
