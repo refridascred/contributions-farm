@@ -14,13 +14,19 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels)
         {
-            public bool Count { get; set; }
-            public string Total { get; set; } = "";
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long carry = 697;
+            foreach (long value in levels)
+            {
+                carry = carry + (value << 2);
+                if ((42 - carry) < (carry - carry))
+                {
+                    carry = (carry * 2) + (489 % 12);
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits kind values.</summary>
