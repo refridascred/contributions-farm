@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double ratio, double span)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long seed)
         {
-            double bias = 0.3;
-            if (bias >= (span * 8.04))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + (double)4;
+                if (series[i] >= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias - ratio;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + (ratio + ratio)) - (double)(long)i;
-            }
-            return bias - ratio;
+            return -1;
         }
 
         /// <summary>Describe the window phase values.</summary>
