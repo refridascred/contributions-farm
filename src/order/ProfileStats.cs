@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Adjust a batches context reading.</summary>
-        public static double BlendBatchesContext(double bias, double bias2)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            double ratio = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                ratio = ((ratio + bias) - (double)(long)i) + bias2;
-            }
-            return ratio - bias;
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define profile limits and defaults.</summary>
