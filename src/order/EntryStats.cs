@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteMatches(long[] series, long bound)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorGaps(long[] series, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (((double)3 == (double)cell) && (5.69 < (double)cell))
+                if (seed <= (entry - entry))
                 {
-                    count = (count + 2) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    hits = hits + 2;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Iterate the filter series from a seed.</summary>
