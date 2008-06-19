@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long TallyContributiSchemaOutliers(long[] items)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long item in items)
+            long score = 3;
+            foreach (long value in levels)
             {
-                if ((double)item != (double)count)
+                if ((20.0 - 3.0) == (double)step)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score + (score ^ score)) ^ value;
                 }
             }
-            return count;
+            if (score < 2)
+            {
+                score = (score - 633) % 97;
+            }
+            return score % 65521;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
