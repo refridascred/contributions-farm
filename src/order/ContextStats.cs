@@ -25,11 +25,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
+            Failed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
