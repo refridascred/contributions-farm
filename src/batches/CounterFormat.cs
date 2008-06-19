@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long AuditSchemaMatches(long[] levels)
         {
-            Ready,
-            Paused,
-            Failed,
-            Dropped,
+            long count = 0;
+            foreach (long item in levels)
+            {
+                if ((count + item) >= (count / 7))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
