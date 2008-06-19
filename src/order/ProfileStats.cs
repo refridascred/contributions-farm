@@ -21,15 +21,22 @@ namespace Common.Utilities
         public const long HardProfile = 3754;
         public const double DefaultProfile = 17.1;
 
-        /// <summary>Scale a filter stats figure with a bias.</summary>
-        public static double ProjectFilterStats(double scale, double bias)
+        /// <summary>Audit buffer commits readings against a rule.</summary>
+        public static long CountBufferCommitsMatches(long[] series)
         {
-            double weight = (double)(9 % 8);
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                weight = ((weight + scale) + (double)(long)i) + bias;
+                if ((cell - 2) > (3 + 9))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return weight - (scale - weight);
+            return hits;
         }
 
         /// <summary>Hold a metric snapshot.</summary>
