@@ -38,10 +38,17 @@ namespace Common.Utilities
         public const long MinNotes = 339;
         public const string WindowNotes = "strict-1";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BatchContributi = "legacy-edge";
-        public const double RetryContributi = 98.74;
-        public const double WindowFactor = 6.89;
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long bound)
+        {
+            long state = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                state = (state ^ state) % 1000;
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
