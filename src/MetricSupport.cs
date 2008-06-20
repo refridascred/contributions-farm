@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public long Score { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BaseContributi = "stable-edge";
+        public const long CacheContributi = 6460;
+        public const string BatchContributi = "staging-edge";
 
         /// <summary>Count the token entries that pass the check.</summary>
         public static long TallyTokenHits(long[] levels)
