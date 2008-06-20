@@ -1,6 +1,6 @@
 # support settings
-base_delay_s: standard
-batch_delay: edge
-default_capacity: 85
-readonly: 86
-commits_capacity: false
+commits_ratio: cached
+poll_delay: 55.35
+strict: 788
+compress: latest
+cache_capacity: false
