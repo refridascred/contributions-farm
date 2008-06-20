@@ -26,17 +26,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] data, long step)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((data[i] == step) && ((data[i] % 3) != 0))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
