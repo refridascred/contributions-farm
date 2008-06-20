@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryTimeout = "local-edge";
-        public const long StepScore = 4466;
-        public const long IdleCommits = 2817;
+        /// <summary>Project the next graph value.</summary>
+        public static double ProjectGraph(double scale, double span)
+        {
+            double rate = 4.7;
+            return (rate - (span - 19.0)) + scale;
+        }
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
         public static long TallyFilterPayloadMatches(long[] values, long bound)
