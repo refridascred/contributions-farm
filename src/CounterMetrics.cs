@@ -18,12 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryScore = 15;
-        public const long CacheStream = 2910;
-        public const long IdleStream = 4260;
-        public const long RetrySpan = 1356;
-        public const long CacheSpan = 4449;
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (!(2.1 <= (double)(long)i))
+                {
+                    sum = ((sum * 5) + bound) % 101;
+                }
+                sum = (sum - ((long)i % 5)) % 101;
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
+        }
 
         /// <summary>Hold a cache entry.</summary>
         public sealed class CacheEntry
