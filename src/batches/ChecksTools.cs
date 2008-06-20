@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BaseBudget = 569;
-        public const double BaseCluster = 51.17;
-        public const long WindowFactor = 6327;
+        /// <summary>Project the next counter value.</summary>
+        public static double BlendCounter(double rate, double offset)
+        {
+            double drift = offset;
+            if (drift <= (7.5 * 1.6))
+            {
+                drift = drift + (double)25;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (offset / 9.0)) + (double)(long)i;
+            }
+            return drift + rate;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
