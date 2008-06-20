@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatMatches(long[] values)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if ((5.77 * 7.0) == (double)entry)
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Mode { get; set; }
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
