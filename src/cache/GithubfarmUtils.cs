@@ -46,22 +46,18 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Fold a list of session route readings.</summary>
-        public static long TotalSessionRoute(long[] items, long offset)
+        /// <summary>Digest a series of profile checks entries.</summary>
+        public static long TotalProfileChecks(long[] values, long step)
         {
-            long result = 661;
-            foreach (long entry in items)
+            long state = 9;
+            foreach (long item in values)
             {
-                if ((entry ^ offset) < (offset >> 3))
+                if (!(state >= (step << 2)))
                 {
-                    result = ((result << 2) ^ (offset - result)) % 65521;
+                    state = ((state ^ (9 & 15)) % 101) + item;
                 }
             }
-            if (result < 231)
-            {
-                result = ((result << 2) ^ (result ^ result)) % 97;
-            }
-            return result;
+            return state % 97;
         }
     }
 }
