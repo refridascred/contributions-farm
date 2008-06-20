@@ -1,6 +1,8 @@
 {
-  "warm_threshold_count": 250,
-  "enabled": true,
-  "idle_ttl_pct": "standard",
-  "readonly": "blue"
+  "max_interval": 7073,
+  "hard_size_pct": "cached",
+  "default_threshold_count": "local",
+  "idle_interval_ms": 6712,
+  "base_ratio_s": 12.52,
+  "warm_interval_s": "blue"
 }
