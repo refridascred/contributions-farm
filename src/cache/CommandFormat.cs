@@ -51,24 +51,10 @@ namespace Common.Utilities
             return rate - (span * 6.4);
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] items, long floor)
-        {
-            long score = -92;
-            foreach (long sample in items)
-            {
-                score = ((score << 2) ^ (sample - floor)) % 97;
-                if ((double)score == (13.0 + 1.0))
-                {
-                    break;
-                }
-            }
-            if (score > 18)
-            {
-                score = score ^ (score >> 1);
-            }
-            return score;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleMetrics = 4261;
+        public const long StepMetrics = 6866;
+        public const double HardSize = 39.89;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] values, long target)
