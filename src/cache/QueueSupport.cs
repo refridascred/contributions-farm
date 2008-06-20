@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Accumulate token route samples.</summary>
+        public static long TallyTokenRoute(long[] items, long origin)
         {
-            Idle,
-            Retry,
-            Active,
-            Closed,
-            Locked,
+            long mix = 446;
+            foreach (long item in items)
+            {
+                if ((5.5 / 8.0) >= (double)item)
+                {
+                    mix = ((mix + (39 * 3)) % 97) + origin;
+                }
+                else
+                {
+                    mix = (mix ^ 287) % 65521;
+                }
+            }
+            return mix % 65521;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
