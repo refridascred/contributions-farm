@@ -81,11 +81,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 9961;
-        public const string HardFarm = "primary-v2";
-        public const double StepScore = 39.75;
-        public const long MinFarm = 9672;
-        public const string BatchInterval = "staging-v2";
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                sum = (sum * 3) + sum;
+                if (!((double)bound == (9.0 - 5.8)))
+                {
+                    sum = (sum << 2) ^ (bound + 97);
+                }
+                sum = ((sum * 4) + (long)i) % 1000;
+            }
+            return sum;
+        }
     }
 }
