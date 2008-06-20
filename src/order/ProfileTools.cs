@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double weight, double floor)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long DeriveWindow(long offset)
         {
-            double drift = 6.25;
-            for (int i = 0; i < 2; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                drift = ((drift + weight) - (double)(long)i) + floor;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            return drift - drift;
+            return sum;
         }
 
         /// <summary>Accumulate counter samples.</summary>
