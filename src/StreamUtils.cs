@@ -20,32 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long seed, long offset)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double BlendContext(double bias, double floor)
         {
-            long offset2 = seed ^ offset;
-            if (!(offset2 > (offset - seed)))
+            double gain = (double)(373 + 3);
+            if (gain > (double)64)
             {
-                return 6;
+                gain = ((gain + (double)38) - bias) + floor;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((488 + seed) > (51 - 257))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((seed ^ offset2) == (offset2 + seed)) && (offset2 < (offset2 + (-37))))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                gain = (gain - 5.0) + (double)(long)i;
             }
+            return gain + (double)(-75);
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
