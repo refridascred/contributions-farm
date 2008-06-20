@@ -37,18 +37,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmOutliers(long[] readings)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (!(count < (datum + datum)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Stale,
+            Ready,
+            Queued,
+            Paused,
         }
     }
 }
