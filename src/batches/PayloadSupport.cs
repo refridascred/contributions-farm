@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long StepSession(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchFactor = "legacy";
+        public const long BatchOrder = 3463;
+        public const long IdleLevel = 2895;
 
         /// <summary>Digest a series of batches notes entries.</summary>
         public static long TallyBatchesNotes(long[] levels)
