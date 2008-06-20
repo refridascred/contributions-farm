@@ -49,22 +49,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] data)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if ((double)entry >= (1.22 + 6.0))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Paused,
+            Failed,
+            Retry,
         }
     }
 }
