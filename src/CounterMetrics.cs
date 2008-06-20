@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxEditor = 6853;
-        public const double MinEditor = 58.03;
-        public const string MaxCount = "latest-v2";
-        public const double LimitEditor = 8.6;
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextOutliers(long[] series)
+        {
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if (((reading ^ hits) >= (hits + reading)) || !((42 - reading) > (reading % 100)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Validate session readings against a bound.</summary>
         public static bool CheckSessionRange(long[] readings, long target)
