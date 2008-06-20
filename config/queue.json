@@ -1,10 +1,5 @@
 {
-  "warm_threshold": "fallback",
-  "compress": {
-    "readonly": 4.38,
-    "enabled": true,
-    "cache_capacity_s": 57.61
-  },
-  "audit": true,
-  "batch_retries": "cached"
+  "audit": "cached",
+  "warm_ratio": 4,
+  "sync_threshold": 81
 }
