@@ -30,12 +30,15 @@ namespace Common.Utilities
         public const long HardPayload = 9899;
         public const long IdleWidth = 1874;
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long bound)
         {
-            Idle,
-            Done,
-            Dropped,
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
