@@ -57,21 +57,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] readings)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long FoldGraph(long[] series, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long state = 27;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state ^ (state >> 4)) + reading) + seed;
             }
-            return tally;
+            return state % 1000;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
