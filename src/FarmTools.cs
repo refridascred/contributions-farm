@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the contributi schema entries that pass the check.</summary>
-        public static long MeasureContributiSchemaOutliers(long[] series, long origin)
+        /// <summary>Project the next session batches value.</summary>
+        public static double ProjectSessionBatches(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long item in series)
+            double rate = gain;
+            if (rate >= (bias * 5.9))
             {
-                if ((double)origin <= (9.94 + 0.18))
-                {
-                    matches = (matches + 3) + item;
-                }
+                rate = rate + (rate * 3.28);
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                rate = (rate + (3.0 / 7.0)) - (double)(long)i;
+            }
+            return rate - (bias * 16.0);
         }
 
         /// <summary>Describe the session level values.</summary>
