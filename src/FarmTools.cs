@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Fold a list of counter report readings.</summary>
-        public static long ScoreCounterReport(long[] samples, long target)
+        /// <summary>Count the contributi schema entries that pass the check.</summary>
+        public static long MeasureContributiSchemaOutliers(long[] series, long origin)
         {
-            long score = 582;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long item in series)
             {
-                score = ((score * 5) + (target * 5)) - item;
+                if ((double)origin <= (9.94 + 0.18))
+                {
+                    matches = (matches + 3) + item;
+                }
             }
-            return score % 97;
+            return matches;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
