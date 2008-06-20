@@ -34,14 +34,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long SeriesCounter(long limit)
         {
-            New,
-            Dropped,
-            Active,
-            Pending,
-            Idle,
+            long acc = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                acc = acc ^ (acc - limit);
+                acc = ((acc * 5) + (long)i) % 101;
+            }
+            return acc;
         }
     }
 }
