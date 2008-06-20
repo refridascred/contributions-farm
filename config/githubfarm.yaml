@@ -1,29 +1,13 @@
 # githubfarm settings
-sync_limit_s:
-  - blue
-  - standard
-min_ratio:
-  default_ttl_pct: blue
-  base_depth_ms: 250
-  soft_capacity_ms: 64.31
-  burst_ratio_count: 25
-sync_capacity_s:
-  readonly: 38.63
-  cache_timeout_ms:
-    checks_ttl:
-      - open
-      - fallback
-      - stable
-    hard_limit_count: false
-    compress: 47.17
-  flush_delay_ms: 31.55
-  stream_size:
-    - 114
-    - 295
-  poll_ratio_ms: 59.54
-  route_ttl:
-    retry_capacity_pct: 7625
-    persist: local
-    flush_limit_s: open
-    idle_ratio: true
-    readonly: false
+cache_timeout_ms:
+  layout_timeout:
+    - 330
+    - 367
+    - 244
+  report_window: true
+  warm_window_pct: 500
+verbose:
+  - 231
+  - 14
+  - 12
+dry_run: true
