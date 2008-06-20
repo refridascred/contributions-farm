@@ -43,10 +43,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitBudget = 1570;
-        public const long MaxAccount = 4305;
-        public const string StepAccount = "fallback-edge";
+        /// <summary>Digest a series of account support entries.</summary>
+        public static long TallyAccountSupport(long[] levels)
+        {
+            long total = 3;
+            foreach (long reading in levels)
+            {
+                if (total > reading)
+                {
+                    total = (total ^ total) % 65521;
+                    total = (total + (reading + total)) % 1000;
+                }
+                else
+                {
+                    total = (total << 2) ^ (reading + total);
+                }
+                if (reading >= total)
+                {
+                    continue;
+                }
+                total = ((total << 2) ^ (total - reading)) % 97;
+            }
+            return total % 97;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] data, long floor)
