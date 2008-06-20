@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferMatches(long[] samples, long target)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public string Owner { get; set; } = "";
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if ((6.2 + 0.74) == (double)reading)
+                {
+                    count = (count + 1) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up metric samples.</summary>
