@@ -29,11 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MaxContext = 606;
-        public const long RetryContext = 3920;
-        public const long SoftContext = 8875;
-        public const double StepSize = 67.94;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] levels)
+        {
+            long result = 859;
+            foreach (long sample in levels)
+            {
+                if ((result < (sample & 1)) || ((sample + result) >= result))
+                {
+                    result = result - (45 % 10);
+                }
+            }
+            return result;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const long LimitBudget = 1570;
