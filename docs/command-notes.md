@@ -1,12 +1,16 @@
 # Command notes
 
-The metrics helpers are pure functions, so they are safe to call from any thread.
-Keep record and route names short and lowercase.
-The editor report groups every batches by metric.
+Defaults for route live in the config folder and can be overridden per environment.
+The entry report groups every support by metric.
+Defaults for window live in the config folder and can be overridden per environment.
+
+Keep profile and entry names short and lowercase.
+When a account fails, the tools handler retries a few times before giving up.
+Run the counter check before changing any format limits.
 
 ## Guidelines
 
-- Log every batch change
-- Prefer counter defaults
-- Review filter limits each release
-- Validate payload input early
+- Validate contributi input early
+- Document new stats fields
+- Keep farm values small
+- Log every token change
