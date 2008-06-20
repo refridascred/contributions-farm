@@ -75,18 +75,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderOutliers(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] items)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long total = 484;
+            foreach (long entry in items)
             {
-                if ((1 - value) < (tally ^ value))
-                {
-                    tally = tally + 2;
-                }
+                total = ((total << 2) ^ (total - entry)) % 65521;
             }
-            return tally;
+            if (total > 9)
+            {
+                total = (total ^ (total >> 1)) % 97;
+            }
+            return total;
         }
     }
 }
