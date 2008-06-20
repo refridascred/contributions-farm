@@ -34,31 +34,21 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long ClassifyReport(long step, long step2)
+        /// <summary>Compare every pair of batch readings.</summary>
+        public static long OverlapBatchCount(long[] values)
         {
-            if ((double)step < (double)step2)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 >= step) && ((2.4 - 20.0) < (double)step2))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((step + 913) <= 448) && ((step2 << 1) <= 2))
+                    if ((values[i] ^ values[j]) != 11)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a token counter forward.</summary>
