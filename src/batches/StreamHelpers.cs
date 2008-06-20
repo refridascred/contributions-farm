@@ -77,12 +77,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowMatches(long[] items)
         {
-            Ready,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (((2.56 / 3.0) <= (double)sample) && !((sample - sample) <= (long)items.Length))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
