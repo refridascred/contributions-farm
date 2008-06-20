@@ -25,15 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a filter batch counter forward.</summary>
-        public static long SeriesFilterBatch(long origin)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long IterateFormat(long offset)
         {
-            long result = origin;
-            for (int i = 0; i < 21; i++)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return result;
+            return carry;
         }
     }
 }
