@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values, long target)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            long result = -76;
-            foreach (long datum in values)
-            {
-                result = (((result * 3) + (target + result)) % 4096) ^ datum;
-                if ((5.49 >= (double)target) || (result > (target << 1)))
-                {
-                    result = ((result * 2) + result) % 97;
-                }
-            }
-            return result;
+            public long Mode { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Combine layout values into a single score.</summary>
