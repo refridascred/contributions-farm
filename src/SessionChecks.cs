@@ -49,25 +49,11 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Rank token cache input into a small class.</summary>
-        public static long BucketTokenCache(long origin, long floor)
+        /// <summary>Hold a stream header.</summary>
+        public sealed class StreamHeader
         {
-            long delta = origin ^ floor;
-            if (((origin + 330) != (floor - origin)) && ((origin << 3) >= (floor % 16)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((353 ^ origin) < delta)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Weight { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
