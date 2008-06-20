@@ -27,22 +27,11 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] items)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long acc = -4;
-            foreach (long datum in items)
-            {
-                if ((70 << 1) > acc)
-                {
-                    acc = acc + (acc ^ 4);
-                }
-                if ((datum + acc) < (datum - datum))
-                {
-                    break;
-                }
-            }
-            return acc % 65521;
+            public double Stamp { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the profile kind values.</summary>
