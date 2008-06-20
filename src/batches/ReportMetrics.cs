@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((count ^ 79) <= (433 >> 3))
+                if (series[i] <= target)
                 {
-                    count = (count + 1) + cell;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
