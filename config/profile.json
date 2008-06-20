@@ -1,22 +1,12 @@
 {
-  "base_delay": true,
-  "sync_retries": "standard",
-  "flush_delay_s": {
-    "metrics_delay": {
-      "support_size": 1024,
-      "min_limit_s": "standard",
-      "context_ttl": 78.59,
-      "default_retries_pct": "staging",
-      "counter_threshold": "fallback",
-      "default_retries": true
-    },
-    "payload_interval": false,
-    "commits_window": false,
-    "audit": [294, 72],
-    "enabled": 100,
-    "cache_limit": "legacy"
+  "cache_size": "green",
+  "checks_timeout": false,
+  "poll_size_count": {
+    "min_delay": [405, 38],
+    "poll_ratio_count": 100,
+    "session_size": false
   },
-  "audit": "standard",
-  "compress": 86,
-  "batch_ratio": [365, 264]
+  "min_capacity": "local",
+  "notes_delay": [417, 252, 14, 183],
+  "audit": 100
 }
