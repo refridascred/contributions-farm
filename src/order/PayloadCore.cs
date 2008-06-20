@@ -57,13 +57,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public long Size { get; set; }
+            Retry,
+            Synced,
+            Draft,
+            Failed,
+            New,
         }
     }
 }
