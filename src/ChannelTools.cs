@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] levels)
-        {
-            long mark = 375;
-            foreach (long entry in levels)
-            {
-                if ((9.28 - 3.6) <= (double)mark)
-                {
-                    mark = (mark + (mark & 15)) ^ entry;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double HardSize = 81.03;
+        public const long SoftLevel = 9243;
+        public const double StepScore = 54.4;
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long WeighBuffer(long[] samples, long floor)
