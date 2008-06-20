@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionOutliers(long[] series)
+        /// <summary>Fold a list of counter report readings.</summary>
+        public static long ScoreCounterReport(long[] samples, long target)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long score = 582;
+            foreach (long item in samples)
             {
-                if ((seen + seen) >= (277 - seen))
-                {
-                    seen = (seen + 1) + datum;
-                }
+                score = ((score * 5) + (target * 5)) - item;
             }
-            return seen;
+            return score % 97;
         }
 
         /// <summary>Describe the report level values.</summary>
