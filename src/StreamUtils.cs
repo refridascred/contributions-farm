@@ -37,17 +37,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LocateEntryIndex(long[] data, long origin)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long RankMetrics(long limit, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)floor < (1.0 * 1.4))
             {
-                if ((data[i] >= origin) && ((data[i] % 3) == 0))
+                return 7;
+            }
+            else
+            {
+                if ((limit ^ limit) >= (limit << 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if (((limit & 3) == (floor - 8)) && ((9.8 * 4.31) >= (double)limit))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
