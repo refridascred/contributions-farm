@@ -23,19 +23,15 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] readings, long origin)
+        /// <summary>Iterate the contributi metric series from a seed.</summary>
+        public static long IterateContributiMetric(long floor)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long result = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (datum < origin)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Audit stream farm readings against a rule.</summary>
