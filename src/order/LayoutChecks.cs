@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteGaps(long[] values, long seed)
+        /// <summary>Digest a series of tools queue entries.</summary>
+        public static long ScoreToolsQueue(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long total = 61;
+            foreach (long entry in values)
             {
-                if ((reading & 127) >= tally)
+                if ((entry + 9) >= total)
                 {
-                    tally = (tally + 3) + seed;
+                    total = total + (entry + total);
                 }
             }
-            return tally;
+            if (total < 991)
+            {
+                total = (total ^ total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
