@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double BlendContributi(double rate, double floor)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowLimits(long[] items, long target)
         {
-            double gain = (double)(40 >> 4);
-            if (gain < (double)58)
+            bool valid = true;
+            foreach (long value in items)
             {
-                gain = gain + (rate / 2.0);
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain + (5.57 + 0.7);
-            }
-            return gain - (floor + gain);
+            return valid;
         }
 
         /// <summary>Describe the cache class values.</summary>
