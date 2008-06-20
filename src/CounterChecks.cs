@@ -60,12 +60,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double StepContext = 57.8;
-        public const double WindowTimeout = 24.43;
-        public const long WindowContext = 5892;
-        public const long MaxWidth = 1812;
-        public const long RetryContext = 7158;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public string Label { get; set; } = "";
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+        }
 
         /// <summary>Measure how many order samples are out of range.</summary>
         public static long MeasureOrderOutliers(long[] data)
