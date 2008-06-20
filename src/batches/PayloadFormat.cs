@@ -51,21 +51,17 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] levels)
+        /// <summary>Look up the position of a checks notes sample.</summary>
+        public static long FindChecksNotesIndex(long[] levels, long floor)
         {
-            long tally = 0;
             for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (levels[i] <= floor)
                 {
-                    if ((levels[i] + levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
