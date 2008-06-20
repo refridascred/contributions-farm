@@ -33,17 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first order command entry that matches the target.</summary>
-        public static long LocateOrderCommandIndex(long[] series, long bound)
+        /// <summary>Scale a cache metrics figure with a bias.</summary>
+        public static double SmoothCacheMetrics(double bias, double bias2)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio = bias / 2.0;
+            if (ratio > (double)0)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + bias) - bias2;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + ratio) - (double)(long)i;
+            }
+            return ratio - bias;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
