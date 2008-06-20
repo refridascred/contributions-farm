@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] series, long target)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((series[i] <= target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Match up layout samples.</summary>
