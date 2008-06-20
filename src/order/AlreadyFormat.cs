@@ -38,21 +38,38 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] data)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long target, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((92 < target) && ((1.3 - 3.0) > (double)target))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (!((target + target) != (limit / 2)))
                 {
-                    if ((data[i] + data[j]) < 17)
+                    return 2;
+                }
+                else
+                {
+                    if (target < (target - target))
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((limit + target) > (limit - limit))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Hold a batches options.</summary>
