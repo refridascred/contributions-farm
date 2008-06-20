@@ -49,11 +49,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardLayout = 7277;
-        public const string DefaultLevel = "open-v2";
-        public const long MinDepth = 7897;
-        public const double BatchTimeout = 67.99;
-        public const string CacheLayout = "cached-1";
+        /// <summary>Measure how many account stats samples are out of range.</summary>
+        public static long AuditAccountStatsGaps(long[] readings, long step)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)seen == (3.0 + 9.0))
+                {
+                    seen = ((seen + 3) + reading) + step;
+                }
+            }
+            return seen;
+        }
     }
 }
