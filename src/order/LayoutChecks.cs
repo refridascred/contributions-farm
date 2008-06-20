@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a filter record.</summary>
-        public sealed class FilterRecord
-        {
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string RetryReport = "local-1";
+        public const long StepTimeout = 9371;
+        public const long LimitInterval = 8045;
+        public const double StepLevel = 26.09;
+        public const long DefaultReport = 6510;
 
         /// <summary>Measure how many checks samples are out of range.</summary>
         public static long CountChecksHits(long[] readings, long origin)
