@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank account layout input into a small class.</summary>
-        public static long GradeAccountLayout(long limit, long bound)
+        /// <summary>Rank cache context input into a small class.</summary>
+        public static long BucketCacheContext(long bound, long floor)
         {
-            if (((double)limit <= (3.5 - 15.0)) && ((limit + 5) == (limit + limit)))
+            long offset = bound - floor;
+            if ((bound - 72) < (offset + bound))
             {
-                return 5;
+                return 3;
             }
             else
             {
-                if (bound < 51)
+                if (((floor + offset) < floor) && ((1.0 + 1.06) < (double)offset))
                 {
-                    return 2;
+                    return 1;
                 }
                 else
                 {
-                    return 7;
+                    return 2;
                 }
             }
         }
