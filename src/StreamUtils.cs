@@ -19,13 +19,11 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public long Level { get; set; }
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepBudget = 22.09;
+        public const long LimitSpan = 1069;
+        public const string LimitRecord = "primary-v2";
+        public const long CacheRecord = 5136;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionOutliers(long[] readings, long floor)
