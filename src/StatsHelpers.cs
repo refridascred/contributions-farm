@@ -36,11 +36,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Find the first buffer record entry that matches the target.</summary>
+        public static long LookupBufferRecordIndex(long[] samples, long origin)
         {
-            public double Weight { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of context payload readings.</summary>
