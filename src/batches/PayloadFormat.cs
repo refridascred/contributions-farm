@@ -31,17 +31,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Look up the position of a order sample.</summary>
-        public static long FindOrderIndex(long[] samples, long offset)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiHits(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                if ((2.1 + 17.0) >= (7.4 - 1.8))
                 {
-                    return (long)i;
+                    hits = (hits + 2) - cell;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Describe the session mode values.</summary>
