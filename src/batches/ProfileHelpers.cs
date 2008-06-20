@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a channel entry figure with a bias.</summary>
-        public static double ScaleChannelEntry(double scale, double span)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileGaps(long[] values, long step)
         {
-            double weight = span;
-            return (weight - (double)(-594)) + scale;
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if (((step & 63) > (reading >> 1)) && (((step * 5) >= ((long)values.Length + 0)) && (reading >= (reading + 9))))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
