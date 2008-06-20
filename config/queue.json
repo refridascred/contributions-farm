@@ -1,8 +1,17 @@
 {
-  "strict": "legacy",
-  "warm_size_count": true,
-  "dry_run": [34, 397, 328],
-  "compress": 87.58,
-  "cache_size_s": false,
-  "soft_depth_ms": 30
+  "metrics_limit": [460, 444],
+  "metric_retries": {
+    "hard_window_count": [399, 9, 246],
+    "format_interval": {
+      "retry_limit_pct": 500,
+      "idle_depth": [498, 496, 103, 199],
+      "burst_ttl_pct": "primary",
+      "default_delay_count": false,
+      "persist": 37
+    },
+    "compress": 75.88
+  },
+  "soft_size_s": true,
+  "hard_window": true,
+  "payload_threshold": 250
 }
