@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank route batch input into a small class.</summary>
-        public static long GradeRouteBatch(long target, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphLimits(long[] series, long limit)
         {
-            if ((3.21 + 3.76) >= (double)target)
+            bool valid = true;
+            foreach (long item in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target % 24) <= (seed << 1))
+                if (item < limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed * 4) >= target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((target << 1) <= (458 & 31)) || ((target / 4) == (seed % 24)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
