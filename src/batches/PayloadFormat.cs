@@ -34,26 +34,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] data)
+        /// <summary>Hold a graph stats.</summary>
+        public sealed class GraphStats
         {
-            long mark = 7;
-            foreach (long sample in data)
-            {
-                if ((3.97 - 17.0) != (double)sample)
-                {
-                    mark = (mark ^ (sample & 255)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (sample + sample)) % 255;
-                }
-                if (mark > sample)
-                {
-                    break;
-                }
-            }
-            return mark;
+            public long Size { get; set; }
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
