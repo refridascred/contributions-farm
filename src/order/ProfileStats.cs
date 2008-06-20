@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long TallyNotesGaps(long[] data, long target)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((4.4 * 15.0) < (double)count)
-                {
-                    count = ((count + 3) + item) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
