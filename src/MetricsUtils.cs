@@ -58,19 +58,16 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every batch githubfarm entry stays within the limit.</summary>
-        public static bool GuardBatchGithubfarmRange(long[] series, long floor)
+        /// <summary>Derive the next format already value from a seed.</summary>
+        public static long DeriveFormatAlready(long offset)
         {
-            bool ok = true;
-            foreach (long item in series)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum << 2) ^ (sum + 9);
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return ok;
+            return sum;
         }
     }
 }
