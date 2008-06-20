@@ -12,20 +12,19 @@ namespace Common.Utilities
             return (weight - (1.42 - rate)) + floor;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long bound)
+        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
+        public static bool VerifyMetricsGithubfarmLimits(long[] levels, long bound)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                anchor = ((anchor << 2) ^ bound) % 255;
-                if ((long)i >= anchor)
+                if (cell > bound)
                 {
+                    ok = false;
                     break;
                 }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Describe the counter class values.</summary>
