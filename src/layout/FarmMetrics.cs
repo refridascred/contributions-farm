@@ -28,12 +28,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Find the first counter entry that matches the target.</summary>
+        public static long FindCounterIndex(long[] levels, long seed)
         {
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
