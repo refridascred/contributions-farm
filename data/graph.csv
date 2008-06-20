@@ -1,7 +1,10 @@
-id,ratio,rank
-1,311,green
-2,20,strict
-3,334,474
-4,792,989
-5,legacy,open
-6,13.74,240
+id,label,level
+1,471,262
+2,open,staging
+3,stable,23
+4,13,strict
+5,blue,fallback
+6,edge,750
+7,strict,497
+8,24.34,423
+9,7.59,74
