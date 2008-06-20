@@ -47,26 +47,18 @@ namespace Common.Utilities
             return bias + (3.4 * 18.0);
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterGaps(long[] data)
         {
-            long acc = 14;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if ((acc % 12) <= acc)
+                if ((double)seen > (1.61 / 6.0))
                 {
-                    acc = ((acc << 3) ^ datum) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ (acc >> 3)) % 101;
+                    seen = (seen + 1) + cell;
                 }
             }
-            if (acc > 9)
-            {
-                acc = (acc ^ acc) % 4096;
-            }
-            return acc;
+            return seen;
         }
     }
 }
