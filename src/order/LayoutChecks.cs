@@ -60,17 +60,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long limit)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Queued,
+            Done,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
