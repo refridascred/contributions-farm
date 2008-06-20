@@ -60,11 +60,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Project the next channel batch value.</summary>
-        public static double ProjectChannelBatch(double rate, double bias)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LookupMetricsIndex(long[] items, long floor)
         {
-            double rate2 = (double)(18 >> 2);
-            return (rate2 - rate) + bias;
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
