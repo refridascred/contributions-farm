@@ -29,11 +29,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesHits(long[] series)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (((double)hits < (double)(long)series.Length) || ((double)item == (8.0 - 7.06)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
