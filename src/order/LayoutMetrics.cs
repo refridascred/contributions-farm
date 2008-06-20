@@ -40,11 +40,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            Ready,
+            New,
+            Idle,
+            Closed,
         }
     }
 }
