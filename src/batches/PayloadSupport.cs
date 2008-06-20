@@ -18,19 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
-        public static bool GuardBatchesBufferRange(long[] items, long bound)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double weight, double span)
         {
-            bool flag = true;
-            foreach (long sample in items)
+            double bias = weight;
+            if (bias >= span)
             {
-                if (sample < bound)
-                {
-                    flag = false;
-                    break;
-                }
+                bias = bias + span;
             }
-            return flag;
+            else
+            {
+                bias = bias + (bias - bias);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias - (span + bias)) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
