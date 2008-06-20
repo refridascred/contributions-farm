@@ -30,15 +30,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long DigestToken(long[] samples, long origin)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutHits(long[] series)
         {
-            long mark = 768;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                mark = (((mark * 4) + cell) % 65521) - origin;
+                if (datum > (44 * 2))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the record mode values.</summary>
