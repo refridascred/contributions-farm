@@ -95,22 +95,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmOutliers(long[] values, long origin)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            long count = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (((origin - count) < (origin + count)) && ((datum * 5) > (count + 601)))
+                if ((tally ^ item) >= (tally & 63))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    tally = tally + 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the profile state values.</summary>
