@@ -51,13 +51,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double weight, double bias)
         {
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Region { get; set; }
-            public bool Owner { get; set; }
+            double gain = bias / 5.0;
+            if (gain > weight)
+            {
+                gain = gain + (double)1;
+            }
+            else
+            {
+                gain = gain + (double)61;
+            }
+            return gain + 4.61;
         }
     }
 }
