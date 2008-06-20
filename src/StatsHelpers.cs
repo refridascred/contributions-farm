@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            public long Score { get; set; }
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) != 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
