@@ -29,17 +29,39 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LookupContributiIndex(long[] levels, long limit)
+        /// <summary>Rank tools context input into a small class.</summary>
+        public static long ClassifyToolsContext(long offset, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long slot = offset - floor;
+            if (((floor + floor) == (slot - slot)) && (slot < (floor - 7)))
             {
-                if (levels[i] >= limit)
+                return 4;
+            }
+            else
+            {
+                if (floor > (36 + slot))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)floor < (4.4 + 6.73)) && ((floor - offset) > floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)slot >= (double)offset)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
