@@ -1,8 +1,8 @@
-id,score,rank
-1,885,26.78
-2,8.23,46.35
-3,12.36,80.87
-4,998,26.53
-5,93.19,staging
-6,46.3,82
-7,stable,fallback
+id,level,ratio,score,weight
+1,122,986,open,latest
+2,edge,61.97,173,staging
+3,243,971,standard,450
+4,184,53.51,525,12.65
+5,250,928,green,934
+6,27.25,786,750,blue
+7,50.7,0.67,74.87,open
