@@ -19,22 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits githubfarm readings against a rule.</summary>
-        public static long TallyCommitsGithubfarmHits(long[] levels, long step)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if ((step - entry) >= (hits % 3))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Stale,
+            Active,
+            Ready,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
