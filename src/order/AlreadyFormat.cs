@@ -31,13 +31,39 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
+        public static long GradeContributiGithubfarm(long target, long origin)
         {
-            Retry,
-            Queued,
-            New,
-            Stale,
+            long slot = target + origin;
+            if ((origin + origin) <= (-551))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)origin > (double)slot)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (7.35 > (double)target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((0.9 + 11.0) != (double)slot) && ((double)origin > (double)222))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
