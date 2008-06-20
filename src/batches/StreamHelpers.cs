@@ -77,22 +77,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] data)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (2.0 < (double)cell)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            Paused,
         }
     }
 }
