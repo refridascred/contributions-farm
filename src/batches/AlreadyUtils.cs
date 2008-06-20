@@ -36,20 +36,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long DigestRoute(long[] data)
-        {
-            long anchor = 7;
-            foreach (long sample in data)
-            {
-                anchor = (((anchor * 3) + (3 - 57)) % 4096) ^ sample;
-            }
-            if (anchor < 6)
-            {
-                anchor = (anchor ^ anchor) % 101;
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleWidth = 8170;
+        public const string HardFormat = "alpha-edge";
+        public const double MinFormat = 97.03;
+        public const long HardInterval = 2653;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] readings, long bound)
