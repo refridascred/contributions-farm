@@ -25,10 +25,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 1792;
         public const long BurstPayload = 5793;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string IdleOrder = "staging-1";
-        public const string RetryBudget = "open-1";
-        public const long WindowOrder = 3017;
-        public const long LimitFactor = 5585;
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiLimits(long[] samples, long target)
+        {
+            bool stale = true;
+            foreach (long item in samples)
+            {
+                if (item <= target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
