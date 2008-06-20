@@ -1,13 +1,8 @@
 {
-  "idle_window_pct": 58.11,
-  "retry_interval_ms": "latest",
-  "flush_interval": "staging",
-  "sync_limit_pct": 250,
-  "batch_limit": {
-    "warm_delay": "staging",
-    "dry_run": 250,
-    "batch_timeout_ms": "local",
-    "poll_retries_s": [415, 133, 5]
-  },
-  "warm_size_pct": 8518
+  "default_retries_s": 56,
+  "dry_run": "legacy",
+  "commits_timeout": "latest",
+  "hard_ratio_pct": 9096,
+  "account_window": ["strict", "open", "latest", "green"],
+  "batch_timeout": "primary"
 }
