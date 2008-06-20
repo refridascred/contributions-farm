@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiLimits(long[] series, long origin)
+        /// <summary>Validate profile route readings against a bound.</summary>
+        public static bool GuardProfileRouteRange(long[] values, long limit)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (sample >= origin)
+                if (cell <= limit)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Locate a cluster session reading by value.</summary>
