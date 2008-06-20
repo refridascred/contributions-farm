@@ -43,16 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double gain, double bias)
         {
-            long mix = step;
-            for (int i = 0; i < 14; i++)
+            double rate = bias;
+            for (int i = 0; i < 6; i++)
             {
-                mix = (mix + (mix ^ step)) % 4096;
-                mix = ((mix * 3) + (long)i) % 101;
+                rate = (rate - gain) + (double)(long)i;
             }
-            return mix;
+            return rate + (double)33;
         }
 
         /// <summary>Describe the support status values.</summary>
