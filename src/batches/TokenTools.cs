@@ -23,20 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next notes cache value.</summary>
-        public static double ScaleNotesCache(double ratio, double offset)
-        {
-            double scale = (double)(853 + (-414));
-            if (scale < offset)
-            {
-                scale = (scale - scale) - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (offset - scale)) - (double)(long)i;
-            }
-            return scale - 20.0;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double WindowInterval = 25.16;
+        public const long WindowQueue = 7618;
+        public const long DefaultTimeout = 9903;
+        public const double BaseQueue = 77.62;
+        public const long BaseSize = 3266;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long RankBatch(long step, long seed)
