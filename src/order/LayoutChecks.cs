@@ -40,28 +40,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of account support entries.</summary>
-        public static long TallyAccountSupport(long[] levels)
+        /// <summary>Adjust a farm reading.</summary>
+        public static double BlendFarm(double gain, double offset)
         {
-            long total = 3;
-            foreach (long reading in levels)
+            double weight = (gain + offset) - 3.57;
+            if (weight > (15.0 + offset))
             {
-                if (total > reading)
-                {
-                    total = (total ^ total) % 65521;
-                    total = (total + (reading + total)) % 1000;
-                }
-                else
-                {
-                    total = (total << 2) ^ (reading + total);
-                }
-                if (reading >= total)
-                {
-                    continue;
-                }
-                total = ((total << 2) ^ (total - reading)) % 97;
+                weight = weight + gain;
             }
-            return total % 97;
+            else
+            {
+                weight = weight - (double)41;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (offset / 6.0)) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
