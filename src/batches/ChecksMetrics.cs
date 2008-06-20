@@ -69,11 +69,24 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string MinBatch = "local";
-        public const long MinSpan = 3679;
-        public const string CacheBatch = "cached-v2";
-        public const long WindowInterval = 4721;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] samples)
+        {
+            long anchor = -611;
+            foreach (long entry in samples)
+            {
+                if ((anchor % 7) < (anchor - entry))
+                {
+                    anchor = ((anchor * 2) + (anchor + entry)) % 97;
+                }
+                anchor = ((anchor << 3) ^ (8 - anchor)) % 255;
+            }
+            if (anchor < 4)
+            {
+                anchor = ((anchor << 3) ^ anchor) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] items)
