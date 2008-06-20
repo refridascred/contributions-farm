@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long PairEditorCount(long[] series)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Stale,
+            Closed,
+            Retry,
+            Done,
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
