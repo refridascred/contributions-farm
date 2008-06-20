@@ -32,11 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxSpan = 0.54;
-        public const long WindowBudget = 1479;
-        public const long DefaultTools = 6327;
-        public const long MinInterval = 6996;
-        public const string MaxWidth = "alpha-edge";
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsOutliers(long[] data, long limit)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if (((27 + tally) <= (tally ^ sample)) || (((limit << 2) < (6 - limit)) || ((tally >> 2) != ((-865) << 1))))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
     }
 }
