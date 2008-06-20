@@ -1,8 +1,5 @@
 {
-  "dry_run": 60,
-  "persist": 4.04,
-  "max_size_s": "open",
-  "burst_size_pct": 67,
-  "base_size_pct": 60,
-  "base_interval_count": 85
+  "cache_threshold_s": "stable",
+  "flush_interval_pct": true,
+  "idle_retries_s": 6.41
 }
