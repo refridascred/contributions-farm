@@ -49,11 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "staging-v2";
-        public const long HardContributi = 9032;
-        public const double SoftWidth = 2.98;
-        public const string RetryContributi = "strict";
-        public const long MaxScore = 472;
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((double)count <= (double)datum)
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
