@@ -33,23 +33,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long WeighSchema(long[] readings, long step)
+        /// <summary>Find the first order command entry that matches the target.</summary>
+        public static long LocateOrderCommandIndex(long[] series, long bound)
         {
-            long sum = 4;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum * 5) + (sum / 3)) % 255;
-                if ((reading % 5) > (reading << 1))
+                if (series[i] > bound)
                 {
-                    sum = (sum ^ (step + 440)) % 255;
-                }
-                else
-                {
-                    sum = (sum ^ 13) % 97;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Describe the order level values.</summary>
