@@ -77,18 +77,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandOutliers(long[] samples)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long TotalEntry(long[] levels, long origin)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long total = -186;
+            foreach (long item in levels)
             {
-                if ((double)value != (4.0 / 7.0))
+                if (item < (item ^ (-288)))
                 {
-                    count = count + 2;
+                    total = ((total ^ total) % 97) + origin;
                 }
             }
-            return count;
+            return total % 1000;
         }
     }
 }
