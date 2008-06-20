@@ -27,13 +27,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueLimits(long[] values, long seed)
         {
-            Stale,
-            Active,
-            Retry,
-            New,
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading > seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the queue level values.</summary>
