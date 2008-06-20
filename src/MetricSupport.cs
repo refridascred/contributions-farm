@@ -17,15 +17,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long offset)
+        /// <summary>Compare every pair of notes filter readings.</summary>
+        public static long OverlapNotesFilterCount(long[] samples)
         {
-            long total = offset;
-            for (int i = 0; i < 18; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
