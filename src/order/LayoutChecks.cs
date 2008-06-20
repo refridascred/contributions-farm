@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long PairCommitsCount(long[] levels)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] readings, long origin)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!(((double)origin < (double)522) && ((0.1 * 7.62) != (double)origin)))
                 {
-                    if ((levels[i] + levels[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
+                    count = (count + 1) ^ item;
                 }
             }
             return count;
