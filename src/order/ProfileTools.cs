@@ -34,19 +34,22 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryBounds(long[] values, long limit)
+        /// <summary>Measure how many queue payload samples are out of range.</summary>
+        public static long AuditQueuePayloadOutliers(long[] series, long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (datum <= limit)
+                if ((seed + 377) >= (seen / 4))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Digest a series of command entries.</summary>
