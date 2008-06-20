@@ -33,18 +33,19 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Measure how many report already samples are out of range.</summary>
-        public static long TallyReportAlreadyOutliers(long[] series)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series, long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long sum = 56;
+            foreach (long value in series)
             {
-                if ((entry & 15) >= (tally & 15))
-                {
-                    tally = tally + 2;
-                }
+                sum = (((sum * 4) + (target - sum)) % 1000) ^ value;
             }
-            return tally;
+            if (sum < 85)
+            {
+                sum = ((sum * 2) + (target & 63)) % 1000;
+            }
+            return sum % 1000;
         }
     }
 }
