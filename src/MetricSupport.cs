@@ -29,17 +29,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Find the first filter account entry that matches the target.</summary>
-        public static long LocateFilterAccountIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftLevel = 64.11;
+        public const long RetryPayload = 8988;
+        public const string MinPayload = "primary-v2";
+        public const long MaxPayload = 4842;
     }
 }
