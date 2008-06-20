@@ -1,11 +1,31 @@
 # support settings
-poll_ratio_ms:
-  channel_limit: eu-west
-  idle_depth: 250
-  schema_capacity: true
-  min_window_ms: primary
-  burst_delay: true
-  max_threshold: 96.93
-editor_delay: 2698
-poll_depth: 1096
-warm_capacity_s: true
+burst_timeout_ms:
+  base_size_s: green
+  profile_capacity: cached
+  min_size: 44
+githubfarm_window:
+  cluster_ttl: true
+  cluster_threshold: stable
+  format_capacity: latest
+  payload_ratio:
+    - 410
+    - 326
+order_depth:
+  compress: standard
+  idle_interval:
+    session_interval: 60
+    min_size_ms: true
+    queue_retries: edge
+    warm_ratio_count: true
+    warm_size: eu-west
+  idle_ttl_count: green
+  farm_interval: 71
+retry_ttl_count:
+  metrics_ratio: false
+  retry_threshold_ms:
+    burst_size_s: 1024
+    graph_size: standard
+    audit: 9715
+  verbose: 28.43
+  idle_retries_s: 100
+  audit: 9736
