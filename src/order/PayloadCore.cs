@@ -20,12 +20,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] items)
         {
-            Active,
-            Dropped,
-            New,
+            long result = 42;
+            foreach (long sample in items)
+            {
+                if ((double)sample <= (7.0 + 4.2))
+                {
+                    result = (result - (sample + sample)) % 4096;
+                }
+                if ((sample ^ sample) >= (sample >> 5))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
