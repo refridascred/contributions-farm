@@ -1,5 +1,6 @@
 # support settings
-editor_threshold: 34
-persist: stable
-window_ratio: 43.74
-soft_delay: true
+base_delay_s: standard
+batch_delay: edge
+default_capacity: 85
+readonly: 86
+commits_capacity: false
