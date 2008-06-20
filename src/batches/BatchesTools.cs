@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double BatchBudget = 31.77;
-        public const long MaxTimeout = 3196;
-        public const long LimitSchema = 3954;
-        public const long SoftSchema = 9649;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmBounds(long[] values, long bound)
+        {
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const long DefaultCount = 3722;
