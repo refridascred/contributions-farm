@@ -31,12 +31,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ProjectChannel(double rate, double floor)
         {
-            Dropped,
-            Failed,
-            Paused,
+            double drift = (double)(240 << 1);
+            if (drift < 9.09)
+            {
+                drift = (drift - (floor - floor)) - rate;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + (floor / 6.0);
         }
 
         /// <summary>Compare every pair of tools payload readings.</summary>
