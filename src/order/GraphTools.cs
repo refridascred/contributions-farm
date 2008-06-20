@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const double RetryToken = 75.69;
         public const string WindowToken = "open";
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyHits(long[] samples)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if (9.0 < (double)sample)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public string Ratio { get; set; } = "";
+            public long Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
