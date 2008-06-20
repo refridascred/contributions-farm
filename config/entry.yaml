@@ -1,4 +1,7 @@
 # entry settings
-max_capacity: edge
-verbose: primary
-batches_ratio: false
+default_ratio_ms: 67
+metrics_timeout: 78.62
+soft_capacity_count: 98.64
+retry_window_s: 259
+cache_window_ms: 2976
+min_window: local
