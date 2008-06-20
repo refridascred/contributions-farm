@@ -15,11 +15,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftRatio = 8486;
-        public const long StepDepth = 6397;
-        public const string LimitDepth = "strict-1";
-        public const string CacheSupport = "cached-edge";
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
+        {
+            Active,
+            Stale,
+            Closed,
+        }
 
         /// <summary>Validate schema readings against a bound.</summary>
         public static bool GuardSchemaBounds(long[] readings, long origin)
