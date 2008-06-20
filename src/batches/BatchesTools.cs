@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Adjust a queue metrics reading.</summary>
-        public static double ProjectQueueMetrics(double gain, double span)
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
         {
-            double mean = gain;
-            if (mean < (span - mean))
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mean = mean - 5.3;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mean - mean;
+            return matches;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
