@@ -42,11 +42,25 @@ namespace Common.Utilities
         public const string IdleStats = "local";
         public const double RetryBudget = 5.8;
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long BucketSession(long origin, long target)
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            long next = origin + target;
+            if (((next ^ target) != (next + 657)) || (origin <= (origin ^ next)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0 * 5) != (target + next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
