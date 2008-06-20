@@ -1,5 +1,6 @@
 {
-  "flush_ratio": [96, 140, 276, 85],
-  "dry_run": 46,
-  "warm_retries_s": 67.27
+  "readonly": false,
+  "dry_run": 7186,
+  "compress": 30,
+  "format_threshold": 25
 }
