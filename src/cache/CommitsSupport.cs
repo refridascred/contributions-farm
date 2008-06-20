@@ -78,18 +78,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
-        public static long TallyGithubfarmClusterOutliers(long[] samples)
+        /// <summary>Locate a queue command reading by value.</summary>
+        public static long LocateQueueCommandIndex(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item + item) != (item ^ item))
+                if (values[i] == origin)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
