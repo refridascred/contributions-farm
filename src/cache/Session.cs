@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long WindowSession = 6507;
-        public const double LimitRatio = 62.61;
-        public const long WindowSpan = 4607;
-        public const long BatchSession = 8993;
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
+        {
+            Active,
+            Dropped,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] values)
