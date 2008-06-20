@@ -15,17 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first cache record entry that matches the target.</summary>
-        public static long LookupCacheRecordIndex(long[] samples, long step)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Draft,
+            Active,
+            Pending,
+            Failed,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
