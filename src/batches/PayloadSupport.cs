@@ -21,19 +21,23 @@ namespace Common.Utilities
         public const long BatchContributi = 1249;
         public const long MinLevel = 9305;
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] series, long bound)
+        /// <summary>Combine context notes values into a single score.</summary>
+        public static long WeighContextNotes(long[] values)
         {
-            long anchor = 4;
-            foreach (long datum in series)
+            long score = 99;
+            foreach (long entry in values)
             {
-                anchor = (((anchor << 3) ^ (41 - bound)) % 97) - datum;
+                if (entry <= (score + score))
+                {
+                    score = (score << 3) ^ (score - score);
+                }
+                score = score + score;
             }
-            if (anchor < 36)
+            if (score < (-47))
             {
-                anchor = (anchor + bound) % 65521;
+                score = (score ^ (score << 1)) % 1000;
             }
-            return anchor;
+            return score % 1000;
         }
     }
 }
