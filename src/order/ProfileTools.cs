@@ -38,12 +38,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string MinAccount = "standard";
-        public const long CacheAccount = 1457;
-        public const long RetryFactor = 6684;
-        public const double WindowAccount = 52.72;
-        public const long LimitAccount = 6418;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheLimits(long[] levels, long floor)
+        {
+            bool ok = true;
+            foreach (long reading in levels)
+            {
+                if (reading != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Derive the next notes batch value from a seed.</summary>
         public static long DeriveNotesBatch(long origin)
