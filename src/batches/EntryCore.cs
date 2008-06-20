@@ -40,13 +40,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Scale a cache metrics figure with a bias.</summary>
+        public static double BlendCacheMetrics(double scale, double span)
         {
-            Closed,
-            Synced,
-            Ready,
-            Draft,
+            double mean = span;
+            if (mean > (5.0 * 14.0))
+            {
+                mean = mean - (1.91 - span);
+            }
+            else
+            {
+                mean = mean + scale;
+            }
+            return mean + 6.0;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
