@@ -1,18 +1,5 @@
 {
-  "sync_ratio": 83.07,
-  "hard_size_pct": 77.36,
-  "max_depth_ms": 81.59,
-  "batch_ratio_ms": {
-    "idle_retries_ms": true,
-    "checks_retries": 6032,
-    "cache_limit": {
-      "warm_ttl_count": 250,
-      "sync_interval_pct": "legacy",
-      "farm_window": 500
-    },
-    "verbose": 30,
-    "enabled": "green"
-  },
-  "hard_size_count": 22,
-  "flush_window": "strict"
+  "hard_size_pct": 22,
+  "default_retries": "open",
+  "soft_capacity": "strict"
 }
