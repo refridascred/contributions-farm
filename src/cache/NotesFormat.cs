@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long BurstFactor = 3674;
         public const long RetryScore = 3595;
 
-        /// <summary>Measure how many stats filter samples are out of range.</summary>
-        public static long AuditStatsFilterHits(long[] levels, long origin)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] data)
         {
             long matches = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((entry - origin) <= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    matches = matches + 2;
+                    if ((data[i] ^ data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
