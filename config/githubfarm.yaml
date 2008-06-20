@@ -1,9 +1,17 @@
 # githubfarm settings
-sync_limit_count: true
-readonly: primary
-record_timeout: 713
-format_capacity:
-  - eu-west
-  - latest
-warm_threshold_count: false
-support_capacity: 15
+graph_delay: 10.78
+hard_timeout_ms:
+  burst_size:
+    - primary
+    - staging
+  poll_delay: 67
+  persist: true
+  cache_capacity: eu-west
+enabled:
+  flush_interval_s: 6162
+  min_interval: 7286
+  warm_delay:
+    min_window: 74.9
+    enabled: 6.6
+    metrics_retries: 9459
+    batch_capacity_pct: 8572
