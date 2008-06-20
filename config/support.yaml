@@ -1,8 +1,23 @@
 # support settings
-base_ratio:
-  - 218
-  - 2
-  - 45
-  - 21
-hard_threshold: 7.35
-verbose: 60
+retry_threshold_s:
+  flush_threshold_s: 76
+  hard_timeout: 575
+  readonly: false
+  base_size_pct:
+    hard_delay_pct: 90
+    poll_threshold: standard
+    batch_depth_pct:
+      - legacy
+      - strict
+      - open
+      - open
+    soft_capacity_ms: 21.25
+    soft_delay_pct: 51.89
+    warm_retries: 39
+  session_capacity:
+    - 377
+    - 490
+    - 133
+    - 50
+base_ttl: 6762
+idle_delay_s: 8644
