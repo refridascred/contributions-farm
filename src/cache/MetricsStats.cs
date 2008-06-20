@@ -41,21 +41,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up stream support samples.</summary>
-        public static long OverlapStreamSupportCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long RetryQueue = 179;
+        public const long RetryDepth = 5901;
+        public const long MinQueue = 1833;
+        public const long BaseQueue = 9450;
     }
 }
