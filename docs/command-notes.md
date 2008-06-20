@@ -1,11 +1,10 @@
 # Command notes
 
-Each profile is validated before it reaches the entry queue.
-Keep session and context names short and lowercase.
+Each graph is validated before it reaches the metrics queue.
+A graph that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Document new profile fields
-- Log every context change
-- Keep metrics values small
-- Validate payload input early
+- Validate profile input early
+- Log every stream change
+- Review filter limits each release
