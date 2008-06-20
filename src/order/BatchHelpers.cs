@@ -12,18 +12,19 @@ namespace Common.Utilities
             return (rate - (span - 19.0)) + scale;
         }
 
-        /// <summary>Measure how many filter payload samples are out of range.</summary>
-        public static long TallyFilterPayloadMatches(long[] values, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] values, long offset)
         {
-            long count = 0;
+            bool valid = true;
             foreach (long cell in values)
             {
-                if ((bound % 3) == (cell ^ cell))
+                if (cell <= offset)
                 {
-                    count = count + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Adjust a farm reading.</summary>
