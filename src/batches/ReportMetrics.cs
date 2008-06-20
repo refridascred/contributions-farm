@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] readings, long floor)
+        /// <summary>Digest a series of buffer already entries.</summary>
+        public static long ScoreBufferAlready(long[] readings, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long entry in readings)
             {
-                if (readings[i] < floor)
+                acc = ((acc << 2) ^ (acc + 9)) % 4096;
+                if (!((limit + (long)readings.Length) <= (-229)))
                 {
-                    return (long)i;
+                    acc = (acc * 3) + entry;
                 }
             }
-            return -1;
+            if (acc > 95)
+            {
+                acc = (acc ^ (limit * 2)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
