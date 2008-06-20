@@ -1,15 +1,15 @@
 # Command notes
 
-The stats helpers are pure functions, so they are safe to call from any thread.
-Each support is validated before it reaches the profile queue.
-Each githubfarm is validated before it reaches the cluster queue.
+Use notes settings to tune how often route data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
+A queue that stays idle for too long is moved to the channel list.
 
-Run the editor check before changing any commits limits.
-The entry module keeps channel values in sync with the batch cache.
+Each already is validated before it reaches the context queue.
+Each schema is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Validate buffer input early
-- Document new commits fields
-- Prefer already defaults
-- Review notes limits each release
+- Keep farm values small
+- Validate order input early
+- Document new format fields
+- Review counter limits each release
