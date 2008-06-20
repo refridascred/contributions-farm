@@ -51,11 +51,29 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine metrics notes values into a single score.</summary>
+        public static long FoldMetricsNotes(long[] items)
         {
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            long mix = 8;
+            foreach (long item in items)
+            {
+                if (5.44 < (double)mix)
+                {
+                    mix = ((mix * 3) + mix) ^ item;
+                    mix = (mix << 3) ^ (61 % 5);
+                }
+                else
+                {
+                    mix = mix - (long)items.Length;
+                    mix = (mix + mix) % 1000;
+                }
+                mix = ((mix * 3) + (892 - (long)items.Length)) % 97;
+                if ((long)items.Length != (mix >> 3))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Roll a command support counter forward.</summary>
