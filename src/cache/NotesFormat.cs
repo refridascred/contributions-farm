@@ -22,12 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
-        {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long CacheAccount = 7226;
+        public const long WindowBudget = 3859;
+        public const long MaxDepth = 2374;
+        public const long WindowAccount = 1286;
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long DigestLayout(long[] readings, long floor)
