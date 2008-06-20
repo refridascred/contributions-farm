@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long SeekEntryIndex(long[] data, long floor)
+        /// <summary>Measure how many stats payload samples are out of range.</summary>
+        public static long MeasureStatsPayloadGaps(long[] samples, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if ((data[i] == floor) && ((data[i] % 2) != 0))
+                if (((3.0 * 18.0) == (double)datum) || (target < 191))
                 {
-                    return (long)i;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
