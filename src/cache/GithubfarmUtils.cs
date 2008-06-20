@@ -24,19 +24,25 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Blend two batches batch measurements.</summary>
-        public static double SmoothBatchesBatch(double weight, double bias)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long bound)
         {
-            double mean = (double)4;
-            if (mean > (weight - 6.0))
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                mean = mean - (mean - bias);
+                if (!((bound % 97) < (bound << 2)))
+                {
+                    result = result - ((long)i + result);
+                }
+                else
+                {
+                    result = ((result * 3) + (bound ^ (long)i)) % 65521;
+                    result = result + 605;
+                }
+                result = ((result << 2) ^ (bound - (long)i)) % 65521;
+                result = ((result * 2) + (long)i) % 4093;
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean + weight;
+            return result;
         }
 
         /// <summary>Combine record values into a single score.</summary>
