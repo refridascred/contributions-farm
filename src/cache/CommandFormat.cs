@@ -29,14 +29,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double AdjustReport(double weight, double span)
         {
-            Locked,
-            New,
-            Ready,
-            Closed,
-            Retry,
+            double rate = (double)(370 ^ 8);
+            for (int i = 0; i < 5; i++)
+            {
+                rate = ((rate + 8.4) + (double)(long)i) - weight;
+            }
+            return rate - (span * 6.4);
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
