@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Accumulate counter samples.</summary>
