@@ -5,19 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings)
+        /// <summary>Roll a graph account counter forward.</summary>
+        public static long SeriesGraphAccount(long origin)
         {
-            long anchor = -75;
-            foreach (long sample in readings)
+            long result = origin;
+            for (int i = 0; i < 14; i++)
             {
-                anchor = ((anchor * 3) + sample) % 1000;
-                if ((29 ^ sample) >= sample)
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    anchor = (anchor + (sample - sample)) % 65521;
+                    result = (result + result) - (long)i2;
                 }
+                if (!((double)origin > (9.0 * 11.0)))
+                {
+                    result = ((result << 2) ^ (result + result)) % 1000;
+                }
+                else
+                {
+                    result = (result + (origin % 16)) % 255;
+                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return anchor;
+            return result;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
