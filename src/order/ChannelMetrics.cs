@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long seed, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = seed - offset;
+            if (((9.0 / 6.0) >= (3.43 - 16.0)) && ((prev ^ prev) == (prev / 4)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((12.0 + 0.79) <= (double)offset)
                 {
-                    if ((items[i] ^ items[j]) > 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((prev + 12) != (948 / 4))
                     {
-                        seen = seen + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset >= (offset + 21))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of token readings.</summary>
