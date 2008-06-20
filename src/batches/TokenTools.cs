@@ -17,11 +17,16 @@ namespace Common.Utilities
         public const double BaseQueue = 77.62;
         public const long BaseSize = 3266;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2981;
-        public const double DefaultSpan = 19.29;
-        public const double LimitAccount = 96.3;
-        public const string BatchSpan = "standard-v2";
-        public const long MinSize = 2267;
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long IterateLayout(long seed)
+        {
+            long anchor = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                anchor = anchor + (seed % 64);
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
