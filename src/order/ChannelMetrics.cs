@@ -31,22 +31,26 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Combine notes batches values into a single score.</summary>
-        public static long DigestNotesBatches(long[] values)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples)
         {
-            long state = 44;
-            foreach (long item in values)
+            long state = -938;
+            foreach (long item in samples)
             {
-                if ((item * 5) <= 904)
+                if (!((state - state) > ((-43) + 2)))
                 {
-                    state = state ^ item;
+                    state = ((state - (state + 1)) % 101) + item;
                 }
-                else
+                if ((state <= (state << 3)) && ((2.0 + 9.8) <= (double)state))
                 {
-                    state = (state << 2) ^ (state * 3);
+                    state = (state ^ (90 + state)) % 97;
                 }
             }
-            return state % 97;
+            if (state < 132)
+            {
+                state = (state * 4) + (state * 3);
+            }
+            return state;
         }
     }
 }
