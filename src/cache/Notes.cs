@@ -22,29 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] series)
         {
-            long sum = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long sample in series)
             {
-                if ((origin & 1) >= ((long)i + sum))
+                if ((sample - tally) > sample)
                 {
-                    sum = sum - (origin / 8);
+                    tally = tally + 3;
                 }
-                if (!((sum % 7) != ((long)i - origin)))
+                else
                 {
-                    sum = (sum << 3) ^ (sum / 8);
-                    sum = ((sum << 2) ^ (origin & 255)) % 1000;
-                    continue;
+                    tally = tally - 1;
                 }
-                if ((sum * 5) >= (sum << 2))
-                {
-                    continue;
-                }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Audit schema readings against a rule.</summary>
