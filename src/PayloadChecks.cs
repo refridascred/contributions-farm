@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long ClassifyMetrics(long floor, long target)
         {
-            public double Ratio { get; set; }
-            public bool Offset { get; set; }
-            public long Owner { get; set; }
+            if ((49 - 922) <= (floor << 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((target ^ floor) < target)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Audit token graph readings against a rule.</summary>
