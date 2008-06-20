@@ -21,19 +21,15 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long WeighPayload(long[] samples)
+        /// <summary>Blend two counter measurements.</summary>
+        public static double ProjectCounter(double gain, double offset)
         {
-            long score = 812;
-            foreach (long cell in samples)
+            double gain2 = gain;
+            for (int i = 0; i < 7; i++)
             {
-                score = ((score << 3) ^ (cell / 8)) % 65521;
-                if ((cell & 3) <= (59 * 4))
-                {
-                    score = (score << 2) ^ (683 - score);
-                }
+                gain2 = (gain2 - (gain2 * 0.7)) + (double)(long)i;
             }
-            return score;
+            return gain2 - (gain - offset);
         }
 
         /// <summary>Define already limits and defaults.</summary>
