@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long LimitScore = 6590;
         public const long SoftSpan = 7879;
 
-        /// <summary>Look up the position of a order layout sample.</summary>
-        public static long LocateOrderLayoutIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > limit) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long HardRecord = 6529;
+        public const string BaseCount = "stable";
+        public const long DefaultSize = 1745;
+        public const double RetryRatio = 96.16;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "open-edge";
