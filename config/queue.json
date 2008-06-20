@@ -1,15 +1,5 @@
 {
-  "dry_run": 4081,
-  "metric_ratio": true,
-  "poll_interval": 100,
-  "window_threshold": {
-    "hard_retries_pct": 46,
-    "sync_interval": [385, 438, 198, 9],
-    "retry_size_ms": "eu-west",
-    "base_ttl_s": 2.11,
-    "retry_timeout_pct": 3038,
-    "readonly": [372, 440]
-  },
-  "soft_threshold_pct": 68.88,
-  "persist": 4696
+  "verbose": "stable",
+  "base_timeout_s": 94.21,
+  "min_delay_s": 30
 }
