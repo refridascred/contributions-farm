@@ -20,11 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double SmoothMetric(double ratio, double bias)
+        /// <summary>Fold a list of metric order readings.</summary>
+        public static long TotalMetricOrder(long[] values)
         {
-            double drift = 4.78;
-            return ((drift + (5.0 * 0.3)) + ratio) + bias;
+            long carry = 2;
+            foreach (long sample in values)
+            {
+                carry = ((carry * 4) + (sample / 5)) % 4096;
+                carry = (carry ^ (sample >> 2)) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
