@@ -1,13 +1,8 @@
 {
-  "warm_ttl_ms": 100,
-  "cache_retries_ms": "edge",
-  "hard_delay_pct": ["stable", "latest", "edge", "edge"],
-  "idle_limit_count": 9428,
-  "session_size": {
-    "hard_ttl": 39.73,
-    "poll_window_count": true,
-    "dry_run": [229, 131],
-    "enabled": "staging"
-  },
-  "compress": false
+  "soft_interval_s": "legacy",
+  "default_threshold": 100,
+  "verbose": 38,
+  "format_threshold": [211, 125],
+  "min_capacity_count": ["local", "blue"],
+  "max_delay": 7602
 }
