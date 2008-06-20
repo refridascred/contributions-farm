@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
             Stale,
-            Ready,
-            Pending,
+            Locked,
+            Done,
         }
 
         /// <summary>Describe the context phase values.</summary>
