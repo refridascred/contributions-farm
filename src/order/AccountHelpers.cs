@@ -26,19 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] values, long bound)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long LocateOrderIndex(long[] items, long origin)
         {
-            long total = 427;
-            foreach (long sample in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total << 2) ^ total) ^ sample;
-                if ((double)bound >= (5.0 + 9.09))
+                if ((items[i] > origin) && ((items[i] % 5) == 0))
                 {
-                    total = total + (bound - bound);
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Hold a entry summary.</summary>
