@@ -37,17 +37,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] values, long seed)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] data, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mix = 223;
+            foreach (long reading in data)
             {
-                if (values[i] <= seed)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ limit) - reading;
             }
-            return -1;
+            return mix % 65521;
         }
 
         /// <summary>Adjust a order reading.</summary>
