@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferGaps(long[] levels, long seed)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches + seed) < seed)
-                {
-                    matches = (matches + 1) ^ item;
-                }
-            }
-            return matches;
+            public bool Token { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
