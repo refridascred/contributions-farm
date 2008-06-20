@@ -34,32 +34,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long floor, long step)
+        /// <summary>Count the stats buffer entries that pass the check.</summary>
+        public static long MeasureStatsBufferMatches(long[] readings)
         {
-            long next = floor + step;
-            if ((4.7 - 5.0) <= (double)next)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((next + next) >= (4 + (-196)))
+                if ((double)tally > 14.0)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)floor != (double)9)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    tally = (tally + 2) - cell;
                 }
             }
+            return tally;
         }
     }
 }
