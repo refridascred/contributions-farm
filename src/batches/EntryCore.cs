@@ -58,18 +58,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiOutliers(long[] data)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long seen = 0;
-            foreach (long cell in data)
-            {
-                if ((4.81 * 3.0) <= (double)cell)
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
