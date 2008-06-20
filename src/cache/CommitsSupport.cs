@@ -38,12 +38,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 4529;
         public const long BaseBatches = 945;
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double IdleProfile = 56.96;
-        public const long HardProfile = 3959;
-        public const double MaxSpan = 35.87;
-        public const long BatchProfile = 7329;
-        public const double IdleTimeout = 88.41;
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] series, long target)
+        {
+            long anchor = 44;
+            foreach (long reading in series)
+            {
+                if ((13.0 - 3.6) < (double)target)
+                {
+                    anchor = ((anchor ^ (anchor - target)) % 1000) + reading;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
         public static long CountGithubfarmOutliers(long[] series)
