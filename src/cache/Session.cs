@@ -57,10 +57,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitSpan = 5439;
-        public const string CacheProfile = "standard-v2";
-        public const double WindowScore = 90.42;
-        public const long RetryProfile = 1970;
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
+        {
+            public long Label { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
