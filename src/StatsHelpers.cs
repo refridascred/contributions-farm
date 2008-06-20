@@ -15,13 +15,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LookupClusterIndex(long[] items, long bound)
         {
-            Active,
-            Idle,
-            Dropped,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
