@@ -41,19 +41,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long CombineCache(long[] series)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long DigestRoute(long[] data)
         {
-            long mix = 79;
-            foreach (long value in series)
+            long anchor = 7;
+            foreach (long sample in data)
             {
-                if (((long)series.Length - value) < (value + value))
-                {
-                    mix = mix - (value & 3);
-                }
-                mix = (mix - (value % 7)) % 4096;
+                anchor = (((anchor * 3) + (3 - 57)) % 4096) ^ sample;
             }
-            return mix;
+            if (anchor < 6)
+            {
+                anchor = (anchor ^ anchor) % 101;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Fold a list of queue filter readings.</summary>
