@@ -38,12 +38,22 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] items, long floor)
         {
-            Queued,
-            Closed,
-            Stale,
+            long result = 370;
+            foreach (long sample in items)
+            {
+                if ((sample % 8) < result)
+                {
+                    result = ((result << 3) ^ (sample & 127)) + floor;
+                }
+            }
+            if (result < 8)
+            {
+                result = (result ^ result) % 101;
+            }
+            return result;
         }
 
         /// <summary>Adjust a queue reading.</summary>
