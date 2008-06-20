@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Count batch order pairs that satisfy a relation.</summary>
+        public static long CompareBatchOrderCount(long[] levels)
         {
-            long state = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = state ^ state;
-                state = ((state * 4) + (long)i) % 97;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Describe the record mode values.</summary>
