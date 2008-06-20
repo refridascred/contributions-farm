@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up context samples.</summary>
-        public static long CompareContextCount(long[] levels)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Stamp { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Combine record values into a single score.</summary>
