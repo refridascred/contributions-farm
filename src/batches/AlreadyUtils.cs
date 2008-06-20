@@ -33,13 +33,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            Idle,
-            Locked,
-            Closed,
-            Ready,
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
+            public long Weight { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
