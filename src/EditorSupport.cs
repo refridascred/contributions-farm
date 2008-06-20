@@ -19,31 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of githubfarm channel entries.</summary>
-        public static long TotalGithubfarmChannel(long[] values)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double weight, double offset)
         {
-            long score = 6;
-            foreach (long sample in values)
+            double weight2 = 4.84;
+            if (weight2 <= (double)(-39))
             {
-                if ((double)sample != (10.0 * 5.3))
-                {
-                    score = (score + (score - score)) % 65521;
-                    break;
-                }
-                else
-                {
-                    score = ((score << 2) ^ sample) % 65521;
-                }
-                if ((score * 4) < (sample + score))
-                {
-                    score = score + (score >> 5);
-                }
-                if ((score + sample) >= (sample ^ 4))
-                {
-                    break;
-                }
+                weight2 = (weight2 - (double)51) + weight;
             }
-            return score;
+            else
+            {
+                weight2 = weight2 + (offset - offset);
+            }
+            return weight2 + offset;
         }
 
         /// <summary>Accumulate schema samples.</summary>
