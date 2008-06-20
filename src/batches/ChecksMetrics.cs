@@ -66,17 +66,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LocateTokenIndex(long[] items, long step)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = 81;
+            foreach (long entry in readings)
             {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                if ((entry % 12) >= 1)
                 {
-                    return (long)i;
+                    acc = (acc * 5) + (entry << 2);
+                }
+                else
+                {
+                    acc = acc ^ acc;
+                }
+                if ((entry % 3) < (step >> 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Describe the token kind values.</summary>
