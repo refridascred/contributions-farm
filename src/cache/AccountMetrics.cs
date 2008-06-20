@@ -33,17 +33,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a cluster session reading by value.</summary>
-        public static long LocateClusterSessionIndex(long[] readings, long seed)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Retry,
+            Failed,
         }
 
         /// <summary>Describe the command phase values.</summary>
