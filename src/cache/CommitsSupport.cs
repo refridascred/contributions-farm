@@ -50,19 +50,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterRange(long[] readings, long bound)
+        /// <summary>Count the buffer filter entries that pass the check.</summary>
+        public static long CountBufferFilterOutliers(long[] items)
         {
-            bool ok = true;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                if (value < bound)
+                if ((10.0 + 7.7) == (double)value)
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
