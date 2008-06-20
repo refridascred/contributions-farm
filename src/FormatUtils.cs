@@ -26,12 +26,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long seed, long target)
         {
-            public double Region { get; set; }
-            public bool Size { get; set; }
-            public long Score { get; set; }
+            if (((double)seed < (double)12) && ((7.78 + 3.0) > (double)seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((target + seed) != (97 - seed)) || ((target + seed) > (seed << 1)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Adjust a graph reading.</summary>
