@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] items)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            long acc = 7;
-            foreach (long cell in items)
-            {
-                acc = ((acc - (acc >> 5)) % 255) + cell;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public bool Offset { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit token graph readings against a rule.</summary>
