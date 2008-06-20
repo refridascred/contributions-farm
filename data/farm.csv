@@ -1,8 +1,7 @@
-id,owner,label,level
-1,726,primary,870
-2,28.42,local,6.97
-3,39.45,599,primary
-4,9.63,edge,45.09
-5,322,906,8.29
-6,blue,397,14.39
-7,85.59,938,stable
+id,region,label
+1,93.53,442
+2,open,49
+3,24.53,658
+4,cached,local
+5,696,622
+6,600,39.91
