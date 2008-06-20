@@ -28,21 +28,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] series)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 16)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Count { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
