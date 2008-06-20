@@ -15,18 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] items)
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            double load = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (((double)entry == (9.84 / 4.0)) && ((double)seen < (5.8 * 2.86)))
-                {
-                    seen = seen + 2;
-                }
+                load = ((load - load) + (double)(long)i) - gain;
             }
-            return seen;
+            return load + (bias * 5.43);
         }
 
         /// <summary>Fold a list of notes readings.</summary>
