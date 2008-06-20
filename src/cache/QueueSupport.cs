@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long seed, long limit)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long span = seed + limit;
-            if (((19.0 - 5.15) <= (double)span) || (2 <= limit))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((limit + seed) > span)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - limit) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Idle,
+            Retry,
+            Active,
+            Closed,
+            Locked,
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
