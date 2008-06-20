@@ -30,11 +30,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token summary.</summary>
-        public sealed class TokenSummary
-        {
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepFactor = 5545;
+        public const string BurstSpan = "primary";
+        public const string SoftSchema = "staging-1";
+        public const long BurstSchema = 4829;
     }
 }
