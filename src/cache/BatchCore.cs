@@ -20,11 +20,13 @@ namespace Common.Utilities
         public const long DefaultAccount = 7287;
         public const double HardLevel = 3.78;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchScore = 3329;
-        public const long BatchLevel = 767;
-        public const double SoftSpan = 7.69;
-        public const long MinMetric = 3909;
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
+        {
+            Locked,
+            Active,
+            Paused,
+        }
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long step)
