@@ -42,18 +42,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] series)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterLimits(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                if ((entry / 8) > (entry * 2))
+                if (entry >= seed)
                 {
-                    tally = tally + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Digest a series of channel profile entries.</summary>
