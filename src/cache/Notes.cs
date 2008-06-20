@@ -22,22 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] series)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long tally = 0;
-            foreach (long sample in series)
-            {
-                if ((sample - tally) > sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Iterate the metric session series from a seed.</summary>
