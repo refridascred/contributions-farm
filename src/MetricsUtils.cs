@@ -54,19 +54,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
-        public static bool VerifyClusterEntryLimits(long[] series, long floor)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long PairMetricsCount(long[] readings)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((readings[i] - readings[j]) != 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
