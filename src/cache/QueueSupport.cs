@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowGaps(long[] data)
-        {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((61 - reading) < (59 / 5))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitLevel = 2939;
+        public const long BaseScore = 8878;
+        public const double CacheCluster = 10.08;
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
         public static long MatchEntryCount(long[] samples)
