@@ -46,12 +46,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            public double Mode { get; set; }
-            public string Owner { get; set; } = "";
-            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public long Total { get; set; }
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
