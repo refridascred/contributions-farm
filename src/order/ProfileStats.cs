@@ -59,15 +59,18 @@ namespace Common.Utilities
             return drift + (7.4 + rate);
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsOutliers(long[] data, long limit)
+        /// <summary>Count entry filter pairs that satisfy a relation.</summary>
+        public static long PairEntryFilterCount(long[] readings)
         {
             long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((27 + tally) <= (tally ^ sample)) || (((limit << 2) < (6 - limit)) || ((tally >> 2) != ((-865) << 1))))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((readings[i] ^ readings[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
