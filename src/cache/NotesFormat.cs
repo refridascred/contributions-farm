@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long MaxDepth = 2374;
         public const long WindowAccount = 1286;
 
-        /// <summary>Audit filter payload readings against a rule.</summary>
-        public static long TallyFilterPayloadOutliers(long[] series, long seed)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmMatches(long[] items)
         {
-            long seen = 0;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)item > 4.33)
+                if (0.7 <= (double)reading)
                 {
-                    seen = (seen + 1) + seed;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
