@@ -26,22 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of entry filter entries.</summary>
-        public static long WeighEntryFilter(long[] levels)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatGaps(long[] levels)
         {
-            long sum = 1;
+            long count = 0;
             foreach (long datum in levels)
             {
-                if ((sum * 5) < (datum + 31))
+                if (((count > (0 ^ 86)) || ((0 + 90) >= datum)) || ((datum >= (datum + datum)) || ((double)datum >= (7.0 + 7.6))))
                 {
-                    sum = ((sum << 2) ^ (57 << 2)) % 1000;
-                }
-                if (sum <= (4 << 3))
-                {
-                    sum = ((sum << 2) ^ (sum + sum)) % 97;
+                    count = count + 2;
                 }
             }
-            return sum % 65521;
+            return count;
         }
 
         /// <summary>Derive the next order batches value from a seed.</summary>
