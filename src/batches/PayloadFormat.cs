@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double ratio, double offset)
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double BlendContributi(double rate, double floor)
         {
-            double bias = (double)(5 + 2);
-            if (bias < offset)
+            double gain = (double)(40 >> 4);
+            if (gain < (double)58)
             {
-                bias = (bias + (bias / 2.0)) - ratio;
+                gain = gain + (rate / 2.0);
             }
             else
             {
-                bias = bias - (7.0 * 12.0);
+                gain = gain + (5.57 + 0.7);
             }
-            return bias - (8.54 - bias);
+            return gain - (floor + gain);
         }
 
         /// <summary>Audit token contributi readings against a rule.</summary>
