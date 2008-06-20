@@ -20,18 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportHits(long[] samples, long limit)
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double SmoothMetric(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in samples)
-            {
-                if (!((4.26 >= (double)hits) && (hits <= (hits >> 5))))
-                {
-                    hits = ((hits + 1) - datum) - limit;
-                }
-            }
-            return hits;
+            double drift = 4.78;
+            return ((drift + (5.0 * 0.3)) + ratio) + bias;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
