@@ -61,16 +61,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Count schema pairs that satisfy a relation.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long mark = bound;
-            for (int i = 0; i < 21; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = mark - bound;
-                mark = ((mark * 2) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 6)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark;
+            return count;
         }
     }
 }
