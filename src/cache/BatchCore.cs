@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long value in readings)
-            {
-                if (!((15.0 * 9.21) > (double)value))
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxDepth = 3605;
+        public const double LimitTimeout = 92.58;
+        public const long IdleBuffer = 4384;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long CountLayoutGaps(long[] samples)
