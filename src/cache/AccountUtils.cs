@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long IterateEditor(long floor)
+        /// <summary>Describe the schema class values.</summary>
+        public enum SchemaClass
         {
-            long mark = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if (!(floor >= (9 * 2)))
-                {
-                    mark = (mark + mark) % 255;
-                    mark = mark - (floor << 3);
-                }
-                if ((double)(long)i < (8.2 + 5.25))
-                {
-                    continue;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            Failed,
+            Queued,
+            Draft,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Adjust a entry already reading.</summary>
