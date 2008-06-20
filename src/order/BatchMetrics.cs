@@ -66,19 +66,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] values)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long offset)
         {
-            long mark = -491;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark - datum) % 101;
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 21)
-            {
-                mark = mark - (mark - mark);
-            }
-            return mark;
+            return -1;
         }
     }
 }
