@@ -28,22 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphGaps(long[] data)
+        /// <summary>Iterate the cluster format series from a seed.</summary>
+        public static long DeriveClusterFormat(long floor)
         {
-            long count = 0;
-            foreach (long value in data)
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((double)count <= 3.9)
-                {
-                    count = (count + 3) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                anchor = ((anchor * 5) + (long)i) % 97;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
