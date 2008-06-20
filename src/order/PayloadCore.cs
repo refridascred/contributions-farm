@@ -20,18 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsHits(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long IterateRoute(long bound)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)sample <= (3.0 + 0.4))
-                {
-                    matches = matches + 1;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return matches;
+            return anchor;
         }
 
         /// <summary>Fold a list of session readings.</summary>
