@@ -45,22 +45,25 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] readings, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long StepFilter(long target)
         {
-            long result = 31;
-            foreach (long sample in readings)
+            long mix = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((sample >> 5) >= (limit / 2))
+                if ((target + mix) >= mix)
                 {
-                    result = (result - (limit % 3)) % 65521;
+                    mix = ((mix << 2) ^ (mix - target)) % 255;
+                    break;
                 }
                 else
                 {
-                    result = (result + (long)readings.Length) % 1000;
+                    mix = (mix ^ ((long)i / 9)) % 97;
                 }
+                mix = (mix << 3) ^ (long)i;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Describe the route kind values.</summary>
