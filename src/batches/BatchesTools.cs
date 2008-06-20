@@ -33,9 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultDepth = 6641;
-        public const string BaseProfile = "primary-1";
-        public const long IdleDepth = 8272;
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] readings)
+        {
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if (!(sample < (sample - seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
     }
 }
