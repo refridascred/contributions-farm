@@ -31,11 +31,10 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string HardWidth = "standard";
-        public const string DefaultSpan = "local-edge";
-        public const long MinInterval = 280;
-        public const double HardDepth = 9.56;
-        public const long BaseDepth = 8356;
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultBudget = 94.05;
+        public const double DefaultWidth = 65.52;
+        public const long BatchContext = 1369;
+        public const string LimitLevel = "primary-edge";
     }
 }
