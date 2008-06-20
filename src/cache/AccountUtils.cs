@@ -40,22 +40,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsOutliers(long[] readings)
-        {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (((tally ^ tally) == (tally << 1)) && ((83 + cell) < tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long StepChannel = 7154;
+        public const long MinChannel = 6841;
+        public const long HardChannel = 4150;
+        public const double MaxRatio = 34.12;
+        public const double CacheChannel = 91.39;
     }
 }
