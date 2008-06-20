@@ -36,15 +36,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] values)
         {
             long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((data[i] - data[j]) == 0)
+                    if ((values[i] - values[j]) == 4)
                     {
                         seen = seen + 1;
                     }
