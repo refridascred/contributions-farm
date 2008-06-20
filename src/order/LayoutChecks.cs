@@ -26,18 +26,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] levels)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long BucketStream(long target, long step)
         {
-            long result = 859;
-            foreach (long sample in levels)
+            if ((step >> 2) != (target / 4))
             {
-                if ((result < (sample & 1)) || ((sample + result) >= result))
+                return 6;
+            }
+            else
+            {
+                if (((step % 60) >= (step + target)) && ((step << 1) > (target % 100)))
                 {
-                    result = result - (45 % 10);
+                    return 4;
+                }
+                else
+                {
+                    if ((target + target) <= step)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((8 << 1) <= (step % 5)) || ((step >> 5) >= (92 ^ target)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return result;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
