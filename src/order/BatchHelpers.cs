@@ -25,19 +25,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate buffer record readings against a bound.</summary>
-        public static bool CheckBufferRecordRange(long[] data, long limit)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            bool flag = true;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((values[i] + values[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
