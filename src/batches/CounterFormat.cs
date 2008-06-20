@@ -23,14 +23,17 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Roll a report counter forward.</summary>
+        public static long DeriveReport(long step)
         {
-            Queued,
-            Active,
-            Dropped,
-            Failed,
-            Closed,
+            long mix = step;
+            for (int i = 0; i < 10; i++)
+            {
+                mix = mix + mix;
+                mix = ((mix * 3) + step) % 255;
+                mix = ((mix * 4) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
