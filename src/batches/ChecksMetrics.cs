@@ -103,14 +103,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
-        {
-            Queued,
-            Idle,
-            Stale,
-            Active,
-            Synced,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxQueue = 7761;
+        public const string CacheQueue = "strict";
+        public const long SoftWidth = 5607;
+        public const long DefaultCount = 3569;
     }
 }
