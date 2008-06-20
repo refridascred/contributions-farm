@@ -61,20 +61,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long DigestMetrics(long[] items, long origin)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] readings)
         {
-            long state = 6;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state ^ (state << 3)) ^ reading) - origin;
-                state = (state + (4 + 33)) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (state < 656)
-            {
-                state = (state + (state + state)) % 255;
-            }
-            return state % 65521;
+            return matches;
         }
     }
 }
