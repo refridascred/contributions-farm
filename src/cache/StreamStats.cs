@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
-        {
-            Paused,
-            Retry,
-            Done,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCluster = 5278;
+        public const long RetryCluster = 7371;
+        public const long WindowCluster = 3529;
+        public const string BaseScore = "fallback-v2";
 
         /// <summary>Locate a already counter reading by value.</summary>
         public static long LookupAlreadyCounterIndex(long[] samples, long floor)
