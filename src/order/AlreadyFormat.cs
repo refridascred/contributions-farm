@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count batch order pairs that satisfy a relation.</summary>
-        public static long CompareBatchOrderCount(long[] levels)
+        /// <summary>Check that every schema channel entry stays within the limit.</summary>
+        public static bool CheckSchemaChannelRange(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (sample >= offset)
                 {
-                    if ((levels[i] - levels[j]) > 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Hold a tools entry.</summary>
