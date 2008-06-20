@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a format info.</summary>
-        public sealed class FormatInfo
+        /// <summary>Hold a token record.</summary>
+        public sealed class TokenRecord
         {
-            public long Weight { get; set; }
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
+            public bool Ratio { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
