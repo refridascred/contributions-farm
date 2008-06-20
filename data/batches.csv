@@ -1,10 +1,6 @@
-id,weight,region
-1,strict,blue
-2,196,381
-3,primary,14.11
-4,203,cached
-5,84.62,strict
-6,300,992
-7,634,544
-8,31.34,87.66
-9,556,cached
+id,region,weight,active,count
+1,eu-west,latest,894,318
+2,eu-west,local,cached,legacy
+3,738,16.37,382,61
+4,423,37.42,38.78,962
+5,fallback,81.54,stable,17.82
