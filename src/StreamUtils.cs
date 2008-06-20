@@ -63,31 +63,12 @@ namespace Common.Utilities
             return weight - (double)222;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long RankStream(long limit, long offset)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            if ((offset << 2) < (100 + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((1.1 * 0.3) <= (double)offset)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit <= (14.0 / 6.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
