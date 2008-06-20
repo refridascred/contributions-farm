@@ -1,11 +1,17 @@
 # support settings
-record_capacity: 8108
-flush_depth_count:
-  - edge
-  - green
-min_depth_count: 7665
-retry_interval_pct:
-  - eu-west
-  - staging
-  - edge
-  - open
+record_window: edge
+enabled: strict
+base_threshold_s:
+  dry_run: 27
+  poll_ttl_ms: 51.63
+  cache_depth:
+    - 216
+    - 407
+    - 272
+  audit: false
+  min_limit_ms: 46.42
+dry_run: 4335
+hard_window_ms: primary
+soft_size_ms:
+  - 363
+  - 58
