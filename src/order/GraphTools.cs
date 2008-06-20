@@ -34,23 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] items)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long carry = 291;
-            foreach (long sample in items)
-            {
-                carry = carry + (sample - carry);
-                if (((723 & 127) >= sample) || ((carry + carry) <= carry))
-                {
-                    carry = (carry + sample) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (carry << 3)) % 4096;
-                }
-            }
-            return carry;
+            Queued,
+            Closed,
+            Stale,
         }
 
         /// <summary>Adjust a queue reading.</summary>
