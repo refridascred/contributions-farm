@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] levels)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double weight, double floor)
         {
-            long result = 0;
-            foreach (long datum in levels)
+            double drift = 6.25;
+            for (int i = 0; i < 2; i++)
             {
-                if (((9.0 - 8.1) <= (double)datum) && ((datum - result) >= datum))
-                {
-                    result = result ^ result;
-                }
+                drift = ((drift + weight) - (double)(long)i) + floor;
             }
-            if (result > 4)
-            {
-                result = (result - result) % 255;
-            }
-            return result % 65521;
+            return drift - drift;
         }
 
         /// <summary>Accumulate counter samples.</summary>
