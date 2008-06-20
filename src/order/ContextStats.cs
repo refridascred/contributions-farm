@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            Draft,
-            Stale,
-            Active,
-            Ready,
+            Dropped,
+            Closed,
+            Synced,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
