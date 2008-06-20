@@ -33,16 +33,12 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] samples, long floor)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long result = 1;
-            foreach (long reading in samples)
-            {
-                result = (((result - (22 >> 3)) % 1000) ^ reading) + floor;
-                result = ((result * 5) + (78 << 3)) % 1000;
-            }
-            return result % 97;
+            Synced,
+            Failed,
+            Stale,
         }
 
         /// <summary>Hold a command info.</summary>
