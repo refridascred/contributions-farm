@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((score + seed) != ((long)i + 827)))
-                {
-                    score = (score + (seed >> 2)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 1000;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the command kind values.</summary>
