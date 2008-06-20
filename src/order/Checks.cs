@@ -42,14 +42,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long bound, long floor)
         {
-            Locked,
-            Active,
-            Paused,
-            Failed,
-            Stale,
+            if (((floor ^ bound) >= (floor - bound)) && ((floor >> 5) <= (floor << 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound - floor) >= (floor * 5))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((bound & 7) > (78 - floor))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine editor values into a single score.</summary>
