@@ -1,6 +1,10 @@
-id,state,level
-1,714,fallback
-2,631,legacy
-3,blue,standard
-4,26.79,805
-5,679,stable
+id,token,rank,count,level
+1,703,64.64,legacy,standard
+2,cached,open,43.09,401
+3,fallback,98,green,fallback
+4,98,edge,local,35
+5,staging,primary,local,stable
+6,742,staging,421,645
+7,cached,731,24.58,9.93
+8,18.78,legacy,fallback,777
+9,17,15.17,62.17,latest
