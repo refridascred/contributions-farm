@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long seed, long offset)
         {
-            Idle,
-            Stale,
-            Ready,
-            Synced,
+            if ((seed % 7) <= offset)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed >> 3) == (seed & 15))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)seed != (double)offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank filter input into a small class.</summary>
