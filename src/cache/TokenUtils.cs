@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long MaxInterval = 8058;
         public const long MaxFilter = 1223;
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long CountBatchHits(long[] items, long offset)
+        /// <summary>Look up the position of a tools support sample.</summary>
+        public static long FindToolsSupportIndex(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell <= (71 * 3)) || !((double)offset > (6.56 + 6.76)))
+                if (levels[i] > floor)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Describe the cache level values.</summary>
