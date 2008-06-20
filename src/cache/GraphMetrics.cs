@@ -40,11 +40,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double HardSpan = 52.55;
-        public const long HardPayload = 4962;
-        public const string WindowSize = "local-v2";
-        public const long BasePayload = 8729;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Done,
+            Closed,
+            New,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long floor)
