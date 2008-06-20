@@ -50,13 +50,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long bound)
         {
-            Paused,
-            Retry,
-            Locked,
-            Dropped,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define report limits and defaults.</summary>
