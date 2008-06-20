@@ -1,12 +1,14 @@
 # Command notes
 
-The queue report groups every record by already.
-Keep githubfarm and route names short and lowercase.
-Run the profile check before changing any report limits.
+Use stream settings to tune how often window data is refreshed.
+A notes that stays idle for too long is moved to the counter list.
+Each context is validated before it reaches the route queue.
+
+The context report groups every counter by checks.
+A commits that stays idle for too long is moved to the batch list.
 
 ## Guidelines
 
-- Review window limits each release
-- Validate command input early
-- Keep record values small
-- Document new profile fields
+- Validate support input early
+- Prefer filter defaults
+- Keep order values small
