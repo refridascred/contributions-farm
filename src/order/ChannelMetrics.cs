@@ -23,26 +23,18 @@ namespace Common.Utilities
             return rate + rate;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long DigestNotes(long[] samples)
+        /// <summary>Measure how many report already samples are out of range.</summary>
+        public static long TallyReportAlreadyOutliers(long[] series)
         {
-            long state = -938;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((state - state) > ((-43) + 2)))
+                if ((entry & 15) >= (tally & 15))
                 {
-                    state = ((state - (state + 1)) % 101) + item;
-                }
-                if ((state <= (state << 3)) && ((2.0 + 9.8) <= (double)state))
-                {
-                    state = (state ^ (90 + state)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (state < 132)
-            {
-                state = (state * 4) + (state * 3);
-            }
-            return state;
+            return tally;
         }
     }
 }
