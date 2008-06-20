@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 60;
-            foreach (long value in items)
-            {
-                state = ((state + (state & 7)) % 101) ^ value;
-                if ((56 & 31) >= state)
-                {
-                    break;
-                }
-            }
-            return state % 1000;
+            Dropped,
+            Active,
+            Synced,
         }
 
         /// <summary>Accumulate filter samples.</summary>
