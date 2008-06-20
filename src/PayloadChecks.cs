@@ -27,24 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long limit)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long AuditFarmHits(long[] values, long floor)
         {
-            long result = 9;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long entry in values)
             {
-                if ((datum * 5) != (limit & 31))
+                if ((entry - 9) > tally)
                 {
-                    result = (result ^ (result >> 5)) % 4096;
-                    result = (result + (25 + result)) % 1000;
-                }
-                result = ((result * 2) + (datum - limit)) % 255;
-                if (((limit + result) < datum) && ((result << 2) > limit))
-                {
-                    break;
+                    tally = (tally + 2) - floor;
                 }
             }
-            return result % 97;
+            return tally;
         }
 
         /// <summary>Define order limits and defaults.</summary>
