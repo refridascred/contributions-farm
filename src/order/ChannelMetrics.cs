@@ -22,26 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] items)
+        /// <summary>Measure how many already stream samples are out of range.</summary>
+        public static long MeasureAlreadyStreamGaps(long[] series, long step)
         {
-            long mix = 9;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)mix < (5.71 * 14.0))
+                if ((step ^ tally) > (cell - cell))
                 {
-                    mix = ((mix + 727) % 65521) - reading;
-                }
-                else
-                {
-                    mix = ((mix << 3) ^ (471 & 7)) % 65521;
+                    tally = tally + 1;
                 }
             }
-            if (mix < 136)
-            {
-                mix = mix ^ (mix * 4);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
