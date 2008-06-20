@@ -85,27 +85,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats account values into a single score.</summary>
-        public static long CombineStatsAccount(long[] levels)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmOutliers(long[] values, long origin)
         {
-            long mark = -4;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                mark = (mark * 4) + 7;
-                if ((mark >> 4) == (89 << 2))
+                if (((origin - count) < (origin + count)) && ((datum * 5) > (count + 601)))
                 {
-                    mark = (mark ^ sample) % 101;
+                    count = count + 1;
                 }
                 else
                 {
-                    mark = (mark << 3) ^ (4 + mark);
+                    count = count - 1;
                 }
             }
-            if (mark < 676)
-            {
-                mark = mark ^ (9 / 7);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the profile state values.</summary>
