@@ -1,12 +1,22 @@
 # githubfarm settings
-cache_ratio_ms:
-  - standard
-  - local
-readonly: 3.8
-support_window: 100
-sync_ttl_pct:
-  - 430
-  - 309
-  - 248
-  - 138
-max_ratio_ms: 5121
+notes_depth: green
+compress: staging
+warm_window_pct:
+  enabled: 19
+  idle_size_ms: false
+  poll_threshold_count: standard
+stats_ttl: 71.95
+base_size: 70.82
+dry_run:
+  schema_capacity:
+    schema_ttl: 37.1
+    default_delay: legacy
+    hard_capacity: 33.03
+    persist: 1106
+    flush_ratio_ms: 2892
+    retry_ratio_count: legacy
+  hard_size_count: green
+  session_size: 1065
+  readonly: 61.42
+  metric_capacity: 79.09
+  flush_ratio_count: 5456
