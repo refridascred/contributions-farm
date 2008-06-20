@@ -47,23 +47,23 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] samples)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] samples, long origin)
         {
-            long anchor = -611;
+            long carry = 8;
             foreach (long entry in samples)
             {
-                if ((anchor % 7) < (anchor - entry))
+                carry = ((carry * 5) + origin) % 4096;
+                if (((-939) + carry) > origin)
                 {
-                    anchor = ((anchor * 2) + (anchor + entry)) % 97;
+                    carry = carry - 8;
                 }
-                anchor = ((anchor << 3) ^ (8 - anchor)) % 255;
+                if (entry >= (origin + entry))
+                {
+                    break;
+                }
             }
-            if (anchor < 4)
-            {
-                anchor = ((anchor << 3) ^ anchor) % 65521;
-            }
-            return anchor;
+            return carry;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
