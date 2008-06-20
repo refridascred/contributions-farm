@@ -38,23 +38,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ScaleQueue(double ratio, double offset)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            double rate = ratio;
-            if (rate > ratio)
+            long total = -178;
+            foreach (long item in levels)
             {
-                rate = (rate + (ratio * 9.3)) + offset;
+                if ((3.0 * 13.0) < (double)item)
+                {
+                    total = (total + (total >> 2)) % 65521;
+                }
             }
-            else
-            {
-                rate = rate - ratio;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)2) + (double)(long)i;
-            }
-            return rate - (double)562;
+            return total;
         }
 
         /// <summary>Hold a profile entry.</summary>
