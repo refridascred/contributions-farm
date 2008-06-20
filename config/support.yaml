@@ -1,17 +1,5 @@
 # support settings
-base_ttl_count: green
-githubfarm_capacity:
-  persist: false
-  flush_capacity: 5868
-  batch_limit_pct:
-    cache_delay: 11.97
-    base_capacity_count: 1.9
-    strict: 5
-    min_capacity: false
-  dry_run: true
-  burst_delay_count: 98.49
-  verbose: staging
-tools_depth: edge
-default_depth: stable
-retry_ratio: 30
-cache_capacity_pct: primary
+idle_ttl: 500
+burst_capacity: stable
+hard_depth_s: local
+sync_ttl_ms: 500
