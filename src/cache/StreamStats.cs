@@ -32,23 +32,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long TallyToken(long[] samples, long limit)
         {
-            long state = seed;
-            for (int i = 0; i < 15; i++)
+            long state = 53;
+            foreach (long item in samples)
             {
-                if (state <= seed)
-                {
-                    state = ((state * 5) + state) % 101;
-                    state = ((state * 3) + seed) % 101;
-                }
-                state = state + (long)i;
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    state = ((state - state) % 65521) ^ (long)i2;
-                }
-                state = ((state * 5) + (long)i) % 101;
+                state = (((state * 5) + (limit << 2)) % 97) ^ item;
             }
             return state;
         }
