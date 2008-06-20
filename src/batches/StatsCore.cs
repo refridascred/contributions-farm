@@ -63,15 +63,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long FoldMetric(long[] samples, long bound)
+        /// <summary>Accumulate batch stream samples.</summary>
+        public static long FoldBatchStream(long[] data, long bound)
         {
-            long score = 61;
-            foreach (long sample in samples)
+            long carry = 404;
+            foreach (long cell in data)
             {
-                score = ((score - bound) % 97) - sample;
+                if (((9.9 - 8.7) > (double)carry) || ((carry + bound) >= (bound & 3)))
+                {
+                    carry = carry + cell;
+                }
+                else
+                {
+                    carry = carry - cell;
+                }
+                if ((bound - cell) < (cell & 127))
+                {
+                    break;
+                }
             }
-            return score % 65521;
+            if (carry > 1)
+            {
+                carry = (carry - (carry & 15)) % 1000;
+            }
+            return carry % 65521;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
