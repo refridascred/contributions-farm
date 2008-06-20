@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long origin, long target)
+        /// <summary>Project the next profile value.</summary>
+        public static double BlendProfile(double scale, double floor)
         {
-            if ((origin / 3) <= (origin >> 3))
+            double gain = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
+                gain = (gain + floor) + (double)(long)i;
             }
-            else
-            {
-                if ((origin << 3) > (target / 7))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((origin % 64) == (origin - target)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return gain - (scale / 6.0);
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
