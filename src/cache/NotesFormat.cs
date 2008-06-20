@@ -13,21 +13,26 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] data)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = 1;
+            foreach (long item in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)(long)data.Length >= (13.0 - 7.0))
                 {
-                    if ((data[i] ^ data[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result ^ (900 + item)) % 101;
+                }
+                else
+                {
+                    result = (result ^ ((-9) * 3)) % 1000;
                 }
             }
-            return matches;
+            if (result > 78)
+            {
+                result = (result - result) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the commits class values.</summary>
