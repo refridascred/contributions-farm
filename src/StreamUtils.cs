@@ -25,17 +25,26 @@ namespace Common.Utilities
             return (drift + (drift + bias)) + span;
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LookupBatchesIndex(long[] samples, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] values, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 3;
+            foreach (long sample in values)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
+                if (sample > (516 & 255))
                 {
-                    return (long)i;
+                    carry = (carry ^ ((-800) / 6)) % 1000;
+                }
+                if ((limit + limit) >= (carry >> 5))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (carry > 23)
+            {
+                carry = ((carry << 2) ^ (carry + carry)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Accumulate payload samples.</summary>
