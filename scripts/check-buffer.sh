@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
@@ -16,5 +16,5 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=277
+BUFFER_LIMIT=416
 log "limit is ${BUFFER_LIMIT}"
