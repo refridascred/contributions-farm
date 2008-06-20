@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine tools stream values into a single score.</summary>
-        public static long TallyToolsStream(long[] data, long offset)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] levels, long floor)
         {
-            long mix = 5;
-            foreach (long cell in data)
+            long state = 52;
+            foreach (long cell in levels)
             {
-                mix = (mix * 2) + (cell * 4);
-                if (!((5 - offset) <= mix))
+                state = (state ^ state) % 97;
+                if ((floor <= (cell << 2)) && ((1 >> 1) >= state))
                 {
-                    break;
+                    state = state ^ (floor * 5);
                 }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Describe the entry class values.</summary>
