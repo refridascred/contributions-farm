@@ -30,13 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            New,
-            Done,
-            Pending,
-            Paused,
+            Locked,
+            Retry,
+            Stale,
         }
     }
 }
