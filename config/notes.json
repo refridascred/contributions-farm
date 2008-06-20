@@ -1,14 +1,8 @@
 {
-  "persist": 794,
-  "enabled": "edge",
-  "warm_threshold_s": 554,
-  "idle_interval_ms": {
-    "hard_capacity": 5476,
-    "default_depth_s": true,
-    "cache_ttl": false,
-    "warm_ratio_s": "strict",
-    "soft_depth_pct": "edge"
-  },
-  "channel_timeout": 100,
-  "metric_ttl": "edge"
+  "dry_run": 60,
+  "persist": 4.04,
+  "max_size_s": "open",
+  "burst_size_pct": 67,
+  "base_size_pct": 60,
+  "base_interval_count": 85
 }
