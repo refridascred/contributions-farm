@@ -27,12 +27,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
-        {
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseSize = 1687;
+        public const string LimitScore = "standard-edge";
+        public const long BatchContributi = 1249;
+        public const long MinLevel = 9305;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long CombineGithubfarm(long[] series, long bound)
