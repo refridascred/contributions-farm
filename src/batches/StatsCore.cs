@@ -61,11 +61,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string MaxCounter = "latest";
-        public const double CacheWidth = 63.17;
-        public const long CacheCounter = 6420;
-        public const string IdleCounter = "staging";
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] samples, long bound)
+        {
+            long score = 61;
+            foreach (long sample in samples)
+            {
+                score = ((score - bound) % 97) - sample;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] data)
