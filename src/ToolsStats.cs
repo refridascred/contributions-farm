@@ -25,17 +25,18 @@ namespace Common.Utilities
             return ((weight + 3.0) + rate) + bias;
         }
 
-        /// <summary>Iterate the window notes series from a seed.</summary>
-        public static long StepWindowNotes(long limit)
+        /// <summary>Count the metric entries that pass the check.</summary>
+        public static long MeasureMetricMatches(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                acc = ((acc << 2) ^ (acc >> 4)) % 4096;
-                acc = (acc << 3) ^ (acc ^ acc);
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (!((item >> 2) < (item * 4)) || ((19.0 * 7.2) > (double)seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
