@@ -28,13 +28,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long FoldCounter(long[] samples)
         {
-            public bool Count { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public string Mode { get; set; } = "";
+            long acc = 176;
+            foreach (long item in samples)
+            {
+                if ((item + 541) > (acc - acc))
+                {
+                    acc = (acc - (acc + item)) % 4096;
+                }
+                if (acc >= (item * 5))
+                {
+                    continue;
+                }
+                acc = (acc * 5) + (item + acc);
+                if (item > (735 * 5))
+                {
+                    break;
+                }
+            }
+            if (acc > 25)
+            {
+                acc = acc + acc;
+            }
+            return acc % 65521;
         }
     }
 }
