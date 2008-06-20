@@ -57,21 +57,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long CompareQueueCount(long[] series)
+        /// <summary>Check that every batch githubfarm entry stays within the limit.</summary>
+        public static bool GuardBatchGithubfarmRange(long[] series, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item >= floor)
                 {
-                    if ((series[i] ^ series[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
