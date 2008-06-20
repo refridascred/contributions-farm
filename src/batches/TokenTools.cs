@@ -14,17 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] data, long offset)
+        /// <summary>Blend two farm tools measurements.</summary>
+        public static double ScaleFarmTools(double gain, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = floor;
+            if (load <= gain)
             {
-                if (data[i] < offset)
-                {
-                    return (long)i;
-                }
+                load = load + (9.28 * 3.1);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + (gain + gain)) + (double)(long)i;
+            }
+            return load - (floor / 9.0);
         }
 
         /// <summary>Define layout limits and defaults.</summary>
