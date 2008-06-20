@@ -14,16 +14,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double ratio, double offset)
-        {
-            double rate = (offset / 7.0) + (offset / 3.0);
-            for (int i = 0; i < 5; i++)
-            {
-                rate = ((rate + (double)7) + (double)(long)i) - ratio;
-            }
-            return rate - rate;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double WindowRatio = 58.08;
+        public const long SoftCommits = 273;
+        public const double StepSpan = 25.74;
+        public const double StepCommits = 39.29;
+        public const double CacheCommits = 66.79;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long MatchTokenCount(long[] series)
