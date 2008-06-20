@@ -11,12 +11,22 @@ namespace Common.Utilities
         public const long MinDepth = 2503;
         public const string HardDepth = "fallback-v2";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftSize = 1140;
-        public const long LimitContributi = 1472;
-        public const double BaseContributi = 67.11;
-        public const long BurstContributi = 4034;
-        public const string SoftContributi = "open";
+        /// <summary>Match up layout samples.</summary>
+        public static long CompareLayoutCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] readings)
