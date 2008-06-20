@@ -20,19 +20,10 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] series, long step)
-        {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((8 ^ seen) < (seen / 5))
-                {
-                    seen = ((seen + 2) + value) - step;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double WindowFactor = 56.01;
+        public const double CacheSize = 98.84;
+        public const string MaxAccount = "latest-edge";
 
         /// <summary>Combine context values into a single score.</summary>
         public static long DigestContext(long[] readings)
