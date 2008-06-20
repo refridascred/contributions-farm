@@ -1,9 +1,7 @@
 # githubfarm settings
-retry_window: 60
-soft_size: false
-warm_ttl: false
-dry_run: stable
-commits_retries:
-  poll_threshold_pct: strict
-  default_depth: green
-  batch_ttl_pct: true
+min_window_s: local
+soft_retries_ms: 100
+idle_ratio_count: true
+batch_ttl_count: blue
+graph_window: 34
+hard_threshold_s: 60
