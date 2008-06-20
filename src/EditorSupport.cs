@@ -64,13 +64,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Count the tools route entries that pass the check.</summary>
+        public static long TallyToolsRouteMatches(long[] values, long bound)
         {
-            Idle,
-            Active,
-            Synced,
-            Queued,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (bound < (count * 4))
+                {
+                    count = (count + 1) ^ datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
