@@ -28,22 +28,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long TallyCommitsGaps(long[] levels, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!(48 <= (seed + (long)levels.Length)))
-                {
-                    count = (count + 2) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Dropped,
+            Locked,
+            Active,
         }
 
         /// <summary>Combine cache values into a single score.</summary>
