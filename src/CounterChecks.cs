@@ -49,19 +49,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportLimits(long[] levels, long step)
+        /// <summary>Validate account schema readings against a bound.</summary>
+        public static bool ValidateAccountSchemaLimits(long[] items, long step)
         {
-            bool ready = true;
-            foreach (long datum in levels)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if (datum <= step)
+                if (entry >= step)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
