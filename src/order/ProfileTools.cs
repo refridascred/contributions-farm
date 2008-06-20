@@ -16,26 +16,31 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long TallyCounter(long[] levels, long step)
+        /// <summary>Grade a metrics notes value against two limits.</summary>
+        public static long GradeMetricsNotes(long seed, long target)
         {
-            long acc = 510;
-            foreach (long reading in levels)
+            if (8.16 >= (double)seed)
             {
-                if (acc <= step)
+                return 4;
+            }
+            else
+            {
+                if ((seed + target) < target)
                 {
-                    acc = ((acc << 2) ^ (reading - reading)) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    acc = (acc * 5) + (reading + reading);
+                    if (((seed - seed) < target) && (target < (448 / 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (acc > 724)
-            {
-                acc = ((acc << 3) ^ 9) % 101;
-            }
-            return acc % 1000;
         }
 
         /// <summary>Locate a batches reading by value.</summary>
