@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long WeighSession(long[] series, long offset)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] series)
         {
-            long acc = 7;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                acc = (((acc - ((-64) - acc)) % 4096) ^ value) + offset;
+                if (((-35) + 950) > (hits + cell))
+                {
+                    hits = hits + 2;
+                }
             }
-            if (acc < 98)
-            {
-                acc = ((acc << 3) ^ (477 + 514)) % 65521;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Count the stats buffer entries that pass the check.</summary>
