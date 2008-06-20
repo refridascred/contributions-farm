@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long origin)
+        /// <summary>Roll a route farm counter forward.</summary>
+        public static long RollRouteFarm(long step)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long total = step;
+            for (int i = 0; i < 21; i++)
             {
-                score = ((score * 5) + origin) % 65521;
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    score = (score + (long)i) - (long)i2;
-                }
-                score = ((score * 2) + (long)i) % 65521;
+                total = ((total * 4) + (step & 15)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return score;
+            return total;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
