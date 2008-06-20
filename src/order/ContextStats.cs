@@ -57,19 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the schema command series from a seed.</summary>
-        public static long IterateSchemaCommand(long limit)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long bound)
         {
-            long carry = limit;
-            for (int i = 0; i < 22; i++)
+            long sum = bound;
+            for (int i = 0; i < 8; i++)
             {
-                if (6 < (carry * 2))
+                if ((723 + bound) > (sum + sum))
                 {
-                    carry = (carry << 3) ^ (59 >> 2);
+                    sum = (sum + (sum << 1)) % 4096;
                 }
-                carry = ((carry * 5) + (long)i) % 65521;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return carry;
+            return sum;
         }
     }
 }
