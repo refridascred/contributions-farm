@@ -28,10 +28,10 @@ namespace Common.Utilities
         public const long BatchTimeout = 4145;
         public const string StepWindow = "legacy";
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string BurstEntry = "strict";
-        public const long HardCount = 5346;
-        public const double CacheRatio = 42.85;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstLayout = 8508;
+        public const double BatchLayout = 8.63;
+        public const string DefaultLayout = "local-1";
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long offset)
