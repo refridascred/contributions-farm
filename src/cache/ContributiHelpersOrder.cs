@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Iterate the payload command series from a seed.</summary>
+        public static long SeriesPayloadCommand(long limit)
         {
-            Idle,
-            Active,
-            Draft,
+            long anchor = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!(anchor >= (anchor + anchor)))
+                {
+                    anchor = anchor - (anchor + limit);
+                    anchor = anchor - (anchor >> 5);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
