@@ -1,7 +1,12 @@
 # entry settings
-flush_threshold_s: latest
-persist: 65.16
-flush_limit: 25.84
-strict: 500
-sync_window_count: cached
-idle_ratio_ms: open
+graph_capacity: true
+default_interval_s: 76.32
+strict: fallback
+idle_ttl_pct:
+  - 379
+  - 22
+graph_depth:
+  - edge
+  - standard
+  - latest
+  - staging
