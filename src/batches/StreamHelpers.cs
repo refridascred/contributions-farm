@@ -30,10 +30,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long MinLevel = 3287;
-        public const long HardWidth = 7226;
-        public const long DefaultSpan = 3554;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] values, long origin)
+        {
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LocateChecksIndex(long[] samples, long seed)
