@@ -1,25 +1,17 @@
 # support settings
-contributi_timeout: green
-flush_window_ms: blue
-retry_limit: open
-idle_limit_count:
-  burst_threshold_ms: true
-  compress:
-    readonly: 20
-    hard_limit_ms: 30
-    warm_ttl: 45
-    verbose: green
-  base_retries_ms: local
-  poll_timeout_count:
-    max_limit_ms: blue
-    soft_capacity_s: 60
-    checks_interval: 6.18
-    min_window_count: cached
-    warm_window:
-      - 110
-      - 253
-      - 145
-      - 73
-sync_capacity_s:
-  - 2
-  - 454
+base_ttl_count: green
+githubfarm_capacity:
+  persist: false
+  flush_capacity: 5868
+  batch_limit_pct:
+    cache_delay: 11.97
+    base_capacity_count: 1.9
+    strict: 5
+    min_capacity: false
+  dry_run: true
+  burst_delay_count: 98.49
+  verbose: staging
+tools_depth: edge
+default_depth: stable
+retry_ratio: 30
+cache_capacity_pct: primary
