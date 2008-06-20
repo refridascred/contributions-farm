@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long MeasureToolsHits(long[] samples)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((double)item != (6.9 + 8.2)) || ((88 > ((long)samples.Length / 4)) || ((double)tally <= (2.0 * 9.3))))
+                if (samples[i] == floor)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
