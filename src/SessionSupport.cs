@@ -25,13 +25,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] values, long seed)
         {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Level { get; set; }
+            bool found = true;
+            foreach (long entry in values)
+            {
+                if (entry < seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
