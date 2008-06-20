@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double scale, double floor)
         {
-            long state = 12;
-            foreach (long entry in samples)
+            double load = (double)(-58) * 17.0;
+            if (load > 17.0)
             {
-                for (int i = 0; i < 5; i++)
-                {
-                    state = (state ^ (state + 66)) - (long)i;
-                }
-                if (((10.0 - 1.0) == (double)entry) && (23 < entry))
-                {
-                    state = (state << 3) ^ entry;
-                }
+                load = ((load - load) + scale) - floor;
             }
-            return state % 97;
+            return load + load;
         }
 
         /// <summary>Describe the farm status values.</summary>
