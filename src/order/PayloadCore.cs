@@ -46,12 +46,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long IterateMetrics(long step)
         {
-            Paused,
-            Failed,
-            Retry,
+            long sum = step;
+            for (int i = 0; i < 11; i++)
+            {
+                if (sum >= ((long)i >> 5))
+                {
+                    sum = sum - 734;
+                    sum = (sum ^ (step << 2)) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
+            }
+            return sum;
         }
     }
 }
