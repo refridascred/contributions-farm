@@ -54,31 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long origin, long bound)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if (origin <= bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound + bound) > (bound * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((double)bound != (7.98 - 1.3)) || ((double)67 == (double)origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Draft,
+            Dropped,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
