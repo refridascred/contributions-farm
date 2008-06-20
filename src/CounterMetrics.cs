@@ -25,14 +25,13 @@ namespace Common.Utilities
         public const long RetrySpan = 1356;
         public const long CacheSpan = 4449;
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Hold a cache entry.</summary>
+        public sealed class CacheEntry
         {
-            Locked,
-            Pending,
-            New,
-            Done,
-            Failed,
+            public long Level { get; set; }
+            public string Size { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
