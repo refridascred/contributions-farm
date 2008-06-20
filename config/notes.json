@@ -1,5 +1,9 @@
 {
-  "audit": true,
-  "retry_size_count": "blue",
-  "entry_limit": 60
+  "warm_delay_count": 21,
+  "contributi_capacity": {
+    "default_limit_s": "staging",
+    "order_timeout": 49.67,
+    "persist": ["staging", "staging", "edge"]
+  },
+  "farm_window": "staging"
 }
