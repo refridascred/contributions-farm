@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string LimitContributi = "open-edge";
         public const double HardSpan = 24.35;
 
-        /// <summary>Digest a series of order payload entries.</summary>
-        public static long TallyOrderPayload(long[] levels, long offset)
+        /// <summary>Measure how many stats filter samples are out of range.</summary>
+        public static long AuditStatsFilterHits(long[] levels, long origin)
         {
-            long carry = 55;
-            foreach (long reading in levels)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                carry = (((carry + carry) % 4096) - reading) - offset;
+                if ((entry - origin) <= origin)
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
