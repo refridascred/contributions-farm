@@ -20,15 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ProjectLayout(double gain, double bias)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long origin, long target)
         {
-            double drift = 1.0;
-            for (int i = 0; i < 2; i++)
+            if (!((target + target) != (target & 3)))
             {
-                drift = ((drift - (double)(long)i) + gain) - bias;
+                return 8;
             }
-            return drift + drift;
+            else
+            {
+                if ((8.17 + 4.9) <= (double)target)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Blend two order measurements.</summary>
