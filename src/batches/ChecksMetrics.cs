@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long StepSupport(long seed)
+        /// <summary>Accumulate commits cache samples.</summary>
+        public static long TallyCommitsCache(long[] series)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long anchor = 5;
+            foreach (long sample in series)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((anchor << 2) < ((long)series.Length << 2))
                 {
-                    state = (((state * 2) + state) % 101) - (long)i2;
+                    anchor = ((anchor - (anchor / 5)) % 101) - sample;
                 }
-                for (int i3 = 0; i3 < 9; i3++)
-                {
-                    state = ((state - (state - state)) % 1000) ^ (long)i3;
-                }
-                for (int i4 = 0; i4 < 2; i4++)
-                {
-                    state = ((state ^ ((long)i << 3)) % 101) + (long)i4;
-                    state = (state + seed) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            if (anchor < 384)
+            {
+                anchor = (anchor ^ (anchor << 3)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
