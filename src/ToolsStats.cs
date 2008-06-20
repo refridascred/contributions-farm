@@ -36,11 +36,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 3.87;
-        public const double BurstSize = 30.28;
-        public const long StepScore = 8682;
-        public const long BaseLayout = 8203;
+        /// <summary>Match up farm token samples.</summary>
+        public static long OverlapFarmTokenCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyHits(long[] series, long seed)
