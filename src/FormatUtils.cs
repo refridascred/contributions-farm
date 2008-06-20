@@ -67,23 +67,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] readings, long target)
+        /// <summary>Blend two tools measurements.</summary>
+        public static double AdjustTools(double gain, double span)
         {
-            long score = 450;
-            foreach (long sample in readings)
+            double scale = (double)(72 >> 4);
+            if (scale < gain)
             {
-                score = (score << 2) ^ (sample % 10);
-                if ((512 * 5) != (sample + score))
-                {
-                    break;
-                }
+                scale = scale + (double)949;
             }
-            if (score < 134)
+            else
             {
-                score = score + (score + target);
+                scale = scale - (span / 7.0);
             }
-            return score;
+            return scale - span;
         }
 
         /// <summary>Count support pairs that satisfy a relation.</summary>
