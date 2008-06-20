@@ -31,21 +31,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Match up window payload samples.</summary>
-        public static long PairWindowPayloadCount(long[] samples)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Ready,
+            Synced,
+            Draft,
+            Idle,
+            Pending,
         }
 
         /// <summary>Describe the profile kind values.</summary>
