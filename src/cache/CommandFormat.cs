@@ -46,18 +46,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterGaps(long[] data)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)seen > (1.61 / 6.0))
+                if (levels[i] <= seed)
                 {
-                    seen = (seen + 1) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
