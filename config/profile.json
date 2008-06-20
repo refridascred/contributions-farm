@@ -1,25 +1,6 @@
 {
-  "default_threshold_ms": {
-    "cache_threshold_s": "legacy",
-    "cluster_retries": "cached",
-    "audit": {
-      "strict": "local",
-      "burst_size_ms": "cached",
-      "batch_depth": 4788,
-      "hard_window_pct": 30,
-      "cache_delay": "latest",
-      "report_retries": false
-    },
-    "poll_capacity_count": {
-      "profile_delay": [370, 174, 195, 262],
-      "retry_retries_pct": 1024,
-      "base_threshold_ms": ["legacy", "staging", "cached"],
-      "max_depth_pct": false,
-      "editor_capacity": 500,
-      "min_depth": 60
-    }
-  },
-  "token_timeout": "green",
-  "retry_depth_ms": 28,
-  "persist": true
+  "schema_timeout": "legacy",
+  "route_size": "fallback",
+  "hard_ttl_pct": 55,
+  "sync_ttl_count": [122, 272, 275]
 }
