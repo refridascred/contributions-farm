@@ -55,13 +55,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double ProjectAlready(double scale, double span)
         {
-            public bool Limit { get; set; }
-            public long Flag { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            double load = (double)(702 - (-590));
+            if (load > scale)
+            {
+                load = load - (load / 3.0);
+            }
+            else
+            {
+                load = load - 8.0;
+            }
+            return load - (span - load);
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
