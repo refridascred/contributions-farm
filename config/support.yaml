@@ -1,37 +1,4 @@
 # support settings
-sync_retries_pct:
-  sync_threshold_s: 1024
-  warm_timeout_count: primary
-  cache_window: legacy
-  hard_ttl_count:
-    retry_retries:
-      - 249
-      - 238
-      - 339
-    token_ttl: 86
-    cache_capacity: local
-  payload_delay: 26
-report_interval:
-  burst_limit_count: latest
-  poll_threshold_ms: 8703
-  cache_depth: true
-enabled: 60
-batch_size_pct:
-  default_ratio_pct: legacy
-  format_retries: 949
-  warm_capacity_pct:
-    contributi_window:
-      - 59
-      - 459
-    buffer_capacity: 38.25
-    flush_retries:
-      - strict
-      - legacy
-    readonly: 55.89
-    max_capacity_pct: 35.16
-    batch_timeout: false
-  dry_run: eu-west
-base_interval_pct:
-  - 39
-  - 356
-payload_delay: 63.81
+burst_ttl: false
+min_delay_pct: false
+batch_ratio: primary
