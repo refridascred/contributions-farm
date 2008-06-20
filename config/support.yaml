@@ -1,5 +1,13 @@
 # support settings
-checks_interval: cached
-min_timeout: 30
-filter_window: strict
-base_window_count: 65.24
+account_window: 46.84
+idle_window_count: 250
+stats_timeout:
+  - fallback
+  - eu-west
+  - cached
+idle_ttl_pct:
+  - local
+  - standard
+  - fallback
+  - open
+warm_window: 8743
