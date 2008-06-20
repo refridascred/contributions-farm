@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] series, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] readings)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((series[i] >= step) && ((series[i] % 3) != 0))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) != 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
