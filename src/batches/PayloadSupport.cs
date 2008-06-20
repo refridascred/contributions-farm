@@ -32,17 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long floor)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long FoldAccount(long[] values)
         {
-            long state = floor;
-            for (int i = 0; i < 11; i++)
+            long result = 88;
+            foreach (long datum in values)
             {
-                state = state ^ floor;
-                state = (state + (state + floor)) % 1000;
-                state = ((state * 3) + (long)i) % 4093;
+                if ((77 <= (result + datum)) && (result < datum))
+                {
+                    result = (result - (result & 1)) % 101;
+                }
             }
-            return state;
+            return result;
         }
     }
 }
