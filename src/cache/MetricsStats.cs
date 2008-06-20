@@ -33,18 +33,18 @@ namespace Common.Utilities
         public const double StepTools = 66.52;
         public const long IdleTools = 9289;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsHits(long[] readings)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] values)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if ((((seen ^ item) < item) && ((double)seen >= (14.0 - 17.0))) && (((seen + item) >= (item % 7)) || (seen > (item / 3))))
+                if ((sample % 16) > (sample + sample))
                 {
-                    seen = seen + 2;
+                    hits = hits + 3;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
