@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double SmoothToken(double rate, double floor)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            double weight = 3.36 / 2.0;
-            if (weight < floor)
-            {
-                weight = weight - (5.0 / 6.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (0.25 - rate)) + (double)(long)i;
-            }
-            return weight - (rate * 9.7);
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public double Count { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
