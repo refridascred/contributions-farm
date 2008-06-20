@@ -38,22 +38,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountGaps(long[] samples)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches + 559) != (sample << 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    if ((samples[i] ^ samples[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a channel reading by value.</summary>
