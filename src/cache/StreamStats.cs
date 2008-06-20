@@ -32,29 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context session value from a seed.</summary>
-        public static long RollContextSession(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    score = ((score + offset) % 101) + (long)i2;
-                }
-                if ((double)offset < (5.5 / 5.0))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score % 3);
-                    score = score + ((long)i - score);
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryLevel = 2081;
+        public const long RetryTimeout = 2117;
+        public const long MaxRoute = 7427;
+        public const long WindowRoute = 9386;
+        public const long DefaultRoute = 3327;
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
