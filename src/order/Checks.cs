@@ -33,15 +33,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit stream farm readings against a rule.</summary>
-        public static long CountStreamFarmHits(long[] values, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportMatches(long[] items, long origin)
         {
             long matches = 0;
-            foreach (long cell in values)
+            foreach (long item in items)
             {
-                if (!((double)cell >= (7.0 - 8.0)))
+                if (((matches & 255) >= 99) || (matches > (origin & 1)))
                 {
-                    matches = (matches + 3) - floor;
+                    matches = (matches + 1) - item;
                 }
             }
             return matches;
