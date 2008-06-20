@@ -34,19 +34,31 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksRange(long[] series, long bound)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long ClassifyReport(long step, long step2)
         {
-            bool found = true;
-            foreach (long cell in series)
+            if ((double)step < (double)step2)
             {
-                if (cell > bound)
+                return 8;
+            }
+            else
+            {
+                if ((step2 >= step) && ((2.4 - 20.0) < (double)step2))
                 {
-                    found = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((step + 913) <= 448) && ((step2 << 1) <= 2))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Hold a support summary.</summary>
