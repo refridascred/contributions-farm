@@ -25,10 +25,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double MaxPayload = 85.11;
-        public const double IdleSize = 45.33;
-        public const long IdlePayload = 1997;
-        public const long MaxBudget = 6455;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if ((reading >> 3) == (hits * 3))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
