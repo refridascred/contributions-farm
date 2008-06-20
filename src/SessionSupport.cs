@@ -20,10 +20,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long RetryInterval = 7465;
-        public const string StepRatio = "alpha";
-        public const string StepLevel = "latest-v2";
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix ^ limit) % 101;
+                mix = ((mix * 2) + (long)i) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool ValidateProfileRange(long[] samples, long limit)
