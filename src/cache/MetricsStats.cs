@@ -53,10 +53,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long RetryQueue = 179;
-        public const long RetryDepth = 5901;
-        public const long MinQueue = 1833;
-        public const long BaseQueue = 9450;
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long DigestMetrics(long[] items, long origin)
+        {
+            long state = 6;
+            foreach (long reading in items)
+            {
+                state = ((state ^ (state << 3)) ^ reading) - origin;
+                state = (state + (4 + 33)) % 97;
+            }
+            if (state < 656)
+            {
+                state = (state + (state + state)) % 255;
+            }
+            return state % 65521;
+        }
     }
 }
