@@ -33,15 +33,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
-        {
-            Ready,
-            Locked,
-            Queued,
-            Paused,
-            Closed,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string BatchContributi = "legacy-edge";
+        public const double RetryContributi = 98.74;
+        public const double WindowFactor = 6.89;
 
         /// <summary>Describe the record mode values.</summary>
         public enum RecordMode
