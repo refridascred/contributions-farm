@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of already stream readings.</summary>
-        public static long CombineAlreadyStream(long[] levels)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] samples, long target)
         {
-            long anchor = 2;
-            foreach (long reading in levels)
+            long score = 352;
+            foreach (long cell in samples)
             {
-                anchor = ((anchor << 3) ^ (reading + reading)) % 255;
+                score = ((score * 2) + (target % 10)) % 4096;
+                if ((long)samples.Length <= (target - score))
+                {
+                    score = (score + target) % 4096;
+                }
+                else
+                {
+                    score = ((score * 2) + (score >> 5)) % 101;
+                }
+                if ((0.6 * 1.0) != (double)cell)
+                {
+                    break;
+                }
             }
-            return anchor % 1000;
+            return score;
         }
 
         /// <summary>Hold a order info.</summary>
