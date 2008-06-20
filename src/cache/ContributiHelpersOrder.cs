@@ -13,16 +13,22 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long AuditOrderHits(long[] values)
         {
-            long anchor = 305;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long reading in values)
             {
-                anchor = (anchor << 2) ^ anchor;
-                anchor = (anchor - (reading - 576)) % 65521;
+                if (!((3.98 / 2.0) <= (double)count))
+                {
+                    count = (count + 1) + reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Describe the editor kind values.</summary>
