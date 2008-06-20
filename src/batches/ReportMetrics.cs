@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long origin, long limit)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            if (151 > (1 ^ origin))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((9.67 / 5.0) > (double)limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((origin / 2) == (origin + (-4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Dropped,
+            Failed,
+            Ready,
         }
 
         /// <summary>Combine channel values into a single score.</summary>
