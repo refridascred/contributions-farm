@@ -20,12 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Failed,
-            Ready,
             Locked,
+            Done,
+            Ready,
+            Dropped,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
