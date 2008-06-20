@@ -46,17 +46,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LocateQueueIndex(long[] data, long target)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < target) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string WindowCount = "legacy-v2";
+        public const long BaseFilter = 7276;
+        public const long HardTimeout = 1975;
+        public const double MaxLevel = 25.47;
+        public const long BatchCount = 5930;
     }
 }
