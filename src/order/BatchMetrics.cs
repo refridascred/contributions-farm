@@ -58,18 +58,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] levels)
+        /// <summary>Measure how many record filter samples are out of range.</summary>
+        public static long MeasureRecordFilterOutliers(long[] samples)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if ((cell << 2) > cell)
+                if (((tally + datum) >= (892 / 7)) && !(tally > (datum + tally)))
                 {
-                    matches = matches + 2;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Look up the position of a channel farm sample.</summary>
