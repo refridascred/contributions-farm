@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit batches window readings against a rule.</summary>
-        public static long TallyBatchesWindowMatches(long[] data, long target)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long state = 5;
+            foreach (long item in samples)
             {
-                if (target < (count - count))
-                {
-                    count = (count + 2) - entry;
-                }
+                state = state ^ (item + item);
             }
-            return count;
+            return state;
         }
 
         /// <summary>Derive the next payload value from a seed.</summary>
