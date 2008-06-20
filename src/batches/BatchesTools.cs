@@ -13,12 +13,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long TallyChecksSupport(long[] readings)
         {
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public long Offset { get; set; }
+            long carry = 7;
+            foreach (long item in readings)
+            {
+                if ((item & 31) == (carry - item))
+                {
+                    carry = (carry + item) % 255;
+                }
+            }
+            return carry % 4096;
         }
 
         /// <summary>Audit metric cluster readings against a rule.</summary>
