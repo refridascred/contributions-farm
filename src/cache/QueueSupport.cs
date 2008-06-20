@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Pending,
+            Active,
+            Retry,
+            Failed,
+            Locked,
             Queued,
-            Ready,
         }
 
         /// <summary>Hold a session header.</summary>
