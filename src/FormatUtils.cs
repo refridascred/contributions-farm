@@ -33,18 +33,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the already window entries that pass the check.</summary>
-        public static long AuditAlreadyWindowOutliers(long[] values, long limit)
+        /// <summary>Rank profile metric input into a small class.</summary>
+        public static long ClassifyProfileMetric(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            if (((floor + bound) >= floor) || ((double)bound <= (8.17 - 0.7)))
             {
-                if (entry < (entry % 16))
+                return 7;
+            }
+            else
+            {
+                if ((bound % 16) >= (floor + bound))
                 {
-                    seen = (seen + 1) - limit;
+                    return 2;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
