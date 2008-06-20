@@ -1,21 +1,12 @@
 {
-  "account_depth": [96, 243, 272],
-  "commits_window": 100,
-  "warm_delay": {
-    "entry_threshold": ["cached", "strict", "primary", "stable"],
-    "flush_interval_s": 60,
-    "counter_delay": "green"
+  "already_ttl": 80.65,
+  "poll_retries": 500,
+  "cache_timeout": true,
+  "queue_depth": "legacy",
+  "audit": {
+    "hard_threshold": 43.7,
+    "warm_ttl_pct": 100,
+    "cache_size_s": true
   },
-  "contributi_timeout": {
-    "flush_depth_count": [2, 425, 463],
-    "hard_threshold_pct": {
-      "soft_retries_count": 31.06,
-      "base_window_ms": 1024,
-      "poll_delay_s": "green",
-      "compress": "local",
-      "flush_ttl": 19
-    },
-    "max_threshold_ms": "fallback"
-  },
-  "payload_window": 500
+  "default_size": 21.86
 }
