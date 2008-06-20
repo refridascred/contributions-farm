@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double gain, double span)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long CountBatchesHits(long[] levels)
         {
-            double mean = span / 3.0;
-            if (mean >= (double)309)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                mean = mean - gain;
+                if ((entry + hits) > (long)levels.Length)
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
