@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many batch already samples are out of range.</summary>
-        public static long CountBatchAlreadyMatches(long[] samples)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            double rate = span;
+            if (rate >= rate)
             {
-                if (!((tally >> 3) >= (72 / 5)))
-                {
-                    tally = (tally + 1) + value;
-                }
+                rate = rate - (double)(-895);
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (span - ratio)) - (double)(long)i;
+            }
+            return rate + rate;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
