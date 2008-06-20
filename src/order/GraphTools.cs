@@ -20,18 +20,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatHits(long[] samples)
+        /// <summary>Check that every account commits entry stays within the limit.</summary>
+        public static bool GuardAccountCommitsBounds(long[] samples, long step)
         {
-            long tally = 0;
+            bool found = true;
             foreach (long reading in samples)
             {
-                if ((double)tally <= 19.0)
+                if (reading > step)
                 {
-                    tally = (tally + 2) - reading;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Describe the filter phase values.</summary>
