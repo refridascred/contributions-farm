@@ -51,21 +51,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] items, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = -51;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (!((double)offset <= (double)value))
                 {
-                    if ((items[i] ^ items[j]) != 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    score = (score - (value / 4)) % 1000;
                 }
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Describe the tools kind values.</summary>
