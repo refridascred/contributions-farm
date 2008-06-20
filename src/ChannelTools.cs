@@ -19,14 +19,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema record.</summary>
-        public sealed class SchemaRecord
-        {
-            public long Stamp { get; set; }
-            public double Limit { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MinChannel = 1995;
+        public const double LimitChannel = 65.16;
+        public const string BaseChannel = "stable-edge";
 
         /// <summary>Audit token order readings against a rule.</summary>
         public static long CountTokenOrderOutliers(long[] items)
