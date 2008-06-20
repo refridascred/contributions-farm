@@ -46,15 +46,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] levels, long bound)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            long total = 94;
-            foreach (long sample in levels)
-            {
-                total = (total + (bound % 3)) + sample;
-            }
-            return total;
+            public bool Level { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
         }
     }
 }
