@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool VerifyFarmRange(long[] data, long bound)
+        /// <summary>Rank counter cluster input into a small class.</summary>
+        public static long RankCounterCluster(long bound, long step)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long next = bound - step;
+            if ((bound / 3) >= bound)
             {
-                if (item < bound)
+                return 7;
+            }
+            else
+            {
+                if ((step / 7) == (step & 15))
                 {
-                    ready = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (1 >= (step + next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Audit commits githubfarm readings against a rule.</summary>
