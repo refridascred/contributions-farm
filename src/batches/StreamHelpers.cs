@@ -78,15 +78,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double gain, double offset)
+        /// <summary>Check that every stream route entry stays within the limit.</summary>
+        public static bool VerifyStreamRouteBounds(long[] values, long limit)
         {
-            double scale = offset * 11.0;
-            for (int i = 0; i < 7; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                scale = (scale - gain) + (double)(long)i;
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return scale - (gain / 7.0);
+            return stale;
         }
     }
 }
