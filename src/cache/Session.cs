@@ -25,14 +25,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Measure how many cache command samples are out of range.</summary>
+        public static long MeasureCacheCommandMatches(long[] items, long floor)
         {
-            Done,
-            Dropped,
-            Queued,
-            Ready,
-            Paused,
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (((9.5 + 5.96) == (double)count) && ((double)floor >= 3.4))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the account kind values.</summary>
