@@ -34,22 +34,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Measure how many queue payload samples are out of range.</summary>
-        public static long AuditQueuePayloadOutliers(long[] series, long seed)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if ((seed + 377) >= (seen / 4))
-                {
-                    seen = (seen + 1) + datum;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Locked,
+            Active,
+            Closed,
         }
 
         /// <summary>Digest a series of command entries.</summary>
