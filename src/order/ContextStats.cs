@@ -51,12 +51,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Match up cluster samples.</summary>
+        public static long CompareClusterCount(long[] items)
         {
-            Done,
-            Idle,
-            Failed,
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 9)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
