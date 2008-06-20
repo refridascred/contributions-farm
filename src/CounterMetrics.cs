@@ -49,18 +49,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyHits(long[] items)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((double)count <= (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
