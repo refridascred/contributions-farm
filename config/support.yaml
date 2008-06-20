@@ -1,10 +1,13 @@
 # support settings
-default_window_ms: 8381
-hard_ratio_s: false
-retry_threshold: 75.04
-retry_limit_s: 35
-soft_size_ms: 8344
-contributi_size:
-  layout_timeout: cached
-  soft_size_count: standard
-  context_threshold: 58.08
+retry_ttl_count: 30.95
+persist: 4197
+session_limit:
+  batch_ratio_pct: 4011
+  tools_limit: legacy
+  idle_delay: false
+  githubfarm_window:
+    schema_timeout: true
+    account_depth: 500
+    stats_timeout: false
+soft_interval: 100
+warm_delay_pct: 69.83
