@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowLimits(long[] items, long target)
+        /// <summary>Derive the next support command value from a seed.</summary>
+        public static long IterateSupportCommand(long target)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long carry = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (value > target)
+                if (!((carry - (-1)) >= carry))
                 {
-                    valid = false;
-                    break;
+                    carry = carry ^ (target * 4);
+                    carry = (carry - (target & 15)) % 1000;
                 }
+                carry = (carry ^ (carry % 8)) % 1000;
+                carry = ((carry * 2) + (long)i) % 4093;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Describe the command phase values.</summary>
