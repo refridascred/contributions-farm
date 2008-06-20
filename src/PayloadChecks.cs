@@ -54,25 +54,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long target, long limit)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long AuditContributiMatches(long[] items)
         {
-            long span = target - limit;
-            if ((target << 3) == (span << 1))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((39 ^ 71) > (target % 8))
+                if (((7.0 / 7.0) >= (double)cell) && (cell < (cell % 7)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
