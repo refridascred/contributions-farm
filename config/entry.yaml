@@ -1,15 +1,7 @@
 # entry settings
-flush_depth_pct: eu-west
-warm_retries: 53
-batch_interval:
-  warm_ratio_count: 10.02
-  soft_interval_count:
-    channel_ttl: 5977
-    burst_limit: 1167
-    min_limit_ms: 9.4
-    hard_delay: 94
-    hard_size:
-      - 323
-      - 116
-  sync_timeout_pct: primary
-  sync_size_count: 78.0
+persist: 1024
+dry_run: 14
+enabled:
+  default_ratio_pct: 27
+  session_ratio: edge
+  readonly: 2331
