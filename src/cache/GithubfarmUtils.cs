@@ -33,12 +33,19 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double BatchTimeout = 3.89;
-        public const double WindowCommits = 97.63;
-        public const double CacheCommits = 39.34;
-        public const double RetryCommits = 45.47;
-        public const string BurstCommits = "staging-1";
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] items)
+        {
+            long mix = 45;
+            foreach (long reading in items)
+            {
+                if (!((double)reading == (8.0 + 5.94)))
+                {
+                    mix = (mix + mix) % 255;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
