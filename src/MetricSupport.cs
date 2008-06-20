@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const long CacheContributi = 6460;
         public const string BatchContributi = "staging-edge";
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenHits(long[] levels)
+        /// <summary>Match up entry samples.</summary>
+        public static long PairEntryCount(long[] readings)
         {
             long tally = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((tally <= (entry * 2)) || ((tally * 5) <= entry)) && ((double)tally > (7.3 + 4.9)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((readings[i] - readings[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
