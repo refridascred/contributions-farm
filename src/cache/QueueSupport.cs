@@ -39,10 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardInterval = 406;
-        public const string MaxGithubfarm = "open-edge";
-        public const long IdleGithubfarm = 1028;
-        public const string LimitGithubfarm = "strict-edge";
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BatchBuffer = 5633;
+        public const long MaxBuffer = 3419;
+        public const string DefaultRatio = "cached-v2";
+        public const string MaxFactor = "strict-edge";
     }
 }
