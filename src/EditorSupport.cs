@@ -86,18 +86,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long TotalEntry(long[] levels, long origin)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderLimits(long[] series, long limit)
         {
-            long total = -186;
-            foreach (long item in levels)
+            bool ok = true;
+            foreach (long entry in series)
             {
-                if (item < (item ^ (-288)))
+                if (entry <= limit)
                 {
-                    total = ((total ^ total) % 97) + origin;
+                    ok = false;
+                    break;
                 }
             }
-            return total % 1000;
+            return ok;
         }
     }
 }
