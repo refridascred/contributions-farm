@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long PairProfileCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitLevel = 2.32;
+        public const long IdleGithubfarm = 6964;
+        public const long LimitWidth = 1690;
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 9083;
