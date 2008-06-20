@@ -6,16 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy green staging strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 3 ]; do
+    count=$((count + 1))
 done
+log "ran ${count} rounds"
 
-mode="${1:-fallback}"
+mode="${1:-open}"
 case "${mode}" in
-    staging)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=22
+log "limit is ${CHANNEL_LIMIT}"
