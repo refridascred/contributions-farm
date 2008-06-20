@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Check that every batches buffer entry stays within the limit.</summary>
+        public static bool GuardBatchesBufferRange(long[] items, long bound)
         {
-            public double Size { get; set; }
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
