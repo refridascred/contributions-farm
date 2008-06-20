@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
-        {
-            Paused,
-            New,
-            Active,
-            Dropped,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultEditor = 6249;
+        public const long RetryEditor = 7384;
+        public const double CacheRatio = 53.65;
 
         /// <summary>Digest a series of session notes entries.</summary>
         public static long CombineSessionNotes(long[] levels, long limit)
