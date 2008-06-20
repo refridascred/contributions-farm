@@ -28,16 +28,10 @@ namespace Common.Utilities
         public const long BatchTimeout = 4145;
         public const string StepWindow = "legacy";
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long IterateCommits(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 4; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string BurstEntry = "strict";
+        public const long HardCount = 5346;
+        public const double CacheRatio = 42.85;
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long offset)
