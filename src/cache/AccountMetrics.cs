@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryFactor = 7193;
-        public const double DefaultCount = 89.43;
-        public const long MaxWidth = 6280;
-        public const double BasePayload = 54.68;
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphLimits(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long cell in values)
+            {
+                if (cell != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the session level values.</summary>
         public enum SessionLevel
