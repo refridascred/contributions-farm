@@ -25,10 +25,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double SoftLevel = 64.11;
-        public const long RetryPayload = 8988;
-        public const string MinPayload = "primary-v2";
-        public const long MaxPayload = 4842;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxTimeout = 8880;
+        public const long MaxScore = 1518;
+        public const long SoftOrder = 9641;
     }
 }
