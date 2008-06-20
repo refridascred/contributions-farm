@@ -22,22 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer token readings against a rule.</summary>
-        public static long TallyBufferTokenGaps(long[] items)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long RollPayload(long target)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                if ((13.0 - 7.0) == (double)sample)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Rank filter support input into a small class.</summary>
