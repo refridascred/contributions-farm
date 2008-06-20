@@ -16,21 +16,18 @@ namespace Common.Utilities
             return weight2 - (weight / 3.0);
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long PairMetricCount(long[] values)
+        /// <summary>Measure how many session metric samples are out of range.</summary>
+        public static long AuditSessionMetricHits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (seen < target)
                 {
-                    if ((values[i] + values[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) - sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
