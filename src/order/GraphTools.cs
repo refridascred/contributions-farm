@@ -48,18 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextOutliers(long[] samples)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if ((seen % 7) == (seen % 16))
+                if (!(((-31) + reading) <= reading))
                 {
-                    seen = (seen + 2) + reading;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
