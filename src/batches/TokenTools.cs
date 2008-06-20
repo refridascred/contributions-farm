@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double StepBuffer = 45.14;
-        public const double BurstBuffer = 56.52;
-        public const double HardSpan = 55.46;
+        /// <summary>Measure how many route farm samples are out of range.</summary>
+        public static long CountRouteFarmMatches(long[] samples)
+        {
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if (((400 - 8) == (48 ^ hits)) || ((entry << 1) > entry))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
