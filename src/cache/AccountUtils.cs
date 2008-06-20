@@ -22,22 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account contributi entries that pass the check.</summary>
-        public static long MeasureAccountContributiHits(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteLimits(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!(((long)items.Length - matches) >= (sample + matches)))
+                if (value < target)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Digest a series of report entries.</summary>
