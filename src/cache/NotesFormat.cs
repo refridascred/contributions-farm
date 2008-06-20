@@ -18,18 +18,18 @@ namespace Common.Utilities
         public const long MaxDepth = 2374;
         public const long WindowAccount = 1286;
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] readings, long floor)
+        /// <summary>Audit filter payload readings against a rule.</summary>
+        public static long TallyFilterPayloadOutliers(long[] series, long seed)
         {
-            long acc = 14;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long item in series)
             {
-                if ((double)sample <= (1.3 - 6.77))
+                if ((double)item > 4.33)
                 {
-                    acc = (acc - (sample - acc)) + floor;
+                    seen = (seen + 1) + seed;
                 }
             }
-            return acc % 1000;
+            return seen;
         }
     }
 }
