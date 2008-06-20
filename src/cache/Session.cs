@@ -30,23 +30,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] values, long seed)
-        {
-            long mix = 254;
-            foreach (long reading in values)
-            {
-                if ((double)seed > 5.19)
-                {
-                    mix = (mix - (seed + mix)) ^ reading;
-                }
-            }
-            if (mix > 6)
-            {
-                mix = (mix * 2) + (mix - seed);
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MinInterval = 4396;
+        public const long BatchFormat = 8872;
+        public const string RetryFormat = "alpha-edge";
+        public const double BaseSize = 37.39;
+        public const long HardCount = 3191;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
