@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] values)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long score = 84;
-            foreach (long datum in values)
-            {
-                if ((datum - datum) >= score)
-                {
-                    score = score + (datum ^ score);
-                }
-            }
-            return score;
+            Idle,
+            Stale,
+            Ready,
+            Synced,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
