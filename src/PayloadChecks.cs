@@ -27,22 +27,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] levels)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long state = 26;
+            foreach (long datum in levels)
             {
-                if (!!((-1) >= (matches & 127)))
-                {
-                    matches = (matches + 2) + entry;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                state = state ^ (state - datum);
             }
-            return matches;
+            return state % 4096;
         }
 
         /// <summary>Define order limits and defaults.</summary>
