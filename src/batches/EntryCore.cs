@@ -51,21 +51,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
-        public static long MatchStatsChecksCount(long[] values)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Offset { get; set; }
+            public double Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
