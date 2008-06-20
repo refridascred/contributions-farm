@@ -59,39 +59,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long BucketWindow(long target, long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long delta = target - origin;
-            if ((target + target) >= 30)
-            {
-                return 1;
-            }
-            else
-            {
-                if (origin < (origin + target))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((38 << 1) == (target ^ delta)) && ((7 << 2) != (783 + target)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!(target <= (delta + 20)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
