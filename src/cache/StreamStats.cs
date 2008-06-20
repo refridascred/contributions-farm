@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Scale a channel order figure with a bias.</summary>
+        public static double ProjectChannelOrder(double rate, double floor)
         {
-            Synced,
-            Idle,
-            Stale,
-            Closed,
+            double weight = rate;
+            return (weight - (1.42 - rate)) + floor;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
