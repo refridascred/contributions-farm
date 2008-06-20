@@ -25,18 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile layout readings against a rule.</summary>
-        public static long MeasureProfileLayoutMatches(long[] data, long origin)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if (!((double)datum < (4.0 / 2.0)))
-                {
-                    seen = (seen + 1) + origin;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a stats counter forward.</summary>
