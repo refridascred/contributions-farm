@@ -1,11 +1,13 @@
 # Command notes
 
-The report helpers are pure functions, so they are safe to call from any thread.
-The buffer report groups every farm by route.
-Defaults for account live in the config folder and can be overridden per environment.
+The batch helpers are pure functions, so they are safe to call from any thread.
+Defaults for payload live in the config folder and can be overridden per environment.
+
+The window report groups every githubfarm by queue.
+Use cluster settings to tune how often format data is refreshed.
 
 ## Guidelines
 
-- Keep farm values small
-- Validate route input early
-- Document new editor fields
+- Review batch limits each release
+- Log every checks change
+- Keep checks values small
