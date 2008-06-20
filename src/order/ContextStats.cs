@@ -35,15 +35,11 @@ namespace Common.Utilities
         public const long HardPayload = 9899;
         public const long IdleWidth = 1874;
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long bound)
-        {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 101;
-            }
-            return acc;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultSpan = 6516;
+        public const long WindowSize = 3643;
+        public const double CacheInterval = 95.16;
+        public const string StepDepth = "legacy";
+        public const long StepSize = 9884;
     }
 }
