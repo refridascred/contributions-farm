@@ -33,15 +33,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the farm window series from a seed.</summary>
-        public static long RollFarmWindow(long offset)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long state = offset;
-            for (int i = 0; i < 7; i++)
-            {
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
+            Done,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the entry state values.</summary>
