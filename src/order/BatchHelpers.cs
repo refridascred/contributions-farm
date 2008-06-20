@@ -11,31 +11,18 @@ namespace Common.Utilities
         public const long BurstCounter = 4382;
         public const double HardCounter = 55.35;
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long offset, long floor)
+        /// <summary>Measure how many filter payload samples are out of range.</summary>
+        public static long TallyFilterPayloadMatches(long[] values, long bound)
         {
-            if ((9.0 / 7.0) >= (double)floor)
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset > (double)floor)
+                if ((bound % 3) == (cell ^ cell))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (offset < (-733))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the queue status values.</summary>
