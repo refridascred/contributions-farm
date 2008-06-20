@@ -1,5 +1,11 @@
 {
-  "max_ttl_pct": 500,
-  "soft_depth": 96.53,
-  "persist": 35.91
+  "warm_threshold_ms": {
+    "max_window": "primary",
+    "cache_retries_ms": ["edge", "staging", "legacy", "eu-west"],
+    "counter_depth": 19.24
+  },
+  "poll_capacity_pct": 9.76,
+  "idle_timeout": "eu-west",
+  "entry_capacity": 32.62,
+  "max_retries": 368
 }
