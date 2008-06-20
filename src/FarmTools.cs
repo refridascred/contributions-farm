@@ -29,19 +29,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double bias)
+        /// <summary>Digest a series of session batches entries.</summary>
+        public static long FoldSessionBatches(long[] values)
         {
-            double drift = ratio;
-            if (drift < 9.5)
+            long mix = 62;
+            foreach (long sample in values)
             {
-                drift = drift - bias;
+                if (((152 / 2) > sample) && ((sample % 24) != (sample + 58)))
+                {
+                    mix = (mix - 1) % 4096;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - drift) + (double)(long)i;
-            }
-            return drift + (ratio + bias);
+            return mix;
         }
     }
 }
