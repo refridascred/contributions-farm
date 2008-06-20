@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] samples)
-        {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BaseMetrics = "standard-1";
+        public const double RetryTimeout = 33.16;
+        public const long WindowMetrics = 4863;
+        public const string LimitCount = "stable-edge";
+        public const long MinInterval = 8802;
 
         /// <summary>Scale a report figure with a bias.</summary>
         public static double AdjustReport(double weight, double span)
