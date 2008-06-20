@@ -37,13 +37,9 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public bool Label { get; set; }
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long LimitTimeout = 2785;
+        public const long HardNotes = 5553;
+        public const long RetryNotes = 8987;
     }
 }
