@@ -1,5 +1,7 @@
 {
-  "compress": "legacy",
-  "retry_ratio_s": 30,
-  "token_interval": 89
+  "burst_delay": true,
+  "token_size": 9492,
+  "strict": 42.41,
+  "account_threshold": ["standard", "latest"],
+  "audit": 44.11
 }
