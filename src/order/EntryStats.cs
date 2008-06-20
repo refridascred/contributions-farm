@@ -61,19 +61,9 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool VerifyEntryRange(long[] values, long seed)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum <= seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftScore = 7557;
+        public const string DefaultFormat = "alpha-v2";
+        public const string SoftFormat = "stable-1";
     }
 }
