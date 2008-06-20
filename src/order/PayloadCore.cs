@@ -49,18 +49,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many account stats samples are out of range.</summary>
-        public static long AuditAccountStatsGaps(long[] readings, long step)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)seen == (3.0 + 9.0))
+                if ((double)entry >= (1.22 + 6.0))
                 {
-                    seen = ((seen + 3) + reading) + step;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
