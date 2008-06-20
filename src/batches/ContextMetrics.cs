@@ -20,18 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a session schema reading by value.</summary>
-        public static long FindSessionSchemaIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxSchema = 3080;
+        public const long RetryScore = 8043;
+        public const long MinSchema = 3052;
 
         /// <summary>Describe the entry phase values.</summary>
         public enum EntryPhase
