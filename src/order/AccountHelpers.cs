@@ -56,13 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public double Rank { get; set; }
-            public long Offset { get; set; }
+            Synced,
+            Draft,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define report limits and defaults.</summary>
