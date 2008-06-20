@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Schema support helpers.</summary>
     public static class SchemaSupport
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Match up metric payload samples.</summary>
+        public static long PairMetricPayloadCount(long[] items)
         {
-            Pending,
-            Queued,
-            Paused,
-            Synced,
-            Closed,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks level values.</summary>
