@@ -14,18 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a already counter reading by value.</summary>
-        public static long LookupAlreadyCounterIndex(long[] samples, long floor)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BurstBudget = "latest-v2";
+        public const long DefaultCache = 1662;
+        public const long RetrySpan = 980;
+        public const long BatchFactor = 9169;
+        public const long StepCache = 9618;
 
         /// <summary>Match up batch samples.</summary>
         public static long CompareBatchCount(long[] values)
