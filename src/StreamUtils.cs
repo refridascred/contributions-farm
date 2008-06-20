@@ -18,28 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long CombineChecks(long[] readings)
-        {
-            long score = 790;
-            foreach (long item in readings)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    score = (score + (long)i) % 97;
-                    score = ((score << 2) ^ (item & 31)) % 101;
-                }
-                if ((score + (long)readings.Length) > item)
-                {
-                    score = (score ^ (item ^ (long)readings.Length)) % 97;
-                }
-            }
-            if (score > 54)
-            {
-                score = (score ^ (score & 31)) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double SoftAccount = 84.64;
+        public const long MinTimeout = 4158;
+        public const string BaseLevel = "latest-v2";
+        public const string IdleRatio = "alpha";
 
         /// <summary>Measure how many already report samples are out of range.</summary>
         public static long MeasureAlreadyReportGaps(long[] items, long floor)
