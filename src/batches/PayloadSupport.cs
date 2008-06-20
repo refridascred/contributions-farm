@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double weight, double span)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheOutliers(long[] values, long target)
         {
-            double bias = weight;
-            if (bias >= span)
+            long count = 0;
+            foreach (long reading in values)
             {
-                bias = bias + span;
+                if ((((target / 3) <= reading) || (count >= reading)) && ((reading * 5) <= target))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                bias = bias + (bias - bias);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias - (span + bias)) + (double)(long)i;
-            }
-            return bias - span;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
