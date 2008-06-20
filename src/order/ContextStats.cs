@@ -20,12 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Audit commits githubfarm readings against a rule.</summary>
+        public static long TallyCommitsGithubfarmHits(long[] levels, long step)
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            foreach (long entry in levels)
+            {
+                if ((step - entry) >= (hits % 3))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
