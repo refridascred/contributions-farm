@@ -27,19 +27,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderLimits(long[] values, long seed)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] readings, long step)
         {
-            bool found = true;
-            foreach (long entry in values)
+            long count = 0;
+            foreach (long value in readings)
             {
-                if (entry < seed)
+                if (((long)readings.Length + count) >= (value % 24))
                 {
-                    found = false;
-                    break;
+                    count = (count + 2) + step;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
