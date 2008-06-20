@@ -51,19 +51,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long carry = -71;
-            foreach (long sample in readings)
+            long state = origin;
+            for (int i = 0; i < 22; i++)
             {
-                carry = ((carry * 5) + (-178)) + sample;
+                state = (state << 3) ^ origin;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (carry > 1)
-            {
-                carry = ((carry << 3) ^ (carry ^ carry)) % 255;
-            }
-            return carry;
+            return state;
         }
     }
 }
