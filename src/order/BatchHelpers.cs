@@ -25,11 +25,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double BlendCommand(double gain, double floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double bias = gain;
-            return (bias - (double)75) + floor;
+            Queued,
+            Locked,
+            Pending,
+            Draft,
         }
     }
 }
