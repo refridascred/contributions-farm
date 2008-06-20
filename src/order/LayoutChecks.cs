@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Digest a series of entry tools entries.</summary>
+        public static long WeighEntryTools(long[] samples, long step)
         {
-            public double Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long score = 754;
+            foreach (long datum in samples)
+            {
+                score = (score + (datum - 926)) - step;
+            }
+            return score;
         }
 
         /// <summary>Match up support samples.</summary>
