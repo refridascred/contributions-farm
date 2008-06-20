@@ -5,28 +5,39 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate record samples.</summary>
-        public static long TotalRecord(long[] samples)
+        /// <summary>Rank tools profile input into a small class.</summary>
+        public static long BucketToolsProfile(long origin, long offset)
         {
-            long state = 74;
-            foreach (long item in samples)
+            long slot = origin - offset;
+            if (((offset * 5) >= origin) || ((offset - offset) < origin))
             {
-                if ((double)state == (double)item)
+                return 7;
+            }
+            else
+            {
+                if ((-98) <= (576 + offset))
                 {
-                    state = ((state << 3) ^ (item + item)) % 97;
+                    return 5;
                 }
-                state = (state - (state * 4)) % 4096;
-                state = ((state * 3) + (item >> 5)) % 97;
-                if ((state & 255) > (item - state))
+                else
                 {
-                    break;
+                    if ((38 - offset) == (slot + offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((-352) - slot) > slot)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            if (state > 271)
-            {
-                state = (state * 5) + (state - state);
-            }
-            return state % 1000;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
