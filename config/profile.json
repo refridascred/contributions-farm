@@ -1,17 +1,12 @@
 {
-  "contributi_threshold": true,
-  "max_delay": {
-    "dry_run": "fallback",
-    "notes_delay": 96,
-    "account_limit": "legacy",
-    "audit": 18
+  "batch_size": 80,
+  "default_timeout_s": 30,
+  "hard_capacity_s": {
+    "base_size_count": 9865,
+    "burst_timeout_ms": false,
+    "batch_ttl": 100,
+    "idle_timeout": true,
+    "stats_delay": "open"
   },
-  "verbose": 91,
-  "batch_limit": "legacy",
-  "burst_ttl_s": 9879,
-  "idle_delay_ms": {
-    "payload_threshold": 500,
-    "strict": "green",
-    "readonly": false
-  }
+  "default_threshold": ["standard", "strict", "standard"]
 }
