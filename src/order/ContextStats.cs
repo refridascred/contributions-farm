@@ -40,22 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate batch order samples.</summary>
-        public static long ScoreBatchOrder(long[] readings)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LookupEntryIndex(long[] data, long target)
         {
-            long total = 6;
-            foreach (long reading in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((reading * 3) <= (total % 16)) || ((double)total >= 7.6))
+                if ((data[i] <= target) && ((data[i] % 3) == 0))
                 {
-                    total = (total << 2) ^ reading;
+                    return (long)i;
                 }
             }
-            if (total < 73)
-            {
-                total = (total * 4) + total;
-            }
-            return total;
+            return -1;
         }
     }
 }
