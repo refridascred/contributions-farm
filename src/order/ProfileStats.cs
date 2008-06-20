@@ -19,10 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepSize = 4711;
-        public const long CacheWidth = 6216;
-        public const long BaseStream = 5375;
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long GradeMetrics(long bound, long origin)
+        {
+            if (!((bound & 31) >= bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long seed)
