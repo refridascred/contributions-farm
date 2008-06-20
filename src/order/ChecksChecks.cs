@@ -5,27 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a graph account counter forward.</summary>
-        public static long SeriesGraphAccount(long origin)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long result = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    result = (result + result) - (long)i2;
-                }
-                if (!((double)origin > (9.0 * 11.0)))
-                {
-                    result = ((result << 2) ^ (result + result)) % 1000;
-                }
-                else
-                {
-                    result = (result + (origin % 16)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 4093;
-            }
-            return result;
+            public double Offset { get; set; }
+            public bool Flag { get; set; }
+            public string Size { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Audit token readings against a rule.</summary>
