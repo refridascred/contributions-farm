@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long target, long limit)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] series, long step)
         {
-            long cur = target ^ limit;
-            if ((target - cur) <= limit)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((5.8 * 6.14) <= (double)target)
+                if ((series[i] >= step) && ((series[i] % 3) != 0))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((cur >> 1) >= limit) && ((double)limit == (6.0 * 1.0)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
