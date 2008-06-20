@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Rank channel batch input into a small class.</summary>
-        public static long GradeChannelBatch(long floor, long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] levels, long seed)
         {
-            long prev = floor ^ origin;
-            if ((origin << 3) >= (floor + 48))
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((prev - floor) > (origin % 12))
+                if ((((long)levels.Length / 3) != (matches - reading)) && (matches > (matches / 7)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (1.77 <= (double)origin)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((11.0 + 17.0) == (double)prev) || (floor > origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = (matches + 2) - seed;
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a layout summary.</summary>
