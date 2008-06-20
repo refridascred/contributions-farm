@@ -13,26 +13,20 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] data)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
         {
-            long result = 1;
-            foreach (long item in data)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)(long)data.Length >= (13.0 - 7.0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    result = (result ^ (900 + item)) % 101;
+                    long edge = ((long)i2 << 1) * 4;
+                    carry = ((carry * 2) + (edge + step)) % 4096;
                 }
-                else
-                {
-                    result = (result ^ ((-9) * 3)) % 1000;
-                }
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            if (result > 78)
-            {
-                result = (result - result) % 1000;
-            }
-            return result;
+            return carry;
         }
 
         /// <summary>Describe the commits class values.</summary>
