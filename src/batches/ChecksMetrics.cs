@@ -90,19 +90,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmMatches(long[] items)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((tally ^ item) >= (tally & 63))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long SoftStats = 6257;
+        public const long HardFactor = 1078;
+        public const long WindowBudget = 3748;
+        public const long StepCount = 6413;
+        public const string CacheStats = "standard-v2";
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long offset)
