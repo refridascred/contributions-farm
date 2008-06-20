@@ -34,39 +34,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long target, long origin)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool ValidateEntryBounds(long[] values, long limit)
         {
-            long cur = target - origin;
-            if ((double)70 != (double)origin)
+            bool found = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target ^ cur) <= cur)
+                if (datum <= limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)origin >= (20.0 + 6.9))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((1.0 + 9.0) != (double)origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Digest a series of command entries.</summary>
