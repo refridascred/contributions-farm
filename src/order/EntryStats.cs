@@ -65,12 +65,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterOutliers(long[] data, long target)
         {
-            Retry,
-            Idle,
-            Paused,
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if ((entry * 4) > (30 + target))
+                {
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
