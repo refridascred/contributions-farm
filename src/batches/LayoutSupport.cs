@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BurstLevel = "alpha-1";
-        public const long BurstGithubfarm = 5172;
-        public const double SoftFactor = 74.13;
-        public const long DefaultBudget = 9424;
-        public const long HardBudget = 1142;
+        /// <summary>Validate checks payload readings against a bound.</summary>
+        public static bool GuardChecksPayloadRange(long[] values, long target)
+        {
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a format schema value against two limits.</summary>
         public static long ClassifyFormatSchema(long seed, long bound)
