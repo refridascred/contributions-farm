@@ -1,18 +1,10 @@
 {
-  "idle_capacity_count": "legacy",
-  "sync_ratio": {
-    "burst_interval": 60,
-    "burst_limit_ms": 28,
-    "sync_ttl_pct": "staging",
-    "cache_ratio": [341, 16, 200, 382],
-    "account_limit": "standard"
-  },
-  "persist": false,
-  "readonly": 2,
-  "warm_limit": {
-    "compress": 30,
-    "max_size_s": false,
-    "poll_threshold": 100,
-    "soft_limit": "legacy"
+  "enabled": 60,
+  "min_capacity_ms": 8781,
+  "entry_delay": {
+    "sync_retries_count": 65.24,
+    "burst_capacity_ms": ["blue", "blue", "blue", "edge"],
+    "persist": true,
+    "readonly": 8040
   }
 }
