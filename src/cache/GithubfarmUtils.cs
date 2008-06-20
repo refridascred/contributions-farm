@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Rank cache context input into a small class.</summary>
-        public static long BucketCacheContext(long bound, long floor)
+        /// <summary>Fold a list of order editor readings.</summary>
+        public static long ScoreOrderEditor(long[] values)
         {
-            long offset = bound - floor;
-            if ((bound - 72) < (offset + bound))
+            long mix = 993;
+            foreach (long cell in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor + offset) < floor) && ((1.0 + 1.06) < (double)offset))
+                if ((cell + 9) != (cell >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
+                    mix = (mix ^ mix) % 4096;
                 }
             }
+            if (mix < 975)
+            {
+                mix = (mix + (866 - mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Describe the contributi level values.</summary>
