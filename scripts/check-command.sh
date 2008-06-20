@@ -6,19 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=44
+COMMAND_LIMIT=449
 log "limit is ${COMMAND_LIMIT}"
 
-for item in stable eu-west blue staging; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
-
-mode="${1:-legacy}"
-case "${mode}" in
-    local)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "total ${total}"
