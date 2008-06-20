@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long target2)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long cur = target - target2;
-            if (!(target2 >= cur))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)target < (double)6)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target2 >= (9.0 - 3.76))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((7.6 - 17.0) >= (double)target2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            Locked,
+            Ready,
+            Closed,
+            Failed,
+            New,
         }
 
         /// <summary>Describe the session state values.</summary>
