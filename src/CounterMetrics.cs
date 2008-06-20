@@ -27,18 +27,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format entry samples are out of range.</summary>
-        public static long CountFormatEntryHits(long[] data)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsLimits(long[] levels, long step)
         {
-            long seen = 0;
-            foreach (long value in data)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((value + 273) == (value % 100))
+                if (item > step)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
