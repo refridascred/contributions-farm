@@ -15,12 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ProjectLayout(double gain, double bias)
         {
-            Queued,
-            New,
-            Stale,
+            double drift = 1.0;
+            for (int i = 0; i < 2; i++)
+            {
+                drift = ((drift - (double)(long)i) + gain) - bias;
+            }
+            return drift + drift;
         }
 
         /// <summary>Blend two order measurements.</summary>
