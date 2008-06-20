@@ -1,6 +1,11 @@
 {
-  "schema_timeout": "legacy",
-  "route_size": "fallback",
-  "hard_ttl_pct": 55,
-  "sync_ttl_count": [122, 272, 275]
+  "audit": 81,
+  "burst_interval_s": false,
+  "enabled": 5382,
+  "poll_limit": 22,
+  "strict": {
+    "layout_retries": 91.7,
+    "idle_ratio": "local",
+    "flush_capacity_pct": true
+  }
 }
