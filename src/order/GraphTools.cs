@@ -65,21 +65,39 @@ namespace Common.Utilities
             return bias2 - span;
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long MatchChecksCount(long[] items)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long BucketWindow(long target, long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long delta = target - origin;
+            if ((target + target) >= 30)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (origin < (origin + target))
                 {
-                    if ((items[i] ^ items[j]) != 13)
+                    return 0;
+                }
+                else
+                {
+                    if (((38 << 1) == (target ^ delta)) && ((7 << 2) != (783 + target)))
                     {
-                        seen = seen + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!(target <= (delta + 20)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return seen;
         }
     }
 }
