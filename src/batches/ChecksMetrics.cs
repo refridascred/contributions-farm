@@ -66,12 +66,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftStats = 6257;
-        public const long HardFactor = 1078;
-        public const long WindowBudget = 3748;
-        public const long StepCount = 6413;
-        public const string CacheStats = "standard-v2";
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long LocateTokenIndex(long[] items, long step)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long offset)
