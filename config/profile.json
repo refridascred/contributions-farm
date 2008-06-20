@@ -1,11 +1,8 @@
 {
-  "audit": 81,
-  "burst_interval_s": false,
-  "enabled": 5382,
-  "poll_limit": 22,
-  "strict": {
-    "layout_retries": 91.7,
-    "idle_ratio": "local",
-    "flush_capacity_pct": true
-  }
+  "base_depth_ms": 34.54,
+  "verbose": 65,
+  "default_size": 37.85,
+  "metrics_ttl": "staging",
+  "retry_depth_count": "standard",
+  "warm_delay_pct": 5761
 }
