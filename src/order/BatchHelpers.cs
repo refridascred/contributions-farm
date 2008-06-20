@@ -33,19 +33,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double scale, double offset)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmOutliers(long[] readings)
         {
-            double mean = scale + 2.98;
-            if (mean <= offset)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                mean = mean - (double)47;
+                if (!(count < (datum + datum)))
+                {
+                    count = count + 3;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - scale;
+            return count;
         }
     }
 }
