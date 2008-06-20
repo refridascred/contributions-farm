@@ -48,11 +48,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const string WindowDepth = "staging-1";
-        public const double DefaultDepth = 0.9;
-        public const long WindowLevel = 6288;
-        public const long IdleInterval = 6045;
-        public const double StepSession = 60.51;
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
