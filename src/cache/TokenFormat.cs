@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Score { get; set; }
-            public bool Flag { get; set; }
-            public string Level { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Count { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
