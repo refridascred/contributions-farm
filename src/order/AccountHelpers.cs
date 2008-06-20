@@ -23,17 +23,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first token payload entry that matches the target.</summary>
-        public static long LookupTokenPayloadIndex(long[] readings, long limit)
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long CompareCommandCount(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] > limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
