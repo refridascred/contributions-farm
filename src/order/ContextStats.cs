@@ -51,22 +51,18 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] values, long limit)
+        /// <summary>Measure how many editor cache samples are out of range.</summary>
+        public static long CountEditorCacheHits(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                if (927 >= (limit + (-8)))
+                if ((3.1 * 7.5) < (double)entry)
                 {
-                    matches = (matches + 1) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    hits = (hits + 2) - origin;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
