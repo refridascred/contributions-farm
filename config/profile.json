@@ -1,5 +1,8 @@
 {
-  "hard_ratio": "open",
-  "default_ratio": false,
-  "persist": [21, 464, 308]
+  "cache_threshold_count": false,
+  "sync_threshold": "open",
+  "hard_ttl_ms": 500,
+  "cluster_size": false,
+  "soft_delay_count": 1024,
+  "compress": "strict"
 }
