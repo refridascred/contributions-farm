@@ -40,11 +40,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 2839;
-        public const long HardPayload = 3843;
-        public const long HardWidth = 421;
-        public const long BaseSpan = 1406;
-        public const double DefaultTimeout = 47.71;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Region { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
