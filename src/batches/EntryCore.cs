@@ -58,11 +58,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            public double Level { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
