@@ -1,10 +1,7 @@
-id,weight,token
-1,stable,85
-2,blue,318
-3,fallback,279
-4,stable,845
-5,48.87,green
-6,cached,local
-7,666,23.07
-8,green,65
-9,cached,807
+id,weight,label,score
+1,93.69,824,80
+2,legacy,60.73,44.89
+3,cached,latest,93
+4,803,strict,strict
+5,standard,410,348
+6,edge,106,27.74
