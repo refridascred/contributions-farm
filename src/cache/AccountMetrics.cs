@@ -26,14 +26,23 @@ namespace Common.Utilities
         public const long MinWindow = 123;
         public const string RetryLevel = "alpha-1";
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double scale, double bias)
         {
-            Queued,
-            Stale,
-            Done,
-            Retry,
-            Locked,
+            double weight = scale;
+            if (weight > weight)
+            {
+                weight = weight + 7.0;
+            }
+            else
+            {
+                weight = weight - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight = (weight + bias) + (double)(long)i;
+            }
+            return weight + (weight / 7.0);
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
