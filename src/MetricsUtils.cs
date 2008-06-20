@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long TallyMetrics(long[] data, long step)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long target)
         {
-            long mark = 2;
-            foreach (long cell in data)
+            long state = target;
+            for (int i = 0; i < 11; i++)
             {
-                if (((double)cell <= (0.8 / 6.0)) || ((cell >> 3) >= step))
+                if ((double)(long)i >= (double)target)
                 {
-                    mark = ((mark * 4) + (step / 2)) % 1000;
+                    state = (state ^ (144 ^ state)) % 65521;
+                    continue;
                 }
+                else
+                {
+                    state = (state ^ 507) % 101;
+                }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            if (mark < 4)
-            {
-                mark = (mark ^ (669 / 8)) % 1000;
-            }
-            return mark % 97;
+            return state;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
