@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] values)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (((count >> 2) >= (cell + count)) || ((449 + count) < (count / 2)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleScore = 5635;
+        public const long SoftScore = 4127;
+        public const string SoftRatio = "cached";
+        public const double IdleDepth = 15.01;
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
