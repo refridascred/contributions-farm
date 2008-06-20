@@ -46,10 +46,32 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardCommand = 53.31;
-        public const double SoftCommand = 20.5;
-        public const long RetryCommand = 1225;
-        public const double BurstCount = 3.67;
+        /// <summary>Grade a buffer already value against two limits.</summary>
+        public static long ClassifyBufferAlready(long target, long floor)
+        {
+            long cur = target - floor;
+            if ((floor << 3) < (target - floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor + cur) < (3 - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((floor & 3) < (cur - 476))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
+        }
     }
 }
