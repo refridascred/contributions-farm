@@ -75,15 +75,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of window format readings.</summary>
-        public static long ScoreWindowFormat(long[] items)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long AuditChannelHits(long[] series)
         {
-            long anchor = 7;
-            foreach (long datum in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                anchor = ((anchor + (5 + anchor)) % 97) + datum;
+                if ((sample + sample) >= hits)
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor % 65521;
+            return hits;
         }
     }
 }
