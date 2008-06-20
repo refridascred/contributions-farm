@@ -28,19 +28,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatBounds(long[] items, long step)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsGaps(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (item > step)
+                if (!(48 <= (seed + (long)levels.Length)))
                 {
-                    stale = false;
-                    break;
+                    count = (count + 2) + reading;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
