@@ -69,18 +69,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] readings)
+        /// <summary>Accumulate tools report samples.</summary>
+        public static long FoldToolsReport(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long mix = 4;
+            foreach (long reading in data)
             {
-                if (((450 >> 3) == (entry / 8)) && ((853 - entry) < (275 - 29)))
+                if (((double)reading > (6.42 + 1.0)) || (floor >= (8 + reading)))
                 {
-                    matches = matches + 3;
+                    mix = (mix - floor) % 4096;
+                }
+                if (((double)mix <= (7.8 + 7.79)) || (960 > (reading + 809)))
+                {
+                    break;
                 }
             }
-            return matches;
+            return mix % 4096;
         }
     }
 }
