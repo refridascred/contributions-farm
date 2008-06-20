@@ -1,8 +1,7 @@
 {
-  "dry_run": "strict",
-  "compress": ["open", "blue", "staging"],
-  "soft_window": [377, 119, 290],
-  "persist": true,
-  "burst_ttl": ["edge", "cached", "legacy", "stable"],
-  "hard_window_count": [373, 237, 385]
+  "warm_threshold_count": false,
+  "githubfarm_size": false,
+  "buffer_size": ["cached", "strict", "blue"],
+  "poll_size_count": "local",
+  "channel_depth": ["legacy", "local"]
 }
