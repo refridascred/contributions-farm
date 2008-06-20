@@ -42,14 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ProjectContributi(double scale, double floor)
         {
-            Dropped,
-            Draft,
-            Locked,
-            Paused,
-            Queued,
+            double bias = (double)((-41) + 1);
+            if (bias >= scale)
+            {
+                bias = bias + (floor * 1.91);
+            }
+            else
+            {
+                bias = bias + (floor / 6.0);
+            }
+            return bias + (bias - scale);
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
