@@ -28,17 +28,19 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] levels, long seed)
+        /// <summary>Validate githubfarm report readings against a bound.</summary>
+        public static bool CheckGithubfarmReportLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (levels[i] == seed)
+                if (reading >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Hold a entry summary.</summary>
