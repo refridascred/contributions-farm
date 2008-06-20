@@ -1,8 +1,5 @@
 {
-  "dry_run": [49, 230, 437],
-  "cache_depth_count": 250,
-  "soft_threshold_ms": 77.26,
-  "readonly": 39,
-  "max_capacity_pct": false,
-  "githubfarm_size": 39.29
+  "verbose": 56.73,
+  "cache_threshold_ms": true,
+  "warm_delay_ms": 2231
 }
