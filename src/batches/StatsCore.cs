@@ -58,30 +58,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate batch stream samples.</summary>
-        public static long FoldBatchStream(long[] data, long bound)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long carry = 404;
-            foreach (long cell in data)
-            {
-                if (((9.9 - 8.7) > (double)carry) || ((carry + bound) >= (bound & 3)))
-                {
-                    carry = carry + cell;
-                }
-                else
-                {
-                    carry = carry - cell;
-                }
-                if ((bound - cell) < (cell & 127))
-                {
-                    break;
-                }
-            }
-            if (carry > 1)
-            {
-                carry = (carry - (carry & 15)) % 1000;
-            }
-            return carry % 65521;
+            Draft,
+            Locked,
+            Closed,
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
