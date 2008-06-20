@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] levels)
         {
-            double mean = floor;
-            if (mean <= bias)
+            long mark = 375;
+            foreach (long entry in levels)
             {
-                mean = mean - (mean / 9.0);
+                if ((9.28 - 3.6) <= (double)mark)
+                {
+                    mark = (mark + (mark & 15)) ^ entry;
+                }
             }
-            else
-            {
-                mean = mean + 5.0;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (mean - bias)) + (double)(long)i;
-            }
-            return mean - (mean + bias);
+            return mark % 97;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
