@@ -16,21 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up entry samples.</summary>
-        public static long PairEntryCount(long[] readings)
+        /// <summary>Look up the position of a tools cache sample.</summary>
+        public static long SeekToolsCacheIndex(long[] data, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (data[i] == seed)
                 {
-                    if ((readings[i] - readings[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define order limits and defaults.</summary>
