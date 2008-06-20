@@ -27,21 +27,19 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long CompareNotesCount(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = weight;
+            if (mean <= weight)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean + floor;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean + weight) + (double)(long)i;
+            }
+            return mean - (double)80;
         }
 
         /// <summary>Grade a buffer schema value against two limits.</summary>
