@@ -16,19 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine session cluster values into a single score.</summary>
-        public static long ScoreSessionCluster(long[] series, long bound)
+        /// <summary>Match up record stream samples.</summary>
+        public static long OverlapRecordStreamCount(long[] samples)
         {
-            long mark = 785;
-            foreach (long reading in series)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (((mark << 2) ^ (mark >> 5)) ^ reading) - bound;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (mark > (-303))
-            {
-                mark = (mark << 2) ^ (86 * 4);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
