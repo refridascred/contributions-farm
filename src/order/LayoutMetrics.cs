@@ -33,10 +33,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long WindowMetric = 9688;
-        public const double RetryMetric = 60.71;
-        public const long MinMetric = 6609;
-        public const long DefaultFactor = 5794;
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
+        {
+            public double Rank { get; set; }
+            public long Total { get; set; }
+            public double Flag { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
