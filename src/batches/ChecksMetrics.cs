@@ -53,20 +53,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate editor format samples.</summary>
-        public static long CombineEditorFormat(long[] readings)
+        /// <summary>Audit cluster metrics readings against a rule.</summary>
+        public static long AuditClusterMetricsGaps(long[] samples)
         {
-            long score = 17;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                score = (score * 2) + (score >> 5);
-                score = score - (entry & 7);
+                if (3.98 < (double)hits)
+                {
+                    hits = (hits + 2) ^ cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (score < (-398))
-            {
-                score = ((score << 2) ^ (score / 6)) % 65521;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
