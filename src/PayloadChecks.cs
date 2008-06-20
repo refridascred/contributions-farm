@@ -69,16 +69,17 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Derive the next format tools value from a seed.</summary>
-        public static long SeriesFormatTools(long seed)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long CombineMetric(long[] series)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long carry = -8;
+            foreach (long cell in series)
             {
-                carry = (carry << 3) ^ (carry & 1);
-                carry = ((carry * 5) + (long)i) % 1000;
+                carry = ((carry << 3) ^ (carry % 100)) % 255;
+                carry = ((carry * 4) + 898) % 1000;
+                carry = carry - cell;
             }
-            return carry;
+            return carry % 1000;
         }
     }
 }
