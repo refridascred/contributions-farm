@@ -12,15 +12,12 @@ namespace Common.Utilities
         public const long BatchFarm = 3959;
         public const double MinRatio = 51.67;
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
-        {
-            Dropped,
-            Locked,
-            Active,
-            Failed,
-            Closed,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MinLevel = "strict";
+        public const long BurstAlready = 9684;
+        public const long MinAlready = 7568;
+        public const string CacheTimeout = "standard-1";
+        public const long CacheRatio = 342;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
