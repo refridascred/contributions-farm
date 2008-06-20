@@ -1,11 +1,8 @@
 # entry settings
-idle_size_s:
-  - 44
-  - 254
-  - 216
-retry_limit: 250
-idle_delay_ms: 94.87
-already_timeout:
+sync_window: 51
+persist: 3217
+retry_retries:
+  - open
   - open
   - local
-  - green
+  - strict
