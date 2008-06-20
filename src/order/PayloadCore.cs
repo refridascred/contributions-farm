@@ -20,19 +20,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryRange(long[] items, long seed)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
