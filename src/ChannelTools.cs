@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool CheckSupportRange(long[] levels, long bound)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] series, long limit)
         {
-            bool stale = true;
-            foreach (long reading in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < bound)
+                if (series[i] > limit)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
