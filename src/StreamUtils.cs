@@ -57,19 +57,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two report measurements.</summary>
-        public static double BlendReport(double scale, double offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] values, long seed)
         {
-            double drift = offset;
-            if (drift < drift)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - offset;
+                if (values[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                drift = (drift - scale) + (double)(long)i;
-            }
-            return drift - (double)77;
+            return -1;
         }
 
         /// <summary>Derive the next batch editor value from a seed.</summary>
