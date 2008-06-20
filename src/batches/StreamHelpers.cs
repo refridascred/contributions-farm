@@ -58,12 +58,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public string Region { get; set; } = "";
-            public string Total { get; set; } = "";
-            public double Rank { get; set; }
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
