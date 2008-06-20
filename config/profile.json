@@ -1,15 +1,6 @@
 {
-  "verbose": {
-    "notes_interval": true,
-    "cluster_capacity": "legacy",
-    "warm_ratio": 76.4,
-    "retry_retries_count": 30,
-    "dry_run": 97,
-    "record_delay": "blue"
-  },
-  "schema_depth": ["blue", "staging", "strict"],
-  "support_threshold": "blue",
-  "warm_limit_s": 1.98,
-  "warm_timeout_s": "edge",
-  "poll_ttl_count": "cached"
+  "batch_ratio_pct": "local",
+  "persist": 1391,
+  "editor_ttl": 30,
+  "strict": "legacy"
 }
