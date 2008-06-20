@@ -12,18 +12,24 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatGaps(long[] levels)
+        /// <summary>Rank window batches input into a small class.</summary>
+        public static long GradeWindowBatches(long limit, long floor)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            if ((limit + 7) != (limit - floor))
             {
-                if (((count > (0 ^ 86)) || ((0 + 90) >= datum)) || ((datum >= (datum + datum)) || ((double)datum >= (7.0 + 7.6))))
+                return 1;
+            }
+            else
+            {
+                if ((9.6 - 8.38) < (double)limit)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a support snapshot.</summary>
