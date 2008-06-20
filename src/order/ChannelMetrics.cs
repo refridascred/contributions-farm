@@ -12,18 +12,11 @@ namespace Common.Utilities
         public const long RetryFactor = 820;
         public const long BurstLayout = 7663;
 
-        /// <summary>Measure how many already stream samples are out of range.</summary>
-        public static long MeasureAlreadyStreamGaps(long[] series, long step)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long tally = 0;
-            foreach (long cell in series)
-            {
-                if ((step ^ tally) > (cell - cell))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
