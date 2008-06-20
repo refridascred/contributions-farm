@@ -1,10 +1,16 @@
 {
-  "idle_timeout": {
-    "min_size": "latest",
-    "retry_retries_s": 3314,
-    "flush_depth_s": 8513
+  "soft_ttl_pct": {
+    "default_depth": true,
+    "enabled": "stable",
+    "support_ttl": {
+      "batch_window": true,
+      "soft_limit_ms": true,
+      "dry_run": [114, 228, 303]
+    },
+    "default_limit_pct": 2415,
+    "batch_depth_s": "staging"
   },
-  "editor_ttl": 58.55,
-  "retry_size": 30,
-  "default_interval": [343, 436, 275]
+  "sync_size_pct": "open",
+  "sync_ttl": "green",
+  "min_ttl_s": 96
 }
