@@ -40,23 +40,17 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] samples, long origin)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long floor)
         {
-            long carry = 8;
-            foreach (long entry in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 5) + origin) % 4096;
-                if (((-939) + carry) > origin)
+                if (data[i] <= floor)
                 {
-                    carry = carry - 8;
-                }
-                if (entry >= (origin + entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
