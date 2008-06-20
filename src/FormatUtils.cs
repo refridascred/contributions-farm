@@ -13,12 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LocateEntryIndex(long[] items, long step)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] items, long limit)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] > step) && ((items[i] % 5) != 0))
+                if (items[i] > limit)
                 {
                     return (long)i;
                 }
