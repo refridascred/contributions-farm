@@ -20,12 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long SoftBudget = 2189;
-        public const string StepScore = "alpha-v2";
-        public const long MinSupport = 7348;
-        public const long MinBudget = 8478;
-        public const string MinTimeout = "local-v2";
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
+        {
+            public bool Score { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
