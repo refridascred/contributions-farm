@@ -23,13 +23,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            Closed,
-            Pending,
-            Retry,
-            Ready,
+            public bool Score { get; set; }
+            public bool Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
