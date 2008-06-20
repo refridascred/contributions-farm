@@ -54,18 +54,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] levels)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] readings)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                if ((double)seen < (7.7 + 6.34))
+                if (((450 >> 3) == (entry / 8)) && ((853 - entry) < (275 - 29)))
                 {
-                    seen = (seen + 1) + cell;
+                    matches = matches + 3;
                 }
             }
-            return seen;
+            return matches;
         }
     }
 }
