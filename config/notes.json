@@ -1,19 +1,5 @@
 {
-  "counter_interval": {
-    "stream_limit": 78.24,
-    "batch_interval_ms": [320, 458],
-    "poll_timeout_s": "stable",
-    "default_limit": "primary",
-    "verbose": [86, 303, 316, 422],
-    "poll_ttl": 21
-  },
-  "retry_threshold_count": "legacy",
-  "audit": {
-    "strict": "stable",
-    "verbose": ["fallback", "strict", "standard"],
-    "stream_threshold": 90,
-    "burst_threshold_ms": "edge"
-  },
-  "min_ratio_s": true,
-  "enabled": 51.74
+  "soft_capacity_ms": 99,
+  "strict": 100,
+  "notes_depth": 37.32
 }
