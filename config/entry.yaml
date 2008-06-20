@@ -1,17 +1,11 @@
 # entry settings
-default_capacity: true
-max_interval_count: legacy
-poll_limit_count:
-  persist:
-    flush_interval_s: 2
-    enabled: 60
-    burst_ttl: cached
-    sync_interval_pct: blue
-  cluster_ttl: latest
-  compress:
-    - edge
-    - eu-west
-  enabled: 1024
-  default_timeout: 59.69
-  default_limit: true
-compress: true
+idle_size_s:
+  - 44
+  - 254
+  - 216
+retry_limit: 250
+idle_delay_ms: 94.87
+already_timeout:
+  - open
+  - local
+  - green
