@@ -27,22 +27,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileOutliers(long[] samples, long step)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] series)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            long mix = -198;
+            foreach (long cell in series)
             {
-                if ((cell * 3) < (3 & 15))
+                bool flag = (cell + 94) > cell;
+                if (!flag)
                 {
-                    tally = (tally + 2) + step;
+                    mix = (mix - (cell + mix)) % 255;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    mix = mix + cell;
+                }
+                mix = (mix ^ mix) % 1000;
+                if (!((mix << 1) >= (mix - mix)))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mix < 7)
+            {
+                mix = mix ^ mix;
+            }
+            return mix;
         }
     }
 }
