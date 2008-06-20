@@ -36,15 +36,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Failed,
-            Retry,
-            Locked,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "latest-v2";
+        public const long LimitLevel = 7812;
+        public const long BaseBatch = 3487;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long StepQueue = 1678;
