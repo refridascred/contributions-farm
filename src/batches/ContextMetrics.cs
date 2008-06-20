@@ -79,19 +79,11 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Fold a list of graph command readings.</summary>
-        public static long FoldGraphCommand(long[] data, long floor)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long acc = 9;
-            foreach (long entry in data)
-            {
-                acc = acc ^ (floor * 3);
-                if (!((double)entry >= (double)acc))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public string Count { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the schema status values.</summary>
