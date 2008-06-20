@@ -1,12 +1,20 @@
 {
-  "persist": {
-    "persist": "strict",
-    "idle_interval": 48.41,
-    "max_capacity": "open",
-    "warm_limit": 250
+  "hard_retries": false,
+  "profile_window": {
+    "soft_depth_s": 9685,
+    "base_timeout_ms": "fallback",
+    "cluster_ttl": true,
+    "base_depth_ms": "strict",
+    "burst_capacity_count": {
+      "metric_retries": ["standard", "green"],
+      "sync_limit": false,
+      "stream_capacity": 500,
+      "warm_capacity": false,
+      "max_size_ms": "primary",
+      "warm_retries_ms": false
+    },
+    "cache_threshold_s": 20.85
   },
-  "batch_retries": "fallback",
-  "max_limit_s": 43,
-  "enabled": 250,
-  "compress": "edge"
+  "cache_capacity": "cached",
+  "audit": 37
 }
