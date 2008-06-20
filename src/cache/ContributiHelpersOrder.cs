@@ -32,22 +32,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long AuditOrderHits(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long DeriveSession(long floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long state = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (!((3.98 / 2.0) <= (double)count))
-                {
-                    count = (count + 1) + reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = state - floor;
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
