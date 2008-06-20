@@ -1,6 +1,8 @@
-id,score
-1,green
-2,55.68
-3,866
-4,62.82
-5,edge
+id,count,ratio,state
+1,806,local,910
+2,54.54,green,blue
+3,833,green,35
+4,670,484,647
+5,13.2,982,58
+6,953,94.29,standard
+7,cached,63.29,526
