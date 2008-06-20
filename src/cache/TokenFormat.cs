@@ -21,10 +21,33 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string LimitCount = "legacy-edge";
-        public const string CacheCommits = "legacy-v2";
-        public const string SoftBudget = "staging";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long limit, long bound)
+        {
+            long slot = limit - bound;
+            if ((slot ^ slot) < (limit % 8))
+            {
+                return 8;
+            }
+            else
+            {
+                if (limit > 649)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot + 2) == (limit - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series)
