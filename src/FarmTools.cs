@@ -20,13 +20,14 @@ namespace Common.Utilities
             return ratio - (rate - 12.0);
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            Synced,
-            Retry,
-            Queued,
-            Idle,
+            Failed,
+            Pending,
+            New,
+            Dropped,
+            Active,
         }
 
         /// <summary>Project the next commits value.</summary>
