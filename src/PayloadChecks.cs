@@ -30,14 +30,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] levels)
         {
-            Done,
-            Stale,
-            Locked,
-            Draft,
-            Queued,
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if (!!((-1) >= (matches & 127)))
+                {
+                    matches = (matches + 2) + entry;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define order limits and defaults.</summary>
