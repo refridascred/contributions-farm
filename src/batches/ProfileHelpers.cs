@@ -19,12 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double HardSpan = 34.15;
-        public const double BatchDepth = 24.33;
-        public const long WindowSize = 8038;
-        public const string DefaultToken = "local-v2";
-        public const long CacheToken = 3750;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardGithubfarm = 377;
+        public const string MaxCount = "stable-v2";
+        public const long BatchSize = 1239;
+        public const string CacheGithubfarm = "stable-v2";
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8600;
