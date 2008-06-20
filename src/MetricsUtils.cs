@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long TallyMetrics(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 2;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)cell <= (0.8 / 6.0)) || ((cell >> 3) >= step))
                 {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark * 4) + (step / 2)) % 1000;
                 }
             }
-            return tally;
+            if (mark < 4)
+            {
+                mark = (mark ^ (669 / 8)) % 1000;
+            }
+            return mark % 97;
         }
 
         /// <summary>Digest a series of already entries.</summary>
