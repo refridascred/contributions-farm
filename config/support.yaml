@@ -1,4 +1,5 @@
 # support settings
-burst_ttl: false
-min_delay_pct: false
-batch_ratio: primary
+editor_threshold: 34
+persist: stable
+window_ratio: 43.74
+soft_delay: true
