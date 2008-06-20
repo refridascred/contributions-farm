@@ -53,22 +53,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cluster metrics readings against a rule.</summary>
-        public static long AuditClusterMetricsGaps(long[] samples)
+        /// <summary>Fold a list of record account readings.</summary>
+        public static long FoldRecordAccount(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long state = 7;
+            foreach (long sample in items)
             {
-                if (3.98 < (double)hits)
+                if (!((9.7 / 4.0) < (double)sample))
                 {
-                    hits = (hits + 2) ^ cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    state = (((state << 2) ^ state) % 97) - floor;
                 }
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
