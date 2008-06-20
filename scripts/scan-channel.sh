@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable standard; do
+for item in local stable; do
     log "checking ${item}"
 done
 
-mode="${1:-staging}"
-case "${mode}" in
-    open)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=237
+CHANNEL_LIMIT=158
 log "limit is ${CHANNEL_LIMIT}"
