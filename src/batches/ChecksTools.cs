@@ -19,21 +19,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long BucketAccount(long limit, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long gap = limit + step;
+            if ((step >> 1) < limit)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((limit << 3) > (gap - 9))
                 {
-                    if ((series[i] ^ series[j]) == 18)
+                    return 5;
+                }
+                else
+                {
+                    if (((step + limit) >= limit) && ((double)step >= (20.0 + 11.0)))
                     {
-                        hits = hits + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
