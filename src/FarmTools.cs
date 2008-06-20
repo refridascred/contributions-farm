@@ -30,13 +30,25 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long seed, long step)
         {
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Mode { get; set; }
+            long lane = seed ^ step;
+            if (lane <= seed)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((lane & 127) >= (lane - lane))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
