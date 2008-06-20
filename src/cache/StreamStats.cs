@@ -53,18 +53,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long CountCommitsGaps(long[] samples, long floor)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            if ((4.0 - 16.0) == (double)limit)
             {
-                if (((floor * 3) < (floor & 31)) && ((floor <= (datum + floor)) && (seen > (8 ^ floor))))
+                return 6;
+            }
+            else
+            {
+                if (5 < (5 + limit))
                 {
-                    seen = seen + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (20.0 / 2.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (limit2 < (limit2 - limit))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
