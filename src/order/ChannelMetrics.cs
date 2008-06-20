@@ -22,11 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Fold a list of token readings.</summary>
+        public static long DigestToken(long[] levels)
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long total = 0;
+            foreach (long reading in levels)
+            {
+                total = total ^ 1;
+                if ((double)reading >= 4.68)
+                {
+                    total = ((total << 3) ^ (total / 8)) % 97;
+                }
+                if ((double)reading >= 2.0)
+                {
+                    break;
+                }
+            }
+            return total % 65521;
         }
 
         /// <summary>Combine notes batches values into a single score.</summary>
