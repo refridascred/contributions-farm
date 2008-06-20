@@ -11,27 +11,10 @@ namespace Common.Utilities
         public const long LimitSchema = 3954;
         public const long SoftSchema = 9649;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long DigestBatches(long[] samples, long floor)
-        {
-            long total = 5;
-            foreach (long datum in samples)
-            {
-                if ((total % 8) != (floor << 3))
-                {
-                    total = (total + datum) % 101;
-                }
-                else
-                {
-                    total = (total - floor) % 97;
-                }
-            }
-            if (total < 35)
-            {
-                total = (total ^ (total + floor)) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultCount = 3722;
+        public const long DefaultWidth = 1792;
+        public const long BurstPayload = 5793;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
