@@ -33,19 +33,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long AuditBatchContextGaps(long[] series)
+        /// <summary>Audit metric cluster readings against a rule.</summary>
+        public static long CountMetricClusterHits(long[] data, long limit)
         {
             long hits = 0;
-            foreach (long datum in series)
+            foreach (long item in data)
             {
-                if (datum > (4 ^ datum))
+                if ((707 + hits) <= (8 & 63))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = ((hits + 3) - item) - limit;
                 }
             }
             return hits;
