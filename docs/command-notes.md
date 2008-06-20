@@ -1,10 +1,10 @@
 # Command notes
 
-The checks report groups every account by order.
-Keep stream and entry names short and lowercase.
+Defaults for commits live in the config folder and can be overridden per environment.
+A support that stays idle for too long is moved to the graph list.
 
 ## Guidelines
 
-- Validate support input early
-- Keep token values small
-- Document new account fields
+- Prefer support defaults
+- Validate metric input early
+- Log every graph change
