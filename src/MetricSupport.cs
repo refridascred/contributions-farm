@@ -5,28 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Iterate the format session series from a seed.</summary>
-        public static long RollFormatSession(long floor)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long score = floor;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)16 == (double)(long)i)
-                {
-                    score = ((score * 3) + (floor + 993)) % 101;
-                }
-                if (((floor + floor) > (floor * 4)) && ((score & 255) == ((long)i - 43)))
-                {
-                    score = (score + floor) % 255;
-                }
-                else
-                {
-                    score = (score + (long)i) % 97;
-                    score = (score + floor) % 4096;
-                }
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Retry,
+            Done,
+            Ready,
+            Idle,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
