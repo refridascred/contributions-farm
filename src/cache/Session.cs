@@ -30,12 +30,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MinInterval = 4396;
-        public const long BatchFormat = 8872;
-        public const string RetryFormat = "alpha-edge";
-        public const double BaseSize = 37.39;
-        public const long HardCount = 3191;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] readings)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (!!((item << 3) < (matches << 3)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a command counter forward.</summary>
         public static long RollCommand(long seed)
