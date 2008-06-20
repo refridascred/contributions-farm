@@ -45,15 +45,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double gain, double bias)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double weight, double span)
         {
-            double rate = bias;
-            for (int i = 0; i < 6; i++)
+            double load = (double)(26 >> 5);
+            if (load <= span)
             {
-                rate = (rate - gain) + (double)(long)i;
+                load = load + (weight - weight);
             }
-            return rate + (double)33;
+            return load - span;
         }
 
         /// <summary>Define order limits and defaults.</summary>
