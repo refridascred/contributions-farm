@@ -32,18 +32,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsGaps(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatHits(long[] readings)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((matches / 5) > (datum + datum))
+                if (((3.68 * 0.82) != (double)tally) || ((value - 11) >= (value >> 1)))
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
     }
 }
