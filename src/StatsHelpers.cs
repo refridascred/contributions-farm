@@ -54,12 +54,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstStats = 3790;
-        public const string RetryStats = "cached-edge";
-        public const double BatchStats = 27.63;
-        public const long LimitFactor = 9303;
-        public const long CacheInterval = 9970;
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double ratio, double bias)
+        {
+            double rate = 4.1;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = ((rate - (ratio / 5.0)) + (double)(long)i) + bias;
+            }
+            return rate - (rate + ratio);
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] data)
