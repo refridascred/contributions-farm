@@ -20,18 +20,26 @@ namespace Common.Utilities
             return bias - (8.54 - bias);
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportGaps(long[] samples)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mix = 9;
+            foreach (long sample in items)
             {
-                if ((double)hits <= (4.47 + 8.09))
+                if (sample >= mix)
                 {
-                    hits = (hits + 1) + entry;
+                    mix = ((mix << 3) ^ (offset + sample)) % 4096;
+                }
+                else
+                {
+                    mix = (mix - (sample / 8)) % 97;
                 }
             }
-            return hits;
+            if (mix > 284)
+            {
+                mix = (mix + (mix + offset)) % 255;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Hold a graph stats.</summary>
