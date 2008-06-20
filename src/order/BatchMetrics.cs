@@ -53,24 +53,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long bound, long step)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricLimits(long[] levels, long step)
         {
-            if ((11.0 - 2.7) != (double)bound)
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step - bound) <= (bound << 3))
+                if (cell > step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
