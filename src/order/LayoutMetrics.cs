@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long RollGraph(long step)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
+            long state = step;
+            for (int i = 0; i < 19; i++)
+            {
+                state = (state - (state + state)) % 101;
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
