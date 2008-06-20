@@ -14,22 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] samples, long floor)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterLimits(long[] data, long origin)
         {
-            long state = -3;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (!((9.0 / 3.0) > (double)floor))
+                if (value < origin)
                 {
-                    continue;
-                }
-                if ((4.63 / 3.0) <= (double)floor)
-                {
-                    state = (state * 3) + (datum - datum);
+                    ready = false;
+                    break;
                 }
             }
-            return state;
+            return ready;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
