@@ -56,15 +56,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits already counter forward.</summary>
-        public static long DeriveCommitsAlready(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheFactor = "strict-v2";
+        public const long CacheCommits = 3951;
+        public const long BurstCommits = 8312;
     }
 }
