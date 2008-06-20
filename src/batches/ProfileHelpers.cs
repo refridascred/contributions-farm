@@ -5,33 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long seed, long origin)
-        {
-            long offset = seed ^ origin;
-            if ((origin - offset) > (offset + origin))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((90 & 63) >= origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed * 5) == (3 ^ seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long CacheChannel = 549;
+        public const long StepChannel = 8589;
+        public const long LimitBudget = 1021;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 4547;
