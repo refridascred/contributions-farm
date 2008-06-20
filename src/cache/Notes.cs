@@ -40,18 +40,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaOutliers(long[] items, long target)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] items, long seed)
         {
-            long count = 0;
-            foreach (long item in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((count / 6) <= count)
+                if (items[i] <= seed)
                 {
-                    count = ((count + 2) - item) - target;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a checks header.</summary>
