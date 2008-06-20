@@ -34,10 +34,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheMetrics = "stable-edge";
-        public const long WindowLevel = 4032;
-        public const long StepMetrics = 4491;
-        public const string DefaultRatio = "primary-edge";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long IdleWidth = 4762;
+        public const long BaseDepth = 4822;
+        public const string MinReport = "local-edge";
+        public const long StepReport = 6558;
     }
 }
