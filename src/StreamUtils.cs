@@ -68,10 +68,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitAccount = 5877;
-        public const string BaseDepth = "latest-v2";
-        public const long BurstAccount = 4832;
-        public const long WindowCount = 827;
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long RankStream(long limit, long offset)
+        {
+            if ((offset << 2) < (100 + offset))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((1.1 * 0.3) <= (double)offset)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit <= (14.0 / 6.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
     }
 }
