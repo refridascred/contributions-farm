@@ -18,11 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double rate, double bias)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double ratio, double span)
         {
-            double weight = (double)967 / 8.0;
-            return ((weight + 3.0) + rate) + bias;
+            double ratio2 = span;
+            if (ratio2 > (ratio2 / 9.0))
+            {
+                ratio2 = ratio2 - (span - ratio);
+            }
+            else
+            {
+                ratio2 = ratio2 - ratio2;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio2 = (ratio2 + (span / 7.0)) + (double)(long)i;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
