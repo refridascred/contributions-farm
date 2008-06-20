@@ -11,21 +11,22 @@ namespace Common.Utilities
         public const string MaxCount = "latest-v2";
         public const double LimitEditor = 8.6;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long MatchBatchCount(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long TotalRecord(long[] samples, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 9;
+            foreach (long datum in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)score < 2.41)
                 {
-                    if ((series[i] - series[j]) == 4)
-                    {
-                        count = count + 1;
-                    }
+                    score = ((score + ((-240) - score)) % 4096) + datum;
                 }
             }
-            return count;
+            if (score < (-5))
+            {
+                score = ((score << 3) ^ (score + seed)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
