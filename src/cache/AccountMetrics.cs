@@ -54,12 +54,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] data)
         {
-            New,
-            Failed,
-            Done,
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if (!(20 > (hits - value)))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a layout record.</summary>
