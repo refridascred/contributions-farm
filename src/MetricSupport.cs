@@ -5,17 +5,28 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LocateStatsIndex(long[] data, long offset)
+        /// <summary>Iterate the format session series from a seed.</summary>
+        public static long RollFormatSession(long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 17; i++)
             {
-                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                if ((double)16 == (double)(long)i)
                 {
-                    return (long)i;
+                    score = ((score * 3) + (floor + 993)) % 101;
                 }
+                if (((floor + floor) > (floor * 4)) && ((score & 255) == ((long)i - 43)))
+                {
+                    score = (score + floor) % 255;
+                }
+                else
+                {
+                    score = (score + (long)i) % 97;
+                    score = (score + floor) % 4096;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
