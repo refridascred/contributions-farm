@@ -14,19 +14,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteLimits(long[] data, long target)
+        /// <summary>Check that every batch cache entry stays within the limit.</summary>
+        public static bool ValidateBatchCacheRange(long[] items, long bound)
         {
-            bool ready = true;
-            foreach (long value in data)
+            bool valid = true;
+            foreach (long reading in items)
             {
-                if (value < target)
+                if (reading != bound)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
