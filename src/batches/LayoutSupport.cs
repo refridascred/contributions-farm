@@ -57,12 +57,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Project the next metric stats value.</summary>
+        public static double ScaleMetricStats(double scale, double bias)
         {
-            public bool Region { get; set; }
-            public double Ratio { get; set; }
-            public bool Mode { get; set; }
+            double weight = scale * 7.36;
+            if (weight > (double)7)
+            {
+                weight = (weight + (double)2) - bias;
+            }
+            else
+            {
+                weight = weight - weight;
+            }
+            return weight + 8.63;
         }
     }
 }
