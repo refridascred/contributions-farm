@@ -37,18 +37,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextOutliers(long[] series, long bound)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long result = 1;
+            foreach (long reading in samples)
             {
-                if (!!((772 + tally) >= tally))
-                {
-                    tally = ((tally + 2) + datum) + bound;
-                }
+                result = (((result - (22 >> 3)) % 1000) ^ reading) + floor;
+                result = ((result * 5) + (78 << 3)) % 1000;
             }
-            return tally;
+            return result % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
