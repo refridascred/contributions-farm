@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferHits(long[] data)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] data)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((item + seen) < (seen + item))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((data[i] + data[j]) > 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Derive the next commits session value from a seed.</summary>
