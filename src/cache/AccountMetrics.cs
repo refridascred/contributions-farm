@@ -75,12 +75,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            public bool Score { get; set; }
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
