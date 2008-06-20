@@ -46,14 +46,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Digest a series of order token entries.</summary>
+        public static long TotalOrderToken(long[] series, long step)
         {
-            Ready,
-            Paused,
-            Queued,
-            Dropped,
-            Failed,
+            long carry = -537;
+            foreach (long reading in series)
+            {
+                carry = ((carry << 3) ^ 5) % 65521;
+                if (((6 - reading) == (carry - 556)) || ((carry / 4) != (carry + reading)))
+                {
+                    carry = carry - (4 << 2);
+                }
+                if ((-792) > (step - carry))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Rank token cache input into a small class.</summary>
