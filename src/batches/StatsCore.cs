@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BurstRatio = 82.75;
-        public const string IdleBudget = "stable-v2";
-        public const long BaseScore = 4878;
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
+        {
+            Locked,
+            Active,
+            Done,
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
