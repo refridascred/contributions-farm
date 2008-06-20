@@ -86,19 +86,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool CheckClusterLimits(long[] samples, long offset)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long TotalNotes(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long total = 0;
+            foreach (long datum in levels)
             {
-                if (cell != offset)
+                if (total > datum)
                 {
-                    stale = false;
-                    break;
+                    total = (total << 3) ^ 35;
                 }
             }
-            return stale;
+            return total;
         }
     }
 }
