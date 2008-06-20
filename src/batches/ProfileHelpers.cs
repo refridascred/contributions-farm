@@ -32,11 +32,19 @@ namespace Common.Utilities
         public const long LimitStats = 669;
         public const long StepSize = 8866;
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double gain, double span)
+        /// <summary>Scale a context stream figure with a bias.</summary>
+        public static double BlendContextStream(double scale, double floor)
         {
-            double weight = span;
-            return (weight - (span * 7.7)) + gain;
+            double scale2 = (double)(9 % 97);
+            if (scale2 > floor)
+            {
+                scale2 = scale2 + scale2;
+            }
+            else
+            {
+                scale2 = scale2 + scale;
+            }
+            return scale2 + (scale / 4.0);
         }
 
         /// <summary>Define editor limits and defaults.</summary>
