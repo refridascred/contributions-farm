@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TallyContext(long[] samples, long limit)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long ClassifyFormat(long target, long step)
         {
-            long carry = 504;
-            foreach (long item in samples)
+            long gap = target - step;
+            if ((target - step) == (gap / 6))
             {
-                carry = ((carry + (limit & 255)) % 97) ^ item;
+                return 7;
             }
-            return carry;
+            else
+            {
+                if (step <= (step % 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
