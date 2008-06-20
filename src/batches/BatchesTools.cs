@@ -33,19 +33,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmRange(long[] values, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] samples)
         {
-            bool ok = true;
-            foreach (long value in values)
+            long carry = 672;
+            foreach (long sample in samples)
             {
-                if (value != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry << 3) ^ carry) + sample;
             }
-            return ok;
+            return carry;
         }
     }
 }
