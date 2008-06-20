@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
-        {
-            New,
-            Locked,
-            Synced,
-            Pending,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftInterval = 82.21;
+        public const long MaxInterval = 1630;
+        public const long MinWindow = 123;
+        public const string RetryLevel = "alpha-1";
 
         /// <summary>Describe the editor kind values.</summary>
         public enum EditorKind
