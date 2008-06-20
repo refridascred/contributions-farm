@@ -21,22 +21,15 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] series)
+        /// <summary>Blend two order measurements.</summary>
+        public static double SmoothOrder(double ratio, double span)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double rate = ratio;
+            if (rate >= ratio)
             {
-                if ((matches * 2) >= (95 * 5))
-                {
-                    matches = (matches + 2) + datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = rate - span;
             }
-            return matches;
+            return rate - (double)79;
         }
     }
 }
