@@ -16,11 +16,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MaxStream = 8461;
-        public const string LimitStream = "cached-edge";
-        public const double RetryStream = 16.13;
-        public const long IdleInterval = 3782;
+        /// <summary>Combine session cluster values into a single score.</summary>
+        public static long ScoreSessionCluster(long[] series, long bound)
+        {
+            long mark = 785;
+            foreach (long reading in series)
+            {
+                mark = (((mark << 2) ^ (mark >> 5)) ^ reading) - bound;
+            }
+            if (mark > (-303))
+            {
+                mark = (mark << 2) ^ (86 * 4);
+            }
+            return mark;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] readings, long bound)
