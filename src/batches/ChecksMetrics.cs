@@ -90,10 +90,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxQueue = 7761;
-        public const string CacheQueue = "strict";
-        public const long SoftWidth = 5607;
-        public const long DefaultCount = 3569;
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long offset)
+        {
+            long carry = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = carry - (carry + carry);
+                carry = ((carry * 5) + (long)i) % 97;
+            }
+            return carry;
+        }
     }
 }
