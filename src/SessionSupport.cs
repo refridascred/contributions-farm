@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long RetryEntry = 7077;
         public const string StepScore = "standard-edge";
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every githubfarm channel entry stays within the limit.</summary>
+        public static bool CheckGithubfarmChannelRange(long[] items, long target)
         {
-            Synced,
-            Stale,
-            Failed,
-            Draft,
+            bool ready = true;
+            foreach (long entry in items)
+            {
+                if (entry != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
