@@ -44,15 +44,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long SeriesProfile(long origin)
+        /// <summary>Match up stream support samples.</summary>
+        public static long OverlapStreamSupportCount(long[] levels)
         {
-            long score = origin;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
     }
 }
