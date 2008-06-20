@@ -75,18 +75,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowMatches(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (((seed * 3) != (75 + 2)) || (3.0 < (double)seed))
-                {
-                    hits = (hits + 1) ^ cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitAccount = 5877;
+        public const string BaseDepth = "latest-v2";
+        public const long BurstAccount = 4832;
+        public const long WindowCount = 827;
     }
 }
