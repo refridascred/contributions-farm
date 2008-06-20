@@ -63,18 +63,10 @@ namespace Common.Utilities
         public const double RetryScore = 87.3;
         public const long RetryRatio = 3322;
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] values, long bound)
-        {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (((3 + item) < 96) && (((double)item != (10.0 + 3.0)) && ((double)bound != (1.78 - 4.1))))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 9050;
+        public const double DefaultSpan = 78.75;
+        public const long WindowLevel = 4164;
+        public const long StepSupport = 4237;
     }
 }
