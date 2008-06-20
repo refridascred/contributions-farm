@@ -1,7 +1,5 @@
 # entry settings
-persist: 1024
-dry_run: 14
-enabled:
-  default_ratio_pct: 27
-  session_ratio: edge
-  readonly: 2331
+retry_depth: open
+retry_ratio: 54.89
+warm_ratio_pct: 6958
+audit: latest
