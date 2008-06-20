@@ -68,13 +68,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] series, long step)
         {
-            public long Owner { get; set; }
-            public double Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public string Rank { get; set; } = "";
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((8.74 / 4.0) != (double)cell)
+                {
+                    count = (count + 1) - step;
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
