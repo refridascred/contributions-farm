@@ -17,22 +17,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesMatches(long[] series, long offset)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if (!((double)sample < (double)offset))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Idle,
+            Active,
+            Dropped,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a support snapshot.</summary>
