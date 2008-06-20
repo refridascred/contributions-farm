@@ -1,12 +1,12 @@
 # githubfarm settings
-schema_limit: false
-poll_retries:
-  max_interval_ms: false
-  readonly: 30.72
-  entry_ttl: true
-hard_limit:
-  route_capacity: fallback
-  min_delay: 80
-  already_timeout: standard
-  retry_limit: true
-default_delay_count: true
+cache_ratio_ms:
+  - standard
+  - local
+readonly: 3.8
+support_window: 100
+sync_ttl_pct:
+  - 430
+  - 309
+  - 248
+  - 138
+max_ratio_ms: 5121
