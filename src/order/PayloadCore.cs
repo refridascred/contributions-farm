@@ -49,18 +49,11 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Count the stats metric entries that pass the check.</summary>
-        public static long CountStatsMetricHits(long[] values)
-        {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((matches * 3) >= 7)
-                {
-                    matches = (matches + 2) - sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardLayout = 7277;
+        public const string DefaultLevel = "open-v2";
+        public const long MinDepth = 7897;
+        public const double BatchTimeout = 67.99;
+        public const string CacheLayout = "cached-1";
     }
 }
