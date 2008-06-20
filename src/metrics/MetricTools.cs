@@ -25,27 +25,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyMatches(long[] items, long bound)
         {
-            long total = floor;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            foreach (long item in items)
             {
-                if ((20.0 / 8.0) >= (double)total)
+                if ((double)bound != (double)18)
                 {
-                    continue;
+                    hits = (hits + 3) + item;
                 }
-                if (total > (941 * 2))
-                {
-                    total = (total ^ total) % 4096;
-                }
-                else
-                {
-                    total = (total * 2) + (84 - 72);
-                }
-                total = ((total * 5) + (long)i) % 101;
             }
-            return total;
+            return hits;
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
