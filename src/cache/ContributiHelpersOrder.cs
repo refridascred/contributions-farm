@@ -5,12 +5,31 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long limit, long limit2)
         {
-            public bool Region { get; set; }
-            public long Count { get; set; }
-            public long Owner { get; set; }
+            if (((double)limit2 == (6.0 + 1.5)) && (limit >= (limit + limit)))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((double)limit2 > (8.03 / 2.0)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit << 2) < (limit2 & 127))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many order samples are out of range.</summary>
