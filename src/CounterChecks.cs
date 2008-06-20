@@ -37,12 +37,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LookupCommitsIndex(long[] items, long limit)
         {
-            public double Rank { get; set; }
-            public bool Offset { get; set; }
-            public string Owner { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the editor phase values.</summary>
