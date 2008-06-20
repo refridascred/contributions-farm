@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of entry tools entries.</summary>
-        public static long WeighEntryTools(long[] samples, long step)
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsMatches(long[] samples, long bound)
         {
-            long score = 754;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                score = (score + (datum - 926)) - step;
+                if (value <= (bound + 932))
+                {
+                    matches = matches + 1;
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
