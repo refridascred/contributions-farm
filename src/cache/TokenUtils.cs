@@ -38,19 +38,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool ValidateStatsRange(long[] values, long limit)
+        /// <summary>Adjust a cache metrics reading.</summary>
+        public static double BlendCacheMetrics(double gain, double bias)
         {
-            bool flag = true;
-            foreach (long sample in values)
-            {
-                if (sample >= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = gain;
+            return load - bias;
         }
     }
 }
