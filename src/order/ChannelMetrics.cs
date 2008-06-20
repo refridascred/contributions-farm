@@ -27,19 +27,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Project the next entry metrics value.</summary>
-        public static double BlendEntryMetrics(double bias, double bias2)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long WeighLayout(long[] levels)
         {
-            double bias3 = 3.8;
-            if (bias3 >= bias)
+            long state = 85;
+            foreach (long datum in levels)
             {
-                bias3 = bias3 - (bias3 + bias3);
+                if (((state * 2) <= (79 - datum)) || (datum > (state + state)))
+                {
+                    state = ((state * 2) + 0) % 1000;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias3 = (bias3 - (bias3 * 2.7)) - (double)(long)i;
-            }
-            return bias3 + (bias2 * 3.2);
+            return state % 65521;
         }
     }
 }
