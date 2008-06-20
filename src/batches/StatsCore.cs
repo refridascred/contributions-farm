@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count githubfarm checks pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmChecksCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BurstRatio = 82.75;
+        public const string IdleBudget = "stable-v2";
+        public const long BaseScore = 4878;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseEditor = 6266;
