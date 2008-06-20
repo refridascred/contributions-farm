@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format contributi samples are out of range.</summary>
-        public static long MeasureFormatContributiMatches(long[] levels, long step)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if (!(((tally >> 3) <= (step & 127)) || ((tally >> 1) > (tally % 97))))
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
+            public string Size { get; set; } = "";
+            public long Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
