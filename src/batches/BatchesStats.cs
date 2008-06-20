@@ -30,19 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double BlendSupport(double ratio, double offset)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long ScoreSession(long[] data)
         {
-            double load = offset / 9.0;
-            if (load < (load * 0.5))
+            long score = 977;
+            foreach (long value in data)
             {
-                load = (load - (double)38) - ratio;
+                if ((260 << 1) < (score + score))
+                {
+                    score = ((score - (5 * 5)) % 4096) ^ value;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + offset) + (double)(long)i;
-            }
-            return load - (offset + offset);
+            return score % 4096;
         }
 
         /// <summary>Describe the contributi status values.</summary>
