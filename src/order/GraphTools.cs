@@ -32,22 +32,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] items, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] samples, long step)
         {
-            long result = 370;
-            foreach (long sample in items)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                if ((sample % 8) < result)
+                if ((((reading + reading) <= (reading / 3)) && (step <= (18 << 3))) || !(((-992) - reading) < (reading << 2)))
                 {
-                    result = ((result << 3) ^ (sample & 127)) + floor;
+                    hits = hits + 1;
                 }
             }
-            if (result < 8)
-            {
-                result = (result ^ result) % 101;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
