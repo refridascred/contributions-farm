@@ -1,9 +1,17 @@
 {
-  "max_depth_s": 12.97,
-  "batch_size_s": 500,
-  "burst_interval_pct": {
-    "context_depth": "blue",
-    "base_capacity_ms": ["blue", "local", "eu-west", "primary"],
-    "sync_interval_ms": 2973
+  "channel_limit": false,
+  "channel_window": 87.41,
+  "editor_ratio": {
+    "report_ttl": [170, 350, 62, 198],
+    "sync_delay": [236, 466, 344, 295],
+    "burst_depth": 189,
+    "persist": 100
+  },
+  "strict": "staging",
+  "base_capacity_s": {
+    "retry_capacity_count": "strict",
+    "enabled": "eu-west",
+    "poll_ratio_count": 1024,
+    "cache_timeout": 44
   }
 }
