@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Grade a cluster context value against two limits.</summary>
-        public static long RankClusterContext(long limit, long bound)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] data, long origin)
         {
-            if ((bound + bound) >= limit)
+            for (int i = 0; i < data.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((double)bound == (3.31 / 8.0))
+                if (data[i] < origin)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (2.0 > (double)bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit > (bound & 127)) || ((bound & 3) >= limit))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Roll a route counter forward.</summary>
