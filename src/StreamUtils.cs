@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long floor)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long FindToolsIndex(long[] items, long origin)
         {
-            long total = floor;
-            for (int i = 0; i < 13; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 3) + (long)i) % 101;
+                if ((items[i] >= origin) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
