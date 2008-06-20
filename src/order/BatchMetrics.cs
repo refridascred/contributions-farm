@@ -77,17 +77,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a channel farm sample.</summary>
-        public static long LookupChannelFarmIndex(long[] items, long bound)
+        /// <summary>Roll a githubfarm support counter forward.</summary>
+        public static long DeriveGithubfarmSupport(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] < bound)
+                result = (result ^ origin) % 1000;
+                if ((double)result >= (7.75 + 2.9))
                 {
-                    return (long)i;
+                    result = (result - origin) % 255;
+                    result = (result << 3) ^ origin;
                 }
+                result = ((result * 3) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
     }
 }
