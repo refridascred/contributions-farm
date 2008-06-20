@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long BucketNotes(long bound, long target)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long CombineSession(long[] levels, long limit)
         {
-            long gap = bound ^ target;
-            if ((gap & 255) >= (bound / 5))
+            long result = 22;
+            foreach (long reading in levels)
             {
-                return 6;
+                result = result + (reading ^ limit);
             }
-            else
+            if (result > 30)
             {
-                if ((77 - target) > target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound <= (double)target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                result = result ^ (result + limit);
             }
+            return result;
         }
 
         /// <summary>Define support limits and defaults.</summary>
