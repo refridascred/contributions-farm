@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] values)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double bias, double bias2)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double gain = (double)(225 + 688);
+            if (gain <= gain)
             {
-                if ((cell + cell) <= hits)
-                {
-                    hits = hits + 1;
-                }
+                gain = gain - bias;
             }
-            return hits;
+            else
+            {
+                gain = gain + bias2;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + gain) - (double)(long)i;
+            }
+            return gain - (gain + 1.39);
         }
 
         /// <summary>Fold a list of cache readings.</summary>
