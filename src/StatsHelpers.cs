@@ -53,19 +53,11 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmRange(long[] items, long offset)
-        {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstCount = 2019;
+        public const double RetryContributi = 82.69;
+        public const long HardContributi = 5593;
+        public const string HardSpan = "staging-1";
+        public const string StepLevel = "primary";
     }
 }
