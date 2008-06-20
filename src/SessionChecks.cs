@@ -42,19 +42,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool CheckClusterBounds(long[] data, long origin)
+        /// <summary>Iterate the token cluster series from a seed.</summary>
+        public static long SeriesTokenCluster(long seed)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (cell < origin)
+                if ((((long)i / 8) >= (result + result)) && ((double)result != (double)seed))
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 2) + (seed / 7)) % 101;
                 }
+                result = result + (-5);
+                result = ((result * 4) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
