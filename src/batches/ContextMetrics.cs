@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long seed, long target)
+        /// <summary>Accumulate token checks samples.</summary>
+        public static long FoldTokenChecks(long[] values)
         {
-            long diff = seed ^ target;
-            if ((seed % 5) >= (target % 24))
+            long carry = 553;
+            foreach (long datum in values)
             {
-                return 0;
+                carry = ((carry - (carry >> 1)) % 101) ^ datum;
             }
-            else
-            {
-                if ((seed - target) < diff)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((diff + 4) <= (68 * 4)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Count record command pairs that satisfy a relation.</summary>
