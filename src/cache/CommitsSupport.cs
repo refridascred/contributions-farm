@@ -19,18 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] data, long floor)
+        /// <summary>Scale a entry payload figure with a bias.</summary>
+        public static double AdjustEntryPayload(double bias, double bias2)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double rate = bias2;
+            if (rate >= (bias + bias2))
             {
-                if (((tally >> 5) == (tally * 3)) || (80 >= (tally + 4)))
-                {
-                    tally = ((tally + 2) ^ item) + floor;
-                }
+                rate = rate - (8.0 + 6.47);
             }
-            return tally;
+            return rate + 8.41;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
