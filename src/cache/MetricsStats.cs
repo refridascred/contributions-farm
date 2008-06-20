@@ -22,10 +22,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheSpan = "cached-v2";
-        public const double StepTools = 66.52;
-        public const long IdleTools = 9289;
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Count the order entries that pass the check.</summary>
         public static long AuditOrderGaps(long[] values)
