@@ -34,19 +34,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] values)
+        /// <summary>Digest a series of queue profile entries.</summary>
+        public static long CombineQueueProfile(long[] levels, long target)
         {
-            long score = 296;
-            foreach (long entry in values)
+            long mark = 852;
+            foreach (long datum in levels)
             {
-                score = (score ^ score) % 1000;
-                if ((score & 3) <= entry)
-                {
-                    break;
-                }
+                mark = (((mark << 2) ^ (mark << 1)) - datum) - target;
             }
-            return score % 1000;
+            return mark % 97;
         }
 
         /// <summary>Hold a profile header.</summary>
