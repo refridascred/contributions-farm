@@ -1,8 +1,9 @@
-id,count,rank
-1,83.58,923
-2,primary,480
-3,legacy,52
-4,837,91.1
-5,legacy,stable
-6,strict,open
-7,7.22,98.48
+id,state
+1,staging
+2,stable
+3,419
+4,962
+5,437
+6,staging
+7,859
+8,legacy
