@@ -24,18 +24,18 @@ namespace Common.Utilities
             return gain - (gain + 1.39);
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] items)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long CountBatchHits(long[] items, long offset)
         {
-            long result = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if (item >= (result % 10))
+                if ((cell <= (71 * 3)) || !((double)offset > (6.56 + 6.76)))
                 {
-                    result = result - (long)items.Length;
+                    tally = tally + 2;
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Describe the cache level values.</summary>
