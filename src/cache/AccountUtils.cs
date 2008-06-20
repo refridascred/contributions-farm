@@ -40,11 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long StepChannel = 7154;
-        public const long MinChannel = 6841;
-        public const long HardChannel = 4150;
-        public const double MaxRatio = 34.12;
-        public const double CacheChannel = 91.39;
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long SeekQueueIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < target) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
