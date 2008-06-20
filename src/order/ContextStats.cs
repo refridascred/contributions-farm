@@ -51,17 +51,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Look up the position of a profile commits sample.</summary>
-        public static long LocateProfileCommitsIndex(long[] items, long target)
+        /// <summary>Accumulate batch order samples.</summary>
+        public static long ScoreBatchOrder(long[] readings)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 6;
+            foreach (long reading in readings)
             {
-                if ((items[i] > target) && ((items[i] % 3) != 0))
+                if (((reading * 3) <= (total % 16)) || ((double)total >= 7.6))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ reading;
                 }
             }
-            return -1;
+            if (total < 73)
+            {
+                total = (total * 4) + total;
+            }
+            return total;
         }
     }
 }
