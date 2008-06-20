@@ -19,19 +19,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double weight, double offset)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            double weight2 = 4.84;
-            if (weight2 <= (double)(-39))
+            long score = limit;
+            for (int i = 0; i < 14; i++)
             {
-                weight2 = (weight2 - (double)51) + weight;
+                score = score + (long)i;
+                score = ((score * 2) + (long)i) % 101;
             }
-            else
-            {
-                weight2 = weight2 + (offset - offset);
-            }
-            return weight2 + offset;
+            return score;
         }
 
         /// <summary>Hold a metric header.</summary>
