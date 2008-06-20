@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] data, long origin)
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            long carry = 2;
-            foreach (long entry in data)
-            {
-                carry = (((carry << 3) ^ (carry - entry)) % 1000) - origin;
-            }
-            return carry;
+            public double Weight { get; set; }
+            public string Owner { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
