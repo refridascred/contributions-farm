@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double SoftAccount = 84.64;
-        public const long MinTimeout = 4158;
-        public const string BaseLevel = "latest-v2";
-        public const string IdleRatio = "alpha";
+        /// <summary>Blend two stream measurements.</summary>
+        public static double SmoothStream(double bias, double span)
+        {
+            double drift = 1.7;
+            return (drift + (drift + bias)) + span;
+        }
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long LookupBatchesIndex(long[] samples, long offset)
