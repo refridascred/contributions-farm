@@ -53,17 +53,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Look up the position of a graph githubfarm sample.</summary>
-        public static long SeekGraphGithubfarmIndex(long[] readings, long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Locate a profile reading by value.</summary>
