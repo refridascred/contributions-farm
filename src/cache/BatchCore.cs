@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] series, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            long result = 193;
-            foreach (long value in series)
-            {
-                if ((value / 7) < (bound + bound))
-                {
-                    result = result + value;
-                }
-                else
-                {
-                    result = (result + (value + bound)) % 4096;
-                }
-                if ((value >> 1) < 376)
-                {
-                    break;
-                }
-            }
-            if (result > 34)
-            {
-                result = (result + bound) % 4096;
-            }
-            return result % 97;
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
