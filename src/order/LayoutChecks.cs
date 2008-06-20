@@ -36,22 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long OverlapMetricCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) == 4)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MaxContext = 606;
+        public const long RetryContext = 3920;
+        public const long SoftContext = 8875;
+        public const double StepSize = 67.94;
 
         /// <summary>Iterate the context batches series from a seed.</summary>
         public static long IterateContextBatches(long limit)
