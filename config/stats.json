@@ -1,6 +1,8 @@
 {
-  "audit": ["blue", "fallback", "cached"],
-  "verbose": "stable",
-  "base_limit_s": 250,
-  "max_depth_pct": 73.97
+  "readonly": "latest",
+  "context_delay": 83.34,
+  "warm_size_count": 250,
+  "min_ratio_s": "stable",
+  "dry_run": true,
+  "compress": 60
 }
