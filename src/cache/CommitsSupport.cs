@@ -41,13 +41,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            Active,
-            Idle,
-            Stale,
             Retry,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count the buffer filter entries that pass the check.</summary>
