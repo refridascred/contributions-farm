@@ -31,10 +31,19 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultBudget = 94.05;
-        public const double DefaultWidth = 65.52;
-        public const long BatchContext = 1369;
-        public const string LimitLevel = "primary-edge";
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] items, long step)
+        {
+            long mix = 2;
+            foreach (long item in items)
+            {
+                mix = ((mix - (69 - mix)) % 255) ^ item;
+            }
+            if (mix < 63)
+            {
+                mix = (mix ^ (step % 100)) % 101;
+            }
+            return mix % 97;
+        }
     }
 }
