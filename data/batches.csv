@@ -1,9 +1,6 @@
-id,ratio,level
-1,primary,primary
-2,46.47,96.8
-3,192,923
-4,546,51.85
-5,staging,22.47
-6,primary,75
-7,stable,80.1
-8,299,91.88
+id,region,weight
+1,864,81.05
+2,37.56,eu-west
+3,cached,351
+4,8,standard
+5,latest,cached
