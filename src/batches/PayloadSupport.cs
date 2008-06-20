@@ -5,22 +5,26 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Audit already githubfarm readings against a rule.</summary>
-        public static long TallyAlreadyGithubfarmHits(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long score = 8;
+            foreach (long sample in readings)
             {
-                if (5.6 < (double)count)
+                if (((score % 12) <= (sample << 3)) && ((298 * 4) > (sample / 8)))
                 {
-                    count = (count + 3) - reading;
+                    score = (score + (score - sample)) % 65521;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score - (532 - sample)) % 4096;
                 }
             }
-            return count;
+            if (score > 663)
+            {
+                score = (score + (score + score)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a cache header.</summary>
