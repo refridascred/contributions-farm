@@ -30,19 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long ScoreSession(long[] data)
-        {
-            long score = 977;
-            foreach (long value in data)
-            {
-                if ((260 << 1) < (score + score))
-                {
-                    score = ((score - (5 * 5)) % 4096) ^ value;
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitCounter = 5926;
+        public const long CacheCounter = 2830;
+        public const long WindowCounter = 3237;
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
