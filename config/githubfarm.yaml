@@ -1,12 +1,20 @@
 # githubfarm settings
-max_retries_count:
-  - open
-  - blue
-hard_limit: staging
-cache_interval: primary
-poll_ratio_s: 80.99
-account_size:
-  - staging
+batch_delay_ms:
   - eu-west
-  - primary
-audit: fallback
+  - cached
+  - stable
+  - latest
+flush_delay: 8179
+batches_threshold: true
+batch_depth_count:
+  compress: 80
+  warm_limit: 55.54
+  batch_ratio: 89.49
+  default_size_pct: 94.42
+  sync_interval_pct: strict
+stats_delay:
+  - 54
+  - 207
+  - 112
+  - 19
+default_ttl_ms: false
