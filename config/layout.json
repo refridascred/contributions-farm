@@ -1,6 +1,6 @@
 {
-  "flush_limit_ms": 30,
-  "idle_interval_pct": 16,
-  "sync_retries_pct": "edge",
-  "compress": false
+  "poll_size": false,
+  "warm_retries": [423, 328],
+  "burst_ratio_count": 500,
+  "compress": ["staging", "stable", "standard"]
 }
