@@ -63,11 +63,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a session entry.</summary>
-        public sealed class SessionEntry
+        /// <summary>Roll a commits already counter forward.</summary>
+        public static long DeriveCommitsAlready(long step)
         {
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
