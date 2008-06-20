@@ -50,20 +50,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] values)
-        {
-            long carry = 961;
-            foreach (long datum in values)
-            {
-                carry = (carry * 2) + (datum + carry);
-            }
-            if (carry < 20)
-            {
-                carry = (carry - (carry - carry)) % 4096;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepWidth = 7157;
+        public const long RetryBatches = 1919;
+        public const long StepBatches = 9357;
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
