@@ -58,19 +58,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double SmoothOrder(double bias, double offset)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheHits(long[] levels)
         {
-            double weight = (offset - bias) - (4.62 + bias);
-            if (weight > (double)71)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                weight = weight + (9.0 * 2.3);
+                if ((((long)levels.Length - hits) < (hits % 3)) || ((double)hits > (7.0 + 0.7)))
+                {
+                    hits = (hits + 2) + value;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - offset) - (double)(long)i;
-            }
-            return weight - (double)222;
+            return hits;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
