@@ -54,18 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples, long step)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long hits = 0;
-            foreach (long value in samples)
-            {
-                if (((double)step == (6.59 + 4.85)) && (hits >= value))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Draft,
+            Failed,
+            Active,
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
