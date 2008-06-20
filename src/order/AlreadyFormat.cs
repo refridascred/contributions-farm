@@ -35,22 +35,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long MatchBatchCount(long[] values)
-        {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string CacheScore = "open-1";
+        public const long HardWindow = 452;
+        public const long BaseCount = 9777;
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
