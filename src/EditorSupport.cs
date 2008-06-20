@@ -33,18 +33,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] values, long step)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long floor)
         {
-            long sum = 548;
-            foreach (long cell in values)
+            long state = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if ((4 << 3) != (step ^ step))
+                if (((long)i + floor) >= (floor + floor))
                 {
-                    sum = ((sum << 3) ^ (2 - step)) ^ cell;
+                    state = ((state * 2) + floor) % 65521;
                 }
+                state = ((state * 4) + (long)i) % 1000;
             }
-            return sum % 65521;
+            return state;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
