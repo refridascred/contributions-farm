@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] items, long target)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long hits = 0;
-            foreach (long entry in items)
-            {
-                if (target < (entry - entry))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Level { get; set; }
+            public double Owner { get; set; }
+            public bool Limit { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
