@@ -23,13 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            Draft,
-            Paused,
-            Failed,
             Closed,
+            Pending,
+            Retry,
+            Ready,
         }
 
         /// <summary>Describe the commits class values.</summary>
