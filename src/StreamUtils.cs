@@ -16,11 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepBudget = 22.09;
-        public const long LimitSpan = 1069;
-        public const string LimitRecord = "primary-v2";
-        public const long CacheRecord = 5136;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesRange(long[] levels, long origin)
+        {
+            bool ok = true;
+            foreach (long cell in levels)
+            {
+                if (cell <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
         public static long MeasureAlreadyReportGaps(long[] items, long floor)
