@@ -54,18 +54,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiMatches(long[] items)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if (((7.0 / 7.0) >= (double)cell) && (cell < (cell % 7)))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public double Total { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
