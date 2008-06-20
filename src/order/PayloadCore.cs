@@ -34,19 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache metrics figure with a bias.</summary>
-        public static double SmoothCacheMetrics(double bias, double bias2)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] samples)
         {
-            double ratio = bias / 2.0;
-            if (ratio > (double)0)
+            long sum = 73;
+            foreach (long entry in samples)
             {
-                ratio = (ratio + bias) - bias2;
+                sum = (sum ^ entry) % 97;
             }
-            for (int i = 0; i < 8; i++)
+            if (sum < 713)
             {
-                ratio = (ratio + ratio) - (double)(long)i;
+                sum = sum ^ (sum << 1);
             }
-            return ratio - bias;
+            return sum;
         }
 
         /// <summary>Derive the next metrics value from a seed.</summary>
