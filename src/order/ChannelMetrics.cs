@@ -20,17 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of metric order readings.</summary>
-        public static long TotalMetricOrder(long[] values)
-        {
-            long carry = 2;
-            foreach (long sample in values)
-            {
-                carry = ((carry * 4) + (sample / 5)) % 4096;
-                carry = (carry ^ (sample >> 2)) % 255;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long IdleLayout = 36;
+        public const long HardInterval = 2298;
+        public const long CacheScore = 5582;
+        public const double IdleWidth = 33.47;
+        public const long MaxLayout = 1728;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamBounds(long[] levels, long target)
