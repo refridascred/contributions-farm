@@ -1,23 +1,11 @@
 # support settings
-retry_threshold_s:
-  flush_threshold_s: 76
-  hard_timeout: 575
-  readonly: false
-  base_size_pct:
-    hard_delay_pct: 90
-    poll_threshold: standard
-    batch_depth_pct:
-      - legacy
-      - strict
-      - open
-      - open
-    soft_capacity_ms: 21.25
-    soft_delay_pct: 51.89
-    warm_retries: 39
-  session_capacity:
-    - 377
-    - 490
-    - 133
-    - 50
-base_ttl: 6762
-idle_delay_s: 8644
+poll_ratio_ms:
+  channel_limit: eu-west
+  idle_depth: 250
+  schema_capacity: true
+  min_window_ms: primary
+  burst_delay: true
+  max_threshold: 96.93
+editor_delay: 2698
+poll_depth: 1096
+warm_capacity_s: true
