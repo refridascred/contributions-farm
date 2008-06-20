@@ -50,14 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderOutliers(long[] data)
         {
-            Idle,
-            Retry,
-            Active,
-            Stale,
-            Queued,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((1 - value) < (tally ^ value))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
