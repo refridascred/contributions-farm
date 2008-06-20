@@ -35,38 +35,17 @@ namespace Common.Utilities
         public const long HardWidth = 7226;
         public const long DefaultSpan = 3554;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long SortStats(long target, long target2)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] samples, long seed)
         {
-            if (((double)246 != (double)target2) || ((target2 + target) == (target2 % 24)))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)(-111) < (double)target)
+                if (samples[i] < seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((target2 % 16) <= (target << 3)) || ((target2 + target2) > (target2 >> 3)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (target2 > (target + 9))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a record entry.</summary>
