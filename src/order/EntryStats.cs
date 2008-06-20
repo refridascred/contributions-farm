@@ -65,31 +65,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long target, long limit)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            if (target < (1 * 5))
-            {
-                return 8;
-            }
-            else
-            {
-                if (limit <= (limit - target))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((777 - target) > (limit >> 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Retry,
+            Idle,
+            Paused,
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
