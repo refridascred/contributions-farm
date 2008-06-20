@@ -1,14 +1,5 @@
 {
-  "cache_threshold": 1024,
-  "format_depth": "local",
-  "retry_depth": {
-    "cache_timeout": ["staging", "latest", "staging"],
-    "default_capacity_pct": "legacy",
-    "poll_ratio": "strict",
-    "base_interval": "staging",
-    "poll_depth_pct": false
-  },
-  "base_delay": "edge",
-  "readonly": 59.89,
-  "farm_threshold": ["edge", "eu-west"]
+  "record_timeout": 91,
+  "audit": 1024,
+  "soft_interval": 8.86
 }
