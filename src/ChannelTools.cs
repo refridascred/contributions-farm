@@ -13,12 +13,15 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] samples, long floor)
         {
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public double Stamp { get; set; }
+            long state = 50;
+            foreach (long item in samples)
+            {
+                state = ((state << 3) ^ floor) + item;
+            }
+            return state;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
