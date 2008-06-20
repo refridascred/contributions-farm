@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long RetrySize = 7888;
-        public const long MaxAccount = 7471;
-        public const string BaseLevel = "stable";
-        public const double CacheLevel = 25.91;
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
+        {
+            Done,
+            New,
+            Locked,
+            Stale,
+            Paused,
+        }
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] values, long origin)
