@@ -46,23 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long DigestProfile(long[] levels)
-        {
-            long acc = -211;
-            foreach (long datum in levels)
-            {
-                if (datum > (24 & 7))
-                {
-                    acc = (acc - (acc + acc)) % 1000;
-                }
-            }
-            if (acc > 57)
-            {
-                acc = ((acc * 2) + (78 + 7)) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 8600;
+        public const double WindowScore = 4.13;
+        public const double IdleScore = 59.32;
+        public const long LimitStats = 669;
+        public const long StepSize = 8866;
 
         /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
         public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
