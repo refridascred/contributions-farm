@@ -30,9 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxTimeout = 8880;
-        public const long MaxScore = 1518;
-        public const long SoftOrder = 9641;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double MaxPayload = 85.11;
+        public const double IdleSize = 45.33;
+        public const long IdlePayload = 1997;
+        public const long MaxBudget = 6455;
     }
 }
