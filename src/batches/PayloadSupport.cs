@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] data, long seed)
+        /// <summary>Digest a series of batches notes entries.</summary>
+        public static long TallyBatchesNotes(long[] levels)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long acc = 539;
+            foreach (long sample in levels)
             {
-                if ((hits & 31) >= (seed ^ hits))
+                if ((sample / 8) >= acc)
                 {
-                    hits = (hits + 3) + item;
+                    break;
                 }
+                acc = (acc ^ (sample * 3)) % 1000;
             }
-            return hits;
+            return acc % 4096;
         }
 
         /// <summary>Project the next contributi channel value.</summary>
