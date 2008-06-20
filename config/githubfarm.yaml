@@ -1,9 +1,12 @@
 # githubfarm settings
-flush_timeout_count: blue
-hard_ratio: standard
-batch_limit: 8955
-burst_limit:
-  persist: latest
-  commits_size: 89.35
-  default_depth_s: 6889
-  warm_threshold_ms: 93.94
+schema_limit: false
+poll_retries:
+  max_interval_ms: false
+  readonly: 30.72
+  entry_ttl: true
+hard_limit:
+  route_capacity: fallback
+  min_delay: 80
+  already_timeout: standard
+  retry_limit: true
+default_delay_count: true
