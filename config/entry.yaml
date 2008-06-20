@@ -1,5 +1,11 @@
 # entry settings
-default_ratio_count: 33
-strict: cached
-warm_retries_ms: 500
-retry_retries: 1574
+session_window: 4874
+dry_run: legacy
+enabled:
+  - fallback
+  - blue
+  - strict
+  - staging
+commits_limit: 1037
+soft_ttl: false
+window_timeout: 64.26
