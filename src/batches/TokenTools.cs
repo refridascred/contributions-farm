@@ -38,22 +38,39 @@ namespace Common.Utilities
             return scale - 20.0;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] levels)
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long step, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long cur = step ^ seed;
+            if (cur <= (seed * 3))
             {
-                if ((entry & 15) >= (tally % 10))
+                return 6;
+            }
+            else
+            {
+                if ((step / 2) <= seed)
                 {
-                    tally = tally + 3;
+                    return 3;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if ((step > cur) && ((step >> 4) < 39))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed / 3) <= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
