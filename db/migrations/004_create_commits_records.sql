@@ -2,12 +2,14 @@
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
     weight REAL,
+    active INTEGER NOT NULL DEFAULT 1,
+    created_at TIMESTAMP,
     owner TEXT NOT NULL,
-    state TEXT NOT NULL DEFAULT 'new'
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_commits_records_weight ON commits_records (weight);
+CREATE INDEX IF NOT EXISTS idx_commits_records_token ON commits_records (token);
 
-INSERT INTO commits_records (weight, owner, state) VALUES (49.27, 'blue', 'standard');
-INSERT INTO commits_records (weight, owner, state) VALUES (25.21, 'open', 'primary');
-INSERT INTO commits_records (weight, owner, state) VALUES (93.8, 'edge', 'fallback');
+INSERT INTO commits_records (weight, active, owner, token) VALUES (33.24, 47, 'fallback', 'blue');
+INSERT INTO commits_records (weight, active, owner, token) VALUES (21.22, 56, 'fallback', 'green');
+INSERT INTO commits_records (weight, active, owner, token) VALUES (39.76, 40, 'stable', 'eu-west');
