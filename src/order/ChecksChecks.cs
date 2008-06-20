@@ -32,10 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardLevel = 6290;
-        public const long StepBudget = 9753;
-        public const long RetryRatio = 63;
-        public const string StepCount = "local-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamHits(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((694 - floor) > 945)
+                {
+                    count = (count + 3) ^ sample;
+                }
+            }
+            return count;
+        }
     }
 }
