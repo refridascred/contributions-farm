@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long WeighNotes(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long mix = 851;
-            foreach (long sample in readings)
-            {
-                if ((sample & 63) < (sample - sample))
-                {
-                    mix = ((mix * 4) + sample) % 97;
-                }
-            }
-            return mix % 1000;
+            public bool Weight { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Define record limits and defaults.</summary>
