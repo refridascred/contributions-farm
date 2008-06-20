@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long DigestSession(long[] items)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LocateCacheIndex(long[] readings, long floor)
         {
-            long state = 653;
-            foreach (long datum in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum >= (state - 87))
+                if (readings[i] <= floor)
                 {
-                    state = (state + (state - state)) % 65521;
-                }
-                else
-                {
-                    state = (state + (-87)) % 97;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
