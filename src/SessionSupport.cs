@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long CompareOrderCount(long[] levels)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Label { get; set; }
+            public bool Limit { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
