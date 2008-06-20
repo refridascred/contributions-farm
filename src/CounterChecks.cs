@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long seed, long target)
+        /// <summary>Roll a githubfarm command counter forward.</summary>
+        public static long IterateGithubfarmCommand(long offset)
         {
-            if ((double)target <= (10.0 + 2.5))
+            long score = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + target) == (seed << 3))
+                if ((score >> 4) != (23 ^ score))
                 {
-                    return 1;
+                    score = score + (score + offset);
+                    score = score ^ (497 ^ score);
                 }
-                else
-                {
-                    return 7;
-                }
+                score = ((score * 2) + (long)i) % 65521;
             }
+            return score;
         }
 
         /// <summary>Look up the position of a order sample.</summary>
