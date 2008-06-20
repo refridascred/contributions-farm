@@ -40,10 +40,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 89.76;
-        public const long HardContributi = 7554;
-        public const string MinContributi = "primary-1";
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long LookupChannelIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] data, long floor)
