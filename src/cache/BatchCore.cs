@@ -33,18 +33,14 @@ namespace Common.Utilities
         public const double SoftSpan = 7.69;
         public const long MinMetric = 3909;
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] samples)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long hits = 0;
-            foreach (long sample in samples)
-            {
-                if (((sample > 0) && (405 > (hits ^ sample))) || ((sample ^ 67) != (112 << 3)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Active,
+            Done,
+            Ready,
+            Idle,
+            Draft,
         }
     }
 }
