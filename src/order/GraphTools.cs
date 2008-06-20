@@ -37,33 +37,18 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TallyLayout(long[] values, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyHits(long[] samples)
         {
-            long acc = 186;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                if ((3.65 / 6.0) != (double)seed)
+                if (9.0 < (double)sample)
                 {
-                    acc = acc + acc;
-                    acc = acc ^ (971 + cell);
-                }
-                else
-                {
-                    acc = acc ^ (acc - cell);
-                    acc = acc - (acc >> 1);
-                }
-                acc = acc + 253;
-                if (!((double)9 <= (double)seed))
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            if (acc < 9)
-            {
-                acc = ((acc << 3) ^ (acc + seed)) % 4096;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the editor kind values.</summary>
