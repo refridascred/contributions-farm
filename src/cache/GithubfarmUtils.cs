@@ -49,13 +49,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool CheckClusterLimits(long[] items, long origin)
         {
-            Ready,
-            Synced,
-            Done,
-            Queued,
+            bool flag = true;
+            foreach (long cell in items)
+            {
+                if (cell < origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
