@@ -61,21 +61,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long OverlapMetricCount(long[] readings)
-        {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long MinCommits = 7098;
+        public const long WindowTimeout = 9118;
+        public const double BurstBudget = 41.36;
+        public const string HardCommits = "standard-v2";
+        public const long SoftRatio = 6107;
     }
 }
