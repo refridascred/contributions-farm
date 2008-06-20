@@ -26,22 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryHits(long[] series, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long value in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((92 >= value) || ((count / 7) >= (long)series.Length)) && ((9 >> 1) >= count))
+                if ((series[i] <= bound) && ((series[i] % 5) != 0))
                 {
-                    count = (count + 1) + floor;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
