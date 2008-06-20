@@ -34,14 +34,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long DeriveStats(long origin)
         {
-            Active,
-            Queued,
-            Dropped,
-            Stale,
-            Idle,
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = sum - (sum + origin);
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
