@@ -15,17 +15,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Find the first window format entry that matches the target.</summary>
-        public static long LookupWindowFormatIndex(long[] samples, long bound)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public double Level { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
