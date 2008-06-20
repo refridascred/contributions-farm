@@ -51,17 +51,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] levels, long floor)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long origin, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if (((origin / 7) >= (offset / 4)) && (offset >= (origin ^ origin)))
             {
-                if (levels[i] >= floor)
+                return 3;
+            }
+            else
+            {
+                if (((7.6 - 2.11) > (double)offset) || ((offset * 2) > origin))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (offset < (origin >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
