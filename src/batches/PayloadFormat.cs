@@ -38,38 +38,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long RankAlready(long bound, long bound2)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountGaps(long[] samples)
         {
-            if (((bound2 + bound2) >= (40 & 31)) && ((bound - bound2) != (bound % 16)))
+            long matches = 0;
+            foreach (long sample in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound2 >> 5) < (bound + bound2))
+                if ((matches + 559) != (sample << 3))
                 {
-                    return 3;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    if ((double)bound2 < (double)bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (3.1 * 4.5)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Look up the position of a checks notes sample.</summary>
