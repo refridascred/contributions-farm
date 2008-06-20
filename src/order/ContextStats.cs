@@ -51,14 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Retry,
-            Ready,
-            Locked,
-            Synced,
-            Stale,
+            Done,
+            Idle,
+            Failed,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
