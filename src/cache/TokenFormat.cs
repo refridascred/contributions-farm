@@ -45,32 +45,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long origin)
         {
-            long mix = -198;
-            foreach (long cell in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                bool flag = (cell + 94) > cell;
-                if (!flag)
+                if (data[i] > origin)
                 {
-                    mix = (mix - (cell + mix)) % 255;
-                }
-                else
-                {
-                    mix = mix + cell;
-                }
-                mix = (mix ^ mix) % 1000;
-                if (!((mix << 1) >= (mix - mix)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (mix < 7)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return -1;
         }
     }
 }
