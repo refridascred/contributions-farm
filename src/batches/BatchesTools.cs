@@ -27,11 +27,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            public long Owner { get; set; }
-            public long Rank { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
