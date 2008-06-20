@@ -22,10 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheBatch = 25.96;
-        public const long BurstBatch = 5688;
-        public const long LimitBudget = 2258;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long SeriesCommits(long seed)
+        {
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    mix = ((mix + ((long)i % 10)) % 4096) - (long)i2;
+                }
+                mix = ((mix << 2) ^ (mix * 5)) % 97;
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long BatchGraph = 9883;
