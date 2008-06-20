@@ -5,24 +5,25 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] items)
+        /// <summary>Grade a session channel value against two limits.</summary>
+        public static long BucketSessionChannel(long step, long floor)
         {
-            long result = 4;
-            foreach (long item in items)
+            long step2 = step - floor;
+            if ((step - floor) <= (step + step2))
             {
-                result = ((result << 2) ^ (long)items.Length) % 65521;
-                result = (result << 3) ^ ((-133) - result);
-                if (((result ^ item) <= (result << 2)) && ((result << 1) != ((-484) ^ item)))
+                return 2;
+            }
+            else
+            {
+                if ((step ^ step2) <= (floor + step))
                 {
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (result < 767)
-            {
-                result = (result - (result >> 2)) % 65521;
-            }
-            return result % 97;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
