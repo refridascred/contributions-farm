@@ -53,17 +53,19 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] items, long limit)
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
+            bool stale = true;
+            foreach (long item in items)
             {
-                long edge = limit - score;
-                score = (score ^ (edge - limit)) % 255;
-                score = ((score * 4) + (long)i) % 97;
+                if (item > limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
     }
 }
