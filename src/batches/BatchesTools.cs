@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsGaps(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutMatches(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in items)
             {
-                if (((4.4 + 7.33) < (double)step) || ((step - step) >= (step / 6)))
+                if (((double)floor < 3.6) || ((floor + count) <= (7 ^ (-93))))
                 {
-                    tally = (tally + 2) + item;
+                    count = (count + 2) - entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
