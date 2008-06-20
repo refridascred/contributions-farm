@@ -16,16 +16,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            long score = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                score = score + (long)i;
-                score = ((score * 2) + (long)i) % 101;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public long Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
