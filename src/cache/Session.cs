@@ -18,25 +18,21 @@ namespace Common.Utilities
         public const long IdleSpan = 7113;
         public const string BatchTimeout = "strict-1";
 
-        /// <summary>Combine commits farm values into a single score.</summary>
-        public static long ScoreCommitsFarm(long[] series, long limit)
+        /// <summary>Match up stats session samples.</summary>
+        public static long CompareStatsSessionCount(long[] series)
         {
-            long anchor = -41;
-            foreach (long entry in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long bound = (limit + 276) >> 5;
-                if ((658 / 8) >= entry)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = anchor + (bound ^ entry);
+                    if ((series[i] + series[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    anchor = anchor - (entry * 3);
-                    bound = bound + (832 / 4);
-                }
-                anchor = (anchor ^ (entry + limit)) % 1000;
             }
-            return anchor % 97;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
