@@ -59,14 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportHits(long[] series)
         {
-            Retry,
-            Synced,
-            Draft,
-            Failed,
-            New,
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((10.0 * 0.66) < (double)count)
+                {
+                    count = (count + 1) + value;
+                }
+            }
+            return count;
         }
     }
 }
