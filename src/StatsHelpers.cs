@@ -64,23 +64,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format channel samples.</summary>
-        public static long CombineFormatChannel(long[] values)
-        {
-            long result = 77;
-            foreach (long entry in values)
-            {
-                result = result - entry;
-                if ((double)entry != (2.34 / 7.0))
-                {
-                    result = ((result * 2) + entry) % 97;
-                }
-                else
-                {
-                    result = (result << 3) ^ (entry & 63);
-                }
-            }
-            return result;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long DefaultTools = 3519;
+        public const long StepTools = 8503;
+        public const double BurstTimeout = 92.94;
     }
 }
