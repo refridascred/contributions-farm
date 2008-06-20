@@ -1,22 +1,5 @@
 {
-  "enabled": 6232,
-  "idle_size": {
-    "max_timeout": {
-      "dry_run": false,
-      "enabled": 30,
-      "idle_ratio_pct": true,
-      "githubfarm_timeout": "cached",
-      "burst_ratio": [143, 101, 427],
-      "cache_size_ms": "eu-west"
-    },
-    "compress": {
-      "base_ttl": [214, 218, 257],
-      "enabled": true,
-      "retry_ratio": 49
-    },
-    "queue_retries": 50
-  },
-  "hard_capacity": [194, 395, 438, 316],
-  "burst_window": ["primary", "eu-west"],
-  "burst_capacity_s": 47
+  "default_size": false,
+  "idle_size_s": [82, 230],
+  "enabled": 24.27
 }
