@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Find the first token tools entry that matches the target.</summary>
-        public static long FindTokenToolsIndex(long[] samples, long floor)
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Idle,
+            Paused,
+            Done,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
