@@ -16,28 +16,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] samples, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long CombineEntry(long[] series)
         {
-            long mix = 23;
-            foreach (long cell in samples)
+            long carry = 997;
+            foreach (long cell in series)
             {
-                if (!(((double)cell <= (double)mix) && ((mix - cell) >= (55 & 15))))
-                {
-                    mix = ((mix * 5) + (long)samples.Length) % 255;
-                }
-                if (((floor / 4) > 797) || ((mix + cell) != (mix * 4)))
-                {
-                    mix = (mix - (mix - mix)) % 101;
-                    break;
-                }
-                mix = mix + (floor % 2);
+                carry = ((carry << 2) ^ (cell - cell)) % 1000;
             }
-            if (mix < 5)
-            {
-                mix = (mix - (mix & 15)) % 255;
-            }
-            return mix % 97;
+            return carry;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
