@@ -43,15 +43,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] data, long limit)
+        /// <summary>Accumulate counter token samples.</summary>
+        public static long FoldCounterToken(long[] levels)
         {
-            long mix = 223;
-            foreach (long reading in data)
+            long anchor = -25;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 2) ^ limit) - reading;
+                anchor = ((anchor + (anchor * 4)) % 4096) - cell;
             }
-            return mix % 65521;
+            if (anchor > 219)
+            {
+                anchor = anchor ^ (anchor >> 1);
+            }
+            return anchor;
         }
 
         /// <summary>Adjust a order reading.</summary>
