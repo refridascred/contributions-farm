@@ -66,18 +66,17 @@ namespace Common.Utilities
         public const double StepProfile = 45.71;
         public const long HardSize = 8411;
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryGaps(long[] data, long seed)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((tally << 1) == (sample / 7))
+                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
                 {
-                    tally = (tally + 2) - seed;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
