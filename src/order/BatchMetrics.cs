@@ -63,18 +63,31 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many record filter samples are out of range.</summary>
-        public static long MeasureRecordFilterOutliers(long[] samples)
+        /// <summary>Rank queue token input into a small class.</summary>
+        public static long BucketQueueToken(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            if (((limit * 3) >= (74 ^ offset)) && ((double)offset > (5.93 * 0.79)))
             {
-                if (((tally + datum) >= (892 / 7)) && !(tally > (datum + tally)))
+                return 8;
+            }
+            else
+            {
+                if (limit > (limit - offset))
                 {
-                    tally = tally + 1;
+                    return 2;
+                }
+                else
+                {
+                    if (((offset + limit) <= offset) && ((limit << 3) >= limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
