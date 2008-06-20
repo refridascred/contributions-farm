@@ -27,23 +27,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of order token entries.</summary>
-        public static long TotalOrderToken(long[] series, long step)
+        /// <summary>Compare every pair of route readings.</summary>
+        public static long CompareRouteCount(long[] levels)
         {
-            long carry = -537;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry << 3) ^ 5) % 65521;
-                if (((6 - reading) == (carry - 556)) || ((carry / 4) != (carry + reading)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    carry = carry - (4 << 2);
-                }
-                if ((-792) > (step - carry))
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Hold a stream header.</summary>
