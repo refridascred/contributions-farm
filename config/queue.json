@@ -1,7 +1,16 @@
 {
-  "min_depth": 51.07,
-  "token_depth": "primary",
-  "metric_size": ["local", "fallback", "eu-west"],
-  "graph_ratio": 39,
-  "githubfarm_ttl": 87
+  "enabled": 1024,
+  "persist": false,
+  "retry_capacity_pct": {
+    "persist": ["primary", "strict", "stable", "green"],
+    "warm_threshold": 854,
+    "default_timeout": {
+      "compress": "local",
+      "cache_interval_pct": [386, 49, 225, 180],
+      "flush_ttl": false,
+      "persist": 60
+    }
+  },
+  "max_size_pct": ["staging", "legacy"],
+  "max_ttl_count": 840
 }
