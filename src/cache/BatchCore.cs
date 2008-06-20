@@ -13,12 +13,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutGaps(long[] samples)
         {
-            public long Token { get; set; }
-            public string Mode { get; set; } = "";
-            public long Weight { get; set; }
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((double)matches < (3.51 * 0.4)) && (((reading & 1) < matches) && (matches <= (8 - matches))))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
