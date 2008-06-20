@@ -18,18 +18,22 @@ namespace Common.Utilities
         public const string LimitRecord = "primary-v2";
         public const long CacheRecord = 5136;
 
-        /// <summary>Audit entry profile readings against a rule.</summary>
-        public static long AuditEntryProfileHits(long[] series)
+        /// <summary>Measure how many already report samples are out of range.</summary>
+        public static long MeasureAlreadyReportGaps(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((cell + count) == (5 + count))
+                if ((floor + 922) >= (cell - cell))
                 {
-                    count = count + 1;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Blend two report measurements.</summary>
