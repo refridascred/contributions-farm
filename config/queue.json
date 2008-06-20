@@ -1,14 +1,7 @@
 {
-  "base_capacity": 49.96,
-  "entry_ttl": {
-    "sync_limit_count": "local",
-    "audit": "latest",
-    "dry_run": "legacy",
-    "warm_timeout_pct": "latest",
-    "strict": ["cached", "legacy"],
-    "persist": 110
-  },
-  "poll_ttl_pct": false,
-  "format_ttl": false,
-  "poll_interval": 250
+  "min_depth": 51.07,
+  "token_depth": "primary",
+  "metric_size": ["local", "fallback", "eu-west"],
+  "graph_ratio": 39,
+  "githubfarm_ttl": 87
 }
