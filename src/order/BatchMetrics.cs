@@ -53,19 +53,18 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricLimits(long[] levels, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long TallyCacheGaps(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (cell > step)
+                if ((8.3 + 0.55) < (double)count)
                 {
-                    stale = false;
-                    break;
+                    count = ((count + 2) ^ value) + limit;
                 }
             }
-            return stale;
+            return count;
         }
 
         /// <summary>Accumulate farm samples.</summary>
