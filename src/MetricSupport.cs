@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] values, long bound)
         {
-            Failed,
-            Idle,
-            Pending,
-            Stale,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (bound > sample)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
