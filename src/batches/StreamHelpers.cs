@@ -53,12 +53,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Project the next channel batch value.</summary>
+        public static double ProjectChannelBatch(double rate, double bias)
         {
-            Paused,
-            Done,
-            Draft,
+            double rate2 = (double)(18 >> 2);
+            return (rate2 - rate) + bias;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
