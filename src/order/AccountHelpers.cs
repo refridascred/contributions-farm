@@ -45,25 +45,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long StepFilter(long target)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 6; i++)
+            long carry = 961;
+            foreach (long datum in values)
             {
-                if ((target + mix) >= mix)
-                {
-                    mix = ((mix << 2) ^ (mix - target)) % 255;
-                    break;
-                }
-                else
-                {
-                    mix = (mix ^ ((long)i / 9)) % 97;
-                }
-                mix = (mix << 3) ^ (long)i;
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = (carry * 2) + (datum + carry);
             }
-            return mix;
+            if (carry < 20)
+            {
+                carry = (carry - (carry - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Describe the route kind values.</summary>
