@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a metric editor value against two limits.</summary>
-        public static long BucketMetricEditor(long origin, long target)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] samples)
         {
-            if (!(464 > origin))
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - target) < (target << 1))
+                if ((605 + seen) != (seen + reading))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((target >> 1) != (origin + 16)) && ((target % 5) != (946 >> 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)target == (double)origin)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    seen = seen + 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Check that every already entry stays within the limit.</summary>
