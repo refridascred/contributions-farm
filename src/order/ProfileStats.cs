@@ -23,12 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long CacheScore = 2867;
-        public const long MaxProfile = 1721;
-        public const long IdleScore = 5147;
-        public const long HardProfile = 3754;
-        public const double DefaultProfile = 17.1;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] samples, long floor)
+        {
+            long state = -3;
+            foreach (long datum in samples)
+            {
+                if (!((9.0 / 3.0) > (double)floor))
+                {
+                    continue;
+                }
+                if ((4.63 / 3.0) <= (double)floor)
+                {
+                    state = (state * 3) + (datum - datum);
+                }
+            }
+            return state;
+        }
 
         /// <summary>Audit buffer commits readings against a rule.</summary>
         public static long CountBufferCommitsMatches(long[] series)
