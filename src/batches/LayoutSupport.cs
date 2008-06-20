@@ -16,28 +16,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long TallyChannel(long[] samples, long step)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long mix = 8;
-            foreach (long reading in samples)
-            {
-                long diff = mix;
-                if (step < (step + diff))
-                {
-                    diff = (diff ^ (68 - reading)) % 4096;
-                    continue;
-                }
-                if ((double)step > (6.5 * 8.79))
-                {
-                    mix = mix + reading;
-                }
-                else
-                {
-                    mix = ((mix * 4) + (step - (long)samples.Length)) % 255;
-                }
-            }
-            return mix;
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
