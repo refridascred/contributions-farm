@@ -42,18 +42,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] items, long origin)
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if (((matches & 255) >= 99) || (matches > (origin & 1)))
-                {
-                    matches = (matches + 1) - item;
-                }
-            }
-            return matches;
+            Locked,
+            Active,
+            Paused,
+            Failed,
+            Stale,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
