@@ -1,8 +1,8 @@
 # support settings
-verbose: 30
-strict: 79.74
-buffer_threshold:
-  - stable
-  - fallback
-  - fallback
-batch_delay_s: 30
+dry_run: false
+min_size_ms: 30
+poll_retries: 88
+counter_ratio: 52.86
+retry_limit_count:
+  - 288
+  - 489
