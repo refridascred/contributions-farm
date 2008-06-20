@@ -32,18 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long AuditStreamHits(long[] levels, long floor)
+        /// <summary>Fold a list of payload format readings.</summary>
+        public static long DigestPayloadFormat(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long mark = 689;
+            foreach (long datum in values)
             {
-                if ((694 - floor) > 945)
+                if ((((long)values.Length / 5) == (mark * 3)) || (20 >= (mark & 7)))
                 {
-                    count = (count + 3) ^ sample;
+                    mark = ((mark * 2) + datum) - floor;
+                }
+                if (mark > (mark >> 1))
+                {
+                    break;
                 }
             }
-            return count;
+            return mark;
         }
     }
 }
