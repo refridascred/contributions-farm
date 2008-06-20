@@ -1,6 +1,10 @@
-id,token,level,state
-1,55.49,local,599
-2,87.85,827,28.06
-3,633,746,549
-4,48.13,311,402
-5,eu-west,95.28,83.52
+id,owner,region,level
+1,82.14,green,strict
+2,41.9,182,edge
+3,62.05,529,legacy
+4,814,edge,73.11
+5,22.88,64.67,34.57
+6,stable,open,598
+7,579,cached,55
+8,97.98,stable,37.01
+9,legacy,455,57.39
