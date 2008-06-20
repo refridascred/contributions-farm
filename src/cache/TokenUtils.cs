@@ -24,26 +24,15 @@ namespace Common.Utilities
             return gain - (gain + 1.39);
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TallyCache(long[] readings, long floor)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long step)
         {
-            long score = 39;
-            foreach (long reading in readings)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading > (reading * 2))
-                {
-                    score = (score << 2) ^ reading;
-                }
-                if (((long)readings.Length % 16) != (40 << 2))
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (score < 224)
-            {
-                score = score ^ floor;
-            }
-            return score;
+            return acc;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
