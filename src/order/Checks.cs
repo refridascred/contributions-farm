@@ -46,13 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            public double Offset { get; set; }
-            public string Count { get; set; } = "";
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            Dropped,
+            New,
+            Synced,
+            Retry,
         }
     }
 }
