@@ -16,18 +16,11 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long TallyChecksSupport(long[] readings)
+        /// <summary>Hold a order info.</summary>
+        public sealed class OrderInfo
         {
-            long carry = 7;
-            foreach (long item in readings)
-            {
-                if ((item & 31) == (carry - item))
-                {
-                    carry = (carry + item) % 255;
-                }
-            }
-            return carry % 4096;
+            public long Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a account summary.</summary>
