@@ -14,10 +14,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double BurstAccount = 23.52;
-        public const string WindowAccount = "primary-edge";
-        public const long LimitAccount = 2531;
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
+        {
+            Retry,
+            Dropped,
+            Active,
+            Done,
+            Failed,
+        }
 
         /// <summary>Project the next metric value.</summary>
         public static double ProjectMetric(double scale, double offset)
