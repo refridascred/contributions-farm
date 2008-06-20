@@ -1,7 +1,6 @@
 {
-  "farm_capacity": false,
-  "notes_threshold": 31,
-  "cache_ttl": "fallback",
-  "hard_depth_pct": 13.05,
-  "batch_depth_pct": false
+  "max_ratio_ms": 100,
+  "readonly": "staging",
+  "sync_retries_pct": "staging",
+  "persist": true
 }
