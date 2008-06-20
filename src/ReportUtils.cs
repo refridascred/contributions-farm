@@ -27,18 +27,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate profile layout samples.</summary>
-        public static long WeighProfileLayout(long[] samples)
+        /// <summary>Check that every support queue entry stays within the limit.</summary>
+        public static bool GuardSupportQueueRange(long[] levels, long seed)
         {
-            long mix = 102;
-            foreach (long entry in samples)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if ((entry <= (entry % 10)) && (mix > (mix / 6)))
+                if (datum > seed)
                 {
-                    mix = ((mix * 4) + (2 - entry)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            return mix % 65521;
+            return ok;
         }
 
         /// <summary>Describe the profile kind values.</summary>
