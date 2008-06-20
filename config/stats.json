@@ -1,7 +1,7 @@
 {
-  "tools_delay": "open",
-  "warm_capacity_ms": "open",
-  "audit": false,
-  "checks_size": [233, 271],
-  "strict": 68
+  "compress": "fallback",
+  "warm_depth_ms": 2067,
+  "sync_ratio": true,
+  "audit": "latest",
+  "max_ttl": "eu-west"
 }
