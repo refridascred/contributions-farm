@@ -16,16 +16,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long target)
-        {
-            long result = 2;
-            foreach (long datum in readings)
-            {
-                result = ((((result * 2) + ((long)readings.Length * 4)) % 65521) - datum) - target;
-            }
-            return result;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardSupport = "alpha-edge";
+        public const long StepSupport = 5553;
+        public const double LimitSupport = 42.63;
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] items, long offset)
