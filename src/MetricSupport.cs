@@ -20,21 +20,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up layout record samples.</summary>
-        public static long PairLayoutRecordCount(long[] items)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Queued,
+            Ready,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Find the first filter account entry that matches the target.</summary>
