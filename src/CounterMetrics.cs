@@ -27,15 +27,14 @@ namespace Common.Utilities
         public const long RetrySpan = 1356;
         public const long CacheSpan = 4449;
 
-        /// <summary>Project the next order value.</summary>
-        public static double ProjectOrder(double rate, double span)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            double mean = 5.0 / 8.0;
-            if (mean > (rate * 9.83))
-            {
-                mean = (mean - (mean + 2.7)) - span;
-            }
-            return mean + (double)897;
+            Locked,
+            Pending,
+            New,
+            Done,
+            Failed,
         }
 
         /// <summary>Hold a account summary.</summary>
