@@ -75,22 +75,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue tools readings.</summary>
-        public static long WeighQueueTools(long[] samples, long step)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long floor)
         {
-            long state = 9;
-            foreach (long item in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((step & 127) < (state / 4))
+                if (items[i] > floor)
                 {
-                    state = (state - item) % 65521;
-                }
-                if (!((double)item < (6.7 - 5.1)))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
