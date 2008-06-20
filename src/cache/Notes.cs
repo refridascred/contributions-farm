@@ -58,18 +58,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryHits(long[] items)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long TallyTools(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            long acc = 5;
+            foreach (long datum in items)
             {
-                if ((-81) <= (entry + entry))
+                if ((datum >> 3) < datum)
                 {
-                    tally = tally + 2;
+                    acc = (acc + datum) % 101;
+                }
+                else
+                {
+                    acc = acc + (acc * 5);
                 }
             }
-            return tally;
+            if (acc < 52)
+            {
+                acc = (acc ^ acc) % 65521;
+            }
+            return acc;
         }
     }
 }
