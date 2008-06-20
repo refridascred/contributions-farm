@@ -5,26 +5,31 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] levels, long target)
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long offset, long bound)
         {
-            long total = 9;
-            foreach (long datum in levels)
+            if (offset <= (offset / 5))
             {
-                if ((5.0 - 7.36) != (double)total)
+                return 1;
+            }
+            else
+            {
+                if ((bound & 15) <= bound)
                 {
-                    total = (total ^ (target - total)) % 101;
+                    return 6;
                 }
                 else
                 {
-                    total = (total - (total - datum)) % 4096;
+                    if (offset < 5)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (total < 42)
-            {
-                total = total - (total / 5);
-            }
-            return total;
         }
 
         /// <summary>Match up metric samples.</summary>
