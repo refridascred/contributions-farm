@@ -83,10 +83,18 @@ namespace Common.Utilities
         public const double StepProfile = 45.71;
         public const long HardSize = 8411;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BurstEntry = 55.69;
-        public const double CacheEntry = 9.1;
-        public const double WindowEntry = 69.37;
-        public const long IdleEntry = 3547;
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryGaps(long[] data, long seed)
+        {
+            long tally = 0;
+            foreach (long sample in data)
+            {
+                if ((tally << 1) == (sample / 7))
+                {
+                    tally = (tally + 2) - seed;
+                }
+            }
+            return tally;
+        }
     }
 }
