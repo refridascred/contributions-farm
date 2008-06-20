@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Measure how many route farm samples are out of range.</summary>
-        public static long CountRouteFarmMatches(long[] samples)
-        {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if (((400 - 8) == (48 ^ hits)) || ((entry << 1) > entry))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long SoftBudget = 2873;
+        public const long StepDepth = 8252;
+        public const double CacheTools = 40.01;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double WindowInterval = 25.16;
