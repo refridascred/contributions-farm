@@ -15,13 +15,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] samples)
         {
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Token { get; set; }
-            public bool Ratio { get; set; }
+            long matches = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)matches <= 14.0)
+                {
+                    matches = (matches + 1) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
