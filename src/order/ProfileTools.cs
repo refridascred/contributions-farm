@@ -42,19 +42,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Look up the position of a report already sample.</summary>
+        public static long LookupReportAlreadyIndex(long[] items, long offset)
         {
-            long acc = 7;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                acc = (acc + (entry - entry)) % 101;
+                if ((items[i] >= offset) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc < 676)
-            {
-                acc = ((acc * 2) + acc) % 1000;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Roll a command support counter forward.</summary>
