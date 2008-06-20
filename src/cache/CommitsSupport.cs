@@ -29,12 +29,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long TallyNotes(long[] levels, long step)
         {
-            Done,
-            Queued,
-            Failed,
+            long result = 610;
+            foreach (long reading in levels)
+            {
+                if ((result << 2) <= (result & 1))
+                {
+                    result = result + (step >> 4);
+                }
+                if (result <= ((long)levels.Length + reading))
+                {
+                    break;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Describe the route kind values.</summary>
