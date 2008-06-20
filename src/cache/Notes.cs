@@ -31,25 +31,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
-        {
-            long mark = 756;
-            foreach (long entry in data)
-            {
-                if (((71 - entry) < (entry % 64)) && (mark > ((-71) + 232)))
-                {
-                    mark = (mark - (entry + mark)) % 97;
-                    continue;
-                }
-                mark = mark - entry;
-                if (878 >= (entry - 9))
-                {
-                    mark = mark ^ ((long)data.Length + entry);
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 4122;
+        public const long RetryInterval = 4754;
+        public const long WindowLevel = 8017;
+        public const double BaseBudget = 64.12;
+        public const long SoftReport = 6633;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double ProjectAlready(double scale, double span)
