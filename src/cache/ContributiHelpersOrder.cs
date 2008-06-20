@@ -27,12 +27,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Paused,
-            New,
-            Dropped,
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepOrder = 9491;
+        public const long DefaultOrder = 8326;
+        public const long StepWidth = 4687;
+        public const long WindowOrder = 7013;
     }
 }
