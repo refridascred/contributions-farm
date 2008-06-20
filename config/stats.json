@@ -1,20 +1,7 @@
 {
-  "base_ratio": "standard",
-  "flush_ratio": "latest",
-  "poll_window_pct": {
-    "persist": false,
-    "flush_ttl_s": {
-      "route_interval": 28,
-      "audit": true,
-      "idle_delay_count": 6126,
-      "burst_delay_ms": "stable"
-    },
-    "notes_size": ["green", "stable", "primary"]
-  },
-  "max_window_ms": {
-    "sync_retries": 20,
-    "retry_ttl": "fallback",
-    "min_size_count": 2773,
-    "enabled": true
-  }
+  "session_capacity": 42,
+  "min_retries_pct": 7946,
+  "cache_interval_s": "strict",
+  "soft_limit_count": false,
+  "readonly": 500
 }
