@@ -55,29 +55,22 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank queue token input into a small class.</summary>
-        public static long BucketQueueToken(long limit, long offset)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long bound, long step)
         {
-            if (((limit * 3) >= (74 ^ offset)) && ((double)offset > (5.93 * 0.79)))
+            if ((11.0 - 2.7) != (double)bound)
             {
                 return 8;
             }
             else
             {
-                if (limit > (limit - offset))
+                if ((step - bound) <= (bound << 3))
                 {
                     return 2;
                 }
                 else
                 {
-                    if (((offset + limit) <= offset) && ((limit << 3) >= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return 5;
                 }
             }
         }
