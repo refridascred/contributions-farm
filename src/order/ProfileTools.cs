@@ -20,31 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a metrics notes value against two limits.</summary>
-        public static long GradeMetricsNotes(long seed, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels)
         {
-            if (8.16 >= (double)seed)
+            long score = 119;
+            foreach (long sample in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if ((seed + target) < target)
+                if (!(score < (sample - score)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed - seed) < target) && (target < (448 / 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    score = (score - sample) % 1000;
                 }
             }
+            if (score < 4)
+            {
+                score = (score + (score / 3)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Define account limits and defaults.</summary>
