@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] readings, long origin)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if (!((20.0 - 1.0) > (double)origin) || (sample <= (tally - tally)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Locked,
+            Retry,
+            New,
+            Ready,
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
