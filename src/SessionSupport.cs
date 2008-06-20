@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long FoldSchema(long[] items, long origin)
+        /// <summary>Count order pairs that satisfy a relation.</summary>
+        public static long CompareOrderCount(long[] levels)
         {
-            long anchor = 684;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + anchor) + reading;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (anchor > 0)
-            {
-                anchor = (anchor << 3) ^ (origin - 96);
-            }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
