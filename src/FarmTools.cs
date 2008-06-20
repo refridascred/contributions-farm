@@ -20,32 +20,13 @@ namespace Common.Utilities
             return rate - (bias * 16.0);
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long RankOrder(long offset, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long offset2 = offset - target;
-            if ((offset ^ target) > offset2)
-            {
-                return 8;
-            }
-            else
-            {
-                if (!(offset2 >= ((-1) + offset2)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((((-37) - 12) >= offset2) && (offset >= (offset2 * 2)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Synced,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
