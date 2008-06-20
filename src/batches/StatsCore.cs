@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            Locked,
-            Active,
-            Done,
+            public double Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
