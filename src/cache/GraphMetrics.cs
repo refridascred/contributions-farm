@@ -33,14 +33,13 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Active,
-            Closed,
             Queued,
-            Locked,
-            Retry,
+            Draft,
+            Idle,
+            Ready,
         }
 
         /// <summary>Grade a buffer schema value against two limits.</summary>
