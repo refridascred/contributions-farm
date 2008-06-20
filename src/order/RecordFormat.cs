@@ -66,15 +66,22 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long IterateBatch(long limit)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordMatches(long[] items, long seed)
         {
-            long anchor = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((double)tally <= (4.4 / 6.0))
+                {
+                    tally = ((tally + 1) ^ sample) + seed;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
     }
 }
