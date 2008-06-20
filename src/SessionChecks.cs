@@ -28,18 +28,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] levels)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 1) >= (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
