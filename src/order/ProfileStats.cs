@@ -35,19 +35,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool CheckCacheRange(long[] data, long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
