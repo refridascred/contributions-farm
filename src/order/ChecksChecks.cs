@@ -5,38 +5,30 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long origin)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] readings)
         {
-            if ((double)(-35) <= (double)origin)
+            long anchor = -8;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step & 127) <= (step ^ step))
+                if ((anchor >= (cell + cell)) && ((anchor << 1) != (cell + anchor)))
                 {
-                    return 1;
+                    anchor = ((anchor << 3) ^ (cell + anchor)) % 255;
                 }
                 else
                 {
-                    if ((origin << 2) < step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((4 - origin) >= (origin + origin)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = (anchor - anchor) % 4096;
+                }
+                if (cell < (176 - anchor))
+                {
+                    anchor = (anchor + (cell + anchor)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + anchor;
                 }
             }
+            return anchor % 4096;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
