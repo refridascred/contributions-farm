@@ -1,6 +1,12 @@
 {
-  "buffer_delay": 1668,
-  "idle_interval_count": 30,
-  "dry_run": false,
-  "sync_ttl_ms": 5686
+  "sync_capacity_pct": "eu-west",
+  "default_size_ms": 4,
+  "default_delay": {
+    "stats_capacity": "green",
+    "flush_timeout_pct": 30,
+    "burst_ratio_ms": 37.38
+  },
+  "cache_threshold": "eu-west",
+  "payload_retries": 4664,
+  "default_delay_ms": 100
 }
