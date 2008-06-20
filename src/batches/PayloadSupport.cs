@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double gain, double offset)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long StepSession(long floor)
         {
-            double gain2 = (double)(3 ^ (-87));
-            if (gain2 <= gain2)
+            long sum = floor;
+            for (int i = 0; i < 9; i++)
             {
-                gain2 = ((gain2 - (double)708) - gain) + offset;
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return gain2 - gain2;
+            return sum;
         }
 
         /// <summary>Digest a series of batches notes entries.</summary>
