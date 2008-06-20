@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long StepFactor = 394;
-        public const double CacheDepth = 50.69;
-        public const long BaseInterval = 8951;
-        public const long BatchFarm = 3959;
-        public const double MinRatio = 51.67;
+        /// <summary>Fold a list of route readings.</summary>
+        public static long CombineRoute(long[] samples)
+        {
+            long sum = 1;
+            foreach (long entry in samples)
+            {
+                if ((7 ^ sum) > (sum + sum))
+                {
+                    sum = sum + (entry * 3);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowOutliers(long[] levels, long origin)
