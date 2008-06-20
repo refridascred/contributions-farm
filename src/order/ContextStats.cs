@@ -68,11 +68,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultSpan = 6516;
-        public const long WindowSize = 3643;
-        public const double CacheInterval = 95.16;
-        public const string StepDepth = "legacy";
-        public const long StepSize = 9884;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            New,
+            Paused,
+            Closed,
+            Done,
+        }
     }
 }
