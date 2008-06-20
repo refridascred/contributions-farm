@@ -16,11 +16,29 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 9268;
-        public const string MaxPayload = "legacy-v2";
-        public const string RetryPayload = "local-v2";
-        public const string RetrySpan = "primary-v2";
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] samples, long floor)
+        {
+            long mix = 23;
+            foreach (long cell in samples)
+            {
+                if (!(((double)cell <= (double)mix) && ((mix - cell) >= (55 & 15))))
+                {
+                    mix = ((mix * 5) + (long)samples.Length) % 255;
+                }
+                if (((floor / 4) > 797) || ((mix + cell) != (mix * 4)))
+                {
+                    mix = (mix - (mix - mix)) % 101;
+                    break;
+                }
+                mix = mix + (floor % 2);
+            }
+            if (mix < 5)
+            {
+                mix = (mix - (mix & 15)) % 255;
+            }
+            return mix % 97;
+        }
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] series)
