@@ -1,38 +1,17 @@
 # githubfarm settings
-poll_ratio: true
-batch_ttl_s: false
-flush_timeout:
-  readonly: true
-  idle_timeout_ms: 64
-  warm_timeout_count: 58
-  audit: false
-  hard_interval_count: 30
-retry_capacity_pct:
-  layout_ratio: 25.77
-  min_limit: local
-  dry_run: false
-  retry_retries_ms: eu-west
-  idle_depth: 1024
-dry_run:
-  sync_depth: true
-  poll_retries_count:
-    dry_run: strict
-    route_threshold: primary
-    idle_size_count: green
-    order_retries:
-      - blue
-      - staging
-      - cached
-  retry_retries_s:
+audit: true
+readonly: cached
+warm_ttl_pct:
+  max_ttl: 274
+  readonly: cached
+  default_limit_ms: standard
+  already_limit:
+    - primary
     - blue
-    - strict
-    - standard
-  window_depth: false
-  sync_size_ms:
-    retry_ttl_pct: false
-    warm_timeout_pct: standard
-    retry_threshold:
-      - open
-      - open
-      - stable
-    metric_size: true
+    - legacy
+  dry_run:
+    hard_interval: latest
+    stats_ttl: 1024
+    default_window_pct: 60
+hard_window: fallback
+queue_timeout: blue
