@@ -46,19 +46,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double weight, double bias)
-        {
-            double gain = bias / 5.0;
-            if (gain > weight)
-            {
-                gain = gain + (double)1;
-            }
-            else
-            {
-                gain = gain + (double)61;
-            }
-            return gain + 4.61;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardCommand = 53.31;
+        public const double SoftCommand = 20.5;
+        public const long RetryCommand = 1225;
+        public const double BurstCount = 3.67;
     }
 }
