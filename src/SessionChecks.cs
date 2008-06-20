@@ -33,22 +33,28 @@ namespace Common.Utilities
         public const long LimitTimeout = 3175;
         public const double BatchSpan = 34.35;
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long limit)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long SeriesContext(long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                if ((carry & 7) > (limit + carry))
+                if (step >= (step - step))
                 {
-                    carry = (carry + (87 + (long)i)) % 255;
-                    carry = (carry - 1) % 97;
-                    break;
+                    anchor = (anchor ^ (anchor * 3)) % 255;
+                    anchor = (anchor + (step + (long)i)) % 1000;
                 }
-                carry = (carry << 3) ^ carry;
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((anchor - anchor) <= step)
+                {
+                    anchor = anchor - step;
+                }
+                if ((step << 3) == (318 + anchor))
+                {
+                    anchor = (anchor ^ step) % 101;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Combine notes values into a single score.</summary>
