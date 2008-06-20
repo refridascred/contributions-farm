@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LocateMetricIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxMetric = 8915;
+        public const long BaseMetric = 5033;
+        public const long BurstMetric = 8394;
+        public const double HardInterval = 26.32;
+        public const long MinMetric = 9978;
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
