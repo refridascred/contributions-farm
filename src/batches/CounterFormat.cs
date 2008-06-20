@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] levels)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long acc = 19;
-            foreach (long datum in levels)
-            {
-                acc = (acc - (datum + acc)) % 101;
-            }
-            return acc;
+            public long Size { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a cluster record.</summary>
