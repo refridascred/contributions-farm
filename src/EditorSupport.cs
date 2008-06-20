@@ -31,11 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] items)
         {
-            public bool Region { get; set; }
-            public bool Total { get; set; }
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!((count - datum) > (datum << 1)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
