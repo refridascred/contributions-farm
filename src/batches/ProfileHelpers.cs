@@ -12,12 +12,38 @@ namespace Common.Utilities
             return (weight - (double)(-594)) + scale;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long offset, long bound)
         {
-            Paused,
-            New,
-            Idle,
+            if ((3.19 / 2.0) == (double)offset)
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((offset % 60) < (offset + offset)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((double)offset >= (9.2 * 7.57))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset - bound) != (offset / 4))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of profile readings.</summary>
