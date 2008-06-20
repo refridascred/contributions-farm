@@ -16,10 +16,19 @@ namespace Common.Utilities
         public const long BatchTimeout = 4145;
         public const string StepWindow = "legacy";
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 8508;
-        public const double BatchLayout = 8.63;
-        public const string DefaultLayout = "local-1";
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] values)
+        {
+            long sum = 35;
+            foreach (long item in values)
+            {
+                if ((18.0 + 7.0) == (double)sum)
+                {
+                    sum = (sum + (item + item)) % 65521;
+                }
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Derive the next support value from a seed.</summary>
         public static long DeriveSupport(long offset)
