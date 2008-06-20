@@ -52,16 +52,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Combine profile record values into a single score.</summary>
-        public static long WeighProfileRecord(long[] readings, long target)
-        {
-            long mark = 0;
-            foreach (long cell in readings)
-            {
-                mark = ((mark * 3) + cell) + target;
-            }
-            return mark % 4096;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowEditor = 690;
+        public const long HardSize = 9131;
+        public const long LimitEditor = 1859;
+        public const double LimitCount = 36.27;
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long step)
