@@ -37,20 +37,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate account schema readings against a bound.</summary>
-        public static bool ValidateAccountSchemaLimits(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry >= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepScore = 4508;
+        public const double HardScore = 6.44;
+        public const double RetryEntry = 51.72;
+        public const long StepEntry = 9561;
+        public const long BaseScore = 9478;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordOutliers(long[] data)
