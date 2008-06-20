@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Digest a series of buffer already entries.</summary>
-        public static long ScoreBufferAlready(long[] readings, long limit)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long origin, long limit)
         {
-            long acc = 7;
-            foreach (long entry in readings)
+            if (151 > (1 ^ origin))
             {
-                acc = ((acc << 2) ^ (acc + 9)) % 4096;
-                if (!((limit + (long)readings.Length) <= (-229)))
+                return 3;
+            }
+            else
+            {
+                if ((9.67 / 5.0) > (double)limit)
                 {
-                    acc = (acc * 3) + entry;
+                    return 7;
+                }
+                else
+                {
+                    if ((origin / 2) == (origin + (-4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (acc > 95)
-            {
-                acc = (acc ^ (limit * 2)) % 4096;
-            }
-            return acc;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
