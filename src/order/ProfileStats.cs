@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
-        {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinLevel = 2114;
+        public const double StepPayload = 78.04;
+        public const long MinDepth = 2503;
+        public const string HardDepth = "fallback-v2";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long SoftSize = 1140;
