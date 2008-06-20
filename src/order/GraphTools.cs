@@ -44,18 +44,12 @@ namespace Common.Utilities
         public const string MinAccount = "cached-edge";
         public const long MinSpan = 3074;
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextOutliers(long[] samples)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!(((-31) + reading) <= reading))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            New,
+            Active,
+            Failed,
         }
     }
 }
