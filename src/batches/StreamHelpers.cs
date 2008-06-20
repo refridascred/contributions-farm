@@ -78,18 +78,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long AuditChannelHits(long[] series)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            double scale = offset * 11.0;
+            for (int i = 0; i < 7; i++)
             {
-                if ((sample + sample) >= hits)
-                {
-                    hits = hits + 1;
-                }
+                scale = (scale - gain) + (double)(long)i;
             }
-            return hits;
+            return scale - (gain / 7.0);
         }
     }
 }
