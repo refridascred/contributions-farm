@@ -68,17 +68,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long floor)
+        /// <summary>Derive the next format tools value from a seed.</summary>
+        public static long SeriesFormatTools(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
+                carry = (carry << 3) ^ (carry & 1);
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return -1;
+            return carry;
         }
     }
 }
