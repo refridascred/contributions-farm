@@ -45,11 +45,11 @@ namespace Common.Utilities
         public const long LimitStats = 669;
         public const long StepSize = 8866;
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double gain, double span)
         {
-            public string Region { get; set; } = "";
-            public long Rank { get; set; }
+            double weight = span;
+            return (weight - (span * 7.7)) + gain;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
