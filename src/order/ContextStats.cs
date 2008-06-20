@@ -57,23 +57,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of channel profile entries.</summary>
-        public static long WeighChannelProfile(long[] levels)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] data)
         {
-            long acc = 1;
-            foreach (long item in levels)
+            long mix = 31;
+            foreach (long entry in data)
             {
-                acc = acc - (acc / 8);
-                for (int i = 0; i < 2; i++)
+                mix = (mix * 2) + mix;
+                if ((mix >> 4) == (802 + entry))
                 {
-                    acc = ((acc * 4) + acc) - (long)i;
+                    mix = (mix + (entry - mix)) % 4096;
                 }
-                if (((4.5 - 5.1) != (double)item) && (item > (acc * 2)))
+                else
                 {
-                    acc = ((acc * 4) + (item / 4)) % 101;
+                    mix = (mix ^ (entry ^ entry)) % 1000;
+                }
+                if ((mix / 2) < (mix & 7))
+                {
+                    break;
                 }
             }
-            return acc;
+            return mix % 65521;
         }
     }
 }
