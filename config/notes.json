@@ -1,9 +1,6 @@
 {
-  "warm_delay_count": 21,
-  "contributi_capacity": {
-    "default_limit_s": "staging",
-    "order_timeout": 49.67,
-    "persist": ["staging", "staging", "edge"]
-  },
-  "farm_window": "staging"
+  "warm_depth": true,
+  "command_ratio": false,
+  "channel_interval": "standard",
+  "poll_window_s": 72.85
 }
