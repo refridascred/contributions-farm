@@ -16,21 +16,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Match up metric samples.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((double)mix <= (3.5 - 7.12))
                 {
-                    if ((levels[i] + levels[j]) > 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Digest a series of context entries.</summary>
