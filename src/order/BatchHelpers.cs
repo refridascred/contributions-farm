@@ -19,10 +19,19 @@ namespace Common.Utilities
         public const string WindowAccount = "primary-edge";
         public const long LimitAccount = 2531;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowCommits = 93.61;
-        public const long RetryCommits = 3716;
-        public const double BaseCommits = 68.36;
-        public const long MinTimeout = 4298;
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double scale, double offset)
+        {
+            double mean = scale + 2.98;
+            if (mean <= offset)
+            {
+                mean = mean - (double)47;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - scale;
+        }
     }
 }
