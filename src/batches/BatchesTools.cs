@@ -30,11 +30,38 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double SoftGraph = 13.17;
-        public const string RetryGraph = "standard-edge";
-        public const long MaxDepth = 5826;
-        public const long MinGraph = 8123;
-        public const string IdleRatio = "local-v2";
+        /// <summary>Rank context batches input into a small class.</summary>
+        public static long ClassifyContextBatches(long step, long bound)
+        {
+            if ((step / 6) != (bound + step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((6.0 + 9.14) > (double)bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((3 & 255) >= (0 + step)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((1 >> 4) > (888 + step)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
