@@ -23,13 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats level values.</summary>
-        public enum StatsLevel
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            Draft,
-            New,
-            Stale,
-            Failed,
+            public long Ratio { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
