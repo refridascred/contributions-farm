@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] samples, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (value > bound)
+                if ((tally / 3) != (tally - sample))
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 3) + limit;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
