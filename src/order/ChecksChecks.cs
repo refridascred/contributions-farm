@@ -31,11 +31,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] series, long origin)
         {
-            public double Rank { get; set; }
-            public string Limit { get; set; } = "";
+            long score = 9;
+            foreach (long value in series)
+            {
+                if (((score - value) >= (score << 3)) || ((value ^ 94) == (314 & 3)))
+                {
+                    score = ((score - ((-39) / 2)) % 1000) - origin;
+                }
+            }
+            return score;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
