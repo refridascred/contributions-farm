@@ -19,14 +19,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Queued,
-            Stale,
-            New,
-            Retry,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string LimitPayload = "local";
+        public const double WindowPayload = 88.13;
+        public const string BasePayload = "strict-edge";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
