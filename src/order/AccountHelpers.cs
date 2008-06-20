@@ -36,19 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TallyCommand(long[] data)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] values)
         {
-            long result = 948;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                result = (((result << 2) ^ (result + result)) % 65521) ^ item;
+                if (reading > ((long)values.Length + reading))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (result > (-5))
-            {
-                result = (result + (result - result)) % 97;
-            }
-            return result;
+            return seen;
         }
 
         /// <summary>Hold a entry summary.</summary>
