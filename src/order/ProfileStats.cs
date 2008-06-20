@@ -23,11 +23,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double bias, double floor)
         {
-            public long Rank { get; set; }
-            public long Label { get; set; }
+            double ratio = (double)(60 - 6);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio = ((ratio - bias) + (double)(long)i) + floor;
+            }
+            return ratio + (double)40;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
