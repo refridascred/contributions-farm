@@ -15,13 +15,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
+        /// <summary>Find the first cache record entry that matches the target.</summary>
+        public static long LookupCacheRecordIndex(long[] samples, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public double Level { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
