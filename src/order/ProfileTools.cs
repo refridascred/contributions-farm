@@ -38,15 +38,39 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double BlendFilter(double rate, double bias)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long target, long origin)
         {
-            double load = (double)(-59) - (bias + rate);
-            for (int i = 0; i < 9; i++)
+            long cur = target - origin;
+            if ((double)70 != (double)origin)
             {
-                load = (load - rate) + (double)(long)i;
+                return 3;
             }
-            return load - rate;
+            else
+            {
+                if ((target ^ cur) <= cur)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)origin >= (20.0 + 6.9))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((1.0 + 9.0) != (double)origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command entries.</summary>
