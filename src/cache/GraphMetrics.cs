@@ -42,39 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Grade a buffer schema value against two limits.</summary>
-        public static long RankBufferSchema(long target, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool VerifyGithubfarmBounds(long[] levels, long floor)
         {
-            long slot = target - limit;
-            if ((target >> 1) != (limit ^ limit))
+            bool valid = true;
+            foreach (long item in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target ^ limit) == (865 ^ limit))
+                if (item < floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((limit - slot) > (limit & 31)) || ((18.0 * 6.47) > (double)target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((7.8 * 3.4) == (double)target) || ((-6) > (target - slot)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
     }
 }
