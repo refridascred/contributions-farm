@@ -30,12 +30,11 @@ namespace Common.Utilities
             return gain2 - (14.0 / 2.0);
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double AdjustChannel(double weight, double offset)
-        {
-            double bias = weight;
-            return (bias - 6.4) + offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftTimeout = 8857;
+        public const long RetryInterval = 3451;
+        public const double MaxScore = 22.73;
+        public const long LimitDepth = 8221;
 
         /// <summary>Count the metrics window entries that pass the check.</summary>
         public static long AuditMetricsWindowGaps(long[] data, long origin)
