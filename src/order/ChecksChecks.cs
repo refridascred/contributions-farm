@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long RetryWidth = 5798;
-        public const long SoftReport = 3295;
-        public const string LimitReport = "staging";
-        public const long IdleRatio = 9578;
-        public const long BurstLevel = 9345;
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long SeriesSession(long limit)
+        {
+            long state = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state - limit) % 255) ^ (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] series, long origin)
