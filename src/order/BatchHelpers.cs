@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 7675;
-        public const string LimitCounter = "staging-edge";
-        public const long BurstCounter = 4382;
-        public const double HardCounter = 55.35;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public bool Size { get; set; }
+            public double Region { get; set; }
+            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
         public static long TallyFilterPayloadMatches(long[] values, long bound)
