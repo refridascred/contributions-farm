@@ -30,19 +30,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Project the next contributi channel value.</summary>
-        public static double ProjectContributiChannel(double rate, double floor)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long target)
         {
-            double gain = rate + (double)71;
-            if (gain >= 4.21)
+            bool ok = true;
+            foreach (long datum in series)
             {
-                gain = (gain + gain) + floor;
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - gain) + (double)(long)i;
-            }
-            return gain + (rate * 5.0);
+            return ok;
         }
     }
 }
