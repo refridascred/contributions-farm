@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long FoldPayload(long[] series, long limit)
         {
-            Pending,
-            Locked,
-            Synced,
-            Ready,
-            Closed,
+            long state = 59;
+            foreach (long cell in series)
+            {
+                if (((5 - 0) >= limit) && ((cell >> 3) <= (12 + 53)))
+                {
+                    state = ((state << 2) ^ (state - (long)series.Length)) % 65521;
+                }
+            }
+            if (state > (-9))
+            {
+                state = state ^ (limit - state);
+            }
+            return state % 97;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
