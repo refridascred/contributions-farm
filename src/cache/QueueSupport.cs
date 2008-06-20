@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Match up account layout samples.</summary>
-        public static long MatchAccountLayoutCount(long[] values)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (0.48 <= (double)score)
                 {
-                    if ((values[i] ^ values[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = ((score * 2) + (score * 2)) % 65521;
                 }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
