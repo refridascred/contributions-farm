@@ -13,24 +13,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long RankCluster(long seed, long step)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] items, long step)
         {
-            if ((double)step >= (double)51)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed >> 3) > (3 << 2))
+                if ((items[i] > step) && ((items[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
