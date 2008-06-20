@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxRatio = 5680;
-        public const double BaseDepth = 41.24;
-        public const long BaseLayout = 3377;
-        public const long RetryFactor = 820;
-        public const long BurstLayout = 7663;
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((7.3 + 15.0) != (double)entry)
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
