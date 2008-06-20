@@ -1,8 +1,10 @@
 # support settings
-persist: eu-west
-sync_ttl:
-  - 423
-  - 73
-  - 310
-  - 208
-batch_ratio_pct: false
+default_window_ms: 8381
+hard_ratio_s: false
+retry_threshold: 75.04
+retry_limit_s: 35
+soft_size_ms: 8344
+contributi_size:
+  layout_timeout: cached
+  soft_size_count: standard
+  context_threshold: 58.08
