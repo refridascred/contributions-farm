@@ -19,25 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a filter payload pair into a bucket.</summary>
-        public static long RankFilterPayload(long step, long offset)
-        {
-            if ((offset & 63) >= (5 ^ offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset < (offset - offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long RetrySize = 7888;
+        public const long MaxAccount = 7471;
+        public const string BaseLevel = "stable";
+        public const double CacheLevel = 25.91;
 
         /// <summary>Look up the position of a notes sample.</summary>
         public static long LocateNotesIndex(long[] values, long origin)
