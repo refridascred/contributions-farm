@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long TallyNotesGaps(long[] data, long target)
         {
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
-            public bool Level { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((4.4 * 15.0) < (double)count)
+                {
+                    count = ((count + 3) + item) - target;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
