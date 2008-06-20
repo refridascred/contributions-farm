@@ -19,32 +19,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long BucketSupport(long target, long target2)
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long OverlapChannelCount(long[] data)
         {
-            long edge = target - target2;
-            if ((edge - edge) <= (target - 2))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((edge + target2) != (target2 >> 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((20 + target) <= edge)
+                    if ((data[i] - data[j]) == 6)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
