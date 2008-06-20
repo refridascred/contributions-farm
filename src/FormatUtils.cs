@@ -33,24 +33,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank profile metric input into a small class.</summary>
-        public static long ClassifyProfileMetric(long floor, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] levels, long floor)
         {
-            if (((floor + bound) >= floor) || ((double)bound <= (8.17 - 0.7)))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((bound % 16) >= (floor + bound))
+                if (sample > floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
