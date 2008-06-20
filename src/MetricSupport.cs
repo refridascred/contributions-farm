@@ -24,11 +24,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Find the first filter account entry that matches the target.</summary>
+        public static long LocateFilterAccountIndex(long[] data, long origin)
         {
-            public string Rank { get; set; } = "";
-            public long Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
