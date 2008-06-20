@@ -30,19 +30,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] values)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long mix = 8;
-            foreach (long reading in values)
-            {
-                if ((mix & 127) <= mix)
-                {
-                    mix = ((mix ^ (mix >> 1)) % 65521) - reading;
-                }
-                mix = (mix + ((long)values.Length % 7)) % 97;
-            }
-            return mix % 65521;
+            Stale,
+            Locked,
+            Retry,
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
