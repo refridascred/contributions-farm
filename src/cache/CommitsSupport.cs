@@ -66,12 +66,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a context stats.</summary>
-        public sealed class ContextStats
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TallyRecord(long[] readings, long offset)
         {
-            public bool Level { get; set; }
-            public bool Count { get; set; }
-            public long Owner { get; set; }
+            long mark = 347;
+            foreach (long item in readings)
+            {
+                mark = (((mark * 5) + mark) % 101) + offset;
+                if (4.87 >= (double)item)
+                {
+                    break;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
