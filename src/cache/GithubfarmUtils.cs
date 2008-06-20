@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Find the first token command entry that matches the target.</summary>
-        public static long LocateTokenCommandIndex(long[] items, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double rate, double bias)
         {
-            for (int i = 0; i < items.Length; i++)
+            double ratio = rate;
+            if (ratio <= (double)7)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = ratio + (bias * 2.3);
             }
-            return -1;
+            else
+            {
+                ratio = ratio - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + bias) + (double)(long)i;
+            }
+            return ratio - rate;
         }
 
         /// <summary>Describe the graph class values.</summary>
