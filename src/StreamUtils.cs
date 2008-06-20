@@ -18,18 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] readings, long bound)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long seed, long offset)
         {
-            long score = 887;
-            foreach (long entry in readings)
+            long offset2 = seed ^ offset;
+            if (!(offset2 > (offset - seed)))
             {
-                if ((26 + 317) <= entry)
+                return 6;
+            }
+            else
+            {
+                if ((488 + seed) > (51 - 257))
                 {
-                    score = ((score + (entry ^ entry)) % 1000) + bound;
+                    return 3;
+                }
+                else
+                {
+                    if (((seed ^ offset2) == (offset2 + seed)) && (offset2 < (offset2 + (-37))))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
