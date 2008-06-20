@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Count the channel entry entries that pass the check.</summary>
-        public static long MeasureChannelEntryOutliers(long[] levels)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if ((7 - sample) >= 6)
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the notes status values.</summary>
