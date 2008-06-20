@@ -1,8 +1,20 @@
 {
-  "farm_depth": [146, 25, 105],
-  "default_interval_s": 60,
-  "already_threshold": "latest",
-  "filter_depth": 60,
-  "record_ttl": "green",
-  "layout_depth": 250
+  "channel_delay": ["green", "stable", "strict"],
+  "default_delay": true,
+  "burst_interval_count": {
+    "entry_ratio": true,
+    "schema_threshold": "fallback",
+    "order_retries": {
+      "soft_threshold": 5074,
+      "hard_depth_count": 10,
+      "poll_size": "legacy",
+      "min_interval_count": "local",
+      "flush_capacity": 0.37
+    },
+    "enabled": "edge",
+    "cluster_capacity": 29.1,
+    "payload_timeout": "blue"
+  },
+  "idle_limit_ms": "fallback",
+  "poll_depth": 53.06
 }
