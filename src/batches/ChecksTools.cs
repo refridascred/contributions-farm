@@ -23,18 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] series)
+        /// <summary>Fold a list of contributi context readings.</summary>
+        public static long WeighContributiContext(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long value in series)
+            long sum = -3;
+            foreach (long item in levels)
             {
-                if ((double)value >= (8.7 / 4.0))
+                if ((0.9 * 8.34) == (double)item)
                 {
-                    count = count + 2;
+                    sum = sum + (sum - item);
+                }
+                else
+                {
+                    sum = (sum ^ step) % 1000;
                 }
             }
-            return count;
+            return sum;
         }
 
         /// <summary>Describe the order phase values.</summary>
