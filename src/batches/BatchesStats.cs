@@ -16,12 +16,20 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryScore = 4128;
-        public const long HardBudget = 912;
-        public const long SoftScore = 8447;
-        public const long BatchCommand = 8119;
-        public const long SoftCommand = 4153;
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long datum in items)
+            {
+                if (datum < origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 14.81;
