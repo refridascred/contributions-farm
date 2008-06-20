@@ -27,10 +27,38 @@ namespace Common.Utilities
         public const double RetryScore = 7.46;
         public const long BatchCommits = 1472;
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string StepStream = "alpha-v2";
-        public const string BatchCount = "strict";
-        public const long SoftCount = 4240;
-        public const string StepWidth = "stable-edge";
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long BucketCluster(long seed, long limit)
+        {
+            if (seed >= limit)
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed < limit)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((776 < seed) || ((seed - limit) >= (820 << 2)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((7.2 < (double)seed) && ((limit - limit) != (limit & 1)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
