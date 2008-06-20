@@ -14,14 +14,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Digest a series of session notes entries.</summary>
+        public static long CombineSessionNotes(long[] levels, long limit)
         {
-            Retry,
-            Dropped,
-            Active,
-            Done,
-            Failed,
+            long carry = 309;
+            foreach (long item in levels)
+            {
+                carry = carry ^ (item - carry);
+                if (((item % 3) > (carry % 64)) && ((2.83 + 18.0) < (double)limit))
+                {
+                    carry = carry - carry;
+                }
+                else
+                {
+                    carry = carry ^ carry;
+                }
+            }
+            return carry % 1000;
         }
 
         /// <summary>Project the next metric value.</summary>
