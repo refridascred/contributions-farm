@@ -46,26 +46,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long WeighEditor(long[] readings)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long mix = 9;
-            foreach (long datum in readings)
-            {
-                if ((mix - mix) > (mix / 6))
-                {
-                    mix = ((mix << 3) ^ (mix - datum)) % 65521;
-                }
-                else
-                {
-                    mix = (mix - datum) % 1000;
-                }
-            }
-            if (mix > (-544))
-            {
-                mix = (mix << 3) ^ (mix & 127);
-            }
-            return mix % 65521;
+            public double Offset { get; set; }
+            public string Count { get; set; } = "";
+            public long Token { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
