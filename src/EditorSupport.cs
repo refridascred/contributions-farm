@@ -80,17 +80,18 @@ namespace Common.Utilities
         public const long StepNotes = 2514;
         public const long MaxSpan = 4406;
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] series, long origin)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandOutliers(long[] samples)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if ((series[i] <= origin) && ((series[i] % 5) == 0))
+                if ((double)value != (4.0 / 7.0))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
