@@ -32,13 +32,15 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long WeighCommits(long[] values)
         {
-            Queued,
-            Draft,
-            Idle,
-            Ready,
+            long total = 0;
+            foreach (long reading in values)
+            {
+                total = total ^ (reading % 7);
+            }
+            return total % 97;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
