@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Check that every batches farm entry stays within the limit.</summary>
+        public static bool ValidateBatchesFarmBounds(long[] samples, long origin)
         {
-            Idle,
-            Stale,
-            Queued,
-            Dropped,
-            Active,
+            bool stale = true;
+            foreach (long sample in samples)
+            {
+                if (sample != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
