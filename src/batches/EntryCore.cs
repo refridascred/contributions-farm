@@ -28,12 +28,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            Closed,
-            Synced,
-            New,
+            Pending,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Scale a cache metrics figure with a bias.</summary>
