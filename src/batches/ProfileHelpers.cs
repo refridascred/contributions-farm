@@ -56,24 +56,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long GradeRecord(long floor, long bound)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] readings)
         {
-            if (bound < floor)
+            long anchor = 469;
+            foreach (long reading in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound <= (14.0 + 3.82))
+                if (((reading % 12) > (anchor * 2)) && ((anchor - 77) < (reading * 4)))
                 {
-                    return 1;
+                    anchor = (anchor + (anchor * 4)) % 65521;
                 }
-                else
+                if ((anchor < (anchor >> 5)) && (reading < (reading >> 3)))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Derive the next metrics commits value from a seed.</summary>
