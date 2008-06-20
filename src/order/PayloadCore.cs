@@ -24,22 +24,26 @@ namespace Common.Utilities
             return gain - floor;
         }
 
-        /// <summary>Audit order editor readings against a rule.</summary>
-        public static long AuditOrderEditorMatches(long[] items)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long ScoreMetric(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 9;
+            foreach (long value in levels)
             {
-                if ((matches > datum) || ((matches / 6) < (matches + matches)))
+                if ((double)total == (3.59 - 2.0))
                 {
-                    matches = matches + 2;
+                    total = (total + value) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    total = (total * 5) + (562 & 15);
                 }
             }
-            return matches;
+            if (total < 8)
+            {
+                total = (total - total) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
