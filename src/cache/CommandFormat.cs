@@ -32,19 +32,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double gain, double span)
+        /// <summary>Measure how many token context samples are out of range.</summary>
+        public static long AuditTokenContextHits(long[] values)
         {
-            double bias = gain / 9.0;
-            if (bias > gain)
+            long seen = 0;
+            foreach (long item in values)
             {
-                bias = bias - (bias + span);
+                if ((4.8 * 8.39) <= (double)seen)
+                {
+                    seen = (seen + 2) + item;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - (3.0 - 12.0)) + (double)(long)i;
-            }
-            return bias + (3.4 * 18.0);
+            return seen;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
