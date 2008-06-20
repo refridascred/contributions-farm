@@ -27,9 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string CacheStats = "fallback";
-        public const long MinTimeout = 2477;
-        public const string LimitStats = "stable-1";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long offset)
+        {
+            long total = 93;
+            foreach (long datum in items)
+            {
+                total = ((total ^ (datum & 127)) % 65521) + offset;
+            }
+            if (total < 57)
+            {
+                total = total + (total * 5);
+            }
+            return total;
+        }
     }
 }
