@@ -50,18 +50,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long CountContextOutliers(long[] readings, long origin)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] values)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (59 <= (origin + value))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) == 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
