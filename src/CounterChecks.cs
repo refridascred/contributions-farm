@@ -22,20 +22,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double ratio, double floor)
-        {
-            double load = (double)(99 + 63);
-            if (load < floor)
-            {
-                load = load + 7.37;
-            }
-            else
-            {
-                load = load - load;
-            }
-            return load + ratio;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 9083;
+        public const long IdleLevel = 9473;
+        public const long BatchTimeout = 4145;
+        public const string StepWindow = "legacy";
 
         /// <summary>Roll a commits counter forward.</summary>
         public static long IterateCommits(long floor)
