@@ -59,11 +59,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double SmoothCounter(double rate, double span)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] series)
         {
-            double ratio = rate;
-            return (ratio - ratio) + span;
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
