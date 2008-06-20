@@ -6,22 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
-
-for item in eu-west green; do
-    log "checking ${item}"
-done
-
-mode="${1:-fallback}"
+mode="${1:-eu-west}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+for item in legacy eu-west open standard; do
+    log "checking ${item}"
+done
