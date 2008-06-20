@@ -30,10 +30,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepDepth = 247;
-        public const long BurstSession = 1165;
-        public const long BaseSession = 6789;
-        public const long RetryRatio = 2734;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double SoftGraph = 13.17;
+        public const string RetryGraph = "standard-edge";
+        public const long MaxDepth = 5826;
+        public const long MinGraph = 8123;
+        public const string IdleRatio = "local-v2";
     }
 }
