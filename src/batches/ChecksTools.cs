@@ -20,12 +20,18 @@ namespace Common.Utilities
             return drift + rate;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] series, long step)
         {
-            public long Mode { get; set; }
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((8 ^ seen) < (seen / 5))
+                {
+                    seen = ((seen + 2) + value) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine context values into a single score.</summary>
