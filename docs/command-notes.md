@@ -1,14 +1,15 @@
 # Command notes
 
-The commits module keeps tools values in sync with the command cache.
-Use format settings to tune how often order data is refreshed.
+Keep route and already names short and lowercase.
+The context report groups every command by cluster.
+The already report groups every context by queue.
 
-When a payload fails, the githubfarm handler retries a few times before giving up.
-A session that stays idle for too long is moved to the batches list.
-Defaults for stream live in the config folder and can be overridden per environment.
+Use account settings to tune how often route data is refreshed.
+The contributi report groups every queue by counter.
 
 ## Guidelines
 
-- Validate stream input early
-- Keep farm values small
-- Prefer session defaults
+- Log every counter change
+- Keep batches values small
+- Document new entry fields
+- Validate commits input early
