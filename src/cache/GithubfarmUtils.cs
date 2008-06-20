@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepTimeout = 38.42;
-        public const long RetryWidth = 5035;
-        public const long RetryDepth = 6966;
+        /// <summary>Find the first token command entry that matches the target.</summary>
+        public static long LocateTokenCommandIndex(long[] items, long limit)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the graph class values.</summary>
         public enum GraphClass
