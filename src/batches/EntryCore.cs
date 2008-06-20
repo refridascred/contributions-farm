@@ -36,19 +36,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Scale a cache metrics figure with a bias.</summary>
-        public static double BlendCacheMetrics(double scale, double span)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double ratio, double floor)
         {
-            double mean = span;
-            if (mean > (5.0 * 14.0))
+            double scale = ratio + floor;
+            for (int i = 0; i < 4; i++)
             {
-                mean = mean - (1.91 - span);
+                scale = scale - (double)(long)i;
             }
-            else
-            {
-                mean = mean + scale;
-            }
-            return mean + 6.0;
+            return scale - (floor + scale);
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
