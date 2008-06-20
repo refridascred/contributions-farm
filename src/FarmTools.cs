@@ -27,10 +27,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string BatchMetrics = "standard";
-        public const long MaxMetrics = 4531;
-        public const string BaseDepth = "open";
-        public const long BaseLevel = 4507;
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double rate, double offset)
+        {
+            double drift = (offset - offset) + (double)39;
+            if (drift <= offset)
+            {
+                drift = drift + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - (4.54 - rate);
+        }
     }
 }
