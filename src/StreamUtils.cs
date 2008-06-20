@@ -27,14 +27,22 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionOutliers(long[] readings, long floor)
         {
-            Synced,
-            Closed,
-            Retry,
-            Draft,
-            Paused,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((hits >> 2) == (floor + hits))
+                {
+                    hits = (hits + 3) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
