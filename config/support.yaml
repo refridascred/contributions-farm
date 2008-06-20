@@ -1,11 +1,8 @@
 # support settings
-soft_capacity_s: 500
-soft_size_s: cached
-flush_retries_ms:
-  - 178
-  - 163
-  - 410
-  - 100
-profile_capacity: open
-enabled: 38.77
-soft_retries_count: edge
+persist: eu-west
+sync_ttl:
+  - 423
+  - 73
+  - 310
+  - 208
+batch_ratio_pct: false
