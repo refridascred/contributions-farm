@@ -24,10 +24,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double CacheTimeout = 85.86;
-        public const long StepFormat = 8410;
-        public const long RetryFormat = 9839;
-        public const long MaxInterval = 1718;
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double offset)
+        {
+            double gain = (7.0 * 3.2) / 3.0;
+            if (gain >= (7.8 / 2.0))
+            {
+                gain = (gain - (offset / 2.0)) + bias;
+            }
+            else
+            {
+                gain = gain - (18.0 * 16.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - offset) + (double)(long)i;
+            }
+            return gain + (offset + offset);
+        }
     }
 }
