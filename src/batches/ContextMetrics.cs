@@ -62,15 +62,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double SmoothBatch(double ratio, double bias)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            double drift = (double)970 * 13.0;
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (((drift - drift) + (double)(long)i) + ratio) - bias;
-            }
-            return drift + drift;
+            Done,
+            Closed,
+            New,
+            Ready,
         }
 
         /// <summary>Look up the position of a window sample.</summary>
