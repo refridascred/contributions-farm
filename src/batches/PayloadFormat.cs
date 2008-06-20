@@ -20,22 +20,12 @@ namespace Common.Utilities
             return gain - (floor + gain);
         }
 
-        /// <summary>Audit token contributi readings against a rule.</summary>
-        public static long AuditTokenContributiMatches(long[] items)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((double)seen >= 1.0)
-                {
-                    seen = (seen + 2) - sample;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            New,
         }
 
         /// <summary>Hold a editor snapshot.</summary>
