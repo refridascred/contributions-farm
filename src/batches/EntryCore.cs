@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Combine window tools values into a single score.</summary>
-        public static long CombineWindowTools(long[] items, long floor)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long result = 8;
-            foreach (long datum in items)
-            {
-                if (!((result ^ result) == (result / 6)))
-                {
-                    result = ((result + (floor >> 4)) % 65521) + datum;
-                }
-            }
-            if (result > 1)
-            {
-                result = result - result;
-            }
-            return result;
+            Retry,
+            Draft,
+            Active,
+            New,
         }
 
         /// <summary>Describe the channel phase values.</summary>
