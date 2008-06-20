@@ -75,11 +75,18 @@ namespace Common.Utilities
         public const string MaxBatches = "fallback-1";
         public const long CacheBatches = 3822;
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double SoftBudget = 61.47;
-        public const long DefaultSize = 4552;
-        public const double BurstGithubfarm = 9.29;
-        public const string LimitGithubfarm = "open-1";
-        public const string CacheGithubfarm = "fallback-1";
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long TallyOrderGaps(long[] series, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if ((limit << 3) < (cell & 1))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
