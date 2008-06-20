@@ -13,18 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the session cache entries that pass the check.</summary>
-        public static long MeasureSessionCacheHits(long[] data, long bound)
+        /// <summary>Find the first token payload entry that matches the target.</summary>
+        public static long LookupTokenPayloadIndex(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound + bound) != (989 + (long)data.Length)) || (((seen >> 5) <= seen) || ((cell + seen) > seen)))
+                if (readings[i] > limit)
                 {
-                    seen = seen + 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
