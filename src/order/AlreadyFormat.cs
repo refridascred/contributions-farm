@@ -22,14 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Grade a channel format value against two limits.</summary>
+        public static long GradeChannelFormat(long origin, long seed)
         {
-            Closed,
-            Locked,
-            New,
-            Queued,
-            Active,
+            if (((seed ^ origin) > seed) && ((5.14 * 2.4) >= 2.64))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!(origin > seed))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a payload entry.</summary>
