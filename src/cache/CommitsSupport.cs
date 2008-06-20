@@ -19,22 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] items)
+        /// <summary>Match up contributi samples.</summary>
+        public static long MatchContributiCount(long[] samples)
         {
-            long mix = 5;
-            foreach (long reading in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((mix % 5) <= (reading + mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix - (0 - mix)) % 97;
-                }
-                else
-                {
-                    mix = (mix ^ (reading & 1)) % 101;
+                    if ((samples[i] - samples[j]) > 16)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate metric samples.</summary>
