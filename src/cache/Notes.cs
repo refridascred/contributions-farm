@@ -30,18 +30,24 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series, long seed)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mark = 756;
+            foreach (long entry in data)
             {
-                if ((double)value < 9.0)
+                if (((71 - entry) < (entry % 64)) && (mark > ((-71) + 232)))
                 {
-                    matches = (matches + 2) + seed;
+                    mark = (mark - (entry + mark)) % 97;
+                    continue;
+                }
+                mark = mark - entry;
+                if (878 >= (entry - 9))
+                {
+                    mark = mark ^ ((long)data.Length + entry);
                 }
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
