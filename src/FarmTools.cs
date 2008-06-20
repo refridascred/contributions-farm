@@ -16,13 +16,11 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Dropped,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 9268;
+        public const string MaxPayload = "legacy-v2";
+        public const string RetryPayload = "local-v2";
+        public const string RetrySpan = "primary-v2";
 
         /// <summary>Match up githubfarm samples.</summary>
         public static long PairGithubfarmCount(long[] series)
