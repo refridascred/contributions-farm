@@ -1,7 +1,22 @@
 {
-  "max_retries": true,
-  "flush_ratio_s": 39.15,
-  "sync_limit_ms": [286, 279],
-  "metric_capacity": true,
-  "default_ratio_pct": "stable"
+  "farm_limit": ["legacy", "open", "local"],
+  "burst_window": 8428,
+  "checks_ratio": {
+    "max_interval_ms": 51.43,
+    "record_capacity": {
+      "flush_depth_count": 98,
+      "batch_ttl_count": [461, 391, 166, 401],
+      "cache_limit": false,
+      "metrics_limit": 39,
+      "dry_run": 86
+    },
+    "base_delay_pct": "staging",
+    "soft_retries_ms": 250,
+    "poll_depth": true,
+    "poll_limit": {
+      "commits_interval": [354, 241, 3],
+      "enabled": false,
+      "stream_timeout": "staging"
+    }
+  }
 }
