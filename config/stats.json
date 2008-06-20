@@ -1,12 +1,19 @@
 {
-  "already_ttl": 80.65,
-  "poll_retries": 500,
-  "cache_timeout": true,
-  "queue_depth": "legacy",
-  "audit": {
-    "hard_threshold": 43.7,
-    "warm_ttl_pct": 100,
-    "cache_size_s": true
+  "retry_timeout_ms": {
+    "min_interval_ms": 19,
+    "enabled": ["green", "strict"],
+    "burst_ratio_count": ["green", "strict", "fallback"],
+    "layout_capacity": 71.25,
+    "graph_size": 66,
+    "githubfarm_depth": "strict"
   },
-  "default_size": 21.86
+  "cache_ratio_ms": 60,
+  "base_ttl_pct": {
+    "soft_limit_count": 123,
+    "readonly": 100,
+    "dry_run": false
+  },
+  "enabled": 2900,
+  "checks_size": 12,
+  "hard_ttl": 60
 }
