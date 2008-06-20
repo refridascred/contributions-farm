@@ -1,6 +1,8 @@
 {
-  "filter_limit": 35.61,
-  "max_interval_ms": true,
-  "session_limit": "green",
-  "warm_delay_count": 42.16
+  "compress": "strict",
+  "checks_delay": "eu-west",
+  "audit": "standard",
+  "batch_threshold_count": 87.51,
+  "base_capacity": ["legacy", "eu-west"],
+  "readonly": false
 }
