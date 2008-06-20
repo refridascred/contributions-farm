@@ -37,18 +37,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] readings, long floor)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((988 % 16) == (item + seen))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Retry,
+            Draft,
+            New,
         }
 
         /// <summary>Hold a buffer summary.</summary>
