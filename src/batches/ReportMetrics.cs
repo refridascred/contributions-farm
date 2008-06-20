@@ -24,15 +24,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long result = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            public bool Count { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Measure how many cache profile samples are out of range.</summary>
