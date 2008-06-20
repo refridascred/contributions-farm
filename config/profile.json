@@ -1,6 +1,8 @@
 {
-  "compress": "cached",
-  "default_ratio": 4325,
-  "retry_ratio": 1024,
-  "batches_retries": "local"
+  "default_depth_pct": 19,
+  "base_delay": ["legacy", "strict"],
+  "profile_ratio": "green",
+  "batch_interval": [257, 377, 451, 122],
+  "enabled": 4881,
+  "default_interval_count": "staging"
 }
