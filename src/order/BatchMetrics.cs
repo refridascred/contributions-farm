@@ -77,21 +77,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a githubfarm support counter forward.</summary>
-        public static long DeriveGithubfarmSupport(long origin)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long WeighMetrics(long[] data)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long score = 1;
+            foreach (long value in data)
             {
-                result = (result ^ origin) % 1000;
-                if ((double)result >= (7.75 + 2.9))
+                if (((value << 3) >= (score - score)) || (score > (14 / 8)))
                 {
-                    result = (result - origin) % 255;
-                    result = (result << 3) ^ origin;
+                    score = score - (value - 942);
                 }
-                result = ((result * 3) + (long)i) % 101;
+                else
+                {
+                    score = (score - (score + value)) % 101;
+                }
             }
-            return result;
+            return score;
         }
     }
 }
