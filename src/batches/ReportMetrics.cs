@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Grade a session channel value against two limits.</summary>
-        public static long BucketSessionChannel(long step, long floor)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] readings, long floor)
         {
-            long step2 = step - floor;
-            if ((step - floor) <= (step + step2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step ^ step2) <= (floor + step))
+                if (readings[i] < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
