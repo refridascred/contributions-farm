@@ -44,17 +44,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a entry reading by value.</summary>
-        public static long LookupEntryIndex(long[] samples, long target)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 2839;
+        public const long HardPayload = 3843;
+        public const long HardWidth = 421;
+        public const long BaseSpan = 1406;
+        public const double DefaultTimeout = 47.71;
     }
 }
