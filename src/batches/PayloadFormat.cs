@@ -39,14 +39,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double AdjustContributi(double bias, double bias2)
         {
-            Failed,
-            Retry,
-            Dropped,
-            Draft,
-            Closed,
+            double load = (bias2 - bias) * 15.0;
+            if (load >= bias)
+            {
+                load = load + (double)6;
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = load - (double)(long)i;
+            }
+            return load + bias2;
         }
     }
 }
