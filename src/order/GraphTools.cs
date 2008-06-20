@@ -38,11 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSize = 1952;
-        public const string BatchAccount = "staging-1";
-        public const string MinAccount = "cached-edge";
-        public const long MinSpan = 3074;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string BaseScore = "alpha-1";
+        public const double BasePayload = 54.62;
+        public const long HardWidth = 9855;
+        public const long IdleRatio = 6953;
 
         /// <summary>Describe the checks phase values.</summary>
         public enum ChecksPhase
