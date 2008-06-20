@@ -1,13 +1,13 @@
 {
-  "audit": 85.73,
-  "readonly": "standard",
-  "already_interval": 40.74,
-  "hard_capacity_pct": {
-    "audit": 68.73,
-    "strict": "primary",
-    "verbose": true,
-    "readonly": "latest",
-    "base_window_s": "green",
-    "default_timeout": false
-  }
+  "warm_ttl_ms": 100,
+  "cache_retries_ms": "edge",
+  "hard_delay_pct": ["stable", "latest", "edge", "edge"],
+  "idle_limit_count": 9428,
+  "session_size": {
+    "hard_ttl": 39.73,
+    "poll_window_count": true,
+    "dry_run": [229, 131],
+    "enabled": "staging"
+  },
+  "compress": false
 }
