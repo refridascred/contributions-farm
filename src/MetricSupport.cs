@@ -27,19 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double ScaleStream(double rate, double floor)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsGaps(long[] levels)
         {
-            double mean = (double)31 + (floor * 10.0);
-            if (mean <= 4.35)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mean = mean - (rate - floor);
+                if ((matches / 5) > (datum + datum))
+                {
+                    matches = matches + 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean + mean)) + (double)(long)i;
-            }
-            return mean - floor;
+            return matches;
         }
     }
 }
