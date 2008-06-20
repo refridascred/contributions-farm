@@ -24,18 +24,22 @@ namespace Common.Utilities
         public const long RetryEntry = 7077;
         public const string StepScore = "standard-edge";
 
-        /// <summary>Measure how many stats report samples are out of range.</summary>
-        public static long CountStatsReportGaps(long[] items)
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long anchor = 185;
+            foreach (long entry in series)
             {
-                if (((double)count != (8.4 * 1.3)) && ((count << 3) <= 59))
+                if ((double)anchor < (double)3)
                 {
-                    count = (count + 1) - reading;
+                    anchor = (((anchor << 3) ^ (anchor - 8)) % 1000) ^ entry;
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ (bound * 5)) % 1000;
                 }
             }
-            return count;
+            return anchor % 65521;
         }
     }
 }
