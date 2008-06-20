@@ -1,10 +1,27 @@
 # entry settings
-retry_timeout: 20
-retry_capacity: 9941
-graph_window:
-  - strict
-  - eu-west
-  - green
-batch_size_s: 30
-cache_window_ms: 100
-cache_ratio: 20.5
+burst_ttl_s:
+  min_ttl: legacy
+  queue_threshold: 56.6
+  command_ratio: 2401
+  default_window:
+    cache_retries: standard
+    enabled: standard
+    tools_interval: latest
+    batch_timeout: false
+    strict: true
+    base_interval: false
+retry_interval_s:
+  - staging
+  - open
+tools_delay: stable
+warm_ratio_s:
+  format_depth: true
+  hard_retries: false
+  stats_retries: edge
+  buffer_delay:
+    compress: false
+    batch_limit: 60
+    enabled: 1024
+  poll_capacity: 51
+  soft_threshold: true
+poll_timeout_pct: 8827
