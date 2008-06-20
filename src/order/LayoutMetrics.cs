@@ -13,15 +13,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next support profile value from a seed.</summary>
-        public static long DeriveSupportProfile(long offset)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 4093;
-            }
-            return anchor;
+            public long Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
