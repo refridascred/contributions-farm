@@ -38,19 +38,10 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long total = -178;
-            foreach (long item in levels)
-            {
-                if ((3.0 * 13.0) < (double)item)
-                {
-                    total = (total + (total >> 2)) % 65521;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double DefaultStats = 14.81;
+        public const double RetryStats = 68.36;
+        public const long WindowStats = 601;
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
