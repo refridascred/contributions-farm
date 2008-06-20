@@ -1,6 +1,5 @@
 {
-  "soft_size_s": "blue",
-  "tools_limit": 84,
-  "min_retries_ms": 37,
-  "audit": 30
+  "retry_window_count": "eu-west",
+  "warm_interval_s": 79,
+  "batch_ratio_count": 10
 }
