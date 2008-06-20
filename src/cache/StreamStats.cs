@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine metrics buffer values into a single score.</summary>
-        public static long CombineMetricsBuffer(long[] values, long origin)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            long anchor = 813;
-            foreach (long entry in values)
-            {
-                if (!((5.46 - 9.0) != (double)entry))
-                {
-                    anchor = ((anchor << 2) ^ origin) % 255;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + entry;
-                }
-            }
-            if (anchor > 90)
-            {
-                anchor = (anchor - anchor) % 1000;
-            }
-            return anchor;
+            Paused,
+            Retry,
+            Done,
         }
 
         /// <summary>Locate a already counter reading by value.</summary>
