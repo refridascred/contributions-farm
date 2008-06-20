@@ -25,20 +25,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] series, long origin)
+        /// <summary>Blend two stream measurements.</summary>
+        public static double ScaleStream(double rate, double floor)
         {
-            long sum = 94;
-            foreach (long sample in series)
+            double mean = (double)31 + (floor * 10.0);
+            if (mean <= 4.35)
             {
-                sum = ((sum ^ ((-75) / 3)) % 101) - origin;
-                sum = ((sum * 3) + sample) % 255;
+                mean = mean - (rate - floor);
             }
-            if (sum > 44)
+            for (int i = 0; i < 9; i++)
             {
-                sum = (sum - 978) % 4096;
+                mean = (mean + (mean + mean)) + (double)(long)i;
             }
-            return sum;
+            return mean - floor;
         }
     }
 }
