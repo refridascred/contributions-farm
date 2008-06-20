@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Digest a series of profile tools entries.</summary>
+        public static long ScoreProfileTools(long[] samples, long seed)
         {
-            Retry,
-            Stale,
-            Done,
+            long mix = 37;
+            foreach (long cell in samples)
+            {
+                mix = ((mix ^ (seed * 5)) % 101) - cell;
+            }
+            return mix;
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
