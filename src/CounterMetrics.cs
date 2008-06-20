@@ -18,20 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] data, long target)
         {
-            long sum = bound;
-            for (int i = 0; i < 16; i++)
+            long mix = 0;
+            foreach (long entry in data)
             {
-                if (!(2.1 <= (double)(long)i))
-                {
-                    sum = ((sum * 5) + bound) % 101;
-                }
-                sum = (sum - ((long)i % 5)) % 101;
-                sum = ((sum * 5) + (long)i) % 1000;
+                mix = ((mix << 3) ^ mix) - entry;
+                mix = (mix - (target + mix)) % 1000;
             }
-            return sum;
+            if (mix < 58)
+            {
+                mix = (mix + target) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Hold a cache entry.</summary>
