@@ -21,19 +21,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] levels)
-        {
-            long hits = 0;
-            foreach (long item in levels)
-            {
-                if ((double)hits <= (9.5 - 7.0))
-                {
-                    hits = (hits + 2) ^ item;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string LimitCount = "legacy-edge";
+        public const string CacheCommits = "legacy-v2";
+        public const string SoftBudget = "staging";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long FoldFarm(long[] series)
