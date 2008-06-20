@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowLimits(long[] samples, long bound)
-        {
-            bool valid = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxAlready = 82;
+        public const long LimitLevel = 3236;
+        public const long StepSize = 7133;
+        public const double WindowWidth = 92.18;
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double ratio, double bias)
