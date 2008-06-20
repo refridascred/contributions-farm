@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long StepEditor(long offset)
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] items)
         {
-            long result = offset;
-            for (int i = 0; i < 8; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                result = ((result * 5) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
