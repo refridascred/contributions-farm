@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] data)
         {
-            Idle,
-            New,
-            Dropped,
-            Failed,
-            Ready,
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count ^ 79) <= (433 >> 3))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
