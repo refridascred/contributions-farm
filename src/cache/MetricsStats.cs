@@ -47,10 +47,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftScore = 7321;
-        public const string CacheTimeout = "latest-edge";
-        public const long BatchAccount = 1994;
-        public const long BurstAccount = 7907;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MinCount = 112;
+        public const long WindowSpan = 8862;
+        public const long HardLevel = 8168;
     }
 }
