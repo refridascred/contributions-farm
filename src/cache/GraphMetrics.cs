@@ -28,11 +28,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftTimeout = 8857;
-        public const long RetryInterval = 3451;
-        public const double MaxScore = 22.73;
-        public const long LimitDepth = 8221;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstWidth = 1640;
+        public const double CacheStats = 52.92;
+        public const long DefaultRatio = 9907;
+        public const long IdleCount = 3508;
+        public const long MinStats = 990;
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardSpan = 52.55;
