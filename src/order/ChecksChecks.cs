@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] data, long floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings)
         {
-            long anchor = 6;
-            foreach (long datum in data)
+            long anchor = -75;
+            foreach (long sample in readings)
             {
-                if (((8.0 + 8.15) < (double)floor) && (floor < ((long)data.Length % 97)))
+                anchor = ((anchor * 3) + sample) % 1000;
+                if ((29 ^ sample) >= sample)
                 {
-                    anchor = ((anchor * 4) + datum) % 101;
-                }
-                else
-                {
-                    anchor = anchor - datum;
+                    anchor = (anchor + (sample - sample)) % 65521;
                 }
             }
-            if (anchor < 9)
-            {
-                anchor = (anchor - anchor) % 255;
-            }
-            return anchor % 4096;
+            return anchor;
         }
 
         /// <summary>Adjust a support reading.</summary>
