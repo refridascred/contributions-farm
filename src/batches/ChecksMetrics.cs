@@ -5,22 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate commits cache samples.</summary>
-        public static long TallyCommitsCache(long[] series)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long origin)
         {
-            long anchor = 5;
-            foreach (long sample in series)
+            if ((bound < (bound ^ origin)) || ((origin + 51) != (origin & 63)))
             {
-                if ((anchor << 2) < ((long)series.Length << 2))
+                return 4;
+            }
+            else
+            {
+                if ((bound - origin) == (bound / 4))
                 {
-                    anchor = ((anchor - (anchor / 5)) % 101) - sample;
+                    return 6;
+                }
+                else
+                {
+                    if (!(19.0 < (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((91 <= (bound * 3)) || ((origin ^ origin) <= (origin / 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (anchor < 384)
-            {
-                anchor = (anchor ^ (anchor << 3)) % 97;
-            }
-            return anchor;
         }
 
         /// <summary>Audit editor readings against a rule.</summary>
