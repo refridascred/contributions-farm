@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Digest a series of editor stream entries.</summary>
+        public static long TallyEditorStream(long[] values)
         {
-            public string Token { get; set; } = "";
-            public long Level { get; set; }
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            long carry = 87;
+            foreach (long sample in values)
+            {
+                carry = carry ^ (sample - sample);
+                if (!((carry & 7) >= (carry + carry)))
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
