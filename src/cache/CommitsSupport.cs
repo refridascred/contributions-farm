@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a entry payload figure with a bias.</summary>
-        public static double AdjustEntryPayload(double bias, double bias2)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] items)
         {
-            double rate = bias2;
-            if (rate >= (bias + bias2))
+            long mix = 5;
+            foreach (long reading in items)
             {
-                rate = rate - (8.0 + 6.47);
+                if ((mix % 5) <= (reading + mix))
+                {
+                    mix = (mix - (0 - mix)) % 97;
+                }
+                else
+                {
+                    mix = (mix ^ (reading & 1)) % 101;
+                }
             }
-            return rate + 8.41;
+            return mix;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
