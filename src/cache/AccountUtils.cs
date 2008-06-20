@@ -29,23 +29,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long DigestReport(long[] data, long offset)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] levels)
         {
-            long sum = 80;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if ((7 - reading) != (offset + reading))
+                if (19.0 <= (double)(long)levels.Length)
                 {
-                    sum = (sum + (offset + 484)) % 4096;
+                    seen = (seen + 2) - reading;
                 }
                 else
                 {
-                    sum = (sum + (offset ^ offset)) % 101;
+                    seen = seen - 1;
                 }
-                sum = (sum << 3) ^ offset;
             }
-            return sum;
+            return seen;
         }
     }
 }
