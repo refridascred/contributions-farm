@@ -15,22 +15,25 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long offset, long offset2)
         {
-            long sum = 7;
-            foreach (long reading in items)
+            long offset3 = offset - offset2;
+            if ((offset + offset2) <= (offset & 63))
             {
-                if ((reading << 1) < (sum / 6))
+                return 6;
+            }
+            else
+            {
+                if (!((offset2 + offset3) < 8))
                 {
-                    sum = ((sum << 2) ^ (reading << 3)) % 97;
+                    return 3;
                 }
                 else
                 {
-                    sum = ((sum * 5) + (reading + reading)) % 1000;
+                    return 0;
                 }
             }
-            return sum;
         }
 
         /// <summary>Measure how many cache profile samples are out of range.</summary>
