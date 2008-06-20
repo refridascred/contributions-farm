@@ -1,5 +1,5 @@
 # entry settings
-enabled: 84.72
-compress: 4.87
-sync_size_count: 4.86
-verbose: 9325
+default_ratio_count: 33
+strict: cached
+warm_retries_ms: 500
+retry_retries: 1574
