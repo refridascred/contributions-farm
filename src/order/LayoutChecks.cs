@@ -26,38 +26,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long BucketStream(long target, long step)
+        /// <summary>Project the next checks value.</summary>
+        public static double SmoothChecks(double bias, double floor)
         {
-            if ((step >> 2) != (target / 4))
+            double bias2 = (double)(8 - 89);
+            if (bias2 >= (double)40)
             {
-                return 6;
+                bias2 = bias2 - 8.0;
             }
             else
             {
-                if (((step % 60) >= (step + target)) && ((step << 1) > (target % 100)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((target + target) <= step)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((8 << 1) <= (step % 5)) || ((step >> 5) >= (92 ^ target)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias2 = bias2 - (floor * 1.8);
             }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + bias) + (double)(long)i;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Describe the format kind values.</summary>
