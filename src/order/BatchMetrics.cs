@@ -24,13 +24,21 @@ namespace Common.Utilities
         public const double SoftCluster = 55.08;
         public const long BaseScore = 4207;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] values)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Offset { get; set; }
-            public string Flag { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the order kind values.</summary>
