@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Scale a queue schema figure with a bias.</summary>
-        public static double AdjustQueueSchema(double rate, double offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long TallyWindowMatches(long[] levels, long origin)
         {
-            double weight = offset;
-            return (weight + (7.0 * 6.0)) + rate;
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell ^ (long)levels.Length) <= (cell + origin))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
