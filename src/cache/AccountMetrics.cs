@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiLimits(long[] series, long origin)
         {
-            Draft,
-            Idle,
-            Failed,
-            Active,
+            bool stale = true;
+            foreach (long sample in series)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Locate a cluster session reading by value.</summary>
