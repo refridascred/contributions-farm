@@ -20,18 +20,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long CountBufferHits(long[] items, long target)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long SeekGithubfarmIndex(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((4 * 2) != (matches / 8))
+                if (samples[i] >= origin)
                 {
-                    matches = ((matches + 2) ^ value) - target;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
