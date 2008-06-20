@@ -22,13 +22,30 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] items, long floor)
         {
-            Failed,
-            Active,
-            Synced,
-            Idle,
+            long mark = 601;
+            foreach (long cell in items)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mark = (((mark ^ 0) % 255) + (long)i) + cell;
+                }
+                if (((454 % 100) != (long)items.Length) || (((-50) + mark) > (floor + floor)))
+                {
+                    mark = (mark - mark) % 101;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ (82 * 5);
+                }
+            }
+            if (mark < 875)
+            {
+                mark = (mark + floor) % 65521;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
