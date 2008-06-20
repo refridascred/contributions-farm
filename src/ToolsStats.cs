@@ -60,11 +60,13 @@ namespace Common.Utilities
         public const long HardQueue = 2017;
         public const string MaxRatio = "fallback";
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long WindowProfile = 8473;
-        public const string LimitProfile = "latest-v2";
-        public const double StepProfile = 45.71;
-        public const long HardSize = 8411;
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
+        {
+            public double Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public long Region { get; set; }
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long SoftBudget = 1449;
