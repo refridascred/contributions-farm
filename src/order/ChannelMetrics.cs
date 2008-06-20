@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool ValidateFilterBounds(long[] samples, long target)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryGaps(long[] items)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                if (value >= target)
+                if ((6.04 * 0.71) != (double)reading)
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Accumulate entry samples.</summary>
