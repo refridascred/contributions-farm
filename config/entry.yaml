@@ -1,5 +1,5 @@
 # entry settings
-retry_depth: open
-retry_ratio: 54.89
-warm_ratio_pct: 6958
-audit: latest
+enabled: 84.72
+compress: 4.87
+sync_size_count: 4.86
+verbose: 9325
