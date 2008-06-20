@@ -13,15 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double AdjustSession(double gain, double offset)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            double gain2 = (offset * 3.29) * 0.49;
-            if (gain2 <= (gain / 3.0))
-            {
-                gain2 = gain2 - (double)438;
-            }
-            return gain2 - (14.0 / 2.0);
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
