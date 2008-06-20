@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every schema channel entry stays within the limit.</summary>
-        public static bool CheckSchemaChannelRange(long[] items, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsBounds(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long item in samples)
             {
-                if (sample >= offset)
+                if (item <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Hold a tools entry.</summary>
