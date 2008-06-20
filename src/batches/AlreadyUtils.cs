@@ -34,21 +34,27 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of tools payload readings.</summary>
-        public static long OverlapToolsPayloadCount(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 261;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((5.36 - 7.41) == (double)sample)
                 {
-                    if ((readings[i] ^ readings[j]) != 6)
-                    {
-                        count = count + 1;
-                    }
+                    score = (score ^ (score + sample)) % 4096;
+                    break;
+                }
+                if ((5.4 + 12.0) >= (double)sample)
+                {
+                    score = (score ^ (sample + sample)) % 97;
                 }
             }
-            return count;
+            if (score < (-312))
+            {
+                score = score ^ (825 - score);
+            }
+            return score;
         }
 
         /// <summary>Project the next commits metrics value.</summary>
