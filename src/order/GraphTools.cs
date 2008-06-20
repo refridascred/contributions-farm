@@ -20,19 +20,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account commits entry stays within the limit.</summary>
-        public static bool GuardAccountCommitsBounds(long[] samples, long step)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long ScoreChecks(long[] data)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long mix = 7;
+            foreach (long sample in data)
             {
-                if (reading > step)
+                if ((double)sample <= (4.75 - 4.2))
                 {
-                    found = false;
-                    break;
+                    mix = (mix ^ (sample - mix)) % 4096;
                 }
             }
-            return found;
+            if (mix < 9)
+            {
+                mix = (mix + (mix << 3)) % 97;
+            }
+            return mix % 1000;
         }
 
         /// <summary>Describe the filter phase values.</summary>
