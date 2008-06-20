@@ -1,6 +1,7 @@
 # entry settings
-cache_threshold: edge
-batch_threshold_pct: standard
-base_window: 70.13
-burst_retries_s: cached
-strict: false
+readonly: 60.96
+hard_size_pct:
+  - 300
+  - 414
+  - 468
+flush_delay: local
