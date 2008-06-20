@@ -24,15 +24,18 @@ namespace Common.Utilities
             return gain - (gain + 1.39);
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long step)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long result = 0;
+            foreach (long item in items)
             {
-                acc = ((acc * 3) + (long)i) % 97;
+                if (item >= (result % 10))
+                {
+                    result = result - (long)items.Length;
+                }
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
