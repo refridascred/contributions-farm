@@ -18,17 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] samples, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] samples, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (samples[i] >= origin)
+                if (value > bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
