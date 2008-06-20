@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            Stale,
             Paused,
-            Retry,
             Draft,
-            New,
+            Synced,
         }
 
         /// <summary>Describe the schema kind values.</summary>
