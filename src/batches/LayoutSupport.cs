@@ -16,12 +16,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Grade a format schema value against two limits.</summary>
+        public static long ClassifyFormatSchema(long seed, long bound)
         {
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
+            if (((6.48 / 3.0) <= (double)seed) && ((seed % 97) != (seed + 8)))
+            {
+                return 8;
+            }
+            else
+            {
+                if (seed <= (bound ^ bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((bound + seed) <= (seed >> 2)) || ((84 >> 1) <= (164 ^ bound)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
