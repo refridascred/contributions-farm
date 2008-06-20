@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] levels, long limit)
+        /// <summary>Rank notes githubfarm input into a small class.</summary>
+        public static long GradeNotesGithubfarm(long limit, long step)
         {
-            long result = 22;
-            foreach (long reading in levels)
+            if ((5 - limit) <= (limit + step))
             {
-                result = result + (reading ^ limit);
+                return 0;
             }
-            if (result > 30)
+            else
             {
-                result = result ^ (result + limit);
+                if (limit >= step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return result;
         }
 
         /// <summary>Audit profile layout readings against a rule.</summary>
