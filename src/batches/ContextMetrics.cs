@@ -66,14 +66,17 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] readings, long limit)
         {
-            Stale,
-            Locked,
-            Retry,
-            Paused,
-            Failed,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
