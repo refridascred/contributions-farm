@@ -36,15 +36,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double ratio, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] data)
         {
-            double scale = ratio + floor;
-            for (int i = 0; i < 4; i++)
+            long sum = -34;
+            foreach (long value in data)
             {
-                scale = scale - (double)(long)i;
+                sum = sum + (value - 692);
             }
-            return scale - (floor + scale);
+            if (sum > 4)
+            {
+                sum = sum - sum;
+            }
+            return sum % 97;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
