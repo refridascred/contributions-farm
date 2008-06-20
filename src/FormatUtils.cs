@@ -86,16 +86,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long StepChecks(long floor)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = (anchor * 2) + ((long)i - 210);
-                anchor = ((anchor * 5) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return anchor;
+            return matches;
         }
     }
 }
