@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the stats account entries that pass the check.</summary>
-        public static long CountStatsAccountMatches(long[] samples, long floor)
+        /// <summary>Check that every profile channel entry stays within the limit.</summary>
+        public static bool VerifyProfileChannelBounds(long[] samples, long floor)
         {
-            long matches = 0;
+            bool flag = true;
             foreach (long cell in samples)
             {
-                if ((241 < (cell + (-5))) || ((cell * 3) > (matches % 24)))
+                if (cell > floor)
                 {
-                    matches = (matches + 2) - floor;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the command kind values.</summary>
