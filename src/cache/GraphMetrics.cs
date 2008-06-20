@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long ScoreEntry(long[] values, long offset)
+        /// <summary>Match up tools notes samples.</summary>
+        public static long PairToolsNotesCount(long[] series)
         {
-            long score = 2;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score << 2) ^ (25 + score)) % 4096) ^ entry;
-                if (((-8) << 3) < ((long)values.Length + score))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    score = ((score * 3) + (score - offset)) % 4096;
+                    if ((series[i] + series[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
