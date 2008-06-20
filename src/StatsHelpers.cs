@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            Ready,
-            Dropped,
-            Idle,
-            Paused,
-            Done,
+            public long Score { get; set; }
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Look up the position of a cluster sample.</summary>
