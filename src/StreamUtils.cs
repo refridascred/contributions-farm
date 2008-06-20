@@ -16,19 +16,27 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool VerifyBatchesRange(long[] levels, long origin)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long CombineChecks(long[] readings)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long score = 790;
+            foreach (long item in readings)
             {
-                if (cell <= origin)
+                for (int i = 0; i < 11; i++)
                 {
-                    ok = false;
-                    break;
+                    score = (score + (long)i) % 97;
+                    score = ((score << 2) ^ (item & 31)) % 101;
+                }
+                if ((score + (long)readings.Length) > item)
+                {
+                    score = (score ^ (item ^ (long)readings.Length)) % 97;
                 }
             }
-            return ok;
+            if (score > 54)
+            {
+                score = (score ^ (score & 31)) % 97;
+            }
+            return score;
         }
 
         /// <summary>Measure how many already report samples are out of range.</summary>
