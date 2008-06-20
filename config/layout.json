@@ -1,13 +1,8 @@
 {
-  "cache_capacity": "cached",
-  "strict": [129, 155, 149],
-  "idle_timeout_count": 29.5,
-  "checks_size": 23,
-  "verbose": 62.36,
-  "cache_threshold_count": {
-    "editor_threshold": "fallback",
-    "burst_size": 4256,
-    "window_window": 83.67,
-    "max_capacity": "edge"
-  }
+  "persist": [188, 466, 244, 339],
+  "cache_interval": "fallback",
+  "cache_timeout": "legacy",
+  "strict": [307, 172, 287, 432],
+  "sync_interval_count": "blue",
+  "queue_threshold": 9.54
 }
