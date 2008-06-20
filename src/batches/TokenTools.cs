@@ -23,12 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Project the next notes cache value.</summary>
+        public static double ScaleNotesCache(double ratio, double offset)
         {
-            Active,
-            Idle,
-            New,
+            double scale = (double)(853 + (-414));
+            if (scale < offset)
+            {
+                scale = (scale - scale) - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (offset - scale)) - (double)(long)i;
+            }
+            return scale - 20.0;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
