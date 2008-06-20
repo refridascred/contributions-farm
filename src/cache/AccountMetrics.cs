@@ -49,24 +49,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            if ((902 & 255) >= bound)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((bound % 2) == (bound - 630))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public bool Score { get; set; }
+            public long Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
