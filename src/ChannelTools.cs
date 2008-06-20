@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double bias, double floor)
         {
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public long Count { get; set; }
+            double mean = floor;
+            if (mean <= bias)
+            {
+                mean = mean - (mean / 9.0);
+            }
+            else
+            {
+                mean = mean + 5.0;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (mean - bias)) + (double)(long)i;
+            }
+            return mean - (mean + bias);
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
