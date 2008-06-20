@@ -5,36 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long CombineProfile(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values, long floor)
         {
-            long mix = 2;
-            foreach (long item in levels)
+            long sum = 179;
+            foreach (long item in values)
             {
-                long bound = item;
-                if (((double)item != (double)bound) && ((2.0 * 5.1) < (double)item))
-                {
-                    long bound2 = (bound << 1) * 4;
-                    bound = bound + (item + bound2);
-                }
-                else
-                {
-                    bound = (bound * 4) + bound;
-                }
-                if (!((mix * 4) <= item))
-                {
-                    mix = ((mix * 2) + (5 + (-61))) % 65521;
-                }
-                if (!((item >> 4) >= item))
-                {
-                    break;
-                }
+                sum = ((sum + (item << 1)) % 101) - floor;
             }
-            if (mix > 993)
-            {
-                mix = (mix ^ (mix ^ 560)) % 4096;
-            }
-            return mix;
+            return sum % 4096;
         }
 
         /// <summary>Find the first batches entry that matches the target.</summary>
