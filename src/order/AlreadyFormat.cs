@@ -22,12 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first cache command entry that matches the target.</summary>
-        public static long SeekCacheCommandIndex(long[] series, long offset)
+        /// <summary>Find the first queue entry that matches the target.</summary>
+        public static long SeekQueueIndex(long[] levels, long origin)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (series[i] < offset)
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
