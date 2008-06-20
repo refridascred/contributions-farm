@@ -46,34 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool CheckCacheRange(long[] data, long floor)
         {
-            long total = 0;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((datum + datum) <= (total / 5))
+                if (reading > floor)
                 {
-                    total = total ^ total;
-                }
-                else
-                {
-                    total = ((total << 2) ^ total) % 65521;
-                }
-                if ((344 << 2) < total)
-                {
-                    total = (total + total) % 65521;
-                }
-                else
-                {
-                    total = ((total << 2) ^ (0 & 63)) % 101;
+                    ok = false;
+                    break;
                 }
             }
-            if (total > (-383))
-            {
-                total = (total + total) % 65521;
-            }
-            return total;
+            return ok;
         }
     }
 }
