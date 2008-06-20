@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long origin)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long seed, long limit)
         {
-            long score = origin;
-            for (int i = 0; i < 16; i++)
+            long span = seed + limit;
+            if (((19.0 - 5.15) <= (double)span) || (2 <= limit))
             {
-                if (0.48 <= (double)score)
-                {
-                    score = ((score * 2) + (score * 2)) % 65521;
-                }
-                score = ((score * 2) + (long)i) % 1000;
+                return 6;
             }
-            return score;
+            else
+            {
+                if ((limit + seed) > span)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - limit) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
