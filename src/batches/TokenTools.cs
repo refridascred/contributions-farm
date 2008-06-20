@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long SoftBudget = 2873;
-        public const long StepDepth = 8252;
-        public const double CacheTools = 40.01;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ScaleChecks(double weight, double span)
+        {
+            double weight2 = weight;
+            if (weight2 <= (weight2 - span))
+            {
+                weight2 = weight2 - (span + weight);
+            }
+            else
+            {
+                weight2 = weight2 + 8.38;
+            }
+            return weight2 - (weight - weight2);
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double WindowInterval = 25.16;
