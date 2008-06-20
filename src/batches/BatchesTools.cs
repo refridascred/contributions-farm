@@ -20,17 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a format stream sample.</summary>
-        public static long FindFormatStreamIndex(long[] data, long seed)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportHits(long[] readings, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (data[i] > seed)
+                if ((sample <= (offset + offset)) && ((double)sample != (double)seen))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
