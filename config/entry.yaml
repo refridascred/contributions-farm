@@ -1,53 +1,22 @@
 # entry settings
-batches_retries:
-  notes_limit:
-    - open
-    - green
-    - local
-    - edge
-  retry_ratio_pct:
-    - 248
-    - 322
-    - 293
-  checks_ttl:
-    retry_delay_count: 10
-    support_limit: 250
-    audit:
-      - 214
-      - 203
-      - 285
-    retry_ratio_ms: 33.91
-    cache_timeout_ms:
-      - 156
-      - 318
-      - 370
-checks_ttl: 39.96
-dry_run: stable
-cache_capacity: stable
-tools_threshold:
-  metrics_threshold:
-    - strict
-    - primary
-    - green
-  retry_size: 31
-  poll_retries:
-    hard_limit_ms: latest
-    hard_ttl_count: 47.03
-    audit: 48.71
-    channel_threshold: 7536
-    poll_depth_ms: cached
-    poll_window:
-      - strict
-      - edge
-      - blue
-  strict:
-    - 428
-    - 231
-    - 247
-    - 465
-  enabled: false
-  retry_window: edge
-layout_window:
-  - 289
-  - 271
-  - 235
+hard_ttl_pct: stable
+enabled: latest
+base_interval_count:
+  batch_timeout_pct:
+    - 75
+    - 499
+    - 191
+    - 145
+  sync_limit_count: 1024
+  warm_limit_s: 250
+  min_timeout: stable
+  poll_ratio:
+    account_delay: strict
+    verbose: 69.92
+    batch_ttl_count:
+      - 466
+      - 83
+      - 427
+cache_retries_s: 75.8
+idle_ratio_count: 21.63
+min_retries_count: latest
