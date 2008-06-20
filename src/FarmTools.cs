@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseTimeout = "strict";
-        public const long HardToken = 8095;
-        public const long BatchSize = 4745;
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double rate, double floor)
+        {
+            double ratio = floor;
+            if (ratio <= ratio)
+            {
+                ratio = ratio - (double)0;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (rate - 12.0);
+        }
 
         /// <summary>Describe the support state values.</summary>
         public enum SupportState
