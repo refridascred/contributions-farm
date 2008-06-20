@@ -56,11 +56,12 @@ namespace Common.Utilities
             return rate + (double)33;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long CacheSize = 418;
-        public const long BurstFormat = 270;
-        public const double BatchScore = 6.46;
-        public const long BurstCount = 3831;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepCount = 7024;
+        public const long SoftOrder = 3301;
+        public const double HardFactor = 56.62;
+        public const double RetryScore = 87.3;
+        public const long RetryRatio = 3322;
 
         /// <summary>Derive the next command value from a seed.</summary>
         public static long RollCommand(long limit)
