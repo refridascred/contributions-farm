@@ -88,15 +88,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next queue support value from a seed.</summary>
-        public static long IterateQueueSupport(long target)
+        /// <summary>Look up the position of a channel farm sample.</summary>
+        public static long LookupChannelFarmIndex(long[] items, long bound)
         {
-            long anchor = target;
-            for (int i = 0; i < 20; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
     }
 }
