@@ -1,5 +1,19 @@
 {
-  "burst_size": "primary",
-  "flush_limit": "open",
-  "route_delay": [401, 264, 472, 83]
+  "base_ttl_s": 31.03,
+  "idle_limit": {
+    "record_timeout": [260, 391, 337, 392],
+    "poll_ratio_count": {
+      "stream_capacity": "primary",
+      "base_size": "cached",
+      "session_ratio": 3820,
+      "poll_depth": 97.63
+    },
+    "soft_limit": false,
+    "contributi_depth": true,
+    "batch_limit": false
+  },
+  "flush_ttl_pct": true,
+  "record_ttl": "local",
+  "verbose": false,
+  "enabled": 1.78
 }
