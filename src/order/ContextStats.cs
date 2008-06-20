@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long target, long target2)
+        /// <summary>Combine batch batches values into a single score.</summary>
+        public static long FoldBatchBatches(long[] readings)
         {
-            if ((5.01 * 8.0) == (double)target2)
+            long sum = 631;
+            foreach (long sample in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (((target2 >> 4) < (target - target2)) && ((target * 5) == (target - target2)))
+                if ((sum / 7) > (sum / 4))
                 {
-                    return 3;
+                    sum = sum ^ sample;
                 }
                 else
                 {
-                    return 7;
+                    sum = ((sum << 3) ^ (sum - sum)) % 1000;
                 }
             }
+            if (sum < 12)
+            {
+                sum = ((sum << 3) ^ sum) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
