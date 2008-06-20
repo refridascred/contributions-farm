@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long BatchSize = 1239;
         public const string CacheGithubfarm = "stable-v2";
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 8600;
-        public const double WindowScore = 4.13;
-        public const double IdleScore = 59.32;
-        public const long LimitStats = 669;
-        public const long StepSize = 8866;
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Scale a context stream figure with a bias.</summary>
         public static double BlendContextStream(double scale, double floor)
