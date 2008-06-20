@@ -37,22 +37,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel tools entries that pass the check.</summary>
-        public static long CountChannelToolsHits(long[] data, long step)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long SeekBatchesIndex(long[] readings, long origin)
         {
-            long count = 0;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + step) > (2 >> 3))
+                if (readings[i] <= origin)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Match up cluster samples.</summary>
