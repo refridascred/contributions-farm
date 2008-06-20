@@ -24,19 +24,13 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool VerifyMetricsRange(long[] samples, long floor)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define commits limits and defaults.</summary>
