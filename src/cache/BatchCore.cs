@@ -13,12 +13,13 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 4268;
-        public const double BaseAccount = 8.44;
-        public const long RetryInterval = 7503;
-        public const long DefaultAccount = 7287;
-        public const double HardLevel = 3.78;
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
+        {
+            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long BatchSize = 1579;
