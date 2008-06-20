@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] samples, long bound)
+        /// <summary>Look up the position of a commits record sample.</summary>
+        public static long FindCommitsRecordIndex(long[] series, long step)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value <= (bound + 932))
+                if (series[i] > step)
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
