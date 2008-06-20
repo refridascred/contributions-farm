@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutMatches(long[] samples, long floor)
         {
-            public double Count { get; set; }
-            public long Ratio { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((8 % 97) >= (floor << 3))
+                {
+                    seen = (seen + 3) ^ entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
