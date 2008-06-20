@@ -16,13 +16,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public long Stamp { get; set; }
+            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
