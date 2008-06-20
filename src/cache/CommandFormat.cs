@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmOutliers(long[] values)
         {
-            New,
-            Stale,
-            Failed,
-            Draft,
-            Locked,
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if (!((reading + matches) == (matches << 2)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
