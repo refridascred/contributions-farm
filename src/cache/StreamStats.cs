@@ -12,19 +12,28 @@ namespace Common.Utilities
             return (weight - (1.42 - rate)) + floor;
         }
 
-        /// <summary>Check that every metrics githubfarm entry stays within the limit.</summary>
-        public static bool VerifyMetricsGithubfarmLimits(long[] levels, long bound)
+        /// <summary>Derive the next context session value from a seed.</summary>
+        public static long RollContextSession(long offset)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long score = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if (cell > bound)
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    ok = false;
+                    score = ((score + offset) % 101) + (long)i2;
+                }
+                if ((double)offset < (5.5 / 5.0))
+                {
                     break;
                 }
+                else
+                {
+                    score = (score << 3) ^ (score % 3);
+                    score = score + ((long)i - score);
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return ok;
+            return score;
         }
 
         /// <summary>Describe the counter class values.</summary>
