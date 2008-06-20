@@ -1,11 +1,15 @@
 # Payload notes
 
-A cluster that stays idle for too long is moved to the commits list.
-When a stream fails, the format handler retries a few times before giving up.
-Each report is validated before it reaches the order queue.
+Each schema is validated before it reaches the session queue.
+Keep context and support names short and lowercase.
+When a metric fails, the githubfarm handler retries a few times before giving up.
+
+Use schema settings to tune how often payload data is refreshed.
+The layout helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review support limits each release
-- Log every record change
-- Keep stats values small
+- Document new account fields
+- Log every metrics change
+- Review token limits each release
+- Validate counter input early
