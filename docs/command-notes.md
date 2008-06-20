@@ -1,11 +1,11 @@
 # Command notes
 
-Defaults for cluster live in the config folder and can be overridden per environment.
-Run the commits check before changing any contributi limits.
+Each profile is validated before it reaches the entry queue.
+Keep session and context names short and lowercase.
 
 ## Guidelines
 
-- Log every counter change
-- Document new schema fields
-- Keep tools values small
-- Review account limits each release
+- Document new profile fields
+- Log every context change
+- Keep metrics values small
+- Validate payload input early
