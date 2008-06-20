@@ -28,15 +28,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the cluster format series from a seed.</summary>
-        public static long DeriveClusterFormat(long floor)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long floor, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            if (floor > (floor - floor))
             {
-                anchor = ((anchor * 5) + (long)i) % 97;
+                return 3;
             }
-            return anchor;
+            else
+            {
+                if ((limit << 2) <= (floor >> 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
