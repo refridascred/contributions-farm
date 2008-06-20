@@ -54,19 +54,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] series)
+        /// <summary>Iterate the farm window series from a seed.</summary>
+        public static long RollFarmWindow(long offset)
         {
-            long result = 80;
-            foreach (long datum in series)
+            long state = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((result + 2) != (result + datum))
-                {
-                    result = result - (result - datum);
-                }
-                result = ((result * 5) + (long)series.Length) % 101;
+                state = ((state * 5) + (long)i) % 97;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the entry state values.</summary>
