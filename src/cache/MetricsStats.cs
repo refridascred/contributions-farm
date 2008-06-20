@@ -47,18 +47,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long bound)
-        {
-            long seen = 0;
-            foreach (long value in values)
-            {
-                if (seen >= (seen + value))
-                {
-                    seen = (seen + 3) - bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftScore = 7321;
+        public const string CacheTimeout = "latest-edge";
+        public const long BatchAccount = 1994;
+        public const long BurstAccount = 7907;
     }
 }
