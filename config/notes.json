@@ -1,5 +1,12 @@
 {
-  "cache_threshold_s": "stable",
-  "flush_interval_pct": true,
-  "idle_retries_s": 6.41
+  "burst_timeout_count": 83.58,
+  "cache_depth": {
+    "compress": false,
+    "hard_ttl_s": "fallback",
+    "default_timeout_count": "standard",
+    "audit": [279, 436]
+  },
+  "min_ttl_s": "primary",
+  "compress": ["staging", "green", "green"],
+  "poll_ttl_ms": "fallback"
 }
