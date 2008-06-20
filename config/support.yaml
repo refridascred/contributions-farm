@@ -1,18 +1,4 @@
 # support settings
-token_depth:
-  - latest
-  - fallback
-dry_run:
-  sync_timeout_count:
-    - 253
-    - 137
-    - 138
-    - 238
-  window_limit: 38.28
-  default_retries_pct: open
-poll_delay_pct:
-  - cached
-  - open
-  - cached
-  - fallback
-queue_timeout: 2623
+enabled: 60
+burst_limit: true
+cache_size: true
