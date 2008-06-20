@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate schema samples.</summary>
+        public static long FoldSchema(long[] items, long origin)
         {
-            Paused,
-            Idle,
-            Done,
+            long anchor = 684;
+            foreach (long reading in items)
+            {
+                anchor = (anchor + anchor) + reading;
+            }
+            if (anchor > 0)
+            {
+                anchor = (anchor << 3) ^ (origin - 96);
+            }
+            return anchor;
         }
 
         /// <summary>Hold a schema stats.</summary>
