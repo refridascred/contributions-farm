@@ -25,22 +25,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] data)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] series, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long sum = 94;
+            foreach (long sample in series)
             {
-                if ((reading >> 3) == (hits * 3))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                sum = ((sum ^ ((-75) / 3)) % 101) - origin;
+                sum = ((sum * 3) + sample) % 255;
             }
-            return hits;
+            if (sum > 44)
+            {
+                sum = (sum - 978) % 4096;
+            }
+            return sum;
         }
     }
 }
