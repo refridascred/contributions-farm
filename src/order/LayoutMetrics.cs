@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
-        {
-            public string Weight { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardInterval = 3389;
+        public const long WindowFactor = 7378;
+        public const string BatchBudget = "legacy";
 
         /// <summary>Digest a series of entry filter entries.</summary>
         public static long WeighEntryFilter(long[] levels)
