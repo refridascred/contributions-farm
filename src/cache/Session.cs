@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long offset, long bound)
-        {
-            if (offset <= (offset / 5))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound & 15) <= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (offset < 5)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long WindowSession = 6507;
+        public const double LimitRatio = 62.61;
+        public const long WindowSpan = 4607;
+        public const long BatchSession = 8993;
 
         /// <summary>Match up metric samples.</summary>
         public static long PairMetricCount(long[] values)
