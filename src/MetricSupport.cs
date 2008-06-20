@@ -20,13 +20,13 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            Queued,
-            Ready,
-            Retry,
-            Dropped,
+            public long Limit { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
