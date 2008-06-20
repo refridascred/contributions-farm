@@ -1,22 +1,15 @@
 # entry settings
-hard_ttl_pct: stable
-enabled: latest
-base_interval_count:
-  batch_timeout_pct:
-    - 75
-    - 499
-    - 191
-    - 145
-  sync_limit_count: 1024
-  warm_limit_s: 250
-  min_timeout: stable
-  poll_ratio:
-    account_delay: strict
-    verbose: 69.92
-    batch_ttl_count:
-      - 466
-      - 83
-      - 427
-cache_retries_s: 75.8
-idle_ratio_count: 21.63
-min_retries_count: latest
+flush_depth_pct: eu-west
+warm_retries: 53
+batch_interval:
+  warm_ratio_count: 10.02
+  soft_interval_count:
+    channel_ttl: 5977
+    burst_limit: 1167
+    min_limit_ms: 9.4
+    hard_delay: 94
+    hard_size:
+      - 323
+      - 116
+  sync_timeout_pct: primary
+  sync_size_count: 78.0
