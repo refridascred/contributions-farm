@@ -26,17 +26,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a tools support sample.</summary>
-        public static long FindToolsSupportIndex(long[] levels, long floor)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long datum in data)
             {
-                if (levels[i] > floor)
+                if (datum > step)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Describe the cache level values.</summary>
