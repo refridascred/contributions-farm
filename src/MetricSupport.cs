@@ -19,18 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many report metrics samples are out of range.</summary>
-        public static long CountReportMetricsOutliers(long[] values)
+        /// <summary>Match up layout record samples.</summary>
+        public static long PairLayoutRecordCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (1 <= (matches + datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((items[i] - items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first filter account entry that matches the target.</summary>
