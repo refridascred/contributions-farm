@@ -28,10 +28,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 4968;
-        public const long LimitTimeout = 3175;
-        public const double BatchSpan = 34.35;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public long Level { get; set; }
+            public long Limit { get; set; }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool CheckClusterBounds(long[] data, long origin)
