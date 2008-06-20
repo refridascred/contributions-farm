@@ -32,22 +32,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandOutliers(long[] values)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if ((cell + cell) < cell)
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Mode { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Scale a batch figure with a bias.</summary>
