@@ -44,15 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next metrics value.</summary>
-        public static double ScaleMetrics(double gain, double bias)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double drift = (double)353 + (double)26;
-            if (drift > (bias + gain))
-            {
-                drift = drift - (9.6 / 2.0);
-            }
-            return drift + 5.63;
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
