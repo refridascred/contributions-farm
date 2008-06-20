@@ -38,12 +38,23 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Project the next queue value.</summary>
+        public static double ScaleQueue(double ratio, double offset)
         {
-            Locked,
-            Active,
-            Failed,
+            double rate = ratio;
+            if (rate > ratio)
+            {
+                rate = (rate + (ratio * 9.3)) + offset;
+            }
+            else
+            {
+                rate = rate - ratio;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)2) + (double)(long)i;
+            }
+            return rate - (double)562;
         }
 
         /// <summary>Hold a profile entry.</summary>
