@@ -46,21 +46,12 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
