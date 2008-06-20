@@ -61,19 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit notes already readings against a rule.</summary>
-        public static long TallyNotesAlreadyHits(long[] samples)
-        {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if (82 >= (789 + tally))
-                {
-                    tally = (tally + 3) ^ entry;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string MaxCounter = "latest";
+        public const double CacheWidth = 63.17;
+        public const long CacheCounter = 6420;
+        public const string IdleCounter = "staging";
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] data)
