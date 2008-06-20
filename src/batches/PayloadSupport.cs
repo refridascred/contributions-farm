@@ -29,19 +29,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate order token readings against a bound.</summary>
-        public static bool VerifyOrderTokenLimits(long[] readings, long limit)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long DeriveFilter(long target)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (item != limit)
-                {
-                    valid = false;
-                    break;
-                }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return valid;
+            return state;
         }
     }
 }
