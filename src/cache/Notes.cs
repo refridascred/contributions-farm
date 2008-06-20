@@ -59,18 +59,19 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmHits(long[] readings)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            long anchor = 37;
+            foreach (long entry in levels)
             {
-                if ((tally & 31) > (datum << 3))
-                {
-                    tally = tally + 1;
-                }
+                anchor = ((anchor * 5) + (anchor ^ entry)) % 255;
             }
-            return tally;
+            if (anchor > 108)
+            {
+                anchor = ((anchor * 5) + (floor * 5)) % 4096;
+            }
+            return anchor;
         }
     }
 }
