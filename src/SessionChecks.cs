@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next profile value.</summary>
-        public static double BlendProfile(double scale, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferHits(long[] data)
         {
-            double gain = floor;
-            for (int i = 0; i < 8; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                gain = (gain + floor) + (double)(long)i;
+                if ((item + seen) < (seen + item))
+                {
+                    seen = seen + 2;
+                }
             }
-            return gain - (scale / 6.0);
+            return seen;
         }
 
         /// <summary>Derive the next commits session value from a seed.</summary>
