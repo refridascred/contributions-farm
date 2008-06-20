@@ -37,14 +37,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the channel tools entries that pass the check.</summary>
+        public static long CountChannelToolsHits(long[] data, long step)
         {
-            Pending,
-            Ready,
-            Retry,
-            Draft,
-            New,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item + step) > (2 >> 3))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a buffer summary.</summary>
