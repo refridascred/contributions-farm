@@ -66,14 +66,18 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Count the stats report entries that pass the check.</summary>
+        public static long TallyStatsReportOutliers(long[] readings)
         {
-            Dropped,
-            Closed,
-            Pending,
-            Ready,
-            Synced,
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((1.32 / 8.0) != (double)hits)
+                {
+                    hits = (hits + 2) - reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a graph reading by value.</summary>
