@@ -54,16 +54,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next format already value from a seed.</summary>
-        public static long DeriveFormatAlready(long offset)
+        /// <summary>Check that every cluster entry entry stays within the limit.</summary>
+        public static bool VerifyClusterEntryLimits(long[] series, long floor)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            bool ok = true;
+            foreach (long reading in series)
             {
-                sum = (sum << 2) ^ (sum + 9);
-                sum = ((sum * 3) + (long)i) % 65521;
+                if (reading > floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
