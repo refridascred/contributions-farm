@@ -82,26 +82,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate contributi queue samples.</summary>
-        public static long ScoreContributiQueue(long[] data)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool VerifyEntryRange(long[] values, long seed)
         {
-            long state = 96;
-            foreach (long item in data)
+            bool ready = true;
+            foreach (long datum in values)
             {
-                if ((6 - state) == (state - item))
+                if (datum <= seed)
                 {
-                    state = (state - (state - 329)) % 65521;
-                }
-                if (((state - state) == (item + state)) && ((item - item) > (64 & 3)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (state > 2)
-            {
-                state = ((state * 4) + ((-2) - (-34))) % 1000;
-            }
-            return state % 4096;
+            return ready;
         }
     }
 }
