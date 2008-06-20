@@ -35,15 +35,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long origin)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long carry = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            Failed,
+            Idle,
+            Locked,
+            Draft,
         }
     }
 }
