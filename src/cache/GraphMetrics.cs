@@ -37,13 +37,18 @@ namespace Common.Utilities
             return (bias - 6.4) + offset;
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Count the metrics window entries that pass the check.</summary>
+        public static long AuditMetricsWindowGaps(long[] data, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((double)tally != (12.0 + 17.0))
+                {
+                    tally = ((tally + 2) - item) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
