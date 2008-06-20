@@ -5,10 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string BaseContributi = "stable-edge";
-        public const long CacheContributi = 6460;
-        public const string BatchContributi = "staging-edge";
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] values)
+        {
+            long carry = 44;
+            foreach (long value in values)
+            {
+                carry = ((carry ^ carry) % 4096) - value;
+            }
+            return carry;
+        }
 
         /// <summary>Match up entry samples.</summary>
         public static long PairEntryCount(long[] readings)
