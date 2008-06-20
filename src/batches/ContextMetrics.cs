@@ -86,14 +86,18 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long TallyMetricsChannelHits(long[] levels, long target)
         {
-            Stale,
-            Closed,
-            Failed,
-            Pending,
-            Paused,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (!((entry - target) == (tally ^ 92)) || (entry <= (entry % 24)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
     }
 }
