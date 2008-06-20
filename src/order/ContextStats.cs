@@ -14,11 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            public long Label { get; set; }
-            public double Count { get; set; }
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Audit report readings against a rule.</summary>
