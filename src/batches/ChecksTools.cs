@@ -47,12 +47,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long SoftSpan = 7485;
-        public const string MaxContext = "stable-v2";
-        public const long BurstCount = 3091;
-        public const long BatchContext = 6241;
-        public const long HardContext = 9358;
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                acc = ((acc * 4) + (long)i) % 101;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a report record.</summary>
         public sealed class ReportRecord
