@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every profile channel entry stays within the limit.</summary>
-        public static bool VerifyProfileChannelBounds(long[] samples, long floor)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long carry = 87;
+            foreach (long cell in values)
             {
-                if (cell > floor)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = (carry + cell) % 101;
+                carry = carry ^ (carry - carry);
             }
-            return flag;
+            if (carry > 77)
+            {
+                carry = ((carry * 5) + 542) % 255;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command kind values.</summary>
