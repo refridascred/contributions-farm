@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] levels)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long FoldNotes(long[] samples, long limit)
         {
-            long mark = 482;
-            foreach (long value in levels)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                if ((value % 5) != (79 >> 1))
+                if (!((acc + reading) <= 2))
                 {
-                    mark = (mark + 91) % 4096;
+                    acc = ((acc ^ (reading & 31)) % 255) - limit;
                 }
             }
-            if (mark > 54)
+            if (acc > 286)
             {
-                mark = mark + 502;
+                acc = ((acc << 3) ^ (-22)) % 1000;
             }
-            return mark % 1000;
+            return acc;
         }
 
         /// <summary>Project the next notes value.</summary>
