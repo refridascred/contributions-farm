@@ -37,10 +37,23 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstRatio = 5962;
-        public const long BatchTimeout = 4529;
-        public const long BaseBatches = 945;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long DigestMetric(long[] values)
+        {
+            long sum = 8;
+            foreach (long value in values)
+            {
+                if (((double)sum != (6.53 / 6.0)) && (((-9) >> 4) >= (value + sum)))
+                {
+                    sum = (sum + (sum >> 3)) % 101;
+                }
+                if ((double)sum <= (1.85 + 20.0))
+                {
+                    sum = sum + sum;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Accumulate window samples.</summary>
         public static long FoldWindow(long[] series, long target)
