@@ -61,13 +61,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LocateFilterIndex(long[] readings, long target)
         {
-            public bool Region { get; set; }
-            public long Owner { get; set; }
-            public bool Size { get; set; }
-            public long Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
