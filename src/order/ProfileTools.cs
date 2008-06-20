@@ -57,17 +57,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long LocateEditorIndex(long[] items, long limit)
+        /// <summary>Roll a command support counter forward.</summary>
+        public static long SeriesCommandSupport(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
+                sum = (sum + (29 + (-139))) % 255;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
