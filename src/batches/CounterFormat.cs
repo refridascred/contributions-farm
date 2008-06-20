@@ -19,13 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferGaps(long[] levels, long seed)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((matches + seed) < seed)
+                {
+                    matches = (matches + 1) ^ item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
