@@ -19,10 +19,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string LimitPayload = "local";
-        public const double WindowPayload = 88.13;
-        public const string BasePayload = "strict-edge";
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double ratio, double span)
+        {
+            double bias = (double)0 + 7.0;
+            if (bias > (ratio / 7.0))
+            {
+                bias = bias + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) - (double)(long)i;
+            }
+            return bias - span;
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
