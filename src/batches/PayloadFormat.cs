@@ -33,18 +33,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelMatches(long[] items)
+        /// <summary>Locate a cache filter reading by value.</summary>
+        public static long LocateCacheFilterIndex(long[] readings, long limit)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((hits >> 3) >= sample) && !(679 > (hits << 1)))
+                if (readings[i] >= limit)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
