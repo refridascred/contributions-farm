@@ -15,13 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            Locked,
-            Done,
-            Ready,
-            Dropped,
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
