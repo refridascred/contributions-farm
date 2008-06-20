@@ -48,15 +48,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double ScaleRecord(double ratio, double bias)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] values, long limit)
         {
-            double rate = 4.1;
-            for (int i = 0; i < 4; i++)
+            long count = 0;
+            foreach (long entry in values)
             {
-                rate = ((rate - (ratio / 5.0)) + (double)(long)i) + bias;
+                if ((entry + limit) <= (entry * 2))
+                {
+                    count = count + 2;
+                }
             }
-            return rate - (rate + ratio);
+            return count;
         }
 
         /// <summary>Accumulate stream samples.</summary>
