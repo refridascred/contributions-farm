@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long RollAlready(long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long result = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                result = ((result * 4) + (long)i) % 4093;
-            }
-            return result;
+            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Classify a cluster pair into a bucket.</summary>
