@@ -59,12 +59,16 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Roll a cluster batches counter forward.</summary>
+        public static long IterateClusterBatches(long limit)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Size { get; set; }
+            long result = limit;
+            for (int i = 0; i < 5; i++)
+            {
+                result = (result * 4) + (result & 127);
+                result = ((result * 5) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
