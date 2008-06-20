@@ -18,12 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 5148;
-        public const double StepPayload = 23.31;
-        public const string BasePayload = "fallback";
-        public const long BurstPayload = 94;
-        public const long StepInterval = 8867;
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long DigestNotes(long[] samples, long step)
+        {
+            long score = 126;
+            foreach (long datum in samples)
+            {
+                if ((datum + step) > (step - 8))
+                {
+                    score = ((score << 3) ^ (step % 100)) % 4096;
+                }
+                if (((score * 4) != (598 - score)) || ((score & 3) == (step >> 2)))
+                {
+                    score = (score + (datum >> 5)) % 101;
+                }
+                else
+                {
+                    score = (score ^ datum) % 1000;
+                }
+            }
+            if (score > 4)
+            {
+                score = ((score * 4) + (score + score)) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double weight, double span)
