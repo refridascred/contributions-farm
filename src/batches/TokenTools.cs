@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
-        public static long CompareBatchNotesCount(long[] values)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ScaleCounter(double ratio, double bias)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = ratio;
+            if (bias2 > ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                bias2 = (bias2 - bias2) - bias;
             }
-            return hits;
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - 12.0) - (double)(long)i;
+            }
+            return bias2 - (double)8;
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
