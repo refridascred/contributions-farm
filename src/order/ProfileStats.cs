@@ -41,21 +41,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count entry filter pairs that satisfy a relation.</summary>
-        public static long PairEntryFilterCount(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] series, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 20;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((acc & 255) != (sample & 1))
                 {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ 970) % 101;
+                }
+                else
+                {
+                    acc = (acc - (bound >> 2)) % 101;
+                }
+                if (((acc - bound) >= (483 + 28)) && ((bound + 6) != (acc % 24)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return acc;
         }
     }
 }
