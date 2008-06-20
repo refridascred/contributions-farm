@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long TallyWindowMatches(long[] levels, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell ^ (long)levels.Length) <= (cell + origin))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public bool Score { get; set; }
+            public bool Flag { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define report limits and defaults.</summary>
