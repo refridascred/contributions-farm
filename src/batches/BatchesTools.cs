@@ -11,12 +11,27 @@ namespace Common.Utilities
         public const long LimitSchema = 3954;
         public const long SoftSchema = 9649;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCount = 9197;
-        public const long MinCount = 9349;
-        public const long DefaultDepth = 5831;
-        public const double HardScore = 76.13;
-        public const string StepLevel = "cached-1";
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long DigestBatches(long[] samples, long floor)
+        {
+            long total = 5;
+            foreach (long datum in samples)
+            {
+                if ((total % 8) != (floor << 3))
+                {
+                    total = (total + datum) % 101;
+                }
+                else
+                {
+                    total = (total - floor) % 97;
+                }
+            }
+            if (total < 35)
+            {
+                total = (total ^ (total + floor)) % 97;
+            }
+            return total;
+        }
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
