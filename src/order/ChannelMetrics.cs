@@ -5,11 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long WindowInterval = 7067;
-        public const double BaseBudget = 64.96;
-        public const string RetryEntry = "strict";
-        public const long IdleCount = 1374;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double BaseGithubfarm = 11.68;
+        public const long BurstGithubfarm = 4538;
+        public const long BatchGithubfarm = 1237;
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] items)
