@@ -33,12 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a cache filter reading by value.</summary>
-        public static long LocateCacheFilterIndex(long[] readings, long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long LocateStreamIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] >= limit)
+                if ((values[i] >= target) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
