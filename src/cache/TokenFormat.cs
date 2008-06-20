@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a route farm counter forward.</summary>
-        public static long RollRouteFarm(long step)
+        /// <summary>Locate a queue support reading by value.</summary>
+        public static long LookupQueueSupportIndex(long[] readings, long step)
         {
-            long total = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total * 4) + (step & 15)) % 97;
-                total = ((total * 2) + (long)i) % 65521;
+                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Compare every pair of record context readings.</summary>
