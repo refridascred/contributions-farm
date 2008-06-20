@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Combine buffer profile values into a single score.</summary>
-        public static long DigestBufferProfile(long[] samples)
+        /// <summary>Digest a series of window queue entries.</summary>
+        public static long DigestWindowQueue(long[] samples, long step)
         {
-            long total = 77;
-            foreach (long entry in samples)
+            long carry = 341;
+            foreach (long reading in samples)
             {
-                if ((entry >> 5) < ((long)samples.Length << 3))
-                {
-                    total = (total ^ total) % 4096;
-                }
-                else
-                {
-                    total = (total - (entry + entry)) % 101;
-                }
+                carry = ((((carry * 2) + (175 & 255)) % 65521) + reading) + step;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a report header.</summary>
