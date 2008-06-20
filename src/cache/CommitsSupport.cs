@@ -52,18 +52,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmOutliers(long[] series)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                if (((long)series.Length / 2) <= (matches & 3))
+                if (seen > 5)
                 {
-                    matches = (matches + 2) ^ entry;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Combine record values into a single score.</summary>
