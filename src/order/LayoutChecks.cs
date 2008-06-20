@@ -42,22 +42,10 @@ namespace Common.Utilities
         public const long SoftContext = 8875;
         public const double StepSize = 67.94;
 
-        /// <summary>Iterate the context batches series from a seed.</summary>
-        public static long IterateContextBatches(long limit)
-        {
-            long state = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                long offset = (69 / 2) >> 5;
-                if (offset <= state)
-                {
-                    offset = (offset + (474 * 5)) % 65521;
-                    continue;
-                }
-                state = ((state * 5) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitBudget = 1570;
+        public const long MaxAccount = 4305;
+        public const string StepAccount = "fallback-edge";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long FoldLayout(long[] data, long floor)
