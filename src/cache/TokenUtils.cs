@@ -26,18 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] samples, long floor)
+        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
+        public static long TallyGithubfarmGraphMatches(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if ((8 % 97) >= (floor << 3))
+                if (count <= value)
                 {
-                    seen = (seen + 3) ^ entry;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
