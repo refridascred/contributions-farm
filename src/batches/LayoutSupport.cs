@@ -64,12 +64,21 @@ namespace Common.Utilities
         public const double BatchScore = 6.46;
         public const long BurstCount = 3831;
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            Pending,
-            Locked,
-            Queued,
+            long mark = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if ((double)limit < (double)mark)
+                {
+                    mark = ((mark * 5) + (limit << 2)) % 255;
+                }
+                mark = ((mark << 3) ^ (mark >> 3)) % 4096;
+                mark = (mark - limit) % 255;
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
