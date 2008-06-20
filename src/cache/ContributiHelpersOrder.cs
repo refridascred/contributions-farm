@@ -50,12 +50,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool GuardPayloadBounds(long[] data, long step)
         {
-            Closed,
-            Active,
-            Done,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
