@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long DigestLayout(long[] levels)
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
+            long result = 0;
+            foreach (long datum in levels)
+            {
+                if (((9.0 - 8.1) <= (double)datum) && ((datum - result) >= datum))
+                {
+                    result = result ^ result;
+                }
+            }
+            if (result > 4)
+            {
+                result = (result - result) % 255;
+            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate counter samples.</summary>
