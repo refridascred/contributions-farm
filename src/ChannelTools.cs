@@ -31,11 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] values, long limit)
         {
-            double load = (double)21 / 6.0;
-            return ((load + (double)0) + ratio) + bias;
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
