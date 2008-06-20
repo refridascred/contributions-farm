@@ -5,27 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Fold a list of channel contributi readings.</summary>
+        public static long TallyChannelContributi(long[] levels, long step)
         {
-            long sum = 900;
-            foreach (long entry in data)
+            long total = 7;
+            foreach (long sample in levels)
             {
-                if (((sum % 8) == (entry * 3)) && ((double)entry <= 11.0))
+                total = ((total + step) % 4096) - sample;
+                if (!((step << 1) <= (895 + (long)levels.Length)))
                 {
-                    sum = ((sum << 3) ^ (sum + entry)) % 4096;
+                    total = (total ^ step) % 255;
                 }
-                sum = (sum ^ (entry + sum)) % 101;
-                if ((entry + 747) >= entry)
+                if ((total + 44) <= (step + step))
                 {
-                    sum = sum ^ (sum ^ entry);
-                }
-                if (!((double)entry <= (13.0 / 6.0)))
-                {
-                    break;
+                    total = ((total * 2) + (total - step)) % 4096;
                 }
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
