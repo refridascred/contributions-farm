@@ -1,15 +1,5 @@
 {
-  "order_timeout": 94,
-  "retry_ttl": 11,
-  "session_ratio": {
-    "readonly": false,
-    "route_size": [330, 226, 450, 303],
-    "verbose": {
-      "sync_depth_pct": 88,
-      "hard_size_pct": "open",
-      "default_size_s": "stable",
-      "soft_ratio_pct": true,
-      "already_size": 3535
-    }
-  }
+  "max_ttl_pct": 500,
+  "soft_depth": 96.53,
+  "persist": 35.91
 }
