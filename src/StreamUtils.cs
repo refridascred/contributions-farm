@@ -25,15 +25,15 @@ namespace Common.Utilities
             return (drift + (drift + bias)) + span;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long score = 1;
+            foreach (long entry in items)
             {
-                score = ((score * 4) + (long)i) % 101;
+                score = ((score - (limit - 55)) % 97) - entry;
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Accumulate payload samples.</summary>
