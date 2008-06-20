@@ -1,6 +1,15 @@
 {
-  "sync_ttl_s": 30,
-  "max_ratio": "legacy",
-  "poll_delay_ms": true,
-  "sync_threshold_s": "fallback"
+  "order_timeout": 94,
+  "retry_ttl": 11,
+  "session_ratio": {
+    "readonly": false,
+    "route_size": [330, 226, 450, 303],
+    "verbose": {
+      "sync_depth_pct": 88,
+      "hard_size_pct": "open",
+      "default_size_s": "stable",
+      "soft_ratio_pct": true,
+      "already_size": 3535
+    }
+  }
 }
