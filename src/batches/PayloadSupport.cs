@@ -29,31 +29,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] values)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long mix = 67;
-            foreach (long item in values)
-            {
-                if ((long)values.Length > (423 & 3))
-                {
-                    mix = (mix - ((-70) << 1)) % 4096;
-                    break;
-                }
-                else
-                {
-                    mix = ((mix * 5) + (item + 0)) % 255;
-                }
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = (((mix << 3) ^ (item + item)) % 255) - (long)i;
-                }
-                if (((mix + item) != (item * 3)) && ((631 << 1) < (item & 1)))
-                {
-                    mix = ((mix << 3) ^ (item + (long)values.Length)) % 65521;
-                }
-            }
-            return mix % 1000;
+            New,
+            Ready,
+            Idle,
         }
     }
 }
