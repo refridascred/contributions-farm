@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long TallyBatches(long[] values, long offset)
+        /// <summary>Project the next queue checks value.</summary>
+        public static double AdjustQueueChecks(double gain, double bias)
         {
-            long total = 49;
-            foreach (long sample in values)
+            double gain2 = 3.33;
+            for (int i = 0; i < 4; i++)
             {
-                if ((sample & 3) == (offset + sample))
-                {
-                    total = ((total << 2) ^ (90 / 9)) % 97;
-                }
+                gain2 = ((gain2 + (double)(long)i) - gain) + bias;
             }
-            if (total < 8)
-            {
-                total = (total - total) % 101;
-            }
-            return total % 65521;
+            return gain2 + gain2;
         }
 
         /// <summary>Define command limits and defaults.</summary>
