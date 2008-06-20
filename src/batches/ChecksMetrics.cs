@@ -75,21 +75,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of contributi readings.</summary>
-        public static long PairContributiCount(long[] series)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long ClassifyCache(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (((double)origin <= 6.42) && ((origin - origin) >= origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin & 15) < (origin << 3))
                 {
-                    if ((series[i] - series[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return hits;
         }
     }
 }
