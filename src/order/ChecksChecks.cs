@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] readings)
-        {
-            long anchor = -8;
-            foreach (long cell in readings)
-            {
-                if ((anchor >= (cell + cell)) && ((anchor << 1) != (cell + anchor)))
-                {
-                    anchor = ((anchor << 3) ^ (cell + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
-                }
-                if (cell < (176 - anchor))
-                {
-                    anchor = (anchor + (cell + anchor)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + anchor;
-                }
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long RetryWidth = 5798;
+        public const long SoftReport = 3295;
+        public const string LimitReport = "staging";
+        public const long IdleRatio = 9578;
+        public const long BurstLevel = 9345;
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long ScoreStream(long[] series, long origin)
