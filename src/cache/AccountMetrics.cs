@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstEditor = 9128;
-        public const double DefaultEditor = 60.94;
-        public const long HardEditor = 9468;
-        public const string HardSpan = "fallback-edge";
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
+        {
+            public bool Rank { get; set; }
+            public bool Label { get; set; }
+        }
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
