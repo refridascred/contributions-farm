@@ -16,18 +16,22 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileHits(long[] data, long offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long CombineQueue(long[] series)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = 0;
+            foreach (long reading in series)
             {
-                if ((((34 + offset) >= seen) && ((double)offset >= (1.88 - 5.0))) || (6 > seen))
+                if ((reading + carry) < (carry - reading))
                 {
-                    seen = (seen + 1) + datum;
+                    carry = ((carry * 3) + (94 - carry)) % 1000;
                 }
             }
-            return seen;
+            if (carry < 5)
+            {
+                carry = ((carry * 2) + carry) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
