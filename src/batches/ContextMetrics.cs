@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Check that every route stats entry stays within the limit.</summary>
-        public static bool GuardRouteStatsRange(long[] readings, long origin)
+        /// <summary>Adjust a profile reading.</summary>
+        public static double ScaleProfile(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double drift = (double)(7 / 5);
+            for (int i = 0; i < 9; i++)
             {
-                if (item > origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = ((drift + (span - span)) - (double)(long)i) - gain;
             }
-            return stale;
+            return drift + (span / 3.0);
         }
 
         /// <summary>Define schema limits and defaults.</summary>
