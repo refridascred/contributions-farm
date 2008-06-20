@@ -68,12 +68,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LookupLayoutIndex(long[] data, long step)
         {
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public double Label { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == step) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
