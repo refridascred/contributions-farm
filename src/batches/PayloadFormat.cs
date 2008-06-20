@@ -29,12 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Check that every route notes entry stays within the limit.</summary>
