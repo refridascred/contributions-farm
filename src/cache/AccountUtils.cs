@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] series, long seed)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphLimits(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if ((4.2 * 1.3) < (double)hits)
+                if (reading < seed)
                 {
-                    hits = ((hits + 2) + sample) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Adjust a entry already reading.</summary>
