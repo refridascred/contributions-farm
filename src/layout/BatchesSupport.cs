@@ -44,11 +44,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double weight, double floor)
         {
-            public bool Score { get; set; }
-            public long Total { get; set; }
+            double load = (double)(77 & 63);
+            if (load > (double)991)
+            {
+                load = load + floor;
+            }
+            else
+            {
+                load = load + load;
+            }
+            return load - (weight / 6.0);
         }
 
         /// <summary>Accumulate context samples.</summary>
