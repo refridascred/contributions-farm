@@ -79,18 +79,19 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Count the stats report entries that pass the check.</summary>
-        public static long TallyStatsReportOutliers(long[] readings)
+        /// <summary>Fold a list of graph command readings.</summary>
+        public static long FoldGraphCommand(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = 9;
+            foreach (long entry in data)
             {
-                if ((1.32 / 8.0) != (double)hits)
+                acc = acc ^ (floor * 3);
+                if (!((double)entry >= (double)acc))
                 {
-                    hits = (hits + 2) - reading;
+                    break;
                 }
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Describe the schema status values.</summary>
