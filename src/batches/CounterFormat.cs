@@ -16,13 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            Queued,
-            Locked,
-            Dropped,
-            Ready,
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the schema level values.</summary>
