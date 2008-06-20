@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
             public long Count { get; set; }
-            public long Size { get; set; }
         }
 
         /// <summary>Hold a checks record.</summary>
