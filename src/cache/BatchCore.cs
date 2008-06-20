@@ -22,18 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutGaps(long[] samples)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((double)matches < (3.51 * 0.4)) && (((reading & 1) < matches) && (matches <= (8 - matches))))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
