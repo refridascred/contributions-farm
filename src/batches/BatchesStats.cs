@@ -23,18 +23,24 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long CountContributiHits(long[] items)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long origin)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            if (2.0 < (double)target)
             {
-                if (!((long)items.Length == (sample * 2)) && (((matches >> 5) <= (matches / 7)) && ((matches - matches) <= (837 * 4))))
+                return 6;
+            }
+            else
+            {
+                if ((target + target) == (target + origin))
                 {
-                    matches = matches + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
