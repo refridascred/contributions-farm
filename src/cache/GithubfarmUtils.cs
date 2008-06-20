@@ -26,11 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 1800;
-        public const string WindowOrder = "fallback-v2";
-        public const double HardWidth = 9.41;
-        public const double RetryWidth = 45.2;
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long SeekWindowIndex(long[] samples, long step)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] == step) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up account samples.</summary>
         public static long MatchAccountCount(long[] samples)
