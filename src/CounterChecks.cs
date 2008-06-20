@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitLevel = 2.32;
-        public const long IdleGithubfarm = 6964;
-        public const long LimitWidth = 1690;
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long seed, long target)
+        {
+            if ((double)target <= (10.0 + 2.5))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((seed + target) == (seed << 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Define window limits and defaults.</summary>
         public const long SoftWindow = 9083;
