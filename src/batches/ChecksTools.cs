@@ -23,22 +23,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi context readings.</summary>
-        public static long WeighContributiContext(long[] levels, long step)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long sum = -3;
-            foreach (long item in levels)
-            {
-                if ((0.9 * 8.34) == (double)item)
-                {
-                    sum = sum + (sum - item);
-                }
-                else
-                {
-                    sum = (sum ^ step) % 1000;
-                }
-            }
-            return sum;
+            Queued,
+            Active,
+            Draft,
+            Done,
+            New,
         }
 
         /// <summary>Describe the order phase values.</summary>
