@@ -48,21 +48,25 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] series)
+        /// <summary>Rank token cache input into a small class.</summary>
+        public static long BucketTokenCache(long origin, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long delta = origin ^ floor;
+            if (((origin + 330) != (floor - origin)) && ((origin << 3) >= (floor % 16)))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((353 ^ origin) < delta)
                 {
-                    if ((series[i] + series[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
     }
 }
