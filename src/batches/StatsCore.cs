@@ -46,23 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double BlendFarm(double ratio, double floor)
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
         {
-            double mean = floor;
-            if (mean > (floor - floor))
-            {
-                mean = mean - mean;
-            }
-            else
-            {
-                mean = mean - (floor + floor);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + (floor + ratio);
+            Idle,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Look up the position of a session entry sample.</summary>
