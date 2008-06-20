@@ -25,14 +25,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            Locked,
             Queued,
-            Idle,
-            Dropped,
-            Active,
+            Closed,
+            Done,
+            New,
+            Stale,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
