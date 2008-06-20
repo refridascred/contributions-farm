@@ -1,6 +1,21 @@
 {
-  "readonly": false,
-  "dry_run": 7186,
-  "compress": 30,
-  "format_threshold": 25
+  "audit": "edge",
+  "flush_delay": "edge",
+  "default_ttl_pct": ["strict", "local", "local", "stable"],
+  "strict": {
+    "persist": 1,
+    "max_depth_s": true,
+    "cache_window": false,
+    "cache_delay_pct": 3649,
+    "burst_ttl_pct": ["cached", "latest"],
+    "soft_window_s": 8265
+  },
+  "poll_timeout_ms": {
+    "compress": 60,
+    "sync_timeout": false,
+    "readonly": false,
+    "soft_ratio": true,
+    "batch_interval_pct": 87.69,
+    "poll_timeout": 6753
+  }
 }
