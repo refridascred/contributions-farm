@@ -1,8 +1,6 @@
 {
-  "readonly": "latest",
-  "context_delay": 83.34,
-  "warm_size_count": 250,
-  "min_ratio_s": "stable",
-  "dry_run": true,
-  "compress": 60
+  "notes_depth": 94,
+  "buffer_ratio": true,
+  "persist": false,
+  "schema_delay": 6181
 }
