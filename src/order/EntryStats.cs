@@ -47,10 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double LimitToken = 94.32;
-        public const double BurstToken = 36.4;
-        public const string WindowInterval = "alpha-1";
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
+        {
+            public long Level { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long target, long limit)
