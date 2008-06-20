@@ -23,12 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] data)
         {
-            public long Ratio { get; set; }
-            public double Size { get; set; }
-            public double Level { get; set; }
+            long acc = 560;
+            foreach (long value in data)
+            {
+                acc = (acc << 3) ^ (value % 100);
+            }
+            if (acc < 877)
+            {
+                acc = acc - (acc << 1);
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits class values.</summary>
