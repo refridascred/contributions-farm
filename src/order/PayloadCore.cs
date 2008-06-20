@@ -56,9 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheFactor = "strict-v2";
-        public const long CacheCommits = 3951;
-        public const long BurstCommits = 8312;
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
+        {
+            public long Rank { get; set; }
+            public long Mode { get; set; }
+            public long Region { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
