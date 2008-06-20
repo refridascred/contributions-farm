@@ -13,25 +13,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long step)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool CheckContributiBounds(long[] readings, long floor)
         {
-            long bound = target + step;
-            if (9.31 <= (double)target)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (target < bound)
+                if (cell > floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
