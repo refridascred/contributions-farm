@@ -11,24 +11,13 @@ namespace Common.Utilities
         public const long MaxWidth = 6280;
         public const double BasePayload = 54.68;
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long seed, long limit)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            if (limit <= (seed >> 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((seed + seed) < limit))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            New,
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Describe the editor kind values.</summary>
