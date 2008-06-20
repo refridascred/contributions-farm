@@ -58,12 +58,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            Locked,
-            Idle,
-            Ready,
+            long carry = -71;
+            foreach (long sample in readings)
+            {
+                carry = ((carry * 5) + (-178)) + sample;
+            }
+            if (carry > 1)
+            {
+                carry = ((carry << 3) ^ (carry ^ carry)) % 255;
+            }
+            return carry;
         }
     }
 }
