@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] samples)
+        /// <summary>Count batch notes pairs that satisfy a relation.</summary>
+        public static long CompareBatchNotesCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((605 + seen) != (seen + reading))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] - values[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Classify a commits metric pair into a bucket.</summary>
