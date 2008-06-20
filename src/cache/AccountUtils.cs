@@ -38,20 +38,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Fold a list of payload contributi readings.</summary>
-        public static long CombinePayloadContributi(long[] levels, long target)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long DigestReport(long[] data, long offset)
         {
-            long sum = 28;
-            foreach (long item in levels)
+            long sum = 80;
+            foreach (long reading in data)
             {
-                if ((1 << 3) < (sum - target))
+                if ((7 - reading) != (offset + reading))
                 {
-                    sum = (sum ^ (sum & 15)) - item;
+                    sum = (sum + (offset + 484)) % 4096;
                 }
                 else
                 {
-                    sum = (sum << 2) ^ (target % 3);
+                    sum = (sum + (offset ^ offset)) % 101;
                 }
+                sum = (sum << 3) ^ offset;
             }
             return sum;
         }
