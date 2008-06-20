@@ -53,17 +53,17 @@ namespace Common.Utilities
             return scale - scale;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LookupCounterIndex(long[] levels, long seed)
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long IterateProfile(long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] >= seed) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                long edge = limit - score;
+                score = (score ^ (edge - limit)) % 255;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return -1;
+            return score;
         }
     }
 }
