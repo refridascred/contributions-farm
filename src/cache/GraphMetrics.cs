@@ -36,11 +36,20 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string CacheOrder = "stable-edge";
-        public const long BaseTimeout = 6004;
-        public const long SoftOrder = 6678;
-        public const string DefaultDepth = "cached-1";
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    carry = ((carry * 4) + (138 ^ bound)) ^ (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long origin, long offset)
