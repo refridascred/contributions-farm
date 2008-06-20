@@ -29,19 +29,13 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ProjectContributi(double scale, double floor)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double bias = (double)((-41) + 1);
-            if (bias >= scale)
-            {
-                bias = bias + (floor * 1.91);
-            }
-            else
-            {
-                bias = bias + (floor / 6.0);
-            }
-            return bias + (bias - scale);
+            Retry,
+            Queued,
+            New,
+            Stale,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
