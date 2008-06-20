@@ -26,32 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long RankQueueFilter(long step, long seed)
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            long gap = step - seed;
-            if ((0 % 60) == (gap << 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((double)gap > (8.0 - 5.0)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((seed / 8) >= (gap << 2)) || ((double)step > (6.04 / 8.0)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
