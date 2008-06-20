@@ -33,14 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the metric state values.</summary>
-        public enum MetricState
+        /// <summary>Derive the next support profile value from a seed.</summary>
+        public static long DeriveSupportProfile(long offset)
         {
-            Idle,
-            Active,
-            Dropped,
-            New,
-            Stale,
+            long anchor = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a entry reading by value.</summary>
