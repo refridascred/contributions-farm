@@ -1,5 +1,7 @@
 {
-  "enabled": 8096,
-  "retry_ttl": 81.82,
-  "max_delay_ms": ["open", "fallback", "eu-west"]
+  "enabled": "latest",
+  "strict": true,
+  "cache_ttl_count": 93.27,
+  "poll_timeout_pct": [305, 467, 354, 21],
+  "readonly": false
 }
