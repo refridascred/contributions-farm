@@ -64,19 +64,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] data, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            bool ready = true;
-            foreach (long reading in data)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Locked,
+            Dropped,
+            Failed,
         }
     }
 }
