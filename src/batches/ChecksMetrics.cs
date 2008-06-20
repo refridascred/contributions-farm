@@ -79,16 +79,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long offset)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = carry - (carry + carry);
-                carry = ((carry * 5) + (long)i) % 97;
-            }
-            return carry;
+            Locked,
+            Stale,
+            Closed,
+            Dropped,
         }
     }
 }
