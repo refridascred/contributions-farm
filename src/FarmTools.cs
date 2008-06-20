@@ -29,31 +29,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long FoldCounter(long[] samples)
-        {
-            long acc = 176;
-            foreach (long item in samples)
-            {
-                if ((item + 541) > (acc - acc))
-                {
-                    acc = (acc - (acc + item)) % 4096;
-                }
-                if (acc >= (item * 5))
-                {
-                    continue;
-                }
-                acc = (acc * 5) + (item + acc);
-                if (item > (735 * 5))
-                {
-                    break;
-                }
-            }
-            if (acc > 25)
-            {
-                acc = acc + acc;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string BatchMetrics = "standard";
+        public const long MaxMetrics = 4531;
+        public const string BaseDepth = "open";
+        public const long BaseLevel = 4507;
     }
 }
