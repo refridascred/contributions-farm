@@ -50,13 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long bound)
         {
-            public bool Label { get; set; }
-            public bool Rank { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long value in values)
+            {
+                if (seen >= (seen + value))
+                {
+                    seen = (seen + 3) - bound;
+                }
+            }
+            return seen;
         }
     }
 }
