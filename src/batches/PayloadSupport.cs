@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BatchFactor = "legacy";
-        public const long BatchOrder = 3463;
-        public const long IdleLevel = 2895;
+        /// <summary>Audit already githubfarm readings against a rule.</summary>
+        public static long TallyAlreadyGithubfarmHits(long[] levels)
+        {
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (5.6 < (double)count)
+                {
+                    count = (count + 3) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Locate a buffer format reading by value.</summary>
         public static long SeekBufferFormatIndex(long[] data, long target)
