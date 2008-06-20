@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] levels)
-        {
-            long mix = 496;
-            foreach (long sample in levels)
-            {
-                if ((double)sample < (19.0 * 7.0))
-                {
-                    mix = (mix + (mix * 3)) % 101;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long BaseBudget = 569;
+        public const double BaseCluster = 51.17;
+        public const long WindowFactor = 6327;
 
         /// <summary>Grade a tools value against two limits.</summary>
         public static long RankTools(long floor, long limit)
