@@ -21,21 +21,25 @@ namespace Common.Utilities
             return (gain - 11.0) + rate;
         }
 
-        /// <summary>Match up profile samples.</summary>
-        public static long PairProfileCount(long[] samples)
+        /// <summary>Combine commits farm values into a single score.</summary>
+        public static long ScoreCommitsFarm(long[] series, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = -41;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                long bound = (limit + 276) >> 5;
+                if ((658 / 8) >= entry)
                 {
-                    if ((samples[i] - samples[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = anchor + (bound ^ entry);
                 }
+                else
+                {
+                    anchor = anchor - (entry * 3);
+                    bound = bound + (832 / 4);
+                }
+                anchor = (anchor ^ (entry + limit)) % 1000;
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
