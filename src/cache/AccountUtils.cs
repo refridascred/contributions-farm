@@ -38,9 +38,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 9883;
-        public const double RetryGraph = 91.34;
-        public const long BatchTimeout = 4454;
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long ClassifyCommits(long bound, long bound2)
+        {
+            if ((9 + bound) == (48 / 6))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound2 ^ bound) != (346 / 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
