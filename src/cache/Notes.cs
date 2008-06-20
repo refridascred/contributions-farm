@@ -54,18 +54,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelHits(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long origin, long bound)
         {
-            long matches = 0;
-            foreach (long cell in levels)
+            if (origin <= bound)
             {
-                if ((((matches & 127) >= matches) && ((matches - cell) != (matches ^ 4))) || (cell >= matches))
+                return 3;
+            }
+            else
+            {
+                if ((bound + bound) > (bound * 4))
                 {
-                    matches = matches + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (((double)bound != (7.98 - 1.3)) || ((double)67 == (double)origin))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
