@@ -36,31 +36,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long GradeMetric(long target, long seed)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            if ((7.0 - 2.1) < (double)target)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target + target) == (seed + seed))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((seed + target) > (seed << 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public double Size { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
