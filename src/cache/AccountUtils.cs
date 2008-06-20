@@ -39,17 +39,11 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] samples, long offset)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == offset) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
