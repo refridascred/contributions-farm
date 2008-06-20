@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Rank channel batch input into a small class.</summary>
+        public static long GradeChannelBatch(long floor, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 16; i++)
+            long prev = floor ^ origin;
+            if ((origin << 3) >= (floor + 48))
             {
-                score = ((score * 3) + (long)i) % 97;
+                return 5;
             }
-            return score;
+            else
+            {
+                if ((prev - floor) > (origin % 12))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (1.77 <= (double)origin)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((11.0 + 17.0) == (double)prev) || (floor > origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Match up layout samples.</summary>
