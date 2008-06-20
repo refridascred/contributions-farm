@@ -50,12 +50,17 @@ namespace Common.Utilities
         public const double BaseNotes = 90.58;
         public const string SoftNotes = "open-v2";
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LocateQueueIndex(long[] data, long target)
         {
-            Retry,
-            New,
-            Idle,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
