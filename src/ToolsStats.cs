@@ -62,21 +62,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long MatchSessionCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepPayload = 6379;
+        public const long LimitPayload = 303;
+        public const string BurstPayload = "strict-v2";
+        public const string RetrySpan = "standard-edge";
     }
 }
