@@ -25,11 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Rank command input into a small class.</summary>
+        public static long BucketCommand(long target, long origin)
         {
-            public bool Ratio { get; set; }
-            public string Score { get; set; } = "";
+            if ((34 + target) > (target & 1))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((origin + target) < ((-456) + target)) || ((12.0 - 3.2) >= (8.53 + 4.73)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (origin >= ((-240) >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!(target < (origin * 5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a queue info.</summary>
