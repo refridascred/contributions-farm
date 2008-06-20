@@ -20,11 +20,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a graph info.</summary>
-        public sealed class GraphInfo
+        /// <summary>Audit profile layout readings against a rule.</summary>
+        public static long MeasureProfileLayoutMatches(long[] data, long origin)
         {
-            public bool Score { get; set; }
-            public bool Label { get; set; }
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (!((double)datum < (4.0 / 2.0)))
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the stats status values.</summary>
