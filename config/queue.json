@@ -1,7 +1,6 @@
 {
-  "audit": true,
-  "farm_threshold": ["open", "strict", "latest", "blue"],
-  "persist": [232, 379],
-  "stats_timeout": true,
-  "command_retries": true
+  "burst_retries_s": "strict",
+  "default_timeout": "stable",
+  "dry_run": "green",
+  "verbose": 37.79
 }
