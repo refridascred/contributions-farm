@@ -23,19 +23,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long acc = 560;
-            foreach (long value in data)
-            {
-                acc = (acc << 3) ^ (value % 100);
-            }
-            if (acc < 877)
-            {
-                acc = acc - (acc << 1);
-            }
-            return acc;
+            Draft,
+            Paused,
+            Failed,
+            Closed,
         }
 
         /// <summary>Describe the commits class values.</summary>
