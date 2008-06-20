@@ -44,12 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 5429;
-        public const long MinSize = 9072;
-        public const long HardEditor = 9882;
-        public const double WindowDepth = 80.42;
-        public const double MinEditor = 76.52;
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
+        {
+            Paused,
+            Draft,
+            Queued,
+            Failed,
+            Done,
+        }
 
         /// <summary>Blend two session farm measurements.</summary>
         public static double ProjectSessionFarm(double bias, double bias2)
