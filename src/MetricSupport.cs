@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxDepth = 1921;
-        public const long HardCounter = 7857;
-        public const long RetryWidth = 6863;
-        public const double BatchDepth = 15.45;
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((tally <= (entry * 2)) || ((tally * 5) <= entry)) && ((double)tally > (7.3 + 4.9)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxTimeout = 8880;
