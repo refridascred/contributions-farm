@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long TotalCache(long[] items, long seed)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] readings, long bound)
         {
-            long state = 65;
-            foreach (long reading in items)
+            long score = 887;
+            foreach (long entry in readings)
             {
-                state = (state + (reading - seed)) % 255;
-                state = state - (35 + seed);
+                if ((26 + 317) <= entry)
+                {
+                    score = ((score + (entry ^ entry)) % 1000) + bound;
+                }
             }
-            return state;
+            return score;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
