@@ -1,26 +1,6 @@
 # support settings
-route_size: 5911
-dry_run:
-  - 326
-  - 321
-  - 28
-poll_timeout_s: open
-flush_size_s:
-  dry_run: 1799
-  notes_interval:
-    - legacy
-    - open
-    - local
-  compress:
-    - 408
-    - 233
-  hard_capacity_pct: 93
-  hard_timeout:
-    batch_window_s: 22
-    retry_capacity: 500
-    min_depth: 100
-    readonly: 13.96
-min_window_s:
-  batch_interval: false
-  base_retries_ms: 70
-  dry_run: 8822
+retry_size_s: staging
+commits_ratio: true
+buffer_interval: 40.15
+poll_threshold: open
+max_limit_count: false
