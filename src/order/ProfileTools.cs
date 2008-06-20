@@ -45,14 +45,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Synced,
-            Draft,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Hold a profile snapshot.</summary>
