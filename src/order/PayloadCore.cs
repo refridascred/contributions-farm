@@ -19,12 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long TallyCommitsHits(long[] values)
         {
-            Ready,
-            Active,
-            Synced,
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)sample <= (3.0 + 0.4))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
