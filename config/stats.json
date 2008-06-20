@@ -1,5 +1,17 @@
 {
-  "readonly": 18,
-  "cache_size_s": "fallback",
-  "farm_size": 2655
+  "warm_timeout_count": true,
+  "support_delay": {
+    "default_delay_ms": 44.47,
+    "max_timeout": {
+      "flush_ratio_count": [340, 138, 175, 358],
+      "buffer_window": 3.48,
+      "idle_window": 13,
+      "token_threshold": ["legacy", "legacy", "staging"]
+    },
+    "audit": "primary",
+    "record_timeout": 19.34
+  },
+  "idle_capacity": false,
+  "sync_ttl_ms": [366, 473, 139],
+  "default_window": 39
 }
