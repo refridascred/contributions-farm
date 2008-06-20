@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] data, long limit)
+        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
+        public static long PairChecksChannelCount(long[] readings)
         {
-            long total = -39;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(datum < (datum / 9)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    total = (total ^ (datum % 2)) % 255;
-                }
-                else
-                {
-                    total = total + (limit % 100);
+                    if ((readings[i] - readings[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Blend two queue measurements.</summary>
