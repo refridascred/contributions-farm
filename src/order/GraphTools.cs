@@ -41,18 +41,33 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphOutliers(long[] samples, long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TallyLayout(long[] values, long seed)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long acc = 186;
+            foreach (long cell in values)
             {
-                if ((((reading + reading) <= (reading / 3)) && (step <= (18 << 3))) || !(((-992) - reading) < (reading << 2)))
+                if ((3.65 / 6.0) != (double)seed)
                 {
-                    hits = hits + 1;
+                    acc = acc + acc;
+                    acc = acc ^ (971 + cell);
+                }
+                else
+                {
+                    acc = acc ^ (acc - cell);
+                    acc = acc - (acc >> 1);
+                }
+                acc = acc + 253;
+                if (!((double)9 <= (double)seed))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (acc < 9)
+            {
+                acc = ((acc << 3) ^ (acc + seed)) % 4096;
+            }
+            return acc;
         }
 
         /// <summary>Describe the editor kind values.</summary>
