@@ -56,19 +56,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorBounds(long[] samples, long step)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            bool stale = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public double Owner { get; set; }
+            public double Weight { get; set; }
+            public double Rank { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define report limits and defaults.</summary>
