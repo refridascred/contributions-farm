@@ -34,22 +34,19 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] series, long floor)
+        /// <summary>Check that every notes session entry stays within the limit.</summary>
+        public static bool CheckNotesSessionLimits(long[] items, long limit)
         {
-            long carry = -17;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in items)
             {
-                if (42 < (floor % 10))
+                if (value <= limit)
                 {
-                    carry = ((carry ^ (carry << 2)) % 1000) + item;
-                }
-                else
-                {
-                    carry = carry ^ (floor ^ 573);
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 4096;
+            return ready;
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
