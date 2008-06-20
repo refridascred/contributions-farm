@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            public string Rank { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
-            public string Stamp { get; set; } = "";
+            Retry,
+            Idle,
+            Ready,
+            Queued,
+            Draft,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
