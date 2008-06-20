@@ -50,15 +50,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double bias, double bias2)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double mean = (bias2 * 6.39) + bias;
-            if (mean < bias2)
-            {
-                mean = mean - (mean - bias);
-            }
-            return mean + mean;
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
