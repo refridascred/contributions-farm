@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] levels, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] levels)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long state = 3;
+            foreach (long datum in levels)
             {
-                if ((((long)levels.Length / 3) != (matches - reading)) && (matches > (matches / 7)))
+                if (datum < (datum << 2))
                 {
-                    matches = (matches + 2) - seed;
+                    state = ((state * 2) + (state ^ 1)) % 97;
                 }
             }
-            return matches;
+            if (state < (-3))
+            {
+                state = ((state * 5) + state) % 101;
+            }
+            return state;
         }
 
         /// <summary>Hold a support header.</summary>
