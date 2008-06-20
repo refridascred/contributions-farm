@@ -32,25 +32,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank filter support input into a small class.</summary>
-        public static long GradeFilterSupport(long bound, long target)
-        {
-            if ((target & 255) < (27 + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((bound * 3) > (bound + bound)) || ((bound % 3) > (bound >> 4)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinDepth = 3496;
+        public const double WindowStats = 19.37;
+        public const double BaseStats = 90.43;
+        public const string IdleStats = "local";
+        public const double RetryBudget = 5.8;
 
         /// <summary>Hold a stats header.</summary>
         public sealed class StatsHeader
