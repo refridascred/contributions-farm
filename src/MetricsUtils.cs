@@ -49,19 +49,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] levels, long seed)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
+            public bool Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a githubfarm options.</summary>
