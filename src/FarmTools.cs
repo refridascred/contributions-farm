@@ -19,15 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long CombineEntry(long[] series)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long carry = 997;
-            foreach (long cell in series)
-            {
-                carry = ((carry << 2) ^ (cell - cell)) % 1000;
-            }
-            return carry;
+            Queued,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Match up githubfarm samples.</summary>
