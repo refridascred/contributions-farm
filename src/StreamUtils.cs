@@ -61,18 +61,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheHits(long[] levels)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((long)levels.Length - hits) < (hits % 3)) || ((double)hits > (7.0 + 0.7)))
+                if (items[i] < target)
                 {
-                    hits = (hits + 2) + value;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next commits value.</summary>
