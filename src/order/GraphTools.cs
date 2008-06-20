@@ -38,14 +38,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Draft,
-            Paused,
-            Stale,
-            Active,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSize = 1952;
+        public const string BatchAccount = "staging-1";
+        public const string MinAccount = "cached-edge";
+        public const long MinSpan = 3074;
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long CountContextOutliers(long[] samples)
