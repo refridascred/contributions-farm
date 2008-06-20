@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphLimits(long[] values, long target)
+        /// <summary>Look up the position of a cache checks sample.</summary>
+        public static long SeekCacheChecksIndex(long[] samples, long bound)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell != target)
+                if ((samples[i] > bound) && ((samples[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
