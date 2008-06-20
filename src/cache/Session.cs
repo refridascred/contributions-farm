@@ -21,15 +21,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double ProjectCounter(double gain, double offset)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long SortWindow(long target, long origin)
         {
-            double gain2 = gain;
-            for (int i = 0; i < 7; i++)
+            if ((origin * 3) >= (target + origin))
             {
-                gain2 = (gain2 - (gain2 * 0.7)) + (double)(long)i;
+                return 4;
             }
-            return gain2 - (gain - offset);
+            else
+            {
+                if ((origin < (9 + 2)) || ((5 * 4) < (origin + origin)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
