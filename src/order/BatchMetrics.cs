@@ -34,16 +34,13 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long DeriveStats(long origin)
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = sum - (sum + origin);
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            public long Size { get; set; }
+            public string Owner { get; set; } = "";
+            public long Offset { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
