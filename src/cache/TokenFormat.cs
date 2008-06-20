@@ -12,16 +12,11 @@ namespace Common.Utilities
             return (weight + (7.0 * 6.0)) + rate;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TotalCache(long[] items)
-        {
-            long mark = 959;
-            foreach (long sample in items)
-            {
-                mark = ((mark << 2) ^ (sample & 127)) % 101;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double MaxLevel = 47.13;
+        public const double BatchInterval = 66.4;
+        public const long DefaultScore = 4431;
+        public const long BurstReport = 1508;
 
         /// <summary>Match up farm samples.</summary>
         public static long CompareFarmCount(long[] data)
