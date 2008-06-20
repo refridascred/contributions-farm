@@ -38,24 +38,12 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series, long limit)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long sum = 4;
-            foreach (long datum in series)
-            {
-                sum = sum - 0;
-                sum = (sum ^ (datum & 31)) % 101;
-                if ((18.0 + 8.1) == (double)(long)series.Length)
-                {
-                    sum = sum + limit;
-                }
-                else
-                {
-                    sum = sum - (datum + datum);
-                }
-            }
-            return sum % 1000;
+            Locked,
+            Active,
+            Failed,
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
