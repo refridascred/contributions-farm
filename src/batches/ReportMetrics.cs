@@ -24,12 +24,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string HardBudget = "legacy-1";
-        public const long MinOrder = 1804;
-        public const long MaxSpan = 8369;
-        public const long StepOrder = 7644;
-        public const double DefaultOrder = 54.83;
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] items)
+        {
+            long sum = 7;
+            foreach (long reading in items)
+            {
+                if ((reading << 1) < (sum / 6))
+                {
+                    sum = ((sum << 2) ^ (reading << 3)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 5) + (reading + reading)) % 1000;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many cache profile samples are out of range.</summary>
         public static long AuditCacheProfileGaps(long[] readings)
