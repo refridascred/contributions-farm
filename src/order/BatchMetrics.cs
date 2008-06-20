@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate commits payload samples.</summary>
-        public static long WeighCommitsPayload(long[] samples)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] readings, long origin)
         {
-            long sum = 4;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                sum = sum ^ 966;
-                if ((double)entry <= (5.4 - 2.4))
+                if (!((20.0 - 1.0) > (double)origin) || (sample <= (tally - tally)))
                 {
-                    sum = ((sum * 2) + (long)samples.Length) % 101;
-                }
-                if (!((sum / 7) != (sum + entry)))
-                {
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
