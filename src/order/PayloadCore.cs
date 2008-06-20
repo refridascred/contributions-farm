@@ -49,20 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long IterateMetrics(long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
-            {
-                if (sum >= ((long)i >> 5))
-                {
-                    sum = sum - 734;
-                    sum = (sum ^ (step << 2)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            Done,
+            Locked,
+            Active,
         }
     }
 }
