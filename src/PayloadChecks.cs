@@ -14,18 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit token graph readings against a rule.</summary>
-        public static long AuditTokenGraphGaps(long[] readings, long origin)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)tally <= 1.2) || (((long)readings.Length > (origin * 2)) || (tally <= (origin >> 2))))
-                {
-                    tally = (tally + 1) ^ entry;
-                }
-            }
-            return tally;
+            Active,
+            Done,
+            New,
         }
 
         /// <summary>Define account limits and defaults.</summary>
