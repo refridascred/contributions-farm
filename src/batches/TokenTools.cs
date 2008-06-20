@@ -29,10 +29,17 @@ namespace Common.Utilities
             return bias - offset;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long LimitScore = 7163;
-        public const long MaxLayout = 6386;
-        public const double WindowLayout = 43.39;
-        public const long BatchSpan = 23;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LookupContributiIndex(long[] levels, long limit)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
