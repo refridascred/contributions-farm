@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] levels, long bound)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long WeighCache(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long result = 2;
+            foreach (long item in values)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = result - (item + result);
             }
-            return -1;
+            if (result > 618)
+            {
+                result = (result - (45 >> 4)) % 1000;
+            }
+            return result % 4096;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
