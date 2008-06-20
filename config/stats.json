@@ -1,10 +1,7 @@
 {
-  "metric_interval": 91,
-  "batch_limit_ms": "primary",
-  "min_limit_s": {
-    "idle_threshold_count": "blue",
-    "idle_capacity": 91.83,
-    "base_interval": "fallback"
-  },
-  "burst_interval_pct": 8112
+  "tools_delay": "open",
+  "warm_capacity_ms": "open",
+  "audit": false,
+  "checks_size": [233, 271],
+  "strict": 68
 }
