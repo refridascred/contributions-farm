@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long offset)
+        /// <summary>Rank account layout input into a small class.</summary>
+        public static long GradeAccountLayout(long limit, long bound)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            if (((double)limit <= (3.5 - 15.0)) && ((limit + 5) == (limit + limit)))
             {
-                if (cell <= offset)
+                return 5;
+            }
+            else
+            {
+                if (bound < 51)
                 {
-                    flag = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return flag;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
