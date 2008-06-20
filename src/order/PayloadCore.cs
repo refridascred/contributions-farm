@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            Dropped,
+            Draft,
+            New,
             Active,
-            Synced,
+            Retry,
+            Done,
         }
 
         /// <summary>Accumulate filter samples.</summary>
