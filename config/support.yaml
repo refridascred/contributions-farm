@@ -1,22 +1,17 @@
 # support settings
-idle_limit_pct: 45
-persist:
-  dry_run: 45.81
-  base_capacity_ms: 88.41
-  idle_threshold_ms:
-    metric_delay: 3304
-    poll_ratio_s:
-      - 342
-      - 196
-      - 426
-    max_depth: stable
-    compress: 3339
-    editor_window: cached
-  base_ttl_pct: 60
-  batch_threshold_pct: true
-  readonly: strict
-cache_threshold_count:
-  - local
-  - fallback
-farm_window: 67.26
-readonly: standard
+burst_size_pct:
+  min_interval: 1024
+  notes_size:
+    - 258
+    - 285
+    - 158
+    - 358
+  checks_limit: 73
+  strict:
+    - 196
+    - 9
+persist: 100
+graph_size: blue
+sync_ratio:
+  - 69
+  - 368
