@@ -5,16 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long RollGraph(long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long bound, long floor)
         {
-            long state = step;
-            for (int i = 0; i < 19; i++)
+            long lane = bound + floor;
+            if (!((floor & 31) != (bound - bound)))
             {
-                state = (state - (state + state)) % 101;
-                state = ((state * 4) + (long)i) % 101;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((7.0 - 5.0) == (double)lane)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (9.4 > (double)lane)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the metric state values.</summary>
