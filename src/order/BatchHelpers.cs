@@ -28,13 +28,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Audit profile cache readings against a rule.</summary>
+        public static long AuditProfileCacheHits(long[] data)
         {
-            Queued,
-            Locked,
-            Pending,
-            Draft,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if ((entry >> 4) <= (entry ^ tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
