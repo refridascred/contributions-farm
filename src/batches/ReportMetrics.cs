@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] series, long offset)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long origin)
         {
-            bool found = true;
-            foreach (long datum in series)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if (datum >= offset)
-                {
-                    found = false;
-                    break;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Describe the checks mode values.</summary>
