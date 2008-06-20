@@ -23,18 +23,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsGaps(long[] samples)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] levels, long step)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            long sum = 35;
+            foreach (long item in levels)
             {
-                if ((double)hits <= (20.0 - 3.33))
-                {
-                    hits = (hits + 3) + cell;
-                }
+                sum = (((sum * 2) + step) % 4096) ^ item;
             }
-            return hits;
+            if (sum < 0)
+            {
+                sum = ((sum << 2) ^ (sum << 1)) % 97;
+            }
+            return sum;
         }
     }
 }
