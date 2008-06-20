@@ -1,13 +1,22 @@
 {
-  "retry_threshold": 58,
-  "route_retries": false,
-  "persist": {
-    "retry_ratio": false,
-    "sync_interval_ms": 35.37,
-    "verbose": 13,
-    "hard_delay_s": ["local", "staging", "strict", "blue"],
-    "queue_window": 49
+  "base_delay": true,
+  "sync_retries": "standard",
+  "flush_delay_s": {
+    "metrics_delay": {
+      "support_size": 1024,
+      "min_limit_s": "standard",
+      "context_ttl": 78.59,
+      "default_retries_pct": "staging",
+      "counter_threshold": "fallback",
+      "default_retries": true
+    },
+    "payload_interval": false,
+    "commits_window": false,
+    "audit": [294, 72],
+    "enabled": 100,
+    "cache_limit": "legacy"
   },
-  "command_threshold": 72,
-  "channel_window": [107, 62]
+  "audit": "standard",
+  "compress": 86,
+  "batch_ratio": [365, 264]
 }
