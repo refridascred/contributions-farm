@@ -24,12 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public bool Count { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string HardBudget = "legacy-1";
+        public const long MinOrder = 1804;
+        public const long MaxSpan = 8369;
+        public const long StepOrder = 7644;
+        public const double DefaultOrder = 54.83;
 
         /// <summary>Measure how many cache profile samples are out of range.</summary>
         public static long AuditCacheProfileGaps(long[] readings)
