@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate token checks samples.</summary>
-        public static long FoldTokenChecks(long[] values)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] values)
         {
-            long carry = 553;
+            long score = 84;
             foreach (long datum in values)
             {
-                carry = ((carry - (carry >> 1)) % 101) ^ datum;
+                if ((datum - datum) >= score)
+                {
+                    score = score + (datum ^ score);
+                }
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Count record command pairs that satisfy a relation.</summary>
