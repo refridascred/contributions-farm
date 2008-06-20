@@ -29,31 +29,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a batches graph pair into a bucket.</summary>
-        public static long BucketBatchesGraph(long offset, long seed)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long MatchNotesCount(long[] data)
         {
-            if ((818 - offset) <= 3)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset <= (seed >> 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (seed >= (offset / 6))
+                    if ((data[i] - data[j]) == 0)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
