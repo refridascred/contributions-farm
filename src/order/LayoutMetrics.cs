@@ -12,24 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Rank window batches input into a small class.</summary>
-        public static long GradeWindowBatches(long limit, long floor)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesMatches(long[] series, long offset)
         {
-            if ((limit + 7) != (limit - floor))
+            long seen = 0;
+            foreach (long sample in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((9.6 - 8.38) < (double)limit)
+                if (!((double)sample < (double)offset))
                 {
-                    return 7;
+                    seen = seen + 3;
                 }
                 else
                 {
-                    return 4;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a support snapshot.</summary>
