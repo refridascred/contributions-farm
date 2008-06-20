@@ -1,7 +1,5 @@
 {
-  "warm_threshold_count": false,
-  "githubfarm_size": false,
-  "buffer_size": ["cached", "strict", "blue"],
-  "poll_size_count": "local",
-  "channel_depth": ["legacy", "local"]
+  "session_threshold": [433, 33, 3, 146],
+  "flush_retries_count": "latest",
+  "sync_capacity_pct": 84.05
 }
