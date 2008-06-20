@@ -13,15 +13,19 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double AdjustReport(double weight, double span)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] values, long target)
         {
-            double rate = (double)(370 ^ 8);
-            for (int i = 0; i < 5; i++)
+            bool found = true;
+            foreach (long sample in values)
             {
-                rate = ((rate + 8.4) + (double)(long)i) - weight;
+                if (sample >= target)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate - (span * 6.4);
+            return found;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
