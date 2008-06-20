@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double BlendChecks(double bias, double offset)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long AuditToolsOutliers(long[] items, long origin)
         {
-            double drift = (bias / 5.0) / 4.0;
-            if (drift >= (bias + bias))
+            long hits = 0;
+            foreach (long datum in items)
             {
-                drift = drift + (double)7;
+                if ((((hits % 100) < (datum + datum)) || ((datum * 2) >= (datum + hits))) && (((9.75 / 2.0) == (double)origin) || (69 > (origin + hits))))
+                {
+                    hits = hits + 2;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - offset;
+            return hits;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
