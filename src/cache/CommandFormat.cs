@@ -40,23 +40,23 @@ namespace Common.Utilities
             return rate - (span * 6.4);
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double BlendCounter(double rate, double floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] items, long floor)
         {
-            double mean = rate;
-            if (mean <= (floor - mean))
+            long score = -92;
+            foreach (long sample in items)
             {
-                mean = mean - (rate / 8.0);
+                score = ((score << 2) ^ (sample - floor)) % 97;
+                if ((double)score == (13.0 + 1.0))
+                {
+                    break;
+                }
             }
-            else
+            if (score > 18)
             {
-                mean = mean - (rate * 5.2);
+                score = score ^ (score >> 1);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + (7.87 - rate)) + (double)(long)i;
-            }
-            return mean - mean;
+            return score;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
