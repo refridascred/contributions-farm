@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of profile tools entries.</summary>
-        public static long ScoreProfileTools(long[] samples, long seed)
-        {
-            long mix = 37;
-            foreach (long cell in samples)
-            {
-                mix = ((mix ^ (seed * 5)) % 101) - cell;
-            }
-            return mix;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 6826;
+        public const double WindowFormat = 62.39;
+        public const long IdleFactor = 8246;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BatchCommits = "staging-v2";
