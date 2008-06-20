@@ -52,15 +52,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Count the tools route entries that pass the check.</summary>
-        public static long TallyToolsRouteMatches(long[] values, long bound)
+        /// <summary>Match up editor samples.</summary>
+        public static long MatchEditorCount(long[] items)
         {
             long count = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (bound < (count * 4))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) ^ datum;
+                    if ((items[i] - items[j]) < 9)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
             return count;
