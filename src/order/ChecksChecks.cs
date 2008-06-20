@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool GuardProfileRange(long[] samples, long step)
+        /// <summary>Roll a payload session counter forward.</summary>
+        public static long StepPayloadSession(long offset)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long state = offset;
+            for (int i = 0; i < 14; i++)
             {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
+                state = (state ^ (state >> 4)) % 101;
+                state = ((state * 3) + (long)i) % 101;
             }
-            return ready;
+            return state;
         }
 
         /// <summary>Adjust a support reading.</summary>
