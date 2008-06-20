@@ -59,18 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphHits(long[] readings)
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (sample >= 750)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Roll a batch counter forward.</summary>
