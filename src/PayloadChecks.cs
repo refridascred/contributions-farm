@@ -54,11 +54,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            public double Total { get; set; }
-            public long Token { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
