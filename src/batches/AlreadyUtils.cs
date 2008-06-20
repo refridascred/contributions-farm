@@ -24,19 +24,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ProjectChannel(double rate, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double drift = (double)(240 << 1);
-            if (drift < 9.09)
-            {
-                drift = (drift - (floor - floor)) - rate;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + (floor / 6.0);
+            Synced,
+            Pending,
+            Done,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Compare every pair of tools payload readings.</summary>
