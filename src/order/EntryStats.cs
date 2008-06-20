@@ -5,32 +5,36 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Rank route filter input into a small class.</summary>
-        public static long RankRouteFilter(long seed, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long CombineProfile(long[] levels)
         {
-            long cur = seed + bound;
-            if (cur < (bound >> 5))
+            long mix = 2;
+            foreach (long item in levels)
             {
-                return 2;
-            }
-            else
-            {
-                if (cur <= bound)
+                long bound = item;
+                if (((double)item != (double)bound) && ((2.0 * 5.1) < (double)item))
                 {
-                    return 4;
+                    long bound2 = (bound << 1) * 4;
+                    bound = bound + (item + bound2);
                 }
                 else
                 {
-                    if ((seed ^ 3) != (bound >> 1))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    bound = (bound * 4) + bound;
+                }
+                if (!((mix * 4) <= item))
+                {
+                    mix = ((mix * 2) + (5 + (-61))) % 65521;
+                }
+                if (!((item >> 4) >= item))
+                {
+                    break;
                 }
             }
+            if (mix > 993)
+            {
+                mix = (mix ^ (mix ^ 560)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
