@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] samples)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits & 15) > (hits << 2))
+                if (series[i] >= floor)
                 {
-                    hits = (hits + 3) + reading;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
