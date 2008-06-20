@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long AuditFarmOutliers(long[] values)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = 2;
+            foreach (long entry in data)
             {
-                if (!((reading + matches) == (matches << 2)))
-                {
-                    matches = matches + 3;
-                }
+                carry = (((carry << 3) ^ (carry - entry)) % 1000) - origin;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
