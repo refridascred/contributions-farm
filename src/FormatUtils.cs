@@ -46,13 +46,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
-        {
-            public bool Region { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BaseDepth = 3249;
+        public const long SoftCounter = 2306;
+        public const long IdleSize = 6356;
+        public const long IdleScore = 8900;
 
         /// <summary>Blend two tools measurements.</summary>
         public static double AdjustTools(double gain, double span)
