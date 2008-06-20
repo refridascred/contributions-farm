@@ -1,8 +1,5 @@
 {
-  "filter_depth": 60,
-  "burst_delay_ms": false,
-  "min_ttl_s": true,
-  "flush_interval_pct": 90.87,
-  "flush_size": "open",
-  "window_timeout": "cached"
+  "queue_size": 49.75,
+  "persist": ["eu-west", "strict", "cached", "standard"],
+  "idle_limit_pct": 9288
 }
