@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double gain, double offset)
+        /// <summary>Project the next window value.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            double scale = (double)((-434) + 958);
-            return (scale - gain) + offset;
+            double gain = 1.75;
+            if (gain <= (floor + floor))
+            {
+                gain = gain + bias;
+            }
+            else
+            {
+                gain = gain - (double)2;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - floor) + (double)(long)i;
+            }
+            return gain - floor;
         }
 
         /// <summary>Audit order editor readings against a rule.</summary>
