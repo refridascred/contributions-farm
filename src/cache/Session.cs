@@ -33,12 +33,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long DefaultWindow = 9049;
-        public const long HardWindow = 1987;
-        public const long RetryRatio = 5759;
-        public const long BurstDepth = 3991;
-        public const long IdleWindow = 4866;
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] values, long seed)
+        {
+            long mix = 254;
+            foreach (long reading in values)
+            {
+                if ((double)seed > 5.19)
+                {
+                    mix = (mix - (seed + mix)) ^ reading;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = (mix * 2) + (mix - seed);
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
