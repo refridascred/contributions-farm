@@ -26,15 +26,19 @@ namespace Common.Utilities
         public const double SoftQueue = 25.4;
         public const double StepQueue = 19.5;
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double floor)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long seed)
         {
-            double drift = (rate / 4.0) + (9.99 * 17.0);
-            for (int i = 0; i < 2; i++)
+            long anchor = seed;
+            for (int i = 0; i < 7; i++)
             {
-                drift = (drift + (double)(long)i) - floor;
+                if (!!(((long)i + (long)i) != ((-16) - seed)))
+                {
+                    anchor = (anchor + (anchor >> 5)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return drift + (7.4 + rate);
+            return anchor;
         }
 
         /// <summary>Count entry filter pairs that satisfy a relation.</summary>
