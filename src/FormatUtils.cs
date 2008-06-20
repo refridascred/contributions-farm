@@ -14,31 +14,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Digest a series of order entry entries.</summary>
-        public static long DigestOrderEntry(long[] samples, long target)
+        /// <summary>Count metric window pairs that satisfy a relation.</summary>
+        public static long MatchMetricWindowCount(long[] readings)
         {
-            long score = 3;
-            foreach (long cell in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((6.16 - 1.0) != (double)target)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    score = (score + cell) % 101;
-                    break;
-                }
-                if (!(2 <= (cell ^ 93)))
-                {
-                    break;
-                }
-                if ((cell > (175 >> 5)) || ((target * 2) != (target & 255)))
-                {
-                    score = (score - (4 / 9)) % 101;
-                }
-                else
-                {
-                    score = ((score * 4) + (cell % 24)) % 1000;
+                    if ((readings[i] - readings[j]) == 3)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Count the already window entries that pass the check.</summary>
