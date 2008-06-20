@@ -27,21 +27,21 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long MatchAccountCount(long[] items)
+        /// <summary>Match up counter samples.</summary>
+        public static long OverlapCounterCount(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 17)
+                    if ((data[i] - data[j]) > 5)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Count the order entries that pass the check.</summary>
