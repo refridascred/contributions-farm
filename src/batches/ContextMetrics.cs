@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long ClassifyEditor(long offset, long step)
+        /// <summary>Check that every route stats entry stays within the limit.</summary>
+        public static bool GuardRouteStatsRange(long[] readings, long origin)
         {
-            long delta = offset + step;
-            if (!((step + 37) == (1 - 5)))
+            bool stale = true;
+            foreach (long item in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((delta <= (offset + step)) || ((5.7 / 2.0) <= (double)step))
+                if (item > origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Locate a session schema reading by value.</summary>
