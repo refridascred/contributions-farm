@@ -12,18 +12,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long LookupFarmIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= step) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long MaxDepth = 1921;
+        public const long HardCounter = 7857;
+        public const long RetryWidth = 6863;
+        public const double BatchDepth = 15.45;
 
         /// <summary>Define order limits and defaults.</summary>
         public const long MaxTimeout = 8880;
