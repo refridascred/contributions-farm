@@ -20,15 +20,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double rate, double floor)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            double gain = floor + rate;
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - gain) - (double)(long)i;
-            }
-            return gain + (gain + gain);
+            public double Owner { get; set; }
+            public long Flag { get; set; }
+            public double Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of window readings.</summary>
