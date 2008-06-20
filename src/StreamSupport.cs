@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] items)
         {
-            long mix = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long value in items)
             {
-                mix = (mix ^ (mix >> 5)) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((double)9 > (double)tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Fold a list of farm entry readings.</summary>
