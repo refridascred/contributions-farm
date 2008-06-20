@@ -30,19 +30,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadBounds(long[] data, long step)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] values, long offset)
         {
-            bool valid = true;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item <= step)
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
