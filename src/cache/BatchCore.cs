@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] readings, long bound)
         {
-            Locked,
-            New,
-            Closed,
+            long count = 0;
+            foreach (long value in readings)
+            {
+                if (!((15.0 * 9.21) > (double)value))
+                {
+                    count = (count + 3) + bound;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
