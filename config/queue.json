@@ -1,17 +1,5 @@
 {
-  "queue_interval": true,
-  "retry_interval_ms": "blue",
-  "min_capacity": {
-    "enabled": {
-      "profile_threshold": 4919,
-      "flush_interval_pct": true,
-      "batch_ratio_ms": 1024,
-      "compress": 19
-    },
-    "idle_timeout": 90,
-    "commits_window": "primary",
-    "max_capacity_count": 500,
-    "contributi_ratio": "cached"
-  },
-  "compress": true
+  "notes_delay": 500,
+  "hard_ttl": 20,
+  "cache_retries_pct": "fallback"
 }
