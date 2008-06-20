@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Adjust a profile reading.</summary>
-        public static double ScaleProfile(double gain, double span)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long seed, long target)
         {
-            double drift = (double)(7 / 5);
-            for (int i = 0; i < 9; i++)
+            long diff = seed ^ target;
+            if ((seed % 5) >= (target % 24))
             {
-                drift = ((drift + (span - span)) - (double)(long)i) - gain;
+                return 0;
             }
-            return drift + (span / 3.0);
+            else
+            {
+                if ((seed - target) < diff)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (!((diff + 4) <= (68 * 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
