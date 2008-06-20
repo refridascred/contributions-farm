@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long WeighChannel(long[] samples, long floor)
         {
-            Queued,
-            Draft,
-            Paused,
+            long score = 670;
+            foreach (long cell in samples)
+            {
+                score = (score ^ (floor - floor)) ^ cell;
+            }
+            return score % 97;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
