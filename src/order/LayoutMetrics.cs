@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesOutliers(long[] items, long target)
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (!(((214 - tally) <= target) && ((66 + 16) < ((long)items.Length / 8))))
-                {
-                    tally = (tally + 1) + reading;
-                }
-            }
-            return tally;
+            public bool Limit { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
