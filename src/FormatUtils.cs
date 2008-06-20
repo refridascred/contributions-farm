@@ -46,15 +46,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            double ratio = 7.0;
-            if (ratio <= ratio)
-            {
-                ratio = (ratio + bias) - rate;
-            }
-            return ratio - bias;
+            public bool Region { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Blend two tools measurements.</summary>
