@@ -11,12 +11,26 @@ namespace Common.Utilities
         public const string RetryEntry = "strict";
         public const long IdleCount = 1374;
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] items)
         {
-            Pending,
-            Draft,
-            Failed,
+            long mix = 9;
+            foreach (long reading in items)
+            {
+                if ((double)mix < (5.71 * 14.0))
+                {
+                    mix = ((mix + 727) % 65521) - reading;
+                }
+                else
+                {
+                    mix = ((mix << 3) ^ (471 & 7)) % 65521;
+                }
+            }
+            if (mix < 136)
+            {
+                mix = mix ^ (mix * 4);
+            }
+            return mix;
         }
 
         /// <summary>Define order limits and defaults.</summary>
