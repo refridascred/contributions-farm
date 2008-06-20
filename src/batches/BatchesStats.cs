@@ -45,21 +45,12 @@ namespace Common.Utilities
             return load - (offset + offset);
         }
 
-        /// <summary>Count tools pairs that satisfy a relation.</summary>
-        public static long PairToolsCount(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Retry,
+            New,
+            Idle,
         }
     }
 }
