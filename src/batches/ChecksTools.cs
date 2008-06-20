@@ -42,15 +42,13 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double AdjustContext(double scale, double floor)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            double gain = scale;
-            for (int i = 0; i < 5; i++)
-            {
-                gain = ((gain - (double)2) + (double)(long)i) - floor;
-            }
-            return gain - scale;
+            Closed,
+            Paused,
+            Draft,
+            Active,
         }
     }
 }
