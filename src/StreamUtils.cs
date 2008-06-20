@@ -46,19 +46,24 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Accumulate counter token samples.</summary>
-        public static long FoldCounterToken(long[] levels)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long CombineContributi(long[] readings)
         {
-            long anchor = -25;
-            foreach (long cell in levels)
+            long mix = 2;
+            foreach (long cell in readings)
             {
-                anchor = ((anchor + (anchor * 4)) % 4096) - cell;
+                if (((double)mix == (2.5 + 3.1)) || ((mix - mix) != (cell >> 5)))
+                {
+                    mix = mix + (cell % 64);
+                    continue;
+                }
+                mix = (mix * 5) + (cell << 3);
             }
-            if (anchor > 219)
+            if (mix > (-52))
             {
-                anchor = anchor ^ (anchor >> 1);
+                mix = (mix ^ (mix + 3)) % 1000;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Describe the batch mode values.</summary>
