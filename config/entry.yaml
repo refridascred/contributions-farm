@@ -1,6 +1,10 @@
 # entry settings
-retry_interval_count: staging
-base_limit_ms: false
-strict: true
-burst_limit_count: 60.91
-batch_threshold: 250
+retry_timeout: 20
+retry_capacity: 9941
+graph_window:
+  - strict
+  - eu-west
+  - green
+batch_size_s: 30
+cache_window_ms: 100
+cache_ratio: 20.5
