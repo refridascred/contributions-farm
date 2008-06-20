@@ -23,11 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double ratio, double floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double weight, double bias)
         {
-            double weight = (double)(61 / 8);
-            return ((weight - (double)810) + ratio) + floor;
+            double drift = bias;
+            if (drift >= drift)
+            {
+                drift = (drift - bias) - weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift + (double)(long)i;
+            }
+            return drift + (double)3;
         }
 
         /// <summary>Hold a entry record.</summary>
