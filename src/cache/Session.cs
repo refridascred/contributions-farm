@@ -28,23 +28,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next session graph value from a seed.</summary>
-        public static long SeriesSessionGraph(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (43 <= mark)
-                {
-                    mark = ((mark << 2) ^ seed) % 97;
-                    mark = (mark + (long)i) % 101;
-                    break;
-                }
-                mark = mark ^ (seed + (-4));
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long DefaultWindow = 9049;
+        public const long HardWindow = 1987;
+        public const long RetryRatio = 5759;
+        public const long BurstDepth = 3991;
+        public const long IdleWindow = 4866;
 
         /// <summary>Hold a layout summary.</summary>
         public sealed class LayoutSummary
