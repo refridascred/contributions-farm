@@ -20,26 +20,20 @@ namespace Common.Utilities
             return bias - (8.54 - bias);
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items, long offset)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long step)
         {
-            long mix = 9;
-            foreach (long sample in items)
+            long sum = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample >= mix)
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    mix = ((mix << 3) ^ (offset + sample)) % 4096;
+                    sum = ((sum + step) % 4096) ^ (long)i2;
+                    sum = (sum ^ ((long)i + 521)) % 255;
                 }
-                else
-                {
-                    mix = (mix - (sample / 8)) % 97;
-                }
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            if (mix > 284)
-            {
-                mix = (mix + (mix + offset)) % 255;
-            }
-            return mix % 4096;
+            return sum;
         }
 
         /// <summary>Hold a graph stats.</summary>
