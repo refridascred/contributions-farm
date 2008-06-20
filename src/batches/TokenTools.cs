@@ -40,11 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            public bool Label { get; set; }
-            public long Total { get; set; }
+            Queued,
+            Pending,
+            Stale,
+            Failed,
+            Closed,
         }
     }
 }
