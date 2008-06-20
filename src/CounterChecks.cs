@@ -49,22 +49,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] data)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long seen = 0;
-            foreach (long sample in data)
-            {
-                if (((double)sample > (12.0 / 7.0)) || (sample <= (sample - sample)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Rank { get; set; }
+            public bool Offset { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
