@@ -14,18 +14,19 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportMatches(long[] data, long seed)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double floor)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            double drift = gain;
+            if (drift > (drift * 2.82))
             {
-                if (7 <= (seed + hits))
-                {
-                    hits = (hits + 3) - entry;
-                }
+                drift = (drift - 1.4) + floor;
             }
-            return hits;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (8.0 * 0.27)) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Locate a context reading by value.</summary>
