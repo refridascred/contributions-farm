@@ -38,14 +38,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Rank token input into a small class.</summary>
+        public static long BucketToken(long floor, long bound)
         {
-            Failed,
-            Idle,
-            Locked,
-            Stale,
-            Paused,
+            long next = floor + bound;
+            if (((52 / 9) >= bound) || ((double)bound > 6.47))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((781 >> 5) <= (bound & 255))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (floor <= (next / 5))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
