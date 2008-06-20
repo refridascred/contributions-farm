@@ -50,15 +50,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long FoldGraph(long[] series, long seed)
+        /// <summary>Accumulate editor format samples.</summary>
+        public static long CombineEditorFormat(long[] readings)
         {
-            long state = 27;
-            foreach (long reading in series)
+            long score = 17;
+            foreach (long entry in readings)
             {
-                state = ((state ^ (state >> 4)) + reading) + seed;
+                score = (score * 2) + (score >> 5);
+                score = score - (entry & 7);
             }
-            return state % 1000;
+            if (score < (-398))
+            {
+                score = ((score << 2) ^ (score / 6)) % 65521;
+            }
+            return score % 97;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
