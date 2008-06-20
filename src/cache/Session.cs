@@ -37,12 +37,16 @@ namespace Common.Utilities
         public const double BaseSize = 37.39;
         public const long HardCount = 3191;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Roll a command counter forward.</summary>
+        public static long RollCommand(long seed)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public double Flag { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                anchor = anchor + (long)i;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
