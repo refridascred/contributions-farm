@@ -33,10 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxSchema = 3080;
-        public const long RetryScore = 8043;
-        public const long MinSchema = 3052;
+        /// <summary>Count record command pairs that satisfy a relation.</summary>
+        public static long MatchRecordCommandCount(long[] items)
+        {
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two graph window measurements.</summary>
         public static double AdjustGraphWindow(double rate, double floor)
