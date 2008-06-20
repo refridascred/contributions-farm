@@ -41,19 +41,38 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long offset)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long target, long floor)
         {
-            long total = 93;
-            foreach (long datum in items)
+            if ((floor + target) != (target + target))
             {
-                total = ((total ^ (datum & 127)) % 65521) + offset;
+                return 3;
             }
-            if (total < 57)
+            else
             {
-                total = total + (total * 5);
+                if ((target % 10) != (target - target))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((2.74 - 0.82) > (double)floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (3.0 > (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return total;
         }
     }
 }
