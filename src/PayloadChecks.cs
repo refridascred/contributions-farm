@@ -44,15 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
-        {
-            Paused,
-            Draft,
-            Queued,
-            Failed,
-            Done,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double StepAlready = 4.16;
+        public const long IdleAlready = 688;
+        public const long BatchAlready = 9959;
+        public const string LimitRatio = "open-v2";
+        public const string BurstBudget = "primary-1";
 
         /// <summary>Hold a stats snapshot.</summary>
         public sealed class StatsSnapshot
