@@ -27,23 +27,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long CombineFarmToken(long[] readings)
-        {
-            long mix = 80;
-            foreach (long sample in readings)
-            {
-                mix = mix ^ (sample ^ sample);
-                if (((mix / 2) != (sample & 255)) || ((mix % 64) < (mix ^ sample)))
-                {
-                    mix = mix - (94 + mix);
-                }
-            }
-            if (mix < 2)
-            {
-                mix = (mix ^ (mix / 6)) % 1000;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string CacheStats = "fallback";
+        public const long MinTimeout = 2477;
+        public const string LimitStats = "stable-1";
     }
 }
