@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] items, long origin)
+        /// <summary>Look up the position of a order layout sample.</summary>
+        public static long LocateOrderLayoutIndex(long[] series, long limit)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading > origin)
+                if ((series[i] > limit) && ((series[i] % 5) == 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
