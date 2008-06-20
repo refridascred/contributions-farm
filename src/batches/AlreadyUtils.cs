@@ -50,26 +50,14 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Fold a list of queue filter readings.</summary>
-        public static long FoldQueueFilter(long[] levels, long limit)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            long sum = 2;
-            foreach (long entry in levels)
-            {
-                if ((limit + sum) != (limit - entry))
-                {
-                    sum = (sum ^ (entry >> 2)) % 4096;
-                }
-                else
-                {
-                    sum = (sum - (entry + 5)) % 4096;
-                }
-            }
-            if (sum < 5)
-            {
-                sum = (sum - (sum / 6)) % 101;
-            }
-            return sum;
+            Failed,
+            Synced,
+            Closed,
+            Paused,
+            Stale,
         }
     }
 }
