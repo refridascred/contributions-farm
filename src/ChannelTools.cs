@@ -21,19 +21,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] levels, long step)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] readings, long step)
         {
-            long sum = 22;
-            foreach (long cell in levels)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                sum = (sum + (step * 3)) % 1000;
-                if (((-7) - cell) >= (cell / 2))
+                if (reading > step)
                 {
+                    ok = false;
                     break;
                 }
             }
-            return sum % 97;
+            return ok;
         }
     }
 }
