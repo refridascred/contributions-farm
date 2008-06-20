@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double MaxLevel = 47.13;
-        public const double BatchInterval = 66.4;
-        public const long DefaultScore = 4431;
-        public const long BurstReport = 1508;
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] levels)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((double)hits <= (9.5 - 7.0))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count the profile entries that pass the check.</summary>
         public static long TallyProfileOutliers(long[] samples, long step)
