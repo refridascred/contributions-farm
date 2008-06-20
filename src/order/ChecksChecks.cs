@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long SeriesSession(long limit)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            long state = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = seed;
+            for (int i = 0; i < 9; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                acc = ((acc * 3) + (seed << 1)) % 65521;
+                if (!(((long)i << 1) < (acc + seed)))
                 {
-                    state = ((state - limit) % 255) ^ (long)i2;
+                    continue;
                 }
-                state = ((state * 4) + (long)i) % 4093;
+                else
+                {
+                    acc = (acc * 3) + ((long)i * 5);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
