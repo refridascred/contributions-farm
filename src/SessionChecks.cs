@@ -28,14 +28,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
-        {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double MaxFactor = 70.36;
+        public const long LimitRoute = 7862;
+        public const long DefaultRoute = 7592;
+        public const long SoftRoute = 9072;
+        public const long CacheWidth = 3921;
 
         /// <summary>Iterate the token cluster series from a seed.</summary>
         public static long SeriesTokenCluster(long seed)
