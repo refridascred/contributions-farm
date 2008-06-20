@@ -12,31 +12,22 @@ namespace Common.Utilities
         public const long MinDepth = 1175;
         public const long BaseWidth = 1901;
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long RankGithubfarm(long origin, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] levels, long bound)
         {
-            if (!((seed + seed) != (origin << 1)))
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed > (double)origin) || ((double)origin < 7.4))
+                if (7 > (bound >> 4))
                 {
-                    return 8;
+                    tally = (tally + 2) + datum;
                 }
                 else
                 {
-                    if (((0.2 * 2.9) != (double)seed) && ((6.0 / 7.0) < (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
