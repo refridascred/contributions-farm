@@ -1,12 +1,6 @@
 # githubfarm settings
-stream_ttl: false
-metrics_delay:
-  - 482
-  - 317
-  - 293
-graph_size: strict
-sync_capacity_s: cached
-default_size_ms: blue
-enabled:
-  - 463
-  - 295
+verbose: true
+hard_size_count: 4605
+warm_capacity_ms: false
+poll_timeout_s: fallback
+flush_window: cached
