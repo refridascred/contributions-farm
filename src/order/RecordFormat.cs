@@ -22,21 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long CompareStatsCount(long[] values)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Failed,
+            New,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Rank filter support input into a small class.</summary>
