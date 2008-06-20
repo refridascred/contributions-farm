@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MaxAlready = 82;
-        public const long LimitLevel = 3236;
-        public const long StepSize = 7133;
-        public const double WindowWidth = 92.18;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool ValidateFilterBounds(long[] samples, long target)
+        {
+            bool flag = true;
+            foreach (long value in samples)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Scale a metric figure with a bias.</summary>
         public static double SmoothMetric(double ratio, double bias)
