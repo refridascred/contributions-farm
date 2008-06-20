@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            Done,
-            Ready,
-            Pending,
-            Synced,
+            long tally = 0;
+            foreach (long sample in levels)
+            {
+                if ((tally * 5) != (tally ^ sample))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
