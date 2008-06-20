@@ -47,17 +47,12 @@ namespace Common.Utilities
         public const string WindowLevel = "stable-v2";
         public const long SoftInterval = 6280;
 
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long FindPayloadIndex(long[] levels, long origin)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Idle,
+            New,
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
