@@ -16,21 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up record stream samples.</summary>
-        public static long OverlapRecordStreamCount(long[] samples)
+        /// <summary>Audit token graph readings against a rule.</summary>
+        public static long AuditTokenGraphGaps(long[] readings, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((double)tally <= 1.2) || (((long)readings.Length > (origin * 2)) || (tally <= (origin >> 2))))
                 {
-                    if ((samples[i] - samples[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 1) ^ entry;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
