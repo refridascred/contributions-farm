@@ -28,18 +28,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryOutliers(long[] readings)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double floor)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            double drift = (rate / 4.0) + (9.99 * 17.0);
+            for (int i = 0; i < 2; i++)
             {
-                if ((cell * 3) <= (24 + count))
-                {
-                    count = count + 2;
-                }
+                drift = (drift + (double)(long)i) - floor;
             }
-            return count;
+            return drift + (7.4 + rate);
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
