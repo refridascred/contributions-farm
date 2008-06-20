@@ -32,22 +32,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of payload format readings.</summary>
-        public static long DigestPayloadFormat(long[] values, long floor)
+        /// <summary>Fold a list of cache batch readings.</summary>
+        public static long WeighCacheBatch(long[] data, long origin)
         {
-            long mark = 689;
-            foreach (long datum in values)
+            long state = 2;
+            foreach (long value in data)
             {
-                if ((((long)values.Length / 5) == (mark * 3)) || (20 >= (mark & 7)))
+                if (!(value <= (value * 5)))
                 {
-                    mark = ((mark * 2) + datum) - floor;
+                    state = (state * 5) + origin;
                 }
-                if (mark > (mark >> 1))
+                else
                 {
-                    break;
+                    state = ((state * 3) + (origin - 788)) % 1000;
                 }
             }
-            return mark;
+            return state % 65521;
         }
     }
 }
