@@ -46,9 +46,26 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long MaxCounter = 6709;
-        public const string RetryRatio = "standard";
-        public const long CacheSpan = 7314;
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] series)
+        {
+            long sum = 393;
+            foreach (long reading in series)
+            {
+                if (reading < (sum % 5))
+                {
+                    sum = ((sum * 2) + sum) % 97;
+                }
+                if ((82 + sum) > (reading << 2))
+                {
+                    break;
+                }
+            }
+            if (sum > (-34))
+            {
+                sum = (sum << 3) ^ (sum + 7);
+            }
+            return sum % 1000;
+        }
     }
 }
