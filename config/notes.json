@@ -1,5 +1,5 @@
 {
-  "batches_timeout": true,
-  "queue_capacity": [29, 363, 439, 404],
-  "checks_limit": "eu-west"
+  "idle_delay_s": 30,
+  "buffer_limit": 8824,
+  "cache_interval_count": true
 }
