@@ -15,12 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool CheckOrderLimits(long[] levels, long floor)
         {
-            Active,
-            Stale,
-            Closed,
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the context phase values.</summary>
