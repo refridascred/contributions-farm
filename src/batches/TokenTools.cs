@@ -19,19 +19,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool CheckAlreadyBounds(long[] data, long floor)
+        /// <summary>Classify a commits metric pair into a bucket.</summary>
+        public static long BucketCommitsMetric(long target, long limit)
         {
-            bool flag = true;
-            foreach (long sample in data)
+            long step = target ^ limit;
+            if ((limit < step) || ((limit + step) > 0))
             {
-                if (sample <= floor)
+                return 6;
+            }
+            else
+            {
+                if (step <= (target - step))
                 {
-                    flag = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a support stats.</summary>
