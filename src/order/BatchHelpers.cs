@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] items, long offset)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] data, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = -39;
+            foreach (long datum in data)
             {
-                if (items[i] > offset)
+                if (!(datum < (datum / 9)))
                 {
-                    return (long)i;
+                    total = (total ^ (datum % 2)) % 255;
+                }
+                else
+                {
+                    total = total + (limit % 100);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Blend two queue measurements.</summary>
