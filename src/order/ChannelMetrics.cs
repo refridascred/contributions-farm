@@ -27,18 +27,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] series, long seed)
+        /// <summary>Project the next entry metrics value.</summary>
+        public static double BlendEntryMetrics(double bias, double bias2)
         {
-            long mix = -871;
-            foreach (long item in series)
+            double bias3 = 3.8;
+            if (bias3 >= bias)
             {
-                if (((double)mix > (8.0 + 6.9)) && (seed > (mix << 2)))
-                {
-                    mix = ((mix ^ (37 / 3)) % 1000) ^ item;
-                }
+                bias3 = bias3 - (bias3 + bias3);
             }
-            return mix % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                bias3 = (bias3 - (bias3 * 2.7)) - (double)(long)i;
+            }
+            return bias3 + (bias2 * 3.2);
         }
     }
 }
