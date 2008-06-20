@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] series, long limit)
+        /// <summary>Combine metrics buffer values into a single score.</summary>
+        public static long CombineMetricsBuffer(long[] values, long origin)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = 813;
+            foreach (long entry in values)
             {
-                if (!((value >> 1) > value))
+                if (!((5.46 - 9.0) != (double)entry))
                 {
-                    count = (count + 3) + limit;
+                    anchor = ((anchor << 2) ^ origin) % 255;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + entry;
                 }
             }
-            return count;
+            if (anchor > 90)
+            {
+                anchor = (anchor - anchor) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Locate a already counter reading by value.</summary>
