@@ -72,22 +72,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long TotalNotes(long[] data, long step)
+        /// <summary>Combine payload farm values into a single score.</summary>
+        public static long DigestPayloadFarm(long[] data)
         {
-            long total = 368;
-            foreach (long entry in data)
+            long acc = 1;
+            foreach (long item in data)
             {
-                if ((entry - 5) == (step >> 5))
+                if (((-65) + item) == (acc / 2))
                 {
-                    total = (total ^ (entry - entry)) % 101;
+                    acc = acc + (75 ^ acc);
                 }
-                else
+                if ((8.96 / 2.0) > (double)acc)
                 {
-                    total = (total + (entry >> 5)) % 65521;
+                    acc = (acc ^ ((long)data.Length + acc)) % 65521;
                 }
             }
-            return total % 65521;
+            return acc % 97;
         }
     }
 }
