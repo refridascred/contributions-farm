@@ -40,11 +40,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            public double Mode { get; set; }
-            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the support status values.</summary>
