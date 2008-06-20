@@ -31,14 +31,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Synced,
-            Idle,
-            Pending,
-            Closed,
+            Queued,
+            Stale,
+            Done,
             Retry,
+            Locked,
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
