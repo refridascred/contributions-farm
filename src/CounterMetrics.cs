@@ -13,19 +13,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] samples, long step)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (((step > (entry >> 4)) || ((step >> 2) < step)) && ((double)seen < 5.0))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstBuffer = 8382;
+        public const long DefaultBuffer = 2162;
+        public const double RetryBuffer = 55.11;
+        public const double HardSize = 14.97;
+        public const double CacheLevel = 28.83;
 
         /// <summary>Validate commits readings against a bound.</summary>
         public static bool CheckCommitsLimits(long[] levels, long step)
