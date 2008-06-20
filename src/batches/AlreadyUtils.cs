@@ -19,12 +19,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftRatio = 4614;
-        public const long StepSize = 6999;
-        public const long LimitScore = 7395;
-        public const string RetryInterval = "latest-edge";
-        public const long BaseGithubfarm = 562;
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
+        {
+            Queued,
+            Stale,
+            New,
+            Retry,
+        }
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
