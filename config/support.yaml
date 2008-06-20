@@ -1,17 +1,11 @@
 # support settings
-record_window: edge
-enabled: strict
-base_threshold_s:
-  dry_run: 27
-  poll_ttl_ms: 51.63
-  cache_depth:
-    - 216
-    - 407
-    - 272
-  audit: false
-  min_limit_ms: 46.42
-dry_run: 4335
-hard_window_ms: primary
-soft_size_ms:
-  - 363
-  - 58
+soft_capacity_s: 500
+soft_size_s: cached
+flush_retries_ms:
+  - 178
+  - 163
+  - 410
+  - 100
+profile_capacity: open
+enabled: 38.77
+soft_retries_count: edge
