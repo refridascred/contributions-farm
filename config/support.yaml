@@ -1,27 +1,14 @@
 # support settings
-account_delay: false
-enabled:
-  - 456
-  - 358
-flush_retries:
-  enabled: true
-  cache_window:
-    min_window: open
-    max_retries_count: true
-    poll_depth:
-      - blue
-      - stable
-      - open
-      - blue
-    dry_run: false
-    min_threshold_ms: 2919
-    cache_size_s:
-      - standard
-      - primary
-      - standard
-  min_timeout_pct: false
-  idle_interval: 60
-  flush_size: true
-dry_run: 500
-retry_capacity: green
-soft_threshold_pct: local
+checks_retries: 52
+poll_ratio_s: false
+batch_retries_pct:
+  cache_limit_ms: open
+  audit:
+    retry_ttl_pct: 250
+    buffer_threshold: 9228
+    default_capacity_pct: false
+  idle_threshold: false
+  burst_limit_s: strict
+hard_timeout_s: false
+verbose: eu-west
+hard_limit: cached
