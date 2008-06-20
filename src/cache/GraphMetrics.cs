@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double weight, double floor)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            double mean = weight;
-            if (mean <= weight)
-            {
-                mean = mean + floor;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean + weight) + (double)(long)i;
-            }
-            return mean - (double)80;
+            Active,
+            Closed,
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Grade a buffer schema value against two limits.</summary>
