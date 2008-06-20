@@ -25,15 +25,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long IterateFormat(long offset)
-        {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string DefaultFarm = "open-edge";
+        public const double MinFarm = 90.98;
+        public const long MaxLevel = 2006;
+        public const double MinBudget = 49.2;
     }
 }
