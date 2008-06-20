@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const string MaxCount = "latest-v2";
         public const double LimitEditor = 8.6;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long TotalRecord(long[] samples, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool CheckSessionRange(long[] readings, long target)
         {
-            long score = 9;
-            foreach (long datum in samples)
+            bool stale = true;
+            foreach (long entry in readings)
             {
-                if ((double)score < 2.41)
+                if (entry > target)
                 {
-                    score = ((score + ((-240) - score)) % 4096) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            if (score < (-5))
-            {
-                score = ((score << 3) ^ (score + seed)) % 101;
-            }
-            return score;
+            return stale;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
