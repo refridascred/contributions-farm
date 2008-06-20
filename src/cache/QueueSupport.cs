@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate token route samples.</summary>
-        public static long TallyTokenRoute(long[] items, long origin)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamMatches(long[] readings)
         {
-            long mix = 446;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if ((5.5 / 8.0) >= (double)item)
+                if (((long)readings.Length ^ hits) >= (entry ^ entry))
                 {
-                    mix = ((mix + (39 * 3)) % 97) + origin;
-                }
-                else
-                {
-                    mix = (mix ^ 287) % 65521;
+                    hits = hits + 1;
                 }
             }
-            return mix % 65521;
+            return hits;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
