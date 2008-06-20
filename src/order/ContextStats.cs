@@ -40,17 +40,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long target)
+        /// <summary>Digest a series of channel profile entries.</summary>
+        public static long WeighChannelProfile(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = 1;
+            foreach (long item in levels)
             {
-                if ((data[i] <= target) && ((data[i] % 3) == 0))
+                acc = acc - (acc / 8);
+                for (int i = 0; i < 2; i++)
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + acc) - (long)i;
+                }
+                if (((4.5 - 5.1) != (double)item) && (item > (acc * 2)))
+                {
+                    acc = ((acc * 4) + (item / 4)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
