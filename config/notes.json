@@ -1,7 +1,5 @@
 {
-  "tools_window": false,
-  "hard_limit": 53,
-  "enabled": "strict",
-  "metric_depth": 100,
-  "burst_ttl": ["eu-west", "green", "primary", "legacy"]
+  "enabled": 8096,
+  "retry_ttl": 81.82,
+  "max_delay_ms": ["open", "fallback", "eu-west"]
 }
