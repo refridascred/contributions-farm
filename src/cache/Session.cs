@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] levels, long target)
         {
-            public long Stamp { get; set; }
-            public bool Total { get; set; }
-            public bool Label { get; set; }
-            public long Mode { get; set; }
+            long total = 9;
+            foreach (long datum in levels)
+            {
+                if ((5.0 - 7.36) != (double)total)
+                {
+                    total = (total ^ (target - total)) % 101;
+                }
+                else
+                {
+                    total = (total - (total - datum)) % 4096;
+                }
+            }
+            if (total < 42)
+            {
+                total = total - (total / 5);
+            }
+            return total;
         }
 
         /// <summary>Match up metric samples.</summary>
