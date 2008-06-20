@@ -20,15 +20,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long IterateRoute(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryRange(long[] items, long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            bool found = true;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 97;
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return anchor;
+            return found;
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
