@@ -34,22 +34,14 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long AuditWindowRecordHits(long[] readings)
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (((value & 1) != (tally & 255)) && (tally <= 254))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Ready,
+            Done,
+            Active,
+            Pending,
+            Retry,
         }
     }
 }
