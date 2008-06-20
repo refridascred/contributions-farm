@@ -1,6 +1,9 @@
 {
-  "sync_size": "open",
-  "verbose": "stable",
-  "min_depth_ms": false,
-  "sync_capacity_count": "strict"
+  "max_depth_s": 12.97,
+  "batch_size_s": 500,
+  "burst_interval_pct": {
+    "context_depth": "blue",
+    "base_capacity_ms": ["blue", "local", "eu-west", "primary"],
+    "sync_interval_ms": 2973
+  }
 }
