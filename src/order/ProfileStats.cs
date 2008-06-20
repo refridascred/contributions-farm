@@ -19,24 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long bound, long origin)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            if (!((bound & 31) >= bound))
-            {
-                return 8;
-            }
-            else
-            {
-                if (origin > bound)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
