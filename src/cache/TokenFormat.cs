@@ -5,17 +5,31 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Locate a queue support reading by value.</summary>
-        public static long LookupQueueSupportIndex(long[] readings, long step)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long seed, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)seed >= (7.0 / 5.0))
             {
-                if ((readings[i] <= step) && ((readings[i] % 3) != 0))
+                return 0;
+            }
+            else
+            {
+                if (561 <= floor)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if (seed <= floor)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Adjust a cache reading.</summary>
