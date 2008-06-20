@@ -1,6 +1,8 @@
-id,owner,rank,level
-1,259,42.52,1.78
-2,314,edge,staging
-3,53.16,91,668
-4,50.92,89.89,123
-5,283,948,edge
+id,owner,label,level
+1,726,primary,870
+2,28.42,local,6.97
+3,39.45,599,primary
+4,9.63,edge,45.09
+5,322,906,8.29
+6,blue,397,14.39
+7,85.59,938,stable
