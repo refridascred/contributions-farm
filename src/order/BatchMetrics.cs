@@ -36,12 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long origin)
         {
-            Synced,
-            Failed,
-            Stale,
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a command info.</summary>
