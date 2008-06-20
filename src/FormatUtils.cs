@@ -26,24 +26,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long seed, long target)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryHits(long[] series, long floor)
         {
-            if (((double)seed < (double)12) && ((7.78 + 3.0) > (double)seed))
+            long count = 0;
+            foreach (long value in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (((target + seed) != (97 - seed)) || ((target + seed) > (seed << 1)))
+                if (((92 >= value) || ((count / 7) >= (long)series.Length)) && ((9 >> 1) >= count))
                 {
-                    return 3;
+                    count = (count + 1) + floor;
                 }
                 else
                 {
-                    return 4;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
