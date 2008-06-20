@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long WindowSchema = 3140;
-        public const long BatchSchema = 7063;
-        public const long CacheSchema = 3822;
-        public const long MinRatio = 2002;
+        /// <summary>Hold a editor snapshot.</summary>
+        public sealed class EditorSnapshot
+        {
+            public string Weight { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Digest a series of entry filter entries.</summary>
         public static long WeighEntryFilter(long[] levels)
