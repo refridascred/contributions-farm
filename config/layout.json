@@ -1,6 +1,6 @@
 {
-  "soft_ttl": 70,
-  "schema_capacity": "eu-west",
-  "contributi_ratio": 55.59,
-  "warm_window_pct": false
+  "buffer_delay": 1668,
+  "idle_interval_count": 30,
+  "dry_run": false,
+  "sync_ttl_ms": 5686
 }
