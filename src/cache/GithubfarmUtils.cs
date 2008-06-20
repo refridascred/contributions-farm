@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the graph status values.</summary>
+        public enum GraphStatus
         {
-            public long Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Mode { get; set; } = "";
+            Queued,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a context value against two limits.</summary>
