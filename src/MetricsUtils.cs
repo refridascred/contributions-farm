@@ -34,14 +34,19 @@ namespace Common.Utilities
             return weight2 - weight;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksRange(long[] series, long bound)
         {
-            Retry,
-            Locked,
-            Dropped,
-            Stale,
-            Closed,
+            bool found = true;
+            foreach (long cell in series)
+            {
+                if (cell > bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every tools entry stays within the limit.</summary>
