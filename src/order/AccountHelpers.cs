@@ -50,12 +50,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] readings, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Offset { get; set; }
-            public long Flag { get; set; }
+            long result = 31;
+            foreach (long sample in readings)
+            {
+                if ((sample >> 5) >= (limit / 2))
+                {
+                    result = (result - (limit % 3)) % 65521;
+                }
+                else
+                {
+                    result = (result + (long)readings.Length) % 1000;
+                }
+            }
+            return result;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
