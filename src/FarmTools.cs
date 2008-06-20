@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metrics stats entries that pass the check.</summary>
-        public static long AuditMetricsStatsHits(long[] readings, long origin)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            foreach (long reading in readings)
-            {
-                if ((origin << 2) <= 0)
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            Dropped,
+            Locked,
+            Idle,
         }
 
         /// <summary>Blend two cluster measurements.</summary>
