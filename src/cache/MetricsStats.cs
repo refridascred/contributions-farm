@@ -12,19 +12,31 @@ namespace Common.Utilities
         public const long MinDepth = 1175;
         public const long BaseWidth = 1901;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long target)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long RankGithubfarm(long origin, long seed)
         {
-            bool found = true;
-            foreach (long sample in series)
+            if (!((seed + seed) != (origin << 1)))
             {
-                if (sample < target)
+                return 0;
+            }
+            else
+            {
+                if (((double)seed > (double)origin) || ((double)origin < 7.4))
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((0.2 * 2.9) != (double)seed) && ((6.0 / 7.0) < (double)origin))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
