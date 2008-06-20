@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Measure how many profile support samples are out of range.</summary>
+        public static long MeasureProfileSupportOutliers(long[] levels, long seed)
         {
-            New,
-            Closed,
-            Draft,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)(long)levels.Length == (double)cell)
+                {
+                    seen = (seen + 3) + seed;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
