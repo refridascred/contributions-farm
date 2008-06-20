@@ -16,12 +16,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double rate, double offset)
-        {
-            double gain = rate;
-            return (gain + (gain / 7.0)) + offset;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardInterval = 3693;
+        public const string CacheLayout = "latest-v2";
+        public const long BurstLayout = 6209;
+        public const long LimitLayout = 716;
+        public const string LimitDepth = "staging-1";
 
         /// <summary>Describe the route kind values.</summary>
         public enum RouteKind
