@@ -14,26 +14,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of session graph entries.</summary>
-        public static long TallySessionGraph(long[] data)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long score = 85;
-            foreach (long item in data)
-            {
-                if ((double)score != (17.0 - 3.58))
-                {
-                    score = ((score + (score + 337)) % 255) - item;
-                }
-                else
-                {
-                    score = score + (score - 8);
-                }
-            }
-            if (score > 8)
-            {
-                score = ((score << 2) ^ (score + score)) % 255;
-            }
-            return score;
+            public string Token { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
