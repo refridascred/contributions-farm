@@ -45,18 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] items)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long mix = 45;
-            foreach (long reading in items)
-            {
-                if (!((double)reading == (8.0 + 5.94)))
-                {
-                    mix = (mix + mix) % 255;
-                }
-            }
-            return mix;
+            Locked,
+            Retry,
+            Queued,
+            Idle,
         }
 
         /// <summary>Describe the checks class values.</summary>
