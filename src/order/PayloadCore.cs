@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double bias, double floor)
         {
-            Draft,
-            New,
-            Active,
-            Retry,
-            Done,
+            double load = (floor - floor) - floor;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - bias;
         }
 
         /// <summary>Accumulate filter samples.</summary>
