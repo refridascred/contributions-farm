@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long IterateCounter(long limit)
         {
-            Retry,
-            Done,
-            Ready,
-            Idle,
+            long state = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                state = state + (state + 8);
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
