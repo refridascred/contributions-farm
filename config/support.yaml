@@ -1,4 +1,25 @@
 # support settings
-flush_limit_s: false
-poll_size: legacy
-idle_ratio: false
+sync_size: 4152
+cluster_limit: edge
+persist: 49
+profile_timeout: 5797
+base_ratio: latest
+audit:
+  hard_limit_ms: edge
+  flush_threshold_s:
+    - 10
+    - 76
+    - 383
+    - 144
+  idle_limit_s:
+    min_depth: stable
+    sync_ratio_s: 26
+    cache_delay: 60
+    max_ratio_count:
+      - edge
+      - local
+      - legacy
+      - staging
+    enabled: 93.07
+  retry_interval_s: false
+  base_size_s: stable
