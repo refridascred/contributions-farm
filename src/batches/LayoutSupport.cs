@@ -49,19 +49,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowBounds(long[] readings, long step)
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyRange(long[] series, long target)
         {
-            bool ok = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                if (entry < step)
+                if (entry < target)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Locate a account reading by value.</summary>
