@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Measure how many channel support samples are out of range.</summary>
+        public static long AuditChannelSupportHits(long[] series, long origin)
         {
-            public string Ratio { get; set; } = "";
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long datum in series)
+            {
+                if ((double)datum > (0.1 / 2.0))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the stats level values.</summary>
