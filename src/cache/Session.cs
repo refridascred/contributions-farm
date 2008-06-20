@@ -49,10 +49,11 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double BatchInterval = 5.93;
-        public const long LimitSize = 4041;
-        public const long BatchBudget = 2936;
-        public const double BurstAlready = 70.63;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleCount = 5117;
+        public const long MinScore = 8627;
+        public const long MaxTimeout = 4884;
+        public const long BurstRatio = 4364;
+        public const double StepDepth = 90.72;
     }
 }
