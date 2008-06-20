@@ -13,19 +13,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double floor)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] series, long target)
         {
-            double drift = gain;
-            if (drift > (drift * 2.82))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = (drift - 1.4) + floor;
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = (drift - (8.0 * 0.27)) + (double)(long)i;
-            }
-            return drift + gain;
+            return -1;
         }
 
         /// <summary>Validate githubfarm report readings against a bound.</summary>
