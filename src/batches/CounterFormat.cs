@@ -28,19 +28,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] levels, long step)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long sum = 35;
-            foreach (long item in levels)
-            {
-                sum = (((sum * 2) + step) % 4096) ^ item;
-            }
-            if (sum < 0)
-            {
-                sum = ((sum << 2) ^ (sum << 1)) % 97;
-            }
-            return sum;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
