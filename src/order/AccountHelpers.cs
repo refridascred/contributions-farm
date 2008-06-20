@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] series)
+        /// <summary>Compare every pair of metric report readings.</summary>
+        public static long CompareMetricReportCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((cell <= (cell & 31)) || !(5 < (tally * 5)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] ^ readings[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Blend two order measurements.</summary>
