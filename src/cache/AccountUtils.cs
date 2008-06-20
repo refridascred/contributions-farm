@@ -22,20 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long SeriesCommits(long seed)
+        /// <summary>Count the account contributi entries that pass the check.</summary>
+        public static long MeasureAccountContributiHits(long[] items)
         {
-            long mix = seed;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                for (int i2 = 0; i2 < 5; i2++)
+                if (!(((long)items.Length - matches) >= (sample + matches)))
                 {
-                    mix = ((mix + ((long)i % 10)) % 4096) - (long)i2;
+                    matches = matches + 3;
                 }
-                mix = ((mix << 2) ^ (mix * 5)) % 97;
-                mix = ((mix * 3) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Digest a series of report entries.</summary>
