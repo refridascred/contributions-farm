@@ -61,26 +61,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long limit, long step)
-        {
-            long edge = limit + step;
-            if ((double)step < 12.0)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((76 << 1) > edge)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string MinBatch = "local";
+        public const long MinSpan = 3679;
+        public const string CacheBatch = "cached-v2";
+        public const long WindowInterval = 4721;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmMatches(long[] items)
