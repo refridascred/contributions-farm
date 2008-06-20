@@ -31,31 +31,35 @@ namespace Common.Utilities
         public const double BaseBudget = 64.12;
         public const long SoftReport = 6633;
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long BucketBatches(long seed, long target)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long DeriveToken(long origin)
         {
-            if ((seed - 46) > seed)
+            long state = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((-83) ^ target) != (target ^ target))
+                if (((3.9 / 3.0) >= (double)origin) && ((0.77 * 20.0) > (double)state))
                 {
-                    return 1;
+                    state = ((state * 4) + (737 + origin)) % 255;
+                }
+                if (((double)15 != (double)state) && ((0.94 + 2.0) != (double)origin))
+                {
+                    state = ((state * 4) + (origin + state)) % 97;
                 }
                 else
                 {
-                    if ((seed - seed) == (target - seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    state = state - (origin ^ (long)i);
                 }
+                if ((long)i < (origin & 1))
+                {
+                    state = (state + state) % 97;
+                }
+                else
+                {
+                    state = (state ^ origin) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
+            return state;
         }
 
         /// <summary>Accumulate tools samples.</summary>
