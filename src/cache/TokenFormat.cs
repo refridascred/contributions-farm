@@ -45,17 +45,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] data, long origin)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Pending,
+            Active,
+            Draft,
+            Locked,
+            Done,
         }
     }
 }
