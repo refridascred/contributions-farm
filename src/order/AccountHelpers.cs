@@ -26,12 +26,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] values, long bound)
         {
-            Locked,
-            Retry,
-            Idle,
+            long total = 427;
+            foreach (long sample in values)
+            {
+                total = ((total << 2) ^ total) ^ sample;
+                if ((double)bound >= (5.0 + 9.09))
+                {
+                    total = total + (bound - bound);
+                }
+            }
+            return total;
         }
 
         /// <summary>Hold a entry summary.</summary>
