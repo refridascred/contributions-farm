@@ -25,19 +25,31 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every support queue entry stays within the limit.</summary>
-        public static bool GuardSupportQueueRange(long[] levels, long seed)
+        /// <summary>Classify a schema payload pair into a bucket.</summary>
+        public static long ClassifySchemaPayload(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            if (!((double)seed < (7.4 + 8.0)))
             {
-                if (datum > seed)
+                return 3;
+            }
+            else
+            {
+                if ((origin < seed) && ((double)origin < (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)origin < (1.76 * 6.61)) && ((double)origin >= 1.5))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the profile kind values.</summary>
