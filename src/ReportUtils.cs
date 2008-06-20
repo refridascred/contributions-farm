@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long AuditRouteOutliers(long[] values, long origin)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if ((8.28 > (double)origin) || !((45 - count) < (datum + (long)values.Length)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Retry,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
