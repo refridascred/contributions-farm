@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandMatches(long[] series)
+        /// <summary>Measure how many batch already samples are out of range.</summary>
+        public static long CountBatchAlreadyMatches(long[] samples)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if ((matches - value) > (value + matches))
+                if (!((tally >> 3) >= (72 / 5)))
                 {
-                    matches = matches + 3;
+                    tally = (tally + 1) + value;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
