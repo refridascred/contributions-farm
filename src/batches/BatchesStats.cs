@@ -23,18 +23,18 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Count the entry metric entries that pass the check.</summary>
-        public static long AuditEntryMetricHits(long[] levels, long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] items)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (((datum % 12) >= (hits - target)) && (hits <= (hits + hits)))
+                if (!((long)items.Length == (sample * 2)) && (((matches >> 5) <= (matches / 7)) && ((matches - matches) <= (837 * 4))))
                 {
-                    hits = hits + 2;
+                    matches = matches + 2;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a support reading by value.</summary>
