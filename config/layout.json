@@ -1,8 +1,14 @@
 {
-  "persist": [188, 466, 244, 339],
-  "cache_interval": "fallback",
-  "cache_timeout": "legacy",
-  "strict": [307, 172, 287, 432],
-  "sync_interval_count": "blue",
-  "queue_threshold": 9.54
+  "notes_capacity": {
+    "persist": 3563,
+    "poll_depth_ms": 60.52,
+    "sync_depth_count": 5685,
+    "channel_limit": "eu-west",
+    "stats_ratio": 94.9,
+    "warm_limit_pct": "cached"
+  },
+  "max_delay_ms": ["eu-west", "open"],
+  "session_retries": true,
+  "compress": 96.24,
+  "entry_threshold": 22
 }
