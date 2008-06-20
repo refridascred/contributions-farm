@@ -20,19 +20,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double rate, double offset)
+        /// <summary>Validate batch batches readings against a bound.</summary>
+        public static bool CheckBatchBatchesBounds(long[] levels, long target)
         {
-            double drift = (offset - offset) + (double)39;
-            if (drift <= offset)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                drift = drift + offset;
+                if (sample < target)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + drift) + (double)(long)i;
-            }
-            return drift - (4.54 - rate);
+            return ready;
         }
     }
 }
