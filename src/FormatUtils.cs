@@ -36,20 +36,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] levels, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in levels)
-            {
-                if (sample > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseSize = "alpha-1";
+        public const long IdleBudget = 1572;
+        public const long BatchInterval = 1041;
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long target)
