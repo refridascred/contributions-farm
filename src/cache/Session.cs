@@ -37,39 +37,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long SortGithubfarm(long bound, long floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] readings)
         {
-            long slot = bound ^ floor;
-            if (!((double)floor > (double)slot))
+            long acc = 20;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!(514 >= slot))
+                if ((value % 5) <= (value + acc))
                 {
-                    return 3;
+                    acc = (acc * 4) + (acc / 8);
                 }
                 else
                 {
-                    if (((9.0 / 5.0) == (double)floor) && ((double)floor <= (double)bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((bound + floor) == (slot & 15))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    acc = acc + acc;
                 }
             }
+            if (acc > (-63))
+            {
+                acc = ((acc * 3) + (2 / 8)) % 101;
+            }
+            return acc;
         }
     }
 }
