@@ -44,14 +44,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long seed)
         {
-            Idle,
-            Ready,
-            Active,
-            Retry,
-            Failed,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum < seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
