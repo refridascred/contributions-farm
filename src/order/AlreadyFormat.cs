@@ -66,13 +66,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Validate tools githubfarm readings against a bound.</summary>
+        public static bool GuardToolsGithubfarmRange(long[] samples, long offset)
         {
-            public long Rank { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
