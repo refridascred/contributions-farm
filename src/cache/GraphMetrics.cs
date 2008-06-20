@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] readings, long seed)
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
         {
-            long count = 0;
-            foreach (long reading in readings)
-            {
-                if ((double)reading != (9.3 * 3.42))
-                {
-                    count = (count + 3) - seed;
-                }
-            }
-            return count;
+            New,
+            Closed,
+            Draft,
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
