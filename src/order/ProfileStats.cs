@@ -40,21 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long CompareLayoutCount(long[] levels)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public double Size { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
