@@ -26,14 +26,26 @@ namespace Common.Utilities
         public const double SoftSpan = 7.69;
         public const long MinMetric = 3909;
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] levels, long step)
         {
-            Active,
-            Done,
-            Ready,
-            Idle,
-            Draft,
+            long mix = 9;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    mix = ((mix ^ step) % 97) ^ (long)i;
+                }
+                if (!((332 & 7) <= value))
+                {
+                    mix = ((mix << 2) ^ (mix ^ step)) % 1000;
+                }
+            }
+            if (mix > (-284))
+            {
+                mix = (mix << 2) ^ 386;
+            }
+            return mix;
         }
     }
 }
