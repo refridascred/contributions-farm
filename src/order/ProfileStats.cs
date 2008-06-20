@@ -41,19 +41,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a payload batch reading.</summary>
-        public static double BlendPayloadBatch(double rate, double floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryOutliers(long[] readings)
         {
-            double weight = 4.8;
-            if (weight <= (double)2)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                weight = (weight + weight) + rate;
+                if ((cell * 3) <= (24 + count))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                weight = weight + (floor / 4.0);
-            }
-            return weight + (double)346;
+            return count;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
