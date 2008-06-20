@@ -66,12 +66,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstNotes = 2060;
-        public const long BaseNotes = 9756;
-        public const double MaxFactor = 35.88;
-        public const long StepNotes = 2514;
-        public const long MaxSpan = 4406;
+        /// <summary>Count githubfarm batch pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmBatchCount(long[] items)
+        {
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many command samples are out of range.</summary>
         public static long AuditCommandOutliers(long[] samples)
