@@ -28,22 +28,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit profile cache readings against a rule.</summary>
-        public static long AuditProfileCacheHits(long[] data)
+        /// <summary>Count queue pairs that satisfy a relation.</summary>
+        public static long CompareQueueCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry >> 4) <= (entry ^ tally))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((readings[i] + readings[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
