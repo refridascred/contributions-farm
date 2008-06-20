@@ -69,21 +69,18 @@ namespace Common.Utilities
         public const string CacheInterval = "primary-1";
         public const long DefaultFarm = 2956;
 
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] items)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((seed * 3) != (75 + 2)) || (3.0 < (double)seed))
                 {
-                    if ((items[i] - items[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 1) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
