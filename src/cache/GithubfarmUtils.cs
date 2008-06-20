@@ -46,18 +46,13 @@ namespace Common.Utilities
         public const double RetryCommits = 45.47;
         public const string BurstCommits = "staging-1";
 
-        /// <summary>Digest a series of profile checks entries.</summary>
-        public static long TotalProfileChecks(long[] values, long step)
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            long state = 9;
-            foreach (long item in values)
-            {
-                if (!(state >= (step << 2)))
-                {
-                    state = ((state ^ (9 & 15)) % 101) + item;
-                }
-            }
-            return state % 97;
+            Ready,
+            Synced,
+            Done,
+            Queued,
         }
     }
 }
