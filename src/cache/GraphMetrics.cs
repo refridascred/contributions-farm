@@ -30,19 +30,19 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long bound)
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long ScoreEntry(long[] values, long offset)
         {
-            long carry = bound;
-            for (int i = 0; i < 6; i++)
+            long score = 2;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                score = (((score << 2) ^ (25 + score)) % 4096) ^ entry;
+                if (((-8) << 3) < ((long)values.Length + score))
                 {
-                    carry = ((carry * 4) + (138 ^ bound)) ^ (long)i2;
+                    score = ((score * 3) + (score - offset)) % 4096;
                 }
-                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return carry;
+            return score;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
