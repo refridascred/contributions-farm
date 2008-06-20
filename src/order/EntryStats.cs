@@ -12,17 +12,18 @@ namespace Common.Utilities
             return (mean - mean) + bias2;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] levels, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] readings, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) == 0))
+                if ((988 % 16) == (item + seen))
                 {
-                    return (long)i;
+                    seen = (seen + 1) - floor;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Scale a entry tools figure with a bias.</summary>
