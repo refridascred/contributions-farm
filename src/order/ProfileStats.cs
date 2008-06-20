@@ -19,12 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstInterval = 46.44;
-        public const long RetryFactor = 7692;
-        public const string BurstQueue = "latest";
-        public const double SoftQueue = 25.4;
-        public const double StepQueue = 19.5;
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepSize = 4711;
+        public const long CacheWidth = 6216;
+        public const long BaseStream = 5375;
 
         /// <summary>Iterate the commits series from a seed.</summary>
         public static long DeriveCommits(long seed)
