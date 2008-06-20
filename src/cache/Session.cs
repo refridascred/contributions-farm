@@ -38,13 +38,12 @@ namespace Common.Utilities
         public const long BurstDepth = 3991;
         public const long IdleWindow = 4866;
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public string Offset { get; set; } = "";
-            public long Total { get; set; }
-            public string Level { get; set; } = "";
-            public long Score { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
