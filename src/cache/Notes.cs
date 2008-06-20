@@ -66,19 +66,12 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] levels, long floor)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long anchor = 37;
-            foreach (long entry in levels)
-            {
-                anchor = ((anchor * 5) + (anchor ^ entry)) % 255;
-            }
-            if (anchor > 108)
-            {
-                anchor = ((anchor * 5) + (floor * 5)) % 4096;
-            }
-            return anchor;
+            Done,
+            Dropped,
+            Retry,
         }
     }
 }
