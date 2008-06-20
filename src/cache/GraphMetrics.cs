@@ -34,10 +34,11 @@ namespace Common.Utilities
         public const double MaxScore = 22.73;
         public const long LimitDepth = 8221;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double BaseTimeout = 18.52;
-        public const long RetryScore = 4339;
-        public const long SoftBudget = 7522;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double HardSpan = 52.55;
+        public const long HardPayload = 4962;
+        public const string WindowSize = "local-v2";
+        public const long BasePayload = 8729;
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool VerifyGithubfarmBounds(long[] levels, long floor)
