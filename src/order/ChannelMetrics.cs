@@ -32,10 +32,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BatchSize = 743;
-        public const long MaxOrder = 651;
-        public const double MaxDepth = 18.12;
-        public const string BurstOrder = "fallback-v2";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BatchNotes = 3457;
+        public const long DefaultBudget = 1684;
+        public const long DefaultNotes = 2874;
+        public const double WindowSpan = 4.74;
+        public const double BurstCount = 60.07;
     }
 }
