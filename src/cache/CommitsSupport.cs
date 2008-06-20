@@ -39,15 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double gain, double bias)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double load = bias;
-            for (int i = 0; i < 5; i++)
-            {
-                load = ((load - load) + (double)(long)i) - gain;
-            }
-            return load + (bias * 5.43);
+            public long Score { get; set; }
+            public bool Limit { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of notes readings.</summary>
