@@ -28,22 +28,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long ScoreProfile(long[] values, long seed)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long score = 42;
-            foreach (long item in values)
-            {
-                if (((-4) ^ seed) == (score + (-42)))
-                {
-                    score = ((score + (7 >> 1)) % 65521) + item;
-                }
-            }
-            if (score < 19)
-            {
-                score = (score ^ score) % 4096;
-            }
-            return score;
+            Failed,
+            Draft,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
