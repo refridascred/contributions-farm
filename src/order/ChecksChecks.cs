@@ -25,18 +25,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] series, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long score = 9;
-            foreach (long value in series)
-            {
-                if (((score - value) >= (score << 3)) || ((value ^ 94) == (314 & 3)))
-                {
-                    score = ((score - ((-39) / 2)) % 1000) - origin;
-                }
-            }
-            return score;
+            public long Label { get; set; }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
