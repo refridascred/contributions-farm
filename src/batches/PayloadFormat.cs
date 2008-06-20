@@ -36,13 +36,38 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
+        /// <summary>Rank already input into a small class.</summary>
+        public static long RankAlready(long bound, long bound2)
         {
-            public long Size { get; set; }
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
-            public double Token { get; set; }
+            if (((bound2 + bound2) >= (40 & 31)) && ((bound - bound2) != (bound % 16)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound2 >> 5) < (bound + bound2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound2 < (double)bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (3.1 * 4.5)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a checks notes sample.</summary>
