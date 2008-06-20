@@ -28,22 +28,9 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((double)cell != (8.94 * 6.7))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowScore = 2028;
+        public const string LimitProfile = "stable-edge";
+        public const string BurstSize = "staging-edge";
     }
 }
