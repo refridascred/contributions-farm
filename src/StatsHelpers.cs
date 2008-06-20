@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
-        {
-            public long Offset { get; set; }
-            public bool Limit { get; set; }
-            public bool Level { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryBudget = 6905;
+        public const long CacheTools = 4995;
+        public const long DefaultTools = 3892;
+        public const string BatchTools = "latest-v2";
+        public const long HardSpan = 3300;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] items, long bound)
