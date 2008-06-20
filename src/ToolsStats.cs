@@ -36,13 +36,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public double Size { get; set; }
-            public double Weight { get; set; }
+            Failed,
+            Retry,
+            Locked,
+            Draft,
+            Paused,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
