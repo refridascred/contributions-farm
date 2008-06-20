@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public bool Label { get; set; }
-            public bool Limit { get; set; }
-            public double Token { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
