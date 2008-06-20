@@ -1,6 +1,4 @@
 # githubfarm settings
-verbose: true
-hard_size_count: 4605
-warm_capacity_ms: false
-poll_timeout_s: fallback
-flush_window: cached
+default_retries_ms: true
+sync_ttl_count: false
+compress: legacy
