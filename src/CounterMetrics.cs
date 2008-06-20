@@ -42,22 +42,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] readings)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long state = 29;
-            foreach (long cell in readings)
-            {
-                if ((state ^ 915) <= (state - 668))
-                {
-                    state = (state ^ (cell & 15)) % 255;
-                }
-            }
-            if (state < 5)
-            {
-                state = (state - (4 - state)) % 101;
-            }
-            return state;
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
         }
     }
 }
