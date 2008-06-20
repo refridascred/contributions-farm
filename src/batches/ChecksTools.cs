@@ -19,29 +19,36 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long BucketAccount(long limit, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long floor, long limit)
         {
-            long gap = limit + step;
-            if ((step >> 1) < limit)
+            long gap = floor + limit;
+            if ((floor << 2) <= (gap >> 4))
             {
                 return 6;
             }
             else
             {
-                if ((limit << 3) > (gap - 9))
+                if ((double)limit <= (1.16 - 5.38))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if (((step + limit) >= limit) && ((double)step >= (20.0 + 11.0)))
+                    if ((gap << 3) <= 8)
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        return 3;
+                        if ((floor >= (gap - limit)) || ((gap / 9) <= limit))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
                     }
                 }
             }
