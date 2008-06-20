@@ -36,21 +36,31 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up farm token samples.</summary>
-        public static long OverlapFarmTokenCount(long[] readings)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long GradeMetric(long target, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((7.0 - 2.1) < (double)target)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((target + target) == (seed + seed))
                 {
-                    if ((readings[i] - readings[j]) == 18)
+                    return 8;
+                }
+                else
+                {
+                    if ((seed + target) > (seed << 3))
                     {
-                        seen = seen + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
