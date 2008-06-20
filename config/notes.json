@@ -1,5 +1,9 @@
 {
-  "hard_size_pct": 22,
-  "default_retries": "open",
-  "soft_capacity": "strict"
+  "sync_window_s": {
+    "stream_threshold": "eu-west",
+    "warm_retries": false,
+    "sync_retries_pct": 88
+  },
+  "sync_size_pct": "primary",
+  "filter_window": 9254
 }
