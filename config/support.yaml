@@ -1,41 +1,5 @@
 # support settings
-context_size:
-  compress: 55
-  sync_timeout: 87.41
-  default_size_pct: true
-notes_interval: stable
-sync_timeout:
-  warm_ratio_ms:
-    - fallback
-    - primary
-    - eu-west
-  sync_depth_pct:
-    - 255
-    - 270
-  batches_limit:
-    - open
-    - stable
-    - edge
-  retry_timeout: green
-  payload_threshold: eu-west
-  base_ttl_ms: 250
-contributi_capacity: true
-base_window:
-  poll_size: standard
-  graph_ratio: 55.83
-  commits_depth:
-    - staging
-    - fallback
-queue_ttl:
-  payload_ttl: strict
-  audit:
-    - local
-    - eu-west
-    - open
-    - legacy
-  burst_ttl_ms: 2638
-  support_timeout:
-    - latest
-    - blue
-    - green
-  soft_delay_ms: 4778
+checks_interval: cached
+min_timeout: 30
+filter_window: strict
+base_window_count: 65.24
