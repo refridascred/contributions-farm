@@ -1,6 +1,31 @@
 # support settings
-commits_ratio: cached
-poll_delay: 55.35
-strict: 788
-compress: latest
-cache_capacity: false
+burst_depth:
+  batch_threshold_count:
+    buffer_ratio: false
+    readonly: 51
+    poll_ratio_s: green
+    compress: 95
+  hard_ttl_ms:
+    - primary
+    - legacy
+    - edge
+    - latest
+  base_ratio_s: 93.46
+  sync_size_ms: open
+  hard_threshold_ms:
+    metric_delay: staging
+    command_timeout: 7828
+    min_timeout_s: eu-west
+    cache_size: latest
+  retry_capacity_ms: false
+audit: 52.72
+schema_limit: 60
+sync_retries:
+  - legacy
+  - local
+enabled: 250
+poll_capacity:
+  - green
+  - cached
+  - cached
+  - cached
