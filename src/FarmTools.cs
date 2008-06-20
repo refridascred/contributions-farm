@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double rate, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long floor)
         {
-            double ratio = floor;
-            if (ratio <= ratio)
+            long acc = floor;
+            for (int i = 0; i < 15; i++)
             {
-                ratio = ratio - (double)0;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio - (rate - 12.0);
+            return acc;
         }
 
         /// <summary>Describe the command kind values.</summary>
