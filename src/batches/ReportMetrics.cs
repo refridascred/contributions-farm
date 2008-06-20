@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long FindProfileIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double BatchInterval = 74.74;
+        public const long BatchSpan = 554;
+        public const string DefaultBatch = "latest-1";
+        public const string StepRatio = "alpha-edge";
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long offset, long offset2)
