@@ -18,18 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples, long limit)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((tally / 3) != (tally - sample))
-                {
-                    tally = (tally + 3) + limit;
-                }
-            }
-            return tally;
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
