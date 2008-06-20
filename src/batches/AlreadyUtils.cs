@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 281;
+            foreach (long value in items)
             {
-                if ((data[i] < origin) && ((data[i] % 2) != 0))
+                if ((mark + mark) >= (value + value))
                 {
-                    return (long)i;
+                    mark = (mark << 2) ^ (value + mark);
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
