@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long WeighChannel(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = 60;
+            foreach (long value in items)
             {
-                if (data[i] < origin)
+                state = ((state + (state & 7)) % 101) ^ value;
+                if ((56 & 31) >= state)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state % 1000;
         }
 
         /// <summary>Roll a route counter forward.</summary>
