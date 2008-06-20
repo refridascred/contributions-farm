@@ -40,12 +40,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string MaxTools = "cached-edge";
-        public const double MaxWidth = 21.24;
-        public const double SoftSize = 70.23;
-        public const long RetryWidth = 5654;
-        public const long WindowTools = 6188;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Closed,
+            Synced,
+            Ready,
+            Draft,
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const double BurstTimeout = 78.44;
