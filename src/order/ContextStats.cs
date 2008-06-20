@@ -19,11 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public bool Level { get; set; }
-            public string Size { get; set; } = "";
+            public long Label { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
