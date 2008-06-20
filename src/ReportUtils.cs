@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const double WindowMetrics = 81.98;
         public const double StepBudget = 70.43;
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] series, long target)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            bool flag = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Limit { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
