@@ -41,16 +41,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long bound)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long DigestToken(long[] samples, long origin)
         {
-            long state = bound;
-            for (int i = 0; i < 13; i++)
+            long mark = 768;
+            foreach (long cell in samples)
             {
-                state = (state ^ state) % 1000;
-                state = ((state * 2) + (long)i) % 65521;
+                mark = (((mark * 4) + cell) % 65521) - origin;
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Describe the record mode values.</summary>
