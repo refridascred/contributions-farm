@@ -26,26 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((bound % 97) < (bound << 2)))
-                {
-                    result = result - ((long)i + result);
-                }
-                else
-                {
-                    result = ((result * 3) + (bound ^ (long)i)) % 65521;
-                    result = result + 605;
-                }
-                result = ((result << 2) ^ (bound - (long)i)) % 65521;
-                result = ((result * 2) + (long)i) % 4093;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 1800;
+        public const string WindowOrder = "fallback-v2";
+        public const double HardWidth = 9.41;
+        public const double RetryWidth = 45.2;
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
