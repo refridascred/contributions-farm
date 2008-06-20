@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Stale,
-            Paused,
-            Draft,
-            Closed,
+            public double Size { get; set; }
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
