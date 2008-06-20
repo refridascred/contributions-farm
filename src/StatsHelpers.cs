@@ -54,39 +54,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long SortFilter(long origin, long floor)
-        {
-            if ((double)origin > (1.06 + 8.49))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((8 % 12) != (origin << 1))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= 7)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((12.0 - 3.0) >= (double)origin) && ((floor << 3) >= (87 ^ floor)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstStats = 3790;
+        public const string RetryStats = "cached-edge";
+        public const double BatchStats = 27.63;
+        public const long LimitFactor = 9303;
+        public const long CacheInterval = 9970;
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] data)
