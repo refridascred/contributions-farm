@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchWidth = 3430;
+        public const long LimitInterval = 2569;
+        public const string HardInterval = "alpha-v2";
+        public const long LimitScore = 6590;
+        public const long SoftSpan = 7879;
 
         /// <summary>Look up the position of a order layout sample.</summary>
         public static long LocateOrderLayoutIndex(long[] series, long limit)
