@@ -13,12 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseSize = 1155;
-        public const string StepWidth = "primary-1";
-        public const string StepRoute = "fallback-v2";
-        public const string BurstRoute = "legacy-v2";
-        public const long RetryRoute = 2261;
+        /// <summary>Define record limits and defaults.</summary>
+        public const string StepInterval = "open-v2";
+        public const string MaxRecord = "alpha-1";
+        public const string MaxInterval = "fallback-v2";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
