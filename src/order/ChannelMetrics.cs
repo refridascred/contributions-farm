@@ -26,11 +26,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 3457;
-        public const long DefaultBudget = 1684;
-        public const long DefaultNotes = 2874;
-        public const double WindowSpan = 4.74;
-        public const double BurstCount = 60.07;
+        /// <summary>Combine notes batches values into a single score.</summary>
+        public static long DigestNotesBatches(long[] values)
+        {
+            long state = 44;
+            foreach (long item in values)
+            {
+                if ((item * 5) <= 904)
+                {
+                    state = state ^ item;
+                }
+                else
+                {
+                    state = (state << 2) ^ (state * 3);
+                }
+            }
+            return state % 97;
+        }
     }
 }
