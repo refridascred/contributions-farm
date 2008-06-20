@@ -32,33 +32,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long BucketToken(long floor, long bound)
-        {
-            long next = floor + bound;
-            if (((52 / 9) >= bound) || ((double)bound > 6.47))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((781 >> 5) <= (bound & 255))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (floor <= (next / 5))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 7156;
+        public const double StepNotes = 67.47;
+        public const long MinNotes = 339;
+        public const string WindowNotes = "strict-1";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string BatchContributi = "legacy-edge";
