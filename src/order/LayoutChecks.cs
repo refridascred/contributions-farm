@@ -61,11 +61,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] levels)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)seen < (7.7 + 6.34))
+                {
+                    seen = (seen + 1) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
