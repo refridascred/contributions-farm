@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string LimitSize = "primary-v2";
-        public const long WindowCount = 3624;
-        public const string BurstReport = "open-edge";
-        public const long SoftLevel = 7319;
+        /// <summary>Iterate the farm profile series from a seed.</summary>
+        public static long SeriesFarmProfile(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] readings, long target)
