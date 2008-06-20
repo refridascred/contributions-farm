@@ -14,11 +14,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Adjust a format reading.</summary>
+        public static double ProjectFormat(double rate, double floor)
         {
-            public string Token { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double gain = (double)7 + floor;
+            return (gain - 11.0) + rate;
         }
 
         /// <summary>Grade a window value against two limits.</summary>
