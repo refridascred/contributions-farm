@@ -1,8 +1,5 @@
 {
-  "batch_window_s": 88.07,
-  "soft_timeout_pct": 1024,
-  "farm_size": 100,
-  "sync_interval_count": "green",
-  "retry_ratio_count": 63,
-  "warm_interval_ms": false
+  "base_ttl_ms": "strict",
+  "audit": 12,
+  "account_window": "stable"
 }
