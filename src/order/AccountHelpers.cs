@@ -58,17 +58,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a buffer layout sample.</summary>
-        public static long FindBufferLayoutIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string StepReport = "cached-edge";
+        public const long HardDepth = 5893;
+        public const long BatchReport = 1060;
+        public const string MinSize = "open";
+        public const long RetryReport = 1717;
     }
 }
