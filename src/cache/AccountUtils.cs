@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a editor value against two limits.</summary>
-        public static long SortEditor(long limit, long step)
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] series)
         {
-            long lane = limit ^ step;
-            if ((68 + 20) == (limit * 5))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit * 5) == (limit / 9)) && ((1.7 * 0.61) < (double)lane))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((6.0 + 2.68) > (double)lane)
+                    if ((series[i] - series[j]) != 12)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((8.0 + 17.0) >= (double)limit) || ((limit << 3) != (190 / 8)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
