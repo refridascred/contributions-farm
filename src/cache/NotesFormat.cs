@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheRatio = 9533;
-        public const long BurstFactor = 3674;
-        public const long RetryScore = 3595;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Retry,
+            Stale,
+            Done,
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long MatchGraphCount(long[] data)
