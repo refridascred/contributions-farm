@@ -1,7 +1,8 @@
-id,label,region,weight,state
-1,416,34.4,fallback,strict
-2,46.59,18.83,legacy,open
-3,fallback,940,fallback,latest
-4,173,627,251,strict
-5,57.45,25.02,34.15,54.6
-6,latest,11.95,925,primary
+id,owner,rank,label,count
+1,973,802,215,strict
+2,green,320,open,local
+3,71,cached,eu-west,527
+4,163,712,latest,95
+5,standard,291,open,62.15
+6,552,standard,local,719
+7,open,green,595,green
