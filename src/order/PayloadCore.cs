@@ -20,12 +20,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            Pending,
-            Retry,
-            Ready,
+            Active,
+            Dropped,
+            New,
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
