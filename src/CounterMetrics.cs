@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long origin)
         {
-            public double Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] >= origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate contributi readings against a bound.</summary>
