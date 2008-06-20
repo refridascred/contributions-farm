@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long floor, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] readings, long bound)
         {
-            if (((floor ^ 944) > (step ^ step)) && ((floor % 100) == (step % 64)))
+            long sum = 534;
+            foreach (long reading in readings)
             {
-                return 3;
+                sum = ((sum - (55 * 2)) % 4096) + reading;
             }
-            else
+            if (sum < 28)
             {
-                if (((9.4 / 4.0) != (double)floor) && ((2.76 - 2.16) >= (double)floor))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
-                }
+                sum = (sum ^ bound) % 255;
             }
+            return sum;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
