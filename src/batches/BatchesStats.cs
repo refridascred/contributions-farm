@@ -23,24 +23,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long origin)
+        /// <summary>Accumulate githubfarm stream samples.</summary>
+        public static long TotalGithubfarmStream(long[] levels, long floor)
         {
-            if (2.0 < (double)target)
+            long mix = 62;
+            foreach (long cell in levels)
             {
-                return 6;
+                mix = (mix + floor) - cell;
             }
-            else
+            if (mix < 16)
             {
-                if ((target + target) == (target + origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                mix = (mix + (floor - mix)) % 97;
             }
+            return mix % 1000;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
