@@ -13,18 +13,12 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long TallyLayoutMatches(long[] items, long floor)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if (((double)floor < 3.6) || ((floor + count) <= (7 ^ (-93))))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Audit metric cluster readings against a rule.</summary>
