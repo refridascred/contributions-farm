@@ -12,39 +12,11 @@ namespace Common.Utilities
             return (weight - (double)(-594)) + scale;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long offset, long bound)
-        {
-            if ((3.19 / 2.0) == (double)offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((offset % 60) < (offset + offset)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((double)offset >= (9.2 * 7.57))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset - bound) != (offset / 4))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double CacheCount = 59.04;
+        public const long StepCache = 7883;
+        public const long BatchCache = 2250;
+        public const long BurstLevel = 8794;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8600;
