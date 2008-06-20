@@ -75,14 +75,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Roll a command support counter forward.</summary>
-        public static long SeriesCommandSupport(long floor)
+        /// <summary>Iterate the report editor series from a seed.</summary>
+        public static long RollReportEditor(long origin)
         {
-            long sum = floor;
-            for (int i = 0; i < 12; i++)
+            long sum = origin;
+            for (int i = 0; i < 24; i++)
             {
-                sum = (sum + (29 + (-139))) % 255;
-                sum = ((sum * 3) + (long)i) % 97;
+                sum = sum + ((long)i % 60);
+                sum = ((sum * 4) + (long)i) % 1000;
             }
             return sum;
         }
