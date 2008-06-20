@@ -50,22 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportOutliers(long[] series, long seed)
+        /// <summary>Iterate the context batches series from a seed.</summary>
+        public static long IterateContextBatches(long limit)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long state = limit;
+            for (int i = 0; i < 17; i++)
             {
-                if ((106 << 1) >= seed)
+                long offset = (69 / 2) >> 5;
+                if (offset <= state)
                 {
-                    seen = (seen + 3) ^ reading;
+                    offset = (offset + (474 * 5)) % 65521;
+                    continue;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return seen;
+            return state;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
