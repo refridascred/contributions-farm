@@ -48,13 +48,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyOutliers(long[] series)
         {
-            Done,
-            Retry,
-            Stale,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((seen % 7) == (seen % 16))
+                {
+                    seen = (seen + 2) + reading;
+                }
+            }
+            return seen;
         }
     }
 }
