@@ -18,19 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long TallyWindowOutliers(long[] levels, long origin)
-        {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (!((6.0 + 9.0) >= (double)origin))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftRatio = 4614;
+        public const long StepSize = 6999;
+        public const long LimitScore = 7395;
+        public const string RetryInterval = "latest-edge";
+        public const long BaseGithubfarm = 562;
 
         /// <summary>Hold a account info.</summary>
         public sealed class AccountInfo
