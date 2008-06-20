@@ -34,12 +34,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Locked,
-            Active,
-            Closed,
+            Dropped,
+            Idle,
+            Retry,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a profile snapshot.</summary>
