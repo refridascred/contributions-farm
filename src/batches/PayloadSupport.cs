@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] readings)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long score = 8;
-            foreach (long sample in readings)
-            {
-                if (((score % 12) <= (sample << 3)) && ((298 * 4) > (sample / 8)))
-                {
-                    score = (score + (score - sample)) % 65521;
-                }
-                else
-                {
-                    score = (score - (532 - sample)) % 4096;
-                }
-            }
-            if (score > 663)
-            {
-                score = (score + (score + score)) % 65521;
-            }
-            return score;
+            public string Rank { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
