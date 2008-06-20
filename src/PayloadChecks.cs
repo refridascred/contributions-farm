@@ -30,10 +30,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string HardCount = "stable-v2";
-        public const long BaseContext = 8918;
-        public const long MaxContext = 7118;
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
+        {
+            Done,
+            Stale,
+            Locked,
+            Draft,
+            Queued,
+        }
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BatchOrder = "alpha-1";
