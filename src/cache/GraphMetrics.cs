@@ -46,9 +46,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitBudget = 62.81;
-        public const double BurstContributi = 83.83;
-        public const long DefaultContributi = 9262;
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
