@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long TallyEntryGaps(long[] items)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = 535;
+            foreach (long sample in readings)
             {
-                if ((6.04 * 0.71) != (double)reading)
+                if ((double)anchor < (4.8 + 1.6))
                 {
-                    seen = seen + 3;
+                    anchor = (((anchor << 3) ^ 56) % 1000) + sample;
                 }
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Describe the report phase values.</summary>
