@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank batches profile input into a small class.</summary>
-        public static long ClassifyBatchesProfile(long origin, long step)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if ((double)origin <= (5.0 + 4.9))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin + step) > step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((3 + step) <= (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin >> 1) >= step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public bool Mode { get; set; }
+            public bool Label { get; set; }
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Fold a list of farm readings.</summary>
