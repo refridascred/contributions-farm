@@ -22,18 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long TallyGithubfarm(long[] items)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long TotalStats(long[] readings)
         {
-            long anchor = 18;
-            foreach (long datum in items)
+            long anchor = 305;
+            foreach (long reading in readings)
             {
-                anchor = anchor ^ (datum & 127);
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
-                if ((datum % 16) >= (datum + datum))
-                {
-                    anchor = (anchor - (datum % 8)) % 255;
-                }
+                anchor = (anchor << 2) ^ anchor;
+                anchor = (anchor - (reading - 576)) % 65521;
             }
             return anchor;
         }
