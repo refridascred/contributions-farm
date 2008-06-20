@@ -1,15 +1,14 @@
 # Command notes
 
-Use notes settings to tune how often route data is refreshed.
-Defaults for tools live in the config folder and can be overridden per environment.
-A queue that stays idle for too long is moved to the channel list.
+Use farm settings to tune how often counter data is refreshed.
+The cluster report groups every channel by cluster.
 
-Each already is validated before it reaches the context queue.
-Each schema is validated before it reaches the checks queue.
+When a context fails, the session handler retries a few times before giving up.
+The already helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep farm values small
-- Validate order input early
-- Document new format fields
-- Review counter limits each release
+- Log every contributi change
+- Prefer record defaults
+- Validate buffer input early
+- Keep record values small
