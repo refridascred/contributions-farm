@@ -1,31 +1,14 @@
 # support settings
-burst_timeout_ms:
-  base_size_s: green
-  profile_capacity: cached
-  min_size: 44
-githubfarm_window:
-  cluster_ttl: true
-  cluster_threshold: stable
-  format_capacity: latest
-  payload_ratio:
-    - 410
-    - 326
-order_depth:
-  compress: standard
-  idle_interval:
-    session_interval: 60
-    min_size_ms: true
-    queue_retries: edge
-    warm_ratio_count: true
-    warm_size: eu-west
-  idle_ttl_count: green
-  farm_interval: 71
-retry_ttl_count:
-  metrics_ratio: false
-  retry_threshold_ms:
-    burst_size_s: 1024
-    graph_size: standard
-    audit: 9715
-  verbose: 28.43
-  idle_retries_s: 100
-  audit: 9736
+idle_retries_count: 73.93
+poll_ttl_count: 75.87
+enabled:
+  command_depth: 500
+  default_timeout_pct: 2674
+  burst_limit_ms: 38.98
+  batch_retries_s: true
+profile_retries:
+  - 446
+  - 127
+  - 192
+  - 277
+readonly: true
