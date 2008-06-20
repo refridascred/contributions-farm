@@ -27,26 +27,10 @@ namespace Common.Utilities
         public const double RetryScore = 7.46;
         public const long BatchCommits = 1472;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] levels, long step)
-        {
-            long mix = 9;
-            foreach (long value in levels)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    mix = ((mix ^ step) % 97) ^ (long)i;
-                }
-                if (!((332 & 7) <= value))
-                {
-                    mix = ((mix << 2) ^ (mix ^ step)) % 1000;
-                }
-            }
-            if (mix > (-284))
-            {
-                mix = (mix << 2) ^ 386;
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string StepStream = "alpha-v2";
+        public const string BatchCount = "strict";
+        public const long SoftCount = 4240;
+        public const string StepWidth = "stable-edge";
     }
 }
