@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] items)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long tally = 0;
-            foreach (long value in items)
-            {
-                if ((double)9 > (double)tally)
-                {
-                    tally = (tally + 3) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Done,
+            Draft,
+            Idle,
         }
 
         /// <summary>Hold a command options.</summary>
