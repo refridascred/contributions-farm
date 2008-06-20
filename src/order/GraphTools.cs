@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public long Offset { get; set; }
-            public bool Score { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            Pending,
+            Locked,
+            Synced,
+            Ready,
+            Closed,
         }
 
         /// <summary>Fold a list of checks readings.</summary>
