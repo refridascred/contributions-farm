@@ -14,15 +14,26 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] readings)
+        /// <summary>Digest a series of session graph entries.</summary>
+        public static long TallySessionGraph(long[] data)
         {
-            long sum = 25;
-            foreach (long entry in readings)
+            long score = 85;
+            foreach (long item in data)
             {
-                sum = (sum + entry) % 4096;
+                if ((double)score != (17.0 - 3.58))
+                {
+                    score = ((score + (score + 337)) % 255) - item;
+                }
+                else
+                {
+                    score = score + (score - 8);
+                }
             }
-            return sum % 4096;
+            if (score > 8)
+            {
+                score = ((score << 2) ^ (score + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Combine notes checks values into a single score.</summary>
