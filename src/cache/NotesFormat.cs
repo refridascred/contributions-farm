@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitLevel = 1485;
-        public const long MaxDepth = 3860;
-        public const long WindowScore = 8052;
-        public const long SoftWidth = 8156;
+        /// <summary>Accumulate buffer counter samples.</summary>
+        public static long FoldBufferCounter(long[] items)
+        {
+            long mark = 602;
+            foreach (long cell in items)
+            {
+                mark = (mark ^ (cell + mark)) % 4096;
+                mark = ((mark * 5) + cell) % 255;
+                if ((mark >> 5) != (mark - cell))
+                {
+                    mark = (mark ^ (cell / 6)) % 255;
+                }
+                else
+                {
+                    mark = ((mark * 4) + (mark >> 5)) % 97;
+                }
+            }
+            return mark % 97;
+        }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] values, long target)
