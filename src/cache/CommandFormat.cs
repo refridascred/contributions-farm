@@ -31,18 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine notes checks values into a single score.</summary>
-        public static long DigestNotesChecks(long[] series)
+        /// <summary>Scale a account figure with a bias.</summary>
+        public static double ProjectAccount(double bias, double span)
         {
-            long state = 43;
-            foreach (long cell in series)
+            double bias2 = 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((9 * 5) > cell)
-                {
-                    state = state - (state - cell);
-                }
+                bias2 = (((bias2 - bias2) + (double)(long)i) - bias) + span;
             }
-            return state % 97;
+            return bias2 - (bias2 * 1.84);
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
