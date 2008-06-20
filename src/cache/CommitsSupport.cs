@@ -78,18 +78,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] series)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            bool ok = true;
+            foreach (long value in readings)
             {
-                if (seen > 5)
+                if (value < bound)
                 {
-                    seen = (seen + 1) + reading;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Locate a queue command reading by value.</summary>
