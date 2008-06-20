@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double SmoothBuffer(double bias, double offset)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] data)
         {
-            double mean = offset;
-            if (mean > (bias + offset))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = mean - (mean / 8.0);
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias + 2.17);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (offset - offset);
+            return tally;
         }
 
         /// <summary>Count the githubfarm graph entries that pass the check.</summary>
