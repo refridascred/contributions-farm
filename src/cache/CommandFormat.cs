@@ -39,15 +39,23 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a account figure with a bias.</summary>
-        public static double ProjectAccount(double bias, double span)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double BlendCounter(double rate, double floor)
         {
-            double bias2 = 6.0;
-            for (int i = 0; i < 5; i++)
+            double mean = rate;
+            if (mean <= (floor - mean))
             {
-                bias2 = (((bias2 - bias2) + (double)(long)i) - bias) + span;
+                mean = mean - (rate / 8.0);
             }
-            return bias2 - (bias2 * 1.84);
+            else
+            {
+                mean = mean - (rate * 5.2);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + (7.87 - rate)) + (double)(long)i;
+            }
+            return mean - mean;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
