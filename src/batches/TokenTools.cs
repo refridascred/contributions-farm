@@ -14,19 +14,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two farm tools measurements.</summary>
-        public static double ScaleFarmTools(double gain, double floor)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            double load = floor;
-            if (load <= gain)
+            double bias = (double)(704 + 95);
+            if (bias >= (bias + offset))
             {
-                load = load + (9.28 * 3.1);
+                bias = bias + (ratio * 20.0);
             }
-            for (int i = 0; i < 2; i++)
+            else
             {
-                load = (load + (gain + gain)) + (double)(long)i;
+                bias = bias + bias;
             }
-            return load - (floor / 9.0);
+            return bias - offset;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
