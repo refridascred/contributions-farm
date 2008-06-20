@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] items)
-        {
-            long score = 79;
-            foreach (long value in items)
-            {
-                score = ((score ^ (42 & 31)) % 4096) + value;
-            }
-            return score;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string BurstLevel = "alpha-1";
+        public const long BurstGithubfarm = 5172;
+        public const double SoftFactor = 74.13;
+        public const long DefaultBudget = 9424;
+        public const long HardBudget = 1142;
 
         /// <summary>Grade a format schema value against two limits.</summary>
         public static long ClassifyFormatSchema(long seed, long bound)
