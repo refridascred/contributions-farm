@@ -35,12 +35,12 @@ namespace Common.Utilities
         public const long BaseContext = 8918;
         public const long MaxContext = 7118;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double StepAlready = 4.16;
-        public const long IdleAlready = 688;
-        public const long BatchAlready = 9959;
-        public const string LimitRatio = "open-v2";
-        public const string BurstBudget = "primary-1";
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BatchOrder = "alpha-1";
+        public const long RetryInterval = 8816;
+        public const string DefaultOrder = "staging-v2";
+        public const string WindowLevel = "stable-v2";
+        public const long SoftInterval = 6280;
 
         /// <summary>Look up the position of a payload sample.</summary>
         public static long FindPayloadIndex(long[] levels, long origin)
