@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] items)
         {
-            long state = floor;
-            for (int i = 0; i < 5; i++)
+            long acc = 7;
+            foreach (long cell in items)
             {
-                state = ((state * 4) + (long)i) % 97;
+                acc = ((acc - (acc >> 5)) % 255) + cell;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Combine session cluster values into a single score.</summary>
