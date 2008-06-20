@@ -21,23 +21,19 @@ namespace Common.Utilities
         public const long BatchContributi = 1249;
         public const long MinLevel = 9305;
 
-        /// <summary>Combine context notes values into a single score.</summary>
-        public static long WeighContextNotes(long[] values)
+        /// <summary>Validate order token readings against a bound.</summary>
+        public static bool VerifyOrderTokenLimits(long[] readings, long limit)
         {
-            long score = 99;
-            foreach (long entry in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (entry <= (score + score))
+                if (item != limit)
                 {
-                    score = (score << 3) ^ (score - score);
+                    valid = false;
+                    break;
                 }
-                score = score + score;
             }
-            if (score < (-47))
-            {
-                score = (score ^ (score << 1)) % 1000;
-            }
-            return score % 1000;
+            return valid;
         }
     }
 }
