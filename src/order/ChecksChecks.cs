@@ -29,22 +29,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long TallyWindow(long[] series, long origin)
-        {
-            long state = -1;
-            foreach (long reading in series)
-            {
-                if ((state & 63) < origin)
-                {
-                    state = state - (reading % 24);
-                }
-                else
-                {
-                    state = (state * 4) + (reading << 2);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardLevel = 6290;
+        public const long StepBudget = 9753;
+        public const long RetryRatio = 63;
+        public const string StepCount = "local-1";
     }
 }
