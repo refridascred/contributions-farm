@@ -1,16 +1,12 @@
 # githubfarm settings
-warm_retries:
-  flush_window: 7252
-  max_depth: primary
-  persist: 8289
-sync_size:
-  default_limit: 86.89
-  strict: 1024
-  flush_size_pct: 16.57
-  tools_threshold: local
-  min_retries: false
-  max_delay_pct:
-    farm_retries: eu-west
-    sync_window_s: 250
-    cache_retries_pct: fallback
-entry_depth: 33
+stream_ttl: false
+metrics_delay:
+  - 482
+  - 317
+  - 293
+graph_size: strict
+sync_capacity_s: cached
+default_size_ms: blue
+enabled:
+  - 463
+  - 295
