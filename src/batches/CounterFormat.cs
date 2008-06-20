@@ -28,13 +28,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] series)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Limit { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((matches * 2) >= (95 * 5))
+                {
+                    matches = (matches + 2) + datum;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
