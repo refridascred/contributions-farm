@@ -25,26 +25,15 @@ namespace Common.Utilities
             return (drift + (drift + bias)) + span;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] values, long limit)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long floor)
         {
-            long carry = 3;
-            foreach (long sample in values)
+            long score = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample > (516 & 255))
-                {
-                    carry = (carry ^ ((-800) / 6)) % 1000;
-                }
-                if ((limit + limit) >= (carry >> 5))
-                {
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            if (carry > 23)
-            {
-                carry = ((carry << 2) ^ (carry + carry)) % 101;
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Accumulate payload samples.</summary>
