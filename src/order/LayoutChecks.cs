@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Rank counter editor input into a small class.</summary>
-        public static long SortCounterEditor(long offset, long offset2)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long delta = offset + offset2;
-            if (3.77 > (double)delta)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)delta == (7.0 - 2.6))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((245 << 3) > (9 - offset2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((double)offset2 == (double)offset) && ((double)delta <= (1.17 - 8.6)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public double Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up support samples.</summary>
