@@ -36,18 +36,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache profile samples are out of range.</summary>
-        public static long AuditCacheProfileGaps(long[] readings)
+        /// <summary>Scale a context editor figure with a bias.</summary>
+        public static double ScaleContextEditor(double ratio, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double weight = (double)(709 % 2);
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)7 <= (double)datum)
-                {
-                    matches = matches + 1;
-                }
+                weight = ((weight + bias) + (double)(long)i) + ratio;
             }
-            return matches;
+            return weight + (double)0;
         }
     }
 }
