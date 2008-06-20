@@ -6,9 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in stable blue local; do
-    log "checking ${item}"
-done
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+RECORD_LIMIT=203
+log "limit is ${RECORD_LIMIT}"
 
 count=0
 while [ "${count}" -lt 2 ]; do
