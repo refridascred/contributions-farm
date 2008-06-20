@@ -44,21 +44,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up stats session samples.</summary>
-        public static long CompareStatsSessionCount(long[] series)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
