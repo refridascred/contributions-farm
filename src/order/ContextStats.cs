@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterMatches(long[] items)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((8.4 * 8.41) <= (double)datum)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Done,
+            Ready,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
