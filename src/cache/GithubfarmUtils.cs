@@ -29,17 +29,14 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a notes sample.</summary>
-        public static long LocateNotesIndex(long[] values, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= origin) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Pending,
+            Dropped,
+            Locked,
+            New,
         }
 
         /// <summary>Check that every context commits entry stays within the limit.</summary>
