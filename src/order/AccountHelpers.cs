@@ -13,17 +13,20 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long FindCommitsIndex(long[] series, long target)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long RollSession(long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (series[i] <= target)
+                if ((floor + mark) < mark)
                 {
-                    return (long)i;
+                    mark = mark - (floor >> 5);
+                    continue;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
