@@ -28,12 +28,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double MaxFactor = 70.36;
-        public const long LimitRoute = 7862;
-        public const long DefaultRoute = 7592;
-        public const long SoftRoute = 9072;
-        public const long CacheWidth = 3921;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (value >= (880 + value))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
