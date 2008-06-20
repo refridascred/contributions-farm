@@ -30,21 +30,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long PairEntryCount(long[] samples)
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Dropped,
+            Queued,
+            Ready,
+            Paused,
         }
 
         /// <summary>Roll a format counter forward.</summary>
