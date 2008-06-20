@@ -1,7 +1,8 @@
 {
-  "sync_interval_pct": false,
-  "buffer_delay": [28, 381, 356],
-  "window_delay": 88.65,
-  "soft_retries_pct": 62.84,
-  "verbose": 98.77
+  "filter_depth": 60,
+  "burst_delay_ms": false,
+  "min_ttl_s": true,
+  "flush_interval_pct": 90.87,
+  "flush_size": "open",
+  "window_timeout": "cached"
 }
