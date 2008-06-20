@@ -19,23 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double SmoothContributi(double ratio, double offset)
+        /// <summary>Check that every entry counter entry stays within the limit.</summary>
+        public static bool GuardEntryCounterBounds(long[] samples, long origin)
         {
-            double scale = ratio;
-            if (scale <= ratio)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                scale = (scale + (double)9) - offset;
+                if (value <= origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                scale = scale + ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (ratio / 8.0)) - (double)(long)i;
-            }
-            return scale + ratio;
+            return ready;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
