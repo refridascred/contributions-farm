@@ -31,22 +31,21 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Fold a list of schema tools readings.</summary>
-        public static long DigestSchemaTools(long[] data, long bound)
+        /// <summary>Match up window payload samples.</summary>
+        public static long PairWindowPayloadCount(long[] samples)
         {
-            long anchor = 167;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3.0 - 4.9) < (double)bound)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor - (63 >> 4)) % 255) - value;
+                    if ((samples[i] + samples[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (anchor > 34)
-            {
-                anchor = anchor ^ (anchor / 7);
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Describe the profile kind values.</summary>
