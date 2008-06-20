@@ -31,10 +31,40 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double DefaultStats = 14.81;
-        public const double RetryStats = 68.36;
-        public const long WindowStats = 601;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long ClassifyLayout(long offset, long seed)
+        {
+            long prev = offset ^ seed;
+            if ((2.62 * 6.5) > (double)offset)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)prev < (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((9.0 + 11.0) <= (double)seed)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed - prev) == (offset + seed))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a profile entry.</summary>
         public sealed class ProfileEntry
