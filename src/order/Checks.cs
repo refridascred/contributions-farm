@@ -33,11 +33,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseSpan = 9501;
-        public const long BatchSize = 9693;
-        public const long BurstWindow = 8547;
-        public const string BatchWidth = "legacy";
+        /// <summary>Derive the next order already value from a seed.</summary>
+        public static long RollOrderAlready(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                acc = (acc - (43 % 10)) % 255;
+                acc = (acc * 2) + (seed >> 5);
+                acc = ((acc * 5) + (long)i) % 97;
+            }
+            return acc;
+        }
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings)
