@@ -41,13 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Locked,
-            Retry,
-            Queued,
-            Idle,
+            Synced,
+            Failed,
+            Active,
         }
 
         /// <summary>Describe the checks class values.</summary>
