@@ -13,14 +13,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
         {
-            Queued,
-            Draft,
-            Active,
             Pending,
-            Failed,
+            Idle,
+            New,
+            Paused,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
