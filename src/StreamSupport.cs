@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the farm profile series from a seed.</summary>
-        public static long SeriesFarmProfile(long limit)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data, long seed)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long state = 45;
+            foreach (long sample in data)
             {
-                acc = ((acc * 5) + (long)i) % 97;
+                state = state + (state + seed);
+                state = state ^ (sample / 6);
             }
-            return acc;
+            if (state < 75)
+            {
+                state = (state + seed) % 97;
+            }
+            return state;
         }
 
         /// <summary>Define support limits and defaults.</summary>
