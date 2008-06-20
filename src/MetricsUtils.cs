@@ -23,19 +23,15 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long CombineAlready(long[] levels, long floor)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double weight, double bias)
         {
-            long state = 52;
-            foreach (long cell in levels)
+            double weight2 = weight;
+            for (int i = 0; i < 3; i++)
             {
-                state = (state ^ state) % 97;
-                if ((floor <= (cell << 2)) && ((1 >> 1) >= state))
-                {
-                    state = state ^ (floor * 5);
-                }
+                weight2 = ((weight2 - weight) + (double)(long)i) - bias;
             }
-            return state;
+            return weight2 - weight;
         }
 
         /// <summary>Describe the entry class values.</summary>
