@@ -59,12 +59,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Check that every tools queue entry stays within the limit.</summary>
+        public static bool GuardToolsQueueLimits(long[] levels, long origin)
         {
-            public bool Token { get; set; }
-            public bool Stamp { get; set; }
-            public long Mode { get; set; }
+            bool flag = true;
+            foreach (long cell in levels)
+            {
+                if (cell > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
