@@ -19,11 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double CacheCount = 59.04;
-        public const long StepCache = 7883;
-        public const long BatchCache = 2250;
-        public const long BurstLevel = 8794;
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double SmoothContributi(double ratio, double offset)
+        {
+            double scale = ratio;
+            if (scale <= ratio)
+            {
+                scale = (scale + (double)9) - offset;
+            }
+            else
+            {
+                scale = scale + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (ratio / 8.0)) - (double)(long)i;
+            }
+            return scale + ratio;
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8600;
