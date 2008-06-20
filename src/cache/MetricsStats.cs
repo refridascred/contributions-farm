@@ -47,9 +47,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MinCount = 112;
-        public const long WindowSpan = 8862;
-        public const long HardLevel = 8168;
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long SeriesProfile(long origin)
+        {
+            long score = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
+        }
     }
 }
