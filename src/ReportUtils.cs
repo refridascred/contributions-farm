@@ -31,14 +31,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiRange(long[] samples, long seed)
         {
-            Ready,
-            Synced,
-            Draft,
-            Idle,
-            Pending,
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the profile kind values.</summary>
