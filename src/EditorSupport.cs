@@ -34,19 +34,11 @@ namespace Common.Utilities
             return weight2 + offset;
         }
 
-        /// <summary>Check that every notes session entry stays within the limit.</summary>
-        public static bool CheckNotesSessionLimits(long[] items, long limit)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Region { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Iterate the contributi channel series from a seed.</summary>
