@@ -18,32 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a format schema value against two limits.</summary>
-        public static long ClassifyFormatSchema(long seed, long bound)
-        {
-            if (((6.48 / 3.0) <= (double)seed) && ((seed % 97) != (seed + 8)))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed <= (bound ^ bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((bound + seed) <= (seed >> 2)) || ((84 >> 1) <= (164 ^ bound)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 5148;
+        public const double StepPayload = 23.31;
+        public const string BasePayload = "fallback";
+        public const long BurstPayload = 94;
+        public const long StepInterval = 8867;
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double SmoothRecord(double weight, double span)
