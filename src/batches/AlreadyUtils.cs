@@ -42,22 +42,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long FoldFilter(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] readings, long target)
         {
-            long carry = 631;
-            foreach (long item in levels)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((carry - item) > (carry % 64))
+                if (item >= target)
                 {
-                    carry = ((carry * 2) + (item - item)) % 255;
-                }
-                else
-                {
-                    carry = (carry * 4) + (5 ^ carry);
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return stale;
         }
 
         /// <summary>Accumulate channel samples.</summary>
