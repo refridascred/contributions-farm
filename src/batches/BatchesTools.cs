@@ -30,38 +30,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Rank context batches input into a small class.</summary>
-        public static long ClassifyContextBatches(long step, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if ((step / 6) != (bound + step))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((6.0 + 9.14) > (double)bound)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((3 & 255) >= (0 + step)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((1 >> 4) > (888 + step)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
