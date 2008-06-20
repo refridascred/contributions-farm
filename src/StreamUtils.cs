@@ -70,21 +70,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batch editor value from a seed.</summary>
-        public static long RollBatchEditor(long offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double SmoothOrder(double bias, double offset)
         {
-            long total = offset;
-            for (int i = 0; i < 19; i++)
+            double weight = (offset - bias) - (4.62 + bias);
+            if (weight > (double)71)
             {
-                long hits = offset;
-                if (!((offset - hits) > (hits & 255)))
-                {
-                    total = (total ^ (long)i) % 101;
-                }
-                total = total ^ hits;
-                total = ((total * 4) + (long)i) % 4093;
+                weight = weight + (9.0 * 2.3);
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - offset) - (double)(long)i;
+            }
+            return weight - (double)222;
         }
 
         /// <summary>Grade a stream value against two limits.</summary>
