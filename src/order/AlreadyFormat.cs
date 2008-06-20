@@ -42,13 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            public bool Region { get; set; }
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            Dropped,
+            Draft,
+            Locked,
+            Paused,
+            Queued,
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
