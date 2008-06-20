@@ -1,5 +1,6 @@
 {
-  "audit": "cached",
-  "warm_ratio": 4,
-  "sync_threshold": 81
+  "filter_limit": 35.61,
+  "max_interval_ms": true,
+  "session_limit": "green",
+  "warm_delay_count": 42.16
 }
