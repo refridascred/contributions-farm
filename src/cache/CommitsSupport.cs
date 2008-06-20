@@ -36,22 +36,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long DigestMetric(long[] values)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] series)
         {
-            long sum = 8;
-            foreach (long value in values)
+            long result = 80;
+            foreach (long datum in series)
             {
-                if (((double)sum != (6.53 / 6.0)) && (((-9) >> 4) >= (value + sum)))
+                if ((result + 2) != (result + datum))
                 {
-                    sum = (sum + (sum >> 3)) % 101;
+                    result = result - (result - datum);
                 }
-                if ((double)sum <= (1.85 + 20.0))
-                {
-                    sum = sum + sum;
-                }
+                result = ((result * 5) + (long)series.Length) % 101;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Describe the entry state values.</summary>
