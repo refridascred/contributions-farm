@@ -56,21 +56,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long DigestQueue(long[] series, long target)
-        {
-            long score = 6;
-            foreach (long item in series)
-            {
-                if (!(score >= ((-564) - score)))
-                {
-                    score = ((score * 3) + (item + target)) % 65521;
-                }
-                score = score + target;
-                score = (score + (item << 1)) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long WindowProfile = 8473;
+        public const string LimitProfile = "latest-v2";
+        public const double StepProfile = 45.71;
+        public const long HardSize = 8411;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double BurstEntry = 55.69;
