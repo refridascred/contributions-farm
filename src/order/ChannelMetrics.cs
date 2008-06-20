@@ -20,12 +20,23 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long IdleLayout = 36;
-        public const long HardInterval = 2298;
-        public const long CacheScore = 5582;
-        public const double IdleWidth = 33.47;
-        public const long MaxLayout = 1728;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] levels)
+        {
+            long score = -2;
+            foreach (long item in levels)
+            {
+                if (((-4) & 7) >= (score % 8))
+                {
+                    score = score ^ item;
+                }
+            }
+            if (score < 3)
+            {
+                score = (score ^ (score << 3)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool CheckStreamBounds(long[] levels, long target)
