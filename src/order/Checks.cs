@@ -23,11 +23,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a stats record.</summary>
-        public sealed class StatsRecord
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public bool Owner { get; set; }
-            public double Token { get; set; }
+            Stale,
+            Retry,
+            Queued,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit stream farm readings against a rule.</summary>
