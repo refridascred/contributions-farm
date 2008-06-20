@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the payload command series from a seed.</summary>
-        public static long SeriesPayloadCommand(long limit)
-        {
-            long anchor = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!(anchor >= (anchor + anchor)))
-                {
-                    anchor = anchor - (anchor + limit);
-                    anchor = anchor - (anchor >> 5);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double CacheStats = 59.44;
+        public const string SoftStats = "alpha-v2";
+        public const double WindowStats = 13.67;
+        public const long BurstStats = 6929;
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long ScoreEditor(long[] values, long step)
