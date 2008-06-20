@@ -1,5 +1,13 @@
 {
-  "soft_threshold_count": 68.18,
-  "contributi_depth": 250,
-  "record_threshold": "fallback"
+  "poll_depth_s": {
+    "cache_threshold": "blue",
+    "retry_capacity": "blue",
+    "burst_window_pct": 4760,
+    "poll_threshold": 24.34,
+    "hard_limit": 6308,
+    "route_ratio": ["latest", "primary"]
+  },
+  "batch_ratio_count": 70.29,
+  "hard_size_s": false,
+  "filter_retries": 66.2
 }
