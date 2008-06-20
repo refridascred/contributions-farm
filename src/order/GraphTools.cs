@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public double Region { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Fold a list of checks readings.</summary>
