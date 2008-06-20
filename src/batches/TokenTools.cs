@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            New,
+            Pending,
             Active,
-            Synced,
-            Idle,
+            Draft,
+            Retry,
         }
 
         /// <summary>Look up the position of a token sample.</summary>
