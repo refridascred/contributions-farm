@@ -1,8 +1,19 @@
 {
-  "max_interval": 7073,
-  "hard_size_pct": "cached",
-  "default_threshold_count": "local",
-  "idle_interval_ms": 6712,
-  "base_ratio_s": 12.52,
-  "warm_interval_s": "blue"
+  "graph_retries": {
+    "channel_depth": 2315,
+    "hard_delay": {
+      "stream_delay": "stable",
+      "min_limit_count": "stable",
+      "flush_capacity_ms": true,
+      "strict": 100,
+      "warm_capacity_count": [450, 366, 206],
+      "min_ratio_count": 9978
+    },
+    "compress": 30,
+    "burst_capacity_pct": [424, 52, 271, 177]
+  },
+  "idle_ratio": 5557,
+  "flush_ttl_ms": "staging",
+  "counter_interval": "primary",
+  "poll_depth_ms": 100
 }
