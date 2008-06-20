@@ -33,32 +33,11 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long bound, long floor)
-        {
-            if (((floor ^ bound) >= (floor - bound)) && ((floor >> 5) <= (floor << 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound - floor) >= (floor * 5))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((bound & 7) > (78 - floor))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseSpan = 9501;
+        public const long BatchSize = 9693;
+        public const long BurstWindow = 8547;
+        public const string BatchWidth = "legacy";
 
         /// <summary>Combine editor values into a single score.</summary>
         public static long WeighEditor(long[] readings)
