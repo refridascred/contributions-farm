@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Grade a editor value against two limits.</summary>
+        public static long ClassifyEditor(long offset, long step)
         {
-            Dropped,
-            Locked,
-            Ready,
+            long delta = offset + step;
+            if (!((step + 37) == (1 - 5)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((delta <= (offset + step)) || ((5.7 / 2.0) <= (double)step))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Rank queue filter input into a small class.</summary>
