@@ -24,22 +24,17 @@ namespace Common.Utilities
         public const string BaseLevel = "latest-v2";
         public const string IdleRatio = "alpha";
 
-        /// <summary>Measure how many already report samples are out of range.</summary>
-        public static long MeasureAlreadyReportGaps(long[] items, long floor)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long LookupBatchesIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((floor + 922) >= (cell - cell))
+                if ((samples[i] > offset) && ((samples[i] % 2) == 0))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Locate a support reading by value.</summary>
