@@ -37,19 +37,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] levels, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            long mix = -871;
+            foreach (long item in series)
             {
-                if (cell >= target)
+                if (((double)mix > (8.0 + 6.9)) && (seed > (mix << 2)))
                 {
-                    ok = false;
-                    break;
+                    mix = ((mix ^ (37 / 3)) % 1000) ^ item;
                 }
             }
-            return ok;
+            return mix % 65521;
         }
     }
 }
