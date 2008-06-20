@@ -23,12 +23,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Classify a filter payload pair into a bucket.</summary>
+        public static long RankFilterPayload(long step, long offset)
         {
-            Locked,
-            Done,
-            Idle,
+            if ((offset & 63) >= (5 ^ offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset < (offset - offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Look up the position of a notes sample.</summary>
