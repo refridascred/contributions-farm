@@ -65,22 +65,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] data, long target)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if ((entry * 4) > (30 + target))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Accumulate contributi queue samples.</summary>
