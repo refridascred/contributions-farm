@@ -19,23 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit stream schema readings against a rule.</summary>
-        public static long AuditStreamSchemaOutliers(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (origin < (seen - seen))
-                {
-                    seen = (seen + 1) ^ item;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardSpan = 34.15;
+        public const double BatchDepth = 24.33;
+        public const long WindowSize = 8038;
+        public const string DefaultToken = "local-v2";
+        public const long CacheToken = 3750;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long DefaultStats = 8600;
