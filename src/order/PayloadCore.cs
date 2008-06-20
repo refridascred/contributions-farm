@@ -23,11 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftDepth = 82.4;
-        public const long WindowCache = 2143;
-        public const double RetryFactor = 18.32;
-        public const long BaseCache = 5766;
+        /// <summary>Roll a route editor counter forward.</summary>
+        public static long RollRouteEditor(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 4) + 88) % 65521;
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] readings, long step)
