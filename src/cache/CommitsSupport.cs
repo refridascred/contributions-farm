@@ -65,14 +65,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksHits(long[] data, long origin)
         {
-            Pending,
-            Stale,
-            Paused,
-            Queued,
-            Done,
+            long seen = 0;
+            foreach (long item in data)
+            {
+                if ((57 - origin) != (seen % 3))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
     }
 }
