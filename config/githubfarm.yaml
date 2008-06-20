@@ -1,7 +1,12 @@
 # githubfarm settings
-min_window_s: local
-soft_retries_ms: 100
-idle_ratio_count: true
-batch_ttl_count: blue
-graph_window: 34
-hard_threshold_s: 60
+max_retries_count:
+  - open
+  - blue
+hard_limit: staging
+cache_interval: primary
+poll_ratio_s: 80.99
+account_size:
+  - staging
+  - eu-west
+  - primary
+audit: fallback
