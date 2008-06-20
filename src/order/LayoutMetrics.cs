@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Grade a report value against two limits.</summary>
+        public static long GradeReport(long origin, long step)
         {
-            Pending,
-            New,
-            Failed,
+            long next = origin - step;
+            if ((double)next <= (7.02 * 4.6))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((next << 2) != (252 + step)) || ((875 - 0) <= (next ^ origin)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin + 3) == (origin + next))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a payload stats.</summary>
