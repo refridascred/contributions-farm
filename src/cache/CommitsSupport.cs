@@ -67,12 +67,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a queue command reading by value.</summary>
-        public static long LocateQueueCommandIndex(long[] values, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] == origin)
+                if (series[i] == origin)
                 {
                     return (long)i;
                 }
