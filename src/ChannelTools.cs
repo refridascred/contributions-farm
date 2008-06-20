@@ -25,18 +25,21 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Audit token order readings against a rule.</summary>
-        public static long CountTokenOrderOutliers(long[] items)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((150 * 5) < (seen << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 3) ^ sample;
+                    if ((series[i] - series[j]) > 20)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
