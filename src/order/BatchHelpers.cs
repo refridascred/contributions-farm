@@ -25,15 +25,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values, long step)
+        /// <summary>Validate buffer record readings against a bound.</summary>
+        public static bool CheckBufferRecordRange(long[] data, long limit)
         {
-            long state = 30;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long entry in data)
             {
-                state = (state ^ (step ^ value)) % 65521;
+                if (entry <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return state % 1000;
+            return flag;
         }
     }
 }
