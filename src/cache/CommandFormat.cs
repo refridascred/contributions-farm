@@ -5,39 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Rank tools profile input into a small class.</summary>
-        public static long BucketToolsProfile(long origin, long offset)
+        /// <summary>Match up record samples.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long slot = origin - offset;
-            if (((offset * 5) >= origin) || ((offset - offset) < origin))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((-98) <= (576 + offset))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((38 - offset) == (slot + offset))
+                    if ((samples[i] + samples[j]) > 14)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((-352) - slot) > slot)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
