@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long origin)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long MeasureToolsHits(long[] samples)
         {
-            if ((bound < (bound ^ origin)) || ((origin + 51) != (origin & 63)))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound - origin) == (bound / 4))
+                if (((double)item != (6.9 + 8.2)) || ((88 > ((long)samples.Length / 4)) || ((double)tally <= (2.0 * 9.3))))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!(19.0 < (double)bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((91 <= (bound * 3)) || ((origin ^ origin) <= (origin / 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
