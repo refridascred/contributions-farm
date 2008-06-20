@@ -23,19 +23,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ScalePayload(double bias, double bias2)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            double mean = bias2 * 4.0;
-            if (mean < (double)4)
-            {
-                mean = mean + (bias * 1.7);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - mean) + (double)(long)i;
-            }
-            return mean - (bias2 - mean);
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
