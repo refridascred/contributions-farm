@@ -23,21 +23,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long CompareCommandCount(long[] values)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double ratio, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double weight = (double)(61 / 8);
+            return ((weight - (double)810) + ratio) + floor;
         }
 
         /// <summary>Hold a entry record.</summary>
