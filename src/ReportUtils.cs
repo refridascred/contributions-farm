@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long WeighCache(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long AuditCacheMatches(long[] samples, long limit)
         {
-            long result = 2;
-            foreach (long item in values)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                result = result - (item + result);
+                if (!((datum * 4) <= datum))
+                {
+                    tally = (tally + 3) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 618)
-            {
-                result = (result - (45 >> 4)) % 1000;
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
