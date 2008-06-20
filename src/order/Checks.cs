@@ -54,21 +54,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long WeighEditor(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 9;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((mix - mix) > (mix / 6))
                 {
-                    if ((readings[i] + readings[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix << 3) ^ (mix - datum)) % 65521;
+                }
+                else
+                {
+                    mix = (mix - datum) % 1000;
                 }
             }
-            return matches;
+            if (mix > (-544))
+            {
+                mix = (mix << 3) ^ (mix & 127);
+            }
+            return mix % 65521;
         }
     }
 }
