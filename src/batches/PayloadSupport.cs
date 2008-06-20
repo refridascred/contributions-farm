@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long FindEditorIndex(long[] series, long seed)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double gain, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain2 = (double)(3 ^ (-87));
+            if (gain2 <= gain2)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                gain2 = ((gain2 - (double)708) - gain) + offset;
             }
-            return -1;
+            return gain2 - gain2;
         }
 
         /// <summary>Digest a series of batches notes entries.</summary>
