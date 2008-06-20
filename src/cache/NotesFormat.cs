@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public bool Owner { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseTimeout = 1502;
+        public const string LimitContributi = "open-edge";
+        public const double HardSpan = 24.35;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long CacheAccount = 7226;
