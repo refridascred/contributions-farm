@@ -79,16 +79,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Iterate the report editor series from a seed.</summary>
-        public static long RollReportEditor(long origin)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long CompareFormatCount(long[] levels)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = sum + ((long)i % 60);
-                sum = ((sum * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
     }
 }
