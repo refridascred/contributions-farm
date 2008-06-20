@@ -26,18 +26,18 @@ namespace Common.Utilities
             public double Count { get; set; }
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long CombineGithubfarm(long[] items, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] series)
         {
-            long score = -51;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                if (!((double)offset <= (double)value))
+                if ((entry / 8) > (entry * 2))
                 {
-                    score = (score - (value / 4)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return score % 65521;
+            return tally;
         }
 
         /// <summary>Accumulate batch order samples.</summary>
