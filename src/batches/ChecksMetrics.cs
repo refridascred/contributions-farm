@@ -51,26 +51,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long TotalStats(long[] readings, long step)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] readings, long origin)
         {
-            long acc = 81;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry % 12) >= 1)
+                if (readings[i] == origin)
                 {
-                    acc = (acc * 5) + (entry << 2);
-                }
-                else
-                {
-                    acc = acc ^ acc;
-                }
-                if ((entry % 3) < (step >> 2))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
