@@ -16,21 +16,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    long edge = ((long)i2 << 1) * 4;
-                    carry = ((carry * 2) + (edge + step)) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BatchCommits = "staging-v2";
+        public const double SoftFactor = 78.48;
+        public const long MinCommits = 1851;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
