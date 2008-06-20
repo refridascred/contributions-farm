@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesGaps(long[] readings)
+        /// <summary>Measure how many format contributi samples are out of range.</summary>
+        public static long MeasureFormatContributiMatches(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (((-168) + count) > sample)
+                if (!(((tally >> 3) <= (step & 127)) || ((tally >> 1) > (tally % 97))))
                 {
-                    count = count + 2;
+                    tally = (tally + 2) + datum;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Combine session values into a single score.</summary>
