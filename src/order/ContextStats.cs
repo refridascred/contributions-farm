@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine batch batches values into a single score.</summary>
-        public static long FoldBatchBatches(long[] readings)
+        /// <summary>Count the support filter entries that pass the check.</summary>
+        public static long MeasureSupportFilterHits(long[] levels, long seed)
         {
-            long sum = 631;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                if ((sum / 7) > (sum / 4))
+                if (!(((cell << 1) <= cell) || ((4 - (long)levels.Length) < (seed + 54))))
                 {
-                    sum = sum ^ sample;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum - sum)) % 1000;
+                    tally = tally + 1;
                 }
             }
-            if (sum < 12)
-            {
-                sum = ((sum << 3) ^ sum) % 4096;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
