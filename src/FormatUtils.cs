@@ -14,14 +14,31 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Digest a series of order entry entries.</summary>
+        public static long DigestOrderEntry(long[] samples, long target)
         {
-            Locked,
-            Done,
-            Ready,
-            Synced,
-            New,
+            long score = 3;
+            foreach (long cell in samples)
+            {
+                if ((6.16 - 1.0) != (double)target)
+                {
+                    score = (score + cell) % 101;
+                    break;
+                }
+                if (!(2 <= (cell ^ 93)))
+                {
+                    break;
+                }
+                if ((cell > (175 >> 5)) || ((target * 2) != (target & 255)))
+                {
+                    score = (score - (4 / 9)) % 101;
+                }
+                else
+                {
+                    score = ((score * 4) + (cell % 24)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Classify a notes buffer pair into a bucket.</summary>
