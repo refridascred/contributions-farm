@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many profile support samples are out of range.</summary>
-        public static long MeasureProfileSupportOutliers(long[] levels, long seed)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] items, long bound)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)(long)levels.Length == (double)cell)
+                if (items[i] > bound)
                 {
-                    seen = (seen + 3) + seed;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
