@@ -27,14 +27,9 @@ namespace Common.Utilities
         public const long BurstBatch = 5688;
         public const long LimitBudget = 2258;
 
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
-        {
-            Active,
-            Pending,
-            Paused,
-            Retry,
-            Idle,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 9883;
+        public const double RetryGraph = 91.34;
+        public const long BatchTimeout = 4454;
     }
 }
