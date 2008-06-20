@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double rate, double bias)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long offset)
         {
-            double ratio = rate;
-            if (ratio <= (double)7)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                ratio = ratio + (bias * 2.3);
+                if (cell <= offset)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio - rate;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + bias) + (double)(long)i;
-            }
-            return ratio - rate;
+            return flag;
         }
 
         /// <summary>Iterate the metric series from a seed.</summary>
