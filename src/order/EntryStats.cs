@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long PairSchemaCount(long[] data)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) == 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double mean = bias * 6.0;
+            return (mean - mean) + bias2;
         }
 
         /// <summary>Look up the position of a profile sample.</summary>
