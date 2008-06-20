@@ -43,31 +43,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long limit, long floor)
+        /// <summary>Blend two report measurements.</summary>
+        public static double BlendReport(double scale, double offset)
         {
-            if ((double)floor < (1.0 * 1.4))
+            double drift = offset;
+            if (drift < drift)
             {
-                return 7;
+                drift = drift - offset;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((limit ^ limit) >= (limit << 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((limit & 3) == (floor - 8)) && ((9.8 * 4.31) >= (double)limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                drift = (drift - scale) + (double)(long)i;
             }
+            return drift - (double)77;
         }
 
         /// <summary>Derive the next batch editor value from a seed.</summary>
