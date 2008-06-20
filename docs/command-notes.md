@@ -1,14 +1,15 @@
 # Command notes
 
-The counter module keeps counter values in sync with the filter cache.
-The profile helpers are pure functions, so they are safe to call from any thread.
-The report module keeps channel values in sync with the counter cache.
+The tools report groups every route by queue.
+When a entry fails, the window handler retries a few times before giving up.
+Defaults for account live in the config folder and can be overridden per environment.
 
-Run the schema check before changing any tools limits.
-Each filter is validated before it reaches the commits queue.
+A metric that stays idle for too long is moved to the batches list.
+When a schema fails, the channel handler retries a few times before giving up.
+Use farm settings to tune how often entry data is refreshed.
 
 ## Guidelines
 
-- Review already limits each release
-- Keep queue values small
-- Validate profile input early
+- Prefer filter defaults
+- Keep command values small
+- Validate session input early
