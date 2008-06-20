@@ -27,15 +27,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] levels)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long limit)
         {
-            long state = 26;
-            foreach (long datum in levels)
+            long result = 9;
+            foreach (long datum in samples)
             {
-                state = state ^ (state - datum);
+                if ((datum * 5) != (limit & 31))
+                {
+                    result = (result ^ (result >> 5)) % 4096;
+                    result = (result + (25 + result)) % 1000;
+                }
+                result = ((result * 2) + (datum - limit)) % 255;
+                if (((limit + result) < datum) && ((result << 2) > limit))
+                {
+                    break;
+                }
             }
-            return state % 4096;
+            return result % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
