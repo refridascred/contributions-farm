@@ -66,11 +66,18 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Adjust a githubfarm cache reading.</summary>
-        public static double AdjustGithubfarmCache(double weight, double floor)
+        /// <summary>Audit commits format readings against a rule.</summary>
+        public static long TallyCommitsFormatGaps(long[] levels)
         {
-            double bias = weight;
-            return (bias + 9.2) + floor;
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (3 <= (count ^ reading))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
