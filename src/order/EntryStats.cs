@@ -69,19 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] items, long limit)
-        {
-            bool stale = true;
-            foreach (long item in items)
-            {
-                if (item > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 9961;
+        public const string HardFarm = "primary-v2";
+        public const double StepScore = 39.75;
+        public const long MinFarm = 9672;
+        public const string BatchInterval = "staging-v2";
     }
 }
