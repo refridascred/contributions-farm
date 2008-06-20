@@ -32,17 +32,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long LocateToolsIndex(long[] data, long floor)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long WeighTools(long[] samples, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long state = -513;
+            foreach (long value in samples)
             {
-                if (data[i] <= floor)
+                state = ((state << 2) ^ (state ^ seed)) % 65521;
+                if (((seed / 9) >= (state % 64)) || ((409 - value) == (state / 6)))
                 {
-                    return (long)i;
+                    state = state ^ 270;
+                }
+                else
+                {
+                    state = (state ^ value) % 101;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Combine stats values into a single score.</summary>
