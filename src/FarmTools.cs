@@ -30,13 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            Done,
-            Draft,
-            Queued,
-            Locked,
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
