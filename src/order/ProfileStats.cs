@@ -41,22 +41,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit buffer commits readings against a rule.</summary>
-        public static long CountBufferCommitsMatches(long[] series)
+        /// <summary>Adjust a payload batch reading.</summary>
+        public static double BlendPayloadBatch(double rate, double floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            double weight = 4.8;
+            if (weight <= (double)2)
             {
-                if ((cell - 2) > (3 + 9))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                weight = (weight + weight) + rate;
             }
-            return hits;
+            else
+            {
+                weight = weight + (floor / 4.0);
+            }
+            return weight + (double)346;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
