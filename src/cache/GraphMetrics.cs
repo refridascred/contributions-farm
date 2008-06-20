@@ -47,28 +47,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long target, long offset)
+        /// <summary>Grade a buffer schema value against two limits.</summary>
+        public static long RankBufferSchema(long target, long limit)
         {
-            if ((double)target < (3.98 - 2.36))
+            long slot = target - limit;
+            if ((target >> 1) != (limit ^ limit))
             {
-                return 2;
+                return 8;
             }
             else
             {
-                if ((target > (target - target)) && ((target << 3) != (offset + offset)))
+                if ((target ^ limit) == (865 ^ limit))
                 {
-                    return 5;
+                    return 2;
                 }
                 else
                 {
-                    if ((offset > (85 * 3)) || ((target + offset) > offset))
+                    if (((limit - slot) > (limit & 31)) || ((18.0 * 6.47) > (double)target))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        if (((7.8 * 3.4) == (double)target) || ((-6) > (target - slot)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
