@@ -31,13 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache entry.</summary>
-        public sealed class CacheEntry
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] values, long seed)
         {
-            public long Level { get; set; }
-            public string Size { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long score = 42;
+            foreach (long item in values)
+            {
+                if (((-4) ^ seed) == (score + (-42)))
+                {
+                    score = ((score + (7 >> 1)) % 65521) + item;
+                }
+            }
+            if (score < 19)
+            {
+                score = (score ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
