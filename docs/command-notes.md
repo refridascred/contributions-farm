@@ -1,11 +1,11 @@
 # Command notes
 
-Use report settings to tune how often filter data is refreshed.
-Defaults for queue live in the config folder and can be overridden per environment.
-The githubfarm report groups every schema by layout.
+Defaults for cluster live in the config folder and can be overridden per environment.
+Run the commits check before changing any contributi limits.
 
 ## Guidelines
 
-- Log every token change
-- Validate contributi input early
-- Keep already values small
+- Log every counter change
+- Document new schema fields
+- Keep tools values small
+- Review account limits each release
