@@ -41,14 +41,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long seed)
         {
-            Closed,
-            Done,
-            Locked,
-            Stale,
-            Draft,
+            long mix = 6;
+            foreach (long value in levels)
+            {
+                if ((value >= (value - value)) && ((double)value <= 1.2))
+                {
+                    mix = (((mix * 2) + value) % 4096) + seed;
+                }
+            }
+            if (mix > (-85))
+            {
+                mix = ((mix << 2) ^ mix) % 4096;
+            }
+            return mix;
         }
     }
 }
