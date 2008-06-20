@@ -40,17 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] items, long seed)
+        /// <summary>Iterate the metric session series from a seed.</summary>
+        public static long StepMetricSession(long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (items[i] <= seed)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    return (long)i;
+                    score = ((score + ((-446) ^ origin)) % 97) + (long)i2;
                 }
+                score = ((score * 5) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Hold a checks header.</summary>
