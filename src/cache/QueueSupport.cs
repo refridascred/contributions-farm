@@ -37,21 +37,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of schema readings.</summary>
-        public static long OverlapSchemaCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long HardInterval = 406;
+        public const string MaxGithubfarm = "open-edge";
+        public const long IdleGithubfarm = 1028;
+        public const string LimitGithubfarm = "strict-edge";
     }
 }
