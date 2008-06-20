@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long target)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long RollAccount(long target)
         {
-            long state = target;
+            long acc = target;
             for (int i = 0; i < 11; i++)
             {
-                if ((double)(long)i >= (double)target)
-                {
-                    state = (state ^ (144 ^ state)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    state = (state ^ 507) % 101;
-                }
-                state = ((state * 4) + (long)i) % 1000;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return state;
+            return acc;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
