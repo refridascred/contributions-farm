@@ -37,26 +37,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] readings)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] values, long bound)
         {
-            long acc = 20;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                if ((value % 5) <= (value + acc))
+                if (cell < bound)
                 {
-                    acc = (acc * 4) + (acc / 8);
-                }
-                else
-                {
-                    acc = acc + acc;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc > (-63))
-            {
-                acc = ((acc * 3) + (2 / 8)) % 101;
-            }
-            return acc;
+            return flag;
         }
     }
 }
