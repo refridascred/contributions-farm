@@ -83,10 +83,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepPayload = 6379;
-        public const long LimitPayload = 303;
-        public const string BurstPayload = "strict-v2";
-        public const string RetrySpan = "standard-edge";
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BurstEntry = 55.69;
+        public const double CacheEntry = 9.1;
+        public const double WindowEntry = 69.37;
+        public const long IdleEntry = 3547;
     }
 }
