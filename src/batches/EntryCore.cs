@@ -23,24 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long RankMetrics(long offset, long offset2)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            if (offset2 < (offset2 ^ (-8)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((45 << 2) == (15 - offset2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Pending,
+            Active,
+            Failed,
         }
 
         /// <summary>Describe the commits phase values.</summary>
