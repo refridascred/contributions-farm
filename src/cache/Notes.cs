@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricHits(long[] readings, long floor)
+        /// <summary>Describe the session class values.</summary>
+        public enum SessionClass
         {
-            long seen = 0;
-            foreach (long datum in readings)
-            {
-                if (seen < (floor >> 1))
-                {
-                    seen = (seen + 3) - datum;
-                }
-            }
-            return seen;
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
