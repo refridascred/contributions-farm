@@ -19,16 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the channel cluster series from a seed.</summary>
-        public static long IterateChannelCluster(long limit)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long SeekEditorIndex(long[] samples, long target)
         {
-            long acc = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc - ((long)i << 3)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                if ((samples[i] < target) && ((samples[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
