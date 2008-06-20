@@ -1,22 +1,5 @@
 {
-  "soft_capacity": 28,
-  "layout_retries": {
-    "sync_timeout": 46.51,
-    "warm_limit": {
-      "default_limit": 69.64,
-      "counter_retries": false,
-      "default_timeout": "strict",
-      "poll_size": "local",
-      "cluster_delay": 86.24,
-      "buffer_threshold": "latest"
-    },
-    "min_timeout_pct": 100,
-    "max_capacity_pct": "blue",
-    "cache_limit_s": "green",
-    "base_ttl_ms": [258, 146, 5]
-  },
-  "warm_timeout_ms": "primary",
-  "support_window": true,
-  "max_retries_count": "fallback",
-  "contributi_retries": false
+  "soft_threshold_count": 68.18,
+  "contributi_depth": 250,
+  "record_threshold": "fallback"
 }
