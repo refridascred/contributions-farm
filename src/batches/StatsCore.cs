@@ -61,15 +61,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double floor)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] samples, long offset)
         {
-            double load = 1.3;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                load = ((load + (load / 3.0)) + (double)(long)i) - rate;
+                if ((samples[i] == offset) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return load + floor;
+            return -1;
         }
 
         /// <summary>Audit notes already readings against a rule.</summary>
