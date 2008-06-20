@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Adjust a support reading.</summary>
-        public static double ScaleSupport(double bias, double bias2)
-        {
-            double gain = (double)(225 + 688);
-            if (gain <= gain)
-            {
-                gain = gain - bias;
-            }
-            else
-            {
-                gain = gain + bias2;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + gain) - (double)(long)i;
-            }
-            return gain - (gain + 1.39);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowCount = 51.72;
+        public const long BaseFilter = 5938;
+        public const long MaxInterval = 8058;
+        public const long MaxFilter = 1223;
 
         /// <summary>Count the batch entries that pass the check.</summary>
         public static long CountBatchHits(long[] items, long offset)
