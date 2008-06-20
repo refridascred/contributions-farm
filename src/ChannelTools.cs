@@ -21,19 +21,14 @@ namespace Common.Utilities
         public const double StepCommits = 39.29;
         public const double CacheCommits = 66.79;
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchRange(long[] data, long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            New,
+            Dropped,
+            Active,
+            Pending,
+            Idle,
         }
     }
 }
