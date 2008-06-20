@@ -34,17 +34,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long LocateStreamIndex(long[] values, long target)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] data)
         {
-            for (int i = 0; i < values.Length; i++)
+            long mark = 7;
+            foreach (long sample in data)
             {
-                if ((values[i] >= target) && ((values[i] % 3) != 0))
+                if ((3.97 - 17.0) != (double)sample)
                 {
-                    return (long)i;
+                    mark = (mark ^ (sample & 255)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (sample + sample)) % 255;
+                }
+                if (mark > sample)
+                {
+                    break;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
