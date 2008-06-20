@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            public long Region { get; set; }
-            public bool Flag { get; set; }
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Synced,
+            Idle,
+            Stale,
+            Closed,
         }
 
         /// <summary>Locate a already counter reading by value.</summary>
