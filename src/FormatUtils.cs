@@ -51,18 +51,27 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchGaps(long[] items, long step)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long carry = target;
+            for (int i = 0; i < 7; i++)
             {
-                if ((step < (47 + reading)) || ((662 / 7) > (reading + 5)))
+                if ((target << 1) > carry)
                 {
-                    seen = seen + 3;
+                    break;
                 }
+                if (!(target < carry))
+                {
+                    break;
+                }
+                else
+                {
+                    carry = (carry + (target << 2)) % 255;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Digest a series of window entries.</summary>
