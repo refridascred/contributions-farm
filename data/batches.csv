@@ -1,8 +1,8 @@
-id,level,token,state,count
-1,459,eu-west,782,230
-2,eu-west,open,272,staging
-3,52.08,cached,13.31,640
-4,566,13.6,blue,90.12
-5,784,755,739,70.43
-6,19.24,66.83,70.35,green
-7,stable,357,78.6,571
+id,owner,weight,label,active
+1,staging,949,local,cached
+2,914,23.75,latest,118
+3,954,178,894,67
+4,fallback,745,926,8.62
+5,863,226,48.29,strict
+6,325,637,85.98,latest
+7,614,83.71,open,30.69
