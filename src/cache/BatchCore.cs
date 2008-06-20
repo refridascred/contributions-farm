@@ -36,38 +36,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long BucketCluster(long seed, long limit)
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            if (seed >= limit)
-            {
-                return 4;
-            }
-            else
-            {
-                if (seed < limit)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((776 < seed) || ((seed - limit) >= (820 << 2)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((7.2 < (double)seed) && ((limit - limit) != (limit & 1)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Dropped,
+            Pending,
         }
     }
 }
