@@ -65,12 +65,17 @@ namespace Common.Utilities
             return mean + (floor + ratio);
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Look up the position of a session entry sample.</summary>
+        public static long SeekSessionEntryIndex(long[] readings, long target)
         {
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
