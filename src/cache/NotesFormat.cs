@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string LimitContributi = "open-edge";
         public const double HardSpan = 24.35;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] values)
+        /// <summary>Digest a series of order payload entries.</summary>
+        public static long TallyOrderPayload(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = 55;
+            foreach (long reading in levels)
             {
-                if (115 > (tally << 1))
-                {
-                    tally = (tally + 2) + entry;
-                }
+                carry = (((carry + carry) % 4096) - reading) - offset;
             }
-            return tally;
+            return carry % 97;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
