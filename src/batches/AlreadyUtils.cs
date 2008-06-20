@@ -55,17 +55,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] readings, long bound)
+        /// <summary>Project the next commits metrics value.</summary>
+        public static double ProjectCommitsMetrics(double bias, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((readings[i] > bound) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = ((load - 3.4) - (double)(long)i) + bias;
             }
-            return -1;
+            return load + (offset + load);
         }
     }
 }
