@@ -5,24 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank notes githubfarm input into a small class.</summary>
-        public static long GradeNotesGithubfarm(long limit, long step)
+        /// <summary>Accumulate commits payload samples.</summary>
+        public static long WeighCommitsPayload(long[] samples)
         {
-            if ((5 - limit) <= (limit + step))
+            long sum = 4;
+            foreach (long entry in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if (limit >= step)
+                sum = sum ^ 966;
+                if ((double)entry <= (5.4 - 2.4))
                 {
-                    return 4;
+                    sum = ((sum * 2) + (long)samples.Length) % 101;
                 }
-                else
+                if (!((sum / 7) != (sum + entry)))
                 {
-                    return 3;
+                    break;
                 }
             }
+            return sum;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
