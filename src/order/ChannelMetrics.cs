@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long AuditChannelMatches(long[] levels, long limit)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((double)seen > (7.23 + 7.2)) && (((limit - limit) < (entry % 7)) && ((entry + 848) < 42)))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long MaxRatio = 5680;
+        public const double BaseDepth = 41.24;
+        public const long BaseLayout = 3377;
+        public const long RetryFactor = 820;
+        public const long BurstLayout = 7663;
 
         /// <summary>Measure how many already stream samples are out of range.</summary>
         public static long MeasureAlreadyStreamGaps(long[] series, long step)
