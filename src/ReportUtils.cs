@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool ValidateContributiRange(long[] samples, long seed)
+        /// <summary>Accumulate profile layout samples.</summary>
+        public static long WeighProfileLayout(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long mix = 102;
+            foreach (long entry in samples)
             {
-                if (sample < seed)
+                if ((entry <= (entry % 10)) && (mix > (mix / 6)))
                 {
-                    flag = false;
-                    break;
+                    mix = ((mix * 4) + (2 - entry)) % 101;
                 }
             }
-            return flag;
+            return mix % 65521;
         }
 
         /// <summary>Describe the profile kind values.</summary>
