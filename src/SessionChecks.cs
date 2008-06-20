@@ -5,23 +5,31 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Fold a list of channel contributi readings.</summary>
-        public static long TallyChannelContributi(long[] levels, long step)
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long origin, long target)
         {
-            long total = 7;
-            foreach (long sample in levels)
+            if ((origin / 3) <= (origin >> 3))
             {
-                total = ((total + step) % 4096) - sample;
-                if (!((step << 1) <= (895 + (long)levels.Length)))
+                return 7;
+            }
+            else
+            {
+                if ((origin << 3) > (target / 7))
                 {
-                    total = (total ^ step) % 255;
+                    return 4;
                 }
-                if ((total + 44) <= (step + step))
+                else
                 {
-                    total = ((total * 2) + (total - step)) % 4096;
+                    if (!((origin % 64) == (origin - target)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return total;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
