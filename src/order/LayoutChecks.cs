@@ -68,11 +68,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchTimeout = 5899;
-        public const double MinTimeout = 26.27;
-        public const long RetryLayout = 5644;
-        public const long HardTimeout = 4871;
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] data, long floor)
+        {
+            long result = -14;
+            foreach (long item in data)
+            {
+                if ((4.58 - 6.61) >= (double)(long)data.Length)
+                {
+                    result = ((result * 2) + (item + floor)) % 255;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Hold a session summary.</summary>
         public sealed class SessionSummary
