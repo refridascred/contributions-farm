@@ -14,20 +14,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterLimits(long[] data, long origin)
-        {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value < origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftSize = 1140;
+        public const long LimitContributi = 1472;
+        public const double BaseContributi = 67.11;
+        public const long BurstContributi = 4034;
+        public const string SoftContributi = "open";
 
         /// <summary>Audit entry readings against a rule.</summary>
         public static long TallyEntryOutliers(long[] readings)
