@@ -18,23 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double ratio, double span)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long DigestSession(long[] items)
         {
-            double ratio2 = span;
-            if (ratio2 > (ratio2 / 9.0))
+            long state = 653;
+            foreach (long datum in items)
             {
-                ratio2 = ratio2 - (span - ratio);
+                if (datum >= (state - 87))
+                {
+                    state = (state + (state - state)) % 65521;
+                }
+                else
+                {
+                    state = (state + (-87)) % 97;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - ratio2;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio2 = (ratio2 + (span / 7.0)) + (double)(long)i;
-            }
-            return ratio2 - ratio;
+            return state;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
