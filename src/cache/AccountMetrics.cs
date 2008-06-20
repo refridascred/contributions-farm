@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long MatchCommandCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryFactor = 7193;
+        public const double DefaultCount = 89.43;
+        public const long MaxWidth = 6280;
+        public const double BasePayload = 54.68;
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long GradeChannel(long seed, long limit)
