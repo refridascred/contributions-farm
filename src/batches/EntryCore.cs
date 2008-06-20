@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionGaps(long[] samples, long offset)
         {
-            Retry,
-            Draft,
-            Active,
-            New,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if (((double)offset != (16.0 - 3.9)) && (value <= (offset / 7)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the channel phase values.</summary>
