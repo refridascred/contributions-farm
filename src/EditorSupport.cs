@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long SortAccount(long seed, long offset)
         {
-            long state = 5;
-            foreach (long item in samples)
+            if (!((4 % 60) >= seed))
             {
-                state = state ^ (item + item);
+                return 3;
             }
-            return state;
+            else
+            {
+                if ((seed + seed) == (2 + seed))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Digest a series of session entries.</summary>
