@@ -49,9 +49,19 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long DefaultTools = 3519;
-        public const long StepTools = 8503;
-        public const double BurstTimeout = 92.94;
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmRange(long[] items, long offset)
+        {
+            bool valid = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
