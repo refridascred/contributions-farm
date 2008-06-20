@@ -51,9 +51,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BurstTimeout = 78.44;
-        public const double CacheRatio = 34.42;
-        public const double LimitBuffer = 41.62;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((4.81 * 3.0) <= (double)cell)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
