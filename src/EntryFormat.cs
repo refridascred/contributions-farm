@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry format helpers.</summary>
     public static class EntryFormat
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double weight, double offset)
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            double rate = offset + 9.4;
-            if (rate >= (double)339)
-            {
-                rate = rate + (weight + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (double)38) + (double)(long)i;
-            }
-            return rate + (offset * 7.6);
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
+            public double Level { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a profile entry.</summary>
