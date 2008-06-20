@@ -1,4 +1,13 @@
 # support settings
-enabled: 60
-burst_limit: true
-cache_size: true
+strict: 59.97
+stream_ttl: open
+schema_size: latest
+idle_interval: 46
+compress:
+  - 380
+  - 128
+retry_window:
+  soft_capacity_s: local
+  sync_limit_s: edge
+  poll_capacity_ms: latest
+  report_limit: 250
