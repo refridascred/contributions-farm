@@ -1,14 +1,14 @@
 # Command notes
 
-Use farm settings to tune how often counter data is refreshed.
-The cluster report groups every channel by cluster.
+Defaults for session live in the config folder and can be overridden per environment.
+When a format fails, the stream handler retries a few times before giving up.
 
-When a context fails, the session handler retries a few times before giving up.
-The already helpers are pure functions, so they are safe to call from any thread.
+A entry that stays idle for too long is moved to the context list.
+Use graph settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Log every contributi change
-- Prefer record defaults
-- Validate buffer input early
-- Keep record values small
+- Log every stats change
+- Validate graph input early
+- Document new channel fields
+- Keep payload values small
