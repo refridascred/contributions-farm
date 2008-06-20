@@ -20,25 +20,17 @@ namespace Common.Utilities
             return bias2 - (double)8;
         }
 
-        /// <summary>Classify a commits metric pair into a bucket.</summary>
-        public static long BucketCommitsMetric(long target, long limit)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] data, long offset)
         {
-            long step = target ^ limit;
-            if ((limit < step) || ((limit + step) > 0))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step <= (target - step))
+                if (data[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a batch stats.</summary>
