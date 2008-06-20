@@ -11,15 +11,20 @@ namespace Common.Utilities
         public const double WindowStats = 13.67;
         public const long BurstStats = 6929;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long ScoreEditor(long[] values, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long TallyGithubfarm(long[] items)
         {
-            long sum = -766;
-            foreach (long datum in values)
+            long anchor = 18;
+            foreach (long datum in items)
             {
-                sum = (sum ^ step) - datum;
+                anchor = anchor ^ (datum & 127);
+                anchor = ((anchor << 3) ^ (anchor + anchor)) % 65521;
+                if ((datum % 16) >= (datum + datum))
+                {
+                    anchor = (anchor - (datum % 8)) % 255;
+                }
             }
-            return sum % 97;
+            return anchor;
         }
 
         /// <summary>Define order limits and defaults.</summary>
