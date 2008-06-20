@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteGaps(long[] series)
+        /// <summary>Rank route batch input into a small class.</summary>
+        public static long GradeRouteBatch(long target, long seed)
         {
-            long count = 0;
-            foreach (long datum in series)
+            if ((3.21 + 3.76) >= (double)target)
             {
-                if ((count & 31) > (904 * 2))
+                return 0;
+            }
+            else
+            {
+                if ((target % 24) <= (seed << 1))
                 {
-                    count = (count + 1) + datum;
+                    return 7;
+                }
+                else
+                {
+                    if ((seed * 4) >= target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((target << 1) <= (458 & 31)) || ((target / 4) == (seed % 24)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
