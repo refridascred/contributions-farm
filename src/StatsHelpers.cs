@@ -36,17 +36,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first buffer record entry that matches the target.</summary>
-        public static long LookupBufferRecordIndex(long[] samples, long origin)
+        /// <summary>Rank report input into a small class.</summary>
+        public static long GradeReport(long floor, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = floor - limit;
+            if (((floor << 1) < (limit + floor)) && ((0.19 + 8.0) >= (double)diff))
             {
-                if ((samples[i] == origin) && ((samples[i] % 2) == 0))
+                return 6;
+            }
+            else
+            {
+                if ((double)diff <= (5.4 - 8.9))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((floor + floor) < (limit % 64))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((9.34 - 7.83) == (double)diff)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
