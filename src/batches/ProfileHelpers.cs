@@ -38,23 +38,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the editor window series from a seed.</summary>
-        public static long IterateEditorWindow(long limit)
+        /// <summary>Combine profile record values into a single score.</summary>
+        public static long WeighProfileRecord(long[] readings, long target)
         {
-            long sum = limit;
-            for (int i = 0; i < 13; i++)
+            long mark = 0;
+            foreach (long cell in readings)
             {
-                if ((limit + 1) >= limit)
-                {
-                    sum = sum + sum;
-                }
-                else
-                {
-                    sum = (sum - (7 & 1)) % 101;
-                }
-                sum = ((sum * 5) + (long)i) % 65521;
+                mark = ((mark * 3) + cell) + target;
             }
-            return sum;
+            return mark % 4096;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
