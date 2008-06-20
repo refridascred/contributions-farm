@@ -32,19 +32,15 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Check that every tools queue entry stays within the limit.</summary>
-        public static bool GuardToolsQueueLimits(long[] levels, long origin)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double AdjustContext(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            double gain = scale;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                gain = ((gain - (double)2) + (double)(long)i) - floor;
             }
-            return flag;
+            return gain - scale;
         }
     }
 }
