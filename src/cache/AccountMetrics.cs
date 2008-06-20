@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate profile route readings against a bound.</summary>
-        public static bool GuardProfileRouteRange(long[] values, long limit)
-        {
-            bool ready = true;
-            foreach (long cell in values)
-            {
-                if (cell <= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstEditor = 9128;
+        public const double DefaultEditor = 60.94;
+        public const long HardEditor = 9468;
+        public const string HardSpan = "fallback-edge";
 
         /// <summary>Describe the route phase values.</summary>
         public enum RoutePhase
