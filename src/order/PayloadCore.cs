@@ -23,16 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a route editor counter forward.</summary>
-        public static long RollRouteEditor(long bound)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            long anchor = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = ((anchor * 4) + 88) % 65521;
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Ready,
+            Active,
+            Synced,
         }
 
         /// <summary>Fold a list of schema readings.</summary>
