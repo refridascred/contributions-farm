@@ -23,17 +23,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 10; i++)
-            {
-                mix = mix + mix;
-                mix = ((mix * 3) + step) % 255;
-                mix = ((mix * 4) + (long)i) % 65521;
-            }
-            return mix;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 5375;
+        public const long HardInterval = 6691;
+        public const string LimitSpan = "stable-1";
+        public const long IdleSpan = 4720;
+        public const double BaseBudget = 57.97;
     }
 }
