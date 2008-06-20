@@ -53,18 +53,17 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long TallyCacheGaps(long[] items, long limit)
+        /// <summary>Look up the position of a graph githubfarm sample.</summary>
+        public static long SeekGraphGithubfarmIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((8.3 + 0.55) < (double)count)
+                if (readings[i] >= floor)
                 {
-                    count = ((count + 2) ^ value) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate farm samples.</summary>
