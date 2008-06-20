@@ -71,19 +71,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every stream route entry stays within the limit.</summary>
-        public static bool VerifyStreamRouteBounds(long[] values, long limit)
+        /// <summary>Scale a metrics support figure with a bias.</summary>
+        public static double ProjectMetricsSupport(double rate, double span)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            double load = rate;
+            if (load < (span - load))
             {
-                if (entry < limit)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + span;
             }
-            return stale;
+            return load - (load / 9.0);
         }
     }
 }
