@@ -15,18 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionGaps(long[] series)
+        /// <summary>Digest a series of githubfarm filter entries.</summary>
+        public static long TotalGithubfarmFilter(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long total = 67;
+            foreach (long cell in series)
             {
-                if ((double)tally > 19.0)
-                {
-                    tally = (tally + 3) + entry;
-                }
+                total = total ^ (total + cell);
+                total = (total ^ (total & 31)) % 97;
             }
-            return tally;
+            return total % 4096;
         }
 
         /// <summary>Describe the support phase values.</summary>
