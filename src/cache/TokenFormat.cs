@@ -5,31 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long seed, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long MeasureMetricMatches(long[] data)
         {
-            if ((double)seed >= (7.0 / 5.0))
+            long count = 0;
+            foreach (long cell in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (561 <= floor)
+                if ((count % 10) < count)
                 {
-                    return 8;
+                    count = (count + 2) ^ cell;
                 }
                 else
                 {
-                    if (seed <= floor)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a cache reading.</summary>
