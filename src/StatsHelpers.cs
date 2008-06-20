@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Count the buffer batches entries that pass the check.</summary>
-        public static long AuditBufferBatchesOutliers(long[] items)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((double)hits > (4.22 - 5.9))
-                {
-                    hits = (hits + 3) - reading;
-                }
-            }
-            return hits;
+            Stale,
+            Done,
+            Ready,
         }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
