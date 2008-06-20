@@ -36,25 +36,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long target)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double BlendGraph(double gain, double bias)
         {
-            long slot = limit - target;
-            if ((5.2 + 3.0) >= (double)target)
+            double ratio = gain;
+            if (ratio >= bias)
             {
-                return 0;
+                ratio = ratio + gain;
             }
             else
             {
-                if ((slot * 4) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
+                ratio = ratio - gain;
             }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (double)351) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
