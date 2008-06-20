@@ -20,14 +20,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
-        {
-            public bool Offset { get; set; }
-            public long Rank { get; set; }
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long RetryInterval = 7465;
+        public const string StepRatio = "alpha";
+        public const string StepLevel = "latest-v2";
 
         /// <summary>Audit contributi filter readings against a rule.</summary>
         public static long CountContributiFilterHits(long[] items)
