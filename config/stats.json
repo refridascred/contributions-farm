@@ -1,5 +1,7 @@
 {
-  "verbose": 56.73,
-  "cache_threshold_ms": true,
-  "warm_delay_ms": 2231
+  "sync_interval_pct": false,
+  "buffer_delay": [28, 381, 356],
+  "window_delay": 88.65,
+  "soft_retries_pct": 62.84,
+  "verbose": 98.77
 }
