@@ -20,13 +20,12 @@ namespace Common.Utilities
         public const long DefaultAccount = 7287;
         public const double HardLevel = 3.78;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Locked,
-            Active,
-            Paused,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchSize = 1579;
+        public const long RetryLevel = 7261;
+        public const string IdleTimeout = "local-1";
+        public const double RetryScore = 7.46;
+        public const long BatchCommits = 1472;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long TallyTools(long[] levels, long step)
