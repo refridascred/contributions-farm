@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public double Weight { get; set; }
+            Done,
+            Paused,
+            Active,
+            Queued,
+            Idle,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
