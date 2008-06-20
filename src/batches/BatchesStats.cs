@@ -46,11 +46,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string WindowCount = "legacy-v2";
-        public const long BaseFilter = 7276;
-        public const long HardTimeout = 1975;
-        public const double MaxLevel = 25.47;
-        public const long BatchCount = 5930;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowFarm = 9875;
+        public const long LimitTimeout = 3383;
+        public const long SoftDepth = 7273;
+        public const double StepTimeout = 70.29;
+        public const long CacheFarm = 1717;
     }
 }
