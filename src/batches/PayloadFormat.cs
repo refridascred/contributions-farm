@@ -56,12 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a checks notes sample.</summary>
-        public static long FindChecksNotesIndex(long[] levels, long floor)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long LookupChannelIndex(long[] series, long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (levels[i] <= floor)
+                if ((series[i] >= seed) && ((series[i] % 2) != 0))
                 {
                     return (long)i;
                 }
