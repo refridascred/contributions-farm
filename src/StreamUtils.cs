@@ -64,10 +64,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long HardFarm = 8086;
-        public const string CacheInterval = "primary-1";
-        public const long DefaultFarm = 2956;
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long DeriveSchema(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    sum = (sum - 15) ^ (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Measure how many window samples are out of range.</summary>
         public static long TallyWindowMatches(long[] items, long seed)
