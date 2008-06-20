@@ -6,15 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 3); do
-    total=$((total + i * 3))
-done
-log "total ${total}"
+mode="${1:-cached}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in local fallback; do
+for item in fallback eu-west; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=277
+COMMAND_LIMIT=320
 log "limit is ${COMMAND_LIMIT}"
