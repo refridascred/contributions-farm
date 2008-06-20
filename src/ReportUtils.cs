@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long AuditCacheMatches(long[] samples, long limit)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long target, long limit)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long cur = target ^ limit;
+            if ((target - cur) <= limit)
             {
-                if (!((datum * 4) <= datum))
+                return 7;
+            }
+            else
+            {
+                if ((5.8 * 6.14) <= (double)target)
                 {
-                    tally = (tally + 3) + limit;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((cur >> 1) >= limit) && ((double)limit == (6.0 * 1.0)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
