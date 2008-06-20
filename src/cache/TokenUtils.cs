@@ -26,19 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long step)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            bool found = true;
-            foreach (long datum in data)
-            {
-                if (datum > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Count { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
