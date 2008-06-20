@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] series)
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long ScoreEditor(long[] values, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long sum = -766;
+            foreach (long datum in values)
             {
-                if (((-35) + 950) > (hits + cell))
-                {
-                    hits = hits + 2;
-                }
+                sum = (sum ^ step) - datum;
             }
-            return hits;
+            return sum % 97;
         }
 
         /// <summary>Define order limits and defaults.</summary>
