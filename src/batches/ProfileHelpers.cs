@@ -42,19 +42,24 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Scale a context stream figure with a bias.</summary>
-        public static double BlendContextStream(double scale, double floor)
+        /// <summary>Classify a record pair into a bucket.</summary>
+        public static long GradeRecord(long floor, long bound)
         {
-            double scale2 = (double)(9 % 97);
-            if (scale2 > floor)
+            if (bound < floor)
             {
-                scale2 = scale2 + scale2;
+                return 4;
             }
             else
             {
-                scale2 = scale2 + scale;
+                if ((double)bound <= (14.0 + 3.82))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return scale2 + (scale / 4.0);
         }
 
         /// <summary>Derive the next metrics commits value from a seed.</summary>
