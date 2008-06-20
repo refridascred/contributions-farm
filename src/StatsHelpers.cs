@@ -27,24 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long floor, long limit)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            if (floor > (floor - floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit << 2) <= (floor >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Locked,
+            Queued,
+            Idle,
+            Dropped,
+            Active,
         }
 
         /// <summary>Hold a githubfarm snapshot.</summary>
