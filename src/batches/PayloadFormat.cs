@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the entry queue entries that pass the check.</summary>
-        public static long AuditEntryQueueOutliers(long[] series, long limit)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double ratio, double offset)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double bias = (double)(5 + 2);
+            if (bias < offset)
             {
-                if ((limit - value) == (seen % 100))
-                {
-                    seen = seen + 2;
-                }
+                bias = (bias + (bias / 2.0)) - ratio;
             }
-            return seen;
+            else
+            {
+                bias = bias - (7.0 * 12.0);
+            }
+            return bias - (8.54 - bias);
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
