@@ -1,24 +1,9 @@
 # githubfarm settings
-enabled: 51.36
-hard_retries_pct: cached
-account_ratio: stable
-idle_size_ms:
-  flush_depth_ms: 5.2
-  metrics_limit: fallback
-  channel_size:
-    cache_delay_ms:
-      - 347
-      - 151
-      - 306
-      - 109
-    batch_size_s:
-      - fallback
-      - fallback
-    farm_timeout: false
-    strict: latest
-    min_threshold_pct: fallback
-    notes_depth: legacy
-  graph_size: blue
-  base_size: 92.73
-warm_delay_count: 26
-retry_window: 250
+flush_timeout_count: blue
+hard_ratio: standard
+batch_limit: 8955
+burst_limit:
+  persist: latest
+  commits_size: 89.35
+  default_depth_s: 6889
+  warm_threshold_ms: 93.94
