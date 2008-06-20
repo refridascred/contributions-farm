@@ -35,20 +35,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long step)
+        /// <summary>Measure how many cache profile samples are out of range.</summary>
+        public static long AuditCacheProfileGaps(long[] readings)
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                mark = ((mark << 3) ^ 77) % 97;
-                if (((long)i > mark) && ((double)mark <= (8.9 / 8.0)))
+                if ((double)7 <= (double)datum)
                 {
-                    mark = (mark ^ (step + step)) % 255;
+                    matches = matches + 1;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
     }
 }
