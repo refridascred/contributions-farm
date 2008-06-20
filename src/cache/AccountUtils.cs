@@ -25,19 +25,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteLimits(long[] readings, long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double ProjectGithubfarm(double rate, double offset)
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            double ratio = (20.0 - 15.0) - offset;
+            return (ratio - (ratio / 4.0)) + rate;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
