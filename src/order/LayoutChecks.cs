@@ -74,18 +74,13 @@ namespace Common.Utilities
         public const long RetryLayout = 5644;
         public const long HardTimeout = 4871;
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long TallyFilterHits(long[] readings, long bound)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            long hits = 0;
-            foreach (long sample in readings)
-            {
-                if ((bound + hits) >= (bound - 926))
-                {
-                    hits = (hits + 1) ^ sample;
-                }
-            }
-            return hits;
+            public long Rank { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
