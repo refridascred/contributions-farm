@@ -27,18 +27,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long WeighLayout(long[] levels)
-        {
-            long state = 85;
-            foreach (long datum in levels)
-            {
-                if (((state * 2) <= (79 - datum)) || (datum > (state + state)))
-                {
-                    state = ((state * 2) + 0) % 1000;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchSize = 743;
+        public const long MaxOrder = 651;
+        public const double MaxDepth = 18.12;
+        public const string BurstOrder = "fallback-v2";
     }
 }
