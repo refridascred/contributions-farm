@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a report value against two limits.</summary>
-        public static long GradeReport(long origin, long step)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsGaps(long[] data)
         {
-            long next = origin - step;
-            if ((double)next <= (7.02 * 4.6))
+            long hits = 0;
+            foreach (long cell in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((next << 2) != (252 + step)) || ((875 - 0) <= (next ^ origin)))
+                if ((cell / 9) != (cell + 39))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin + 3) == (origin + next))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
 
         /// <summary>Hold a payload stats.</summary>
