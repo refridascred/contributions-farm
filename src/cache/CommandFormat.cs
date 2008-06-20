@@ -46,17 +46,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] levels, long seed)
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Retry,
+            Ready,
+            Closed,
+            Active,
         }
     }
 }
