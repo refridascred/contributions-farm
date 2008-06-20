@@ -26,19 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate githubfarm report readings against a bound.</summary>
-        public static bool CheckGithubfarmReportLimits(long[] levels, long floor)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool ok = true;
-            foreach (long reading in levels)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Locked,
+            Retry,
+            Idle,
         }
 
         /// <summary>Hold a entry summary.</summary>
