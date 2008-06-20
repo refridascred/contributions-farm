@@ -23,11 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            Pending,
-            Active,
+            New,
+            Locked,
+            Closed,
             Failed,
         }
 
