@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] readings)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long target2)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long cur = target - target2;
+            if (!(target2 >= cur))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((double)target < (double)6)
                 {
-                    if ((readings[i] ^ readings[j]) == 12)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target2 >= (9.0 - 3.76))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((7.6 - 17.0) >= (double)target2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the session state values.</summary>
