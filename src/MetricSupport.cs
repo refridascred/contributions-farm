@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 7769;
-        public const double SoftDepth = 26.27;
-        public const long BurstTimeout = 329;
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesHits(long[] readings, long seed)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if ((item - 82) != (item / 2))
+                {
+                    matches = (matches + 2) - seed;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Measure how many report metrics samples are out of range.</summary>
         public static long CountReportMetricsOutliers(long[] values)
