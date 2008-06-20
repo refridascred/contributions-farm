@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchWidth = 3430;
-        public const long LimitInterval = 2569;
-        public const string HardInterval = "alpha-v2";
-        public const long LimitScore = 6590;
-        public const long SoftSpan = 7879;
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] samples)
+        {
+            long state = 12;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = (state ^ (state + 66)) - (long)i;
+                }
+                if (((10.0 - 1.0) == (double)entry) && (23 < entry))
+                {
+                    state = (state << 3) ^ entry;
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long HardRecord = 6529;
