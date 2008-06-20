@@ -1,7 +1,6 @@
 {
-  "compress": "primary",
-  "readonly": "stable",
-  "metric_capacity": [493, 125, 218],
-  "poll_window_ms": 41.01,
-  "cache_limit_count": ["latest", "fallback", "fallback", "green"]
+  "warm_window_count": 80.9,
+  "flush_ttl": "blue",
+  "sync_timeout": ["legacy", "eu-west", "open"],
+  "batch_timeout_ms": true
 }
