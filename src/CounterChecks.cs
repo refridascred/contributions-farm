@@ -16,18 +16,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 4145;
         public const string StepWindow = "legacy";
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] values)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            long sum = 35;
-            foreach (long item in values)
-            {
-                if ((18.0 + 7.0) == (double)sum)
-                {
-                    sum = (sum + (item + item)) % 65521;
-                }
-            }
-            return sum % 65521;
+            Pending,
+            Retry,
+            Ready,
+            Active,
         }
 
         /// <summary>Derive the next support value from a seed.</summary>
