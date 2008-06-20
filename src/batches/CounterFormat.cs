@@ -12,13 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data, long floor)
         {
-            public bool Token { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public double Level { get; set; }
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((double)hits < (0.2 * 2.0)) || ((9.1 / 3.0) < (8.6 + 3.41)))
+                {
+                    hits = ((hits + 2) + item) + floor;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
