@@ -1,8 +1,15 @@
 {
-  "soft_interval_s": "legacy",
-  "default_threshold": 100,
-  "verbose": 38,
-  "format_threshold": [211, 125],
-  "min_capacity_count": ["local", "blue"],
-  "max_delay": 7602
+  "base_threshold_pct": ["edge", "legacy", "local"],
+  "retry_capacity_ms": 2631,
+  "max_depth_s": true,
+  "cluster_capacity": false,
+  "min_threshold_s": {
+    "idle_delay_count": 62,
+    "report_size": 5149,
+    "default_timeout_count": {
+      "enabled": 500,
+      "max_timeout": "standard",
+      "commits_limit": "legacy"
+    }
+  }
 }
