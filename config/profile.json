@@ -1,13 +1,5 @@
 {
-  "flush_limit_pct": 45.72,
-  "hard_retries_pct": "staging",
-  "compress": {
-    "buffer_ttl": 54,
-    "context_ttl": "blue",
-    "soft_capacity_count": 500,
-    "token_ttl": "strict"
-  },
-  "idle_window_s": 40,
-  "strict": 30,
-  "soft_window_pct": ["standard", "stable", "latest", "edge"]
+  "hard_ratio": "open",
+  "default_ratio": false,
+  "persist": [21, 464, 308]
 }
