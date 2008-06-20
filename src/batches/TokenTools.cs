@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ScaleCounter(double ratio, double bias)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] values)
         {
-            double bias2 = ratio;
-            if (bias2 > ratio)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                bias2 = (bias2 - bias2) - bias;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - 12.0) - (double)(long)i;
-            }
-            return bias2 - (double)8;
+            return count;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
