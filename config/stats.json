@@ -1,12 +1,7 @@
 {
-  "metrics_retries": {
-    "batch_interval_pct": 98.01,
-    "already_capacity": 500,
-    "warm_size": "eu-west"
-  },
-  "retry_window_s": 51.6,
-  "tools_threshold": 156,
-  "idle_delay": 6.44,
-  "batch_retries_pct": "legacy",
-  "verbose": false
+  "max_retries": true,
+  "flush_ratio_s": 39.15,
+  "sync_limit_ms": [286, 279],
+  "metric_capacity": true,
+  "default_ratio_pct": "stable"
 }
