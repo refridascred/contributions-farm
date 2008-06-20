@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank account cache input into a small class.</summary>
-        public static long SortAccountCache(long offset, long offset2)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyOutliers(long[] series)
         {
-            long edge = offset ^ offset2;
-            if ((double)447 >= (double)offset2)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((double)edge == (double)offset2))
+                if ((double)entry == (7.9 * 5.8))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (offset2 <= (942 << 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((874 - offset2) > edge) || ((offset % 100) == (offset >> 4)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = tally + 2;
                 }
             }
+            return tally;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
