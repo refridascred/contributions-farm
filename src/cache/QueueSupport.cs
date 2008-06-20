@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long seed, long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowGaps(long[] data)
         {
-            if (0.45 >= (13.0 * 2.0))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((target + 87) >= (59 << 1)))
+                if ((61 - reading) < (59 / 5))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
