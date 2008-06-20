@@ -36,21 +36,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double scale, double span)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = scale;
+            if (load >= (load / 3.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                load = load - 2.44;
             }
-            return hits;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load + scale) + (double)(long)i;
+            }
+            return load - span;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
