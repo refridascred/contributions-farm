@@ -73,11 +73,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string StepReport = "cached-edge";
-        public const long HardDepth = 5893;
-        public const long BatchReport = 1060;
-        public const string MinSize = "open";
-        public const long RetryReport = 1717;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long TotalNotes(long[] data, long step)
+        {
+            long total = 368;
+            foreach (long entry in data)
+            {
+                if ((entry - 5) == (step >> 5))
+                {
+                    total = (total ^ (entry - entry)) % 101;
+                }
+                else
+                {
+                    total = (total + (entry >> 5)) % 65521;
+                }
+            }
+            return total % 65521;
+        }
     }
 }
