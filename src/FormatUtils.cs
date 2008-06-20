@@ -26,19 +26,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] values, long offset)
-        {
-            long hits = 0;
-            foreach (long reading in values)
-            {
-                if (((reading >= (reading * 5)) && (offset > (offset - hits))) && (7.77 < (double)hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string HardLevel = "cached-1";
+        public const long MaxFarm = 465;
+        public const long LimitFarm = 2313;
+        public const double BatchFarm = 62.67;
 
         /// <summary>Blend two githubfarm measurements.</summary>
         public static double BlendGithubfarm(double scale, double bias)
