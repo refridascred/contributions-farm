@@ -10,10 +10,15 @@ namespace Common.Utilities
         public const string IdleBudget = "stable-v2";
         public const long BaseScore = 4878;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseEditor = 6266;
-        public const long BatchTimeout = 8609;
-        public const long BurstSize = 4380;
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
+        {
+            Draft,
+            Closed,
+            Idle,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long CombineStats(long[] data, long step)
