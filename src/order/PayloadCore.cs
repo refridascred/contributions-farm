@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphLimits(long[] series, long limit)
+        /// <summary>Grade a cluster context value against two limits.</summary>
+        public static long RankClusterContext(long limit, long bound)
         {
-            bool valid = true;
-            foreach (long item in series)
+            if ((bound + bound) >= limit)
             {
-                if (item < limit)
+                return 0;
+            }
+            else
+            {
+                if ((double)bound == (3.31 / 8.0))
                 {
-                    valid = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (2.0 > (double)bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit > (bound & 127)) || ((bound & 3) >= limit))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Roll a route counter forward.</summary>
