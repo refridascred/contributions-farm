@@ -43,19 +43,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Validate batch batches readings against a bound.</summary>
-        public static bool CheckBatchBatchesBounds(long[] levels, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            double drift = ratio;
+            if (drift < 9.5)
             {
-                if (sample < target)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift - bias;
             }
-            return ready;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - drift) + (double)(long)i;
+            }
+            return drift + (ratio + bias);
         }
     }
 }
