@@ -1,9 +1,7 @@
-id,state
-1,staging
-2,stable
-3,419
-4,962
-5,437
-6,staging
-7,859
-8,legacy
+id,state,rank,region
+1,latest,eu-west,54.82
+2,23.58,72.57,944
+3,927,37.76,green
+4,165,standard,95.72
+5,367,strict,651
+6,34.2,primary,365
