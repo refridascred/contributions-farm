@@ -17,19 +17,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] values, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] levels, long origin)
         {
-            bool found = true;
-            foreach (long sample in values)
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                if (sample >= target)
+                if (datum >= origin)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
