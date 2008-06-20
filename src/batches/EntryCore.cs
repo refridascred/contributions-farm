@@ -51,21 +51,21 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Compare every pair of layout token readings.</summary>
-        public static long MatchLayoutTokenCount(long[] levels)
+        /// <summary>Count stats checks pairs that satisfy a relation.</summary>
+        public static long MatchStatsChecksCount(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) < 10)
+                    if ((values[i] + values[j]) == 14)
                     {
-                        count = count + 1;
+                        seen = seen + 1;
                     }
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
