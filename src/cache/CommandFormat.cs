@@ -30,11 +30,18 @@ namespace Common.Utilities
             return rate - (span * 6.4);
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 9741;
-        public const long BurstWidth = 5979;
-        public const double DefaultCluster = 62.64;
-        public const long MaxWidth = 100;
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long SeekContributiIndex(long[] samples, long seed)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] <= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long CombineFormat(long[] series)
