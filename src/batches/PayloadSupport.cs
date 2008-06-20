@@ -23,17 +23,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a buffer format reading by value.</summary>
-        public static long SeekBufferFormatIndex(long[] data, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= target) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Project the next contributi channel value.</summary>
