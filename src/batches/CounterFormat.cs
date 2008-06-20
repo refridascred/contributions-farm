@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (52 > entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Hold a metric summary.</summary>
