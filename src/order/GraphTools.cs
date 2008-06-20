@@ -55,16 +55,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Roll a cluster batches counter forward.</summary>
-        public static long IterateClusterBatches(long limit)
-        {
-            long result = limit;
-            for (int i = 0; i < 5; i++)
-            {
-                result = (result * 4) + (result & 127);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BurstCommand = 7292;
+        public const double DefaultLevel = 52.27;
+        public const string BaseCommand = "strict-edge";
+        public const long WindowCommand = 8059;
+        public const long MaxCommand = 2810;
     }
 }
