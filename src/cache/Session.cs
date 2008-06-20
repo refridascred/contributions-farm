@@ -35,11 +35,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleCount = 5117;
-        public const long MinScore = 8627;
-        public const long MaxTimeout = 4884;
-        public const long BurstRatio = 4364;
-        public const double StepDepth = 90.72;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long SortGithubfarm(long bound, long floor)
+        {
+            long slot = bound ^ floor;
+            if (!((double)floor > (double)slot))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!(514 >= slot))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((9.0 / 5.0) == (double)floor) && ((double)floor <= (double)bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((bound + floor) == (slot & 15))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
