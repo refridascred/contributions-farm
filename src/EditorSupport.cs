@@ -16,21 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] readings)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 212;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 7)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                total = total + (sample + sample);
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Roll a editor counter forward.</summary>
