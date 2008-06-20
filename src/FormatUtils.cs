@@ -45,11 +45,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchGaps(long[] items, long step)
         {
-            public bool Label { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((step < (47 + reading)) || ((662 / 7) > (reading + 5)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Digest a series of window entries.</summary>
