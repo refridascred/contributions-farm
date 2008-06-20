@@ -59,17 +59,11 @@ namespace Common.Utilities
         public const double StepProfile = 45.71;
         public const long HardSize = 8411;
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long SoftBudget = 1449;
+        public const long BaseSpan = 2036;
+        public const long RetryCluster = 4926;
+        public const long DefaultCluster = 3090;
+        public const long BurstCluster = 1630;
     }
 }
