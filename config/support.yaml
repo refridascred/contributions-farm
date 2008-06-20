@@ -1,5 +1,8 @@
 # support settings
-idle_ttl: 500
-burst_capacity: stable
-hard_depth_s: local
-sync_ttl_ms: 500
+verbose: 30
+strict: 79.74
+buffer_threshold:
+  - stable
+  - fallback
+  - fallback
+batch_delay_s: 30
