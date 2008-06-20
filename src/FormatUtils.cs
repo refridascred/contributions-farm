@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
         {
-            public double Ratio { get; set; }
-            public double Total { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            public string Owner { get; set; } = "";
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Digest a series of order entry entries.</summary>
