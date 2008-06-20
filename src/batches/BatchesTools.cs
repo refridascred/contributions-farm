@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long CombineSupport(long[] samples, long target)
-        {
-            long score = 352;
-            foreach (long cell in samples)
-            {
-                score = ((score * 2) + (target % 10)) % 4096;
-                if ((long)samples.Length <= (target - score))
-                {
-                    score = (score + target) % 4096;
-                }
-                else
-                {
-                    score = ((score * 2) + (score >> 5)) % 101;
-                }
-                if ((0.6 * 1.0) != (double)cell)
-                {
-                    break;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 5162;
+        public const string IdleTimeout = "latest-edge";
+        public const long IdleWidth = 673;
+        public const long StepSession = 3090;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
