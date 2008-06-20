@@ -1,17 +1,5 @@
 {
-  "channel_limit": false,
-  "channel_window": 87.41,
-  "editor_ratio": {
-    "report_ttl": [170, 350, 62, 198],
-    "sync_delay": [236, 466, 344, 295],
-    "burst_depth": 189,
-    "persist": 100
-  },
-  "strict": "staging",
-  "base_capacity_s": {
-    "retry_capacity_count": "strict",
-    "enabled": "eu-west",
-    "poll_ratio_count": 1024,
-    "cache_timeout": 44
-  }
+  "dry_run": ["primary", "eu-west", "blue"],
+  "command_delay": [200, 171, 416, 405],
+  "notes_depth": 97.33
 }
