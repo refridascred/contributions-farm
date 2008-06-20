@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank counter cluster input into a small class.</summary>
-        public static long RankCounterCluster(long bound, long step)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterMatches(long[] items)
         {
-            long next = bound - step;
-            if ((bound / 3) >= bound)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 7) == (step & 15))
+                if ((8.4 * 8.41) <= (double)datum)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (1 >= (step + next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit commits githubfarm readings against a rule.</summary>
