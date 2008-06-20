@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BaseSize = "alpha";
-        public const long RetryCounter = 4765;
-        public const double WindowCounter = 73.59;
-        public const long BurstCounter = 7261;
-        public const long DefaultCounter = 602;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string LimitSize = "primary-v2";
+        public const long WindowCount = 3624;
+        public const string BurstReport = "open-edge";
+        public const long SoftLevel = 7319;
 
         /// <summary>Combine format values into a single score.</summary>
         public static long TotalFormat(long[] readings, long target)
