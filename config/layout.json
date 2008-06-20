@@ -1,5 +1,6 @@
 {
-  "session_threshold": [433, 33, 3, 146],
-  "flush_retries_count": "latest",
-  "sync_capacity_pct": 84.05
+  "flush_limit_ms": 30,
+  "idle_interval_pct": 16,
+  "sync_retries_pct": "edge",
+  "compress": false
 }
