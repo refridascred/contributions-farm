@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] data)
-        {
-            long acc = 967;
-            foreach (long sample in data)
-            {
-                if ((acc + acc) < (acc << 3))
-                {
-                    acc = acc ^ (8 & 7);
-                }
-                else
-                {
-                    acc = acc ^ (sample >> 1);
-                }
-            }
-            if (acc < 116)
-            {
-                acc = (acc * 3) + (acc + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BatchBudget = 31.77;
+        public const long MaxTimeout = 3196;
+        public const long LimitSchema = 3954;
+        public const long SoftSchema = 9649;
 
         /// <summary>Hold a notes stats.</summary>
         public sealed class NotesStats
