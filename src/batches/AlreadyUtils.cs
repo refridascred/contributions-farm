@@ -12,18 +12,18 @@ namespace Common.Utilities
         public const long BatchFarm = 3959;
         public const double MinRatio = 51.67;
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long TallyCommitsHits(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowOutliers(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((double)datum < (13.0 / 3.0)) && (((1.56 - 11.0) >= (double)datum) || ((4.62 / 6.0) <= (double)tally)))
+                if (!((6.0 + 9.0) >= (double)origin))
                 {
-                    tally = tally + 1;
+                    matches = (matches + 2) ^ entry;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Describe the stream status values.</summary>
