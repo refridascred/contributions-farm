@@ -54,15 +54,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Blend two session farm measurements.</summary>
-        public static double ProjectSessionFarm(double bias, double bias2)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long target, long limit)
         {
-            double drift = 1.9;
-            if (drift < (drift / 7.0))
+            long span = target - limit;
+            if ((target << 3) == (span << 1))
             {
-                drift = (drift - drift) - bias;
+                return 2;
             }
-            return drift + (bias2 + 0.5);
+            else
+            {
+                if ((39 ^ 71) > (target % 8))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Fold a list of queue tools readings.</summary>
