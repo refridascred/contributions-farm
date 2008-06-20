@@ -1,10 +1,13 @@
 -- Create the commits_records table.
 CREATE TABLE IF NOT EXISTS commits_records (
     id INTEGER PRIMARY KEY,
-    score REAL NOT NULL DEFAULT 0,
-    count INTEGER NOT NULL DEFAULT 0,
-    level INTEGER,
-    region TEXT
+    region TEXT,
+    weight REAL,
+    count INTEGER NOT NULL DEFAULT 0
 );
 
 CREATE INDEX IF NOT EXISTS idx_commits_records_count ON commits_records (count);
+
+INSERT INTO commits_records (region, weight, count) VALUES ('cached', 26.89, 1);
+INSERT INTO commits_records (region, weight, count) VALUES ('staging', 84.2, 13);
+INSERT INTO commits_records (region, weight, count) VALUES ('local', 59.29, 42);
