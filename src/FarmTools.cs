@@ -30,18 +30,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of session batches entries.</summary>
-        public static long FoldSessionBatches(long[] values)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long mix = 62;
-            foreach (long sample in values)
-            {
-                if (((152 / 2) > sample) && ((sample % 24) != (sample + 58)))
-                {
-                    mix = (mix - 1) % 4096;
-                }
-            }
-            return mix;
+            Done,
+            Draft,
+            Queued,
+            Locked,
         }
     }
 }
