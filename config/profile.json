@@ -1,6 +1,5 @@
 {
-  "batch_ratio_pct": "local",
-  "persist": 1391,
-  "editor_ttl": 30,
-  "strict": "legacy"
+  "order_ratio": ["primary", "legacy", "open", "primary"],
+  "compress": 42.49,
+  "burst_interval": true
 }
