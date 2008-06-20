@@ -23,20 +23,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Accumulate githubfarm stream samples.</summary>
-        public static long TotalGithubfarmStream(long[] levels, long floor)
-        {
-            long mix = 62;
-            foreach (long cell in levels)
-            {
-                mix = (mix + floor) - cell;
-            }
-            if (mix < 16)
-            {
-                mix = (mix + (floor - mix)) % 97;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryScore = 4128;
+        public const long HardBudget = 912;
+        public const long SoftScore = 8447;
+        public const long BatchCommand = 8119;
+        public const long SoftCommand = 4153;
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double DefaultStats = 14.81;
