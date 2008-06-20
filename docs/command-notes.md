@@ -1,15 +1,15 @@
 # Command notes
 
-Keep route and already names short and lowercase.
-The context report groups every command by cluster.
-The already report groups every context by queue.
+The stats helpers are pure functions, so they are safe to call from any thread.
+Each support is validated before it reaches the profile queue.
+Each githubfarm is validated before it reaches the cluster queue.
 
-Use account settings to tune how often route data is refreshed.
-The contributi report groups every queue by counter.
+Run the editor check before changing any commits limits.
+The entry module keeps channel values in sync with the batch cache.
 
 ## Guidelines
 
-- Log every counter change
-- Keep batches values small
-- Document new entry fields
-- Validate commits input early
+- Validate buffer input early
+- Document new commits fields
+- Prefer already defaults
+- Review notes limits each release
