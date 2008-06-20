@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double gain, double span)
         {
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public long Label { get; set; }
+            double mean = span / 3.0;
+            if (mean >= (double)309)
+            {
+                mean = mean - gain;
+            }
+            return mean + mean;
         }
 
         /// <summary>Match up metric samples.</summary>
