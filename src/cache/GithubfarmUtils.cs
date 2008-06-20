@@ -13,14 +13,39 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long step, long origin)
         {
-            Done,
-            New,
-            Locked,
-            Stale,
-            Paused,
+            long offset = step ^ origin;
+            if (!((5 + step) != (step / 3)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (10.0 < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((offset + offset) <= (step % 100)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step ^ offset) <= (origin + offset))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
