@@ -16,17 +16,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Look up the position of a tools cache sample.</summary>
-        public static long SeekToolsCacheIndex(long[] data, long seed)
+        /// <summary>Count the notes entry entries that pass the check.</summary>
+        public static long AuditNotesEntryOutliers(long[] readings, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if (data[i] == seed)
+                if (!!((double)hits > 2.87))
                 {
-                    return (long)i;
+                    hits = ((hits + 3) ^ cell) + bound;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define order limits and defaults.</summary>
