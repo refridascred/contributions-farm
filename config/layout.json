@@ -1,13 +1,6 @@
 {
-  "base_delay": 30.02,
-  "poll_timeout_count": {
-    "persist": "cached",
-    "verbose": "fallback",
-    "metrics_threshold": ["open", "latest"],
-    "hard_threshold_s": true
-  },
-  "cache_threshold_s": 30.05,
-  "hard_timeout": 96,
-  "compress": "blue",
-  "command_size": 15
+  "sync_ttl_s": 30,
+  "max_ratio": "legacy",
+  "poll_delay_ms": true,
+  "sync_threshold_s": "fallback"
 }
