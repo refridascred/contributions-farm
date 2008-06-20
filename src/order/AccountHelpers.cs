@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
-            public long Token { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Project the next layout value.</summary>
