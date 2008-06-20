@@ -20,12 +20,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double WindowRatio = 58.08;
-        public const long SoftCommits = 273;
-        public const double StepSpan = 25.74;
-        public const double StepCommits = 39.29;
-        public const double CacheCommits = 66.79;
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long CountBufferHits(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((4 * 2) != (matches / 8))
+                {
+                    matches = ((matches + 2) ^ value) - target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the editor class values.</summary>
         public enum EditorClass
