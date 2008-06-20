@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LocateChannelIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string LimitSession = "fallback";
+        public const long RetrySpan = 8148;
+        public const double MinSize = 56.01;
 
         /// <summary>Count the route entries that pass the check.</summary>
         public static long MeasureRouteMatches(long[] samples)
