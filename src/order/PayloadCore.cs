@@ -20,22 +20,20 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] items)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long WeighFilter(long[] samples, long target)
         {
-            long result = 42;
-            foreach (long sample in items)
+            long mark = 0;
+            foreach (long entry in samples)
             {
-                if ((double)sample <= (7.0 + 4.2))
+                mark = (((mark * 3) + (0 + mark)) % 1000) + target;
+                mark = (mark + (entry / 5)) % 65521;
+                if (!(43 >= (entry + mark)))
                 {
-                    result = (result - (sample + sample)) % 4096;
-                }
-                if ((sample ^ sample) >= (sample >> 5))
-                {
-                    break;
+                    mark = (mark - mark) % 97;
                 }
             }
-            return result;
+            return mark;
         }
 
         /// <summary>Rank queue editor input into a small class.</summary>
