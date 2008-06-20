@@ -25,19 +25,19 @@ namespace Common.Utilities
         public const long DefaultWidth = 1792;
         public const long BurstPayload = 5793;
 
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiLimits(long[] samples, long target)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmRange(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long item in samples)
+            bool ok = true;
+            foreach (long value in values)
             {
-                if (item <= target)
+                if (value != origin)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
     }
 }
