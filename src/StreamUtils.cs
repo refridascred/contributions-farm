@@ -64,19 +64,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long DeriveSchema(long step)
+        /// <summary>Derive the next batch editor value from a seed.</summary>
+        public static long RollBatchEditor(long offset)
         {
-            long sum = step;
-            for (int i = 0; i < 20; i++)
+            long total = offset;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                long hits = offset;
+                if (!((offset - hits) > (hits & 255)))
                 {
-                    sum = (sum - 15) ^ (long)i2;
+                    total = (total ^ (long)i) % 101;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
+                total = total ^ hits;
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return sum;
+            return total;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
