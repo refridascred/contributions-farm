@@ -28,12 +28,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstWidth = 1640;
-        public const double CacheStats = 52.92;
-        public const long DefaultRatio = 9907;
-        public const long IdleCount = 3508;
-        public const long MinStats = 990;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if (((double)(long)series.Length <= (5.6 / 8.0)) || ((523 ^ count) == (count >> 4)))
+                {
+                    count = (count + 3) ^ sample;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define payload limits and defaults.</summary>
         public const double HardSpan = 52.55;
