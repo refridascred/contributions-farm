@@ -38,12 +38,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string WindowPayload = "fallback-1";
-        public const long BurstBudget = 6972;
-        public const long HardDepth = 492;
-        public const long HardPayload = 9899;
-        public const long IdleWidth = 1874;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Retry,
+            Ready,
+            Locked,
+            Synced,
+            Stale,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long DefaultSpan = 6516;
