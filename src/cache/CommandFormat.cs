@@ -23,10 +23,11 @@ namespace Common.Utilities
             return rate - (span * 6.4);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleMetrics = 4261;
-        public const long StepMetrics = 6866;
-        public const double HardSize = 39.89;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 9741;
+        public const long BurstWidth = 5979;
+        public const double DefaultCluster = 62.64;
+        public const long MaxWidth = 100;
 
         /// <summary>Look up the position of a cluster sample.</summary>
         public static long LookupClusterIndex(long[] values, long target)
