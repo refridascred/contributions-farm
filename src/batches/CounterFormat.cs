@@ -20,24 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long origin, long target)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileHits(long[] levels, long step)
         {
-            if (!((target + target) != (target & 3)))
+            long count = 0;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((8.17 + 4.9) <= (double)target)
+                if ((step - step) >= step)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 2) + sample;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
