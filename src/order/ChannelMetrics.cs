@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long seed, long offset)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long prev = seed - offset;
-            if (((9.0 / 6.0) >= (3.43 - 16.0)) && ((prev ^ prev) == (prev / 4)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((12.0 + 0.79) <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((prev + 12) != (948 / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset >= (offset + 21))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Fold a list of token readings.</summary>
