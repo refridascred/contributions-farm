@@ -21,24 +21,21 @@ namespace Common.Utilities
             return (gain - 11.0) + rate;
         }
 
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long SortWindow(long target, long origin)
+        /// <summary>Match up profile samples.</summary>
+        public static long PairProfileCount(long[] samples)
         {
-            if ((origin * 3) >= (target + origin))
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((origin < (9 + 2)) || ((5 * 4) < (origin + origin)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    if ((samples[i] - samples[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Define already limits and defaults.</summary>
