@@ -78,39 +78,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long GradeStats(long offset, long floor)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double bias, double span)
         {
-            long cur = offset - floor;
-            if (cur < offset)
+            double bias2 = span;
+            for (int i = 0; i < 4; i++)
             {
-                return 7;
+                bias2 = ((bias2 + 19.0) - (double)(long)i) - bias;
             }
-            else
-            {
-                if (5.35 < (double)floor)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (cur < (floor & 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((floor >> 1) != (465 - (-43)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return bias2 + (double)0;
         }
     }
 }
