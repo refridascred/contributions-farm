@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportBounds(long[] data, long offset)
         {
-            public double Ratio { get; set; }
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum <= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
