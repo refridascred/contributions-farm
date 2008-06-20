@@ -35,39 +35,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a contributi githubfarm pair into a bucket.</summary>
-        public static long GradeContributiGithubfarm(long target, long origin)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long MatchBatchCount(long[] values)
         {
-            long slot = target + origin;
-            if ((origin + origin) <= (-551))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin > (double)slot)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (7.35 > (double)target)
+                    if ((values[i] ^ values[j]) == 2)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((0.9 + 11.0) != (double)slot) && ((double)origin > (double)222))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
