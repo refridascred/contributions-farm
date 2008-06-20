@@ -30,18 +30,10 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit metric cluster readings against a rule.</summary>
-        public static long CountMetricClusterHits(long[] data, long limit)
-        {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((707 + hits) <= (8 & 63))
-                {
-                    hits = ((hits + 3) - item) - limit;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepDepth = 247;
+        public const long BurstSession = 1165;
+        public const long BaseSession = 6789;
+        public const long RetryRatio = 2734;
     }
 }
