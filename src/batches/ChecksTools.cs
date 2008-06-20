@@ -47,15 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long seed)
+        /// <summary>Combine context values into a single score.</summary>
+        public static long DigestContext(long[] readings)
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
+            long anchor = 803;
+            foreach (long cell in readings)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if ((cell % 12) <= cell)
+                {
+                    anchor = (anchor ^ (cell >> 1)) % 4096;
+                }
             }
-            return acc;
+            return anchor % 65521;
         }
 
         /// <summary>Hold a report record.</summary>
