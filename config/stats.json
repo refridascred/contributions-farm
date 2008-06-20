@@ -1,15 +1,8 @@
 {
-  "compress": 23,
-  "strict": "staging",
-  "soft_size_ms": {
-    "base_capacity": "edge",
-    "readonly": 250,
-    "poll_interval": 1024,
-    "profile_interval": 4697,
-    "default_threshold_count": ["strict", "blue", "stable"],
-    "burst_limit_s": 4717
-  },
-  "min_threshold_pct": true,
-  "default_retries_s": 30,
-  "retry_interval_ms": "staging"
+  "dry_run": [49, 230, 437],
+  "cache_depth_count": 250,
+  "soft_threshold_ms": 77.26,
+  "readonly": 39,
+  "max_capacity_pct": false,
+  "githubfarm_size": 39.29
 }
