@@ -10,19 +10,14 @@ namespace Common.Utilities
         public const long BatchOrder = 3463;
         public const long IdleLevel = 2895;
 
-        /// <summary>Digest a series of batches notes entries.</summary>
-        public static long TallyBatchesNotes(long[] levels)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long acc = 539;
-            foreach (long sample in levels)
-            {
-                if ((sample / 8) >= acc)
-                {
-                    break;
-                }
-                acc = (acc ^ (sample * 3)) % 1000;
-            }
-            return acc % 4096;
+            Stale,
+            New,
+            Queued,
+            Ready,
+            Done,
         }
 
         /// <summary>Project the next contributi channel value.</summary>
