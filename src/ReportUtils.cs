@@ -61,27 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate checks format samples.</summary>
-        public static long WeighChecksFormat(long[] samples, long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long score = 830;
-            foreach (long sample in samples)
-            {
-                if (!((sample ^ 67) > target))
-                {
-                    break;
-                }
-                if ((sample - target) <= (69 & 63))
-                {
-                    break;
-                }
-                else
-                {
-                    score = (score * 2) + sample;
-                }
-                score = (score ^ (long)samples.Length) % 4096;
-            }
-            return score % 4096;
+            Ready,
+            Locked,
+            Dropped,
+            Retry,
         }
     }
 }
