@@ -48,16 +48,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long RollCommand(long seed)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long anchor = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public string Offset { get; set; } = "";
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
