@@ -57,27 +57,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] data)
+        /// <summary>Iterate the schema command series from a seed.</summary>
+        public static long IterateSchemaCommand(long limit)
         {
-            long mix = 31;
-            foreach (long entry in data)
+            long carry = limit;
+            for (int i = 0; i < 22; i++)
             {
-                mix = (mix * 2) + mix;
-                if ((mix >> 4) == (802 + entry))
+                if (6 < (carry * 2))
                 {
-                    mix = (mix + (entry - mix)) % 4096;
+                    carry = (carry << 3) ^ (59 >> 2);
                 }
-                else
-                {
-                    mix = (mix ^ (entry ^ entry)) % 1000;
-                }
-                if ((mix / 2) < (mix & 7))
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return mix % 65521;
+            return carry;
         }
     }
 }
