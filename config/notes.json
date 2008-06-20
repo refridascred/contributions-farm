@@ -1,14 +1,6 @@
 {
-  "compress": {
-    "readonly": "edge",
-    "githubfarm_limit": {
-      "base_limit_s": "blue",
-      "warm_depth_ms": [186, 93, 433, 238],
-      "command_ratio": 100
-    },
-    "base_ratio": [58, 272, 149, 420]
-  },
-  "command_ttl": false,
-  "idle_interval": 86,
-  "batch_limit": true
+  "idle_ratio": "standard",
+  "profile_capacity": 8489,
+  "default_window_count": true,
+  "record_ratio": 8427
 }
