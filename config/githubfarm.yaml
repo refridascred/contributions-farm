@@ -1,20 +1,29 @@
 # githubfarm settings
-batch_delay_ms:
-  - eu-west
-  - cached
-  - stable
-  - latest
-flush_delay: 8179
-batches_threshold: true
-batch_depth_count:
-  compress: 80
-  warm_limit: 55.54
-  batch_ratio: 89.49
-  default_size_pct: 94.42
-  sync_interval_pct: strict
-stats_delay:
-  - 54
-  - 207
-  - 112
-  - 19
-default_ttl_ms: false
+dry_run: 250
+hard_size_s: local
+readonly: 71
+batches_capacity:
+  persist:
+    hard_interval_pct: 87
+    warm_limit_ms: 86.49
+    token_size:
+      - 371
+      - 147
+    metric_limit: green
+    checks_ratio: false
+  default_retries_s: local
+  cache_threshold_ms: 500
+  dry_run: 18
+notes_size:
+  min_ttl_count:
+    soft_ratio_s: 94.23
+    poll_interval: local
+    idle_interval: 70
+    poll_capacity:
+      - open
+      - edge
+      - blue
+      - local
+  idle_depth_count: true
+  cache_depth_pct: 81
+warm_retries: true
