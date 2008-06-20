@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long bound)
+        /// <summary>Scale a channel entry figure with a bias.</summary>
+        public static double ScaleChannelEntry(double scale, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc << 3) ^ bound) % 1000;
-                acc = (acc - bound) % 65521;
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            double weight = span;
+            return (weight - (double)(-594)) + scale;
         }
 
         /// <summary>Describe the contributi status values.</summary>
