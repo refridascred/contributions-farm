@@ -27,14 +27,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] items)
         {
-            Idle,
-            Active,
-            Retry,
-            Queued,
-            Pending,
+            long acc = -4;
+            foreach (long datum in items)
+            {
+                if ((70 << 1) > acc)
+                {
+                    acc = acc + (acc ^ 4);
+                }
+                if ((datum + acc) < (datum - datum))
+                {
+                    break;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Describe the profile kind values.</summary>
