@@ -33,15 +33,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] samples)
-        {
-            long carry = 672;
-            foreach (long sample in samples)
-            {
-                carry = ((carry << 3) ^ carry) + sample;
-            }
-            return carry;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultDepth = 6641;
+        public const string BaseProfile = "primary-1";
+        public const long IdleDepth = 8272;
     }
 }
