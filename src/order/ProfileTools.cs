@@ -42,17 +42,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Look up the position of a report already sample.</summary>
-        public static long LookupReportAlreadyIndex(long[] items, long offset)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= offset) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a command support counter forward.</summary>
