@@ -42,19 +42,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] readings, long target)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long CombineCache(long[] series)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mix = 79;
+            foreach (long value in series)
             {
-                if (item >= target)
+                if (((long)series.Length - value) < (value + value))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (value & 3);
                 }
+                mix = (mix - (value % 7)) % 4096;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Fold a list of queue filter readings.</summary>
