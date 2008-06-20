@@ -56,22 +56,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowMatches(long[] items)
-        {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (((2.56 / 3.0) <= (double)sample) && !((sample - sample) <= (long)items.Length))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryCount = 6577;
+        public const long CacheBudget = 4956;
+        public const long IdleRatio = 905;
     }
 }
