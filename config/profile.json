@@ -1,8 +1,8 @@
 {
-  "cache_threshold_count": false,
-  "sync_threshold": "open",
-  "hard_ttl_ms": 500,
-  "cluster_size": false,
-  "soft_delay_count": 1024,
-  "compress": "strict"
+  "hard_ratio": 77,
+  "verbose": "local",
+  "schema_ttl": "eu-west",
+  "context_window": 72,
+  "stream_retries": 100,
+  "flush_timeout_pct": "eu-west"
 }
