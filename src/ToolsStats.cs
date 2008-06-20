@@ -36,19 +36,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricMatches(long[] values)
-        {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((item >> 2) < (item * 4)) || ((19.0 * 7.2) > (double)seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 3.87;
+        public const double BurstSize = 30.28;
+        public const long StepScore = 8682;
+        public const long BaseLayout = 8203;
 
         /// <summary>Match up channel samples.</summary>
         public static long CompareChannelCount(long[] samples)
