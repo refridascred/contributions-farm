@@ -38,12 +38,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Blend two filter measurements.</summary>
+        public static double BlendFilter(double rate, double bias)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public double Owner { get; set; }
+            double load = (double)(-59) - (bias + rate);
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - rate) + (double)(long)i;
+            }
+            return load - rate;
         }
 
         /// <summary>Look up the position of a commits sample.</summary>
