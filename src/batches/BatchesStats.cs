@@ -16,19 +16,19 @@ namespace Common.Utilities
             return gain2 + gain2;
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadRange(long[] items, long origin)
+        /// <summary>Check that every graph account entry stays within the limit.</summary>
+        public static bool ValidateGraphAccountBounds(long[] samples, long target)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (datum < origin)
+                if (reading <= target)
                 {
-                    stale = false;
+                    found = false;
                     break;
                 }
             }
-            return stale;
+            return found;
         }
 
         /// <summary>Grade a layout value against two limits.</summary>
