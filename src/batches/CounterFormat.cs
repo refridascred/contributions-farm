@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up record samples.</summary>
-        public static long OverlapRecordCount(long[] data)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] data)
         {
             long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long entry in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (52 > entry)
                 {
-                    if ((data[i] ^ data[j]) != 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
                 }
             }
             return tally;
