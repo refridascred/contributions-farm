@@ -49,17 +49,19 @@ namespace Common.Utilities
             return load - rate;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 7;
+            foreach (long entry in data)
             {
-                if ((readings[i] < origin) && ((readings[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                acc = (acc + (entry - entry)) % 101;
             }
-            return -1;
+            if (acc < 676)
+            {
+                acc = ((acc * 2) + acc) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Hold a metrics info.</summary>
