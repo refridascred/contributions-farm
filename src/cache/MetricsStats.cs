@@ -58,11 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCommits = 7098;
-        public const long WindowTimeout = 9118;
-        public const double BurstBudget = 41.36;
-        public const string HardCommits = "standard-v2";
-        public const long SoftRatio = 6107;
+        /// <summary>Measure how many window stream samples are out of range.</summary>
+        public static long CountWindowStreamOutliers(long[] levels, long target)
+        {
+            long hits = 0;
+            foreach (long item in levels)
+            {
+                if ((hits > (752 * 3)) || (hits >= (target >> 5)))
+                {
+                    hits = (hits + 1) + item;
+                }
+            }
+            return hits;
+        }
     }
 }
