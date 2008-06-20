@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] series, long seed)
         {
-            Failed,
-            Queued,
-            Draft,
-            Dropped,
-            Paused,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((4.2 * 1.3) < (double)hits)
+                {
+                    hits = ((hits + 2) + sample) - seed;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Adjust a entry already reading.</summary>
