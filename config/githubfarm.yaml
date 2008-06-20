@@ -1,29 +1,38 @@
 # githubfarm settings
-dry_run: 250
-hard_size_s: local
-readonly: 71
-batches_capacity:
-  persist:
-    hard_interval_pct: 87
-    warm_limit_ms: 86.49
-    token_size:
-      - 371
-      - 147
-    metric_limit: green
-    checks_ratio: false
-  default_retries_s: local
-  cache_threshold_ms: 500
-  dry_run: 18
-notes_size:
-  min_ttl_count:
-    soft_ratio_s: 94.23
-    poll_interval: local
-    idle_interval: 70
-    poll_capacity:
-      - open
-      - edge
+poll_ratio: true
+batch_ttl_s: false
+flush_timeout:
+  readonly: true
+  idle_timeout_ms: 64
+  warm_timeout_count: 58
+  audit: false
+  hard_interval_count: 30
+retry_capacity_pct:
+  layout_ratio: 25.77
+  min_limit: local
+  dry_run: false
+  retry_retries_ms: eu-west
+  idle_depth: 1024
+dry_run:
+  sync_depth: true
+  poll_retries_count:
+    dry_run: strict
+    route_threshold: primary
+    idle_size_count: green
+    order_retries:
       - blue
-      - local
-  idle_depth_count: true
-  cache_depth_pct: 81
-warm_retries: true
+      - staging
+      - cached
+  retry_retries_s:
+    - blue
+    - strict
+    - standard
+  window_depth: false
+  sync_size_ms:
+    retry_ttl_pct: false
+    warm_timeout_pct: standard
+    retry_threshold:
+      - open
+      - open
+      - stable
+    metric_size: true
