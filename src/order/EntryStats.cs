@@ -55,19 +55,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] items, long target)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] samples)
         {
-            bool valid = true;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((samples[i] + samples[j]) == 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Rank command input into a small class.</summary>
