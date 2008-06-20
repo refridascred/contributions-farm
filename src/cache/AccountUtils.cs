@@ -40,17 +40,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long SeekQueueIndex(long[] levels, long target)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return -1;
+            return total;
         }
     }
 }
