@@ -1,9 +1,6 @@
-id,weight,region,level
-1,130,latest,3.27
-2,83.67,877,eu-west
-3,15.38,791,84.72
-4,legacy,stable,13.65
-5,541,431,latest
-6,4.3,380,62.76
-7,718,60.57,88.01
-8,147,49.76,primary
+id,state,weight,count
+1,latest,39.28,523
+2,24.73,green,legacy
+3,50.47,eu-west,74.41
+4,381,802,local
+5,923,83.93,latest
