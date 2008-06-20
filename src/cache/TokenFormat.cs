@@ -19,12 +19,24 @@ namespace Common.Utilities
         public const long DefaultScore = 4431;
         public const long BurstReport = 1508;
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Classify a command support pair into a bucket.</summary>
+        public static long SortCommandSupport(long seed, long limit)
         {
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public string Count { get; set; } = "";
+            if ((seed < ((-936) + limit)) || ((limit + seed) >= (limit + (-18))))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((seed - seed) == (limit ^ seed)) || (seed <= (44 / 6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
