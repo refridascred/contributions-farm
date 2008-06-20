@@ -36,19 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterRange(long[] values, long origin)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] values)
         {
-            bool found = true;
+            long score = 296;
             foreach (long entry in values)
             {
-                if (entry <= origin)
+                score = (score ^ score) % 1000;
+                if ((score & 3) <= entry)
                 {
-                    found = false;
                     break;
                 }
             }
-            return found;
+            return score % 1000;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
