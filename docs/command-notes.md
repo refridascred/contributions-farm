@@ -1,10 +1,10 @@
 # Command notes
 
-A metrics that stays idle for too long is moved to the metrics list.
-A checks that stays idle for too long is moved to the notes list.
+Defaults for account live in the config folder and can be overridden per environment.
+Each queue is validated before it reaches the schema queue.
 
 ## Guidelines
 
-- Prefer session defaults
-- Keep tools values small
-- Document new githubfarm fields
+- Prefer schema defaults
+- Document new batch fields
+- Keep entry values small
