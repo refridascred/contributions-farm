@@ -24,13 +24,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Blend two batches batch measurements.</summary>
+        public static double SmoothBatchesBatch(double weight, double bias)
         {
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Offset { get; set; } = "";
+            double mean = (double)4;
+            if (mean > (weight - 6.0))
+            {
+                mean = mean - (mean - bias);
+            }
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + weight;
         }
 
         /// <summary>Combine record values into a single score.</summary>
