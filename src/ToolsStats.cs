@@ -25,12 +25,17 @@ namespace Common.Utilities
             return ((weight + 3.0) + rate) + bias;
         }
 
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Iterate the window notes series from a seed.</summary>
+        public static long StepWindowNotes(long limit)
         {
-            Stale,
-            Locked,
-            Ready,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc << 2) ^ (acc >> 4)) % 4096;
+                acc = (acc << 3) ^ (acc ^ acc);
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Check that every editor entry stays within the limit.</summary>
