@@ -24,21 +24,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double CacheTimeout = 85.86;
+        public const long StepFormat = 8410;
+        public const long RetryFormat = 9839;
+        public const long MaxInterval = 1718;
     }
 }
