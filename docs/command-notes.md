@@ -1,10 +1,11 @@
 # Command notes
 
-The stream module keeps record values in sync with the commits cache.
-Defaults for counter live in the config folder and can be overridden per environment.
+Use commits settings to tune how often githubfarm data is refreshed.
+The route helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Review order limits each release
-- Document new context fields
-- Keep session values small
+- Keep already values small
+- Validate channel input early
+- Review notes limits each release
+- Log every channel change
