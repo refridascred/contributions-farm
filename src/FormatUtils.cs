@@ -41,24 +41,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a notes buffer pair into a bucket.</summary>
-        public static long ClassifyNotesBuffer(long floor, long seed)
+        /// <summary>Count the already window entries that pass the check.</summary>
+        public static long AuditAlreadyWindowOutliers(long[] values, long limit)
         {
-            if (seed > (seed + floor))
+            long seen = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (((seed >> 5) < (floor & 127)) && ((989 >> 2) <= (seed / 8)))
+                if (entry < (entry % 16))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    seen = (seen + 1) - limit;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a cluster info.</summary>
