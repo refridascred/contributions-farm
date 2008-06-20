@@ -30,12 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] readings, long origin)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] readings, long offset)
         {
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < origin)
+                if ((readings[i] <= offset) && ((readings[i] % 5) == 0))
                 {
                     return (long)i;
                 }
