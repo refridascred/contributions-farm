@@ -36,12 +36,18 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepCount = 7024;
-        public const long SoftOrder = 3301;
-        public const double HardFactor = 56.62;
-        public const double RetryScore = 87.3;
-        public const long RetryRatio = 3322;
+        /// <summary>Locate a account reading by value.</summary>
+        public static long LookupAccountIndex(long[] series, long target)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const long CacheSupport = 9050;
