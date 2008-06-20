@@ -1,8 +1,15 @@
 {
-  "base_depth_ms": 34.54,
-  "verbose": 65,
-  "default_size": 37.85,
-  "metrics_ttl": "staging",
-  "retry_depth_count": "standard",
-  "warm_delay_pct": 5761
+  "verbose": {
+    "notes_interval": true,
+    "cluster_capacity": "legacy",
+    "warm_ratio": 76.4,
+    "retry_retries_count": 30,
+    "dry_run": 97,
+    "record_delay": "blue"
+  },
+  "schema_depth": ["blue", "staging", "strict"],
+  "support_threshold": "blue",
+  "warm_limit_s": 1.98,
+  "warm_timeout_s": "edge",
+  "poll_ttl_count": "cached"
 }
