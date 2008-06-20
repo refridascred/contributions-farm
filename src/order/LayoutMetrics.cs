@@ -27,13 +27,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long LookupEntryIndex(long[] samples, long target)
         {
-            public double Rank { get; set; }
-            public long Total { get; set; }
-            public double Flag { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
