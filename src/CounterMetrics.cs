@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TallyContext(long[] samples, long limit)
         {
-            public bool Flag { get; set; }
-            public long Owner { get; set; }
-            public string Total { get; set; } = "";
+            long carry = 504;
+            foreach (long item in samples)
+            {
+                carry = ((carry + (limit & 255)) % 97) ^ item;
+            }
+            return carry;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
