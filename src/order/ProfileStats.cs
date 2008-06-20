@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LocateRecordIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstInterval = 46.44;
+        public const long RetryFactor = 7692;
+        public const string BurstQueue = "latest";
+        public const double SoftQueue = 25.4;
+        public const double StepQueue = 19.5;
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double rate, double floor)
