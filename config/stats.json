@@ -1,5 +1,5 @@
 {
-  "queue_size": 49.75,
-  "persist": ["eu-west", "strict", "cached", "standard"],
-  "idle_limit_pct": 9288
+  "flush_ratio": [96, 140, 276, 85],
+  "dry_run": 46,
+  "warm_retries_s": 67.27
 }
