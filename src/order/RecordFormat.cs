@@ -22,14 +22,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Grade a channel stream value against two limits.</summary>
+        public static long GradeChannelStream(long seed, long step)
         {
-            Failed,
-            New,
-            Idle,
-            Synced,
-            Closed,
+            if ((seed + seed) >= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (((double)step >= 19.0) && (seed > (seed * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed < (seed * 4)) && ((step - seed) == (seed & 1)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step >> 5) > (seed >> 1))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
