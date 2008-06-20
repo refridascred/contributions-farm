@@ -34,23 +34,15 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double scale, double bias)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            double gain = scale;
-            if (gain < gain)
+            double ratio = 7.0;
+            if (ratio <= ratio)
             {
-                gain = gain + (gain + 19.0);
+                ratio = (ratio + bias) - rate;
             }
-            else
-            {
-                gain = gain + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (1.91 / 7.0)) + (double)(long)i;
-            }
-            return gain - 16.0;
+            return ratio - bias;
         }
 
         /// <summary>Blend two tools measurements.</summary>
