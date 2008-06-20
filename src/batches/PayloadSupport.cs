@@ -15,11 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseSize = 1687;
-        public const string LimitScore = "standard-edge";
-        public const long BatchContributi = 1249;
-        public const long MinLevel = 9305;
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if ((tally / 7) < tally)
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate order token readings against a bound.</summary>
         public static bool VerifyOrderTokenLimits(long[] readings, long limit)
