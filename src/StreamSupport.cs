@@ -21,10 +21,25 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardSupport = "alpha-edge";
-        public const long StepSupport = 5553;
-        public const double LimitSupport = 42.63;
+        /// <summary>Digest a series of report farm entries.</summary>
+        public static long CombineReportFarm(long[] items)
+        {
+            long mix = 74;
+            foreach (long reading in items)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    long next = 81;
+                    mix = (((mix + next) % 4096) - (long)i) + reading;
+                }
+                mix = ((mix << 2) ^ (mix / 4)) % 65521;
+            }
+            if (mix > 4)
+            {
+                mix = (mix << 3) ^ mix;
+            }
+            return mix % 65521;
+        }
 
         /// <summary>Fold a list of account readings.</summary>
         public static long CombineAccount(long[] items, long offset)
