@@ -19,17 +19,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a editor reading by value.</summary>
-        public static long SeekEditorIndex(long[] samples, long target)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long bound = target + step;
+            if (9.31 <= (double)target)
             {
-                if ((samples[i] < target) && ((samples[i] % 2) != 0))
+                return 5;
+            }
+            else
+            {
+                if (target < bound)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the route entries that pass the check.</summary>
