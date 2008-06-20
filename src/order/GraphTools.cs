@@ -64,11 +64,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BurstCommand = 7292;
-        public const double DefaultLevel = 52.27;
-        public const string BaseCommand = "strict-edge";
-        public const long WindowCommand = 8059;
-        public const long MaxCommand = 2810;
+        /// <summary>Match up cache samples.</summary>
+        public static long PairCacheCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
     }
 }
