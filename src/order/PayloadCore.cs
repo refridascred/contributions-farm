@@ -46,12 +46,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next metrics value.</summary>
+        public static double ScaleMetrics(double gain, double bias)
         {
-            Done,
-            Locked,
-            Active,
+            double drift = (double)353 + (double)26;
+            if (drift > (bias + gain))
+            {
+                drift = drift - (9.6 / 2.0);
+            }
+            return drift + 5.63;
         }
     }
 }
