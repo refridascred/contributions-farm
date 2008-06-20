@@ -23,16 +23,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Iterate the contributi metric series from a seed.</summary>
-        public static long IterateContributiMetric(long floor)
-        {
-            long result = floor;
-            for (int i = 0; i < 12; i++)
-            {
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double IdleCount = 97.52;
+        public const long HardChecks = 2238;
+        public const string BatchChecks = "standard-v2";
+        public const long HardSize = 5678;
 
         /// <summary>Audit stream farm readings against a rule.</summary>
         public static long CountStreamFarmHits(long[] values, long floor)
