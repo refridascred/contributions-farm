@@ -35,22 +35,19 @@ namespace Common.Utilities
         public const double StepTools = 66.52;
         public const long IdleTools = 9289;
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] items, long target)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if ((sample & 3) < sample)
+                if (cell > floor)
                 {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
