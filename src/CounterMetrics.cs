@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Locked,
-            Done,
+            Queued,
             Idle,
-            Stale,
-            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Audit session readings against a rule.</summary>
