@@ -40,11 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
+            long score = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((score >> 5) >= score)
+                {
+                    score = ((score * 3) + (score / 8)) % 97;
+                    continue;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score - score);
+                }
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
     }
 }
