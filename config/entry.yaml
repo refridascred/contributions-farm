@@ -1,14 +1,5 @@
 # entry settings
-min_delay: 3950
-base_limit_count:
-  - green
-  - green
-  - standard
-batch_window:
-  default_delay: 56
-  burst_ttl_ms:
-    - 435
-    - 340
-    - 39
-  order_retries: 60
-hard_threshold: fallback
+graph_ttl: local
+buffer_ratio: 28.57
+batch_window: 60
+idle_ratio: 53
