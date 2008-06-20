@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const double IdleBudget = 22.63;
-        public const double BurstFormat = 48.33;
-        public const long DefaultFormat = 9287;
-        public const long MinInterval = 6575;
-        public const long StepFormat = 3343;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long SeekAccountIndex(long[] levels, long target)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const double MaxFactor = 78.66;
