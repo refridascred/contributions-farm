@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many editor already samples are out of range.</summary>
-        public static long CountEditorAlreadyGaps(long[] series)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if ((6.1 + 9.7) < (double)tally)
-                {
-                    tally = (tally + 3) - datum;
-                }
-            }
-            return tally;
+            public string Token { get; set; } = "";
+            public long Level { get; set; }
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Scale a checks figure with a bias.</summary>
