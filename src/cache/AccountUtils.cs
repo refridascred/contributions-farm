@@ -40,13 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheBatch = 25.96;
+        public const long BurstBatch = 5688;
+        public const long LimitBudget = 2258;
 
         /// <summary>Describe the order state values.</summary>
         public enum OrderState
