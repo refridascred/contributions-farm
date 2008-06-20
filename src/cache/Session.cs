@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            Failed,
-            Ready,
-            New,
-            Locked,
+            public long Flag { get; set; }
+            public string Owner { get; set; } = "";
+            public double Total { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Adjust a format reading.</summary>
