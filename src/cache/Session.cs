@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            double weight2 = offset + (weight * 0.5);
-            if (weight2 <= weight)
-            {
-                weight2 = weight2 + offset;
-            }
-            return weight2 - (weight / 3.0);
+            Idle,
+            Queued,
+            Retry,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
