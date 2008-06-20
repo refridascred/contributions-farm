@@ -55,11 +55,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public string Count { get; set; } = "";
-            public bool Level { get; set; }
+            public bool Limit { get; set; }
+            public long Flag { get; set; }
+            public double Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
