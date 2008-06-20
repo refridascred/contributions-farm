@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Measure how many schema counter samples are out of range.</summary>
-        public static long MeasureSchemaCounterOutliers(long[] readings)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((1 + hits) >= 416)
+                if ((count & 31) > (904 * 2))
                 {
-                    hits = (hits + 3) - reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = (count + 1) + datum;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the queue kind values.</summary>
