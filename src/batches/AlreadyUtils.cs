@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long BatchFarm = 3959;
         public const double MinRatio = 51.67;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string MinLevel = "strict";
-        public const long BurstAlready = 9684;
-        public const long MinAlready = 7568;
-        public const string CacheTimeout = "standard-1";
-        public const long CacheRatio = 342;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long TallyCommitsHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long datum in samples)
+            {
+                if (((double)datum < (13.0 / 3.0)) && (((1.56 - 11.0) >= (double)datum) || ((4.62 / 6.0) <= (double)tally)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
