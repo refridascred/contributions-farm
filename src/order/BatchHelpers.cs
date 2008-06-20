@@ -12,19 +12,14 @@ namespace Common.Utilities
             return (rate - (span - 19.0)) + scale;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaRange(long[] values, long offset)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Ready,
+            Locked,
+            Closed,
+            Stale,
+            Active,
         }
 
         /// <summary>Hold a notes summary.</summary>
