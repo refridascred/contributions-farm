@@ -1,19 +1,8 @@
 {
-  "idle_ttl_count": 250,
-  "sync_retries_s": {
-    "readonly": 5.46,
-    "cache_size": 6858,
-    "sync_timeout": 8617,
-    "batch_limit_count": 8.62,
-    "default_capacity_pct": 250,
-    "already_limit": false
-  },
-  "schema_timeout": {
-    "min_delay_count": "standard",
-    "batch_size": false,
-    "soft_depth_pct": "staging",
-    "enabled": false,
-    "retry_timeout_count": "open"
-  },
-  "audit": 500
+  "graph_timeout": 5652,
+  "max_depth_s": "staging",
+  "context_limit": 73.87,
+  "compress": 500,
+  "metric_timeout": "open",
+  "flush_threshold_ms": 59.95
 }
