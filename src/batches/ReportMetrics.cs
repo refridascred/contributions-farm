@@ -39,15 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a context editor figure with a bias.</summary>
-        public static double ScaleContextEditor(double ratio, double bias)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchBounds(long[] values, long offset)
         {
-            double weight = (double)(709 % 2);
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                weight = ((weight + bias) + (double)(long)i) + ratio;
+                if (datum <= offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return weight + (double)0;
+            return stale;
         }
     }
 }
