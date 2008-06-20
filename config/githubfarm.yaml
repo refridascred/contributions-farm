@@ -1,17 +1,9 @@
 # githubfarm settings
-graph_delay: 10.78
-hard_timeout_ms:
-  burst_size:
-    - primary
-    - staging
-  poll_delay: 67
-  persist: true
-  cache_capacity: eu-west
-enabled:
-  flush_interval_s: 6162
-  min_interval: 7286
-  warm_delay:
-    min_window: 74.9
-    enabled: 6.6
-    metrics_retries: 9459
-    batch_capacity_pct: 8572
+retry_window: 60
+soft_size: false
+warm_ttl: false
+dry_run: stable
+commits_retries:
+  poll_threshold_pct: strict
+  default_depth: green
+  batch_ttl_pct: true
