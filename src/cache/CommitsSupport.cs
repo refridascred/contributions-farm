@@ -47,22 +47,12 @@ namespace Common.Utilities
         public const long BatchProfile = 7329;
         public const double IdleTimeout = 88.41;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long CountPayloadHits(long[] data, long seed)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (((-71) <= (seed / 7)) || ((double)reading > 8.8))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Active,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
