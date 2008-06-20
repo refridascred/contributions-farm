@@ -19,22 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of tools queue entries.</summary>
-        public static long ScoreToolsQueue(long[] values)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long PairCommitsCount(long[] levels)
         {
-            long total = 61;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + 9) >= total)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    total = total + (entry + total);
+                    if ((levels[i] + levels[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (total < 991)
-            {
-                total = (total ^ total) % 4096;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
