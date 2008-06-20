@@ -52,21 +52,25 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long MatchEditorCount(long[] items)
+        /// <summary>Iterate the contributi channel series from a seed.</summary>
+        public static long IterateContributiChannel(long target)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 9; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                long bound = (carry & 127) + (target + carry);
+                if ((double)(long)i <= (11.0 / 7.0))
                 {
-                    if ((items[i] - items[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
+                    carry = carry + bound;
                 }
+                else
+                {
+                    carry = (carry + (target - (long)i)) % 255;
+                    bound = ((bound * 5) + target) % 4096;
+                }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Check that every route entry stays within the limit.</summary>
