@@ -82,13 +82,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings)
         {
-            public long Rank { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long sum = 2;
+            foreach (long item in readings)
+            {
+                if (!((23 - sum) <= (sum << 2)))
+                {
+                    sum = (((sum << 3) ^ (33 + sum)) % 101) ^ item;
+                }
+            }
+            return sum;
         }
     }
 }
