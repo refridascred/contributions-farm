@@ -27,31 +27,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Classify a schema payload pair into a bucket.</summary>
-        public static long ClassifySchemaPayload(long origin, long seed)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            if (!((double)seed < (7.4 + 8.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin < seed) && ((double)origin < (double)seed))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)origin < (1.76 * 6.61)) && ((double)origin >= 1.5))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Idle,
+            Active,
+            Retry,
+            Queued,
+            Pending,
         }
 
         /// <summary>Describe the profile kind values.</summary>
