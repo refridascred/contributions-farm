@@ -30,19 +30,19 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long target)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] series, long bound)
         {
-            bool ok = true;
+            long anchor = 4;
             foreach (long datum in series)
             {
-                if (datum > target)
-                {
-                    ok = false;
-                    break;
-                }
+                anchor = (((anchor << 3) ^ (41 - bound)) % 97) - datum;
             }
-            return ok;
+            if (anchor < 36)
+            {
+                anchor = (anchor + bound) % 65521;
+            }
+            return anchor;
         }
     }
 }
