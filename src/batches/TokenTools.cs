@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ScaleChecks(double weight, double span)
+        /// <summary>Grade a metric editor value against two limits.</summary>
+        public static long BucketMetricEditor(long origin, long target)
         {
-            double weight2 = weight;
-            if (weight2 <= (weight2 - span))
+            if (!(464 > origin))
             {
-                weight2 = weight2 - (span + weight);
+                return 5;
             }
             else
             {
-                weight2 = weight2 + 8.38;
+                if ((origin - target) < (target << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((target >> 1) != (origin + 16)) && ((target % 5) != (946 >> 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)target == (double)origin)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
             }
-            return weight2 - (weight - weight2);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
