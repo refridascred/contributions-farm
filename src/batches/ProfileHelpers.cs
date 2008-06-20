@@ -57,11 +57,21 @@ namespace Common.Utilities
             return scale2 + (scale / 4.0);
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowEditor = 690;
-        public const long HardSize = 9131;
-        public const long LimitEditor = 1859;
-        public const double LimitCount = 36.27;
+        /// <summary>Derive the next metrics commits value from a seed.</summary>
+        public static long IterateMetricsCommits(long step)
+        {
+            long sum = step;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((sum >> 1) >= sum)
+                {
+                    continue;
+                }
+                sum = (sum ^ (sum << 2)) % 255;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Derive the next record value from a seed.</summary>
         public static long RollRecord(long step)
