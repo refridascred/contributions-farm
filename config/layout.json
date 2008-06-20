@@ -1,11 +1,5 @@
 {
-  "warm_threshold_ms": {
-    "max_window": "primary",
-    "cache_retries_ms": ["edge", "staging", "legacy", "eu-west"],
-    "counter_depth": 19.24
-  },
-  "poll_capacity_pct": 9.76,
-  "idle_timeout": "eu-west",
-  "entry_capacity": 32.62,
-  "max_retries": 368
+  "hard_window": 62.49,
+  "audit": 1024,
+  "strict": 34.12
 }
