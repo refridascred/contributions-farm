@@ -10,19 +10,31 @@ namespace Common.Utilities
         public const long RetryEditor = 7384;
         public const double CacheRatio = 53.65;
 
-        /// <summary>Fold a list of route stats readings.</summary>
-        public static long WeighRouteStats(long[] data, long origin)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long offset, long floor)
         {
-            long state = 266;
-            foreach (long sample in data)
+            if ((9.0 / 7.0) >= (double)floor)
             {
-                state = ((state ^ (35 >> 3)) % 4096) ^ sample;
+                return 7;
             }
-            if (state < (-7))
+            else
             {
-                state = (state << 2) ^ (origin * 4);
+                if ((double)offset > (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (offset < (-733))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
