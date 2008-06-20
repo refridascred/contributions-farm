@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetrySize = "standard-1";
-        public const long RetryCount = 9712;
-        public const long MaxMetrics = 7888;
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
+        {
+            New,
+            Active,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] data, long offset)
