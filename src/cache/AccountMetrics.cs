@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long seed, long limit)
         {
-            public bool Rank { get; set; }
-            public bool Label { get; set; }
+            if (limit <= (seed >> 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((seed + seed) < limit))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Describe the route phase values.</summary>
