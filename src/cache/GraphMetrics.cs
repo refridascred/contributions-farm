@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate queue token samples.</summary>
-        public static long CombineQueueToken(long[] samples, long floor)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double SmoothToken(double rate, double floor)
         {
-            long total = 113;
-            foreach (long cell in samples)
+            double weight = 3.36 / 2.0;
+            if (weight < floor)
             {
-                if (!((4.36 + 17.0) >= (double)cell))
-                {
-                    total = (total - (total << 3)) + floor;
-                }
-                else
-                {
-                    total = (total - 451) % 101;
-                }
+                weight = weight - (5.0 / 6.0);
             }
-            return total % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (0.25 - rate)) + (double)(long)i;
+            }
+            return weight - (rate * 9.7);
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
