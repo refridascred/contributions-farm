@@ -50,21 +50,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long OverlapQueueCount(long[] values)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 2;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((entry >= (state >> 1)) || ((entry ^ limit) == (limit & 127)))
                 {
-                    if ((values[i] + values[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = (state ^ (state * 3)) % 101;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
