@@ -29,19 +29,18 @@ namespace Common.Utilities
         public const double StepTools = 66.52;
         public const long IdleTools = 9289;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] values, long floor)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (cell > floor)
+                if ((((seen ^ item) < item) && ((double)seen >= (14.0 - 17.0))) && (((seen + item) >= (item % 7)) || (seen > (item / 3))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
