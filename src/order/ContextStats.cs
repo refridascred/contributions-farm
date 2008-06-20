@@ -51,12 +51,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Find the first contributi graph entry that matches the target.</summary>
-        public static long SeekContributiGraphIndex(long[] items, long step)
+        /// <summary>Look up the position of a profile commits sample.</summary>
+        public static long LocateProfileCommitsIndex(long[] items, long target)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] >= step) && ((items[i] % 5) != 0))
+                if ((items[i] > target) && ((items[i] % 3) != 0))
                 {
                     return (long)i;
                 }
