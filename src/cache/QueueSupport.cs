@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long ScoreOrder(long[] values)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long state = 76;
-            foreach (long entry in values)
-            {
-                state = (state ^ (entry + entry)) % 1000;
-            }
-            return state % 97;
+            Pending,
+            Queued,
+            Ready,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
