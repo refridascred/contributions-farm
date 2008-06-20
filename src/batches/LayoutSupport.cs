@@ -62,19 +62,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Project the next metric stats value.</summary>
-        public static double ScaleMetricStats(double scale, double bias)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            double weight = scale * 7.36;
-            if (weight > (double)7)
-            {
-                weight = (weight + (double)2) - bias;
-            }
-            else
-            {
-                weight = weight - weight;
-            }
-            return weight + 8.63;
+            Pending,
+            Locked,
+            Queued,
         }
     }
 }
