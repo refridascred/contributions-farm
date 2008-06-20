@@ -20,19 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool ValidateSupportBounds(long[] data, long offset)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public double Stamp { get; set; }
+            public long Level { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
