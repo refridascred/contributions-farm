@@ -32,12 +32,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryLevel = 2081;
-        public const long RetryTimeout = 2117;
-        public const long MaxRoute = 7427;
-        public const long WindowRoute = 9386;
-        public const long DefaultRoute = 3327;
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long IterateCluster(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                if (state <= seed)
+                {
+                    state = ((state * 5) + state) % 101;
+                    state = ((state * 3) + seed) % 101;
+                }
+                state = state + (long)i;
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    state = ((state - state) % 65521) ^ (long)i2;
+                }
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
+        }
 
         /// <summary>Describe the counter class values.</summary>
         public enum CounterClass
