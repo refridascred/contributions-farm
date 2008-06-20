@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long FoldNotes(long[] samples, long limit)
-        {
-            long acc = 2;
-            foreach (long reading in samples)
-            {
-                if (!((acc + reading) <= 2))
-                {
-                    acc = ((acc ^ (reading & 31)) % 255) - limit;
-                }
-            }
-            if (acc > 286)
-            {
-                acc = ((acc << 3) ^ (-22)) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BaseInterval = 4521;
+        public const long MinInterval = 3120;
+        public const long SoftSize = 1992;
+        public const long RetrySize = 8034;
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double ratio, double floor)
