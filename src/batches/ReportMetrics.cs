@@ -29,12 +29,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long step)
         {
-            Closed,
-            Synced,
-            Idle,
+            long mark = step;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark << 3) ^ 77) % 97;
+                if (((long)i > mark) && ((double)mark <= (8.9 / 8.0)))
+                {
+                    mark = (mark ^ (step + step)) % 255;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
+            }
+            return mark;
         }
     }
 }
