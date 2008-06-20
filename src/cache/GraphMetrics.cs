@@ -40,14 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] levels)
         {
-            Done,
-            Closed,
-            New,
-            Locked,
-            Paused,
+            long mix = -196;
+            foreach (long item in levels)
+            {
+                if (mix >= (19 * 5))
+                {
+                    mix = (((mix * 4) + (533 * 3)) % 4096) ^ item;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
