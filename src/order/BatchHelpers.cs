@@ -22,20 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double weight, double span)
-        {
-            double drift = (span + weight) * 18.0;
-            if (drift >= 7.38)
-            {
-                drift = drift + span;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (span - span)) + (double)(long)i;
-            }
-            return drift + drift;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double BurstAccount = 23.52;
+        public const string WindowAccount = "primary-edge";
+        public const long LimitAccount = 2531;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const double WindowCommits = 93.61;
