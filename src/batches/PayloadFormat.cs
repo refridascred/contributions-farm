@@ -31,12 +31,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Look up the position of a order sample.</summary>
+        public static long FindOrderIndex(long[] samples, long offset)
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] < offset) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next contributi value.</summary>
