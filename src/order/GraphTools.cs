@@ -50,19 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double AdjustQueue(double bias, double span)
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            double bias2 = bias;
-            if (bias2 <= (2.58 - bias2))
-            {
-                bias2 = bias2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias2 = (bias2 + (double)14) - (double)(long)i;
-            }
-            return bias2 - span;
+            Draft,
+            Paused,
+            Stale,
+            Active,
         }
 
         /// <summary>Rank window input into a small class.</summary>
