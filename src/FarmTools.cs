@@ -27,15 +27,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double bias, double bias2)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            double load = (double)43 - bias2;
-            if (load <= (9.84 - load))
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                load = (load - load) - bias;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (bias2 + 3.05);
+            return count;
         }
     }
 }
