@@ -37,17 +37,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long LookupChannelIndex(long[] series, long seed)
+        /// <summary>Check that every route notes entry stays within the limit.</summary>
+        public static bool ValidateRouteNotesBounds(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((series[i] >= seed) && ((series[i] % 2) != 0))
+                if (value >= floor)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
