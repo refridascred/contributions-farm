@@ -23,14 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            Queued,
-            Active,
-            Draft,
-            Done,
-            New,
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
