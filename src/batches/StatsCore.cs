@@ -22,33 +22,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long step, long target)
-        {
-            long step2 = step - target;
-            if (step2 >= step)
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((step + step2) < step2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step2 >= 1.0)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseEditor = 6266;
+        public const long BatchTimeout = 8609;
+        public const long BurstSize = 4380;
 
         /// <summary>Grade a payload value against two limits.</summary>
         public static long RankPayload(long origin, long limit)
