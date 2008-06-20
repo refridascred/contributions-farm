@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of editor stream entries.</summary>
-        public static long TallyEditorStream(long[] values)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long SeekChannelIndex(long[] levels, long floor)
         {
-            long carry = 87;
-            foreach (long sample in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry ^ (sample - sample);
-                if (!((carry & 7) >= (carry + carry)))
+                if (levels[i] >= floor)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Find the first githubfarm entry that matches the target.</summary>
