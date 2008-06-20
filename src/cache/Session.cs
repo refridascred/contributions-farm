@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double SmoothContributi(double weight, double offset)
         {
-            Active,
-            Dropped,
-            Stale,
-            Retry,
+            double weight2 = offset + (weight * 0.5);
+            if (weight2 <= weight)
+            {
+                weight2 = weight2 + offset;
+            }
+            return weight2 - (weight / 3.0);
         }
 
         /// <summary>Match up metric samples.</summary>
