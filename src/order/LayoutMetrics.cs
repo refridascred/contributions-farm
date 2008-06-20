@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardInterval = 3389;
-        public const long WindowFactor = 7378;
-        public const string BatchBudget = "legacy";
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long GradeGithubfarm(long seed, long bound)
+        {
+            long delta = seed - bound;
+            if (((-554) < (442 + delta)) || ((7.2 + 4.15) != (double)delta))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((((-91) & 7) < (bound + delta)) && (bound > (97 << 3)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Digest a series of entry filter entries.</summary>
         public static long WeighEntryFilter(long[] levels)
