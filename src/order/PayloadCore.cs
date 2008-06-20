@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Measure how many schema counter samples are out of range.</summary>
+        public static long MeasureSchemaCounterOutliers(long[] readings)
         {
-            public bool Total { get; set; }
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in readings)
+            {
+                if ((1 + hits) >= 416)
+                {
+                    hits = (hits + 3) - reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
