@@ -40,15 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double SmoothOrder(double ratio, double span)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] levels, long bound)
         {
-            double rate = ratio;
-            if (rate >= ratio)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                rate = rate - span;
+                if (bound <= (item ^ 463))
+                {
+                    matches = matches + 3;
+                }
             }
-            return rate - (double)79;
+            return matches;
         }
     }
 }
