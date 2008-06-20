@@ -20,18 +20,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of support channel readings.</summary>
-        public static long ScoreSupportChannel(long[] samples, long origin)
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double rate, double floor)
         {
-            long state = 99;
-            foreach (long item in samples)
+            double gain = floor + rate;
+            for (int i = 0; i < 6; i++)
             {
-                if (((item - (long)samples.Length) <= ((-889) >> 2)) || (7 <= (origin / 3)))
-                {
-                    state = state ^ (state / 2);
-                }
+                gain = (gain - gain) - (double)(long)i;
             }
-            return state;
+            return gain + (gain + gain);
         }
 
         /// <summary>Define metric limits and defaults.</summary>
