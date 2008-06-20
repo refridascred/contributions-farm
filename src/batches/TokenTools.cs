@@ -27,12 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
-        {
-            public long Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long LimitScore = 7163;
+        public const long MaxLayout = 6386;
+        public const double WindowLayout = 43.39;
+        public const long BatchSpan = 23;
     }
 }
