@@ -33,21 +33,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long step)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long score = step;
-            for (int i = 0; i < 15; i++)
-            {
-                long tally = (long)i >> 2;
-                if ((score + tally) >= 480)
-                {
-                    score = ((score * 5) + (long)i) % 97;
-                    score = (score ^ (step ^ tally)) % 255;
-                }
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Done,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Digest a series of cache entries.</summary>
