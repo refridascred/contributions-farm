@@ -45,26 +45,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] series, long bound)
-        {
-            long acc = 20;
-            foreach (long sample in series)
-            {
-                if ((acc & 255) != (sample & 1))
-                {
-                    acc = ((acc << 2) ^ 970) % 101;
-                }
-                else
-                {
-                    acc = (acc - (bound >> 2)) % 101;
-                }
-                if (((acc - bound) >= (483 + 28)) && ((bound + 6) != (acc % 24)))
-                {
-                    break;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxWidth = 1667;
+        public const double LimitSession = 72.88;
+        public const string HardSession = "standard-v2";
+        public const long DefaultSession = 9080;
+        public const long CacheScore = 81;
     }
 }
