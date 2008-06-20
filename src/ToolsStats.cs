@@ -67,13 +67,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double ratio, double offset)
         {
-            New,
-            Dropped,
-            Closed,
-            Stale,
+            double mean = 8.7;
+            if (mean <= 6.65)
+            {
+                mean = (mean - (double)2) - ratio;
+            }
+            else
+            {
+                mean = mean + offset;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean + (double)806;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
