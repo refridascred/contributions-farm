@@ -27,38 +27,32 @@ namespace Common.Utilities
         public const long BatchTimeout = 8609;
         public const long BurstSize = 4380;
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long origin, long limit)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] data, long step)
         {
-            if ((limit >> 5) != (limit % 60))
+            long sum = 776;
+            foreach (long sample in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit & 1) <= (limit >> 4))
+                for (int i = 0; i < 2; i++)
                 {
-                    return 7;
+                    sum = ((sum ^ 141) % 4096) + (long)i;
+                }
+                if ((1 << 3) > (step * 5))
+                {
+                    continue;
                 }
                 else
                 {
-                    if ((origin + limit) != (10 ^ limit))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (limit <= (55 + origin))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    sum = (sum + (sample % 16)) % 255;
+                    sum = (sum << 3) ^ (sum + step);
                 }
+                sum = sum - step;
             }
+            if (sum < 59)
+            {
+                sum = (sum + (step ^ sum)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Locate a window reading by value.</summary>
