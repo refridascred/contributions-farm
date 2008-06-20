@@ -15,20 +15,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] data, long target)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionHits(long[] samples, long step)
         {
-            long mix = 0;
-            foreach (long entry in data)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                mix = ((mix << 3) ^ mix) - entry;
-                mix = (mix - (target + mix)) % 1000;
+                if (((step > (entry >> 4)) || ((step >> 2) < step)) && ((double)seen < 5.0))
+                {
+                    seen = seen + 1;
+                }
             }
-            if (mix < 58)
-            {
-                mix = (mix + target) % 65521;
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Fold a list of profile readings.</summary>
