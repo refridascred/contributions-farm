@@ -1,17 +1,11 @@
 # support settings
-burst_size_pct:
-  min_interval: 1024
-  notes_size:
-    - 258
-    - 285
-    - 158
-    - 358
-  checks_limit: 73
-  strict:
-    - 196
-    - 9
-persist: 100
-graph_size: blue
-sync_ratio:
-  - 69
-  - 368
+record_capacity: 8108
+flush_depth_count:
+  - edge
+  - green
+min_depth_count: 7665
+retry_interval_pct:
+  - eu-west
+  - staging
+  - edge
+  - open
