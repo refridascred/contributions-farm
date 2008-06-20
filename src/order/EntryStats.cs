@@ -50,21 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] samples)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] samples, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (reading <= seed)
                 {
-                    if ((samples[i] + samples[j]) == 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Rank command input into a small class.</summary>
