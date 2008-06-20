@@ -38,23 +38,13 @@ namespace Common.Utilities
         public const string IdleStats = "local";
         public const double RetryBudget = 5.8;
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long RollChecks(long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long acc = target;
+            for (int i = 0; i < 23; i++)
             {
-                long diff = (seed * 3) ^ seed;
-                if (((diff + (long)i) >= ((long)i + 56)) || ((long)i >= 0))
-                {
-                    diff = (diff ^ seed) % 101;
-                }
-                else
-                {
-                    diff = (diff ^ (6 + acc)) % 255;
-                    diff = (diff << 2) ^ seed;
-                }
-                acc = ((acc * 4) + (long)i) % 101;
+                acc = ((acc * 2) + (long)i) % 97;
             }
             return acc;
         }
