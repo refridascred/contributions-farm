@@ -65,21 +65,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count tools context pairs that satisfy a relation.</summary>
-        public static long OverlapToolsContextCount(long[] samples)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            Paused,
+            Queued,
+            Done,
         }
     }
 }
