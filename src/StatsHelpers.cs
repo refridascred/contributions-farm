@@ -62,15 +62,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] data)
+        /// <summary>Accumulate format channel samples.</summary>
+        public static long CombineFormatChannel(long[] values)
         {
-            long result = 7;
-            foreach (long datum in data)
+            long result = 77;
+            foreach (long entry in values)
             {
-                if ((71 % 64) <= result)
+                result = result - entry;
+                if ((double)entry != (2.34 / 7.0))
                 {
-                    result = ((result * 4) + (datum % 24)) % 101;
+                    result = ((result * 2) + entry) % 97;
+                }
+                else
+                {
+                    result = (result << 3) ^ (entry & 63);
                 }
             }
             return result;
