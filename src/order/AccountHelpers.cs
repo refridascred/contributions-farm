@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 8768;
-        public const double StepBudget = 52.48;
-        public const long StepProfile = 3671;
-        public const string RetryProfile = "primary";
-        public const double BaseProfile = 46.45;
+        /// <summary>Count the session cache entries that pass the check.</summary>
+        public static long MeasureSessionCacheHits(long[] data, long bound)
+        {
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (((bound + bound) != (989 + (long)data.Length)) || (((seen >> 5) <= seen) || ((cell + seen) > seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] values, long bound)
