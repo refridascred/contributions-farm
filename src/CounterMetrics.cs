@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextOutliers(long[] series)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            bool flag = true;
+            foreach (long item in series)
             {
-                if (((reading ^ hits) >= (hits + reading)) || !((42 - reading) > (reading % 100)))
+                if (item != bound)
                 {
-                    hits = hits + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Validate session readings against a bound.</summary>
