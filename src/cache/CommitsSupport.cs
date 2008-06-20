@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public double Offset { get; set; }
-            public bool Owner { get; set; }
-            public bool Score { get; set; }
-            public string Ratio { get; set; } = "";
+            Locked,
+            Done,
+            Closed,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
