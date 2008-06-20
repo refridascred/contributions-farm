@@ -28,10 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 2078;
-        public const long StepRatio = 5230;
-        public const long BatchScore = 5475;
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LocateContextIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a entry summary.</summary>
         public sealed class EntrySummary
