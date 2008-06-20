@@ -51,12 +51,10 @@ namespace Common.Utilities
             return load - span;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 1678;
-        public const double BaseQueue = 31.5;
-        public const long DefaultQueue = 2562;
-        public const long HardQueue = 2017;
-        public const string MaxRatio = "fallback";
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double SoftMetric = 38.88;
+        public const long RetryLevel = 55;
+        public const string SoftWidth = "local-edge";
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
