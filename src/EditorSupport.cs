@@ -66,14 +66,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            Stale,
-            Ready,
-            Dropped,
-            Synced,
-            Retry,
+            public long Owner { get; set; }
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
