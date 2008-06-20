@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Region { get; set; }
+            public bool Flag { get; set; }
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a already counter reading by value.</summary>
