@@ -23,21 +23,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] values)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mix & 127) <= mix)
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((mix ^ (mix >> 1)) % 65521) - reading;
                 }
+                mix = (mix + ((long)values.Length % 7)) % 97;
             }
-            return matches;
+            return mix % 65521;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
