@@ -50,19 +50,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool VerifyGithubfarmBounds(long[] levels, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LookupClusterIndex(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < floor)
+                if (readings[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
