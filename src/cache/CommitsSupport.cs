@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double ratio, double span)
+        /// <summary>Rank account cache input into a small class.</summary>
+        public static long SortAccountCache(long offset, long offset2)
         {
-            double rate = span;
-            if (rate >= rate)
+            long edge = offset ^ offset2;
+            if ((double)447 >= (double)offset2)
             {
-                rate = rate - (double)(-895);
+                return 6;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate + (span - ratio)) - (double)(long)i;
+                if (!((double)edge == (double)offset2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (offset2 <= (942 << 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((874 - offset2) > edge) || ((offset % 100) == (offset >> 4)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return rate + rate;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
