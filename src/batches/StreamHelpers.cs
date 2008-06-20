@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long CountBatchesHits(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long limit)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if ((entry + hits) > (long)levels.Length)
+                if ((mix + 6) >= (long)i)
                 {
-                    hits = hits + 1;
+                    mix = mix - (limit % 16);
+                    mix = (mix - (mix + mix)) % 97;
                 }
+                else
+                {
+                    mix = (mix - limit) % 97;
+                    mix = (mix ^ (47 >> 5)) % 101;
+                }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
