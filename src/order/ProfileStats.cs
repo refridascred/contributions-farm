@@ -35,21 +35,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long OverlapSupportCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxSpan = 0.54;
+        public const long WindowBudget = 1479;
+        public const long DefaultTools = 6327;
+        public const long MinInterval = 6996;
+        public const string MaxWidth = "alpha-edge";
     }
 }
