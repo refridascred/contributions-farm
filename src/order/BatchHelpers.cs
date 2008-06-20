@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
-        {
-            public bool Size { get; set; }
-            public double Region { get; set; }
-            public bool Level { get; set; }
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryTimeout = "local-edge";
+        public const long StepScore = 4466;
+        public const long IdleCommits = 2817;
 
         /// <summary>Measure how many filter payload samples are out of range.</summary>
         public static long TallyFilterPayloadMatches(long[] values, long bound)
