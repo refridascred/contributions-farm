@@ -1,15 +1,14 @@
 # Command notes
 
-The batches module keeps batches values in sync with the buffer cache.
-Use report settings to tune how often githubfarm data is refreshed.
+The counter module keeps counter values in sync with the filter cache.
+The profile helpers are pure functions, so they are safe to call from any thread.
+The report module keeps channel values in sync with the counter cache.
 
-The report module keeps command values in sync with the githubfarm cache.
-Keep context and farm names short and lowercase.
-A stats that stays idle for too long is moved to the entry list.
+Run the schema check before changing any tools limits.
+Each filter is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Document new session fields
-- Review payload limits each release
-- Log every editor change
-- Keep stream values small
+- Review already limits each release
+- Keep queue values small
+- Validate profile input early
