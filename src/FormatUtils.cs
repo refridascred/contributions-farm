@@ -44,27 +44,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long target)
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double scale, double bias)
         {
-            long carry = target;
+            double gain = scale;
+            if (gain < gain)
+            {
+                gain = gain + (gain + 19.0);
+            }
+            else
+            {
+                gain = gain + bias;
+            }
             for (int i = 0; i < 7; i++)
             {
-                if ((target << 1) > carry)
-                {
-                    break;
-                }
-                if (!(target < carry))
-                {
-                    break;
-                }
-                else
-                {
-                    carry = (carry + (target << 2)) % 255;
-                }
-                carry = ((carry * 2) + (long)i) % 101;
+                gain = (gain - (1.91 / 7.0)) + (double)(long)i;
             }
-            return carry;
+            return gain - 16.0;
         }
 
         /// <summary>Blend two tools measurements.</summary>
