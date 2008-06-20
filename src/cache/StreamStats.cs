@@ -19,13 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Locate a already counter reading by value.</summary>
+        public static long LookupAlreadyCounterIndex(long[] samples, long floor)
         {
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] >= floor) && ((samples[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
