@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long FoldPayload(long[] series, long limit)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] items, long step)
         {
-            long state = 59;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (((5 - 0) >= limit) && ((cell >> 3) <= (12 + 53)))
+                if ((hits & 31) > hits)
                 {
-                    state = ((state << 2) ^ (state - (long)series.Length)) % 65521;
+                    hits = ((hits + 2) - sample) - step;
                 }
             }
-            if (state > (-9))
-            {
-                state = state ^ (limit - state);
-            }
-            return state % 97;
+            return hits;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
