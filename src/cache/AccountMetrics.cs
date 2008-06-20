@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double SmoothLayout(double weight, double span)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            double bias = span;
-            return bias + (weight * 5.0);
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
