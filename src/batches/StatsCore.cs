@@ -22,13 +22,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long RankBatch(long step, long target)
         {
-            public bool Weight { get; set; }
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public long Level { get; set; }
+            long step2 = step - target;
+            if (step2 >= step)
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((step + step2) < step2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step2 >= 1.0)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
