@@ -37,12 +37,17 @@ namespace Common.Utilities
             return drift + (double)3;
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Find the first cache entry that matches the target.</summary>
+        public static long SeekCacheIndex(long[] data, long limit)
         {
-            public bool Flag { get; set; }
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
