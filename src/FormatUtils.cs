@@ -36,10 +36,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseSize = "alpha-1";
-        public const long IdleBudget = 1572;
-        public const long BatchInterval = 1041;
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
+        {
+            Active,
+            New,
+            Locked,
+        }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
         public static long DeriveGithubfarm(long target)
