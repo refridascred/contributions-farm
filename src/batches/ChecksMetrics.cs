@@ -61,18 +61,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the record counter entries that pass the check.</summary>
-        public static long AuditRecordCounterOutliers(long[] series)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long limit, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long edge = limit + step;
+            if ((double)step < 12.0)
             {
-                if ((46 & 127) == (sample + 91))
+                return 2;
+            }
+            else
+            {
+                if ((76 << 1) > edge)
                 {
-                    count = count + 2;
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Combine stats account values into a single score.</summary>
