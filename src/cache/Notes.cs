@@ -31,19 +31,31 @@ namespace Common.Utilities
         public const double BaseBudget = 64.12;
         public const long SoftReport = 6633;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double ProjectAlready(double scale, double span)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long BucketBatches(long seed, long target)
         {
-            double load = (double)(702 - (-590));
-            if (load > scale)
+            if ((seed - 46) > seed)
             {
-                load = load - (load / 3.0);
+                return 4;
             }
             else
             {
-                load = load - 8.0;
+                if (((-83) ^ target) != (target ^ target))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((seed - seed) == (target - seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return load - (span - load);
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
