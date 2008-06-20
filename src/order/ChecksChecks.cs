@@ -25,12 +25,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Validate context queue readings against a bound.</summary>
+        public static bool GuardContextQueueBounds(long[] readings, long bound)
         {
-            public long Label { get; set; }
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading > bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
