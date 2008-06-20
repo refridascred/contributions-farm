@@ -37,13 +37,13 @@ namespace Common.Utilities
             return (bias - 6.4) + offset;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            Dropped,
-            Draft,
-            Idle,
-            Paused,
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Locate a notes reading by value.</summary>
