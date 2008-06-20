@@ -15,21 +15,14 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] items)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Draft,
+            Stale,
+            Active,
+            Synced,
+            Pending,
         }
 
         /// <summary>Iterate the stats commits series from a seed.</summary>
