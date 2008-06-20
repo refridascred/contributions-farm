@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            public double Limit { get; set; }
-            public string Region { get; set; } = "";
-            public long Offset { get; set; }
+            public string Weight { get; set; } = "";
+            public double Offset { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Match up metric samples.</summary>
