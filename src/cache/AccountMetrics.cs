@@ -58,38 +58,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long SortBatch(long seed, long bound)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long floor)
         {
-            if ((double)bound > (0.14 / 2.0))
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((seed - seed) <= 43)
+                if (reading < floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed >= (4.31 * 2.59))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((51 % 24) > (bound << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
