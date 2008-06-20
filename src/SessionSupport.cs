@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const string StepRatio = "alpha";
         public const string StepLevel = "latest-v2";
 
-        /// <summary>Audit contributi filter readings against a rule.</summary>
-        public static long CountContributiFilterHits(long[] items)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if ((3.0 - 0.2) <= (double)reading)
+                if (entry > limit)
                 {
-                    tally = tally + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
