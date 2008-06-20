@@ -34,18 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many route already samples are out of range.</summary>
-        public static long AuditRouteAlreadyOutliers(long[] readings, long bound)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LookupLayoutIndex(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((reading * 2) > (bound ^ 60)) || (((double)bound > (9.9 / 6.0)) || ((reading + matches) == (matches / 6))))
+                if ((series[i] == offset) && ((series[i] % 2) == 0))
                 {
-                    matches = matches + 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
