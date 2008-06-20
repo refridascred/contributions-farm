@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long bound, long floor)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] values)
         {
-            long lane = bound + floor;
-            if (!((floor & 31) != (bound - bound)))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((7.0 - 5.0) == (double)lane)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (9.4 > (double)lane)
+                    if ((values[i] ^ values[j]) < 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next support profile value from a seed.</summary>
