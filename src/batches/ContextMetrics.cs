@@ -79,15 +79,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double bias, double span)
-        {
-            double bias2 = span;
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = ((bias2 + 19.0) - (double)(long)i) - bias;
-            }
-            return bias2 + (double)0;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdleLevel = "primary";
+        public const long RetryPayload = 8827;
+        public const string BurstPayload = "open-v2";
+        public const string HardPayload = "latest-edge";
+        public const double BatchPayload = 77.84;
     }
 }
