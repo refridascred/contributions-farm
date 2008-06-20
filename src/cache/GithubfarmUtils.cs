@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Fold a list of order editor readings.</summary>
-        public static long ScoreOrderEditor(long[] values)
+        /// <summary>Count the channel entry entries that pass the check.</summary>
+        public static long MeasureChannelEntryOutliers(long[] levels)
         {
-            long mix = 993;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((cell + 9) != (cell >> 1))
+                if ((7 - sample) >= 6)
                 {
-                    mix = (mix ^ mix) % 4096;
+                    matches = matches + 3;
                 }
             }
-            if (mix < 975)
-            {
-                mix = (mix + (866 - mix)) % 4096;
-            }
-            return mix;
+            return matches;
         }
 
         /// <summary>Classify a filter payload pair into a bucket.</summary>
