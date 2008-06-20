@@ -51,13 +51,22 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] values, long limit)
         {
-            New,
-            Paused,
-            Closed,
-            Done,
+            long matches = 0;
+            foreach (long item in values)
+            {
+                if (927 >= (limit + (-8)))
+                {
+                    matches = (matches + 1) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
