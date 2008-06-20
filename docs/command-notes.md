@@ -1,14 +1,11 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-Each batch is validated before it reaches the queue queue.
-
-The support module keeps notes values in sync with the channel cache.
-Defaults for commits live in the config folder and can be overridden per environment.
-Use stream settings to tune how often stats data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
+The buffer report groups every farm by route.
+Defaults for account live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Validate record input early
-- Review entry limits each release
+- Keep farm values small
+- Validate route input early
+- Document new editor fields
