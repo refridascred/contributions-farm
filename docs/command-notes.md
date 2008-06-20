@@ -1,11 +1,12 @@
 # Command notes
 
-A cluster that stays idle for too long is moved to the already list.
-The queue module keeps tools values in sync with the buffer cache.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Keep record and route names short and lowercase.
+The editor report groups every batches by metric.
 
 ## Guidelines
 
-- Document new commits fields
-- Keep filter values small
-- Validate channel input early
-- Log every cache change
+- Log every batch change
+- Prefer counter defaults
+- Review filter limits each release
+- Validate payload input early
