@@ -1,8 +1,8 @@
-id,owner,rank,label,count
-1,973,802,215,strict
-2,green,320,open,local
-3,71,cached,eu-west,527
-4,163,712,latest,95
-5,standard,291,open,62.15
-6,552,standard,local,719
-7,open,green,595,green
+id,token,active
+1,75.95,37.69
+2,98.33,45.99
+3,21.27,staging
+4,357,91
+5,26.48,67.71
+6,52.85,520
+7,5,597
