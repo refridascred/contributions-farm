@@ -66,19 +66,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TallyRecord(long[] readings, long offset)
+        /// <summary>Audit githubfarm cluster readings against a rule.</summary>
+        public static long TallyGithubfarmClusterOutliers(long[] samples)
         {
-            long mark = 347;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mark = (((mark * 5) + mark) % 101) + offset;
-                if (4.87 >= (double)item)
+                if ((item + item) != (item ^ item))
                 {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return mark % 65521;
+            return matches;
         }
     }
 }
