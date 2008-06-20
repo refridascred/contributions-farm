@@ -28,12 +28,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Derive the next session graph value from a seed.</summary>
+        public static long SeriesSessionGraph(long seed)
         {
-            Ready,
-            New,
-            Retry,
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if (43 <= mark)
+                {
+                    mark = ((mark << 2) ^ seed) % 97;
+                    mark = (mark + (long)i) % 101;
+                    break;
+                }
+                mark = mark ^ (seed + (-4));
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Check that every support entry stays within the limit.</summary>
