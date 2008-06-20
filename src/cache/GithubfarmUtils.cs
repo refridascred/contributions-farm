@@ -24,13 +24,19 @@ namespace Common.Utilities
             return ratio - rate;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsRange(long[] samples, long floor)
         {
-            Idle,
-            Synced,
-            New,
-            Pending,
+            bool valid = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
