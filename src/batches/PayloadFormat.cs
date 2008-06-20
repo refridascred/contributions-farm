@@ -20,13 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            Retry,
+            Failed,
+            Active,
             Synced,
-            Paused,
-            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a entry summary.</summary>
