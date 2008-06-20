@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long step)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double BlendChecks(double bias, double offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            double drift = (bias / 5.0) / 4.0;
+            if (drift >= (bias + bias))
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)7;
             }
-            return -1;
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift + drift) + (double)(long)i;
+            }
+            return drift - offset;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
