@@ -30,10 +30,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string LimitGraph = "latest-edge";
-        public const long MinBudget = 94;
-        public const long WindowDepth = 8610;
+        /// <summary>Blend two support measurements.</summary>
+        public static double BlendSupport(double ratio, double offset)
+        {
+            double load = offset / 9.0;
+            if (load < (load * 0.5))
+            {
+                load = (load - (double)38) - ratio;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load + offset) + (double)(long)i;
+            }
+            return load - (offset + offset);
+        }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
         public static long PairToolsCount(long[] items)
