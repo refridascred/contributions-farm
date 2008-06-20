@@ -46,32 +46,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] data, long step)
+        /// <summary>Project the next farm value.</summary>
+        public static double BlendFarm(double ratio, double floor)
         {
-            long sum = 776;
-            foreach (long sample in data)
+            double mean = floor;
+            if (mean > (floor - floor))
             {
-                for (int i = 0; i < 2; i++)
-                {
-                    sum = ((sum ^ 141) % 4096) + (long)i;
-                }
-                if ((1 << 3) > (step * 5))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = (sum + (sample % 16)) % 255;
-                    sum = (sum << 3) ^ (sum + step);
-                }
-                sum = sum - step;
+                mean = mean - mean;
             }
-            if (sum < 59)
+            else
             {
-                sum = (sum + (step ^ sum)) % 4096;
+                mean = mean - (floor + floor);
             }
-            return sum;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + (floor + ratio);
         }
 
         /// <summary>Hold a metrics stats.</summary>
