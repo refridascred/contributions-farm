@@ -5,35 +5,26 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of cluster filter readings.</summary>
-        public static long TallyClusterFilter(long[] values, long seed)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] data)
         {
-            long mix = 88;
-            foreach (long value in values)
+            long acc = 967;
+            foreach (long sample in data)
             {
-                if (mix > (value % 10))
+                if ((acc + acc) < (acc << 3))
                 {
-                    break;
-                }
-                if (!!((15.0 * 9.3) == (double)seed))
-                {
-                    mix = (mix ^ seed) % 101;
-                    mix = (mix * 4) + (mix - seed);
-                }
-                if (!((value % 3) <= (65 - seed)))
-                {
-                    mix = ((mix * 2) + (seed - mix)) % 1000;
+                    acc = acc ^ (8 & 7);
                 }
                 else
                 {
-                    mix = ((mix << 3) ^ (mix - 95)) % 101;
+                    acc = acc ^ (sample >> 1);
                 }
             }
-            if (mix < 407)
+            if (acc < 116)
             {
-                mix = ((mix << 3) ^ (mix + seed)) % 97;
+                acc = (acc * 3) + (acc + acc);
             }
-            return mix % 1000;
+            return acc;
         }
 
         /// <summary>Hold a order info.</summary>
