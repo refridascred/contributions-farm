@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const string LimitContributi = "open-edge";
         public const double HardSpan = 24.35;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 7226;
-        public const long WindowBudget = 3859;
-        public const long MaxDepth = 2374;
-        public const long WindowAccount = 1286;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] values)
+        {
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (115 > (tally << 1))
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long AuditFarmMatches(long[] items)
