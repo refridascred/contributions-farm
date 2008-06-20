@@ -25,11 +25,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double ProjectGithubfarm(double rate, double offset)
+        /// <summary>Adjust a entry already reading.</summary>
+        public static double BlendEntryAlready(double bias, double offset)
         {
-            double ratio = (20.0 - 15.0) - offset;
-            return (ratio - (ratio / 4.0)) + rate;
+            double mean = offset * 0.9;
+            if (mean >= (mean * 5.62))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean - (bias / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (mean - (offset - bias)) - (double)(long)i;
+            }
+            return mean - (bias + bias);
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
