@@ -1,4 +1,32 @@
 # githubfarm settings
-default_retries_ms: true
-sync_ttl_count: false
-compress: legacy
+sync_interval: 64.28
+dry_run: 98
+payload_ttl:
+  verbose: local
+  sync_interval_ms: 19.04
+  window_timeout:
+    readonly: 100
+    dry_run: 50
+    githubfarm_size:
+      - 21
+      - 304
+      - 344
+      - 485
+  burst_limit_count: true
+  stream_timeout: green
+cache_retries_ms: 500
+warm_interval_count: 89.21
+burst_timeout_ms:
+  payload_interval:
+    idle_interval_s: eu-west
+    default_ttl_s: standard
+    hard_size_count: 11.57
+    audit: 21.85
+    base_capacity_s: false
+    readonly: primary
+  default_size_pct: legacy
+  verbose:
+    - staging
+    - strict
+    - cached
+  flush_ttl_ms: edge
