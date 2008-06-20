@@ -16,12 +16,10 @@ namespace Common.Utilities
         public const long DefaultWidth = 1792;
         public const long BurstPayload = 5793;
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
-        {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string IdleOrder = "staging-1";
+        public const string RetryBudget = "open-1";
+        public const long WindowOrder = 3017;
+        public const long LimitFactor = 5585;
     }
 }
