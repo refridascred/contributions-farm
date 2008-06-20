@@ -39,11 +39,27 @@ namespace Common.Utilities
             return mean - (bias + bias);
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] data)
         {
-            public string Flag { get; set; } = "";
-            public double Size { get; set; }
+            long total = 21;
+            foreach (long datum in data)
+            {
+                long cur = datum;
+                if (((669 & 3) >= datum) && ((datum & 31) < (cur / 2)))
+                {
+                    break;
+                }
+                if (datum < (total * 3))
+                {
+                    total = total - (total - total);
+                }
+            }
+            if (total > (-4))
+            {
+                total = (total + (6 * 2)) % 65521;
+            }
+            return total;
         }
     }
 }
