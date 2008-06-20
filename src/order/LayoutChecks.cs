@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Look up the position of a commits record sample.</summary>
-        public static long FindCommitsRecordIndex(long[] series, long step)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Count commits pairs that satisfy a relation.</summary>
