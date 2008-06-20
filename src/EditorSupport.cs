@@ -92,19 +92,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderLimits(long[] series, long limit)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long OverlapEntryCount(long[] data)
         {
-            bool ok = true;
-            foreach (long entry in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry <= limit)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
