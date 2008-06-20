@@ -49,21 +49,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of context payload readings.</summary>
-        public static long PairContextPayloadCount(long[] data)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long FoldMetrics(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = 59;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((datum / 5) <= (datum + datum))
                 {
-                    if ((data[i] + data[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = ((state * 3) + (target >> 2)) % 4096;
                 }
             }
-            return seen;
+            if (state > 365)
+            {
+                state = ((state * 4) + (target & 127)) % 4096;
+            }
+            return state % 4096;
         }
     }
 }
