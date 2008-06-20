@@ -21,19 +21,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] readings, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
