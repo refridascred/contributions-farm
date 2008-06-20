@@ -1,6 +1,4 @@
 # support settings
-retry_size_s: staging
-commits_ratio: true
-buffer_interval: 40.15
-poll_threshold: open
-max_limit_count: false
+base_ttl_ms: fallback
+cache_capacity_count: false
+batch_size_pct: 60
