@@ -28,12 +28,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatBounds(long[] items, long step)
         {
-            Pending,
-            Dropped,
-            Paused,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
