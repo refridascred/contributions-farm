@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] values)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LocateStatsIndex(long[] data, long offset)
         {
-            long carry = 44;
-            foreach (long value in values)
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry ^ carry) % 4096) - value;
+                if ((data[i] < offset) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
