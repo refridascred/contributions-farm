@@ -22,38 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a channel stream value against two limits.</summary>
-        public static long GradeChannelStream(long seed, long step)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] series, long target)
         {
-            if ((seed + seed) >= step)
+            long acc = 705;
+            foreach (long sample in series)
             {
-                return 4;
+                acc = ((acc + (acc << 1)) % 97) + sample;
             }
-            else
+            if (acc > 671)
             {
-                if (((double)step >= 19.0) && (seed > (seed * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed < (seed * 4)) && ((step - seed) == (seed & 1)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step >> 5) > (seed >> 1))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
+                acc = ((acc << 3) ^ (target - target)) % 65521;
             }
+            return acc % 97;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
