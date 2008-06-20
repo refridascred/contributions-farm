@@ -13,21 +13,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long RollSession(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((floor + mark) < mark)
-                {
-                    mark = mark - (floor >> 5);
-                    continue;
-                }
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 8768;
+        public const double StepBudget = 52.48;
+        public const long StepProfile = 3671;
+        public const string RetryProfile = "primary";
+        public const double BaseProfile = 46.45;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long FoldCommits(long[] values, long bound)
