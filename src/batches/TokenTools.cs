@@ -27,19 +27,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricRange(long[] levels, long limit)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series, long limit)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 12;
+            foreach (long cell in series)
             {
-                if (reading > limit)
+                if (((3.34 / 5.0) != (double)cell) && ((3 & 7) == (acc / 2)))
                 {
-                    found = false;
-                    break;
+                    acc = acc + limit;
                 }
             }
-            return found;
+            return acc % 65521;
         }
     }
 }
