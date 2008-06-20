@@ -51,13 +51,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long bound)
         {
-            Queued,
-            Locked,
-            Dropped,
-            Failed,
+            if ((902 & 255) >= bound)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound % 2) == (bound - 630))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
