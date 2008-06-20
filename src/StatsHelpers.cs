@@ -50,18 +50,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] values, long limit)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry + limit) <= (entry * 2))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public double Weight { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
