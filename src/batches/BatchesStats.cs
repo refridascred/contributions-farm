@@ -43,18 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == offset) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 5717;
+        public const long LimitNotes = 6358;
+        public const long MaxNotes = 6732;
+        public const double BaseNotes = 90.58;
+        public const string SoftNotes = "open-v2";
 
         /// <summary>Describe the contributi status values.</summary>
         public enum ContributiStatus
