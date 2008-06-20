@@ -55,18 +55,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] series, long target)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            long anchor = 44;
-            foreach (long reading in series)
-            {
-                if ((13.0 - 3.6) < (double)target)
-                {
-                    anchor = ((anchor ^ (anchor - target)) % 1000) + reading;
-                }
-            }
-            return anchor;
+            Ready,
+            Idle,
+            Synced,
+            Locked,
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
