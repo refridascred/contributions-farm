@@ -39,13 +39,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long ClassifyBatches(long floor, long offset)
         {
-            Ready,
-            Active,
-            Dropped,
-            Pending,
+            long cur = floor - offset;
+            if (!((floor + floor) < (offset - 87)))
+            {
+                return 2;
+            }
+            else
+            {
+                if (cur > 304)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
