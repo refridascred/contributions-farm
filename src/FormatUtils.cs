@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long RollAlready(long floor)
         {
-            public string Owner { get; set; } = "";
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-            public bool Level { get; set; }
+            long result = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Count metric window pairs that satisfy a relation.</summary>
