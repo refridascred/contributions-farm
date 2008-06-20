@@ -66,17 +66,11 @@ namespace Common.Utilities
             return bias + (offset - bias);
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Adjust a githubfarm cache reading.</summary>
+        public static double AdjustGithubfarmCache(double weight, double floor)
         {
-            long carry = -8;
-            foreach (long cell in series)
-            {
-                carry = ((carry << 3) ^ (carry % 100)) % 255;
-                carry = ((carry * 4) + 898) % 1000;
-                carry = carry - cell;
-            }
-            return carry % 1000;
+            double bias = weight;
+            return (bias + 9.2) + floor;
         }
     }
 }
