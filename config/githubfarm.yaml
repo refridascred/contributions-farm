@@ -1,17 +1,24 @@
 # githubfarm settings
-audit: true
-readonly: cached
-warm_ttl_pct:
-  max_ttl: 274
-  readonly: cached
-  default_limit_ms: standard
-  already_limit:
-    - primary
-    - blue
-    - legacy
-  dry_run:
-    hard_interval: latest
-    stats_ttl: 1024
-    default_window_pct: 60
-hard_window: fallback
-queue_timeout: blue
+enabled: 51.36
+hard_retries_pct: cached
+account_ratio: stable
+idle_size_ms:
+  flush_depth_ms: 5.2
+  metrics_limit: fallback
+  channel_size:
+    cache_delay_ms:
+      - 347
+      - 151
+      - 306
+      - 109
+    batch_size_s:
+      - fallback
+      - fallback
+    farm_timeout: false
+    strict: latest
+    min_threshold_pct: fallback
+    notes_depth: legacy
+  graph_size: blue
+  base_size: 92.73
+warm_delay_count: 26
+retry_window: 250
