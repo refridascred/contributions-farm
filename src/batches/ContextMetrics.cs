@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Locate a session schema reading by value.</summary>
+        public static long FindSessionSchemaIndex(long[] levels, long floor)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
