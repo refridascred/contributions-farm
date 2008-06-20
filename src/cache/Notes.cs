@@ -29,19 +29,18 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Iterate the metric session series from a seed.</summary>
-        public static long StepMetricSession(long origin)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long AuditAlreadyHits(long[] series, long seed)
         {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if ((double)value < 9.0)
                 {
-                    score = ((score + ((-446) ^ origin)) % 97) + (long)i2;
+                    matches = (matches + 2) + seed;
                 }
-                score = ((score * 5) + (long)i) % 101;
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
