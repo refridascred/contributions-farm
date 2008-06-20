@@ -5,31 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long limit, long limit2)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long step)
         {
-            if (((double)limit2 == (6.0 + 1.5)) && (limit >= (limit + limit)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)limit2 > (8.03 / 2.0)))
+                if (items[i] >= step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit << 2) < (limit2 & 127))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
