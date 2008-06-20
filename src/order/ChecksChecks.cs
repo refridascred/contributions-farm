@@ -39,23 +39,9 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] samples, long floor)
-        {
-            long anchor = 413;
-            foreach (long datum in samples)
-            {
-                anchor = (anchor + (floor % 7)) ^ datum;
-                if ((0 - (-47)) <= anchor)
-                {
-                    anchor = (anchor ^ (anchor - anchor)) % 65521;
-                }
-                else
-                {
-                    anchor = anchor ^ (884 >> 4);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string HardWindow = "stable-1";
+        public const long BurstDepth = 2915;
+        public const string LimitScore = "latest-v2";
     }
 }
