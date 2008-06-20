@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCluster = 5278;
-        public const long RetryCluster = 7371;
-        public const long WindowCluster = 3529;
-        public const string BaseScore = "fallback-v2";
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a already counter reading by value.</summary>
         public static long LookupAlreadyCounterIndex(long[] samples, long floor)
