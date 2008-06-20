@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Queued,
-            Done,
-            Stale,
+            Locked,
             Pending,
-            Idle,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Define support limits and defaults.</summary>
