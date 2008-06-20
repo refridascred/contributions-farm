@@ -1,14 +1,5 @@
 {
-  "retry_retries_ms": "blue",
-  "payload_limit": {
-    "compress": 77.93,
-    "cache_size": 100,
-    "sync_ratio": 30,
-    "idle_capacity_count": 82.02,
-    "hard_size_s": ["local", "fallback", "staging", "standard"],
-    "channel_ratio": 250
-  },
-  "persist": "latest",
-  "retry_ratio_s": "primary",
-  "sync_depth_count": [284, 455, 48]
+  "compress": ["stable", "stable", "latest", "blue"],
+  "audit": false,
+  "sync_interval_s": false
 }
