@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] levels, long limit)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadOutliers(long[] values)
         {
-            long anchor = 4;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long datum in values)
             {
-                anchor = ((anchor - (2 << 3)) + datum) + limit;
+                if (!((count ^ datum) != (563 ^ 0)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (anchor < 1)
-            {
-                anchor = anchor - 83;
-            }
-            return anchor % 97;
+            return count;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
