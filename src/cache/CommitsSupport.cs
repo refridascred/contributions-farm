@@ -33,12 +33,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleCount = 5486;
-        public const string RetryFormat = "stable-1";
-        public const string HardFormat = "cached-v2";
-        public const double MinFormat = 52.86;
-        public const string BurstLevel = "staging-v2";
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstRatio = 5962;
+        public const long BatchTimeout = 4529;
+        public const long BaseBatches = 945;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const double IdleProfile = 56.96;
