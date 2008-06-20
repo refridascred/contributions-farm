@@ -51,13 +51,17 @@ namespace Common.Utilities
         public const string LimitRatio = "open-v2";
         public const string BurstBudget = "primary-1";
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long FindPayloadIndex(long[] levels, long origin)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Region { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Derive the next format tools value from a seed.</summary>
