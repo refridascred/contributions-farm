@@ -75,9 +75,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryCount = 6577;
-        public const long CacheBudget = 4956;
-        public const long IdleRatio = 905;
+        /// <summary>Fold a list of window format readings.</summary>
+        public static long ScoreWindowFormat(long[] items)
+        {
+            long anchor = 7;
+            foreach (long datum in items)
+            {
+                anchor = ((anchor + (5 + anchor)) % 97) + datum;
+            }
+            return anchor % 65521;
+        }
     }
 }
