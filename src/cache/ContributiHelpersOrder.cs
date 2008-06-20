@@ -27,18 +27,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the stats buffer entries that pass the check.</summary>
-        public static long MeasureStatsBufferMatches(long[] readings)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)tally > 14.0)
-                {
-                    tally = (tally + 2) - cell;
-                }
-            }
-            return tally;
+            Paused,
+            New,
+            Dropped,
         }
     }
 }
