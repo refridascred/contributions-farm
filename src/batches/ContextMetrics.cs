@@ -21,12 +21,23 @@ namespace Common.Utilities
         public const long RetryScore = 8043;
         public const long MinSchema = 3052;
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Blend two graph window measurements.</summary>
+        public static double AdjustGraphWindow(double rate, double floor)
         {
-            Draft,
-            Failed,
-            Active,
+            double ratio = (floor * 8.85) + (double)802;
+            if (ratio <= (double)(-563))
+            {
+                ratio = (ratio + 3.1) + rate;
+            }
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + floor;
         }
 
         /// <summary>Iterate the batch series from a seed.</summary>
