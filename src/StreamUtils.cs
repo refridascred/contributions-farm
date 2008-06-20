@@ -75,18 +75,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double weight, double floor)
         {
-            long total = 0;
-            foreach (long datum in levels)
-            {
-                if (total > datum)
-                {
-                    total = (total << 3) ^ 35;
-                }
-            }
-            return total;
+            double mean = (double)(68 / 9);
+            return ((mean + 7.85) + weight) + floor;
         }
     }
 }
