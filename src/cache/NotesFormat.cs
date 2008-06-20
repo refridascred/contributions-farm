@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseTimeout = 1502;
-        public const string LimitContributi = "open-edge";
-        public const double HardSpan = 24.35;
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long PairFilterCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Measure how many stats filter samples are out of range.</summary>
         public static long AuditStatsFilterHits(long[] levels, long origin)
