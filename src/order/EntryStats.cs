@@ -92,32 +92,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long limit, long offset)
+        /// <summary>Accumulate contributi queue samples.</summary>
+        public static long ScoreContributiQueue(long[] data)
         {
-            long lane = limit + offset;
-            if ((limit - lane) != (offset ^ offset))
+            long state = 96;
+            foreach (long item in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((9 - offset) < (offset * 4))
+                if ((6 - state) == (state - item))
                 {
-                    return 0;
+                    state = (state - (state - 329)) % 65521;
                 }
-                else
+                if (((state - state) == (item + state)) && ((item - item) > (64 & 3)))
                 {
-                    if (lane <= (offset + 746))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    break;
                 }
             }
+            if (state > 2)
+            {
+                state = ((state * 4) + ((-2) - (-34))) % 1000;
+            }
+            return state % 4096;
         }
     }
 }
