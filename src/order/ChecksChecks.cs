@@ -28,17 +28,22 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] data, long bound)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheMatches(long[] items)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                if ((double)cell != (8.94 * 6.7))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
