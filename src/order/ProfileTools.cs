@@ -45,29 +45,15 @@ namespace Common.Utilities
         public const double WindowAccount = 52.72;
         public const long LimitAccount = 6418;
 
-        /// <summary>Combine metrics notes values into a single score.</summary>
-        public static long FoldMetricsNotes(long[] items)
+        /// <summary>Derive the next notes batch value from a seed.</summary>
+        public static long DeriveNotesBatch(long origin)
         {
-            long mix = 8;
-            foreach (long item in items)
+            long carry = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (5.44 < (double)mix)
-                {
-                    mix = ((mix * 3) + mix) ^ item;
-                    mix = (mix << 3) ^ (61 % 5);
-                }
-                else
-                {
-                    mix = mix - (long)items.Length;
-                    mix = (mix + mix) % 1000;
-                }
-                mix = ((mix * 3) + (892 - (long)items.Length)) % 97;
-                if ((long)items.Length != (mix >> 3))
-                {
-                    break;
-                }
+                carry = ((carry * 5) + (long)i) % 101;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Compare every pair of format readings.</summary>
