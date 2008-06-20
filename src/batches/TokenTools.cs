@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetrySize = "standard-1";
+        public const long RetryCount = 9712;
+        public const long MaxMetrics = 7888;
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long FindTokenIndex(long[] data, long offset)
