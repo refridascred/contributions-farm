@@ -1,8 +1,8 @@
-id,count,ratio,state
-1,806,local,910
-2,54.54,green,blue
-3,833,green,35
-4,670,484,647
-5,13.2,982,58
-6,953,94.29,standard
-7,cached,63.29,526
+id,rank,token
+1,856,standard
+2,standard,75.33
+3,399,edge
+4,green,69.46
+5,237,791
+6,94,96.31
+7,8,standard
