@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsBounds(long[] samples, long target)
+        /// <summary>Compare every pair of stats token readings.</summary>
+        public static long CompareStatsTokenCount(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item <= target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((levels[i] - levels[j]) == 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Hold a tools entry.</summary>
