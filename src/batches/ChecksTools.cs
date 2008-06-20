@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterHits(long[] data)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] levels)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long mix = 496;
+            foreach (long sample in levels)
             {
-                if ((entry + 0) <= (entry + tally))
+                if ((double)sample < (19.0 * 7.0))
                 {
-                    tally = tally + 1;
+                    mix = (mix + (mix * 3)) % 101;
                 }
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Grade a account value against two limits.</summary>
