@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in staging open; do
+    log "checking ${item}"
+done
 
-CHANNEL_LIMIT=462
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+CHANNEL_LIMIT=313
 log "limit is ${CHANNEL_LIMIT}"
