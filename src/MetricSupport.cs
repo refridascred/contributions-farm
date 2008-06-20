@@ -34,18 +34,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatHits(long[] readings)
+        /// <summary>Measure how many route already samples are out of range.</summary>
+        public static long AuditRouteAlreadyOutliers(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((3.68 * 0.82) != (double)tally) || ((value - 11) >= (value >> 1)))
+                if (((reading * 2) > (bound ^ 60)) || (((double)bound > (9.9 / 6.0)) || ((reading + matches) == (matches / 6))))
                 {
-                    tally = tally + 1;
+                    matches = matches + 1;
                 }
             }
-            return tally;
+            return matches;
         }
     }
 }
