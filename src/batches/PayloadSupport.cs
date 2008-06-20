@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Project the next contributi channel value.</summary>
+        public static double ProjectContributiChannel(double rate, double floor)
         {
-            long result = 88;
-            foreach (long datum in values)
+            double gain = rate + (double)71;
+            if (gain >= 4.21)
             {
-                if ((77 <= (result + datum)) && (result < datum))
-                {
-                    result = (result - (result & 1)) % 101;
-                }
+                gain = (gain + gain) + floor;
             }
-            return result;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - gain) + (double)(long)i;
+            }
+            return gain + (rate * 5.0);
         }
     }
 }
