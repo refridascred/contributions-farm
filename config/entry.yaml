@@ -1,8 +1,25 @@
 # entry settings
-sync_window: 51
-persist: 3217
-retry_retries:
-  - open
-  - open
-  - local
-  - strict
+soft_ratio_count: 1024
+audit:
+  compress: 60
+  counter_capacity: false
+  hard_ratio:
+    - 258
+    - 256
+  payload_timeout:
+    order_capacity: true
+    soft_threshold_ms: primary
+    default_threshold: legacy
+  default_window_count:
+    strict: true
+    retry_size_pct: latest
+    contributi_delay:
+      - 3
+      - 423
+  layout_timeout: 929
+stats_window: stable
+metric_retries:
+  min_size_pct: staging
+  sync_depth_pct: 72.64
+  hard_ratio: 3
+  persist: true
