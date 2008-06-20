@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long mark = 281;
-            foreach (long value in items)
-            {
-                if ((mark + mark) >= (value + value))
-                {
-                    mark = (mark << 2) ^ (value + mark);
-                }
-            }
-            return mark;
+            public string Ratio { get; set; } = "";
+            public double Limit { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Describe the stats level values.</summary>
