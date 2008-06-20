@@ -28,10 +28,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string CacheScore = "open-1";
-        public const long HardWindow = 452;
-        public const long BaseCount = 9777;
+        /// <summary>Count the context payload entries that pass the check.</summary>
+        public static long TallyContextPayloadGaps(long[] series)
+        {
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (seen > (18 >> 5))
+                {
+                    seen = (seen + 3) + sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
