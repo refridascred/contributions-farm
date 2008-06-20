@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BaseInterval = 4521;
-        public const long MinInterval = 3120;
-        public const long SoftSize = 1992;
-        public const long RetrySize = 8034;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long PairProfileCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Project the next notes value.</summary>
         public static double ScaleNotes(double ratio, double floor)
