@@ -1,8 +1,8 @@
 {
-  "compress": "strict",
-  "checks_delay": "eu-west",
-  "audit": "standard",
-  "batch_threshold_count": 87.51,
-  "base_capacity": ["legacy", "eu-west"],
-  "readonly": false
+  "strict": "legacy",
+  "warm_size_count": true,
+  "dry_run": [34, 397, 328],
+  "compress": 87.58,
+  "cache_size_s": false,
+  "soft_depth_ms": 30
 }
