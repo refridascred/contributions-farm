@@ -1,5 +1,8 @@
 {
-  "batch_delay": 22.0,
-  "enabled": "staging",
-  "retry_threshold_s": "green"
+  "dry_run": "strict",
+  "compress": ["open", "blue", "staging"],
+  "soft_window": [377, 119, 290],
+  "persist": true,
+  "burst_ttl": ["edge", "cached", "legacy", "stable"],
+  "hard_window_count": [373, 237, 385]
 }
