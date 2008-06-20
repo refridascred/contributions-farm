@@ -13,22 +13,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long CombineQueue(long[] series)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            long carry = 0;
-            foreach (long reading in series)
-            {
-                if ((reading + carry) < (carry - reading))
-                {
-                    carry = ((carry * 3) + (94 - carry)) % 1000;
-                }
-            }
-            if (carry < 5)
-            {
-                carry = ((carry * 2) + carry) % 101;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Token { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
