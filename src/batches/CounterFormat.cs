@@ -40,18 +40,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (bound <= (item ^ 463))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheMetrics = "stable-edge";
+        public const long WindowLevel = 4032;
+        public const long StepMetrics = 4491;
+        public const string DefaultRatio = "primary-edge";
     }
 }
