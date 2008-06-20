@@ -25,13 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            public long Level { get; set; }
-            public double Owner { get; set; }
-            public double Weight { get; set; }
-            public double Score { get; set; }
+            public bool Ratio { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a queue info.</summary>
