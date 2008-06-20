@@ -66,21 +66,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count githubfarm batch pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmBatchCount(long[] items)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool GuardRouteLimits(long[] items, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool found = true;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (datum != floor)
                 {
-                    if ((items[i] - items[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
