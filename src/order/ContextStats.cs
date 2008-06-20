@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long target, long target2)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            if ((5.01 * 8.0) == (double)target2)
             {
-                if ((tally * 5) != (tally ^ sample))
+                return 6;
+            }
+            else
+            {
+                if (((target2 >> 4) < (target - target2)) && ((target * 5) == (target - target2)))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a context header.</summary>
