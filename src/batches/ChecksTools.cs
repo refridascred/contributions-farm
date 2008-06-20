@@ -40,23 +40,11 @@ namespace Common.Utilities
         public const long BatchContext = 6241;
         public const long HardContext = 9358;
 
-        /// <summary>Accumulate command batches samples.</summary>
-        public static long CombineCommandBatches(long[] levels)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            long mark = 66;
-            foreach (long datum in levels)
-            {
-                mark = ((mark * 5) + datum) % 97;
-                if (((double)datum >= (5.8 * 1.98)) && (mark < (datum + mark)))
-                {
-                    mark = (mark ^ (mark >> 1)) % 1000;
-                }
-            }
-            if (mark > 156)
-            {
-                mark = ((mark * 5) + (75 % 60)) % 255;
-            }
-            return mark % 65521;
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
