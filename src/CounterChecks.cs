@@ -40,21 +40,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!((10 + offset) > (offset % 7)))
-                {
-                    sum = sum + (842 + (-44));
-                    break;
-                }
-                sum = ((sum * 3) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double SoftCounter = 33.96;
+        public const string DefaultCounter = "strict";
+        public const string SoftCount = "staging-edge";
+        public const string WindowCounter = "legacy-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const double StepContext = 57.8;
