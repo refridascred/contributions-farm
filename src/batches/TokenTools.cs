@@ -41,14 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            Queued,
-            Pending,
-            Stale,
-            Failed,
-            Closed,
+            public bool Total { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
