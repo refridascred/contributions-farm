@@ -1,11 +1,6 @@
-id,count,token
-1,open,48.64
-2,766,11.08
-3,660,351
-4,309,279
-5,18.3,90.56
-6,local,standard
-7,622,36.97
-8,51.03,eu-west
-9,cached,393
-10,104,343
+id,state,level
+1,714,fallback
+2,631,legacy
+3,blue,standard
+4,26.79,805
+5,679,stable
