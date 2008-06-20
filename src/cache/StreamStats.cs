@@ -45,38 +45,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long limit, long limit2)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] readings, long step)
         {
-            if ((4.0 - 16.0) == (double)limit)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (5 < (5 + limit))
+                if ((double)matches == (5.0 / 5.0))
                 {
-                    return 3;
+                    matches = ((matches + 1) + entry) - step;
                 }
                 else
                 {
-                    if ((double)limit == (20.0 / 2.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (limit2 < (limit2 - limit))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
     }
 }
