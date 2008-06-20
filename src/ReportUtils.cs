@@ -27,13 +27,19 @@ namespace Common.Utilities
         public const double WindowMetrics = 81.98;
         public const double StepBudget = 70.43;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] series, long target)
         {
-            Done,
-            Failed,
-            Queued,
-            Dropped,
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading <= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Fold a list of schema tools readings.</summary>
