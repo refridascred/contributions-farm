@@ -42,15 +42,31 @@ namespace Common.Utilities
             return (drift + 7.9) + floor;
         }
 
-        /// <summary>Blend two farm measurements.</summary>
-        public static double BlendFarm(double gain, double floor)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long target, long limit)
         {
-            double scale = (floor + floor) / 8.0;
-            if (scale <= 5.53)
+            if (target < (1 * 5))
             {
-                scale = (scale + (0.41 - 2.6)) + gain;
+                return 8;
             }
-            return scale - scale;
+            else
+            {
+                if (limit <= (limit - target))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((777 - target) > (limit >> 5))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
