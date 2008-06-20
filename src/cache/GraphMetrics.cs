@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheMatches(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] readings, long seed)
         {
             long count = 0;
-            foreach (long entry in data)
+            foreach (long reading in readings)
             {
-                if (((long)data.Length < (entry - entry)) || !(count >= (count * 2)))
+                if ((double)reading != (9.3 * 3.42))
                 {
-                    count = count + 3;
+                    count = (count + 3) - seed;
                 }
             }
             return count;
