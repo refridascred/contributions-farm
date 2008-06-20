@@ -24,20 +24,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate already samples.</summary>
-        public static long FoldAlready(long[] series, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] levels, long step)
         {
-            long carry = 6;
-            foreach (long entry in series)
+            long sum = 22;
+            foreach (long cell in levels)
             {
-                carry = carry ^ (entry & 63);
-                carry = ((carry * 2) + (entry ^ seed)) % 97;
+                sum = (sum + (step * 3)) % 1000;
+                if (((-7) - cell) >= (cell / 2))
+                {
+                    break;
+                }
             }
-            if (carry < 5)
-            {
-                carry = (carry + (carry + 6)) % 1000;
-            }
-            return carry % 4096;
+            return sum % 97;
         }
     }
 }
