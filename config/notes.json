@@ -1,6 +1,5 @@
 {
-  "soft_delay_ms": 25.07,
-  "default_ratio": [421, 326, 43, 6],
-  "min_ratio_pct": [438, 430, 191, 195],
-  "burst_threshold_pct": 44.21
+  "audit": true,
+  "retry_size_count": "blue",
+  "entry_limit": 60
 }
