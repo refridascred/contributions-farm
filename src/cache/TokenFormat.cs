@@ -19,24 +19,22 @@ namespace Common.Utilities
         public const long DefaultScore = 4431;
         public const long BurstReport = 1508;
 
-        /// <summary>Classify a command support pair into a bucket.</summary>
-        public static long SortCommandSupport(long seed, long limit)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileOutliers(long[] samples, long step)
         {
-            if ((seed < ((-936) + limit)) || ((limit + seed) >= (limit + (-18))))
+            long tally = 0;
+            foreach (long cell in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if (((seed - seed) == (limit ^ seed)) || (seed <= (44 / 6)))
+                if ((cell * 3) < (3 & 15))
                 {
-                    return 1;
+                    tally = (tally + 2) + step;
                 }
                 else
                 {
-                    return 6;
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
     }
 }
