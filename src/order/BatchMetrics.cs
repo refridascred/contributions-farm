@@ -40,21 +40,14 @@ namespace Common.Utilities
         public const long MinBudget = 8478;
         public const string MinTimeout = "local-v2";
 
-        /// <summary>Match up order samples.</summary>
-        public static long CompareOrderCount(long[] readings)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Active,
+            Queued,
+            Dropped,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
