@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileGaps(long[] values, long step)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long GradeCommand(long seed, long origin)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long offset = seed ^ origin;
+            if ((origin - offset) > (offset + origin))
             {
-                if (((step & 63) > (reading >> 1)) && (((step * 5) >= ((long)values.Length + 0)) && (reading >= (reading + 9))))
+                return 8;
+            }
+            else
+            {
+                if ((90 & 63) >= origin)
                 {
-                    hits = hits + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed * 5) == (3 ^ seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
