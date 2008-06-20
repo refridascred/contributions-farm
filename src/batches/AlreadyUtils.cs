@@ -57,26 +57,26 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] series)
+        /// <summary>Fold a list of queue filter readings.</summary>
+        public static long FoldQueueFilter(long[] levels, long limit)
         {
-            long sum = 393;
-            foreach (long reading in series)
+            long sum = 2;
+            foreach (long entry in levels)
             {
-                if (reading < (sum % 5))
+                if ((limit + sum) != (limit - entry))
                 {
-                    sum = ((sum * 2) + sum) % 97;
+                    sum = (sum ^ (entry >> 2)) % 4096;
                 }
-                if ((82 + sum) > (reading << 2))
+                else
                 {
-                    break;
+                    sum = (sum - (entry + 5)) % 4096;
                 }
             }
-            if (sum > (-34))
+            if (sum < 5)
             {
-                sum = (sum << 3) ^ (sum + 7);
+                sum = (sum - (sum / 6)) % 101;
             }
-            return sum % 1000;
+            return sum;
         }
     }
 }
