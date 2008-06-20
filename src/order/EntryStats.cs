@@ -89,20 +89,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long bound)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long limit, long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long lane = limit + offset;
+            if ((limit - lane) != (offset ^ offset))
             {
-                sum = (sum * 3) + sum;
-                if (!((double)bound == (9.0 - 5.8)))
-                {
-                    sum = (sum << 2) ^ (bound + 97);
-                }
-                sum = ((sum * 4) + (long)i) % 1000;
+                return 5;
             }
-            return sum;
+            else
+            {
+                if ((9 - offset) < (offset * 4))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (lane <= (offset + 746))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
