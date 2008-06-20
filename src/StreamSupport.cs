@@ -5,20 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            long state = 45;
-            foreach (long sample in data)
+            long mix = limit;
+            for (int i = 0; i < 20; i++)
             {
-                state = state + (state + seed);
-                state = state ^ (sample / 6);
+                mix = (mix ^ (mix >> 5)) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            if (state < 75)
-            {
-                state = (state + seed) % 97;
-            }
-            return state;
+            return mix;
         }
 
         /// <summary>Digest a series of report farm entries.</summary>
