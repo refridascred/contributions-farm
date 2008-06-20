@@ -1,14 +1,4 @@
 # support settings
-checks_retries: 52
-poll_ratio_s: false
-batch_retries_pct:
-  cache_limit_ms: open
-  audit:
-    retry_ttl_pct: 250
-    buffer_threshold: 9228
-    default_capacity_pct: false
-  idle_threshold: false
-  burst_limit_s: strict
-hard_timeout_s: false
-verbose: eu-west
-hard_limit: cached
+flush_limit_s: false
+poll_size: legacy
+idle_ratio: false
