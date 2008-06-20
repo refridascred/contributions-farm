@@ -22,19 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] series, long target)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] data, long step)
         {
-            long acc = 705;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc + (acc << 1)) % 97) + sample;
+                if ((data[i] < step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (acc > 671)
-            {
-                acc = ((acc << 3) ^ (target - target)) % 65521;
-            }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
