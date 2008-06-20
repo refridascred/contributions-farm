@@ -22,22 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the githubfarm graph entries that pass the check.</summary>
-        public static long TallyGithubfarmGraphMatches(long[] levels)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long reading in items)
             {
-                if (count <= value)
+                if (reading > origin)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
