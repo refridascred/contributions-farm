@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Project the next window value.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Check that every already schema entry stays within the limit.</summary>
+        public static bool GuardAlreadySchemaLimits(long[] samples, long seed)
         {
-            double gain = 1.75;
-            if (gain <= (floor + floor))
+            bool valid = true;
+            foreach (long item in samples)
             {
-                gain = gain + bias;
+                if (item > seed)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - (double)2;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - floor) + (double)(long)i;
-            }
-            return gain - floor;
+            return valid;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
