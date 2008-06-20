@@ -13,13 +13,21 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Match up metric samples.</summary>
+        public static long CompareMetricCount(long[] readings)
         {
-            Pending,
-            Idle,
-            New,
-            Paused,
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up account samples.</summary>
