@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            public long Stamp { get; set; }
-            public string Weight { get; set; } = "";
+            Locked,
+            Done,
+            Idle,
+            Stale,
+            Retry,
         }
 
         /// <summary>Combine record values into a single score.</summary>
