@@ -32,12 +32,21 @@ namespace Common.Utilities
         public const double HardWidth = 9.41;
         public const double RetryWidth = 45.2;
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Match up account samples.</summary>
+        public static long MatchAccountCount(long[] samples)
         {
-            Synced,
-            Failed,
-            Active,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
