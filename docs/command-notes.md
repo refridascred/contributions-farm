@@ -1,16 +1,15 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the commits list.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The report report groups every queue by cache.
+The checks module keeps contributi values in sync with the layout cache.
+Keep cache and window names short and lowercase.
+Use window settings to tune how often context data is refreshed.
 
-Run the channel check before changing any window limits.
-Keep counter and context names short and lowercase.
-Each record is validated before it reaches the context queue.
+The cluster module keeps token values in sync with the profile cache.
+Each window is validated before it reaches the editor queue.
 
 ## Guidelines
 
-- Log every command change
-- Keep contributi values small
-- Document new format fields
-- Review graph limits each release
+- Validate notes input early
+- Keep stream values small
+- Review counter limits each release
+- Log every schema change
