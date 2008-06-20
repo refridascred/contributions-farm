@@ -28,22 +28,18 @@ namespace Common.Utilities
         public const long RetryEntry = 7077;
         public const string StepScore = "standard-edge";
 
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long ScoreMetrics(long[] series, long bound)
+        /// <summary>Audit contributi filter readings against a rule.</summary>
+        public static long CountContributiFilterHits(long[] items)
         {
-            long anchor = 185;
-            foreach (long entry in series)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((double)anchor < (double)3)
+                if ((3.0 - 0.2) <= (double)reading)
                 {
-                    anchor = (((anchor << 3) ^ (anchor - 8)) % 1000) ^ entry;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (bound * 5)) % 1000;
+                    tally = tally + 2;
                 }
             }
-            return anchor % 65521;
+            return tally;
         }
     }
 }
