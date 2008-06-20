@@ -47,13 +47,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long origin)
         {
-            public string Offset { get; set; } = "";
-            public bool Count { get; set; }
-            public bool Rank { get; set; }
-            public long Weight { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
