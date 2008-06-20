@@ -39,19 +39,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double weight, double floor)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double weight2 = 9.43;
-            if (weight2 > (floor / 5.0))
-            {
-                weight2 = weight2 + (weight2 - weight);
-            }
-            else
-            {
-                weight2 = weight2 + 1.1;
-            }
-            return weight2 + floor;
+            Queued,
+            Synced,
+            Done,
+            Closed,
+            Active,
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
