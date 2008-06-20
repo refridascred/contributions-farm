@@ -40,38 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a editor pair into a bucket.</summary>
-        public static long ClassifyEditor(long seed, long origin)
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
         {
-            if ((15.0 + 0.82) > (double)origin)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (seed <= origin)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed >= (origin - 40))
+                    if ((samples[i] ^ samples[j]) < 8)
                     {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((10.0 - 3.5) == (double)seed)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a batches graph pair into a bucket.</summary>
