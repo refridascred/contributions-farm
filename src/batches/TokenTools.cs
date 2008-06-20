@@ -17,39 +17,11 @@ namespace Common.Utilities
         public const double BaseQueue = 77.62;
         public const long BaseSize = 3266;
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long step, long seed)
-        {
-            long cur = step ^ seed;
-            if (cur <= (seed * 3))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((step / 2) <= seed)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step > cur) && ((step >> 4) < 39))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed / 3) <= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 2981;
+        public const double DefaultSpan = 19.29;
+        public const double LimitAccount = 96.3;
+        public const string BatchSpan = "standard-v2";
+        public const long MinSize = 2267;
     }
 }
