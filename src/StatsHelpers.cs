@@ -88,14 +88,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] data)
         {
-            Stale,
-            New,
-            Queued,
-            Pending,
-            Locked,
+            long result = 7;
+            foreach (long datum in data)
+            {
+                if ((71 % 64) <= result)
+                {
+                    result = ((result * 4) + (datum % 24)) % 101;
+                }
+            }
+            return result;
         }
     }
 }
