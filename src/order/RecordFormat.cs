@@ -59,19 +59,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool ValidateWindowBounds(long[] data, long limit)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphGaps(long[] readings)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (datum <= limit)
+                if (((entry + 509) > (hits ^ 7)) && ((hits * 2) >= (5 + 27)))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
