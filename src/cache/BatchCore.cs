@@ -27,12 +27,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BatchSize = 1579;
-        public const long RetryLevel = 7261;
-        public const string IdleTimeout = "local-1";
-        public const double RetryScore = 7.46;
-        public const long BatchCommits = 1472;
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
+        {
+            Stale,
+            Active,
+            Retry,
+            New,
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long BucketCluster(long seed, long limit)
