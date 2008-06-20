@@ -35,20 +35,14 @@ namespace Common.Utilities
         public const long SoftRoute = 9072;
         public const long CacheWidth = 3921;
 
-        /// <summary>Iterate the token cluster series from a seed.</summary>
-        public static long SeriesTokenCluster(long seed)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((((long)i / 8) >= (result + result)) && ((double)result != (double)seed))
-                {
-                    result = ((result * 2) + (seed / 7)) % 101;
-                }
-                result = result + (-5);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            Ready,
+            Paused,
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Compare every pair of payload readings.</summary>
