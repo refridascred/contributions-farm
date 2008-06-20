@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate buffer counter samples.</summary>
-        public static long FoldBufferCounter(long[] items)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long OverlapSchemaCount(long[] data)
         {
-            long mark = 602;
-            foreach (long cell in items)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark ^ (cell + mark)) % 4096;
-                mark = ((mark * 5) + cell) % 255;
-                if ((mark >> 5) != (mark - cell))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark ^ (cell / 6)) % 255;
-                }
-                else
-                {
-                    mark = ((mark * 4) + (mark >> 5)) % 97;
+                    if ((data[i] + data[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark % 97;
+            return count;
         }
 
         /// <summary>Hold a graph snapshot.</summary>
