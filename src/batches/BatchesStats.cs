@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double bias, double offset)
-        {
-            double ratio = bias;
-            if (ratio <= 16.0)
-            {
-                ratio = (ratio - 7.2) - offset;
-            }
-            return ratio - (7.0 / 3.0);
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double SoftSpan = 21.69;
+        public const string StepMetrics = "stable";
+        public const long BurstSpan = 7548;
 
         /// <summary>Count the entry metric entries that pass the check.</summary>
         public static long AuditEntryMetricHits(long[] levels, long target)
