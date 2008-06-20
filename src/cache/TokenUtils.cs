@@ -38,11 +38,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Adjust a cache metrics reading.</summary>
-        public static double BlendCacheMetrics(double gain, double bias)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double load = gain;
-            return load - bias;
+            Closed,
+            Done,
+            Locked,
+            Stale,
+            Draft,
         }
     }
 }
