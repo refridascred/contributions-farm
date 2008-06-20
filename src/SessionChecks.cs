@@ -16,18 +16,15 @@ namespace Common.Utilities
             return gain - (scale / 6.0);
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] data)
+        /// <summary>Derive the next commits session value from a seed.</summary>
+        public static long IterateCommitsSession(long offset)
         {
-            long seen = 0;
-            foreach (long value in data)
+            long result = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (value >= (880 + value))
-                {
-                    seen = seen + 3;
-                }
+                result = ((result * 5) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Digest a series of order token entries.</summary>
