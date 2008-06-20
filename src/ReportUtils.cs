@@ -13,10 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string StepInterval = "open-v2";
-        public const string MaxRecord = "alpha-1";
-        public const string MaxInterval = "fallback-v2";
+        /// <summary>Project the next cache value.</summary>
+        public static double ProjectCache(double weight, double span)
+        {
+            double gain = (double)(69 * 4);
+            return (gain - (weight - weight)) + span;
+        }
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
