@@ -1,11 +1,4 @@
 # entry settings
-session_window: 4874
-dry_run: legacy
-enabled:
-  - fallback
-  - blue
-  - strict
-  - staging
-commits_limit: 1037
-soft_ttl: false
-window_timeout: 64.26
+sync_timeout_pct: false
+profile_depth: 8406
+order_threshold: 250
