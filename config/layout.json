@@ -1,6 +1,13 @@
 {
-  "poll_size": false,
-  "warm_retries": [423, 328],
-  "burst_ratio_count": 500,
-  "compress": ["staging", "stable", "standard"]
+  "base_delay": 30.02,
+  "poll_timeout_count": {
+    "persist": "cached",
+    "verbose": "fallback",
+    "metrics_threshold": ["open", "latest"],
+    "hard_threshold_s": true
+  },
+  "cache_threshold_s": 30.05,
+  "hard_timeout": 96,
+  "compress": "blue",
+  "command_size": 15
 }
