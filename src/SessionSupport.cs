@@ -27,18 +27,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] readings, long step)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long floor)
         {
-            long count = 0;
-            foreach (long value in readings)
+            long sum = floor;
+            for (int i = 0; i < 6; i++)
             {
-                if (((long)readings.Length + count) >= (value % 24))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    count = (count + 2) + step;
+                    sum = sum - ((long)i2 << 3);
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return count;
+            return sum;
         }
     }
 }
