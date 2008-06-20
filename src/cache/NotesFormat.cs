@@ -30,10 +30,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long StepFactor = 5545;
-        public const string BurstSpan = "primary";
-        public const string SoftSchema = "staging-1";
-        public const long BurstSchema = 4829;
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
+        {
+            New,
+            Done,
+            Pending,
+            Paused,
+        }
     }
 }
