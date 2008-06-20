@@ -18,22 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long MeasureCommitsMatches(long[] values)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long TotalCache(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long state = 65;
+            foreach (long reading in items)
             {
-                if (((-7) - tally) > (long)values.Length)
-                {
-                    tally = (tally + 1) + sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                state = (state + (reading - seed)) % 255;
+                state = state - (35 + seed);
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
