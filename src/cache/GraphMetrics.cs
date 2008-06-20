@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] items, long bound)
+        /// <summary>Accumulate queue token samples.</summary>
+        public static long CombineQueueToken(long[] samples, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 113;
+            foreach (long cell in samples)
             {
-                if (items[i] > bound)
+                if (!((4.36 + 17.0) >= (double)cell))
                 {
-                    return (long)i;
+                    total = (total - (total << 3)) + floor;
+                }
+                else
+                {
+                    total = (total - 451) % 101;
                 }
             }
-            return -1;
+            return total % 65521;
         }
 
         /// <summary>Hold a contributi snapshot.</summary>
