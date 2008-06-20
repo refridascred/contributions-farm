@@ -14,22 +14,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] values, long bound)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long total = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (bound > sample)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                total = ((total * 4) + (long)i) % 4093;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
