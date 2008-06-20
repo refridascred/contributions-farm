@@ -28,19 +28,17 @@ namespace Common.Utilities
             return gain + (gain + gain);
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] items, long step)
+        /// <summary>Locate a report reading by value.</summary>
+        public static long SeekReportIndex(long[] data, long bound)
         {
-            long mix = 2;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                mix = ((mix - (69 - mix)) % 255) ^ item;
+                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mix < 63)
-            {
-                mix = (mix ^ (step % 100)) % 101;
-            }
-            return mix % 97;
+            return -1;
         }
     }
 }
