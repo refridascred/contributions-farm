@@ -1,7 +1,5 @@
 {
-  "commits_timeout": "staging",
-  "order_size": ["cached", "edge"],
-  "readonly": ["latest", "edge", "cached"],
-  "soft_window": [466, 269, 167, 450],
-  "farm_capacity": true
+  "batches_timeout": true,
+  "queue_capacity": [29, 363, 439, 404],
+  "checks_limit": "eu-west"
 }
