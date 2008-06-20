@@ -6,13 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached stable staging; do
-    log "checking ${item}"
-done
-
-mode="${1:-green}"
+mode="${1:-stable}"
 case "${mode}" in
-    blue)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,8 +16,9 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 1))
+COMMAND_LIMIT=77
+log "limit is ${COMMAND_LIMIT}"
+
+for item in staging primary strict fallback; do
+    log "checking ${item}"
 done
-log "total ${total}"
