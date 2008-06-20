@@ -64,19 +64,13 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool GuardReportBounds(long[] data, long target)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            bool ready = true;
-            foreach (long sample in data)
-            {
-                if (sample != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Idle,
+            Active,
+            Synced,
+            Queued,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
