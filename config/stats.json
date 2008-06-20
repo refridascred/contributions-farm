@@ -1,8 +1,5 @@
 {
-  "dry_run": 1357,
-  "schema_timeout": "eu-west",
-  "max_delay_ms": 8,
-  "verbose": 7.63,
-  "metric_depth": 426,
-  "default_capacity_count": "standard"
+  "readonly": 18,
+  "cache_size_s": "fallback",
+  "farm_size": 2655
 }
