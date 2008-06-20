@@ -17,32 +17,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long limit, long bound)
+        /// <summary>Compare every pair of record context readings.</summary>
+        public static long OverlapRecordContextCount(long[] values)
         {
-            long slot = limit - bound;
-            if ((slot ^ slot) < (limit % 8))
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (limit > 649)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((slot + 2) == (limit - bound))
+                    if ((values[i] ^ values[j]) < 19)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 1;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Describe the route kind values.</summary>
