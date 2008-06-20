@@ -46,11 +46,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 9875;
-        public const long LimitTimeout = 3383;
-        public const long SoftDepth = 7273;
-        public const double StepTimeout = 70.29;
-        public const long CacheFarm = 1717;
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] levels, long bound)
+        {
+            long total = 94;
+            foreach (long sample in levels)
+            {
+                total = (total + (bound % 3)) + sample;
+            }
+            return total;
+        }
     }
 }
