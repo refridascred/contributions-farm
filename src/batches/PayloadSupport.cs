@@ -18,18 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheOutliers(long[] values, long target)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((((target / 3) <= reading) || (count >= reading)) && ((reading * 5) <= target))
+                if ((hits & 31) >= (seed ^ hits))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + item;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Project the next contributi channel value.</summary>
