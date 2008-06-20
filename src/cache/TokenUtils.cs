@@ -35,24 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
+        /// <summary>Roll a filter batch counter forward.</summary>
+        public static long SeriesFilterBatch(long origin)
         {
-            long score = target;
-            for (int i = 0; i < 6; i++)
+            long result = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((score >> 5) >= score)
-                {
-                    score = ((score * 3) + (score / 8)) % 97;
-                    continue;
-                }
-                else
-                {
-                    score = (score << 3) ^ (score - score);
-                }
-                score = ((score * 5) + (long)i) % 65521;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return score;
+            return result;
         }
     }
 }
