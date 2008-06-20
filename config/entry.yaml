@@ -1,5 +1,4 @@
 # entry settings
-graph_ttl: local
-buffer_ratio: 28.57
-batch_window: 60
-idle_ratio: 53
+max_capacity: edge
+verbose: primary
+batches_ratio: false
