@@ -30,18 +30,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string HardCount = "stable-v2";
+        public const long BaseContext = 8918;
+        public const long MaxContext = 7118;
 
         /// <summary>Define already limits and defaults.</summary>
         public const double StepAlready = 4.16;
