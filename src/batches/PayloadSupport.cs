@@ -10,14 +10,17 @@ namespace Common.Utilities
         public const long BatchOrder = 3463;
         public const long IdleLevel = 2895;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a buffer format reading by value.</summary>
+        public static long SeekBufferFormatIndex(long[] data, long target)
         {
-            Stale,
-            New,
-            Queued,
-            Ready,
-            Done,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= target) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next contributi channel value.</summary>
