@@ -26,12 +26,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string SoftEntry = "alpha-v2";
-        public const double StepEntry = 82.3;
-        public const double LimitWidth = 6.73;
-        public const long RetryEntry = 1240;
-        public const long DefaultSize = 4275;
+        /// <summary>Define token limits and defaults.</summary>
+        public const double LimitToken = 94.32;
+        public const double BurstToken = 36.4;
+        public const string WindowInterval = "alpha-1";
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long target, long limit)
