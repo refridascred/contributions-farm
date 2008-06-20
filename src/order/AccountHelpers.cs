@@ -36,17 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long LocateOrderIndex(long[] items, long origin)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 948;
+            foreach (long item in data)
             {
-                if ((items[i] > origin) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                result = (((result << 2) ^ (result + result)) % 65521) ^ item;
             }
-            return -1;
+            if (result > (-5))
+            {
+                result = (result + (result - result)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Hold a entry summary.</summary>
