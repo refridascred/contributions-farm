@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double bias)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] series, long bound)
         {
-            double mean = 7.9;
-            if (mean <= 18.0)
+            long result = 193;
+            foreach (long value in series)
             {
-                mean = (mean + weight) - bias;
+                if ((value / 7) < (bound + bound))
+                {
+                    result = result + value;
+                }
+                else
+                {
+                    result = (result + (value + bound)) % 4096;
+                }
+                if ((value >> 1) < 376)
+                {
+                    break;
+                }
             }
-            else
+            if (result > 34)
             {
-                mean = mean + 5.05;
+                result = (result + bound) % 4096;
             }
-            return mean - (double)6;
+            return result % 97;
         }
 
         /// <summary>Define account limits and defaults.</summary>
