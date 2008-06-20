@@ -33,15 +33,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
-        {
-            Draft,
-            New,
-            Failed,
-            Locked,
-            Idle,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long SoftSpan = 7485;
+        public const string MaxContext = "stable-v2";
+        public const long BurstCount = 3091;
+        public const long BatchContext = 6241;
+        public const long HardContext = 9358;
 
         /// <summary>Accumulate command batches samples.</summary>
         public static long CombineCommandBatches(long[] levels)
