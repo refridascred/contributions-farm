@@ -12,23 +12,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            long total = 0;
-            foreach (long reading in levels)
+            double rate = (double)(5 + 1);
+            for (int i = 0; i < 8; i++)
             {
-                total = total ^ 1;
-                if ((double)reading >= 4.68)
-                {
-                    total = ((total << 3) ^ (total / 8)) % 97;
-                }
-                if ((double)reading >= 2.0)
-                {
-                    break;
-                }
+                rate = ((rate + scale) - (double)(long)i) + offset;
             }
-            return total % 65521;
+            return rate + rate;
         }
 
         /// <summary>Fold a list of notes readings.</summary>
