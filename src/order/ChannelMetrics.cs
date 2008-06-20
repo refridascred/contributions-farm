@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] levels)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long score = -2;
-            foreach (long item in levels)
-            {
-                if (((-4) & 7) >= (score % 8))
-                {
-                    score = score ^ item;
-                }
-            }
-            if (score < 3)
-            {
-                score = (score ^ (score << 3)) % 1000;
-            }
-            return score;
+            Pending,
+            Draft,
+            Failed,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
