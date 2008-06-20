@@ -24,12 +24,23 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 4122;
-        public const long RetryInterval = 4754;
-        public const long WindowLevel = 8017;
-        public const double BaseBudget = 64.12;
-        public const long SoftReport = 6633;
+        /// <summary>Audit notes route readings against a rule.</summary>
+        public static long AuditNotesRouteOutliers(long[] items, long origin)
+        {
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((double)datum == (18.0 - 0.8)))
+                {
+                    matches = (matches + 2) - origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Derive the next token value from a seed.</summary>
         public static long DeriveToken(long origin)
