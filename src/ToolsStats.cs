@@ -46,19 +46,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] series, long seed)
-        {
-            long count = 0;
-            foreach (long sample in series)
-            {
-                if ((seed > (sample >> 2)) && ((seed - 9) <= sample))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long StepQueue = 1678;
+        public const double BaseQueue = 31.5;
+        public const long DefaultQueue = 2562;
+        public const long HardQueue = 2017;
+        public const string MaxRatio = "fallback";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long WindowProfile = 8473;
