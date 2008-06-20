@@ -64,12 +64,19 @@ namespace Common.Utilities
             return weight - (double)222;
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool CheckClusterLimits(long[] samples, long offset)
         {
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public double Stamp { get; set; }
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
