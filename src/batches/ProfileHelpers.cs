@@ -19,11 +19,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long HardGithubfarm = 377;
-        public const string MaxCount = "stable-v2";
-        public const long BatchSize = 1239;
-        public const string CacheGithubfarm = "stable-v2";
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 4547;
+        public const long BaseInterval = 4401;
+        public const long SoftScore = 5904;
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long OverlapBatchCount(long[] readings)
