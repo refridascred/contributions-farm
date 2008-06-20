@@ -45,15 +45,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of payload readings.</summary>
-        public static long OverlapPayloadCount(long[] samples)
+        /// <summary>Match up account samples.</summary>
+        public static long OverlapAccountCount(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 5)
+                    if ((series[i] + series[j]) != 11)
                     {
                         tally = tally + 1;
                     }
