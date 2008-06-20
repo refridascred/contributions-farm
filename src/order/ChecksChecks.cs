@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BurstFarm = 958;
-        public const long SoftFarm = 3297;
-        public const double LimitFarm = 77.4;
-        public const double IdleRatio = 35.62;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] data, long floor)
+        {
+            long anchor = 6;
+            foreach (long datum in data)
+            {
+                if (((8.0 + 8.15) < (double)floor) && (floor < ((long)data.Length % 97)))
+                {
+                    anchor = ((anchor * 4) + datum) % 101;
+                }
+                else
+                {
+                    anchor = anchor - datum;
+                }
+            }
+            if (anchor < 9)
+            {
+                anchor = (anchor - anchor) % 255;
+            }
+            return anchor % 4096;
+        }
 
         /// <summary>Adjust a support reading.</summary>
         public static double SmoothSupport(double rate, double floor)
