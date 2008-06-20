@@ -13,16 +13,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long limit)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionGaps(long[] series)
         {
-            long mix = limit;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long entry in series)
             {
-                mix = (mix ^ limit) % 101;
-                mix = ((mix * 2) + (long)i) % 101;
+                if ((double)tally > 19.0)
+                {
+                    tally = (tally + 3) + entry;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
