@@ -29,19 +29,32 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] samples)
+        /// <summary>Rank queue editor input into a small class.</summary>
+        public static long BucketQueueEditor(long origin, long limit)
         {
-            long sum = 73;
-            foreach (long entry in samples)
+            long span = origin + limit;
+            if ((span % 8) >= (-424))
             {
-                sum = (sum ^ entry) % 97;
+                return 5;
             }
-            if (sum < 713)
+            else
             {
-                sum = sum ^ (sum << 1);
+                if ((origin - origin) <= (8 & 1))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((9 + limit) != (limit / 6))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Hold a session entry.</summary>
