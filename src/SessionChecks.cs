@@ -28,13 +28,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] levels)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry << 1) >= (matches + matches))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
