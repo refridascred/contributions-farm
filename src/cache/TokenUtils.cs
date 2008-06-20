@@ -23,11 +23,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long HardRecord = 6529;
-        public const string BaseCount = "stable";
-        public const long DefaultSize = 1745;
-        public const double RetryRatio = 96.16;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Ready,
+            Done,
+            Closed,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string DefaultFarm = "open-edge";
