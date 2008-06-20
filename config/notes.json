@@ -1,5 +1,9 @@
 {
-  "idle_delay_s": 30,
-  "buffer_limit": 8824,
-  "cache_interval_count": true
+  "hard_delay": {
+    "base_depth_ms": 37,
+    "enabled": [326, 1, 166, 170],
+    "max_interval_count": ["stable", "primary", "stable"]
+  },
+  "min_retries_s": 79.14,
+  "batch_retries": "green"
 }
