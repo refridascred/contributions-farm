@@ -1,27 +1,6 @@
 # entry settings
-burst_ttl_s:
-  min_ttl: legacy
-  queue_threshold: 56.6
-  command_ratio: 2401
-  default_window:
-    cache_retries: standard
-    enabled: standard
-    tools_interval: latest
-    batch_timeout: false
-    strict: true
-    base_interval: false
-retry_interval_s:
-  - staging
-  - open
-tools_delay: stable
-warm_ratio_s:
-  format_depth: true
-  hard_retries: false
-  stats_retries: edge
-  buffer_delay:
-    compress: false
-    batch_limit: 60
-    enabled: 1024
-  poll_capacity: 51
-  soft_threshold: true
-poll_timeout_pct: 8827
+cache_threshold: edge
+batch_threshold_pct: standard
+base_window: 70.13
+burst_retries_s: cached
+strict: false
