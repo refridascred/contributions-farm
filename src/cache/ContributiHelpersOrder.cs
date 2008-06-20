@@ -38,10 +38,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long StepOrder = 9491;
-        public const long DefaultOrder = 8326;
-        public const long StepWidth = 4687;
-        public const long WindowOrder = 7013;
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
+        {
+            Closed,
+            Active,
+            Done,
+        }
     }
 }
