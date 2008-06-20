@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool ValidateQueueRange(long[] levels, long floor)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphOutliers(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long count = 0;
+            foreach (long cell in values)
             {
-                if (reading != floor)
+                if (((count >> 2) >= (cell + count)) || ((449 + count) < (count / 2)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Accumulate editor format samples.</summary>
