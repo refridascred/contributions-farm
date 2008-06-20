@@ -1,9 +1,20 @@
 {
-  "sync_window_s": {
-    "stream_threshold": "eu-west",
-    "warm_retries": false,
-    "sync_retries_pct": 88
+  "soft_timeout_count": 65,
+  "cache_interval_ms": "strict",
+  "route_timeout": {
+    "persist": 44,
+    "flush_ttl": "blue",
+    "idle_size_pct": {
+      "metrics_limit": "green",
+      "soft_retries_count": "primary",
+      "min_threshold": 72.11,
+      "enabled": false,
+      "base_retries_s": 250
+    },
+    "readonly": 250,
+    "batch_timeout_s": 69.32,
+    "command_window": true
   },
-  "sync_size_pct": "primary",
-  "filter_window": 9254
+  "context_timeout": 60,
+  "compress": [432, 168, 166]
 }
