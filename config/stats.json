@@ -1,21 +1,10 @@
 {
-  "audit": "edge",
-  "flush_delay": "edge",
-  "default_ttl_pct": ["strict", "local", "local", "stable"],
-  "strict": {
-    "persist": 1,
-    "max_depth_s": true,
-    "cache_window": false,
-    "cache_delay_pct": 3649,
-    "burst_ttl_pct": ["cached", "latest"],
-    "soft_window_s": 8265
+  "metric_interval": 91,
+  "batch_limit_ms": "primary",
+  "min_limit_s": {
+    "idle_threshold_count": "blue",
+    "idle_capacity": 91.83,
+    "base_interval": "fallback"
   },
-  "poll_timeout_ms": {
-    "compress": 60,
-    "sync_timeout": false,
-    "readonly": false,
-    "soft_ratio": true,
-    "batch_interval_pct": 87.69,
-    "poll_timeout": 6753
-  }
+  "burst_interval_pct": 8112
 }
