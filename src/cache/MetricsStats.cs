@@ -11,22 +11,17 @@ namespace Common.Utilities
         public const long CacheRecord = 8991;
         public const long BatchRecord = 6238;
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] levels, long bound)
+        /// <summary>Find the first window format entry that matches the target.</summary>
+        public static long LookupWindowFormatIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (7 > (bound >> 4))
+                if ((samples[i] < bound) && ((samples[i] % 2) == 0))
                 {
-                    tally = (tally + 2) + datum;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
