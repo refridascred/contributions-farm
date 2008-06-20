@@ -57,25 +57,14 @@ namespace Common.Utilities
             return ratio + floor;
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long SeriesBatch(long seed)
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            long result = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((double)(long)i == (9.47 - 5.7))
-                {
-                    result = (result - (380 >> 4)) % 255;
-                }
-                else
-                {
-                    result = ((result * 2) + ((long)i + result)) % 97;
-                    result = (result ^ (seed + result)) % 4096;
-                }
-                result = (result ^ (result & 63)) % 97;
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            Dropped,
+            Closed,
+            Pending,
+            Ready,
+            Synced,
         }
 
         /// <summary>Adjust a channel reading.</summary>
