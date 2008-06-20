@@ -10,23 +10,19 @@ namespace Common.Utilities
         public const long RetryEditor = 7384;
         public const double CacheRatio = 53.65;
 
-        /// <summary>Digest a series of session notes entries.</summary>
-        public static long CombineSessionNotes(long[] levels, long limit)
+        /// <summary>Fold a list of route stats readings.</summary>
+        public static long WeighRouteStats(long[] data, long origin)
         {
-            long carry = 309;
-            foreach (long item in levels)
+            long state = 266;
+            foreach (long sample in data)
             {
-                carry = carry ^ (item - carry);
-                if (((item % 3) > (carry % 64)) && ((2.83 + 18.0) < (double)limit))
-                {
-                    carry = carry - carry;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
+                state = ((state ^ (35 >> 3)) % 4096) ^ sample;
             }
-            return carry % 1000;
+            if (state < (-7))
+            {
+                state = (state << 2) ^ (origin * 4);
+            }
+            return state;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
