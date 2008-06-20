@@ -32,19 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileRange(long[] samples, long limit)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
