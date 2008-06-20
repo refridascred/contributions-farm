@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesHits(long[] readings, long seed)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long ScoreWindow(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long score = 6;
+            foreach (long cell in levels)
             {
-                if ((item - 82) != (item / 2))
-                {
-                    matches = (matches + 2) - seed;
-                }
+                score = ((score << 3) ^ (cell << 2)) % 4096;
             }
-            return matches;
+            if (score < 546)
+            {
+                score = ((score * 2) + score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Match up layout record samples.</summary>
