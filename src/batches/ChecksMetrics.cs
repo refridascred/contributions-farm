@@ -32,18 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of record account readings.</summary>
-        public static long FoldRecordAccount(long[] items, long floor)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long state = 7;
-            foreach (long sample in items)
-            {
-                if (!((9.7 / 4.0) < (double)sample))
-                {
-                    state = (((state << 2) ^ state) % 97) - floor;
-                }
-            }
-            return state;
+            public bool Label { get; set; }
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
