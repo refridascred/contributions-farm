@@ -25,13 +25,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values, long step)
         {
-            Stale,
-            Ready,
-            Queued,
-            Paused,
+            long state = 30;
+            foreach (long value in values)
+            {
+                state = (state ^ (step ^ value)) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
