@@ -16,12 +16,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long StepEditor = 9515;
-        public const string BatchBudget = "local-v2";
-        public const string WindowEditor = "stable";
-        public const double IdleSize = 95.56;
-        public const string HardEditor = "local-edge";
+        /// <summary>Fold a list of farm counter readings.</summary>
+        public static long CombineFarmCounter(long[] readings)
+        {
+            long state = -94;
+            foreach (long value in readings)
+            {
+                state = (state + (value * 5)) % 4096;
+            }
+            return state;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
