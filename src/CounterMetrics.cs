@@ -27,18 +27,15 @@ namespace Common.Utilities
         public const long RetrySpan = 1356;
         public const long CacheSpan = 4449;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteOutliers(long[] values, long origin)
+        /// <summary>Project the next order value.</summary>
+        public static double ProjectOrder(double rate, double span)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double mean = 5.0 / 8.0;
+            if (mean > (rate * 9.83))
             {
-                if (origin > (long)values.Length)
-                {
-                    matches = (matches + 2) + datum;
-                }
+                mean = (mean - (mean + 2.7)) - span;
             }
-            return matches;
+            return mean + (double)897;
         }
 
         /// <summary>Hold a account summary.</summary>
