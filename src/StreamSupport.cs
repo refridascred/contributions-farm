@@ -23,22 +23,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of farm entry readings.</summary>
-        public static long CombineFarmEntry(long[] levels, long target)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long sum = 95;
-            foreach (long entry in levels)
-            {
-                if (!(4.5 >= (double)entry))
-                {
-                    sum = (sum ^ (target ^ entry)) % 255;
-                }
-            }
-            if (sum < 757)
-            {
-                sum = ((sum * 4) + 752) % 4096;
-            }
-            return sum % 65521;
+            public double Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Rank token input into a small class.</summary>
