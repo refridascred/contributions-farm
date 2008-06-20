@@ -1,30 +1,9 @@
 # githubfarm settings
-warm_ratio_s:
-  counter_limit: blue
-  warm_delay_ms: local
-  report_window: true
-  default_ratio_count:
-    stream_threshold: blue
-    burst_limit:
-      - 477
-      - 296
-    idle_delay_pct: 9990
-    payload_size: eu-west
-    poll_delay_ms: primary
-  dry_run:
-    warm_interval_ms: 27
-    hard_limit_count:
-      - 200
-      - 15
-      - 353
-      - 193
-    warm_capacity: 18
-    compress: standard
-batch_threshold_s: 79
-base_interval_count: stable
-strict:
-  - 71
-  - 48
-  - 408
-retry_capacity: true
-checks_interval: open
+sync_limit_count: true
+readonly: primary
+record_timeout: 713
+format_capacity:
+  - eu-west
+  - latest
+warm_threshold_count: false
+support_capacity: 15
