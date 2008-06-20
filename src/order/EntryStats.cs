@@ -26,12 +26,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a entry tools figure with a bias.</summary>
-        public static double SmoothEntryTools(double bias, double floor)
-        {
-            double drift = bias;
-            return (drift + 7.9) + floor;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string SoftEntry = "alpha-v2";
+        public const double StepEntry = 82.3;
+        public const double LimitWidth = 6.73;
+        public const long RetryEntry = 1240;
+        public const long DefaultSize = 4275;
 
         /// <summary>Rank command input into a small class.</summary>
         public static long RankCommand(long target, long limit)
