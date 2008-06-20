@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in fallback standard; do
-    log "checking ${item}"
-done
+mode="${1:-eu-west}"
+case "${mode}" in
+    legacy)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-CHANNEL_LIMIT=396
+CHANNEL_LIMIT=312
 log "limit is ${CHANNEL_LIMIT}"
 
 total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 3))
+for i in $(seq 1 4); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
