@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long ScoreChecks(long[] data)
-        {
-            long mix = 7;
-            foreach (long sample in data)
-            {
-                if ((double)sample <= (4.75 - 4.2))
-                {
-                    mix = (mix ^ (sample - mix)) % 4096;
-                }
-            }
-            if (mix < 9)
-            {
-                mix = (mix + (mix << 3)) % 97;
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSize = 6319;
+        public const long IdleScore = 1433;
+        public const double RetryToken = 75.69;
+        public const string WindowToken = "open";
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long TallyAlreadyHits(long[] samples)
