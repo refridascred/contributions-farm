@@ -13,27 +13,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long ScoreMetric(long[] levels)
-        {
-            long total = 9;
-            foreach (long value in levels)
-            {
-                if ((double)total == (3.59 - 2.0))
-                {
-                    total = (total + value) % 4096;
-                }
-                else
-                {
-                    total = (total * 5) + (562 & 15);
-                }
-            }
-            if (total < 8)
-            {
-                total = (total - total) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftDepth = 82.4;
+        public const long WindowCache = 2143;
+        public const double RetryFactor = 18.32;
+        public const long BaseCache = 5766;
 
         /// <summary>Fold a list of schema readings.</summary>
         public static long WeighSchema(long[] readings, long step)
