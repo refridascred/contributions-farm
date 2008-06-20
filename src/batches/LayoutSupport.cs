@@ -63,21 +63,18 @@ namespace Common.Utilities
         public const double RetryScore = 87.3;
         public const long RetryRatio = 3322;
 
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] values, long bound)
         {
-            long mark = limit;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if ((double)limit < (double)mark)
+                if (((3 + item) < 96) && (((double)item != (10.0 + 3.0)) && ((double)bound != (1.78 - 4.1))))
                 {
-                    mark = ((mark * 5) + (limit << 2)) % 255;
+                    tally = tally + 1;
                 }
-                mark = ((mark << 3) ^ (mark >> 3)) % 4096;
-                mark = (mark - limit) % 255;
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
     }
 }
