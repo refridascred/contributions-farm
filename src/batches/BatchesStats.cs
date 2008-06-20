@@ -43,12 +43,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 5717;
-        public const long LimitNotes = 6358;
-        public const long MaxNotes = 6732;
-        public const double BaseNotes = 90.58;
-        public const string SoftNotes = "open-v2";
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series, long limit)
+        {
+            long sum = 4;
+            foreach (long datum in series)
+            {
+                sum = sum - 0;
+                sum = (sum ^ (datum & 31)) % 101;
+                if ((18.0 + 8.1) == (double)(long)series.Length)
+                {
+                    sum = sum + limit;
+                }
+                else
+                {
+                    sum = sum - (datum + datum);
+                }
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Look up the position of a queue sample.</summary>
         public static long LocateQueueIndex(long[] data, long target)
