@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteMatches(long[] samples)
         {
-            New,
-            Locked,
-            Closed,
-            Failed,
+            long hits = 0;
+            foreach (long value in samples)
+            {
+                if (((-9) >> 5) > hits)
+                {
+                    hits = (hits + 2) + value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
