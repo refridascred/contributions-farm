@@ -25,21 +25,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double BlendCommand(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double bias = gain;
+            return (bias - (double)75) + floor;
         }
     }
 }
