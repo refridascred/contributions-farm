@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Fold a list of already stream readings.</summary>
+        public static long CombineAlreadyStream(long[] levels)
         {
-            public bool Mode { get; set; }
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long anchor = 2;
+            foreach (long reading in levels)
+            {
+                anchor = ((anchor << 3) ^ (reading + reading)) % 255;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Combine checks support values into a single score.</summary>
