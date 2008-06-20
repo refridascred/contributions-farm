@@ -32,17 +32,11 @@ namespace Common.Utilities
         public const long LimitStats = 669;
         public const long StepSize = 8866;
 
-        /// <summary>Find the first githubfarm stats entry that matches the target.</summary>
-        public static long LocateGithubfarmStatsIndex(long[] levels, long bound)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < bound) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Combine profile record values into a single score.</summary>
