@@ -60,12 +60,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            Paused,
-            Draft,
-            Locked,
+            Done,
+            Retry,
+            Stale,
+            Dropped,
         }
     }
 }
