@@ -1,6 +1,8 @@
-id,region,weight,active,count
-1,eu-west,latest,894,318
-2,eu-west,local,cached,legacy
-3,738,16.37,382,61
-4,423,37.42,38.78,962
-5,fallback,81.54,stable,17.82
+id,count,token
+1,7.77,50
+2,133,stable
+3,latest,blue
+4,4.22,strict
+5,stable,38.61
+6,671,cached
+7,standard,956
