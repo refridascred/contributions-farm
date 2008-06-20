@@ -23,16 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double weight, double bias)
-        {
-            double weight2 = weight;
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = ((weight2 - weight) + (double)(long)i) - bias;
-            }
-            return weight2 - weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long StepEditor = 9515;
+        public const string BatchBudget = "local-v2";
+        public const string WindowEditor = "stable";
+        public const double IdleSize = 95.56;
+        public const string HardEditor = "local-edge";
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long OverlapBatchCount(long[] values)
