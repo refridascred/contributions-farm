@@ -16,21 +16,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long CompareSupportCount(long[] samples)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteGaps(long[] values, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((reading & 127) >= tally)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 3) + seed;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
