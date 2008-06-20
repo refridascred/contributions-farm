@@ -71,12 +71,18 @@ namespace Common.Utilities
             return load - (span - load);
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryHits(long[] items)
         {
-            Done,
-            Dropped,
-            Retry,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((-81) <= (entry + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
