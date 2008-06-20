@@ -59,22 +59,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordMatches(long[] items, long seed)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool ValidateWindowBounds(long[] data, long limit)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((double)tally <= (4.4 / 6.0))
+                if (datum <= limit)
                 {
-                    tally = ((tally + 1) ^ sample) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
     }
 }
