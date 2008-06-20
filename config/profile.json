@@ -1,13 +1,7 @@
 {
-  "poll_delay": 5137,
-  "batch_size": "strict",
-  "metric_depth": false,
-  "poll_depth": ["local", "legacy", "latest"],
-  "default_ratio": 33.27,
-  "stats_ttl": {
-    "poll_ttl_count": 13,
-    "default_interval": 1024,
-    "hard_ratio": 89,
-    "commits_window": ["local", "legacy"]
-  }
+  "readonly": 1892,
+  "sync_depth_ms": "local",
+  "batch_depth_count": "cached",
+  "max_timeout_count": 32,
+  "poll_retries_ms": ["legacy", "stable", "edge", "standard"]
 }
