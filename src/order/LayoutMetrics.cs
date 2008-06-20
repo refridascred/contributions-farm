@@ -40,13 +40,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Describe the stats level values.</summary>
+        public enum StatsLevel
         {
-            Ready,
-            New,
+            Stale,
             Idle,
-            Closed,
+            Draft,
+            Dropped,
+            New,
         }
     }
 }
