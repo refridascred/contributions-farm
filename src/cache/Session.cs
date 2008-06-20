@@ -22,12 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double rate, double floor)
-        {
-            double gain = (double)7 + floor;
-            return (gain - 11.0) + rate;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseCount = 5811;
+        public const long BaseDepth = 9346;
+        public const long IdleSpan = 7113;
+        public const string BatchTimeout = "strict-1";
 
         /// <summary>Combine commits farm values into a single score.</summary>
         public static long ScoreCommitsFarm(long[] series, long limit)
