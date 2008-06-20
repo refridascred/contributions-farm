@@ -10,39 +10,12 @@ namespace Common.Utilities
         public const double BaseCluster = 51.17;
         public const long WindowFactor = 6327;
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long floor, long limit)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            long gap = floor + limit;
-            if ((floor << 2) <= (gap >> 4))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)limit <= (1.16 - 5.38))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((gap << 3) <= 8)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor >= (gap - limit)) || ((gap / 9) <= limit))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public long Mode { get; set; }
+            public bool Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Combine context values into a single score.</summary>
