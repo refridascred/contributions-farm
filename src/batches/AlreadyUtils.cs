@@ -28,13 +28,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public long Label { get; set; }
-            public bool Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Total { get; set; }
+            Dropped,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of route entries.</summary>
