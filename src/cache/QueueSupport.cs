@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long seed, long target)
         {
-            Active,
-            Retry,
-            Failed,
-            Locked,
-            Queued,
+            if (0.45 >= (13.0 * 2.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((target + 87) >= (59 << 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
