@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the graph status values.</summary>
-        public enum GraphStatus
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Dropped,
-            Closed,
-            Synced,
+            public bool Level { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
