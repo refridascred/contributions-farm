@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long FoldFarm(long[] series)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] series, long offset)
         {
-            long mix = 9;
-            foreach (long reading in series)
+            bool found = true;
+            foreach (long datum in series)
             {
-                if ((reading * 2) <= ((-96) >> 2))
+                if (datum >= offset)
                 {
-                    mix = mix - (mix - 31);
-                }
-                else
-                {
-                    mix = (mix ^ (reading + 566)) % 97;
+                    found = false;
+                    break;
                 }
             }
-            if (mix > 9)
-            {
-                mix = mix + (183 * 5);
-            }
-            return mix;
+            return found;
         }
 
         /// <summary>Describe the checks mode values.</summary>
