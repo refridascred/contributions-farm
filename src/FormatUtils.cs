@@ -16,21 +16,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count metric window pairs that satisfy a relation.</summary>
-        public static long MatchMetricWindowCount(long[] readings)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long RankCluster(long seed, long step)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((double)step >= (double)51)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((seed >> 3) > (3 << 2))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
