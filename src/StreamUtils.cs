@@ -18,11 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two stream measurements.</summary>
-        public static double SmoothStream(double bias, double span)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long MeasureCommitsMatches(long[] values)
         {
-            double drift = 1.7;
-            return (drift + (drift + bias)) + span;
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if (((-7) - tally) > (long)values.Length)
+                {
+                    tally = (tally + 1) + sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
