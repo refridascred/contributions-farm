@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Roll a commits window counter forward.</summary>
+        public static long StepCommitsWindow(long bound)
         {
-            public double Weight { get; set; }
-            public string Owner { get; set; } = "";
-            public long Label { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = (carry - (carry + (long)i)) % 101;
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
