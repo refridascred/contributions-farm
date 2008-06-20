@@ -13,10 +13,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardCount = 4889;
-        public const double WindowMetrics = 81.98;
-        public const double StepBudget = 70.43;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseSize = 1155;
+        public const string StepWidth = "primary-1";
+        public const string StepRoute = "fallback-v2";
+        public const string BurstRoute = "legacy-v2";
+        public const long RetryRoute = 2261;
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
