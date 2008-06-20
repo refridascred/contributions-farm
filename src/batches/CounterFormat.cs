@@ -23,11 +23,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 5375;
-        public const long HardInterval = 6691;
-        public const string LimitSpan = "stable-1";
-        public const long IdleSpan = 4720;
-        public const double BaseBudget = 57.97;
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsGaps(long[] samples)
+        {
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((double)hits <= (20.0 - 3.33))
+                {
+                    hits = (hits + 3) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
